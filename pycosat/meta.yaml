@@ -12,6 +12,10 @@ requirements:
   run:
     - python
 
+test:
+  imports:
+    - pycosat
+
 about:
   home: https://github.com/ilanschnell/pycosat
   license: MIT
