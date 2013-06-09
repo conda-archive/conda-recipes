@@ -1,0 +1,19 @@
+package:
+  name: ipython-qtconsole
+  version: 0.13.2
+
+requirements:
+  run:
+    - python
+    - ipython
+    - pyside
+
+app:
+  entry: ipython qtconsole
+  icon: ipy.png
+  summary: IPython QtConsole
+  type: desk
+
+about:
+  home: http://ipython.org/
+  license: BSD
