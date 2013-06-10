@@ -1,0 +1,22 @@
+package:
+  name: BeautifulSoup
+  version: 3.2.1
+
+source:
+  fn: BeautifulSoup-3.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/B/BeautifulSoup/BeautifulSoup-3.2.1.tar.gz
+  mdf: 44656527ef3ac9874ac4d1c9f35f70ee
+
+requirements:
+  build:
+    - python
+  run:
+  - python
+
+test:
+  imports:
+    - BeautifulSoup
+
+about:
+  home: https://github.com/numpy/numpy/tree/master/doc/sphinxext
+  license: BSD
