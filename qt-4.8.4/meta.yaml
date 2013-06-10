@@ -1,0 +1,10 @@
+source:
+  fn: qt-everywhere-opensource-src-4.8.4.tar.gz
+  md5: 89c5ecba180cae74c66260ac732dc5cb
+
+build:
+  number: 0
+
+about:
+    home: http://qt-project.org
+    license: LGPL
