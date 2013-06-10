@@ -18,5 +18,5 @@ test:
     - BeautifulSoup
 
 about:
-  home: https://github.com/numpy/numpy/tree/master/doc/sphinxext
+  home: http://www.crummy.com/software/BeautifulSoup/
   license: BSD
