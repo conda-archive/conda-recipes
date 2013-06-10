@@ -1,6 +1,11 @@
+package:
+  name: opencv
+  version: 2.4.5
+
 source:
-  fn: OpenCV-2.4.2.tar.bz2
-  md5: 059ef86fc1724d69b75832a0d2929ff5
+  fn: opencv-2.4.5.tar.gz
+  url: http://filer/src/opencv-2.4.5.tar.gz
+  md5: 8eac87462c7bec8b89021b723207c623
 
 build:
   number: 1
