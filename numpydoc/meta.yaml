@@ -1,0 +1,18 @@
+package:
+  name: numpydoc
+  version: 0.4
+
+source:
+  fn: numpydoc-0.4
+  url: https://pypi.python.org/packages/source/n/numpydoc/numpydoc-0.4.tar.gz
+  md5: e5bdd98f84f2bb220373819e20c27091
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+
+about:
+  home: https://github.com/numpy/numpy/tree/master/doc/sphinxext
+  license: BSD
