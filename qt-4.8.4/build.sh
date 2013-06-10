@@ -1,7 +1,9 @@
 #!/bin/bash
 
-$REPLACE "read acceptance" "acceptance=yes" configure
-$REPLACE "read commercial" "commercial=o" configure
+set -e
+
+replace "read acceptance" "acceptance=yes" configure
+replace "read commercial" "commercial=o" configure
 
 if [ `uname` == Darwin ]; then
     patch -p0 <$PKG_PATH/10.5.patch || exit 1
@@ -17,7 +19,7 @@ if [ `uname` == Darwin ]; then
         -prefix $PREFIX
 
     for x in $(find . -name Makefile); do
-      $REPLACE "-arch -Wl,-syslibroot,/Developer/SDKs/MacOSX10.5.sdk" "" $x
+      replace "-arch -Wl,-syslibroot,/Developer/SDKs/MacOSX10.5.sdk" "" $x
     done
 fi
 
