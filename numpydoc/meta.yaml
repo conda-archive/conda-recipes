@@ -3,15 +3,22 @@ package:
   version: 0.4
 
 source:
-  fn: numpydoc-0.4
+  fn: numpydoc-0.4.tar.gz
   url: https://pypi.python.org/packages/source/n/numpydoc/numpydoc-0.4.tar.gz
   md5: e5bdd98f84f2bb220373819e20c27091
 
 requirements:
   build:
     - python
+    - distribute
+    - sphinx
   run:
     - python
+    - sphinx
+
+test:
+  imports:
+    - numpydoc
 
 about:
   home: https://github.com/numpy/numpy/tree/master/doc/sphinxext
