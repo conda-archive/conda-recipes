@@ -11,7 +11,7 @@ requirements:
   build:
     - python
   run:
-  - python
+    - python
 
 test:
   imports:
