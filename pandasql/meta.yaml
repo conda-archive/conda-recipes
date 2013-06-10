@@ -1,0 +1,29 @@
+package:
+  name: pandasql
+  version: 0.3.1
+
+source:
+  fn: pandasql-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pandasql/pandasql-0.3.1.tar.gz
+  md5: 87a52197d59f9b95195ba3463f50cf87
+  patches:
+    - sqlparse_version.patch
+
+requirements:
+  build:
+    - python
+    - distribute
+    - sqlparse
+  run:
+    - python
+    - sqlparse
+    - pandas
+    - numpy
+
+test:
+  imports:
+    - pandasql
+
+about:
+  home: https://github.com/yhat/pandasql
+  license: BSD

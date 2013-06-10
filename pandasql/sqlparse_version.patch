@@ -1,0 +1,18 @@
+diff --git setup.py setup.py
+index e96a1a9..eb14d97 100644
+--- setup.py
++++ setup.py
+@@ -2,7 +2,7 @@ from distutils.core import setup
+ from setuptools import find_packages
+ 
+ 
+-required = ['sqlparse==0.1.6']
++required = ['sqlparse']
+ 
+ setup(
+     name="pandasql",
+@@ -18,4 +18,3 @@ setup(
+     long_description=open("README.txt").read(),
+     install_requires=required,
+ )
+-
