@@ -8,7 +8,8 @@ requirements:
 
 test:
   commands:
-    - patch
+    - patch    [win]
+    - patch.py [not win]
   files:
     - testfile
     - testfile2
