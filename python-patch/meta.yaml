@@ -8,7 +8,7 @@ requirements:
 
 test:
   commands:
-    - patch.py
+    - patch
   files:
     - testfile
     - testfile2
