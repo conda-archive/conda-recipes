@@ -1,0 +1,10 @@
+diff --git python-patch/test/testfile python-patch/test/testfile2
+index f10cda7..f7bacac 100644
+--- python-patch/test/testfile
++++ python-patch/test/testfile2
+@@ -1,4 +1,4 @@
+ A
+ A
+ A
+-B
++A

@@ -1,0 +1,15 @@
+package:
+  name: python-patch
+  version: 1.2.11
+
+requirements:
+  run:
+    - python
+
+test:
+  commands:
+    - patch.py
+
+about:
+  home: https://code.google.com/p/python-patch/
+  license: MIT License
