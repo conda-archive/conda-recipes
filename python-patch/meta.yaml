@@ -9,6 +9,10 @@ requirements:
 test:
   commands:
     - patch.py
+  files:
+    - testfile
+    - testfile2
+    - testfile.patch
 
 about:
   home: https://code.google.com/p/python-patch/
