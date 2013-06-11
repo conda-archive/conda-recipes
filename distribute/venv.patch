@@ -1,0 +1,24 @@
+diff --git setuptools/command/easy_install.py setuptools/command/easy_install.py
+index 0d72f75..b870ecb 100644
+--- setuptools/command/easy_install.py
++++ setuptools/command/easy_install.py
+@@ -1902,6 +1902,19 @@ def bootstrap():
+     sys.argv[0] = argv0; sys.argv.append(argv0); main()
+ 
+ def main(argv=None, **kw):
++    if 'virtualenv' in sys.argv:
++        print("""
++WARNING: using virtualenv with Anaconda is untested and not recommended.
++    We suggest using the conda command to create environments instead.
++    For more information about creating conda environments, please see:
++         http://docs.continuum.io/conda/examples/create.html
++""")
++        sys.stdout.write("Proceed (y/n)? ")
++        sys.stdout.flush()
++        proceed = sys.stdin.readline()
++        if proceed.strip().lower() not in ('y', 'yes'):
++            sys.exit(0)
++
+     from setuptools import setup
+     from setuptools.dist import Distribution
+     import distutils.core

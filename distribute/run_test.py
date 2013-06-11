@@ -1,0 +1,3 @@
+import setuptools
+import easy_install
+import pkg_resources

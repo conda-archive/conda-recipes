@@ -1,0 +1,31 @@
+package:
+  name: distribute
+  version: 0.6.45
+
+source:
+  fn: distribute-0.6.45.tar.gz
+  url: http://pypi.python.org/packages/source/d/distribute/distribute-0.6.45.tar.gz
+  md5: 8953f2c07e6700dabf2ec150129b8c31
+  patches:
+    - venv.patch
+    - build_nodownload.patch
+
+build:
+  entry_points:
+    - easy_install = setuptools.command.easy_install:main
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+
+test:
+  commands:
+    - easy_install --help
+  imports:
+    - setuptools
+
+about:
+  home: https://pypi.python.org/pypi/distribute
+  license: PSF or ZPL
