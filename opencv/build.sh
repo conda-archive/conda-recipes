@@ -9,7 +9,7 @@ fi
 if [ `uname` == Darwin ]; then
     CC=gcc-4.2
     CXX=g++-4.2
-    EXTRA="-DCMAKE_OSX_SYSROOT=$SDK"
+    EXTRA="-DCMAKE_OSX_SYSROOT=/Developer/SDKs/MacOSX10.5.sdk"
 fi
 
 mkdir build
