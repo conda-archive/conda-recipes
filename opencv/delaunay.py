@@ -91,7 +91,7 @@ def paint_voronoi( subdiv, img ):
         # right
         draw_subdiv_facet( img, cv.Subdiv2DRotateEdge( edge, 3 ));
 
-if __name__ == '__main__':
+def main():
     win = "source";
     rect = ( 0, 0, 600, 600 );
 
@@ -137,3 +137,6 @@ if __name__ == '__main__':
     cv.WaitKey(0);
 
     cv.DestroyWindow( win );
+
+if __name__ == '__main__':
+    main()
