@@ -1,0 +1,24 @@
+package:
+  name: docopt
+  version: 0.6.1
+
+source:
+  fn: docopt-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/docopt/docopt-0.6.1.tar.gz
+  md5: fe36e9b7a1708a0b02a115f2a78cf623
+
+requirements:
+  build:
+    - python
+    - distribute
+
+  run:
+    - python
+
+test:
+  imports:
+    - docopt
+
+about:
+  home: http://docopt.org
+  license: MIT License
