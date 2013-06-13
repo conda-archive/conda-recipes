@@ -2,7 +2,7 @@
 
 Example recipes for the new conda build system.  Use
 
-    conda build recipe
+    conda build <recipe directory>
 
 You have to use the git version of
 [conda](https://github.com/continuumio/conda).
