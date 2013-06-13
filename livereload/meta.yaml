@@ -1,0 +1,35 @@
+package:
+  name: livereload
+  version: 1.0.0
+
+source:
+  fn: livereload-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/l/livereload/livereload-1.0.0.tar.gz
+  md5: 3fa30a516ec72ea02d69afdf9cf25b64
+
+build:
+  entry_points:
+    - livereload = livereload.cli:main
+
+requirements:
+  build:
+    - python
+    - distribute
+    - tornado
+    - docopt
+
+  run:
+    - python
+    - tornado
+    - docopt
+
+test:
+  imports:
+    - livereload
+
+  commands:
+    - livereload --help
+
+about:
+  home: http://lab.lepture.com/livereload/
+  license: BSD License
