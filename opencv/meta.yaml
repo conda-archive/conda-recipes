@@ -24,10 +24,6 @@ requirements:
     - zlib         [unix]
     - libpng
 
-test:
-  files:
-    - delaunay.py
-
 about:
   home: http://opencv.willowgarage.com/wiki/
   license: BSD
