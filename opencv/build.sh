@@ -26,7 +26,7 @@ cmake                                                                      \
     -DPYTHON_INCLUDE_PATH:PATH=$PREFIX/include/python${PY_VER}             \
     -DPYTHON_LIBRARY:FILEPATH=$STDLIB_DIR/config/libpython${PY_VER}.a      \
     -DPYTHON_PACKAGES_PATH:PATH=$SP_DIR                                    \
-    -D BUILD_PYTHON_SUPPORT=ON                                             \
+    -DBUILD_PYTHON_SUPPORT=ON                                              \
     -DCUDA_TOOLKIT_ROOT_DIR=/nowhere                                       \
     -DCMAKE_INSTALL_PREFIX=$PREFIX ..
 make
