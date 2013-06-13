@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 if [ `uname` == Linux ]; then
     CC=gcc44
     CXX=g++44
