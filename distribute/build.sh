@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 $PYTHON setup.py install
 
 rm -rf $SP_DIR/distribute-*-py*.egg/EGG-INFO

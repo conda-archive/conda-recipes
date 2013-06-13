@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 sed -i "s/read acceptance/acceptance=yes/g" configure
 sed -i "s/read commercial/commercial=o/g" configure
 
