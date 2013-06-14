@@ -1,0 +1,25 @@
+package:
+  name: urwid
+  version: 1.1.1
+
+source:
+  fn: urwid-1.1.1.tar.gz
+  url: http://pypi.python.org/packages/source/u/urwid/urwid-1.1.1.tar.gz
+  md5: 932d199de6fc847eab2c151512220665
+
+requirements:
+  build:
+    - python
+    - distribute
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - urwid
+
+about:
+  home: http://excess.org/urwid/
+  license: GNU Library or Lesser General Public License (LGPL)
