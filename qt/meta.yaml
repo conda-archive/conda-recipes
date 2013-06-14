@@ -7,6 +7,10 @@ source:
   url: http://filer/src/qt-everywhere-opensource-src-4.8.4.tar.gz
   md5: 89c5ecba180cae74c66260ac732dc5cb
 
+patches:
+  - acceptance.patch
+  - 10.5.patch [osx]
+
 build:
   number: 1
 

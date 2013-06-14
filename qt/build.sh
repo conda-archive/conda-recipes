@@ -1,10 +1,6 @@
 #!/bin/bash
 
-sed -i "s/read acceptance/acceptance=yes/g" configure
-sed -i "s/read commercial/commercial=o/g" configure
-
 if [ `uname` == Darwin ]; then
-    patch -p0 <$PKG_PATH/10.5.patch || exit 1
     chmod +x configure
 
     ./configure \

@@ -1,14 +1,15 @@
---- configure	2011-12-08 06:06:02.000000000 +0100
-+++ configure	2011-12-21 01:41:11.000000000 +0100
-@@ -7753,16 +7753,18 @@
- # env. variable. 
+diff --git configure configure
+index b1c6025..78d6e12 100755
+--- configure
++++ configure
+@@ -7910,16 +7910,16 @@ fi
+ # env. variable.
  if [ "$PLATFORM_MAC" = "yes" ] && [ "$CFG_MAC_XARCH" != "no" ] ; then
      if echo "$CFG_MAC_ARCHS" | grep '\<x86\>' > /dev/null 2>&1; then
 -        QMakeVar add QMAKE_CFLAGS "-Xarch_i386 -mmacosx-version-min=10.4"
 -        QMakeVar add QMAKE_CXXFLAGS "-Xarch_i386 -mmacosx-version-min=10.4"
 -        QMakeVar add QMAKE_LFLAGS "-Xarch_i386 -mmacosx-version-min=10.4"
 -        QMakeVar add QMAKE_OBJECTIVE_CFLAGS_X86 "-arch i386 -Xarch_i386 -mmacosx-version-min=10.4"
-+		# Orig = 10.4
 +        QMakeVar add QMAKE_CFLAGS "-Xarch_i386 -mmacosx-version-min=10.5"
 +        QMakeVar add QMAKE_CXXFLAGS "-Xarch_i386 -mmacosx-version-min=10.5"
 +        QMakeVar add QMAKE_LFLAGS "-Xarch_i386 -mmacosx-version-min=10.5"
@@ -19,7 +20,6 @@
 -        QMakeVar add QMAKE_CXXFLAGS "-Xarch_ppc -mmacosx-version-min=10.4"
 -        QMakeVar add QMAKE_LFLAGS "-Xarch_ppc -mmacosx-version-min=10.4"
 -        QMakeVar add QMAKE_OBJECTIVE_CFLAGS_PPC "-arch ppc -Xarch_ppc -mmacosx-version-min=10.4"
-+		# Orig = 10.4
 +        QMakeVar add QMAKE_CFLAGS "-Xarch_ppc -mmacosx-version-min=10.5"
 +        QMakeVar add QMAKE_CXXFLAGS "-Xarch_ppc -mmacosx-version-min=10.5"
 +        QMakeVar add QMAKE_LFLAGS "-Xarch_ppc -mmacosx-version-min=10.5"
@@ -27,4 +27,3 @@
      fi
      if echo "$CFG_MAC_ARCHS" | grep '\<x86_64\>' > /dev/null 2>&1; then
          QMakeVar add QMAKE_CFLAGS "-Xarch_x86_64 -mmacosx-version-min=10.5"
-diff -ur qt-everywhere-opensource-src-4.8.0-vanilla/src/3rdparty/webkit/Source/WebCore/platform/graphics/mac/MediaPlayerPrivateQTKit.mm qt-everywhere-opensource-src-4.8.0-for-10.5/src/3rdparty/webkit/Source/WebCore/platform/graphics/mac/MediaPlayerPrivateQTKit.mm
