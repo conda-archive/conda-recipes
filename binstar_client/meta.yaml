@@ -10,13 +10,13 @@ source:
    # List any patch files here
    # - fix.patch
 
-# build:
-  # entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - binstar_client:main
-    #
+build:
+   entry_points:
+     #Put any entry points (scripts to be generated automatically) here. The
+     #syntax is module:function.  For example
+    
+    - binstar = binstar_client:binstar_client.scripts.cli:main
+    
     # Would call binstar_client.main()
 
   # If this is a new build for the same version, increment the build
@@ -32,7 +32,6 @@ requirements:
     - appdirs
     - pyyaml
     - distribute
-    - wsgiref
     - requests
 
   run:
@@ -42,7 +41,7 @@ requirements:
     - pyyaml
     - requests
     - distribute
-    - wsgiref
+
 test:
   # Python imports
   imports:
