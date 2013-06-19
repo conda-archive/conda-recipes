@@ -2,8 +2,8 @@ diff --git setuptools/package_index.py setuptools/package_index.py
 index b038862..9abe430 100644
 --- setuptools/package_index.py
 +++ setuptools/package_index.py
-@@ -210,0 +210,0 @@ class PackageIndex(Environment):
-
+@@ -210,6 +210,9 @@ class PackageIndex(Environment):
+ 
      def process_url(self, url, retrieve=False):
          """Evaluate a URL as a possible download, and maybe retrieve it"""
 +        if os.getenv("CONDA_BUILD"):
