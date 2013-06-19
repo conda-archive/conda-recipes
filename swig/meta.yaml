@@ -9,8 +9,10 @@ source:
 requirements:
   build:
     - pcre
+    - python
   run:
     - pcre
+    - python
 
 about:
     home: http://www.swig.org/
