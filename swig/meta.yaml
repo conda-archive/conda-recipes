@@ -1,0 +1,17 @@
+package:
+  name: swig
+  version: 2.0.10
+
+source:
+  fn: swig-2.0.10.tar.gz
+  url: http://prdownloads.sourceforge.net/swig/swig-2.0.10.tar.gz
+
+requirements:
+  build:
+    - pcre
+  run:
+    - pcre
+
+about:
+    home: http://www.swig.org/
+    license: GPLv3
