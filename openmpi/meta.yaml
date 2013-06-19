@@ -1,0 +1,12 @@
+package:
+  name: openmpi
+  version: 1.6.3
+
+source:
+  fn: openmpi-1.6.3.tar.bz2
+  url: http://www.open-mpi.org/software/ompi/v1.6/downloads/openmpi-1.6.3.tar.bz2
+  md5: eedb73155a7a40b0b07718494298fb25
+
+about:
+  home: http://www.open-mpi.org/
+  license: new BSD  (http://www.open-mpi.org/community/license.php)

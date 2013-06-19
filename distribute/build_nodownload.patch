@@ -7,7 +7,7 @@ index b038862..9abe430 100644
      def process_url(self, url, retrieve=False):
          """Evaluate a URL as a possible download, and maybe retrieve it"""
 +        if os.getenv("CONDA_BUILD"):
-+            raise RuntimeError("Distribute downloading is disabled in conda build")
++            raise RuntimeError("Distribute downloading is disabled in conda build. Add the dependencies to meta.yaml.")
 +
          if url in self.scanned_urls and not retrieve:
              return
