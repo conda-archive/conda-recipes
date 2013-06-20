@@ -19,7 +19,7 @@ app:
       args: --port %s            [not osx]
       default: 8080              [not osx]
       summary: Server port ...   [not osx]
-  entry: open ipython_osx.command    [osx]
+  entry: ipython_mac.sh              [osx]
 
 build:
   number: 1                          [osx]
