@@ -1,0 +1,66 @@
+package:
+  name: iep
+  version: 3.2
+
+source:
+  fn: iep-3.2.source.tar.gz
+  url: https://pypi.python.org/packages/source/i/iep/iep-3.2.source.tar.gz
+  md5: 3ca5a836f107ed1075957d2921cf5ecc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - iep:main
+    #
+    # Would call iep.main()
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    # requires python3
+    - pyzolib
+    - qt
+    - pyqt
+    - sip
+    # If setuptools is required to run setup.py, add distribute to the build
+    # requirements.
+    #
+    # - distribute
+
+  run:
+    - python
+    - pyside
+    - pyzolib
+
+test:
+  # Python imports
+  imports:
+    - iep
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/iep/
+  license: BSD License
+
+# See
+# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# more information about meta.yaml
