@@ -3,9 +3,7 @@ package:
   version: 0.13.2
 
 source:
-  fn: ipython-0.13.2.tar.gz
-  url: http://pypi.python.org/packages/source/i/ipython/ipython-0.13.2.tar.gz
-  md5: ead3b7eb70c653b537fb9d96d71b8b2a
+  git_url: https://github.com/ipython/ipython.git
   patches:
     - hugo.patch             [linux]
 
