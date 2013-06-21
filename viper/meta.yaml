@@ -1,0 +1,38 @@
+package:
+  name: viper
+  version: 0.14
+
+source:
+  git_url: https://github.com/majidaldo/vIPer.git
+  #forked to use pyside instead of pyqt
+
+requirements:
+  build:
+    - python
+    - distribute
+    - pyside
+    - jinja2
+    - pygments
+    - docutils
+
+  run:
+    - python
+    - ipython
+    - pyside
+    - jinja2
+    - pygments
+    - docutils
+
+# test:
+ # Python imports
+  # imports:
+    # - IPconverter
+    #- IPslider
+
+about:
+  home: https://github.com/damianavila/vIPer
+  license: TBD
+
+# See
+# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# more information about meta.yaml
