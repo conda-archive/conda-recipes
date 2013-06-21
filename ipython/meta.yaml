@@ -10,6 +10,7 @@ source:
     - hugo.patch             [linux]
 
 build:
+  number: 1                  [win]
   entry_points:
     - ipython3 = IPython.frontend.terminal.ipapp:launch_new_instance  [py3k]
     - ipython = IPython.frontend.terminal.ipapp:launch_new_instance   [win]
