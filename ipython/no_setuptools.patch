@@ -1,0 +1,15 @@
+--- setup.py.orig	2012-04-21 23:07:05.000000000 -0700
++++ setup.py	2012-08-29 23:18:42.806538700 -0700
+@@ -180,12 +180,6 @@
+            'bdist', 'bdist_dumb', 'bdist_wininst', 'install_egg_info',
+            'egg_info', 'easy_install', 'upload',
+             ))
+-if sys.platform == 'win32':
+-    # Depend on setuptools for install on *Windows only*
+-    # If we get script-installation working without setuptools,
+-    # then we can back off, but until then use it.
+-    # See Issue #369 on GitHub for more
+-    needs_setuptools.add('install')
+ 
+ if len(needs_setuptools.intersection(sys.argv)) > 0:
+     import setuptools

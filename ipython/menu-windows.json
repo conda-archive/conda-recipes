@@ -1,0 +1,20 @@
+[
+  {
+    "name": "IPython (Py __PY_VER__)",
+    "pyscript": "${PYTHON_SCRIPTS}/ipython-script.py",
+    "workdir": "${PERSONALDIR}/Python Scripts",
+    "icon": "${MENU_DIR}/IPython.ico"
+  },
+  {
+    "name": "IPython (Py __PY_VER__) QTConsole",
+    "pywscript": "${PYTHON_SCRIPTS}/ipython-script.py qtconsole",
+    "workdir": "${PERSONALDIR}/Python Scripts",
+    "icon": "${MENU_DIR}/IPython.ico"
+  },
+  {
+    "name": "IPython (Py __PY_VER__) Notebook",
+    "pyscript": "${PYTHON_SCRIPTS}/ipython-script.py notebook",
+    "workdir": "${PERSONALDIR}/IPython Notebooks",
+    "icon": "${MENU_DIR}/IPython.ico"
+  }
+]
