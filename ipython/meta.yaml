@@ -8,10 +8,8 @@ source:
   md5: ead3b7eb70c653b537fb9d96d71b8b2a
   patches:
     - hugo.patch             [linux]
-    - wakari.patch           [wakari]
 
 build:
-  channel: w                 [wakari]
   entry_points:
     - ipython3 = IPython.frontend.terminal.ipapp:launch_new_instance  [py3k]
     - ipython = IPython.frontend.terminal.ipapp:launch_new_instance   [win]
