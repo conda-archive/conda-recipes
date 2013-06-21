@@ -1,4 +1,4 @@
-copy %PKG_PATH%\IPython.ico %MENU_DIR%
+copy "%RECIPE_DIR%\IPython.ico" %MENU_DIR%
 if errorlevel 1 exit 1
 
 python setup.py install
