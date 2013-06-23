@@ -1,0 +1,33 @@
+package:
+  name: pyside
+  version: 1.1.2
+
+source:
+  fn: pyside-latest.tar.bz2                  [unix]
+  md5: 59c8653734b020b0128b82adc98ee704      [unix]
+  url: http://filer/src/pyside-latest.tar.bz2
+  fn: PySide-1.1.2qt474.win32-py2.7.exe      [win32 and py27]
+  fn: PySide-1.1.2qt474.win-amd64-py2.7.exe  [win64 and py27]
+  fn: PySide-1.1.2.win32-py3.3.exe           [win32 and py33]
+  fn: PySide-1.1.2.win-amd64-py3.3.exe       [win64 and py33]
+
+build:
+  number: 1     [osx]
+
+requirements:
+  build:
+    - cmake     [unix]
+    - qt        [unix]
+    - libpng    [linux]
+    - shiboken  [unix]
+    - python
+  run:
+    - qt        [unix]
+    - shiboken  [unix]
+    - libpng    [linux]
+    - python
+    - python.app  [osx]
+
+about:
+  home: https://pypi.python.org/pypi/PySide
+  license: LGPL
