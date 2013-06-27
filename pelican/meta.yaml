@@ -1,0 +1,75 @@
+package:
+  name: pelican
+  version: 3.2.2
+
+source:
+  fn: pelican-3.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pelican/pelican-3.2.2.tar.gz
+  md5: cf9af2669dbd84c3e83b546b70b1a78c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pelican:main
+    #
+    # Would call pelican.main()
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    # If setuptools is required to run setup.py, add distribute to the build
+    # requirements.
+    #
+    - distribute
+    - six
+    - unidecode
+    - blinker
+    - pytz
+    - docutils
+    - pygments
+    - jinja2
+    - feedgenerator
+
+  run:
+    - python
+    - six
+    - unidecode
+    - blinker
+    - pytz
+    - docutils
+    - pygments
+    - jinja2
+    - feedgenerator
+
+test:
+  # Python imports
+  imports:
+    - pelican
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any test requirements here.  For example
+    # - nose
+
+about:
+  home: http://getpelican.com/
+  license: GNU Affero General Public License v3
+
+# See
+# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# more information about meta.yaml
