@@ -9,7 +9,7 @@ source:
 
 build:
   entry_points:
-    - yt = yt.utilities.comand_line:run_main
+    - yt = yt.utilities.command_line:run_main
 
 requirements:
   build:
@@ -29,6 +29,8 @@ requirements:
     - matplotlib
 
 test:
+  commands:
+    - yt -h
   imports:
     - yt
     - yt.utilities.hdf5_light_reader
