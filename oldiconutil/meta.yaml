@@ -1,0 +1,15 @@
+package:
+  name: oldiconutil
+  version: 1
+
+# There are no versions or git tags
+source:
+  git_url: https://github.com/uliwitness/oldiconutil.git
+
+about:
+    home: https://github.com/uliwitness/oldiconutil
+    license: BSD
+
+test:
+  commands:
+    - oldiconutil --help

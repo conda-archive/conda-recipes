@@ -1,0 +1,36 @@
+package:
+  name: ipython
+  version: 0.13.2
+
+source:
+  git_url: https://github.com/ipython/ipython.git
+  patches:
+    - hugo.patch             [linux]
+
+build:
+  number: 1                  [win]
+  entry_points:
+    - ipython3 = IPython.frontend.terminal.ipapp:launch_new_instance  [py3k]
+    - ipython = IPython.frontend.terminal.ipapp:launch_new_instance   [win]
+  osx_is_app: True           [py2k]
+
+requirements:
+  build:
+    - python
+    - distribute             [win or py3k]
+    - pyreadline             [win]
+  run:
+    - python
+    - pyreadline             [win]
+    - python.app             [osx and py2k]
+
+test:
+  commands:
+    - ipython -h             [py2k]
+    - ipython3 -h            [py3k]
+  imports:
+    - IPython
+
+about:
+  home: http://ipython.org/
+  license: BSD

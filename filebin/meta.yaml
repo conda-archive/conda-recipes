@@ -1,0 +1,11 @@
+package:
+  name: filebin
+  version: 1.0.0
+
+test:
+  commands:
+    - filebin -v
+
+source:
+  git_url: git@github.com:ilanschnell/filebin.git
+  git_tag: 1.0.0
