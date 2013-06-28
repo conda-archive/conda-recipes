@@ -1,11 +1,11 @@
 package:
-  name: iep
-  version: 3.2
+  name: requests
+  version: 1.2.3
 
 source:
-  fn: iep-3.2.source.tar.gz
-  url: https://pypi.python.org/packages/source/i/iep/iep-3.2.source.tar.gz
-  md5: 3ca5a836f107ed1075957d2921cf5ecc
+  fn: requests-1.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/r/requests/requests-1.2.3.tar.gz
+  md5: adbd3f18445f7fe5e77f65c502e264fb
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - iep:main
+    # - requests:main
     #
-    # Would call iep.main()
+    # Would call requests.main()
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -26,7 +26,6 @@ source:
 requirements:
   build:
     - python
-    # requires python3
     # If setuptools is required to run setup.py, add distribute to the build
     # requirements.
     #
@@ -34,12 +33,11 @@ requirements:
 
   run:
     - python
-    - pyside
-    - pyzolib
 
 test:
+  # Python imports
   imports:
-    - iep
+    - requests
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -53,8 +51,8 @@ test:
     # - nose
 
 about:
-  home: http://code.google.com/p/iep/
-  license: BSD License
+  home: http://python-requests.org
+  license: ache Software License
 
 # See
 # https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
