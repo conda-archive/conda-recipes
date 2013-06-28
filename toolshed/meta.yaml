@@ -1,0 +1,27 @@
+package:
+  name: toolshed
+  version: 0.2.9
+
+source:
+  fn: toolshed-0.2.9.tar.gz
+  url: https://pypi.python.org/packages/source/t/toolshed/toolshed-0.2.9.tar.gz
+  md5: a665488a48805f3455037d9c00c07e5b
+
+requirements:
+  build:
+    - python
+    - distribute
+    - nose
+
+  run:
+    - python
+
+test:
+  requires:
+    - nose
+  imports:
+    - toolshed
+
+about:
+  home: https://github.com/brentp/toolshed
+  license: MIT License
