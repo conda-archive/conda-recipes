@@ -22,3 +22,4 @@ requirements:
 test:
   imports:
     - PyTrilinos
+    - PyTrilinos._Teuchos
