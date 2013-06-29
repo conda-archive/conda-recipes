@@ -11,7 +11,7 @@ requirements:
   build:
     - python
     - numpy
-    - swig
+    - swig 2.0.8
     - cmake
   run:
     - python
