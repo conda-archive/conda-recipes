@@ -15,8 +15,12 @@ cmake \
   -D Trilinos_ENABLE_PyTrilinos:BOOL=ON \
   -D BUILD_SHARED_LIBS:BOOL=ON \
   -D SWIG_EXECUTABLE:FILEPATH=$PREFIX/bin/swig \
+  -D PYTHON_EXECUTABLE:FILEPATH=$PREFIX/bin/python${PY_VER} \
+  -D PYTHON_INCLUDE_PATH:PATH=$PREFIX/include/python${PY_VER} \
   -D CMAKE_INSTALL_PREFIX=$PREFIX \
   ..
+
+#  -D PYTHON_LIBRARY:FILEPATH=$PREFIX/lib/libpython${PY_VER}.dylib \
 
 make
 make install
