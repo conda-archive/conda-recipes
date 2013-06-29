@@ -1,0 +1,22 @@
+package:
+  name: trilinos
+  version: 11.2.4
+
+source:
+  fn: trilinos-11.2.4-Source.tar.gz
+  url: http://trilinos.sandia.gov/download/files/trilinos-11.2.4-Source.tar.gz
+  md5: 29abd4c5bd4bb39aef87e151bfe12541
+
+requirements:
+  build:
+    - python
+    - numpy
+    - swig
+    - cmake
+  run:
+    - python
+    - numpy
+
+test:
+  imports:
+    - PyTrilinos
