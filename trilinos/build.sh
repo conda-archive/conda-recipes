@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ `uname` == Darwin ]; then
+    SO_EXT='dylib'
+else
+    SO_EXT='so'
+fi
+
 mkdir build
 cd build
 
@@ -17,10 +23,9 @@ cmake \
   -D SWIG_EXECUTABLE:FILEPATH=$PREFIX/bin/swig \
   -D PYTHON_EXECUTABLE:FILEPATH=$PREFIX/bin/python${PY_VER} \
   -D PYTHON_INCLUDE_PATH:PATH=$PREFIX/include/python${PY_VER} \
+  -D PYTHON_LIBRARY:FILEPATH=$PREFIX/lib/libpython${PY_VER}.${SO_EXT} \
   -D CMAKE_INSTALL_PREFIX=$PREFIX \
   ..
-
-#  -D PYTHON_LIBRARY:FILEPATH=$PREFIX/lib/libpython${PY_VER}.dylib \
 
 make
 make install
