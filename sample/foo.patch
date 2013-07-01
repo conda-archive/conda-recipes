@@ -1,0 +1,13 @@
+diff --git test_pycosat.py test_pycosat.py
+index 1456d78..af66daf 100644
+--- test_pycosat.py
++++ test_pycosat.py
+@@ -9,6 +9,8 @@ from pycosat import solve, itersolve
+ 
+ # -------------------------- utility functions ---------------------------
+ 
++foo = 42
++
+ def read_cnf(path):
+     """
+     read a DIMACS cnf formatted file from `path`, and return the clauses

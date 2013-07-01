@@ -5,6 +5,8 @@ package:
 source:
   git_url: git@github.com:ContinuumIO/pycosat.git
   git_tag: 0.6.0
+  patches:
+    - foo.patch
 
 requirements:
   build:
