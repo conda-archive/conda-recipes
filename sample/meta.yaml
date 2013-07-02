@@ -1,3 +1,6 @@
+# This is a sample conda recipe, which is used for testing features
+# in the conda build command.
+
 package:
   name: pycosat
   version: 0.6.0
@@ -5,6 +8,8 @@ package:
 source:
   git_url: git@github.com:ContinuumIO/pycosat.git
   git_tag: 0.6.0
+  patches:
+    - foo.patch
 
 requirements:
   build:
