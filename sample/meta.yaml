@@ -1,3 +1,6 @@
+# This is a sample conda recipe, which is used for testing features
+# in the conda build command.
+
 package:
   name: pycosat
   version: 0.6.0
