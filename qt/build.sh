@@ -8,13 +8,9 @@ if [ `uname` == Darwin ]; then
         -release -no-qt3support -nomake examples -nomake demos \
         -opensource \
         -no-framework \
-        -sdk $SDK \
         -arch $OSX_ARCH \
         -prefix $PREFIX
 
-    for x in $(find . -name Makefile); do
-      sed -i "s_-arch -Wl,-syslibroot,/Developer/SDKs/MacOSX10.5.sdk__g" $x
-    done
 fi
 
 if [ `uname` == Linux ]; then

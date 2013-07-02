@@ -7,6 +7,13 @@ source:
   url: http://pypi.python.org/packages/source/p/pudb/pudb-2013.3.2.tar.gz
   md5: aacca6e45b664914a1f514e3580d1d65
 
+build:
+  entry_points:
+    - pudb = pudb.run:main  [py2k]
+    - pudb3 = pudb.run:main [py3k]
+
+  number: 1
+
 requirements:
   build:
     - python
@@ -23,6 +30,10 @@ test:
   # Python imports
   imports:
     - pudb
+
+  commands:
+    - pudb --help  [py2k]
+    - pudb3 --help [py3k]
 
 about:
   home: http://pypi.python.org/pypi/pudb

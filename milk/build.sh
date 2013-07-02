@@ -1,5 +1,6 @@
 #!/bin/bash
 
+./get-eigen.sh
 $PYTHON setup.py install
 
 # Add more build steps here, if they are necessary.

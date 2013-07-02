@@ -26,6 +26,7 @@ source:
 requirements:
   build:
     - python
+    - gdata
     # If setuptools is required to run setup.py, add distribute to the build
     # requirements.
     #
@@ -47,7 +48,6 @@ test:
   # at test time.
 
   requires:
-    Put any test requirements here.  For example
     - gdata
 
 about:
