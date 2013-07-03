@@ -10,6 +10,10 @@ source:
     - acceptance.patch
     - 10.5.patch [osx]
 
+requirements:
+  build:
+    - freetype
+
 build:
   number: 2
 
