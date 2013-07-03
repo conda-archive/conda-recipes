@@ -1,0 +1,17 @@
+package:
+  name: fontconfig
+  version: 2.10.93
+
+source:
+  fn: fontconfig-2.10.93.tar.bz2
+  url: http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.10.93.tar.bz2
+  md5: 0f8e5c63c2d6931626185c02802375a3
+
+requirements:
+  build:
+    - freetype
+    - libxml2
+
+about:
+    home: http://www.freedesktop.org/wiki/Software/fontconfig/
+    license: BSD
