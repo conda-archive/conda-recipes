@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - Unidecode:main
+    # - unidecode:main
     #
-    # Would call Unidecode.main()
+    # Would call unidecode.main()
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.

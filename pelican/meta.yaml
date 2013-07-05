@@ -19,7 +19,6 @@ build:
     - pelican-import = pelican.tools.pelican_import:main
     - pelican-quickstart = pelican.tools.pelican_quickstart:main
     - pelican-themes = pelican.tools.pelican_themes:main
-    # Would call pelican.main()
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -34,6 +33,7 @@ requirements:
     - distribute
     - six
     - unidecode
+    - argparse [py26]
     - blinker
     - pytz
     - docutils
@@ -64,6 +64,10 @@ test:
     - pelican-import --help
     - pelican-quickstart --help
     - pelican-themes --help
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
