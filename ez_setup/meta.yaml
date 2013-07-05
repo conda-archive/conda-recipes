@@ -1,0 +1,59 @@
+package:
+  name: ez_setup
+  version: 0.9
+
+source:
+  fn: ez_setup-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/e/ez_setup/ez_setup-0.9.tar.gz
+  md5: 1ac53445a67bf68eb2676a72cc3f87f8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ez_setup:main
+    #
+    # Would call ez_setup.main()
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    # If setuptools is required to run setup.py, add distribute to the build
+    # requirements.
+    #
+    - distribute
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - ez_setup
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ActiveState/ez_setup
+  license: MIT
+
+# See
+# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# more information about meta.yaml
