@@ -1,0 +1,61 @@
+package:
+  name: fabric-virtualenv
+  version: 0.2.1
+
+source:
+  fn: fabric-virtualenv-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/f/fabric-virtualenv/fabric-virtualenv-0.2.1.tar.gz
+  md5: cdcc2b9a02acda7947f89c0b419b6b8b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fabric-virtualenv:main
+    #
+    # Would call fabric-virtualenv.main()
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    # If setuptools is required to run setup.py, add distribute to the build
+    # requirements.
+    #
+    - distribute
+    - fabric
+
+  run:
+    - python
+    - fabric
+
+test:
+  # Python imports
+  imports:
+    - fabvenv
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/fabric-virtualenv/
+  license: UNKNOWN
+
+# See
+# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# more information about meta.yaml
