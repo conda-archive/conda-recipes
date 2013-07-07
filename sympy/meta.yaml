@@ -17,5 +17,5 @@ requirements:
     - python
 
 about:
-  home: http://code.google.com/p/sympy/
+  home: http://sympy.org
   license: New BSD
