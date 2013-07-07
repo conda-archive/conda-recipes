@@ -1,3 +1,7 @@
+package:
+  name: sympy
+  version: 0.7.2
+
 source:
   fn: sympy-0.7.2.tar.gz                                                  [py2k]
   url: http://pypi.python.org/packages/source/s/sympy/sympy-0.7.2.tar.gz  [py2k]
