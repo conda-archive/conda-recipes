@@ -16,7 +16,7 @@ fi
 if [ `uname` == Linux ]; then
     chmod +x configure
     ./configure \
-        -release -fontconfig -continue -verbose \
+        -release -fontconfig -verbose \
         -no-qt3support -nomake examples -nomake demos \
         -qt-libpng -qt-zlib \
         -prefix $PREFIX
