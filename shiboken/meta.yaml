@@ -16,6 +16,9 @@ requirements:
     - qt
     - python
 
+build:
+  number: 1
+
 #test:
 #  commands:
 #    - shiboken --help
