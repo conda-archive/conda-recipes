@@ -5,6 +5,7 @@ package:
 source:
   fn: shiboken-latest.tar.bz2
   md5: 0a37b5011b3a7276bf4584317412a4b6
+  url: http://filer/src/shiboken-latest.tar.bz2
 
 requirements:
   build:
