@@ -1,0 +1,26 @@
+package:
+  name: shiboken
+  version: 1.1.2
+
+source:
+  fn: shiboken-latest.tar.bz2
+  md5: 0a37b5011b3a7276bf4584317412a4b6
+
+requirements:
+  build:
+    - cmake
+    - qt
+    - python
+  run:
+    - qt
+    - python
+
+#test:
+#  commands:
+#    - shiboken --help
+#  imports:
+#    - shiboken
+
+about:
+    home: https://github.com/PySide/Shiboken
+    license: LGPL
