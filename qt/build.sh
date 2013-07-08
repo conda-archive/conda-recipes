@@ -19,6 +19,7 @@ if [ `uname` == Linux ]; then
         -release -fontconfig -verbose \
         -no-qt3support -nomake examples -nomake demos \
         -qt-libpng -qt-zlib \
+        -webkit \
         -prefix $PREFIX
 fi
 
