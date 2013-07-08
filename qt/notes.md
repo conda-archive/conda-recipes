@@ -7,3 +7,5 @@ Packages needed in Ubuntu:
 - libfreetype6-dev
 - libfontconfig1-dev
 - chrpath
+- libxrender-dev
+- freeglut3-dev
