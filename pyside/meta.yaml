@@ -13,7 +13,7 @@ source:
 
 build:
   number: 1     [osx]
-  number: 1     [linux]
+  number: 2     [linux]
 
 requirements:
   build:
