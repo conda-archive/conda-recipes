@@ -1,6 +1,6 @@
 Packages needed in Ubuntu:
 
-- g++
+- g++-4.4
 - libx11-dev
 - libxt-dev
 - libxext-dev
