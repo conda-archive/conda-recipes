@@ -15,7 +15,7 @@ requirements:
     - freetype
 
 build:
-  number: 3
+  number: 4
 
 about:
     home: http://qt-project.org
