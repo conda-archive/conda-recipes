@@ -1,3 +1,3 @@
-./configure --prefix=$PREFIX --enable-shared --disable-openssl
+./configure --prefix=$PREFIX
 make
 make install
