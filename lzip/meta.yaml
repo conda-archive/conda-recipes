@@ -1,0 +1,15 @@
+package:
+  name: lzip
+  version: 1.4
+
+source:
+  fn: lzlib-1.4.tar.gz
+  url: http://download.savannah.gnu.org/releases/lzip/lzlib-1.4.tar.gz
+
+test:
+  commands:
+    - lzip --help
+
+about:
+  home: http://lzip.nongnu.org/lzip.html
+  license: GPL
