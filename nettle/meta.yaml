@@ -1,10 +1,10 @@
 package:
   name: nettle
-  version: 2.7.1
+  version: 2.7
 
 source:
-  fn: nettle-2.7.1.tar.gz
-  url: http://www.lysator.liu.se/~nisse/archive/nettle-2.7.1.tar.gz
+  fn: nettle-2.7.tar.gz
+  url: http://www.lysator.liu.se/~nisse/archive/nettle-2.7.tar.gz
 
 about:
   home: http://www.lysator.liu.se/~nisse/nettle/
