@@ -46,5 +46,5 @@ about:
   license: BSD License
 
 # See
-# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# https://github.com/ContinuumIO/conda/blob/master/docs/source/build.rst for
 # more information about meta.yaml
