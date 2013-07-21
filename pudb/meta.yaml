@@ -10,10 +10,10 @@ source:
 
 build:
   entry_points:
-    - pudb = pudb.run:main  [py2k]
+    - pudb = pudb.run:main
     - pudb3 = pudb.run:main [py3k]
 
-  number: 1
+  number: 2
 
 requirements:
   build:
