@@ -1,14 +1,22 @@
 package:
   name: vtk
-  version: 5.10.1
+  version: 6.0.0
 
 source:
-  fn: vtk-5.10.1.tar.gz
-  url: http://www.vtk.org/files/release/5.10/vtk-5.10.1.tar.gz
+  fn: vtk-6.0.0.tar.gz
+  url: http://www.vtk.org/files/release/6.0/vtk-6.0.0.tar.gz
 
 requirements:
   build:
     - cmake        [unix]
+    - python
+
+test:
+  requires:
+    - python
+
+  imports:
+    - vtk
 
 about:
   home: http://www.vtk.org/
