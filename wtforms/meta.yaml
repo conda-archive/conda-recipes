@@ -1,0 +1,59 @@
+package:
+  name: wtforms
+  version: 1.0.4
+
+source:
+  fn: WTForms-1.0.4.zip
+  url: https://pypi.python.org/packages/source/W/WTForms/WTForms-1.0.4.zip
+  md5: f7fe9a18f46dda7f6a2350319949593e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - wtforms:main
+    #
+    # Would call wtforms.main()
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    # If setuptools is required to run setup.py, add distribute to the build
+    # requirements.
+    #
+    # - distribute
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - wtforms
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any test requirements here.  For example
+    # - nose
+
+about:
+  home: http://wtforms.simplecodes.com/
+  license: BSD License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
