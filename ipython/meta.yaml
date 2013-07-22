@@ -9,9 +9,10 @@ source:
     - hugo.patch             [linux]
 
 build:
+  number: 1
   entry_points:
-    - ipython3 = IPython.frontend.terminal.ipapp:launch_new_instance  [py3k]
-    - ipython = IPython.frontend.terminal.ipapp:launch_new_instance
+    - ipython3 = IPython.terminal.ipapp:launch_new_instance  [py3k]
+    - ipython = IPython.terminal.ipapp:launch_new_instance
   osx_is_app: True           [py2k]
 
 requirements:
