@@ -1,0 +1,59 @@
+package:
+  name: anyjson
+  version: 0.3.3
+
+source:
+  fn: anyjson-0.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/anyjson/anyjson-0.3.3.tar.gz
+  md5: 2ea28d6ec311aeeebaf993cb3008b27c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - anyjson:main
+    #
+    # Would call anyjson.main()
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    # If setuptools is required to run setup.py, add distribute to the build
+    # requirements.
+    #
+    - distribute
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - anyjson
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/runeh/anyjson/
+  license: BSD License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
