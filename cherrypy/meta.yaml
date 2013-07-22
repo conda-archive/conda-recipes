@@ -1,0 +1,60 @@
+package:
+  name: cherrypy
+  version: 3.2.4
+
+source:
+  fn: CherryPy-3.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/C/CherryPy/CherryPy-3.2.4.tar.gz
+  md5: e2c8455e15c39c9d60e0393c264a4d16
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cherrypy:main
+    #
+    # Would call cherrypy.main()
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    # If setuptools is required to run setup.py, add distribute to the build
+    # requirements.
+    #
+    # - distribute
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - cherrypy
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+    - cherryd --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.cherrypy.org
+  license: BSD
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
