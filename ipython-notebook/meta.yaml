@@ -11,10 +11,19 @@ requirements:
     - jinja2
 
 app:
+  entry: ipython notebook                        [not osx]
   icon: ipynb_icon_64x64.png
   summary: IPython Notebook
   type: web
-  entry: open ${PREFIX}/bin/ipython_mac.command
+  cli_opts:                                      [not osx]
+    - name: port                                 [not osx]
+      args: --port %s                            [not osx]
+      default: 8080                              [not osx]
+      summary: Server port ...                   [not osx]
+  entry: open ${PREFIX}/bin/ipython_mac.command  [osx]
+
+build:
+  number: 1                                      [osx]
 
 about:
   home: http://ipython.org/notebook.html
