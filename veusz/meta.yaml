@@ -5,12 +5,11 @@ package:
 source:
   git_url: https://github.com/jeremysanders/veusz.git
   git_tag: veusz-1.17.1
-  
-requirements: 
+
+requirements:
   build:
     - python
 
   run:
     - python
     - numpy
-  
