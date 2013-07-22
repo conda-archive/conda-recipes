@@ -6,9 +6,7 @@ source:
   fn: appdirs-1.2.0.zip
   url: https://pypi.python.org/packages/source/a/appdirs/appdirs-1.2.0.zip
   md5: 7bc76ee16112388a390ca0139e565d9b
-#  patches:
-   # List any patch files here
-   # - fix.patch
+  sha1: 818c8d1848cc4f5f047abfc53f059ee96b14cef0
 
 # build:
   # entry_points:
