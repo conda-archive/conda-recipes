@@ -1,17 +1,17 @@
 package:
   name: ipython
-  version: 0.13.2
+  version: 1.0.0a1
 
 source:
-  git_url: https://github.com/ipython/ipython.git
+  fn: ipython-1.0.0a1.tar.gz
+  url: http://archive.ipython.org/testing/1.0.0/ipython-1.0.0a1.tar.gz
   patches:
     - hugo.patch             [linux]
 
 build:
-  number: 1                  [win]
   entry_points:
     - ipython3 = IPython.frontend.terminal.ipapp:launch_new_instance  [py3k]
-    - ipython = IPython.frontend.terminal.ipapp:launch_new_instance   [win]
+    - ipython = IPython.frontend.terminal.ipapp:launch_new_instance
   osx_is_app: True           [py2k]
 
 requirements:
@@ -26,7 +26,7 @@ requirements:
 
 test:
   commands:
-    - ipython -h             [py2k]
+    - ipython -h
     - ipython3 -h            [py3k]
   imports:
     - IPython
