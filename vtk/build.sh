@@ -24,7 +24,7 @@ cmake                                                                       \
     -DPYTHON_INCLUDE_PATH:PATH=$PREFIX/include/python2.7 \
     -DPYTHON_LIBRARY:FILEPATH=$PREFIX/lib/libpython2.7.dylib \
     -DVTK_USE_X:BOOL=OFF \
-    -DVTK_WRAP_PYTHON:BOOL=OFF \
+    -DVTK_WRAP_PYTHON:BOOL=ON \
     -DVTK_USE_OFFSCREEN:BOOL=ON \
     ..
 
