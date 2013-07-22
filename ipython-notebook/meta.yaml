@@ -1,6 +1,6 @@
 package:
   name: ipython-notebook
-  version: 0.13.2
+  version: 1.0.0a1
 
 requirements:
   run:
@@ -8,6 +8,7 @@ requirements:
     - ipython
     - pyzmq
     - tornado
+    - jinja2
 
 app:
   entry: ipython notebook                        [not osx]
