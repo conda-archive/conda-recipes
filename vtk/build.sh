@@ -17,7 +17,6 @@ cmake                                                                       \
     $EXTRA                                                                 \
     -DCMAKE_INSTALL_PREFIX:PATH="$PREFIX" \
     -DCMAKE_INSTALL_RPATH:STRING="$PREFIX/lib" \
-    -DCMAKE_INSTALL_RPATH_USE_LINK_PATH:BOOL=ON \
     -DBUILD_TESTING:BOOL=OFF \
     -DBUILD_EXAMPLES:BOOL=OFF \
     -DPYTHON_EXECUTABLE:FILEPATH=$PYTHON \
