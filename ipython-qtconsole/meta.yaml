@@ -14,7 +14,8 @@ build:
   number: 2
 
 app:
-  entry: pythonw ipython qtconsole
+  entry: pythonw ipython qtconsole [osx]
+  entry: ipython qtconsole [not osx]
   icon: ipy.png
   summary: IPython QtConsole
   type: desk
