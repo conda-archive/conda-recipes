@@ -1,21 +1,23 @@
 package:
-  name: appdirs
-  version: 1.2.0
+  name: pytz
+  version: 2013b
 
 source:
-  fn: appdirs-1.2.0.zip
-  url: https://pypi.python.org/packages/source/a/appdirs/appdirs-1.2.0.zip
-  md5: 7bc76ee16112388a390ca0139e565d9b
-  sha1: 818c8d1848cc4f5f047abfc53f059ee96b14cef0
+  fn: pytz-2013b.tar.bz2
+  url: https://pypi.python.org/packages/source/p/pytz/pytz-2013b.tar.bz2
+  md5: 34f47470eedd5cd1faf6c3da2741967b
+#  patches:
+   # List any patch files here
+   # - fix.patch
 
 # build:
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - appdirs:main
+    # - pytz:main
     #
-    # Would call appdirs.main()
+    # Would call pytz.main()
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -24,8 +26,10 @@ source:
 requirements:
   build:
     - python
-
-    - distribute
+    # If setuptools is required to run setup.py, add distribute to the build
+    # requirements.
+    #
+    # - distribute
 
   run:
     - python
@@ -33,7 +37,7 @@ requirements:
 test:
   # Python imports
   imports:
-    - appdirs
+    - pytz
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -47,7 +51,7 @@ test:
     # - nose
 
 about:
-  home: http://github.com/ActiveState/appdirs
+  home: http://pytz.sourceforge.net
   license: MIT License
 
 # See
