@@ -7,9 +7,14 @@ requirements:
     - python
     - ipython
     - pyside
+    - pygments
+    - python.app
+
+build:
+  number: 2
 
 app:
-  entry: ipython qtconsole
+  entry: pythonw ipython qtconsole
   icon: ipy.png
   summary: IPython QtConsole
   type: desk
