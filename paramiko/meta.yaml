@@ -56,5 +56,5 @@ about:
   license: GNU Library or Lesser General Public License (LGPL)
 
 # See
-# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# http://docs.continuum.io/conda/build.html for
 # more information about meta.yaml
