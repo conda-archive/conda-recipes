@@ -1,7 +1,7 @@
 mkdir bld
 cd bld
 ../configure --prefix=$PREFIX \
-    --with-mac \
+    --with-gtk \
     --with-opengl \
     --enable-geometry \
     --enable-graphics_ctx \
@@ -9,7 +9,6 @@ cd bld
     --enable-mediactrl \
     --enable-display \
     --enable-monolithic \
-    --osx_cocoa
 
 make
 make -C contrib/src/gizmos
