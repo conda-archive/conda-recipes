@@ -8,7 +8,8 @@ cd bld
     --enable-sound --with-sdl \
     --enable-mediactrl \
     --enable-display \
-    --enable-monolithic
+    --enable-monolithic \
+    --osx_cocoa
 
 make
 make -C contrib/src/gizmos
