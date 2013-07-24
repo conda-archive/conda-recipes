@@ -10,13 +10,13 @@ cd bld
     --enable-display \
     --enable-monolithic
 
-make \
-    && make -C contrib/src/gizmos \
-                && make -C contrib/src/stc
+make
+make -C contrib/src/gizmos
+make -C contrib/src/stc
 
-make install \
-    && make -C contrib/src/gizmos install \
-    && make -C contrib/src/stc install
+make install
+make -C contrib/src/gizmos install
+make -C contrib/src/stc install
 
 export WX_CONFIG=$PREFIX/bin/wx-config
 
