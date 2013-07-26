@@ -1,5 +1,5 @@
 package:
-  name: pastedeploy
+  name: paste.deploy
   version: 1.5.0
 
 source:
