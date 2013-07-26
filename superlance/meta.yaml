@@ -1,0 +1,71 @@
+package:
+  name: superlance
+  version: 0.8
+
+source:
+  fn: superlance-0.8.tar.gz
+  url: https://pypi.python.org/packages/source/s/superlance/superlance-0.8.tar.gz
+  md5: 3c5ab1551b163b4f8f436062218a99ad
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - superlance = superlance:main
+    #
+    # Would create an entry point called superlance that calls superlance.main()
+    - httpok = superlance.httpok:main
+    - crashsms = superlance.crashsms:main
+    - crashmail = superlance.crashmail:main
+    - crashmailbatch = superlance.crashmailbatch:main
+    - fatalmailbatch = superlance.fatalmailbatch:main
+    - memmon = superlance.memmon:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - distribute
+    - supervisor
+
+  run:
+    - python
+    - supervisor
+
+test:
+  # Python imports
+  imports:
+    - superlance
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+    # These return non-zero exit status
+    # - httpok --help
+    # - crashsms --help
+    # - crashmail --help
+    - crashmailbatch --help
+    - fatalmailbatch --help
+    # - memmon --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any test requirements here.  For example
+    # - nose
+
+about:
+  home: http://supervisord.org
+  license: UNKNOWN
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
