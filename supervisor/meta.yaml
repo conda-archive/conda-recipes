@@ -1,0 +1,69 @@
+package:
+  name: supervisor
+  version: 3.0b2
+
+source:
+  fn: supervisor-3.0b2.tar.gz
+  url: https://pypi.python.org/packages/source/s/supervisor/supervisor-3.0b2.tar.gz
+  md5: e2557853239ee69955f993091b0eddc4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - supervisor = supervisor:main
+    #
+    # Would create an entry point called supervisor that calls supervisor.main()
+
+    - supervisord = supervisor.supervisord:main
+    - supervisorctl = supervisor.supervisorctl:main
+    - echo_supervisord_conf = supervisor.confecho:main
+    - pidproxy = supervisor.pidproxy:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - distribute
+    - meld3
+
+  run:
+    - python
+    - distribute
+    - meld3
+
+test:
+  # Python imports
+  imports:
+    - supervisor
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - supervisord --help
+    - supervisorctl --help
+    - echo_supervisord_conf --help
+    #- pidproxy
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any test requirements here.  For example
+    # - nose
+
+about:
+  home: http://supervisord.org/
+  license: BSD
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
