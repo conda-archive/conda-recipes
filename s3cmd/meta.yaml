@@ -1,6 +1,6 @@
 package:
   name: s3cmd
-  version: 1.1.0-beta3
+  version: 1.1.0beta3
 
 source:
   fn: s3cmd-1.1.0-beta3.tar.gz
@@ -34,7 +34,7 @@ requirements:
 test:
   # Python imports
   imports:
-    - s3cmd
+    - S3
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
