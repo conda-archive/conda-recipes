@@ -1,0 +1,57 @@
+package:
+  name: markdown2
+  version: 2.1.0
+
+source:
+  fn: markdown2-2.1.0.zip
+  url: https://pypi.python.org/packages/source/m/markdown2/markdown2-2.1.0.zip
+  md5: 0c4bd59eb0249cd84ebe4dd4a15626e3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - markdown2 = markdown2:main
+    #
+    # Would create an entry point called markdown2 that calls markdown2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - markdown2
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/trentm/python-markdown2
+  license: MIT License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
