@@ -1,10 +1,10 @@
 package:
   name: vtk
-  version: 6.0.0
+  version: 5.10.1
 
 source:
-  fn: vtk-6.0.0.tar.gz
-  url: http://www.vtk.org/files/release/6.0/vtk-6.0.0.tar.gz
+  fn: vtk-5.10.1.tar.gz
+  url: http://www.vtk.org/files/release/5.10/vtk-5.10.1.tar.gz
 
 requirements:
   build:
