@@ -25,6 +25,7 @@ cmake                                                                       \
     -DVTK_USE_X:BOOL=OFF \
     -DVTK_WRAP_PYTHON:BOOL=ON \
     -DVTK_USE_OFFSCREEN:BOOL=ON \
+    -DBUILD_SHARED_LIBS:BOOL=ON \
     ..
 
 make
