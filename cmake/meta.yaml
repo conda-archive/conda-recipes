@@ -7,6 +7,10 @@ source:
   url: http://www.cmake.org/files/v2.8/cmake-2.8.11.1.tar.gz
   md5: df5324a3b203373a9e0a04b924281a43
 
+test:
+  commands:
+    - cmake --help
+
 about:
   home: http://www.cmake.org/
   license: BSD
