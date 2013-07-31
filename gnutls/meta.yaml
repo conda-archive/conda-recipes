@@ -1,0 +1,21 @@
+package:
+  name: gnutls
+  version: 3.2.1
+
+source:
+  fn: gnutls-3.2.1.tar.xz
+  url: ftp://ftp.gnutls.org/gcrypt/gnutls/v3.2/gnutls-3.2.1.tar.xz
+
+requirements:
+  build:
+    - gmp
+    - nettle 2.7
+    - zlib
+  run:
+    - gmp
+    - nettle 2.7
+    - zlib
+
+about:
+  home: http://www.gnutls.org/
+  license: GPL
