@@ -6,11 +6,11 @@ source:
   fn: argcomplete-0.5.7.tar.gz
   url: https://pypi.python.org/packages/source/a/argcomplete/argcomplete-0.5.7.tar.gz
   md5: d42f788bf85bbfb2db34526d9c87a550
-#  patches:
+  patches:
    # List any patch files here
-   # - fix.patch
+    - remove_setuptools.patch
 
-# build:
+build:
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
@@ -22,24 +22,30 @@ source:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 1
 
 requirements:
   build:
     - python
     - distribute
+    - argparse [py26]
 
   run:
     - python
+    - argparse [py26]
+    - distribute # Needs pkg_resources
 
 test:
   # Python imports
   imports:
     - argcomplete
 
-  # commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
+    - activate-global-python-argcomplete --help
+    - python-argcomplete-check-easy-install-script --help
+    - register-python-argcomplete --help
 
 
   # You can also put a file called run_test.py in the recipe that will be run
@@ -51,7 +57,7 @@ test:
 
 about:
   home: https://github.com/kislyuk/argcomplete
-  license: ache Software License
+  license: Apache Software License
 
 # See
 # http://docs.continuum.io/conda/build.html for

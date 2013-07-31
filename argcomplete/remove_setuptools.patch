@@ -1,0 +1,40 @@
+diff --git setup.py setup.py
+index 6a8f023..d59bf7d 100755
+--- setup.py
++++ setup.py
+@@ -1,7 +1,7 @@
+ #!/usr/bin/env python
+ 
+ import glob
+-from setuptools import setup, find_packages
++from distutils.core import setup
+ 
+ install_requires = []
+ 
+@@ -10,6 +10,26 @@ try:
+ except ImportError:
+     install_requires.append('argparse')
+ 
++import os
++from fnmatch import fnmatchcase
++from distutils.util import convert_path
++
++def find_packages(where='.', exclude=()):
++    out = []
++    stack=[(convert_path(where), '')]
++    while stack:
++        where, prefix = stack.pop(0)
++        for name in os.listdir(where):
++            fn = os.path.join(where,name)
++            if ('.' not in name and os.path.isdir(fn) and
++                os.path.isfile(os.path.join(fn, '__init__.py'))
++            ):
++                out.append(prefix+name)
++                stack.append((fn, prefix+name+'.'))
++    for pat in list(exclude) + ['ez_setup', 'distribute_setup']:
++        out = [item for item in out if not fnmatchcase(item, pat)]
++    return out
++
+ setup(
+     name='argcomplete',
+     version='0.5.7',
