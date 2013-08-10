@@ -1,11 +1,11 @@
 package:
   name: py
-  version: 1.4.14
+  version: 1.4.15
 
 source:
-  fn: py-1.4.14.tar.gz
-  url: https://pypi.python.org/packages/source/p/py/py-1.4.14.tar.gz
-  md5: f441639a1d3f0bbbc955cd22d8127d5e
+  fn: py-1.4.15.tar.gz
+  url: https://pypi.python.org/packages/source/p/py/py-1.4.15.tar.gz
+  md5: b5afc772d242d2dbcf7a2fcf3080a799
 #  patches:
    # List any patch files here
    # - fix.patch
