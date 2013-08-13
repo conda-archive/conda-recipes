@@ -5,7 +5,7 @@ package:
 source:
   fn: BeautifulSoup-3.2.1.tar.gz
   url: https://pypi.python.org/packages/source/B/BeautifulSoup/BeautifulSoup-3.2.1.tar.gz
-  mdf: 44656527ef3ac9874ac4d1c9f35f70ee
+  md5: 44656527ef3ac9874ac4d1c9f35f70ee
 
 requirements:
   build:
