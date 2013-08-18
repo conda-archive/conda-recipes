@@ -1,11 +1,11 @@
 package:
   name: jedi
-  version: 0.6.0
+  version: 0.7.0
 
 source:
-  fn: jedi-0.6.0.tar.gz
-  url: https://pypi.python.org/packages/source/j/jedi/jedi-0.6.0.tar.gz
-  md5: 2e2d953bf8213e56478e5df886ea7c02
+  fn: jedi-0.7.0.tar.gz
+  url: https://pypi.python.org/packages/source/j/jedi/jedi-0.7.0.tar.gz
+  md5: fb4a452b6baa09ce7ced445e58625d25
 #  patches:
    # List any patch files here
    # - fix.patch
