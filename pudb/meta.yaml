@@ -1,12 +1,11 @@
 package:
   name: pudb
-  version: 2013.3.4
+  version: 2013.3.5
 
 source:
-  fn: pudb-2013.3.4.tar.gz
-
-  url: http://pypi.python.org/packages/source/p/pudb/pudb-2013.3.4.tar.gz
-  md5: 2b0205d11f4851099f6edad70a118537
+  fn: pudb-2013.3.5.tar.gz
+  url: http://pypi.python.org/packages/source/p/pudb/pudb-2013.3.5.tar.gz
+  md5: 532a9a919b943ccf01205451d51b55ab
 
 build:
   entry_points:
