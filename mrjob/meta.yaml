@@ -1,0 +1,64 @@
+package:
+  name: mrjob
+  version: 0.4
+
+source:
+  fn: mrjob-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/m/mrjob/mrjob-0.4.tar.gz
+  md5: 48e50fb60c8463b4f59ac0add5ecceee
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mrjob = mrjob:main
+    #
+    # Would create an entry point called mrjob that calls mrjob.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - distribute
+    - boto
+    - pyyaml
+    - simplejson
+
+  run:
+    - python
+    - boto
+    - pyyaml
+    - simplejson
+
+test:
+  # Python imports
+  imports:
+    - mrjob
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/Yelp/mrjob
+  license: ache Software License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
