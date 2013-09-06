@@ -1,29 +1,29 @@
 package:
-    name: pymc
-    version: 2.3
+  name: pymc
+  version: 2.3
 
 source:
-    git_url: git@github.com:pymc-devs/pymc.git
+  git_url: git@github.com:pymc-devs/pymc.git
 
 requirements:
   build:
     - python
-    - numpy 1.9|2.0
-    - scipy 0.11|0.12|0.13|0.14
+    - numpy
+
   run:
     - python
-    - numpy 1.9|2.0
-    - matplotlib 0.9|1.0
-    - scipy 0.11|0.12|0.13|0.14
+    - numpy
+    - matplotlib
+    - scipy
     - pydot
 
 test:
-    imports:
-        - pymc
+  imports:
+    - pymc
 
-    requires:
-        - nose
+  requires:
+    - nose
 
 about:
   home: https://github.com/pymc-devs/pymc
-  license: Academic Free License
+  license: Academic Free License (http://opensource.org/licenses/AFL-3.0)
