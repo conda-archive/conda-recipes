@@ -1,0 +1,25 @@
+package:
+  name: pymc
+  version: 2.2
+
+source:
+  fn: pymc-2.2.tar.gz
+  url: http://pypi.python.org/packages/source/p/pymc/pymc-2.2.tar.gz
+  md5: f94439b23cbfaf89a1bafb97bfc71b85
+
+requirements:
+  build:
+    - python
+    - numpy
+
+  run:
+    - python
+    - numpy
+
+test:
+  imports:
+    - pymc
+
+about:
+  home: https://github.com/pymc-devs/pymc
+  license: Academic Free License (http://opensource.org/licenses/AFL-3.0)
