@@ -1,0 +1,3 @@
+import pymc
+
+pymc.test()
