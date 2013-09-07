@@ -3,7 +3,7 @@ package:
   version: 2.3
 
 source:
-  git_url: git@github.com:pymc-devs/pymc.git
+  git_url: https://github.com/pymc-devs/pymc.git
 
 requirements:
   build:
