@@ -1,0 +1,26 @@
+package:
+  name: biopython
+  version: 1.61
+
+source:
+  fn: biopython-1.61.tar.gz
+  url: https://pypi.python.org/packages/source/b/biopython/biopython-1.61.tar.gz
+  md5: 1da7be780d88eda588bb904865730363
+
+requirements:
+  build:
+    - python
+    - numpy
+  run:
+    - python
+    - numpy
+    - matplotlib
+    - networkx
+
+test:
+  imports:
+    - Bio.Seq
+
+about:
+  home: http://www.biopython.org/
+  license: Biopython License
