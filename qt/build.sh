@@ -1,44 +1,46 @@
 #!/bin/bash
 
-if [ `uname` == Darwin ]; then
-    chmod +x configure
-
-    ./configure \
-        -platform macx-g++ \
-        -release -no-qt3support -nomake examples -nomake demos \
-        -opensource \
-        -no-framework \
-        -arch $OSX_ARCH \
-        -prefix $PREFIX
-
-fi
-
 if [ `uname` == Linux ]; then
+    $REPLACE "read acceptance" "acceptance=yes" configure
+    $REPLACE "read commercial" "commercial=o" configure
+
     chmod +x configure
     ./configure \
-        -release -fontconfig -verbose \
+        -release -fontconfig -continue -verbose \
         -no-qt3support -nomake examples -nomake demos \
-        -qt-libpng -qt-zlib \
-        -webkit \
+        -webkit -qt-libpng -qt-zlib \
         -prefix $PREFIX
-fi
+    make
+    make install
 
-make || exit 1
-make install
-
-if [ `uname` == Darwin ]; then
-    cd $PREFIX
-    rm -rf doc imports mkspecs doc plugins phrasebooks translations \
-        q3porting.xml
-    cd bin
-    rm -rf *.app qcollectiongenerator qhelpgenerator qt3to4 qdoc3
-    rm -rf xml* rcc uic moc macdeployqt
-fi
-
-if [ `uname` == Linux ]; then
     cp $SRC_DIR/bin/* $PREFIX/bin/
     cd $PREFIX
     rm -rf doc imports mkspecs phrasebooks plugins q3porting.xml translations
+    rm -rf demos examples tests
     cd $PREFIX/bin
     rm -f *.bat *.pl qt3to4 qdoc3
+fi
+
+if [ `uname` == Darwin ]; then
+    cd $PREFIX
+    mkdir bin include lib
+    for fn in lconvert lrelease lupdate macdeployqt moc qmake rcc uic
+    do
+        cp /usr/bin/$fn $PREFIX/bin
+    done
+
+    for x in QtCore QtDBus QtDeclarative QtGui QtMultimedia QtNetwork \
+        QtOpenGL QtScript QtSql QtSvg QtWebKit QtXml QtXmlPatterns phonon
+    do
+        cd $PREFIX/include
+        cp -r /Library/Frameworks/$x.framework/Versions/4/Headers $x
+
+        cd $PREFIX/lib
+        fn=lib$x.4.8.5.dylib
+        cp /Library/Frameworks/$x.framework/Versions/4/$x $fn
+        chmod +x $fn
+        ln -s $fn lib$x.4.8.dylib
+        ln -s $fn lib$x.4.dylib
+        ln -s $fn lib$x.dylib
+    done
 fi
