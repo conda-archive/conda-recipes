@@ -1,9 +1,6 @@
 #!/bin/bash
 
 if [ `uname` == Linux ]; then
-    $REPLACE "read acceptance" "acceptance=yes" configure
-    $REPLACE "read commercial" "commercial=o" configure
-
     chmod +x configure
     ./configure \
         -release -fontconfig -continue -verbose \
