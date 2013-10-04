@@ -20,7 +20,6 @@ fi
 
 if [ `uname` == Darwin ]; then
     cd $PREFIX
-    mkdir bin include lib
     for fn in lconvert lrelease lupdate macdeployqt moc qmake rcc uic
     do
         cp /usr/bin/$fn $PREFIX/bin
