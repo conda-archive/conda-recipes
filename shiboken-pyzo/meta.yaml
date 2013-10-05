@@ -1,0 +1,29 @@
+package:
+  name: shiboken
+  version: 1.2.1
+
+source:
+  fn: shiboken-1.2.1.tar.bz2
+  url: http://download.qt-project.org/official_releases/pyside/shiboken-1.2.1.tar.bz2
+
+requirements:
+  build:
+    - cmake
+    - qt
+    - python
+  run:
+    - qt
+    - python
+
+build:
+  number: 3
+
+#test:
+#  commands:
+#    - shiboken --help
+#  imports:
+#    - shiboken
+
+about:
+    home: https://github.com/PySide/Shiboken
+    license: LGPL
