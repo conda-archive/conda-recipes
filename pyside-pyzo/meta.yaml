@@ -1,0 +1,29 @@
+package:
+  name: pyside-pyzo
+  version: 1.2.1
+
+source:
+  fn: PySide-1.2.1.tar.gz
+  url: http://download.qt-project.org/official_releases/pyside/PySide-1.2.1.tar.gz
+
+requirements:
+  build:
+    - cmake
+    - qt
+    - python
+  run:
+    - qt
+    - python
+
+build:
+  number: 3
+
+test:
+  imports:
+    - shiboken
+    - PySide.QtCore
+    - PySide.QtGui
+
+about:
+    home: https://github.com/PySide
+    license: LGPL
