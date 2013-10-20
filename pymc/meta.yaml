@@ -3,7 +3,9 @@ package:
   version: 2.3
 
 source:
-  git_url: https://github.com/pymc-devs/pymc.git
+  fn:  pymc-2.3.tar.gz
+  url: https://github.com/pymc-devs/pymc/archive/2.3.tar.gz
+  md5: 3b644a6e11cd2a57c6fcd3ee593d8d9e
 
 requirements:
   build:
