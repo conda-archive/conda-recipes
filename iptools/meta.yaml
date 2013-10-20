@@ -12,3 +12,7 @@ requirements:
     - distribute
   run:
     - python
+
+about:
+  home: https://github.com/bd808/python-iptools
+  license: New BSD Licence
