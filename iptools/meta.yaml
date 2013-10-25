@@ -1,0 +1,18 @@
+package:
+  name: iptools
+  version: 0.6.1
+
+source:
+  fn: v0.6.1.zip
+  url: https://github.com/bd808/python-iptools/archive/v0.6.1.zip
+
+requirements:
+  build:
+    - python
+    - distribute
+  run:
+    - python
+
+about:
+  home: https://github.com/bd808/python-iptools
+  license: New BSD Licence
