@@ -1,19 +1,19 @@
 package:
   name: distribute
-  version: 0.6.45
+  version: 0.7.3
 
 source:
-  fn: distribute-0.6.45.tar.gz
-  url: http://pypi.python.org/packages/source/d/distribute/distribute-0.6.45.tar.gz
-  md5: 8953f2c07e6700dabf2ec150129b8c31
+  fn: distribute-0.7.3.zip
+  url: http://pypi.python.org/packages/source/d/distribute/distribute-0.7.3.zip
+  md5: c6c59594a7b180af57af8a0cc0cf5b4a
   patches:
     - venv.patch
-    - build_nodownload.patch
+  #  - build_nodownload.patch
 
 build:
   entry_points:
     - easy_install = setuptools.command.easy_install:main
-  number: 2
+  number: 0
 
 requirements:
   build:
@@ -26,6 +26,7 @@ test:
     - easy_install --help
   imports:
     - setuptools
+    - pkg_resources
 
 about:
   home: https://pypi.python.org/pypi/distribute
