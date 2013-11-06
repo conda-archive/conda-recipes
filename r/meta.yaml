@@ -1,0 +1,11 @@
+package:
+  name: r
+  version: 3.0.2
+
+source:
+  fn: R-3.0.2.tar.gz
+  url: http://rweb.quant.ku.edu/cran/src/base/R-3/R-3.0.2.tar.gz
+
+about:
+  home: http://www.r-project.org/
+  license: GPL
