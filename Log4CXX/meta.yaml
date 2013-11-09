@@ -1,0 +1,13 @@
+package:
+  name: log4cxx
+  version: 0.10
+
+source:
+  fn: apache-log4cxx-0.10.0.tar.gz
+  url: http://mirror.reverse.net/pub/apache/logging/log4cxx/0.10.0/apache-log4cxx-0.10.0.tar.gz
+  md5: b30ffb8da3665178e68940ff7a61084c
+
+
+about:
+  home: http://logging.apache.org/log4cxx/
+  license: Apache 2.0

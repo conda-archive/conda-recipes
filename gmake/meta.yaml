@@ -1,0 +1,11 @@
+package:
+  name: gmake
+  version: 4.0
+
+source:
+  fn: make-4.0.tar.gz
+  url: http://ftp.gnu.org/gnu/make/make-4.0.tar.gz
+
+about:
+  home: http://www.cmake.org/
+  license: GPL 3

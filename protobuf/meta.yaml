@@ -1,0 +1,12 @@
+package:
+  # bug: Can't upload protobuf to binstar because of binstar naming bug
+  name: protobuf-bkreider
+  version: 2.5.0
+
+source:
+  fn: protobuf-2.5.0.tar.gz
+  url: http://protobuf.googlecode.com/files/protobuf-2.5.0.tar.bz2
+  sha1: 62c10dcdac4b69cc8c6bb19f73db40c264cb2726
+about:
+  home: http://protobuf.googlecode.com
+  license: BSD 3-Clause
