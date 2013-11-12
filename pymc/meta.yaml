@@ -1,11 +1,11 @@
 package:
   name: pymc
-  version: 2.2
+  version: 2.3
 
 source:
-  fn: pymc-2.2.tar.gz
-  url: http://pypi.python.org/packages/source/p/pymc/pymc-2.2.tar.gz
-  md5: f94439b23cbfaf89a1bafb97bfc71b85
+  fn:  pymc-2.3.tar.gz
+  url: https://github.com/pymc-devs/pymc/archive/2.3.tar.gz
+  md5: 3b644a6e11cd2a57c6fcd3ee593d8d9e
 
 requirements:
   build:
@@ -15,10 +15,16 @@ requirements:
   run:
     - python
     - numpy
+    - matplotlib
+    - scipy
+    - pydot
 
 test:
   imports:
     - pymc
+
+  requires:
+    - nose
 
 about:
   home: https://github.com/pymc-devs/pymc
