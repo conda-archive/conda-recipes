@@ -1,0 +1,28 @@
+package:
+  name: pyserial 
+  version: 2.7
+
+source:
+  fn: pyserial-2.7.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyserial/pyserial-2.7.tar.gz#md5=794506184df83ef2290de0d18803dd11
+  md5: 794506184df83ef2290de0d18803dd11
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - serial 
+
+about:
+  home: http://pyserial.sourceforge.net/
+  license: http://pyserial.sourceforge.net/appendix.html#license 
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

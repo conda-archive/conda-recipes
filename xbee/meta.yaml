@@ -1,0 +1,27 @@
+package:
+  name: xbee 
+  version: 2.1.0
+
+source:
+  fn: XBee-2.1.0.tar.gz 
+  url: https://pypi.python.org/packages/source/X/XBee/XBee-2.1.0.tar.gz#md5=ed3c8c24fd375d980fcef9ce520c53e8
+  md5: ed3c8c24fd375d980fcef9ce520c53e8
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - xbee 
+
+about:
+  home: http://code.google.com/p/python-xbee/
+  license: MIT License 
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
