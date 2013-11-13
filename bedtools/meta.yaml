@@ -1,0 +1,11 @@
+package:
+  name: bedtools
+  version: 2.17
+
+#test:
+#  commands:
+#    - test/test.sh
+
+source:
+  git_url: git@github.com:arq5x/bedtools.git
+  git_tag: v2.17.0
