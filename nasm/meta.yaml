@@ -1,0 +1,15 @@
+package:
+  name: nasm
+  version: 2.10.09
+
+source:
+  fn: nasm-2.10.09.tar.gz
+  url: http://www.nasm.us/pub/nasm/releasebuilds/2.10.09/nasm-2.10.09.tar.bz2
+
+test:
+  commands:
+    - nasm -h
+
+about:
+  home: http://www.nasm.us/
+  license: BSD
