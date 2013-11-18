@@ -1,0 +1,29 @@
+package:
+  name: astropy
+  version: 0.2.5
+
+source:
+  fn: astropy-0.2.5.tar.gz
+  url: https://pypi.python.org/packages/source/a/astropy/astropy-0.2.5.tar.gz
+  md5: d25a81d72f4c3743d75f147503aab34f
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+  run:
+    - python
+    - numpy
+
+test:
+  commands:
+    - fitscheck --help
+    - fitsdiff --help
+    - volint --help
+  imports:
+    - astropy
+
+about:
+  home: http://www.astropy.org/
+  license: BSD
