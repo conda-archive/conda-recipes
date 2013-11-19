@@ -1,0 +1,65 @@
+package:
+  name: gridmap
+  version: 0.10.3
+
+source:
+  fn: gridmap-0.10.3.tar.gz
+  url: https://pypi.python.org/packages/source/g/gridmap/gridmap-0.10.3.tar.gz
+  md5: 9397d820a76918692a9e322410d9a51a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - gridmap = gridmap:main
+    #
+    # Would create an entry point called gridmap that calls gridmap.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - distribute
+    - drmaa
+    - redis
+    - hiredis
+
+  run:
+    - python
+    - distribute
+    - drmaa
+    - redis
+    - hiredis
+
+test:
+  # Python imports
+  imports:
+    - gridmap
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/EducationalTestingService/gridmap
+  license: GNU General Public License v3 (GPLv3)
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
