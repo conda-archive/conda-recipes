@@ -1,0 +1,24 @@
+package:
+  name: xdmf2
+  version: 20131030
+
+source:
+  git_url: git://paraview.org/Xdmf2.git
+  git_tag: e3018ed0cdd6774e27622c1dec1579136bdbe5fc
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - cmake        [unix]
+    - swig
+    - python
+    - hdf5
+  run:
+    - python
+    - hdf5
+
+about:
+  home: http://xdmf.org/
+  license: ARL
