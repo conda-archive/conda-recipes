@@ -7,7 +7,7 @@ source:
   git_tag: e3018ed0cdd6774e27622c1dec1579136bdbe5fc
 
 build:
-  number: 1
+  number: 3
 
 requirements:
   build:
@@ -15,9 +15,11 @@ requirements:
     - swig
     - python
     - hdf5
+    - libxml2
   run:
     - python
     - hdf5
+    - libxml2
 
 about:
   home: http://xdmf.org/
