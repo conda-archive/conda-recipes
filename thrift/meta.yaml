@@ -38,7 +38,6 @@ test:
   imports:
     - thrift.server
     - thrift.transport
-    - thrift
     - thrift.protocol
     - thrift
 
