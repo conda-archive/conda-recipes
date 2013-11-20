@@ -34,9 +34,9 @@ requirements:
     - beautiful-soup
     - numpy
     - scipy
-    - configparser
-    - futures
-    - logutils
+    - configparser [py2k]
+    - futures [py2k]
+    - logutils [py2k]
 
   run:
     - python
@@ -47,9 +47,9 @@ requirements:
     - beautiful-soup
     - numpy
     - scipy
-    - configparser
-    - futures
-    - logutils
+    - configparser [py2k]
+    - futures [py2k]
+    - logutils [py2k]
 
 test:
   # Python imports
