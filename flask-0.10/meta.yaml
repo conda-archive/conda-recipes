@@ -10,13 +10,13 @@ source:
 requirements:
   build:
     - python
-    - distribute
-    - werkzeug
+    - setuptools
+    - werkzeug 0.8.3
     - jinja2
     - itsdangerous
   run:
     - python
-    - werkzeug
+    - werkzeug 0.8.3
     - jinja2
     - itsdangerous
 
