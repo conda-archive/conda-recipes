@@ -1,6 +1,6 @@
 package:
   name: flask
-  version: 0.10
+  version: '0.10'
 
 source:
   fn: Flask-0.10.tar.gz
@@ -16,7 +16,6 @@ requirements:
     - itsdangerous
   run:
     - python
-    - distribute
     - werkzeug
     - jinja2
     - itsdangerous
