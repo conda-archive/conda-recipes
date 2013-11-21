@@ -1,0 +1,74 @@
+package:
+  name: pylint
+  version: 1.0.0
+
+source:
+  fn: pylint-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/pylint/pylint-1.0.0.tar.gz
+  md5: 082b84db04e92f58bba6331060397b05
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pylint = pylint:main
+    #
+    # Would create an entry point called pylint that calls pylint.main()
+    - pylint = pylint:run_pylint
+    - pylint-gui = pylint:run_pylint_gui
+    - epylint = pylint:run_epylint
+    - pyreverse = pylint:run_pyreverse
+    - symilar = pylint:run_symilar
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - distribute
+    - logilab-common
+    - astroid
+
+  run:
+    - python
+    - distribute
+    - logilab-common
+    - astroid
+
+test:
+  # Python imports
+  imports:
+    - pylint
+    - pylint.checkers
+    - pylint.pyreverse
+    - pylint.reporters
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+    - pylint --help
+    - pylint-gui --help
+    - epylint --help
+    - pyreverse --help
+    - symilar --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.pylint.org
+  license: GPL
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
