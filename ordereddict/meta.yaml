@@ -1,11 +1,11 @@
 package:
-  name: skll
-  version: 0.21.0
+  name: ordereddict
+  version: 1.1
 
 source:
-  fn: skll-0.21.0.tar.gz
-  url: https://pypi.python.org/packages/source/s/skll/skll-0.21.0.tar.gz
-  md5: c0e13ef8800eabc21ff634c6bdd3e9bc
+  fn: ordereddict-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/o/ordereddict/ordereddict-1.1.tar.gz
+  md5: a0ed854ee442051b249bfad0f638bbec
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - skll = skll:main
+    # - ordereddict = ordereddict:main
     #
-    # Would create an entry point called skll that calls skll.main()
+    # Would create an entry point called ordereddict that calls ordereddict.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -27,34 +27,14 @@ source:
 requirements:
   build:
     - python
-    - distribute
-    - scikit-learn
-    - six
-    - prettytable
-    - beautiful-soup
-    - numpy
-    - scipy
-    - configparser [py2k]
-    - futures [py2k]
-    - logutils [py2k]
 
   run:
     - python
-    - distribute
-    - scikit-learn
-    - six
-    - prettytable
-    - beautiful-soup
-    - numpy
-    - scipy
-    - configparser [py2k]
-    - futures [py2k]
-    - logutils [py2k]
 
 test:
   # Python imports
   imports:
-    - skll
+    - ordereddict
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -69,8 +49,8 @@ test:
     # - nose
 
 about:
-  home: http://github.com/EducationalTestingService/skll
-  license: GNU General Public License v3 (GPLv3)
+  home: UNKNOWN
+  license: MIT License
 
 # See
 # http://docs.continuum.io/conda/build.html for
