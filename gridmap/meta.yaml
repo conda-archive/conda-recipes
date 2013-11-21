@@ -1,11 +1,11 @@
 package:
   name: gridmap
-  version: 0.10.3
+  version: 0.11.0
 
 source:
-  fn: gridmap-0.10.3.tar.gz
-  url: https://pypi.python.org/packages/source/g/gridmap/gridmap-0.10.3.tar.gz
-  md5: 9397d820a76918692a9e322410d9a51a
+  fn: gridmap-0.11.0.tar.gz
+  url: https://pypi.python.org/packages/source/g/gridmap/gridmap-0.11.0.tar.gz
+  md5: 602fba9b15c6ec62b781b45d6763bf74
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -29,15 +29,13 @@ requirements:
     - python
     - distribute
     - drmaa
-    - redis
-    - hiredis
+    - pyzmq
 
   run:
     - python
     - distribute
     - drmaa
-    - redis
-    - hiredis
+    - pyzmq
 
 test:
   # Python imports
