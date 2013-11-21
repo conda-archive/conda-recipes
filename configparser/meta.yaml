@@ -1,0 +1,61 @@
+package:
+  name: configparser
+  version: 3.3.0r2
+
+source:
+  fn: configparser-3.3.0r2.tar.gz
+  url: https://pypi.python.org/packages/source/c/configparser/configparser-3.3.0r2.tar.gz
+  md5: dda0e6a43e9d8767b36d10f1e6770f09
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - configparser = configparser:main
+    #
+    # Would create an entry point called configparser that calls configparser.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - distribute
+    - ordereddict [py26]
+
+  run:
+    - python
+    - distribute
+    - ordereddict [py26]
+
+test:
+  # Python imports
+  imports:
+    - configparser
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://docs.python.org/3/library/configparser.html
+  license: MIT License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
