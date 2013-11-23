@@ -1,0 +1,9 @@
+diff --git requirements.txt requirements.txt
+index 9b2726a..408d257 100644
+--- requirements.txt
++++ requirements.txt
+@@ -1,4 +1,3 @@
+-argparse
+ PyYAML
+ requests
+ coverage
