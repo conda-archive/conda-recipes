@@ -1,14 +1,21 @@
 package:
   name: zeromq
-  version: 3.2.3
+  version: 4.0.3
 
 source:
-  fn: zeromq-3.2.3.tar.gz
-  url: http://download.zeromq.org/zeromq-3.2.3.tar.gz
-  sha1: 6857a3a0e908eca58f7c0f90e2ba4695f6700957
+  fn: zeromq-4.0.3.tar.gz
+  url: http://download.zeromq.org/zeromq-4.0.3.tar.gz
+  sha1: a363ddfff75f73976f656b3ba48f32544b214075
 
 build:
   number: 1
+
+requirements:
+  build:
+    - libsodium
+
+  run:
+    - libsodium
 
 about:
   home: http://zeromq.org
