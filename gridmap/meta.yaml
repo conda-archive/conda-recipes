@@ -1,11 +1,11 @@
 package:
-  name: py
-  version: 1.4.18
+  name: gridmap
+  version: 0.11.0
 
 source:
-  fn: py-1.4.18.tar.gz
-  url: https://pypi.python.org/packages/source/p/py/py-1.4.18.tar.gz
-  md5: 1b04e9879fed8a420b9e52cbaf7d8b4f
+  fn: gridmap-0.11.0.tar.gz
+  url: https://pypi.python.org/packages/source/g/gridmap/gridmap-0.11.0.tar.gz
+  md5: 602fba9b15c6ec62b781b45d6763bf74
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - py = py:main
+    # - gridmap = gridmap:main
     #
-    # Would create an entry point called py that calls py.main()
+    # Would create an entry point called gridmap that calls gridmap.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -28,20 +28,19 @@ requirements:
   build:
     - python
     - distribute
+    - drmaa
+    - pyzmq
 
   run:
     - python
     - distribute
+    - drmaa
+    - pyzmq
 
 test:
   # Python imports
   imports:
-    - py
-    - py._log
-    - py._code
-    - py._process
-    - py._path
-    - py._io
+    - gridmap
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -56,8 +55,8 @@ test:
     # - nose
 
 about:
-  home: http://pylib.readthedocs.org/
-  license: MIT
+  home: http://github.com/EducationalTestingService/gridmap
+  license: GNU General Public License v3 (GPLv3)
 
 # See
 # http://docs.continuum.io/conda/build.html for

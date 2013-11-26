@@ -1,23 +1,23 @@
 package:
-  name: py
-  version: 1.4.18
+  name: nose-cov
+  version: 1.6
 
 source:
-  fn: py-1.4.18.tar.gz
-  url: https://pypi.python.org/packages/source/p/py/py-1.4.18.tar.gz
-  md5: 1b04e9879fed8a420b9e52cbaf7d8b4f
+  fn: nose-cov-1.6.tar.gz
+  url: https://pypi.python.org/packages/source/n/nose-cov/nose-cov-1.6.tar.gz
+  md5: 606c873acdccc331a6d5acd681e97ef9
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
-  # entry_points:
+build:
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - py = py:main
+    # - nose-cov = nose-cov:main
     #
-    # Would create an entry point called py that calls py.main()
+    # Would create an entry point called nose-cov that calls nose-cov.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -28,22 +28,20 @@ requirements:
   build:
     - python
     - distribute
+    - nose
+    - cov-core
 
   run:
     - python
     - distribute
+    - nose
+    - cov-core
 
 test:
   # Python imports
-  imports:
-    - py
-    - py._log
-    - py._code
-    - py._process
-    - py._path
-    - py._io
+  # imports:
 
-  # commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -56,8 +54,8 @@ test:
     # - nose
 
 about:
-  home: http://pylib.readthedocs.org/
-  license: MIT
+  home: http://bitbucket.org/memedough/nose-cov/overview
+  license: MIT License
 
 # See
 # http://docs.continuum.io/conda/build.html for

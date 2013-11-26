@@ -18,6 +18,8 @@ requirements:
     - python
 
 test:
+  files:
+    - uf20-098.cnf
   imports:
     - pycosat
 

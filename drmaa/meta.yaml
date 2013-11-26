@@ -1,11 +1,11 @@
 package:
-  name: py
-  version: 1.4.18
+  name: drmaa
+  version: 0.6
 
 source:
-  fn: py-1.4.18.tar.gz
-  url: https://pypi.python.org/packages/source/p/py/py-1.4.18.tar.gz
-  md5: 1b04e9879fed8a420b9e52cbaf7d8b4f
+  fn: drmaa-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/drmaa/drmaa-0.6.tar.gz
+  md5: 40a04e2290aff947a08aeb97a55d1401
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - py = py:main
+    # - drmaa = drmaa:main
     #
-    # Would create an entry point called py that calls py.main()
+    # Would create an entry point called drmaa that calls drmaa.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -36,12 +36,7 @@ requirements:
 test:
   # Python imports
   imports:
-    - py
-    - py._log
-    - py._code
-    - py._process
-    - py._path
-    - py._io
+    - drmaa
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -56,8 +51,8 @@ test:
     # - nose
 
 about:
-  home: http://pylib.readthedocs.org/
-  license: MIT
+  home: http://drmaa-python.googlecode.com
+  license: BSD License
 
 # See
 # http://docs.continuum.io/conda/build.html for

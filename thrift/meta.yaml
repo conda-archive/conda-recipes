@@ -1,11 +1,11 @@
 package:
-  name: py
-  version: 1.4.18
+  name: thrift
+  version: 0.9.1
 
 source:
-  fn: py-1.4.18.tar.gz
-  url: https://pypi.python.org/packages/source/p/py/py-1.4.18.tar.gz
-  md5: 1b04e9879fed8a420b9e52cbaf7d8b4f
+  fn: thrift-0.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/thrift/thrift-0.9.1.tar.gz
+  md5: 8989a8a96b0e3a3380cfb89c44e172a6
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - py = py:main
+    # - thrift = thrift:main
     #
-    # Would create an entry point called py that calls py.main()
+    # Would create an entry point called thrift that calls thrift.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -36,12 +36,10 @@ requirements:
 test:
   # Python imports
   imports:
-    - py
-    - py._log
-    - py._code
-    - py._process
-    - py._path
-    - py._io
+    - thrift.server
+    - thrift.transport
+    - thrift.protocol
+    - thrift
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -56,8 +54,8 @@ test:
     # - nose
 
 about:
-  home: http://pylib.readthedocs.org/
-  license: MIT
+  home: http://thrift.apache.org
+  license: Apache License 2.0
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -1,11 +1,11 @@
 package:
-  name: py
-  version: 1.4.18
+  name: cov-core
+  version: 1.7
 
 source:
-  fn: py-1.4.18.tar.gz
-  url: https://pypi.python.org/packages/source/p/py/py-1.4.18.tar.gz
-  md5: 1b04e9879fed8a420b9e52cbaf7d8b4f
+  fn: cov-core-1.7.tar.gz
+  url: https://pypi.python.org/packages/source/c/cov-core/cov-core-1.7.tar.gz
+  md5: 59c1e22e636633e10120beacbf45b28c
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - py = py:main
+    # - cov-core = cov-core:main
     #
-    # Would create an entry point called py that calls py.main()
+    # Would create an entry point called cov-core that calls cov-core.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -28,20 +28,16 @@ requirements:
   build:
     - python
     - distribute
+    - coverage
 
   run:
     - python
     - distribute
+    - coverage
 
 test:
   # Python imports
-  imports:
-    - py
-    - py._log
-    - py._code
-    - py._process
-    - py._path
-    - py._io
+  # imports:
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -56,8 +52,8 @@ test:
     # - nose
 
 about:
-  home: http://pylib.readthedocs.org/
-  license: MIT
+  home: http://bitbucket.org/memedough/cov-core/overview
+  license: MIT License
 
 # See
 # http://docs.continuum.io/conda/build.html for

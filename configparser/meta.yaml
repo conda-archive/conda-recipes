@@ -1,11 +1,11 @@
 package:
-  name: py
-  version: 1.4.18
+  name: configparser
+  version: 3.3.0r2
 
 source:
-  fn: py-1.4.18.tar.gz
-  url: https://pypi.python.org/packages/source/p/py/py-1.4.18.tar.gz
-  md5: 1b04e9879fed8a420b9e52cbaf7d8b4f
+  fn: configparser-3.3.0r2.tar.gz
+  url: https://pypi.python.org/packages/source/c/configparser/configparser-3.3.0r2.tar.gz
+  md5: dda0e6a43e9d8767b36d10f1e6770f09
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - py = py:main
+    # - configparser = configparser:main
     #
-    # Would create an entry point called py that calls py.main()
+    # Would create an entry point called configparser that calls configparser.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -28,20 +28,17 @@ requirements:
   build:
     - python
     - distribute
+    - ordereddict [py26]
 
   run:
     - python
     - distribute
+    - ordereddict [py26]
 
 test:
   # Python imports
   imports:
-    - py
-    - py._log
-    - py._code
-    - py._process
-    - py._path
-    - py._io
+    - configparser
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -56,8 +53,8 @@ test:
     # - nose
 
 about:
-  home: http://pylib.readthedocs.org/
-  license: MIT
+  home: http://docs.python.org/3/library/configparser.html
+  license: MIT License
 
 # See
 # http://docs.continuum.io/conda/build.html for

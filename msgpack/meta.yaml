@@ -1,11 +1,11 @@
 package:
-  name: py
-  version: 1.4.18
+  name: msgpack
+  version: 0.4.0
 
 source:
-  fn: py-1.4.18.tar.gz
-  url: https://pypi.python.org/packages/source/p/py/py-1.4.18.tar.gz
-  md5: 1b04e9879fed8a420b9e52cbaf7d8b4f
+  fn: msgpack-python-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/msgpack-python/msgpack-python-0.4.0.tar.gz
+  md5: 8b9ce43619fd1428bf7baddf57e38d1a
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - py = py:main
+    # - msgpack-python = msgpack-python:main
     #
-    # Would create an entry point called py that calls py.main()
+    # Would create an entry point called msgpack-python that calls msgpack-python.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -36,12 +36,7 @@ requirements:
 test:
   # Python imports
   imports:
-    - py
-    - py._log
-    - py._code
-    - py._process
-    - py._path
-    - py._io
+    - msgpack
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -56,8 +51,8 @@ test:
     # - nose
 
 about:
-  home: http://pylib.readthedocs.org/
-  license: MIT
+  home: http://msgpack.org/
+  license: ache Software License
 
 # See
 # http://docs.continuum.io/conda/build.html for

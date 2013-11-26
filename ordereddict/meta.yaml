@@ -1,11 +1,11 @@
 package:
-  name: py
-  version: 1.4.18
+  name: ordereddict
+  version: 1.1
 
 source:
-  fn: py-1.4.18.tar.gz
-  url: https://pypi.python.org/packages/source/p/py/py-1.4.18.tar.gz
-  md5: 1b04e9879fed8a420b9e52cbaf7d8b4f
+  fn: ordereddict-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/o/ordereddict/ordereddict-1.1.tar.gz
+  md5: a0ed854ee442051b249bfad0f638bbec
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - py = py:main
+    # - ordereddict = ordereddict:main
     #
-    # Would create an entry point called py that calls py.main()
+    # Would create an entry point called ordereddict that calls ordereddict.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -27,21 +27,14 @@ source:
 requirements:
   build:
     - python
-    - distribute
 
   run:
     - python
-    - distribute
 
 test:
   # Python imports
   imports:
-    - py
-    - py._log
-    - py._code
-    - py._process
-    - py._path
-    - py._io
+    - ordereddict
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -56,8 +49,8 @@ test:
     # - nose
 
 about:
-  home: http://pylib.readthedocs.org/
-  license: MIT
+  home: UNKNOWN
+  license: MIT License
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -1,24 +1,26 @@
 package:
-  name: py
-  version: 1.4.18
+  name: python-coveralls
+  version: 2.4.0
 
 source:
-  fn: py-1.4.18.tar.gz
-  url: https://pypi.python.org/packages/source/p/py/py-1.4.18.tar.gz
-  md5: 1b04e9879fed8a420b9e52cbaf7d8b4f
-#  patches:
-   # List any patch files here
-   # - fix.patch
+  fn: python-coveralls-2.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-coveralls/python-coveralls-2.4.0.tar.gz
+  md5: 8e9dfc1ef9059719535bd1bb9d235552
 
-# build:
-  # entry_points:
+  patches:
+   # List any patch files here
+   - patchfile
+
+build:
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - py = py:main
+    # - python-coveralls = python-coveralls:main
     #
-    # Would create an entry point called py that calls py.main()
+    # Would create an entry point called python-coveralls that calls python-coveralls.main()
 
+    - coveralls = coveralls:wear
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -28,25 +30,33 @@ requirements:
   build:
     - python
     - distribute
+    - argparse [py26]
+    - pyyaml
+    - requests
+    - coverage
+    - six
+    - sh
 
   run:
     - python
     - distribute
+    - argparse [py26]
+    - pyyaml
+    - requests
+    - coverage
+    - six
+    - sh
 
 test:
   # Python imports
   imports:
-    - py
-    - py._log
-    - py._code
-    - py._process
-    - py._path
-    - py._io
+    - coveralls
 
-  # commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+    - coveralls --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -56,8 +66,8 @@ test:
     # - nose
 
 about:
-  home: http://pylib.readthedocs.org/
-  license: MIT
+  home: http://github.com/z4r/python-coveralls
+  license: ache Software License
 
 # See
 # http://docs.continuum.io/conda/build.html for
