@@ -1,24 +1,26 @@
 package:
-  name: logilab-common
-  version: 0.60.0
+  name: unittest2
+  version: 0.5.1
 
 source:
-  fn: logilab-common-0.60.0.tar.gz
-  url: https://pypi.python.org/packages/source/l/logilab-common/logilab-common-0.60.0.tar.gz
-  md5: d06c4d033beb5bde46abd6960615980c
+  fn: unittest2-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/u/unittest2/unittest2-0.5.1.tar.gz
+  md5: a0af5cac92bbbfa0c3b0e99571390e0f
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
-  # entry_points:
+build:
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - logilab-common = logilab-common:main
+    # - unittest2 = unittest2:main
     #
-    # Would create an entry point called logilab-common that calls logilab-common.main()
+    # Would create an entry point called unittest2 that calls unittest2.main()
 
+    - unit2 = unittest2:main_
+    - unit2-2.6 = unittest2:main_
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -28,27 +30,20 @@ requirements:
   build:
     - python
     - distribute
-    - unittest2 [py26]
 
   run:
     - python
     - distribute
-    - unittest2 [py26]
 
 test:
   # Python imports
   imports:
-    - logilab.common.ureports
-    - logilab.common.test
-    - logilab.common.test.data
-    - logilab.common.test.data.lmfp
-    - logilab.common.test.data.find_test
-    - logilab.common
+    - unittest2.test
+    - unittest2
 
-  # commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
-
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -58,8 +53,8 @@ test:
     # - nose
 
 about:
-  home: http://www.logilab.org/project/logilab-common
-  license: LGPL
+  home: http://pypi.python.org/pypi/unittest2
+  license: BSD License
 
 # See
 # http://docs.continuum.io/conda/build.html for
