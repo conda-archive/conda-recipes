@@ -1,0 +1,61 @@
+package:
+  name: unittest2
+  version: 0.5.1
+
+source:
+  fn: unittest2-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/u/unittest2/unittest2-0.5.1.tar.gz
+  md5: a0af5cac92bbbfa0c3b0e99571390e0f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - unittest2 = unittest2:main
+    #
+    # Would create an entry point called unittest2 that calls unittest2.main()
+
+    - unit2 = unittest2:main_
+    - unit2-2.6 = unittest2:main_
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - distribute
+
+  run:
+    - python
+    - distribute
+
+test:
+  # Python imports
+  imports:
+    - unittest2.test
+    - unittest2
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/unittest2
+  license: BSD License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
