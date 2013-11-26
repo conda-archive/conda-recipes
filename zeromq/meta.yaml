@@ -6,6 +6,8 @@ source:
   fn: zeromq-4.0.3.tar.gz
   url: http://download.zeromq.org/zeromq-4.0.3.tar.gz
   sha1: a363ddfff75f73976f656b3ba48f32544b214075
+  patches:
+    - pedantic.patch
 
 build:
   number: 1
