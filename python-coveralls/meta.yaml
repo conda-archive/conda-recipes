@@ -1,15 +1,14 @@
 package:
   name: python-coveralls
-  version: 2.4.0
+  version: 2.4.1
 
 source:
-  fn: python-coveralls-2.4.0.tar.gz
-  url: https://pypi.python.org/packages/source/p/python-coveralls/python-coveralls-2.4.0.tar.gz
-  md5: 8e9dfc1ef9059719535bd1bb9d235552
+  fn: python-coveralls-2.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-coveralls/python-coveralls-2.4.1.tar.gz
+  md5: 36e6a21be9dceedd09d50f48dd80b87b
 
   patches:
    # List any patch files here
-   - patchfile
 
 build:
   entry_points:
