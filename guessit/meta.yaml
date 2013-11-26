@@ -1,0 +1,28 @@
+
+package:
+    name: guessit
+    version: 0.6.2
+
+source:
+    git_url: https://github.com/wackou/guessit.git
+    git_tag: 0.6.2
+
+build:
+    number: 1
+
+requirements:
+    build:
+        - python
+        - distribute
+
+    run:
+        - python
+
+test:
+    imports:
+        - guessit
+
+about:
+    home: https://github.com/wackou/guessit
+    license: LGPL v3
+
