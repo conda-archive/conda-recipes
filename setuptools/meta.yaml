@@ -29,11 +29,9 @@ build:
 requirements:
   build:
     - python
-    - distribute
 
   run:
     - python
-    - distribute
 
 test:
   # Python imports

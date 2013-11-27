@@ -27,12 +27,12 @@ source:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools 1.4.1
     - argparse [py26]
 
   run:
     - python
-    - distribute
+    - setuptools 1.4.1
     - argparse [py26]
 
 test:
