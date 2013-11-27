@@ -11,11 +11,14 @@ requirements:
     - cmake
     - cython
     - pytables
+    - hdf5
     - numpy
     - scipy
   run:
     - python
+    - hdf5
     - numpy
+    - scipy
 
 test:
   requires:
