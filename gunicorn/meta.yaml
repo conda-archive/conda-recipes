@@ -34,7 +34,6 @@ requirements:
 
   run:
     - python
-    - setuptools
     - paste.deploy
 
 test:

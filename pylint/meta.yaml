@@ -37,7 +37,6 @@ requirements:
 
   run:
     - python
-    - setuptools
     - logilab-common
     - astroid
 

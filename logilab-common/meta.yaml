@@ -32,7 +32,6 @@ requirements:
 
   run:
     - python
-    - setuptools
     - unittest2 [py26]
 
 test:

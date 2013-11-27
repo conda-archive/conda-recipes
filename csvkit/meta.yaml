@@ -48,7 +48,6 @@ requirements:
 
   run:
     - python
-    - setuptools
     - argparse [py26]
     - xlrd
     - dateutil

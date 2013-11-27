@@ -26,8 +26,6 @@ build:
 requirements:
   build:
     - python
-
-    # requirements.
     - keyring
     - appdirs
     - pyyaml
@@ -40,7 +38,6 @@ requirements:
     - appdirs
     - pyyaml
     - requests
-    - setuptools
 
 test:
   # Python imports

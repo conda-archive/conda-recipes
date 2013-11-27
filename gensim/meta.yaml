@@ -34,7 +34,6 @@ requirements:
 
   run:
     - python
-    - setuptools
     - scipy
     - atlas
 

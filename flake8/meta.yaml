@@ -38,7 +38,6 @@ requirements:
     - pyflakes
     - pep8
     - mccabe
-    - setuptools
 
 test:
   # Python imports

@@ -40,7 +40,6 @@ requirements:
 
   run:
     - python
-    - setuptools
     - scikit-learn
     - six
     - prettytable

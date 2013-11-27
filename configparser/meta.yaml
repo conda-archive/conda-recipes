@@ -32,7 +32,6 @@ requirements:
 
   run:
     - python
-    - setuptools
     - ordereddict [py26]
 
 test:
