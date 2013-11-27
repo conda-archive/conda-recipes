@@ -10,19 +10,23 @@ source:
    # List any patch files here
    # - fix.patch
 
-# build:
-  # entry_points:
+build:
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - wheel = wheel:main
+    - wininst2wheel = wheel.wininst2wheel:main
+    - egg2wheel = wheel.egg2wheel:main
+    - wheel = wheel.tool:main
+    # Can't figure out how to get distutils.commands entry points working 
+    # - bdist_wheel = wheel.bdist_wheel:bdist_wheel
     #
     # Would create an entry point called wheel that calls wheel.main()
 
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 2
 
 requirements:
   build:
@@ -43,10 +47,10 @@ test:
     - wheel.tool
     - wheel.test
 
-  # commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
-
+    - wheel --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
