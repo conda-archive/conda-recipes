@@ -27,11 +27,11 @@ source:
 requirements:
   build:
     - python
-    - setuptools
+    - distribute
 
   run:
     - python
-    - setuptools
+    - distribute
 
 test:
   # Python imports
