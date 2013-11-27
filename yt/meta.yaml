@@ -34,7 +34,6 @@ test:
     - yt -h
   imports:
     - yt
-    - yt.utilities.hdf5_light_reader
 
 about:
   home: http://yt-project.org/
