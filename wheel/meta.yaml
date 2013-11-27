@@ -1,0 +1,64 @@
+package:
+  name: wheel
+  version: 0.22.0
+
+source:
+  fn: wheel-0.22.0.tar.gz
+  url: https://pypi.python.org/packages/source/w/wheel/wheel-0.22.0.tar.gz
+  md5: 16bb8eb3bdd3d93813295463bb949705
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - wheel = wheel:main
+    #
+    # Would create an entry point called wheel that calls wheel.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - distribute
+    - argparse [py26]
+
+  run:
+    - python
+    - distribute
+    - argparse [py26]
+
+test:
+  # Python imports
+  imports:
+    - wheel
+    - wheel.signatures
+    - wheel.tool
+    - wheel.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/dholth/wheel/
+  license: MIT
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
