@@ -1,0 +1,57 @@
+package:
+  name: iotop
+  version: 0.6
+
+source:
+  fn: iotop-0.6.tar.gz
+  url: http://guichaz.free.fr/iotop/files/iotop-0.6.tar.gz
+  md5: 080fbb494566b5291a2a27cf6c203562
+  #patches:
+   # List any patch files here
+   # - setup.patch
+
+build:
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - iotop = iotop:main
+    #
+    # Would create an entry point called iotop that calls iotop.main()
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - distribute
+
+  run:
+    - python
+    - distribute
+
+test:
+  # Python imports
+  imports:
+    - iotop
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://guichaz.free.fr/iotop/
+  license: GNU General Public License (GPL)
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
