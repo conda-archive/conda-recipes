@@ -28,7 +28,7 @@ build:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - argparse [py26]
     - pyyaml
     - requests
@@ -38,7 +38,7 @@ requirements:
 
   run:
     - python
-    - distribute
+    - setuptools
     - argparse [py26]
     - pyyaml
     - requests

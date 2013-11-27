@@ -27,12 +27,12 @@ source:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - logilab-common
 
   run:
     - python
-    - distribute
+    - setuptools
     - logilab-common
 
 test:

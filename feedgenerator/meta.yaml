@@ -26,10 +26,10 @@ source:
 requirements:
   build:
     - python
-    # If setuptools is required to run setup.py, add distribute to the build
+
     # requirements.
     #
-    - distribute
+    - setuptools
     - six
     - pytz
 

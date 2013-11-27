@@ -26,10 +26,10 @@ source:
 requirements:
   build:
     - python 2.6*
-    # If setuptools is required to run setup.py, add distribute to the build
+
     # requirements.
     #
-    # - distribute
+    # - setuptools
 
   run:
     - python 2.6*

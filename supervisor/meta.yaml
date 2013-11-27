@@ -31,12 +31,12 @@ build:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - meld3
 
   run:
     - python
-    - distribute
+    - setuptools
     - meld3
 
 test:

@@ -31,14 +31,14 @@ requirements:
     - pyflakes
     - pep8
     - mccabe
-    - distribute
+    - setuptools
 
   run:
     - python
     - pyflakes
     - pep8
     - mccabe
-    - distribute
+    - setuptools
 
 test:
   # Python imports

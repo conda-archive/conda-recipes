@@ -29,7 +29,7 @@ requirements:
   build:
     - python
     - argparse [py26]
-    - distribute
+    - setuptools
     - py
     - virtualenv
 

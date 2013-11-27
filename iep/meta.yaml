@@ -27,10 +27,10 @@ requirements:
   build:
     - python
     # requires python3
-    # If setuptools is required to run setup.py, add distribute to the build
+
     # requirements.
     #
-    # - distribute
+    # - setuptools
 
   run:
     - python

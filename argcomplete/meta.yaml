@@ -27,13 +27,13 @@ build:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - argparse [py26]
 
   run:
     - python
     - argparse [py26]
-    - distribute # Needs pkg_resources
+    - setuptools # Needs pkg_resources
 
 test:
   # Python imports

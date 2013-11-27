@@ -27,12 +27,12 @@ source:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - pyparsing
 
   run:
     - python
-    - distribute
+    - setuptools
     - pyparsing
 
 test:

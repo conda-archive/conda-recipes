@@ -27,7 +27,7 @@ source:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - configobj
 
   run:

@@ -31,13 +31,13 @@ build:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - logilab-common
     - astroid
 
   run:
     - python
-    - distribute
+    - setuptools
     - logilab-common
     - astroid
 

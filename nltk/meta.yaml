@@ -26,12 +26,12 @@ source:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - pyyaml
 
   run:
     - python
-    - distribute
+    - setuptools
     - pyyaml
 
 test:

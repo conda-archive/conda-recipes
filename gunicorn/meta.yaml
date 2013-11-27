@@ -30,11 +30,11 @@ build:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
 
   run:
     - python
-    - distribute
+    - setuptools
     - paste.deploy
 
 test:

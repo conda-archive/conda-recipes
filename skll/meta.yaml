@@ -27,7 +27,7 @@ source:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - scikit-learn
     - six
     - prettytable
@@ -40,7 +40,7 @@ requirements:
 
   run:
     - python
-    - distribute
+    - setuptools
     - scikit-learn
     - six
     - prettytable

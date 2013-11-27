@@ -10,7 +10,7 @@ requirements:
   build:
     - python
     - flask
-    - distribute
+    - setuptools
     - six
     - mock
     - sphinx

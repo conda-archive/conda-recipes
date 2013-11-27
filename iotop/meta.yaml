@@ -26,11 +26,11 @@ build:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
 
   run:
     - python
-    - distribute
+    - setuptools
 
 test:
   # Python imports

@@ -27,12 +27,12 @@ source:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - coverage
 
   run:
     - python
-    - distribute
+    - setuptools
     - coverage
 
 test:

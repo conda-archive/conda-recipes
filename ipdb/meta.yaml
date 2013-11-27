@@ -28,12 +28,12 @@ build:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - ipython
 
   run:
     - python
-    - distribute
+    - setuptools
     - ipython
 
 test:

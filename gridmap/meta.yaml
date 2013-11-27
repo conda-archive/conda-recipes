@@ -27,13 +27,13 @@ source:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - drmaa
     - pyzmq
 
   run:
     - python
-    - distribute
+    - setuptools
     - drmaa
     - pyzmq
 

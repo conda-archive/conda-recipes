@@ -10,7 +10,7 @@ source:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - sphinx
   run:
     - python

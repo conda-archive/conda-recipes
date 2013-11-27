@@ -28,13 +28,13 @@ source:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - scipy
     - atlas
 
   run:
     - python
-    - distribute
+    - setuptools
     - scipy
     - atlas
 

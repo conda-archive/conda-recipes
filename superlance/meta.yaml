@@ -32,7 +32,7 @@ build:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - supervisor
 
   run:
