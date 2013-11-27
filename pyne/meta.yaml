@@ -1,0 +1,38 @@
+package:
+  name: pyne
+  version: master
+
+source:
+  git_url: git@github.com:pyne/pyne.git
+
+requirements:
+  build:
+    - python
+    - cmake
+    - cython
+    - pytables
+    - numpy
+    - scipy
+  run:
+    - python
+    - numpy
+
+test:
+  requires:
+    - nose
+  imports:
+    - pyne
+    - pyne._utils
+    - pyne.ace
+    - pyne.data
+    - pyne.enrichment
+    - pyne.jsoncpp
+    - pyne.material
+    - pyne.nucname
+    - pyne.pyne_config
+    - pyne.stlconverters
+    - pyne.xs.models
+
+about:
+  home: http://pynesim.org/
+  license: BSD
