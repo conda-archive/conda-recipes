@@ -19,7 +19,7 @@ requirements:
     - libpng
     - freetype
     - hdf5
-    - distribute
+    - setuptools
   run:
     - python
     - numpy
