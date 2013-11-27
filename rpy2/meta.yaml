@@ -1,0 +1,67 @@
+package:
+  name: rpy2
+  version: 2.3.8
+
+source:
+  fn: rpy2-2.3.8.tar.gz
+  url: https://pypi.python.org/packages/source/r/rpy2/rpy2-2.3.8.tar.gz
+  md5: f331120aeeb1b27118d4e3360f2ec45d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rpy2 = rpy2:main
+    #
+    # Would create an entry point called rpy2 that calls rpy2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - rpy2
+    - rpy2.robjects.lib.tests
+    - rpy2.robjects.tests
+    - rpy2.rinterface.tests
+    - rpy2.robjects.lib
+    - rpy2.robjects
+    - rpy2.rlike
+    - rpy2.interactive
+    - rpy2.rlike.tests
+    - rpy2.interactive.tests
+    - rpy2.rinterface
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://rpy.sourceforge.net
+  license: GNU Affero General Public License v3 or GNU Library or Lesser General Public License (LGPL)
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
