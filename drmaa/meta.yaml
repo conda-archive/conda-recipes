@@ -1,11 +1,11 @@
 package:
   name: drmaa
-  version: 0.6
+  version: 0.7.1
 
 source:
-  fn: drmaa-0.6.tar.gz
-  url: https://pypi.python.org/packages/source/d/drmaa/drmaa-0.6.tar.gz
-  md5: 40a04e2290aff947a08aeb97a55d1401
+  fn: drmaa-0.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/drmaa/drmaa-0.7.1.tar.gz
+  md5: cddbbb3b69044c6dac81bff18262631a
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -27,11 +27,10 @@ source:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
 
   run:
     - python
-    - distribute
 
 test:
   # Python imports
