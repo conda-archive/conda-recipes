@@ -38,7 +38,7 @@ build:
 requirements:
   build:
     - python
-    - setuptools
+    - distribute
     - argparse [py26]
     - xlrd
     - dateutil
