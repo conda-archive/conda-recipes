@@ -1,0 +1,33 @@
+
+package:
+    name: rpy
+    version: 1.0.3
+
+source:
+    fn: rpy-1.0.3.tar.gz
+    url: http://sourceforge.net/projects/rpy/files/rpy/1.0.3/rpy-1.0.3.tar.gz
+    patches:
+        - dir/0001-Change-Rdevices-to-Rembedded.patch
+        - dir/0001-Commented-out-Rf_PrintWarnings.patch
+
+build:
+    number: 1
+
+requirements:
+    build:
+        - python
+        - distribute
+        - rproject
+
+    run:
+        - python
+        - rproject
+
+test:
+    imports:
+        - rpy
+
+about:
+    home: http://rpy.sourceforge.net/
+    license: Mozilla Public License Version 1.1
+
