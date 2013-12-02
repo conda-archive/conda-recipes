@@ -27,7 +27,7 @@ build:
 requirements:
   build:
     - python
-    - setuptools
+    - distribute
     - pyparsing
 
   run:
