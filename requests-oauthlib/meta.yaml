@@ -1,41 +1,47 @@
 package:
-  name: drmaa
-  version: 0.7.1
+  name: requests-oauthlib
+  version: 0.4.0
 
 source:
-  fn: drmaa-0.7.1.tar.gz
-  url: https://pypi.python.org/packages/source/d/drmaa/drmaa-0.7.1.tar.gz
-  md5: cddbbb3b69044c6dac81bff18262631a
+  fn: requests-oauthlib-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/r/requests-oauthlib/requests-oauthlib-0.4.0.tar.gz
+  md5: 2649560205a02473998e0e7dd881ee5a
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
+# build:
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - drmaa = drmaa:main
+    # - requests-oauthlib = requests-oauthlib:main
     #
-    # Would create an entry point called drmaa that calls drmaa.main()
+    # Would create an entry point called requests-oauthlib that calls requests-oauthlib.main()
 
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
 requirements:
   build:
     - python
     - distribute
+    - oauthlib
+    - requests
 
   run:
     - python
+    - distribute
+    - oauthlib
+    - requests
 
 test:
   # Python imports
   imports:
-    - drmaa
+    - requests_oauthlib
+    - requests_oauthlib.compliance_fixes
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -50,8 +56,8 @@ test:
     # - nose
 
 about:
-  home: http://drmaa-python.googlecode.com
-  license: BSD License
+  home: https://github.com/requests/requests-oauthlib
+  license: ISC
 
 # See
 # http://docs.continuum.io/conda/build.html for

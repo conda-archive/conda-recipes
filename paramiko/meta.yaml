@@ -1,11 +1,11 @@
 package:
   name: paramiko
-  version: 1.10.1
+  version: 1.12.0
 
 source:
-  fn: paramiko-1.10.1.tar.gz
-  url: https://pypi.python.org/packages/source/p/paramiko/paramiko-1.10.1.tar.gz
-  md5: 4ba105e2d8535496fd633889396b20b7
+  fn: paramiko-1.12.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/paramiko/paramiko-1.12.0.tar.gz
+  md5: 4187f77b1a5a313c899993930e30c321
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,10 @@ build:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - paramiko:main
+    # - paramiko = paramiko:main
     #
-    # Would call paramiko.main()
+    # Would create an entry point called paramiko that calls paramiko.main()
+
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -26,14 +27,14 @@ build:
 requirements:
   build:
     - python
-
-    # requirements.
-    #
-    # - setuptools
+    - setuptools
+    - pycrypto
+    - ecdsa
 
   run:
     - python
     - pycrypto
+    - ecdsa
 
 test:
   # Python imports
@@ -44,11 +45,12 @@ test:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
   # requires:
-    # Put any test requirements here.  For example
+    # Put any additional test requirements here.  For example
     # - nose
 
 about:

@@ -1,28 +1,28 @@
 package:
-  name: drmaa
-  version: 0.7.1
+  name: oauthlib
+  version: 0.6.0
 
 source:
-  fn: drmaa-0.7.1.tar.gz
-  url: https://pypi.python.org/packages/source/d/drmaa/drmaa-0.7.1.tar.gz
-  md5: cddbbb3b69044c6dac81bff18262631a
+  fn: oauthlib-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/o/oauthlib/oauthlib-0.6.0.tar.gz
+  md5: b7c3e1832ec111e65baaab2de7834aae
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
+# build:
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - drmaa = drmaa:main
+    # - oauthlib = oauthlib:main
     #
-    # Would create an entry point called drmaa that calls drmaa.main()
+    # Would create an entry point called oauthlib that calls oauthlib.main()
 
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
 requirements:
   build:
@@ -31,11 +31,19 @@ requirements:
 
   run:
     - python
+    - distribute
 
 test:
   # Python imports
   imports:
-    - drmaa
+    - oauthlib.oauth1.rfc5849
+    - oauthlib.oauth2.rfc6749.clients
+    - oauthlib.oauth2
+    - oauthlib.oauth1
+    - oauthlib.oauth2.rfc6749.endpoints
+    - oauthlib.oauth2.rfc6749.grant_types
+    - oauthlib.oauth1.rfc5849.endpoints
+    - oauthlib.oauth2.rfc6749
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -50,7 +58,7 @@ test:
     # - nose
 
 about:
-  home: http://drmaa-python.googlecode.com
+  home: https://github.com/idan/oauthlib
   license: BSD License
 
 # See

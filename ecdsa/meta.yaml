@@ -1,33 +1,32 @@
 package:
-  name: drmaa
-  version: 0.7.1
+  name: ecdsa
+  version: 0.10
 
 source:
-  fn: drmaa-0.7.1.tar.gz
-  url: https://pypi.python.org/packages/source/d/drmaa/drmaa-0.7.1.tar.gz
-  md5: cddbbb3b69044c6dac81bff18262631a
+  fn: ecdsa-0.10.tar.gz
+  url: https://pypi.python.org/packages/source/e/ecdsa/ecdsa-0.10.tar.gz
+  md5: e95941b3bcbf1726472bb724d7478551
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
+# build:
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - drmaa = drmaa:main
+    # - ecdsa = ecdsa:main
     #
-    # Would create an entry point called drmaa that calls drmaa.main()
+    # Would create an entry point called ecdsa that calls ecdsa.main()
 
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
 requirements:
   build:
     - python
-    - distribute
 
   run:
     - python
@@ -35,7 +34,7 @@ requirements:
 test:
   # Python imports
   imports:
-    - drmaa
+    - ecdsa
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -50,8 +49,8 @@ test:
     # - nose
 
 about:
-  home: http://drmaa-python.googlecode.com
-  license: BSD License
+  home: http://github.com/warner/python-ecdsa
+  license: MIT
 
 # See
 # http://docs.continuum.io/conda/build.html for

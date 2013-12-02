@@ -1,11 +1,11 @@
 package:
-  name: drmaa
-  version: 0.7.1
+  name: urllib3
+  version: 1.7.1
 
 source:
-  fn: drmaa-0.7.1.tar.gz
-  url: https://pypi.python.org/packages/source/d/drmaa/drmaa-0.7.1.tar.gz
-  md5: cddbbb3b69044c6dac81bff18262631a
+  fn: urllib3-1.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/u/urllib3/urllib3-1.7.1.tar.gz
+  md5: 8b05bb2081379fe3c332542aa7c172f3
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,14 +15,14 @@ build:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - drmaa = drmaa:main
+    # - urllib3 = urllib3:main
     #
-    # Would create an entry point called drmaa that calls drmaa.main()
+    # Would create an entry point called urllib3 that calls urllib3.main()
 
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  number: 2
 
 requirements:
   build:
@@ -31,11 +31,19 @@ requirements:
 
   run:
     - python
+    - ndg-httpsclient
+    - pyopenssl
+    - pyasn1
 
 test:
   # Python imports
   imports:
-    - drmaa
+    - urllib3.packages.ssl_match_hostname
+    - urllib3.contrib
+    - urllib3.packages
+    - urllib3
+    - dummyserver
+    - urllib3.contrib.pyopenssl
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -50,8 +58,8 @@ test:
     # - nose
 
 about:
-  home: http://drmaa-python.googlecode.com
-  license: BSD License
+  home: http://urllib3.readthedocs.org/
+  license: MIT License
 
 # See
 # http://docs.continuum.io/conda/build.html for

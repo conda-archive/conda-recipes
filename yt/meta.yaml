@@ -1,11 +1,11 @@
 package:
   name: yt
-  version: 2.5.5
+  version: 2.6
 
 source:
-  fn: yt-2.5.5.tar.gz
-  url: https://pypi.python.org/packages/source/y/yt/yt-2.5.5.tar.gz
-  md5: 1b497061d1b7ee0859caec1c8a1ef2e2
+  fn: yt-2.6.tar.gz
+  url: https://pypi.python.org/packages/source/y/yt/yt-2.6.tar.gz
+  md5: 3fb120071f7fe59211ee1edfa14dd2f2
 
 build:
   entry_points:
@@ -34,8 +34,7 @@ test:
     - yt -h
   imports:
     - yt
-    - yt.utilities.hdf5_light_reader
 
 about:
   home: http://yt-project.org/
-  license: GNU General Public License version 3 (GPL)
+  license: BSD
