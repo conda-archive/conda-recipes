@@ -1,11 +1,11 @@
 package:
-  name: paramiko
-  version: 1.12.0
+  name: ecdsa
+  version: 0.10
 
 source:
-  fn: paramiko-1.12.0.tar.gz
-  url: https://pypi.python.org/packages/source/p/paramiko/paramiko-1.12.0.tar.gz
-  md5: 4187f77b1a5a313c899993930e30c321
+  fn: ecdsa-0.10.tar.gz
+  url: https://pypi.python.org/packages/source/e/ecdsa/ecdsa-0.10.tar.gz
+  md5: e95941b3bcbf1726472bb724d7478551
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - paramiko = paramiko:main
+    # - ecdsa = ecdsa:main
     #
-    # Would create an entry point called paramiko that calls paramiko.main()
+    # Would create an entry point called ecdsa that calls ecdsa.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -27,20 +27,14 @@ source:
 requirements:
   build:
     - python
-    - distribute
-    - pycrypto
-    - ecdsa
 
   run:
     - python
-    - distribute
-    - pycrypto
-    - ecdsa
 
 test:
   # Python imports
   imports:
-    - paramiko
+    - ecdsa
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -55,8 +49,8 @@ test:
     # - nose
 
 about:
-  home: https://github.com/paramiko/paramiko/
-  license: GNU Library or Lesser General Public License (LGPL)
+  home: http://github.com/warner/python-ecdsa
+  license: MIT
 
 # See
 # http://docs.continuum.io/conda/build.html for
