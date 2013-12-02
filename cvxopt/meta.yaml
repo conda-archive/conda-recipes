@@ -25,11 +25,11 @@ source:
 
 requirements:
   build:
-    - atlas
+    - atlas [linux]
     - python
 
   run:
-    - atlas
+    - atlas [linux]
     - python
 
 test:
