@@ -1,25 +1,24 @@
 package:
-  name: fabric
-  version: 1.8.0
+  name: configparser
+  version: 3.3.0r2
 
 source:
-  fn: Fabric-1.8.0.tar.gz
-  url: https://pypi.python.org/packages/source/F/Fabric/Fabric-1.8.0.tar.gz
-  md5: 1f195d16b05877767816617749d33eca
+  fn: configparser-3.3.0r2.tar.gz
+  url: https://pypi.python.org/packages/source/c/configparser/configparser-3.3.0r2.tar.gz
+  md5: dda0e6a43e9d8767b36d10f1e6770f09
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
-  entry_points:
+# build:
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - fabric = fabric:main
+    # - configparser = configparser:main
     #
-    # Would create an entry point called fabric that calls fabric.main()
+    # Would create an entry point called configparser that calls configparser.main()
 
-    - fab = fabric.main:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -29,36 +28,33 @@ requirements:
   build:
     - python
     - distribute
-    - paramiko
+    - ordereddict [py26]
 
   run:
     - python
     - distribute
-    - paramiko
+    - ordereddict [py26]
 
 test:
   # Python imports
   imports:
-    - fabfile
-    - fabric
-    - fabric.contrib
+    - configparser
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - fab --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  requires:
+  # requires:
     # Put any additional test requirements here.  For example
-    - nose
+    # - nose
 
 about:
-  home: http://fabfile.org
-  license: BSD License
+  home: http://docs.python.org/3/library/configparser.html
+  license: MIT License
 
 # See
 # http://docs.continuum.io/conda/build.html for

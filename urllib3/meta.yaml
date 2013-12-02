@@ -1,64 +1,65 @@
 package:
-  name: fabric
-  version: 1.8.0
+  name: urllib3
+  version: 1.7.1
 
 source:
-  fn: Fabric-1.8.0.tar.gz
-  url: https://pypi.python.org/packages/source/F/Fabric/Fabric-1.8.0.tar.gz
-  md5: 1f195d16b05877767816617749d33eca
+  fn: urllib3-1.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/u/urllib3/urllib3-1.7.1.tar.gz
+  md5: 8b05bb2081379fe3c332542aa7c172f3
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  entry_points:
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - fabric = fabric:main
+    # - urllib3 = urllib3:main
     #
-    # Would create an entry point called fabric that calls fabric.main()
+    # Would create an entry point called urllib3 that calls urllib3.main()
 
-    - fab = fabric.main:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 2
 
 requirements:
   build:
     - python
     - distribute
-    - paramiko
 
   run:
     - python
-    - distribute
-    - paramiko
+    - ndg-httpsclient
+    - pyopenssl
+    - pyasn1
 
 test:
   # Python imports
   imports:
-    - fabfile
-    - fabric
-    - fabric.contrib
+    - urllib3.packages.ssl_match_hostname
+    - urllib3.contrib
+    - urllib3.packages
+    - urllib3
+    - dummyserver
+    - urllib3.contrib.pyopenssl
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - fab --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  requires:
+  # requires:
     # Put any additional test requirements here.  For example
-    - nose
+    # - nose
 
 about:
-  home: http://fabfile.org
-  license: BSD License
+  home: http://urllib3.readthedocs.org/
+  license: MIT License
 
 # See
 # http://docs.continuum.io/conda/build.html for

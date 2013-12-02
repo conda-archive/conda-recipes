@@ -1,25 +1,24 @@
 package:
-  name: fabric
-  version: 1.8.0
+  name: skll
+  version: 0.21.0
 
 source:
-  fn: Fabric-1.8.0.tar.gz
-  url: https://pypi.python.org/packages/source/F/Fabric/Fabric-1.8.0.tar.gz
-  md5: 1f195d16b05877767816617749d33eca
+  fn: skll-0.21.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/skll/skll-0.21.0.tar.gz
+  md5: c0e13ef8800eabc21ff634c6bdd3e9bc
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
-  entry_points:
+# build:
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - fabric = fabric:main
+    # - skll = skll:main
     #
-    # Would create an entry point called fabric that calls fabric.main()
+    # Would create an entry point called skll that calls skll.main()
 
-    - fab = fabric.main:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -29,36 +28,49 @@ requirements:
   build:
     - python
     - distribute
-    - paramiko
+    - scikit-learn
+    - six
+    - prettytable
+    - beautiful-soup
+    - numpy
+    - scipy
+    - configparser [py2k]
+    - futures [py2k]
+    - logutils [py2k]
 
   run:
     - python
     - distribute
-    - paramiko
+    - scikit-learn
+    - six
+    - prettytable
+    - beautiful-soup
+    - numpy
+    - scipy
+    - configparser [py2k]
+    - futures [py2k]
+    - logutils [py2k]
 
 test:
   # Python imports
   imports:
-    - fabfile
-    - fabric
-    - fabric.contrib
+    - skll
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - fab --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  requires:
+  # requires:
     # Put any additional test requirements here.  For example
-    - nose
+    # - nose
 
 about:
-  home: http://fabfile.org
-  license: BSD License
+  home: http://github.com/EducationalTestingService/skll
+  license: GNU General Public License v3 (GPLv3)
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -1,11 +1,11 @@
 package:
-  name: fabric
-  version: 1.8.0
+  name: ndg-httpsclient
+  version: 0.3.2
 
 source:
-  fn: Fabric-1.8.0.tar.gz
-  url: https://pypi.python.org/packages/source/F/Fabric/Fabric-1.8.0.tar.gz
-  md5: 1f195d16b05877767816617749d33eca
+  fn: ndg_httpsclient-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/n/ndg-httpsclient/ndg_httpsclient-0.3.2.tar.gz
+  md5: 076303c7aa0e41f3b45a7cb43dbb0743
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,11 +15,11 @@ build:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - fabric = fabric:main
+    # - ndg-httpsclient = ndg-httpsclient:main
     #
-    # Would create an entry point called fabric that calls fabric.main()
+    # Would create an entry point called ndg-httpsclient that calls ndg-httpsclient.main()
 
-    - fab = fabric.main:main
+    - ndg_httpclient = ndg.httpsclient.utils:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -29,35 +29,35 @@ requirements:
   build:
     - python
     - distribute
-    - paramiko
+    - pyopenssl
 
   run:
     - python
     - distribute
-    - paramiko
+    - pyopenssl
 
 test:
   # Python imports
   imports:
-    - fabfile
-    - fabric
-    - fabric.contrib
+    - ndg
+    - ndg.httpsclient
+    - ndg.httpsclient.test
 
   commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - fab --help
+    - ndg_httpclient --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  requires:
+  # requires:
     # Put any additional test requirements here.  For example
-    - nose
+    # - nose
 
 about:
-  home: http://fabfile.org
+  home: http://ndg-security.ceda.ac.uk/wiki/ndg_httpsclient/
   license: BSD License
 
 # See

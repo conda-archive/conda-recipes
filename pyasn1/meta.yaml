@@ -1,25 +1,24 @@
 package:
-  name: fabric
-  version: 1.8.0
+  name: pyasn1
+  version: 0.1.7
 
 source:
-  fn: Fabric-1.8.0.tar.gz
-  url: https://pypi.python.org/packages/source/F/Fabric/Fabric-1.8.0.tar.gz
-  md5: 1f195d16b05877767816617749d33eca
+  fn: pyasn1-0.1.7.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyasn1/pyasn1-0.1.7.tar.gz
+  md5: 2cbd80fcd4c7b1c82180d3d76fee18c8
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
-  entry_points:
+# build:
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - fabric = fabric:main
+    # - pyasn1 = pyasn1:main
     #
-    # Would create an entry point called fabric that calls fabric.main()
+    # Would create an entry point called pyasn1 that calls pyasn1.main()
 
-    - fab = fabric.main:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -29,35 +28,36 @@ requirements:
   build:
     - python
     - distribute
-    - paramiko
 
   run:
     - python
     - distribute
-    - paramiko
 
 test:
   # Python imports
   imports:
-    - fabfile
-    - fabric
-    - fabric.contrib
+    - pyasn1
+    - pyasn1.type
+    - pyasn1.codec.der
+    - pyasn1.codec
+    - pyasn1.compat
+    - pyasn1.codec.ber
+    - pyasn1.codec.cer
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - fab --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  requires:
+  # requires:
     # Put any additional test requirements here.  For example
-    - nose
+    # - nose
 
 about:
-  home: http://fabfile.org
+  home:
   license: BSD License
 
 # See

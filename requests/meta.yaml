@@ -1,54 +1,64 @@
 package:
   name: requests
-  version: 1.2.3
+  version: 2.0.1
 
 source:
-  fn: requests-1.2.3.tar.gz
-  url: https://pypi.python.org/packages/source/r/requests/requests-1.2.3.tar.gz
-  md5: adbd3f18445f7fe5e77f65c502e264fb
-#  patches:
+  fn: requests-2.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/r/requests/requests-2.0.1.tar.gz
+  md5: 38e61c2856d2ba2782286730241975e6
+  patches:
    # List any patch files here
-   # - fix.patch
+    - pyopenssl.patch
 
-# build:
+build:
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - requests:main
+    # - requests = requests:main
     #
-    # Would call requests.main()
+    # Would create an entry point called requests that calls requests.main()
+
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 1
 
 requirements:
   build:
     - python
-    # If setuptools is required to run setup.py, add distribute to the build
-    # requirements.
-    #
-    # - distribute
+    - distribute
 
   run:
     - python
+    - distribute
 
 test:
   # Python imports
   imports:
+    - requests.packages
+    - requests.packages.urllib3.contrib
+    - requests.packages.urllib3
+    - requests.packages.charade
+    - requests.packages.urllib3.packages.ssl_match_hostname
     - requests
+    - requests.packages.urllib3.packages
+    # Only test in Python 2 because ndg-httpsclient doesn't yet support Python 3.
+    - requests.packages.urllib3.contrib.pyopenssl #[py2k]
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  # requires:
-    # Put any test requirements here.  For example
-    # - nose
+  requires: #[py2k]
+    # Put any additional test requirements here.  For example
+    - pyopenssl #[py2k]
+    - ndg-httpsclient #[py2k]
+    - pyasn1 #[py2k]
 
 about:
   home: http://python-requests.org

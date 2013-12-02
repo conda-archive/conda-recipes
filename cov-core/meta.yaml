@@ -1,25 +1,24 @@
 package:
-  name: fabric
-  version: 1.8.0
+  name: cov-core
+  version: 1.7
 
 source:
-  fn: Fabric-1.8.0.tar.gz
-  url: https://pypi.python.org/packages/source/F/Fabric/Fabric-1.8.0.tar.gz
-  md5: 1f195d16b05877767816617749d33eca
+  fn: cov-core-1.7.tar.gz
+  url: https://pypi.python.org/packages/source/c/cov-core/cov-core-1.7.tar.gz
+  md5: 59c1e22e636633e10120beacbf45b28c
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
-  entry_points:
+# build:
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - fabric = fabric:main
+    # - cov-core = cov-core:main
     #
-    # Would create an entry point called fabric that calls fabric.main()
+    # Would create an entry point called cov-core that calls cov-core.main()
 
-    - fab = fabric.main:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -29,36 +28,32 @@ requirements:
   build:
     - python
     - distribute
-    - paramiko
+    - coverage
 
   run:
     - python
     - distribute
-    - paramiko
+    - coverage
 
 test:
   # Python imports
-  imports:
-    - fabfile
-    - fabric
-    - fabric.contrib
+  # imports:
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - fab --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  requires:
+  # requires:
     # Put any additional test requirements here.  For example
-    - nose
+    # - nose
 
 about:
-  home: http://fabfile.org
-  license: BSD License
+  home: http://bitbucket.org/memedough/cov-core/overview
+  license: MIT License
 
 # See
 # http://docs.continuum.io/conda/build.html for

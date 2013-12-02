@@ -1,25 +1,24 @@
 package:
-  name: fabric
-  version: 1.8.0
+  name: logutils
+  version: 0.3.3
 
 source:
-  fn: Fabric-1.8.0.tar.gz
-  url: https://pypi.python.org/packages/source/F/Fabric/Fabric-1.8.0.tar.gz
-  md5: 1f195d16b05877767816617749d33eca
+  fn: logutils-0.3.3.tar.gz
+  url: https://pypi.python.org/packages/source/l/logutils/logutils-0.3.3.tar.gz
+  md5: 07b2a31d3d48e4f748363d33c03639cd
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
-  entry_points:
+# build:
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - fabric = fabric:main
+    # - logutils = logutils:main
     #
-    # Would create an entry point called fabric that calls fabric.main()
+    # Would create an entry point called logutils that calls logutils.main()
 
-    - fab = fabric.main:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -28,36 +27,29 @@ build:
 requirements:
   build:
     - python
-    - distribute
-    - paramiko
 
   run:
     - python
-    - distribute
-    - paramiko
 
 test:
   # Python imports
   imports:
-    - fabfile
-    - fabric
-    - fabric.contrib
+    - logutils
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - fab --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  requires:
+  # requires:
     # Put any additional test requirements here.  For example
-    - nose
+    # - nose
 
 about:
-  home: http://fabfile.org
+  home: http://code.google.com/p/logutils/
   license: BSD License
 
 # See

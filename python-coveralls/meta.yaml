@@ -1,25 +1,25 @@
 package:
-  name: fabric
-  version: 1.8.0
+  name: python-coveralls
+  version: 2.4.1
 
 source:
-  fn: Fabric-1.8.0.tar.gz
-  url: https://pypi.python.org/packages/source/F/Fabric/Fabric-1.8.0.tar.gz
-  md5: 1f195d16b05877767816617749d33eca
-#  patches:
+  fn: python-coveralls-2.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-coveralls/python-coveralls-2.4.1.tar.gz
+  md5: 36e6a21be9dceedd09d50f48dd80b87b
+
+  patches:
    # List any patch files here
-   # - fix.patch
 
 build:
   entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - fabric = fabric:main
+    # - python-coveralls = python-coveralls:main
     #
-    # Would create an entry point called fabric that calls fabric.main()
+    # Would create an entry point called python-coveralls that calls python-coveralls.main()
 
-    - fab = fabric.main:main
+    - coveralls = coveralls:wear
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -29,36 +29,44 @@ requirements:
   build:
     - python
     - distribute
-    - paramiko
+    - argparse [py26]
+    - pyyaml
+    - requests
+    - coverage
+    - six
+    - sh
 
   run:
     - python
     - distribute
-    - paramiko
+    - argparse [py26]
+    - pyyaml
+    - requests
+    - coverage
+    - six
+    - sh
 
 test:
   # Python imports
   imports:
-    - fabfile
-    - fabric
-    - fabric.contrib
+    - coveralls
 
   commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - fab --help
+    - coveralls --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  requires:
+  # requires:
     # Put any additional test requirements here.  For example
-    - nose
+    # - nose
 
 about:
-  home: http://fabfile.org
-  license: BSD License
+  home: http://github.com/z4r/python-coveralls
+  license: ache Software License
 
 # See
 # http://docs.continuum.io/conda/build.html for

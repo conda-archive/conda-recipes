@@ -1,11 +1,11 @@
 package:
-  name: fabric
-  version: 1.8.0
+  name: nose-cov
+  version: 1.6
 
 source:
-  fn: Fabric-1.8.0.tar.gz
-  url: https://pypi.python.org/packages/source/F/Fabric/Fabric-1.8.0.tar.gz
-  md5: 1f195d16b05877767816617749d33eca
+  fn: nose-cov-1.6.tar.gz
+  url: https://pypi.python.org/packages/source/n/nose-cov/nose-cov-1.6.tar.gz
+  md5: 606c873acdccc331a6d5acd681e97ef9
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,11 +15,10 @@ build:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - fabric = fabric:main
+    # - nose-cov = nose-cov:main
     #
-    # Would create an entry point called fabric that calls fabric.main()
+    # Would create an entry point called nose-cov that calls nose-cov.main()
 
-    - fab = fabric.main:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -29,36 +28,34 @@ requirements:
   build:
     - python
     - distribute
-    - paramiko
+    - nose
+    - cov-core
 
   run:
     - python
     - distribute
-    - paramiko
+    - nose
+    - cov-core
 
 test:
   # Python imports
-  imports:
-    - fabfile
-    - fabric
-    - fabric.contrib
+  # imports:
 
   commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - fab --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  requires:
+  # requires:
     # Put any additional test requirements here.  For example
-    - nose
+    # - nose
 
 about:
-  home: http://fabfile.org
-  license: BSD License
+  home: http://bitbucket.org/memedough/nose-cov/overview
+  license: MIT License
 
 # See
 # http://docs.continuum.io/conda/build.html for

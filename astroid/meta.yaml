@@ -1,25 +1,24 @@
 package:
-  name: fabric
-  version: 1.8.0
+  name: astroid
+  version: 1.0.1
 
 source:
-  fn: Fabric-1.8.0.tar.gz
-  url: https://pypi.python.org/packages/source/F/Fabric/Fabric-1.8.0.tar.gz
-  md5: 1f195d16b05877767816617749d33eca
+  fn: astroid-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/astroid/astroid-1.0.1.tar.gz
+  md5: 8f4a0e85b018239bf7d5952eaa3a63b4
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
-  entry_points:
+# build:
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - fabric = fabric:main
+    # - astroid = astroid:main
     #
-    # Would create an entry point called fabric that calls fabric.main()
+    # Would create an entry point called astroid that calls astroid.main()
 
-    - fab = fabric.main:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -29,36 +28,38 @@ requirements:
   build:
     - python
     - distribute
-    - paramiko
+    - logilab-common
 
   run:
     - python
     - distribute
-    - paramiko
+    - logilab-common
 
 test:
   # Python imports
   imports:
-    - fabfile
-    - fabric
-    - fabric.contrib
+    - astroid
+    - astroid.test.data.SSL1
+    - astroid.test.data.appl
+    - astroid.test.data2
+    - astroid.test
+    - astroid.test.data
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - fab --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  requires:
+  # requires:
     # Put any additional test requirements here.  For example
-    - nose
+    # - nose
 
 about:
-  home: http://fabfile.org
-  license: BSD License
+  home: http://bitbucket.org/logilab/astroid
+  license: LGPL
 
 # See
 # http://docs.continuum.io/conda/build.html for

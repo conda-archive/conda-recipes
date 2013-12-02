@@ -1,25 +1,24 @@
 package:
-  name: fabric
-  version: 1.8.0
+  name: regex
+  version: 2013-10-26
 
 source:
-  fn: Fabric-1.8.0.tar.gz
-  url: https://pypi.python.org/packages/source/F/Fabric/Fabric-1.8.0.tar.gz
-  md5: 1f195d16b05877767816617749d33eca
+  fn: regex-2013-10-26.tar.gz
+  url: https://pypi.python.org/packages/source/r/regex/regex-2013-10-26.tar.gz
+  md5: c377580356e61065ec597c5b0b5eb486
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
-  entry_points:
+# build:
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - fabric = fabric:main
+    # - regex = regex:main
     #
-    # Would create an entry point called fabric that calls fabric.main()
+    # Would create an entry point called regex that calls regex.main()
 
-    - fab = fabric.main:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -28,37 +27,30 @@ build:
 requirements:
   build:
     - python
-    - distribute
-    - paramiko
 
   run:
     - python
-    - distribute
-    - paramiko
 
 test:
   # Python imports
   imports:
-    - fabfile
-    - fabric
-    - fabric.contrib
+    - regex
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - fab --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  requires:
+  # requires:
     # Put any additional test requirements here.  For example
-    - nose
+    # - nose
 
 about:
-  home: http://fabfile.org
-  license: BSD License
+  home: https://code.google.com/p/mrab-regex-hg/
+  license: Python Software Foundation License
 
 # See
 # http://docs.continuum.io/conda/build.html for

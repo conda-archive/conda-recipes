@@ -1,25 +1,24 @@
 package:
-  name: fabric
-  version: 1.8.0
+  name: oauthlib
+  version: 0.6.0
 
 source:
-  fn: Fabric-1.8.0.tar.gz
-  url: https://pypi.python.org/packages/source/F/Fabric/Fabric-1.8.0.tar.gz
-  md5: 1f195d16b05877767816617749d33eca
+  fn: oauthlib-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/o/oauthlib/oauthlib-0.6.0.tar.gz
+  md5: b7c3e1832ec111e65baaab2de7834aae
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
-  entry_points:
+# build:
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - fabric = fabric:main
+    # - oauthlib = oauthlib:main
     #
-    # Would create an entry point called fabric that calls fabric.main()
+    # Would create an entry point called oauthlib that calls oauthlib.main()
 
-    - fab = fabric.main:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -29,35 +28,37 @@ requirements:
   build:
     - python
     - distribute
-    - paramiko
 
   run:
     - python
     - distribute
-    - paramiko
 
 test:
   # Python imports
   imports:
-    - fabfile
-    - fabric
-    - fabric.contrib
+    - oauthlib.oauth1.rfc5849
+    - oauthlib.oauth2.rfc6749.clients
+    - oauthlib.oauth2
+    - oauthlib.oauth1
+    - oauthlib.oauth2.rfc6749.endpoints
+    - oauthlib.oauth2.rfc6749.grant_types
+    - oauthlib.oauth1.rfc5849.endpoints
+    - oauthlib.oauth2.rfc6749
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - fab --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  requires:
+  # requires:
     # Put any additional test requirements here.  For example
-    - nose
+    # - nose
 
 about:
-  home: http://fabfile.org
+  home: https://github.com/idan/oauthlib
   license: BSD License
 
 # See
