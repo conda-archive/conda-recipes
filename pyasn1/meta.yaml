@@ -31,7 +31,6 @@ requirements:
 
   run:
     - python
-    - distribute
 
 test:
   # Python imports
