@@ -1,54 +1,53 @@
 package:
-  name: urllib3
-  version: 1.7.1
+  name: ndg-httpsclient
+  version: 0.3.2
 
 source:
-  fn: urllib3-1.7.1.tar.gz
-  url: https://pypi.python.org/packages/source/u/urllib3/urllib3-1.7.1.tar.gz
-  md5: 8b05bb2081379fe3c332542aa7c172f3
+  fn: ndg_httpsclient-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/n/ndg-httpsclient/ndg_httpsclient-0.3.2.tar.gz
+  md5: 076303c7aa0e41f3b45a7cb43dbb0743
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # entry_points:
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - urllib3 = urllib3:main
+    # - ndg-httpsclient = ndg-httpsclient:main
     #
-    # Would create an entry point called urllib3 that calls urllib3.main()
+    # Would create an entry point called ndg-httpsclient that calls ndg-httpsclient.main()
 
+    - ndg_httpclient = ndg.httpsclient.utils:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2
+  # number: 1
 
 requirements:
   build:
     - python
     - distribute
+    - pyopenssl
 
   run:
     - python
-    - ndg-httpsclient
+    - distribute
     - pyopenssl
-    - pyasn1
 
 test:
   # Python imports
   imports:
-    - urllib3.packages.ssl_match_hostname
-    - urllib3.contrib
-    - urllib3.packages
-    - urllib3
-    - dummyserver
-    - urllib3.contrib.pyopenssl
+    - ndg
+    - ndg.httpsclient
+    - ndg.httpsclient.test
 
-  # commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+    - ndg_httpclient --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -58,8 +57,8 @@ test:
     # - nose
 
 about:
-  home: http://urllib3.readthedocs.org/
-  license: MIT License
+  home: http://ndg-security.ceda.ac.uk/wiki/ndg_httpsclient/
+  license: BSD License
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -1,28 +1,28 @@
 package:
-  name: urllib3
-  version: 1.7.1
+  name: pyasn1
+  version: 0.1.7
 
 source:
-  fn: urllib3-1.7.1.tar.gz
-  url: https://pypi.python.org/packages/source/u/urllib3/urllib3-1.7.1.tar.gz
-  md5: 8b05bb2081379fe3c332542aa7c172f3
+  fn: pyasn1-0.1.7.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyasn1/pyasn1-0.1.7.tar.gz
+  md5: 2cbd80fcd4c7b1c82180d3d76fee18c8
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
+# build:
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - urllib3 = urllib3:main
+    # - pyasn1 = pyasn1:main
     #
-    # Would create an entry point called urllib3 that calls urllib3.main()
+    # Would create an entry point called pyasn1 that calls pyasn1.main()
 
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2
+  # number: 1
 
 requirements:
   build:
@@ -31,19 +31,18 @@ requirements:
 
   run:
     - python
-    - ndg-httpsclient
-    - pyopenssl
-    - pyasn1
+    - distribute
 
 test:
   # Python imports
   imports:
-    - urllib3.packages.ssl_match_hostname
-    - urllib3.contrib
-    - urllib3.packages
-    - urllib3
-    - dummyserver
-    - urllib3.contrib.pyopenssl
+    - pyasn1
+    - pyasn1.type
+    - pyasn1.codec.der
+    - pyasn1.codec
+    - pyasn1.compat
+    - pyasn1.codec.ber
+    - pyasn1.codec.cer
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -58,8 +57,8 @@ test:
     # - nose
 
 about:
-  home: http://urllib3.readthedocs.org/
-  license: MIT License
+  home:
+  license: BSD License
 
 # See
 # http://docs.continuum.io/conda/build.html for
