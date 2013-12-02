@@ -30,12 +30,10 @@ requirements:
     - python
     - setuptools
     - scipy
-    - atlas
 
   run:
     - python
     - scipy
-    - atlas
 
 test:
   # Python imports
