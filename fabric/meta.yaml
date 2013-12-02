@@ -1,11 +1,11 @@
 package:
   name: fabric
-  version: 1.6.1
+  version: 1.8.0
 
 source:
-  fn: Fabric-1.6.1.tar.gz
-  url: https://pypi.python.org/packages/source/F/Fabric/Fabric-1.6.1.tar.gz
-  md5: c318ac3f7011ede0be1ca9a20f435735
+  fn: Fabric-1.8.0.tar.gz
+  url: https://pypi.python.org/packages/source/F/Fabric/Fabric-1.8.0.tar.gz
+  md5: 1f195d16b05877767816617749d33eca
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,11 @@ build:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    - fab = fabric.main:main
+    # - fabric = fabric:main
     #
-    # Would call Fabric.main()
+    # Would create an entry point called fabric that calls fabric.main()
+
+    - fab = fabric.main:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -26,32 +28,33 @@ build:
 requirements:
   build:
     - python
-    # If setuptools is required to run setup.py, add distribute to the build
-    # requirements.
-    #
     - distribute
     - paramiko
 
   run:
     - python
+    - distribute
     - paramiko
 
 test:
   # Python imports
   imports:
+    - fabfile
     - fabric
+    - fabric.contrib
 
   commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
+
     - fab --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  # requires:
-    # Put any test requirements here.  For example
-    # - nose
+  requires:
+    # Put any additional test requirements here.  For example
+    - nose
 
 about:
   home: http://fabfile.org
