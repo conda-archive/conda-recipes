@@ -71,8 +71,6 @@ LinuxInstallation() {
     ln -vs R/lib/libRblas.so . || return 1;
     popd || return 1;
 
-    ldconfig || return 1;
-
     return 0;
 }
 
