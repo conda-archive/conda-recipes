@@ -28,11 +28,12 @@ build:
 requirements:
   build:
     - python
-    - setuptools
+    - distribute
     - argparse [py26]
 
   run:
     - python
+    - distribute
     - argparse [py26]
 
 test:
