@@ -61,7 +61,7 @@ test:
 
 about:
   home: http://python-requests.org
-  license: ache Software License
+  license: Apache Software License
 
 # See
 # http://docs.continuum.io/conda/build.html for
