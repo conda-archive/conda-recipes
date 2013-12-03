@@ -10,7 +10,7 @@ source:
 requirements:
   build:
     - python
-    - setuptools
+    - distribute
   run:
     - python
 
