@@ -25,14 +25,10 @@ build:
 
 requirements:
   build:
-    - python 2.6*
-
-    # requirements.
-    #
-    # - setuptools
+    - python
 
   run:
-    - python 2.6*
+    - python
 
 test:
   # Python imports
