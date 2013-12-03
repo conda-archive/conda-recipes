@@ -35,16 +35,16 @@ test:
   # Python imports
   imports:
     - rpy2
-    - rpy2.robjects.lib.tests
-    - rpy2.robjects.tests
-    - rpy2.rinterface.tests
-    - rpy2.robjects.lib
-    - rpy2.robjects
-    - rpy2.rlike
     - rpy2.interactive
-    - rpy2.rlike.tests
     - rpy2.interactive.tests
     - rpy2.rinterface
+    - rpy2.rinterface.tests
+    - rpy2.rlike
+    - rpy2.rlike.tests
+    - rpy2.robjects
+    - rpy2.robjects.lib
+    - rpy2.robjects.lib.tests
+    - rpy2.robjects.tests
 
 about:
   home: http://rpy.sourceforge.net
