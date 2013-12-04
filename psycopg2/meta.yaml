@@ -27,8 +27,10 @@ source:
 requirements:
   build:
     - python
+    - glibc
 
   run:
+    - glibc
     - python
 
 test:
