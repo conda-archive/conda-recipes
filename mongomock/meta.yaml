@@ -13,6 +13,7 @@ requirements:
     - setuptools
     - sentinels
     - six
+    - unittest2 [py26]
 
   run:
     - python
