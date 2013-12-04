@@ -12,11 +12,12 @@ build:
     - coverage = coverage:main
     - coverage2 = coverage:main
     - coverage-2.7 = coverage:main
+  number: 1
 
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
 
   run:
     - python

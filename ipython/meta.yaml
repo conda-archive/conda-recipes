@@ -15,7 +15,7 @@ build:
 requirements:
   build:
     - python
-    - distribute             [win or py3k]
+    - setuptools             [win or py3k]
     - pyreadline             [win]
   run:
     - python

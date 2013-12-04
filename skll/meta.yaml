@@ -1,16 +1,16 @@
 package:
   name: skll
-  version: 0.21.0
+  version: 0.22.0
 
 source:
-  fn: skll-0.21.0.tar.gz
-  url: https://pypi.python.org/packages/source/s/skll/skll-0.21.0.tar.gz
-  md5: c0e13ef8800eabc21ff634c6bdd3e9bc
+  fn: skll-0.22.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/skll/skll-0.22.0.tar.gz
+  md5: 9d50a134ddeb17cbb9ed31c804a492df
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
+build:
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
@@ -22,12 +22,12 @@ source:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 2
 
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - scikit-learn
     - six
     - prettytable
@@ -40,7 +40,6 @@ requirements:
 
   run:
     - python
-    - distribute
     - scikit-learn
     - six
     - prettytable

@@ -1,0 +1,58 @@
+package:
+  name: jcc
+  version: 2.18
+
+source:
+  fn: JCC-2.18.tar.gz
+  url: https://pypi.python.org/packages/source/J/JCC/JCC-2.18.tar.gz
+  md5: bf7dd84f65a842bd196e8324199e7a91
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jcc = jcc:main
+    #
+    # Would create an entry point called jcc that calls jcc.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - jcc
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://lucene.apache.org/pylucene/jcc/index.html
+  license: Apache Software License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

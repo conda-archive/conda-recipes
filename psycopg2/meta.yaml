@@ -1,0 +1,58 @@
+package:
+  name: psycopg2
+  version: 2.5.1
+
+source:
+  fn: psycopg2-2.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/psycopg2/psycopg2-2.5.1.tar.gz
+  md5: 1b433f83d50d1bc61e09026e906d84c7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - psycopg2 = psycopg2:main
+    #
+    # Would create an entry point called psycopg2 that calls psycopg2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - psycopg2
+    - psycopg2.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://initd.org/psycopg/
+  license: GNU Library or Lesser General Public License (LGPL) or Zope Public License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

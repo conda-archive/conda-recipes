@@ -9,7 +9,7 @@ source:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - pyside
     - jinja2
     - pygments
