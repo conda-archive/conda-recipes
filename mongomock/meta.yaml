@@ -19,6 +19,7 @@ requirements:
     - python
     - sentinels
     - six
+    - unittest2 [py26]
 
 test:
   imports:
