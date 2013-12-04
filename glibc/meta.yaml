@@ -1,0 +1,12 @@
+package:
+  name: glibc
+  version: 2.18
+
+source:
+  fn: glibc-2.18.tar.xz
+  url: http://ftpmirror.gnu.org/libc/glibc-2.18.tar.xz
+  md5: 88fbbceafee809e82efd52efa1e3c58f
+
+about:
+  home: http://www.gnu.org/software/libc/
+  license: GPL
