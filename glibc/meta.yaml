@@ -2,6 +2,9 @@ package:
   name: glibc
   version: 2.18
 
+build:
+  number: 1
+
 source:
   fn: glibc-2.18.tar.xz
   url: http://ftpmirror.gnu.org/libc/glibc-2.18.tar.xz
