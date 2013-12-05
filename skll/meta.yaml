@@ -1,32 +1,40 @@
 package:
   name: skll
-  version: 0.22.0
+  version: 0.22.2
 
 source:
-  fn: skll-0.22.0.tar.gz
-  url: https://pypi.python.org/packages/source/s/skll/skll-0.22.0.tar.gz
-  md5: 9d50a134ddeb17cbb9ed31c804a492df
+  fn: skll-0.22.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/skll/skll-0.22.2.tar.gz
+  md5: a2626ac6f245f74882f37c3e255d7927
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # entry_points:
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - skll = skll:main
+    - filter_megam = skll.utilities.filter_megam:main
+    - generate_predictions = skll.utilities.generate_predictions:main
+    - join_megam = skll.utilities.join_megam:main
+    - megam_to_libsvm = skll.utilities.megam_to_libsvm:main
+    - print_model_weights = skll.utilities.print_model_weights:main
+    - run_experiment = skll.utilities.run_experiment:main
+    - skll_convert = skll.utilities.skll_convert:main
+    - summarize_results = skll.utilities.summarize_results:main
     #
     # Would create an entry point called skll that calls skll.main()
 
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2
+  number: 0
 
 requirements:
   build:
     - python
+    - joblib
     - setuptools
     - scikit-learn
     - six
@@ -40,6 +48,7 @@ requirements:
 
   run:
     - python
+    - joblib
     - scikit-learn
     - six
     - prettytable
@@ -55,9 +64,17 @@ test:
   imports:
     - skll
 
-  # commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
+    - filter_megam --help
+    - generate_predictions --help
+    - join_megam --help
+    - megam_to_libsvm --help
+    - print_model_weights --help
+    - run_experiment --help
+    - skll_convert --help
+    - summarize_results --help
 
 
   # You can also put a file called run_test.py in the recipe that will be run
