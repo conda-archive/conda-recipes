@@ -1,11 +1,11 @@
 package:
   name: yt
-  version: 2.6
+  version: 2.6.1
 
 source:
-  fn: yt-2.6.tar.gz
-  url: https://pypi.python.org/packages/source/y/yt/yt-2.6.tar.gz
-  md5: 3fb120071f7fe59211ee1edfa14dd2f2
+  fn: yt-2.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/y/yt/yt-2.6.1.tar.gz
+  md5: 9d4c3aa49f30aaba5a8f2fac073aef8654f42c74
 
 build:
   entry_points:
