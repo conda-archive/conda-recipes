@@ -6,23 +6,15 @@ source:
   fn: twitter-1.10.2.tar.gz
   url: https://pypi.python.org/packages/source/t/twitter/twitter-1.10.2.tar.gz
   md5: 8bff1167b3886c759ee76afa8b52267e
-#  patches:
-   # List any patch files here
-   # - fix.patch
 
-# build:
-  # entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - twitter = twitter:main
-    #
-    # Would create an entry point called twitter that calls twitter.main()
-
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+build:
+  entry_points:
+    - twitter = twitter.cmdline:main
+    - twitter-log = twitter.logger:main
+    - twitter-archiver = twitter.archiver:main
+    - twitter-follow = twitter.follow:main
+    - twitter-stream-example = twitter.stream_example:main
+  number: 1
 
 requirements:
   build:
@@ -31,24 +23,14 @@ requirements:
 
   run:
     - python
-    - distribute
 
 test:
   # Python imports
   imports:
     - twitter
 
-  # commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
-
-
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any additional test requirements here.  For example
-    # - nose
+  commands:
+    - twitter --help
 
 about:
   home: http://mike.verdone.ca/twitter/
