@@ -10,6 +10,10 @@ source:
   url: http://ftpmirror.gnu.org/libc/glibc-2.18.tar.xz
   md5: 88fbbceafee809e82efd52efa1e3c58f
 
+requirements:
+  build:
+    - system
+
 about:
   home: http://www.gnu.org/software/libc/
   license: GPL
