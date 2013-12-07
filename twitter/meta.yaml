@@ -29,8 +29,8 @@ test:
   imports:
     - twitter
 
-  commands:
-    - twitter --help
+#  commands:
+#    - twitter --help
 
 about:
   home: http://mike.verdone.ca/twitter/
