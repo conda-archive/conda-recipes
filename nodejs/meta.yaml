@@ -1,0 +1,20 @@
+package:
+  name: nodejs
+  version: 0.10.23
+
+source:
+  fn: node-v0.10.23.tar.gz
+  url: http://nodejs.org/dist/v0.10.23/node-v0.10.23.tar.gz
+  sha1: 8717942d1bdfa8902ce65cd33b4293d16b486c64
+
+build:
+  number: 0
+
+test:
+  commands:
+    - node -e 'console.log("ok")'
+    - npm version
+
+about:
+  home: http://nodejs.org
+  license: MIT
