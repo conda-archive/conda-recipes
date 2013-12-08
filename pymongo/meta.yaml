@@ -1,25 +1,13 @@
 package:
   name: pymongo
-  version: 2.5.2
+  version: 2.6.3
 
 source:
-  fn: pymongo-2.5.2.tar.gz
-  url: https://pypi.python.org/packages/source/p/pymongo/pymongo-2.5.2.tar.gz
-  md5: d1ada91f0ec474534eab88429fb6ce5e
-#  patches:
-   # List any patch files here
-   # - fix.patch
+  fn: pymongo-2.6.3.tar.gz
+  url: https://pypi.python.org/packages/source/p/pymongo/pymongo-2.6.3.tar.gz
+  md5: da4a7d6ee47fe30b3978b8805d266167
 
 build:
-  # entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - pymongo = pymongo:main
-    #
-    # Would create an entry point called pymongo that calls pymongo.main()
-
-
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
   number: 1
@@ -35,24 +23,11 @@ requirements:
 test:
   # Python imports
   imports:
+    - bson
     - pymongo
-
-  # commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
-
-
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any test requirements here.  For example
-    # - nose
+    - gridfs
 
 about:
   home: http://github.com/mongodb/mongo-python-driver
-  license: ache Software License
+  license: Apache Software License
 
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml
