@@ -7,10 +7,10 @@ source:
   url: https://pypi.python.org/packages/source/p/pymongo/pymongo-2.6.3.tar.gz
   md5: da4a7d6ee47fe30b3978b8805d266167
 
-# build:
+build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 1
 
 requirements:
   build:
@@ -19,7 +19,6 @@ requirements:
 
   run:
     - python
-    - distribute
 
 test:
   # Python imports
