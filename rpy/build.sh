@@ -5,7 +5,7 @@ touch requirements.txt;
 export RHOME="${PREFIX}/lib64/R"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${RHOME}/lib:${SRC_DIR}/src"
 
-${PYTHON} setup.py install;
+${PYTHON} setup.py install || exit 1;
 
 mkdir -vp ${PREFIX}/bin;
 

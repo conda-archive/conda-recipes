@@ -2,7 +2,7 @@
 
 touch requirements.txt;
 
-${PYTHON} setup.py install;
+${PYTHON} setup.py install || exit 1;
 
 mkdir -vp ${PREFIX}/bin;
 

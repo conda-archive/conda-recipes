@@ -11,7 +11,7 @@ export CXXFLAGS="${CFLAGS}"
 export CPPFLAGS="-I${PREFIX}/include"
 export LDFLAGS="-L${PREFIX}/lib -L${PREFIX}/lib64"
 
-${PYTHON} setup.py install;
+${PYTHON} setup.py install || exit 1;
 
 mkdir -vp ${PREFIX}/bin;
 
