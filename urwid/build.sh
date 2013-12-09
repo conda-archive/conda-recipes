@@ -1,9 +1,9 @@
 #!/bin/bash
 
-$PYTHON setup.py install || exit 1
+${PYTHON} setup.py install || exit 1;
 
-# Add more build steps here, if they are necessary.
+mkdir -vp ${PREFIX}/bin;
 
-# See
-# http://docs.continuum.io/conda/build.html
-# for a list of environment variables that are set during the build process.
+POST_LINK="${PREFIX}/bin/.urwid-post-link.sh"
+cp -v ${RECIPE_DIR}/post-link.sh ${POST_LINK};
+chmod -v 0755 ${POST_LINK};
