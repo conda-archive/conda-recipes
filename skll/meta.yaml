@@ -1,14 +1,11 @@
 package:
   name: skll
-  version: 0.22.2
+  version: 0.22.4
 
 source:
-  fn: skll-0.22.2.tar.gz
-  url: https://pypi.python.org/packages/source/s/skll/skll-0.22.2.tar.gz
-  md5: a2626ac6f245f74882f37c3e255d7927
-#  patches:
-   # List any patch files here
-   # - fix.patch
+  fn: skll-0.22.4.tar.gz
+  url: https://pypi.python.org/packages/source/s/skll/skll-0.22.4.tar.gz
+  md5: 3762d64c3191aeb8049c8f88d9d340ed
 
 build:
   entry_points:
