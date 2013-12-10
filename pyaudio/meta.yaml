@@ -1,0 +1,29 @@
+
+package:
+    name: pyaudio
+    version: 0.2.7
+
+source:
+    fn: pyaudio-0.2.7.tar.gz
+    url: http://people.csail.mit.edu/hubert/pyaudio/packages/pyaudio-0.2.7.tar.gz
+    md5: 41eaa5a027e2a68ac29237018985dfbb
+
+build:
+    number: 1
+
+requirements:
+    build:
+        - python
+        - distribute
+
+    run:
+        - python
+
+test:
+    imports:
+        - pyaudio
+
+about:
+    home: http://people.csail.mit.edu/hubert/pyaudio/
+    license: MIT
+
