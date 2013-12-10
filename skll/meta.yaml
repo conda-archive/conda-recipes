@@ -4,8 +4,8 @@ package:
 
 source:
   fn: skll-0.22.5.tar.gz
-  url: https://pypi.python.org/packages/source/s/skll/skll-0.22.4.tar.gz
-  md5: 3762d64c3191aeb8049c8f88d9d340ed
+  url: https://pypi.python.org/packages/source/s/skll/skll-0.22.5.tar.gz
+  md5: 112e911167843884cdefadd3ee6ab0e6
 
 build:
   entry_points:
