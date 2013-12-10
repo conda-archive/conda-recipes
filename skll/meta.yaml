@@ -1,17 +1,14 @@
 package:
   name: skll
-  version: 0.22.4
+  version: 0.22.5
 
 source:
-  fn: skll-0.22.4.tar.gz
+  fn: skll-0.22.5.tar.gz
   url: https://pypi.python.org/packages/source/s/skll/skll-0.22.4.tar.gz
   md5: 3762d64c3191aeb8049c8f88d9d340ed
 
 build:
   entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
     - filter_megam = skll.utilities.filter_megam:main
     - generate_predictions = skll.utilities.generate_predictions:main
     - join_megam = skll.utilities.join_megam:main
@@ -20,12 +17,6 @@ build:
     - run_experiment = skll.utilities.run_experiment:main
     - skll_convert = skll.utilities.skll_convert:main
     - summarize_results = skll.utilities.summarize_results:main
-    #
-    # Would create an entry point called skll that calls skll.main()
-
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
   number: 0
 
 requirements:
@@ -62,8 +53,6 @@ test:
     - skll
 
   commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
     - filter_megam --help
     - generate_predictions --help
     - join_megam --help
@@ -73,18 +62,6 @@ test:
     - skll_convert --help
     - summarize_results --help
 
-
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any additional test requirements here.  For example
-    # - nose
-
 about:
   home: http://github.com/EducationalTestingService/skll
-  license: GNU General Public License v3 (GPLv3)
-
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml
+  license: BSD 3-clause
