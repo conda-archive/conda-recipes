@@ -1,0 +1,31 @@
+
+package:
+    name: pysam
+    version: 0.7.7
+
+source:
+    fn: pysam-0.7.7.tar.gz
+    url: https://pypi.python.org/packages/source/p/pysam/pysam-0.7.7.tar.gz
+    md5: eaf9f37cbccc5e2708754d045909c1a0
+
+build:
+    number: 1
+
+requirements:
+    build:
+        - python
+        - distribute
+        - cython
+
+    run:
+        - python
+        - cython
+
+test:
+    imports:
+        - pysam
+
+about:
+    home: https://code.google.com/p/pysam/
+    license: MIT
+
