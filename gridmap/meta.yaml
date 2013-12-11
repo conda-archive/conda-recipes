@@ -1,11 +1,11 @@
 package:
   name: gridmap
-  version: 0.11.3
+  version: 0.11.4
 
 source:
-  fn: gridmap-0.11.3.tar.gz
-  url: https://pypi.python.org/packages/source/g/gridmap/gridmap-0.11.3.tar.gz
-  md5: b7258e5bb0a56aed99e16fb60688c47c
+  fn: gridmap-0.11.4.tar.gz
+  url: https://pypi.python.org/packages/source/g/gridmap/gridmap-0.11.4.tar.gz
+  md5: 37f7e11e12607c75d5d4eab9a3de4335
 
 build:
   entry_points:
@@ -35,10 +35,6 @@ test:
 
   commands:
     - gridmap_web --help
-
-  # requires:
-    # Put any additional test requirements here.  For example
-    # - nose
 
 about:
   home: http://github.com/EducationalTestingService/gridmap
