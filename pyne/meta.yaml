@@ -1,9 +1,11 @@
 package:
   name: pyne
-  version: master
+  version: staging
 
 source:
-  git_url: git@github.com:pyne/pyne.git
+  git_tag: staging
+  git_url: https://github.com/pyne/pyne.git
+  
 
 requirements:
   build:
@@ -19,7 +21,8 @@ requirements:
     - hdf5
     - numpy
     - scipy
-
+    - pytables
+	
 test:
   requires:
     - nose
@@ -33,8 +36,8 @@ test:
     - pyne.material
     - pyne.nucname
     - pyne.pyne_config
-    - pyne.stlconverters
     - pyne.xs.models
+
 
 about:
   home: http://pynesim.org/
