@@ -1,0 +1,25 @@
+
+package:
+    name: ilmbase
+    version: 2.1.0
+
+source:
+    fn: ilmbase-2.1.0.tar.gz
+    url: http://download.savannah.nongnu.org/releases/openexr/ilmbase-2.1.0.tar.gz
+
+build:
+    number: 1
+
+requirements:
+    build:
+
+    run:
+
+test:
+    imports:
+
+    commands:
+
+about:
+    home: http://www.openexr.com/
+    license: Modified BSD license
