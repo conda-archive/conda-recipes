@@ -4,7 +4,7 @@ mkdir -vp ${PREFIX}/bin;
 
 MACHINE="$(uname 2>/dev/null)"
 
-export CFLAGS="-m64 -pipe -O2 -march=x64-64 -fPIC"
+export CFLAGS="-m64 -pipe -O2 -march=x86-64 -fPIC"
 export CXXLAGS="${CFLAGS}"
 #export CPPFLAGS="-I${PREFIX}/include"
 #export LDFLAGS="-L${PREFIX}/lib64"
