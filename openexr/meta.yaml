@@ -1,29 +1,28 @@
 
 package:
     name: openexr
-    version: 1.2.0
+    version: 2.0.1
 
 source:
-    fn: OpenEXR-1.2.0.tar.gz
-    url: https://pypi.python.org/packages/source/O/OpenEXR/OpenEXR-1.2.0.tar.gz
-    md5: 10a4949d5b7d2372f7e2064f2c683264
+    fn: OpenEXR-2.0.1.tar.gz
+    url: http://download.savannah.nongnu.org/releases/openexr/openexr-2.0.1.tar.gz
 
 build:
     number: 1
 
 requirements:
     build:
-        - python
-        - distribute
+        - zlib
+        #- ilmbase
 
     run:
-        - python
+        - zlib
+        #- ilmbase
 
 test:
     imports:
-        - OpenEXR
 
 about:
-    home: http://excamera.com/sphinx/articles-openexr.html
-    license: Unknown
+    home: http://www.openexr.com/
+    license: Modified BSD license
 
