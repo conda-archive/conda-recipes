@@ -3,7 +3,7 @@ package:
   version: 1.1.4
 
 source:
-  git_url: git@github.com:ilanschnell/bsdiff4.git
+  git_url: git://github.com/ilanschnell/bsdiff4.git
   git_tag: 1.1.4
 
 build:
