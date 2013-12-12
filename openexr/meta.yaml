@@ -13,11 +13,11 @@ build:
 requirements:
     build:
         - zlib
-        #- ilmbase
+        - ilmbase
 
     run:
         - zlib
-        #- ilmbase
+        - ilmbase
 
 test:
     imports:
