@@ -4,7 +4,7 @@ mkdir -vp ${PREFIX}/bin;
 
 MACHINE="$(uname 2>/dev/null)"
 
-export CFLAGS="-m64 -pipe -O2 -march=x64-64 -fPIC"
+export CFLAGS="-m64 -pipe -O2 -march=x86-64 -fPIC"
 export CXXLAGS="${CFLAGS}"
 #export CPPFLAGS="-I${PREFIX}/include"
 #export LDFLAGS="-L${PREFIX}/lib64"
@@ -12,7 +12,9 @@ export CXXLAGS="${CFLAGS}"
 LinuxInstallation() {
 
     chmod +x configure;
+    chmod +x bootstrap;
 
+    ./bootstrap;
     ./configure \
         --prefix ${PREFIX} || return 1;
     make || return 1;
