@@ -1,35 +1,18 @@
 package:
-  name: beautifulsoup4
-  version: 4.2.1
+  name: beautiful-soup
+  version: 4.3.2
 
 source:
-  fn: beautifulsoup4-4.2.1.tar.gz
-  url: https://pypi.python.org/packages/source/b/beautifulsoup4/beautifulsoup4-4.2.1.tar.gz
-  md5: 91ea70ce16a5f1f43e58f2ef05651679
-#  patches:
-   # List any patch files here
-   # - fix.patch
+  fn: beautifulsoup4-4.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/b/beautifulsoup4/beautifulsoup4-4.3.2.tar.gz
+  md5: b8d157a204d56512a4cc196e53e7d8ee
 
 build:
-  # entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - beautifulsoup4:main
-    #
-    # Would call beautifulsoup4.main()
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  number: 1
+  number: 0
 
 requirements:
   build:
     - python
-
-    # requirements.
-    #
-    # - setuptools
 
   run:
     - python
@@ -39,21 +22,6 @@ test:
   imports:
     - bs4
 
-  # commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
-
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any test requirements here.  For example
-    # - nose
-
 about:
   home: http://www.crummy.com/software/BeautifulSoup/bs4/
   license: MIT License
-
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml
