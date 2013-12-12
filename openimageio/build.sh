@@ -1,17 +1,8 @@
 #!/bin/bash
 
-# Build dependencies:
-# - libjpeg-devel
-# - libpng-devel
-# - libtiff-devel
-# - openexr-libs
-# - openexr-devel
-# - boost
-# - boost-devel
-# - boost-python
-
-export CFLAGS="-m64 -pipe -O2 -march=x86-64 -I${PREFIX}/include"
+export CFLAGS="-m64 -pipe -O2 -march=x86-64 -fPIC"
 export CXXFLAGS="${CFLAGS}"
+export CPPFLAGS="-I${PREFIX}/include"
 export LDFLAGS="-L${PREFIX}/lib"
 
 export CMAKE_INCLUDE_PATH="${PREFIX}/include"
