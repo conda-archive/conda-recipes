@@ -6,6 +6,7 @@ package:
   version: 0.6.0
 
 build:
+  number: 9
   string: xyz
 
 source:
