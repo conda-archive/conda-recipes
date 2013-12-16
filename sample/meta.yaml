@@ -5,6 +5,9 @@ package:
   name: pycosat
   version: 0.6.0
 
+build:
+  string: xyz
+
 source:
   git_url: git@github.com:ContinuumIO/pycosat.git
   git_tag: 0.6.0
