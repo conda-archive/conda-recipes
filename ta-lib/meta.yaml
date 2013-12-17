@@ -21,7 +21,6 @@ requirements:
     - setuptools
     - cython
     - numpy
-    - chrpath [py27]
     
   run:
     - ta-lib-libraries

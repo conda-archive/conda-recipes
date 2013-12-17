@@ -41,6 +41,7 @@ PWD:                $PWD
 
 
 ./configure --prefix=$PREFIX
-make
+
+make -j2
 make check
 make install

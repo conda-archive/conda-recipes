@@ -17,7 +17,6 @@ build:
 requirements:
   build:
     - python
-    - chrpath [py27]
   
 about:
     home: http://ta-lib.org/
