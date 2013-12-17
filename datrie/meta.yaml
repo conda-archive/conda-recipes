@@ -1,0 +1,23 @@
+package:
+  name: datrie
+  version: 0.6.1
+
+source:
+  fn: 0.6.1.zip
+  url: https://github.com/kmike/datrie/archive/0.6.1.zip
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - cython
+  run:
+    - python
+
+about:
+  home: https://github.com/kmike/datrie
+  license: LGPL v2.1
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:
