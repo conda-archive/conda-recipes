@@ -1,3 +1,4 @@
+* added recipe: make_stage1
 * added recipe: sed_stage1
 * added recipe: isl_stage1
 * added recipe: tar_stage1
