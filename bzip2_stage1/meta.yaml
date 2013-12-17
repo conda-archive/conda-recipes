@@ -1,0 +1,19 @@
+package:
+  name: bzip2_stage1
+  version: 1.0.6
+
+source:
+  fn: bzip2-1.0.6.tar.gz
+  url: http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+  string:
+     build_on_debian_wheezy__p33
+
+about:
+  home: http://sources.redhat.com/bzip2
+  license: LGPL
