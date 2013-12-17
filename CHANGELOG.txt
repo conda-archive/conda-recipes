@@ -1,4 +1,4 @@
-
+* updated conda to conda-2.2.5
 * added: recipe ta-lib-libraries and ta-lib
 * updated: recipe: conda: removed run requirement setuptools
 

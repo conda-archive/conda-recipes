@@ -1,11 +1,11 @@
 package:
   name: conda
-  version: 2.2.4
+  version: 2.2.5
 
 source:
   git_url: git://github.com/peter1000/conda.git
   # use master branch
-  #git_tag: 2.2.4
+  #git_tag: 2.2.5
   
 build:
   # If this is a new build for the same version, increment the build
