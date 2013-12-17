@@ -1,2 +1,5 @@
+
+* updated: recipe: conda: removed run requirement setuptools
+
 20131217: new meta.yaml can have the string: parameter set: needs a newer conda to build: 
 https://github.com/ContinuumIO/conda
