@@ -1,4 +1,5 @@
 
+* added: recipe ta-lib-libraries and ta-lib
 * updated: recipe: conda: removed run requirement setuptools
 
 20131217: new meta.yaml can have the string: parameter set: needs a newer conda to build: 
