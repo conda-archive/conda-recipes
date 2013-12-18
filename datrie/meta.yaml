@@ -16,6 +16,10 @@ requirements:
   run:
     - python
 
+test:
+  imports:
+    - datrie
+
 about:
   home: https://github.com/kmike/datrie
   license: LGPL v2.1
