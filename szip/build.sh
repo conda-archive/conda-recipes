@@ -15,7 +15,7 @@ LinuxInstallation() {
 
     ./configure \
         --disable-encoding \
-        --prefix ${PREFIX} || return 1;
+        --prefix=${PREFIX} || return 1;
     make || return 1;
     make install || return 1;
 
