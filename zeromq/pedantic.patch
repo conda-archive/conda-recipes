@@ -1,0 +1,11 @@
+--- configure	2013-11-24 10:02:49.000000000 -0800
++++ configure.2	2013-11-25 16:01:22.511708578 -0800
+@@ -16954,7 +16954,7 @@
+ fi
+ 
+ # Set pedantic
+-libzmq_pedantic="yes"
++libzmq_pedantic="no"
+ 
+ # By default compiling with -Werror except OSX.
+ libzmq_werror="yes"
