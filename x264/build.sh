@@ -7,7 +7,7 @@ export CXXLAGS="${CFLAGS}"
 #export CPPFLAGS="-I${PREFIX}/include"
 #export LDFLAGS="-L${PREFIX}/lib"
 
-MACHINE="$(uname 2>/dev/null)"
+ARCH="$(uname 2>/dev/null)"
 
 LinuxInstallation() {
     # Build dependencies:
@@ -26,12 +26,12 @@ LinuxInstallation() {
     return 0;
 }
 
-case ${MACHINE} in
+case ${ARCH} in
     'Linux')
         LinuxInstallation || exit 1;
         ;;
     *)
-        echo -e "Unsupported machine type: ${MACHINE}";
+        echo -e "Unsupported machine type: ${ARCH}";
         exit 1;
         ;;
 esac

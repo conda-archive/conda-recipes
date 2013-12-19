@@ -6,7 +6,7 @@ POST_LINK="${PREFIX}/bin/.rproject-post-link.sh"
 cp -v ${RECIPE_DIR}/post-link.sh ${POST_LINK};
 chmod -v 0755 ${POST_LINK};
 
-MACHINE="$(uname 2>/dev/null)"
+ARCH="$(uname 2>/dev/null)"
 
 export CFLAGS="-m64 -pipe -O2 -march=x86-64"
 export CXXFLAGS="${CFLAGS}"
@@ -74,12 +74,12 @@ LinuxInstallation() {
     return 0;
 }
 
-case ${MACHINE} in
+case ${ARCH} in
     'Linux')
         LinuxInstallation || exit 1;
         ;;
     *)
-        echo -e "Unsupported machine type: ${MACHINE}";
+        echo -e "Unsupported machine type: ${ARCH}";
         exit 1;
         ;;
 esac
