@@ -25,8 +25,8 @@ test:
   imports:
     - chardet
 
-#  commands:
-#    - chardetect --help
+  commands:
+    - chardetect run_test.py
 
 about:
   home: https://github.com/chardet/chardet
