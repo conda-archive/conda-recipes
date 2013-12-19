@@ -1,0 +1,26 @@
+
+package:
+    name: x264
+    version: 20131217
+
+source:
+    fn: x264-snapshot-20131217-2245-stable.tar.bz2
+    url: http://download.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-20131217-2245-stable.tar.bz2
+
+build:
+    number: 1
+
+requirements:
+    build:
+
+    run:
+
+test:
+    imports:
+
+    commands:
+
+about:
+    home: http://www.videolan.org/
+    license: GPL-2
+
