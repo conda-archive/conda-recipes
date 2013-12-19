@@ -1,0 +1,26 @@
+
+package:
+    name: minuit
+    version: 1.7.9
+
+source:
+    fn: Minuit-1_7_9-patch1.tar.gz
+    url: https://pyminuit.googlecode.com/files/Minuit-1_7_9-patch1.tar.gz
+
+build:
+    number: 1
+
+requirements:
+    build:
+
+    run:
+
+test:
+    imports:
+
+    commands:
+
+about:
+    home: http://root.cern.ch/
+    license: Unknown
+
