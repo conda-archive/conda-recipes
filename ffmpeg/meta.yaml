@@ -1,0 +1,26 @@
+
+package:
+    name: ffmpeg
+    version: 2.1.0
+
+source:
+    git_url: git://source.ffmpeg.org/ffmpeg.git
+    git_tag: release/2.1
+
+build:
+    number: 1
+
+requirements:
+    build:
+        - x264
+
+    run:
+        - x264
+
+test:
+    imports:
+
+about:
+    home: http://www.ffmpeg.org/
+    license: GPL-2
+
