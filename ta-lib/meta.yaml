@@ -1,0 +1,49 @@
+package:
+  name: ta-lib
+  version: 0.4.7
+
+source:
+  fn: TA_Lib-0.4.7.zip
+  url: https://github.com/mrjbq7/ta-lib/archive/TA_Lib-0.4.7.zip
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+  string:
+     build_on_debian_wheezy__p33
+  
+requirements:
+  build:
+    - ta-lib-libraries
+    - python
+    - setuptools
+    - cython
+    - numpy
+    
+  run:
+    - ta-lib-libraries
+    - python
+    - numpy
+   
+test:
+  # Python imports
+  imports:
+    - talib
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    # Put any additional test requirements here.  For example
+    - nose
+     
+about:
+    home: https://github.com/mrjbq7/ta-lib
+    license: BSD License

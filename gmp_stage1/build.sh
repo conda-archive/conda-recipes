@@ -1,11 +1,11 @@
-#!/bin/bash
+##!/bin/bash
 
 #===================== REMOVE THE OUTSIDE PATH VARIABLES
 echo "RESET PATH to Conda ENV"
 export PATH=$PREFIX/bin:$PREFIX/include:$PREFIX/lib
 
 #===================== ADD Main System Path
-
+export PATH=$PATH:/usr/bin:/bin
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 echo "=====================================
@@ -39,4 +39,12 @@ PWD:                $PWD
 
 ====================================="
 
-$PYTHON setup.py install || exit 1
+./configure --prefix=$PREFIX   \
+            --with-sysroot=$PREFIX    \
+            --enable-shared   \
+            --enable-cxx
+
+make -j2
+make check 2>&1 | tee gmp-check-log
+awk '/tests passed/{total+=$2} ; END{print total}' gmp-check-log
+make install

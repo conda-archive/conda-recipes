@@ -1,0 +1,19 @@
+package:
+  name: sed_stage1
+  version: 4.2.2
+
+source:
+  fn: sed-4.2.2.tar.bz2
+  url: ftp://ftp.gnu.org/pub/gnu/sed/sed-4.2.2.tar.bz2
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+  string:
+     build_on_debian_wheezy__p33
+
+about:
+  home: http://www.gnu.org/software/sed
+  license: GPL 3

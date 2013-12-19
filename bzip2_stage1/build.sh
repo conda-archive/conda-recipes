@@ -1,11 +1,11 @@
-#!/bin/bash
+##!/bin/bash
 
 #===================== REMOVE THE OUTSIDE PATH VARIABLES
 echo "RESET PATH to Conda ENV"
 export PATH=$PREFIX/bin:$PREFIX/include:$PREFIX/lib
 
 #===================== ADD Main System Path
-
+export PATH=$PATH:/usr/bin:/bin
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 echo "=====================================
@@ -39,4 +39,12 @@ PWD:                $PWD
 
 ====================================="
 
-$PYTHON setup.py install || exit 1
+
+#****
+sed -i 's@\(ln -s -f \)$PREFIX/bin/@\1@' Makefile
+
+make -f Makefile-libbz2_so
+make bzip2 bzip2recover
+make clean
+make
+make PREFIX=$PREFIX install

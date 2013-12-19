@@ -1,0 +1,8 @@
+package:
+  name: test-meta
+  version: 0.0.1
+
+requirements:
+  run:
+    - python
+

@@ -1,13 +1,5 @@
 #!/bin/bash
 
-#===================== REMOVE THE OUTSIDE PATH VARIABLES
-echo "RESET PATH to Conda ENV"
-export PATH=$PREFIX/bin:$PREFIX/include:$PREFIX/lib
-
-#===================== ADD Main System Path
-
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 echo "=====================================
 CONDA_BUILD:        $CONDA_BUILD
 ARCH:               $ARCH
@@ -38,5 +30,3 @@ PYTHONPATH:         $PYTHONPATH
 PWD:                $PWD
 
 ====================================="
-
-$PYTHON setup.py install || exit 1

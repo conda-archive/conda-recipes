@@ -1,0 +1,11 @@
+* added recipe: make_stage1
+* added recipe: sed_stage1
+* added recipe: isl_stage1
+* added recipe: tar_stage1
+* started to add an whole self containing linux build/compile chain
+* updated conda to conda-2.2.5
+* added: recipe ta-lib-libraries and ta-lib
+* updated: recipe: conda: removed run requirement setuptools
+
+20131217: new meta.yaml can have the string: parameter set: needs a newer conda to build: 
+https://github.com/ContinuumIO/conda

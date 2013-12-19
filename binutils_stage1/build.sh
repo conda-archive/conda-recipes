@@ -5,7 +5,7 @@ echo "RESET PATH to Conda ENV"
 export PATH=$PREFIX/bin:$PREFIX/include:$PREFIX/lib
 
 #===================== ADD Main System Path
-
+export PATH=$PATH:/usr/bin:/bin
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 echo "=====================================
@@ -39,4 +39,39 @@ PWD:                $PWD
 
 ====================================="
 
-$PYTHON setup.py install || exit 1
+
+#***
+sed -i -e 's/@colophon/@@colophon/'   \
+       -e 's/doc@cygnus.com/doc@@cygnus.com/' bfd/doc/bfd.texinfo
+
+#***
+BuildDir=$SRC_DIR/../binutils-build
+echo BuildDir: $BuildDir
+rm -rf $BuildDir
+mkdir -v $BuildDir
+cd $BuildDir
+
+
+#***
+if [ ! -d $PREFIX/tools ]; then
+    mkdir -v $PREFIX/tools
+fi
+
+#***
+$SRC_DIR/configure   \
+        --prefix=$PREFIX/tools    \
+        --with-sysroot=$PREFIX    \
+        --with-lib-path=$PREFIX/tools/lib   \
+        --target="x86_64-conda-linux-gnu"   \
+        --disable-nls   \
+        --disable-werror   \
+        --with-gmp=$PREFIX   \
+        --with-mpfr=$PREFIX   \
+        --with-mpc=$PREFIX  
+
+make -j2
+make install
+
+ln -sv $PREFIX/tools/lib $PREFIX/tools/lib64
+
+rm -rf $BuildDir

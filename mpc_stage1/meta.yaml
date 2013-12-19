@@ -1,0 +1,24 @@
+package:
+  name: mpc_stage1
+  version: 1.0.1
+
+source:
+  fn: mpc-1.0.1.tar.gz
+  url: http://www.multiprecision.org/mpc/download/mpc-1.0.1.tar.gz
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+  string:
+     build_on_debian_wheezy__p33
+     
+requirements:
+  build:
+    - gmp_stage1
+    - mpfr_stage1
+    
+about:
+  home: http://www.multiprecision.org/
+  license: GPL

@@ -5,7 +5,7 @@ echo "RESET PATH to Conda ENV"
 export PATH=$PREFIX/bin:$PREFIX/include:$PREFIX/lib
 
 #===================== ADD Main System Path
-
+export PATH=$PATH:/usr/bin
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 echo "=====================================
@@ -39,4 +39,8 @@ PWD:                $PWD
 
 ====================================="
 
-$PYTHON setup.py install || exit 1
+
+
+
+$PYTHON setup.py build build_ext --include-dirs $PREFIX/include:$PREFIX/lib
+$PYTHON setup.py install
