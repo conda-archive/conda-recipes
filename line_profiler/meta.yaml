@@ -7,20 +7,6 @@ source:
   url: https://pypi.python.org/packages/source/l/line_profiler/line_profiler-1.0b3.tar.gz
   md5: 63fc2a757192eb5e577559cfdff5b831
 
-# build:
-  # entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - line_profiler = line_profiler:main
-    #
-    # Would create an entry point called line_profiler that calls line_profiler.main()
-
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
-
 requirements:
   build:
     - python
@@ -35,6 +21,8 @@ test:
   imports:
     - line_profiler
 
+  # This command actually gets installed properly without an entry point 
+  # because it's a script
   commands:
     - kernprof.py --help
 
