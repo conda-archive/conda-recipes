@@ -1,0 +1,16 @@
+diff -u vagrant/bin/vagrant vagrant/bin/vagrant
+--- vagrant/bin/vagrant	2013-12-18 18:07:57.000000000 -0600
++++ vagrant/bin/vagrant	2013-12-18 18:08:02.000000000 -0600
+@@ -8,7 +8,9 @@
+ # any symlinks in the directory/script, so it will be the fully
+ # resolved path.
+ SOURCE="${BASH_SOURCE[0]}"
++CURDIR="$(pwd)"
+-while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
++while [ -h "$SOURCE" ] ; do cd "$(dirname "$SOURCE")"; SOURCE="$(readlink "$SOURCE")"; done
+ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
++cd "$CURDIR"
+ 
+ # Useful variables
+
+Diff finished.  Wed Dec 18 18:10:25 2013

@@ -1,0 +1,51 @@
+package:
+  name: rpy2
+  version: 2.3.8
+
+source:
+  fn: rpy2-2.3.8.tar.gz
+  url: https://pypi.python.org/packages/source/r/rpy2/rpy2-2.3.8.tar.gz
+  md5: f331120aeeb1b27118d4e3360f2ec45d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rpy2 = rpy2:main
+    #
+    # Would create an entry point called rpy2 that calls rpy2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - rpy2
+    - rpy2.interactive
+    - rpy2.interactive.tests
+    - rpy2.rinterface
+    - rpy2.rinterface.tests
+    - rpy2.rlike
+    - rpy2.rlike.tests
+    - rpy2.robjects
+    - rpy2.robjects.lib
+    - rpy2.robjects.lib.tests
+    - rpy2.robjects.tests
+
+about:
+  home: http://rpy.sourceforge.net
+  license: GNU Affero General Public License v3 or GNU Library or Lesser General Public License (LGPL)

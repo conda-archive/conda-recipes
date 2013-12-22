@@ -1,0 +1,22 @@
+package:
+  name: cgkit
+  version: 2.0.0
+
+source:
+  fn: cgkit-2.0.0-py2k.tar.gz [py2k]
+  url: http://downloads.sourceforge.net/project/cgkit/cgkit/cgkit-2.0.0/cgkit-2.0.0-py2k.tar.gz [py2k]
+  fn: cgkit-2.0.0-py3k.tar.gz [py3k]
+  url: http://downloads.sourceforge.net/project/cgkit/cgkit/cgkit-2.0.0/cgkit-2.0.0-py3k.tar.gz [py3k]
+
+requirements:
+  build:
+    - python
+    - scons
+    # boost.python 
+  run:
+    - python
+    # boost.python
+
+about:
+  home: http://cgkit.sourceforge.net
+  license: Mozilla Public License

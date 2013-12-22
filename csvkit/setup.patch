@@ -1,0 +1,12 @@
+diff --git setup.py setup.py
+index e682865..5967114 100644
+--- setup.py
++++ setup.py
+@@ -48,7 +48,6 @@ setup(
+         ]
+     },
+     install_requires = [
+-        'argparse>=1.2.1',
+         'xlrd>=0.7.1',
+         'python-dateutil>=1.5',
+         'sqlalchemy>=0.6.6',

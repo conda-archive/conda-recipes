@@ -14,7 +14,7 @@ build:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - tornado
     - docopt
 

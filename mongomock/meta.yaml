@@ -10,14 +10,16 @@ source:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - sentinels
     - six
+    - unittest2 [py26]
 
   run:
     - python
     - sentinels
     - six
+    - unittest2 [py26]
 
 test:
   imports:

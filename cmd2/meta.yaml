@@ -1,0 +1,60 @@
+package:
+  name: cmd2
+  version: 0.6.7
+
+source:
+  fn: cmd2-0.6.7.tar.gz
+  url: https://pypi.python.org/packages/source/c/cmd2/cmd2-0.6.7.tar.gz
+  md5: 842df29ff2f72d64d7f0d917039c0e51
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cmd2 = cmd2:main
+    #
+    # Would create an entry point called cmd2 that calls cmd2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+requirements:
+  build:
+    - python
+    - distribute
+    - pyparsing
+
+  run:
+    - python
+    - pyparsing
+
+test:
+  # Python imports
+  imports:
+    - cmd2
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://packages.python.org/cmd2/
+  license: MIT License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
