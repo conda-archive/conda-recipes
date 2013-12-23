@@ -7,6 +7,9 @@ source:
   url: https://pypi.python.org/packages/source/s/sqlparse/sqlparse-0.1.7.tar.gz
   md5: a62c0075e5707ccd36c237e461b90913
 
+build:
+  number: 1
+
 requirements:
   build:
     - python

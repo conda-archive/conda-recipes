@@ -14,7 +14,7 @@ build:
     - twitter-archiver = twitter.archiver:main
     - twitter-follow = twitter.follow:main
     - twitter-stream-example = twitter.stream_example:main
-  number: 1
+  number: 2
 
 requirements:
   build:

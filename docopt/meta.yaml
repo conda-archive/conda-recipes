@@ -7,6 +7,9 @@ source:
   url: https://pypi.python.org/packages/source/d/docopt/docopt-0.6.1.tar.gz
   md5: fe36e9b7a1708a0b02a115f2a78cf623
 
+build:
+  number: 1
+
 requirements:
   build:
     - python
