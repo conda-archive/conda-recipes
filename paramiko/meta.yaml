@@ -27,7 +27,7 @@ build:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - pycrypto
     - ecdsa
 

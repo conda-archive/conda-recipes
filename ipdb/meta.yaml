@@ -28,7 +28,7 @@ build:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - ipython
 
   run:

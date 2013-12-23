@@ -31,7 +31,7 @@ requirements:
     - pyflakes
     - pep8
     - mccabe
-    - distribute
+    - setuptools
 
   run:
     - python
