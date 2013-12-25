@@ -1,0 +1,23 @@
+package:
+  name: dos2unix
+  version: 6.0.3
+
+source:
+  fn: dos2unix-6.0.3.tar.gz
+  url: http://waterlan.home.xs4all.nl/dos2unix/dos2unix-6.0.3.tar.gz
+  patches:
+    - osx-Makefile.patch [osx]
+
+build:
+  number: 0
+
+test:
+  commands:
+    - dos2unix -h
+    - unix2dos -h
+
+about:
+  home: http://waterlan.home.xs4all.nl/dos2unix.html
+  license: FreeBSD
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:
