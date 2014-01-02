@@ -1,6 +1,6 @@
 package:
   name: regex
-  version: 2013-11-29
+  version: 2013.11.29
 
 source:
   fn: regex-2013-11-29.tar.gz
