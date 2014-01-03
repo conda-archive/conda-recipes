@@ -1,0 +1,26 @@
+package:
+  name: scipy
+  version: 0.10.1
+
+source:
+  fn: scipy-0.10.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/scipy/scipy-0.10.1.tar.gz
+  md5: 6ad976549e22e04ca93e70cf55b70a22
+
+requirements:
+  build:
+    - numpy
+    - atlas
+  run:
+    - python
+    - numpy
+
+test:
+  requires:
+    - nose
+  imports:
+    - scipy
+
+about:
+  home: http://www.scipy.org/
+  license: BSD
