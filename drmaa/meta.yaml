@@ -1,11 +1,11 @@
 package:
   name: drmaa
-  version: 0.7.3
+  version: 0.7.5
 
 source:
-  fn: drmaa-0.7.3.tar.gz
-  url: https://pypi.python.org/packages/source/d/drmaa/drmaa-0.7.3.tar.gz
-  md5: cbc2f07b63d5e95a98348c45e085733f
+  fn: drmaa-0.7.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/drmaa/drmaa-0.7.5.tar.gz
+  md5: 602d4ba915cb91fd0bb7319d147cf775
 
 build:
   number: 0
