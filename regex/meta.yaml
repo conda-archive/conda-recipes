@@ -7,6 +7,9 @@ source:
   url: https://pypi.python.org/packages/source/r/regex/regex-2013-12-31.tar.gz
   md5: 1d8311d0df721174bec826cf7d6596d8
 
+build:
+  number: 1
+
 requirements:
   build:
     - python
