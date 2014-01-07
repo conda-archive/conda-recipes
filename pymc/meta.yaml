@@ -5,7 +5,7 @@ package:
 source:
   fn:  pymc-2.3.tar.gz
   url: https://pypi.python.org/packages/source/p/pymc/pymc-2.3.tar.gz
-  md5: 3b644a6e11cd2a57c6fcd3ee593d8d9e
+  md5: 03678068b552eecb16fc7aded39d125a
 
 requirements:
   build:
