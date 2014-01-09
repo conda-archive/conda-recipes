@@ -1,61 +1,39 @@
 package:
   name: livereload
-  version: !!str 2.0.0
+  version: 1.0.1
 
 source:
-  fn: livereload-2.0.0.tar.gz
-  url: https://pypi.python.org/packages/source/l/livereload/livereload-2.0.0.tar.gz
-  md5: d1212220677714ca8743d96d8b2cfd0a
-#  patches:
-   # List any patch files here
-   # - fix.patch
+  fn: livereload-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/l/livereload/livereload-1.0.1.tar.gz
+  md5: 13ee6d6689ae997a64612523fe029338
+  patches:
+    - python3.patch
 
-# build:
-  # entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - livereload = livereload:main
-    #
-    # Would create an entry point called livereload that calls livereload.main()
+build:
+  entry_points:
+    - livereload = livereload.cli:main
 
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 1
 
 requirements:
   build:
     - python
     - setuptools
     - tornado
+    - docopt
 
   run:
     - python
-    - setuptools
     - tornado
+    - docopt
 
 test:
-  # Python imports
   imports:
     - livereload
 
-  # commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
-
-
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any additional test requirements here.  For example
-    # - nose
+  commands:
+    - livereload --help
 
 about:
-  home: https://github.com/lepture/python-livereload
+  home: http://lab.lepture.com/livereload/
   license: BSD License
-
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml
