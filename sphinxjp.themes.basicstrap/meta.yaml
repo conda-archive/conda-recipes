@@ -10,8 +10,8 @@ source:
    # List any patch files here
    # - fix.patch
 
-# build:
-  # entry_points:
+build:
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -22,18 +22,18 @@ source:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 1
 
 requirements:
   build:
     - python
     - sphinx
-    - distribute
+    - setuptools
 
   run:
     - python
     - sphinx
-    - distribute
+    - setuptools
 
 test:
   # Python imports
