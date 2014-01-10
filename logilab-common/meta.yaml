@@ -1,0 +1,66 @@
+package:
+  name: logilab-common
+  version: 0.60.0
+
+source:
+  fn: logilab-common-0.60.0.tar.gz
+  url: https://pypi.python.org/packages/source/l/logilab-common/logilab-common-0.60.0.tar.gz
+  md5: d06c4d033beb5bde46abd6960615980c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - logilab-common = logilab-common:main
+    #
+    # Would create an entry point called logilab-common that calls logilab-common.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - unittest2 [py26]
+
+  run:
+    - python
+    - setuptools
+    - unittest2 [py26]
+
+test:
+  # Python imports
+  imports:
+    - logilab.common.ureports
+    - logilab.common.test
+    - logilab.common.test.data
+    - logilab.common.test.data.lmfp
+    - logilab.common.test.data.find_test
+    - logilab.common
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.logilab.org/project/logilab-common
+  license: LGPL
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

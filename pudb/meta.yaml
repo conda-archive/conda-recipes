@@ -14,9 +14,9 @@ build:
         - pudb3 = pudb.run:main [py3k]
 
 requirements:
-    build:
+      build:
         - python
-        - distribute
+        - setuptools
         - pygments
         - urwid
 

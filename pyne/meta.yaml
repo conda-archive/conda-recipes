@@ -1,46 +1,41 @@
-
 package:
-    name: pyne
-    version: 0.3
+  name: pyne
+  version: master
 
 source:
-    git_url: https://github.com/pyne/pyne
-    git_tag: 0.3
-
-build:
-    number: 0
+  git_url: git@github.com:pyne/pyne.git
 
 requirements:
-    build:
-        - python
-        - cython
-        - cmake
-        - distribute
-        - numpy
-        - scipy
-        - hdf5
-        - pytables
-        - sphinx
-        - scisphinx
-        - breathe
-
-    run:
-        - python
-        - cython
-        - cmake
-        - numpy
-        - scipy
-        - hdf5
-        - pytables
-        - sphinx
-        - scisphinx
-        - breathe
+  build:
+    - python
+    - cmake
+    - cython
+    - pytables
+    - hdf5
+    - numpy
+    - scipy
+  run:
+    - python
+    - hdf5
+    - numpy
+    - scipy
 
 test:
-    imports:
-        - pyne
+  requires:
+    - nose
+  imports:
+    - pyne
+    - pyne._utils
+    - pyne.ace
+    - pyne.data
+    - pyne.enrichment
+    - pyne.jsoncpp
+    - pyne.material
+    - pyne.nucname
+    - pyne.pyne_config
+    - pyne.stlconverters
+    - pyne.xs.models
 
 about:
-    home: http://pynesim.org/
-    license: https://github.com/pyne/pyne/blob/master/license.txt
-
+  home: http://pynesim.org/
+  license: BSD

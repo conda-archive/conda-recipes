@@ -1,0 +1,41 @@
+package:
+  name: twitter
+  version: 1.10.2
+
+source:
+  fn: twitter-1.10.2.tar.gz
+  url: https://pypi.python.org/packages/source/t/twitter/twitter-1.10.2.tar.gz
+  md5: 8bff1167b3886c759ee76afa8b52267e
+
+build:
+  entry_points:
+    - twitter = twitter.cmdline:main
+    - twitter-log = twitter.logger:main
+    - twitter-archiver = twitter.archiver:main
+    - twitter-follow = twitter.follow:main
+    - twitter-stream-example = twitter.stream_example:main
+  number: 2
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - twitter
+
+#  commands:
+#    - twitter --help
+
+about:
+  home: http://mike.verdone.ca/twitter/
+  license: MIT License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,13 @@
+diff --git ../complete.c complete.c
+index e67cfeb..4cf7fff 100644
+--- ../complete.c
++++ complete.c
+@@ -337,7 +337,7 @@ int rl_completion_suppress_append = 0;
+ 
+ /* Character appended to completed words when at the end of the line.  The
+    default is a space. */
+-int rl_completion_append_character = ' ';
++int rl_completion_append_character = '\0';
+ 
+ /* If non-zero, the completion functions don't append any closing quote.
+    This is set to 0 by rl_complete_internal and may be changed by an

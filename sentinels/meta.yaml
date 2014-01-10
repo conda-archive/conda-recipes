@@ -7,10 +7,13 @@ source:
   url: https://pypi.python.org/packages/source/s/sentinels/sentinels-0.0.6.tar.gz
   md5: 1fcd4e1dbbc128a2639813db60432067
 
+build:
+  number: 1
+
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
 
   run:
     - python
