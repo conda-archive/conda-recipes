@@ -1,0 +1,26 @@
+package:
+  name: pygame # lower case name of package, may contain '-' but no spaces
+  version: 1.9.1    # version of package. Should use the PEP-386 verlib conventions.
+
+source:
+  #fn: pygame-1.9.1release.tar.gz [unix]
+  #fn: pygame-1.9.1release.zip [win]
+  #url: http://www.pygame.org/ftp/pygame-1.9.1release.tar.gz [unix] 
+  #url: http://www.pygame.org/ftp/pygame-1.9.1release.zip [win] 
+  #git_url: git@github.com:xamox/pygame.git
+  hg_url: https://bitbucket.org/pygame/pygame
+
+build:            # (optional)
+  number: 1                        # (optional, defaults to 0)
+
+# the build and runtime requirements:
+requirements:     # (optional)
+  build:
+    - setuptools
+    - python
+  run:
+    - python
+
+about:            # (optional)
+  home: https://bitbucket.org/pygame
+  license: LGPL 
