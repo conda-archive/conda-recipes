@@ -8,7 +8,7 @@ source:
     url: http://rweb.quant.ku.edu/cran/src/base/R-3/R-3.0.2.tar.gz
 
 build:
-    number: 1
+    number: 0
 
 requirements:
     build:

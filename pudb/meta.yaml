@@ -8,7 +8,7 @@ source:
     md5: 721c4d7cb1074e60a4ea4e8e480bc019
 
 build:
-    number: 1
+    number: 0
     entry_points:
         - pudb = pudb.run:main
         - pudb3 = pudb.run:main [py3k]

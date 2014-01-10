@@ -8,7 +8,7 @@ source:
     url: https://pyminuit.googlecode.com/files/Minuit-1_7_9-patch1.tar.gz
 
 build:
-    number: 1
+    number: 0
 
 requirements:
     build:
