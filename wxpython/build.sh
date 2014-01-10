@@ -45,6 +45,6 @@ case ${ARCH} in
         ;;
 esac
 
-POST_LINK="${PREFIX}/bin/.wxpython-post-link.sh"
-cp -v ${RECIPE_DIR}/post-link.sh ${POST_LINK};
-chmod -v 0755 ${POST_LINK};
+#POST_LINK="${PREFIX}/bin/.wxpython-post-link.sh"
+#cp -v ${RECIPE_DIR}/post-link.sh ${POST_LINK};
+#chmod -v 0755 ${POST_LINK};

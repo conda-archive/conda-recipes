@@ -15,6 +15,6 @@ mkdir -vp ${PREFIX}/bin;
 make USE_QT=0 USE_PYTHON=1 USE_OPENGL=0 LINKSTATIC=0 || exit 1;
 make install || exit 1;
 
-POST_LINK="${PREFIX}/bin/.openimageio-post-link.sh"
-cp -v ${RECIPE_DIR}/post-link.sh ${POST_LINK};
-chmod -v 0755 ${POST_LINK};
+#POST_LINK="${PREFIX}/bin/.openimageio-post-link.sh"
+#cp -v ${RECIPE_DIR}/post-link.sh ${POST_LINK};
+#chmod -v 0755 ${POST_LINK};
