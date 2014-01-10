@@ -1,11 +1,11 @@
 package:
-  name: sphinx-bootstrap-theme
-  version: !!str 0.3.5
+  name: sphinxjp.themecore
+  version: !!str 0.2.0
 
 source:
-  fn: sphinx-bootstrap-theme-0.3.5.tar.gz
-  url: https://pypi.python.org/packages/source/s/sphinx-bootstrap-theme/sphinx-bootstrap-theme-0.3.5.tar.gz
-  md5: a51f524a384b5e72de5989c4edd08e91
+  fn: sphinxjp.themecore-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/sphinxjp.themecore/sphinxjp.themecore-0.2.0.tar.gz
+  md5: 20c4d0ca1b4447fcda6f1b1638006caa
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - sphinx-bootstrap-theme = sphinx-bootstrap-theme:main
+    # - sphinxjp.themecore = sphinxjp.themecore:main
     #
-    # Would create an entry point called sphinx-bootstrap-theme that calls sphinx-bootstrap-theme.main()
+    # Would create an entry point called sphinxjp.themecore that calls sphinxjp.themecore.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -27,15 +27,21 @@ source:
 requirements:
   build:
     - python
-    - setuptools
+    - docutils
+    - sphinx
+    - distribute
 
   run:
     - python
+    - docutils
+    - sphinx
+    - distribute
 
 test:
   # Python imports
   imports:
-    - sphinx_bootstrap_theme
+    - sphinxjp
+    - sphinxjp.themecore
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -50,7 +56,7 @@ test:
     # - nose
 
 about:
-  home: http://ryan-roemer.github.com/sphinx-bootstrap-theme/README.html
+  home: http://bitbucket.org/shimizukawa/sphinxjp.themecore
   license: MIT License
 
 # See

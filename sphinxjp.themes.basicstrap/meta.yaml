@@ -1,41 +1,46 @@
 package:
-  name: sphinx-bootstrap-theme
-  version: !!str 0.3.5
+  name: sphinxjp.themes.basicstrap
+  version: !!str 0.3.2
 
 source:
-  fn: sphinx-bootstrap-theme-0.3.5.tar.gz
-  url: https://pypi.python.org/packages/source/s/sphinx-bootstrap-theme/sphinx-bootstrap-theme-0.3.5.tar.gz
-  md5: a51f524a384b5e72de5989c4edd08e91
+  fn: sphinxjp.themes.basicstrap-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/sphinxjp.themes.basicstrap/sphinxjp.themes.basicstrap-0.3.2.tar.gz
+  md5: e0b71f754c0e244490309a5f577855c7
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
-  # entry_points:
+build:
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - sphinx-bootstrap-theme = sphinx-bootstrap-theme:main
+    # - sphinxjp.themes.basicstrap = sphinxjp.themes.basicstrap:main
     #
-    # Would create an entry point called sphinx-bootstrap-theme that calls sphinx-bootstrap-theme.main()
+    # Would create an entry point called sphinxjp.themes.basicstrap that calls sphinxjp.themes.basicstrap.main()
 
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 1
 
 requirements:
   build:
     - python
+    - sphinx
     - setuptools
 
   run:
     - python
+    - sphinx
+    - setuptools
 
 test:
   # Python imports
   imports:
-    - sphinx_bootstrap_theme
+    - sphinxjp
+    - sphinxjp.themes.basicstrap
+    - sphinxjp.themes
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -50,7 +55,7 @@ test:
     # - nose
 
 about:
-  home: http://ryan-roemer.github.com/sphinx-bootstrap-theme/README.html
+  home: https://github.com/tell-k/sphinxjp.themes.basicstrap
   license: MIT License
 
 # See
