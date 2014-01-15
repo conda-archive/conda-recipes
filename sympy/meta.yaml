@@ -1,14 +1,11 @@
 package:
   name: sympy
-  version: 0.7.3
+  version: 0.7.4.1
 
 source:
-  fn: sympy-0.7.3.tar.gz                                                                            [py2k]
-  url: https://github.com/sympy/sympy/releases/download/sympy-0.7.3/sympy-0.7.3.tar.gz              [py2k]
-  md5: 91e3dc58c0af063bc64b17674296cb35                                                             [py2k]
-  fn: sympy-0.7.2-py3.2.tar.gz                                                                      [py3k]
-  url: https://github.com/sympy/sympy/releases/download/sympy-0.7.3/sympy-0.7.3-py3.2.tar.gz        [py3k]
-  md5: c6343a8eb1ab9a9741b3a3bba02a0eeb                                                                 [py3k]
+  fn: sympy-0.7.4.1.tar.gz
+  url: https://github.com/sympy/sympy/releases/download/sympy-0.7.4.1/sympy-0.7.4.1.tar.gz
+  md5: 2547375b3b7eee17a3f1f4f3038c383d
 
 requirements:
   build:
