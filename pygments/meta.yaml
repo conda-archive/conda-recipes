@@ -1,0 +1,65 @@
+package:
+  name: pygments
+  version: !!str 1.6
+
+source:
+  fn: Pygments-1.6.tar.gz
+  url: https://pypi.python.org/packages/source/P/Pygments/Pygments-1.6.tar.gz
+  md5: a18feedf6ffd0b0cc8c8b0fbdb2027b1
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  #preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pygments = pygments:main
+    #
+    # Would create an entry point called pygments that calls pygments.main()
+
+    - pygmentize = pygments.cmdline:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - pygments.styles
+    - pygments
+    - pygments.lexers
+    - pygments.filters
+    - pygments.formatters
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pygmentize --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pygments.org/
+  license: BSD License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
