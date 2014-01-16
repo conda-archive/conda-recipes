@@ -9,27 +9,37 @@ export CXXLAGS="${CFLAGS}"
 #export CPPFLAGS="-I${PREFIX}/include"
 #export LDFLAGS="-L${PREFIX}/lib64"
 
-sed -i 's/\(CORE_ONLY\)\s*=\s*0\(.*\)/\1 = 1\2/' wxPython/config.py
-
 LinuxInstallation() {
+    # Build dependencies:
+    # - wxGTK-devel
+    # - wxBase
+    # - SDL-devel
+    # - gstreamer-devel
+    # - gstreamer-plugins-base-devel
 
-    #chmod +x configure;
+    chmod +x configure;
 
-    #./configure \
-    #    --with-gtk \
-    #    --enable-unicode \
-    #    --with-libjpeg=builtin \
-    #    --with-libpng=builtin \
-    #    --with-libtiff=builtin \
-    #    --with-zlib=builtin \
-    #    --prefix ${PREFIX} || return 1;
-    #make || return 1;
-    #make install || return 1;
+    ./configure \
+        --enable-utf8 \
+        --enable-sound \
+        --enable-unicode \
+        --enable-monolithic \
+        --enable-rpath='$ORIGIN/../lib' \
+        --with-gtk \
+        --with-sdl \
+        --with-expat=builtin \
+        --with-libjpeg=builtin \
+        --with-libpng=builtin \
+        --with-libtiff=builtin \
+        --with-regex=builtin \
+        --with-zlib=builtin \
+        --prefix="${PREFIX}" || return 1;
+    make || return 1;
+    make install || return 1;
 
     pushd wxPython/;
-
-    ${PYTHON} setup.py install || exit 1;
-
+    ${PYTHON} -u ./setup.py install UNICODE=1 BUILD_BASE=build WX_CONFIG="${PREFIX}/bin/wx-config --prefix=${PREFIX}" \
+        --record installed_files.txt --prefix="${PREFIX}" || return 1;
     popd;
 
     return 0;
