@@ -1,0 +1,29 @@
+
+package:
+    name: cloud
+    version: 2.3.1
+
+source:
+    fn: cloud-2.3.1.tar.gz
+    url: https://pypi.python.org/packages/source/c/cloud/cloud-2.3.1.tar.gz
+    md5: a2cf310278b41a35d63eee08ff6f4ae8
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - distribute
+
+    run:
+        - python
+
+test:
+    imports:
+        - cloud
+
+about:
+    home: http://www.picloud.com/
+    license: GNU LGPL
+

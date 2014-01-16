@@ -1,0 +1,50 @@
+From c69db94f200b20c1ab6b7b0fcb87a96ad9cccf14 Mon Sep 17 00:00:00 2001
+From: irritum <kamil.kwiek@continuum.io>
+Date: Mon, 2 Dec 2013 11:03:49 +0100
+Subject: [PATCH] Commented out Rf_PrintWarnings
+
+---
+ src/RPy.h       |    4 ++--
+ src/rpymodule.c |    4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/RPy.h b/src/RPy.h
+index 5bf70c0..055aaae 100644
+--- src/RPy.h
++++ src/RPy.h
+@@ -81,8 +81,8 @@
+ # define CleanEd		Rf_CleanEd
+ extern void CleanEd(void);
+ extern int  R_CollectWarnings; 
+-# define PrintWarnings		Rf_PrintWarnings
+-extern void PrintWarnings(void);
++//# define PrintWarnings		Rf_PrintWarnings
++//extern void PrintWarnings(void);
+ /****/
+ 
+ #include <signal.h>
+diff --git a/src/rpymodule.c b/src/rpymodule.c
+index d487a09..1d54887 100644
+--- src/rpymodule.c
++++ src/rpymodule.c
+@@ -1180,7 +1180,7 @@ Robj_call(PyObject *self, PyObject *args, PyObject *kwds)
+   obj = to_Pyobj_with_mode(res, conv);
+   UNPROTECT(2);
+ 
+-  PrintWarnings(); /* show any warning messages */
++  //PrintWarnings(); /* show any warning messages */
+   
+   return obj;
+ }
+@@ -1799,7 +1799,7 @@ void r_finalize(void)
+     }
+ #endif 
+ 
+-    PrintWarnings();	/* from device close and .Last */
++    //PrintWarnings();	/* from device close and .Last */
+     R_gc();  /* Remove any remaining R objects from memory */
+ }
+ 
+-- 
+1.7.1
+
