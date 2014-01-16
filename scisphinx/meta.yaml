@@ -1,0 +1,30 @@
+
+package:
+    name: scisphinx
+    version: 1.0.0
+
+source:
+    git_url: https://github.com/numfocus/scisphinx.git
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - distribute
+        - sphinx
+        - configobj
+
+    run:
+        - python
+        - sphinx
+
+test:
+    imports:
+        - scisphinx
+
+about:
+    home: https://github.com/numfocus/scisphinx
+    license: https://github.com/numfocus/scisphinx/blob/master/license.txt
+
