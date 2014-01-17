@@ -8,6 +8,7 @@ package:
 build:
   number: 9
   string: xyz
+  no_softlink: .*
 
 source:
   git_url: git@github.com:ContinuumIO/pycosat.git
