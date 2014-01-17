@@ -11,6 +11,12 @@ export CXXLAGS="${CFLAGS}"
 
 LinuxInstallation() {
     # Build dependencies:
+    # - gtk+-devel
+    # - gtk+extra-devel
+    # - gtk2-devel
+    # - gtk2-engines-devel
+    # - gtkglext-devel
+    # - gtkmm24-devel
     # - wxGTK-devel
     # - wxBase
     # - SDL-devel
