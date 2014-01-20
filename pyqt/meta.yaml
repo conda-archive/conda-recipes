@@ -1,0 +1,21 @@
+package:
+  name: pyqt
+  version: 4.10.3
+
+source:
+  fn: PyQt-mac-gpl-4.10.3.tar.gz # [osx]
+  url: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10.3/PyQt-mac-gpl-4.10.3.tar.gz # [osx]
+  md5: 4dfb646512dd479cfa7518605eda1f32
+
+requirements:
+  build:
+    - python
+    - qt
+
+  run:
+    - python
+    - qt
+
+about:
+  home: http://www.riverbankcomputing.co.uk/software/pyqt
+  license: GPL
