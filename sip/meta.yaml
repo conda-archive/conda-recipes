@@ -19,6 +19,9 @@ requirements:
     - python
 
 test:
+  imports:
+    - sip
+
   files:
     - test
 
