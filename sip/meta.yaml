@@ -15,6 +15,9 @@ requirements:
     - python
     - python.app # [osx]
 
+  run:
+    - python
+
 test:
   files:
     - test
