@@ -1,0 +1,27 @@
+package:
+  name: sip
+  version: 4.15.4
+
+source:
+  fn: sip-4.15.4.tar.gz
+  url: http://sourceforge.net/projects/pyqt/files/sip/sip-4.15.4/sip-4.15.4.tar.gz
+  md5: 1d5c9e92bc7fca5ac11e088a4cf6c83d
+
+  patches:
+    - noframework.patch # [osx]
+
+requirements:
+  build:
+    - python
+    - python.app # [osx]
+
+test:
+  files:
+    - test
+
+  commands:
+    - sip -c test test/word.sip
+
+about:
+  home: http://www.riverbankcomputing.com/software/sip/intro
+  license: GPL
