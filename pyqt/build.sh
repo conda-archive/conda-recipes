@@ -1,5 +1,7 @@
 if [ `uname` == Darwin ]; then
     export QMAKESPEC="unsupported/macx-clang-libc++"
+else
+    export QMAKESPEC="linux-g++"
 fi
 $PYTHON configure.py --verbose \
         --confirm-license \
