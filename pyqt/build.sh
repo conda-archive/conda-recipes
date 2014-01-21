@@ -22,3 +22,4 @@ $PYTHON configure-ng.py --verbose \
 make
 make install
 
+rm -rf /opt/anaconda1anaconda2anaconda3
