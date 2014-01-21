@@ -23,6 +23,10 @@ requirements:
     - qt
     - sip
 
+test:
+  imports:
+    - PyQt4
+
 about:
   home: http://www.riverbankcomputing.co.uk/software/pyqt
   license: GPL
