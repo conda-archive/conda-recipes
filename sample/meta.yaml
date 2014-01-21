@@ -2,7 +2,7 @@
 # in the conda build command.
 
 package:
-  name: pycosat
+  name: sample
   version: 0.6.0
 
 build:
