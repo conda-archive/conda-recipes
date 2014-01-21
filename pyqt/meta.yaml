@@ -7,14 +7,19 @@ source:
   url: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10.3/PyQt-mac-gpl-4.10.3.tar.gz # [osx]
   md5: 4dfb646512dd479cfa7518605eda1f32
 
+  patches:
+    - configure.patch
+
 requirements:
   build:
     - python
     - qt
+    - sip
 
   run:
     - python
     - qt
+    - sip
 
 about:
   home: http://www.riverbankcomputing.co.uk/software/pyqt
