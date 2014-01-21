@@ -1,5 +1,6 @@
-export QMAKESPEC="unsupported/macx-clang-libc++"
-$PYTHON -c "import os;print(os.environ)"
+if [ `uname` == Darwin ]; then
+    export QMAKESPEC="unsupported/macx-clang-libc++"
+fi
 $PYTHON configure.py --verbose \
         --confirm-license \
         --bindir=$PREFIX/bin \
@@ -7,7 +8,7 @@ $PYTHON configure.py --verbose \
 
 
 
-$PYTHON configure-ng.py --verbose --spec="unsupported/macx-clang-libc++"
+# $PYTHON configure-ng.py --verbose --spec="unsupported/macx-clang-libc++"
 
 make
 make install
