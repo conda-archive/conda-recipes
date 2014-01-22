@@ -1,11 +1,11 @@
 package:
   name: spyder
-  version: 2.2.5
+  version: 2.3.0beta3
 
 source:
-  fn: spyder-2.2.5.zip
-  url: http://spyderlib.googlecode.com/files/spyder-2.2.5.zip
-  sha1: ff64d1181d5f17b6813e810cd07369e5b5b0f359
+  fn: spyder-2.3.0beta3.zip
+  url: https://bitbucket.org/spyder-ide/spyderlib/downloads/spyder-2.3.0beta3.zip
+  sha1: 5694c2759ae175b4fd65f9713ac1a5dff21f1fa2
 
 build:
   osx_is_app: True
