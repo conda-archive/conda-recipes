@@ -21,7 +21,8 @@ requirements:
     - ipython
     - pygments
     - pyzmq
-    - pyside
+    - pyside          [not linux]
+    - pyqt            [linux]
     - python.app      [osx]
 
 test:
