@@ -1,0 +1,35 @@
+package:
+  name: spyder
+  version: 2.2.5
+
+source:
+  fn: spyder-2.2.5.zip
+  url: http://spyderlib.googlecode.com/files/spyder-2.2.5.zip
+  sha1: ff64d1181d5f17b6813e810cd07369e5b5b0f359
+
+build:
+  osx_is_app: True
+
+requirements:
+  build:
+    - python
+    - sphinx
+    - rope
+    - pyflakes
+  run:
+    - python
+    - ipython
+    - pygments
+    - pyzmq
+    - pyside
+    - python.app      [osx]
+
+test:
+  commands:
+    - spyder -h
+  imports:
+    - spyderlib
+
+about:
+  home: http://code.google.com/p/spyderlib/
+  license: MIT
