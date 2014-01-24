@@ -1,0 +1,25 @@
+diff --git a/configure.py b/configure.py
+index a8e5dcd..a5f1474 100644
+--- configure.py
++++ configure.py
+@@ -1886,7 +1886,7 @@ def get_build_macros(overrides):
+     if "QMAKESPEC" in list(os.environ.keys()):
+         fname = os.environ["QMAKESPEC"]
+
+-        if not os.path.dirname(fname):
++        if not os.path.dirname(fname) or fname.startswith('unsupported'):
+             qt_macx_spec = fname
+             fname = os.path.join(qt_archdatadir, "mkspecs", fname)
+     elif sys.platform == "darwin":
+@@ -1934,6 +1934,11 @@ def get_build_macros(overrides):
+     if macros is None:
+         return None
+
++    # QMake macros may contain comments on the same line so we need to remove them
++    for macro, value in macros.iteritems():
++        if "#" in value:
++            macros[macro] = value.split("#", 1)[0]
++
+     # Qt5 doesn't seem to support the specific macros so add them if they are
+     # missing.
+     if macros.get("INCDIR_QT", "") == "":
