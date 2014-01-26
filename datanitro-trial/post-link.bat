@@ -32,9 +32,16 @@ type %LICENSE_TXT%
 
 exit /b
 
+:prompt_for_email
+    set /p USER_EMAIL="Please enter your e-mail address:"
+    if "%USER_EMAIL%" == "" goto prompt_for_email
+    goto do_install
+
+exit /b
+
 :do_install
     start /wait /min cmd /c %SETUP_EXE% /S ^
-        /e "anaconda-trial@datanitro.com" ^
+        /e "%USER_EMAIL%" ^
         /y "%CONDA_ROOT%" ^
         /D=%CONDA_ROOT%\datanitro-trial
 
