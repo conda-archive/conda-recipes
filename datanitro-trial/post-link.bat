@@ -20,10 +20,6 @@ set LICENSE_TXT=%DN%-license.txt
 set SETUP_EXE=%DN%-setup.exe
 set PYTHON_EXE=%CONDA_ROOT%\python.exe
 
-echo Found python: %PYTHON_EXE%
-echo Root: %CONDA_ROOT%
-echo setup-exe: %SETUP_EXE%
-
 type %LICENSE_TXT%
 
 :accept_license_agreement
@@ -37,8 +33,6 @@ type %LICENSE_TXT%
 exit /b
 
 :do_install
-    echo Running DataNitro installer...
-
     start /wait cmd /c %SETUP_EXE% ^
         /e "anaconda-trial@datanitro.com" ^
         /y "%CONDA_ROOT%" ^
@@ -46,6 +40,7 @@ exit /b
 
     if ERRORLEVEL 1 (
         echo Failed to install.
+        set ERROR=1
         goto :eof
     )
 
@@ -54,7 +49,9 @@ exit /b
 exit /b
 
 :eof
-set ERROR=
+if not defined ERROR (
+    set ERROR=
+)
 if ERRORLEVEL 1 (
     set ERROR=1
 )
