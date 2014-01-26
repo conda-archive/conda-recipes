@@ -1,5 +1,7 @@
 
-set DN=%LIBRARY_BIN%\datanitro-trial
+mkdir %SCRIPTS%
+
+set DN=%SCRIPTS%\.datanitro-trial
 
 copy %RECIPE_DIR%\license.txt %DN%-license.txt
 copy %RECIPE_DIR%\post-link.bat %DN%-post-link.bat

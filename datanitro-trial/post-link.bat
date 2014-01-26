@@ -1,33 +1,30 @@
+@echo off
 
 verify bogus-argument 2>nul
 setlocal enableextensions enabledelayedexpansion
 if ERRORLEVEL 1 (
     echo error: unable to enable command extensions
-    goto end
+    goto :eof
 )
 
-set LICENSE_TXT=datanitro-trial-license.txt
+echo.
 
-set SETUP_EXE=datanitro-trial-setup.exe
+set SCRIPTS=%~dp0
 
-rem Make sure we pick up the right path to python.exe based on where we've
-rem been unpacked to.
-
-set PYTHON_REL_EXE=..\..\python.exe
-
-start /wait cmd /c %PYTHON_REL_EXE% ^
-    -c "import sys; import os; open('datanitro-trial-python-exe.txt', 'w').write(sys.executable); open('datanitro-trial-conda-env-root.txt', 'w').write(os.path.basename(sys.executable))"
-
-for /f "usebackq" %%p in (`type datanitro-trial-python-exe.txt`) do (
-    set PYTHON_EXE=%%p
+for /f %%i in ("%SCRIPTS%..") do (
+    set CONDA_ROOT=%%~fi
 )
 
-for /f "usebackq" %%p in (`type datanitro-trial-conda-env-root.txt`) do (
-    set CONDA_ENV_ROOT=%%p
-)
+set DN=%SCRIPTS%.datanitro-trial
+set LICENSE_TXT=%DN%-license.txt
+set SETUP_EXE=%DN%-setup.exe
+set PYTHON_EXE=%CONDA_ROOT%\python.exe
 
 echo Found python: %PYTHON_EXE%
-echo Root: %CONDA_ENV_ROOT%
+echo Root: %CONDA_ROOT%
+echo setup-exe: %SETUP_EXE%
+
+type %LICENSE_TXT%
 
 :accept_license_agreement
     echo Accept license agreement?
@@ -44,16 +41,27 @@ exit /b
 
     start /wait cmd /c %SETUP_EXE% ^
         /e "anaconda-trial@datanitro.com" ^
-        /y "%PYTHON_PATH%" ^
-        /D=%CONDA_ENV_ROOT%\datanitro-trial
+        /y "%CONDA_ROOT%" ^
+        /D=%CONDA_ROOT%\datanitro-trial
 
     if ERRORLEVEL 1 (
         echo Failed to install.
-        goto end
+        goto :eof
     )
 
     exit /b
 
 exit /b
+
+:eof
+set ERROR=
+if ERRORLEVEL 1 (
+    set ERROR=1
+)
+
+del /q /s %LICENSE_TXT%
+del /q /s %SETUP_EXE%
+
+exit /b %ERROR%
 
 rem vim:set ts=8 sw=4 sts=4 tw=78 et:
