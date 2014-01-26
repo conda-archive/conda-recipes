@@ -20,6 +20,12 @@ set LICENSE_TXT=%DN%-license.txt
 set SETUP_EXE=%DN%-setup.exe
 set PYTHON_EXE=%CONDA_ROOT%\python.exe
 
+:prompt_for_email
+    set /p USER_EMAIL="Please enter your e-mail address to enable the trial: "
+    if "%USER_EMAIL%" == "" (
+        goto prompt_for_email
+    )
+
 type %LICENSE_TXT%
 
 :accept_license_agreement
@@ -29,13 +35,6 @@ type %LICENSE_TXT%
     if ERRORLEVEL 2 exit /b 1
     if ERRORLEVEL 1 goto do_install
     goto accept_license_agreement
-
-exit /b
-
-:prompt_for_email
-    set /p USER_EMAIL="Please enter your e-mail address:"
-    if "%USER_EMAIL%" == "" goto prompt_for_email
-    goto do_install
 
 exit /b
 
