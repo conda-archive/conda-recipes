@@ -4,8 +4,6 @@ mkdir %SCRIPTS%
 set DN=%SCRIPTS%\.datanitro-trial
 
 copy %RECIPE_DIR%\license.txt %DN%-license.txt
-copy %RECIPE_DIR%\post-link.bat %DN%-post-link.bat
-copy %RECIPE_DIR%\post-unlink.bat %DN%-post-unlink.bat
 
 copy DataNitroAnacondaTrialSetup.exe %DN%-setup.exe
 

@@ -7,7 +7,7 @@ source:
   url: https://datanitro.com/download/DataNitroAnacondaTrialSetup.tar.gz [win]
 
 build:
-  number: 3
+  number: 4
 
 requirements:
   run:
