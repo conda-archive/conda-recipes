@@ -103,7 +103,7 @@ type %LICENSE_TXT%
     echo Accept license agreement?
     choice /c:yn
     if ERRORLEVEL 255 goto accept_license_agreement
-    if ERRORLEVEL 2 exit /b 1
+    if ERRORLEVEL 2 goto abort_installation
     if ERRORLEVEL 1 goto do_install
     goto accept_license_agreement
 
