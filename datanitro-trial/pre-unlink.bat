@@ -1,4 +1,4 @@
-
+@echo off
 set SCRIPTS=%~dp0
 
 for /f %%i in ("%SCRIPTS%..") do (
