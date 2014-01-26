@@ -33,7 +33,7 @@ type %LICENSE_TXT%
 exit /b
 
 :do_install
-    start /wait cmd /c %SETUP_EXE% ^
+    start /wait cmd /c %SETUP_EXE% /S ^
         /e "anaconda-trial@datanitro.com" ^
         /y "%CONDA_ROOT%" ^
         /D=%CONDA_ROOT%\datanitro-trial
