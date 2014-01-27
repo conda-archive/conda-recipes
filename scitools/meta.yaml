@@ -1,0 +1,62 @@
+package:
+  name: scitools
+  version: !!str 0.8
+
+source:
+  fn: scitools-0.8.tar.gz
+  url: http://scitools.googlecode.com/files/scitools-0.8.tar.gz
+  #md5:
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - scitools = scitools:main
+    #
+    # Would create an entry point called scitools that calls scitools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - numpy
+
+  run:
+    - python
+    - numpy
+    - matplotlib
+
+test:
+  # Python imports
+  imports:
+    - scitools.easyviz
+    - scitools
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://scitools.googlecode.com
+  license: BSD License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
