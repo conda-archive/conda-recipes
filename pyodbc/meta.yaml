@@ -1,0 +1,28 @@
+package:
+  name: pyodbc
+  version: 3.0.7
+
+source:
+  fn: pyodbc-3.0.7.zip
+  url: https://pyodbc.googlecode.com/files/pyodbc-3.0.7.zip
+  md5: 0e47254b17cf563f34852be644826459
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+    - setuptools
+
+test:
+  imports:
+    - pyodbc
+
+about:
+  home: https://code.google.com/p/pyodbc/
+  license: MIT
+
