@@ -3,7 +3,7 @@ package:
   version: 5.18.2
 
 build:
-  number: 2
+  number: 3
 
 source:
   fn: perl-5.18.2.tar.gz
