@@ -2,6 +2,9 @@ package:
   name: perl
   version: 5.18.2
 
+build:
+  number: 1
+
 source:
   fn: perl-5.18.2.tar.gz
   url: http://www.cpan.org/src/5.0/perl-5.18.2.tar.gz
