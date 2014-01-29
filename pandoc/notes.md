@@ -1,5 +1,2 @@
-You need to install cabal. Then run
-
-    cabal install hsb2hs  # a required build tool
-
-to get a build dependency.
+You need to install cabal. This recipe will install some dependencies into
+cabal, so you need to have write access to it.

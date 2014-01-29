@@ -6,3 +6,12 @@ source:
   fn: pandoc-1.12.3.tar.gz
   url: https://pandoc.googlecode.com/files/pandoc-1.12.3.tar.gz
   sha1: f519b5fb8c88ff4374432477dc12f68bbe238510
+
+test:
+  commands:
+    - pandoc --help
+
+about:
+  home: http://johnmacfarlane.net/pandoc/
+  license: GPL
+  summary: Universal markup converter
