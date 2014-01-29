@@ -11,4 +11,4 @@ cabal install hsb2hs  # a required build tool
 cabal install --flags="embed_data_files" citeproc-hs
 cabal configure --flags="embed_data_files"
 cabal build
-cp dist/build/pandoc $PREFIX/bin
+cp dist/build/pandoc/pandoc $PREFIX/bin
