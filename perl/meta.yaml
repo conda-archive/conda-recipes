@@ -3,7 +3,7 @@ package:
   version: 5.18.2
 
 build:
-  number: 3
+  number: 4
 
 source:
   fn: perl-5.18.2.tar.gz
@@ -13,6 +13,7 @@ source:
 test:
   commands:
     - perl --help
+    - cpanm --help
 
 about:
   home: http://www.perl.org/
