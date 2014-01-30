@@ -1,0 +1,24 @@
+package:
+  name: pylevenshtein
+  version: 0.10.1
+
+source:
+  fn: python-Levenshtein-0.10.1.tar.bz2
+  url: https://pylevenshtein.googlecode.com/files/python-Levenshtein-0.10.1.tar.bz2
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - Levenshtein
+
+about:
+  home: https://code.google.com/p/pylevenshtein/
+  license: GPLv2
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:
