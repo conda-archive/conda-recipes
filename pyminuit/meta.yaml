@@ -1,0 +1,30 @@
+
+package:
+    name: pyminuit
+    version: 1.2.1
+
+source:
+    fn: pyminuit-1.2.1.tgz
+    url: http://pyminuit.googlecode.com/files/pyminuit-1.2.1.tgz
+
+build:
+    number: 1
+
+requirements:
+    build:
+        - python
+        - distribute
+        - minuit
+
+    run:
+        - python
+        - minuit
+
+test:
+    imports:
+        - minuit
+
+about:
+    home: https://code.google.com/p/pyminuit/
+    license: GNU GPL v2
+

@@ -1,0 +1,67 @@
+package:
+  name: reportlab
+  version: !!str 2.7
+
+source:
+  fn: reportlab-2.7.tar.gz
+  url: http://pypi.python.org/packages/source/r/reportlab/reportlab-2.7.tar.gz
+  md5: 78300e6fe8a0d020fc16734a3de80cc4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - reportlab = reportlab:main
+    #
+    # Would create an entry point called reportlab that calls reportlab.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - reportlab.pdfbase
+    - reportlab
+    - reportlab.platypus
+    - reportlab.graphics.barcode
+    - reportlab.graphics
+    - reportlab.lib
+    - reportlab.graphics.charts
+    - reportlab.graphics.samples
+    - reportlab.graphics.widgets
+    - reportlab.pdfgen
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.reportlab.com/
+  license: BSD license (see license.txt for details), Copyright (c) 2000-2012, ReportLab Inc.
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

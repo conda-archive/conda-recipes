@@ -1,0 +1,31 @@
+
+package:
+    name: pytools
+    version: 2013.5.7
+
+source:
+    fn: pytools-2013.5.7.tar.gz
+    url: https://pypi.python.org/packages/source/p/pytools/pytools-2013.5.7.tar.gz
+    md5: 8954a655749d646d456335b93aad3caf
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - distribute
+        - decorator
+
+    run:
+        - python
+        - decorator
+
+test:
+    imports:
+        - pytools
+
+about:
+    home: https://pypi.python.org/pypi/pytools
+    license: MIT
+

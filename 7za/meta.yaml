@@ -1,0 +1,16 @@
+package:
+  name: 7za
+  version: 9.20
+
+source:
+  fn: 7za920.zip [win]
+  url: http://downloads.sourceforge.net/sevenzip/7za920.zip [win]
+
+build:
+  number: 0
+
+about:
+  home: http://www.7-zip.org
+  license: LGPL
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:

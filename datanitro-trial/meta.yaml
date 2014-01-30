@@ -1,0 +1,20 @@
+package:
+  name: datanitro-trial
+  version: 1.0
+
+source:
+  fn: datanitro-trial.tar.gz [win]
+  url: https://datanitro.com/download/DataNitroAnacondaTrialSetup.tar.gz [win]
+
+build:
+  number: 5
+
+requirements:
+  run:
+    - python
+
+about:
+  home: http://www.datanitro.com
+  license: 30-day trial
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:

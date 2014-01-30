@@ -1,11 +1,11 @@
 package:
   name: gridmap
-  version: 0.12.1
+  version: 0.12.2
 
 source:
-  fn: gridmap-0.12.1.tar.gz
-  url: https://pypi.python.org/packages/source/g/gridmap/gridmap-0.12.1.tar.gz
-  md5: 158636b7af296652328adc13eebcfa16
+  fn: gridmap-0.12.2.tar.gz
+  url: https://pypi.python.org/packages/source/g/gridmap/gridmap-0.12.2.tar.gz
+  md5: b5f70faa70be4631492b3a7949f83db7
 
 build:
   entry_points:

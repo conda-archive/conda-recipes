@@ -2,12 +2,13 @@
 # in the conda build command.
 
 package:
-  name: pycosat
+  name: sample
   version: 0.6.0
 
 build:
   number: 9
   string: xyz
+  no_softlink: .*
 
 source:
   git_url: git@github.com:ContinuumIO/pycosat.git

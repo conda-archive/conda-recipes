@@ -1,28 +1,11 @@
 package:
   name: regex
-  version: 2013.11.29
+  version: 2013.12.31
 
 source:
-  fn: regex-2013-11-29.tar.gz
-  url: https://pypi.python.org/packages/source/r/regex/regex-2013-11-29.tar.gz
-  md5: 963facf4147b3a85be9efd2a7dbaa057
-#  patches:
-   # List any patch files here
-   # - fix.patch
-
-# build:
-  # entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - regex = regex:main
-    #
-    # Would create an entry point called regex that calls regex.main()
-
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  fn: regex-2013-12-31.tar.gz
+  url: https://pypi.python.org/packages/source/r/regex/regex-2013-12-31.tar.gz
+  md5: 1d8311d0df721174bec826cf7d6596d8
 
 requirements:
   build:
@@ -36,22 +19,6 @@ test:
   imports:
     - regex
 
-  # commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
-
-
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any additional test requirements here.  For example
-    # - nose
-
 about:
   home: https://code.google.com/p/mrab-regex-hg/
   license: Python Software Foundation License
-
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml

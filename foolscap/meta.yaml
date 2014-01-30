@@ -1,0 +1,65 @@
+package:
+  name: foolscap
+  version: !!str 0.6.4
+
+source:
+  fn: foolscap-0.6.4.tar.gz
+  url: https://pypi.python.org/packages/source/f/foolscap/foolscap-0.6.4.tar.gz
+  md5: 0aedae62a0be50da4f89d80b5b30c8a2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - foolscap = foolscap:main
+    #
+    # Would create an entry point called foolscap that calls foolscap.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted
+
+  run:
+    - python
+    - twisted
+
+test:
+  # Python imports
+  imports:
+    - foolscap.appserver
+    - foolscap.test
+    - foolscap.logging
+    - foolscap
+    - foolscap.slicers
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://foolscap.lothar.com/trac
+  license: MIT License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

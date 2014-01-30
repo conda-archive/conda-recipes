@@ -1,6 +1,6 @@
 #!/bin/bash
 
-$PYTHON setup.py install
+${PYTHON} setup.py install || exit 1;
 
 find . -name '*.so' | xargs chmod +x
-cp build/cpp/*.so $PREFIX/lib
+cp build/cpp/*.so ${PREFIX}/lib
