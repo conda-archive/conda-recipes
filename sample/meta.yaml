@@ -8,7 +8,7 @@ package:
 build:
   number: 9
   string: xyz
-  no_softlink: .*
+  no_softlink: (lib/python3\.3/site-packages/pycosat\.so|lib/python3\.3/site-packages/test_pycosat\.py)
 
 source:
   git_url: git@github.com:ContinuumIO/pycosat.git
