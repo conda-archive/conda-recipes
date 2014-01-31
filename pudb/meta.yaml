@@ -1,39 +1,39 @@
 package:
-    name: pudb
-    version: 2013.5.1
+  name: pudb
+  version: 2013.5.1
 
 source:
-    fn: pudb-2013.5.1.tar.gz
-    url: http://pypi.python.org/packages/source/p/pudb/pudb-2013.5.1.tar.gz
-    md5: 721c4d7cb1074e60a4ea4e8e480bc019
+  fn: pudb-2013.5.1.tar.gz
+  url: http://pypi.python.org/packages/source/p/pudb/pudb-2013.5.1.tar.gz
+  md5: 721c4d7cb1074e60a4ea4e8e480bc019
 
 build:
-    number: 0
-    entry_points:
-        - pudb = pudb.run:main
-        - pudb3 = pudb.run:main [py3k]
+  entry_points:
+    - pudb = pudb.run:main
+    - pudb3 = pudb.run:main [py3k]
+
+  script: python setup.py install
 
 requirements:
-      build:
-        - python
-        - setuptools
-        - pygments
-        - urwid
+  build:
+    - python
+    - setuptools
+    - pygments
+    - urwid
 
-    run:
-        - python
-        - pygments
-        - urwid
+  run:
+    - python
+    - pygments
+    - urwid
 
 test:
-    imports:
-        - pudb
+  imports:
+    - pudb
 
-    commands:
-        - pudb --help  [py2k]
-        - pudb3 --help [py3k]
+  commands:
+    - pudb --help  [py2k]
+    - pudb3 --help [py3k]
 
 about:
-    home: http://pypi.python.org/pypi/pudb
-    license: MIT License
-
+  home: http://pypi.python.org/pypi/pudb
+  license: MIT License
