@@ -1,0 +1,30 @@
+package:
+  name: postgresql
+  version: 9.3.2
+
+source:
+  fn: postgresql-9.3.2.tar.bz2
+  url: http://ftp.postgresql.org/pub/source/v9.3.2/postgresql-9.3.2.tar.bz2
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - openssl
+    - readline
+    - libxml2
+    - zlib
+  run:
+    - python
+    - openssl
+    - readline
+    - libxml2
+    - zlib
+
+about:
+  home: http://www.postgresql.org
+  license: MIT
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:

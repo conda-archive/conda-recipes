@@ -1,0 +1,16 @@
+package:
+  name: proj4
+  version: 4.8.0
+
+source:
+  fn: proj-4.8.0.tar.gz
+  url: http://download.osgeo.org/proj/proj-4.8.0.tar.gz
+
+build:
+  number: 0
+
+about:
+  home: http://trac.osgeo.org/proj/
+  license: MIT
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:
