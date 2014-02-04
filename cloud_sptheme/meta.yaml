@@ -1,0 +1,63 @@
+package:
+  name: cloud_sptheme
+  version: !!str 1.6
+
+source:
+  fn: cloud_sptheme-1.6.tar.gz
+  url: https://pypi.python.org/packages/source/c/cloud_sptheme/cloud_sptheme-1.6.tar.gz
+  md5: 23d5fce0b87836d9f29573d6ee6a9bc1
+  patches:
+   # List any patch files here
+   - ext.patch
+   - table_styling.css.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cloud_sptheme = cloud_sptheme:main
+    #
+    # Would create an entry point called cloud_sptheme that calls cloud_sptheme.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 2
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sphinx
+
+  run:
+    - python
+    - sphinx
+
+test:
+  # Python imports
+  imports:
+    - cloud_sptheme.ext
+    - cloud_sptheme
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/ecollins/cloud_sptheme
+  license: BSD License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

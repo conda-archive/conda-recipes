@@ -1,0 +1,57 @@
+package:
+  name: inflect
+  version: 0.2.4
+
+source:
+  fn: inflect-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/i/inflect/inflect-0.2.4.tar.gz
+  md5: fc2d807b600c4e959e993690ffa573bc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - inflect = inflect:main
+    #
+    # Would create an entry point called inflect that calls inflect.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - inflect
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/inflect
+  license: GNU Affero General Public License v3
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

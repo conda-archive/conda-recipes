@@ -1,0 +1,31 @@
+package:
+    name: cvxopt
+    version: 1.1.6
+
+source:
+    git_url: https://github.com/cvxopt/cvxopt.git
+    git_tag: 1.1.6
+
+build:
+    number: 1
+
+requirements:
+    build:
+        - atlas
+        - python
+        - distribute
+
+    run:
+        - atlas
+        - python
+
+test:
+    imports:
+        - cvxopt
+
+    #commands:
+    #    - cd examples/doc/chap8 && python lp.py
+
+about:
+    home: http://cvxopt.org/
+    license: GPL v3

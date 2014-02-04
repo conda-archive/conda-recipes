@@ -1,0 +1,33 @@
+
+package:
+    name: openimageio
+    version: 1.1.1
+
+source:
+    git_url: https://github.com/OpenImageIO/oiio
+    git_tag: Release-1.1.1
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - distribute
+        - cmake
+        - openexr
+        - boost
+
+    run:
+        - python
+        - openexr
+        - boost
+
+test:
+    imports:
+        - openimageio
+
+about:
+    home: https://sites.google.com/site/openimageio/home
+    license: Modified BSD License
+

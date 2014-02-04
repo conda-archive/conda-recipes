@@ -1,0 +1,34 @@
+
+package:
+    name: scrappy
+    version: 0.2.10-beta-11
+
+source:
+    fn: Scrappy-0.2.10.beta.11.tar.gz
+    url: https://pypi.python.org/packages/source/S/Scrappy/Scrappy-0.2.10.beta.11.tar.gz
+    md5: 5cbe9b2fac5a7f167001042875aa7cab
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - distribute
+
+    run:
+        - python
+        - nose
+        - guessit
+
+test:
+    imports:
+        - scrappy
+
+    commands:
+        #- nosetests -w tests/
+
+about:
+    home: https://github.com/louist87/Scrappy
+    license: GPL v3
+

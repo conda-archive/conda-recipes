@@ -1,0 +1,24 @@
+package:
+  name: patchelf
+  version: 0.15
+
+source:
+  git_url: https://github.com/NixOS/patchelf.git
+  git_tag: 0.6
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - automake
+
+test:
+  commands:
+    - patchelf --help
+
+about:
+  home: http://nixos.org/patchelf.html
+  license: GPL 3
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:

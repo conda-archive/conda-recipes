@@ -1,0 +1,28 @@
+package:
+  name: w3lib
+  version: 1.5
+
+source:
+  fn: w3lib-1.5.tar.gz
+  url: https://pypi.python.org/packages/source/w/w3lib/w3lib-1.5.tar.gz
+  md5: 51351a5273a7416faca0f31c6fbd8f99
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+  run:
+    - python
+    - six
+
+test:
+  imports:
+    - w3lib
+
+about:
+  home: http://github.com/scrapy/w3lib
+  license: BSD

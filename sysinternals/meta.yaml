@@ -1,0 +1,15 @@
+package:
+  name: sysinternals
+  version: 2014.01
+
+source:
+  fn: SysinternalsSuite.zip [win]
+  url: http://download.sysinternals.com/files/SysinternalsSuite.zip [win]
+
+build:
+  number: 0
+
+about:
+  home: http://technet.microsoft.com/en-us/sysinternals/bb842062
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:

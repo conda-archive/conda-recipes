@@ -1,0 +1,61 @@
+package:
+  name: thrift
+  version: 0.9.1
+
+source:
+  fn: thrift-0.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/thrift/thrift-0.9.1.tar.gz
+  md5: 8989a8a96b0e3a3380cfb89c44e172a6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - thrift = thrift:main
+    #
+    # Would create an entry point called thrift that calls thrift.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - thrift.server
+    - thrift.transport
+    - thrift.protocol
+    - thrift
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://thrift.apache.org
+  license: Apache License 2.0
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
