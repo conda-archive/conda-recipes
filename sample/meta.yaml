@@ -28,7 +28,7 @@ test:
   imports:
     - pycosat
   commands:
-    - echo "Testing from the commands"
+    - echo "Testing from the meta.yaml"
     - echo "This is Windows" # [win]
     - echo "This is not Windows" # [not win]
 
