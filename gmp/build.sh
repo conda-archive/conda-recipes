@@ -2,7 +2,7 @@
 
 chmod +x configure
 
-./configure --prefix=$PREFIX --disable-static
+./configure --prefix=$PREFIX
 
 make
 make check
