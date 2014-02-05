@@ -13,6 +13,7 @@ about:
 test:
   files:
     - test.c
-  commands:
-    - cc -I $PREFIX/include -L $PREFIX/lib test.c -o test.out
-    - ./test.out
+  # commands:
+  #   - echo $PREFIX
+  #   - cc -I $PREFIX/include -L $PREFIX/lib test.c -o test.out
+  #   - ./test.out
