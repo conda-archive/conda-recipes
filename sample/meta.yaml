@@ -27,6 +27,10 @@ test:
     - uf20-098.cnf
   imports:
     - pycosat
+  commands:
+    - echo "Testing from the commands"
+    - echo "This is Windows" # [win]
+    - echo "This is not Windows" # [not win]
 
 about:
   home: https://github.com/ilanschnell/pycosat
