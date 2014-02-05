@@ -1,0 +1,63 @@
+package:
+  name: argcomplete
+  version: !!str 0.6.7
+
+source:
+  fn: argcomplete-0.6.7.tar.gz
+  url: https://pypi.python.org/packages/source/a/argcomplete/argcomplete-0.6.7.tar.gz
+  md5: d9faf5e522f15b829588cbca4859563c
+  patches:
+   # List any patch files here
+   - remove_setuptools.patch
+
+build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - argcomplete = argcomplete:main
+    #
+    # Would create an entry point called argcomplete that calls argcomplete.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 2
+
+requirements:
+  build:
+    - python
+    - argparse [py26]
+
+  run:
+    - argparse [py26]
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - argcomplete
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+    - activate-global-python-argcomplete --help
+    - python-argcomplete-check-easy-install-script --help
+    - register-python-argcomplete --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kislyuk/argcomplete
+  license: Apache Software License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

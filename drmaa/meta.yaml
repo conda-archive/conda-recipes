@@ -1,0 +1,28 @@
+package:
+  name: drmaa
+  version: 0.7.6
+
+source:
+  fn: drmaa-0.7.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/drmaa/drmaa-0.7.6.tar.gz
+  md5: 3cb6dade683d0621fb14871ef1261f9b
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - drmaa
+
+about:
+  home: http://drmaa-python.googlecode.com
+  license: BSD License

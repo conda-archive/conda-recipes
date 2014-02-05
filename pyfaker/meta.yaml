@@ -1,0 +1,24 @@
+package:
+  name: pyfaker
+  version: 0.3.2
+
+source:
+  git_tag: 0.3.2
+  git_url: https://github.com/tpn/faker.git
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - faker
+
+about:
+  home: http://www.joke2k.net/faker
+  license: MIT
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:

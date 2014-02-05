@@ -1,0 +1,57 @@
+package:
+  name: fpdf
+  version: 1.7
+
+source:
+  fn: fpdf-1.7.zip
+  url: https://pypi.python.org/packages/source/f/fpdf/fpdf-1.7.zip
+  md5: e40a5042888c3e1024edc21eb73c181d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fpdf = fpdf:main
+    #
+    # Would create an entry point called fpdf that calls fpdf.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - fpdf
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/pyfpdf
+  license: GNU Lesser General Public License v3 (LGPLv3)
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

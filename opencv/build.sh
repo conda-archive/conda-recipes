@@ -1,14 +1,27 @@
 #!/bin/bash
 
+# Build dependencies:
+# - libv4l-devel
+
 if [ `uname` == Linux ]; then
-    CC=gcc44
-    CXX=g++44
+    CC=gcc
+    CXX=g++
 fi
 if [ `uname` == Darwin ]; then
     CC=cc
     CXX=c++
     EXTRA="-DCMAKE_OSX_SYSROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/"
 fi
+
+export CFLAGS="-Wall -g -m64 -pipe -O2 -march=x86-64 -fPIC"
+export CXXLAGS="${CFLAGS}"
+export CPPFLAGS="-I${PREFIX}/include"
+export LDFLAGS="-L${PREFIX}/lib"
+
+export CMAKE_C_FLAGS="${CFLAGS}"
+export CMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS}"
+export CMAKE_INCLUDE_PATH="${PREFIX}/include"
+export CMAKE_LIBRARY_PATH="${PREFIX}/lib"
 
 mkdir build
 cd build

@@ -1,0 +1,57 @@
+package:
+  name: sh
+  version: 1.09
+
+source:
+  fn: sh-1.09.tar.gz
+  url: https://pypi.python.org/packages/source/s/sh/sh-1.09.tar.gz
+  md5: b68a2f91de880dce042d4f03ec9e0f47
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sh = sh:main
+    #
+    # Would create an entry point called sh that calls sh.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - sh
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/amoffat/sh
+  license: MIT License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

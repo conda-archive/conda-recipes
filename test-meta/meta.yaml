@@ -1,0 +1,12 @@
+# This is an example of a meta package
+
+package:
+  name: test-meta
+  version: 1.0
+
+requirements:
+  run:
+    - python
+    - pycosat
+    - bsdiff4
+    - nose

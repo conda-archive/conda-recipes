@@ -1,0 +1,41 @@
+package:
+  name: gridmap
+  version: 0.12.2
+
+source:
+  fn: gridmap-0.12.2.tar.gz
+  url: https://pypi.python.org/packages/source/g/gridmap/gridmap-0.12.2.tar.gz
+  md5: b5f70faa70be4631492b3a7949f83db7
+
+build:
+  entry_points:
+    - gridmap_web = gridmap.web:main
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - drmaa
+    - pyzmq
+    - psutil
+    - cherrypy
+
+  run:
+    - python
+    - drmaa
+    - pyzmq
+    - psutil
+    - cherrypy
+
+test:
+  # Python imports
+  imports:
+    - gridmap
+
+  commands:
+    - gridmap_web --help
+
+about:
+  home: http://github.com/EducationalTestingService/gridmap
+  license: GNU General Public License v3 (GPLv3)

@@ -1,0 +1,24 @@
+package:
+  name: python-graph-core
+  version: 1.8.2
+
+source:
+  fn: python-graph-core-1.8.2.tar.gz
+  url: https://python-graph.googlecode.com/files/python-graph-core-1.8.2.tar.gz
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - pygraph
+
+about:
+  home: https://code.google.com/p/python-graph/
+  license: MIT
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:

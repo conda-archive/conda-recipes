@@ -1,0 +1,22 @@
+package:
+  name: h5py
+  version: 2.2.0
+
+source:
+  fn: h5py-2.2.0.tar.gz
+  url: http://h5py.googlecode.com/files/h5py-2.2.0.tar.gz
+  md5: 05bab036748e90d0a3ce37622292aab2
+
+requirements:
+  build:
+    - python
+    - numpy
+    - hdf5
+  run:
+    - python
+    - numpy
+    - hdf5         [unix]
+
+about:
+  home: http://code.google.com/p/h5py/
+  license: New BSD (http://opensource.org/licenses/bsd-license.php)

@@ -26,17 +26,16 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 1
 
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
     - meld3
 
   run:
     - python
-    - distribute
     - meld3
 
 test:

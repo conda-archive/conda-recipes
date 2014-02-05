@@ -1,0 +1,62 @@
+package:
+  name: git2json
+  version: 0.2.0
+
+source:
+  fn: git2json-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/g/git2json/git2json-0.2.0.tar.gz
+  md5: 1c7397c2971250bb7457ddfe0feb6172
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - git2json = git2json:main
+    #
+    # Would create an entry point called git2json that calls git2json.main()
+
+    - git2json = git2json:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse [py26]
+
+  run:
+    - python
+    - argparse [py26]
+
+test:
+  # Python imports
+  imports:
+    - git2json
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - git2json --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tarmstrong/git2json
+  license: BSD License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

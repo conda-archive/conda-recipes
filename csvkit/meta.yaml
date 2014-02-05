@@ -1,0 +1,94 @@
+package:
+  name: csvkit
+  version: 0.6.1
+
+source:
+  fn: csvkit-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/csvkit/csvkit-0.6.1.tar.gz
+  md5: edc3c078192232263c02f9aa84960673
+  patches:
+   # List any patch files here
+    - setup.patch
+
+build:
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - csvkit = csvkit:main
+    #
+    # Would create an entry point called csvkit that calls csvkit.main()
+    - csvcut = csvkit.utilities.csvcut:launch_new_instance
+    - in2csv = csvkit.utilities.in2csv:launch_new_instance
+    - csvsql = csvkit.utilities.csvsql:launch_new_instance
+    - csvclean = csvkit.utilities.csvclean:launch_new_instance
+    - csvstat = csvkit.utilities.csvstat:launch_new_instance
+    - csvlook = csvkit.utilities.csvlook:launch_new_instance
+    - csvjoin = csvkit.utilities.csvjoin:launch_new_instance
+    - csvstack = csvkit.utilities.csvstack:launch_new_instance
+    - csvsort = csvkit.utilities.csvsort:launch_new_instance
+    - csvgrep = csvkit.utilities.csvgrep:launch_new_instance
+    - csvjson = csvkit.utilities.csvjson:launch_new_instance
+    - csvpy = csvkit.utilities.csvpy:launch_new_instance
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 2
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - argparse [py26]
+    - xlrd
+    - dateutil
+    - sqlalchemy
+    - openpyxl
+    - dbf
+
+  run:
+    - python
+    - argparse [py26]
+    - xlrd
+    - dateutil
+    - sqlalchemy
+    - openpyxl
+    - dbf
+
+test:
+  # Python imports
+  imports:
+    - csvkit
+    - csvkit.convert
+    - csvkit.utilities
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+    - csvcut --help
+    - in2csv --help
+    - csvsql --help
+    - csvclean --help
+    - csvstat --help
+    - csvlook --help
+    - csvjoin --help
+    - csvstack --help
+    - csvsort --help
+    - csvgrep --help
+    - csvjson --help
+    - csvpy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://blog.apps.chicagotribune.com/
+  license: MIT License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

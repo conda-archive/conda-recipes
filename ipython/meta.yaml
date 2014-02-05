@@ -1,15 +1,12 @@
 package:
   name: ipython
-  version: 1.0.0a1
+  version: 1.0.0rc1
 
 source:
-  fn: ipython-1.0.0a1.tar.gz
-  url: http://archive.ipython.org/testing/1.0.0/ipython-1.0.0a1.tar.gz
-  patches:
-    - hugo.patch             [linux]
+  fn: ipython-1.0.0-rc1.tar.gz
+  url: http://archive.ipython.org/testing/1.0.0/ipython-1.0.0-rc1.tar.gz
 
 build:
-  number: 1
   entry_points:
     - ipython3 = IPython.terminal.ipapp:launch_new_instance  [py3k]
     - ipython = IPython.terminal.ipapp:launch_new_instance
@@ -18,7 +15,7 @@ build:
 requirements:
   build:
     - python
-    - distribute             [win or py3k]
+    - setuptools             [win or py3k]
     - pyreadline             [win]
   run:
     - python

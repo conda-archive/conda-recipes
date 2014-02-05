@@ -1,0 +1,58 @@
+package:
+  name: rl
+  version: 2.4
+
+source:
+  fn: rl-2.4.zip
+  url: https://pypi.python.org/packages/source/r/rl/rl-2.4.zip
+  md5: 206512834d837e9cdde81e6cf7e8fca4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rl = rl:main
+    #
+    # Would create an entry point called rl that calls rl.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - rl
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/rl
+  license: GNU General Public License (GPL) or Python Software Foundation License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

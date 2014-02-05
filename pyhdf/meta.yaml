@@ -1,0 +1,38 @@
+
+package:
+    name: pyhdf
+    version: 0.8.3
+
+source:
+    fn: pyhdf-0.8.3.tar.gz
+    url: http://sourceforge.net/projects/pysclint/files/pyhdf/0.8.3/pyhdf-0.8.3.tar.gz
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - distribute
+        - jpeg
+        - numpy
+        - zlib
+        - hdf4
+        - szip
+
+    run:
+        - python
+        - numpy
+        - jpeg
+        - zlib
+        - hdf4
+        - szip
+
+test:
+    imports:
+        - pyhdf
+
+about:
+    home:  http://www.sourceforge.net/projects/pysclint
+    license: Public
+

@@ -1,0 +1,32 @@
+package:
+  name: pyqt
+  version: 4.10.3
+
+source:
+  fn: PyQt-mac-gpl-4.10.3.tar.gz                                                               # [osx]
+  url: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10.3/PyQt-mac-gpl-4.10.3.tar.gz # [osx]
+  md5: 4dfb646512dd479cfa7518605eda1f32                                                        # [osx]
+  fn: PyQt-x11-gpl-4.10.3.tar.gz                                                               # [linux]
+  url: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10.3/PyQt-x11-gpl-4.10.3.tar.gz # [linux]
+  md5: 8b13d2ab64e4d2fd0037b81b7e78c15c                                                        # [linux]
+  patches:
+    - configure.patch
+
+requirements:
+  build:
+    - python
+    - qt
+    - sip
+
+  run:
+    - python
+    - qt
+    - sip
+
+test:
+  imports:
+    - PyQt4
+
+about:
+  home: http://www.riverbankcomputing.co.uk/software/pyqt
+  license: GPL

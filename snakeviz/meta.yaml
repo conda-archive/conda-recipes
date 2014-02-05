@@ -21,15 +21,15 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 1
 
 requirements:
   build:
     - python
-    # If setuptools is required to run setup.py, add distribute to the build
+
     # requirements.
     #
-    - distribute
+    - setuptools
     - jinja2
     - tornado
 

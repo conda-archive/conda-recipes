@@ -1,0 +1,70 @@
+package:
+  name: bpython
+  version: !!str 0.12
+
+source:
+  fn: bpython-0.12.tar.gz
+  url: https://pypi.python.org/packages/source/b/bpython/bpython-0.12.tar.gz
+  md5: 14cbe92620d386a769b3faa282a1d6c3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  #preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bpython = bpython:main
+    #
+    # Would create an entry point called bpython that calls bpython.main()
+
+    - bpython = bpython.cli:main
+    - bpython-urwid = bpython.urwid:main
+    - bpython-gtk = bpython.gtk_:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygments
+
+  run:
+    - python
+    - pygments
+    - urwid
+
+test:
+  # Python imports
+  imports:
+    - bpython.test
+    - bpython.translations
+    - bpython
+    - bpdb
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - bpython --help
+    - bpython-urwid --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bpython-interpreter.org
+  license: MIT
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

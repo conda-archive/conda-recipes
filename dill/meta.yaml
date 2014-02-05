@@ -1,0 +1,58 @@
+package:
+  name: dill
+  version: 0.2a1
+
+source:
+  fn: dill-0.2a1.tgz
+  url: https://pypi.python.org/packages/source/d/dill/dill-0.2a1.tgz
+  md5: 10ec6e5629143df115c3e1438a16e042
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dill = dill:main
+    #
+    # Would create an entry point called dill that calls dill.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - dill
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.cacr.caltech.edu/~mmckerns/dill.htm
+  license: BSD
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

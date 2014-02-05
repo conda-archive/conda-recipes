@@ -1,0 +1,28 @@
+package:
+  name: sentinels
+  version: 0.0.6
+
+source:
+  fn: sentinels-0.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/s/sentinels/sentinels-0.0.6.tar.gz
+  md5: 1fcd4e1dbbc128a2639813db60432067
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - sentinels
+
+about:
+  home: https://pypi.python.org/pypi/sentinels
+  license: BSD License
