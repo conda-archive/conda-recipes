@@ -2,7 +2,7 @@
 
 chmod +x configure
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --disable-shared
 
 make
 make check

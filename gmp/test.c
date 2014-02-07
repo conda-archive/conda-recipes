@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <gmp.h>
+#include "gmp.h"
 
 int main(void)
 {
