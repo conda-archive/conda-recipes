@@ -1,11 +1,11 @@
 package:
-  name: gmpy2
-  version: 2.0.3
+  name: gmpy
+  version: 1.17
 
 source:
-  fn: gmpy2-2.0.3.zip
-  url: https://gmpy.googlecode.com/files/gmpy2-2.0.3.zip
-  sha1: 87be9edb39613f026e606f18b254086597eb619c
+  fn: gmpy-1.17.zip
+  url: https://gmpy.googlecode.com/files/gmpy-1.17.zip
+  sha1: b5353453fa7a4b7d6480686c3a9b91d1c4455957
 
 requirements:
   build:
@@ -21,7 +21,7 @@ requirements:
 
 test:
   imports:
-    - gmpy2
+    - gmpy
 
 about:
   home: https://code.google.com/p/gmpy/
