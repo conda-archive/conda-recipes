@@ -11,3 +11,9 @@ requirements:
     - gmp
   run:
     - gmp
+
+
+about:
+  home: http://www.mpfr.org/
+  license: LGPL
+  summary: The MPFR library is a C library for multiple-precision floating-point computations with correct rounding.

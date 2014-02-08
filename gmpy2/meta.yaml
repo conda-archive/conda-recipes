@@ -18,6 +18,10 @@ requirements:
     - mpc
     - python
 
+test:
+  imports:
+    - gmpy2
+
 about:
   home: https://code.google.com/p/gmpy/
   license: LGPL
