@@ -2,7 +2,11 @@
 
 chmod +x configure
 
-./configure --prefix=$PREFIX --disable-shared
+if [ `uname` == Darwin ]; then
+    ./configure --prefix=$PREFIX --disable-shared
+else
+    ./configure --prefix=$PREFIX
+fi
 
 make
 make check
