@@ -6,9 +6,8 @@ source:
   fn: webassets-0.9.tar.gz
   url: https://pypi.python.org/packages/source/w/webassets/webassets-0.9.tar.gz
   md5: e9fb6a746c1166dda48d5c2cfc8bc1b5
-#  patches:
-   # List any patch files here
-   # - fix.patch
+  patches:
+    - exit0.patch
 
 build:
   #preserve_egg_dir: True
