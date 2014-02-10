@@ -25,7 +25,7 @@ if [ `uname` == Darwin ]; then
         -release -no-qt3support -nomake examples -nomake demos \
         -opensource \
         -no-framework \
-        -sdk $SDK \
+        -arch $OSX_ARCH \
         -prefix $PREFIX
 
     make
