@@ -1,25 +1,25 @@
 package:
-  name: blinker
-  version: !!str 1.3
+  name: webassets
+  version: !!str 0.9
 
 source:
-  fn: blinker-1.3.tar.gz
-  url: https://pypi.python.org/packages/source/b/blinker/blinker-1.3.tar.gz
-  md5: 66e9688f2d287593a0e698cd8a5fbc57
-#  patches:
-   # List any patch files here
-   # - fix.patch
+  fn: webassets-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/w/webassets/webassets-0.9.tar.gz
+  md5: e9fb6a746c1166dda48d5c2cfc8bc1b5
+  patches:
+    - exit0.patch
 
-# build:
+build:
   #preserve_egg_dir: True
-  #entry_points:
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - blinker = blinker:main
+    # - webassets = webassets:main
     #
-    # Would create an entry point called blinker that calls blinker.main()
+    # Would create an entry point called webassets that calls webassets.main()
 
+    - webassets=webassets.script:run
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -28,19 +28,28 @@ source:
 requirements:
   build:
     - python
+    - setuptools
 
   run:
     - python
+    - setuptools
+    - argparse # [py26]
 
 test:
   # Python imports
   imports:
-    - blinker
+    - webassets.ext
+    - webassets.filter.rjsmin
+    - webassets.filter.cssrewrite
+    - webassets.filter
+    - webassets.filter.jspacker
+    - webassets
 
-  #commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+    - webassets --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -50,9 +59,9 @@ test:
     # - nose
 
 about:
-  home: http://pythonhosted.org/blinker/
-  license: MIT License
-  summary: Fast, simple object-to-object and broadcast signaling
+  home: http://github.com/miracle2k/webassets/
+  license: BSD License
+  summary: Media asset management for Python, with glue code for various web frameworks
 
 # See
 # http://docs.continuum.io/conda/build.html for
