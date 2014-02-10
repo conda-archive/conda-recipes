@@ -1,0 +1,13 @@
+package:
+  name: libffi
+  version: 3.0.13
+
+source:
+  fn: libffi-3.0.13.tar.gz
+  url: ftp://sourceware.org/pub/libffi/libffi-3.0.13.tar.gz
+  sha1: f5230890dc0be42fb5c58fbf793da253155de106
+
+about:
+  home: https://sourceware.org/libffi/
+  license: BSD
+  summary: Compilers for high level languages generate code that follows certain conventions.
