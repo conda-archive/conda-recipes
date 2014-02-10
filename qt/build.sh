@@ -26,7 +26,6 @@ if [ `uname` == Darwin ]; then
         -opensource \
         -no-framework \
         -sdk $SDK \
-        -arch $ARCH \
         -prefix $PREFIX
 
     make
