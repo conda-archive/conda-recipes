@@ -19,24 +19,37 @@ if [ `uname` == Linux ]; then
 fi
 
 if [ `uname` == Darwin ]; then
-    cd $PREFIX
-    for fn in lconvert lrelease lupdate macdeployqt moc qmake rcc uic
-    do
-        cp /usr/bin/$fn $PREFIX/bin
-    done
+    chmod +x configure
+    ./configure \
+        -platform macx-g++ \
+        -release -no-qt3support -nomake examples -nomake demos \
+        -opensource \
+        -no-framework \
+        -sdk $SDK \
+        -arch $ARCH \
+        -prefix $PREFIX
 
-    for x in QtCore QtDBus QtDeclarative QtGui QtMultimedia QtNetwork \
-        QtOpenGL QtScript QtSql QtSvg QtWebKit QtXml QtXmlPatterns phonon
-    do
-        cd $PREFIX/include
-        cp -r /Library/Frameworks/$x.framework/Versions/4/Headers $x
+    make
+    make install
 
-        cd $PREFIX/lib
-        fn=lib$x.4.8.5.dylib
-        cp /Library/Frameworks/$x.framework/Versions/4/$x $fn
-        chmod +x $fn
-        ln -s $fn lib$x.4.8.dylib
-        ln -s $fn lib$x.4.dylib
-        ln -s $fn lib$x.dylib
-    done
+    # cd $PREFIX
+    # for fn in lconvert lrelease lupdate macdeployqt moc qmake rcc uic
+    # do
+    #     cp /usr/bin/$fn $PREFIX/bin
+    # done
+    #
+    # for x in QtCore QtDBus QtDeclarative QtGui QtMultimedia QtNetwork \
+    #     QtOpenGL QtScript QtSql QtSvg QtWebKit QtXml QtXmlPatterns phonon
+    # do
+    #     cd $PREFIX/include
+    #     cp -r /Library/Frameworks/$x.framework/Versions/4/Headers $x
+    #
+    #     cd $PREFIX/lib
+    #     fn=lib$x.4.8.5.dylib
+    #     cp /Library/Frameworks/$x.framework/Versions/4/$x $fn
+    #     chmod +x $fn
+    #     ln -s $fn lib$x.4.8.dylib
+    #     ln -s $fn lib$x.4.dylib
+    #     ln -s $fn lib$x.dylib
+    # done
 fi
