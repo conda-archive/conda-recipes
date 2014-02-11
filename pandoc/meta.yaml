@@ -16,10 +16,10 @@ test:
 
 requirements: # [linux]
   build:      # [linux]
-    - gmpy    # [linux]
+    - gmp     # [linux]
     - libffi  # [linux]
   run:        # [linux]
-    - gmpy    # [linux]
+    - gmp     # [linux]
     - libffi  # [linux]
 
 build:  # [linux]
