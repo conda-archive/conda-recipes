@@ -13,7 +13,7 @@ if [ `uname` == Linux ]; then
     cabal install --flags="embed_data_files" citeproc-hs
     cabal configure --flags="embed_data_files"
     cabal build
-    mkdir $PREFIX/bin
+    mkdir -p $PREFIX/bin
     cp $SRC_DIR/dist/build/pandoc/pandoc $PREFIX/bin/pandoc
 
 fi
