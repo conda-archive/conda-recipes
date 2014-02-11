@@ -4,4 +4,5 @@ cd build
 export CFLAGS=-U_FORTIFY_SOURCE
 ../configure --prefix=$PREFIX
 make
+make test
 make install
