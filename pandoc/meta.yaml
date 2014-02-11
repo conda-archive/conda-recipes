@@ -14,15 +14,17 @@ test:
   commands:
     - pandoc --help
 
-requirements: # [linux]
-  build:      # [linux]
-    - gmp     # [linux]
-    - libffi  # [linux]
-    - zlib    # [linux]
-  run:        # [linux]
-    - gmp     # [linux]
-    - libffi  # [linux]
-    - zlib    # [linux]
+requirements:           # [linux]
+  build:                # [linux]
+    - haskell-platform  # [linux]
+    - gmp               # [linux]
+    - libffi            # [linux]
+    - zlib              # [linux]
+  run:                  # [linux]
+    - haskell-platform  # [linux]
+    - gmp               # [linux]
+    - libffi            # [linux]
+    - zlib              # [linux]
 
 build:  # [linux]
   number: 1 # [linux]
