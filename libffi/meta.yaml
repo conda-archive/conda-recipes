@@ -8,7 +8,7 @@ source:
   sha1: f5230890dc0be42fb5c58fbf793da253155de106
 
 build:
-  number: 1
+  number: 2
 
 about:
   home: https://sourceware.org/libffi/
