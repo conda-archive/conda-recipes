@@ -1,0 +1,13 @@
+package:
+  name: glibc
+  version: 2.19
+
+source:
+  fn: glibc-2.19.tar.xz
+  url: http://gnu.spinellicreations.com/libc/glibc-2.19.tar.xz
+  sha1: b29e1f94b8a32e283e1cb66c9a913950c496fb51
+
+about:
+  home: http://www.gnu.org/software/libc/
+  license: LGPL
+  summary: "Any Unix-like operating system needs a C library: the library which defines the ``system calls'' and other basic facilities such as open, malloc, printf, exit..."
