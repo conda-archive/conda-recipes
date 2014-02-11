@@ -42,6 +42,7 @@ requirements:
     - statsmodels
     - scikit-learn
     - six
+    - matplotlib
 
 test:
   # Python imports
