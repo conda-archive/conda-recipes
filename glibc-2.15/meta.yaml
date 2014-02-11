@@ -1,11 +1,11 @@
 package:
   name: glibc
-  version: 2.14
+  version: 2.15
 
 source:
-  fn: glibc-2.14.tar.xz
-  url: http://gnu.spinellicreations.com/libc/glibc-2.14.tar.xz
-  sha1: 175df29814b1eee3c9e68dd721c8f71c7b5e2c2e
+  fn: glibc-2.15.tar.xz
+  url: http://gnu.spinellicreations.com/libc/glibc-2.15.tar.xz
+  sha1: 0a7936be3bd0562b076b95dacb7c9daa3dbc83fc
 
 about:
   home: http://www.gnu.org/software/libc/
