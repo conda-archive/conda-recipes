@@ -1,10 +1,11 @@
 package:
   name: gmpy2
-  version: 2.0.0
+  version: 2.0.3
 
 source:
-  fn: gmpy2-2.0.0.zip
-  url: https://gmpy.googlecode.com/files/gmpy2-2.0.0.zip
+  fn: gmpy2-2.0.3.zip
+  url: https://gmpy.googlecode.com/files/gmpy2-2.0.3.zip
+  sha1: 87be9edb39613f026e606f18b254086597eb619c
 
 requirements:
   build:
@@ -25,3 +26,4 @@ test:
 about:
   home: https://code.google.com/p/gmpy/
   license: LGPL
+  summary: GMPY and GMPY2 are C-coded Python extension modules that support fast multiple-precision arithmetic. GMPY only supports the GMP library and provides fast multiple-precision integer and rational arithmetic.
