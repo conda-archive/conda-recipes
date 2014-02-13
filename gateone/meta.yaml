@@ -1,0 +1,25 @@
+package:
+  name: gateone
+  version: master
+
+source:
+  git_url: git://github.com/liftoff/GateOne.git
+
+build:
+  entry_points:
+    - gateone = gateone.core.server:main
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - futures
+    - tornado
+  run:
+    - python
+    - futures
+    - tornado
+
+about:
+  home: https://github.com/ilanschnell/pycosat
+  license: MIT
