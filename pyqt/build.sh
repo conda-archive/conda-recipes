@@ -12,6 +12,10 @@ if [ `uname` == Linux ]; then
 
 fi
 
+if [ `uname` == Darwin ]; then
+    export DYLD_LIBRARY_PATH=$PREFIX/lib/
+fi
+
 $PYTHON configure-ng.py --verbose \
         --confirm-license \
         --bindir=$PREFIX/bin \
