@@ -1,0 +1,16 @@
+package:
+  name: make
+  version: 3.81
+
+source:
+  fn: make-3.81-bin.zip # [win]
+  url: http://downloads.sourceforge.net/project/gnuwin32/make/3.81/make-3.81-bin.zip # [win]
+  md5: 3521948bc27a31d1ade0dcb23be16d49 # [win]
+
+test:
+  commands:
+    - make --version
+
+about:
+  home: http://gnuwin32.sourceforge.net/packages/make.htm # [win]
+  summary: "Make is a tool which controls the generation of executables and other non-source files of a program from the program's source files. "
