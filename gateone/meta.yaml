@@ -20,6 +20,13 @@ requirements:
     - futures
     - tornado
 
+test:
+  imports:
+    - gateone
+    - terminal
+    - termio
+    - onoff
+
 about:
   home: https://github.com/ilanschnell/pycosat
   license: MIT
