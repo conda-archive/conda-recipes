@@ -25,7 +25,7 @@ requirements:           # [linux]
     - zlib              # [linux]
 
 build:  # [linux]
-  number: 1 # [linux]
+  number: 2 # [linux]
 
 about:
   home: http://johnmacfarlane.net/pandoc/
