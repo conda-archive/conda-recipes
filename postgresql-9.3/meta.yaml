@@ -14,13 +14,15 @@ requirements:
     - python
     - openssl
     - readline
-    - libxml2
+    - libxml2   [not osx]
+    - libxslt   [not osx]
     - zlib
   run:
     - python
     - openssl
     - readline
-    - libxml2
+    - libxml2   [not osx]
+    - libxslt   [not osx]
     - zlib
 
 about:
