@@ -16,11 +16,11 @@ test:
 
 requirements:           # [linux]
   build:                # [linux]
-    - gmp 4             # [linux]
+    - gmp 4.*           # [linux]
     - libffi            # [linux]
     - zlib              # [linux]
   run:                  # [linux]
-    - gmp 4             # [linux]
+    - gmp 4.*           # [linux]
     - libffi            # [linux]
     - zlib              # [linux]
 
