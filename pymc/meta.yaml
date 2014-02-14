@@ -3,9 +3,9 @@ package:
   version: 2.3
 
 source:
-  fn:  pymc-2.3.1.tar.gz
-  url: https://pypi.python.org/packages/source/p/pymc/pymc-2.3.1.tar.gz
-  md5: 66102a39b95efc9f9438803cdc93df4f
+  fn:  pymc-2.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pymc/pymc-2.3.2.tar.gz
+  md5: ea95fd6186a5c08937744f38f85390b9
 
 requirements:
   build:
