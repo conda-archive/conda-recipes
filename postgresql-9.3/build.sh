@@ -9,3 +9,4 @@ fi
 
 make
 make install
+make install-world
