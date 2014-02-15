@@ -16,18 +16,16 @@ test:
 
 requirements:           # [linux]
   build:                # [linux]
-    - haskell-platform  # [linux]
-    - gmp               # [linux]
+    - gmp 4.*           # [linux]
     - libffi            # [linux]
     - zlib              # [linux]
   run:                  # [linux]
-    - haskell-platform  # [linux]
-    - gmp               # [linux]
+    - gmp 4.*           # [linux]
     - libffi            # [linux]
     - zlib              # [linux]
 
 build:  # [linux]
-  number: 1 # [linux]
+  number: 3 # [linux]
 
 about:
   home: http://johnmacfarlane.net/pandoc/

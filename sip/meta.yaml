@@ -3,9 +3,12 @@ package:
   version: 4.15.4
 
 source:
-  fn: sip-4.15.4.tar.gz
-  url: http://sourceforge.net/projects/pyqt/files/sip/sip-4.15.4/sip-4.15.4.tar.gz
-  md5: 1d5c9e92bc7fca5ac11e088a4cf6c83d
+  fn: sip-4.15.4.tar.gz                                                            # [not win]
+  url: http://sourceforge.net/projects/pyqt/files/sip/sip-4.15.4/sip-4.15.4.tar.gz # [not win]
+  md5: 1d5c9e92bc7fca5ac11e088a4cf6c83d                                            # [not win]
+  fn: sip-4.15.4.zip                                                               # [win]
+  url: http://sourceforge.net/projects/pyqt/files/sip/sip-4.15.4/sip-4.15.4.zip    # [win]
+  sha1: 663088693ff9c0656b22e37fed26bfdfe0829562
 
   patches:
     - noframework.patch # [osx]
@@ -14,6 +17,7 @@ requirements:
   build:
     - python
     - python.app # [osx]
+    - mingw      # [win]
 
   run:
     - python
