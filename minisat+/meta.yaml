@@ -1,0 +1,23 @@
+package:
+  name: minisat+
+  version: 1.0
+
+source:
+  fn: minisatp-1.0.tar.gz
+  url: http://minisat.se/downloads/minisatp-1.0.tar.gz
+  sha1: 1a8d5d4547e78dd38928ef52933ffcb22d54d0f1
+
+requirements:
+  build:
+    - gmp
+  run:
+    - gmp
+
+test:
+  commands:
+    - minisat+_script
+
+about:
+  license: BSD
+  summary: MiniSat+ is a two-week hack done to enable Pseudo-Boolean constraints in MiniSat.
+  home: http://minisat.se/MiniSat+.html
