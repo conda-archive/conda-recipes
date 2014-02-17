@@ -8,8 +8,10 @@ source:
   sha1: dfc25898bf40e00cf04252a42176e0c0600fbc90
 
 test:
+  files:
+    - 145.cnf
   commands:
-    - minisat
+    - minisat 145.cnf
 
 about:
   home: http://minisat.se/MiniSat.html
