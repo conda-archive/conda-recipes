@@ -1,0 +1,16 @@
+package:
+  name: minisat
+  version: 2.2.0
+
+source:
+  fn: minisat-2.2.0.tar.gz
+  url: http://minisat.se/downloads/minisat-2.2.0.tar.gz
+  sha1: dfc25898bf40e00cf04252a42176e0c0600fbc90
+
+test:
+  commands:
+    - minisat
+
+about:
+  home: http://minisat.se/MiniSat.html
+  license: MIT
