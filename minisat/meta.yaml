@@ -12,7 +12,7 @@ test:
     - 145.cnf
   commands:
     # For some reason 10 is considered an acceptable exit code for success
-    - minisat 145.cnf || [ $? == 10 ]
+    - "minisat 145.cnf || [ $? == 10 ]"
 
 about:
   home: http://minisat.se/MiniSat.html
