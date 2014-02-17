@@ -7,7 +7,7 @@ source:
   url: http://ftp.postgresql.org/pub/source/v9.3.2/postgresql-9.3.2.tar.bz2
 
 build:
-  number: 0
+  number: 2
 
 requirements:
   build:
@@ -17,6 +17,7 @@ requirements:
     - libxml2   [not osx]
     - libxslt   [not osx]
     - zlib
+    - system    [linux]
   run:
     - python
     - openssl
@@ -24,6 +25,14 @@ requirements:
     - libxml2   [not osx]
     - libxslt   [not osx]
     - zlib
+    - system    [linux]
+
+test:
+  commands:
+    - initdb --help
+    - postgres --help
+    - createdb --help
+    - psql --help
 
 about:
   home: http://www.postgresql.org

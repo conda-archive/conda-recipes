@@ -1,0 +1,16 @@
+package:
+  name: geos
+  version: 3.4.2
+
+source:
+  fn: geos-3.4.2.tar.bz2
+  url: http://download.osgeo.org/geos/geos-3.4.2.tar.bz2
+
+build:
+  number: 0
+
+about:
+  home: http://trac.osgeo.org/geos/
+  license: LGPL
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:
