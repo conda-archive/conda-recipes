@@ -6,6 +6,8 @@ source:
   fn: minisatp-1.0.tar.gz
   url: http://minisat.se/downloads/minisatp-1.0.tar.gz
   sha1: 1a8d5d4547e78dd38928ef52933ffcb22d54d0f1
+  patches:
+    - override.patch
 
 requirements:
   build:
