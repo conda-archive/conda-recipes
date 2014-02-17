@@ -1,5 +1,5 @@
 package:
-  name: minisat+
+  name: minisat-plus
   version: 1.0
 
 source:
