@@ -1,4 +1,4 @@
-export MROOT=$RECIPE_DIR
+export MROOT=$SRC_DIR
 cd core
 make rs
 cd ..
