@@ -9,6 +9,9 @@ source:
   patches:
     - override.patch
 
+build:
+  number: 1
+
 requirements:
   build:
     - gmp
