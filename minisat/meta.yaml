@@ -11,7 +11,8 @@ test:
   files:
     - 145.cnf
   commands:
-    - minisat 145.cnf
+    # For some reason 10 is considered an acceptable exit code for success
+    - minisat 145.cnf || [ $? == 10 ]
 
 about:
   home: http://minisat.se/MiniSat.html
