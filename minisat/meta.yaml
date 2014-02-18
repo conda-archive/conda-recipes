@@ -3,9 +3,13 @@ package:
   version: 2.2.0
 
 source:
-  fn: minisat-2.2.0.tar.gz
-  url: http://minisat.se/downloads/minisat-2.2.0.tar.gz
-  sha1: dfc25898bf40e00cf04252a42176e0c0600fbc90
+  git_url: https://github.com/niklasso/minisat.git # [not osx]
+  # Combines https://github.com/niklasso/minisat/pull/10 and https://github.com/niklasso/minisat/pull/4
+  git_url: https://github.com/asmeurer/minisat.git # [osx]
+  git_branch: osx # [osx]
+
+build:
+  number: 1
 
 test:
   files:
