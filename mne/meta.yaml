@@ -1,0 +1,107 @@
+package:
+  name: mne
+  version: !!str 0.7.1
+
+source:
+  fn: mne-0.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/mne/mne-0.7.1.tar.gz
+  md5: c4be211a8777fafa05d9b332fcfef669
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mne = mne:main
+    #
+    # Would create an entry point called mne that calls mne.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+
+  run:
+    - python
+    - numpy
+    - scipy
+
+test:
+  # Python imports
+  imports:
+    - mne.preprocessing
+    - mne.minimum_norm
+    - mne.fiff.bti.tests
+    - mne.beamformer
+    - mne.fiff.bti
+    - mne.realtime.tests
+    - mne.stats.tests
+    - mne.fiff.tests
+    - mne.decoding.tests
+    - mne
+    - mne.datasets
+    - mne.fiff.kit
+    - mne.simulation
+    - mne.fiff.kit.tests
+    - mne.fiff.edf
+    - mne.connectivity.tests
+    - mne.forward.tests
+    - mne.minimum_norm.tests
+    - mne.fiff.brainvision
+    - mne.realtime
+    - mne.gui.tests
+    - mne.time_frequency
+    - mne.layouts
+    - mne.layouts.tests
+    - mne.stats
+    - mne.beamformer.tests
+    - mne.datasets.spm_face
+    - mne.datasets.sample
+    - mne.forward
+    - mne.fiff.edf.tests
+    - mne.commands
+    - mne.mixed_norm
+    - mne.gui
+    - mne.data
+    - mne.decoding
+    - mne.connectivity
+    - mne.fiff.brainvision.tests
+    - mne.datasets.megsim
+    - mne.tests
+    - mne.fiff
+    - mne.preprocessing.tests
+    - mne.time_frequency.tests
+    - mne.inverse_sparse.tests
+    - mne.simulation.tests
+    - mne.inverse_sparse
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    # Put any additional test requirements here.  For example
+    - nose
+
+about:
+  home: http://martinos.org/mne
+  license: BSD (3-clause)
+  summary: 'MNE python project for MEG and EEG data analysis.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
