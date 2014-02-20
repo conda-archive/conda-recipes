@@ -13,8 +13,6 @@ build:
 requirements:
     build:
         - python
-        - distribute
-
     run:
         - python
 
