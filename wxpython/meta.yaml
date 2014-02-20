@@ -8,7 +8,7 @@ source:
     url: http://downloads.sourceforge.net/wxpython/wxPython-src-3.0.0.0.tar.bz2
 
 build:
-    number: 0
+    number: 1
 
 requirements:
     build:
@@ -25,4 +25,3 @@ test:
 about:
     home: http://www.wxpython.org
     license: wxWindows Licese
-
