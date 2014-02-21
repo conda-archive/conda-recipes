@@ -11,6 +11,12 @@ export CXXLAGS="${CFLAGS}"
 
 LinuxInstallation() {
     # Build dependencies:
+    # - gtk+-devel
+    # - gtk+extra-devel
+    # - gtk2-devel
+    # - gtk2-engines-devel
+    # - gtkglext-devel
+    # - gtkmm24-devel
     # - wxGTK-devel
     # - wxBase
     # - SDL-devel
@@ -42,6 +48,11 @@ LinuxInstallation() {
         --record installed_files.txt --prefix="${PREFIX}" || return 1;
     popd;
 
+    rm ${PREFIX}/bin/wx-config || return 1;
+    
+    pushd ${PREFIX};
+    ln -vs ../lib/wx/config/inplace-gtk2-unicode-3.0 wx-config || return 1;
+    
     return 0;
 }
 
