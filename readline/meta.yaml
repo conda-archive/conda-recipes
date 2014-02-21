@@ -1,15 +1,12 @@
 package:
   name: readline
-  version: 6.2
+  version: 6.2.5
 
 source:
   fn: readline-6.2.5.tar.gz
   url: https://github.com/tpn/readline/archive/6.2.5.tar.gz
   patches:
     - stop-completion-from-appending-space.patch
-
-build:
-  number: 2
 
 about:
   home: http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html
