@@ -8,10 +8,10 @@ package:
 build:
   number: 9
   string: xyz
-  no_softlink: .*
+  no_softlink: (lib/python3\.3/site-packages/pycosat\.so|lib/python3\.3/site-packages/test_pycosat\.py)
 
 source:
-  git_url: git@github.com:ContinuumIO/pycosat.git
+  git_url: git://github.com/ContinuumIO/pycosat.git
   git_tag: 0.6.0
   patches:
     - foo.patch
@@ -27,6 +27,10 @@ test:
     - uf20-098.cnf
   imports:
     - pycosat
+  commands:
+    - echo "Testing from the meta.yaml"
+    - echo "This is Windows" # [win]
+    - echo "This is not Windows" # [not win]
 
 about:
   home: https://github.com/ilanschnell/pycosat

@@ -1,0 +1,26 @@
+package:
+  name: pybloomfiltermmap
+  version: 0.10.1
+
+source:
+  fn: pybloomfiltermmap-0.3.11.tar.gz
+  url: https://github.com/axiak/pybloomfiltermmap/archive/release/0.3.11.tar.gz
+
+requirements:
+  build:
+    - python
+    - cython
+    - distribute
+
+  run:
+    - python
+
+test:
+  imports:
+    - pybloomfilter
+
+about:
+  home: http://axiak.github.com/pybloomfiltermmap/
+  license: MIT
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:
