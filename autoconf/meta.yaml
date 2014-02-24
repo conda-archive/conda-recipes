@@ -1,0 +1,26 @@
+package:
+  name: autoconf
+  version: 2.69
+
+source:
+  fn: autoconf-2.69.tar.gz
+  url: http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - m4
+  run:
+    - m4
+
+test:
+  commands:
+    - autoconf --help
+
+about:
+  home: http://www.gnu.org/software/autoconf/
+  license: GPL 3
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:

@@ -1,0 +1,60 @@
+package:
+  name: pygithub
+  version: !!str 1.21.0
+
+source:
+  fn: PyGithub-1.21.0.tar.gz
+  url: https://pypi.python.org/packages/source/P/PyGithub/PyGithub-1.21.0.tar.gz
+  md5: 026f71ff1bb77f5545e9b26349443d15
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pygithub = pygithub:main
+    #
+    # Would create an entry point called pygithub that calls pygithub.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - github
+    - github.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://jacquev6.github.com/PyGithub
+  license: GNU Library or Lesser General Public License (LGPL)
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

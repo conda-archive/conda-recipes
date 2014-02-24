@@ -1,0 +1,17 @@
+diff --git setup.py setup.py
+index 34f2fbb..9d60234 100644
+--- setup.py
++++ setup.py
+@@ -1,11 +1,12 @@
++import os
+ from distutils.core import setup, Extension
+ from glob import glob
+
+ # Modifiy this if BLAS and LAPACK libraries are not in /usr/lib.
+-BLAS_LIB_DIR = '/usr/lib'
++BLAS_LIB_DIR = os.path.join(os.getenv('PREFIX'), 'lib')
+
+ # Default names of BLAS and LAPACK libraries
+-BLAS_LIB = ['blas']
++BLAS_LIB = ['f77blas','cblas','atlas','gfortran']
+ LAPACK_LIB = ['lapack']

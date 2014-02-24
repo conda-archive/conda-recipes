@@ -1,0 +1,11 @@
+--- Makefile.orig	2013-12-25 17:13:08.000000000 -0500
++++ Makefile	2013-12-25 17:13:15.000000000 -0500
+@@ -47,7 +47,7 @@
+ UNIX2MAC	= unix2mac
+ 
+ # Native Language Support (NLS)
+-ENABLE_NLS	= 1
++#ENABLE_NLS	= 1
+ # Large File Support (LFS)
+ LFS             = 1
+ DEBUG = 0

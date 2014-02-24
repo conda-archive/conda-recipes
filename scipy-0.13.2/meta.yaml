@@ -1,0 +1,26 @@
+package:
+  name: scipy
+  version: 0.13.2
+
+source:
+  fn: scipy-0.13.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/scipy/scipy-0.13.2.tar.gz
+  md5: fcd110802b0bf3505ba567cf831566e1
+
+requirements:
+  build:
+    - numpy
+    - atlas
+  run:
+    - python
+    - numpy
+
+test:
+  requires:
+    - nose
+  imports:
+    - scipy
+
+about:
+  home: http://www.scipy.org/
+  license: BSD

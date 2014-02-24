@@ -1,0 +1,105 @@
+package:
+  name: boto
+  version: 2.18.0
+
+source:
+  fn: boto-2.18.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/boto/boto-2.18.0.tar.gz
+  md5: 087037d477ee71601171d6b4e32856e8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - boto = boto:main
+    #
+    # Would create an entry point called boto that calls boto.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - boto.contrib
+    - boto.ec2.autoscale
+    - boto.sdb
+    - boto.ecs
+    - boto.elasticache
+    - boto.cloudformation
+    - boto.swf
+    - boto.pyami
+    - boto.cacerts
+    - boto.file
+    - boto.dynamodb2
+    - boto.redshift
+    - boto.mashups
+    - boto.sdb.db.manager
+    - boto.services
+    - boto.sqs
+    - boto.beanstalk
+    - boto.route53
+    - boto.iam
+    - boto.s3
+    - boto.cloudsearch
+    - boto.support
+    - boto.elastictranscoder
+    - boto.cloudfront
+    - boto.roboto
+    - boto.vpc
+    - boto.ec2
+    - boto.gs
+    - boto.glacier
+    - boto.ec2.elb
+    - boto.opsworks
+    - boto.sdb.db
+    - boto.ses
+    - boto.cloudtrail
+    - boto.mws
+    - boto.ec2.cloudwatch
+    - boto.sts
+    - boto.fps
+    - boto
+    - boto.pyami.installers
+    - boto.mturk
+    - boto.dynamodb
+    - boto.pyami.installers.ubuntu
+    - boto.emr
+    - boto.rds
+    - boto.sns
+    - boto.datapipeline
+    - boto.manage
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/boto/boto/
+  license: MIT License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

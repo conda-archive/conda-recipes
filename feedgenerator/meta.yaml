@@ -1,23 +1,25 @@
 package:
   name: feedgenerator
-  version: 1.6
+  version: !!str 1.7
 
 source:
-  fn: feedgenerator-1.6.tar.gz
-  url: https://pypi.python.org/packages/source/f/feedgenerator/feedgenerator-1.6.tar.gz
-  md5: 63f6f8529a1ae877715124328edea196
+  fn: feedgenerator-1.7.tar.gz
+  url: https://pypi.python.org/packages/source/f/feedgenerator/feedgenerator-1.7.tar.gz
+  md5: 92978492871342ad64e8ae0ccfcf200c
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
-  # entry_points:
+  #preserve_egg_dir: True
+  #entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - feedgenerator:main
+    # - feedgenerator = feedgenerator:main
     #
-    # Would call feedgenerator.main()
+    # Would create an entry point called feedgenerator that calls feedgenerator.main()
+
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -26,32 +28,32 @@ source:
 requirements:
   build:
     - python
-    # If setuptools is required to run setup.py, add distribute to the build
-    # requirements.
-    #
-    - distribute
-    - six
+    - setuptools
     - pytz
+    - six
 
   run:
     - python
-    - six
     - pytz
+    - six
 
 test:
   # Python imports
   imports:
+    - feedgenerator.django
     - feedgenerator
+    - feedgenerator.django.utils
 
-  # commands:
+  #commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
+
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
   # requires:
-    # Put any test requirements here.  For example
+    # Put any additional test requirements here.  For example
     # - nose
 
 about:

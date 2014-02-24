@@ -1,23 +1,25 @@
 package:
   name: unidecode
-  version: 0.04.13
+  version: !!str 0.04.14
 
 source:
-  fn: Unidecode-0.04.13.tar.gz
-  url: https://pypi.python.org/packages/source/U/Unidecode/Unidecode-0.04.13.tar.gz
-  md5: 74fabcc0aa3c3b185181df7fce8cab09
+  fn: Unidecode-0.04.14.tar.gz
+  url: https://pypi.python.org/packages/source/U/Unidecode/Unidecode-0.04.14.tar.gz
+  md5: d4106bcfdef39625944f4294ef4666de
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
-  # entry_points:
+  #preserve_egg_dir: True
+  #entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - unidecode:main
+    # - unidecode = unidecode:main
     #
-    # Would call unidecode.main()
+    # Would create an entry point called unidecode that calls unidecode.main()
+
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -26,10 +28,6 @@ source:
 requirements:
   build:
     - python
-    # If setuptools is required to run setup.py, add distribute to the build
-    # requirements.
-    #
-    # - distribute
 
   run:
     - python
@@ -39,20 +37,22 @@ test:
   imports:
     - unidecode
 
-  # commands:
+  #commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
+
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
   # requires:
-    # Put any test requirements here.  For example
+    # Put any additional test requirements here.  For example
     # - nose
 
 about:
   home: UNKNOWN
   license: GNU General Public License v2 or later (GPLv2+)
+  summary: ASCII transliterations of Unicode text
 
 # See
 # http://docs.continuum.io/conda/build.html for

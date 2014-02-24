@@ -1,0 +1,26 @@
+
+package:
+    name: szip
+    version: 2.1
+
+source:
+    fn: szip-2.1.tar.gz
+    url: http://www.hdfgroup.org/ftp/lib-external/szip/2.1/src/szip-2.1.tar.gz
+
+build:
+    number: 0
+
+requirements:
+    build:
+
+    run:
+
+test:
+    imports:
+
+    commands:
+
+about:
+    home: http://www.hdfgroup.org/doc_resource/SZIP/
+    license: Free for non-commercial use
+

@@ -1,0 +1,31 @@
+package:
+  name: line_profiler
+  version: !!str 1.0b3
+
+source:
+  fn: line_profiler-1.0b3.tar.gz
+  url: https://pypi.python.org/packages/source/l/line_profiler/line_profiler-1.0b3.tar.gz
+  md5: 63fc2a757192eb5e577559cfdff5b831
+
+requirements:
+  build:
+    - python
+    - cython
+
+  run:
+    - python
+    - cython
+
+test:
+  # Python imports
+  imports:
+    - line_profiler
+
+  # This command actually gets installed properly without an entry point 
+  # because it's a script
+  commands:
+    - kernprof.py --help
+
+about:
+  home: http://packages.python.org/line_profiler
+  license: BSD License

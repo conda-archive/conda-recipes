@@ -1,17 +1,18 @@
 package:
   name: argcomplete
-  version: 0.5.7
+  version: !!str 0.6.7
 
 source:
-  fn: argcomplete-0.5.7.tar.gz
-  url: https://pypi.python.org/packages/source/a/argcomplete/argcomplete-0.5.7.tar.gz
-  md5: d42f788bf85bbfb2db34526d9c87a550
+  fn: argcomplete-0.6.7.tar.gz
+  url: https://pypi.python.org/packages/source/a/argcomplete/argcomplete-0.6.7.tar.gz
+  md5: d9faf5e522f15b829588cbca4859563c
   patches:
    # List any patch files here
-    - remove_setuptools.patch
+   - remove_setuptools.patch
 
 build:
-  # entry_points:
+  #preserve_egg_dir: True
+  #entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -22,18 +23,17 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  number: 2
 
 requirements:
   build:
     - python
-    - distribute
     - argparse [py26]
 
   run:
-    - python
     - argparse [py26]
-    - distribute # Needs pkg_resources
+    - python
+    - setuptools
 
 test:
   # Python imports
@@ -46,7 +46,6 @@ test:
     - activate-global-python-argcomplete --help
     - python-argcomplete-check-easy-install-script --help
     - register-python-argcomplete --help
-
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.

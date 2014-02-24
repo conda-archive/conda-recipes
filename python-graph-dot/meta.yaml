@@ -1,0 +1,28 @@
+package:
+  name: python-graph-dot
+  version: 1.8.2
+
+source:
+  fn: python-graph-dot-1.8.2.tar.gz
+  url: https://python-graph.googlecode.com/files/python-graph-dot-1.8.2.tar.gz
+
+requirements:
+  build:
+    # No conda recipe exists for graphviz yet, making this recipe kinda'
+    # useless at the moment.
+    - graphviz
+    - python-graph-core
+
+  run:
+    - graphviz
+    - python-graph-core
+
+test:
+  imports:
+    - pygraph.readwrite.dot
+
+about:
+  home: https://code.google.com/p/python-graph/
+  license: MIT
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:

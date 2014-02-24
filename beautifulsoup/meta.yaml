@@ -1,5 +1,5 @@
 package:
-  name: beautifulsoup
+  name: beautiful-soup
   version: 3.2.1
 
 source:

@@ -1,0 +1,13 @@
+package:
+  name: glibc
+  version: 2.5.1
+
+source:
+  fn: glibc-2.5.1.tar.gz
+  url: http://gnu.spinellicreations.com/libc/glibc-2.5.1.tar.gz
+  sha1: c4e7f1aacdf24ff02896df94e644ba8951a712ca
+
+about:
+  home: http://www.gnu.org/software/libc/
+  license: LGPL
+  summary: "Any Unix-like operating system needs a C library: the library which defines the ``system calls'' and other basic facilities such as open, malloc, printf, exit..."

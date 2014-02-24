@@ -1,0 +1,24 @@
+package:
+  name: minisatp
+  version: 1.0
+
+source:
+  git_url: https://github.com/asmeurer/minisatp.git
+  git_branch: work
+
+requirements:
+  build:
+    - gmp
+    - minisat
+  run:
+    - gmp
+    - minisat
+
+test:
+  commands:
+    - minisat+_script
+
+about:
+  license: BSD
+  summary: MiniSat+ is a two-week hack done to enable Pseudo-Boolean constraints in MiniSat.
+  home: http://minisat.se/MiniSat+.html

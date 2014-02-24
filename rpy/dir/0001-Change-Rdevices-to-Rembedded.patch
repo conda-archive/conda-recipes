@@ -1,0 +1,25 @@
+From 4ddb7759a3bebaee03841ba5625a07ad7362dea9 Mon Sep 17 00:00:00 2001
+From: irritum <kamil.kwiek@continuum.io>
+Date: Thu, 28 Nov 2013 20:15:28 +0100
+Subject: [PATCH] Change Rdevices to Rembedded
+
+---
+ src/RPy.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git src/RPy.h src/RPy.h
+index 94cf4af..5bf70c0 100644
+--- src/RPy.h
++++ src/RPy.h
+@@ -74,7 +74,7 @@
+ #  endif
+ #endif  /* _WIN32 */
+ 
+-#include <Rdevices.h> /* must follow Graphics.h */
++#include <Rembedded.h> /* must follow Graphics.h */
+ 
+ 
+ /* Missing definitions from Rinterface.h or RStartup.h */
+-- 
+1.7.1
+

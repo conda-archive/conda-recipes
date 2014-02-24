@@ -1,17 +1,18 @@
 package:
   name: py
-  version: 1.4.18
+  version: !!str 1.4.19
 
 source:
-  fn: py-1.4.18.tar.gz
-  url: https://pypi.python.org/packages/source/p/py/py-1.4.18.tar.gz
-  md5: 1b04e9879fed8a420b9e52cbaf7d8b4f
+  fn: py-1.4.19.tar.gz
+  url: http://pypi.python.org/packages/source/p/py/py-1.4.19.tar.gz
+  md5: d2e24b4363d834bf9192247f143435bc
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
-  # entry_points:
+  #preserve_egg_dir: True
+  #entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -27,23 +28,22 @@ source:
 requirements:
   build:
     - python
-    - distribute
+    - setuptools
 
   run:
     - python
-    - distribute
 
 test:
   # Python imports
   imports:
     - py
-    - py._log
+    - py._io
+    - py._path
     - py._code
     - py._process
-    - py._path
-    - py._io
+    - py._log
 
-  # commands:
+  #commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -57,7 +57,7 @@ test:
 
 about:
   home: http://pylib.readthedocs.org/
-  license: MIT
+  license: MIT License
 
 # See
 # http://docs.continuum.io/conda/build.html for
