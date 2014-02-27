@@ -4,7 +4,7 @@ package:
 
 source:
   fn: libsodium-0.4.5.tar.gz
-  url: https://download.libsodium.org/libsodium/releases/libsodium-0.4.5.tar.gz
+  url: http://download.libsodium.org/libsodium/releases/libsodium-0.4.5.tar.gz
   sha1: 1ccb98a90ad499656eccef9b69e1c899e35d7139
 
 build:
