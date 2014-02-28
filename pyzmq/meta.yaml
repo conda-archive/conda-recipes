@@ -8,7 +8,7 @@ source:
   sha1: d09c72dc6dcad9449dbcb2f97b3cc1f2443d4b84
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
