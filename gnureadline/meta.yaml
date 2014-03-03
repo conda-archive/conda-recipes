@@ -1,0 +1,31 @@
+package:
+  name: gnureadline
+  version: 6.2.5
+
+source:
+  fn: gnureadline-6.2.5.tar.gz
+  url: https://pypi.python.org/packages/source/g/gnureadline/gnureadline-6.2.5.tar.gz
+  sha1: 861987c56af12634ee8100b8c05a1bdeab5a6bec
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - gnureadline
+
+
+about:
+  home: https://github.com/ludwigschwardt/python-gnureadline
+  
+  license: GNU Public License (GPL)
+
