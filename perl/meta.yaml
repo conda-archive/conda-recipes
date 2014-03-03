@@ -2,8 +2,12 @@ package:
   name: perl
   version: 5.18.2
 
+requirements:
+  build:
+    - curl
+
 build:
-  number: 4
+  number: 5
 
 source:
   fn: perl-5.18.2.tar.gz
