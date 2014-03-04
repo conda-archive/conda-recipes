@@ -3,7 +3,7 @@
 # Build perl
 sh Configure -de -Dprefix=$PREFIX -Duserelocatableinc
 make
-make test
+# make test
 make install
 
 # Install CPAN Minus to make building other packages that rely on this simpler
