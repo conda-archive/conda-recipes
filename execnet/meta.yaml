@@ -1,0 +1,61 @@
+package:
+  name: execnet
+  version: !!str 1.2.0
+
+source:
+  fn: execnet-1.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/e/execnet/execnet-1.2.0.tar.gz
+  md5: 1886d12726b912fc2fd05dfccd7e6432
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - execnet = execnet:main
+    #
+    # Would create an entry point called execnet that calls execnet.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - execnet
+    - execnet.script
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://codespeak.net/execnet
+  license: MIT License
+  summary: 'execnet: rapid multi-Python deployment'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
