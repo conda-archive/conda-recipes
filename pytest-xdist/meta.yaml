@@ -1,43 +1,47 @@
 package:
-  name: urwid
-  version: !!str 1.2.0
+  name: pytest-xdist
+  version: !!str 1.10
 
 source:
-  fn: urwid-1.2.0.tar.gz
-  url: https://pypi.python.org/packages/source/u/urwid/urwid-1.2.0.tar.gz
-  md5: ea046a0f683bc2d46b08df70b29c7f66
+  fn: pytest-xdist-1.10.tar.gz
+  url: https://pypi.python.org/packages/source/p/pytest-xdist/pytest-xdist-1.10.tar.gz
+  md5: 9bb894aa76d5871f74eac793f59e15a9
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
-  #preserve_egg_dir: True
+build:
+  preserve_egg_dir: True
   #entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - urwid = urwid:main
+    # - pytest-xdist = pytest-xdist:main
     #
-    # Would create an entry point called urwid that calls urwid.main()
+    # Would create an entry point called pytest-xdist that calls pytest-xdist.main()
 
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+
+  number: 1
 
 requirements:
   build:
     - python
     - setuptools
+    - execnet
+    - pytest
 
   run:
     - python
+    - execnet
+    - pytest
 
 test:
   # Python imports
   imports:
-    - urwid.tests
-    - urwid
+    - xdist
 
   #commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -52,9 +56,9 @@ test:
     # - nose
 
 about:
-  home: http://urwid.org/
-  license: GNU Library or Lesser General Public License (LGPL)
-  summary: 'A full-featured console (xterm et al.) user interface library'
+  home: http://bitbucket.org/hpk42/pytest-xdist
+  license: MIT License
+  summary: 'py.test xdist plugin for distributed testing and loop-on-failing modes'
 
 # See
 # http://docs.continuum.io/conda/build.html for
