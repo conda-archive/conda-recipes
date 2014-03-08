@@ -1,0 +1,29 @@
+package:
+  name: gmpy
+  version: 1.17
+
+source:
+  fn: gmpy-1.17.zip
+  url: https://gmpy.googlecode.com/files/gmpy-1.17.zip
+  sha1: b5353453fa7a4b7d6480686c3a9b91d1c4455957
+
+requirements:
+  build:
+    - gmp
+    - mpfr
+    - mpc
+    - python
+  run:
+    - gmp
+    - mpfr
+    - mpc
+    - python
+
+test:
+  imports:
+    - gmpy
+
+about:
+  home: https://code.google.com/p/gmpy/
+  license: LGPL
+  summary: GMPY and GMPY2 are C-coded Python extension modules that support fast multiple-precision arithmetic. GMPY only supports the GMP library and provides fast multiple-precision integer and rational arithmetic.

@@ -1,0 +1,20 @@
+package:
+  name: elevate
+  version: 1.3.0
+
+source:
+  fn: elevate-1.3.0-redist.7z [win]
+  url: http://code.kliu.org/misc/elevate/elevate-1.3.0-redist.7z [win]
+
+requirements:
+  build:
+    - 7za
+
+build:
+  number: 0
+
+about:
+  home: http://code.kliu.org/misc/elevate/
+  license: GPL
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:

@@ -1,0 +1,15 @@
+package:
+  name: rktools
+  version: 2003
+
+source:
+  fn: windows-rktools-2003.zip [win]
+  url: https://github.com/tpn/windows-rktools-2003/archive/2003.zip [win]
+
+build:
+  number: 0
+
+about:
+  home: http://www.microsoft.com/en-us/download/details.aspx?id=17657
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:

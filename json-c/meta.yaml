@@ -1,0 +1,16 @@
+package:
+  name: json-c
+  version: 0.11.20130402
+
+source:
+  fn: json-c-0.11-20130402.zip
+  url: https://github.com/json-c/json-c/archive/json-c-0.11-20130402.zip
+
+build:
+  number: 0
+
+about:
+  home: http://github.com/json-c/json-c
+  license: GPL?
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:
