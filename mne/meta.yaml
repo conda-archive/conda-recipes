@@ -35,6 +35,9 @@ requirements:
     - python
     - numpy
     - scipy
+    - matplotlib
+    - mayavi
+    - scikit-learn
 
 test:
   # Python imports
