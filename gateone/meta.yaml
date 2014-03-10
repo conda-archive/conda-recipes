@@ -6,6 +6,7 @@ source:
   git_url: git://github.com/liftoff/GateOne.git
 
 build:
+  number: 1
   entry_points:
     - gateone = gateone.core.server:main
 
@@ -14,11 +15,13 @@ requirements:
     - python
     - setuptools
     - futures
+    - html5lib
     - tornado
   run:
     - python
     - futures
     - tornado
+    - html5lib
 
 test:
   imports:
@@ -28,5 +31,6 @@ test:
     - onoff
 
 about:
-  home: https://github.com/ilanschnell/pycosat
-  license: MIT
+  home: http://liftoffsoftware.com/Products/GateOne 
+  license: Dual License AGPLv3 or Commercial Licensing
+
