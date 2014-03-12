@@ -11,7 +11,7 @@ if [ -z "$MACOSX_DEPLOYMENT_TARGET" ]; then
 	hdiutil attach -mountpoint jdk_mount jdk.dmg
 	pkgutil --expand jdk_mount/JDK\ 7\ Update\ 51/JDK\ 7\ Update\ 51.pkg java
 	cat java/jdk17051.pkg/Payload | cpio -zi
-	mv Contents/Home "$PREFIX/java"
+	mv Contents/Home "$PREFIX/jdk1.7.0_51"
 else
 	# Download architecture-specific version (by setting cookie)
 	if ["$ARCH" eq "32"]; then
@@ -22,8 +22,8 @@ else
 
 	# Extract files
 	tar -xzvf jdk.tar.gz
-	mv WHATEVERTHEDIRECTORYISCALLED "$PREFIX/java"
+	mv jdk1.7.0_51 "$PREFIX/jdk1.7.0_51"
 fi
 
 # Make symlinks so that things are in the prefix's bin directory
-ls "$PREFIX/java/bin/*" | xargs -I{} ln -s "$PREFIX/java/bin/{}" "$PREFIX/bin/{}"
+ls "$PREFIX/jdk1.7.0_51/bin/*" | xargs -I{} ln -s "$PREFIX/jdk1.7.0_51/bin/{}" "$PREFIX/bin/{}"
