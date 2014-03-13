@@ -33,7 +33,8 @@ function ask {
     done
 }
 
-if ask "Do you accept the Oracle Binary Code License Agreement for Java SE?"; then
+echo
+if ask "Do you accept the Oracle Binary Code License Agreement for Java SE?" Y; then
     exit 0
 else
     echo "You must accept the Oracle Binary Code License Agreement to install JDK."
