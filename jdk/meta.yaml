@@ -8,7 +8,7 @@ requirements:
 
 test:
   commands:
-    - java --help
+    - java -version
 
 about:
   home: http://www.oracle.com/technetwork/java/javase/
