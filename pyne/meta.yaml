@@ -3,7 +3,8 @@ package:
   version: staging
 
 source:
-  url : https://github.com/pyne/pyne/archive/staging.zip
+  fn: pyne.tar.gz
+  url : https://github.com/pyne/pyne/archive/staging.tar.gz
 
 requirements:
   build:
