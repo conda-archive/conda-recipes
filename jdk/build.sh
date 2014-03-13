@@ -2,7 +2,7 @@
 
 #### Download ####
 # Check if we're on OS X
-if [ -z "$MACOSX_DEPLOYMENT_TARGET" ]; then
+if [ $(uname) = "Darwin" ]; then
 	# Download by setting cookie
 	curl -b gpw_e24=http%3A%2F%2Fwww.oracle.com -o jdk.dmg -L 'http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jdk-7u51-macosx-x64.dmg'
 
