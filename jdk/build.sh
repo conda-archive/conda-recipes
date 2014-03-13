@@ -14,7 +14,7 @@ if [ $(uname) = "Darwin" ]; then
 	mv Contents/Home "$PREFIX/jdk1.7.0_51"
 else
 	# Download architecture-specific version (by setting cookie)
-	if ["$ARCH" eq "32"]; then
+	if ["$ARCH" = "32"]; then
 		curl -b gpw_e24=http%3A%2F%2Fwww.oracle.com -o jdk.tar.gz -L 'http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jdk-7u51-linux-i586.tar.gz'
 	else
 		curl -b gpw_e24=http%3A%2F%2Fwww.oracle.com -o jdk.tar.gz -L 'http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jdk-7u51-linux-x64.tar.gz'
