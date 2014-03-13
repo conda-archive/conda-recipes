@@ -9,7 +9,8 @@ if [ $(uname) = "Darwin" ]; then
 	# Extract files like in
 	# http://stackoverflow.com/questions/15217200/how-to-install-java-7-on-mac-in-custom-location
 	hdiutil attach -mountpoint jdk_mount jdk.dmg
-	pkgutil --expand jdk_mount/JDK\ 7\ Update\ 51/JDK\ 7\ Update\ 51.pkg java
+	pkgutil --expand jdk_mount/JDK\ 7\ Update\ 51.pkg java
+	hdiutil detach jdk_mount
 	cat java/jdk17051.pkg/Payload | cpio -zi
 	mv Contents/Home "$PREFIX/jdk1.7.0_51"
 else
