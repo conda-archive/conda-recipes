@@ -1,9 +1,8 @@
 #!/bin/bash
 
-#### Download ####
+#### Download in build because we have to set cookies ####
 # Check if we're on OS X
 if [ $(uname) = "Darwin" ]; then
-	# Download by setting cookie
 	curl -b gpw_e24=http%3A%2F%2Fwww.oracle.com -o jdk.dmg -L 'http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jdk-7u51-macosx-x64.dmg'
 
 	# Extract files like in
@@ -14,7 +13,6 @@ if [ $(uname) = "Darwin" ]; then
 	cat java/jdk17051.pkg/Payload | cpio -zi
 	mv Contents/Home "$PREFIX/jdk1.7.0_51"
 else
-	# Download architecture-specific version (by setting cookie)
 	if ["$ARCH" = "32"]; then
 		curl -b gpw_e24=http%3A%2F%2Fwww.oracle.com -o jdk.tar.gz -L 'http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jdk-7u51-linux-i586.tar.gz'
 	else
