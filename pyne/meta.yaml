@@ -3,9 +3,7 @@ package:
   version: staging
 
 source:
-  git_tag: staging
-  git_url: https://github.com/pyne/pyne.git
-  
+  url : https://github.com/pyne/pyne/archive/staging.zip
 
 requirements:
   build:
