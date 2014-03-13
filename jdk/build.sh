@@ -26,4 +26,5 @@ else
 fi
 
 # Make symlinks so that things are in the prefix's bin directory
-ls "$PREFIX/jdk1.7.0_51/bin/*" | xargs -I{} ln -s "$PREFIX/jdk1.7.0_51/bin/{}" "$PREFIX/bin/{}"
+cd "$PREFIX/jdk1.7.0_51/bin"
+ls * | xargs -0 -I{} ln -s {} "$PREFIX/bin/"
