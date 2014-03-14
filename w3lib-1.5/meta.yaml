@@ -7,11 +7,13 @@ source:
   url: https://pypi.python.org/packages/source/w/w3lib/w3lib-1.5.tar.gz
   md5: 51351a5273a7416faca0f31c6fbd8f99
 
+build:
+  number: 1
+
 requirements:
   build:
     - python
     - setuptools
-#    - distribute
     - six
   run:
     - python

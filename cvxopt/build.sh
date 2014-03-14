@@ -1,9 +1,20 @@
 #!/bin/bash
 
-$PYTHON setup.py install
+# Build dependencies:
+# - lapack
+# - lapack-devel
 
-# Add more build steps here, if they are necessary.
+touch requirements.txt;
 
-# See
-# http://docs.continuum.io/conda/build.html
-# for a list of environment variables that are set during the build process.
+export CFLAGS="-m64 -pipe -O2 -march=x86-64"
+export CXXFLAGS="${CFLAGS}"
+export CPPFLAGS="-I${PREFIX}/include"
+export LDFLAGS="-L${PREFIX}/lib -L${PREFIX}/lib64"
+
+${PYTHON} setup.py install || exit 1;
+
+mkdir -vp ${PREFIX}/bin;
+
+#POST_LINK="${PREFIX}/bin/.cvxopt-post-link.sh"
+#cp -v ${RECIPE_DIR}/post-link.sh ${POST_LINK};
+#chmod -v 0755 ${POST_LINK};

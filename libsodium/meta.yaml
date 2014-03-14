@@ -1,0 +1,15 @@
+package:
+  name: libsodium
+  version: 0.4.5
+
+source:
+  fn: libsodium-0.4.5.tar.gz
+  url: https://github.com/jedisct1/libsodium/releases/download/0.4.5/libsodium-0.4.5.tar.gz
+  sha1: 1ccb98a90ad499656eccef9b69e1c899e35d7139
+
+build:
+  number: 2
+
+about:
+  home: https://github.com/jedisct1/libsodium
+  license: MIT

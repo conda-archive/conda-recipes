@@ -1,0 +1,48 @@
+package:
+  name: pyzmq
+  version: 14.1.0
+
+source:
+  fn: pyzmq-14.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyzmq/pyzmq-14.1.0.tar.gz
+  sha1: ee34d9d3dd13e82152ac82b6bb2116430a14e506
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - zeromq
+
+  run:
+    - python
+    - zeromq
+
+test:
+  # Python imports
+  imports:
+    - zmq
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+    - nosetests zmq.tests
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    # Put any additional test requirements here.  For example
+    - nose
+
+about:
+  home: https://github.com/zeromq/pyzmq
+  summary: http://zeromq.github.io/pyzmq/changelog.html
+  
+  license: BSD License and GNU Library or Lesser General Public License (LGPL)
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,20 @@
+package:
+  name: chrpath
+  version: 0.15
+
+source:
+  fn: chrpath-0.15.tar.gz
+  url: https://alioth.debian.org/frs/download.php/file/3968/chrpath-0.15.tar.gz [not win]
+
+build:
+  number: 0
+
+test:
+  commands:
+    - chrpath -h
+
+about:
+  home: https://alioth.debian.org/frs/?group_id=31052
+  license: GPL 2
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:

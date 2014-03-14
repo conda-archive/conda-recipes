@@ -1,0 +1,18 @@
+package:
+  name: apr
+  version: 1.5.0
+
+source:
+  fn: tpn-apr-1.5.0-win32.zip [win]
+  url: https://github.com/tpn/apr-win/archive/1.5.0-vc9.zip [win]
+  fn: apr-1.5.0.tar.bz2 [not win]
+  url: http://apache.mirrors.pair.com/apr/apr-1.5.0.tar.bz2 [not win]
+
+build:
+  number: 0
+
+about:
+  home: http://apr.apache.org/
+  license: Apache License 2.0
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:

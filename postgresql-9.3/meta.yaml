@@ -1,0 +1,46 @@
+package:
+  name: postgresql
+  version: 9.3.2
+
+source:
+  fn: postgresql-9.3.2.tar.bz2
+  url: http://ftp.postgresql.org/pub/source/v9.3.2/postgresql-9.3.2.tar.bz2
+
+build:
+  number: 3
+
+requirements:
+  build:
+    - python
+    - openssl
+    - readline
+    - libxml2
+    - libxslt
+    # 10.9 appears to have an issue with libxml2.
+    #- libxml2   [not osx]
+    #- libxslt   [not osx]
+    - zlib
+    - system    [linux]
+  run:
+    - python
+    - openssl
+    - readline
+    - libxml2
+    - libxslt
+    #- libxml2   [not osx]
+    #- libxslt   [not osx]
+    - zlib
+    - system    [linux]
+
+test:
+  commands:
+    - initdb --help
+    - postgres --help
+    - createdb --help
+    - psql --help
+
+about:
+  home: http://www.postgresql.org
+  license: MIT
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:

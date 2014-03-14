@@ -4,4 +4,5 @@
     --enable-shared=no
 
 make
+make check
 make install

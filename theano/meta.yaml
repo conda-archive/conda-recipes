@@ -1,0 +1,62 @@
+package:
+  name: theano
+  version: 0.6.0
+
+source:
+  fn: Theano-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/T/Theano/Theano-0.6.0.tar.gz
+  md5: 44df6c476d8012290a2d5bb66611126a
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - scipy
+
+  run:
+    - python
+    - numpy
+    - scipy
+
+test:
+  # Python imports
+  imports:
+    - theano.scan_module
+    - theano.tensor.nnet
+    - theano.misc
+    - theano.sandbox.gpuarray
+    - theano.tensor.signal
+    - theano.scalar.tests
+    - theano.sparse
+    - theano.compile.sandbox
+    - theano.compile
+    - theano.sparse.sandbox
+    - theano.sandbox.linalg
+    - theano.sandbox.scan_module.tests
+    - theano.tensor.deprecated
+    - theano.gof
+    - theano.compat
+    - theano.tensor.nnet.tests
+    - theano.scalar
+    - theano.sandbox.cuda.tests
+    - theano.sandbox.cuda
+    - theano.tensor.tests
+    - theano.tensor.signal.tests
+    - theano
+    - theano.sandbox.gpuarray.tests
+    - theano.sandbox.scan_module
+    - theano.misc.tests
+    - theano.compile.tests
+    - theano.sandbox.linalg.tests
+    - theano.sandbox
+    - theano.gof.tests
+    - theano.sparse.tests
+    - theano.scan_module.tests
+    - theano.tests
+    - theano.tensor
+
+about:
+  home: http://deeplearning.net/software/theano/
+  license: BSD License
+

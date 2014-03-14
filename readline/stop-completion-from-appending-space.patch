@@ -1,0 +1,20 @@
+--- readline-6.2.5/complete.c   2014-01-04 02:29:06.000000000 +0100
++++ complete.c  2014-02-20 23:40:20.084564457 +0100
+@@ -337,7 +337,7 @@
+
+ /* Character appended to completed words when at the end of the line.  The
+    default is a space. */
+-int rl_completion_append_character = ' ';
++int rl_completion_append_character = '\0';
+
+ /* If non-zero, the completion functions don't append any closing quote.
+    This is set to 0 by rl_complete_internal and may be changed by an
+@@ -468,7 +468,7 @@
+   rl_filename_quoting_desired = 1;
+   rl_completion_type = what_to_do;
+   rl_completion_suppress_append = rl_completion_suppress_quote = 0;
+-  rl_completion_append_character = ' ';
++  rl_completion_append_character = '\0';
+
+   /* The completion entry function may optionally change this. */
+   rl_completion_mark_symlink_dirs = _rl_complete_mark_symlink_dirs;
