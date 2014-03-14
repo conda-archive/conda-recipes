@@ -25,7 +25,8 @@ else
 fi
 
 # Make symlinks so that things are in the prefix's bin directory
-cd "$PREFIX/jdk1.7.0_51/bin"
-for filename in *; do
-	ln -s "$filename" "$PREFIX/bin/$filename"
+mkdir -p "$PREFIX/bin"
+cd "$PREFIX/bin"
+for filename in ../jdk1.7.0_51/bin/*; do
+	ln -s $filename $(basename $filename)
 done
