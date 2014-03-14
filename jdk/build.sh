@@ -11,7 +11,7 @@ if [ $(uname) = "Darwin" ]; then
 	pkgutil --expand jdk_mount/JDK\ 7\ Update\ 51.pkg java
 	hdiutil detach jdk_mount
 	cat java/jdk17051.pkg/Payload | cpio -zi
-	mv Contents/Home "$PREFIX/jdk1.7.0_51"
+	mv Contents/Home "$PREFIX/jdk"
 else
 	if [ "$ARCH" = "32" ]; then
 		curl -b gpw_e24=http%3A%2F%2Fwww.oracle.com -o jdk.tar.gz -L 'http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jdk-7u51-linux-i586.tar.gz'
@@ -21,12 +21,19 @@ else
 
 	# Extract files
 	tar -xzvf jdk.tar.gz
-	mv jdk1.7.0_51 "$PREFIX/jdk1.7.0_51"
+	mv jdk1.7.0_51 "$PREFIX/jdk"
 fi
 
 # Make symlinks so that things are in the prefix's bin directory
 mkdir -p "$PREFIX/bin"
 cd "$PREFIX/bin"
-for filename in ../jdk1.7.0_51/bin/*; do
+for filename in ../jdk/bin/*; do
+	ln -s $filename $(basename $filename)
+done
+
+# Make symlinks so that things are in the prefix's lib directory
+mkdir -p "$PREFIX/lib"
+cd "$PREFIX/lib"
+for filename in ../jdk/lib/*; do
 	ln -s $filename $(basename $filename)
 done
