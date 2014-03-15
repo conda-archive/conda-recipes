@@ -21,7 +21,7 @@ requirements:
     - numpy
     - scipy
     - pytables
-	
+
 test:
   requires:
     - nose
