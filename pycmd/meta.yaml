@@ -1,0 +1,73 @@
+package:
+  name: pycmd
+  version: !!str 1.0
+
+source:
+  fn: pycmd-1.0.zip
+  url: https://pypi.python.org/packages/source/p/pycmd/pycmd-1.0.zip
+  md5: f63ca65f5fbc27321346114fa429c811
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  #preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pycmd = pycmd:main
+    #
+    # Would create an entry point called pycmd that calls pycmd.main()
+
+    - py.cleanup  = pycmd:pycleanup
+    - py.lookup   = pycmd:pylookup
+    - py.countloc = pycmd:pycountloc
+    - py.which   = pycmd:pywhich
+    - py.convert_unittest = pycmd:pyconvert_unittest
+    - py.svnwcrevert= pycmd:pysvnwcrevert
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - py
+
+  run:
+    - python
+    - py
+
+test:
+  # Python imports
+  imports:
+    - pycmd
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - py.cleanup --help
+    - py.lookup --help
+    - py.countloc --help
+    - py.which --help
+    - py.convert_unittest --help
+    - py.svnwcrevert --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: UNKNOWN
+  license: MIT License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

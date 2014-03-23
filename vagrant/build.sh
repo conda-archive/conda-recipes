@@ -26,7 +26,9 @@ echo "Installing the files"
 mkdir $PREFIX/vagrant
 mkdir $PREFIX/bin
 cp -R -p * $PREFIX/vagrant
-ln -s $PREFIX/vagrant/bin/vagrant $PREFIX/bin/vagrant
+cd $PREFIX
+ln -s ../vagrant/bin/vagrant bin/vagrant
+patch vagrant/bin/vagrant $RECIPE_DIR/symlink.diff
 
 echo "Unmounting the disk image"
 hdiutil detach $MOUNT_LOCATION

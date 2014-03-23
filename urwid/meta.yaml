@@ -1,11 +1,29 @@
 package:
   name: urwid
-  version: 1.1.1
+  version: !!str 1.2.0
 
 source:
-  fn: urwid-1.1.1.tar.gz
-  url: http://pypi.python.org/packages/source/u/urwid/urwid-1.1.1.tar.gz
-  md5: 932d199de6fc847eab2c151512220665
+  fn: urwid-1.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/u/urwid/urwid-1.2.0.tar.gz
+  md5: ea046a0f683bc2d46b08df70b29c7f66
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - urwid = urwid:main
+    #
+    # Would create an entry point called urwid that calls urwid.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
 
 requirements:
   build:
@@ -18,8 +36,26 @@ requirements:
 test:
   # Python imports
   imports:
+    - urwid.tests
     - urwid
 
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
 about:
-  home: http://excess.org/urwid/
+  home: http://urwid.org/
   license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'A full-featured console (xterm et al.) user interface library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

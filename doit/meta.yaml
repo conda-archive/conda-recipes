@@ -1,0 +1,65 @@
+package:
+  name: doit
+  version: !!str 0.24.0
+
+source:
+  fn: doit-0.24.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/doit/doit-0.24.0.tar.gz
+  md5: 6f8a88277fba15607f301014866c06de
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - doit = doit:main
+    #
+    # Would create an entry point called doit that calls doit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - six
+    - macfsevents # [osx]
+    - pyinotify  # [linux]
+
+  run:
+    - python
+    - six
+    - macfsevents # [osx]
+    - pyinotify # [linux]
+
+test:
+  # Python imports
+  imports:
+    - doit
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pydoit.org
+  license: MIT License
+  summary: doit - Automation Tool
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

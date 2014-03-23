@@ -1,0 +1,20 @@
+package:
+  name: tal
+  version: 1.9
+
+source:
+  fn: tal-1.9.tar.gz [not win]
+  url: http://thomasjensen.com/software/tal/tal-1.9.tar.gz [not win]
+
+build:
+  number: 0
+
+test:
+  commands:
+    - tal -h
+
+about:
+  home: http://thomasjensen.com/software/tal/
+  license: Ambiguous-BSD?
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:

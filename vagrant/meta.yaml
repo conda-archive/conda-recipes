@@ -13,7 +13,7 @@ test:
   commands:
     - vagrant up
     - vagrant ssh -c "echo test"
-    - vagrant destroy
+    - vagrant destroy -f
 
 about:
   home: http://www.vagrantup.com/

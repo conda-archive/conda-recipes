@@ -1,0 +1,28 @@
+package:
+  name: doto
+  version: 0.2
+
+source: 
+  git_url: git@github.com:quasiben/doto.git
+  git_tag: v0.2
+
+requirements:
+  build:
+    - python
+    - distribute
+
+  run:
+    - python
+    - requests
+    - pycrypto
+    - six 
+
+test:
+  # Python imports
+  imports:
+    - doto
+
+about:
+  home: https://github.com/quasiben/doto
+  license: BSD
+

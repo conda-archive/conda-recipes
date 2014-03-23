@@ -1,0 +1,18 @@
+package:
+  name: notepad2-mod
+  version: 4.2.25.897
+
+source:
+  fn: Notepad2-mod.4.2.25.897_x86.zip [win32]
+  url: https://github.com/XhmikosR/notepad2-mod/releases/download/4.2.25.897/Notepad2-mod.4.2.25.897_x86.zip [win32]
+  fn: Notepad2-mod.4.2.25.897_x64.zip [win64]
+  url: https://github.com/XhmikosR/notepad2-mod/releases/download/4.2.25.897/Notepad2-mod.4.2.25.897_x64.zip [win64]
+
+build:
+  number: 0
+
+about:
+  home: http://xhmikosr.github.io/notepad2-mod/
+  license: BSD
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:
