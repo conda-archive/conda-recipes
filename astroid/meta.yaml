@@ -38,7 +38,7 @@ test:
   # Python imports
   imports:
     - astroid
-    - astroid.test
+    - astroid.test [py3k]
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
