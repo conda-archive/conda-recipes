@@ -22,7 +22,7 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  number: 2
 
 requirements:
   build:
@@ -39,10 +39,7 @@ test:
   # Python imports
   imports:
     - logilab.common.ureports
-    - logilab.common.test
-    - logilab.common.test.data
-    - logilab.common.test.data.lmfp
-    - logilab.common.test.data.find_test
+    - logilab.common.test [py3k]
     - logilab.common
 
   # commands:
