@@ -6,7 +6,7 @@ source:
   git_url: git://github.com/liftoff/GateOne.git
 
 build:
-  number: 1
+  number: 2
   entry_points:
     - gateone = gateone.core.server:main
 
