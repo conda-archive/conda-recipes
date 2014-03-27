@@ -7,16 +7,17 @@ source:
   url: http://ftp.gnu.org/gnu/automake/automake-1.14.tar.gz
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
     - m4
     - autoconf
+    - perl
   run:
     - m4
     - autoconf
-
+    - perl
 test:
   commands:
     - automake --help
