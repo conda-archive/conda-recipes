@@ -12,17 +12,17 @@ source:
 
 
 build:
-  number: 2
+  number: 3
 
-  has_prefix_files:
-    - lib/libaspell.15.dylib
-    - lib/libaspell.dylib
+  # has_prefix_files:
+  #   - lib/libaspell.15.dylib
+  #   - lib/libaspell.dylib
 
 test:
   commands:
     - aspell --help
     # Make sure the build prefix is not hard-coded into aspell
-    - aspell dump config | grep -v "_build"
+    - if aspell dump config | grep "_build"; then exit 1; fi
 
 about:
   home: http://aspell.net/
