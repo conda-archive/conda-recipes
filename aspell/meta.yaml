@@ -10,6 +10,9 @@ source:
     # http://www.freebsd.org/cgi/query-pr.cgi?pr=180565&cat=
     - aspell.patch
 
+build:
+  number: 1
+
 test:
   commands:
     - aspell --help
