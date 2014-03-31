@@ -8,7 +8,6 @@ function patch_strings_in_file() {
     STRINGS=$(strings ${FILE} | grep ${PATTERN} | sort -u -r)
 
     if [ "${STRINGS}" != "" ] ; then
-        echo "File '${FILE}' contain strings with '${PATTERN}' in them:"
 
         for OLD_STRING in ${STRINGS} ; do
             # Create the new string with a simple bash-replacement
@@ -26,12 +25,10 @@ function patch_strings_in_file() {
                 done
 
                 # Now, replace every occurrence of OLD_STRING with NEW_STRING
-                echo -n "Replacing ${OLD_STRING} with ${NEW_STRING}... "
                 hexdump -ve '1/1 "%.2X"' ${FILE} | \
                 sed "s/${OLD_STRING_HEX}/${NEW_STRING_HEX}/g" | \
                 xxd -r -p > ${FILE}.tmp
                 mv ${FILE}.tmp ${FILE}
-                echo "Done!"
             else
                 echo "New string '${NEW_STRING}' is longer than old" \
                      "string '${OLD_STRING}'. Skipping."
@@ -51,6 +48,9 @@ fi
 patch_strings_in_file "$PREFIX/lib/libaspell.dylib" "$PLACEHOLDER_PREFIX" "$PREFIX"
 patch_strings_in_file "$PREFIX/lib/libaspell.15.dylib" "$PLACEHOLDER_PREFIX" "$PREFIX"
 
+# Unfortunately, this can't detect if you actually did install a dictionary
+# alongside aspell, as aspell would be a dependency of such a package and
+# would be linked first.
 if [ ! -e "$PREFIX/conda-meta/aspell-[!0123456789]*" ]; then
     echo "Note: The aspell package does not come with any dictionaries. You should
 install at least one dictionary, e.g., aspell-en." > "$PREFIX/.messages.txt"
