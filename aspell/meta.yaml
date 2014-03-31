@@ -10,12 +10,19 @@ source:
     # http://www.freebsd.org/cgi/query-pr.cgi?pr=180565&cat=
     - aspell.patch
 
+
 build:
-  number: 1
+  number: 2
+
+  has_prefix_files:
+    - lib/libaspell.15.dylib
+    - lib/libaspell.dylib
 
 test:
   commands:
     - aspell --help
+    # Make sure the build prefix is not hard-coded into aspell
+    - aspell dump config | grep -v "_build"
 
 about:
   home: http://aspell.net/
