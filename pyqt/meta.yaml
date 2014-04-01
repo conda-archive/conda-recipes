@@ -8,7 +8,7 @@ source:
   sha1: ef3bb2a05a5c8c3ab7578a0991ef5a4e17c314c0                                               # [osx]
   fn: PyQt-x11-gpl-4.10.4.tar.gz                                                               # [linux]
   url: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10.4/PyQt-x11-gpl-4.10.4.tar.gz # [linux]
-  sha1: jkjkjkjkfdjsfdkfdkfdkfdjkfdjfkdjfkdjfkdj                                               # [linux]
+  sha1: 33243462987a0ff135487855e2dcd1de1834d1fa                                               # [linux]
   patches:
     - configure.patch
 
