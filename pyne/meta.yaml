@@ -1,9 +1,10 @@
 package:
   name: pyne
-  version: master
+  version: staging
 
 source:
-  git_url: git@github.com:pyne/pyne.git
+  fn: pyne.tar.gz
+  url : https://github.com/pyne/pyne/archive/staging.tar.gz
 
 requirements:
   build:
@@ -19,6 +20,7 @@ requirements:
     - hdf5
     - numpy
     - scipy
+    - pytables
 
 test:
   requires:
@@ -33,9 +35,9 @@ test:
     - pyne.material
     - pyne.nucname
     - pyne.pyne_config
-    - pyne.stlconverters
     - pyne.xs.models
 
+
 about:
-  home: http://pynesim.org/
+  home: http://pyne.io/
   license: BSD

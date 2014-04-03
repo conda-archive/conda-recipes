@@ -4,6 +4,10 @@ package:
   name: test-meta
   version: 1.0
 
+build:
+  has_prefix_files:
+    - test-has-prefix
+
 requirements:
   run:
     - python

@@ -6,15 +6,14 @@ package:
 source:
     fn: wxPython-src-3.0.0.0.tar.bz2
     url: http://downloads.sourceforge.net/wxpython/wxPython-src-3.0.0.0.tar.bz2
+    sha1: 48451763275cfe4e5bbec49ccd75bc9652cba719
 
 build:
-    number: 0
+    number: 2
 
 requirements:
     build:
         - python
-        - distribute
-
     run:
         - python
 
@@ -25,4 +24,3 @@ test:
 about:
     home: http://www.wxpython.org
     license: wxWindows Licese
-

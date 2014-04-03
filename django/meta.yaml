@@ -1,17 +1,18 @@
 package:
   name: django
-  version: 1.5.4
+  version: !!str 1.6.2
 
 source:
-  fn: Django-1.5.4.tar.gz
-  url: https://pypi.python.org/packages/source/D/Django/Django-1.5.4.tar.gz
-  md5: b2685469bb4d1fbb091316e21f4108de
+  fn: Django-1.6.2.tar.gz
+  url: https://pypi.python.org/packages/source/D/Django/Django-1.6.2.tar.gz
+  md5: 45d974c623b3bfbf9976f3d808fe1ee9
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
-  # entry_points:
+  #preserve_egg_dir: True
+  #entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -34,9 +35,163 @@ requirements:
 test:
   # Python imports
   imports:
+    - django.http
+    - django.contrib.flatpages.templatetags
+    - django.conf
+    - django.conf.locale.sv
+    - django.conf.locale.ka
+    - django.conf.locale.sr
+    - django.conf.locale.sq
+    - django.conf.locale.ja
+    - django.conf.locale.sl
+    - django.conf.locale.nn
+    - django.conf.locale.sk
+    - django.conf.locale.ga
+    - django.contrib.humanize
+    - django.contrib.webdesign
+    - django.conf.locale.ca
+    - django.contrib.gis.tests.distapp
+    - django.contrib.formtools.wizard
+    - django.core.handlers
+    - django.conf.locale.cy
+    - django.conf.locale.es_MX
+    - django.contrib.contenttypes
+    - django.conf.locale.cs
+    - django.contrib.formtools.tests
+    - django.middleware
+    - django.contrib.flatpages
+    - django.conf.locale.pt
+    - django.contrib
+    - django.core.mail.backends
+    - django.contrib.gis.db
+    - django.contrib.staticfiles.templatetags
+    - django.contrib.sessions.management
+    - django.contrib.messages.storage
+    - django.conf.locale.kn
+    - django.conf.locale.ko
+    - django.conf.locale.km
+    - django.conf.locale.es_NI
+    - django.conf.locale.pl
+    - django.contrib.syndication
+    - django.conf.locale.zh_TW
+    - django.contrib.gis.utils
+    - django.contrib.formtools.wizard.storage
+    - django.conf.locale.en_GB
+    - django.conf.locale.fy_NL
+    - django.conf.locale.uk
+    - django.contrib.gis.gdal.tests
+    - django.conf.locale.lv
+    - django.conf.locale.lt
+    - django.conf.locale.de
+    - django.db.backends.dummy
+    - django.conf.locale.da
+    - django.contrib.gis.db.backends.mysql
+    - django.core.mail
+    - django.db.backends.oracle
+    - django.conf.locale
+    - django.db.backends.mysql
+    - django.contrib.gis.db.backends
+    - django.conf.locale.ml
+    - django.db
+    - django.conf.urls
+    - django.contrib.gis.tests.geoadmin
+    - django.core.management.commands
+    - django.conf.locale.et
+    - django.conf.locale.eu
+    - django.conf.locale.mn
+    - django.conf.locale.ru
+    - django.contrib.formtools
+    - django.contrib.admindocs.tests
+    - django.conf.locale.es
+    - django.conf.locale.el
+    - django.conf.locale.en
+    - django.conf.locale.ro
+    - django.conf.locale.mk
+    - django.template
+    - django.contrib.gis.db.backends.postgis
+    - django.conf.locale.bn
+    - django.core.management
+    - django.conf.locale.bg
+    - django.contrib.gis.tests.relatedapp
+    - django.contrib.gis.geos.tests
+    - django.contrib.sessions.backends
+    - django.conf.locale.bs
+    - django.conf.locale.sr_Latn
+    - django.conf.locale.nl
+    - django.contrib.webdesign.templatetags
+    - django.contrib.sites
+    - django.contrib.admindocs
+    - django.contrib.gis.tests.geo3d
+    - django.contrib.redirects
+    - django.conf.locale.nb
+    - django.contrib.sessions
+    - django.utils.unittest
+    - django.contrib.gis.geoip
+    - django.contrib.gis.db.backends.oracle
+    - django.core
+    - django.conf.locale.es_PR
+    - django.conf.locale.vi
+    - django.templatetags
+    - django.core.files
+    - django.contrib.sessions.management.commands
+    - django.conf.locale.th
+    - django.conf.locale.ta
+    - django.conf.locale.gl
+    - django.contrib.gis.tests
+    - django.contrib.gis
+    - django.conf.locale.tr
     - django
+    - django.contrib.gis.management
+    - django.contrib.gis.tests.layermap
+    - django.conf.locale.de_CH
+    - django.views.decorators
+    - django.contrib.gis.geos
+    - django.contrib.gis.tests.geogapp
+    - django.utils.translation
+    - django.core.servers
+    - django.forms.extras
+    - django.conf.locale.hi
+    - django.conf.locale.zh_CN
+    - django.contrib.messages.tests
+    - django.contrib.gis.geometry
+    - django.conf.locale.he
+    - django.views
+    - django.utils
+    - django.core.checks
+    - django.conf.locale.hr
+    - django.conf.locale.pt_BR
+    - django.conf.locale.hu
+    - django.contrib.gis.maps
+    - django.contrib.gis.gdal
+    - django.db.backends.sqlite3
+    - django.contrib.gis.management.commands
+    - django.db.backends
+    - django.conf.locale.es_AR
+    - django.contrib.gis.gdal.prototypes
+    - django.contrib.gis.maps.openlayers
+    - django.conf.locale.ar
+    - django.contrib.staticfiles.management.commands
+    - django.core.checks.compatibility
+    - django.conf.locale.te
+    - django.contrib.humanize.templatetags
+    - django.forms
+    - django.contrib.messages
+    - django.conf.locale.fr
+    - django.conf.locale.id
+    - django.template.loaders
+    - django.contrib.staticfiles
+    - django.dispatch
+    - django.contrib.gis.db.backends.spatialite
+    - django.conf.locale.it
+    - django.conf.locale.fa
+    - django.conf.locale.fi
+    - django.contrib.staticfiles.management
+    - django.contrib.gis.tests.inspectapp
+    - django.db.backends.postgresql_psycopg2
+    - django.contrib.gis.tests.geoapp
+    - django.contrib.flatpages.tests
 
-  # commands:
+  #commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -51,6 +206,7 @@ test:
 about:
   home: http://www.djangoproject.com/
   license: BSD License
+  summary: 'A high-level Python Web framework that encourages rapid development and clean, pragmatic design.'
 
 # See
 # http://docs.continuum.io/conda/build.html for

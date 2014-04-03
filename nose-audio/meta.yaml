@@ -1,0 +1,62 @@
+package:
+  name: nose-audio
+  version: !!str 0.2
+
+source:
+  fn: nose-audio-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/n/nose-audio/nose-audio-0.2.tar.gz
+  md5: 1532fae2134205d3b1555380795cdadb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - nose-audio = nose-audio:main
+    #
+    # Would create an entry point called nose-audio that calls nose-audio.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nose
+
+  run:
+    - python
+    - nose
+
+test:
+  # Python imports
+  imports:
+    - naudio
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ralphbean/nose-audio/
+  license: LGPLv2+
+  summary: 'Add audio to your test suite'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
