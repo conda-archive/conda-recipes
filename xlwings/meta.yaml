@@ -1,0 +1,26 @@
+package:
+  name: xlwings
+  version: 0.1.0
+
+source:
+  fn: xlwings-0.1.1.zip
+  url: https://github.com/ZoomerAnalytics/xlwings/archive/v0.1.0.zip
+
+requirements:
+  build:
+    - python
+    - pywin32
+
+  run:
+    - python
+    - pywin32
+
+#test:
+#  imports:
+#   - xlwings
+
+about:
+  home: http://xlwings.org
+  license: BSD
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:
