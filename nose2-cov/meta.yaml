@@ -1,0 +1,63 @@
+package:
+  name: nose2-cov
+  version: !!str 1.0a4
+
+source:
+  fn: nose2-cov-1.0a4.tar.gz
+  url: https://pypi.python.org/packages/source/n/nose2-cov/nose2-cov-1.0a4.tar.gz
+  md5: 6442f03e2ea732b0e38eb5b00fbe0b31
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - nose2-cov = nose2-cov:main
+    #
+    # Would create an entry point called nose2-cov that calls nose2-cov.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nose2
+    - cov-core
+
+  run:
+    - python
+    - nose2
+    - cov-core
+
+test:
+  # Python imports
+  # imports:
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/memedough/nose2-cov/overview
+  license: MIT License
+  summary: 'nose2 plugin for coverage reporting, including subprocesses and multiprocessing'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
