@@ -1,0 +1,13 @@
+package:
+  name: emacs
+  version: 24.3
+
+source:
+  fn: emacs-24.3.tar.xz
+  url: http://ftp.gnu.org/gnu/emacs/emacs-24.3.tar.xz
+
+requirements:
+  build:
+        - ncurses
+  run:
+        - ncurses
