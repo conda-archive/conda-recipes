@@ -1,52 +1,50 @@
 package:
-  name: livereload
-  version: !!str 2.2.0
+  name: nose2-cov
+  version: !!str 1.0a4
 
 source:
-  # fn: livereload-2.2.0.tar.gz
-  # url: https://pypi.python.org/packages/source/l/livereload/livereload-2.2.0.tar.gz
-  # md5: ee9208c932cca9ff10e50dd38006c43f
+  fn: nose2-cov-1.0a4.tar.gz
+  url: https://pypi.python.org/packages/source/n/nose2-cov/nose2-cov-1.0a4.tar.gz
+  md5: 6442f03e2ea732b0e38eb5b00fbe0b31
 #  patches:
    # List any patch files here
    # - fix.patch
-   git_url: https://github.com/lepture/python-livereload.git
 
-build:
-  preserve_egg_dir: True
+# build:
+  #preserve_egg_dir: True
   #entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - livereload = livereload:main
+    # - nose2-cov = nose2-cov:main
     #
-    # Would create an entry point called livereload that calls livereload.main()
+    # Would create an entry point called nose2-cov that calls nose2-cov.main()
 
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 3
+  # number: 1
 
 requirements:
   build:
     - python
     - setuptools
-    - tornado
+    - nose2
+    - cov-core
 
   run:
     - python
-    - tornado
-    - setuptools
-    - argparse # [py26]
+    - nose2
+    - cov-core
 
 test:
   # Python imports
-  imports:
-    - livereload
+  # imports:
 
-  commands:
+  #commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
-    - livereload --help
+
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -56,9 +54,9 @@ test:
     # - nose
 
 about:
-  home: https://github.com/lepture/python-livereload
-  license: BSD License
-  summary: Python LiveReload is an awesome tool for web developers
+  home: http://bitbucket.org/memedough/nose2-cov/overview
+  license: MIT License
+  summary: 'nose2 plugin for coverage reporting, including subprocesses and multiprocessing'
 
 # See
 # http://docs.continuum.io/conda/build.html for

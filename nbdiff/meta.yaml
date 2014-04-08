@@ -1,52 +1,65 @@
 package:
-  name: livereload
-  version: !!str 2.2.0
+  name: nbdiff
+  version: !!str 1.0.2
 
 source:
-  # fn: livereload-2.2.0.tar.gz
-  # url: https://pypi.python.org/packages/source/l/livereload/livereload-2.2.0.tar.gz
-  # md5: ee9208c932cca9ff10e50dd38006c43f
+  fn: nbdiff-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/n/nbdiff/nbdiff-1.0.2.tar.gz
+  md5: 5980dca70ca87c42eba666a2554a1192
 #  patches:
    # List any patch files here
    # - fix.patch
-   git_url: https://github.com/lepture/python-livereload.git
 
 build:
-  preserve_egg_dir: True
-  #entry_points:
+  #preserve_egg_dir: True
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - livereload = livereload:main
+    # - nbdiff = nbdiff:main
     #
-    # Would create an entry point called livereload that calls livereload.main()
+    # Would create an entry point called nbdiff that calls nbdiff.main()
 
+    - nbdiff = nbdiff.commands:diff
+    - nbmerge = nbdiff.commands:merge
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 3
+  # number: 1
 
 requirements:
   build:
     - python
     - setuptools
-    - tornado
+    - flask
+    - jinja2
+    - ipython
+    - python-levenshtein
 
   run:
     - python
-    - tornado
-    - setuptools
+    - flask
+    - jinja2
+    - ipython
+    - python-levenshtein
+    - sqlalchemy
     - argparse # [py26]
 
 test:
   # Python imports
   imports:
-    - livereload
+    - nbdiff
+    - nbdiff.adapter
+    - nbdiff.server
+    - nbdiff.server.command
+    - nbdiff.server.database
 
   commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
-    - livereload --help
+
+    - nbdiff --help
+    - nbmerge --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -56,9 +69,9 @@ test:
     # - nose
 
 about:
-  home: https://github.com/lepture/python-livereload
+  home: https://github.com/tarmstrong/nbdiff
   license: BSD License
-  summary: Python LiveReload is an awesome tool for web developers
+  summary: 'A tool for diffing and merging IPython Notebook files'
 
 # See
 # http://docs.continuum.io/conda/build.html for
