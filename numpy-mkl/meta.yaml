@@ -1,0 +1,28 @@
+package:
+  name: numpy
+  version: 1.8.0
+
+source:
+  fn: numpy-1.8.0.tar.gz
+  url: https://pypi.python.org/packages/source/n/numpy/numpy-1.8.0.tar.gz
+  md5: 2a4b0423a758706d592abb6721ec8dcd
+
+requirements:
+  build:
+    - python
+    - mkl-devel
+  run:
+    - python
+    - mkl-rt
+
+test:
+  requires:
+    - nose
+  imports:
+    - numpy
+    - numpy.linalg.lapack_lite
+    - numpy.core._dotblas
+
+about:
+  home: http://numpy.scipy.org/
+  license: BSD

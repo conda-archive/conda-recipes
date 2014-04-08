@@ -2,11 +2,8 @@
 
 $PYTHON setup.py install
 
-rm -rf $PREFIX/share
+# Add more build steps here, if they are necessary.
 
-if [ $PY3K == 0 ]; then
-    cd $SP_DIR
-    rm sympy/mpmath/tests/torture.py
-    rm sympy/mpmath/tests/extratest_gamma.py
-    rm sympy/mpmath/libmp/exec_py3.py
-fi
+# See
+# http://docs.continuum.io/conda/build.html
+# for a list of environment variables that are set during the build process.

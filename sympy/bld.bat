@@ -1,8 +1,8 @@
-python setup.py install
+"%PYTHON%" setup.py install
 if errorlevel 1 exit 1
 
-if "%PY3K%"=="0" (
-    del %SP_DIR%\sympy\mpmath\tests\torture.py
-    del %SP_DIR%\sympy\mpmath\tests\extratest_gamma.py
-    del %SP_DIR%\sympy\mpmath\libmp\exec_py3.py
-)
+:: Add more build steps here, if they are necessary.
+
+:: See
+:: http://docs.continuum.io/conda/build.html
+:: for a list of environment variables that are set during the build process.

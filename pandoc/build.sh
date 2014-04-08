@@ -6,14 +6,14 @@ if [ `uname` == Linux ]; then
     #   getAppUserDataDirectory "cabal"
     # I couldn't figure out how to run this dynamically. ghci doesn't seem to have
     # a -c switch like python.
-    export PATH="$HOME/.cabal/bin:$PATH"
+    #export PATH="$HOME/.cabal/bin:$PATH"
     cabal install alex happy
     cabal install --only-dependencies
     cabal install hsb2hs  # a required build tool
     cabal install --flags="embed_data_files" citeproc-hs
     cabal configure --flags="embed_data_files"
     cabal build
-    mkdir $PREFIX/bin
+    mkdir -p $PREFIX/bin
     cp $SRC_DIR/dist/build/pandoc/pandoc $PREFIX/bin/pandoc
 
 fi

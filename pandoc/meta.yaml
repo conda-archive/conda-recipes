@@ -14,8 +14,18 @@ test:
   commands:
     - pandoc --help
 
+requirements:           # [linux]
+  build:                # [linux]
+    - gmp 4.*           # [linux]
+    - libffi            # [linux]
+    - zlib              # [linux]
+  run:                  # [linux]
+    - gmp 4.*           # [linux]
+    - libffi            # [linux]
+    - zlib              # [linux]
+
 build:  # [linux]
-  number: 1 # [linux]
+  number: 3 # [linux]
 
 about:
   home: http://johnmacfarlane.net/pandoc/

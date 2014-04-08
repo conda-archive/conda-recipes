@@ -1,6 +1,6 @@
 package:
   name: patchelf
-  version: 0.15
+  version: 0.6
 
 source:
   git_url: https://github.com/NixOS/patchelf.git

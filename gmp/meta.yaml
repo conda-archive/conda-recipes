@@ -6,6 +6,9 @@ source:
   fn: gmp-5.1.2.tar.bz2
   url: ftp://ftp.gnu.org/gnu/gmp/gmp-5.1.2.tar.bz2
 
+build:
+  number: 2
+
 about:
   home: http://gmplib.org/
   license: GPL 3
@@ -13,7 +16,3 @@ about:
 test:
   files:
     - test.c
-  # commands:
-  #   - echo $PREFIX
-  #   - cc -I $PREFIX/include -L $PREFIX/lib test.c -o test.out
-  #   - ./test.out
