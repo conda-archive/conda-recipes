@@ -2,5 +2,6 @@
 
 $PYTHON setup.py install
 
-mkdir $EXAMPLES
-mv examples $EXAMPLES/bokeh
+#I guess conda-build does not export EXAMPLES
+#mkdir $EXAMPLES
+#mv examples $EXAMPLES/bokeh
