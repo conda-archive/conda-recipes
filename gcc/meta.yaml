@@ -12,7 +12,7 @@ requirements:
     # These are taken from the output of the configure scripts
     - gmp >=4.2
     - mpfr >=2.4.0
-    - mpc >= 0.8.0
+    - mpc >=0.8.0
   run:
     - gmp >=4.2
     - mpfr >=2.4.0
