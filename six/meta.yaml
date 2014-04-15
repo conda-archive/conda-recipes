@@ -1,0 +1,60 @@
+package:
+  name: six
+  version: 1.3.0
+
+source:
+  fn: six-1.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/six/six-1.3.0.tar.gz#md5=ec47fe6070a8a64c802363d2c2b1e2ee
+  md5: ec47fe6070a8a64c802363d2c2b1e2ee
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - six = six:main
+    #
+    # Would create an entry point called six that calls six.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - six
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/six/
+  license: MIT License
+  summary: 'Python 2 and 3 compatibility utilities'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
