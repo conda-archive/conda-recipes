@@ -16,7 +16,7 @@ requirements:
   run:
     - gmp >=4.2
     - mpfr >=2.4.0
-    - mpc >= 0.8.0
+    - mpc >=0.8.0
 
 about:
   home: http://gcc.gnu.org/
