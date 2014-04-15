@@ -1,0 +1,18 @@
+package:
+  name: isl
+  version: 0.12.2
+
+source:
+  fn: isl-0.12.2.tar.bz2
+  url: ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-0.12.2.tar.bz2
+  sha1: ca98a91e35fb3ded10d080342065919764d6f928
+
+requirements:
+  build:
+    - gmp
+  run:
+    - gmp
+
+about:
+  license: MIT
+  summary: "isl is a thread-safe C library for manipulating sets and relations of integer points bounded by affine constraints."
