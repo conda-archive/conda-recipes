@@ -22,6 +22,10 @@ requirements:
         - matplotlib
         - libxml2     # [unix]
 
+test:
+    imports:
+      - openturns
+
 about:
     home: http://openturns.org/
     license: GNU Lesser General Public License (LGPL)
