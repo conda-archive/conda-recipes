@@ -23,5 +23,4 @@ cmake \
     -DPYTHON_INCLUDE_DIR=$PREFIX/include/python2.7/ \
     -DCMAKE_INSTALL_PREFIX=$PREFIX/ \
     ..
-make -j -C lib
 make install
