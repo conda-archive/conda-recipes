@@ -1,0 +1,23 @@
+package:
+  name: vim
+  version: 7.4
+
+source: 
+  hg_url: https://code.google.com/p/vim/
+
+requirements:
+
+  build:
+    - cmake
+
+test:
+  commands:
+    - vim --help
+    - vim --version
+    - vim --version | grep 7.4
+
+
+about:
+  home: https://vim.googlecode.com/
+  license: BSD
+
