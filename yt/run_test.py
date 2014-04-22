@@ -1,7 +1,6 @@
 import yt.analysis_modules.halo_finding.fof.EnzoFOF
 import yt.analysis_modules.halo_finding.hop.EnzoHop
 import yt.utilities.data_point_utilities
-import yt.utilities.hdf5_light_reader
 import yt.utilities.lib.CICDeposit
 import yt.utilities.lib.ContourFinding
 import yt.utilities.lib.DepthFirstOctree
