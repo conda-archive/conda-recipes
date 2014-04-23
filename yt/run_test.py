@@ -10,15 +10,12 @@ import yt.utilities.lib.Octree
 import yt.utilities.lib.PointsInVolume
 import yt.utilities.lib.QuadTree
 import yt.utilities.lib.RayIntegrators
-import yt.utilities.lib.VolumeIntegrator
 import yt.utilities.lib.amr_kdtools
 import yt.utilities.lib.fortran_reader
-import yt.utilities.lib.freetype_writer
 import yt.utilities.lib.geometry_utils
 import yt.utilities.lib.grid_traversal
 import yt.utilities.lib.marching_cubes
 import yt.utilities.lib.misc_utilities
-import yt.utilities.lib.png_writer
 import yt.utilities.lib.write_array
 import yt.utilities.spatial._distance_wrap
 import yt.utilities.spatial.ckdtree

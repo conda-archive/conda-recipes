@@ -3,7 +3,7 @@ package:
   version: 3.0
 
 source:
-  hg_url: https://bitbucket.org/jzuhone/yt-3.x
+  hg_url: https://bitbucket.org/yt_analysis/yt/yt-3.0
 
 build:
   entry_points:
@@ -23,6 +23,7 @@ requirements:
     - h5py
     - sympy
     - matplotlib
+    - ipython
 
 test:
   commands:
