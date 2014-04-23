@@ -1,0 +1,18 @@
+package:
+  name: languagetool
+  version: 2.6 # Overriden by build.sh
+
+source:
+  git_url: git://github.com/languagetool-org/languagetool.git
+
+test:
+  files:
+    - test.txt
+
+  commands:
+    - java -jar $PREFIX/languagetool/languagetool-commandline.jar test.txt
+
+about:
+  home: https://www.languagetool.org/
+  license: LGPL
+  summary: "LanguageTool is an Open Source proofreading software for English, French, German, Polish, Russian, and more than 20 other languages. It finds many errors that a simple spell checker cannot detect."
