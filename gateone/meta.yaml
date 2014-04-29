@@ -1,0 +1,36 @@
+package:
+  name: gateone
+  version: master
+
+source:
+  git_url: git://github.com/liftoff/GateOne.git
+
+build:
+  number: 2
+  entry_points:
+    - gateone = gateone.core.server:main
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - futures
+    - html5lib
+    - tornado
+  run:
+    - python
+    - futures
+    - tornado
+    - html5lib
+
+test:
+  imports:
+    - gateone
+    - terminal
+    - termio
+    - onoff
+
+about:
+  home: http://liftoffsoftware.com/Products/GateOne 
+  license: Dual License AGPLv3 or Commercial Licensing
+

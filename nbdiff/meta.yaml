@@ -1,0 +1,78 @@
+package:
+  name: nbdiff
+  version: !!str 1.0.2
+
+source:
+  fn: nbdiff-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/n/nbdiff/nbdiff-1.0.2.tar.gz
+  md5: 5980dca70ca87c42eba666a2554a1192
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  #preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - nbdiff = nbdiff:main
+    #
+    # Would create an entry point called nbdiff that calls nbdiff.main()
+
+    - nbdiff = nbdiff.commands:diff
+    - nbmerge = nbdiff.commands:merge
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - flask
+    - jinja2
+    - ipython
+    - python-levenshtein
+
+  run:
+    - python
+    - flask
+    - jinja2
+    - ipython
+    - python-levenshtein
+    - sqlalchemy
+    - argparse # [py26]
+
+test:
+  # Python imports
+  imports:
+    - nbdiff
+    - nbdiff.adapter
+    - nbdiff.server
+    - nbdiff.server.command
+    - nbdiff.server.database
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - nbdiff --help
+    - nbmerge --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/tarmstrong/nbdiff
+  license: BSD License
+  summary: 'A tool for diffing and merging IPython Notebook files'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

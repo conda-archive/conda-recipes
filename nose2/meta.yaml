@@ -1,0 +1,77 @@
+package:
+  name: nose2
+  version: !!str 0.4.7
+
+source:
+  fn: nose2-0.4.7.tar.gz
+  url: https://pypi.python.org/packages/source/n/nose2/nose2-0.4.7.tar.gz
+  md5: ac90c9536a0a52b5f5873e6405d50c43
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  #preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - nose2 = nose2:main
+    #
+    # Would create an entry point called nose2 that calls nose2.main()
+
+    - nose2 = nose2:discover
+    - nose2-2.7 = nose2:discover
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six >=1.1,<1.4
+    - argparse [py26]
+    - unittest2 [py26]
+
+  run:
+    - python
+    - six
+    - argparse [py26]
+    - unittest2 [py26]
+
+test:
+  # Python imports
+  imports:
+    - nose2
+    - nose2.backports
+    - nose2.plugins
+    - nose2.plugins.loader
+    - nose2.tests
+    - nose2.tests.functional
+    - nose2.tests.unit
+    - nose2.tools
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - nose2 --help
+    - nose2-2.7 --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/nose-devs/nose2
+  license: BSD License
+  summary: 'nose2 is the next generation of nicer testing for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

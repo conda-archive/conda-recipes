@@ -2,15 +2,18 @@
 # in the conda build command.
 
 package:
-  name: pycosat
+  name: sample
   version: 0.6.0
 
 build:
   number: 9
   string: xyz
+  no_link:
+    - lib/python*/site-packages/test_pycosat.py
+    - lib/python*/site-packages/*.so
 
 source:
-  git_url: git@github.com:ContinuumIO/pycosat.git
+  git_url: git://github.com/ContinuumIO/pycosat.git
   git_tag: 0.6.0
   patches:
     - foo.patch
@@ -26,6 +29,10 @@ test:
     - uf20-098.cnf
   imports:
     - pycosat
+  commands:
+    - echo "Testing from the meta.yaml"
+    - echo "This is Windows" # [win]
+    - echo "This is not Windows" # [not win]
 
 about:
   home: https://github.com/ilanschnell/pycosat

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+gateone --settings_dir="$HOME/.gateone/conf.d" --disable_ssl --origins='*' --url_prefix="" --port="4444" --log_file_prefix=$HOME/.gateone/gateone.log  --session_dir=$HOME/.gateone/session --user_dir=$HOME/.gateone --pid_file=$HOME/.gateone/gateone.pid
+
+

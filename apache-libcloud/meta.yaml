@@ -1,0 +1,19 @@
+package:
+  name: apache-libcloud
+  version: 0.14.1
+
+source:
+  fn: apache-libcloud-0.14.1.tar.bz2
+  url: http://apache.osuosl.org/libcloud/apache-libcloud-0.14.1.tar.bz2
+  sha1: fd977f2a437d71cd8d76cec6b67f6bf0251658b9
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+
+about:
+  home: http://libcloud.apache.org
+  license: Apache License 2.0

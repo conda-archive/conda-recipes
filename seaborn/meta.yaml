@@ -1,0 +1,73 @@
+package:
+  name: seaborn
+  version: !!str 0.2.1
+
+source:
+  fn: seaborn-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/seaborn/seaborn-0.2.1.tar.gz
+  md5: e717341e46b50062a62603d3c88175df
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - seaborn = seaborn:main
+    #
+    # Would create an entry point called seaborn that calls seaborn.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - husl
+    - moss
+    - patsy
+    - pandas
+    - statsmodels
+    - six
+
+  run:
+    - python
+    - husl
+    - moss
+    - patsy
+    - pandas
+    - statsmodels
+    - six
+
+test:
+  # Python imports
+  imports:
+    - seaborn
+    - seaborn.tests
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://stanford.edu/~mwaskom/software/seaborn/
+  license: BSD License
+  summary: 'Seaborn: improved statistical visualization using Matplotlib'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,34 @@
+package:
+  name: sip
+  version: 4.15.5
+
+source:
+  fn: sip-4.15.5.tar.gz                                                            # [not win]
+  url: http://sourceforge.net/projects/pyqt/files/sip/sip-4.15.5/sip-4.15.5.tar.gz # [not win]
+  sha1: 1e1c912981930754885ba47d708e2664d1c6ba9e                                   # [not win]
+  fn: sip-4.15.4.zip                                                               # [win]
+  url: http://sourceforge.net/projects/pyqt/files/sip/sip-4.15.4/sip-4.15.4.zip    # [win]
+  sha1: 663088693ff9c0656b22e37fed26bfdfe0829562                                   # [win]
+
+requirements:
+  build:
+    - python
+    - python.app # [osx]
+    - mingw      # [win]
+
+  run:
+    - python
+
+test:
+  imports:
+    - sip
+
+  files:
+    - test
+
+  commands:
+    - sip -c test test/word.sip
+
+about:
+  home: http://www.riverbankcomputing.com/software/sip/intro
+  license: GPL

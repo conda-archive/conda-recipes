@@ -11,12 +11,12 @@ build:
 
 requirements:
     build:
-        - cmake        [unix]
+        - cmake       #  [unix]
         - numpy
         - jpeg
         - zlib
         - libpng
-        - ffmpeg
+        - ffmpeg      # [linux]
 
     run:
         - python
@@ -24,7 +24,7 @@ requirements:
         - jpeg
         - zlib         [unix]
         - libpng
-        - ffmpeg
+        - ffmpeg      # [linux]
 
 about:
     home: http://opencv.org/
