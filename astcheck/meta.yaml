@@ -1,0 +1,59 @@
+package:
+  name: astcheck
+  version: !!str 0.2.1
+
+source:
+  fn: astcheck-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/astcheck/astcheck-0.2.1.tar.gz
+  md5: 72081716c4fcd86e7e4e5d3b7df2d6b0
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - astcheck = astcheck:main
+    #
+    # Would create an entry point called astcheck that calls astcheck.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - astcheck
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/takluyver/astcheck
+  license: MIT License
+  summary: 'Check Python ASTs against templates'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
