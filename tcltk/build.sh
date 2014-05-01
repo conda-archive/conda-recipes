@@ -12,7 +12,7 @@ make
 make install
 
 cd $SRC_DIR/tk${VER}/unix
-./configure --with-tcl=$PREFIX/lib --prefix=$PREFIX
+./configure --with-tcl=$PREFIX/lib --prefix=$PREFIX --enable-aqua=yes
 make
 make install
 
