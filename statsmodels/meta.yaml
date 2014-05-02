@@ -23,6 +23,10 @@ requirements:
     - numpy
     - cython
 
+test:
+  imports:
+    - statsmodels
+
 about:
   home: http://statsmodels.sourceforge.net/
   license : BSD License
