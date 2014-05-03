@@ -1,0 +1,17 @@
+package:
+  name: scotch
+  version: "6.0.0"
+
+source:
+  fn: scotch_6.0.0.tar.gz
+  url: https://gforge.inria.fr/frs/download.php/31831/scotch_6.0.0.tar.gz
+  md5: ba117428c0a6cd97d0c93e8b872bb3fe
+  patches:
+    - clock_gettime.patch [osx]
+
+build:
+  number: 1
+
+about:
+  home: http://www.labri.fr/perso/pelegrin/scotch/
+  license: CeCILL-C
