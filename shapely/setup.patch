@@ -1,0 +1,10 @@
+--- setup.py
++++ setup.py
+@@ -202,6 +202,7 @@ ext_modules = [
+     Extension(
+         "shapely.speedups._speedups",
+         ["shapely/speedups/_speedups.c"],
++        include_dirs=[os.path.join(sys.prefix, 'include')],
+         libraries=libraries)
+ ]
+ 

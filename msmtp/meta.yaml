@@ -1,0 +1,30 @@
+package:
+  name: msmtp
+  version: 1.4.32
+
+source:
+  fn: msmtp-rel-1-4-32.zip
+  url: https://github.com/tpn/msmtp/archive/rel-1-4-32.zip
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - openssl
+    - autoconf
+    - gettext
+    - pkg-config
+  run:
+    - openssl
+    - gettext
+
+test:
+  commands:
+    - msmtp --help
+
+about:
+  home: http://msmtp.sourceforge.net/
+  license: GPL 3
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:
