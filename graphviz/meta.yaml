@@ -6,9 +6,27 @@ source:
   fn: graphviz-2.38.0.tar.gz
   url: http://www.graphviz.org/pub/graphviz/stable/SOURCES/graphviz-2.38.0.tar.gz
   md5: 5b6a829b2ac94efcd5fa3c223ed6d3ae
+  patches:
+     - gvconfig_libdir.patch
+#    - patch-project.pbxproj.diff
 
 build:
-  number: 1
+  number: 2
+  binary_relocation: true
+
+requirements:
+  build:
+    - libpng
+    - libtiff
+    - freetype
+    - jpeg
+    - zlib
+  run:
+    - libpng
+    - libtiff
+    - freetype
+    - jpeg
+    - zlib
 
 test:
   commands:
