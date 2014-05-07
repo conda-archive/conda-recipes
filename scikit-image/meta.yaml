@@ -3,7 +3,7 @@ package:
   version: 0.9.3
 
 source:
-  git_url: git@github.com:scikit-image/scikit-image.git
+  git_url: git://github.com/scikit-image/scikit-image.git
   git_tag: v0.9.3
 
 build:
