@@ -8,7 +8,6 @@ source:
   md5: 5b6a829b2ac94efcd5fa3c223ed6d3ae
   patches:
      - gvconfig_libdir.patch
-#    - patch-project.pbxproj.diff
 
 build:
   number: 2
