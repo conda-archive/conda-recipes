@@ -1,0 +1,30 @@
+package:
+  name: scikit-image
+  version: 0.9.3
+
+source:
+  git_url: git@github.com:scikit-image/scikit-image.git
+  git_tag: v0.9.3
+
+build:
+  number: 1            [win]
+
+requirements:
+  build:
+    - python
+    - numpy
+    - scipy
+    - distribute
+    - cython
+  run:
+    - python
+    - numpy
+    - scipy
+
+test:
+  imports:
+    - skimage
+
+about:
+  home: http://scikit-image.org/
+  license: Modified BSD (http://scikit-image.org/docs/dev/license.html)
