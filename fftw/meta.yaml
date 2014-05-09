@@ -1,0 +1,16 @@
+package:
+    name: fftw
+    version: "3.3.3"
+
+source:
+    fn: fftw-3.3.3.tar.gz
+    url: http://www.fftw.org/fftw-3.3.3.tar.gz
+    md5: 0a05ca9c7b3bfddc8278e7c40791a1c2
+
+requirements:
+    build:
+
+about:
+    home: http://fftw.org
+    license: GNU General Public License (GPL)
+    summary: 'The fastest Fourier transform in the west.'
