@@ -1,0 +1,17 @@
+diff --git skimage/segmentation/random_walker_segmentation.py skimage/segmentation/random_walker_segmentation.py
+index 6df714d..e0198bc 100644
+--- skimage/segmentation/random_walker_segmentation.py
++++ skimage/segmentation/random_walker_segmentation.py
+@@ -12,11 +12,7 @@ import warnings
+ 
+ import numpy as np
+ from scipy import sparse, ndimage
+-try:
+-    from scipy.sparse.linalg.dsolve import umfpack
+-    UmfpackContext = umfpack.UmfpackContext()
+-except:
+-    UmfpackContext = None
++UmfpackContext = None
+ try:
+     from pyamg import ruge_stuben_solver
+     amg_loaded = True
