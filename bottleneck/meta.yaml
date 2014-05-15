@@ -1,0 +1,64 @@
+package:
+  name: bottleneck
+  version: !!str 0.8.0
+
+source:
+  fn: Bottleneck-0.8.0.tar.gz
+  url: https://pypi.python.org/packages/source/B/Bottleneck/Bottleneck-0.8.0.tar.gz
+  md5: 1a363fa35ce521eebb838e1bd6520e24
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - bottleneck = bottleneck:main
+    #
+    # Would create an entry point called bottleneck that calls bottleneck.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy >=1.8
+
+  run:
+    - python
+    - numpy >=1.8
+
+test:
+  # Python imports
+  requires:
+    - nose
+  imports:
+    - bottleneck
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://berkeleyanalytics.com/bottleneck
+  license: BSD License
+  summary: 'Fast NumPy array functions written in Cython'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

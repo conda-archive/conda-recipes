@@ -1,0 +1,2 @@
+import bottleneck
+bottleneck.test()
