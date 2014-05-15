@@ -1,0 +1,24 @@
+package:
+  name: scs
+  version: 1.0.2
+
+source:
+  fn: scs-1.0.2.zip [not win]
+  url: https://github.com/cvxgrp/scs/archive/1.0.2.zip
+  patches:
+    - scs.mk.patch
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - system  [linux]
+  run:
+    - system  [linux]
+
+about:
+  home: https://github.com/cvxgrp/scs
+  license: MIT
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:
