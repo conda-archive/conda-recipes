@@ -1,0 +1,32 @@
+
+package:
+    name: mongodb
+    version: 2.4.9
+
+source:
+    git_tag: r2.4.9
+    git_url: https://github.com/mongodb/mongo
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - scons
+        - openssl
+
+    run:
+        - openssl
+
+test:
+    #imports:
+    #    - 
+
+    #commands:
+    #    -
+
+about:
+    home: http://www.mongodb.org/
+    license: AGPL-3 Apache-2.0
+

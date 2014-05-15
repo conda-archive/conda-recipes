@@ -1,0 +1,33 @@
+
+package:
+    name: cytoolz
+    version: 0.6.1
+
+source:
+    fn: cytoolz-0.6.1.tar.gz
+    url: https://pypi.python.org/packages/source/c/cytoolz/cytoolz-0.6.1.tar.gz
+    md5: 1e66f47dec333efa80c9ab781ecad452
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - setuptools
+        - cython
+
+    run:
+        - python
+
+test:
+    imports:
+        - cytoolz
+
+    #commands:
+    #    -
+
+about:
+    home: https://github.com/pytoolz/cytoolz/
+    license: New BSD
+

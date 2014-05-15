@@ -1,0 +1,32 @@
+
+package:
+    name: toolz
+    version: 0.6.0
+
+source:
+  fn: toolz-0.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/t/toolz/toolz-0.6.0.tar.gz
+  md5: 779bd5844a223c9f0be7e7ea03cc02b1
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - setuptools
+
+    run:
+        - python
+
+test:
+    imports:
+        - toolz
+
+    #commands:
+    #    -
+
+about:
+    home: http://toolz.readthedocs.org/
+    license: New BSD
+
