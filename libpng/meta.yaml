@@ -1,0 +1,11 @@
+package:
+  name: libpng
+  version: 1.6.10
+
+source:
+  fn: libpng-1.6.10.tar.gz
+  url: http://sourceforge.net/projects/libpng/files/libpng16/1.6.10/libpng-1.6.10.tar.gz/download
+  md5: b0f0c38a02dc92f70f0053a40abc7e0b
+
+about:
+  home: http://libpng.sourceforge.net

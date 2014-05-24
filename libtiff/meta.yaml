@@ -1,0 +1,11 @@
+package:
+  name: libtiff
+  version: 4.0.3
+
+source:
+  fn: tiff-4.0.3.tar.gz
+  url: http://download.osgeo.org/libtiff/tiff-4.0.3.tar.gz
+  md5: 051c1068e6a0627f461948c365290410
+
+about:
+  home: http://www.remotesensing.org/libtiff/
