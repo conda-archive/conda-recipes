@@ -6,7 +6,7 @@ source:
     fn: master.zip
     url: https://github.com/AprilArcus/vpython-wx/archive/master.zip
     patches:
-        - vpython.patch
+        - vpython.patch   # [osx]
 build:
     number: 0
 

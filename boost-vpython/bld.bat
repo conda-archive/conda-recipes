@@ -1,2 +1,2 @@
-python setup.py install
-if errorlevel 1 exit 1
+cmd /c bootstrap msvc
+b2 --prefix=%PREFIX% --build-type=complete --with-python --with-signals  --toolset=msvc install
