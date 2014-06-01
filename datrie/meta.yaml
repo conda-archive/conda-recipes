@@ -1,10 +1,10 @@
 package:
   name: datrie
-  version: 0.6.1
+  version: 0.7
 
 source:
-  fn: 0.6.1.zip
-  url: https://github.com/kmike/datrie/archive/0.6.1.zip
+  fn: datrie-0.7.zip
+  url: https://github.com/kmike/datrie/archive/0.7.zip
 
 build:
   number: 0

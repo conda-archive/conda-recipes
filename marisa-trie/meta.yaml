@@ -1,28 +1,13 @@
 package:
   name: marisa-trie
-  version: 0.5.1
+  version: 0.6
 
 source:
-  fn: marisa-trie-0.5.1.tar.gz
-  url: https://pypi.python.org/packages/source/m/marisa-trie/marisa-trie-0.5.1.tar.gz
-  md5: 5e076419a6e27a11e720b3ebf95c5ff8
-#  patches:
-   # List any patch files here
-   # - fix.patch
+  fn: marisa-trie-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/m/marisa-trie/marisa-trie-0.6.tar.gz
 
-# build:
-  # entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - marisa-trie = marisa-trie:main
-    #
-    # Would create an entry point called marisa-trie that calls marisa-trie.main()
-
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+build:
+  number: 0
 
 requirements:
   build:
@@ -32,25 +17,9 @@ requirements:
     - python
 
 test:
-  # Python imports
-  # imports:
-
-  # commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
-
-
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any additional test requirements here.  For example
-    # - nose
+  imports:
+    - marisa_trie
 
 about:
   home: https://github.com/kmike/marisa-trie/
   license: MIT License
-
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml

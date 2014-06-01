@@ -1,0 +1,35 @@
+
+package:
+    name: mpld3
+    version: 0.2
+
+source:
+    fn: mpld3-0.2.tar.gz
+    url: https://pypi.python.org/packages/source/m/mpld3/mpld3-0.2.tar.gz
+    md5: 266f4e51a094f8ff1aaf7e2018f763b4
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - distribute
+        - matplotlib
+        - jinja2
+
+    run:
+        - python
+        - matplotlib
+        - jinja2
+
+test:
+    imports:
+        - mpld3
+
+    #commands:
+    #    -
+
+about:
+    home: http://mpld3.github.io/
+    license: BSD 3-clause

@@ -1,0 +1,31 @@
+package:
+    name: pyfftw
+    version: "0.9.2"
+
+source:
+    fn: pyFFTW-0.9.2.tar.gz
+    url: https://pypi.python.org/packages/source/p/pyFFTW/pyFFTW-0.9.2.tar.gz
+    md5: 34fcbc68afb8ebe5f040a02a8d20d565
+
+requirements:
+    build:
+        - python
+        - numpy
+        - fftw
+
+    run:
+        - python
+        - numpy
+        - fftw
+
+test:
+    # Python imports
+    imports:
+        - pyfftw
+        - pyfftw.builders
+        - pyfftw.interfaces
+
+about:
+    home: http://hgomersall.github.com/pyFFTW/
+    license: GNU General Public License (GPL)
+    summary: 'A pythonic wrapper around FFTW, the FFT library, presenting a unified interface for all the supported transforms.'

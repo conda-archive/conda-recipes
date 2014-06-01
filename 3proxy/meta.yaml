@@ -1,0 +1,20 @@
+package:
+  name: 3proxy
+  version: 0.7
+
+source:
+  fn: 3proxy-0.7.zip
+  url: https://github.com/z3APA3A/3proxy/archive/v0.7.zip
+
+build:
+  number: 0
+
+test:
+  commands:
+    - 3proxy --help
+
+about:
+  home: https://github.com/z3APA3A/3proxy/
+  license: Multi
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:

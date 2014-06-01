@@ -1,0 +1,31 @@
+package:
+  name: lshash
+  version: 0.0.4
+
+source:
+  fn: lshash-0.0.4-dev.zip
+  url: https://github.com/kayzh/LSHash/archive/master.zip
+  # (I wish people would tag their releases:  ^^^^^^^^^^^.)
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - numpy
+    - python
+    - bitarray
+  run:
+    - numpy
+    - python
+    - bitarray
+
+test:
+  imports:
+    - lshash
+
+about:
+  home: https://github.com/kayzh/lshash
+  license: MIT
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:
