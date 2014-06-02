@@ -1,11 +1,11 @@
 package:
-  name: jedi
-  version: !!str 0.8.0.final0
+  name: fuckit
+  version: !!str 4.8.0
 
 source:
-  fn: jedi-0.8.0-final0.tar.gz
-  url: https://pypi.python.org/packages/source/j/jedi/jedi-0.8.0-final0.tar.gz
-  md5: 25ba4ee6160c2de751bd00c7a4f32bff
+  fn: fuckit-4.8.0.zip
+  url: https://pypi.python.org/packages/source/f/fuckit/fuckit-4.8.0.zip
+  md5: 56a206c963d857bb1b97fef55acc2759
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -16,9 +16,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - jedi = jedi:main
+    # - fuckit = fuckit:main
     #
-    # Would create an entry point called jedi that calls jedi.main()
+    # Would create an entry point called fuckit that calls fuckit.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -36,11 +36,7 @@ requirements:
 test:
   # Python imports
   imports:
-    - jedi
-    - jedi.api
-    - jedi.evaluate
-    - jedi.evaluate.compiled
-    - jedi.parser
+    - fuckit
 
   #commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -55,9 +51,9 @@ test:
     # - nose
 
 about:
-  home: https://github.com/davidhalter/jedi
-  license: MIT License
-  summary: 'An autocompletion tool for Python that can be used for text editors.'
+  home: https://github.com/ajalt/fuckitpy
+  license: DWTFYWTPL
+  summary: 'The Python Error Steamroller'
 
 # See
 # http://docs.continuum.io/conda/build.html for
