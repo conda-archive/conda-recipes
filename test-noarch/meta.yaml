@@ -1,0 +1,9 @@
+# This is a sample conda recipe, which is used for testing features
+# in the conda build command.
+
+package:
+  name: test-noarch
+  version: 1.0
+
+build:
+  noarch: True
