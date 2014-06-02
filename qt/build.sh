@@ -5,7 +5,7 @@ if [ `uname` == Linux ]; then
     ./configure \
         -release -fontconfig -continue -verbose \
         -no-qt3support -nomake examples -nomake demos \
-        -webkit -qt-libpng -qt-zlib -gtkstyle \
+        -webkit -qt-libpng -qt-zlib -gtkstyle -dbus \
         -prefix $PREFIX
     make
     make install
