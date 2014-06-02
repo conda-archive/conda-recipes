@@ -12,7 +12,7 @@ if [ `uname` == Linux ]; then
 
     cp $SRC_DIR/bin/* $PREFIX/bin/
     cd $PREFIX
-    rm -rf doc imports mkspecs phrasebooks plugins q3porting.xml translations
+    rm -rf doc imports mkspecs phrasebooks q3porting.xml translations
     rm -rf demos examples tests
     cd $PREFIX/bin
     rm -f *.bat *.pl qt3to4 qdoc3
