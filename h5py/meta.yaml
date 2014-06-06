@@ -1,11 +1,11 @@
 package:
   name: h5py
-  version: 2.2.0
+  version: 2.3.0
 
 source:
-  fn: h5py-2.2.0.tar.gz
-  url: https://github.com/h5py/h5py/archive/2.2.0.tar.gz
-  md5: 7456ff4b33a7d8581027acd0e92eb3fb
+  fn: h5py-2.3.0.tar.gz
+  url: https://github.com/h5py/h5py/archive/2.3.0.tar.gz
+  md5: 2dca39fb2ff6e70824487201e1d1fb84
 
 requirements:
   build:
