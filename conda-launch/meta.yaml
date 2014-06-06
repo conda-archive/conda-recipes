@@ -1,0 +1,30 @@
+package:
+  name: conda-launch
+  version: 0.1
+
+source:
+  git_url: git@github.com:conda/conda-launch.git
+#  git_tag: 0.1
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+    - ipython
+    - runipy
+    - flask
+    - requests
+    - psutil
+    - conda-api
+
+test:
+  commands:
+    - conda-appserver -h
+    - conda-launch -h
+  imports:
+    - ipyapp
+
+about:
+  home: https://github.com/conda/conda-api
+  license: BSD
