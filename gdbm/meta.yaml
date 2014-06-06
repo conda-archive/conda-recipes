@@ -1,0 +1,21 @@
+package:
+  name: gdbm
+  version: 1.11
+
+source:
+  fn: gdbm-1.11.tar.gz
+  url: http://ftp.gnu.org/gnu/gdbm/gdbm-1.11.tar.gz
+  md5: 72c832680cf0999caedbe5b265c8c1bd
+
+build:
+  number: 0
+
+#test:
+#  commands:
+#    - gdbm --help
+
+about:
+  home: http://www.gnu.org/software/gdbm/
+  license: GPL 3
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:

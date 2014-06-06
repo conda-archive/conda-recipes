@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ./configure --prefix=$PREFIX
-make
+make SHLIB_LIBS="-ltinfo"
 make install
 
 rm -rf $PREFIX/share/man

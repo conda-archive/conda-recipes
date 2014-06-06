@@ -1,0 +1,30 @@
+
+package:
+    name: spark
+    version: 0.9.0
+
+source:
+    git_url: https://github.com/apache/spark
+    git_tag: v0.9.0-incubating
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+
+    run:
+        - python
+
+test:
+    #imports:
+    #    - spark
+
+    #commands:
+    #    -
+
+about:
+    home: https://spark.incubator.apache.org/
+    license: Apache 2.0 license
+

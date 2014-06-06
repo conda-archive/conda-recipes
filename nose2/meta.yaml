@@ -31,7 +31,7 @@ requirements:
   build:
     - python
     - setuptools
-    - six 1.3*
+    - six >=1.1,<1.4
     - argparse [py26]
     - unittest2 [py26]
 

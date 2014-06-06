@@ -1,0 +1,26 @@
+package:
+  name: gcc
+  version: 4.8.2
+
+source:
+  fn: gcc-4.8.2.tar.bz2
+  url: http://www.netgull.com/gcc/releases/gcc-4.8.2/gcc-4.8.2.tar.bz2
+  md5: a3d7d63b9cb6b6ea049469a0c4a43c9d
+
+requirements:
+  build:
+    # These are taken from the output of the configure scripts
+    - gmp >=4.2
+    - mpfr >=2.4.0
+    - mpc >=0.8.0
+    - isl
+  run:
+    - gmp >=4.2
+    - mpfr >=2.4.0
+    - mpc >=0.8.0
+    - isl
+
+about:
+  home: http://gcc.gnu.org/
+  summary: The GNU Compiler Collection
+  license: GPL

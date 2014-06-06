@@ -1,0 +1,18 @@
+package:
+  name: tk
+  version: 8.5.15
+
+source:
+  fn: tcltk-8.5.15.tar
+  url: http://filer/src/tcltk-8.5.15.tar
+  md5: b8752a99b3331cec3b087b49ba19e143
+
+test:
+  requires:
+    - python
+  commands:
+    - python -c "import turtle; turtle.forward(100)"
+
+about:
+  home: http://www.tcl.tk/
+  license: BSD-style
