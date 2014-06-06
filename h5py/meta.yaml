@@ -4,19 +4,20 @@ package:
 
 source:
   fn: h5py-2.2.0.tar.gz
-  url: http://h5py.googlecode.com/files/h5py-2.2.0.tar.gz
-  md5: 05bab036748e90d0a3ce37622292aab2
+  url: https://github.com/h5py/h5py/archive/2.2.0.tar.gz
+  md5: 7456ff4b33a7d8581027acd0e92eb3fb
 
 requirements:
   build:
     - python
     - numpy
     - hdf5
+    - cython
   run:
     - python
     - numpy
     - hdf5         [unix]
 
 about:
-  home: http://code.google.com/p/h5py/
+  home: http://www.h5py.org/
   license: New BSD (http://opensource.org/licenses/bsd-license.php)
