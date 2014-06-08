@@ -19,14 +19,18 @@ if [ `uname` == Linux ]; then
 fi
 
 if [ `uname` == Darwin ]; then
+    # Leave Qt set its own flags and vars, else compilation errors
+    # will occur
+    for x in OSX_ARCH CFLAGS CXXFLAGS LDFLAGS
+    do
+	unset $x
+    done
+
     chmod +x configure
     ./configure \
-        -platform macx-g++ \
-        -release -no-qt3support -nomake examples -nomake demos \
-        -opensource \
-        -no-framework \
-        -prefix $PREFIX \
-        -verbose
+        -platform macx-g++ -release -prefix $PREFIX \
+        -no-qt3support -nomake examples -nomake demos -nomake docs \
+        -opensource -no-framework -fast -verbose -arch `uname -m`
 
     make
     make install
