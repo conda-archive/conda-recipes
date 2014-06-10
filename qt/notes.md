@@ -10,3 +10,4 @@ Packages needed in Ubuntu:
 - libxrender-dev
 - freeglut3-dev
 - libgtk2.0-dev (to enable gtkstyle)
+- libdbus-1-dev
