@@ -1,0 +1,26 @@
+
+package:
+    name: apache-maven
+    version: 3.2.1
+
+source:
+    fn: apache-maven-3.2.1-bin.tar.gz
+    url: http://ftp.ps.pl/pub/apache/maven/maven-3/3.2.1/binaries/apache-maven-3.2.1-bin.tar.gz
+    md5: aaef971206104e04e21a3b580d9634fe
+
+build:
+    number: 0
+
+requirements:
+    build:
+
+    run:
+
+test:
+    commands:
+        - mvn --version
+
+about:
+    home: http://maven.apache.org/
+    license: Apache License v2.0
+
