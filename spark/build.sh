@@ -7,20 +7,40 @@ export CXXLAGS="${CFLAGS}"
 export CPPFLAGS="-I${PREFIX}/include"
 export LDFLAGS="-L${PREFIX}/lib"
 
+export JAVA_HOME="/usr/lib/jvm/java-1.6.0"
+export JRE_HOME="/usr/lib/jvm/jre-1.6.0"
+export SCALA_HOME="${PREFIX}/share/scala"
+
 LinuxInstallation() {
     # Build dependencies:
     # - java-1.7.0-openjdk-devel
 
-    local pkgBaseDir="${PKG_NAME}-${PKG_VERSION}-incubating"
+    local pkgBaseDir="${PKG_NAME}-${PKG_VERSION}"
+    local aliasPkgBaseDir="${PKG_NAME}"
+    local fullPkgBaseDir="${PREFIX}/share/${pkgBaseDir}"
+    local fullAliasPkgBaseDir="${PREFIX}/share/${aliasPkgBaseDir}"
     local launchWrapperName="launch-symlink"
-    local binLaunchWrapper="${PREFIX}/${pkgBaseDir}/bin/${launchWrapperName}"
-    local sbinLaunchWrapper="${PREFIX}/${pkgBaseDir}/sbin/${launchWrapperName}"
-    local pkgRelBinPath="../${pkgBaseDir}/bin"
-    local pkgRelSbinPath="../${pkgBaseDir}/sbin"
+    local binLaunchWrapper="${fullPkgBaseDir}/bin/${launchWrapperName}"
+    local sbinLaunchWrapper="${fullPkgBaseDir}/sbin/${launchWrapperName}"
+    local pkgRelBinPath="../share/${aliasPkgBaseDir}/bin"
+    local pkgRelSbinPath="../share/${aliasPkgBaseDir}/sbin"
 
-    ./sbt/sbt assembly || return 1;
+    mkdir -vp ${PREFIX}/bin || exit 1;
+    mkdir -vp ${PREFIX}/share || exit 1;
+    mkdir -vp ${fullPkgBaseDir} || exit 1;
+
+    pushd ${PREFIX}/share || exit 1;
+    ln -sv ${pkgBaseDir} ${aliasPkgBaseDir} || exit  1;
+    popd || exit 1;
+
+    # Build package by using sbt tool (however, there is no target to create distribution - this is mostly for local usage):
+    #./sbt/sbt assembly || return 1;
+    #./sbt/sbt test || return 1;
+    #./bin/run-example org.apache.spark.examples.SparkLR local[2] || return 1;
+
+    # Build package by using specially preapared script:
     ./make-distribution.sh --tgz || return 1;
-    tar -xvzpf ${pkgBaseDir}*.tar.gz -C ${PREFIX}/ || return 1;
+    tar --strip-components=1 -xvpf ${pkgBaseDir}*.tgz -C ${fullPkgBaseDir}/ || return 1;
 
     for bin in ${binLaunchWrapper} ${sbinLaunchWrapper}; do
         cat > ${bin} <<EOF
