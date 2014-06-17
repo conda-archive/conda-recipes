@@ -1,0 +1,16 @@
+package:
+  name: emacs 
+  version: 24.3 
+
+source:
+  fn: emacs-24.3.tar.gz
+  url: http://ftp.gnu.org/gnu/emacs/emacs-24.3.tar.gz
+  md5: d20441025efd4931ef64cc2bb18eddc9 
+
+test:
+  commands:
+    - emacs --help
+
+about:
+  home: http://www.cmake.org/
+  license: BSD

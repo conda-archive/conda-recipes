@@ -1,0 +1,11 @@
+package:
+  name: emacs_libs 
+  version: 24.3 
+
+
+
+build:
+  binary_relocation: false
+about:
+  home: http://www.cmake.org/
+  license: BSD
