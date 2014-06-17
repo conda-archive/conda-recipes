@@ -20,5 +20,6 @@ test:
     - emacs --kill
 
 about:
-  home: http://www.cmake.org/
-  license: BSD
+  home: http://www.gnu.org/software/emacs/
+  license: GPL
+  summary: "GNU Emacs is an extensible, customizable text editor—and more."
