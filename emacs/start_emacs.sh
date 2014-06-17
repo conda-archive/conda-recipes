@@ -1,9 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-
-
-export LISPBOX_HOME=~/anaconda/envs/$CONDA_DEFAULT_ENV
-
+export LISPBOX_HOME=/opt/anaconda1anaconda2anaconda3/
 
 export EMACSDATA=${LISPBOX_HOME}/share/emacs/24.3/etc/
 
@@ -27,4 +24,4 @@ ${LISPBOX_HOME}/share/emacs/24.3/lisp/emulation:\
 ${LISPBOX_HOME}/share/emacs/24.3/lisp/emacs-lisp:\
 ${LISPBOX_HOME}/share/emacs/24.3/lisp/calendar
 
-emacs
+/opt/anaconda1anaconda2anaconda3/bin/.emacs

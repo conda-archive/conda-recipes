@@ -1,15 +1,22 @@
 package:
-  name: emacs 
-  version: 24.3 
+  name: emacs
+  version: 24.3.91
 
 source:
-  fn: emacs-24.3.tar.gz
-  url: http://ftp.gnu.org/gnu/emacs/emacs-24.3.tar.gz
-  md5: d20441025efd4931ef64cc2bb18eddc9 
+  fn: emacs-24.3.91.tar.xz
+  url: ftp://alpha.gnu.org/gnu/emacs/pretest/emacs-24.3.91.tar.xz
+  md5: f14b1b0d56aac1da8abb37f30ab70dc3
+
+build:
+  number: 1
+  has_prefix_files:
+    # The wrapper script
+    - bin/emacs
 
 test:
   commands:
     - emacs --help
+    - emacs --kill
 
 about:
   home: http://www.cmake.org/
