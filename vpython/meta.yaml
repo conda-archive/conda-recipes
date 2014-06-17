@@ -23,3 +23,7 @@ requirements:
         - boost-vpython
         - fonttools
         - ttfquery
+
+about:
+    home: http://vpython.org/
+    license: modified BSD
