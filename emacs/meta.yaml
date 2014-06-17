@@ -8,7 +8,7 @@ source:
   md5: f14b1b0d56aac1da8abb37f30ab70dc3
 
 build:
-  number: 2
+  number: 3
   binary_has_prefix_files:
     - bin/emacs
     - bin/emacs-24.3.91
