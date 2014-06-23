@@ -1,0 +1,21 @@
+package:
+  name: abstract-rendering
+  version: master
+
+source:
+  git_url: git://github.com/JosephCottam/AbstractRendering.git
+#  git_tag:
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+
+test:
+  imports:
+    - pycosat
+
+about:
+  home: https://github.com/ilanschnell/pycosat
+  license: MIT
