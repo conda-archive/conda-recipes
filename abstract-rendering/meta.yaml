@@ -14,7 +14,8 @@ requirements:
 
 test:
   imports:
-    - pycosat
+    - abstract_rendering.transform
+    - abstract_rendering.transform_libdispatch
 
 about:
   home: https://github.com/ilanschnell/pycosat
