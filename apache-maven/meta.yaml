@@ -4,7 +4,7 @@ package:
     version: 3.2.1
 
 source:
-    fn: apache-maven-3.2.1-bin.tar.gz
+    fn: apache-maven-3.2.1-bin.gz
     url: http://ftp.ps.pl/pub/apache/maven/maven-3/3.2.1/binaries/apache-maven-3.2.1-bin.tar.gz
     md5: aaef971206104e04e21a3b580d9634fe
 

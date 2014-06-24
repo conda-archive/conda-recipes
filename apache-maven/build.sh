@@ -7,8 +7,16 @@
 mkdir -vp ${PREFIX}/bin;
 mkdir -vp ${PREFIX}/share;
 
-export JAVA_HOME="/usr/lib/jvm/java"
-export JRE_HOME="/usr/lib/jvm/jre"
+tar xvzf ${SRC_DIR}/apache-maven-3.2.1-bin.gz
+
+if [ "$(uname)" == "Darwin" ]; then
+    export JAVA_HOME=$(/usr/libexec/java_home)
+    export JRE_HOME=$JAVA_HOME/jre
+else
+    export JAVA_HOME="/usr/lib/jvm/java"
+    export JRE_HOME="/usr/lib/jvm/jre"
+fi
+
 
 cat > ${PREFIX}/bin/mvn <<EOF
 #!/bin/bash
@@ -27,7 +35,7 @@ EOF
 
 chmod 755 ${PREFIX}/bin/mvn || exit 1;
 
-cp -var ${SRC_DIR}/ ${PREFIX}/share || exit 1;
+cp -va ${SRC_DIR}/${PKG_NAME}-${PKG_VERSION} ${PREFIX}/share || exit 1;
 
 pushd ${PREFIX}/share || exit 1;
 ln -sv ${PKG_NAME}-${PKG_VERSION} ${PKG_NAME} || exit  1;
