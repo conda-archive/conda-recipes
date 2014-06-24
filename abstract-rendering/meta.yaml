@@ -11,11 +11,12 @@ requirements:
     - python
   run:
     - python
+    - numpy
 
 test:
   imports:
-    - abstract_rendering.transform
-    - abstract_rendering.transform_libdispatch
+    - abstract_rendering
+    - abstract_rendering.fast_project
 
 about:
   home: https://github.com/ilanschnell/pycosat
