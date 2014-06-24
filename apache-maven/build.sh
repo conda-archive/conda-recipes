@@ -9,8 +9,13 @@
 mkdir -vp ${PREFIX}/bin;
 mkdir -vp ${PREFIX}/share;
 
-export JAVA_HOME="/usr/lib/jvm/java"
-export JRE_HOME="/usr/lib/jvm/jre"
+if [ "$(uname)" == "Darwin" ]; then
+    export JAVA_HOME=$(/usr/libexec/java_home)
+    export JRE_HOME=${JAVA_HOME}/jre
+else
+    export JAVA_HOME="/usr/lib/jvm/java"
+    export JRE_HOME="/usr/lib/jvm/jre"
+fi
 
 cat > ${PREFIX}/bin/mvn <<EOF
 #!/bin/bash
@@ -29,7 +34,11 @@ EOF
 
 chmod 755 ${PREFIX}/bin/mvn || exit 1;
 
-cp -var ${SRC_DIR}/ ${PREFIX}/share || exit 1;
+if [ "$(uname)" == "Darwin" ]; then
+    cp -va ${SRC_DIR}/ ${PREFIX}/share || exit 1;
+else
+    cp -var ${SRC_DIR}/ ${PREFIX}/share || exit 1;
+fi
 
 pushd ${PREFIX}/share || exit 1;
 ln -sv ${PKG_NAME}-${PKG_VERSION} ${PKG_NAME} || exit  1;
