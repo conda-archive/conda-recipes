@@ -6,7 +6,7 @@ PKG_LAUNCHER="${PKG_FULL_HOME_PATH}/bin/scala-launcher"
 mkdir -vp ${PREFIX}/bin;
 mkdir -vp ${PREFIX}/share;
 
-cp -var ${SRC_DIR}/ ${PREFIX}/share || exit 1;
+cp -va ${SRC_DIR} ${PREFIX}/share || exit 1;
 
 pushd ${PREFIX}/share || exit 1;
 ln -sv ${PKG_NAME}-${PKG_VERSION} ${PKG_NAME} || exit  1;
