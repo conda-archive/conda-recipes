@@ -1,0 +1,31 @@
+package:
+  name: hexrd
+  version: master
+
+source:
+  git_url: https://github.com/ContinuumIO/hexrd.git
+
+build:
+  script: $PYTHON setup.py install
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy #>=1.4.0
+    - scipy >=0.7.0
+    - wxpython >=2.8
+  run:
+    - python
+    - numpy #>=1.4.0
+    - scipy >=0.7.0
+    - wxpython >=2.8
+
+test:
+  imports:
+    - hexrd
+
+about:
+  license: LGPL
+  home: https://github.com/ContinuumIO/hexrd
+  summary: High energy diffraction microscopy
