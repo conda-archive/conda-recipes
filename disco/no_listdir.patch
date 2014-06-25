@@ -1,0 +1,28 @@
+diff --git bin/ddfscli.py bin/ddfscli.py
+index 3c3429a..1064af1 100755
+--- bin/ddfscli.py
++++ bin/ddfscli.py
+@@ -32,9 +32,6 @@ Run :command:`ddfs help` for information on using the command line utility.
+ 
+ import fileinput, os, sys
+ 
+-if '.disco-home' in os.listdir('.'):
+-    sys.path.append('lib')
+-
+ from disco.cli import OptionParser, Program
+ 
+ class DDFS(Program):
+diff --git bin/discocli.py bin/discocli.py
+index c191fe0..dd4e2fb 100755
+--- bin/discocli.py
++++ bin/discocli.py
+@@ -52,9 +52,6 @@ Would get the results for the last job with name containing ``WordCount``.
+ 
+ import fileinput, os, sys
+ 
+-if '.disco-home' in os.listdir('.'):
+-    sys.path.append('lib')
+-
+ from disco.cli import OptionParser, Program
+ 
+ class Disco(Program):

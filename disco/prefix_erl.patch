@@ -1,0 +1,17 @@
+diff --git lib/clx/server.py lib/clx/server.py
+index 6182301..1a78887 100644
+--- lib/clx/server.py
++++ lib/clx/server.py
+@@ -47,7 +47,11 @@ class Server(object):
+             raise ServerError("%s already started" % self)
+         if self.rotate_log:
+             self.log_rotate()
+-        process = subprocess.Popen(args or self.args, env=self.env, **kwargs)
++        cmd = args or self.args
++        if cmd and cmd[0] == 'erl':
++            import sys
++            cmd[0] = sys.prefix + '/lib/erlang/bin/erl'
++        process = subprocess.Popen(cmd, env=self.env, **kwargs)
+         if process.wait():
+             raise ServerError("Failed to start %s" % self)
+         yield '%s started' % self
