@@ -15,11 +15,13 @@ requirements:
     - numpy #>=1.4.0
     - scipy >=0.7.0
     - wxpython >=2.8
+    - numbapro
   run:
     - python
     - numpy #>=1.4.0
     - scipy >=0.7.0
     - wxpython >=2.8
+    - numbapro
 
 test:
   imports:
