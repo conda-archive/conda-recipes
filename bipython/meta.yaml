@@ -1,11 +1,11 @@
 package:
   name: bipython
-  version: !!str 0.1.2
+  version: !!str 0.1.3.894b734
 
 source:
-  fn: bipython-0.1.2.tar.gz
-  url: https://pypi.python.org/packages/source/b/bipython/bipython-0.1.2.tar.gz
-  md5: d2547028217a9a1a690ac2d7d36d9128
+  fn: bipython-0.1.3.-894b734-.tar.gz
+  url: https://pypi.python.org/packages/source/b/bipython/bipython-0.1.3.-894b734-.tar.gz
+  md5: 2a1860006e9282c1644bb38ceed085c4
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -21,6 +21,7 @@ build:
     # Would create an entry point called bipython that calls bipython.main()
 
     - bipython = bipython:main
+    - bipython3 = bipython:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -38,7 +39,6 @@ requirements:
 
   run:
     - python
-    - argparse # [py26]
     - pygments >=1.6
     - urwid >=1.1.1
     - bpython >=0.12
@@ -55,6 +55,7 @@ test:
     # entry points work.
 
     - bipython --help
+    - bipython3 --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -65,8 +66,8 @@ test:
 
 about:
   home: http://bipython.org/
-  license: BSD License
-  summary: 'bipython: boldly indiscriminate python interpreter'
+  license:  BSD License
+  summary: 'bipython: the boldly indiscriminate python interpreter'
 
 # See
 # http://docs.continuum.io/conda/build.html for
