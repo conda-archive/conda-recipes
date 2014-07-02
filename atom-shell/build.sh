@@ -5,9 +5,9 @@ EXEC=$BIN/atomshell
 
 mkdir -p $BIN
 mkdir -p $SP_DIR/atomshell
+mkdir $PREFIX/atom-shell
 
 if [[ (`uname` == Linux) ]]; then
-    mkdir $PREFIX/atom-shell
     mv ./* $PREFIX/atom-shell
     chmod +x $PREFIX/atom-shell/atom
 
@@ -21,10 +21,10 @@ fi
 
 if [ `uname` == Darwin ]; then
     # XXX THIS IS A HACK XXX
-    rm 'atom-shell/Atom.app/Contents/Frameworks/Atom Framework.framework/Frameworks'
-    rm 'atom-shell/Atom.app/Contents/Frameworks/Atom Framework.framework/Libraries/Libraries'
+    rm './Atom.app/Contents/Frameworks/Atom Framework.framework/Frameworks'
 
-    mv atom-shell/Atom.app $PREFIX/atom-shell
+    mv ./Atom.app/* $PREFIX/atom-shell
+    chmod +x $PREFIX/atom-shell/Contents/MacOS/Atom
 
     cat <<EOF >$EXEC
 #!/bin/sh
