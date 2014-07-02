@@ -7,6 +7,12 @@ build:
   entry_points:
     - atomshell = atomshell:main
 
+requirements:
+  build:
+    - python
+  run:
+    - python
+
 about:
   home: https://github.com/atom/atom-shell
   license: MIT
