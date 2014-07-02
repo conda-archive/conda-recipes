@@ -1,0 +1,12 @@
+package:
+  name: atom-shell
+  version: '0.13.3'
+  
+build:
+  binary_relocation: false
+  entry_points:
+    - atomshell = atomshell:main
+
+about:
+  home: https://github.com/atom/atom-shell
+  license: MIT
