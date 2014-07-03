@@ -5,6 +5,8 @@ package:
 build:
   number: 1
   binary_relocation: false
+  has_prefix_files:
+    - Scripts\atomshell.bat
 
 source:
   fn: atom-shell-v0.13.3-linux-x64.zip                          [linux64]
