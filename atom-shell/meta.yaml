@@ -1,0 +1,23 @@
+package:
+  name: atom-shell
+  version: '0.13.3'
+  
+build:
+  number: 1
+  binary_relocation: false
+  has_prefix_files:                                             [win]
+    - Scripts\atomshell.bat                                     [win]
+
+source:
+  fn: atom-shell-v0.13.3-linux-x64.zip                          [linux64]
+  url: https://github.com/atom/atom-shell/releases/download/v0.13.3/atom-shell-v0.13.3-linux-x64.zip    [linux64]
+
+  fn: atom-shell-v0.13.3-darwin-x64.zip                         [osx]
+  url: https://github.com/atom/atom-shell/releases/download/v0.13.3/atom-shell-v0.13.3-darwin-x64.zip   [osx]
+  
+  fn: atom-shell-v0.13.3-win32-ia32.zip                         [win]
+  url: https://github.com/atom/atom-shell/releases/download/v0.13.3/atom-shell-v0.13.3-win32-ia32.zip   [win]
+
+about:
+  home: https://github.com/atom/atom-shell
+  license: MIT
