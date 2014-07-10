@@ -9,6 +9,7 @@ source:
 requirements:
   build:
     - python
+    - patchelf # [linux]
     - cmake
     - libtiff
     - libpng
