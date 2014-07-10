@@ -1,0 +1,22 @@
+package:
+  name: simpleitk
+  version: "0.8.0"
+
+source:
+  git_url: git@itk.org:SimpleITK.git
+  git_tag: v0.8.0
+
+requirements:
+  build:
+    - python
+    - cmake
+  run:
+    - python
+
+test:
+  imports:
+    - SimpleITK
+
+about:
+   home: http::/www.simpleitk.org
+   license: Apache 2.0
