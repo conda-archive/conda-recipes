@@ -1,0 +1,179 @@
+package:
+  name: opencascade_community_edition
+  version: 0.15.0
+
+source:
+  fn: OCE-0.15.tar.gz
+  url: https://github.com/tpaviot/oce/archive/OCE-0.15.tar.gz [not win]
+#   patches:
+#     - my.patch
+
+# build:
+#   number: 1
+#   binary_relocation: true # (defaults to true)
+
+requirements:
+  build:
+    - cmake
+    - freeimage
+    - freetype
+#     - autoconf
+
+# test:
+#   commands:
+#     - libtool --help
+
+about:
+  home: https://github.com/tpaviot/oce
+  license: LGPL 2.1
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:
+
+
+
+# package:
+#   name: bsdiff4       # lower case name of package, may contain '-' but no spaces
+#   version: "1.1.4"    # version of package. Should use the PEP-386 verlib
+#                       # conventions. Note that YAML will interpret
+#                       # versions like 1.0 as floats, meaning that 1.0 will
+#                       # be the same as 1. To avoid this, always put the
+#                       # version in quotes, so that it will be interpreted
+#                       # as a string.
+
+# source:
+#   # The source section specifies where the source code of the package is coming
+#   # from, it may be coming from a source tarball like:
+#   fn: bsdiff-1.1.14.tar.gz
+#   url: https://pypi.python.org/packages/source/b/bsdiff4/bsdiff4-1.1.4.tar.gz
+#   md5: 29f6089290505fc1a852e176bd276c43
+#   sha1: f0a2c9a30073449cfb7d171c57552f3109d93894
+#   sha256: 5a022ff4c1d1de87232b1c70bde50afbb98212fd246be4a867d8737173cf1f8f
+#   # or from git:
+#   git_url: git@github.com:ilanschnell/bsdiff4.git
+#   git_tag: 1.1.4
+#   # or from hg:
+#   hg_url: ssh://hg@bitbucket.org/ilanschnell/bsdiff4
+#   hg_tag: 1.1.4
+#   # or from svn:
+#   svn_url: https://github.com/ilanschnell/bsdiff
+#   svn_rev: 1.1.4
+#   svn_ignore_externals: yes # (defaults to no)
+
+#   # Patches may optionally be applied to the source
+#   patches:
+#     - my.patch    # the patch file is expected to be found in the recipe
+
+# # Note, the source section is optional. If you want to specify a source
+# # location locally, the easiest way is to not specify the source here, but
+# # to just add something like
+# #
+# # cp -r $RECIPE_DIR/../src .
+# # cd src
+# # ...
+# #
+# # in build.sh (and similarly in bld.bat). This assumes the source is
+# # shipped alongside the recipe in src.
+
+# build:
+#   # The build number should be incremented for new builds of the same version
+#   number: 1       # (defaults to 0)
+#   string: abc     # (defaults to default conda build string plus the build number)
+
+#   # Optional Python entry points
+#   entry_points:
+#     # This creates an entry point named bsdiff4 that calls bsdiff4.cli.main_bsdiff4()
+#     - bsdiff4 = bsdiff4.cli:main_bsdiff4
+#     - bspatch4 = bsdiff4.cli:main_bspatch4
+
+#   # If osx_is_app is set, entry points will use python.app instead of python in Mac OS X
+#   osx_is_app: yes # (defaults to no)
+
+#   # Whether binary files should be made relocatable (using
+#   # install_name_tool on OS X or patchelf on Linux). See the "making
+#   # packages relocatable" section below for more information on this.
+#   binary_relocation: false # (defaults to true)
+
+#   # See the features section below for more information on features
+
+#   # Defines what features a package has
+#   features:
+#     - feature1
+
+#   # Indicates that installing this package should enable (track) the given
+#   # features. A package does not need to have a feature to track it.
+#   track_features:
+#     - feature2
+
+#   # Preserve the Python egg directory. This is needed for some packages
+#   # that use setuptools specific features.
+#   preserve_egg_dir: yes # (default no)
+
+#   # A regular expression describing files to not install using soft
+#   # links. If hard links are not possible and this is set, the package
+#   # will be installed via copying. By default all files are considered
+#   # safe for soft linking.
+#   no_softlink: (bin/path1\.py|bin/path2) # Don't softlink bin/path1.py or bin/path2
+
+#   # Used instead of build.sh or bld.bat. For short build scripts, this can
+#   # be more convenient. You may need to use selectors (see below) to use
+#   # different scripts for different platforms.
+#   script: python setup.py install
+
+#   # Files that should have the placeholder prefix
+#   # (/opt/anaconda1anaconda2anaconda3) replaced with the install prefix at
+#   # installation.  Note that conda build does this automatically for the
+#   # build prefix. See also the Relocatable section below.
+#   has_prefix_files:
+#     - bin/file1
+#     - lib/file2
+
+#   # Binary files that should have their build prefix replaced with the
+#   # install prefix at installation time.  Due to the way this works, the
+#   # install prefix cannot be longer than the build prefix.  It is
+#   # recommended to build against a very long prefix. The easiest way to do
+#   # this is to install miniconda into a very long path.  Future versions
+#   # of conda build may do this automatically. See also the Relocatable
+#   # section below.
+#   binary_has_prefix_files:
+#     - bin/binaryfile1
+#     - lib/binaryfile2
+
+# # the build and runtime requirements. Dependencies of these requirements
+# # are included automatically.
+# requirements:
+#   # Packages required to build the package. python and numpy must be
+#   # listed explicitly if they are required.
+#   build:
+#     - python
+#   # Packages required to run the package. These are the dependencies that
+#   # will be installed automatically whenever the package is installed.
+#   run:
+#     - python
+#     - argparse # [py26]
+
+# test:
+#   # files which are copied from the recipe into the (temporary) test
+#   # directory which are needed during testing
+#   files:
+#     - test-data.txt
+#   # in addition to the run-time requirements, you can specify requirements
+#   # needed during testing. The run time requirements specified above are
+#   # included automatically.
+#   requires:
+#     - nose
+#   # commands we want to make sure they work, which are expected to get
+#   # installed by the package
+#   commands:
+#     - bsdiff4 -h
+#     - bspatch4 -h
+#   # Python imports
+#   imports:
+#     - bsdiff4
+
+#   # The script run_test.py will be run automatically if it is part of the
+#   # recipe
+
+# about:
+#   home: https://github.com/ilanschnell/bsdiff4
+#   license: BSD
+#   summary: binary diff and patch using the BSDIFF4-format
