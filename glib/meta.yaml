@@ -1,0 +1,7 @@
+package:
+  name: glib
+  version: 2.26.1
+
+source:
+  fn: glib_2.26.1-1_win64.zip
+  url: http://ftp.gnome.org/pub/gnome/binaries/win64/glib/2.26/glib_2.26.1-1_win64.zip
