@@ -13,4 +13,4 @@ source:
 about:
   home: http://www.tortall.net/projects/yasm/
   license: BSD
-  summary: "Yasm is a complete rewrite of the NASM assembler under the “new” BSD License"
+  summary: 'Yasm is a complete rewrite of the NASM assembler under the "new" BSD License'
