@@ -17,10 +17,6 @@ requirements:
         - zlib
         - libtiff
 
-# test:
-#   commands:
-#     - libtool --help
-
 about:
-  home: http://freeimage.sourceforge.net/
-  license: GPLv2 and FreeImage Public License
+    home: http://freeimage.sourceforge.net/
+    license: GPLv2 and FreeImage Public License
