@@ -1,1 +1,1 @@
-xcopy "%SRC_DIR%" "%PREFIX%"
+xcopy /s "%SRC_DIR%" "%PREFIX%"
