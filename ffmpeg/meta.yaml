@@ -14,6 +14,7 @@ requirements:
     build:
         - x264
         - openssl
+        - yasm
 
     run:
         - x264
