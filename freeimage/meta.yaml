@@ -1,6 +1,6 @@
 package:
   name: freeimage
-  version: 2.4.2
+  version: 3.16.0
 
 source:
   fn: FreeImage3160.zip
