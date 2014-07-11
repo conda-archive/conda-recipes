@@ -28,5 +28,6 @@ cmake   -DPYTHON_PACKAGES_DIR_NAME="site-packages" \
 make -j$ncpus
 make install
 
+# python doesnt swallow .dylib for extensions 
 
-
+mv $PREFIX/lib/python2.7/site-packages/PyKDL.dylib $PREFIX/lib/python2.7/site-packages/PyKDL.so
