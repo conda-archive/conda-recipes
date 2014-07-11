@@ -1,0 +1,32 @@
+package:
+  name: pykdl
+  version: 1.2.2
+
+source:
+  fn: v1.2.2.tar.gz
+  url: https://github.com/orocos/orocos_kinematics_dynamics/archive/v1.2.2.tar.gz
+
+build:
+  number: 0
+  binary_relocation: true # (defaults to true)
+
+requirements:
+  build:
+    - cmake
+    - python
+    - sip
+    - eigen # https://binstar.org/meznom/eigen/
+    # - openssl
+  # run:
+  #   - zlib
+  #   - openssl
+
+# test:
+#   commands:
+#     - wget --help
+
+about:
+  home: http://www.orocos.org
+  license: GPL 2.1
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:
