@@ -12,8 +12,7 @@ build:
 
 requirements:
     build:
-
-    run:
+      - yasm
 
 test:
     imports:
@@ -23,4 +22,3 @@ test:
 about:
     home: http://www.videolan.org/
     license: GPL-2
-
