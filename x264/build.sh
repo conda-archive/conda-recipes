@@ -2,7 +2,11 @@
 
 mkdir -vp ${PREFIX}/bin;
 
-export CFLAGS="-Wall -g -m64 -pipe -O2 -march=x86-64 -fPIC"
+if [[ $ARCH = 64 ]]; then
+    export CFLAGS="-Wall -g -m64 -pipe -O2 -march=x86-64 -fPIC"
+else
+    export CFLAGS="-Wall -g -m64 -pipe -O2 -march=x86 -fPIC"
+fi
 export CXXLAGS="${CFLAGS}"
 #export CPPFLAGS="-I${PREFIX}/include"
 #export LDFLAGS="-L${PREFIX}/lib"
