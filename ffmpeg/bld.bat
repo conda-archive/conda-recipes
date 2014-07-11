@@ -1,2 +1,3 @@
-python setup.py install
-if errorlevel 1 exit 1
+:: http://ffmpeg.zeranoe.com/blog/?p=300
+
+bash "%RECIPE_DIR%\mingw-w64-build-3.6.0.sh"
