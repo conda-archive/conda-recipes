@@ -14,6 +14,7 @@ requirements:
     - zlib
     - autoconf
     - python
+    - automake
   run:
     - zlib
 
