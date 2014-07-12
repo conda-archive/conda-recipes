@@ -6,9 +6,7 @@ export LDFLAGS="-L$PREFIX/lib"
 autoreconf -i
 
 ./configure --prefix=$PREFIX   \
-            --with-internal-glib \
-            # Compatibility with older automake
-            --disable-silent-rules
+            --with-internal-glib
 
 make
 make install
