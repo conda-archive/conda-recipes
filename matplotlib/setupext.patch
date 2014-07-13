@@ -1,0 +1,34 @@
+diff --git setupext.py setupext.py
+index 4e304d9..f6e2a67 100644
+--- setupext.py
++++ setupext.py
+@@ -1223,6 +1223,7 @@ class BackendTkAgg(OptionalBackendPackage):
+             tk.destroy()
+ 
+         # Save directories and version string to cache
++        tcl_lib_dir = tk_lib_dir = r'C:\Tcl%d' % (8 * tuple.__itemsize__)
+         self.tcl_tk_cache = tcl_lib_dir, tk_lib_dir, str(Tkinter.TkVersion)[:3]
+         return self.tcl_tk_cache
+ 
+@@ -1765,19 +1766,12 @@ class BackendQt4(OptionalBackendPackage):
+ 
+     def check_requirements(self):
+         try:
+-            from PyQt4 import pyqtconfig
++            import PyQt4
+         except ImportError:
+             raise CheckFailed("PyQt4 not found")
+         # Import may still be broken for our python
+-        try:
+-            qtconfig = pyqtconfig.Configuration()
+-        except AttributeError:
+-            raise CheckFailed('PyQt4 not correctly imported')
+         BackendAgg.force = True
+-        return ("Qt: %s, PyQt4: %s" %
+-                (self.convert_qt_version(
+-                    qtconfig.qt_version),
+-                    qtconfig.pyqt_version_str))
++        return "Qt: unkown, PyQt4: unkown"
+ 
+ 
+ class BackendPySide(OptionalBackendPackage):

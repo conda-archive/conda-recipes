@@ -19,5 +19,5 @@ test:
     - abstract_rendering.fast_project
 
 about:
-  home: https://github.com/ilanschnell/pycosat
-  license: MIT
+  home: https://github.com/JosephCottam/AbstractRendering
+  license: 3rd-clause BSD (https://github.com/JosephCottam/AbstractRendering/blob/master/LICENSE)

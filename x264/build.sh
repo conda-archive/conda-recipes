@@ -2,7 +2,11 @@
 
 mkdir -vp ${PREFIX}/bin;
 
-export CFLAGS="-Wall -g -m64 -pipe -O2 -march=x86-64 -fPIC"
+if [[ $ARCH = 64 ]]; then
+    export CFLAGS="-Wall -g -m64 -pipe -O2 -march=x86-64 -fPIC"
+else
+    export CFLAGS="-Wall -g -m32 -pipe -O2 -march=i386 -fPIC"
+fi
 export CXXLAGS="${CFLAGS}"
 #export CPPFLAGS="-I${PREFIX}/include"
 #export LDFLAGS="-L${PREFIX}/lib"
@@ -35,7 +39,3 @@ case ${ARCH} in
         exit 1;
         ;;
 esac
-
-#POST_LINK="${PREFIX}/bin/.x264-post-link.sh"
-#cp -v ${RECIPE_DIR}/post-link.sh ${POST_LINK};
-#chmod -v 0755 ${POST_LINK};
