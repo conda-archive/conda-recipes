@@ -4,14 +4,13 @@ package:
 
 source:
   fn: matplotlib-1.3.1.tar.gz
-  url: https://downloads.sourceforge.net/project/matplotlib/matplotlib/matplotlib-1.3.0/matplotlib-1.3.1.tar.gz
+  url: https://downloads.sourceforge.net/project/matplotlib/matplotlib/matplotlib-1.3.1/matplotlib-1.3.1.tar.gz
   md5: 444624ad58de05f9029b0b5811e11c17
   patches:
     - setupext.patch
     - cfg.patch
     - cfg_qt4agg.patch    [not osx]
     - rctmp_pyside.patch  [not osx]
-    - osx-tk.patch        [osx]
     - win-tk.patch        [win]
 
 build:
@@ -23,7 +22,6 @@ requirements:
     - numpy
     - dateutil
     - freetype
-    - nose
     - pyparsing
     - pytz
     - py2cairo            [linux and py2k]
@@ -31,7 +29,8 @@ requirements:
     - libpng
     - zlib                [win]
     - pyqt                [not osx]
-    - distribute
+    - setuptools
+    - pkg-config
   run:
     - python
     - numpy

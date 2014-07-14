@@ -6,8 +6,6 @@ fi
 
 cp setup.cfg.template setup.cfg || exit 1
 
-$REPLACE "/usr/local" "$PREFIX" setupext.py
-
 $PYTHON setup.py install
 
 rm -rf $SP_DIR/PySide

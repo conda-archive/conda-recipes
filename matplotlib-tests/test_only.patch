@@ -1,0 +1,24 @@
+diff --git a/test_only.py b/test_only.py
+new file mode 100644
+index 0000000..192881f
+--- /dev/null
++++ test_only.py
+@@ -0,0 +1,18 @@
++from distutils.core import setup
++
++import os
++
++baseline_images = [
++    'baseline_images/%s/*' % x
++    for x in os.listdir('lib/matplotlib/tests/baseline_images')]
++
++baseline_images += [
++        'mpltest.ttf',
++        'test_rcparams.rc'
++    ]
++
++setup(name='matplotlib.tests',
++      packages=['matplotlib.tests'],
++      package_dir={'matplotlib.tests': 'lib/matplotlib/tests'},
++      package_data={'matplotlib.tests': baseline_images}
++)
