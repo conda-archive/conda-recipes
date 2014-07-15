@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ `uname` == "Darwin" ]]; then
+    # This enables Xcode support for C++11, that is needed for CSymPy.
+    export MACOSX_DEPLOYMENT_TARGET=10.9
+fi
+
 mkdir build
 cd build
 
