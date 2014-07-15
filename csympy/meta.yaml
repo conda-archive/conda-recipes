@@ -1,0 +1,23 @@
+package:
+  name: csympy
+  version: 0.1
+
+source:
+  git_url: https://github.com/sympy/csympy
+  git_tag: c9d29e5ced2089934d769115e3002a5f0be089bc
+
+requirements:
+  build:
+    - python
+    - cython
+    - numpy
+    - gmp
+    - cmake
+  run:
+    - python
+    - numpy
+    - gmp
+
+test:
+  imports:
+    - csympy
