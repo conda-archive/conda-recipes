@@ -3,7 +3,8 @@
 chmod +x configure
 
 if [ `uname` == Darwin ]; then
-    ./configure --prefix=$PREFIX --disable-shared
+    export MACOSX_DEPLOYMENT_TARGET=10.9
+    ./configure --prefix=$PREFIX --disable-shared --enable-cxx
 else
     ./configure --prefix=$PREFIX
 fi
