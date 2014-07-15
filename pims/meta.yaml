@@ -1,0 +1,66 @@
+package:
+  name: pims
+  version: 0.2
+
+source:
+  fn: pims-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/P/PIMS/pims-0.2.tar.gz
+  md5: 3d9f3c47a5e097549c132cbe516e66f6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pims = pims:main
+    #
+    # Would create an entry point called pims that calls pims.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - numpy
+    - scikit-image  # one of { scikit-image | matplotlib | scipy }
+
+  run:
+    - python
+    - six
+    - numpy
+    - scikit-image  # one of { scikit-image | matplotlib | scipy }
+
+test:
+  # Python imports
+  imports:
+    - pims
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pims.readthedocs.org
+  license: 3-clause BSD License
+  summary: 'Python particle-tracking toolkit'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
