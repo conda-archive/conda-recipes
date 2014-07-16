@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ `uname` == Darwin ]; then
-    $REPLACE '#ifdef WITH_NEXT_FRAMEWORK' '#if 1' src/_macosx.m
+    export CFLAGS="-DWITH_NEXT_FRAMEWORK $CFLAGS"
 fi
 
 cp setup.cfg.template setup.cfg || exit 1
