@@ -31,6 +31,7 @@ requirements:
     - pyqt                [not osx]
     - setuptools
     - pkg-config
+    - tk
   run:
     - python
     - numpy
