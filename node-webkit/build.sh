@@ -13,24 +13,13 @@ if [[ (`uname` == Linux) ]]; then
     ln -s /lib/
 
     # https://github.com/rogerwang/node-webkit/wiki/The-solution-of-lacking-libudev.so.0
-    paths=(
-        "/lib/x86_64-linux-gnu/libudev.so.1" # Ubuntu, Xubuntu, Mint
-        "/usr/lib64/libudev.so.1" # SUSE, Fedora, Arch64
-        "/usr/lib/libudev.so.1" # Arch, Fedora 32bit
-        "/lib/i386-linux-gnu/libudev.so.1" # Ubuntu 32bit
-    )
-    for i in "${paths[@]}"; do
-        if [ -f $i ]; then
-            ln -sf "$i" $PREFIX/node-webkit/libudev.so.0
-            break
-        fi
-    done
+    # Simplest workaround
+    sed -i 's/udev\.so\.0/udev.so.1/g' $PREFIX/node-webkit/nw
 
     cat <<EOF >$EXEC
 #!/bin/sh
 
-# http://stackoverflow.com/questions/59895
-LD_LIBRARY_PATH=$PREFIX/node-webkit:\$LD_LIBRARY_PATH $PREFIX/node-webkit/nw "\$@"
+$PREFIX/node-webkit/nw "\$@"
 
 EOF
 fi
