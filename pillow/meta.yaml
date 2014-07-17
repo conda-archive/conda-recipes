@@ -1,0 +1,38 @@
+package:
+  name: pillow
+  version: 2.5.1
+
+source:
+  fn: Pillow-2.5.1.zip
+  url: https://pypi.python.org/packages/source/P/Pillow/Pillow-2.5.1.zip
+  md5: cf42c695fab68116af2c8ef816fca0d9
+
+build:                   [win]
+  number: 1              [win]
+
+requirements:
+  build:
+    - python
+    - zlib
+    - libpng
+    - libtiff
+    - jpeg
+    - freetype
+    - distribute
+  run:
+    - python
+    - jpeg               [unix]
+    - zlib               [unix]
+    - freetype           [unix]
+    - libtiff            [unix]
+
+test:
+  imports:
+    - PIL
+    - PIL.Image
+    - PIL._imagingtk     [linux]
+    - PIL._imagingft     [unix]
+
+about:
+  home: http://python-imaging.github.io/
+  license: Standard PIL license
