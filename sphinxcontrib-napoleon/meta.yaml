@@ -1,0 +1,30 @@
+
+package:
+    name: sphinxcontrib-napoleon
+    version: 0.2.8
+
+source:
+    fn: sphinxcontrib-napoleon-0.2.8.tar.gz
+    url: https://pypi.python.org/packages/source/s/sphinxcontrib-napoleon/sphinxcontrib-napoleon-0.2.8.tar.gz
+    md5: 004abec2393a8743a150a9d64a85d517
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - setuptools
+        - sphinx 1.2*
+
+    run:
+        - python
+        - sphinx 1.2*
+
+test:
+    commands:
+        - sphinx-apidoc -h
+
+about:
+    home: https://bitbucket.org/birkenfeld/sphinx-contrib
+    license: BSD

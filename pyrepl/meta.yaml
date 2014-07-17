@@ -1,0 +1,60 @@
+package:
+  name: pyrepl
+  version: !!str 0.8.4
+
+source:
+  fn: pyrepl-0.8.4.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyrepl/pyrepl-0.8.4.tar.gz
+  md5: 9f02a9cc56162e2df647283d9180d7da
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyrepl = pyrepl:main
+    #
+    # Would create an entry point called pyrepl that calls pyrepl.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - pyrepl
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/pypy/pyrepl/
+  license: MIT X11 style
+  summary: 'A library for building flexible command line interfaces'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

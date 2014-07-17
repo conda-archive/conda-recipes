@@ -1,11 +1,11 @@
 package:
   name: seaborn
-  version: !!str 0.2.1
+  version: 0.3.1
 
 source:
-  fn: seaborn-0.2.1.tar.gz
-  url: https://pypi.python.org/packages/source/s/seaborn/seaborn-0.2.1.tar.gz
-  md5: e717341e46b50062a62603d3c88175df
+  fn: seaborn-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/seaborn/seaborn-0.3.1.tar.gz
+  md5: 7f39766a1dd2c9ddaacf7420d77208b2
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -30,7 +30,6 @@ requirements:
     - python
     - setuptools
     - husl
-    - moss
     - patsy
     - pandas
     - statsmodels
@@ -39,11 +38,11 @@ requirements:
   run:
     - python
     - husl
-    - moss
     - patsy
     - pandas
     - statsmodels
     - six
+    - matplotlib
 
 test:
   # Python imports

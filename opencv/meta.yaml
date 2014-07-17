@@ -17,6 +17,7 @@ requirements:
         - jpeg
         - zlib
         - libpng
+        - python
     run:
         - python
         - numpy
@@ -26,7 +27,7 @@ requirements:
 test:
     imports:
       - cv2
-      - cv2.cv  
+      - cv2.cv
 
 about:
     home: http://opencv.org/

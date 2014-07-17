@@ -1,0 +1,28 @@
+
+package:
+    name: greenlet
+    version: 0.4.2
+
+source:
+    fn: greenlet-0.4.2.zip
+    url: https://pypi.python.org/packages/source/g/greenlet/greenlet-0.4.2.zip
+    md5: 580a8a5e833351f7abdaedb1a877f7ac
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+
+    run:
+        - python
+
+test:
+    imports:
+        - greenlet
+
+about:
+    home: https://github.com/python-greenlet/greenlet
+    license: MIT
+
