@@ -26,6 +26,8 @@ fi
 
 if [ `uname` == Darwin ]; then
     mv ./node-webkit.app/* $PREFIX/node-webkit
+    # Remove Info.plist so OSX doesn't treat node-webkit as its own app
+    rm $PREFIX/node-webkit/Contents/Info.plist
     chmod +x $PREFIX/node-webkit/Contents/MacOS/node-webkit
     chmod +x $PREFIX/node-webkit/Contents/Frameworks/node-webkit\ Helper*.app/Contents/MacOS/node-webkit\ Helper*
 
