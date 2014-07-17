@@ -1,0 +1,24 @@
+From e633b814a128dd9f80bfde41ed95244d7ee301f1 Mon Sep 17 00:00:00 2001
+From: "Kamil Kwiek (irritum)" <kamil.kwiek@continuum.io>
+Date: Thu, 17 Jul 2014 12:26:36 +0200
+Subject: [PATCH] Added CMAKE_INSTALL_PREFIX
+
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git CMakeLists.txt CMakeLists.txt
+index 2320eda..c07ee65 100644
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -7,6 +7,8 @@ CompareArgs.cpp Metric.cpp)
+
+ ADD_EXECUTABLE (perceptualdiff ${DIFF_SRC})
+
++set(CMAKE_INSTALL_PREFIX "/")
++
+ INSTALL(TARGETS perceptualdiff DESTINATION bin)
+
+ # look for freeimage
+--
+1.8.5.5

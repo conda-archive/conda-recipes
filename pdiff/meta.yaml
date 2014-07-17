@@ -1,0 +1,28 @@
+
+package:
+    name: pdiff
+    version: 1.1.1
+
+source:
+    fn: perceptualdiff-1.1.1-linux.tar.gz
+    url: http://softlayer-ams.dl.sourceforge.net/project/pdiff/pdiff/perceptualdiff-1.1.1/perceptualdiff-1.1.1-linux.tar.gz
+    md5: 4488a732180d6a4be6537eb7094735f2
+    patches:
+        - 0001-Added-CMAKE_INSTALL_PREFIX.patch
+        - 0001-Added-support-for-rpath.patch
+        - 0001-Added-missing-header-stdio.h.patch
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - cmake
+        - freeimage
+
+    run:
+        - freeimage
+
+about:
+    home: http://pdiff.sourceforge.net/
+    license: GNU GPL
