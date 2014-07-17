@@ -1,0 +1,11 @@
+package:
+  name: libjpeg-turbo
+  version: 1.2.0
+
+source:
+  fn: jpegsrc.v9a.tar.gz
+  url: http://www.ijg.org/files/jpegsrc.v9a.tar.gz
+  md5: 3353992aecaee1805ef4109aadd433e7
+
+about:
+  home: http://www.ijg.org/
