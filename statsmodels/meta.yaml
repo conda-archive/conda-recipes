@@ -7,21 +7,26 @@ source:
   git_tag: v0.5.0
 
 build:
-  script: python setup.py install
+  number: 0
 
 requirements:
   build:
     - python
-    - numpy
-    - cython
     - distribute
+    - cython
+    - numpy
     - scipy
     - pandas
     - patsy
+
   run:
     - python
     - numpy
     - cython
+    - numpy
+    - scipy
+    - pandas
+    - patsy
 
 test:
   imports:

@@ -1,0 +1,21 @@
+
+package:
+    name: freeimage
+    version: 3.15.4
+
+source:
+    fn: FreeImage3154.zip
+    url: http://optimate.dl.sourceforge.net/project/freeimage/Source%20Distribution/3.15.4/FreeImage3154.zip
+    md5: 9f9a3b2c3c1b4fd24fe479e8aaee86b1
+
+build:
+    number: 0
+
+requirements:
+    run:
+        - zlib
+        - libtiff
+
+about:
+    home: http://freeimage.sourceforge.net/
+    license: GPLv2 and FreeImage Public License
