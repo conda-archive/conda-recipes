@@ -10,4 +10,13 @@ about:
   home: http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html
   license: GPL 3
 
+build:
+  number: 1
+
+requirements:
+  build:
+    - ncurses 5.9
+  run:
+    - ncurses 5.9
+
 # vim:set ts=8 sw=2 sts=2 tw=78 et:
