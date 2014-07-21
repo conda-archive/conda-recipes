@@ -3,7 +3,7 @@
 chmod +x configure
 
 if [ `uname` == Darwin ]; then
-    ./configure --prefix=$PREFIX --disable-shared
+    ./configure --prefix=$PREFIX
 else
     ./configure --prefix=$PREFIX
 fi
