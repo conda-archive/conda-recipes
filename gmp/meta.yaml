@@ -7,7 +7,7 @@ source:
   url: ftp://ftp.gnu.org/gnu/gmp/gmp-5.1.2.tar.bz2
 
 build:
-  number: 4
+  number: 5
 
 about:
   home: http://gmplib.org/
