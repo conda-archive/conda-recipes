@@ -1,11 +1,11 @@
 package:
   name: ppl
-  version: 0.11
+  version: 0.11.2
 
 source:
-  fn: ppl-0.11.tar.bz2
-  url: http://bugseng.com/products/ppl/download/ftp/releases/0.11/ppl-0.11.tar.bz2
-  md5: c414abd2ecaf1f1f48949c78d383ee1a
+  fn: ppl-0.11.2.tar.bz2
+  url: http://bugseng.com/products/ppl/download/ftp/releases/0.11.2/ppl-0.11.2.tar.bz2
+  md5: c24429e6c3bc97d45976a63f40f489a1
 
 requirements:
   build:
