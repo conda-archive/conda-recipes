@@ -3,9 +3,9 @@ package:
   version: 1.1
 
 source:
-  fn: ppl-1.1.tar.xz
-  url: http://bugseng.com/products/ppl/download/ftp/releases/1.1/ppl-1.1.tar.xz
-  md5: 82617a9c4e08606111ed9d2dc37ececa
+  fn: ppl-1.1.tar.bz2
+  url: http://bugseng.com/products/ppl/download/ftp/releases/1.1/ppl-1.1.tar.bz2
+  md5: 98be3e1a272bd5337fbadabb0d3f3d20
 
 requirements:
   build:
