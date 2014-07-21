@@ -13,12 +13,12 @@ requirements:
     - gmp >=4.2
     - mpfr >=2.3.1
     - mpc >=0.8.0
-    - ppl
+    - ppl >=0.11,<1
   run:
     - gmp >=4.2
     - mpfr >=2.3.1
     - mpc >=0.8.0
-    - ppl
+    - ppl >=0.11,<1
 
 about:
   home: http://gcc.gnu.org/
