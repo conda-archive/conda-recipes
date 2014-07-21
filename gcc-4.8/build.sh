@@ -3,8 +3,7 @@
     --with-gmp=$PREFIX \
     --with-mpfr=$PREFIX \
     --with-mpc=$PREFIX \
-    --with-isl=$PREFIX \
-    --with-cloog=$PREFIX
+    --with-isl=$PREFIX
 
 make
 make install
