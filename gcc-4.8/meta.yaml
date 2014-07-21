@@ -16,14 +16,13 @@ requirements:
     - gmp >=4.2
     - mpfr >=2.4.0
     - mpc >=0.8.0
-    - isl 0.12.2
-    - cloog 0.18.1
+    - isl
   run:
     - gmp >=4.2
     - mpfr >=2.4.0
     - mpc >=0.8.0
-    - isl 0.12.2
-    - cloog 0.18.1
+    - isl
+
 
 about:
   home: http://gcc.gnu.org/
