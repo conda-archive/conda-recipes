@@ -1,26 +1,25 @@
 
 package:
     name: ffmpeg
-    version: 2.1.0
+    version: 2.2.4
 
 source:
     git_url: git://source.ffmpeg.org/ffmpeg.git
-    git_tag: release/2.1
+    git_tag: n2.2.4
 
 build:
     number: 0
 
 requirements:
     build:
-        - x264
-
+        - x264 # [unix]
+        - openssl
+        - yasm # [unix]
+        - mingw # [win]
     run:
-        - x264
-
-test:
-    imports:
+        - x264 # [unix]
+        - openssl
 
 about:
     home: http://www.ffmpeg.org/
     license: GPL-2
-

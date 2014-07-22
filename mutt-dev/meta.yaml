@@ -1,0 +1,30 @@
+package:
+  name: mutt-dev
+  version: 2014.04.16
+
+source:
+  fn: mutt-20140416.tar.gz
+  url: http://dev.mutt.org/nightlies/mutt-20140416.tar.gz
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - autoconf
+    - openssl
+    - gdbm
+  run:
+    - autoconf
+    - openssl
+    - gdbm
+
+test:
+  commands:
+    - mutt --help
+
+about:
+  home: http://www.mutt.org/
+  license: GPL
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:

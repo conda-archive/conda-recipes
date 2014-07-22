@@ -1,0 +1,20 @@
+package:
+  name: erlang
+  version: R15B01
+
+source:
+  fn: otp_src_R15B01.tar.gz
+  md5: f12d00f6e62b36ad027d6c0c08905fad
+  url: http://www.erlang.org/download/otp_src_R15B01.tar.gz
+
+requirements:
+  build:
+    - readline
+    - openssl
+  run:
+    - readline
+    - openssl
+
+about:
+  home: http://www.erlang.org/
+  license: Erlang Public License 1.1 (http://www.erlang.org/EPLICENSE)

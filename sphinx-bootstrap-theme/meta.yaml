@@ -1,11 +1,11 @@
 package:
   name: sphinx-bootstrap-theme
-  version: !!str 0.3.5
+  version: 0.4.0
 
 source:
-  fn: sphinx-bootstrap-theme-0.3.5.tar.gz
-  url: https://pypi.python.org/packages/source/s/sphinx-bootstrap-theme/sphinx-bootstrap-theme-0.3.5.tar.gz
-  md5: a51f524a384b5e72de5989c4edd08e91
+  fn: sphinx-bootstrap-theme-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/sphinx-bootstrap-theme/sphinx-bootstrap-theme-0.4.0.tar.gz
+  md5: 067f6c8c8b30bb8e70884fce45ce1550
 #  patches:
    # List any patch files here
    # - fix.patch

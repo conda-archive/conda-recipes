@@ -1,0 +1,66 @@
+package:
+  name: game-of-thrones
+  version: !!str 0.1.7
+
+source:
+  fn: game-of-thrones-0.1.7.tar.gz
+  url: https://pypi.python.org/packages/source/g/game-of-thrones/game-of-thrones-0.1.7.tar.gz
+  md5: 94d878187ba1912cc1fe75d9dfba3b5f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  #preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - game-of-thrones = game-of-thrones:main
+    #
+    # Would create an entry point called game-of-thrones that calls game-of-thrones.main()
+
+    - game-of-thrones = game_of_thrones.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - colorama >=0.3.1
+    - docopt >=0.6.2
+
+  run:
+    - python
+    - colorama >=0.3.1
+    - docopt >=0.6.2
+
+test:
+  # Python imports
+  imports:
+    - game_of_thrones
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - game-of-thrones --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://dirtymonkey.co.uk/game-of-thrones
+  license:  MIT License
+  summary: 'Command line tool to generate words that sound like characters from Game of Thrones. Good for project names.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

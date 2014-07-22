@@ -1,0 +1,15 @@
+package:
+  name: ncurses
+  version: 5.9
+
+source:
+  fn: ncurses-5.9.tar.gz
+  url: http://ftp.gnu.org/pub/gnu/ncurses/ncurses-5.9.tar.gz
+  md5: 8cb9c412e5f2d96bc6f459aa8c6282a1
+
+build:
+  number: 3
+
+about:
+  home: http://www.gnu.org/software/ncurses/
+  license:  Free software (X11 License)

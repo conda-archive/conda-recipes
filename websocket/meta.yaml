@@ -1,0 +1,30 @@
+
+package:
+    name: websocket
+    version: 0.2.1
+
+source:
+    fn: websocket-0.2.1.tar.gz
+    url: https://pypi.python.org/packages/source/w/websocket/websocket-0.2.1.tar.gz
+    md5: 2ded54ca7c61a9a0afb93fe2666dea76
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+
+    run:
+        - python
+
+test:
+    imports:
+        - websocket
+
+    #commands:
+    #    -
+
+about:
+    home: https://pypi.python.org/packages/source/w/websocket/
+    license: MIT

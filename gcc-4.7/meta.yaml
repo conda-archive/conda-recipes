@@ -1,0 +1,26 @@
+package:
+  name: gcc
+  version: 4.7.3
+
+source:
+  fn: gcc-4.7.3.tar.bz2
+  url: http://www.netgull.com/gcc/releases/gcc-4.7.3/gcc-4.7.3.tar.bz2
+  md5: 86f428a30379bdee0224e353ee2f999e
+
+requirements:
+  build:
+    # These are taken from the output of the configure scripts
+    - gmp >=4.2
+    - mpfr >=2.3.1
+    - mpc >=0.8.0
+    - ppl >=0.11,<1
+  run:
+    - gmp >=4.2
+    - mpfr >=2.3.1
+    - mpc >=0.8.0
+    - ppl >=0.11,<1
+
+about:
+  home: http://gcc.gnu.org/
+  summary: The GNU Compiler Collection
+  license: GPL

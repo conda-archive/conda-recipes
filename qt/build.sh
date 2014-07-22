@@ -5,28 +5,32 @@ if [ `uname` == Linux ]; then
     ./configure \
         -release -fontconfig -continue -verbose \
         -no-qt3support -nomake examples -nomake demos \
-        -webkit -qt-libpng -qt-zlib -gtkstyle \
+        -webkit -qt-libpng -qt-zlib -gtkstyle -dbus \
         -prefix $PREFIX
     make
     make install
 
     cp $SRC_DIR/bin/* $PREFIX/bin/
     cd $PREFIX
-    rm -rf doc imports mkspecs phrasebooks plugins q3porting.xml translations
+    rm -rf doc imports mkspecs phrasebooks q3porting.xml translations
     rm -rf demos examples tests
     cd $PREFIX/bin
     rm -f *.bat *.pl qt3to4 qdoc3
 fi
 
 if [ `uname` == Darwin ]; then
+    # Leave Qt set its own flags and vars, else compilation errors
+    # will occur
+    for x in OSX_ARCH CFLAGS CXXFLAGS LDFLAGS
+    do
+	unset $x
+    done
+
     chmod +x configure
     ./configure \
-        -platform macx-g++ \
-        -release -no-qt3support -nomake examples -nomake demos \
-        -opensource \
-        -no-framework \
-        -prefix $PREFIX \
-        -verbose
+        -platform macx-g++ -release -prefix $PREFIX \
+        -no-qt3support -nomake examples -nomake demos -nomake docs \
+        -opensource -no-framework -fast -verbose -arch `uname -m`
 
     make
     make install

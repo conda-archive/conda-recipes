@@ -1,0 +1,37 @@
+package:
+  name: statsmodels
+  version: "0.5.0"
+
+source:
+  git_url: https://github.com/statsmodels/statsmodels.git
+  git_tag: v0.5.0
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - distribute
+    - cython
+    - numpy
+    - scipy
+    - pandas
+    - patsy
+
+  run:
+    - python
+    - numpy
+    - cython
+    - numpy
+    - scipy
+    - pandas
+    - patsy
+
+test:
+  imports:
+    - statsmodels
+
+about:
+  home: http://statsmodels.sourceforge.net/
+  license : BSD License

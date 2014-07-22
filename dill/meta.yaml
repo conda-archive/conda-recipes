@@ -1,17 +1,18 @@
 package:
   name: dill
-  version: 0.2a1
+  version: !!str 0.2b1
 
 source:
-  fn: dill-0.2a1.tgz
-  url: https://pypi.python.org/packages/source/d/dill/dill-0.2a1.tgz
-  md5: 10ec6e5629143df115c3e1438a16e042
+  fn: dill-0.2b1.tgz
+  url: https://pypi.python.org/packages/source/d/dill/dill-0.2b1.tgz
+  md5: 75f44a4727017e0c08d8a23daac7a2f2
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
-  # entry_points:
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -22,7 +23,7 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
 requirements:
   build:
@@ -37,7 +38,7 @@ test:
   imports:
     - dill
 
-  # commands:
+  #commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -51,7 +52,8 @@ test:
 
 about:
   home: http://www.cacr.caltech.edu/~mmckerns/dill.htm
-  license: BSD
+  license: 3-clause BSD
+  summary: 'serialize all of python (almost)'
 
 # See
 # http://docs.continuum.io/conda/build.html for

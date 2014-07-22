@@ -1,0 +1,29 @@
+package:
+  name: shapely
+  version: 1.3.1
+
+source:
+  fn: Shapely-1.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/S/Shapely/Shapely-1.3.1.tar.gz
+  md5: 5ac028637fbd52b9752994bdbfd9446c
+  patches:
+    - setup.patch
+    - osx-geos.patch        [osx]
+
+requirements:
+  build:
+    - python
+    - distribute
+    - geos
+  run:
+    - python
+    - geos
+
+test:
+  imports:
+    - shapely
+    - shapely.speedups._speedups
+
+about:
+  home: https://github.com/Toblerity/Shapely
+  license: BSD

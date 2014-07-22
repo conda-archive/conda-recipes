@@ -1,0 +1,32 @@
+
+package:
+    name: dulwich
+    version: 0.9.5
+
+source:
+    fn: dulwich-0.9.5.tar.gz
+    url: https://pypi.python.org/packages/source/d/dulwich/dulwich-0.9.5.tar.gz
+    md5: 7ace33f90cd61c7fcd32816eb73d1f5a
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - distribute
+
+    run:
+        - python
+
+test:
+    imports:
+        - dulwich
+
+    #commands:
+    #    -
+
+about:
+    home: https://samba.org/~jelmer/dulwich
+    license: GPLv2 or later
+

@@ -1,0 +1,23 @@
+From 60dd274686a0c853e0db7890fb45344fbab4b16b Mon Sep 17 00:00:00 2001
+From: irritum <kamil.kwiek@continuum.io>
+Date: Thu, 17 Jul 2014 11:51:15 +0200
+Subject: [PATCH] Added missing header: stdio.h
+
+---
+ Metric.cpp |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git Metric.cpp Metric.cpp
+index 10fcd29..0f31a16 100644
+--- Metric.cpp
++++ Metric.cpp
+@@ -19,6 +19,7 @@ if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330,
+ #include "RGBAImage.h"
+ #include "LPyramid.h"
+ #include <math.h>
++#include <stdio.h>
+
+ #ifndef M_PI
+ #define M_PI 3.14159265f
+--
+1.7.1

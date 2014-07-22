@@ -1,0 +1,34 @@
+package:
+  name: pkg-config
+  version: 0.28
+
+source:
+  fn: pkg-config-0.28.zip
+  url: https://github.com/tpn/pkg-config/archive/pkg-config-0.28.zip
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - zlib
+    - autoconf
+    - python
+    - automake
+    - libtool
+  run:
+    - zlib
+
+test:
+  commands:
+    - pkg-config --help
+    - !!str [ "$(pkg-config freetype2 --cflags)" == "-I$PREFIX/include/freetype2 -I$PREFIX/include" ]
+
+  requires:
+    - freetype
+
+about:
+  home: http://www.freedesktop.org/wiki/Software/pkg-config/
+  license: GPL 2
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:

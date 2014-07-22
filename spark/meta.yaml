@@ -1,0 +1,28 @@
+package:
+    name: spark
+    version: 1.0.0
+
+source:
+    git_url: https://github.com/apache/spark
+    git_tag: v1.0.0
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - apache-maven
+        - scala 2.10.*
+
+    run:
+        - python
+        - apache-maven
+
+test:
+    commands:
+        - pyspark --help
+
+about:
+    home: https://spark.incubator.apache.org/
+    license: Apache 2.0 license

@@ -1,20 +1,20 @@
 package:
   name: numpydoc
-  version: 0.4
+  version: 0.5.git
 
 source:
-  fn: numpydoc-0.4.tar.gz
-  url: https://pypi.python.org/packages/source/n/numpydoc/numpydoc-0.4.tar.gz
-  md5: e5bdd98f84f2bb220373819e20c27091
+  git_url: https://github.com/numpy/numpydoc.git
 
 requirements:
   build:
     - python
     - setuptools
     - sphinx
+    - six
   run:
     - python
     - sphinx
+    - six
 
 test:
   imports:

@@ -1,0 +1,24 @@
+
+package:
+    name: scala
+    version: 2.11.1
+
+source:
+    fn: scala-2.11.1.tgz
+    url: http://downloads.typesafe.com/scala/2.11.1/scala-2.11.1.tgz
+
+build:
+    number: 0
+
+requirements:
+    build:
+
+    run:
+
+test:
+    commands:
+        - scalac -help
+
+about:
+    home: http://www.scala-lang.org/
+    license: 3-clause BSD license
