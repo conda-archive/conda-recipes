@@ -1,11 +1,11 @@
 package:
   name: moss
-  version: !!str 0.2.0
+  version: 0.3.2
 
 source:
-  fn: moss-0.2.0.tar.gz
-  url: https://pypi.python.org/packages/source/m/moss/moss-0.2.0.tar.gz
-  md5: ba50bee1706bb0579a36cc11df88bc16
+  fn: moss-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/m/moss/moss-0.3.2.tar.gz
+  md5: 938acc90d8dd617c0c9474299eab6599
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -28,21 +28,30 @@ source:
 requirements:
   build:
     - python
+    - ipython
     - setuptools
     - patsy
     - pandas
     - statsmodels
     - scikit-learn
     - six
+    - numpy
+    - scipy
+    - matplotlib
+    - seaborn
 
   run:
     - python
+    - ipython
     - patsy
     - pandas
     - statsmodels
     - scikit-learn
     - six
     - matplotlib
+    - seaborn
+    - numpy
+    - scipy
 
 test:
   # Python imports
@@ -63,7 +72,7 @@ test:
     # - nose
 
 about:
-  home: UNKNOWN
+  home: https://github.com/mwaskom/moss
   license: BSD
   summary: 'Moss: statistical utilities for neuroimaging and cognitive science'
 

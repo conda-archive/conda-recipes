@@ -1,0 +1,60 @@
+package:
+  name: modernize3k
+  version: !!str 0.3.5
+
+source:
+  fn: modernize3k-0.3.5.tar.gz
+  url: https://pypi.python.org/packages/source/m/modernize3k/modernize3k-0.3.5.tar.gz
+  md5: 1467baaf528f1b03ffb6b8fda35c02f4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - modernize3k = modernize3k:main
+    #
+    # Would create an entry point called modernize3k that calls modernize3k.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - libmodernize
+    - libmodernize.fixes
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/myint/python-modernize
+  license:  BSD License
+  summary: 'A hack on top of 2to3 for modernizing code for hybrid codebases.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
