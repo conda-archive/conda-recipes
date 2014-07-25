@@ -1,0 +1,21 @@
+package:
+  name: ctk
+  version: 0.1
+  
+source:
+  git_url: https://github.com/ContinuumIO/ctk.git
+  
+requirements:
+  build:
+    - python
+    
+  run:
+    - python
+    
+test:
+  imports:
+    - ctk
+    
+about:
+  home: https://github.com/ContinuumIO/ctk
+  license: BSD
