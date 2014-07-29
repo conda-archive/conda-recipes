@@ -1,11 +1,11 @@
 package:
   name: jedi
-  version: !!str 0.8.0.final0
+  version: !!str 0.8.1
 
 source:
-  fn: jedi-0.8.0-final0.tar.gz
-  url: https://pypi.python.org/packages/source/j/jedi/jedi-0.8.0-final0.tar.gz
-  md5: 25ba4ee6160c2de751bd00c7a4f32bff
+  fn: jedi-0.8.1-final0.tar.gz
+  url: https://pypi.python.org/packages/source/j/jedi/jedi-0.8.1-final0.tar.gz
+  md5: e4db996421a640d50f559587e805412b
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -56,7 +56,7 @@ test:
 
 about:
   home: https://github.com/davidhalter/jedi
-  license: MIT License
+  license:  MIT License
   summary: 'An autocompletion tool for Python that can be used for text editors.'
 
 # See
