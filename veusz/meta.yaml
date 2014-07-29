@@ -1,15 +1,26 @@
 package:
   name: veusz
-  version: 1.17.1
+  version: 1.21.0
 
 source:
   git_url: https://github.com/jeremysanders/veusz.git
-  git_tag: veusz-1.17.1
 
 requirements:
   build:
     - python
+    - numpy
+    - qt
+    - pyqt
 
   run:
     - python
     - numpy
+    - pyqt
+
+build:
+  entry_points:
+    - veusz = veusz.veusz_main:run
+
+app:
+  type: desk
+  own_environment: true
