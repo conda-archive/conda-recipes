@@ -9,7 +9,6 @@ requirements:
   build:
     - python
     - numpy
-    - qt
     - pyqt
 
   run:
@@ -22,5 +21,7 @@ build:
     - veusz = veusz.veusz_main:run
 
 app:
+  entry: veusz
   type: desk
   own_environment: true
+  summary: Veusz Scientific Plotting Application
