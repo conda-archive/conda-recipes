@@ -1,6 +1,6 @@
 package:
   name: node-webkit
-  version: '0.10.0'
+  version: '0.10.1'
   
 build:
   number: 0
@@ -9,14 +9,17 @@ build:
     - Scripts\node-webkit.bat                                   [win]
 
 source:
-  fn: node-webkit-v0.10.0-linux-x64.tar.gz                                      [linux64]
-  url: http://dl.node-webkit.org/v0.10.0/node-webkit-v0.10.0-linux-x64.tar.gz   [linux64]
+  fn: node-webkit-v0.10.1-linux-ia32.tar.gz                                     [linux32]
+  url: http://dl.node-webkit.org/v0.10.1/node-webkit-v0.10.1-linux-ia32.tar.gz  [linux32]
 
-  fn: node-webkit-v0.10.0-osx-ia32.zip                                          [osx]
-  url: http://dl.node-webkit.org/v0.10.0/node-webkit-v0.10.0-osx-ia32.zip       [osx]
+  fn: node-webkit-v0.10.1-linux-x64.tar.gz                                      [linux64]
+  url: http://dl.node-webkit.org/v0.10.1/node-webkit-v0.10.1-linux-x64.tar.gz   [linux64]
+
+  fn: node-webkit-v0.10.1-osx-x64.zip                                           [osx]
+  url: http://dl.node-webkit.org/v0.10.1/node-webkit-v0.10.1-osx-x64.zip        [osx]
   
-  fn: node-webkit-v0.10.0-win-ia32.zip                                          [win]
-  url: http://dl.node-webkit.org/v0.10.0/node-webkit-v0.10.0-win-ia32.zip       [win]
+  fn: node-webkit-v0.10.1-win-ia32.zip                                          [win]
+  url: http://dl.node-webkit.org/v0.10.1/node-webkit-v0.10.1-win-ia32.zip       [win]
 
 about:
   home: https://github.com/rogerwang/node-webkit
