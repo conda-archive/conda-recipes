@@ -1,0 +1,78 @@
+package:
+  name: robotframework-python3
+  version: !!str 2.8.4
+
+source:
+  fn: robotframework-python3-2.8.4.tar.gz
+  url: https://pypi.python.org/packages/source/r/robotframework-python3/robotframework-python3-2.8.4.tar.gz
+  md5: a92e45da752a803288cd64dc83320265
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - robotframework-python3 = robotframework-python3:main
+    #
+    # Would create an entry point called robotframework-python3 that calls robotframework-python3.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+
+  run:
+    - python
+    - six
+
+test:
+  # Python imports
+  imports:
+    - robot
+    - robot.api
+    - robot.conf
+    - robot.htmldata
+    - robot.libdocpkg
+    - robot.libraries
+    - robot.model
+    - robot.output
+    - robot.parsing
+    - robot.reporting
+    - robot.result
+    - robot.running
+    - robot.running.arguments
+    - robot.running.timeouts
+    - robot.utils
+    - robot.variables
+    - robot.writer
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/userzimmermann/robotframework-python3
+  license:  Apache Software License
+  summary: 'Python 3 compatible generic test automation framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
