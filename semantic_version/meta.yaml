@@ -1,0 +1,60 @@
+package:
+  name: semantic_version
+  version: !!str 2.3.0
+
+source:
+  fn: semantic_version-2.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/semantic_version/semantic_version-2.3.0.tar.gz
+  md5: 3d3e9abc4cdd2dc37af8e3fc28affe64
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - semantic_version = semantic_version:main
+    #
+    # Would create an entry point called semantic_version that calls semantic_version.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - semantic_version
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rbarrois/python-semanticversion
+  license:  BSD License
+  summary: "A library implementing the 'SemVer' scheme."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
