@@ -33,6 +33,7 @@ requirements:
     - path.py
     - moretools >=0.1a38
     - robotframework-python3 >=2.8.4
+    - robotframework
 
   run:
     - python
@@ -40,6 +41,8 @@ requirements:
     - path.py
     - moretools >=0.1a38
     - robotframework-python3 >=2.8.4
+    - robotframework
+    - setuptools
 
 test:
   # Python imports
