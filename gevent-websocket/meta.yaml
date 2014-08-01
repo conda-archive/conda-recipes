@@ -1,0 +1,38 @@
+
+package:
+    name: gevent-websocket
+    version: 0.9.3
+
+source:
+    fn: gevent-websocket-0.9.3.tar.gz
+    url: https://pypi.python.org/packages/source/g/gevent-websocket/gevent-websocket-0.9.3.tar.gz
+    md5: eb59f931d60e068e95adecefaed54df7
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - setuptools
+        - gevent
+        - wsaccel
+        - ujson
+
+    run:
+        - python
+        - gevent
+        - wsaccel
+        - ujson
+
+test:
+    imports:
+        - geventwebsocket
+
+    #commands:
+    #    -
+
+about:
+    home: https://bitbucket.org/Jeffrey/gevent-websocket
+    license: Apache 2.0
+

@@ -1,0 +1,42 @@
+
+package:
+    name: ggplot
+    version: "master"
+
+source:
+    git_url: https://github.com/yhat/ggplot
+    git_tag: "master"
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - setuptools
+        - matplotlib
+        - pandas
+        - numpy
+        - scipy
+        - statsmodels
+        - patsy
+        - brewer2mpl
+
+    run:
+        - python
+        - matplotlib
+        - pandas
+        - numpy
+        - scipy
+        - statsmodels
+        - patsy
+        - brewer2mpl
+
+test:
+    imports:
+        - ggplot
+
+about:
+    home: https://github.com/yhat/ggplot/
+    license: BSD
+

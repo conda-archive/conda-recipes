@@ -1,0 +1,62 @@
+package:
+  name: fancycompleter
+  version: !!str 0.4
+
+source:
+  fn: fancycompleter-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/f/fancycompleter/fancycompleter-0.4.tar.gz
+  md5: 44667c62c6db6318ca6482f3e0781d31
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - fancycompleter = fancycompleter:main
+    #
+    # Would create an entry point called fancycompleter that calls fancycompleter.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyrepl
+
+  run:
+    - python
+    - pyrepl
+
+test:
+  # Python imports
+  imports:
+    - fancycompleter
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/antocuni/fancycompleter
+  license:  BSD License
+  summary: 'colorful TAB completion for Python prompt'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,81 @@
+package:
+  name: robotframework-tools
+  version: !!str 0.1a111
+
+source:
+  fn: robotframework-tools-0.1a111.tar.gz
+  url: https://pypi.python.org/packages/source/r/robotframework-tools/robotframework-tools-0.1a111.tar.gz
+  md5: 5d1bc577eacd261066bab34a4e1c480e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - robotframework-tools = robotframework-tools:main
+    #
+    # Would create an entry point called robotframework-tools that calls robotframework-tools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - path.py
+    - moretools >=0.1a38
+    - robotframework-python3 >=2.8.4
+    - robotframework
+
+  run:
+    - python
+    - six
+    - path.py
+    - moretools >=0.1a38
+    - robotframework-python3 >=2.8.4
+    - robotframework
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - robotshell
+    - robotshell.magic
+    - robottools
+    - robottools.library
+    - robottools.library.context
+    - robottools.library.inspector
+    - robottools.library.keywords
+    - robottools.library.session
+    - robottools.remote
+    - robottools.testrobot
+    - robottools.zetup
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/userzimmermann/robotframework-tools
+  license:  GNU General Public License (GPL)
+  summary: 'Python Tools for Robot Framework and Test Libraries.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

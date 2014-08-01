@@ -1,17 +1,18 @@
 package:
   name: cov-core
-  version: 1.7
+  version: !!str 1.13.0
 
 source:
-  fn: cov-core-1.7.tar.gz
-  url: https://pypi.python.org/packages/source/c/cov-core/cov-core-1.7.tar.gz
-  md5: 59c1e22e636633e10120beacbf45b28c
+  fn: cov-core-1.13.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/cov-core/cov-core-1.13.0.tar.gz
+  md5: 8999e0bc50bca5a09d7731a3d42bfcd1
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
-  # entry_points:
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -22,23 +23,23 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
 requirements:
   build:
     - python
     - setuptools
-    - coverage
+    - coverage >=3.6
 
   run:
     - python
-    - coverage
+    - coverage >=3.6
 
 test:
   # Python imports
   # imports:
 
-  # commands:
+  #commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -51,8 +52,9 @@ test:
     # - nose
 
 about:
-  home: http://bitbucket.org/memedough/cov-core/overview
-  license: MIT License
+  home: https://github.com/schlamar/cov-core
+  license:  MIT License
+  summary: 'plugin core for use by pytest-cov, nose-cov and nose2-cov'
 
 # See
 # http://docs.continuum.io/conda/build.html for

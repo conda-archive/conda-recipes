@@ -1,0 +1,19 @@
+package:
+  name: ppl
+  version: 0.11.2
+
+source:
+  fn: ppl-0.11.2.tar.bz2
+  url: http://bugseng.com/products/ppl/download/ftp/releases/0.11.2/ppl-0.11.2.tar.bz2
+  md5: c24429e6c3bc97d45976a63f40f489a1
+
+requirements:
+  build:
+    - gmp >=4.1.3
+  run:
+    - gmp >=4.1.3
+
+about:
+  home: http://bugseng.com/products/ppl
+  summary: "The Parma Polyhedra Library (PPL) provides numerical abstractions especially targeted at applications in the field of analysis and verification of complex systems. "
+  license: GPL

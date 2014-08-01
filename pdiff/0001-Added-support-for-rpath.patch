@@ -1,0 +1,31 @@
+From 5bd86cd45a3405de45559934ac2542a9131f11f1 Mon Sep 17 00:00:00 2001
+From: "Kamil Kwiek (irritum)" <kamil.kwiek@continuum.io>
+Date: Thu, 17 Jul 2014 12:37:41 +0200
+Subject: [PATCH] Added support for rpath
+
+---
+ CMakeLists.txt | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git CMakeLists.txt CMakeLists.txt
+index c07ee65..72753be 100644
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -11,6 +11,15 @@ set(CMAKE_INSTALL_PREFIX "/")
+
+ INSTALL(TARGETS perceptualdiff DESTINATION bin)
+
++SET(CMAKE_SKIP_BUILD_RPATH  FALSE)
++SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
++SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/usr/lib")
++SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
++LIST(FIND CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES "${CMAKE_INSTALL_PREFIX}/usr/lib" isSystemDir)
++IF("${isSystemDir}" STREQUAL "-1")
++    SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/usr/lib")
++ENDIF("${isSystemDir}" STREQUAL "-1")
++
+ # look for freeimage
+ FIND_PATH(FREEIMAGE_INCLUDE_DIR FreeImage.h
+   /usr/local/include
+--
+1.8.5.5
