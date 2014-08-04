@@ -1,0 +1,65 @@
+package:
+  name: ansi2html
+  version: !!str 1.0.6
+
+source:
+  fn: ansi2html-1.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/a/ansi2html/ansi2html-1.0.6.tar.gz
+  md5: df764afaa8e1167d7e7747ea59705e49
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  #preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ansi2html = ansi2html:main
+    #
+    # Would create an entry point called ansi2html that calls ansi2html.main()
+
+    - ansi2html=ansi2html.converter:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+
+  run:
+    - python
+    - setuptools
+    - six
+
+test:
+  # Python imports
+  imports:
+    - ansi2html
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - ansi2html --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/ralphbean/ansi2html/
+  license:  GNU General Public License (GPL)
+  summary: 'Convert text with ANSI color codes to HTML'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
