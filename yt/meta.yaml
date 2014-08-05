@@ -1,11 +1,11 @@
 package:
   name: yt
-  version: 2.6.2
+  version: 3.0
 
 source:
-  fn: yt-2.6.2.tar.gz
-  url: https://pypi.python.org/packages/source/y/yt/yt-2.6.2.tar.gz
-  md5: 93826b0812ad12ea9dc30894ec82de06
+  fn: yt-3.0.tar.gz
+  url: https://pypi.python.org/packages/source/y/yt/yt-3.0.tar.gz
+  md5: c73c9ea79822208a6a373829175ab220
 
 build:
   entry_points:
@@ -16,20 +16,20 @@ requirements:
     - python
     - numpy
     - cython
-    - libpng
-    - freetype
-    - hdf5
-    - setuptools
+    - setuptools 
+    - libpython # [win]
+    - mingw # [win]
   run:
     - python
     - numpy
-    - libpng
-    - freetype
-    - hdf5
     - h5py
+    - sympy
     - matplotlib
+    - ipython
 
 test:
+  requires:
+    - nose
   commands:
     - yt -h
   imports:
