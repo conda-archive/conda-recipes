@@ -8,7 +8,7 @@ source:
   md5: a3d7d63b9cb6b6ea049469a0c4a43c9d
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
@@ -17,11 +17,13 @@ requirements:
     - mpfr >=2.4.0
     - mpc >=0.8.0
     - isl
+    - cloog 0.18.0
   run:
     - gmp >=4.2
     - mpfr >=2.4.0
     - mpc >=0.8.0
     - isl
+    - cloog 0.18.0
 
 
 about:
