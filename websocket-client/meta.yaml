@@ -28,12 +28,12 @@ requirements:
     - python
     - setuptools
     - unittest2 [not py3k]
-    - backports.ssl_match_hostname
+    - backports.ssl_match_hostname [not py3k]
     - six
   run:
     - python
     - unittest2 [not py3k]
-    - backports.ssl_match_hostname
+    - backports.ssl_match_hostname [not py3k]
     - six
 
 test:
