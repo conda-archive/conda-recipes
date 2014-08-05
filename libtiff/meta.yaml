@@ -1,5 +1,5 @@
 package:
-  name: libdiff
+  name: libtiff
   version: 4.0.2
 
 source:
@@ -9,9 +9,15 @@ source:
   patches:
     - enable_zip.patch  [win]
 
+build:
+  number: 1  [linux]
+
 requirements:
   build:
     - zlib
+    - jpeg
+  run:
+    - jpeg
 
 about:
   home: http://www.libtiff.org/
