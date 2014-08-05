@@ -5,7 +5,6 @@ package:
 source:
   git_url: https://github.com/liris/websocket-client.git
   git_tag: v0.16.0
-  git_tag: v0.16.0 [py3k]
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -28,12 +27,12 @@ requirements:
   build:
     - python
     - setuptools
-    - unittest2
+    - unittest2 [not py3k]
     - backports.ssl_match_hostname
     - six
   run:
     - python
-    - unittest2
+    - unittest2 [not py3k]
     - backports.ssl_match_hostname
     - six
 
