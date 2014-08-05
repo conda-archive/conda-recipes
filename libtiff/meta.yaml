@@ -1,0 +1,18 @@
+package:
+  name: libdiff
+  version: 4.0.2
+
+source:
+  fn: tiff-4.0.2.tar.gz
+  url: ftp://ftp.remotesensing.org/pub/libtiff/tiff-4.0.2.tar.gz
+  md5: 04a08fa1e07e696e820a0c3f32465a13
+  patches:
+    - enable_zip.patch  [win]
+
+requirements:
+  build:
+    - zlib
+
+about:
+  home: http://www.libtiff.org/
+  license: as-is (http://www.libtiff.org/misc.html)
