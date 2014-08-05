@@ -1,0 +1,60 @@
+package:
+  name: doge
+  version: !!str 3.5.0
+
+source:
+  fn: doge-3.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/doge/doge-3.5.0.tar.gz
+  md5: 29642ad2903f73ffc939c04689c695cb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - doge = doge:main
+    #
+    # Would create an entry point called doge that calls doge.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+    - argparse # [py26]
+
+test:
+  # Python imports
+  imports:
+    - doge
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+    - doge
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/thiderman/doge
+  license: MIT
+  summary: 'wow very terminal doge'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
