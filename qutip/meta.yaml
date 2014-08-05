@@ -1,0 +1,33 @@
+package:
+  name: qutip
+  version: 3.0.1
+
+source:
+  fn: qutip-3.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/q/qutip/qutip-3.0.1.tar.gz
+  md5: 3d785a372661166dbf81652c36848b5e
+
+requirements:
+  build:
+    - numpy
+    - scipy
+    - cython
+    - matplotlib
+  run:
+    - numpy
+    - scipy
+    - cython
+    - matplotlib
+
+test:
+  requires:
+    - nose
+  imports:
+    - numpy
+    - scipy
+    - cython
+    - matplotlib
+
+about:
+  home: http://www.qutip.org/
+  license: BSD
