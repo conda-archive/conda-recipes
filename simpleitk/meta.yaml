@@ -1,0 +1,32 @@
+package:
+  name: simpleitk
+  version: "0.8.0.post29"
+
+source:
+  git_url: git://itk.org:SimpleITK.git
+  git_tag: 7372be074932a9916df6e061d9071d7696078a7d
+
+requirements:
+  build:
+    - python
+    - cmake
+    - libtiff
+    - libpng
+    - jpeg
+    - zlib
+    - setuptools
+  run:
+    - python
+    - libtiff
+    - libpng
+    - jpeg
+    - zlib
+
+test:
+  imports:
+    - SimpleITK
+
+about:
+  home: http::/www.simpleitk.org
+  license: Apache 2.0
+  summary: Simplified interface to the Insight Toolkit for image registration and segmentation
