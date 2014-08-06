@@ -1,10 +1,10 @@
 package:
   name: cloog
-  version: 0.18.1
+  version: 0.18.0
 
 source:
-  fn: cloog-0.18.1.tar.gz
-  url: http://www.bastoul.net/cloog/pages/download/count.php3?url=./cloog-0.18.1.tar.gz
+  fn: cloog-0.18.0.tar.gz
+  url: http://www.bastoul.net/cloog/pages/download/count.php3?url=./cloog-0.18.0.tar.gz
 
 requirements:
   build:
