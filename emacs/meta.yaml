@@ -12,7 +12,7 @@ build:
   binary_has_prefix_files:
     - bin/emacs
     - bin/emacs-24.3.91
-    - libexec/emacs/24.3.91/x86_64-apple-darwin13.2.0/update-game-score
+#    - libexec/emacs/24.3.91/x86_64-apple-darwin13.2.0/update-game-score
 
 test:
   commands:
