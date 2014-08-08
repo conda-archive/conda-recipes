@@ -1,0 +1,25 @@
+package:
+  name: concurrentloghandler
+  version: !!str 0.9.1
+
+source:
+  fn: ConcurrentLogHandler-0.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/C/ConcurrentLogHandler/ConcurrentLogHandler-0.9.1.tar.gz
+  md5: 9609ecc4c269ac43f0837d89f12554c3
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - cloghandler
+
+about:
+  home: http://launchpad.net/python-concurrent-log-handler
+  license: Apache Software License
+  summary: 'Concurrent logging handler (drop-in replacement for RotatingFileHandler) Python 2.6+'
