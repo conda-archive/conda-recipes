@@ -1,0 +1,31 @@
+package:
+  name: multyvac
+  version: !!str 0.4.9
+
+source:
+  fn: multyvac-0.4.9.tar.gz
+  url: https://pypi.python.org/packages/source/m/multyvac/multyvac-0.4.9.tar.gz
+  md5: 07cdcb9257446068c1341d31e2f7b054
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=1.1.0
+    - concurrentloghandler >=0.9.1
+
+  run:
+    - python
+    - setuptools
+    - requests >=1.1.0
+    - concurrentloghandler >=0.9.1
+
+test:
+  imports:
+    - multyvac
+    - multyvac.util
+
+about:
+  home: http://www.multyvac.com
+  license: BSD License
+  summary: 'Multyvac for Python'
