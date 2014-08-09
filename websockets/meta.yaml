@@ -1,0 +1,33 @@
+
+package:
+    name: websockets
+    version: 2.1
+
+source:
+    fn: websockets-2.1.tar.gz
+    url: https://pypi.python.org/packages/source/w/websockets/websockets-2.1.tar.gz
+    md5: 2e395216a6af15b9e686b057cf28a3f1
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - asyncio
+        - setuptools
+
+    run:
+        - python
+        - asyncio
+
+test:
+    imports:
+        - websockets
+
+    #commands:
+    #    -
+
+about:
+    home: https://github.com/aaugustin/websockets
+    license: BSD

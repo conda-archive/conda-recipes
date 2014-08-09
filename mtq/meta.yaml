@@ -1,0 +1,78 @@
+package:
+  name: mtq
+  version: !!str 0.4.3
+
+source:
+  fn: mtq-0.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/m/mtq/mtq-0.4.3.tar.gz
+  md5: 3c9cf1de68a11ef1419192ffb6a59bc6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  #preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mtq = mtq:main
+    #
+    # Would create an entry point called mtq that calls mtq.main()
+
+    - mtq-worker = mtq.scripts.worker:main
+    - mtq-info = mtq.scripts.info:main
+    - mtq-tail = mtq.scripts.log:main
+    - mtq-scheduler = mtq.scripts.schedule:main
+    - mtq-ctrl = mtq.scripts.ctrl:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymongo >=2.5
+    - python-dateutil >=2.1
+    - pytz >=2013b
+
+  run:
+    - python
+    - pymongo >=2.5
+    - python-dateutil >=2.1
+    - pytz >=2013b
+
+test:
+  # Python imports
+  imports:
+    - mtq
+    - mtq.scripts
+    - mtq.tests
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mtq-worker --help
+    - mtq-info --help
+    - mtq-tail --help
+    - mtq-scheduler --help
+    - mtq-ctrl --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: UNKNOWN
+  license: UNKNOWN
+  summary: 'Mongo Task Queue'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

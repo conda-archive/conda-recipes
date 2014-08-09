@@ -1,0 +1,13 @@
+package:
+  name: xz
+  version: 5.0.5
+
+source:
+  fn: xz-5.0.5.tar.bz2
+  url: http://tukaani.org/xz/xz-5.0.5.tar.bz2
+  sha1: 166b228efae6bfadbbf831e9982510209d74240e
+
+about:
+  home: http://tukaani.org/xz/
+  summary: "XZ Utils is free general-purpose data compression software with high compression ratio."
+  license: Public domain/GPL

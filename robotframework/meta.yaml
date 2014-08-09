@@ -1,0 +1,75 @@
+package:
+  name: robotframework
+  version: !!str 2.8.5
+
+source:
+  fn: robotframework-2.8.5.tar.gz
+  url: https://pypi.python.org/packages/source/r/robotframework/robotframework-2.8.5.tar.gz
+  md5: 2d2c6938830f71a6aa6f4be32227997f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - robotframework = robotframework:main
+    #
+    # Would create an entry point called robotframework that calls robotframework.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - robot
+    - robot.api
+    - robot.conf
+    - robot.htmldata
+    - robot.libdocpkg
+    - robot.libraries
+    - robot.model
+    - robot.output
+    - robot.parsing
+    - robot.reporting
+    - robot.result
+    - robot.running
+    - robot.running.arguments
+    - robot.running.timeouts
+    - robot.utils
+    - robot.variables
+    - robot.writer
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://robotframework.org
+  license:  Apache Software License
+  summary: 'A generic test automation framework'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

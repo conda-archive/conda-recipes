@@ -1,0 +1,30 @@
+
+package:
+    name: asyncio
+    version: 3.4.1
+
+source:
+    fn: asyncio-3.4.1.tar.gz
+    url: https://pypi.python.org/packages/source/a/asyncio/asyncio-3.4.1.tar.gz
+    md5: 7dc164ad37905ca3745576d0b9dfb2de
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+
+    run:
+        - python
+
+test:
+    imports:
+        - asyncio
+
+    #commands:
+    #    -
+
+about:
+    home: http://www.python.org/dev/peps/pep-3156/
+    license: Apache 2.0

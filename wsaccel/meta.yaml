@@ -1,0 +1,32 @@
+
+package:
+    name: wsaccel
+    version: 0.6.2
+
+source:
+    fn: wsaccel-0.6.2.tar.gz
+    url: https://pypi.python.org/packages/source/w/wsaccel/wsaccel-0.6.2.tar.gz
+    md5: 2b4ea3d6847855c0587d37fca9db0557
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - cython
+
+    run:
+        - python
+        - cython
+
+test:
+    imports:
+        - wsaccel
+
+    #commands:
+    #    -
+
+about:
+    home: https://github.com/methane/wsaccel
+    license: Unknown
