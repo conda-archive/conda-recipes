@@ -1,0 +1,1 @@
+xcopy * %PREFIX%\Scripts\ /E

@@ -1,0 +1,34 @@
+package:
+  name: qt5
+  version: 5.3.1
+
+source:
+  fn: qt-everywhere-opensource-src-5.3.1.tar.gz # [unix]
+  url: http://download.qt-project.org/official_releases/qt/5.3/5.3.1/single/qt-everywhere-opensource-src-5.3.1.tar.gz # [unix]
+  sha1: 3244dd34f5fb695e903eaa49c6bd0838b9bf7a73 # [unix]
+  fn: qt-everywhere-opensource-src-5.3.1.zip # [win]
+  url: http://download.qt-project.org/official_releases/qt/5.3/5.3.1/single/qt-everywhere-opensource-src-5.3.1.zip # [win]
+  sha1: 4695389cacd256aef25fc42ce27e15355e44bff5 # [win]
+
+build:
+  number: 1
+  binary_has_prefix_files:
+    - lib/qt5/bin/qmake # [unix]
+    - Scripts\qmake.exe # [win]
+    - Scripts\Qt5Core.dll # [win]
+    - lib/libQt5Core.so # [linux]
+    - lib/libQt5Core.dylib # [osx]
+    - lib/libQt5Core.la # [osx]
+
+requirements:
+  build:
+    - freetype # [unix]
+    - icu # [win]
+    - jom # [win]
+  run:
+    - freetype # [unix]
+    - icu # [win]
+
+about:
+    home: http://qt-project.org
+    license: LGPL
