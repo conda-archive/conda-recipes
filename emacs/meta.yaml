@@ -8,11 +8,11 @@ source:
   md5: f14b1b0d56aac1da8abb37f30ab70dc3
 
 build:
-  number: 3
+  number: 4
   binary_has_prefix_files:
     - bin/emacs
     - bin/emacs-24.3.91
-    - libexec/emacs/24.3.91/x86_64-apple-darwin13.2.0/update-game-score
+#    - libexec/emacs/24.3.91/x86_64-apple-darwin13.2.0/update-game-score
 
 test:
   commands:

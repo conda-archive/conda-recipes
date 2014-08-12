@@ -1,0 +1,29 @@
+package:
+  name: sockjs-tornado
+  version: !!str 1.0.0
+
+source:
+  fn: sockjs-tornado-1.0.0.zip
+  url: https://pypi.python.org/packages/source/s/sockjs-tornado/sockjs-tornado-1.0.0.zip
+  md5: ff03279696f3466b54fb184a8c358221
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado >=2.1.1
+
+  run:
+    - python
+    - tornado >=2.1.1
+
+test:
+  imports:
+    - sockjs
+    - sockjs.tornado
+    - sockjs.tornado.transports
+
+about:
+  home: http://github.com/mrjoes/sockjs-tornado/
+  license: MIT
+  summary: 'SockJS python server implementation on top of Tornado framework'
