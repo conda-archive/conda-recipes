@@ -1,3 +1,6 @@
+REM setenv /Release /x86 /xp
+REM set DISTUTILS_USE_SDK=1
+
 "%PYTHON%" setup.py build
 "%PYTHON%" setup.py install
 if errorlevel 1 exit 1
