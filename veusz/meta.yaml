@@ -6,6 +6,7 @@ source:
   git_url: https://github.com/jeremysanders/veusz.git
   patches:
     - pyqtdistutils.patch                       [win32]
+    - showicons.patch                           [win32]
 
 requirements:
   build:

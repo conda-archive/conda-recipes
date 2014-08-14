@@ -1,5 +1,6 @@
-REM setenv /Release /x86 /xp
-REM set DISTUTILS_USE_SDK=1
+REM IF ARCH EQU 32 setenv /Release /x86 /xp
+REM IF ARCH EQU 64 setenv /Release /x64 /xp
+set DISTUTILS_USE_SDK=1
 
 "%PYTHON%" setup.py build
 "%PYTHON%" setup.py install
