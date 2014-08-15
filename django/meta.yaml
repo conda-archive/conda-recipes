@@ -1,11 +1,11 @@
 package:
   name: django
-  version: !!str 1.6.2
+  version: !!str 1.6.5
 
 source:
-  fn: Django-1.6.2.tar.gz
-  url: https://pypi.python.org/packages/source/D/Django/Django-1.6.2.tar.gz
-  md5: 45d974c623b3bfbf9976f3d808fe1ee9
+  fn: Django-1.6.5.tar.gz
+  url: https://pypi.python.org/packages/source/D/Django/Django-1.6.5.tar.gz
+  md5: e4c5b2d35ecb3807317713afa70a0c77
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -191,9 +191,10 @@ test:
     - django.contrib.gis.tests.geoapp
     - django.contrib.flatpages.tests
 
-  #commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
+    - django-admin.py --version
 
 
   # You can also put a file called run_test.py in the recipe that will be run
