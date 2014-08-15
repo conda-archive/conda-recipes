@@ -18,7 +18,6 @@ requirements:
 test:
   commands:
     - crf_learn --help
-    - crf_test --help
 
 about:
   home: https://code.google.com/p/crfpp/
