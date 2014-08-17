@@ -1,7 +1,3 @@
-:: may need to change these depending on environment:
-CALL "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
-::CALL "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\vcvarsall.bat" amd64
-
 :: set path to find resources shipped with qt-5:
 set PATH=%SRC_DIR%\gnuwin32\bin;%PATH%
 
@@ -14,7 +10,7 @@ set PATH=C:\OpenSSL-Win64\bin;%PATH%
 set SQLITE3SRCDIR=%SRC_DIR%\qtbase\src\3rdparty\sqlite
 
 :: this needs to be CALLed due to an exit statement at the end of configure:
-CALL configure -platform win32-msvc2010 ^
+CALL configure ^
       -prefix %PREFIX%\Library ^
       -libdir %PREFIX%\Library\lib ^
       -bindir %PREFIX%\Scripts ^

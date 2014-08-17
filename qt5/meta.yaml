@@ -10,6 +10,9 @@ source:
   url: http://download.qt-project.org/official_releases/qt/5.3/5.3.1/single/qt-everywhere-opensource-src-5.3.1.zip # [win]
   sha1: 4695389cacd256aef25fc42ce27e15355e44bff5 # [win]
 
+  patches: # [win and py2k]
+    - msvc2008.patch # [win and py2k]
+
 build:
   number: 1
   binary_has_prefix_files:
@@ -25,9 +28,11 @@ requirements:
     - freetype # [unix]
     - icu # [win]
     - jom # [win]
+    - python
   run:
     - freetype # [unix]
     - icu # [win]
+    - python # [win]
 
 about:
     home: http://qt-project.org
