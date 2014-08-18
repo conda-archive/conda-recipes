@@ -23,15 +23,21 @@ These may have been optional
 
 ## Notes concerning Windows:
 
+- It is possible to build Qt5 with MSVC2008, but I have not been successful
+  building ICU with MSVC2008. The readme.html in ICU's sources explain how to
+  build with older MSVC via cygwin, but I have not been successful. Riverbank
+  Computing does not provide PyQt5 installers for python2.7 on windows, due
+  to the lack of MSVC2008 support. It seems unwise to distribute PyQt5 for py27
+  without upstream support.
+
 - Building from source requires preparing the environment outside conda
   (see http://qt-project.org/doc/qt-5/windows-requirements.html):
 
     * ActivePerl
     * Ruby
     * Python (trivial)
-    * DirectX SDK
-    * Visual C++ 2010 (2008 yields compilation errors, see
-      https://bugreports.qt-project.org/browse/QTBUG-36037):
+    * DirectX SDK (if omitting `-opengl desktop` config argument)
+    * Visual C++ 2010:
 
       1. Install Visual Studio 2010
       2. Install Windows SDK 7.1
@@ -41,15 +47,12 @@ These may have been optional
          http://www.opengl.org/registry/ into
          `C:\Program Files\ Microsoft SDKs\Windows\v7.1\Include\gl`
 
-  You may also have to edit bld.bat to make sure perl and ruby can be found on
-  the `%PATH%`. I also installed openssl and grep for windows. OpenSSL was
-  necessary for PyQt-5.3.1. The instructions at
+  You may also have to make sure perl and ruby can be found on the `%PATH%`. I
+  also installed openssl and grep for windows. OpenSSL was necessary for
+  PyQt-5.3.1 (but should not be for PyQt-5.3.2). The instructions at
   http://trac.webkit.org/wiki/BuildingQtOnWindows were especially helpful, and
   include links to build dependencies.
 
   This recipe assumes the computer on which Qt-5 will be installed has drivers
-  supporting opengl.
-
-  Alternatively, one might consider building with mingw:
-  http://qt-project.org/wiki/MinGW-64-bit . I gave up after failing to build
-  the ICU dependency with MinGW.
+  supporting opengl. It could be rebuilt removing the `-opengl desktop` config
+  parameter to use ANGLE, which ships with the qt5 sources.
