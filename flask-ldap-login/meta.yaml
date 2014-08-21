@@ -1,0 +1,36 @@
+package:
+  name: flask-ldap-login
+  version: !!str 0.1
+
+source:
+  fn: flask-ldap-login-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/f/flask-ldap-login/flask-ldap-login-0.1.tar.gz
+  md5: 1066ff870c7ed5dfcec20c854d7e6f7f
+
+build:
+  entry_points:
+    - flask-ldap-login-check = flask_ldap_login.check:main
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - python-ldap
+    - flask
+    - flask-wtf
+
+test:
+  imports:
+    - examples
+    - flask_ldap_login
+
+  commands:
+    - flask-ldap-login-check --help
+
+about:
+  home: https://github.com/srossross/flask-ldap-login
+  license: UNKNOWN
+  summary: 'UNKNOWN'
