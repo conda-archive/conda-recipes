@@ -1,0 +1,68 @@
+package:
+  name: flask
+  version: !!str 0.10.1
+
+source:
+  fn: Flask-0.10.1.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask/Flask-0.10.1.tar.gz
+  md5: 378670fe456957eb3c27ddaef60b2b24
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flask = flask:main
+    #
+    # Would create an entry point called flask that calls flask.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - werkzeug >=0.7
+    - jinja2 >=2.4
+    - itsdangerous >=0.21
+
+  run:
+    - python
+    - werkzeug >=0.7
+    - jinja2 >=2.4
+    - itsdangerous >=0.21
+
+test:
+  # Python imports
+  imports:
+    - flask
+    - flask.ext
+    - flask.testsuite
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/mitsuhiko/flask/
+  license:  BSD License
+  summary: 'A microframework based on Werkzeug, Jinja2 and good intentions'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
