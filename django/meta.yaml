@@ -3,9 +3,9 @@ package:
   version: !!str 1.6.5
 
 source:
-  fn: Django-1.6.5.tar.gz
-  url: https://pypi.python.org/packages/source/D/Django/Django-1.6.5.tar.gz
-  md5: e4c5b2d35ecb3807317713afa70a0c77
+  fn: Django-1.6.6.tar.gz
+  url: https://pypi.python.org/packages/source/D/Django/Django-1.6.6.tar.gz
+  md5: d14fd332f31799fff39acc0c79e8421c
 #  patches:
    # List any patch files here
    # - fix.patch
