@@ -34,4 +34,3 @@ if [ `uname` == Darwin ]; then
     # python doesnt swallow .dylib for extensions
     mv $PREFIX/lib/python2.7/site-packages/PyKDL.dylib $PREFIX/lib/python2.7/site-packages/PyKDL.so
 fi
-

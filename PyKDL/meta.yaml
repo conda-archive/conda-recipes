@@ -29,6 +29,16 @@ test:
   imports:
     - PyKDL
 
+# test:
+#   commands:
+#     - wget --help
+>>>>>>> 1c681ef20b8ad3c2a4b790b6023717331c3fd2b4
+
 about:
   home: http://www.orocos.org
   license: GPL 2.1
+<<<<<<< HEAD
+=======
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:
+>>>>>>> 1c681ef20b8ad3c2a4b790b6023717331c3fd2b4
