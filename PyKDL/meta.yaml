@@ -5,9 +5,10 @@ package:
 source:
   fn: v1.2.2.tar.gz
   url: https://github.com/orocos/orocos_kinematics_dynamics/archive/v1.2.2.tar.gz
+  md5: 6be8169f8811e4d9e09a8eeff5832834
 
 build:
-  number: 0
+  number: 1
   binary_relocation: true # (defaults to true)
 
 requirements:
@@ -16,17 +17,18 @@ requirements:
     - python
     - sip
     - eigen # https://binstar.org/meznom/eigen/
-    # - openssl
-  # run:
-  #   - zlib
-  #   - openssl
 
-# test:
-#   commands:
-#     - wget --help
+  run:
+    - sip
+    - python
+
+test:
+  requires:
+    - sip
+    - python
+  imports:
+    - PyKDL
 
 about:
   home: http://www.orocos.org
   license: GPL 2.1
-
-# vim:set ts=8 sw=2 sts=2 tw=78 et:

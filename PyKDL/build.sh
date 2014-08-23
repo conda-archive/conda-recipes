@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# tested on OSX 10.8.5
+
 ncpus=1
 if test -x /usr/bin/getconf; then
     ncpus=$(/usr/bin/getconf _NPROCESSORS_ONLN)
@@ -28,6 +30,8 @@ cmake   -DPYTHON_PACKAGES_DIR_NAME="site-packages" \
 make -j$ncpus
 make install
 
-# python doesnt swallow .dylib for extensions 
+if [ `uname` == Darwin ]; then
+    # python doesnt swallow .dylib for extensions
+    mv $PREFIX/lib/python2.7/site-packages/PyKDL.dylib $PREFIX/lib/python2.7/site-packages/PyKDL.so
+fi
 
-mv $PREFIX/lib/python2.7/site-packages/PyKDL.dylib $PREFIX/lib/python2.7/site-packages/PyKDL.so
