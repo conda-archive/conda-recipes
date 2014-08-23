@@ -1,7 +1,7 @@
-diff --git a/include/boost/atomic/detail/cas128strong.hpp b/include/boost/atomic/detail/cas128strong.hpp
+diff --git boost/atomic/detail/cas128strong.hpp boost/atomic/detail/cas128strong.hpp
 index 906c13e..dcb4d7d 100644
---- a/include/boost/atomic/detail/cas128strong.hpp
-+++ b/include/boost/atomic/detail/cas128strong.hpp
+--- boost/atomic/detail/cas128strong.hpp
++++ boost/atomic/detail/cas128strong.hpp
 @@ -196,15 +196,17 @@ class base_atomic<T, void, 16, Sign>
  
  public:

@@ -1,16 +1,7 @@
-From 9127260dea5092a7fb845cf24758a7cd07156207 Mon Sep 17 00:00:00 2001
-From: Lars Viklund <zao@zao.se>
-Date: Tue, 2 Jul 2013 01:11:29 +0200
-Subject: [PATCH 5/6] Boost.S11n include missing algorithm
-
----
- boost/archive/iterators/transform_width.hpp | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/boost/archive/iterators/transform_width.hpp b/boost/archive/iterators/transform_width.hpp
+diff --git boost/archive/iterators/transform_width.hpp boost/archive/iterators/transform_width.hpp
 index 3562144..f95c675 100644
---- a/boost/archive/iterators/transform_width.hpp
-+++ b/boost/archive/iterators/transform_width.hpp
+--- boost/archive/iterators/transform_width.hpp
++++ boost/archive/iterators/transform_width.hpp
 @@ -30,6 +30,8 @@
  #include <boost/iterator/iterator_adaptor.hpp>
  #include <boost/iterator/iterator_traits.hpp>
