@@ -9,9 +9,6 @@ source:
   patches:
     - enable_zip.patch  [win]
 
-build:
-  number: 1  [linux]
-
 requirements:
   build:
     - zlib
