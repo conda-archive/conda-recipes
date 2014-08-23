@@ -1,0 +1,24 @@
+package:
+  name: crfpp
+  version: 0.58
+
+source:
+  fn: CRF++-0.58.tar.gz
+  url: https://crfpp.googlecode.com/files/CRF%2B%2B-0.58.tar.gz
+  sha1: 979a686a6d73d14cdd0c96a310888fb6bffd2e91
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - automake
+    - autoconf
+
+test:
+  commands:
+    - crf_learn --help
+
+about:
+  home: https://code.google.com/p/crfpp/
+  license: New BSD License
