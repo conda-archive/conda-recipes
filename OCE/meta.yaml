@@ -9,7 +9,7 @@ source:
   md5: 7a4b4df5a104d75a537e25e7dd387eca
 
 build:
-   number: 0
+   number: 1
    binary_relocation: true # (defaults to true)
 
 requirements:
@@ -17,9 +17,13 @@ requirements:
     - cmake
     - freeimage
     - freetype
+    - tbb
+    - gl2ps
   run:
     - freeimage
     - freetype
+    - tbb
+    - gl2ps
 
 # test:
 #   commands:
