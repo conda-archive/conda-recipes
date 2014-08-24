@@ -1,23 +1,25 @@
 package:
   name: opencascade_community_edition
-  version: 0.15.0
+  version: 0.16.0
 
 source:
-  fn: OCE-0.15.tar.gz
-  url: https://github.com/tpaviot/oce/archive/OCE-0.15.tar.gz [not win]
-#   patches:
-#     - my.patch
+  fn: OCE-0.16.tar.gz
+  # windows can be built from this source, but is not yet supported
+  url: https://github.com/tpaviot/oce/archive/OCE-0.16.tar.gz [not win]
+  md5: 7a4b4df5a104d75a537e25e7dd387eca
 
-# build:
-#   number: 1
-#   binary_relocation: true # (defaults to true)
+build:
+   number: 0
+   binary_relocation: true # (defaults to true)
 
 requirements:
   build:
     - cmake
     - freeimage
     - freetype
-#     - autoconf
+  run:
+    - freeimage
+    - freetype
 
 # test:
 #   commands:
