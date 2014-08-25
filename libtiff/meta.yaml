@@ -1,5 +1,5 @@
 package:
-  name: libdiff
+  name: libtiff
   version: 4.0.2
 
 source:
@@ -12,6 +12,9 @@ source:
 requirements:
   build:
     - zlib
+    - jpeg
+  run:
+    - jpeg
 
 about:
   home: http://www.libtiff.org/
