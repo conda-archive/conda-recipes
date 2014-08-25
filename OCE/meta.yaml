@@ -9,7 +9,7 @@ source:
   md5: 7a4b4df5a104d75a537e25e7dd387eca
 
 build:
-   number: 1
+   number: 2
    binary_relocation: true # (defaults to true)
 
 requirements:
@@ -19,11 +19,15 @@ requirements:
     - freetype
     - tbb
     - gl2ps
+    - python # actually, to have TCL
+    - tk #
   run:
     - freeimage
     - freetype
     - tbb
     - gl2ps
+    - python # actually to have TCL
+    - tk # since the DRAW program should be included, not just the raw libs...
 
 # test:
 #   commands:
