@@ -1,0 +1,40 @@
+package:
+  name: george
+  version: !!str 0.1.1
+
+source:
+  fn: george-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/george/george-0.1.1.tar.gz
+  md5: c7e782c249d3e094dad61f7f21636d3d
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - eigen3
+    - numpy
+
+  run:
+    - python
+    - setuptools
+    - eigen3
+    - numpy
+    - scipy
+
+test:
+  requires:
+    - nose
+  imports:
+    - george
+    - george.testing
+  commands:
+    # I'm not sure why, but nosetests george.testing does not run any tests,
+    # so I need to call out each module separately
+    - nosetests george.testing.test_basic
+    - nosetests george.testing.test_kernels
+    - nosetests george.testing.test_tutorial
+
+about:
+  home: https://github.com/dfm/george
+  license:  MIT License
+  summary: 'Blazingly fast Gaussian Processes for regression.'
