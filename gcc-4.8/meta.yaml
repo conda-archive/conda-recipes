@@ -28,6 +28,9 @@ requirements:
     - isl
     - cloog 0.18.0
 
+test:
+  commands:
+    - gcc --help
 
 about:
   home: http://gcc.gnu.org/
