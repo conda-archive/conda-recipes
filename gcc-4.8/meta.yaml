@@ -8,7 +8,10 @@ source:
   md5: a3d7d63b9cb6b6ea049469a0c4a43c9d
 
 build:
-  number: 2
+  number: 3
+  binary_has_prefix_files:
+    - lib/libgcc_ext.10.4.dylib
+    - lib/libgcc_ext.10.5.dylib
 
 requirements:
   build:
