@@ -1,7 +1,7 @@
-diff --git a/include/boost/atomic/detail/gcc-atomic.hpp b/include/boost/atomic/detail/gcc-atomic.hpp
+diff --git boost/atomic/detail/gcc-atomic.hpp boost/atomic/detail/gcc-atomic.hpp
 index a130590..4af99a1 100644
---- a/include/boost/atomic/detail/gcc-atomic.hpp
-+++ b/include/boost/atomic/detail/gcc-atomic.hpp
+--- boost/atomic/detail/gcc-atomic.hpp
++++ boost/atomic/detail/gcc-atomic.hpp
 @@ -958,14 +958,16 @@ class base_atomic<T, void, 16, Sign>
  
  public:
