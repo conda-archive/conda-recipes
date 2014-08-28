@@ -1,9 +1,10 @@
 Building a conda qt5 package is a slow process. Its a big package, and it takes
-a long time to even unpack the compressed source. Its also not possible for
-conda to use a git checkout, because conda caches a bare repository, almost
-all of the source exists as submodules, and conda tries to clone the submodules
-from nonexistent directories in its cache. So we are stuck with the compressed
-source files.
+a long time to even unpack the compressed source. In fact, it takes about as
+long to delete an old qt5 source directory and unpack a new one as it does to
+compile qt5 on a 48-core machine. Its currently not possible for conda to use a
+git checkout, because conda caches a bare repository, almost all of the source
+exists as submodules, and conda tries to clone the submodules from nonexistent
+directories in its cache. So we are stuck with the compressed source files.
 
 ## Packages needed to build with RHEL6
 
@@ -56,3 +57,10 @@ These may have been optional
   This recipe assumes the computer on which Qt-5 will be installed has drivers
   supporting opengl. It could be rebuilt removing the `-opengl desktop` config
   parameter to use ANGLE, which ships with the qt5 sources.
+
+  Qt5, especially QtWebKit, have a few source files with paths that are long
+  enough to cause problems for the MSVC compiler, which has a 260 character
+  constraint. This caused problems when I installed anaconda in
+  `C:\Users\myprofile\anaconda` (particularly when compiling the third-party
+  webp graphics plugin for qtwebkit). Installing anaconda/miniconda in
+  `C:\conda` worked around this issue. 

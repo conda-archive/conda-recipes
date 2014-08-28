@@ -1,3 +1,7 @@
+:: need to reset the environment here, or will not compile with errors
+:: similar to http://qt-project.org/forums/viewthread/32660 
+CALL "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
+
 :: set path to find resources shipped with qt-5:
 set PATH=%SRC_DIR%\gnuwin32\bin;%PATH%
 
@@ -10,14 +14,15 @@ set PATH=C:\OpenSSL-Win64\bin;%PATH%
 set SQLITE3SRCDIR=%SRC_DIR%\qtbase\src\3rdparty\sqlite
 
 :: this needs to be CALLed due to an exit statement at the end of configure:
-CALL configure ^
+CALL configure -platform win32-msvc2010 ^
       -prefix %PREFIX%\Library ^
-      -libdir %PREFIX%\Library\lib ^
+      -libdir %PREFIX%\Library\lib\qt5 ^
       -bindir %PREFIX%\Scripts ^
       -headerdir %PREFIX%\Library\include\qt5 ^
       -archdatadir %PREFIX%\Library\lib\qt5 ^
       -datadir %PREFIX%\Library\share\qt5 ^
       -release ^
+      -shared ^
       -opensource ^
       -confirm-license ^
       -no-warnings-are-errors ^
@@ -36,3 +41,5 @@ nmake install
 
 :: remove docs, phrasebooks, translations
 rmdir %PREFIX%\Library\share\qt5 /s /q
+
+%PYTHON% %RECIPE_DIR%\patch_prefix_files.py

@@ -25,7 +25,7 @@ requirements:
 
 test:
   imports:
-    - PyQt5
+    - PyQt5.QtCore
 
 about:
   home: http://www.riverbankcomputing.co.uk/software/pyqt
