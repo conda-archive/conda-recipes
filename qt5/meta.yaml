@@ -12,14 +12,14 @@ source:
 
 build:
   number: 1
-  detect_binary_files_with_prefix: true
-#  binary_has_prefix_files:
-#    - lib/qt5/bin/qmake # [unix]
-#    - Scripts/qmake.exe # [win]
-#    - Scripts/Qt5Core.dll # [win]
-#    - lib/libQt5Core.so # [linux]
-#    - lib/libQt5Core.dylib # [osx]
-#    - lib/libQt5Core.la # [osx]
+#  detect_binary_files_with_prefix: true
+  binary_has_prefix_files:
+    - lib/qt5/bin/qmake # [unix]
+    - Scripts/qmake.exe # [win]
+    - Scripts/Qt5Core.dll # [win]
+    - lib/libQt5Core.so # [linux]
+    - lib/libQt5Core.dylib # [osx]
+    - lib/libQt5Core.la # [osx]
 
 requirements:
   build:
