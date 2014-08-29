@@ -6,16 +6,16 @@ CALL "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
 set PATH=%SRC_DIR%\gnuwin32\bin;%PATH%
 
 :: make sure we can find ICU and openssl:
-set INCLUDE=%PREFIX%\include;C:\OpenSSL-Win64\include;%INCLUDE%
-set LIB=%PREFIX%\libs;C:\OpenSSL-Win64\lib;%LIB%
-set PATH=C:\OpenSSL-Win64\bin;%PATH%
+set INCLUDE=%PREFIX%\Library\include;C:\OpenSSL-Win64\include;%INCLUDE%
+set LIB=%PREFIX%\Library\lib;C:\OpenSSL-Win64\lib;%LIB%
+set PATH=%PREFIX%\Scripts;C:\OpenSSL-Win64\bin;%PATH%
 
 :: make sure we can find sqlite3:
 set SQLITE3SRCDIR=%SRC_DIR%\qtbase\src\3rdparty\sqlite
 
 :: this needs to be CALLed due to an exit statement at the end of configure:
 CALL configure -platform win32-msvc2010 ^
-      -prefix %PREFIX%\Library ^
+      -prefix %PREFIX% ^
       -libdir %PREFIX%\Library\lib\qt5 ^
       -bindir %PREFIX%\Scripts ^
       -headerdir %PREFIX%\Library\include\qt5 ^
