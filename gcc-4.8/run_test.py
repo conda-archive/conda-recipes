@@ -19,4 +19,4 @@ prefix = os.environ['PREFIX']
 
 for f in os.listdir(os.path.join(prefix, 'lib')):
     if f.endswith('dylib'):
-        assert_relative_osx(f)
+        assert_relative_osx(os.path.join(prefix, f))
