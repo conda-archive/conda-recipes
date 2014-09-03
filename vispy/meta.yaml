@@ -10,10 +10,16 @@ source:
 requirements:
   build:
     - python
+    - numpy
   run:
     - python
     - numpy
     - pyqt
+
+test:
+  imports:
+    - vispy.app
+    - vispy.scene
 
 about:
   home: http://www.vispy.org
