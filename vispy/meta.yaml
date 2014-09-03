@@ -1,0 +1,21 @@
+package:
+  name: vispy
+  version: "0.3.0"
+
+source:
+  fn: vispy-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/v/vispy/vispy-0.3.0.tar.gz
+  md5: 77e6a198c3edac005aaec1153460489c
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+    - numpy
+    - pyqt
+
+about:
+  home: http://www.vispy.org
+  license: BSD
+  summary: Vispy is a high-performance, interactive 2D/3D data visualization library (currently in early development).
