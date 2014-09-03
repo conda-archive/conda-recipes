@@ -1,11 +1,11 @@
 package:
   name: django
-  version: !!str 1.6.5
+  version: !!str 1.7
 
 source:
-  fn: Django-1.6.5.tar.gz
-  url: https://pypi.python.org/packages/source/D/Django/Django-1.6.5.tar.gz
-  md5: e4c5b2d35ecb3807317713afa70a0c77
+  fn: Django-1.7.tar.gz
+  url: https://pypi.python.org/packages/source/D/Django/Django-1.7.tar.gz
+  md5: 03edab6828119aa9b32b2252d25eb38d
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -28,9 +28,12 @@ source:
 requirements:
   build:
     - python
+    - pip
+    - setuptools
 
   run:
     - python
+    - setuptools
 
 test:
   # Python imports
@@ -77,7 +80,6 @@ test:
     - django.contrib.gis.utils
     - django.contrib.formtools.wizard.storage
     - django.conf.locale.en_GB
-    - django.conf.locale.fy_NL
     - django.conf.locale.uk
     - django.contrib.gis.gdal.tests
     - django.conf.locale.lv
@@ -194,6 +196,7 @@ test:
   commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
+    - django-admin --version
     - django-admin.py --version
 
 

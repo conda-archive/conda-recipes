@@ -1,0 +1,29 @@
+
+package:
+    name: selenium
+    version: 2.42.1
+
+source:
+    fn: selenium-2.42.1.tar.gz
+    url: https://pypi.python.org/packages/source/s/selenium/selenium-2.42.1.tar.gz
+    md5: 628be3f9426c0ec973d421fd08854552
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - distribute
+
+    run:
+        - python
+
+test:
+    imports:
+        - selenium
+
+about:
+    home: http://www.seleniumhq.org/
+    license: Apache License 2.0
+
