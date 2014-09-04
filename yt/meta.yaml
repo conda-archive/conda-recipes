@@ -1,11 +1,11 @@
 package:
   name: yt
-  version: 3.0
+  version: 3.0.1
 
 source:
-  fn: yt-3.0.tar.gz
-  url: https://pypi.python.org/packages/source/y/yt/yt-3.0.tar.gz
-  md5: c73c9ea79822208a6a373829175ab220
+  fn: yt-3.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/y/yt/yt-3.0.1.tar.gz
+  md5: 7983a358aab047ab582aa22bfa0de7fa
 
 build:
   entry_points:
