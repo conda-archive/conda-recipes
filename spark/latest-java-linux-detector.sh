@@ -17,28 +17,28 @@ DETERMINED_JRE_HOME=""
 #############
 
 f_CheckJavaHomeVariable() {
-    if [[ ! -z ${JAVA_HOME} ]]; then
+    if [[ -z ${JAVA_HOME} ]]; then
+        echo -e "You have NO setup of JAVA_HOME variable!";
+        return 1;
+    else
         if [[ ! -x ${JAVA_HOME}/bin/java ]]; then
             echo -e "Your JAVA_HOME variable is NOT pointing to right directory with java (no executable bin/java was found there)!";
             return 1;
         fi
-    else
-        echo -e "You have NO setup of JAVA_HOME variable!";
-        return 1;
     fi
 
     return 0;
 }
 
 f_CheckJreHomeVariable() {
-    if [[ ! -z ${JRE_HOME} ]]; then
+    if [[ -z ${JRE_HOME} ]]; then
+        echo -e "You have NO setup of JRE_HOME variable!";
+        return 1;
+    else
         if [[ ! -x ${JRE_HOME}/bin/java ]]; then
             echo -e "Your JRE_HOME variable is NOT pointing to right directory with java (no executable bin/java was found there)!";
             return 1;
         fi
-    else
-        echo -e "You have NO setup of JRE_HOME variable!";
-        return 1;
     fi
 
     return 0;
