@@ -1,0 +1,25 @@
+From 57afd8f63c62fc455b0ef4e747f3490d5764fcad Mon Sep 17 00:00:00 2001
+From: irritum <kamil.kwiek@continuum.io>
+Date: Wed, 10 Sep 2014 11:48:33 -0400
+Subject: [PATCH] Patching SPARK_HOME variable
+
+---
+ java_gateway.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/java_gateway.py b/java_gateway.py
+index 91ae826..22691f1 100644
+--- java_gateway.py
++++ java_gateway.py
+@@ -25,7 +25,7 @@ from threading import Thread
+ from py4j.java_gateway import java_import, JavaGateway, GatewayClient
+ 
+ def launch_gateway():
+-    SPARK_HOME = os.environ["SPARK_HOME"]
++    SPARK_HOME = os.path.dirname(os.path.realpath(__file__))+'/../../../../share/spark'
+ 
+     gateway_port = -1
+     if "PYSPARK_GATEWAY_PORT" in os.environ:
+-- 
+1.7.1
+
