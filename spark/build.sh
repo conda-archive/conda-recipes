@@ -155,6 +155,14 @@ EOF
 
     popd || return 1;
 
+    ### Patching SPARK_HOME
+
+    pushd ${SP_DIR}/pyspark/ || return 1;
+
+    patch -p0 < ${RECIPE_DIR}/0001-Patching_SPARK_HOME_variable.patch || exit 1;
+
+    popd || return 1;
+
     return 0;
 }
 
