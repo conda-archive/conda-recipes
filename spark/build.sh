@@ -124,6 +124,7 @@ EOF
         if [[ ${fileName} == ${launchWrapperName} ]]; then
             continue;
         fi
+
         ln -vs ${pkgRelBinPath}/${launchWrapperName} ${fileName} || return 1;
     done
 
@@ -139,8 +140,18 @@ EOF
         if [[ ${fileName} == ${launchWrapperName} ]]; then
             continue;
         fi
+
         ln -vs ${pkgRelSbinPath}/${launchWrapperName} ${fileName} || return 1;
     done
+
+    popd || return 1;
+
+    ### Setup pyspark & py4j
+
+    pushd ${SP_DIR}/ || return 1;
+
+    ln -vs ../../../share/spark/python/pyspark/ . || return 1;
+    ln -vs ../../../share/spark/python/build/py4j/ . || return 1;
 
     popd || return 1;
 

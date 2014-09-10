@@ -21,6 +21,9 @@ requirements:
         - apache-maven
 
 test:
+    imports:
+        - pyspark
+
     commands:
         - pyspark --help
 
