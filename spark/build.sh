@@ -7,14 +7,15 @@ export CXXLAGS="${CFLAGS}"
 export CPPFLAGS="-I${PREFIX}/include"
 export LDFLAGS="-L${PREFIX}/lib"
 
-export JAVA_HOME="/usr/lib/jvm/java-1.6.0"
-export JRE_HOME="/usr/lib/jvm/jre-1.6.0"
 export SCALA_HOME="${PREFIX}/share/scala"
+
+export SPARK_HADOOP_VERSION="2.4.0"
 
 LinuxInstallation() {
     # Build dependencies:
-    # - java-1.7.0-openjdk-devel
+    # - java-1.6.0-openjdk-devel
 
+    local javaVersion=''
     local pkgBaseDir="${PKG_NAME}-${PKG_VERSION}"
     local aliasPkgBaseDir="${PKG_NAME}"
     local fullPkgBaseDir="${PREFIX}/share/${pkgBaseDir}"
@@ -25,6 +26,37 @@ LinuxInstallation() {
     local pkgRelBinPath="../share/${aliasPkgBaseDir}/bin"
     local pkgRelSbinPath="../share/${aliasPkgBaseDir}/sbin"
 
+    shopt -s extglob;
+
+    ${RECIPE_DIR}/latest-java-linux-detector.sh;
+    if [[ ${?} -eq 1 ]]; then
+        ${RECIPE_DIR}/latest-java-linux-detector.sh -d;
+        if [[ ${?} -eq 1 ]]; then
+            echo -e "Unable to setup JAVA_HOME and/or JRE_HOME in built environment";
+            exit 1;
+        else
+            export JAVA_HOME="$(${RECIPE_DIR}/latest-java-linux-detector.sh -d| grep 'export JAVA_HOME='| cut -d '=' -f 2)"
+            export JRE_HOME="$(${RECIPE_DIR}/latest-java-linux-detector.sh -d| grep 'export JRE_HOME='| cut -d '=' -f 2)"
+        fi
+    fi
+
+    # Bug: https://issues.apache.org/jira/browse/SPARK-1911
+    javaVersion="$(${JAVA_HOME}/bin/java -version 2>&1|grep '^java version'|cut -d '"' -f 2)"
+
+    if [[ ! ${javaVersion} =~ 1.6.+([0-9])* ]]; then
+        cat <<NEWEOF
+    Sorry but currently (due to the bug: https://issues.apache.org/jira/browse/SPARK-1911) your java version is NOT supported!
+
+    Your java version:     ${javaVersion}
+    Required java version: 1.6.X
+
+    Please do one of:
+    a) remove from your system all newer java's versions than 1.6.X (if You are using latest-java-linux-detector.sh),
+    b) manually setup JAVA_HOME and JRE_HOME to 1.6.X version of java.
+NEWEOF
+        exit 1;
+    fi
+
     mkdir -vp ${PREFIX}/bin || exit 1;
     mkdir -vp ${PREFIX}/share || exit 1;
     mkdir -vp ${fullPkgBaseDir} || exit 1;
@@ -32,6 +64,8 @@ LinuxInstallation() {
     pushd ${PREFIX}/share || exit 1;
     ln -sv ${pkgBaseDir} ${aliasPkgBaseDir} || exit  1;
     popd || exit 1;
+
+    cp -v ${RECIPE_DIR}/latest-java-linux-detector.sh ${PREFIX}/bin/ || exit 1;
 
     # Build package by using sbt tool (however, there is no target to create distribution - this is mostly for local usage):
     #./sbt/sbt assembly || return 1;
@@ -57,6 +91,17 @@ if [[ ! -d \${SCRIPT_DIR} ]]; then
 fi
 if [[ ! -f \${SCRIPT_FILE} ]]; then
     echo -e "Problem with launch-wrapper, no file was found: \${SCRIPT_FILE}" && exit 1;
+fi
+
+latest-java-linux-detector.sh;
+if [[ \${?} -eq 1 ]]; then
+    latest-java-linux-detector.sh -d;
+    if [[ \${?} -eq 1 ]]; then
+        echo -e "Unable to setup JAVA_HOME and/or JRE_HOME in environment" && exit 1;
+    else
+        export JAVA_HOME="\$(latest-java-linux-detector.sh -d| grep 'export JAVA_HOME='| cut -d '=' -f 2)"
+        export JRE_HOME="\$(latest-java-linux-detector.sh -d| grep 'export JRE_HOME='| cut -d '=' -f 2)"
+    fi
 fi
 
 echo -e "\nlaunch-wrapper:"
