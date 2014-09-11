@@ -45,11 +45,10 @@ f_CheckJreHomeVariable() {
 }
 
 f_PrintError() {
-    var="${1}"
-    cmd="${2}"
+    cmd="${1}"
 
     cat <<NEWEOF
-    Can't determine appropriate value for ${var} variable.
+    Can't determine appropriate value for JAVA_HOME and JAVA_JRE variables.
     Probably You have no java installed at all.
     Please run below command and eventually re-run this script:
 
@@ -87,18 +86,18 @@ NEWEOF
     return 0;
 }
 
-f_DetermineJavaHome() {
-    local determined_java_home=''
-    local cmd=''
-    local test_java=0
+f_DetermineVariables() {
+    local determined_home=''
+    local test_home=0
+    local pattern=''
+
+    determined_home="$(find /usr/lib/jvm/ -wholename '*java' 2>/dev/null| sort| head -n1)"
 
     case ${LINUX_DISTRO} in
         'centos')
-            determined_java_home="$(ls -1 /usr/lib/jvm/java-+([0-9]).+([0-9]).+([0-9])/bin/java 2>&1| sort -r| head -n1)"
             cmd="sudo yum install java-1.6.0-openjdk-devel"
             ;;
         'debian')
-            determined_java_home="$(ls -1 /usr/lib/jvm/java-+([0-9]).+([0-9]).+([0-9])/bin/java 2>&1| sort -r| head -n1)"
             cmd="sudo apt-get install openjdk-6-jdk"
             ;;
         *)
@@ -107,58 +106,21 @@ f_DetermineJavaHome() {
             ;;
     esac
 
-    [[ -z ${determined_java_home} ]] && test_java=1;
-    [[ ! -x ${determined_java_home} ]] && test_java=1;
+    [[ -z ${determined_home} ]] && test_home=1;
 
-    determined_java_home="${determined_java_home%%/bin/java}"
+    pattern="${determined_home:${#determined_home} - 8}"
 
-    if [[ ${test_java} -eq 1 ]]; then
-        f_PrintError "JAVA_HOME" "${cmd}" && return 1;
+    [[ ${pattern} != "bin/java" ]] && test_home=1
+    [[ ! -x ${determined_home} ]] && test_home=1;
+
+    determined_home="${determined_home%%/bin/java}"
+
+    if [[ ${test_home} -eq 1 ]]; then
+        f_PrintError "${cmd}" && return 1;
     fi
 
-    export DETERMINED_JAVA_HOME="${determined_java_home}"
-
-    return 0;
-}
-
-f_DetermineJreHome() {
-    local determined_jre_home=''
-    local cmd=''
-    local test_jre=0
-
-    case ${LINUX_DISTRO} in
-        'centos')
-            determined_jre_home="$(ls -1 /usr/lib/jvm/java-+([0-9]).+([0-9]).+([0-9])/jre/bin/java 2>&1| sort -r| head -n1)"
-            cmd="sudo yum install jre-1.6.0-openjdk-devel"
-            ;;
-        'debian')
-            determined_jre_home="$(ls -1 /usr/lib/jvm/java-+([0-9]).+([0-9]).+([0-9])-*/jre/bin/java 2>&1| sort -r| head -n1)"
-            cmd="sudo apt-get install openjdk-6-jdk"
-            ;;
-        *)
-            echo -e "Internal error!";
-            exit 1;
-            ;;
-    esac
-
-    [[ -z ${determined_jre_home} ]] && test_jre=1;
-    [[ ! -x ${determined_jre_home} ]] && test_jre=1;
-
-    determined_jre_home="${determined_jre_home%%/bin/java}"
-
-    if [[ ${test_jre} -eq 1 ]]; then
-        f_PrintError "JRE_HOME" "${cmd}" && return 1;
-    fi
-
-    export DETERMINED_JRE_HOME="${determined_jre_home}"
-
-    return 0;
-}
-
-f_DetermineVariables() {
-
-    f_DetermineJavaHome || return 1;
-    f_DetermineJreHome || return 1;
+    DETERMINED_JAVA_HOME="${determined_home}"
+    DETERMINED_JRE_HOME="${determined_home}"
 
     cat <<NEWEOF
     You should setup in your environment (for example in .bashrc file):
@@ -166,6 +128,7 @@ f_DetermineVariables() {
     export JAVA_HOME=${DETERMINED_JAVA_HOME}
     export JRE_HOME=${DETERMINED_JRE_HOME}
 
+    Then restart current shell to properly propagate the changes.
 NEWEOF
 
     export JAVA_HOME="${DETERMINED_JAVA_HOME}"
