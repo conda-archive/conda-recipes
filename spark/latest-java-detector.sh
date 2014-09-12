@@ -7,7 +7,7 @@
 SCRIPT_NAME="${0}"
 CMD="${1}"
 
-LINUX_DISTRO="unknown"
+MACHINE_TYPE="unknown"
 
 DETERMINED_JAVA_HOME=""
 DETERMINED_JRE_HOME=""
@@ -58,30 +58,37 @@ NEWEOF
     return 0;
 }
 
-f_DetermineLinuxDistro() {
-    local distro=''
+f_DetermineMachineType() {
+    local machineType=''
+
+    uname|grep -q '^Darwin';
+    [[ ${?} -eq 0 ]] && {
+        export MACHINE_TYPE="osx"
+        return 0;
+    }
 
     which yum &>/dev/null;
     if [[ ${?} -eq 0 ]]; then
-        distro='centos'
+        machineType='centos'
     else
         which apt-get &>/dev/null;
         if [[ ${?} -eq 0 ]]; then
-            distro='debian'
+            machineType='debian'
         else
             cat <<NEWEOF
-    Sorry but your distribution is not supported.
+    Sorry but your machine type is not supported.
 
-    The support is available only for distros with:
+    The support is available only for linux distros with:
     a) apt-get package manager
     b) yum package manager
 
+    And OSX machines.
 NEWEOF
             exit 1;
         fi
     fi
 
-    export LINUX_DISTRO="${distro}"
+    export MACHINE_TYPE="${machineType}"
 
     return 0;
 }
@@ -90,15 +97,32 @@ f_DetermineVariables() {
     local determined_home=''
     local test_home=0
     local pattern=''
+    local javaPath=''
 
-    determined_home="$(find /usr/lib/jvm/ -wholename '*java' 2>/dev/null| sort| head -n1)"
+    case ${MACHINE_TYPE} in
+        'centos'|'debian')
+            javaPath="/usr/lib/jvm/"
+            ;;
+        'osx')
+            javaPath="/System/Library/Frameworks/JavaVM.framework/Versions/"
+            ;;
+        *)
+            echo -e "Internal error!";
+            exit 1;
+            ;;
+    esac
 
-    case ${LINUX_DISTRO} in
+    determined_home="$(find ${javaPath} -wholename '*bin/java' 2>/dev/null| sort -r| head -n1)"
+
+    case ${MACHINE_TYPE} in
         'centos')
             cmd="sudo yum install java-1.6.0-openjdk-devel"
             ;;
         'debian')
             cmd="sudo apt-get install openjdk-6-jdk"
+            ;;
+        'osx')
+            cmd="Use package manager and install java 6 in your OSX system."
             ;;
         *)
             echo -e "Internal error!";
@@ -162,7 +186,7 @@ NEWEOF
 f_Main() {
     shopt -s extglob;
 
-    f_DetermineLinuxDistro;
+    f_DetermineMachineType;
 
     if [[ ${CMD} == '-h' ]]; then
         f_Usage;
