@@ -8,7 +8,9 @@ source:
   md5: 8cb9c412e5f2d96bc6f459aa8c6282a1
 
 build:
-  number: 3
+  number: 4
+  binary_has_prefix_files:
+    - lib/libtinfo.so.5.9
 
 about:
   home: http://www.gnu.org/software/ncurses/
