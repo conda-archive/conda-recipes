@@ -104,7 +104,7 @@ f_DetermineVariables() {
             javaPath="/usr/lib/jvm/"
             ;;
         'osx')
-            javaPath="/System/Library/Frameworks/JavaVM.framework/Versions/"
+            javaPath="/System/Library/Java/JavaVirtualMachines/"
             ;;
         *)
             echo -e "Internal error!";

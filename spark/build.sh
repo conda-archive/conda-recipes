@@ -166,7 +166,7 @@ EOF
 }
 
 case ${MACHINE} in
-    'Linux')
+    'Linux'|'Darwin')
         LinuxInstallation || exit 1;
         ;;
     *)
