@@ -11,6 +11,10 @@ export SCALA_HOME="${PREFIX}/share/scala"
 
 export SPARK_HADOOP_VERSION="2.4.0"
 
+# INFO:
+# - https://cwiki.apache.org/confluence/display/MAVEN/OutOfMemoryError
+export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=512M -XX:ReservedCodeCacheSize=512m"
+
 LinuxInstallation() {
     # Build dependencies:
     # - java-1.6.0-openjdk-devel
@@ -68,7 +72,7 @@ NEWEOF
     cp -v ${RECIPE_DIR}/latest-java-detector.sh ${PREFIX}/bin/ || exit 1;
 
     # Build package by using sbt tool (however, there is no target to create distribution - this is mostly for local usage):
-    #./sbt/sbt assembly || return 1;
+    #./sbt/sbt -Phive assembly || return 1;
     #./sbt/sbt test || return 1;
     #./bin/run-example org.apache.spark.examples.SparkLR local[2] || return 1;
 
