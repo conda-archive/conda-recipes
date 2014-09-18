@@ -11,6 +11,10 @@ export SCALA_HOME="${PREFIX}/share/scala"
 
 export SPARK_HADOOP_VERSION="2.4.0"
 
+# INFO:
+# - https://cwiki.apache.org/confluence/display/MAVEN/OutOfMemoryError
+export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=512M -XX:ReservedCodeCacheSize=512m"
+
 LinuxInstallation() {
     # Build dependencies:
     # - java-1.6.0-openjdk-devel
@@ -28,15 +32,15 @@ LinuxInstallation() {
 
     shopt -s extglob;
 
-    ${RECIPE_DIR}/latest-java-linux-detector.sh;
+    ${RECIPE_DIR}/latest-java-detector.sh;
     if [[ ${?} -eq 1 ]]; then
-        ${RECIPE_DIR}/latest-java-linux-detector.sh -d;
+        ${RECIPE_DIR}/latest-java-detector.sh -d;
         if [[ ${?} -eq 1 ]]; then
             echo -e "Unable to setup JAVA_HOME and/or JRE_HOME in built environment";
             exit 1;
         else
-            export JAVA_HOME="$(${RECIPE_DIR}/latest-java-linux-detector.sh -d| grep 'export JAVA_HOME='| cut -d '=' -f 2)"
-            export JRE_HOME="$(${RECIPE_DIR}/latest-java-linux-detector.sh -d| grep 'export JRE_HOME='| cut -d '=' -f 2)"
+            export JAVA_HOME="$(${RECIPE_DIR}/latest-java-detector.sh -d| grep 'export JAVA_HOME='| cut -d '=' -f 2)"
+            export JRE_HOME="$(${RECIPE_DIR}/latest-java-detector.sh -d| grep 'export JRE_HOME='| cut -d '=' -f 2)"
         fi
     fi
 
@@ -51,7 +55,7 @@ LinuxInstallation() {
     Required java version: 1.6.X
 
     Please do one of:
-    a) remove from your system all newer java's versions than 1.6.X (if You are using latest-java-linux-detector.sh),
+    a) remove from your system all newer java's versions than 1.6.X (if You are using latest-java-detector.sh),
     b) manually setup JAVA_HOME and JRE_HOME to 1.6.X version of java.
 NEWEOF
         exit 1;
@@ -65,10 +69,10 @@ NEWEOF
     ln -sv ${pkgBaseDir} ${aliasPkgBaseDir} || exit  1;
     popd || exit 1;
 
-    cp -v ${RECIPE_DIR}/latest-java-linux-detector.sh ${PREFIX}/bin/ || exit 1;
+    cp -v ${RECIPE_DIR}/latest-java-detector.sh ${PREFIX}/bin/ || exit 1;
 
     # Build package by using sbt tool (however, there is no target to create distribution - this is mostly for local usage):
-    #./sbt/sbt assembly || return 1;
+    #./sbt/sbt -Phive assembly || return 1;
     #./sbt/sbt test || return 1;
     #./bin/run-example org.apache.spark.examples.SparkLR local[2] || return 1;
 
@@ -93,14 +97,14 @@ if [[ ! -f \${SCRIPT_FILE} ]]; then
     echo -e "Problem with launch-wrapper, no file was found: \${SCRIPT_FILE}" && exit 1;
 fi
 
-latest-java-linux-detector.sh;
+latest-java-detector.sh;
 if [[ \${?} -eq 1 ]]; then
-    latest-java-linux-detector.sh -d;
+    latest-java-detector.sh -d;
     if [[ \${?} -eq 1 ]]; then
         echo -e "Unable to setup JAVA_HOME and/or JRE_HOME in environment" && exit 1;
     else
-        export JAVA_HOME="\$(latest-java-linux-detector.sh -d| grep 'export JAVA_HOME='| cut -d '=' -f 2)"
-        export JRE_HOME="\$(latest-java-linux-detector.sh -d| grep 'export JRE_HOME='| cut -d '=' -f 2)"
+        export JAVA_HOME="\$(latest-java-detector.sh -d| grep 'export JAVA_HOME='| cut -d '=' -f 2)"
+        export JRE_HOME="\$(latest-java-detector.sh -d| grep 'export JRE_HOME='| cut -d '=' -f 2)"
     fi
 fi
 
@@ -146,16 +150,15 @@ EOF
 
     popd || return 1;
 
-    ### Setup pyspark & py4j
+    ### Setup pyspark
 
     pushd ${SP_DIR}/ || return 1;
 
     ln -vs ../../../share/spark/python/pyspark/ . || return 1;
-    ln -vs ../../../share/spark/python/build/py4j/ . || return 1;
 
     popd || return 1;
 
-    ### Patching SPARK_HOME
+    ### Patching
 
     pushd ${SP_DIR}/pyspark/ || return 1;
 
@@ -167,7 +170,7 @@ EOF
 }
 
 case ${MACHINE} in
-    'Linux')
+    'Linux'|'Darwin')
         LinuxInstallation || exit 1;
         ;;
     *)

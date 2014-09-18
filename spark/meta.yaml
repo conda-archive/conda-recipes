@@ -1,11 +1,11 @@
 
 package:
     name: spark
-    version: 1.0.2
+    version: 1.1.0
 
 source:
     git_url: https://github.com/apache/spark
-    git_tag: v1.0.2
+    git_tag: v1.1.0
 
 build:
     number: 0
@@ -19,6 +19,7 @@ requirements:
     run:
         - python
         - apache-maven
+        - py4j
 
 test:
     imports:

@@ -1,9 +1,9 @@
 package:
   name: pystan
-  version: 2.0.1.3
+  version: 2.4.0.3
 
 source:
-  git_tag: 2.0.1.3
+  git_tag: v2.4.0.3
   git_url: https://github.com/stan-dev/pystan.git
 
 requirements:
