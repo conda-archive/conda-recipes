@@ -27,7 +27,7 @@ requirements:
   build:
     - python
     - setuptools
-    - unittest2 [not py3k]
+    - unittest2 [py26]
     - backports.ssl_match_hostname [not py3k]
     - six
     - argparse [py26]
