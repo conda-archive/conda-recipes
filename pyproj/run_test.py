@@ -1,0 +1,2 @@
+import pyproj
+pyproj.test()
