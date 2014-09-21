@@ -1,0 +1,44 @@
+*detectindent.txt*	The Detect Indent Plugin	     1.0, Jan 04, 2005
+
+Author:  Ciaran McCreesh <ciaran.mccreesh at googlemail.com>
+
+==============================================================================
+1. Contents				*detectindent* *detectindent-contents*
+
+    1. Contents                                    |detectindent-contents|
+    2. :DetectIndent Command                               |:DetectIndent|
+	Settings                                   |detectindent-settings|
+    3. Uptime ChangeLog                                 |uptime-changelog|
+
+==============================================================================
+2. :DetectIndent Command				       *:DetectIndent*
+
+	The :DetectIndent command tries to intelligently set the 'shiftwidth',
+	'expandtab' and 'tabstop' options based upon the existing settings in
+	use in the active file.
+
+    Settings					       *detectindent-settings*
+
+	When the correct value for 'expandtab' cannot be determined, it will
+	usually retain its existing value. To specify that 'expandtab' should
+	be used where autodetection is impossible, set: >
+		:let g:detectindent_preferred_expandtab = 1
+<	in your |vimrc| file.
+
+	To set a preferred value for 'shiftwidth' and 'tabstop' when they
+	cannot be automatically detected, set: >
+		:let g:detectindent_preferred_indent = 4
+<       in your |vimrc| file.
+
+	To set limit for number of lines that will be analysed set: >
+		:let g:detectindent_max_lines_to_analyse = 1024
+<	in your |vimrc| file.
+
+==============================================================================
+3. DetectIndent ChangeLog			      *detectindent-changelog*
+
+	v1.0 (20050105)
+	    * initial release after discussion on irc.freenode.net:#vim
+
+==============================================================================
+vim:tw=78:ts=8:ft=help

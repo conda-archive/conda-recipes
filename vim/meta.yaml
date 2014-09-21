@@ -1,0 +1,21 @@
+package:
+    name:       vim
+    version:    7.4.453                                 [win]
+    version:    7.4.443                                 [not win]
+
+source:
+    fn: vim-7.4.tar.bz2                                 [not win]
+    url: ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2 [not win]
+    hg_url: https://vim.googlecode.com/hg/              [win]
+    hg_tag: v7-4-453                                    [win]
+
+requirements:
+    build:
+        - python
+    run:
+        - python
+
+build:
+    number: 1
+
+# vim:set ts=8 sw=4 sts=4 tw=78 et:
