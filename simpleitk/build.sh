@@ -35,7 +35,7 @@ cmake \
     -D ITK_USE_SYSTEM_TIFF:BOOL=ON \
     -D ITK_USE_SYSTEM_ZLIB:BOOL=ON \
     -D "PYTHON_EXECUTABLE:FILEPATH=${PYTHON}" \
-    -D "PYTHON_INCLUDE_PATH:PATH=$PREFIX/include/python${PY_VER}" \
+    -D "PYTHON_INCLUDE_DIR:PATH=$PREFIX/include/python${PY_VER}" \
     -D "PYTHON_LIBRARY:FILEPATH=$PREFIX/lib/libpython${PY_VER}.${SO_EXT}" \
     "${SRC_DIR}/SuperBuild"
 
