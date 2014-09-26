@@ -1,21 +1,17 @@
 package:
   name: ipython-qtconsole
-  version: 1.0.0a1
+  version: 2.2.0
 
 requirements:
   run:
     - python
     - ipython
-    - pyside
+    - pyzmq
+    - pyqt
     - pygments
-    - python.app
-
-build:
-  number: 2
 
 app:
-  entry: pythonw ipython qtconsole [osx]
-  entry: ipython qtconsole [not osx]
+  entry: ipython qtconsole
   icon: ipy.png
   summary: IPython QtConsole
   type: desk
