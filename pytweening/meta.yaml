@@ -1,0 +1,60 @@
+package:
+  name: pytweening
+  version: !!str 1.0.1
+
+source:
+  fn: PyTweening-1.0.1.zip
+  url: https://pypi.python.org/packages/source/P/PyTweening/PyTweening-1.0.1.zip
+  md5: 260e0ad87d642040aa219dc95db53b72
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pytweening = pytweening:main
+    #
+    # Would create an entry point called pytweening that calls pytweening.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - pytweening
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/asweigart/pytweening
+  license:  BSD License
+  summary: 'A collection of tweening / easing functions.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
