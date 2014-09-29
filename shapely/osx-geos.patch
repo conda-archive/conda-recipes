@@ -17,7 +17,7 @@ index 20945bb..371be63 100644
 -            # macports
 -            '/opt/local/lib/libgeos_c.dylib',
 -        ]
-+    alt_paths = [os.path.join(sys.prefix, 'lib', 'libgeos_c.dylib')]
-     _lgeos = load_dll('geos_c', fallbacks=alt_paths)
+-    _lgeos = load_dll('geos_c', fallbacks=alt_paths)
++    _lgeos = CDLL(os.path.join(sys.prefix, 'lib', 'libgeos_c.dylib'))
      free = load_dll('c').free
      free.argtypes = [c_void_p]
