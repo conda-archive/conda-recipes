@@ -76,9 +76,16 @@ NEWEOF
     #./sbt/sbt test || return 1;
     #./bin/run-example org.apache.spark.examples.SparkLR local[2] || return 1;
 
-    # Build package by using specially preapared script:
-    ./make-distribution.sh --tgz || return 1;
-    tar --strip-components=1 -xvpf ${pkgBaseDir}*.tgz -C ${fullPkgBaseDir}/ || return 1;
+    case ${MACHINE} in
+        'Linux')
+            # Build package by using specially preapared script:
+            ./make-distribution.sh --tgz || return 1;
+            tar --strip-components=1 -xvpf ${pkgBaseDir}*.tgz -C ${fullPkgBaseDir}/ || return 1;
+            ;;
+        'Darwin')
+            mv -v ${SRC_DIR}/* ${fullPkgBaseDir}/ || return 1;
+            ;;
+    esac
 
     for bin in ${binLaunchWrapper} ${sbinLaunchWrapper}; do
         cat > ${bin} <<EOF
@@ -154,7 +161,7 @@ EOF
 
     pushd ${SP_DIR}/ || return 1;
 
-    ln -vs ../../../share/spark/python/pyspark/ . || return 1;
+    ln -vs ../../../share/spark/python/pyspark/ pyspark || return 1;
 
     popd || return 1;
 
