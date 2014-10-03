@@ -1,11 +1,11 @@
 
 package:
     name: lmfit
-    version: "0.7.4"
+    version: "0.8.0"
 
 source:
     git_url: https://github.com/lmfit/lmfit-py.git
-    git_tag : 0.7.4
+    git_tag : 0.8.0
 
 build:
     number: 0
@@ -27,6 +27,5 @@ test:
         - lmfit
 
 about:
-    home: http://lmfit.github.io/lmfit-py/ 
+    home: http://lmfit.github.io/lmfit-py/
     license: BSD
-
