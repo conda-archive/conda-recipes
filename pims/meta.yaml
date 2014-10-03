@@ -1,16 +1,17 @@
 package:
   name: pims
-  version: 0.2
+  version: 0.2.1
 
 source:
-  fn: pims-0.2.tar.gz
-  url: https://pypi.python.org/packages/source/P/PIMS/pims-0.2.tar.gz
-  md5: 3d9f3c47a5e097549c132cbe516e66f6
+  fn: pims-0.2.1.tar.gz
+  url: https://github.com/soft-matter/pims/archive/v0.2.1.tar.gz
+  md5: 871623c381da3840130dfd1588fa46bf
+  sha1: c956b83f8c893a09b25f7576892d022c2d8a6f95
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
+build:
   #preserve_egg_dir: True
   #entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
@@ -24,6 +25,9 @@ source:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
   # number: 1
+
+  binary_relocation: true
+
 
 requirements:
   build:
@@ -57,7 +61,7 @@ test:
     # - nose
 
 about:
-  home: http://pims.readthedocs.org
+  home: https://github.com/soft-matter/pims
   license: 3-clause BSD License
   summary: 'Python particle-tracking toolkit'
 
