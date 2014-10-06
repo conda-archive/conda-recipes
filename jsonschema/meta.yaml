@@ -15,9 +15,11 @@ requirements:
   build:
     - python
     - setuptools
+    - argparse # [py26]
 
   run:
     - python
+    - argparse # [py26]
 
 test:
   imports:
