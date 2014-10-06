@@ -13,8 +13,10 @@ build:
 requirements:
   build:
     - python
+    - argparse # [py26]
 
   run:
+    - argparse # [py26]
     - python
 
 test:
