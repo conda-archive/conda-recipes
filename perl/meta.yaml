@@ -3,12 +3,18 @@ package:
   version: 5.18.2
 
 build:
-  number: 1
+  number: 8
 
 source:
-  fn: perl-5.18.2.tar.gz
-  url: http://www.cpan.org/src/5.0/perl-5.18.2.tar.gz
-  md5: 373f57ccc441dbc1812435f45ad20660
+  fn: perl-5.18.2.tar.gz [unix]
+  url: http://www.cpan.org/src/5.0/perl-5.18.2.tar.gz [unix]
+  md5: 373f57ccc441dbc1812435f45ad20660 [unix]
+  fn: strawberry-perl-5.18.2.1-32bit-portable.zip [win32]
+  url: http://strawberryperl.com/download/5.18.2.1/strawberry-perl-5.18.2.1-32bit-portable.zip [win32]
+  sha1: ca6081888dca6844038ac4a99f2a82c81d48f9d0 [win32]
+  fn: strawberry-perl-5.18.2.1-64bit-portable.zip [win64]
+  url: http://strawberryperl.com/download/5.18.2.1/strawberry-perl-5.18.2.1-64bit-portable.zip [win64]
+  sha1: d1b5d8ed03b87aa14db0a881b2d7bbb1e5b09ad5 [win64]
 
 test:
   commands:
