@@ -1,0 +1,31 @@
+package:
+    name: lettuce
+    version: 0.2.19
+
+source:
+    fn: lettuce-3.3.tar.gz
+    url: https://pypi.python.org/packages/source/l/lettuce/lettuce-0.2.19.tar.gz
+    md5: 208723511568917608a90e3832351a9c
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - colorama
+    - fuzzywuzzy
+    - sure
+
+  run:
+    - python
+    - colorama
+    - fuzzywuzzy
+    - sure
+
+test:
+  imports:
+    - lettuce
+
+about:
+    home: http://lettuce.it/
+    license: unspecified
+    summary: "Behaviour Driven Development for python"

@@ -1,0 +1,25 @@
+package:
+  name: coffin
+  version: 0.3.8
+
+source:
+  fn: coffin-0.3.8.tar.gz
+  url: https://pypi.python.org/packages/source/C/Coffin/Coffin-0.3.8.tar.gz
+  md5: 107b9a62adbe15ce6330033a100b4f0b
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - coffin
+
+about:
+  home: http://github.com/coffin/coffin
+  license: unspecified
+  summary: "Jinja2 adapter for Django"

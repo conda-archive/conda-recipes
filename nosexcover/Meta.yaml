@@ -1,0 +1,29 @@
+package:
+  name: nosexcover
+  version: 1.0.10
+
+source:
+  fn: nosexcover-1.0.10.tar.gz
+  url: https://pypi.python.org/packages/source/n/nosexcover/nosexcover-1.0.10.tar.gz
+  md5: 12bf494a801b376debeb6a167c247391
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - coverage
+    - nose
+
+  run:
+    - python
+    - coverage
+    - nose
+
+test:
+  imports:
+    - nosexcover
+
+about:
+  home: http://github.com/cmheisel/nose-xcover/
+  license: BSD
+  summary: "Extends nose.plugins.cover to add Cobertura-style XML reports"

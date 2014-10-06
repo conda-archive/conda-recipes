@@ -1,0 +1,25 @@
+package:
+  name: jinja
+  version: !!str 1.2
+
+source:
+  fn: jinja-1.2.tar.gz
+  url: https://pypi.python.org/packages/source/J/Jinja/Jinja-1.2.tar.gz
+  md5: 1235a005ade00b213800ff1e798c0241
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - jinja
+
+about:
+  home: http://jinja.pocoo.org/
+  license: BSD License
+  summary: "A small but fast and easy to use stand-alone template engine written in pure python."

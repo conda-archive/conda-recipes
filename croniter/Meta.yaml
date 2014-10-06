@@ -1,0 +1,27 @@
+package:
+  name: croniter
+  version: !!str 0.3.5
+
+source:
+  fn: croniter-0.3.5.zip
+  url: https://pypi.python.org/packages/source/c/croniter/croniter-0.3.5.zip
+  md5: 63cf9e4d6778dc4102a4794a39a1b45b
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-dateutil
+
+  run:
+    - python
+    - python-dateutil
+
+test:
+  imports:
+    - croniter
+
+about:
+  home: http://github.com/kiorky/croniter
+  license: MIT
+  summary: "croniter provides iteration for datetime object with cron like format"

@@ -1,0 +1,26 @@
+package:
+    name: sure
+    version: 1.2.7
+source:
+    fn: sure-1.2.7.tar.gz
+    url: https://pypi.python.org/packages/source/s/sure/sure-1.2.7.tar.gz
+    md5: 6dbecef27dffc41c8cd8aab8a8b3fdfb
+
+requirements:
+    build:
+        - python
+        - setuptools
+
+    run:
+        - python
+        - six
+        - mock
+
+test:
+    imports:
+        - sure
+
+about:
+    home: http://github.com/gabrielfalcao/sure
+    license: unspecified
+    summary: "utility belt for automated testing in python for python"

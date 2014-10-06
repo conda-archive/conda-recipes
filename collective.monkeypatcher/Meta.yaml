@@ -1,0 +1,28 @@
+package:
+  name: collective.monkeypatcher
+  version: 1.0.1
+
+source:
+  fn: collective.monkeypatcher-1.0.1.zip
+  url: https://pypi.python.org/packages/source/c/collective.monkeypatcher/collective.monkeypatcher-1.0.1.zip
+  md5: 4d4f20f9b8bb84b24afadc4f56f6dc2c
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - collective.monkeypatcher
+
+about:
+  home: http://pypi.python.org/pypi/collective.monkeypatcher
+  license: BSD
+  summary: "Support for applying monkey patches late in the startup cycle by using ZCML configuration actions"

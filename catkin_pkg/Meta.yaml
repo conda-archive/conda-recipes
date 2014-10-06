@@ -1,0 +1,24 @@
+package:
+  name: catkin_pkg
+  version: 0.2.4
+
+source:
+  fn: catkin_pkg-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/c/catkin_pkg/catkin_pkg-0.2.4.tar.gz
+  md5: 2432483a7f294491d335840194e551d0
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - catkin_pkg
+
+about:
+  home: http://wiki.ros.org/catkin_pkg
+  license: BSD
+  summary: 'catkin package library'

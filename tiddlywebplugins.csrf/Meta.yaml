@@ -1,0 +1,28 @@
+package:
+  name: tiddlywebplugins.csrf
+  version: 0.5.1
+
+source:
+  fn: tiddlywebplugins.csrf-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/tiddlywebplugins.csrf/tiddlywebplugins.csrf-0.5.1.tar.gz
+  md5: 67665a330b50e252150b3479659fe336
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tiddlyweb
+
+  run:
+    - python
+    - tiddlyweb
+    - setuptools
+
+test:
+  imports:
+    - tiddlywebplugins.csrf
+
+about:
+  home: http://pypi.python.org/pypi/tiddlywebplugins.csrf
+  license: unspecified
+  summary: "CSRF Middleware Protector for TiddlyWeb"

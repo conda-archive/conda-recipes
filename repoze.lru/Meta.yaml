@@ -1,0 +1,26 @@
+package:
+  name: repoze.lru
+  version: 0.6
+
+source:
+  fn: repoze.lru-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/r/repoze.lru/repoze.lru-0.6.tar.gz
+  md5: 2c3b64b17a8e18b405f55d46173e14dd
+
+requirements:
+  build:
+    - python
+    - distribute
+
+  run:
+    - python
+    - distribute
+
+test:
+  imports:
+    - repoze.lru
+
+about:
+  home: http://www.repoze.org
+  license: BSD
+  summary: "A tiny LRU cache implementation and decorator"

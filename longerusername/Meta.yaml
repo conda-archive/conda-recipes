@@ -1,0 +1,25 @@
+package:
+  name: longerusername
+  version: 0.4
+
+source:
+  fn: longerusername-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/l/longerusername/longerusername-0.4.tar.gz
+  md5: 35cc158a7f562935cc8fa30eee439768
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - django-appconf
+
+test:
+  imports:
+    - longerusername
+
+about:
+  home: https://pypi.python.org/pypi/longerusername
+  license: Unspecified

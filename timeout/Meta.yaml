@@ -1,0 +1,24 @@
+package:
+  name: timeout
+  version: !!str 0.1.2
+
+source:
+  fn: timeout-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/t/timeout/timeout-0.1.2.tar.gz
+  md5: 1f1cc341bb2677d2f451724ad76acbad
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - timeout
+
+about:
+  home: http://www.finalcog.com/
+  license: BSD
+  summary: "Python Timeout Decorators"

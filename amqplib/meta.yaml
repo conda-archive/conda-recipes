@@ -1,0 +1,23 @@
+package:
+  name: amqplib
+  version: !!str 1.0.2
+
+source:
+  fn: amqplib-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/a/amqplib/amqplib-1.0.2.tgz
+  md5: 5c92f17fbedd99b2b4a836d4352d1e2f
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+test:
+  imports:
+    - amqplib
+
+about:
+  home: http://code.google.com/p/py-amqplib/
+  license: GNU
+  summary: 'AMQP Client Library'

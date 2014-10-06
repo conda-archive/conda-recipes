@@ -1,0 +1,24 @@
+package:
+  name: component
+  version: 0.0.1
+
+source:
+  fn: component-0.0.1.zip
+  url: https://pypi.python.org/packages/source/c/component/component-0.0.1.zip
+  md5: f73d29d2d9fce24f8b667b7b8855dfd8
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+test:
+  imports:
+    - component
+
+about:
+  home: http://github.com/import/component
+  license: MIT
+  summary: "A python library that makes is easy to consume bower components with python."

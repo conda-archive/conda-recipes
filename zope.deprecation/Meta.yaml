@@ -1,0 +1,26 @@
+package:
+  name: zope.deprecation
+  version: 4.1.1
+
+source:
+  fn: zope.deprecation-4.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.deprecation/zope.deprecation-4.1.1.tar.gz
+  md5: ce261b9384066f7e13b63525778430cb
+
+requirements:
+  build:
+    - python
+    - distribute
+
+  run:
+    - python
+    - distribute
+
+test:
+  imports:
+    - zope.deprecation
+
+about:
+  home: http://pypi.python.org/pypi/zope.deprecation
+  license: ZPL 2.1
+  summary: "Zope Deprecation Infrastructure"

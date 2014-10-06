@@ -1,0 +1,27 @@
+package:
+  name: stevedore
+  version: 1.0.0
+
+source:
+  fn: stevedore-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/stevedore/stevedore-1.0.0.tar.gz
+  md5: b61ba05d0f6b69efc28541f5f42cbfe5
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pbr
+
+  run:
+    - python
+    - pbr
+
+test:
+  imports:
+    - stevedore
+
+about:
+  home: https://github.com/dreamhost/stevedore
+  license: Apache Software License
+  summary: "Manage dynamic plugins for Python applications"

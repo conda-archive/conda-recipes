@@ -1,0 +1,32 @@
+package:
+  name: zope.size
+  version: 4.0.1
+
+source:
+  fn: zope.size-4.0.1.zip
+  url: https://pypi.python.org/packages/source/z/zope.size/zope.size-4.0.1.zip
+  md5: d6914177a5b0afdedb855d84c3f87c94
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.i18nmessageid
+    - zope.interface
+
+  run:
+    - python
+    - zope.i18nmessageid
+    - zope.interface
+
+test:
+  imports:
+    - zope.size
+
+about:
+  home: http://pypi.python.org/pypi/zope.size
+  license: ZPL 2.1
+  summary: "Interfaces and simple adapter that give the size of an object"

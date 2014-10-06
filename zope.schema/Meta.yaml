@@ -1,0 +1,32 @@
+package:
+  name: zope.schema
+  version: 4.4.2
+
+source:
+  fn: zope.schema-4.4.2.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.schema/zope.schema-4.4.2.tar.gz
+  md5: 939680fec2a5cf9e214cc80d6665065c
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.event
+    - zope.interface
+
+  run:
+    - python
+    - zope.event
+    - zope.interface
+
+test:
+  imports:
+    - zope.schema
+
+about:
+  home: http://pypi.python.org/pypi/zope.schema
+  license: ZPL 2.1
+  summary: "zope.interface extension for defining data schemas"

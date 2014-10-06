@@ -1,0 +1,34 @@
+package:
+  name: zope.testrunner
+  version: !!str 4.4.3
+
+source:
+  fn: zope.testrunner-4.4.3.zip
+  url: https://pypi.python.org/packages/source/z/zope.testrunner/zope.testrunner-4.4.3.zip
+  md5: 5fa0716fc657b7ecd07afec634a942c3
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+    - zope.exceptions
+    - six
+
+  run:
+    - python
+    - zope.interface
+    - zope.exceptions
+    - six
+
+test:
+  imports:
+    - zope.testrunner
+
+about:
+  home: http://pypi.python.org/pypi/zope.testrunner
+  license: ZPL 2.1
+  summary: "Zope testrunner script."

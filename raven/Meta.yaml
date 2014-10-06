@@ -1,0 +1,24 @@
+package:
+  name: raven
+  version: 5.0.0
+
+source:
+  fn: raven-5.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/r/raven/raven-5.0.0.tar.gz
+  md5: b5cd433fd73ab19de1a9ef5e3b6f31b3
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+
+test:
+  imports:
+    - raven
+
+about:
+  home: http://github.com/getsentry/raven-python
+  license: BSD License
+  summary: "Raven is a client for Sentry (https://www.getsentry.com)"

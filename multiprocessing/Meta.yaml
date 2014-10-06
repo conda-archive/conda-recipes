@@ -1,0 +1,24 @@
+package:
+  name: multiprocessing
+  version: 2.6.2.1
+
+source:
+  fn: multiprocessing-2.6.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/multiprocessing/multiprocessing-2.6.2.1.tar.gz
+  md5: 5cc484396c040102116ccc2355379c72
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - multiprocessing
+
+about:
+  home: http://code.google.com/p/python-multiprocessing
+  license: BSD
+  summary: "Backport of the multiprocessing package to Python 2.4 and 2.5"

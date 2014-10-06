@@ -1,0 +1,32 @@
+package:
+  name: zope.tal
+  version: 4.0.0
+
+source:
+  fn: zope.tal-4.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.tal/zope.tal-4.0.0.tar.gz
+  md5: aa859b5ce4e9ff38fa91e5942be59f8c
+
+build: 
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+    - zope.i18nmessageid
+
+  run:
+    - python
+    - zope.interface
+    - zope.i18nmessageid
+
+test:
+  imports:
+    - zope.tal
+
+about:
+  home: http://pypi.python.org/pypi/zope.tal
+  license: Zope Public License
+  summary: "Zope Template Application Language (TAL)"

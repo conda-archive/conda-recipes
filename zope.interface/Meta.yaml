@@ -1,0 +1,28 @@
+package:
+  name: zope.interface
+  version: 4.1.1
+
+source:
+  fn: zope.interface-4.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.interface/zope.interface-4.1.1.tar.gz
+  md5: edcd5f719c5eb2e18894c4d06e29b6c6
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - zope.interface.interface
+    - zope.interface.declarations
+    - zope.interface.common
+
+
+about:
+  home: http://pypi.python.org/pypi/zope.interface
+  license: ZPL 2.1
+  summary: "Interfaces for Python"

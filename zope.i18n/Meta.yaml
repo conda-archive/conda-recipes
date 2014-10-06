@@ -1,0 +1,36 @@
+package:
+  name: zope.i18n
+  version: !!str 4.0.0a4
+
+source:
+  fn: zope.i18n-4.0.0a4.zip
+  url: https://pypi.python.org/packages/source/z/zope.i18n/zope.i18n-4.0.0a4.zip
+  md5: b42982b33aac2af11549f301822f7db8
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.component
+    - zope.i18nmessageid
+    - zope.schema
+    - pytz
+
+  run:
+    - python
+    - zope.component
+    - zope.i18nmessageid
+    - zope.schema
+    - pytz
+
+test:
+  imports:
+    - zope.i18n
+
+about:
+  home: http://pypi.python.org/pypi/zope.i18n
+  license: ZPL 2.1
+  summary: "Zope Internationalization Support"

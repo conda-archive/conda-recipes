@@ -1,0 +1,26 @@
+package:
+  name: webhelpers
+  version: 1.3
+
+source:
+  fn: webhelpers-1.3.tar.gz
+  url: https://pypi.python.org/packages/source/W/WebHelpers/WebHelpers-1.3.tar.gz
+  md5: 32749ffadfc40fea51075a7def32588b
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - markupsafe
+  run:
+    - python
+    - markupsafe
+
+test:
+  imports:
+    - webhelpers
+
+about:
+  home: https://webhelpers.readthedocs.org/en/latest/
+  license: unspecified
+  summary: "Web Helpers"

@@ -1,0 +1,26 @@
+package:
+  name: rightscale
+  version: 0.302
+
+source:
+  fn: rightscale-0.302.tar.gz
+  url: https://pypi.python.org/packages/source/r/rightscale/rightscale-0.302.tar.gz
+  md5: dbcb134a7c68ffa818b378636da79c5c
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+    - httplib2
+    - netifaces
+
+test:
+  imports:
+    - rightscale
+
+about:
+  home: https://pypi.python.org/pypi/rightscale
+  license: unspecified
+  summary: "Object-oriented library for RightScale's API."

@@ -1,0 +1,30 @@
+package:
+  name: pyramid_chameleon
+  version: 0.3
+
+source:
+  fn: pyramid_chameleon-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyramid_chameleon/pyramid_chameleon-0.3.tar.gz
+  md5: 5bb5938356dfd13fce06e095f132e137
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - chameleon
+    - pyramid
+
+  run:
+    - python
+    - chameleon
+    - zope.interface
+    - pyramid
+
+test:
+  imports:
+    - pyramid_chameleon
+
+about:
+  home: https://github.com/Pylons/pyramid_chameleon
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: "pyramid_chameleon"

@@ -1,0 +1,25 @@
+package:
+  name: socketpool
+  version: !!str 0.5.3
+
+source:
+  fn: socketpool-0.5.3.tar.gz
+  url: https://pypi.python.org/packages/source/s/socketpool/socketpool-0.5.3.tar.gz
+  md5: 24f542abc27293bf40c5223f2f8fb966
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - socketpool
+
+about:
+  home: http://github.com/benoitc/socketpool
+  license: BSD
+  summary: "Python socket pool"

@@ -1,0 +1,27 @@
+package:
+  name: wsgiproxy
+  version: !!str 0.2.2
+
+source:
+  fn: wsgiproxy-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/W/WSGIProxy/WSGIProxy-0.2.2.tar.gz
+  md5: b553c2f9b66a1816fcb1681e3f70ba15
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - paste
+
+  run:
+    - python
+    - paste
+
+test:
+  imports:
+    - wsgiproxy
+
+about:
+  home: http://pythonpaste.org/wsgiproxy/
+  license: MIT License
+  summary: "HTTP proxying tools for WSGI apps"

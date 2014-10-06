@@ -1,0 +1,29 @@
+package:
+  name: pyramid_deform
+  version: 0.2
+
+source:
+  fn: pyramid_deform-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyramid_deform/pyramid_deform-0.2.tar.gz
+  md5: cd2818f1b5f19062798dbb947a01497c
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - deform
+    - pyramid
+
+  run:
+    - python
+    - deform
+    - pyramid
+
+test:
+  imports:
+    - pyramid_deform
+
+about:
+  home: http://docs.pylonshq.com/
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: "Bindings to the Deform form library for the Pyramid web framework"

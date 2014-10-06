@@ -1,0 +1,28 @@
+package:
+  name: async
+  version: 0.6.1
+
+source:
+  fn: async-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/async/async-0.6.1.tar.gz
+  md5: 6f0e2ced1fe85f8410b9bde11be08587
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - async
+
+about:
+  home: https://github.com/gitpython-developers/async
+  license: New BSD License
+  summary: 'Async Framework'

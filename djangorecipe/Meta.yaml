@@ -1,0 +1,32 @@
+package:
+  name: djangorecipe
+  version: 1.10
+
+source:
+  fn: djangorecipe-1.10.zip
+  url: https://pypi.python.org/packages/source/d/djangorecipe/djangorecipe-1.10.zip
+  md5: 1e411a34f4e25adaf3228074d307d3cb
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+    - zc.recipe.egg
+
+  run:
+    - python
+    - django
+    - zc.recipe.egg
+
+test:
+  imports:
+    - djangorecipe
+
+about:
+  home: https://github.com/rvanlaar/djangorecipe
+  license:  BSD License
+  summary: "Buildout recipe for Django"

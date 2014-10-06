@@ -1,0 +1,26 @@
+package:
+  name: translationstring
+  version: 1.1
+
+source:
+  fn: translationstring-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/translationstring/translationstring-1.1.tar.gz
+  md5: 0979b46d8f0f852810c8ec4be5c26cf2
+
+requirements:
+  build:
+    - python
+    - distribute
+
+  run:
+    - python
+    - distribute
+
+test:
+  imports:
+    - translationstring
+
+about:
+  home: http://pylonsproject.org
+  license: BSD-like (http://repoze.org/license.html)
+  summary: "Utility library for i18n relied on by various Repoze and Pyramid packages"

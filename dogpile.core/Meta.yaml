@@ -1,0 +1,25 @@
+package:
+  name: dogpile.core
+  version: !!str 0.4.1
+
+source:
+  fn: dogpile.core-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/dogpile.core/dogpile.core-0.4.1.tar.gz
+  md5: 01cb19f52bba3e95c9b560f39341f045
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - dogpile.core
+
+about:
+  home: http://bitbucket.org/zzzeek/dogpile.core
+  license: BSD
+  summary: "A 'dogpile' lock, typically used as a component of a larger caching solution"

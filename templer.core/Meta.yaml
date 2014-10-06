@@ -1,0 +1,31 @@
+package:
+  name: templer.core
+  version: !!str 1.0b4
+
+source:
+  fn: templer.core-1.0b4.zip
+  url: https://pypi.python.org/packages/source/t/templer.core/templer.core-1.0b4.zip
+  md5: e337e70f26172425fbecd04e60868bdb
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cheetah >1.0,<=2.2.1
+    - pastescript
+
+
+  run:
+    - python
+    - cheetah >1.0,<=2.2.1
+    - pastescript
+    - setuptools
+
+test:
+  imports:
+    - templer.core
+
+about:
+  home: https://github.com/collective/templer.core
+  license: MIT
+  summary: "Core functionality for the templer tool"

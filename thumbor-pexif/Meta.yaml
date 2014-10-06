@@ -1,0 +1,26 @@
+package:
+  name: thumbor-pexif
+  version: !!str 0.14
+
+source:
+  fn: thumbor-pexif-0.14.tar.gz
+  url: https://pypi.python.org/packages/source/t/thumbor-pexif/thumbor-pexif-0.14.tar.gz
+  md5: fb4cdb60f4a0bead5193fb483ccd3430
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+
+  imports:
+    - pexif
+
+about:
+  home: http://www.benno.id.au/code/pexif/
+  license: http://www.opensource.org/licenses/mit-license.php
+  summary: "A module for editing JPEG EXIF data"

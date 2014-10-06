@@ -1,0 +1,26 @@
+package:
+  name: zc.lockfile
+  version: !!str 1.1.0
+
+source:
+  fn: zc.lockfile-1.1.0.zip
+  url: https://pypi.python.org/packages/source/z/zc.lockfile/zc.lockfile-1.1.0.zip
+  md5: 8e46b830417363501363bd09e1af1ecc
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+   imports: 
+     - zc.lockfile
+
+about:
+  home: http://www.python.org/pypi/zc.lockfile
+  license: Zope Public License
+  summary: "Basic inter-process locks"

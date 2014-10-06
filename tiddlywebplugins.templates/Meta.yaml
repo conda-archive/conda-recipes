@@ -1,0 +1,32 @@
+package:
+  name: tiddlywebplugins.templates
+  version: 0.9.6
+
+source:
+  fn: tiddlywebplugins.templates-0.9.6.tar.gz
+  url: https://pypi.python.org/packages/source/t/tiddlywebplugins.templates/tiddlywebplugins.templates-0.9.6.tar.gz
+  md5: c54031d17700782d442ff4e67062a06e
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jinja2
+    - tiddlyweb
+
+  run:
+    - python
+    - jinja2
+    - tiddlyweb
+
+test:
+  imports:
+    - tiddlywebplugins.templates
+
+about:
+  home: http://pypi.python.org/pypi/tiddlywebplugins.templates
+  license: BSD
+  summary: "A TiddlyWeb plugin with tools and packaging for templates."

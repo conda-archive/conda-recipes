@@ -1,0 +1,27 @@
+package:
+  name: tiddlywebplugins.privateer
+  version: 0.7
+
+source:
+  fn: tiddlywebplugins.privateer-0.7.tar.gz
+  url: https://pypi.python.org/packages/source/t/tiddlywebplugins.privateer/tiddlywebplugins.privateer-0.7.tar.gz
+  md5: 99f7a64a4da4417ebda828fe231dea7c
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tiddlywebplugins.utils
+
+  run:
+    - python
+    - tiddlywebplugins.utils
+
+test:
+  imports:
+    - tiddlywebplugins.privateer
+
+about:
+  home: http://pypi.python.org/pypi/tiddlywebplugins.privateer
+  license: BSD
+  summary: "Public access to private things."

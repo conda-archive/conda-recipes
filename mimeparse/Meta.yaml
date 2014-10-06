@@ -1,0 +1,23 @@
+package:
+  name: mimeparse
+  version: 0.1.3
+
+source:
+  fn: mimeparse-0.1.3.tar.gz
+  url: https://mimeparse.googlecode.com/files/mimeparse-0.1.3.tar.gz
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - mimeparse
+
+about:
+  home: https://mimeparse.googlecode.com
+  license: MIT License
+  summary: "A module provides basic functions for parsing mime-type names and matching them against a list of media-ranges."

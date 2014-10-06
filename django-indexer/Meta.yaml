@@ -1,0 +1,28 @@
+package:
+  name: django-indexer
+  version: 0.3.0
+
+source:
+  fn: django-indexer-0.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-indexer/django-indexer-0.3.0.tar.gz
+  md5: 3e10959319901d5f27d356bdd377b0cb
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build: 
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - indexer
+
+about:
+  home: http://github.com/dcramer/django-indexer
+  license: Unspecified
+  summary: "Key/Value Indexer"

@@ -1,0 +1,28 @@
+package:
+  name: jaraco.compat
+  version: !!str 1.2
+
+source:
+  fn: jaraco.compat-1.2.zip
+  url: https://pypi.python.org/packages/source/j/jaraco.compat/jaraco.compat-1.2.zip
+  md5: 4c35ef5cd6dada05d8596acda5a0354b
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - hgtools
+
+  run:
+    - python
+    - pytest-runner
+    - hgtools
+
+test:
+  imports:
+    - py27compat
+
+about:
+  home: http://bitbucket.org/jaraco/jaraco.compat
+  license: MIT
+  summary: "Modules providing forward compatibility across some Python 2.x versions"

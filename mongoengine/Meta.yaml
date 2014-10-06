@@ -1,0 +1,30 @@
+package:
+  name: mongoengine
+  version: !!str 0.8.7
+
+source:
+  fn: mongoengine-0.8.7.tar.gz
+  url: https://pypi.python.org/packages/source/m/mongoengine/mongoengine-0.8.7.tar.gz
+  md5: 189d7c833519c3483cf69f59b6a51dc7
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pymongo
+
+  run:
+    - python
+    - pymongo
+
+test:
+  imports:
+    - mongoengine
+
+about:
+  home: http://mongoengine.org
+  license: Mit License
+  summary: "MongoEngine is a Python Object-Document Mapper for working with MongoDB."

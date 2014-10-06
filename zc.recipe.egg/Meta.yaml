@@ -1,0 +1,32 @@
+package:
+  name: zc.recipe.egg
+  version: !!str 2.0.1
+
+source:
+  fn: zc.recipe.egg-2.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zc.recipe.egg/zc.recipe.egg-2.0.1.tar.gz
+  md5: 5e81e9d4cc6200f5b1abcf7c653dd9e3
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout
+
+  run:
+    - python
+    - zc.buildout
+
+test:
+
+  imports:
+    - zc.recipe.egg
+    - zc
+
+about:
+  home: http://cheeseshop.python.org/pypi/zc.recipe.egg
+  license: ZPL 2.1
+  summary: "Recipe for installing Python package distributions as eggs"

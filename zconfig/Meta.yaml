@@ -1,0 +1,25 @@
+package:
+  name: zconfig
+  version: !!str 3.0.4
+
+source:
+  fn: zconfig-3.0.4.tar.gz
+  url: https://pypi.python.org/packages/source/Z/ZConfig/ZConfig-3.0.4.tar.gz
+  md5: 32018f77d37f220b6a80aaf311fea63f
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - ZConfig
+
+about:
+  home: http://www.zope.org/Members/fdrake/zconfig/
+  license: ZPL
+  summary: "Structured Configuration Library"

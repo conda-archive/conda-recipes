@@ -1,0 +1,29 @@
+package:
+  name: tiddlywebplugins.imaker
+  version: 0.1.5
+
+source:
+  fn: tiddlywebplugins.imaker-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/t/tiddlywebplugins.imaker/tiddlywebplugins.imaker-0.1.5.tar.gz
+  md5: f01801cd354feb0b2ff7895b53f7b3d1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tiddlywebplugins.pkgstore
+    - tiddlywebplugins.utils
+
+  run:
+    - python
+    - tiddlywebplugins.pkgstore
+    - tiddlywebplugins.utils
+
+test:
+  imports:
+    - tiddlywebplugins.imaker
+
+about:
+  home: http://pypi.python.org/pypi/tiddlywebplugins.imaker
+  license: BSD
+  summary: "Make TiddlyWeb instances"

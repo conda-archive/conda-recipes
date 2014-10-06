@@ -1,0 +1,34 @@
+package:
+  name: strangecase
+  version: !!str 4.6.5
+
+source:
+  fn: strangecase-4.6.5.tar.gz
+  url: https://pypi.python.org/packages/source/S/StrangeCase/StrangeCase-4.6.5.tar.gz
+  md5: 834d62257d3960bc63f17063f85f77e2
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - plywood
+    - watchdog
+    - jinja2
+
+  run:
+    - python
+    - plywood
+    - watchdog
+    - jinja2
+
+test:
+  imports:
+    - strange_case
+
+about:
+  home: https://github.com/colinta/StrangeCase
+  license: BSD
+  summary: "A straightforward python static site generator."

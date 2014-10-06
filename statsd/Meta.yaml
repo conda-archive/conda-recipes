@@ -1,0 +1,25 @@
+package:
+  name: statsd
+  version: 3.0.1
+
+source:
+  fn: statsd-3.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/statsd/statsd-3.0.1.tar.gz
+  md5: af256148584ed4daa66f50c30b5c1f95
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - statsd
+
+about:
+  home: https://github.com/jsocol/pystatsd
+  license: MIT License
+  summary: "A simple statsd client."

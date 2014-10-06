@@ -1,0 +1,25 @@
+package:
+  name: djangorestframework
+  version: !!str 2.4.3
+
+source:
+  fn: djangorestframework-2.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/djangorestframework/djangorestframework-2.4.3.tar.gz
+  md5: d066f54dec201df9e5113561ed4a5ff9
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - rest_framework
+
+about:
+  home: http://www.django-rest-framework.org/
+  license: BSD
+  summary: "Web APIs for Django, made easy."

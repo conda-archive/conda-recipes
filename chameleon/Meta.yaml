@@ -1,0 +1,27 @@
+package:
+  name: chameleon
+  version: 2.16
+
+source:
+  fn: Chameleon-2.16.tar.gz
+  url: https://pypi.python.org/packages/source/C/Chameleon/Chameleon-2.16.tar.gz
+  md5: 6336d780dde9f7a4b8a5a8971dd983a1 
+
+requirements:
+  build:
+    - python
+    - distribute
+
+  run:
+    - python
+    - distribute
+
+test:
+  # Python imports
+  imports:
+    - chameleon
+
+about:
+  home: http://www.pagetemplates.org/
+  license: BSD-like (http://repoze.org/license.html)
+  summary: 'Fast HTML/XML Template Compiler.'

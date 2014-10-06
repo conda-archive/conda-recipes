@@ -1,0 +1,27 @@
+package:
+  name: xml_marshaller
+  version: 0.9.7
+
+source:
+  fn: xml_marshaller-0.9.7.tar.gz
+  url: https://pypi.python.org/packages/source/x/xml_marshaller/xml_marshaller-0.9.7.tar.gz
+  md5: de083e7b6997f899335729accd8e928c
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+
+  run:
+    - python
+    - lxml
+
+test: 
+  imports:
+    - xml_marshaller
+
+about:
+  home: http://www.python.org/community/sigs/current/xml-sig/
+  license: Python License (CNRI Python License)
+  summary: "Converting Python objects to XML and back again."

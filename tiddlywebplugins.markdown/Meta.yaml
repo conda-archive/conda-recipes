@@ -1,0 +1,30 @@
+package:
+  name: tiddlywebplugins.markdown
+  version: 1.2.10
+
+source:
+  fn: tiddlywebplugins.markdown-1.2.10.tar.gz
+  url: https://pypi.python.org/packages/source/t/tiddlywebplugins.markdown/tiddlywebplugins.markdown-1.2.10.tar.gz
+  md5: a8e5b8de6e4ace1e1c24f744c6faf20c
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - markdown
+    - tiddlyweb
+
+  run:
+    - python
+    - markdown
+    - tiddlyweb
+    - setuptools
+
+test:
+  imports:
+    - tiddlywebplugins.markdown
+
+about:
+  home: http://pypi.python.org/pypi/tiddlywebplugins.markdown
+  license: BSD
+  summary: "Markdown rendering for TiddlyWeb"

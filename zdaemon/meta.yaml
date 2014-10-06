@@ -1,0 +1,28 @@
+package:
+  name: zdaemon
+  version: !!str 4.0.0
+
+source:
+  fn: zdaemon-4.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zdaemon/zdaemon-4.0.0.tar.gz
+  md5: 4056e2ea35855695ed15389d9c168b92
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zconfig
+
+  run:
+    - python
+    - zconfig
+
+test:
+
+   imports: 
+     - zdaemon
+
+about:
+  home: http://www.python.org/pypi/zdaemon
+  license: Zope Public License
+  summary: "Daemon process control library and tools for Unix-based systems"

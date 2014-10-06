@@ -1,0 +1,30 @@
+package:
+  name: record
+  version: 3.0
+
+source:
+  fn: record-3.0.zip
+  url: https://pypi.python.org/packages/source/R/Record/Record-3.0.zip
+  md5: 0da426b483836c75bac8b414c7d72d8e
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - extensionclass
+
+  run:
+    - python
+    - extensionclass
+
+test: 
+  imports:
+    - Record
+
+about:
+  home: http://pypi.python.org/pypi/record
+  license: ZPL 2.1
+  summary: "Special Record objects used in Zope2."

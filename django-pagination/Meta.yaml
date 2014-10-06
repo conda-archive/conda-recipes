@@ -1,0 +1,28 @@
+package:
+  name: django-pagination
+  version: 1.0.7
+
+source:
+  fn: django-pagination-1.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-pagination/django-pagination-1.0.7.tar.gz
+  md5: 43353a0b3344e5b10a9a83248a6dc24a
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - pagination
+
+about:
+  home: http://django-pagination.googlecode.com/
+  license:  BSD License
+  summary: "django-pagination"

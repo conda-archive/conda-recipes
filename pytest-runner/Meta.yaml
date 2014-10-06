@@ -1,0 +1,28 @@
+package:
+  name: pytest-runner
+  version: !!str 2.1.2
+
+source:
+  fn: pytest-runner-2.1.2.zip
+  url: https://pypi.python.org/packages/source/p/pytest-runner/pytest-runner-2.1.2.zip
+  md5: fa70e3494e72a525e2296f6c979463f9
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - hgtools
+
+  run:
+    - python
+    - hgtools
+    - setuptools
+
+test:
+  imports:
+    - ptr
+
+about:
+  home: https://bitbucket.org/jaraco/pytest-runner
+  license: MIT
+  summary: "Invoke py.test as distutils command with dependency resolution."

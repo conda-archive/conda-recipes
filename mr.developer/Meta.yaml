@@ -1,0 +1,27 @@
+package:
+  name: mr.developer
+  version: !!str 1.3.0
+
+source:
+  fn: mr.developer-1.3.0.zip
+  url: https://pypi.python.org/packages/source/m/mr.developer/mr.developer-1.30.zip
+  md5: d8d54637e0078f127aa8dde353adeb6d
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout
+
+  run:
+    - python
+    - zc.buildout
+
+test:
+  imports:
+    - mr.developer
+
+about:
+  home: http://github.com/fschulze/mr.developer
+  license: BSD
+  summary: "A zc.buildout extension to ease the development of large projects with lots of packages."

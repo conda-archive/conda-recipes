@@ -1,0 +1,29 @@
+package:
+  name: pyramid_beaker
+  version: 0.8
+
+source:
+  fn: pyramid_beaker-0.8.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyramid_beaker/pyramid_beaker-0.8.tar.gz
+  md5: 22f14be31b06549f80890e2c63a93834
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - beaker
+    - pyramid
+
+  run:
+    - python
+    - beaker
+    - pyramid
+
+test:
+  imports:
+    - pyramid_beaker
+
+about:
+  home: http://docs.pylonsproject.org/projects/pyramid_beaker/en/latest/
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: "Beaker session factory backend for Pyramid"

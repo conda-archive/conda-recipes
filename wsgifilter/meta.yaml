@@ -1,0 +1,29 @@
+package:
+  name: wsgifilter
+  version: !!str 0.2
+
+source:
+  fn: wsgifilter-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/W/WSGIFilter/WSGIFilter-0.2.tar.gz
+  md5: 4a9f536ebc901e8cefc339ba164eeb06
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - webob
+    - httpencode
+
+  run:
+    - python
+    - webob
+    - httpencode
+
+test:
+   imports: 
+     - wsgifilter
+
+about:
+  home: http://pythonpaste.org/wsgifilter/
+  license: MIT
+  summary: "Abstract base class / framework for building output-filtering WSGI middleware"

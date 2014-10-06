@@ -1,0 +1,29 @@
+package:
+  name: minitage.paste
+  version: 1.4.6
+
+source:
+  fn: minitage.paste-1.4.6.zip
+  url: https://pypi.python.org/packages/source/m/minitage.paste/minitage.paste-1.4.6.zip
+  md5: 19408106b94736dedc0553832d737b4e
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - iniparse
+    - pastescript
+
+  run:
+    - python
+    - iniparse
+    - pastescript
+
+test: 
+  imports:
+    - minitage.paste
+
+about:
+  home: http://cheeseshop.python.org/pypi/minitage.paste
+  license: BSD
+  summary: "PasteScripts to facilitate use of minitage and creation of minitage based projects sponsored by Makina Corpus."

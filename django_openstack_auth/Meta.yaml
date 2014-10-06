@@ -1,0 +1,27 @@
+package:
+  name: django_openstack_auth
+  version: 1.1.7
+
+source:
+  fn: django_openstack_auth-1.1.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_openstack_auth/django_openstack_auth-1.1.7.tar.gz
+  md5: 6afb0748dab95003b75f0d6f4f4a1100
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pbr
+
+  run:
+    - python
+    - pbr
+
+test:
+  imports:
+    - openstack_auth
+
+about:
+  home: http://www.openstack.org/
+  license: Apache Software license
+  summary: "Django authentication backend for use with OpenStack Identity"

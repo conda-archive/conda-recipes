@@ -1,0 +1,31 @@
+package:
+  name: rosinstall
+  version: 0.7.3
+
+source:
+  fn: rosinstall-0.7.3.tar.gz
+  url: https://pypi.python.org/packages/source/r/rosinstall/rosinstall-0.7.3.tar.gz
+  md5: 59919fcf9a9163ca3f62e065e4cf7d7a
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - wstool
+    - catkin_pkg
+    - rosdistro
+
+  run:
+    - python
+    - wstool
+    - catkin_pkg
+    - rosdistro
+
+test:
+  imports:
+    - rosinstall
+
+about:
+  home: http://wiki.ros.org/rosinstall
+  license: BSD
+  summary: "The installer for ROS"

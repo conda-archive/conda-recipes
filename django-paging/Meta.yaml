@@ -1,0 +1,27 @@
+package:
+  name: django-paging
+  version: !!str 0.2.5
+
+source:
+  fn: django-paging-0.2.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-paging/django-paging-0.2.5.tar.gz
+  md5: 282ef984815f73ce43189d288b2bae2a
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-templatetag-sugar
+
+  run:
+    - python
+    - django-templatetag-sugar
+
+test:
+  imports:
+    - paging
+
+about:
+  home: http://github.com/dcramerdjango-paging
+  license: unspecified
+  summary: "An efficient paginator that works."

@@ -1,0 +1,27 @@
+package:
+  name: sqlalchemy-citext
+  version: 1.2.0
+
+source:
+  fn: sqlalchemy-citext-1.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/sqlalchemy-citext/sqlalchemy-citext-1.2-0.tar.gz
+  md5: bd8bcf90a76c547de6a3fd7d0690b12f
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlalchemy
+
+  run:
+    - python
+    - sqlalchemy
+
+test:
+  imports:
+    - citext
+
+about:
+  home: https://github.com/mahmoudimus/sqlalchemy-citext
+  license: BSD
+  summary: "A sqlalchemy plugin that allows postgres use of CITEXT."

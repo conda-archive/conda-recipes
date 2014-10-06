@@ -1,0 +1,25 @@
+package:
+  name: cssutils
+  version: !!str 1.0
+
+source:
+  fn: FormEncode-1.0.zip
+  url: https://pypi.python.org/packages/source/c/cssutils/cssutils-1.0.zip
+  md5: 0c0b9df329ec1461c732d0f3cba05e93
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - cssutils
+
+about:
+  home: http://cthedot.de/cssutils/
+  license:  GNU Library LGPL
+  summary: "A CSS Cascading Style Sheets library for Python"

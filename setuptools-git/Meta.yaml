@@ -1,0 +1,23 @@
+package:
+  name: setuptools-git
+  version: 1.1
+
+source:
+  fn: setuptools-git-1.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/setuptools-git/setuptools-git-1.1.tar.gz
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+   - setuptools_git
+
+about:
+  home: https://github.com/wichert/setuptools-git
+  license: BSD

@@ -1,0 +1,32 @@
+package:
+  name: nma-python
+  version: !!str 0.2.4
+
+source:
+  fn: nma-python-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/n/nma-python/nma-python-0.2.4.tar.gz
+  md5: 6f24c3e764989d8ae435613c8f1cc290
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - httplib2
+    - argparse
+
+  run:
+    - python
+    - httplib2
+    - argparse
+
+test:
+  imports:
+    - nma
+
+about:
+  home: https://github.com/thekad/nma-python
+  license: MIT
+  summary: "A library/cli tool for notifymyandroid (http://nma.usk.bz"

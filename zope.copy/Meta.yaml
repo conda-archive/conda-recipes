@@ -1,0 +1,30 @@
+package:
+  name: zope.copy
+  version: 4.0.2
+
+source:
+  fn: zope.copy-4.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.copy/zope.copy-4.0.2.tar.gz
+  md5: a7491c2b4257d5e789bbe4f291447c5e
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+
+  run:
+    - python
+    - zope.interface
+
+test: 
+  imports:
+    - zope.copy
+
+about:
+  home: http://pypi.python.org/pypi/zope.copy
+  license: ZPL 2.1
+  summary: "Pluggable object copying mechanism"

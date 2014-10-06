@@ -1,0 +1,28 @@
+package:
+  name: tiddlywebplugins.utils
+  version: 1.9
+
+source:
+  fn: tiddlywebplugins.utils-1.9.tar.gz
+  url: https://pypi.python.org/packages/source/t/tiddlywebplugins.utils/tiddlywebplugins.utils-1.9.tar.gz
+  md5: c2d2676aa60be8910a58d5f3a6b28367
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tiddlyweb
+
+  run:
+    - python
+    - tiddlyweb	
+    - setuptools
+
+test:
+  imports:
+    - tiddlywebplugins.utils
+
+about:
+  home: http://pypi.python.org/pypi/tiddlywebplugins.utils
+  license: unspecified
+  summary: "Tools and methods for managing TiddlyWeb plugins"

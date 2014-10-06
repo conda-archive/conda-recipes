@@ -1,0 +1,28 @@
+package:
+  name: django-appconf
+  version: 0.6
+
+source:
+  fn: django-appconf-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-appconf/django-appconf-0.6.tar.gz
+  md5: 40494042c3c8bd1e054c884e5ed4bb6c
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+
+  run:
+    - python
+    - six
+    - django
+
+test:
+  imports:
+    - appconf
+
+about:
+  home:  http://django-appconf.readthedocs.org/
+  license: BSD License
+  summary: "A helper class for handling configuration defaults of packaged apps gracefully."

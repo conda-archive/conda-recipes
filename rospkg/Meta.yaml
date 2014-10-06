@@ -1,0 +1,29 @@
+package:
+  name: rospkg
+  version: 1.0.29
+
+source:
+  fn: rospkg-1.0.29.tar.gz
+  url: https://pypi.python.org/packages/source/r/rospkg/rospkg-1.0.29.tar.gz
+  md5: 26cfd8a4911af56627802ba327d44a7f
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+    - argparse
+
+  run:
+    - python
+    - pyyaml
+    - argparse
+
+test:
+  imports:
+    - rospkg
+
+about:
+  home: http://wiki.ros.org/rospkg
+  license: BSD
+  summary: "ROS package library"

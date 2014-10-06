@@ -1,0 +1,34 @@
+package:
+  name: zope.password
+  version: 4.0.2
+
+build:
+  preserve_egg_dir: True
+
+source:
+  fn: zope.password-4.0.2.zip
+  url: https://pypi.python.org/packages/source/z/zope.password/zope.password-4.0.2.zip
+  md5: 4c035f4cebf6b5007e8de57adafe47b2
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+    - zope.configuration
+    - zope.component
+
+  run:
+    - python
+    - zope.interface
+    - zope.configuration
+    - zope.component
+
+test:
+  imports:
+    - zope.password
+
+about:
+  home: http://pypi.python.org/pypi/zope.password
+  license: ZPL 2.1
+  summary: "Password encoding and checking utilities"

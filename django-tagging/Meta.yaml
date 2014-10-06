@@ -1,0 +1,24 @@
+package:
+  name: django-tagging
+  version: 0.3.2
+
+source:
+  fn: django-tagging.0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-tagging/django-tagging-0.3.2.tar.gz
+  md5: 23d4040f1d5e50511c9bc94565bf4baa
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - tagging
+
+about:
+  home: https://code.google.com/p/django-tagging/
+  license: BSD License
+  summary: "Generic tagging application for Django"

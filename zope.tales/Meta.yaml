@@ -1,0 +1,33 @@
+package:
+  name: zope.tales
+  version: 4.0.2
+
+source:
+  fn: zope.tales-4.0.2.zip
+  url: https://pypi.python.org/packages/source/z/zope.tales/zope.tales-4.0.2.zip
+  md5: 902b03a5f9774f6e2decf3f06d18a09d
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - zope.interface
+
+  run:
+    - python
+    - six
+    - zope.interface
+    - setuptools
+
+test:
+ imports:
+    - zope.tales
+
+about:
+  home: http://pypi.python.org/pypi/zope.tales
+  license: Zope Public License
+  summary: "Zope Template Application Language Expression Syntax (TALES)"

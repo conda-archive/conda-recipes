@@ -1,0 +1,34 @@
+package:
+  name: zope.sqlalchemy
+  version: 0.7.5
+
+source:
+  fn: zope.sqlalchemy-0.7.5.zip
+  url: https://pypi.python.org/packages/source/z/zope.sqlalchemy/zope.sqlalchemy-0.7.5.zip
+  md5: 0a468bd5b8884cd29fb71acbf7eaa31e
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+    - transaction
+    - sqlalchemy
+
+  run:
+    - python
+    - zope.interface
+    - transaction
+    - sqlalchemy
+
+test:
+  imports:
+    - zope.sqlalchemy
+
+about:
+  home: http://pypi.python.org/pypi/zope.sqlalchemy
+  license: ZPL 2.1
+  summary: "Minimal Zope/SQLAlchemy transaction integration"

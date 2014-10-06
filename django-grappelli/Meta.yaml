@@ -1,0 +1,28 @@
+package:
+  name: django-grappelli
+  version: !!str 2.6.1
+
+source:
+  fn: django-grappelli-2.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-grappelli/django-grappelli-2.6.1.tar.gz
+  md5: aa27ef97886ca7f55fa9fd301d5f4fe9
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - grappelli
+
+about:
+  home: http://django-grappelli.readthedocs.org/
+  license: BSD
+  summary: "A jazzy skin for the Django Admin-Interface."

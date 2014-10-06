@@ -1,0 +1,28 @@
+package:
+  name: vcstools
+  version: 0.1.35
+
+source:
+  fn: vcstools-0.1.35.tar.gz
+  url: https://pypi.python.org/packages/source/v/vcstools/vcstools-0.1.35.tar.gz
+  md5: 750f0e902f33d13bce8636ca7a38c672
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-dateutil
+    - pyyaml
+
+  run:
+    - python
+    - python-dateutil
+    - pyyaml
+test:
+  imports:
+    - vcstools
+
+about:
+  home: http://wiki.ros.org/vcstools
+  license: BSD
+  summary: "VCS/SCM source control library for svn, git, hg, and bzr"

@@ -1,0 +1,25 @@
+package:
+  name: flup
+  version: !!str 1.0.3.dev_20110405
+
+source:
+  fn: flup-1.0.3.dev_20110405.tar.gz
+  url: https://pypi.python.org/packages/source/f/flup/flup-1.0.3.dev-20110405.tar.gz
+  md5: a005b072d144fc0e44b0fa4c5a9ba029
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - flup
+
+about:
+  home: http://www.saddi.com/software/flup/
+  license: BSD
+  summary: "Random assortment of WSGI servers"

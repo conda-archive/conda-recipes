@@ -1,0 +1,36 @@
+package:
+  name: z3c.autoinclude
+  version: 0.3.5
+
+source:
+  fn: z3c.autoinclude-0.3.5.zip
+  url: https://pypi.python.org/packages/source/z/z3c.autoinclude/z3c.autoinclude-0.3.5.zip
+  md5: 44f113a1c280dd238ab9b8490ae88857
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout
+    - zope.schema
+    - zope.configuration
+    - zope.dottedname
+
+  run:
+    - python
+    - zc.buildout
+    - zope.schema
+    - zope.configuration
+    - zope.dottedname
+
+test:
+  imports:
+    - z3c.autoinclude
+
+about:
+  home: http://pypi.python.org/pypi/z3c.autoinclude
+  license: ZPL
+  summary: "Automatically include ZCML"

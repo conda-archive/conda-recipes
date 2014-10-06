@@ -1,0 +1,28 @@
+package:
+  name: transaction
+  version: 1.4.3
+
+source:
+  fn: transaction-1.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/t/transaction/transaction-1.4.3.tar.gz
+  md5: b4ca5983c9e3a0808ff5ff7648092c76
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface 
+
+  run:
+    - python
+    - zope.interface
+    - setuptools
+
+test:
+  imports:
+     - transaction
+
+about:
+  home:  http://www.zope.org/Products/ZODB
+  license: ZPL 2.1 License
+  summary: "Transaction management for Python"

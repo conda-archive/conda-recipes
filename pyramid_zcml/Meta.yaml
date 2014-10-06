@@ -1,0 +1,32 @@
+package:
+  name: pyramid_zcml
+  version: 1.0.0
+
+source:
+  fn: pyramid_zcml-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyramid_zcml/pyramid_zcml-1.0.0.tar.gz
+  md5: 446ad9ea7969f61cb50b761e5a1f36a7
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.configuration
+    - pyramid
+
+  run:
+    - python
+    - zope.configuration
+    - pyramid
+
+test:
+  imports:
+    - pyramid_zcml
+
+about:
+  home: http://docs.pylonsproject.org/
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: "Zope Config Markup Language support for Pyramid"

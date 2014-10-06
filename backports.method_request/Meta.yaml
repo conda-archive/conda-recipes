@@ -1,0 +1,28 @@
+package:
+  name: backports.method_request
+  version: !!str 1.0
+
+source:
+  fn: backports.method_request-1.0.zip
+  url: https://pypi.python.org/packages/source/b/backports.method_request/backports.method_request-1.0.zip
+  md5: f68f4c0f45e6b9f8ef0e4534e54448fa
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pytest-runner
+
+  run:
+    - python
+    - pytest-runner
+    - setuptools
+test:
+  # Python imports
+  imports:
+    - backports.method_request
+
+about:
+  home: https://bitbucket.org/jaraco/backports.method_request
+  license: unknown
+  summary: https://bitbucket.org/jaraco/backports.method_request

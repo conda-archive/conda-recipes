@@ -1,0 +1,28 @@
+package:
+  name: chomsky
+  version: !!str 1.10.0
+
+source:
+  fn: chomsky-1.10.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/chomsky/chomsky-1.0.2.tar.gz
+  md5: bd3b30648f14d8054a5b865ccf8c157a
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - chomsky
+
+about:
+  home: https://github.com/colinta/chomsky
+  license: BSD
+  summary: "Another language grammar parser. Inspired by modgrammar and pyparsing"

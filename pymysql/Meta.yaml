@@ -1,0 +1,25 @@
+package:
+  name: pymysql
+  version: !!str 0.6.2
+
+source:
+  fn: pymysql-0.6.2.tar.gz
+  url: https://pypi.python.org/packages/source/P/PyMySQL/PyMySQL-0.6.2.tar.gz
+  md5: 5d7016e8f13e6c4edb539aa736896ffe
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - pymysql
+
+about:
+  home: https://github.com/PyMySQL/PyMySQL/
+  license: MIT
+  summary: "Pure-Python MySQL Driver"

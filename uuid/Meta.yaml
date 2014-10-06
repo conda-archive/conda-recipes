@@ -1,0 +1,25 @@
+package:
+  name: uuid
+  version: !!str 1.30
+
+source:
+  fn: uuid-1.30.tar.gz
+  url: https://pypi.python.org/packages/source/u/uuid/uuid-1.30.tar.gz
+  md5: 639b310f1fe6800e4bf8aa1dd9333117
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - uuid
+
+about:
+  home: http://zesty.ca/python/
+  license: unspecified
+  summary: "UUID object and generation functions (Python 2.3 or higher)"

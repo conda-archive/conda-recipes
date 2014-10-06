@@ -1,0 +1,25 @@
+package:
+  name: mechanize
+  version: 0.2.5
+
+source:
+  fn: mechanize-0.2.5.zip
+  url: https://pypi.python.org/packages/source/m/mechanize/mechanize-0.2.5.zip
+  md5: a497ad4e875f7506ffcf8ad3ada4c2fc
+
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - mechanize
+
+about:
+  home: http://wwwsearch.sourceforge.net/mechanize/
+  license: Zope Public License
+  summary: "Stateful programmatic web browsing."

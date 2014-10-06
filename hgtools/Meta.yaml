@@ -1,0 +1,24 @@
+package:
+  name: hgtools
+  version: !!str 6.0
+
+source:
+  fn: hgtools-6.0.zip
+  url: https://pypi.python.org/packages/source/h/hgtools/hgtools-6.0.zip
+  md5: efbadd0d6d19a827ad254a08f696ea89
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+
+test:
+  imports:
+    - hgtools
+
+about:
+  home: https://bitbucket.org/jaraco/hgtools/
+  license: GNU
+  summary: "Classes and setuptools plugin for Mercurial repositories"

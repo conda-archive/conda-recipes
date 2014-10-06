@@ -1,0 +1,28 @@
+package:
+  name: tiddlywebplugins.relativetime
+  version: 0.5
+
+source:
+  fn: tiddlywebplugins.relativetime-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/t/tiddlywebplugins.relativetime/tiddlywebplugins.relativetime-0.5.tar.gz
+  md5: fb205ea897c2de9b80da2d6bfeaa23c4
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tiddlyweb
+
+  run:
+    - python
+    - tiddlyweb
+    - setuptools
+
+test:
+  imports:
+    - tiddlywebplugins.relativetime
+
+about:
+  home: http://pypi.python.org/pypi/tiddlywebplugins.relativetime
+  license: BSD
+  summary: "Use relative time expressions in select filters"

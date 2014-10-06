@@ -1,0 +1,25 @@
+package:
+  name: python-digest
+  version: 1.7
+
+source:
+  fn: python-digest-1.7.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-digest/python-digest-1.7.tar.gz
+  md5: 472a33170f06e4c645d99e3a10c62894
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - python_digest
+
+about:
+  home: http://bitbucket.org/akoha/python-digest/
+  license: BSD License
+  summary: "A Python library to aid in implementing HTTP Digest Authentication."

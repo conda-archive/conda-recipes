@@ -1,0 +1,25 @@
+package:
+  name: markdown
+  version: !!str 1.3.0a1
+
+source:
+  fn: FormEncode-1.3.0a1.tar.gz
+  url: https://pypi.python.org/packages/source/F/FormEncode/FormEncode-1.3.0a1.tar.gz
+  md5: 9238026a057018b840f25cf18b16fba0
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - markdown
+
+about:
+  home: http://packages.python.org/Markdown/
+  license:  BSD License
+  summary: "HTML form validation, generation, and conversion package"

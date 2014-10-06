@@ -1,0 +1,25 @@
+package:
+  name: nt_svcutils
+  version: 2.13.0
+
+source:
+  fn: nt_svcutils-2.13.0.zip
+  url: https://pypi.python.org/packages/source/n/nt_svcutils/nt_svcutils-2.13.0.zip
+  md5: 5d5f2c527d323e4e82cd6c7c113207ab
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - nt_svcutils
+
+about:
+  home: http://pypi.python.org/pypi/nt_svcutils
+  license: ZPL 2.1
+  summary: "nt_svcutils for Zope2."

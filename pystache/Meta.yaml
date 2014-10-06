@@ -1,0 +1,25 @@
+package:
+  name: pystache
+  version: 0.5.4
+
+source:
+  fn: pystache-0.5.4.tar.gz
+  url: https://pypi.python.org/packages/source/p/pystache/pystache-0.5.4.tar.gz
+  md5: 485885e67a0f6411d5252e69b20a35ca
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - pystache
+
+about:
+  home: http://github.com/defunkt/pystache
+  license: MIT
+  summary: "Mustache for Python"

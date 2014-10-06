@@ -1,0 +1,24 @@
+package:
+  name: vnc2flv
+  version: 20100207
+
+source:
+  fn: vnc2flv-20100207.tar.gz
+  url: https://pypi.python.org/packages/source/v/vnc2flv/vnc2flv-20100207.tar.gz
+  md5: 8492e46496e187b49fe5569b5639804e
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - vnc2flv
+
+about:
+  home: http://www.unixuser.org/~euske/python/vnc2flv/index.html
+  license: MIT
+  summary: "Screen recording tool that captures a VNC session and saves as FLV"

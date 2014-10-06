@@ -1,0 +1,29 @@
+package:
+  name: pyramid_mako
+  version: !!str 1.0.2
+
+source:
+  fn: pyramid-mako-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyramid_mako/pyramid_mako-1.0.2.tar.gz
+  md5: ee25343a97eb76bd90abdc2a774eb48a
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mako
+    - pyramid
+
+  run:
+    - python
+    - mako
+    - pyramid
+
+test:
+  imports:
+    - pyramid_mako
+
+about:
+  home: https://github.com/Pylons/pyramid_mako
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: "Mako template bindings for the Pyramid web framework"

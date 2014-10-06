@@ -1,0 +1,24 @@
+package:
+  name: beaker
+  version: 1.6.4
+
+source:
+  fn: Beaker-1.6.4.tar.gz
+  url: https://pypi.python.org/packages/source/B/Beaker/Beaker-1.6.4.tar.gz
+  md5: c2e102870ed4c53104dec48ceadf8e9d
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+
+test:
+  imports:
+    - beaker
+
+about:
+  home: http://beaker.rtfd.org/
+  license: BSD License
+  summary: 'A Session and Caching library with WSGI Middleware'

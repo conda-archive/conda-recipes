@@ -1,0 +1,28 @@
+package:
+  name: bleach
+  version: 1.4
+
+source:
+  fn: bleach-1.4.tar.gz
+  url: https://pypi.python.org/packages/source/b/bleach/bleach-1.4.tar.gz
+  md5: 724c24f0ae54ecb73928812a8de6cb3a
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - html5lib
+
+  run:
+    - python
+    - html5lib
+
+test:
+  # Python imports
+  imports:
+    - bleach
+
+about:
+  home: https://github.com/jsocol/bleach
+  license: Apache Software License
+  summary: 'An easy whitelist-based HTML-sanitizing tool.'

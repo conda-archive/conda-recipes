@@ -1,0 +1,29 @@
+package:
+  name: pastescript
+  version: 1.7.5
+
+source:
+  fn: pastescript-1.7.5.tar.gz
+  url: https://pypi.python.org/packages/source/P/PasteScript/PasteScript-1.7.5.tar.gz
+  md5: 4c72d78dcb6bb993f30536842c16af4d
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pastedeploy
+    - paste
+
+  run:
+    - python
+    - pastedeploy
+    - paste
+
+test:
+  imports:
+    - paste.script
+
+about:
+  home: http://pythonpaste.org/script/
+  license: BSD
+  summary: "A pluggable command-line frontend, including commands to setup package file layouts"

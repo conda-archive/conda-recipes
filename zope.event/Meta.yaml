@@ -1,0 +1,26 @@
+package:
+  name: zope.event
+  version: 4.0.3
+
+source:
+  fn: zope.event-4.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.event/zope.event-4.0.3.tar.gz
+  md5: 9a3780916332b18b8b85f522bcc3e249
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  imports:
+    - zope.event
+
+about:
+  home: http://pypi.python.org/pypi/zope.event
+  license:  ZPL 2.1 License
+  summary: "Very basic event publishing system"
