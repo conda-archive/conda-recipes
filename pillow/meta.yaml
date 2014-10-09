@@ -1,11 +1,11 @@
 package:
   name: pillow
-  version: 2.5.1
+  version: 2.6.0
 
 source:
-  fn: Pillow-2.5.1.zip
-  url: https://pypi.python.org/packages/source/P/Pillow/Pillow-2.5.1.zip
-  md5: cf42c695fab68116af2c8ef816fca0d9
+  fn: Pillow-2.6.0.zip
+  url: https://pypi.python.org/packages/source/P/Pillow/Pillow-2.6.0.zip
+  md5: 611b51542236f0d876ba0c8a97c259e8
   
   patches:
     - windows_multiprocess.patch [win]
@@ -37,5 +37,5 @@ test:
     - PIL._imagingft     [unix]
 
 about:
-  home: http://python-imaging.github.io/
+  home: https://python-pillow.github.io/
   license: Standard PIL license
