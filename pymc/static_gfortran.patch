@@ -1,7 +1,7 @@
 diff --git a/setup.py b/setup.py
-index f2acc07..d20dda9 100755
---- setup.py
-+++ setup.py
+index f2acc07..1dc835e 100755
+--- a/setup.py
++++ b/setup.py
 @@ -23,7 +23,10 @@ lapack_info = get_info('lapack_opt',1)
  f_sources = ['pymc/flib.f','pymc/histogram.f', 'pymc/flib_blas.f', 'pymc/blas_wrap.f', 'pymc/math.f', 'pymc/gibbsit.f',
               'cephes/c2f.c','cephes/chbevl.c']
@@ -9,8 +9,13 @@ index f2acc07..d20dda9 100755
 -    config.add_extension(name='flib',sources=f_sources, extra_info=lapack_info, f2py_options=['skip:ppnd7'])
 +    config.add_extension(name='flib', sources=f_sources,
 +                         extra_info=lapack_info, f2py_options=['skip:ppnd7'],
-+                         extra_compile_args=['-static-libgfortran', '-fPIC'],
++                         extra_compile_args=['-fPIC'],
 +                         extra_link_args=['-static-libgfortran'])
 
  if not lapack_info or dist in ['bdist', 'sdist']:
      ##inc_dirs = ['blas/BLAS','lapack/double']
+@@ -122,4 +125,3 @@ if __name__ == '__main__':
+             """,
+             packages=["pymc", "pymc/database", "pymc/examples", "pymc/examples/gp", "pymc/tests", "pymc/gp", "pymc/gp/co
+             **(config_dict))
+-
