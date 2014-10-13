@@ -12,8 +12,3 @@
 
  if not lapack_info or dist in ['bdist', 'sdist']:
      ##inc_dirs = ['blas/BLAS','lapack/double']
-@@ -122,4 +125,3 @@ if __name__ == '__main__':
-             """,
-             packages=["pymc", "pymc/database", "pymc/examples", "pymc/examples/gp", "pymc/tests", "pymc/gp", "pymc/gp/co
-             **(config_dict))
--
