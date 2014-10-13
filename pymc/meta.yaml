@@ -8,7 +8,9 @@ source:
   md5: 99645bf558a41376be0e687ccf90a39f
 
 build:
-  number: 2
+  number: 3
+  patches:
+    - static_gfortran.patch
 
 requirements:
   build:
@@ -21,7 +23,6 @@ requirements:
     - numpy
     - matplotlib
     - scipy
-    - gcc
 
 test:
   imports:
