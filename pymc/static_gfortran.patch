@@ -1,7 +1,5 @@
-diff --git a/setup.py b/setup.py
-index f2acc07..1dc835e 100755
---- a/setup.py
-+++ b/setup.py
+--- setup.py
++++ setup.py
 @@ -23,7 +23,10 @@ lapack_info = get_info('lapack_opt',1)
  f_sources = ['pymc/flib.f','pymc/histogram.f', 'pymc/flib_blas.f', 'pymc/blas_wrap.f', 'pymc/math.f', 'pymc/gibbsit.f',
               'cephes/c2f.c','cephes/chbevl.c']
