@@ -1,6 +1,6 @@
 --- setup.py
 +++ setup.py
-@@ -23,7 +23,10 @@ lapack_info = get_info('lapack_opt',1)
+@@ -23,4 +23,7 @@ lapack_info = get_info('lapack_opt',1)
  f_sources = ['pymc/flib.f','pymc/histogram.f', 'pymc/flib_blas.f', 'pymc/blas_wrap.f', 'pymc/math.f', 'pymc/gibbsit.f',
               'cephes/c2f.c','cephes/chbevl.c']
  if lapack_info:
@@ -8,7 +8,7 @@
 +    config.add_extension(name='flib', sources=f_sources,
 +                         extra_info=lapack_info, f2py_options=['skip:ppnd7'],
 +                         extra_compile_args=['-fPIC'],
-+                         extra_link_args=['-static-libgfortran', '-static-libgcc'])
++                         extra_link_args=['-static-libgfortran', '-static-libgcc', '-static'])
 
  if not lapack_info or dist in ['bdist', 'sdist']:
      ##inc_dirs = ['blas/BLAS','lapack/double']
