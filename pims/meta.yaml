@@ -1,12 +1,11 @@
 package:
   name: pims
-  version: 0.2.1
+  version: 0.2.2rc2
 
 source:
-  fn: pims-0.2.1.tar.gz
-  url: https://github.com/soft-matter/pims/archive/v0.2.1.tar.gz
-  md5: 871623c381da3840130dfd1588fa46bf
-  sha1: c956b83f8c893a09b25f7576892d022c2d8a6f95
+  fn: pims-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/P/PIMS/PIMS-0.2.2rc2.tar.gz
+  md5: e49a4993dce60ba507654a88ec44dfd6
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -36,12 +35,14 @@ requirements:
     - six
     - numpy
     - scikit-image  # one of { scikit-image | matplotlib | scipy }
+    - tifffile
 
   run:
     - python
     - six
     - numpy
     - scikit-image  # one of { scikit-image | matplotlib | scipy }
+    - tifffile
 
 test:
   # Python imports

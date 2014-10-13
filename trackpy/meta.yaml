@@ -1,12 +1,11 @@
 package:
   name: trackpy
-  version: 0.2.3
+  version: 0.2.4rc6
 
 source:
-  fn: trackpy-0.2.3.tar.gz
-  url: https://github.com/soft-matter/trackpy/archive/v0.2.3.tar.gz
-  md5: 07a42c6fa2b49d1ddf17756b36dad3df
-  sha1: 8646aa60e10d4354461be5d432e4c0dde10bd500
+  fn: trackpy-0.2.4rc6.tar.gz
+  url: https://pypi.python.org/packages/source/t/trackpy/trackpy-0.2.4rc6.tar.gz
+  md5: 255eb73f736c3151241ba6286fb71bed
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -53,6 +52,7 @@ requirements:
 test:
   # Python imports
   imports:
+    - tifffile
     - pims
     - trackpy
 
