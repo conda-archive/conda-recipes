@@ -43,6 +43,7 @@ requirements:
     - numpy
     - scikit-image  # one of { scikit-image | matplotlib | scipy }
     - tifffile
+    - pillow  # optional, but necessary for ipython rich display
 
 test:
   # Python imports
