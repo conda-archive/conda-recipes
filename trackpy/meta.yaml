@@ -1,11 +1,11 @@
 package:
   name: trackpy
-  version: 0.2.4rc6
+  version: 0.2.4rc7
 
 source:
-  fn: trackpy-0.2.4rc6.tar.gz
-  url: https://pypi.python.org/packages/source/t/trackpy/trackpy-0.2.4rc6.tar.gz
-  md5: 255eb73f736c3151241ba6286fb71bed
+  fn: trackpy-0.2.4rc7.tar.gz
+  url: https://pypi.python.org/packages/source/t/trackpy/trackpy-0.2.4rc7.tar.gz
+  md5: 10cc6969af5856b25da3fbe9ed179b38
 #  patches:
    # List any patch files here
    # - fix.patch

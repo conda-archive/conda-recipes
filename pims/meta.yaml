@@ -1,11 +1,11 @@
 package:
   name: pims
-  version: 0.2.2rc2
+  version: 0.2.2
 
 source:
   fn: pims-0.2.2.tar.gz
-  url: https://pypi.python.org/packages/source/P/PIMS/PIMS-0.2.2rc2.tar.gz
-  md5: e49a4993dce60ba507654a88ec44dfd6
+  url: https://pypi.python.org/packages/source/P/PIMS/PIMS-0.2.2.tar.gz
+  md5: ef7d935221df418b2b68b5c5fc721e50
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -39,10 +39,10 @@ requirements:
 
   run:
     - python
-    - six
-    - numpy
+    - six >=1.8
+    - numpy >=1.7
     - scikit-image  # one of { scikit-image | matplotlib | scipy }
-    - tifffile
+    - tifffile >=0.3.1
     - pillow  # optional, but necessary for ipython rich display
 
 test:
