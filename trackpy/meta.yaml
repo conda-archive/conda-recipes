@@ -38,16 +38,16 @@ requirements:
     - matplotlib
 
   run:
-    - matplotlib
     - python
     - six
     - pyyaml
     - numpy
     - pandas
-    - scipy
+    - scipy >=0.12.0
     - matplotlib
     - pims
     - pyyaml
+    - numba 0.12.2
 
 test:
   # Python imports
