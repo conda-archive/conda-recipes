@@ -1,0 +1,21 @@
+package:
+  name: man2html
+  version: 3.0.1
+
+source:
+  fn: man2html3.0.1.tar.gz
+  url: http://search.cpan.org/CPAN/authors/id/E/EH/EHOOD/man2html3.0.1.tar.gz
+  sha1: 18b617783ce59491db984d23d2b0c8061bff385c
+
+requirements:
+  run:
+    - perl
+
+test:
+  commands:
+    - man2html --help
+
+about:
+  home: http://www.nongnu.org/man2html/
+  license: GPL
+  summary: "man2html a Perl program that reads formatted nroff text from standard input (stdin) and writes a HTML document to standard output (stdout)."
