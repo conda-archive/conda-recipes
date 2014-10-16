@@ -1,0 +1,29 @@
+package:
+  name: jpype1
+  version: !!str 0.5.6
+
+source:
+  fn: JPype1-0.5.6.tar.gz
+  url: https://pypi.python.org/packages/source/J/JPype1/JPype1-0.5.6.tar.gz
+  md5: 8fff49dad9d36c5252cace8d2442c404
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+  run:
+    - python
+    - numpy
+test:
+  # Python imports
+  imports:
+    - jpype
+
+  commands:
+    - python $SRC_DIR/test/testsuite.py
+
+about:
+  home: https://github.com/originell/jpype/
+  license: 'License :: OSI Approved :: Apache Software License'
+  summary: 'A Python to Java bridge.'
