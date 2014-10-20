@@ -7,7 +7,7 @@ source:
   url: http://ftp.postgresql.org/pub/source/v9.3.2/postgresql-9.3.2.tar.bz2
 
 build:
-  number: 3
+  number: 4
 
 requirements:
   build:
@@ -16,19 +16,13 @@ requirements:
     - readline
     - libxml2
     - libxslt
-    # 10.9 appears to have an issue with libxml2.
-    #- libxml2   [not osx]
-    #- libxslt   [not osx]
     - zlib
     - system    [linux]
   run:
-    - python
-    - openssl
     - readline
+    - openssl
     - libxml2
     - libxslt
-    #- libxml2   [not osx]
-    #- libxslt   [not osx]
     - zlib
     - system    [linux]
 
