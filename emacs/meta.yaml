@@ -8,7 +8,18 @@ source:
   md5: ad487658ad7421ad8d7b5152192eb945
 
 build:
+  number: 1
   detect_binary_files_with_prefix: true
+
+requirements:
+  build:
+    - libxml2
+    - ncurses
+    - dbus
+  run:
+    - libxml2
+    - ncurses
+    - dbus
 
 test:
   commands:
