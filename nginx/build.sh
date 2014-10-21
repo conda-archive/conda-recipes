@@ -26,38 +26,21 @@ EOF
 
 chmod 755 ${PREFIX}/bin/nginx
 
-LinuxInstallation() {
-    # Build dependencies:
-    # - pcre-devel
+chmod +x configure;
 
-    chmod +x configure;
-
-    ./configure \
-        --with-pcre \
-        --with-http_ssl_module \
-        --http-client-body-temp-path=etc/nginx/client \
-        --http-proxy-temp-path=etc/nginx/proxy \
-        --http-fastcgi-temp-path=etc/nginx/fastcgi \
-        --http-scgi-temp-path=etc/nginx/scgi \
-        --http-uwsgi-temp-path=etc/nginx/uwsgi \
-        --http-log-path=var/log/nginx/access.log \
-        --conf-path=etc/nginx/nginx.conf \
-        --lock-path=etc/nginx/nginx.lock \
-        --error-log-path=var/log/nginx/error.log \
-        --pid-path=etc/nginx/nginx.pid \
-        --prefix="${PREFIX}" || return 1;
-    make || return 1;
-    make install || return 1;
-
-    return 0;
-}
-
-case ${MACHINE} in
-    'Linux')
-        LinuxInstallation || exit 1;
-        ;;
-    *)
-        echo -e "Unsupported machine type: ${MACHINE}";
-        exit 1;
-        ;;
-esac
+./configure \
+    --with-pcre \
+    --with-http_ssl_module \
+    --http-client-body-temp-path=etc/nginx/client \
+    --http-proxy-temp-path=etc/nginx/proxy \
+    --http-fastcgi-temp-path=etc/nginx/fastcgi \
+    --http-scgi-temp-path=etc/nginx/scgi \
+    --http-uwsgi-temp-path=etc/nginx/uwsgi \
+    --http-log-path=var/log/nginx/access.log \
+    --conf-path=etc/nginx/nginx.conf \
+    --lock-path=etc/nginx/nginx.lock \
+    --error-log-path=var/log/nginx/error.log \
+    --pid-path=etc/nginx/nginx.pid \
+    --prefix="${PREFIX}" || return 1;
+make || return 1;
+make install || return 1;

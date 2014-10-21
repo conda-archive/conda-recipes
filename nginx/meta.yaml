@@ -7,18 +7,23 @@ source:
     fn: nginx-1.4.3.tar.gz
     url: http://nginx.org/download/nginx-1.4.3.tar.gz
     #md5:
+   
+    patches:
+       - configure.patch
 
 build:
-    number: 0
+    number: 2
 
 requirements:
     build:
         - openssl
         - zlib
+        - pcre   # [osx]
 
     run:
         - openssl
         - zlib
+        - pcre   # [osx]
 
 test:
     #imports:
