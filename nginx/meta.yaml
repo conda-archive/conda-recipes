@@ -18,12 +18,12 @@ requirements:
     build:
         - openssl
         - zlib
-        - pcre   # [osx]
+        - pcre
 
     run:
         - openssl
         - zlib
-        - pcre   # [osx]
+        - pcre 
 
 about:
     home: http://www.nginx.org

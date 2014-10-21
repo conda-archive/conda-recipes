@@ -41,6 +41,8 @@ chmod +x configure;
     --lock-path=etc/nginx/nginx.lock \
     --error-log-path=var/log/nginx/error.log \
     --pid-path=etc/nginx/nginx.pid \
+    --with-cc-opt="-I$PREFIX/include" \
+    --with-ld-opt="-L$PREFIX/lib" \
     --prefix="${PREFIX}" || return 1;
 make || return 1;
 make install || return 1;
