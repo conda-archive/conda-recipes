@@ -25,13 +25,6 @@ requirements:
         - zlib
         - pcre   # [osx]
 
-test:
-    #imports:
-    #    - nginx
-
-    #commands:
-    #    -
-
 about:
     home: http://www.nginx.org
     license: 2-clause BSD-like license
