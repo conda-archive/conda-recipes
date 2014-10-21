@@ -1,18 +1,14 @@
 package:
   name: emacs
-  version: 24.3.91
+  version: 24.4
 
 source:
-  fn: emacs-24.3.91.tar.xz
-  url: ftp://alpha.gnu.org/gnu/emacs/pretest/emacs-24.3.91.tar.xz
-  md5: f14b1b0d56aac1da8abb37f30ab70dc3
+  fn: emacs-24.4.tar.xz
+  url: http://ftp.gnu.org/gnu/emacs/emacs-24.4.tar.xz
+  md5: ad487658ad7421ad8d7b5152192eb945
 
 build:
-  number: 4
-  binary_has_prefix_files:
-    - bin/emacs
-    - bin/emacs-24.3.91
-#    - libexec/emacs/24.3.91/x86_64-apple-darwin13.2.0/update-game-score
+  detect_binary_files_with_prefix: true
 
 test:
   commands:
