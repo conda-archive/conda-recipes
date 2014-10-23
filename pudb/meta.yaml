@@ -1,39 +1,67 @@
 package:
   name: pudb
-  version: 2013.5.1
+  version: !!str 2014.1
 
 source:
-  fn: pudb-2013.5.1.tar.gz
-  url: http://pypi.python.org/packages/source/p/pudb/pudb-2013.5.1.tar.gz
-  md5: 721c4d7cb1074e60a4ea4e8e480bc019
+  fn: pudb-2014.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pudb/pudb-2014.1.tar.gz
+  md5: 8104db184c9553c568966cd67a7b1b2f
+#  patches:
+   # List any patch files here
+   # - fix.patch
 
 build:
+  preserve_egg_dir: True
   entry_points:
-    - pudb = pudb.run:main
-    - pudb3 = pudb.run:main [py3k]
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pudb = pudb:main
+    #
+    # Would create an entry point called pudb that calls pudb.main()
 
-  script: python setup.py install
+    - pudb = pudb.run:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
 
 requirements:
   build:
     - python
     - setuptools
-    - pygments
-    - urwid
+    - urwid >=1.1.1
+    - pygments >=1.0
 
   run:
     - python
-    - pygments
-    - urwid
+    - setuptools
+    - urwid >=1.1.1
+    - pygments >=1.0
 
 test:
+  # Python imports
   imports:
     - pudb
 
   commands:
-    - pudb --help  [py2k]
-    - pudb3 --help [py3k]
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pudb --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
 
 about:
   home: http://pypi.python.org/pypi/pudb
   license: MIT License
+  summary: 'A full-screen, console-based Python debugger'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
