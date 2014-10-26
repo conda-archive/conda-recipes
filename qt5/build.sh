@@ -5,7 +5,7 @@ PATH=/usr/bin:/usr/sbin:/bin
 
 if [ `uname` == Linux ]; then
     CONFIG_OPTS+=" -dbus"
-    MAKE_JOBS=$(nproc)
+    MAKE_JOBS=$CPU_COUNT
 fi
 
 if [ `uname` == Darwin ]; then

@@ -4,7 +4,7 @@ if [ `uname` == Darwin ]; then
 fi
 
 if [ `uname` == Linux ]; then
-    MAKE_JOBS=$(nproc)
+    MAKE_JOBS=$CPU_COUNT
 fi
 
 $PYTHON configure.py \
