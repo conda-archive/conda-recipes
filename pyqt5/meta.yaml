@@ -1,15 +1,17 @@
 package:
   name: pyqt5
-  version: 5.3.1
+  version: 5.3.2
 
 source:
-  fn: PyQt-gpl-5.3.1.zip # [win]
-  url: http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-5.3.1/PyQt-gpl-5.3.1.zip # [win]
-  sha1: 446ff0f29f5fd6f7fbadb5a9b36ef8cced10a322 # [win]
-  fn: PyQt-gpl-5.3.1.tar.gz # [unix]
-  url: http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-5.3.1/PyQt-gpl-5.3.1.tar.gz # [unix]
-  sha1: c3554c33cfe589afb3e3a4ca2ad87e325da30945 # [unix]
+  fn: PyQt-gpl-5.3.2.zip # [win]
+  url: http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-5.3.2/PyQt-gpl-5.3.2.zip # [win]
+  sha1: e8a0a1db25cbbf14bedca976f6ffb15dac2ecc35 # [win]
+  fn: PyQt-gpl-5.3.2.tar.gz # [unix]
+  url: http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-5.3.2/PyQt-gpl-5.3.2.tar.gz # [unix]
+  sha1: bb34d826a50b0735d1319dc51be6a094ba64b800 # [unix]
 
+  patches: # [osx]
+    - configure.patch # [osx] may not be required for >5.3.2
 
 requirements:
   build:
