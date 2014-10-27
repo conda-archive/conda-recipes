@@ -8,7 +8,7 @@ source:
   sha1: 7eebb6ead072b19863f28acca051bc3e3c40fdf9
 
 build:
-  number: 2
+  number: 3
 
 requirements:
   run:
@@ -16,4 +16,5 @@ requirements:
 
 test:
   commands:
-    - help2man --help
+    # Make sure we don't pick up the system perl
+    - PATH=$PREFIX/bin help2man --help
