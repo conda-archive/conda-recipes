@@ -1,0 +1,26 @@
+--- auto/lib/pcre/conf  2013-10-08 08:07:14.000000000 -0400
++++ auto/lib/pcre/conf.new  2014-10-20 20:48:35.000000000 -0400
+@@ -162,6 +162,22 @@
+             . auto/feature
+         fi
+ 
++        if [ $ngx_found = no ]; then
++
++            #  Conda
++
++            ngx_feature="PCRE library in /opt/anaconda/envs/_build/lib"
++            ngx_feature_path="/opt/anaconda/envs/_build/include"
++
++            if [ $NGX_RPATH = YES ]; then
++                ngx_feature_libs="-R/opt/anaconda/envs/_build/lib -L/opt/anaconda/envs/_build/lib -lpcre"
++            else
++                ngx_feature_libs="-L/opt/anaconda/envs/_build/lib -lpcre"
++            fi
++
++            . auto/feature
++        fi
++
+         if [ $ngx_found = yes ]; then
+             CORE_INCS="$CORE_INCS $ngx_feature_path"
+             CORE_LIBS="$CORE_LIBS $ngx_feature_libs"
+
