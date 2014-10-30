@@ -6,8 +6,6 @@ source:
   fn:  pymc-2.3.3.tar.gz
   url: https://pypi.python.org/packages/source/p/pymc/pymc-2.3.3.tar.gz
   md5: 99645bf558a41376be0e687ccf90a39f
-  patches:
-    - static_gfortran.patch
 
 build:
   number: 3
