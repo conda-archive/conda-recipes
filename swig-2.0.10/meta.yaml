@@ -6,6 +6,9 @@ source:
   fn: swig-2.0.10.tar.gz
   url: http://prdownloads.sourceforge.net/swig/swig-2.0.10.tar.gz
 
+build:
+  detect_binary_files_with_prefix: True
+
 requirements:
   build:
     - pcre

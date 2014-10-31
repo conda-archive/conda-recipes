@@ -1,0 +1,15 @@
+diff --git IPython/core/usage.py IPython/core/usage.py
+index bce4ea6..1f62a1a 100644
+--- IPython/core/usage.py
++++ IPython/core/usage.py
+@@ -549,7 +549,9 @@ gui_note = """\
+ default_banner_parts = [
+     'Python %s\n' % (sys.version.split('\n')[0],),
+     'Type "copyright", "credits" or "license" for more information.\n\n',
+-    'IPython {version} -- An enhanced Interactive Python.\n'.format(
++    'IPython {version} -- An enhanced Interactive Python.\n'
++    'Anaconda is brought to you by Continuum Analytics.\n'
++    'Please check out: http://continuum.io/thanks and https://binstar.org\n'.format(
+         version=release.version,
+         ),
+     quick_guide

@@ -1,0 +1,27 @@
+
+package:
+    name: selenium-chromedriver
+    version: 2.10.0
+
+source:
+    fn: chromedriver_linux64.zip                                                        # [linux64]
+    url: http://chromedriver.storage.googleapis.com/2.10/chromedriver_linux64.zip       # [linux64]
+    md5: 058cd8b7b4b9688507701b5e648fd821                                               # [linux64]
+    fn: chromedriver_linux32.zip                                                        # [linux32]
+    url: http://chromedriver.storage.googleapis.com/2.10/chromedriver_linux32.zip       # [linux32]
+    md5: 4fecc99b066cb1a346035bf022607104                                               # [linux32]
+    fn: chromedriver_win32.zip                                                          # [win32]
+    url: http://chromedriver.storage.googleapis.com/2.10/chromedriver_win32.zip         # [win32]
+    md5: 082e91e5c8994a7879710caeed62e334                                               # [win32]
+
+build:
+    number: 0
+
+test:
+    commands:
+        - chromedriver --help
+
+about:
+    home: https://code.google.com/p/selenium/wiki/ChromeDriver
+    license: New BSD License
+

@@ -1,12 +1,12 @@
 
 package:
     name: selenium
-    version: 2.42.1
+    version: 2.43.0
 
 source:
-    fn: selenium-2.42.1.tar.gz
-    url: https://pypi.python.org/packages/source/s/selenium/selenium-2.42.1.tar.gz
-    md5: 628be3f9426c0ec973d421fd08854552
+    fn: selenium-2.43.0.tar.gz
+    url: https://pypi.python.org/packages/source/s/selenium/selenium-2.43.0.tar.gz
+    md5: bf2b46caa5c1ea4b68434809c695d69b
 
 build:
     number: 0

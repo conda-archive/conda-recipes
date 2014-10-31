@@ -1,0 +1,15 @@
+package:
+  name: gsl
+  version: 1.16
+
+source:
+  fn: gsl-1.16.tar.gz
+  url: http://ftp.club.cc.cmu.edu/pub/gnu/gsl/gsl-1.16.tar.gz
+
+requirements:
+  build:
+    - gcc
+
+about:
+  home: http://www.gnu.org/software/gsl/
+  license: GPL 3

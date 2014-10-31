@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./configure --prefix=$PREFIX --enable-linux-lfs --with-zlib --with-ssl
+./configure --prefix=$PREFIX --enable-linux-lfs --with-zlib=$PREFIX --with-ssl
 make
 make install
 

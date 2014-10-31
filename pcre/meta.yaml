@@ -1,0 +1,17 @@
+
+package:
+    name: pcre
+    version: 8.36
+
+source:
+    fn: pcre-8.36.tar.gz
+    url: ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.36.tar.gz
+    md5: ff7b4bb14e355f04885cf18ff4125c98
+
+build:
+    number: 0
+
+about:
+    home:  http://www.pcre.org/
+    license: 3-clause BSD License
+

@@ -21,6 +21,7 @@ requirements:
         - statsmodels
         - patsy
         - brewer2mpl
+        - husl
 
     run:
         - python
@@ -31,6 +32,7 @@ requirements:
         - statsmodels
         - patsy
         - brewer2mpl
+        - husl
 
 test:
     imports:

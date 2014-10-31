@@ -10,6 +10,12 @@ source:
 build:
   number: 0
 
+requirements:
+  build:
+    - zlib
+  run:
+    - zlib
+
 about:
   home: http://www.hdfgroup.org/HDF5/
   license: BSD-style (http://www.hdfgroup.org/ftp/HDF5/current/src/unpacked/COPYING)
