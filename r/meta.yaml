@@ -27,8 +27,6 @@ requirements:
     - libxml2
     - libxslt
     - lxml
-    - matplotlib
-    - vtk
 
   run:
     - readline
@@ -47,8 +45,6 @@ requirements:
     - libxml2
     - libxslt
     - lxml
-    - matplotlib
-    - vtk
 
 test:
   commands:
