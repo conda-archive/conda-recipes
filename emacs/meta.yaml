@@ -15,11 +15,11 @@ requirements:
   build:
     - libxml2
     - ncurses
-    - dbus
+    - dbus # [osx]
   run:
     - libxml2
     - ncurses
-    - dbus
+    - dbus # [osx]
 
 test:
   commands:
