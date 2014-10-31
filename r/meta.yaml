@@ -1,15 +1,13 @@
 package:
   name: r
-  version: 3.1.1
+  version: 3.1.2
 
 source:
-  fn: R-3.1.1.tar.gz
-  url: http://cran.cnr.berkeley.edu/src/base/R-3/R-3.1.0.tar.gz
+  fn: R-3.1.2.tar.gz
+  url: http://cran.cnr.berkeley.edu/src/base/R-3/R-3.1.2.tar.gz
+  sha1: 93809368e5735a630611633ac1fa99010020c5d6
   patches:
     - share-make-vars.mk.patch
-
-build:
-  number: 3
 
 requirements:
   build:
