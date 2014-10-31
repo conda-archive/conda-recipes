@@ -49,5 +49,3 @@ cp $_usrlib/libgomp.so.1.0.0 $PREFIX/lib && {
 
 make
 make install
-
-# vim:set ts=8 sw=4 sts=4 tw=78 et:
