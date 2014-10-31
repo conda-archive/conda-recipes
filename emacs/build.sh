@@ -1,8 +1,3 @@
-#!/bin/bash
-if [ `uname` == Darwin ]; then
-    ./configure  --prefix=$PREFIX --without-x
-else
-    ./configure  --prefix=$PREFIX
-fi
+./configure  --prefix=$PREFIX --without-x
 
 make -j4  && make -j4  install
