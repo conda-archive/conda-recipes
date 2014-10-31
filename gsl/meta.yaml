@@ -8,9 +8,7 @@ source:
 
 requirements:
   build:
-    - system
-  run:
-    - system
+    - gcc
 
 about:
   home: http://www.gnu.org/software/gsl/
