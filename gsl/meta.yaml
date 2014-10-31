@@ -6,9 +6,6 @@ source:
   fn: gsl-1.16.tar.gz
   url: http://ftp.club.cc.cmu.edu/pub/gnu/gsl/gsl-1.16.tar.gz
 
-build:
-  number: 4
-
 requirements:
   build:
     - system
@@ -18,5 +15,3 @@ requirements:
 about:
   home: http://www.gnu.org/software/gsl/
   license: GPL 3
-
-# vim:set ts=8 sw=2 sts=2 tw=78 et:
