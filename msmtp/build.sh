@@ -11,11 +11,12 @@ else
     with_keyring=""
 fi
 
-autoreconf -i
+if [ ! -f configure ]; then
+    autoreconf -i
+fi
 
 ./configure --prefix=$PREFIX   \
             --with-ssl=openssl \
-            --without-gnutls   \
             $with_keyring
 
 make
