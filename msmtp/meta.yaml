@@ -3,8 +3,10 @@ package:
   version: 1.4.32
 
 source:
-  fn: msmtp-rel-1-4-32.zip
-  url: https://github.com/tpn/msmtp/archive/rel-1-4-32.zip
+  fn: msmtp-rel-1-4-32.zip [osx]
+  url: https://github.com/tpn/msmtp/archive/rel-1-4-32.zip [osx]
+  fn: msmtp-1.4.32.tar.gz [linux]
+  url: http://downloads.sourceforge.net/project/msmtp/msmtp/1.4.32/msmtp-1.4.32.tar.bz2 [linux]
 
 build:
   number: 0
@@ -12,9 +14,10 @@ build:
 requirements:
   build:
     - openssl
-    - autoconf
+    - autoconf [not linux]
+    - automake [not linux]
     - gettext
-    - pkg-config
+    - pkg-config [not linux]
   run:
     - openssl
     - gettext
