@@ -7,7 +7,8 @@ source:
   url: http://www.netgull.com/gcc/releases/gcc-4.8.2/gcc-4.8.2.tar.bz2
   md5: a3d7d63b9cb6b6ea049469a0c4a43c9d
 
-build:                            # [osx]
+build:                            # [osx or linux64]
+  number: 2                       # [linux64]
   number: 4                       # [osx]
   binary_has_prefix_files:        # [osx]
     - lib/libgcc_ext.10.4.dylib   # [osx]
