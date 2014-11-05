@@ -50,6 +50,6 @@ cp $_usrlib/libgomp.so.1.0.0 $PREFIX/lib && {
 make
 make install
 
-if [$ARCH = "64" ]; then
+if [ $ARCH = "64" ]; then
     mv $PREFIX/lib64/* $PREFIX/lib/
 fi
