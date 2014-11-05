@@ -45,6 +45,7 @@ requirements:
     - libtiff
     - libxml2
     - libxslt
+    - gcc
 
 test:
   commands:
