@@ -50,6 +50,8 @@ cp $_usrlib/libgomp.so.1.0.0 $PREFIX/lib && {
 make
 make install
 
+sed -i -e "s/lib64/lib/g" $PREFIX/lib64/pkgconfig/*
+
 if [ $ARCH = "64" ]; then
     mv $PREFIX/lib64/pkgconfig/* $PREFIX/lib/pkgconfig/
     rmdir $PREFIX/lib64/pkgconfig
