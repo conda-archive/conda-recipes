@@ -51,5 +51,7 @@ make
 make install
 
 if [ $ARCH = "64" ]; then
+    mv $PREFIX/lib64/pkgconfig/* $PREFIX/lib/pkgconfig/
+    rmdir $PREFIX/lib64/pkgconfig
     mv $PREFIX/lib64/* $PREFIX/lib/
 fi
