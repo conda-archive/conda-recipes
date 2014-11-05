@@ -1,16 +1,9 @@
 #!/bin/bash
 
-mkdir -vp ${PREFIX}/bin;
+$PYTHON setup.py install
 
-export CFLAGS="-Wall -g -m64 -pipe -O2 -march=x86-64 -fPIC"
-export CXXLAGS="${CFLAGS}"
-#export CPPFLAGS="-I${PREFIX}/include"
-#export LDFLAGS="-L${PREFIX}/lib"
+# Add more build steps here, if they are necessary.
 
-touch requirements.txt;
-
-${PYTHON} setup.py install || exit 1;
-
-#POST_LINK="${PREFIX}/bin/.iminuit-post-link.sh"
-#cp -v ${RECIPE_DIR}/post-link.sh ${POST_LINK};
-#chmod -v 0755 ${POST_LINK};
+# See
+# http://docs.continuum.io/conda/build.html
+# for a list of environment variables that are set during the build process.
