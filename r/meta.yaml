@@ -19,7 +19,6 @@ requirements:
     - cairo     [linux]
     - freeglut  [linux]
     - freetype
-    - imaging
     - jpeg
     - libpng
     - libtiff
@@ -37,7 +36,6 @@ requirements:
     - cairo     [linux]
     - freeglut  [linux]
     - freetype
-    - imaging
     - jpeg
     - libpng
     - libtiff
