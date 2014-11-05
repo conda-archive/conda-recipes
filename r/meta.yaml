@@ -24,7 +24,6 @@ requirements:
     - libtiff
     - libxml2
     - libxslt
-    - lxml
     - gcc
 
   run:
@@ -41,7 +40,6 @@ requirements:
     - libtiff
     - libxml2
     - libxslt
-    - lxml
 
 test:
   commands:
