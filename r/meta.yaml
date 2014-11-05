@@ -9,6 +9,11 @@ source:
   patches:
     - share-make-vars.mk.patch
 
+build:
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
 requirements:
   build:
     - readline
