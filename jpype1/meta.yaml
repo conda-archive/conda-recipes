@@ -9,18 +9,17 @@ source:
 
 requirements:
   build:
-    - python
+    - python <3 # py-2 only
     - setuptools
     - numpy
   run:
-    - python
+    - python <3 # py-2 only
     - numpy
 test:
-  # Python imports
   imports:
     - jpype
 
 about:
   home: https://github.com/originell/jpype/
-  license: 'License :: OSI Approved :: Apache Software License'
+  license: 'Apache Software License'
   summary: 'A Python to Java bridge.'
