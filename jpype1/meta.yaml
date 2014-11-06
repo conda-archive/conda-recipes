@@ -1,11 +1,11 @@
 package:
   name: jpype1
-  version: !!str 0.5.6
+  version: !!str 0.5.7
 
 source:
-  fn: JPype1-0.5.6.tar.gz
-  url: https://pypi.python.org/packages/source/J/JPype1/JPype1-0.5.6.tar.gz
-  md5: 8fff49dad9d36c5252cace8d2442c404
+  fn: JPype1-0.5.7.tar.gz
+  url: https://pypi.python.org/packages/source/J/JPype1/JPype1-0.5.7.tar.gz
+  md5: 71333b39aca9fd08b6d0515bfc6c1d62 
 
 requirements:
   build:
@@ -19,9 +19,6 @@ test:
   # Python imports
   imports:
     - jpype
-
-  commands:
-    - python $SRC_DIR/test/testsuite.py
 
 about:
   home: https://github.com/originell/jpype/
