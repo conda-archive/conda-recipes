@@ -1,0 +1,28 @@
+package:
+  name: r-tests
+  version: 3.1.2
+
+source:
+  fn: R-3.1.2.tar.gz
+  url: http://cran.cnr.berkeley.edu/src/base/R-3/R-3.1.2.tar.gz
+  sha1: 93809368e5735a630611633ac1fa99010020c5d6
+
+build:
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+requirements:
+  build:
+    - r
+
+  run:
+    - r
+
+test:
+  commands:
+    - exit 1
+
+about:
+  home: http://www.r-project.org/
+  license: GPL
