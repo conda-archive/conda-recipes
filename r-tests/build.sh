@@ -1,3 +1,4 @@
+ln -s $PREFIX/lib $PREFIX/lib64
 
 ./configure --with-x                        \
             --with-pic                      \
@@ -12,3 +13,5 @@
             --with-tcl-config=$TCL_CONFIG
 
 make install-tests
+
+rm $PREFIX/lib64
