@@ -8,4 +8,4 @@ export LIBXML2_CFLAGS=-I$PREFIX/include/libxml2
 export LIBXML2_LIBS=-L$PREFIX/lib/
 ./configure --prefix $PREFIX --enable-libxml2
 make
-make instal
+make install
