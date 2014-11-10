@@ -1,10 +1,10 @@
 package:
   name: swig
-  version: 2.0.10
+  version: 3.0.2
 
 source:
-  fn: swig-2.0.10.tar.gz
-  url: http://prdownloads.sourceforge.net/swig/swig-2.0.10.tar.gz
+  fn: swig-3.0.2.tar.gz
+  url: http://prdownloads.sourceforge.net/swig/swig-3.0.2.tar.gz
 
 build:
   detect_binary_files_with_prefix: True
