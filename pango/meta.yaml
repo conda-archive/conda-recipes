@@ -9,8 +9,10 @@ source:
 requirements:
   build:
     - cairo
+    - fontconfig
   run:
     - cairo
+    - fontconfig
 
 about:
   license: LGPL
