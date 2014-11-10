@@ -8,10 +8,10 @@ source:
 
 requirements:
   build:
-    - cairo
+    - cairo >=1.12.10
     - fontconfig
   run:
-    - cairo
+    - cairo >=1.12.10
     - fontconfig
 
 about:
