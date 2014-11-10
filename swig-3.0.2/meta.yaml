@@ -15,7 +15,10 @@ requirements:
     - python
   run:
     - pcre
-    - python
+
+test:
+  commands:
+    - swig -help
 
 about:
     home: http://www.swig.org/
