@@ -10,6 +10,7 @@ requirements:
   build:
     - cairo >=1.12.10
     - fontconfig
+    - pkgconfig
   run:
     - cairo >=1.12.10
     - fontconfig
