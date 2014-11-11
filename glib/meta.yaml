@@ -1,7 +1,13 @@
 package:
   name: glib
-  version: 2.26.1
+  version: 2.43.0
 
 source:
-  fn: glib_2.26.1-1_win64.zip
-  url: http://ftp.gnome.org/pub/gnome/binaries/win64/glib/2.26/glib-dev_2.26.1-1_win64.zip
+  fn: glib-2.43.0.tar.xz
+  url: http://ftp.gnome.org/pub/gnome/sources/glib/2.43/glib-2.43.0.tar.xz
+  sha256: b01efba5a9301a4ae32f5d5623bcda31917839d4f1bfe879775b2df34c8cfdd7
+
+about:
+  license: LGPL
+  home: https://developer.gnome.org/glib/
+  summary: "GLib provides the core application building blocks for libraries and applications written in C. "
