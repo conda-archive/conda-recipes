@@ -15,8 +15,10 @@ requirements:
     - python
     - gcc
     - libffi >=3.0.0
+    - zlib
   run:
     - libffi >=3.0.0
+    - zlib
 
 about:
   license: LGPL

@@ -11,10 +11,12 @@ requirements:
     - freetype
     - cairo
     - glib
+    - zlib
   run:
     - freetype
     - cairo
     - glib
+    - zlib
 
 source:
   url: http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-0.9.35.tar.bz2
