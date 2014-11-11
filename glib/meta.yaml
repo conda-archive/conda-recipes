@@ -11,6 +11,7 @@ requirements:
   build:
     - python
     - gcc
+    - libffi >=3.0.0
 
 about:
   license: LGPL
