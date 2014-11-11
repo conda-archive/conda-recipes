@@ -37,6 +37,7 @@ cp $_usrlib/libgomp.so.1.0.0 $PREFIX/lib && {
 
 ./configure --with-x                        \
             --with-pic                      \
+            --with-cairo                    \
             --prefix=$PREFIX                \
             --enable-shared                 \
             --enable-R-shlib                \
