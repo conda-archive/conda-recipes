@@ -17,35 +17,32 @@ build:
 requirements:
   build:
     - readline
+    - ncurses
     - tk
     - zlib
-    - gmp
     - gsl
-    - cairo     [linux]
-    - freeglut  [linux]
-    - freetype
+    - cairo     # [linux]
+    - pango     # [linux]
     - jpeg
     - libpng
     - libtiff
-    - libxml2
-    - libxslt
+    - libxml2 # Not really sure if libxml2 is needed
     - gcc
+    - pcre
 
   run:
     - readline
+    - ncurses
     - tk
     - zlib
-    - gmp
-    - gsl
-    - cairo     [linux]
-    - freeglut  [linux]
-    - freetype
+    - cairo     # [linux]
+    - pango     # [linux]
     - jpeg
     - libpng
     - libtiff
     - libxml2
-    - libxslt
     - gcc
+    - pcre
 
 test:
   commands:
