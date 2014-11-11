@@ -2,13 +2,18 @@ package:
   name: harfbuzz
   version: 0.9.35
 
+build:
+  number: 1
+
 requirements:
   build:
     - freetype
     - cairo
+    - glib
   run:
     - freetype
     - cairo
+    - glib
 
 source:
   url: http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-0.9.35.tar.bz2
