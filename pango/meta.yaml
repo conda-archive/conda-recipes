@@ -10,9 +10,11 @@ requirements:
   build:
     - cairo >=1.12.10
     - fontconfig
+    - harfbuzz
   run:
     - cairo >=1.12.10
     - fontconfig
+    - harfbuzz
 
 about:
   license: LGPL
