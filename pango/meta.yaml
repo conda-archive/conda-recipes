@@ -12,6 +12,7 @@ requirements:
     - fontconfig
     - harfbuzz
     - glib
+    - libffi
   run:
     - cairo >=1.12.10
     - fontconfig
