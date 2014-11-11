@@ -7,6 +7,10 @@ source:
   url: http://ftp.gnome.org/pub/gnome/sources/glib/2.43/glib-2.43.0.tar.xz
   sha256: b01efba5a9301a4ae32f5d5623bcda31917839d4f1bfe879775b2df34c8cfdd7
 
+requirements:
+  build:
+    - python
+
 about:
   license: LGPL
   home: https://developer.gnome.org/glib/
