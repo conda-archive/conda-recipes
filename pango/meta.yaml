@@ -7,7 +7,8 @@ source:
   fn: pango-1.36.8.tar.xz
 
 build:
-  number: 1
+  number: 2
+  detect_binary_files_with_prefix: true
 
 requirements:
   build:
