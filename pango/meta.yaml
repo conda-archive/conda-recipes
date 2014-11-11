@@ -11,10 +11,12 @@ requirements:
     - cairo >=1.12.10
     - fontconfig
     - harfbuzz
+    - glib
   run:
     - cairo >=1.12.10
     - fontconfig
     - harfbuzz
+    - glib
 
 about:
   license: LGPL
