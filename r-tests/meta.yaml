@@ -14,19 +14,7 @@ build:
 
 requirements:
   build:
-    - readline
-    - ncurses
-    - tk
-    - zlib
-    - gsl
-    - cairo     # [linux]
-    - pango     # [linux]
-    - jpeg
-    - libpng
-    - libtiff
-    - libxml2 # Not really sure if libxml2 is needed
-    - gcc
-    - pcre
+    - r
 
   run:
     - r
