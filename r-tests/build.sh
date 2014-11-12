@@ -2,6 +2,7 @@ ln -s $PREFIX/lib $PREFIX/lib64
 
 ./configure --with-x                        \
             --with-pic                      \
+            --with-cairo                    \
             --prefix=$PREFIX                \
             --enable-shared                 \
             --enable-R-shlib                \
