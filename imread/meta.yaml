@@ -1,0 +1,48 @@
+package:
+  name: imread
+  version: !!str 0.5.1
+
+source:
+  git_url: git://github.com/luispedro/imread.git
+  git_tag: release-0.5.1
+
+  patches:
+    - add_sys_prefix_include.patch
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - libpng
+    - libwebp
+
+  run:
+    - python
+    - numpy
+    - libpng
+    - libwebp
+
+test:
+  # Python imports
+  imports:
+    - imread
+
+
+  requires:
+    - libpng
+    - libwebp
+    - nose
+    - scipy
+
+about:
+  home: http://imread.rtfd.org/
+  license: MIT License
+  summary: 'imread: Image reading library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

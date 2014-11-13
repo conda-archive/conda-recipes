@@ -1,0 +1,52 @@
+package:
+  name: mahotas
+  version: !!str 1.2.3
+
+source:
+  git_url: git://github.com/luispedro/mahotas.git
+  git_tag: release-1.2.3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+
+  run:
+    - python
+    - numpy
+
+build:
+    script: python setup.py install
+
+test:
+  # Python imports
+  imports:
+    - mahotas
+    - mahotas.demos
+    - mahotas.features
+    - mahotas.io
+    - mahotas.tests
+
+
+  requires:
+    - nose
+    - scipy
+    - imread
+
+about:
+  home: http://luispedro.org/software/mahotas
+  license: MIT License
+  summary: 'Mahotas: Computer Vision Library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
