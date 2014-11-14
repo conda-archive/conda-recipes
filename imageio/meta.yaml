@@ -1,0 +1,33 @@
+package:
+  name: imageio
+  version: 1.0
+
+source:
+  fn: imageio-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/imageio/imageio-1.0.tar.gz
+  md5: 385eddb398fcba4e6b90d00b896fae68
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - python
+    - numpy
+
+  run:
+    - python
+    - numpy
+
+test:
+  # Python imports
+  imports:
+    - imageio
+    - imageio.core
+    - imageio.plugins
+
+about:
+  home: http://imageio.github.io/
+  license: BSD License
+  summary: Library for reading and writing a wide range of image formats.
+
