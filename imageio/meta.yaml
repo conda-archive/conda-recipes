@@ -8,7 +8,7 @@ source:
   md5: 385eddb398fcba4e6b90d00b896fae68
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -17,7 +17,7 @@ requirements:
 
   run:
     - python
-    #- numpy, we need numpy, but we don't want to bind i
+    - numpy
 
 test:
   # Python imports
@@ -25,10 +25,6 @@ test:
     - imageio
     - imageio.core
     - imageio.plugins
-  
-  requires:
-    - python
-    - numpy
 
 about:
   home: http://imageio.github.io/
