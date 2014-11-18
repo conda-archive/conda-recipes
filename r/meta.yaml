@@ -13,37 +13,37 @@ build:
   rpaths:
     - lib/R/lib/
     - lib/
-  number: 1
+  number: 1 # [linux]
 
 requirements:
   build:
-    - readline
-    - ncurses
-    - tk
-    - zlib
-    - gsl
+    - readline  # [not win]
+    - ncurses   # [not win]
+    - tk        # [not win]
+    - zlib      # [not win]
+    - gsl       # [not win]
     - cairo     # [linux]
     - pango     # [linux]
-    - jpeg
-    - libpng
-    - libtiff
-    - libxml2 # Not really sure if libxml2 is needed
-    - gcc
-    - pcre
+    - jpeg      # [not win]
+    - libpng    # [not win]
+    - libtiff   # [not win]
+    - libxml2 # Not really sure if libxml2 is needed [not win]
+    - gcc       # [not win]
+    - pcre      # [not win]
 
   run:
-    - readline
-    - ncurses
-    - tk
-    - zlib
+    - readline  # [not win]
+    - ncurses   # [not win]
+    - tk        # [not win]
+    - zlib      # [not win]
     - cairo     # [linux]
     - pango     # [linux]
-    - jpeg
-    - libpng
-    - libtiff
-    - libxml2
-    - gcc
-    - pcre
+    - jpeg      # [not win]
+    - libpng    # [not win]
+    - libtiff   # [not win]
+    - libxml2   # [not win]
+    - gcc       # [not win]
+    - pcre      # [not win]
 
 test:
   commands:
