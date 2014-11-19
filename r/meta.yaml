@@ -53,6 +53,7 @@ test:
     - R -h
     - R --version
     - Rscript --version
+    - Rscript -e  "cat('ok')"
 
 about:
   home: http://www.r-project.org/
