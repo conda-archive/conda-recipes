@@ -13,7 +13,8 @@ build:
   rpaths:
     - lib/R/lib/
     - lib/
-  number: 1 # [linux]
+  number: 2 # [linux]
+  detect_binary_files_with_prefix: true
 
 requirements:
   build:
