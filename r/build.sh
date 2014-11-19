@@ -26,15 +26,6 @@ fi
 
 mkdir -p $PREFIX/lib
 
-# We should probably add libgomp.so to the conda system package.
-_usrlib=/usr/lib
-if [ $ARCH == "64" ]; then
-    _usrlib=${_userlib}64
-fi
-cp $_usrlib/libgomp.so.1.0.0 $PREFIX/lib && {
-    cd $_usrlib && ln -sf libgomp.so.1.0.0 libgomp.so.1
-}
-
 ./configure --with-x                        \
             --with-pic                      \
             --with-cairo                    \
@@ -46,7 +37,8 @@ cp $_usrlib/libgomp.so.1.0.0 $PREFIX/lib && {
             --disable-prebuilt-html         \
             --disable-memory-profiling      \
             --with-tk-config=$TK_CONFIG     \
-            --with-tcl-config=$TCL_CONFIG
+            --with-tcl-config=$TCL_CONFIG   \
+            LIBnn=lib
 
 make
 make install
