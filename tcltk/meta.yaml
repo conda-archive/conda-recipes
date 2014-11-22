@@ -1,14 +1,8 @@
 package:
   name: tk
-  version: 8.5.15
-
-source:
-  fn: tcltk-8.5.15.tar
-  url: http://filer/src/tcltk-8.5.15.tar
-  md5: b8752a99b3331cec3b087b49ba19e143
+  version: 8.5.17
 
 build:
-  number: 1
   detect_binary_files_with_prefix: true
 
 test:

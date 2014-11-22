@@ -2,7 +2,9 @@
 
 VER=$PKG_VERSION
 
-cd $SRC_DIR
+curl "http://prdownloads.sourceforge.net/tcl/tcl${VER}-src.tar.gz"
+curl "http://prdownloads.sourceforge.net/tcl/tk${VER}-src.tar.gz"
+
 tar xzf tcl${VER}-src.tar.gz
 tar xzf tk${VER}-src.tar.gz
 
