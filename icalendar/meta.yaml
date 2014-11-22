@@ -1,0 +1,29 @@
+
+package:
+    name: icalendar
+    version: 3.8.4
+
+source:
+    git_url: https://github.com/collective/icalendar
+    git_tag: 3.8.4
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - setuptools
+        - pytz
+
+    run:
+        - python
+        - pytz
+
+test:
+    imports:
+        - icalendar
+
+about:
+    home: http://icalendar.readthedocs.org/
+    license: BSD
