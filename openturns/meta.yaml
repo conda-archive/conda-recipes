@@ -14,7 +14,7 @@ requirements:
     build:
         - cmake       # [unix]
         - python      # [unix]
-        - swig        # [unix]
+        - swig 2.0.10 # [unix]
         - libxml2     # [unix]
 
     run:
