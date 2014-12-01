@@ -12,11 +12,11 @@ build:
 
 requirements:
     build:
-        - cmake       # [unix]
-        - python      # [unix]
-        - swig 2.0.10 # [unix]
-        - libxml2     # [unix]
-        - boost       # [unix]
+        - cmake >=2.8   # [unix]
+        - python        # [unix]
+        - swig >=2.0.9  # [unix]
+        - libxml2       # [unix]
+        - boost >=1.46  # [unix]
 
     run:
         - python
