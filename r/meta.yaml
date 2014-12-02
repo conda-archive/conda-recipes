@@ -32,7 +32,6 @@ requirements:
     - gcc       # [not win]
     - pcre      # [not win]
 
-    - mingw     # [win]
 
   run:
     - readline  # [not win]
