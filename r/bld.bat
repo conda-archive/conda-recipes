@@ -6,3 +6,4 @@
 @rem /SAVEINF="installer_settings.inf" with the desired settings and cancel just
 @rem before the install begins.
 R-3.1.2-win.exe /SILENT /DIR="%PREFIX%"
+"%PREFIX%\bin\R.exe"
