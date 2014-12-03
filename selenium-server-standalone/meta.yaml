@@ -1,12 +1,12 @@
 
 package:
     name: selenium-server-standalone
-    version: 2.42.2
+    version: 2.44.0
 
 source:
-    fn: selenium-server-standalone-2.42.2.jar
-    url: http://selenium-release.storage.googleapis.com/2.42/selenium-server-standalone-2.42.2.jar
-    md5: e357c6c0a757311b0da571abd7386cac
+    fn: selenium-server-standalone-2.44.0.jar
+    url: http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
+    md5: 6514fd7c3869e2699f8c2a16868da336
 
 build:
     number: 0
