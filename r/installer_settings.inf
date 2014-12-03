@@ -1,0 +1,6 @@
+[Setup]
+Lang=en
+NoIcons=1
+SetupType=custom
+Components=main,x64,translations
+Tasks=
