@@ -1,3 +1,3 @@
-TMPDIR="%SRC_DIR%"
+set TMPDIR="%SRC_DIR%"
 cd src\gnuwin32
 make
