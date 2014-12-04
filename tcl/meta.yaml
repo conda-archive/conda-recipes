@@ -1,0 +1,17 @@
+package:
+  name: tcl
+  version: 8.5.17
+
+source:
+  fn: tcl8.5.17-src.tar.gz
+  url: http://superb-dca2.dl.sourceforge.net/project/tcl/Tcl/8.5.17/tcl8.5.17-src.tar.gz
+
+test:
+  requires:
+    - python
+  commands:
+    - python -c "import turtle; turtle.forward(100)"
+
+about:
+  home: http://www.tcl.tk/
+  license: BSD-style
