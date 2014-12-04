@@ -3,7 +3,9 @@ set TMPDIR=.
 
 @rem The path where the Rtools installed the R stuff. Should be a directory
 @rem with a Tcl directory in it.
-set R_HOME=C:\R64
+set RTOOLS=C:\R64
+
+xcopy /S /E "%RTOOLS%\Tcl" %SRC_DIR%\Tcl
 
 cd src\gnuwin32
 make
