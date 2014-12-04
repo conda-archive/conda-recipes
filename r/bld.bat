@@ -1,4 +1,4 @@
 @rem This is relative apparently
-set TMPDIR="."
+set TMPDIR=.
 cd src\gnuwin32
 make
