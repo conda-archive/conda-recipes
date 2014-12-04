@@ -5,7 +5,7 @@ set TMPDIR=.
 @rem with a Tcl directory in it.
 set RTOOLS=C:\R64
 
-xcopy /S /E "%RTOOLS%\Tcl" %SRC_DIR%\Tcl
+xcopy /S /E "%RTOOLS%\Tcl\" "%SRC_DIR%\Tcl\"
 if errorlevel 1 exit 1
 
 cd src\gnuwin32
