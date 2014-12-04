@@ -6,6 +6,6 @@ set TMPDIR=.
 set RTOOLS=C:\R64
 
 xcopy /S /E "%RTOOLS%\Tcl" %SRC_DIR%\Tcl
-
+exit 1
 cd src\gnuwin32
 make
