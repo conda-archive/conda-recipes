@@ -17,6 +17,10 @@ the Rtools installer put the tools on the PATH. Be sure to use a normal
 cmd shell. The git shell includes its own sh on the PATH, which won't be able
 to find the R tools.
 
-Setting TMPDIR is important, as the default isn't very useful on Windows
-(/tmp). It's apparently relative, so I just used ., which uses the source
+Setting `TMPDIR` is important, as the default isn't very useful on Windows
+(`/tmp`). It's apparently relative, so I just used `.`, which uses the source
 directory.
+
+To build the docs, you will need qpdf
+http://sourceforge.net/projects/qpdf/ and MiKTeX http://www.miktex.org/. Let
+MiKTeX install packages on the fly.
