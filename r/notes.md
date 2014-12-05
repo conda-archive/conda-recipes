@@ -24,3 +24,7 @@ directory.
 To build the docs, you will need qpdf
 http://sourceforge.net/projects/qpdf/ and MiKTeX http://www.miktex.org/. Let
 MiKTeX install packages on the fly.
+
+`make distribution` will make *everything*, down to an R installer. I had to
+`cp doc\html\logo.jpg %TMPDIR%` (actually `C:\tmp` because it was ignoring
+`TMPDIR`).
