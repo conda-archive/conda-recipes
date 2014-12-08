@@ -15,7 +15,7 @@ cd src\gnuwin32\bitmap
 python "%RECIPE_DIR%\download_win_libs.py"
 if errorlevel 1 exit 1
 
-tar -zxf libpng-1.6.15.tar.gz
+tar -zxf libpng-1.6.15.tar.xz
 if errorlevel 1 exit 1
 
 mv libpng-1.6.15 libpng
