@@ -32,6 +32,8 @@ requirements:
     - gcc       # [not win]
     - pcre      # [not win]
 
+    # Used to download some build dependencies.  See notes.md
+    - requests  # [win]
 
   run:
     - readline  # [not win]
