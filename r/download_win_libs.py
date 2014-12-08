@@ -3,7 +3,7 @@ import requests
 def download_file(url):
     local_filename = url.split('/')[-1]
     # jpeg won't download otherwise
-    headers = {'User-agent': 'Mozilla/5.0'}
+    headers = {'User-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.10 Safari/537.36'}
 
     print("Downloading %s" % local_filename)
     r = requests.get(url, stream=True, headers=headers)
@@ -16,7 +16,7 @@ def download_file(url):
     return local_filename
 
 for url in [
-    'http://superb-dca2.dl.sourceforge.net/project/libpng/libpng16/1.6.15/libpng-1.6.15.tar.gz',
+    'http://downloads.sourceforge.net/project/libpng/libpng16/1.6.15/libpng-1.6.15.tar.xz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Flibpng%2Ffiles%2F&ts=1418080939&use_mirror=iweb',
     'http://www.ijg.org/files/jpegsrc.v9a.tar.gz',
     'http://download.osgeo.org/libtiff/tiff-4.0.3.tar.gz',
     ]:
