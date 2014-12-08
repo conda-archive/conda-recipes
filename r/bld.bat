@@ -11,6 +11,7 @@ xcopy /S /E "%RTOOLS%\Tcl" "%SRC_DIR%\Tcl\"
 if errorlevel 1 exit 1
 
 @rem R requires sources for libpng, libjpeg, and libtiff to compile.
+cd src\gnuwin32\bitmap
 python "%RECIPE_DIR%\download_win_libs.py"
 if errorlevel 1 exit 1
 
@@ -34,6 +35,8 @@ if errorlevel 1 exit 1
 
 rm -rf tiff-4.0.3
 if errorlevel 1 exit 1
+
+cd "%SRC_DIR%"
 
 @rem Various things that are needed to make the docs work.
 cp doc\html\logo.jpg %TMPDIR%
