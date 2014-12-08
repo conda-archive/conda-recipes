@@ -1,7 +1,8 @@
 import requests
 
 def download_file(url):
-    local_filename = url.split('/')[-1]
+    urlparts = list(requests.packages.urllib3.util.url.parse_url(url))
+    local_filename = urlparts.path.split('/')[-1]
     # jpeg won't download otherwise
     headers = {'User-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.10 Safari/537.36'}
 
