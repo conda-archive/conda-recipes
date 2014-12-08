@@ -2,8 +2,11 @@ import requests
 
 def download_file(url):
     local_filename = url.split('/')[-1]
+    # jpeg won't download otherwise
+    headers = {'User-agent': 'Mozilla/5.0'}
+
     print("Downloading %s" % local_filename)
-    r = requests.get(url, stream=True)
+    r = requests.get(url, stream=True, headers=headers)
     r.raise_for_status()
     with open(local_filename, 'wb') as f:
         for chunk in r.iter_content(chunk_size=1024):
