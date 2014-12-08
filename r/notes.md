@@ -35,3 +35,16 @@ manually using `mpm` (MiKTeX Package Manager).
 `TMPDIR`).
 
 You need to grab libjpeg, libpng, and libtiff as described at http://cran.r-project.org/doc/manuals/r-release/R-admin.html#Getting-the-source-files.
+
+I had to `cp library\graphics\help\figures\pch.pdf doc\manual\`, `cp
+library\graphics\help\figures\mai.pdf doc\manual\`, and `cp
+library\graphics\help\figures\oma.pdf doc\manual\` for the docs to build
+correctly.
+
+`make distribution` requires the Inno setup installer from
+http://jrsoftware.org/.  Make sure you get the Unicode one. Install it to
+`C:\packages\Inno` (otherwise you will have to edit the Makefile).
+
+Once you have run `make distribution`, run `cd installer; make imagedir`. This
+will put all the files that should be installed into `R-3.1.2` (in the
+`installer` directory).  This is what you should "install".
