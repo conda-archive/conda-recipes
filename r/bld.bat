@@ -18,7 +18,7 @@ if errorlevel 1 exit 1
 tar -zxf libpng-1.6.15.tar.gz
 if errorlevel 1 exit 1
 
-mv libpng-1.6.10 libpng
+mv libpng-1.6.15 libpng
 if errorlevel 1 exit 1
 
 tar -zxf jpegsrc.v9a.tar.gz
