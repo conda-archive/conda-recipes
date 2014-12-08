@@ -11,7 +11,7 @@ xcopy /S /E "%RTOOLS%\Tcl" "%SRC_DIR%\Tcl\"
 if errorlevel 1 exit 1
 
 @rem R requires sources for libpng, libjpeg, and libtiff to compile.
-python download_win_libs.py
+python "%RECIPE_DIR%\download_win_libs.py"
 if errorlevel 1 exit 1
 
 tar -zxf libpng-1.6.15.tar.gz
