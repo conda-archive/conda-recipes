@@ -7,7 +7,7 @@ def download_file(url):
     headers = {'User-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.10 Safari/537.36'}
 
     print("Downloading %s" % local_filename)
-    r = requests.get(url, stream=True, headers=headers)
+    r = requests.get(url, stream=True, headers=headers, allow_redirects=True)
     r.raise_for_status()
     with open(local_filename, 'wb') as f:
         for chunk in r.iter_content(chunk_size=1024):
