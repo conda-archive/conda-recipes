@@ -17,7 +17,7 @@ def download_file(url):
     return local_filename
 
 for url in [
-    'http://tcpdiag.dl.sourceforge.net/project/libpng/libpng16/1.6.15/libpng-1.6.15.tar.xz',
+    'http://tcpdiag.dl.sourceforge.net/project/libpng/libpng16/1.6.15/libpng-1.6.15.tar.gz',
     'http://www.ijg.org/files/jpegsrc.v9a.tar.gz',
     'http://download.osgeo.org/libtiff/tiff-4.0.3.tar.gz',
     ]:
