@@ -34,6 +34,8 @@ requirements:
 
     # Used to download some build dependencies.  See notes.md
     - requests  # [win]
+    # Some bug prevents 32-bit Python 3 from working on a 64-bit machine
+    - python 2* # [win]
 
   run:
     - readline  # [not win]
