@@ -50,6 +50,7 @@ if errorlevel 1 exit 1
 @rem it inevitably fails and build it again.
 cd src\gnuwin32
 make distribution
+cd "%SRC_DIR%"
 
 cp library\graphics\help\figures\pch.pdf doc\manual\
 if errorlevel 1 exit 1
@@ -60,6 +61,7 @@ if errorlevel 1 exit 1
 cp library\graphics\help\figures\oma.pdf doc\manual\
 if errorlevel 1 exit 1
 
+cd "%SRC_DIR%\src\gnuwin32"
 make distribution
 if errorlevel 1 exit 1
 
