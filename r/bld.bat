@@ -42,6 +42,15 @@ cd "%SRC_DIR%"
 cp doc\html\logo.jpg %TMPDIR%
 if errorlevel 1 exit 1
 
+@rem Now actually compile it
+
+@rem For whatever reason, these files aren't put in the right place.  They
+@rem files won't exist the first time we try to build, so let's "build" it
+@rem once (without the 'if errorlevel 1 exit 1') and then copy the files after
+@rem it inevitably fails and build it again.
+cd src\gnuwin32
+make distribution
+
 cp library\graphics\help\figures\pch.pdf doc\manual\
 if errorlevel 1 exit 1
 
@@ -51,8 +60,6 @@ if errorlevel 1 exit 1
 cp library\graphics\help\figures\oma.pdf doc\manual\
 if errorlevel 1 exit 1
 
-@rem Now actually compile it
-cd src\gnuwin32
 make distribution
 if errorlevel 1 exit 1
 
