@@ -1,6 +1,7 @@
+@echo off
+
 SETLOCAL ENABLEDELAYEDEXPANSION
 
-@echo off
 @rem Name of this file
 set THISFILE=!%~nx0
 @rem Path to this file (without the file name)
