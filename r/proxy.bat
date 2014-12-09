@@ -10,6 +10,6 @@ set THISPATH=%~dp0
 set EXEFILE=%THISFILE:~0,-4%
 
 @rem Run the exe
-"%~dp0\..\R\bin\i386\%EXEFILE%.exe"
+"%~dp0\..\R\bin\i386\%EXEFILE%.exe" %*
 
 ENDLOCAL
