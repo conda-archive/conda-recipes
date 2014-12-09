@@ -72,3 +72,7 @@ if errorlevel 1 exit 1
 
 @rem And install it
 xcopy /S /E R-3.1.2 "%PREFIX%\R\"
+if errorlevel 1 exit 1
+
+python "%RECIPE_DIR%\write_proxies.py"
+if errorlevel 1 exit 1
