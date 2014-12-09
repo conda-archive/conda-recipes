@@ -15,7 +15,7 @@ def main():
 
         script_name = fn.rsplit('.exe', 2)[0]
 
-        with open(os.path.join(prefix, 'Scripts', '%s.exe' % script_name), 'w') as f:
+        with open(os.path.join(prefix, 'Scripts', '%s.bat' % script_name), 'w') as f:
             print("Writing proxy for %s" % script_name)
             f.write(proxy)
 
