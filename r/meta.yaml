@@ -6,8 +6,9 @@ source:
   fn: R-3.1.2.tar.gz
   url: http://cran.cnr.berkeley.edu/src/base/R-3/R-3.1.2.tar.gz
   sha1: 93809368e5735a630611633ac1fa99010020c5d6
-  patches: # [not win]
+  patches: # [not win32]
     - share-make-vars.mk.patch # [not win]
+    - win-64.patch # [win64]
 
 build:
   rpaths:

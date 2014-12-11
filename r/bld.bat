@@ -1,5 +1,8 @@
 @rem See notes.md for more information about all of this.
 
+@rem This is modified by win-64.patch to set WIN = 64
+cp src\gnuwin32\MkRules.dist src\gnuwin32\MkRules.local
+
 @rem This is relative apparently
 set TMPDIR=.
 
