@@ -6,10 +6,18 @@ def main():
     prefix = os.environ['PREFIX']
     thisdir = os.path.dirname(__file__)
 
-    with open(os.path.join(thisdir, 'proxy.bat')) as f:
+    arch = os.environ['ARCH']
+    if arch == '32':
+        bindir = os.path.join(prefix, 'R', 'bin', 'i386')
+    elif arch == '64':
+        os.path.join(prefix, 'R', 'bin', 'x64')
+    else:
+        raise ValueError("Unexpected ARCH: %s" % arch)
+
+    with open(os.path.join(thisdir, 'proxy-%s.bat' % arch)) as f:
         proxy = f.read()
 
-    for fn in os.listdir(os.path.join(prefix, 'R', 'bin', 'i386')):
+    for fn in os.listdir(bindir):
         if not fn.endswith('.exe'):
             continue
 
