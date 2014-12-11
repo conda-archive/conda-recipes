@@ -1,7 +1,7 @@
 diff --git src/gnuwin32/MkRules.dist src/gnuwin32/MkRules.dist
 index 9a99723..841268f 100644
---- a/MkRules.dist
-+++ b/MkRules.dist
+--- src/gnuwin32/MkRules.dist
++++ src/gnuwin32/MkRules.dist
 @@ -54,9 +54,9 @@ RC_ARCH =
  DT_ARCH =
 
