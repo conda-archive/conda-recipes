@@ -2,14 +2,14 @@ diff --git src/gnuwin32/MkRules.dist src/gnuwin32/MkRules.dist
 index 9a99723..841268f 100644
 --- src/gnuwin32/MkRules.dist
 +++ src/gnuwin32/MkRules.dist
-@@ -54,9 +54,9 @@ RC_ARCH =
+@@ -54,1 +54,1 @@ RC_ARCH =
  DT_ARCH =
 
  # 32- or 64-bit Windows?
 -WIN = 32
 +WIN = 64
 
- # We normally link directly against DLLs,
+ # We normally link directly against DLLs, 
  # but this macro forces the use of import libs
  # Has been needed for some versions of MinGW-w64
  # USE_IMPLIBS = YES
