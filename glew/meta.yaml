@@ -1,0 +1,28 @@
+package:
+  name: glew 
+  version: 1.11.0
+
+source:
+  fn: glew-1.11.0.tgz
+  url: https://sourceforge.net/projects/glew/files/glew/1.11.0/glew-1.11.0.tgz
+  patches: 
+    - libdir.patch 
+# ubuntu: sudo apt-get install libXmu-dev libXi-dev libgl-dev dos2unix
+#requirements:
+#    build:
+#        - freeglut
+#     - perl
+#     - gcc
+#        - libxml2
+#        - numpy
+#        - python
+#    run:
+#        - python
+#        - numpy
+
+# TODO: test eg. linkage against glew
+#test:
+
+about:
+    home: http://opencv.org/
+    license: BSD
