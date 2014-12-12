@@ -10,6 +10,7 @@ source:
 requirements:
     build:
         - glew
+        - libpng
         - freeglut
         - freetype
         - libxml2
@@ -17,6 +18,7 @@ requirements:
         - python
     run:
         - libxml2
+        - libpng
         - glew
         - freetype
         - freeglut
