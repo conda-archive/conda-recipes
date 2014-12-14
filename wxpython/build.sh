@@ -5,7 +5,8 @@ mkdir -vp ${PREFIX}/bin;
 ARCH="$(uname 2>/dev/null)"
 
 export CFLAGS="-m64 -pipe -O2 -march=x86-64 -fPIC"
-export CXXLAGS="${CFLAGS}"
+export CXXFLAGS="${CFLAGS} -std=c++11"
+export CPPFLAGS="${CFLAGS} -std=c++11"
 #export CPPFLAGS="-I${PREFIX}/include"
 #export LDFLAGS="-L${PREFIX}/lib64"
 
