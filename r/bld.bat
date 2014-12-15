@@ -56,6 +56,9 @@ if errorlevel 1 exit 1
 @rem once (without the 'if errorlevel 1 exit 1') and then copy the files after
 @rem it inevitably fails and build it again.
 cd src\gnuwin32
+@rem This is the copied version of MkRules.dist with WIN = 32 changed to WIN =
+@rem 64 and BINDIR64 set to empty.
+cp "%RECIPE_DIR%\MkRules.local%" .
 make distribution
 cd "%SRC_DIR%"
 
