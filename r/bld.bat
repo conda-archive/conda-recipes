@@ -1,8 +1,5 @@
 @rem See notes.md for more information about all of this.
 
-@rem This is modified by win-64.patch to set WIN = 64
-cp src\gnuwin32\MkRules.dist src\gnuwin32\MkRules.local
-
 @rem This is relative apparently
 set TMPDIR=.
 
@@ -56,9 +53,12 @@ if errorlevel 1 exit 1
 @rem once (without the 'if errorlevel 1 exit 1') and then copy the files after
 @rem it inevitably fails and build it again.
 cd src\gnuwin32
-@rem This is the copied version of MkRules.dist with WIN = 32 changed to WIN =
-@rem 64 and BINDIR64 set to empty.
-cp "%RECIPE_DIR%\MkRules.local%" .
+
+if "%ARCH%"=="32" (
+    @rem This is the copied version of MkRules.dist with WIN = 32 changed to WIN =
+    @rem 64 and BINDIR64 set to empty and MULTI = 64.
+    cp "%RECIPE_DIR%\MkRules.local" .
+)
 make distribution
 cd "%SRC_DIR%"
 
