@@ -28,7 +28,7 @@ ATLAS_PATH=/R/ATLAS/lib/WinNT_P4SSE2
 # USE_SVNVERSION = YES
 
 # With the recommended toolchain, set this to 32 or 64
-MULTI =
+MULTI = 64
 # If the toolchain's bin directory is not in your path, set this to the path
 # (including the trailing /, and use / not \).
 TOOL_PATH =
