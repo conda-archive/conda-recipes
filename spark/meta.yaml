@@ -1,14 +1,14 @@
 
 package:
     name: spark
-    version: 1.1.0
+    version: 1.1.1
 
 source:
     git_url: https://github.com/apache/spark                                               # [linux]
-    git_tag: v1.1.0                                                                        # [linux]
-    fn: spark-1.1.0-bin-hadoop2.4.tgz                                                      # [osx]
-    url: http://www.apache.org/dist/spark/spark-1.1.0/spark-1.1.0-bin-hadoop2.4.tgz        # [osx]
-    md5: 97e496772878dfa14be102e190e366fc                                                  # [osx]
+    git_tag: v1.1.1                                                                        # [linux]
+    fn: spark-1.1.1-bin-hadoop2.4.tgz                                                      # [osx]
+    url: http://www.apache.org/dist/spark/spark-1.1.1/spark-1.1.1-bin-hadoop2.4.tgz        # [osx]
+    md5: ffd5aaf5d06b7b3cf9c9b2ce4b423396                                                  # [osx]
 
 build:
     number: 0
