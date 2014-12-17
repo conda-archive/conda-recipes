@@ -10,7 +10,7 @@ def main():
     if arch == '32':
         bindir = os.path.join(prefix, 'R', 'bin', 'i386')
     elif arch == '64':
-        os.path.join(prefix, 'R', 'bin', 'x64')
+        bindir = os.path.join(prefix, 'R', 'bin', 'x64')
     else:
         raise ValueError("Unexpected ARCH: %s" % arch)
 
