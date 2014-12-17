@@ -48,3 +48,15 @@ http://jrsoftware.org/.  Make sure you get the Unicode one. Install it to
 Once you have run `make distribution`, run `cd installer; make imagedir`. This
 will put all the files that should be installed into `R-3.1.2` (in the
 `installer` directory).  This is what you should "install".
+
+
+For 64-bit Windows, you need to copy things from C:\R64 instead of C:\R. If
+you try to compile as-is, it will fail. The R docs are a little light on
+this. They indicate that they use mingw-w64, leading you to download and
+install it from SourceForge. You may also think that you need to edit some of
+the source code that comes with R to fix some compiler errors. DON'T DO
+THIS. IT'S A TRAP. Only use the compilers that come with Rtools.
+
+What you need to do is edit the MkRules.dist in src\gnuwin32 and copy it to
+MkRules.local. I had to set `WIN = 64`, `MULTI = 64` and clear `BINDIR64` (it
+references an executable name that doesn't seem to exist).
