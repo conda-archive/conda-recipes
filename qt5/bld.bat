@@ -1,9 +1,11 @@
 :: need to reset the environment here, or will not compile with errors
-:: similar to http://qt-project.org/forums/viewthread/32660 
+:: similar to http://qt-project.org/forums/viewthread/32660
 CALL "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
 
-:: set path to find resources shipped with qt-5:
-set PATH=%SRC_DIR%\gnuwin32\bin;%PATH%
+:: set path to find resources shipped with qt-5
+:: see http://doc-snapshot.qt-project.org/qt5-5.4/windows-building.html
+set PATH=%SRC_DIR%\qtbase\bin;%SRC_DIR%\gnuwin32\bin;%PATH%
+set QMAKESPEC=win32-msvc2010
 
 :: make sure we can find ICU and openssl:
 set INCLUDE=%PREFIX%\Library\include;C:\OpenSSL-Win64\include;%INCLUDE%
@@ -12,6 +14,8 @@ set PATH=%PREFIX%\Scripts;C:\OpenSSL-Win64\bin;%PATH%
 
 :: make sure we can find sqlite3:
 set SQLITE3SRCDIR=%SRC_DIR%\qtbase\src\3rdparty\sqlite
+
+:: See http://doc-snapshot.qt-project.org/qt5-5.4/windows-requirements.html
 
 :: this needs to be CALLed due to an exit statement at the end of configure:
 CALL configure -platform win32-msvc2010 ^
@@ -33,11 +37,12 @@ CALL configure -platform win32-msvc2010 ^
       -qt-libpng ^
       -qt-zlib ^
       -qt-libjpeg ^
-      -opengl desktop
+      -icu ^
+      -opengl dynamic
 
 :: jom is nmake alternative with multicore support, uses all cores by default
 jom
-nmake install
+jom install
 
 :: remove docs, phrasebooks, translations
 rmdir %PREFIX%\Library\share\qt5 /s /q

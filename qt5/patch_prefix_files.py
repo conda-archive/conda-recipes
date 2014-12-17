@@ -1,24 +1,27 @@
-from os import environ
+import glob
+import os
 import sys
 
-PREFIX = environ['PREFIX']
-#PREFIX = "C:\Anaconda\envs\_build_placehold_placehold_placehold_placehold_placehold_placeh"
-PRL_PREFIX = PREFIX.replace('\\', '\\\\') + '\\\\Library\\\\lib\\\\qt5'
+PREFIX = os.environ['PREFIX']
+LIBQT5 = os.path.join(PREFIX, 'Library', 'lib', 'qt5')
+# Qt5 installs .prl files with hard-coded prefixes containing \\\\ path
+# separators, which conda does not know how to replace on install.
+# This script searches for such paths, and replaces the path separators
+# with /.
+PRL_PREFIX = LIBQT5.replace('\\', '\\\\')
 # must include an empty string in the *last* position of this list:
 LIBS = ['\\\\Qt5Core.lib', '\\\\Qt5Gui.lib', '\\\\Qt5Widgets.lib', '']
-PKG_VERSION = environ['PKG_VERSION']
-#PKG_VERSION = "5.3.1"
-RECIPE_DIR = environ['RECIPE_DIR']
-#RECIPE_DIR = "C:\Users\darren\Documents\GitHub\conda-recipes\qt5"
 
-with open('%s/%s_patch_files.txt' % (RECIPE_DIR, PKG_VERSION), 'r') as names:
-    for filename in names:
-        filename = filename[:-1]
-        with open('%s/%s' % (PREFIX, filename), 'rb') as f:
-            data = f.read()
-        for lib in LIBS:
-            old = (PRL_PREFIX+lib).encode('utf-8')
-            new = b'"%s"' % (old.replace(b'\\\\', b'/'))
-            data = data.replace(old, new)
-        with open('%s/%s' % (PREFIX, filename), 'wb') as f:
-            f.write(data)
+filenames = glob.glob('%s\\*.prl' % LIBQT5)
+
+for filename in filenames:
+    with open(filename, 'rb') as f:
+        old_data = f.read()
+    for lib in LIBS:
+        old_path = (PRL_PREFIX+lib).encode('utf-8')
+        new_path = b'"%s"' % (old_path.replace(b'\\\\', b'/'))
+        new_data = old_data.replace(old_path, new_path)
+    if new_data == old_data:
+        continue
+    with open(filename, 'wb') as f:
+        f.write(new_data)
