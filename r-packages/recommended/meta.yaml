@@ -2,7 +2,7 @@ package:
   name: recommended
   version: 3.1.2
 
-requires:
+requirements:
   run:
     - r 3.1.2
     - r-mass
