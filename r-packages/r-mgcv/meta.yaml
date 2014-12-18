@@ -15,12 +15,12 @@ build:
 requirements:
   build:
     - r >=2.14.0
-    - nlme>=3.1.64
-    - Matrix
+    - r-nlme>=3.1.64
+    - r-matrix
   run:
     - r >=2.14.0
-    - nlme>=3.1.64
-    - Matrix
+    - r-nlme>=3.1.64
+    - r-matrix
 
 test:
   commands:

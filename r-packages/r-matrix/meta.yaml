@@ -15,10 +15,10 @@ build:
 requirements:
   build:
     - r >=2.15.2
-    - lattice
+    - r-lattice
   run:
     - r >=2.15.2
-    - lattice
+    - r-lattice
 
 test:
   commands:
