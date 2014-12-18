@@ -4,7 +4,7 @@ package:
 
 source:
   fn: rpart_4.1-8.tar.gz
-  url: http://cran.r-project.org/src/contrib/rpart_4.1.8.tar.gz
+  url: http://cran.r-project.org/src/contrib/rpart_4.1-8.tar.gz
 
 build:
   rpaths:
