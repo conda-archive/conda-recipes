@@ -6,6 +6,11 @@ source:
   fn: MASS_7.3-35.tar.gz
   url: http://cran.r-project.org/src/contrib/MASS_7.3-35.tar.gz
 
+build:
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
 # Suggests: lattice, nlme, nnet, survival
 requirements:
   build:
