@@ -16,12 +16,12 @@ build:
 requirements:
   build:
     - r >=2.15.1
-    - KernSmooth
-    - MASS
+    - r-KernSmooth
+    - r-MASS
   run:
     - r >=2.15.1
-    - KernSmooth
-    - MASS
+    - r-KernSmooth
+    - r-MASS
 
 test:
   commands:
