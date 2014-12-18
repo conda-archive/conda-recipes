@@ -1,5 +1,5 @@
 package:
-  name: recommended
+  name: r-recommended
   version: 3.1.2
 
 requirements:
