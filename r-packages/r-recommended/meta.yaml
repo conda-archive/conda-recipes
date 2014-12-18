@@ -14,7 +14,7 @@ requirements:
     - r-cluster
     - r-codetools
     - r-foreign
-    - r-kern
+    - r-kernsmooth
     - r-rpart
     - r-class
     - r-nnet
@@ -31,7 +31,7 @@ requirements:
     - r-cluster
     - r-codetools
     - r-foreign
-    - r-kern
+    - r-kernsmooth
     - r-rpart
     - r-class
     - r-nnet
