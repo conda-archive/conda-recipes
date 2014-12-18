@@ -4,7 +4,7 @@ package:
 
 source:
   fn: boot_1.3-13.tar.gz
-  url: http://cran.r-project.org/src/contrib/boot_1.3.13.tar.gz
+  url: http://cran.r-project.org/src/contrib/boot_1.3-13.tar.gz
 
 build:
   rpaths:
