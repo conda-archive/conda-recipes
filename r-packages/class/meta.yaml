@@ -1,0 +1,28 @@
+package:
+  name: r-class
+  version: 7.3.11
+
+source:
+  fn: class_7.3-11.tar.gz
+  url: http://cran.r-project.org/src/contrib/class_7.3-11.tar.gz
+
+build:
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: none
+requirements:
+  build:
+    - r >=3.0.0
+    - r-mass
+  run:
+    - r >=3.0.0
+    - r-mass
+
+test:
+  commands:
+    - R -e "library('class')"
+
+about:
+  license: GPL-2 | GPL-3

@@ -1,0 +1,26 @@
+package:
+  name: r-survival
+  version: 2.37.7
+
+source:
+  fn: survival_2.37.7.tar.gz
+  url: http://cran.r-project.org/src/contrib/survival_2.37.7.tar.gz
+
+build:
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: none
+requirements:
+  build:
+    - r >=2.13.0
+  run:
+    - r >=2.13.0
+
+test:
+  commands:
+    - R -e "library('survival')"
+
+about:
+  license: LGPL (>= 2)
