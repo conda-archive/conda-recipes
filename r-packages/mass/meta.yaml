@@ -18,5 +18,9 @@ requirements:
   run:
     - r >=3.0.0
 
+test:
+  commands:
+    - R -e "library('MASS')"
+
 about:
   license: GPL-2 | GPL-3
