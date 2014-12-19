@@ -1,11 +1,11 @@
 package:
   name: joblib
-  version: 0.7.0d
+  version: 0.8.4
 
 source:
-  fn: joblib-0.7.0d.tar.gz
-  url: https://pypi.python.org/packages/source/j/joblib/joblib-0.7.0d.tar.gz
-  md5: 96400ad0df65337541eab20a1f673ce0
+  fn: joblib-0.8.4.tar.gz
+  url: https://pypi.python.org/packages/source/j/joblib/joblib-0.8.4.tar.gz
+  md5: 90a1c25cc4dc4a8e3536093dbc35cff3
 #  patches:
    # List any patch files here
    # - fix.patch
