@@ -1,10 +1,10 @@
 package:
   name: pyne
-  version: staging
+  version: develop
 
 source:
   fn: pyne.tar.gz
-  url : https://github.com/pyne/pyne/archive/staging.tar.gz
+  url : https://github.com/pyne/pyne/archive/develop.tar.gz
 
 requirements:
   build:
@@ -35,7 +35,6 @@ test:
     - pyne.material
     - pyne.nucname
     - pyne.pyne_config
-    - pyne.xs.models
 
 
 about:
