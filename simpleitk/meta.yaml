@@ -9,7 +9,7 @@ source:
 requirements:
   build:
     - python
-    - cmake
+    - cmake      # [not win]
     - libtiff
     - libpng
     - jpeg
