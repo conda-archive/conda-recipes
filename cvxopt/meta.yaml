@@ -11,12 +11,12 @@ build:
 
 requirements:
     build:
-        - atlas
+        - atlas # [linux]
         - python
         - distribute
 
     run:
-        - atlas
+        - atlas # [linux]
         - python
 
 test:
