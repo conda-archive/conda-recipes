@@ -1,0 +1,66 @@
+package:
+  name: db.py
+  version: !!str 0.3.5
+
+source:
+  fn: db.py-0.3.5.tar.gz
+  url: https://pypi.python.org/packages/source/d/db.py/db.py-0.3.5.tar.gz
+  md5: bef28ef1140580612103cd0655a170c5
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - db.py = db.py:main
+    #
+    # Would create an entry point called db.py that calls db.py.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - prettytable >=0.7.2
+    - pandas
+
+  run:
+    - python
+    - prettytable >=0.7.2
+    - pandas
+
+test:
+  # Python imports
+  imports:
+    - db
+    - db.queries
+    - db.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/yhat/db.py
+  license: BSD License
+  summary: "a db package that doesn't suck"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
