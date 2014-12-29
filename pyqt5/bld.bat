@@ -8,4 +8,4 @@ CALL "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
         --bindir=%PREFIX%\Scripts
 
 jom
-nmake install
+jom install
