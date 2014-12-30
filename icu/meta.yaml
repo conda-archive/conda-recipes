@@ -1,17 +1,14 @@
 package:
   name: icu
-  version: 53.1
+  version: 54.1
 
 source:
-#  fn: icu4c-53_1-src.zip # [win]
-#  url: http://download.icu-project.org/files/icu4c/53.1/icu4c-53_1-src.zip # [win]
-#  md5: a2795d3c23f063179046cdf5359a0389 # [win]
-  fn: icu4c-53_1-Win64-msvc10.zip # [win64]
-  url: http://download.icu-project.org/files/icu4c/53.1/icu4c-53_1-Win64-msvc10.zip # [win64]
-  md5: 3d36641e0ae7a93cd3ce5b35ce7d8961 # [win64]
-  fn: icu4c-53_1-Win32-msvc10.zip # [win32]
-  url: http://download.icu-project.org/files/icu4c/53.1/icu4c-53_1-Win32-msvc10.zip # [win32]
-  md5: 57a8bfd78d4c68582c2c976c7d842f03 # [win32]
+  fn: icu4c-54_1-Win64-msvc10.zip # [win64]
+  url: http://download.icu-project.org/files/icu4c/54.1/icu4c-54_1-Win64-msvc10.zip # [win64]
+  md5: 4d85e1817a5a59582517262b9396c7ba # [win64]
+  fn: icu4c-54_1-Win32-msvc10.zip # [win32]
+  url: http://download.icu-project.org/files/icu4c/54.1/icu4c-54_1-Win32-msvc10.zip # [win32]
+  md5: 2419927dae9f0ac2498b10de657ff6d3 # [win32]
 
 about:
     home: http://site.icu-project.org/
