@@ -1,7 +1,3 @@
-:: need to reset the environment here, or will not compile with errors
-:: similar to http://qt-project.org/forums/viewthread/32660
-CALL "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
-
 :: set path to find resources shipped with qt-5
 :: see http://doc-snapshot.qt-project.org/qt5-5.4/windows-building.html
 set PATH=%SRC_DIR%\qtbase\bin;%SRC_DIR%\gnuwin32\bin;%PATH%

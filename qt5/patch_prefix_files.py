@@ -15,13 +15,13 @@ LIBS = ['\\\\Qt5Core.lib', '\\\\Qt5Gui.lib', '\\\\Qt5Widgets.lib', '']
 filenames = glob.glob('%s\\*.prl' % LIBQT5)
 
 for filename in filenames:
-    with open(filename, 'rb') as f:
+    with open(filename, 'r') as f:
         old_data = f.read()
     for lib in LIBS:
-        old_path = (PRL_PREFIX+lib).encode('utf-8')
-        new_path = b'"%s"' % (old_path.replace(b'\\\\', b'/'))
+        old_path = PRL_PREFIX + lib
+        new_path = '"%s"' % old_path.replace('\\\\', '/')
         new_data = old_data.replace(old_path, new_path)
     if new_data == old_data:
         continue
     with open(filename, 'wb') as f:
-        f.write(new_data)
+        f.write(new_data.encode('utf8'))
