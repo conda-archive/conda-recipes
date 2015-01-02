@@ -1,0 +1,26 @@
+package:
+  name: r-spatial
+  version: 7.3.8
+
+source:
+  fn: spatial_7.3-8.tar.gz
+  url: http://cran.r-project.org/src/contrib/spatial_7.3-8.tar.gz
+
+build:
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: MASS
+requirements:
+  build:
+    - r >=3.0.0
+  run:
+    - r >=3.0.0
+
+test:
+  commands:
+    - R -e "library('spatial')"
+
+about:
+  license: GPL-2 | GPL-3

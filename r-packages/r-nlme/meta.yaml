@@ -1,0 +1,28 @@
+package:
+  name: r-nlme
+  version: 3.1.118
+
+source:
+  fn: nlme_3.1-118.tar.gz
+  url: http://cran.r-project.org/src/contrib/nlme_3.1-118.tar.gz
+
+build:
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: Hmisc, MASS
+requirements:
+  build:
+    - r >=3.0.0
+    - r-lattice
+  run:
+    - r >=3.0.0
+    - r-lattice
+
+test:
+  commands:
+    - R -e "library('nlme')"
+
+about:
+  license: GPL (>= 2)

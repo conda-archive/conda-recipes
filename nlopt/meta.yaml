@@ -2,6 +2,9 @@ package:
   name: nlopt
   version: 2.4.2
 
+build:
+  number: 1
+
 source:
   fn: nlopt-2.4.2.tar.gz
   url: http://ab-initio.mit.edu/nlopt/nlopt-2.4.2.tar.gz

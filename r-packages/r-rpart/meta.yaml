@@ -1,0 +1,26 @@
+package:
+  name: r-rpart
+  version: 4.1.8
+
+source:
+  fn: rpart_4.1-8.tar.gz
+  url: http://cran.r-project.org/src/contrib/rpart_4.1-8.tar.gz
+
+build:
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: survival
+requirements:
+  build:
+    - r >=2.15.0
+  run:
+    - r >=2.15.0
+
+test:
+  commands:
+    - R -e "library('rpart')"
+
+about:
+  license: GPL-2 | GPL-3

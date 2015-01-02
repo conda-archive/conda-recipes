@@ -1,16 +1,17 @@
 package:
   name: flake8
-  version: 2.0
+  version: !!str 2.2.5
 
 source:
-  fn: flake8-2.0.tar.gz
-  url: https://pypi.python.org/packages/source/f/flake8/flake8-2.0.tar.gz
-  md5: 176c6b3613777122721db181560aa1e3
+  fn: flake8-2.2.5.tar.gz
+  url: https://pypi.python.org/packages/source/f/flake8/flake8-2.2.5.tar.gz
+  md5: 6dea927949b94c9d9495ab24bcdf9cf0
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
+  preserve_egg_dir: True
   entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
@@ -23,27 +24,28 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2
+  # number: 1
 
 requirements:
   build:
     - python
-    - pyflakes
-    - pep8
-    - mccabe
     - setuptools
+    - pyflakes >=0.8.1
+    - pep8 >=1.5.7
+    - mccabe >=0.2.1
 
   run:
     - python
-    - pyflakes
-    - pep8
-    - mccabe
     - setuptools
+    - pyflakes >=0.8.1
+    - pep8 >=1.5.7
+    - mccabe >=0.2.1
 
 test:
   # Python imports
   imports:
     - flake8
+    - flake8.tests
 
   commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -59,8 +61,9 @@ test:
     # - nose
 
 about:
-  home: http://bitbucket.org/tarek/flake8
+  home: https://gitlab.com/pycqa/flake8
   license: MIT License
+  summary: 'the modular source code checker: pep8, pyflakes and co'
 
 # See
 # http://docs.continuum.io/conda/build.html for

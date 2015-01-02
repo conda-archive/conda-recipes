@@ -1,9 +1,10 @@
 package:
-  name: tk
+  name: tcl
   version: 8.5.17
 
-build:
-  detect_binary_files_with_prefix: true
+source:
+  fn: tcl8.5.17-src.tar.gz
+  url: http://superb-dca2.dl.sourceforge.net/project/tcl/Tcl/8.5.17/tcl8.5.17-src.tar.gz
 
 test:
   requires:
