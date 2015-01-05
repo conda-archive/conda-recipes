@@ -1,11 +1,11 @@
 package:
-  name: rpy2
-  version: !!str 2.4.4
+  name: isodate
+  version: !!str 0.5.0
 
 source:
-  fn: rpy2-2.4.4.tar.gz
-  url: https://pypi.python.org/packages/source/r/rpy2/rpy2-2.4.4.tar.gz
-  md5: 58fd357ba922839b65fd67766319b806
+  fn: isodate-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/isodate/isodate-0.5.0.tar.gz
+  md5: 9a267e9327feb3d021cae26002ba6e0e
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -16,9 +16,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - rpy2 = rpy2:main
+    # - isodate = isodate:main
     #
-    # Would create an entry point called rpy2 that calls rpy2.main()
+    # Would create an entry point called isodate that calls isodate.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -36,17 +36,8 @@ requirements:
 test:
   # Python imports
   imports:
-    - rpy2
-    - rpy2.interactive
-    - rpy2.interactive.tests
-    - rpy2.rinterface
-    - rpy2.rinterface.tests
-    - rpy2.rlike
-    - rpy2.rlike.tests
-    - rpy2.robjects
-    - rpy2.robjects.lib
-    - rpy2.robjects.lib.tests
-    - rpy2.robjects.tests
+    - isodate
+    - isodate.tests
 
   #commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -61,9 +52,9 @@ test:
     # - nose
 
 about:
-  home: http://rpy.sourceforge.net
-  license:  GNU General Public License v2 or later (GPLv2+)
-  summary: 'Python interface to the R language (embedded R)'
+  home: http://cheeseshop.python.org/pypi/isodate
+  license:  BSD License
+  summary: 'An ISO 8601 date/time/duration parser and formater'
 
 # See
 # http://docs.continuum.io/conda/build.html for
