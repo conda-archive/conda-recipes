@@ -1,11 +1,11 @@
 package:
   name: qutip
-  version: 3.0.1
+  version: 3.1.0
 
 source:
-  fn: qutip-3.0.1.tar.gz
-  url: https://pypi.python.org/packages/source/q/qutip/qutip-3.0.1.tar.gz
-  md5: 3d785a372661166dbf81652c36848b5e
+  fn: qutip-3.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/q/qutip/qutip-3.1.0.tar.gz
+  md5: 73aefdc714149fa6e1a03de660f2eb2b
 
 requirements:
   build:
