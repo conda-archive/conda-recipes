@@ -32,6 +32,7 @@ requirements:
     - python
     - r
     - setuptools
+    - argparse # [py26]
 
   run:
     - python
