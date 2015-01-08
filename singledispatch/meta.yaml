@@ -30,10 +30,12 @@ requirements:
     - python
     - setuptools
     - six
+    - ordereddict # [not py3k]
 
   run:
     - python
     - six
+    - ordereddict # [not py3k]
 
 test:
   # Python imports
