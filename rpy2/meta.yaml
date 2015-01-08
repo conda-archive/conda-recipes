@@ -10,7 +10,10 @@ source:
    # List any patch files here
    # - fix.patch
 
-# build:
+build:
+  rpaths:
+    - lib/R/lib/
+    - lib/
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
@@ -27,9 +30,11 @@ source:
 requirements:
   build:
     - python
+    - r
 
   run:
     - python
+    - r
 
 test:
   # Python imports
