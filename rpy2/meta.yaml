@@ -66,6 +66,8 @@ test:
   requires:
     # Put any additional test requirements here.  For example
     - ipython
+    - r-survival
+    - numpy
 
 about:
   home: http://rpy.sourceforge.net
