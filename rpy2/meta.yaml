@@ -1,11 +1,11 @@
 package:
   name: rpy2
-  version: 2.3.8
+  version: !!str 2.5.4
 
 source:
-  fn: rpy2-2.3.8.tar.gz
-  url: https://pypi.python.org/packages/source/r/rpy2/rpy2-2.3.8.tar.gz
-  md5: f331120aeeb1b27118d4e3360f2ec45d
+  fn: rpy2-2.5.4.tar.gz
+  url: https://pypi.python.org/packages/source/r/rpy2/rpy2-2.5.4.tar.gz
+  md5: 115a20ac30883f096da2bdfcab55196d
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -31,6 +31,7 @@ requirements:
   build:
     - python
     - r
+    - setuptools
 
   run:
     - python
@@ -42,6 +43,8 @@ test:
     - rpy2
     - rpy2.interactive
     - rpy2.interactive.tests
+    - rpy2.ipython
+    - rpy2.ipython.tests
     - rpy2.rinterface
     - rpy2.rinterface.tests
     - rpy2.rlike
@@ -51,6 +54,23 @@ test:
     - rpy2.robjects.lib.tests
     - rpy2.robjects.tests
 
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
 about:
   home: http://rpy.sourceforge.net
-  license: GNU Affero General Public License v3 or GNU Library or Lesser General Public License (LGPL)
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'Python interface to the R language (embedded R)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
