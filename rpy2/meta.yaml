@@ -63,9 +63,9 @@ test:
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  # requires:
+  requires:
     # Put any additional test requirements here.  For example
-    # - nose
+    - ipython
 
 about:
   home: http://rpy.sourceforge.net
