@@ -41,7 +41,7 @@ if [[ (`uname` == Linux) ]]; then
                 --with-tcl-config=$TCL_CONFIG   \
                 LIBnn=lib
 elif [ `uname` == Darwin ]; then
-    ./configure --prefix==$PREFIX
+    ./configure --prefix=$PREFIX
 fi
 
 make
