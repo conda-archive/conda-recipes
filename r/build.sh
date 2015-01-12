@@ -46,7 +46,7 @@ if [[ (`uname` == Linux) ]]; then
                 LIBnn=lib
 elif [ `uname` == Darwin ]; then
 
-    export DYLD_LIBRARY_PATH=$PREFIX/lib
+    # export DYLD_LIBRARY_PATH=$PREFIX/lib
 
     # Prevent configure from finding Fink or Homebrew.
 
