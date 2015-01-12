@@ -39,6 +39,7 @@ else
   ./b2 \
     variant=release address-model=64 architecture=x86 \
     threading=multi link=shared ${B2ARGS} \
+    -j$(getconf _NPROCESSORS_ONLN) \
     install | tee b2.log 2>&1
 fi
 
