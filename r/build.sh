@@ -46,7 +46,7 @@ if [[ (`uname` == Linux) ]]; then
                 LIBnn=lib
 elif [ `uname` == Darwin ]; then
 
-    export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib:$(HOME)/lib:/usr/local/lib:/lib:/usr/lib
+    # export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib:$(HOME)/lib:/usr/local/lib:/lib:/usr/lib
 
     # Prevent configure from finding Fink or Homebrew.
 
@@ -63,7 +63,8 @@ EOF
                 --with-blas="-framework Accelerate" \
                 --with-lapack                       \
                 --enable-R-shlib                    \
-                --without-x
+                --without-x                         \
+                --enable-R-framework=no
 
 fi
 
