@@ -45,7 +45,18 @@ if [[ (`uname` == Linux) ]]; then
                 --with-tcl-config=$TCL_CONFIG   \
                 LIBnn=lib
 elif [ `uname` == Darwin ]; then
-    ./configure --prefix=$PREFIX
+
+    echo >> config.site <<EOF
+CC=clang
+CXX=clang++
+F77=gfortran
+OBJC=clang
+EOF
+
+    ./configure --prefix=$PREFIX                    \
+                --with-blas="-framework Accelerate" \
+                --with-lapack
+
 fi
 
 make
