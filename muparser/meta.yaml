@@ -1,0 +1,11 @@
+package:
+  name: muparser
+  version: 2.2.3
+
+build:
+  number: 1
+
+source:
+  fn: muparser_v2_2_3.zip
+  url: http://downloads.sourceforge.net/muparser/muparser_v2_2_3.zip
+

@@ -1,0 +1,37 @@
+package:
+  name: openturns
+  version: 1.5rc1
+
+source:
+    svn_url: https://svn.openturns.org/openturns/tags/openturns-1.5rc1 # [not win]
+    url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.5rc1/openturns-1.5rc1-py2.7-i686.exe # [win32 and py27]
+    url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.5rc1/openturns-1.5rc1-py2.7-x86_64.exe # [win64 and py27]
+    fn: openturns-1.5rc1-py2.7-i686.exe # [win32 and py27]
+    fn: openturns-1.5rc1-py2.7-x86_64.exe # [win64 and py27]
+
+build:
+    number: 1
+
+requirements:
+    build:
+        - cmake         # [not win]
+        - python        # [not win]
+        - swig >=2.0.9  # [not win]
+        - libxml2       # [not win]
+        - boost         # [not win]
+        - muparser      # [not win]
+
+    run:
+        - python
+        - matplotlib
+        - libxml2     # [not win]
+        - muparser    # [not win]
+
+test:
+    imports:
+      - openturns
+      - openturns.viewer
+
+about:
+    home: http://openturns.org/
+    license: GNU Lesser General Public License (LGPL)
