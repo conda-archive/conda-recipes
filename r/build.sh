@@ -52,12 +52,12 @@ elif [ `uname` == Darwin ]; then
 
     export PATH=$PREFIX/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
-#     echo >> config.site <<EOF
-# CC=clang
-# CXX=clang++
-# F77=gfortran
-# OBJC=clang
-# EOF
+    cat >> config.site <<EOF
+CC=clang
+CXX=clang++
+F77=gfortran
+OBJC=clang
+EOF
 
     ./configure --prefix=$PREFIX                    \
                 --with-blas="-framework Accelerate" \
