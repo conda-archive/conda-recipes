@@ -8,7 +8,7 @@ index 954b17f..812bcd9 100644
             [menu addItem:[NSMenuItem separatorItem]];
 -           menuItem = [[NSMenuItem alloc] initWithTitle:@"Page Setup…" action:@selector(runPageLayout:) keyEquivalent:@"P"]; [menu addItem:menuItem]; [menuItem release];
 -           menuItem = [[NSMenuItem alloc] initWithTitle:@"Print" action:@selector(printDocument:) keyEquivalent:@"p"]; [menu addItem:menuItem]; [menuItem release];
--
+-           
 +           menuItem = [[NSMenuItem alloc] initWithTitle:@"Page Setup\\U2026" action:@selector(runPageLayout:) keyEquivalent:@"P"]; [menu addItem:menuItem]; [menuItem release];
 +           menuItem = [[NSMenuItem alloc] initWithTitle:@"Print" action:@selector(printDocument:) keyEquivalent:@"p"]; [menu addItem:menuItem]; [menuItem release];
 +
