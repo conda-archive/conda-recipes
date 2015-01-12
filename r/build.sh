@@ -46,7 +46,7 @@ if [[ (`uname` == Linux) ]]; then
                 LIBnn=lib
 elif [ `uname` == Darwin ]; then
 
-    export DYLD_LIBRARY_PATH=$PREFIX/lib
+    export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib:$(HOME)/lib:/usr/local/lib:/lib:/usr/lib
 
     # Prevent configure from finding Fink or Homebrew.
 
@@ -65,7 +65,6 @@ EOF
                 --enable-R-shlib                    \
                 --without-x
 
-    unset DYLD_LIBRARY_PATH
 fi
 
 make
