@@ -48,12 +48,16 @@ elif [ `uname` == Darwin ]; then
 
     export DYLD_LIBRARY_PATH=$PREFIX/lib
 
-    echo >> config.site <<EOF
-CC=clang
-CXX=clang++
-F77=gfortran
-OBJC=clang
-EOF
+    # Prevent configure from finding Fink or Homebrew.
+
+    export PATH=$PREFIX/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+#     echo >> config.site <<EOF
+# CC=clang
+# CXX=clang++
+# F77=gfortran
+# OBJC=clang
+# EOF
 
     ./configure --prefix=$PREFIX                    \
                 --with-blas="-framework Accelerate" \
