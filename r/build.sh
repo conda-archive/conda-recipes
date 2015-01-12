@@ -46,6 +46,8 @@ if [[ (`uname` == Linux) ]]; then
                 LIBnn=lib
 elif [ `uname` == Darwin ]; then
 
+    export DYLD_LIBRARY_PATH=$PREFIX/lib
+
     echo >> config.site <<EOF
 CC=clang
 CXX=clang++
