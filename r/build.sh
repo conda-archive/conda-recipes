@@ -58,7 +58,8 @@ EOF
     ./configure --prefix=$PREFIX                    \
                 --with-blas="-framework Accelerate" \
                 --with-lapack                       \
-                --enable-R-shlib
+                --enable-R-shlib                    \
+                --without-x
 
 fi
 
