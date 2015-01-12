@@ -16,6 +16,9 @@ build:
   number: 2 # [linux]
   detect_binary_files_with_prefix: true
 
+patches:              # [mac]
+  - mac-unicode.patch # [mac]
+
 requirements:
   build:
     - readline  # [not win]

@@ -1,0 +1,26 @@
+diff --git a/src/library/grDevices/src/qdCocoa.m b/src/library/grDevices/src/qdCocoa.m
+index 954b17f..812bcd9 100644
+--- src/library/grDevices/src/qdCocoa.m
++++ src/library/grDevices/src/qdCocoa.m
+@@ -95,7 +95,7 @@ static QuartzFunctions_t *qf;
+        [window setBackgroundColor:canvasColor ? canvasColor : [NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:0.5]];
+        [window setOpaque:NO];
+        ci->window = window;
+-
++
+        [window setDelegate: view];
+        [window setContentView: view];
+        [window setInitialFirstResponder: view];
+@@ -127,9 +127,9 @@ static QuartzFunctions_t *qf;
+            menuItem = [[NSMenuItem alloc] initWithTitle:@"Close Window" action:@selector(performClose:) keyEquivalent:@"w"]; [menu addItem:menuItem]; [menuItem release];
+            menuItem = [[NSMenuItem alloc] initWithTitle:@"Save" action:@selector(saveDocument:) keyEquivalent:@"s"]; [menu addItem:menuItem]; [menuItem release];
+            [menu addItem:[NSMenuItem separatorItem]];
+-           menuItem = [[NSMenuItem alloc] initWithTitle:@"Page Setup…" action:@selector(runPageLayout:) keyEquivalent:@"P"]; [menu addItem:menuItem]; [menuItem release];
+-           menuItem = [[NSMenuItem alloc] initWithTitle:@"Print" action:@selector(printDocument:) keyEquivalent:@"p"]; [menu addItem:menuItem]; [menuItem release];
+-
++           menuItem = [[NSMenuItem alloc] initWithTitle:@"Page Setup\\U2026" action:@selector(runPageLayout:) keyEquivalent:@"P"]; [menu addItem:menuItem]; [menuItem release];
++           menuItem = [[NSMenuItem alloc] initWithTitle:@"Print" action:@selector(printDocument:) keyEquivalent:@"p"]; [menu addItem:menuItem]; [menuItem release];
++
+             menuItem = [[NSMenuItem alloc] initWithTitle:[menu title] action:nil keyEquivalent:@""]; /* the "Quartz" item in the main menu */
+             [menuItem setSubmenu:menu];
+            [mainMenu insertItem: menuItem atIndex:0];
