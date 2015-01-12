@@ -17,6 +17,7 @@ requirements:
         - cmake         # [not win]
         - python        # [not win]
         - swig >=2.0.9  # [not win]
+        - lapack        # [not win]
         - libxml2       # [not win]
         - boost         # [not win]
         - muparser      # [not win]
@@ -24,8 +25,9 @@ requirements:
     run:
         - python
         - matplotlib
-        - libxml2     # [not win]
-        - muparser    # [not win]
+        - lapack        # [not win]
+        - libxml2       # [not win]
+        - muparser      # [not win]
 
 test:
     imports:

@@ -10,6 +10,7 @@ mkdir build
 cd build
 
 cmake \
+    -DLAPACK_LIBRARIES="$PREFIX/lib/libblas.${SO_EXT};$PREFIX/lib/liblapack.${SO_EXT}" \
     -DLIBXML2_LIBRARIES=$PREFIX/lib/libxml2.${SO_EXT} \
     -DLIBXML2_INCLUDE_DIR=$PREFIX/include/libxml2 \
     -DMUPARSER_LIBRARIES=$PREFIX/lib/libmuparser.${SO_EXT} \
@@ -22,5 +23,6 @@ cmake \
     -DCMAKE_INSTALL_PREFIX=$PREFIX \
     -DUSE_SPHINX=OFF \
     ..
+
 make -j$(getconf _NPROCESSORS_ONLN)
 make install
