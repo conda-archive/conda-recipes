@@ -1,20 +1,24 @@
 #!/bin/bash
 
+# Without setting these, R goes off and tries to find things on its own, which
+# we don't want (we only want it to find stuff in the build environment).
+
+export CFLAGS="-I$PREFIX/include"
+export CPPFLAGS="-I$PREFIX/include"
+export FFLAGS="-I$PREFIX/include -L$PREFIX/lib"
+export FCFLAGS="-I$PREFIX/include -L$PREFIX/lib"
+export OBJCFLAGS="-I$PREFIX/include"
+export CXXFLAGS="-I$PREFIX/include"
+export LDFLAGS="-L$PREFIX/lib -lgfortran"
+export LAPACK_LDFLAGS="-L$PREFIX/lib -lgfortran"
+export PKG_CPPFLAGS="-I$PREFIX/include"
+export PKG_LDFLAGS="-L$PREFIX/lib -lgfortran"
+export TCL_CONFIG=$PREFIX/lib/tclConfig.sh
+export TK_CONFIG=$PREFIX/lib/tkConfig.sh
+export TCL_LIBRARY=$PREFIX/lib/tcl8.5
+export TK_LIBRARY=$PREFIX/lib/tk8.5
+
 if [[ (`uname` == Linux) ]]; then
-    export CFLAGS="-I$PREFIX/include"
-    export CPPFLAGS="-I$PREFIX/include"
-    export FFLAGS="-I$PREFIX/include -L$PREFIX/lib"
-    export FCFLAGS="-I$PREFIX/include -L$PREFIX/lib"
-    export OBJCFLAGS="-I$PREFIX/include"
-    export CXXFLAGS="-I$PREFIX/include"
-    export LDFLAGS="-L$PREFIX/lib -lgfortran"
-    export LAPACK_LDFLAGS="-L$PREFIX/lib -lgfortran"
-    export PKG_CPPFLAGS="-I$PREFIX/include"
-    export PKG_LDFLAGS="-L$PREFIX/lib -lgfortran"
-    export TCL_CONFIG=$PREFIX/lib/tclConfig.sh
-    export TK_CONFIG=$PREFIX/lib/tkConfig.sh
-    export TCL_LIBRARY=$PREFIX/lib/tcl8.5
-    export TK_LIBRARY=$PREFIX/lib/tk8.5
 
     # There's probably a much better way to do this.
     . ${RECIPE_DIR}/java.rc
