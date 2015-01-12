@@ -7,7 +7,7 @@ index 954b17f..41ab6f7 100644
  	    menuItem = [[NSMenuItem alloc] initWithTitle:@"Save" action:@selector(saveDocument:) keyEquivalent:@"s"]; [menu addItem:menuItem]; [menuItem release];
  	    [menu addItem:[NSMenuItem separatorItem]];
 -	    menuItem = [[NSMenuItem alloc] initWithTitle:@"Page Setup…" action:@selector(runPageLayout:) keyEquivalent:@"P"]; [menu addItem:menuItem]; [menuItem release];
-+	    menuItem = [[NSMenuItem alloc] initWithTitle:@"Page Setup\\U2026" action:@selector(runPageLayout:) keyEquivalent:@"P"]; [menu addItem:menuItem]; [menuItem release];
++	    menuItem = [[NSMenuItem alloc] initWithTitle:@"Page Setup\U2026" action:@selector(runPageLayout:) keyEquivalent:@"P"]; [menu addItem:menuItem]; [menuItem release];
  	    menuItem = [[NSMenuItem alloc] initWithTitle:@"Print" action:@selector(printDocument:) keyEquivalent:@"p"]; [menu addItem:menuItem]; [menuItem release];   
  	    
              menuItem = [[NSMenuItem alloc] initWithTitle:[menu title] action:nil keyEquivalent:@""]; /* the "Quartz" item in the main menu */
