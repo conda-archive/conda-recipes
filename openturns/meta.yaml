@@ -14,8 +14,8 @@ build:
 
 requirements:
     build:
+        - python
         - cmake         # [not win]
-        - python        # [not win]
         - swig          # [not win]
         - boost         # [not win]
         - lapack        # [not win]
