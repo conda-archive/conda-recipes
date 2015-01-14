@@ -29,6 +29,7 @@ if [ `uname` == Darwin ]; then
     variant=release address-model=64 architecture=x86 \
     threading=multi link=shared ${B2ARGS} \
     cxxflags="${CXXFLAGS}" linkflags="${LINKFLAGS}" \
+    -j${CPU_COUNT} \
     install | tee b2.log 2>&1
 else
   B2ARGS="toolset=gcc"
@@ -39,7 +40,7 @@ else
   ./b2 \
     variant=release address-model=64 architecture=x86 \
     threading=multi link=shared ${B2ARGS} \
-    -j$(getconf _NPROCESSORS_ONLN) \
+    -j${CPU_COUNT} \
     install | tee b2.log 2>&1
 fi
 
