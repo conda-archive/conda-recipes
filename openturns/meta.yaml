@@ -10,17 +10,18 @@ source:
     fn: openturns-1.5rc1-py2.7-x86_64.exe # [win64 and py27]
 
 build:
-    number: 1
+    number: 2
 
 requirements:
     build:
         - cmake         # [not win]
         - python        # [not win]
-        - swig >=2.0.9  # [not win]
+        - swig          # [not win]
+        - boost         # [not win]
         - lapack        # [not win]
         - libxml2       # [not win]
-        - boost         # [not win]
         - muparser      # [not win]
+        - tbb           # [not win]
 
     run:
         - python
@@ -28,6 +29,7 @@ requirements:
         - lapack        # [not win]
         - libxml2       # [not win]
         - muparser      # [not win]
+        - tbb           # [not win]
 
 test:
     imports:
