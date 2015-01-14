@@ -21,6 +21,7 @@ cmake \
     -DPYTHON_INCLUDE_PATH:PATH=$PREFIX/include/python${PY_VER} \
     -DPYTHON_LIBRARY:FILEPATH=$PREFIX/lib/libpython${PY_VER}.${SO_EXT} \
     -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DUSE_TBB=OFF \
     -DUSE_SPHINX=OFF \
     ..
 
