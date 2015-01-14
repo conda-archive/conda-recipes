@@ -31,6 +31,6 @@ cmake \
     -DUSE_HMAT=OFF \
     ..
 
-make -j$(getconf _NPROCESSORS_ONLN)
+make -j${CPU_COUNT}
 make install
 
