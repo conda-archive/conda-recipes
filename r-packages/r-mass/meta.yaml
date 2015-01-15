@@ -1,10 +1,10 @@
 package:
   name: r-mass
-  version: 7.3.35
+  version: 7.3.37
 
 source:
-  fn: MASS_7.3-35.tar.gz
-  url: http://cran.r-project.org/src/contrib/MASS_7.3-35.tar.gz
+  fn: MASS_7.3-37.tar.gz
+  url: http://cran.r-project.org/src/contrib/MASS_7.3-37.tar.gz
 
 build:
   rpaths:
