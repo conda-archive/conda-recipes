@@ -8,7 +8,7 @@ source:
     git_tag: v0.9.0
 
 build:
-    number: 0
+    number: 1
 
 requirements:
     build:
@@ -16,6 +16,7 @@ requirements:
         - distribute
 
     run:
+        - six
         - python
 
 test:

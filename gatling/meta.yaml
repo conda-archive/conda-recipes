@@ -1,0 +1,20 @@
+
+package:
+    name: gatling
+    version: 2.2.0
+
+source:
+    fn: gatling-charts-highcharts-bundle-2.2.0-20150114.161537-60-bundle.zip
+    url: https://oss.sonatype.org/content/repositories/snapshots/io/gatling/highcharts/gatling-charts-highcharts-bundle/2.2.0-SNAPSHOT/gatling-charts-highcharts-bundle-2.2.0-20150114.161537-60-bundle.zip
+    md5: a650a3cb84a4cb8fb02c5751d50e401d
+
+build:
+    number: 0
+
+test:
+    commands:
+        - gatling.sh --help
+
+about:
+    home: http://gatling.io
+    license: Apache license 2.0
