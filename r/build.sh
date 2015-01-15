@@ -50,7 +50,7 @@ elif [ `uname` == Darwin ]; then
     # DYLD_LIBRARY_PATH because that screws up some of the system libraries
     # that have older versions of libjpeg than the one we are using
     # here. DYLD_FALLBACK_LIBRARY_PATH will only come into play if it cannot
-    # find the library via normal means.
+    # find the library via normal means. The default comes from 'man dyld'.
     export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib:$(HOME)/lib:/usr/local/lib:/lib:/usr/lib
 
     # Prevent configure from finding Fink or Homebrew.
