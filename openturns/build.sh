@@ -31,6 +31,5 @@ cmake \
     -DUSE_HMAT=OFF \
     ..
 
-make -j${CPU_COUNT}
+make OT -j${CPU_COUNT}
 make install
-
