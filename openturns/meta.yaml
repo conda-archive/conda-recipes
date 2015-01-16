@@ -3,11 +3,17 @@ package:
   version: 1.5rc1
 
 source:
-    svn_url: https://svn.openturns.org/openturns/tags/openturns-1.5rc1 # [not win]
-    url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.5rc1/openturns-1.5rc1-py2.7-i686.exe # [win32 and py27]
-    url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.5rc1/openturns-1.5rc1-py2.7-x86_64.exe # [win64 and py27]
+    fn: openturns-1.5rc1.tar.bz2 # [not win]
+    url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.5rc1/openturns-1.5rc1.tar.bz2 # [not win]
+    md5: 584e3b48630b95a2844d50438b110164 # [not win]
+
     fn: openturns-1.5rc1-py2.7-i686.exe # [win32 and py27]
+    url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.5rc1/openturns-1.5rc1-py2.7-i686.exe # [win32 and py27]
+    md5: db11cf169aeb549fa7ef098a38a44600 # [win32 and py27]
+
     fn: openturns-1.5rc1-py2.7-x86_64.exe # [win64 and py27]
+    url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.5rc1/openturns-1.5rc1-py2.7-x86_64.exe # [win64 and py27]
+    md5: 1c2c318576ce17b344efd78d6636eb02 # [win64 and py27]
 
 build:
     number: 2
