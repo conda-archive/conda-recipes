@@ -29,8 +29,10 @@ build:
 
 requirements:
   build:
+    - r
 
   run:
+    - r
 
 test:
   commands:
