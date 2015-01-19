@@ -1,28 +1,59 @@
 package:
   name: r-nlme
-  version: 3.1.118
+  version: "3.1_119"
 
 source:
-  fn: nlme_3.1-118.tar.gz
-  url: http://cran.r-project.org/src/contrib/nlme_3.1-118.tar.gz
+  fn: nlme_3.1-119.tar.gz
+  url: http://cran.r-project.org/src/contrib/nlme_3.1-119.tar.gz
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
 
-build:
-  rpaths:
-    - lib/R/lib/
-    - lib/
+# build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
 
 # Suggests: Hmisc, MASS
 requirements:
   build:
     - r >=3.0.0
-    - r-lattice
+    - r-lattice # [not win]
+
   run:
     - r >=3.0.0
-    - r-lattice
+    - r-lattice # [not win]
 
 test:
   commands:
+    # You can put additional test commands to be run here.
     - R -e "library('nlme')"
 
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
 about:
+  #home:
   license: GPL (>= 2)
+  #summary:
+
+# The original CRAN metadata for this package was:
+
+# Package: nlme
+# Version: 3.1-119
+# Priority: recommended
+# Depends: graphics, stats, R (>= 3.0.0)
+# Imports: lattice
+# Suggests: Hmisc, MASS
+# License: GPL (>= 2)
+# NeedsCompilation: yes
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
