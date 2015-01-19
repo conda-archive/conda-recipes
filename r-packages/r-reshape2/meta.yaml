@@ -29,11 +29,13 @@ build:
 # Suggests: testthat (>= 0.8.0), lattice
 requirements:
   build:
+    - r
     - r-rcpp
     - r-plyr >=1.8.1
     - r-stringr
 
   run:
+    - r
     - r-rcpp
     - r-plyr >=1.8.1
     - r-stringr
@@ -41,7 +43,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - R -e "library('reshape2')"
+    - $R -e "library('reshape2')" # [not win]
+    - %R% -e "library('reshape2')" # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.

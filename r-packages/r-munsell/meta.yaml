@@ -29,15 +29,18 @@ build:
 # Suggests: ggplot2 (>= 0.9.2)
 requirements:
   build:
+    - r
     - r-colorspace
 
   run:
+    - r
     - r-colorspace
 
 test:
   commands:
     # You can put additional test commands to be run here.
-    - R -e "library('munsell')"
+    - $R -e "library('munsell')" # [not win]
+    - %R% -e "library('munsell')" # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.

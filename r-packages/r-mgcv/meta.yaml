@@ -31,17 +31,18 @@ requirements:
   build:
     - r >=2.14.0
     - r-matrix # [not win]
-    - r-nlme >=3.1-64 # [not win]
+    - r-nlme >=3.1_64 # [not win]
 
   run:
     - r >=2.14.0
     - r-matrix # [not win]
-    - r-nlme >=3.1-64 # [not win]
+    - r-nlme >=3.1_64 # [not win]
 
 test:
   commands:
     # You can put additional test commands to be run here.
-    - R -e "library('mgcv')"
+    - $R -e "library('mgcv')" # [not win]
+    - %R% -e "library('mgcv')" # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.

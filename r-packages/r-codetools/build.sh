@@ -12,7 +12,7 @@ grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
 # from 'man dyld'.
 export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib:$(HOME)/lib:/usr/local/lib:/lib:/usr/lib
 
-R CMD INSTALL --build .
+$R CMD INSTALL --build .
 
 # Add more build steps here, if they are necessary.
 
