@@ -38,7 +38,7 @@ test:
   commands:
     # You can put additional test commands to be run here.
     - $R -e "library('stringr')" # [not win]
-    - %R% -e "library('stringr')" # [win]
+    - "%R% -e \"library('stringr')\"" # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.

@@ -40,7 +40,7 @@ test:
   commands:
     # You can put additional test commands to be run here.
     - $R -e "library('class')" # [not win]
-    - %R% -e "library('class')" # [win]
+    - "%R% -e \"library('class')\"" # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
