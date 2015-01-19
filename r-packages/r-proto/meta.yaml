@@ -29,8 +29,10 @@ build:
 # Suggests: graph, Rgraphviz
 requirements:
   build:
+    - r
 
   run:
+    - r
 
 test:
   commands:
