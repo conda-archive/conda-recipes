@@ -30,17 +30,17 @@ build:
 requirements:
   build:
     - r >=2.11.0
-    - r-rcpp >=0.11.0
+    - r-rcpp
 
   run:
     - r >=2.11.0
-    - r-rcpp >=0.11.0
+    - r-rcpp
 
 test:
   commands:
     # You can put additional test commands to be run here.
     - $R -e "library('plyr')" # [not win]
-    - "%R% -e \"library('plyr')\"" # [win]
+    - "\"%R%\" -e \"library('plyr')\"" # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
