@@ -3,8 +3,8 @@ package:
   version: "0.11.3"
 
 source:
-  fn: Rcpp_0.11.3.tar.bz2
-  url: http://cran.r-project.org/src/contrib/Rcpp_0.11.3.tar.bz2
+  fn: Rcpp_0.11.3.tar.gz
+  url: http://cran.r-project.org/src/contrib/Rcpp_0.11.3.tar.gz
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
