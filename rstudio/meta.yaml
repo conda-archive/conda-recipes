@@ -11,7 +11,7 @@ requirements:
     - cmake
     - r
     - qt
-    - boost # [linux]
+    - boost
 
   run:
     - r
