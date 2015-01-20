@@ -30,9 +30,11 @@ build:
 requirements:
   build:
     - r
+    - nlopt
 
   run:
     - r
+    - nlopt
 
 test:
   commands:
