@@ -31,10 +31,12 @@ requirements:
   build:
     - r >=3.0.0
     - r-bitops
+    - curl # [linux]
 
   run:
     - r >=3.0.0
     - r-bitops
+    - curl # [linux]
 
 test:
   commands:
