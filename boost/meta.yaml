@@ -17,7 +17,7 @@ build:
 requirements:
   build:
     - python
-    - libpython
+    - libpython         [win]
 
 about:
   home: http://www.boost.org/
