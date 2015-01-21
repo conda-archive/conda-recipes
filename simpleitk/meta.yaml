@@ -1,15 +1,15 @@
 package:
   name: simpleitk
-  version: "0.8.0.post29"
+  version: "0.8.1"
 
 source:
   git_url: http://itk.org/SimpleITK.git
-  git_tag: 7372be074932a9916df6e061d9071d7696078a7d
+  git_tag:  v0.8.1
 
 requirements:
   build:
     - python
-    - cmake
+    - cmake      # [not win]
     - libtiff
     - libpng
     - jpeg
