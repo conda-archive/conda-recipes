@@ -1,9 +1,9 @@
 REM Rename needed boost libraries so that cmake can find them
 pushd %LIBRARY_LIB%
 for %%x in (system serialization thread python) do (
-    copy libboost_%%x-mgw47-mt-1_57.dll.a boost_%%x.dll.a
+    copy /b libboost_%%x-*.dll.a boost_%%x.dll.a
     if errorlevel 1 exit 1
-    copy libboost_%%x-mgw47-mt-1_57.dll boost_%%x.dll
+    copy /b libboost_%%x-*.dll boost_%%x.dll
     if errorlevel 1 exit 1
 )
 popd
@@ -40,7 +40,7 @@ popd
 pushd %LIBRARY_LIB%
 for %%x in (chrono system serialization thread python) do (
     for %%y in (algorithm core migration problem topology util) do (
-        copy libboost_%%x-mgw47-mt-1_57.* %PYGMO_DIR%\%%y
+        copy /b libboost_%%x-*.* %PYGMO_DIR%\%%y
         if errorlevel 1 exit 1
     )
 )
