@@ -7,5 +7,5 @@ cmake \
     -DBUILD_SHARED_LIBS=ON \
     ..
 
-make -j$(getconf _NPROCESSORS_ONLN)
+make -j${CPU_COUNT}
 make install
