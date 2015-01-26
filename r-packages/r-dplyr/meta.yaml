@@ -1,0 +1,81 @@
+package:
+  name: r-dplyr
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.4.1"
+
+source:
+  fn: dplyr_0.4.1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/dplyr_0.4.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/dplyr/dplyr_0.4.1.tar.gz
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: RSQLite (>= 1.0.0), RMySQL, RPostgreSQL, data.table, testthat, knitr, microbenchmark, ggplot2, mgcv, Lahman (>= 3.0-1), nycflights13, methods
+requirements:
+  build:
+    - r >=3.0.2
+    - r-bh >=1.51.0_2
+    - r-dbi >=0.3
+    - r-r6
+    - r-rcpp
+    - r-assertthat
+    - r-lazyeval >=0.1.10
+    - r-magrittr
+
+  run:
+    - r >=3.0.2
+    - r-bh >=1.51.0_2
+    - r-dbi >=0.3
+    - r-r6
+    - r-rcpp
+    - r-assertthat
+    - r-lazyeval >=0.1.10
+    - r-magrittr
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('dplyr')" # [not win]
+    - "\"%R%\" -e \"library('dplyr')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: MIT + file LICENSE
+  #summary:
+
+# The original CRAN metadata for this package was:
+
+# Package: dplyr
+# Version: 0.4.1
+# Depends: R (>= 3.0.2)
+# Imports: assertthat, utils, R6, Rcpp, magrittr, lazyeval (>= 0.1.10), DBI (>= 0.3)
+# LinkingTo: Rcpp (>= 0.11.3), BH (>= 1.51.0-2)
+# Suggests: RSQLite (>= 1.0.0), RMySQL, RPostgreSQL, data.table, testthat, knitr, microbenchmark, ggplot2, mgcv, Lahman (>= 3.0-1), nycflights13, methods
+# License: MIT + file LICENSE
+# NeedsCompilation: yes
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
