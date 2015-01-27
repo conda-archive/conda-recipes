@@ -1,14 +1,16 @@
 package:
   name: cookiecutter
-  version: !!str 0.9.1
+  version: {{ environ['GIT_DESCRIBE_TAG'] }}
 
 source:
-  fn: cookiecutter-0.9.1.tar.gz
-  url: https://pypi.python.org/packages/source/c/cookiecutter/cookiecutter-0.9.1.tar.gz
-  md5: ea02caabba54412eb94f8bd0ac8c9ef8
+  # fn: cookiecutter-0.9.1.tar.gz
+  # url: https://pypi.python.org/packages/source/c/cookiecutter/cookiecutter-0.9.1.tar.gz
+  # md5: ea02caabba54412eb94f8bd0ac8c9ef8
 #  patches:
    # List any patch files here
    # - fix.patch
+  git_tag: 0.9.1
+  git_url: https://github.com/audreyr/cookiecutter.git
 
 build:
   # preserve_egg_dir: True
@@ -16,7 +18,11 @@ build:
 
     - cookiecutter = cookiecutter.main:main
 
-  number: 2
+  number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
+
+  # Note that this will override the default build string with the Python
+  # and NumPy versions
+  string: {{ environ.get('GIT_BUILD_STR', '') }}
 
 requirements:
   build:
