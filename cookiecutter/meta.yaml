@@ -1,0 +1,68 @@
+package:
+  name: cookiecutter
+  version: {{ environ['GIT_DESCRIBE_TAG'] }}
+
+source:
+  # fn: cookiecutter-0.9.1.tar.gz
+  # url: https://pypi.python.org/packages/source/c/cookiecutter/cookiecutter-0.9.1.tar.gz
+  # md5: ea02caabba54412eb94f8bd0ac8c9ef8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+  git_tag: 0.9.1
+  git_url: https://github.com/audreyr/cookiecutter.git
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+
+    - cookiecutter = cookiecutter.main:main
+
+  number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
+
+  # Note that this will override the default build string with the Python
+  # and NumPy versions
+  string: {{ environ.get('GIT_BUILD_STR', '') }}
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - binaryornot >=0.2.0
+    - jinja2 >=2.4
+    - pyyaml >=3.10
+
+  run:
+    - python
+    - binaryornot >=0.2.0
+    - jinja2 >=2.4
+    - pyyaml >=3.10
+
+
+
+test:
+  # Python imports
+  imports:
+    - cookiecutter
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - cookiecutter --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/audreyr/cookiecutter
+  license: BSD License
+  summary: 'A command-line utility that creates projects from project templates, e.g. creating a Python package project from a Python package project template.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
