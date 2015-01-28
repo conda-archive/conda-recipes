@@ -3,15 +3,18 @@ package:
   version: !!str 0.3.0
 
 source:
-  fn: binaryornot-0.3.0.tar.gz
-  url: https://pypi.python.org/packages/source/b/binaryornot/binaryornot-0.3.0.tar.gz
-  md5: 8f5bdbeb5ca31075582b42fdf4ce28f5
+  git_tag: 0.3.0
+  git_url: https://github.com/audreyr/binaryornot.git
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  number: 1
+  number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
+
+  # Note that this will override the default build string with the Python
+  # and NumPy versions
+  string: {{ environ.get('GIT_BUILD_STR', '') }}
 
 requirements:
   build:
