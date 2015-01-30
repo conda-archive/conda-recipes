@@ -4,23 +4,23 @@ package:
 
 source:
   git_url: http://itk.org/SimpleITK.git
-  git_tag:  v0.8.1
+  git_tag: 260e265160887fff62fd17f4a717fdc0150cba11
 
 requirements:
   build:
     - python
     - cmake      # [not win]
-    - libtiff
-    - libpng
-    - jpeg
-    - zlib
+    - libtiff    # [not win]
+    - libpng     # [not win]
+    - jpeg       # [not win]
+    - zlib       # [not win]
     - setuptools
   run:
     - python
-    - libtiff
-    - libpng
-    - jpeg
-    - zlib
+    - libtiff    # [not win]
+    - libpng     # [not win]
+    - jpeg       # [not win]
+    - zlib       # [not win]
 
 test:
   imports:
