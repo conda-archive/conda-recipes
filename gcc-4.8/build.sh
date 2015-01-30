@@ -1,3 +1,7 @@
+if [ "$(uname)" == "Darwin" ]; then
+    export LDFLAGS="$LDFLAGS -Wl,-headerpad_max_install_names"
+fi
+
 ./configure \
     --prefix=$PREFIX \
     --libdir=$PREFIX/lib \
