@@ -1,5 +1,6 @@
 if [ "$(uname)" == "Darwin" ]; then
-    export LDFLAGS="-headerpad_max_install_names"
+    export LDFLAGS="-Wl,-headerpad_max_install_names"
+    export BOOT_LDFLAGS="-Wl,-headerpad_max_install_names"
 fi
 
 ./configure \
