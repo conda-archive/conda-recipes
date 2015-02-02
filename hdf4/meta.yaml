@@ -1,23 +1,23 @@
 package:
-    name: hdf4
-    version: 4.2.9
+  name: hdf4
+  version: 4.2.10
 
 source:
-    fn: hdf-4.2.9.tar.bz2
-    url: http://www.hdfgroup.org/ftp/HDF/releases/HDF4.2.9/src/hdf-4.2.9.tar.bz2
-    md5: c268a703f334ee4987fa710a0de9b9fc
-
-build:
-    number: 0
-
+  fn: hdf-4.2.10.tar.bz2
+  url: http://www.hdfgroup.org/ftp/HDF/HDF_Current/src/hdf-4.2.10.tar.bz2
+  md5: bf26b3caaf3c0090965c8995578375bd
+  patches: 
+    - max_files.patch
 requirements:
-    build:
-
-    run:
-
-test:
-    imports:
+  build:
+    - python
+    - jpeg
+    - zlib
+  run:
+    - python
+    - jpeg
+    - zlib
 
 about:
-    home: http://www.hdfgroup.org/HDF4/
-    license: BSD-style (http://www.hdfgroup.org/ftp/HDF/current/src/unpacked/COPYING)
+  home: http://www.hdfgroup.org
+  license: BSD-stype
