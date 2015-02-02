@@ -1,0 +1,11 @@
+diff --git setup.py setup.py
+index abf95d9..77a86a5 100644
+--- setup.py
++++ setup.py
+@@ -1,5 +1,5 @@
+ import os
+-from setuptools import setup
++from distutils.core import setup
+ 
+ kwds = {}
+ 
