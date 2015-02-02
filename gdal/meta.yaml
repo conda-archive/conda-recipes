@@ -12,7 +12,7 @@ requirements:
     - python
     - hdf4
     - hdf5 
-    - numpy >=1.9
+    - numpy 
     - geos
     - proj4
     - curl
@@ -20,7 +20,7 @@ requirements:
     - python
     - hdf5
     - hdf4
-    - numpy >=1.9
+    - numpy
     - geos
     - proj4
     - curl
