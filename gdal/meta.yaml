@@ -1,18 +1,29 @@
 package:
   name: gdal
-  version: 1.10.1
+  version: 1.11.1
 
 source:
-  fn: gdal-1.10.1.tar.gz
-  url: http://download.osgeo.org/gdal/1.10.1/gdal-1.10.1.tar.gz
-  md5: 86b2c71a910d826a7fe6ebb43a532fb7
+  fn: gdal-1.11.1.tar.gz
+  url: http://download.osgeo.org/gdal/1.11.1/gdal-1.11.1.tar.gz
+  md5: 7555f55855f613be49e6508eed0ac3fa
 
 requirements:
   build:
     - python
+    - hdf4
+    - hdf5 
+    - numpy >=1.9
+    - geos
+    - proj4
+    - curl
   run:
     - python
-
+    - hdf5
+    - hdf4
+    - numpy >=1.9
+    - geos
+    - proj4
+    - curl
 test:
   files:
     - os1_hw.py
