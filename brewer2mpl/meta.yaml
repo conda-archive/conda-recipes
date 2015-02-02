@@ -1,11 +1,11 @@
 package:
   name: brewer2mpl
-  version: !!str 1.3.2
+  version: !!str 1.4
 
 source:
-  fn: brewer2mpl-1.3.2.tar.gz
-  url: https://pypi.python.org/packages/source/b/brewer2mpl/brewer2mpl-1.3.2.tar.gz
-  md5: 7d4df4329f3022c003fa1c045619e321
+  fn: brewer2mpl-1.4.tar.gz
+  url: https://pypi.python.org/packages/source/b/brewer2mpl/brewer2mpl-1.4.tar.gz
+  md5: 49b7f7de78a5a47021aee91bee543026
 #  patches:
    # List any patch files here
    # - fix.patch
