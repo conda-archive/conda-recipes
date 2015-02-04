@@ -7,6 +7,7 @@
 --with-netcdf=$PREFIX \
 --with-xerces=$PREFIX \
 --with-sqlite3=$PREFIX \
+--with-curl=$PREFIX/bin/curl-config \
 --without-pam \
 --disable-rpath
 
