@@ -11,6 +11,11 @@ BUILD_DIR=${SRC_DIR}/build
 mkdir ${BUILD_DIR}
 cd ${BUILD_DIR}
 
+MY_PY_VER=${PY_VER}
+if [ $PY3K -eq "1" ]; then
+    MY_PY_VER="${MY_PY_VER}m"
+fi
+
 
 cmake \
     -D "CMAKE_CXX_FLAGS:STRING=-fvisibility=hidden -fvisibility-inlines-hidden ${CFLAGS}" \
@@ -34,9 +39,10 @@ cmake \
     -D ITK_USE_SYSTEM_PNG:BOOL=ON \
     -D ITK_USE_SYSTEM_TIFF:BOOL=ON \
     -D ITK_USE_SYSTEM_ZLIB:BOOL=ON \
+    -D "CMAKE_SYSTEM_PREFIX_PATH:FILEPATH=${PREFIX}" \
     -D "PYTHON_EXECUTABLE:FILEPATH=${PYTHON}" \
-    -D "PYTHON_INCLUDE_DIR:PATH=$PREFIX/include/python${PY_VER}" \
-    -D "PYTHON_LIBRARY:FILEPATH=$PREFIX/lib/libpython${PY_VER}.${SO_EXT}" \
+    -D "PYTHON_INCLUDE_DIR:PATH=$PREFIX/include/python${MY_PY_VER}" \
+    -D "PYTHON_LIBRARY:FILEPATH=$PREFIX/lib/libpython${MY_PY_VER}.${SO_EXT}" \
     "${SRC_DIR}/SuperBuild"
 
 make -j ${CORES}
