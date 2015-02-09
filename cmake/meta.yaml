@@ -1,11 +1,11 @@
 package:
   name: cmake
-  version: 3.1.1
+  version: 3.1.2
 
 source:
-  fn: cmake-3.1.1.tar.gz
-  url: http://www.cmake.org/files/v3.1/cmake-3.1.1.tar.gz
-  md5: d1c5176d111f6adec7aafb0afa00b6ec
+  fn: cmake-3.1.2.tar.gz
+  url: http://www.cmake.org/files/v3.1/cmake-3.1.2.tar.gz
+  md5: a33a4a533d5f16ac7ea50f564da48ade
 
 test:
   commands:
