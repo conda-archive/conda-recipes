@@ -49,14 +49,23 @@ test:
 about:
   #home:
   license: MIT + file LICENSE
-  #summary:
+  summary: This package provides functions to make it easy to access the RStudio API when available,
+    and provide informative error messages when not.
 
 # The original CRAN metadata for this package was:
 
 # Package: rstudioapi
+# Title: Safely access the RStudio API.
+# Description: This package provides functions to make it easy to access the RStudio API when available, and provide informative error messages when not.
 # Version: 0.2
+# Authors@R: c( person("Hadley", "Wickham", role = c("aut"), email = "hadley@rstudio.com"), person("JJ", "Allaire", role = c("aut", "cre"), email = "jj@rstudio.com"), person(family = "RStudio", role = "cph") )
+# Maintainer: JJ Allaire <jj@rstudio.com>
 # License: MIT + file LICENSE
+# Packaged: 2014-12-30 12:00:36 UTC; jjallaire
+# Author: Hadley Wickham [aut], JJ Allaire [aut, cre], RStudio [cph]
 # NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2014-12-31 01:07:34
 
 # See
 # http://docs.continuum.io/conda/build.html for

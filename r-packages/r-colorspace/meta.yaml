@@ -49,16 +49,28 @@ test:
 about:
   #home:
   license: BSD_3_clause + file LICENSE
-  #summary:
+  summary: Carries out mapping between assorted color spaces including RGB, HSV, HLS, CIEXYZ,
+    CIELUV, HCL (polar CIELUV), CIELAB and polar CIELAB. Qualitative, sequential, and
+    diverging color palettes based on HCL colors are provided.
 
 # The original CRAN metadata for this package was:
 
 # Package: colorspace
 # Version: 1.2-4
+# Date: 2013-09-30
+# Title: Color Space Manipulation
+# Authors@R: c(person(given = "Ross", family = "Ihaka", role = "aut", email = "ihaka@stat.auckland.ac.nz"), person(given = "Paul", family = "Murrell", role = "aut", email = "paul@stat.auckland.ac.nz"), person(given = "Kurt", family = "Hornik", role = "aut", email = "Kurt.Hornik@R-project.org"), person(given = c("Jason", "C."), family = "Fisher", role = "aut", email = "jfisher@usgs.gov"), person(given = "Achim", family = "Zeileis", role = c("aut", "cre"), email = "Achim.Zeileis@R-project.org"))
+# Description: Carries out mapping between assorted color spaces including RGB, HSV, HLS, CIEXYZ, CIELUV, HCL (polar CIELUV), CIELAB and polar CIELAB. Qualitative, sequential, and diverging color palettes based on HCL colors are provided.
 # Depends: R (>= 2.13.0), methods
 # Suggests: KernSmooth, MASS, kernlab, mvtnorm, vcd, tcltk, dichromat
 # License: BSD_3_clause + file LICENSE
+# LazyData: yes
+# Packaged: 2013-09-30 05:25:23 UTC; zeileis
+# Author: Ross Ihaka [aut], Paul Murrell [aut], Kurt Hornik [aut], Jason C. Fisher [aut], Achim Zeileis [aut, cre]
+# Maintainer: Achim Zeileis <Achim.Zeileis@R-project.org>
 # NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2013-09-30 07:37:29
 
 # See
 # http://docs.continuum.io/conda/build.html for

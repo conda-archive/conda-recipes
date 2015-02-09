@@ -65,19 +65,32 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: http://biostat.mc.vanderbilt.edu/Hmisc, https://github.com/harrelfe/Hmisc
   license: GPL (>= 2)
-  #summary:
+  summary: The Hmisc package contains many functions useful for data analysis, high-level graphics,
+    utility operations, functions for computing sample size and power, importing datasets,
+    imputing missing values, advanced table making, variable clustering, character string
+    manipulation, conversion of R objects to LaTeX code, and recoding variables.
 
 # The original CRAN metadata for this package was:
 
 # Package: Hmisc
 # Version: 3.14-6
+# Date: 2014-11-16
+# Title: Harrell Miscellaneous
+# Author: Frank E Harrell Jr <f.harrell@vanderbilt.edu>, with contributions from Charles Dupont and many others.
+# Maintainer: Frank E Harrell Jr <f.harrell@vanderbilt.edu>
 # Depends: methods, grid, lattice, survival (>= 2.37-6), Formula
 # Imports: latticeExtra, cluster, rpart, nnet, acepack, foreign
 # Suggests: chron, rms, mice, tables
+# Description: The Hmisc package contains many functions useful for data analysis, high-level graphics, utility operations, functions for computing sample size and power, importing datasets, imputing missing values, advanced table making, variable clustering, character string manipulation, conversion of R objects to LaTeX code, and recoding variables.
 # License: GPL (>= 2)
+# LazyLoad: Yes
+# URL: http://biostat.mc.vanderbilt.edu/Hmisc, https://github.com/harrelfe/Hmisc
+# Packaged: 2014-11-21 18:05:11 UTC; harrelfe
 # NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2014-11-22 00:42:24
 
 # See
 # http://docs.continuum.io/conda/build.html for

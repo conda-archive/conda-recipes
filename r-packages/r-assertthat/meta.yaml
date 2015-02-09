@@ -49,15 +49,26 @@ test:
 about:
   #home:
   license: GPL-3
-  #summary:
+  summary: assertthat is an extension to stopifnot() that makes it easy to declare the pre and
+    post conditions that you code should satisfy, while also producing friendly error
+    messages so that your users know what they've done wrong.
 
 # The original CRAN metadata for this package was:
 
 # Package: assertthat
+# Title: Easy pre and post assertions.
 # Version: 0.1
-# Suggests: testthat
+# Authors@R: 'Hadley Wickham <h.wickham@gmail.com> [aut,cre]'
+# Description: assertthat is an extension to stopifnot() that makes it easy to declare the pre and post conditions that you code should satisfy, while also producing friendly error messages so that your users know what they've done wrong.
 # License: GPL-3
+# Suggests: testthat
+# Collate: 'assert-that.r' 'on-failure.r' 'assertions-file.r' 'assertions-scalar.R' 'assertions.r' 'base.r' 'base-comparison.r' 'base-is.r' 'base-logical.r' 'base-misc.r' 'utils.r' 'validate-that.R'
+# Packaged: 2013-12-05 18:46:37 UTC; hadley
+# Author: 'Hadley Wickham' [aut, cre]
+# Maintainer: 'Hadley Wickham' <h.wickham@gmail.com>
 # NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2013-12-06 00:51:10
 
 # See
 # http://docs.continuum.io/conda/build.html for

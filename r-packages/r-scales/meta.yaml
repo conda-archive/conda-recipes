@@ -57,19 +57,32 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: https://github.com/hadley/scales
   license: MIT + file LICENSE
-  #summary:
+  summary: Scales map data to aesthetics, and provide methods for automatically determining breaks
+    and labels for axes and legends.
 
 # The original CRAN metadata for this package was:
 
 # Package: scales
+# Type: Package
+# Title: Scale functions for graphics.
 # Version: 0.2.4
+# Author: Hadley Wickham <h.wickham@gmail.com>
+# Maintainer: Hadley Wickham <h.wickham@gmail.com>
+# Description: Scales map data to aesthetics, and provide methods for automatically determining breaks and labels for axes and legends.
+# URL: https://github.com/hadley/scales
+# BugReports: https://github.com/hadley/scales/issues
 # Depends: R (>= 2.13)
 # Imports: RColorBrewer, dichromat, munsell (>= 0.2), plyr (>= 1.2), labeling, methods
 # Suggests: testthat (>= 0.8)
 # License: MIT + file LICENSE
+# LazyLoad: yes
+# BuildManual: yes
+# Packaged: 2014-04-21 22:24:36 UTC; hadley
 # NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2014-04-22 10:50:55
 
 # See
 # http://docs.continuum.io/conda/build.html for

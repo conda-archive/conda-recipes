@@ -53,18 +53,28 @@ test:
 about:
   #home:
   license: GPL (>= 2)
-  #summary:
+  summary: Routines for GAMs and other generalized ridge regression   with multiple smoothing
+    parameter selection by GCV, REML   or UBRE/AIC. Also GAMMs. Includes a gam() function.
 
 # The original CRAN metadata for this package was:
 
 # Package: mgcv
 # Version: 1.8-4
+# Author: Simon Wood <simon.wood@r-project.org>
+# Maintainer: Simon Wood <simon.wood@r-project.org>
+# Title: Mixed GAM Computation Vehicle with GCV/AIC/REML smoothness estimation
+# Description: Routines for GAMs and other generalized ridge regression   with multiple smoothing parameter selection by GCV, REML   or UBRE/AIC. Also GAMMs. Includes a gam() function.
 # Priority: recommended
 # Depends: R (>= 2.14.0), nlme (>= 3.1-64)
 # Imports: methods, stats, graphics, Matrix
 # Suggests: splines, parallel, survival, MASS
+# LazyLoad: yes
+# ByteCompile: yes
 # License: GPL (>= 2)
+# Packaged: 2014-11-27 09:49:02 UTC; sw283
 # NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2014-11-27 13:16:04
 
 # See
 # http://docs.continuum.io/conda/build.html for

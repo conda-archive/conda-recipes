@@ -49,19 +49,32 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: http://igraph.org
   license: GPL (>= 2)
-  #summary:
+  summary: Routines for simple graphs and network analysis. igraph can handle large graphs very
+    well and provides functions for generating random and regular graphs, graph visualization,
+    centrality indices and much more.
 
 # The original CRAN metadata for this package was:
 
 # Package: igraph
 # Version: 0.7.1
+# Date: 2014-04-22
+# Title: Network analysis and visualization
+# Author: See AUTHORS file.
+# Maintainer: Gabor Csardi <csardi.gabor@gmail.com>
+# Description: Routines for simple graphs and network analysis. igraph can handle large graphs very well and provides functions for generating random and regular graphs, graph visualization, centrality indices and much more.
 # Depends: methods
 # Imports: Matrix
 # Suggests: igraphdata, stats4, rgl, tcltk, graph, ape
 # License: GPL (>= 2)
+# URL: http://igraph.org
+# SystemRequirements: gmp, libxml2
+# BugReports: https://github.com/igraph/igraph/issues
+# Packaged: 2014-04-22 18:00:26 UTC; gaborcsardi
 # NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2014-04-22 23:08:29
 
 # See
 # http://docs.continuum.io/conda/build.html for

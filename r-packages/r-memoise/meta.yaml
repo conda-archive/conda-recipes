@@ -49,17 +49,27 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: http://github.com/hadley/memoise
   license: MIT + file LICENSE
-  #summary:
+  summary: Cache the results of a function so that when you call it again with the same arguments
+    it returns the pre-computed value.
 
 # The original CRAN metadata for this package was:
 
 # Package: memoise
+# Title: Memoise functions
 # Version: 0.2.1
+# Author: Hadley Wickham <h.wickham@gmail.com>
+# Maintainer: Hadley Wickham <h.wickham@gmail.com>
+# Description: Cache the results of a function so that when you call it again with the same arguments it returns the pre-computed value.
+# URL: http://github.com/hadley/memoise
+# BugReports: http://github.com/hadley/memoise/issues
 # Imports: digest
 # License: MIT + file LICENSE
+# Packaged: 2014-04-21 22:42:55 UTC; hadley
 # NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2014-04-22 07:23:30
 
 # See
 # http://docs.continuum.io/conda/build.html for

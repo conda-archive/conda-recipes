@@ -49,14 +49,31 @@ test:
 about:
   #home:
   license: BSL-1.0
-  #summary:
+  summary: 'Boost provides free peer-reviewed portable C++ source  libraries.  A large part of
+    Boost is provided as C++ template code which is resolved entirely at compile-time
+    without linking.  This  package aims to provide the most useful subset of Boost
+    libraries  for template use among CRAN package. By placing these libraries in  this
+    package, we offer a more efficient distribution system for CRAN  as replication
+    of this code in the sources of other packages is  avoided. '
+
 
 # The original CRAN metadata for this package was:
 
 # Package: BH
+# Type: Package
+# Title: Boost C++ Header Files
 # Version: 1.55.0-3
+# Date: 2015-01-04
+# Author: Dirk Eddelbuettel, John W. Emerson and Michael J. Kane
+# Maintainer: Dirk Eddelbuettel <edd@debian.org>
+# Description: Boost provides free peer-reviewed portable C++ source  libraries.  A large part of Boost is provided as C++ template code which is resolved entirely at compile-time without linking.  This  package aims to provide the most useful subset of Boost libraries  for template use among CRAN package. By placing these libraries in  this package, we offer a more efficient distribution system for CRAN  as replication of this code in the sources of other packages is  avoided.
 # License: BSL-1.0
+# MailingList: Please send questions and comments regarding BH to http://lists.r-forge.r-project.org/cgi-bin/mailman/listinfo/boostheaders-devel
+# BugReports: https://github.com/eddelbuettel/bh/issues
+# Packaged: 2015-01-04 18:05:03.7939 UTC; edd
 # NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2015-01-05 23:21:12
 
 # See
 # http://docs.continuum.io/conda/build.html for

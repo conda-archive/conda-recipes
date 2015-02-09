@@ -61,19 +61,32 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: https://github.com/jimhester/lintr
   license: MIT + file LICENSE
-  #summary:
+  summary: Checks adherence to a given style, syntax errors and possible semantic issues.  Supports
+    on the fly checking of R code edited with Emacs, Vim and Sublime Text.
 
 # The original CRAN metadata for this package was:
 
 # Package: lintr
+# Title: Static R Code Analysis
 # Version: 0.2.0
+# Authors@R: "Jim Hester <james.f.hester@gmail.com> [aut, cre]"
+# URL: https://github.com/jimhester/lintr
+# BugReports: https://github.com/jimhester/lintr/issues
+# Description: Checks adherence to a given style, syntax errors and possible semantic issues.  Supports on the fly checking of R code edited with Emacs, Vim and Sublime Text.
 # Depends: R (>= 3.1.1)
 # Imports: rex, crayon, codetools, stringdist, testthat, digest, igraph
-# Suggests: knitr
 # License: MIT + file LICENSE
+# LazyData: true
+# Suggests: knitr
+# VignetteBuilder: knitr
+# Packaged: 2014-12-01 02:53:22 UTC; james.hester
+# Author: "Jim Hester" [aut, cre]
+# Maintainer: "Jim Hester" <james.f.hester@gmail.com>
 # NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2014-12-01 09:09:24
 
 # See
 # http://docs.continuum.io/conda/build.html for

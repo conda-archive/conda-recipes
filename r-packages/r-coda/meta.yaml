@@ -51,14 +51,23 @@ test:
 about:
   #home:
   license: GPL (>= 2)
-  #summary:
+  summary: Output analysis and diagnostics for Markov Chain Monte Carlo simulations.
 
 # The original CRAN metadata for this package was:
 
 # Package: coda
 # Version: 0.16-1
+# Date: 2012-11-06
+# Title: Output analysis and diagnostics for MCMC
+# Authors@R: c(person("Martyn", "Plummer", role=c("aut","cre","trl"), email="plummerm@iarc.fr"), person("Nicky", "Best", role="aut"), person("Kate", "Cowles", role="aut"), person("Karen", "Vines", role="aut"), person("Deepayan", "Sarkar", role="aut"), person("Russell", "Almond", role="ctb"))
 # Depends: R (>= 2.14.0), lattice
+# Description: Output analysis and diagnostics for Markov Chain Monte Carlo simulations.
 # License: GPL (>= 2)
+# Packaged: 2012-11-06 13:12:03 UTC; martyn
+# Author: Martyn Plummer [aut, cre, trl], Nicky Best [aut], Kate Cowles [aut], Karen Vines [aut], Deepayan Sarkar [aut], Russell Almond [ctb]
+# Maintainer: Martyn Plummer <plummerm@iarc.fr>
+# Repository: CRAN
+# Date/Publication: 2012-11-06 13:24:00
 # NeedsCompilation: no
 
 # See

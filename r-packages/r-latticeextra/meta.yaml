@@ -51,19 +51,30 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: http://latticeextra.r-forge.r-project.org/
   license: GPL (>= 2)
-  #summary:
+  summary: Extra graphical utilities based on lattice
 
 # The original CRAN metadata for this package was:
 
 # Package: latticeExtra
 # Version: 0.6-26
+# Date: 2013/08/15
+# Title: Extra Graphical Utilities Based on Lattice
+# Author: Deepayan Sarkar <deepayan.sarkar@r-project.org>, Felix Andrews <felix@nfrac.org>
+# Maintainer: Deepayan Sarkar <deepayan.sarkar@r-project.org>
+# Description: Extra graphical utilities based on lattice
 # Depends: R (>= 2.10.0), RColorBrewer, lattice (>= 0.18-1)
 # Imports: grid
 # Suggests: maps, mapproj, deldir, tripack, quantreg, zoo, MASS, mgcv
+# URL: http://latticeextra.r-forge.r-project.org/
+# LazyLoad: yes
+# LazyData: yes
 # License: GPL (>= 2)
+# Packaged: 2013-08-15 16:03:24 UTC; deepayan
 # NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2013-08-15 18:21:41
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -49,19 +49,32 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: http://ram-n.github.io/weatherData/
   license: GPL
-  #summary:
+  summary: Functions that help in fetching weather data from websites. Given a location and a
+    date range, these functions help fetch weather data (temperature, pressure etc.)
+    for any weather related analysis.
 
 # The original CRAN metadata for this package was:
 
 # Package: weatherData
+# Type: Package
+# Title: Get Weather Data from the Web
+# Description: Functions that help in fetching weather data from websites. Given a location and a date range, these functions help fetch weather data (temperature, pressure etc.) for any weather related analysis.
+# URL: http://ram-n.github.io/weatherData/
 # Version: 0.4.1
-# Depends: R (>= 2.10)
-# Imports: plyr
+# Date: 2014-06-23
+# Author: Ram Narasimhan
 # Suggests: testthat
+# Imports: plyr
+# Maintainer: Ram Narasimhan <ramnarasimhan@gmail.com>
+# LazyData: TRUE
 # License: GPL
+# Packaged: 2014-06-24 14:44:23 UTC; 212310464
+# Depends: R (>= 2.10)
 # NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2014-06-24 17:17:14
 
 # See
 # http://docs.continuum.io/conda/build.html for

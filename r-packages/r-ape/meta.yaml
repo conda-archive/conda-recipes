@@ -51,19 +51,41 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: http://ape-package.ird.fr/
   license: GPL (>= 2)
-  #summary:
+  summary: ape provides functions for reading, writing, plotting, and manipulating phylogenetic
+    trees, analyses of comparative data in a phylogenetic framework, ancestral character
+    analyses, analyses of diversification and macroevolution, computing distances from
+    allelic and nucleotide data, reading and writing nucleotide sequences as well as
+    importing from BioConductor, and several tools such as Mantel's test, generalized
+    skyline plots, graphical exploration of phylogenetic data (alex, trex, kronoviz),
+    estimation of absolute evolutionary rates and clock-like trees using mean path lengths
+    and penalized likelihood. Phylogeny estimation can be done with the NJ, BIONJ, ME,
+    MVR, SDM, and triangle methods, and several methods handling incomplete distance
+    matrices (NJ*, BIONJ*, MVR*, and the corresponding triangle method). Some functions
+    call external applications (PhyML, Clustal, T-Coffee, Muscle) whose results are
+    returned into R.
 
 # The original CRAN metadata for this package was:
 
 # Package: ape
 # Version: 3.2
+# Date: 2014-12-05
+# Title: Analyses of Phylogenetics and Evolution
+# Authors@R: c(person("Emmanuel", "Paradis", role = c("aut", "cre", "cph"), email = "Emmanuel.Paradis@ird.fr"), person("Simon", "Blomberg", role = c("aut", "cph")), person("Ben", "Bolker", role = c("aut", "cph")), person("Julien", "Claude", role = c("aut", "cph")), person("Hoa Sien", "Cuong", role = c("aut", "cph")), person("Richard", "Desper", role = c("aut", "cph")), person("Gilles", "Didier", role = c("aut", "cph")), person("Benoit", "Durand", role = c("aut", "cph")), person("Julien", "Dutheil", role = c("aut", "cph")), person("Olivier", "Gascuel", role = c("aut", "cph")), person("Christoph", "Heibl", role = c("aut", "cph")), person("Daniel", "Lawson", role = c("aut", "cph")), person("Vincent", "Lefort", role = c("aut", "cph")), person("Pierre", "Legendre", role = c("aut", "cph")), person("Jim", "Lemon", role = c("aut", "cph")), person("Rosemary", "McCloskey", role = c("aut", "cph")), person("Johan", "Nylander", role = c("aut", "cph")), person("Rainer", "Opgen-Rhein", role = c("aut", "cph")), person("Andrei-Alin", "Popescu", role = c("aut", "cph")), person("Manuela", "Royer-Carenzi", role = c("aut", "cph")), person("Klaus", "Schliep", role = c("aut", "cph")), person("Korbinian", "Strimmer", role = c("aut", "cph")), person("Damien", "de Vienne", role = c("aut", "cph")))
 # Depends: R (>= 3.0.0)
-# Imports: nlme, lattice, graphics, stats, tools, utils, parallel
 # Suggests: gee, expm
+# Imports: nlme, lattice, graphics, stats, tools, utils, parallel
+# ZipData: no
+# Description: ape provides functions for reading, writing, plotting, and manipulating phylogenetic trees, analyses of comparative data in a phylogenetic framework, ancestral character analyses, analyses of diversification and macroevolution, computing distances from allelic and nucleotide data, reading and writing nucleotide sequences as well as importing from BioConductor, and several tools such as Mantel's test, generalized skyline plots, graphical exploration of phylogenetic data (alex, trex, kronoviz), estimation of absolute evolutionary rates and clock-like trees using mean path lengths and penalized likelihood. Phylogeny estimation can be done with the NJ, BIONJ, ME, MVR, SDM, and triangle methods, and several methods handling incomplete distance matrices (NJ*, BIONJ*, MVR*, and the corresponding triangle method). Some functions call external applications (PhyML, Clustal, T-Coffee, Muscle) whose results are returned into R.
 # License: GPL (>= 2)
+# URL: http://ape-package.ird.fr/
+# Packaged: 2014-12-04 21:10:22 UTC; paradis
+# Author: Emmanuel Paradis [aut, cre, cph], Simon Blomberg [aut, cph], Ben Bolker [aut, cph], Julien Claude [aut, cph], Hoa Sien Cuong [aut, cph], Richard Desper [aut, cph], Gilles Didier [aut, cph], Benoit Durand [aut, cph], Julien Dutheil [aut, cph], Olivier Gascuel [aut, cph], Christoph Heibl [aut, cph], Daniel Lawson [aut, cph], Vincent Lefort [aut, cph], Pierre Legendre [aut, cph], Jim Lemon [aut, cph], Rosemary McCloskey [aut, cph], Johan Nylander [aut, cph], Rainer Opgen-Rhein [aut, cph], Andrei-Alin Popescu [aut, cph], Manuela Royer-Carenzi [aut, cph], Klaus Schliep [aut, cph], Korbinian Strimmer [aut, cph], Damien de Vienne [aut, cph]
+# Maintainer: Emmanuel Paradis <Emmanuel.Paradis@ird.fr>
 # NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2014-12-05 17:18:03
 
 # See
 # http://docs.continuum.io/conda/build.html for

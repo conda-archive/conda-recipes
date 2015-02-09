@@ -49,13 +49,20 @@ test:
 about:
   #home:
   license: MIT + file LICENSE
-  #summary:
+  summary: ACE and AVAS methods for choosing regression transformations.
 
 # The original CRAN metadata for this package was:
 
 # Package: acepack
+# Maintainer: Jonathan Baron <baron@psych.upenn.edu>
 # Version: 1.3-3.3
+# Author: Phil Spector, Jerome Friedman, Robert Tibshirani, Thomas Lumley
+# Description: ACE and AVAS methods for choosing regression transformations.
+# Title: ace() and avas() for selecting regression transformations
 # License: MIT + file LICENSE
+# Packaged: 2014-11-24 11:35:02 UTC; baron
+# Repository: CRAN
+# Date/Publication: 2014-11-24 12:48:55
 # NeedsCompilation: yes
 
 # See

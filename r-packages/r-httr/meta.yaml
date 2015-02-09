@@ -59,19 +59,31 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: https://github.com/hadley/httr
   license: MIT + file LICENSE
-  #summary:
+  summary: Useful tools for working with HTTP organised by HTTP verbs (GET(), POST(), etc). Configuration
+    functions make it easy to control additional request components (authenticate(),
+    add_headers() and so on).
 
 # The original CRAN metadata for this package was:
 
 # Package: httr
 # Version: 0.6.1
+# Title: Tools for Working with URLs and HTTP
+# Description: Useful tools for working with HTTP organised by HTTP verbs (GET(), POST(), etc). Configuration functions make it easy to control additional request components (authenticate(), add_headers() and so on).
+# Authors@R: as.person(c( "Hadley Wickham <hadley@rstudio.com> [cre, aut, cph]", "RStudio [cph]" ))
 # Depends: R (>= 3.0.0)
 # Imports: digest, jsonlite, methods, mime, RCurl (>= 1.95-0), R6, stringr (>= 0.6.1)
 # Suggests: base64enc, httpuv, jpeg, knitr, PKI (>= 0.1-2), png, testthat (>= 0.8.0), XML
+# VignetteBuilder: knitr
 # License: MIT + file LICENSE
+# URL: https://github.com/hadley/httr
+# Packaged: 2014-12-31 20:19:10 UTC; hadley
+# Author: Hadley Wickham [cre, aut, cph], RStudio [cph]
+# Maintainer: Hadley Wickham <hadley@rstudio.com>
 # NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2015-01-01 05:49:55
 
 # See
 # http://docs.continuum.io/conda/build.html for

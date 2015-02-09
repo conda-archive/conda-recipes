@@ -47,17 +47,31 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: https://github.com/yihui/mime
   license: GPL
-  #summary:
+  summary: This package guesses the MIME type from a filename extension using the data derived
+    from /etc/mime.types in UNIX-type systems.
 
 # The original CRAN metadata for this package was:
 
 # Package: mime
+# Type: Package
+# Title: Map filenames to MIME types
 # Version: 0.2
+# Date: 2014-09-27
+# Authors@R: c(person("Jeffrey", "Horner", role = "ctb"), person("Yihui", "Xie", role = c("aut", "cre"), email = "xie@yihui.name"))
+# Maintainer: Yihui Xie <xie@yihui.name>
+# Description: This package guesses the MIME type from a filename extension using the data derived from /etc/mime.types in UNIX-type systems.
 # Imports: tools
 # License: GPL
+# URL: https://github.com/yihui/mime
+# BugReports: https://github.com/yihui/mime/issues
+# LazyData: TRUE
+# Packaged: 2014-09-26 19:35:03 UTC; yihui
+# Author: Jeffrey Horner [ctb], Yihui Xie [aut, cre]
 # NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2014-09-26 23:43:41
 
 # See
 # http://docs.continuum.io/conda/build.html for

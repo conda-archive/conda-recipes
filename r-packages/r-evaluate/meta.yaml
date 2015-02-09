@@ -51,17 +51,28 @@ test:
 about:
   #home:
   license: GPL
-  #summary:
+  summary: Parsing and evaluation tools that make it easy to recreate the command line behaviour
+    of R.
 
 # The original CRAN metadata for this package was:
 
 # Package: evaluate
+# Type: Package
+# Title: Parsing and evaluation tools that provide more details than the default.
 # Version: 0.5.5
+# Date: 2014-04-30
+# Authors@R: c(person("Hadley", "Wickham", role = "aut"), person("Yihui", "Xie", role = c("cre", "ctb"), email = "xie@yihui.name"), person("Barret", "Schloerke", role = "ctb"))
+# Description: Parsing and evaluation tools that make it easy to recreate the command line behaviour of R.
+# License: GPL
 # Depends: R (>= 2.14.0)
 # Imports: stringr (>= 0.6.2)
 # Suggests: testthat, lattice, ggplot2
-# License: GPL
+# Packaged: 2014-04-29 19:01:11 UTC; yihui
+# Author: Hadley Wickham [aut], Yihui Xie [cre, ctb], Barret Schloerke [ctb]
+# Maintainer: Yihui Xie <xie@yihui.name>
 # NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2014-04-29 22:08:31
 
 # See
 # http://docs.continuum.io/conda/build.html for

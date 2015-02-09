@@ -49,15 +49,29 @@ test:
 about:
   #home:
   license: GPL-2
-  #summary:
+  summary: 'stringr is a set of simple wrappers that make R''s string functions more consistent,
+    simpler and easier to use.  It does this by ensuring that: function and argument
+    names (and positions) are consistent, all functions deal with NA''s and zero length
+    character appropriately, and the output data structures from each function matches
+    the input data structures of other functions.'
+
 
 # The original CRAN metadata for this package was:
 
 # Package: stringr
+# Maintainer: Hadley Wickham <h.wickham@gmail.com>
+# License: GPL-2
+# Title: Make it easier to work with strings.
+# Type: Package
+# Author: Hadley Wickham <h.wickham@gmail.com>
+# Description: stringr is a set of simple wrappers that make R's string functions more consistent, simpler and easier to use.  It does this by ensuring that: function and argument names (and positions) are consistent, all functions deal with NA's and zero length character appropriately, and the output data structures from each function matches the input data structures of other functions.
 # Version: 0.6.2
 # Depends: R (>= 2.14)
 # Suggests: testthat (>= 0.3)
-# License: GPL-2
+# Collate: 'c.r' 'checks.r' 'count.r' 'detect.r' 'dup.r' 'extract.r' 'length.r' 'locate.r' 'match.r' 'modifiers.r' 'pad-trim.r' 'replace.r' 'split.r' 'sub.r' 'vectorise.r' 'word.r' 'wrap.r' 'utils.r'
+# Packaged: 2012-12-05 21:47:03 UTC; hadley
+# Repository: CRAN
+# Date/Publication: 2012-12-06 08:39:59
 # NeedsCompilation: no
 
 # See

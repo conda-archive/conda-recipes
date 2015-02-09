@@ -51,18 +51,32 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: https://github.com/kevinushey/rex
   license: MIT + file LICENSE
-  #summary:
+  summary: A more friendly, human-readable interface for the construction of regular expressions.
 
 # The original CRAN metadata for this package was:
 
 # Package: rex
+# Type: Package
+# Title: Friendly Regular Expressions
 # Version: 0.2.0
+# Date: 2014-10-31
+# Authors@R: as.person(c( "Kevin Ushey <kevinushey@gmail.com> [aut]", "Jim Hester <james.f.hester@gmail.com> [cre, aut]" ))
+# Maintainer: Jim Hester <james.f.hester@gmail.com>
+# URL: https://github.com/kevinushey/rex
+# BugReports: https://github.com/kevinushey/rex/issues
+# Description: A more friendly, human-readable interface for the construction of regular expressions.
 # Imports: magrittr, lazyeval
-# Suggests: testthat, knitr, dplyr, ggplot2
 # License: MIT + file LICENSE
+# Suggests: testthat, knitr, dplyr, ggplot2
+# VignetteBuilder: knitr
+# Collate: 'aaa.R' 'utils.R' 'escape.R' 'capture.R' 'character_class.R' 'counts.R' 'lookarounds.R' 'match.R' 'or.R' 'rex-mode.R' 'rex.R' 'shortcuts.R' 'wildcards.R' 'zzz.R'
+# Packaged: 2014-11-26 17:22:14 UTC; james.hester
+# Author: Kevin Ushey [aut], Jim Hester [cre, aut]
 # NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2014-11-26 18:49:27
 
 # See
 # http://docs.continuum.io/conda/build.html for

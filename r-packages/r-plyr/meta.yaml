@@ -30,11 +30,11 @@ build:
 requirements:
   build:
     - r >=2.11.0
-    - r-rcpp
+    - r-rcpp >=0.11.0
 
   run:
     - r >=2.11.0
-    - r-rcpp
+    - r-rcpp >=0.11.0
 
 test:
   commands:
@@ -49,20 +49,36 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: http://had.co.nz/plyr
   license: MIT + file LICENSE
-  #summary:
+  summary: 'plyr is a set of tools that solves a common set of problems: you need to break a
+    big problem down into manageable pieces, operate on each pieces and then put all
+    the pieces back together.  For example, you might want to fit a model to each spatial
+    location or time point in your study, summarise data by panels or collapse high-dimensional
+    arrays to simpler summary statistics. The development of plyr has been generously
+    supported by BD (Becton Dickinson).'
+
 
 # The original CRAN metadata for this package was:
 
 # Package: plyr
+# Type: Package
+# Title: Tools for splitting, applying and combining data
 # Version: 1.8.1
+# Author: Hadley Wickham <h.wickham@gmail.com>
+# Maintainer: Hadley Wickham <h.wickham@gmail.com>
+# Description: plyr is a set of tools that solves a common set of problems: you need to break a big problem down into manageable pieces, operate on each pieces and then put all the pieces back together.  For example, you might want to fit a model to each spatial location or time point in your study, summarise data by panels or collapse high-dimensional arrays to simpler summary statistics. The development of plyr has been generously supported by BD (Becton Dickinson).
+# URL: http://had.co.nz/plyr
 # Depends: R (>= 2.11.0)
 # Imports: Rcpp (>= 0.11.0)
 # LinkingTo: Rcpp
 # Suggests: abind, testthat, tcltk, foreach, doMC, itertools, iterators
 # License: MIT + file LICENSE
+# LazyData: true
+# Packaged: 2014-02-26 16:06:36 UTC; hadley
 # NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2014-02-26 17:25:17
 
 # See
 # http://docs.continuum.io/conda/build.html for

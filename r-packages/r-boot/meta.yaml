@@ -49,17 +49,30 @@ test:
 about:
   #home:
   license: Unlimited
-  #summary:
+  summary: functions and datasets for bootstrapping from the book "Bootstrap Methods and Their
+    Applications" by A. C. Davison and  D. V. Hinkley (1997, CUP).
 
 # The original CRAN metadata for this package was:
 
 # Package: boot
-# Version: 1.3-14
 # Priority: recommended
+# Version: 1.3-14
+# Date: 2015-01-10
+# Authors@R: c(person("Angelo", "Canty", role = "aut", email = "cantya@mcmaster.ca"), person("Brian", "Ripley", role = c("aut", "trl", "cre"), email = "ripley@stats.ox.ac.uk", comment = "author of parallel support"))
+# Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
+# Note: Maintainers are not available to give advice on using a package they did not author.
+# Description: functions and datasets for bootstrapping from the book "Bootstrap Methods and Their Applications" by A. C. Davison and  D. V. Hinkley (1997, CUP).
+# Title: Bootstrap Functions (originally by Angelo Canty for S)
 # Depends: R (>= 3.0.0), graphics, stats
 # Suggests: MASS, survival
+# LazyData: yes
+# ByteCompile: yes
 # License: Unlimited
+# Packaged: 2015-01-10 08:31:54 UTC; ripley
+# Author: Angelo Canty [aut], Brian Ripley [aut, trl, cre] (author of parallel support)
 # NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2015-01-10 12:52:21
 
 # See
 # http://docs.continuum.io/conda/build.html for

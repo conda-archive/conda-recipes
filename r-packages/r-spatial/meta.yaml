@@ -47,19 +47,31 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: http://www.stats.ox.ac.uk/pub/MASS4/
   license: GPL-2 | GPL-3
-  #summary:
+  summary: Functions for kriging and point pattern analysis.
 
 # The original CRAN metadata for this package was:
 
 # Package: spatial
-# Version: 7.3-8
 # Priority: recommended
+# Version: 7.3-8
+# Date: 2014-03-28
 # Depends: R (>= 3.0.0), graphics, stats, utils
 # Suggests: MASS
+# Authors@R: c(person("Brian", "Ripley", role = c("aut", "cre", "cph"), email = "ripley@stats.ox.ac.uk"), person("Roger", "Bivand", role = "ctb"), person("William", "Venables", role = "cph"))
+# Description: Functions for kriging and point pattern analysis.
+# Title: Functions for Kriging and Point Pattern Analysis
+# LazyLoad: yes
+# ByteCompile: yes
 # License: GPL-2 | GPL-3
+# URL: http://www.stats.ox.ac.uk/pub/MASS4/
+# Packaged: 2014-03-28 07:36:07 UTC; ripley
+# Author: Brian Ripley [aut, cre, cph], Roger Bivand [ctb], William Venables [cph]
+# Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
 # NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2014-03-28 09:12:09
 
 # See
 # http://docs.continuum.io/conda/build.html for

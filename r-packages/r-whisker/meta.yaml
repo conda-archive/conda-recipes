@@ -47,17 +47,29 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: http://github.com/edwindj/whisker
   license: GPL-3
-  #summary:
+  summary: logicless templating, reuse templates in many programming languages including R
 
 # The original CRAN metadata for this package was:
 
 # Package: whisker
-# Version: 0.3-2
-# Suggests: markdown
+# Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
 # License: GPL-3
+# Title: {{mustache}} for R, logicless templating
+# Type: Package
+# LazyLoad: yes
+# Author: Edwin de Jonge
+# Description: logicless templating, reuse templates in many programming languages including R
+# Version: 0.3-2
+# URL: http://github.com/edwindj/whisker
+# Date: 2010-12-23
+# Collate: 'whisker.R' 'section.R' 'parseTemplate.R' 'partials.R' 'inverted.R' 'pkg.R' 'iteratelist.R' 'delim.R' 'markdown.R' 'rowsplit.R'
+# Suggests: markdown
+# Packaged: 2013-04-27 22:49:33 UTC; Edwin
 # NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2013-04-28 07:55:20
 
 # See
 # http://docs.continuum.io/conda/build.html for

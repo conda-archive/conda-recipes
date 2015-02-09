@@ -49,17 +49,31 @@ test:
 about:
   #home:
   license: GPL (>= 2)
-  #summary:
+  summary: Functions for reading and writing data stored by some versions of Epi Info, Minitab,
+    S, SAS, SPSS, Stata, Systat and Weka and for reading and writing some dBase files.
 
 # The original CRAN metadata for this package was:
 
 # Package: foreign
-# Version: 0.8-62
 # Priority: recommended
+# Version: 0.8-62
+# Date: 2015-01-07
+# Title: Read Data Stored by Minitab, S, SAS, SPSS, Stata, Systat, Weka, dBase, ...
 # Depends: R (>= 3.0.0), stats
 # Imports: methods, utils
+# Authors@R: c( person("R Core Team", email = "R-core@R-project.org", role = c("aut", "cph", "cre")), person("Roger", "Bivand", role = c("ctb", "cph")), person(c("Vincent", "J."), "Carey", role = c("ctb", "cph")), person("Saikat", "DebRoy", role = c("ctb", "cph")), person("Stephen", "Eglen", role = c("ctb", "cph")), person("Rajarshi", "Guha", role = c("ctb", "cph")), person("Nicholas", "Lewin-Koh", role = c("ctb", "cph")), person("Mark", "Myatt", role = c("ctb", "cph")), person("Ben", "Pfaff", role = "ctb"), person("Brian", "Quistorff", role = "ctb"), person("Frank", "Warmerdam", role = c("ctb", "cph")), person("Stephen", "Weigand", role = c("ctb", "cph")), person("Free Software Foundation, Inc.", role = "cph"))
+# Copyright: see file COPYRIGHTS
+# Description: Functions for reading and writing data stored by some versions of Epi Info, Minitab, S, SAS, SPSS, Stata, Systat and Weka and for reading and writing some dBase files.
+# ByteCompile: yes
+# Biarch: yes
 # License: GPL (>= 2)
+# BugReports: http://bugs.r-project.org
 # NeedsCompilation: yes
+# Packaged: 2015-01-07 08:15:39 UTC; ripley
+# Author: R Core Team [aut, cph, cre], Roger Bivand [ctb, cph], Vincent J. Carey [ctb, cph], Saikat DebRoy [ctb, cph], Stephen Eglen [ctb, cph], Rajarshi Guha [ctb, cph], Nicholas Lewin-Koh [ctb, cph], Mark Myatt [ctb, cph], Ben Pfaff [ctb], Brian Quistorff [ctb], Frank Warmerdam [ctb, cph], Stephen Weigand [ctb, cph], Free Software Foundation, Inc. [cph]
+# Maintainer: R Core Team <R-core@R-project.org>
+# Repository: CRAN
+# Date/Publication: 2015-01-07 10:41:12
 
 # See
 # http://docs.continuum.io/conda/build.html for

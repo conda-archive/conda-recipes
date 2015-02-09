@@ -49,18 +49,33 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: https://github.com/gaborcsardi/crayon
   license: MIT + file LICENSE
-  #summary:
+  summary: Crayon adds support for colored terminal output on terminals that support ANSI color
+    and highlight codes. ANSI color support is automatically detected. Colors and highlighting
+    can be combined and nested. New styles can also be created easily. This package
+    was inspired by the chalk JavaScript project.
 
 # The original CRAN metadata for this package was:
 
 # Package: crayon
+# Title: Colored Terminal Output
 # Version: 1.1.0
+# Authors@R: "Gabor Csardi <csardi.gabor@gmail.com> [aut, cre]"
+# Description: Crayon adds support for colored terminal output on terminals that support ANSI color and highlight codes. ANSI color support is automatically detected. Colors and highlighting can be combined and nested. New styles can also be created easily. This package was inspired by the chalk JavaScript project.
+# License: MIT + file LICENSE
+# LazyData: true
+# URL: https://github.com/gaborcsardi/crayon
+# BugReports: https://github.com/gaborcsardi/crayon/issues
+# Collate: 'ansi-256.r' 'combine.r' 'utils.r' 'string.r' 'crayon-package.r' 'disposable.r' 'has_ansi.r' 'has_color.r' 'styles.r' 'machinery.r' 'print.r' 'style-var.r' 'show.r'
 # Imports: memoise
 # Suggests: testthat
-# License: MIT + file LICENSE
+# Packaged: 2014-10-15 14:38:49 UTC; gaborcsardi
+# Author: "Gabor Csardi" [aut, cre]
+# Maintainer: "Gabor Csardi" <csardi.gabor@gmail.com>
 # NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2014-10-15 17:51:51
 
 # See
 # http://docs.continuum.io/conda/build.html for

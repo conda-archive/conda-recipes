@@ -47,19 +47,32 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: http://www.omegahat.org/RSXML
   license: BSD
-  #summary:
+  summary: This package provides many approaches for both reading and creating XML (and HTML)
+    documents (including DTDs), both local and accessible via HTTP or FTP.  It also
+    offers access to an XPath "interpreter".
 
 # The original CRAN metadata for this package was:
 
 # Package: XML
 # Version: 3.98-1.1
+# Author: Duncan Temple Lang (duncan@r-project.org)
+# Maintainer: Duncan Temple Lang <duncan@r-project.org>
+# Title: Tools for parsing and generating XML within R and S-Plus.
 # Depends: R (>= 1.2.0), methods, utils
 # Imports: methods
 # Suggests: bitops, RCurl
+# SystemRequirements: libxml2 (>= 2.6.3)
+# Description: This package provides many approaches for both reading and creating XML (and HTML) documents (including DTDs), both local and accessible via HTTP or FTP.  It also offers access to an XPath "interpreter".
+# Note: In version 2.4.0 of this package, a new approach to garbage collection has been implemented and it is experimental. You can disable it via the configuration option --enable-nodegc=no. However, you are encouraged to use this and report problems as the results are beneficial and being able to produce any errors should they occur will be very helpful. The versions numbers 1.0 and 2.0 do not have any special significance, but are merely the result of incrementing the minor count by 1 for each release. Specifically, there is no change in the interface.
+# URL: http://www.omegahat.org/RSXML
 # License: BSD
+# Collate: AAA.R DTD.R DTDClasses.R DTDRef.R SAXMethods.S XMLClasses.R applyDOM.R assignChild.R catalog.R createNode.R dynSupports.R error.R flatTree.R nodeAccessors.R parseDTD.R schema.S summary.R tangle.R toString.S tree.R version.R xmlErrorEnums.R xmlEventHandler.R xmlEventParse.R xmlHandler.R xmlInternalSource.R xmlOutputDOM.R xmlNodes.R xmlOutputBuffer.R xmlTree.R xmlTreeParse.R htmlParse.R hashTree.R zzz.R supports.R parser.R libxmlFeatures.R xmlString.R saveXML.R namespaces.R readHTMLTable.R reflection.R xmlToDataFrame.R bitList.R compare.R encoding.R fixNS.R xmlRoot.R serialize.R xmlMemoryMgmt.R keyValueDB.R solrDocs.R XMLRErrorInfo.R xincludes.R namespaceHandlers.R tangle1.R htmlLinks.R htmlLists.R getDependencies.R getRelativeURL.R xmlIncludes.R simplifyPath.R
+# Packaged: 2013-06-20 13:45:20 UTC; ripley
 # NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2013-06-20 15:50:33
 
 # See
 # http://docs.continuum.io/conda/build.html for
