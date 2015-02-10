@@ -15,7 +15,7 @@ build:
     - lib/R/lib/
     - lib/
   number: 2 # [linux]
-  number: 2 # [osx]
+  number: 3 # [osx]
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -59,6 +59,7 @@ test:
     - R --version
     - Rscript --version
     - Rscript -e  "cat('ok\n')"
+    - exit 1 # [osx]
 
 about:
   home: http://www.r-project.org/
