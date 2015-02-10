@@ -5,7 +5,7 @@ if [ `uname` == Linux ]; then
     ./configure \
         -release -fontconfig -continue -verbose \
         -no-qt3support -nomake examples -nomake demos \
-        -webkit -qt-libpng -qt-zlib -gtkstyle -dbus \
+        -webkit -qt-libpng -qt-zlib -gtkstyle -dbus -openssl \
         -prefix $PREFIX
     make
     make install
@@ -30,7 +30,8 @@ if [ `uname` == Darwin ]; then
     ./configure \
         -platform macx-g++ -release -prefix $PREFIX \
         -no-qt3support -nomake examples -nomake demos -nomake docs \
-        -opensource -no-framework -fast -verbose -arch `uname -m`
+        -opensource -no-framework -fast -verbose -openssl \
+        -arch `uname -m`
 
     make
     make install
