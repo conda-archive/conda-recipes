@@ -7,7 +7,8 @@ if [ `uname` == Linux ]; then
         -nomake examples -nomake demos -nomake docs \
         -webkit -qt-libpng -qt-zlib -gtkstyle -dbus -openssl \
         -L $LIBRARY_PATH -I $INCLUDE_PATH -prefix $PREFIX
-    make
+
+    make -j $CPU_COUNT
     make install
 
     cp $SRC_DIR/bin/* $PREFIX/bin/
@@ -33,7 +34,7 @@ if [ `uname` == Darwin ]; then
         -opensource -no-framework -fast -verbose -openssl \
         -L $LIBRARY_PATH -I $INCLUDE_PATH -arch `uname -m`
 
-    make
+    make -j $(sysctl -n hw.ncpu)
     make install
 
     # cd $PREFIX
