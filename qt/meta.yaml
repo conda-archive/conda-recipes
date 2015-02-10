@@ -16,7 +16,13 @@ build:
 
 requirements:
   build:
-    - freetype
+    - freetype    [linux, osx]
+    - fontconfig  [linux]
+    - openssl
+
+  run:
+    - freetype    [linux, osx]
+    - fontconfig  [linux]
     - openssl
 
 about:
