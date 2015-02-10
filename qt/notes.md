@@ -11,7 +11,6 @@ Packages needed in Ubuntu:
 - freeglut3-dev
 - libgtk2.0-dev (to enable gtkstyle)
 - libdbus-1-dev
-- libssl-dev
 
 Packages needed in CentOS:
 
@@ -26,4 +25,3 @@ Packages needed in CentOS:
 - freeglut-devel
 - gtk2-devel
 - dbus-devel
-- openssl-devel
