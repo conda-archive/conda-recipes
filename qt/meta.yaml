@@ -12,11 +12,17 @@ source:
     - acceptance.patch
 
 build:
-  number: 2
+  number: 4
 
 requirements:
   build:
-    - freetype
+    - freetype    [linux, osx]
+    - fontconfig  [linux]
+    - openssl
+
+  run:
+    - freetype    [linux, osx]
+    - fontconfig  [linux]
     - openssl
 
 about:
