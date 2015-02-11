@@ -2,6 +2,11 @@
 
 if [ `uname` == Linux ]; then
     chmod +x configure
+
+    # Build on CentOS 5 fails without setting these flags explicitly
+    # See https://bugs.webkit.org/show_bug.cgi?id=25836#c5
+    # This is caused by using an old gcc
+    CFLAGS='-march=i686' CXXFLAGS='-march=i686' CPPFLAGS='-march=i686' LDFLAGS='-march=i686' \
     ./configure \
         -release -fast -no-qt3support \
         -nomake examples -nomake demos -nomake docs \
