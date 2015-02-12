@@ -3,17 +3,22 @@
 if [ `uname` == Linux ]; then
     chmod +x configure
 
-    # Build on CentOS 5 fails without setting these flags explicitly
+    # Building QtWebKit on CentOS 5 fails without setting these flags
+    # explicitly. This is caused by using an old gcc version
     # See https://bugs.webkit.org/show_bug.cgi?id=25836#c5
-    # This is caused by using an old gcc
-    CFLAGS='-march=i686' CXXFLAGS='-march=i686' CPPFLAGS='-march=i686' LDFLAGS='-march=i686' \
+    CFLAGS='-march=i686' CXXFLAGS='-march=i686' CPPFLAGS='-march=i686' \
+    LDFLAGS='-march=i686' \
     ./configure \
         -release -fast -no-qt3support \
         -nomake examples -nomake demos -nomake docs \
         -webkit -qt-libpng -qt-zlib -gtkstyle -dbus -openssl \
         -L $LIBRARY_PATH -I $INCLUDE_PATH -prefix $PREFIX
 
-    make -j $CPU_COUNT
+    # Build on RPM based distros fails without setting LD_LIBRARY_PATH
+    # to the build lib dir
+    # See https://bugreports.qt.io/browse/QTBUG-5385
+    LD_LIBRARY_PATH=$SRC_DIR/lib make -j $CPU_COUNT
+    
     make install
 
     cp $SRC_DIR/bin/* $PREFIX/bin/
