@@ -5,7 +5,7 @@ set -e
 # Based on https://github.com/jyypma/nloptr/blob/master/INSTALL.windows
 
 R_HOME="$PREFIX/R"
-if [[ $ARCH == "32" ]]; then
+if [ $ARCH == "32" ]; then
     export R_ARCH="i386"
 else
     export R_ARCH="x64"
@@ -13,7 +13,7 @@ fi
 
 
 # Create directory for output
-mkdir ${PREFIX}/${R_ARCH}
+mkdir "${PREFIX}/${R_ARCH}"
 
 
 
