@@ -3,5 +3,20 @@ cp "%RECIPE_DIR%\CMakeLists.txt" .
 if errorlevel 1 exit 1
 cp "%RECIPE_DIR%\config.cmake.h.in" .
 if errorlevel 1 exit 1
-cmake -DCMAKE_INSTALL_PREFIX="%PREFIX%" .
+
+cmake -DCMAKE_INSTALL_PREFIX="%PREFIX%".
 if errorlevel 1 exit 1
+
+if "%ARCH%"=="32" (
+    set RELEASE_TARGET="Release|Win32"
+) else (
+    set RELEASE_TARGET="Releaes|x64"
+)
+
+REM Build step
+devenv NLOPT.sln /Build "%RELEASE_TARGET%"
+if errorlevel 1 exit /b 1
+
+REM Install step
+devenv %PKG_NAME%.sln /Build "%RELEASE_TARGET%" /Project INSTALL
+if errorlevel 1 exit /b 1
