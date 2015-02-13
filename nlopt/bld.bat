@@ -1,6 +1,3 @@
-bash configure --prefix=$PREFIX --enable-shared
-if errorlevel 1 exit 1
-make
-if errorlevel 1 exit 1
-make install
+@rem See https://github.com/jyypma/nloptr/blob/master/INSTALL.windows
+bash "%RECIPE_DIR%\install_windows.sh"
 if errorlevel 1 exit 1
