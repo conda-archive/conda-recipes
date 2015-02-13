@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+set -e
 # Based on https://github.com/jyypma/nloptr/blob/master/INSTALL.windows
 
 R_HOME="$PREFIX/R"
