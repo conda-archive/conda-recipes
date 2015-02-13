@@ -18,5 +18,5 @@ devenv NLOPT.sln /Build "%RELEASE_TARGET%"
 if errorlevel 1 exit /b 1
 
 REM Install step
-devenv %PKG_NAME%.sln /Build "%RELEASE_TARGET%" /Project INSTALL
+devenv NLOPT.sln /Build "%RELEASE_TARGET%" /Project INSTALL
 if errorlevel 1 exit /b 1
