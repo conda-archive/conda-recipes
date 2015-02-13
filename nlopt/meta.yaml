@@ -5,10 +5,9 @@ package:
 build:        # [not win]
   number: 1   # [not win]
 
-requirements:
-  build:
+requirements: # [not win]
+  build:      # [not win]
     - gcc     # [not win]
-    - r       # [win]
 
 source:
   fn: nlopt-2.4.2.tar.gz
