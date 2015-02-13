@@ -3,11 +3,17 @@
 if [ `uname` == Linux ]; then
     chmod +x configure
 
+    if [ $ARCH == 64 ]; then
+        MARCH=x86-64
+    else
+        MARCH=i686
+    fi
+
     # Building QtWebKit on CentOS 5 fails without setting these flags
     # explicitly. This is caused by using an old gcc version
     # See https://bugs.webkit.org/show_bug.cgi?id=25836#c5
-    CFLAGS='-march=i686' CXXFLAGS='-march=i686' CPPFLAGS='-march=i686' \
-    LDFLAGS='-march=i686' \
+    CFLAGS="-march=${MARCH}" CXXFLAGS="-march=${MARCH}" \
+    CPPFLAGS="-march=${MARCH}" LDFLAGS="-march=${MARCH}" \
     ./configure \
         -release -fast -no-qt3support \
         -nomake examples -nomake demos -nomake docs \
