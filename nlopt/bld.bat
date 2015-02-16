@@ -8,9 +8,9 @@ cmake -DCMAKE_INSTALL_PREFIX="%PREFIX%".
 if errorlevel 1 exit 1
 
 if "%ARCH%"=="32" (
-    set RELEASE_TARGET="Release|Win32"
+    set RELEASE_TARGET="Release^|Win32"
 ) else (
-    set RELEASE_TARGET="Releaes|x64"
+    set RELEASE_TARGET="Release^|x64"
 )
 
 REM Build step
