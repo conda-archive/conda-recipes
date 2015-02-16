@@ -1,10 +1,10 @@
 package:
   name: pyne
-  version: develop
+  version: 0.4.1
 
 source:
   fn: pyne.tar.gz
-  url : https://github.com/pyne/pyne/archive/develop.tar.gz
+  url : https://github.com/pyne/pyne/archive/0.4.1.tar.gz
 
 requirements:
   build:
