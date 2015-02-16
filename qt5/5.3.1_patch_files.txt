@@ -1,0 +1,8 @@
+Library/lib/qt5/Qt5AxBase.prl
+Library/lib/qt5/Qt5AxContainer.prl
+Library/lib/qt5/Qt5AxServer.prl
+Library/lib/qt5/Qt5OpenGLExtensions.prl
+Library/lib/qt5/Qt5PlatformSupport.prl
+Library/lib/qt5/Qt5QmlDevTools.prl
+Library/lib/qt5/Qt5UiTools.prl
+Library/lib/qt5/qtmain.prl

@@ -1,0 +1,15 @@
+package:
+  name: icu
+  version: 54.1
+
+source:
+  fn: icu4c-54_1-Win64-msvc10.zip # [win64]
+  url: http://download.icu-project.org/files/icu4c/54.1/icu4c-54_1-Win64-msvc10.zip # [win64]
+  md5: 4d85e1817a5a59582517262b9396c7ba # [win64]
+  fn: icu4c-54_1-Win32-msvc10.zip # [win32]
+  url: http://download.icu-project.org/files/icu4c/54.1/icu4c-54_1-Win32-msvc10.zip # [win32]
+  md5: 2419927dae9f0ac2498b10de657ff6d3 # [win32]
+
+about:
+    home: http://site.icu-project.org/
+    license: MIT
