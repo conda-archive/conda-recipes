@@ -1,0 +1,12 @@
+package:
+  name: jom
+  version: 1.0.14
+
+source:
+  fn: jom_1_0_14.zip # [win]
+  url: http://download.qt-project.org/official_releases/jom/jom_1_0_14.zip # [win]
+  sha1: 5ae36ead8f0a877578b961acea80705416d23374 # [win]
+
+about:
+    home: http://qt-project.org/wiki/jom
+    license: LGPL

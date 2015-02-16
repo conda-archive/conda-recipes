@@ -8,12 +8,14 @@ source:
   sha1: 93809368e5735a630611633ac1fa99010020c5d6
   patches: # [not win]
     - share-make-vars.mk.patch # [not win]
+    - mac-unicode.patch # [osx]
 
 build:
   rpaths:
     - lib/R/lib/
     - lib/
   number: 2 # [linux]
+  number: 3 # [osx]
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -56,7 +58,8 @@ test:
     - R -h
     - R --version
     - Rscript --version
-    - Rscript -e  "cat('ok')"
+    - Rscript -e  "cat('ok\n')"
+    - exit 1 # [osx]
 
 about:
   home: http://www.r-project.org/

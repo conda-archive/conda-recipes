@@ -7,14 +7,19 @@ source:
   url: http://cairographics.org/releases/cairo-1.12.18.tar.xz
   md5: 8e4ff32b82c3b39387eb6f5c59ef848e
 
+build:
+  number: 1
+
 requirements:
   build:
     - freetype
+    - fontconfig
     - libpng
     - pixman
     - zlib
   run:
     - freetype
+    - fontconfig
     - libpng
     - pixman
     - zlib

@@ -1,28 +1,79 @@
 package:
   name: r-class
-  version: 7.3.11
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "7.3_11"
 
 source:
   fn: class_7.3-11.tar.gz
-  url: http://cran.r-project.org/src/contrib/class_7.3-11.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/class_7.3-11.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/class/class_7.3-11.tar.gz
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
 
 build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1 # [osx]
+
+  # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: none
+
 requirements:
   build:
     - r >=3.0.0
-    - r-mass
+    - r-mass # [not win]
+
   run:
     - r >=3.0.0
-    - r-mass
+    - r-mass # [not win]
 
 test:
   commands:
-    - R -e "library('class')"
+    # You can put additional test commands to be run here.
+    - $R -e "library('class')" # [not win]
+    - "\"%R%\" -e \"library('class')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
 
 about:
+  home: http://www.stats.ox.ac.uk/pub/MASS4/
   license: GPL-2 | GPL-3
+  summary: Various functions for classification.
+
+# The original CRAN metadata for this package was:
+
+# Package: class
+# Priority: recommended
+# Version: 7.3-11
+# Date: 2014-07-21
+# Depends: R (>= 3.0.0), stats, utils
+# Imports: MASS
+# Authors@R: c(person("Brian", "Ripley", role = c("aut", "cre", "cph"), email = "ripley@stats.ox.ac.uk"), person("William", "Venables", role = "cph"))
+# Description: Various functions for classification.
+# Title: Functions for Classification
+# ByteCompile: yes
+# License: GPL-2 | GPL-3
+# URL: http://www.stats.ox.ac.uk/pub/MASS4/
+# Packaged: 2014-07-21 06:45:11 UTC; ripley
+# Author: Brian Ripley [aut, cre, cph], William Venables [cph]
+# Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2014-07-21 08:47:47
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

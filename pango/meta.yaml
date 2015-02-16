@@ -14,12 +14,14 @@ requirements:
   build:
     - cairo >=1.12.10
     - fontconfig
+    - freetype
     - harfbuzz
     - glib
     - libffi
   run:
     - cairo >=1.12.10
     - fontconfig
+    - freetype
     - harfbuzz
     - glib
     - libffi

@@ -1,31 +1,82 @@
 package:
   name: r-lattice
-  version: 0.20.29
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.20_29"
 
 source:
   fn: lattice_0.20-29.tar.gz
-  url: http://cran.r-project.org/src/contrib/lattice_0.20-29.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/lattice_0.20-29.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/lattice/lattice_0.20-29.tar.gz
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
 
 build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1 # [osx]
+
+  # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
 # Suggests: KernSmooth, MASS
-# Enhances: chron
 requirements:
   build:
     - r >=2.15.1
-    - r-kernsmooth
-    - r-mass
+
   run:
     - r >=2.15.1
-    - r-kernsmooth
-    - r-mass
 
 test:
   commands:
-    - R -e "library('lattice')"
+    # You can put additional test commands to be run here.
+    - $R -e "library('lattice')" # [not win]
+    - "\"%R%\" -e \"library('lattice')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
 
 about:
+  home: http://lattice.r-forge.r-project.org/
   license: GPL (>= 2)
+  summary: Lattice is a powerful and elegant high-level data visualization system, with an emphasis
+    on multivariate data, that is sufficient for typical graphics needs, and is also
+    flexible enough to handle most nonstandard requirements.  See ?Lattice for an introduction.
+
+# The original CRAN metadata for this package was:
+
+# Package: lattice
+# Version: 0.20-29
+# Date: 2014/04/01
+# Priority: recommended
+# Title: Lattice Graphics
+# Author: Deepayan Sarkar <deepayan.sarkar@r-project.org>
+# Maintainer: Deepayan Sarkar <deepayan.sarkar@r-project.org>
+# Description: Lattice is a powerful and elegant high-level data visualization system, with an emphasis on multivariate data, that is sufficient for typical graphics needs, and is also flexible enough to handle most nonstandard requirements.  See ?Lattice for an introduction.
+# Depends: R (>= 2.15.1)
+# Suggests: KernSmooth, MASS
+# Imports: grid, grDevices, graphics, stats, utils
+# Enhances: chron
+# LazyLoad: yes
+# LazyData: yes
+# License: GPL (>= 2)
+# URL: http://lattice.r-forge.r-project.org/
+# BugReports: http://r-forge.r-project.org/projects/lattice/
+# Packaged: 2014-04-03 11:25:19 UTC; deepayan
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2014-04-04 08:56:27
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

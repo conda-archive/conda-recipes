@@ -60,3 +60,24 @@ THIS. IT'S A TRAP. Only use the compilers that come with Rtools.
 What you need to do is edit the MkRules.dist in src\gnuwin32 and copy it to
 MkRules.local. I had to set `WIN = 64`, `MULTI = 64` and clear `BINDIR64` (it
 references an executable name that doesn't seem to exist).
+
+# OS X
+
+The OS X sections of
+http://cran.r-project.org/doc/manuals/r-release/R-admin.html are helpful
+here. Make sure to set CLFAGS, etc., or else the R configure script will try
+to pick up Fink or Homebrew or whatever.
+
+Adding
+
+    CC=clang
+    CXX=clang++
+    F77=gfortran-4.8
+    FC=$F77
+    OBJC=clang
+
+to the `config.site` file (according to that page) is a good idea. It seems to
+work.
+
+The `--with-blas="-framework Accelerate" --with-lapack` flags to `configure`
+enable the Accelerate framework. The `--with-lapack` flag may cause issues.

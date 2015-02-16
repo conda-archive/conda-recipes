@@ -1,0 +1,29 @@
+package:
+  name: qt5
+  version: 5.4.0
+
+source:
+  fn: qt-everywhere-opensource-src-5.4.0.tar.gz # [unix]
+  url: http://download.qt-project.org/official_releases/qt/5.4/5.4.0/single/qt-everywhere-opensource-src-5.4.0.tar.gz # [unix]
+  sha1: 06a510e1019f3d42d122b89b912332e804da41e1 # [unix]
+  fn: qt-everywhere-opensource-src-5.4.0.zip # [win]
+  url: http://download.qt-project.org/official_releases/qt/5.4/5.4.0/single/qt-everywhere-opensource-src-5.4.0.zip # [win]
+  sha1: d098e27e441f6d806c0e56c65f40c57931754acc # [win]
+
+build:
+  detect_binary_files_with_prefix: true
+
+requirements:
+  build:
+    - freetype # [unix]
+    - icu # [win]
+    - jom # [win]
+    - python # [win]
+  run:
+    - freetype # [unix]
+    - icu # [win]
+
+
+about:
+    home: http://www.qt.io
+    license: LGPL

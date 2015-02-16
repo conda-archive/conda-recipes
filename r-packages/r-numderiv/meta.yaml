@@ -1,0 +1,82 @@
+package:
+  name: r-numderiv
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "2012.9_1"
+
+source:
+  fn: numDeriv_2012.9-1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/numDeriv_2012.9-1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/numDeriv/numDeriv_2012.9-1.tar.gz
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1 # [osx]
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r >=1.8.1
+
+  run:
+    - r >=1.8.1
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('numDeriv')" # [not win]
+    - "\"%R%\" -e \"library('numDeriv')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http:http://optimizer.r-forge.r-project.org/
+  license: GPL-2
+  summary: This package provide methods for calculating (usually) accurate numerical first and
+    second order derivatives. Accurate calculations are done using Richardson's extrapolation
+    or, when applicable, a complex step derivative is available. A simple difference
+    method is also provided. Simple difference is (usually) less accurate but is much
+    quicker than Richardson's extrapolation and provides a useful cross-check.  Methods
+    are provided for real scalar and vector valued functions.
+
+# The original CRAN metadata for this package was:
+
+# Package: numDeriv
+# Version: 2012.9-1
+# Title: Accurate Numerical Derivatives
+# Description: This package provide methods for calculating (usually) accurate numerical first and second order derivatives. Accurate calculations are done using Richardson's extrapolation or, when applicable, a complex step derivative is available. A simple difference method is also provided. Simple difference is (usually) less accurate but is much quicker than Richardson's extrapolation and provides a useful cross-check.  Methods are provided for real scalar and vector valued functions.
+# Depends: R (>= 1.8.1)
+# LazyLoad: yes
+# License: GPL-2
+# Copyright: 2006-2011, Bank of Canada. 2012, Paul Gilbert
+# Author: Paul Gilbert and Ravi Varadhan
+# Maintainer: Paul Gilbert <pgilbert.ttv9z@ncf.ca>
+# URL: http:http://optimizer.r-forge.r-project.org/
+# Repository: CRAN
+# Repository/R-Forge/Project: optimizer
+# Repository/R-Forge/Revision: 679
+# Repository/R-Forge/DateTimeStamp: 2012-09-30 23:59:38
+# Date/Publication: 2012-10-14 06:18:55
+# Packaged: 2012-10-01 14:21:40 UTC; rforge
+# NeedsCompilation: no
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,14 +1,14 @@
 package:
   name: pillow
-  version: 2.5.1
+  version: 2.6.1
 
 source:
-  fn: Pillow-2.5.1.zip
-  url: https://pypi.python.org/packages/source/P/Pillow/Pillow-2.5.1.zip
-  md5: cf42c695fab68116af2c8ef816fca0d9
-  
+  fn: Pillow-2.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/P/Pillow/Pillow-2.6.1.tar.gz
+  md5: 4b77fb0c81bbe0c8bf90c6eea960e091
   patches:
     - windows_multiprocess.patch [win]
+    - osx.patch [osx]
 
 build:                   [win]
   number: 1              [win]

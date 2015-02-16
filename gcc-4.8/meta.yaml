@@ -9,14 +9,8 @@ source:
 
 build:                            # [osx or linux64]
   number: 2                       # [linux64]
-  number: 4                       # [osx]
+  number: 5                       # [osx]
   detect_binary_files_with_prefix: true
-  binary_has_prefix_files:        # [osx]
-    - lib/libgcc_ext.10.4.dylib   # [osx]
-    - lib/libgcc_ext.10.5.dylib   # [osx]
-    - lib/libgcc_s.1.dylib        # [osx]
-    - lib/libgcc_s_ppc64.1.dylib  # [osx]
-    - lib/libgcc_s_x86_64.1.dylib # [osx]
 
 requirements:
   build:

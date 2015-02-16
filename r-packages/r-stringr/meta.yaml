@@ -1,0 +1,79 @@
+package:
+  name: r-stringr
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.6.2"
+
+source:
+  fn: stringr_0.6.2.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/stringr_0.6.2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/stringr/stringr_0.6.2.tar.gz
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1 # [osx]
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat (>= 0.3)
+requirements:
+  build:
+    - r >=2.14
+
+  run:
+    - r >=2.14
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('stringr')" # [not win]
+    - "\"%R%\" -e \"library('stringr')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: GPL-2
+  summary: 'stringr is a set of simple wrappers that make R''s string functions more consistent,
+    simpler and easier to use.  It does this by ensuring that: function and argument
+    names (and positions) are consistent, all functions deal with NA''s and zero length
+    character appropriately, and the output data structures from each function matches
+    the input data structures of other functions.'
+
+
+# The original CRAN metadata for this package was:
+
+# Package: stringr
+# Maintainer: Hadley Wickham <h.wickham@gmail.com>
+# License: GPL-2
+# Title: Make it easier to work with strings.
+# Type: Package
+# Author: Hadley Wickham <h.wickham@gmail.com>
+# Description: stringr is a set of simple wrappers that make R's string functions more consistent, simpler and easier to use.  It does this by ensuring that: function and argument names (and positions) are consistent, all functions deal with NA's and zero length character appropriately, and the output data structures from each function matches the input data structures of other functions.
+# Version: 0.6.2
+# Depends: R (>= 2.14)
+# Suggests: testthat (>= 0.3)
+# Collate: 'c.r' 'checks.r' 'count.r' 'detect.r' 'dup.r' 'extract.r' 'length.r' 'locate.r' 'match.r' 'modifiers.r' 'pad-trim.r' 'replace.r' 'split.r' 'sub.r' 'vectorise.r' 'word.r' 'wrap.r' 'utils.r'
+# Packaged: 2012-12-05 21:47:03 UTC; hadley
+# Repository: CRAN
+# Date/Publication: 2012-12-06 08:39:59
+# NeedsCompilation: no
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,82 @@
+package:
+  name: r-nloptr
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.0.4"
+
+source:
+  fn: nloptr_1.0.4.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/nloptr_1.0.4.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/nloptr/nloptr_1.0.4.tar.gz
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1 # [osx]
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat (>= 0.8.1)
+requirements:
+  build:
+    - r
+    - nlopt
+
+  run:
+    - r
+    - nlopt
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('nloptr')" # [not win]
+    - "\"%R%\" -e \"library('nloptr')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: LGPL-3
+  summary: ' nloptr is an R interface to NLopt. NLopt is a free/open-source library for nonlinear
+    optimization, providing a common interface for a number of different free optimization
+    routines available online as well as original implementations of various other algorithms.
+    See http://ab-initio.mit.edu/wiki/index.php/NLopt_Introduction for more information
+    on the available algorithms. During installation on Unix the NLopt code is downloaded
+    and compiled from the NLopt website.'
+
+
+# The original CRAN metadata for this package was:
+
+# Package: nloptr
+# Type: Package
+# Title: R interface to NLopt
+# Version: 1.0.4
+# Date: 2014-08-02
+# Author: Jelmer Ypma <uctpjyy@ucl.ac.uk>, with contributions by Hans W. Borchers <hwborchers@googlemail.com> and  Dirk Eddelbuettel <edd@debian.org>
+# Maintainer: Jelmer Ypma <uctpjyy@ucl.ac.uk>
+# Description:  nloptr is an R interface to NLopt. NLopt is a free/open-source library for nonlinear optimization, providing a common interface for a number of different free optimization routines available online as well as original implementations of various other algorithms. See http://ab-initio.mit.edu/wiki/index.php/NLopt_Introduction for more information on the available algorithms. During installation on Unix the NLopt code is downloaded and compiled from the NLopt website.
+# License: LGPL-3
+# Suggests: testthat (>= 0.8.1)
+# LazyLoad: yes
+# Packaged: 2014-08-02 18:12:19 UTC; Jelmer
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2014-08-04 15:35:43
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

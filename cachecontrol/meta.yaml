@@ -1,0 +1,64 @@
+package:
+  name: cachecontrol
+  version: "0.10.7"
+
+source:
+  fn: CacheControl-0.10.7.tar.gz
+  url: https://pypi.python.org/packages/source/C/CacheControl/CacheControl-0.10.7.tar.gz
+  md5: ff259a671b0521117dd9b028c66d23ef
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cachecontrol = cachecontrol:main
+    #
+    # Would create an entry point called cachecontrol that calls cachecontrol.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+
+  run:
+    - python
+    - requests
+    - lockfile
+
+test:
+  # Python imports
+  imports:
+    - cachecontrol
+    - cachecontrol.caches
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/ionrock/cachecontrol
+  license: MIT License
+  summary: 'httplib2 caching for requests'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

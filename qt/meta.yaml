@@ -8,15 +8,21 @@ source:
   sha1: ddf9c20ca8309a116e0466c42984238009525da6
   # https://github.com/Homebrew/homebrew/blob/master/Library/Formula/qt.rb
   patches:
-    - qmake-arch.patch
+    - qmake-arch.patch  [osx]
     - acceptance.patch
 
 build:
-  number: 2
+  number: 6
 
 requirements:
   build:
-    - freetype
+    - freetype    [linux, osx]
+    - fontconfig  [linux]
+    - openssl
+
+  run:
+    - freetype    [linux, osx]
+    - fontconfig  [linux]
     - openssl
 
 about:

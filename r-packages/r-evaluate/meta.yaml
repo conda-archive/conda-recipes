@@ -1,0 +1,79 @@
+package:
+  name: r-evaluate
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.5.5"
+
+source:
+  fn: evaluate_0.5.5.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/evaluate_0.5.5.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/evaluate/evaluate_0.5.5.tar.gz
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1 # [osx]
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, lattice, ggplot2
+requirements:
+  build:
+    - r >=2.14.0
+    - r-stringr >=0.6.2
+
+  run:
+    - r >=2.14.0
+    - r-stringr >=0.6.2
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('evaluate')" # [not win]
+    - "\"%R%\" -e \"library('evaluate')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: GPL
+  summary: Parsing and evaluation tools that make it easy to recreate the command line behaviour
+    of R.
+
+# The original CRAN metadata for this package was:
+
+# Package: evaluate
+# Type: Package
+# Title: Parsing and evaluation tools that provide more details than the default.
+# Version: 0.5.5
+# Date: 2014-04-30
+# Authors@R: c(person("Hadley", "Wickham", role = "aut"), person("Yihui", "Xie", role = c("cre", "ctb"), email = "xie@yihui.name"), person("Barret", "Schloerke", role = "ctb"))
+# Description: Parsing and evaluation tools that make it easy to recreate the command line behaviour of R.
+# License: GPL
+# Depends: R (>= 2.14.0)
+# Imports: stringr (>= 0.6.2)
+# Suggests: testthat, lattice, ggplot2
+# Packaged: 2014-04-29 19:01:11 UTC; yihui
+# Author: Hadley Wickham [aut], Yihui Xie [cre, ctb], Barret Schloerke [ctb]
+# Maintainer: Yihui Xie <xie@yihui.name>
+# NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2014-04-29 22:08:31
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

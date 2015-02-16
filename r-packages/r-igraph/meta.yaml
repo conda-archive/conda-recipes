@@ -1,0 +1,81 @@
+package:
+  name: r-igraph
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.7.1"
+
+source:
+  fn: igraph_0.7.1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/igraph_0.7.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/igraph/igraph_0.7.1.tar.gz
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1 # [osx]
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: igraphdata, stats4, rgl, tcltk, graph, ape
+requirements:
+  build:
+    - r
+    - r-matrix # [not win]
+
+  run:
+    - r
+    - r-matrix # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('igraph')" # [not win]
+    - "\"%R%\" -e \"library('igraph')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://igraph.org
+  license: GPL (>= 2)
+  summary: Routines for simple graphs and network analysis. igraph can handle large graphs very
+    well and provides functions for generating random and regular graphs, graph visualization,
+    centrality indices and much more.
+
+# The original CRAN metadata for this package was:
+
+# Package: igraph
+# Version: 0.7.1
+# Date: 2014-04-22
+# Title: Network analysis and visualization
+# Author: See AUTHORS file.
+# Maintainer: Gabor Csardi <csardi.gabor@gmail.com>
+# Description: Routines for simple graphs and network analysis. igraph can handle large graphs very well and provides functions for generating random and regular graphs, graph visualization, centrality indices and much more.
+# Depends: methods
+# Imports: Matrix
+# Suggests: igraphdata, stats4, rgl, tcltk, graph, ape
+# License: GPL (>= 2)
+# URL: http://igraph.org
+# SystemRequirements: gmp, libxml2
+# BugReports: https://github.com/igraph/igraph/issues
+# Packaged: 2014-04-22 18:00:26 UTC; gaborcsardi
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2014-04-22 23:08:29
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

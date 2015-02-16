@@ -1,0 +1,81 @@
+package:
+  name: r-weatherdata
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.4.1"
+
+source:
+  fn: weatherData_0.4.1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/weatherData_0.4.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/weatherData/weatherData_0.4.1.tar.gz
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1 # [osx]
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat
+requirements:
+  build:
+    - r >=2.10
+    - r-plyr
+
+  run:
+    - r >=2.10
+    - r-plyr
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('weatherData')" # [not win]
+    - "\"%R%\" -e \"library('weatherData')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://ram-n.github.io/weatherData/
+  license: GPL
+  summary: Functions that help in fetching weather data from websites. Given a location and a
+    date range, these functions help fetch weather data (temperature, pressure etc.)
+    for any weather related analysis.
+
+# The original CRAN metadata for this package was:
+
+# Package: weatherData
+# Type: Package
+# Title: Get Weather Data from the Web
+# Description: Functions that help in fetching weather data from websites. Given a location and a date range, these functions help fetch weather data (temperature, pressure etc.) for any weather related analysis.
+# URL: http://ram-n.github.io/weatherData/
+# Version: 0.4.1
+# Date: 2014-06-23
+# Author: Ram Narasimhan
+# Suggests: testthat
+# Imports: plyr
+# Maintainer: Ram Narasimhan <ramnarasimhan@gmail.com>
+# LazyData: TRUE
+# License: GPL
+# Packaged: 2014-06-24 14:44:23 UTC; 212310464
+# Depends: R (>= 2.10)
+# NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2014-06-24 17:17:14
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

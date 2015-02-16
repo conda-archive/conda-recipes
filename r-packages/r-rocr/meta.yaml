@@ -1,0 +1,88 @@
+package:
+  name: r-rocr
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.0_5"
+
+source:
+  fn: ROCR_1.0-5.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/ROCR_1.0-5.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/ROCR/ROCR_1.0-5.tar.gz
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r >=2.10
+    - r-gplots
+
+  run:
+    - r >=2.10
+    - r-gplots
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('ROCR')" # [not win]
+    - "\"%R%\" -e \"library('ROCR')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://rocr.bioinf.mpi-sb.mpg.de/
+  license: GPL (>= 2)
+  summary: ROC graphs, sensitivity/specificity curves, lift charts, and precision/recall plots
+    are popular examples of trade-off visualizations for specific pairs of performance
+    measures. ROCR is a flexible tool for creating cutoff-parameterized 2D performance
+    curves by freely combining two from over 25 performance measures (new performance
+    measures can be added using a standard interface).  Curves from different cross-validation
+    or bootstrapping runs can be averaged by different methods, and standard deviations,
+    standard errors or box plots can be used to visualize the variability across the
+    runs. The parameterization can be visualized by printing cutoff values at the corresponding
+    curve positions, or by coloring the curve according to cutoff. All components of
+    a performance plot can be quickly adjusted using a flexible parameter dispatching
+    mechanism. Despite its flexibility, ROCR is easy to use, with only three commands
+    and reasonable default values for all optional parameters.
+
+# The original CRAN metadata for this package was:
+
+# Package: ROCR
+# Title: Visualizing the performance of scoring classifiers.
+# Version: 1.0-5
+# Date: 2013-05-12
+# Depends: R (>= 2.10), gplots, methods
+# Author: Tobias Sing, Oliver Sander, Niko Beerenwinkel, Thomas Lengauer
+# Description: ROC graphs, sensitivity/specificity curves, lift charts, and precision/recall plots are popular examples of trade-off visualizations for specific pairs of performance measures. ROCR is a flexible tool for creating cutoff-parameterized 2D performance curves by freely combining two from over 25 performance measures (new performance measures can be added using a standard interface).  Curves from different cross-validation or bootstrapping runs can be averaged by different methods, and standard deviations, standard errors or box plots can be used to visualize the variability across the runs. The parameterization can be visualized by printing cutoff values at the corresponding curve positions, or by coloring the curve according to cutoff. All components of a performance plot can be quickly adjusted using a flexible parameter dispatching mechanism. Despite its flexibility, ROCR is easy to use, with only three commands and reasonable default values for all optional parameters.
+# Maintainer: ORPHANED
+# License: GPL (>= 2)
+# URL: http://rocr.bioinf.mpi-sb.mpg.de/
+# Packaged: 2014-12-07 16:02:12 UTC; hornik
+# NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2014-12-07 17:23:11
+# X-CRAN-Comment: Orphaned on 2014-12-07 as maintainer address <tobias.sing@mpi-sb.mpg.de> bounced.
+# X-CRAN-Original-Maintainer: Tobias Sing <tobias.sing@mpi-sb.mpg.de>
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

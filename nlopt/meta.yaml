@@ -2,8 +2,12 @@ package:
   name: nlopt
   version: 2.4.2
 
-build:
-  number: 1
+build:        # [not win]
+  number: 1   # [not win]
+
+requirements: # [not win]
+  build:      # [not win]
+    - gcc     # [not win]
 
 source:
   fn: nlopt-2.4.2.tar.gz

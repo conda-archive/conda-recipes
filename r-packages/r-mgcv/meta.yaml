@@ -1,12 +1,27 @@
 package:
   name: r-mgcv
-  version: 1.8.4
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.8_4"
 
 source:
   fn: mgcv_1.8-4.tar.gz
-  url: http://cran.r-project.org/src/contrib/mgcv_1.8-4.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/mgcv_1.8-4.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/mgcv/mgcv_1.8-4.tar.gz
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
 
 build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1 # [osx]
+
+  # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
@@ -15,16 +30,52 @@ build:
 requirements:
   build:
     - r >=2.14.0
-    - r-nlme >=3.1.64
-    - r-matrix
+    - r-matrix # [not win]
+    - r-nlme >=3.1_64 # [not win]
+
   run:
     - r >=2.14.0
-    - r-nlme >=3.1.64
-    - r-matrix
+    - r-matrix # [not win]
+    - r-nlme >=3.1_64 # [not win]
 
 test:
   commands:
-    - R -e "library('mgcv')"
+    # You can put additional test commands to be run here.
+    - $R -e "library('mgcv')" # [not win]
+    - "\"%R%\" -e \"library('mgcv')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
 
 about:
+  #home:
   license: GPL (>= 2)
+  summary: Routines for GAMs and other generalized ridge regression   with multiple smoothing
+    parameter selection by GCV, REML   or UBRE/AIC. Also GAMMs. Includes a gam() function.
+
+# The original CRAN metadata for this package was:
+
+# Package: mgcv
+# Version: 1.8-4
+# Author: Simon Wood <simon.wood@r-project.org>
+# Maintainer: Simon Wood <simon.wood@r-project.org>
+# Title: Mixed GAM Computation Vehicle with GCV/AIC/REML smoothness estimation
+# Description: Routines for GAMs and other generalized ridge regression   with multiple smoothing parameter selection by GCV, REML   or UBRE/AIC. Also GAMMs. Includes a gam() function.
+# Priority: recommended
+# Depends: R (>= 2.14.0), nlme (>= 3.1-64)
+# Imports: methods, stats, graphics, Matrix
+# Suggests: splines, parallel, survival, MASS
+# LazyLoad: yes
+# ByteCompile: yes
+# License: GPL (>= 2)
+# Packaged: 2014-11-27 09:49:02 UTC; sw283
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2014-11-27 13:16:04
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

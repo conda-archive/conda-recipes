@@ -1,12 +1,27 @@
 package:
   name: r-cluster
-  version: 1.15.3
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "2.0.1"
 
 source:
-  fn: cluster_1.15.3.tar.gz
-  url: http://cran.r-project.org/src/contrib/cluster_1.15.3.tar.gz
+  fn: cluster_2.0.1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/cluster_2.0.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/cluster/cluster_2.0.1.tar.gz
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
 
 build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
@@ -14,13 +29,54 @@ build:
 # Suggests: MASS
 requirements:
   build:
-    - r >=2.12.0
+    - r >=2.15.0
+
   run:
-    - r >=2.12.0
+    - r >=2.15.0
 
 test:
   commands:
-    - R -e "library('cluster')"
+    # You can put additional test commands to be run here.
+    - $R -e "library('cluster')" # [not win]
+    - "\"%R%\" -e \"library('cluster')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
 
 about:
+  #home:
   license: GPL (>= 2)
+  summary: Cluster analysis methods.  Much extended the original from Peter Rousseeuw, Anja Struyf
+    and Mia Hubert, based on Kaufman and Rousseeuw (1990).
+
+# The original CRAN metadata for this package was:
+
+# Package: cluster
+# Version: 2.0.1
+# Date: 2015-01-31
+# Priority: recommended
+# Title: Cluster Analysis Extended Rousseeuw et al.
+# Description: Cluster analysis methods.  Much extended the original from Peter Rousseeuw, Anja Struyf and Mia Hubert, based on Kaufman and Rousseeuw (1990).
+# Maintainer: Martin Maechler <maechler@stat.math.ethz.ch>
+# Authors@R: c(person("Martin","Maechler", role=c("aut","cre"), email="maechler@stat.math.ethz.ch") ,person("Peter", "Rousseeuw", role="aut", email="rousse@uia.ua.ac.be", comment = "Fortran original") ,person("Anja", "Struyf", role="aut", comment= "S original") ,person("Mia", "Hubert", role="aut", email= "Mia.Hubert@uia.ua.ac.be", comment= "S original") ,person("Kurt", "Hornik", role=c("trl", "ctb"), email="Kurt.Hornik@R-project.org", comment="port to R; maintenance(1999-2000)") ,person("Matthias", "Studer", role="ctb") ,person("Pierre", "Roudier", role="ctb") )
+# Depends: R (>= 2.15.0), stats, utils
+# Imports: graphics, grDevices
+# Suggests: MASS
+# SuggestsNote: two small examples using MASS' cov.rob() and mvrnorm()
+# LazyLoad: yes
+# LazyData: yes
+# ByteCompile: yes
+# BuildResaveData: no
+# License: GPL (>= 2)
+# Packaged: 2015-01-31 19:19:48 UTC; maechler
+# Author: Martin Maechler [aut, cre], Peter Rousseeuw [aut] (Fortran original), Anja Struyf [aut] (S original), Mia Hubert [aut] (S original), Kurt Hornik [trl, ctb] (port to R; maintenance(1999-2000)), Matthias Studer [ctb], Pierre Roudier [ctb]
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2015-01-31 23:11:21
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

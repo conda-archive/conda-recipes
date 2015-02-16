@@ -1,0 +1,82 @@
+package:
+  name: r-gplots
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "2.16.0"
+
+source:
+  fn: gplots_2.16.0.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/gplots_2.16.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/gplots/gplots_2.16.0.tar.gz
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: grid, MASS
+requirements:
+  build:
+    - r >=3.0
+    - r-kernsmooth # [not win]
+    - r-catools
+    - r-gdata
+    - r-gtools
+
+  run:
+    - r >=3.0
+    - r-kernsmooth # [not win]
+    - r-catools
+    - r-gdata
+    - r-gtools
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('gplots')" # [not win]
+    - "\"%R%\" -e \"library('gplots')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: GPL-2
+  summary: Various R programming tools for plotting data
+
+# The original CRAN metadata for this package was:
+
+# Package: gplots
+# Title: Various R Programming Tools for Plotting Data
+# Description: Various R programming tools for plotting data
+# Depends: R (>= 3.0)
+# Imports: gtools, gdata, stats, caTools, KernSmooth
+# Suggests: grid, MASS
+# Version: 2.16.0
+# Date: 2015-01-02
+# Author: Gregory R. Warnes, Ben Bolker, Lodewijk Bonebakker, Robert Gentleman, Wolfgang Huber Andy Liaw, Thomas Lumley, Martin Maechler, Arni Magnusson, Steffen Moeller, Marc Schwartz, Bill Venables
+# Maintainer: Gregory R. Warnes <greg@warnes.net>
+# License: GPL-2
+# NeedsCompilation: no
+# Packaged: 2015-01-06 23:39:55 UTC; warnes
+# Repository: CRAN
+# Date/Publication: 2015-01-07 19:33:40
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
