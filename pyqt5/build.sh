@@ -3,9 +3,13 @@ if [ `uname` == Darwin ]; then
     MAKE_JOBS=$(sysctl -n hw.ncpu)
 fi
 
+
+# Build is running out of memory on Linux with several
+# cores
 if [ `uname` == Linux ]; then
-    MAKE_JOBS=$CPU_COUNT
+    MAKE_JOBS=1
 fi
+
 
 $PYTHON configure.py \
         --verbose \
