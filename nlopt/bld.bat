@@ -8,7 +8,7 @@ REM Override cmake generator to visual studio 2008
 if "%ARCH%" == "32" set CMAKE_GENERATOR=Visual Studio 9
 if "%ARCH%" == "64" set CMAKE_GENERATOR=Visual Studio 9 Win64
 
-cmake -DCMAKE_INSTALL_PREFIX="%PREFIX%".
+cmake -G "%CMAKE_GENERATOR%" -DCMAKE_INSTALL_PREFIX="%PREFIX%".
 if errorlevel 1 exit 1
 
 if "%ARCH%"=="32" (
