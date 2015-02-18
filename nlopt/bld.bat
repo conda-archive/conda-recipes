@@ -27,6 +27,9 @@ REM Install step
 devenv NLOPT.sln /Build "%RELEASE_TARGET%" /Project INSTALL
 if errorlevel 1 exit /b 1
 
+mkdir "%PREFIX%\%ARCH_DIR%"
+if errorlevel 1 exit /b e
+
 mv "%PREFIX%\include" "%PREFIX%\%ARCH_DIR%\include"
 if errorlevel 1 exit /b 1
 
