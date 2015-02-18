@@ -13,8 +13,10 @@ if errorlevel 1 exit 1
 
 if "%ARCH%"=="32" (
     set RELEASE_TARGET="Release^|Win32"
+    set ARCH_DIR="i386"
 ) else (
     set RELEASE_TARGET="Release^|x64"
+    set ARCH_DIR="x64"
 )
 
 REM Build step
@@ -23,4 +25,10 @@ if errorlevel 1 exit /b 1
 
 REM Install step
 devenv NLOPT.sln /Build "%RELEASE_TARGET%" /Project INSTALL
+if errorlevel 1 exit /b 1
+
+mv "%PREFIX%\include" "%PREFIX%\%ARCH_DIR%\include"
+if errorlevel 1 exit /b 1
+
+mv "%PREFIX%\lib" "%PREFIX%\%ARCH_DIR%\lib"
 if errorlevel 1 exit /b 1

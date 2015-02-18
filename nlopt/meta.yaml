@@ -2,8 +2,8 @@ package:
   name: nlopt
   version: 2.4.2
 
-build:        # [not win]
-  number: 1   # [not win]
+build:
+  number: 1
 
 requirements: # [not win]
   build:      # [not win]
