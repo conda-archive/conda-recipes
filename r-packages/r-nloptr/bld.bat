@@ -1,3 +1,6 @@
+@rem cygwin wants a path with forward slashes
+set NLOPT_HOME=%PREFIX:\=/%
+
 "%R%" CMD INSTALL --build .
 if errorlevel 1 exit 1
 
