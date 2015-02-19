@@ -19,4 +19,4 @@ if __name__ == '__main__':
     download_file('http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD',
         fn='config.guess')
     download_file('http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD',
-        fn=config.sub')
+        fn='config.sub')
