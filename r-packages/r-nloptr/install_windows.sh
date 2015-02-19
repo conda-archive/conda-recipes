@@ -4,6 +4,10 @@ set -x
 set -e
 # Based on https://github.com/jyypma/nloptr/blob/master/INSTALL.windows
 
+# Use Unix style paths
+
+export PREFIX=${PREFIX//\\//}
+
 R_HOME="$PREFIX/R"
 if [ $ARCH == "32" ]; then
     export R_ARCH="i386"
