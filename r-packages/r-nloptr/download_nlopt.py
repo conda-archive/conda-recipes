@@ -16,3 +16,5 @@ def download_file(url):
 
 if __name__ == '__main__':
     download_file('http://ab-initio.mit.edu/nlopt/nlopt-2.4.2.tar.gz')
+    download_file('http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD')
+    download_file('http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD')

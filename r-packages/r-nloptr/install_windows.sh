@@ -13,6 +13,10 @@ fi
 
 cd nlopt-2.4.2
 
+# The ones that come with nlopt are too old for Windows 7
+mv $RECIPE_DIR/config.guess .
+mv $RECIPE_DIR/config.sub .
+
 # Create directory for output
 mkdir "${PREFIX}/${R_ARCH}"
 
