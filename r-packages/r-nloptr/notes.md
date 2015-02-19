@@ -12,3 +12,6 @@ the RTools's sed doesn't work.
 If you get an error about creating /tmp, run `mkdir /tmp` inside bash.
 
 You may need to download a newer config.guess file, as instructed.
+
+The Windows build for this package will not work if there are spaces in the
+path (I couldn't figure out how to work around it).
