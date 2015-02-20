@@ -1,0 +1,44 @@
+
+package:
+    name: thinc
+    version: 1.42
+
+source:
+    fn: thinc-1.42.tar.gz
+    url: https://pypi.python.org/packages/source/t/thinc/thinc-1.42.tar.gz
+    md5: 74de1875a4ae6b919b8aff01ee7703b1
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - cython
+        - cymem
+        - murmurhash
+        - preshed
+        - humanize
+        - ujson
+        - fabric
+        - fabtools
+
+    run:
+        - python
+        - cython
+        - cymem
+        - murmurhash
+        - preshed
+        - humanize
+        - ujson
+        - fabric
+        - fabtools
+
+test:
+    imports:
+        - thinc
+
+about:
+    home: http://github.com/syllog1sm/thinc
+    license: Commercial or GPLv2
+
