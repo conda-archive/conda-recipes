@@ -8,6 +8,8 @@ if errorlevel 1 exit 1
 bash "%RECIPE_DIR%\install_windows.sh"
 if errorlevel 1 exit 1
 
+set NLOPT_HOME="%PREFIX%"
+
 "%R%" CMD INSTALL --build .
 if errorlevel 1 exit 1
 
