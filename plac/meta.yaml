@@ -1,0 +1,28 @@
+
+package:
+    name: plac
+    version: 0.9.1
+
+source:
+    fn: plac-0.9.1.tar.gz
+    url: https://pypi.python.org/packages/source/p/plac/plac-0.9.1.tar.gz
+    md5: d7c90a689341c9a8f2706669f4be8b2b
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+
+    run:
+        - python
+
+test:
+    imports:
+        - plac
+
+about:
+    home: http://code.google.com/p/plac/
+    license: BSD
+
