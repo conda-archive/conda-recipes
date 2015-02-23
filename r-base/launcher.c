@@ -171,7 +171,7 @@ int run(int argc, char **argv, int is_gui)
     *end = '\0';
 
     strcpy(newpath, path);
-    strcat(newpath, "\\R\\i386\\bin\\");
+    strcat(newpath, "\\R\\bin\\i386\\");
     strcat(newpath, fn);
 
 #if DEBUG
