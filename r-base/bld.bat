@@ -5,6 +5,10 @@ gcc -DGUI=1 -mwindows -O -s -m"%ARCH%" -o launcher.exe "%RECIPE_DIR%\launcher.c"
 if errorlevel 1 exit 1
 
 @rem Install the launcher
+
+mkdir "%PREFIX%\Scripts"
+if errorlevel 1 exit 1
+
 cp launcher.exe "%PREFIX%\Scripts\R.exe"
 if errorlevel 1 exit 1
 
