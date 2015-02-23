@@ -46,28 +46,14 @@ if errorlevel 1 exit 1
 
 @rem R requires sources for libpng, libjpeg, and libtiff to compile.
 cd src\gnuwin32\bitmap
-python "%RECIPE_DIR%\download_win_libs.py"
+
+xcopy /S /E "%RTOOLS%\src\gnuwin32\bitmap\libpng" .
 if errorlevel 1 exit 1
 
-tar -zxf libpng-1.6.15.tar.gz
+xcopy /S /E "%RTOOLS%\src\gnuwin32\bitmap\jpeg-9" .
 if errorlevel 1 exit 1
 
-mv libpng-1.6.15 libpng
-if errorlevel 1 exit 1
-
-tar -zxf jpegsrc.v9a.tar.gz
-if errorlevel 1 exit 1
-
-mv jpeg-9a jpeg-9
-if errorlevel 1 exit 1
-
-tar -zxf tiff-4.0.3.tar.gz
-if errorlevel 1 exit 1
-
-mv tiff-4.0.3/libtiff .
-if errorlevel 1 exit 1
-
-rm -rf tiff-4.0.3
+xcopy /S /E "%RTOOLS%\src\gnuwin32\bitmap\libtiff" .
 if errorlevel 1 exit 1
 
 cd "%SRC_DIR%"
