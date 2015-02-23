@@ -1,7 +1,7 @@
 @rem See notes.md for more information about all of this.
 
 @rem Compile the launcher
-gcc -DGUI=1 -mwindows -mno-cygwin -O -s -m"%ARCH%" -o launcher.exe "%RECIPE_DIR%\launcher.c"
+gcc -DGUI=1 -mwindows -O -s -m"%ARCH%" -o launcher.exe "%RECIPE_DIR%\launcher.c"
 if errorlevel 1 exit 1
 
 @rem Install the launcher
