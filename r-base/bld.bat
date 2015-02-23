@@ -51,13 +51,13 @@ if errorlevel 1 exit 1
 @rem R requires sources for libpng, libjpeg, and libtiff to compile.
 cd src\gnuwin32\bitmap
 
-xcopy /S /E "%RTOOLS%\src\gnuwin32\bitmap\libpng" .
+xcopy /S /E "%RTOOLS%\src\gnuwin32\bitmap\libpng" libpng
 if errorlevel 1 exit 1
 
-xcopy /S /E "%RTOOLS%\src\gnuwin32\bitmap\jpeg-9" .
+xcopy /S /E "%RTOOLS%\src\gnuwin32\bitmap\jpeg-9" jpeg-9
 if errorlevel 1 exit 1
 
-xcopy /S /E "%RTOOLS%\src\gnuwin32\bitmap\libtiff" .
+xcopy /S /E "%RTOOLS%\src\gnuwin32\bitmap\libtiff" libtiff
 if errorlevel 1 exit 1
 
 cd "%SRC_DIR%"
