@@ -51,6 +51,15 @@ if errorlevel 1 exit 1
 @rem R requires sources for libpng, libjpeg, and libtiff to compile.
 cd src\gnuwin32\bitmap
 
+mkdir libpng
+if errorlevel 1 exit 1
+
+mkdir jpeg-9
+if errorlevel 1 exit 1
+
+mkdir libtiff
+if errorlevel 1 exit 1
+
 xcopy /S /E "%RTOOLS%\src\gnuwin32\bitmap\libpng" libpng
 if errorlevel 1 exit 1
 
