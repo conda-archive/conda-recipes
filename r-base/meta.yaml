@@ -58,6 +58,12 @@ test:
     - R --version
     - Rscript --version
     - Rscript -e  "cat('ok\n')"
+    - open # [win]
+    # There doesn't seem to be a way to test this one
+    # - RSetReg # [win]
+    - Rfe --help
+    - Rterm --help
+    - Rterm --version
     - exit 1 # [osx]
 
 about:

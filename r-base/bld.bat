@@ -1,5 +1,35 @@
 @rem See notes.md for more information about all of this.
 
+@rem Compile the launcher
+gcc -DGUI=1 -mwindows -mno-cygwin -O -s -m"%ARCH%" -o launcher.exe "%RECIPE_DIR%\launcher.c"
+if errorlevel 1 exit 1
+
+@rem Install the launcher
+cp launcher.exe "%PREFIX%\Scripts\R.exe"
+if errorlevel 1 exit 1
+
+cp launcher.exe "%PREFIX%\Scripts\Rcmd.exe"
+if errorlevel 1 exit 1
+
+cp launcher.exe "%PREFIX%\Scripts\RSetReg.exe"
+if errorlevel 1 exit 1
+
+cp launcher.exe "%PREFIX%\Scripts\Rfe.exe"
+if errorlevel 1 exit 1
+
+cp launcher.exe "%PREFIX%\Scripts\Rgui.exe"
+if errorlevel 1 exit 1
+
+cp launcher.exe "%PREFIX%\Scripts\Rscript.exe"
+if errorlevel 1 exit 1
+
+cp launcher.exe "%PREFIX%\Scripts\Rterm.exe"
+if errorlevel 1 exit 1
+
+@rem XXX: Should we skip this one?
+cp launcher.exe "%PREFIX%\Scripts\open.exe"
+if errorlevel 1 exit 1
+
 @rem This is relative apparently
 set TMPDIR=.
 
