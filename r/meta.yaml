@@ -8,5 +8,5 @@ build:
 
 requirements:
   run:
-    - r-core
+    - r-base
     - r-recommended

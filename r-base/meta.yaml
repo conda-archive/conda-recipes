@@ -1,6 +1,6 @@
 package:
   name: r # [win]
-  name: r-core # [not win]
+  name: r-base # [not win]
   version: 3.1.2
 
 source:
