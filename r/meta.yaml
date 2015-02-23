@@ -4,7 +4,8 @@ package:
   version: 3.1.2
 
 build:
-  number: 3
+  number: 3 # [not win]
+  number: 1 # [win]
 
 requirements:
   run:
