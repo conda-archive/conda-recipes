@@ -1,0 +1,32 @@
+
+package:
+    name: pywget
+    version: 2.2
+
+source:
+    fn: wget-2.2.tar.gz
+    url: https://pypi.python.org/packages/source/w/wget/wget-2.2.tar.gz
+    md5: 1ffdf1a214aa0d30edb0fc8b2a628738
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        #- distribute
+
+    run:
+        - python
+
+test:
+    imports:
+        - wget
+
+    #commands:
+    #    -
+
+about:
+    home: http://bitbucket.org/techtonik/python-wget/
+    license: Public Domain
+
