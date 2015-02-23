@@ -1,11 +1,10 @@
 # This package is for OS X and Linux only. On Windows, r-recommended is part of r, and there is no r-core.
 package:
-  name: r
+  name: r # Let's make this fail on Windows: [not win]
   version: 3.1.2
 
 build:
-  number: 3 # [not win]
-  number: 1 # [win]
+  number: 3
 
 requirements:
   run:
