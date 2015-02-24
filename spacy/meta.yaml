@@ -9,7 +9,7 @@ source:
     md5: 180110909ad2d95bb0dd85b13941982e
 
 build:
-    number: 0
+    number: 1
 
 requirements:
     build:
@@ -45,5 +45,5 @@ test:
 
 about:
     home: http://honnibal.github.io/spaCy/
-    license: Commercial or AGPL
+    license: Commercial or Trial or AGPLv3
 
