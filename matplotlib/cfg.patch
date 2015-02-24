@@ -2,6 +2,15 @@ diff --git setup.cfg.template setup.cfg.template
 index ba4cde3..8d8b7c5 100644
 --- setup.cfg.template
 +++ setup.cfg.template
+@@ -18,7 +18,7 @@
+ # optional.  They are all installed by default, but they may be turned
+ # off here.
+ #
+-#tests = True
++tests = False
+ #sample_data = True
+ #toolkits = True
+ # Tests for the toolkits are only automatically installed
 @@ -63,7 +63,7 @@
  #macosx = auto
  #pyside = auto
@@ -10,4 +19,3 @@ index ba4cde3..8d8b7c5 100644
 +tkagg = True
  #windowing = auto
  #wxagg = auto
- 
