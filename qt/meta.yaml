@@ -10,9 +10,10 @@ source:
   patches:
     - qmake-arch.patch  [osx]
     - acceptance.patch
+    - wkhtmltopdf.patch  [linux]
 
 build:
-  number: 7
+  number: 8
 
 requirements:
   build:
