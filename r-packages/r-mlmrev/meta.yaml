@@ -1,0 +1,78 @@
+package:
+  name: r-mlmrev
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.0_6"
+
+source:
+  fn: mlmRev_1.0-6.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/mlmRev_1.0-6.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/mlmRev/mlmRev_1.0-6.tar.gz
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: lattice
+requirements:
+  build:
+    - r >=2.10
+    - r-lme4
+
+  run:
+    - r >=2.10
+    - r-lme4
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('mlmRev')" # [not win]
+    - "\"%R%\" -e \"library('mlmRev')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: GPL (>= 2)
+  summary: Data and examples from a multilevel modelling software review as well as other well-known
+    data sets from the multilevel modelling literature.
+
+# The original CRAN metadata for this package was:
+
+# Package: mlmRev
+# Version: 1.0-6
+# Date: 2014-03-11
+# Title: Examples from Multilevel Modelling Software Review
+# Author: Douglas Bates <bates@stat.wisc.edu>, Martin Maechler <maechler@R-project.org> and Ben Bolker <bolker@mcmaster.ca>
+# Contact: LME4 Authors <lme4-authors@lists.r-forge.r-project.org>
+# Maintainer: Steve Walker <steve.walker@utoronto.ca>
+# Description: Data and examples from a multilevel modelling software review as well as other well-known data sets from the multilevel modelling literature.
+# Depends: lme4, R (>= 2.10)
+# Suggests: lattice
+# LazyData: yes
+# License: GPL (>= 2)
+# Packaged: 2014-03-11 14:11:54 UTC; stevenwalker
+# NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2014-03-11 16:41:16
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
