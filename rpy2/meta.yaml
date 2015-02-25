@@ -1,31 +1,16 @@
 package:
   name: rpy2
-  version: !!str 2.5.4
+  version: !!str 2.5.6
 
 source:
-  fn: rpy2-2.5.4.tar.gz
-  url: https://pypi.python.org/packages/source/r/rpy2/rpy2-2.5.4.tar.gz
-  md5: 115a20ac30883f096da2bdfcab55196d
-#  patches:
-   # List any patch files here
-   # - fix.patch
+  fn: rpy2-2.5.6.tar.gz
+  url: https://pypi.python.org/packages/source/r/rpy2/rpy2-2.5.6.tar.gz
+  md5: a36e758b633ce6aec6a5f450bfee980f
 
 build:
   rpaths:
     - lib/R/lib/
     - lib/
-  # entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - rpy2 = rpy2:main
-    #
-    # Would create an entry point called rpy2 that calls rpy2.main()
-
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
 
 requirements:
   build:
@@ -59,15 +44,9 @@ test:
     - rpy2.robjects.tests
 
   commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
     - python -m rpy2.tests
 
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
   requires:
-    # Put any additional test requirements here.  For example
     - ipython
     - r-survival
     - numpy
@@ -76,7 +55,3 @@ about:
   home: http://rpy.sourceforge.net
   license: GNU General Public License v2 or later (GPLv2+)
   summary: 'Python interface to the R language (embedded R)'
-
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml
