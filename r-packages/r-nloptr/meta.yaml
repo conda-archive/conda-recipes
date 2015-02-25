@@ -30,9 +30,11 @@ build:
 requirements:
   build:
     - r
+    - nlopt # [not win]
 
   run:
     - r
+    - nlopt # [not win]
 
 test:
   commands:
