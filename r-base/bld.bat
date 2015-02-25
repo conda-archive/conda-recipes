@@ -1,7 +1,11 @@
 @rem See notes.md for more information about all of this.
 
 @rem Compile the launcher
-gcc -DGUI=1 -mwindows -O -s -m"%ARCH%" -o launcher.exe "%RECIPE_DIR%\launcher.c"
+
+@rem XXX: Should we build Rgui with -DGUI=1 -mwindows?  The only difference is
+@rem that that it doesn't block the terminal, but we also can't get the return
+@rem value for the conda build tests.
+gcc -DGUI=0 -O -s -m"%ARCH%" -o launcher.exe "%RECIPE_DIR%\launcher.c"
 if errorlevel 1 exit 1
 
 @rem Install the launcher
