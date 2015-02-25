@@ -19,6 +19,7 @@ requirements:
     - setuptools
     - argparse # [py26]
     - singledispatch # [not py34]
+    - libpython # [win]
 
   run:
     - python
