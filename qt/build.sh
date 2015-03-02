@@ -1,5 +1,8 @@
 #!/bin/bash
 
+BIN=$PREFIX/bin
+QTCONF=$BIN/qt.conf
+
 if [ `uname` == Linux ]; then
     chmod +x configure
 
@@ -74,3 +77,9 @@ if [ `uname` == Darwin ]; then
     #     ln -s $fn lib$x.dylib
     # done
 fi
+
+cat <<EOF >$QTCONF
+[Paths]
+Prefix = $PREFIX
+
+EOF
