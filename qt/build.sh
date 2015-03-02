@@ -55,29 +55,14 @@ if [ `uname` == Darwin ]; then
 
     make -j $(sysctl -n hw.ncpu)
     make install
-
-    # cd $PREFIX
-    # for fn in lconvert lrelease lupdate macdeployqt moc qmake rcc uic
-    # do
-    #     cp /usr/bin/$fn $PREFIX/bin
-    # done
-    #
-    # for x in QtCore QtDBus QtDeclarative QtGui QtMultimedia QtNetwork \
-    #     QtOpenGL QtScript QtSql QtSvg QtWebKit QtXml QtXmlPatterns phonon
-    # do
-    #     cd $PREFIX/include
-    #     cp -r /Library/Frameworks/$x.framework/Versions/4/Headers $x
-    #
-    #     cd $PREFIX/lib
-    #     fn=lib$x.4.8.5.dylib
-    #     cp /Library/Frameworks/$x.framework/Versions/4/$x $fn
-    #     chmod +x $fn
-    #     ln -s $fn lib$x.4.8.dylib
-    #     ln -s $fn lib$x.4.dylib
-    #     ln -s $fn lib$x.dylib
-    # done
 fi
 
+# Make sure $BIN exists
+if [ ! -d $BIN ]; then
+  mkdir $BIN
+fi
+
+# Add qt.conf file to the package to make it fully relocatable
 cat <<EOF >$QTCONF
 [Paths]
 Prefix = $PREFIX
