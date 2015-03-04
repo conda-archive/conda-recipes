@@ -12,17 +12,17 @@ source:
     - wkhtmltopdf.patch  [linux]
 
 build:
-  number: 10
+  number: 11
 
 requirements:
   build:
-    - freetype    [unix]
-    - fontconfig  [linux]
+    - freetype    >=2.5.2    [unix]
+    - fontconfig  >=2.11.1   [linux]
     - openssl
 
   run:
-    - freetype    [unix]
-    - fontconfig  [linux]
+    - freetype    >=2.5.2    [unix]
+    - fontconfig  >=2.11.1   [linux]
     - openssl
 
 about:

@@ -11,15 +11,15 @@ source:
 
 build:
   detect_binary_files_with_prefix: true
-  number: 0
+  number: 1
 
 requirements:
   build:
-    - freetype
+    - freetype  >=2.5.2
     - libxml2
     - libpng
   run:
-    - freetype
+    - freetype  >=2.5.2
     - libxml2
     - libpng
 
