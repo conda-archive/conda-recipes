@@ -18,10 +18,10 @@ if [ `uname` == Linux ]; then
     CFLAGS="-march=${MARCH}" CXXFLAGS="-march=${MARCH}" \
     CPPFLAGS="-march=${MARCH}" LDFLAGS="-march=${MARCH}" \
     ./configure \
-        -release -fast -no-qt3support \
-        -nomake examples -nomake demos -nomake docs \
-        -webkit -qt-libpng -qt-zlib -gtkstyle -dbus -openssl \
-        -L $LIBRARY_PATH -I $INCLUDE_PATH -prefix $PREFIX
+        -release -fast -prefix $PREFIX \
+        -no-qt3support -nomake examples -nomake demos -nomake docs \
+        -opensource -verbose -openssl -webkit -gtkstyle -dbus \
+        -qt-libpng -qt-zlib -L $LIBRARY_PATH -I $INCLUDE_PATH
 
     # Build on RPM based distros fails without setting LD_LIBRARY_PATH
     # to the build lib dir
@@ -48,10 +48,10 @@ if [ `uname` == Darwin ]; then
 
     chmod +x configure
     ./configure \
-        -platform macx-g++ -release -prefix $PREFIX \
+        -release -fast -prefix $PREFIX -platform macx-g++ \
         -no-qt3support -nomake examples -nomake demos -nomake docs \
-        -opensource -no-framework -fast -verbose -openssl \
-        -L $LIBRARY_PATH -I $INCLUDE_PATH -arch `uname -m`
+        -opensource -verbose -openssl -no-framework \
+        -arch `uname -m` -L $LIBRARY_PATH -I $INCLUDE_PATH
 
     make -j $(sysctl -n hw.ncpu)
     make install
