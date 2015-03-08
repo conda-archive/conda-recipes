@@ -1,11 +1,11 @@
 package:
   name: prettyplotlib
-  version: !!str 0.1.4
+  version: !!str 0.1.7
 
 source:
-  fn: prettyplotlib-0.1.4.tar.gz
-  url: https://pypi.python.org/packages/source/p/prettyplotlib/prettyplotlib-0.1.4.tar.gz
-  md5: 90db05bcf4d7bae810bd5651b916dde5
+  fn: prettyplotlib-0.1.7.tar.gz
+  url: https://pypi.python.org/packages/source/p/prettyplotlib/prettyplotlib-0.1.7.tar.gz
+  md5: 85e4d27cefb86d5b2161eff94a77a7bc
 #  patches:
    # List any patch files here
    # - fix.patch
