@@ -1,6 +1,6 @@
-diff -rupN hdf-4.2.10/hdf/src/hlimits.h new/hdf/src/hlimits.h
---- hdf-4.2.10/hdf/src/hlimits.h	2014-02-10 02:28:49.000000000 +0000
-+++ new/hdf/src/hlimits.h	2014-09-02 14:07:48.015297738 +0100
+diff -rupN hdf-4.2.11/hdf/src/hlimits.h new/hdf/src/hlimits.h
+--- hdf-4.2.11/hdf/src/hlimits.h	2014-02-10 02:28:49.000000000 +0000
++++ hdf/src/hlimits.h	2014-09-02 14:07:48.015297738 +0100
 @@ -88,7 +88,7 @@
  /* ------------------------- Constants for hfile.c --------------------- */
  /* Maximum number of files (number of slots for file records) */

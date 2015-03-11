@@ -1,11 +1,11 @@
 package:
   name: hdf4
-  version: 4.2.10
+  version: 4.2.11
 
 source:
-  fn: hdf-4.2.10.tar.bz2
-  url: http://www.hdfgroup.org/ftp/HDF/HDF_Current/src/hdf-4.2.10.tar.bz2
-  md5: bf26b3caaf3c0090965c8995578375bd
+  fn: hdf-4.2.11.tar.bz2
+  url: http://www.hdfgroup.org/ftp/HDF/HDF_Current/src/hdf-4.2.11.tar.bz2
+  md5: 192a0320ef06f657523c2efaee0ccdcf
   patches: 
     - max_files.patch
 requirements:
