@@ -57,9 +57,9 @@ test:
     - open # [win]
     # There doesn't seem to be a way to test this one
     # - RSetReg # [win]
-    - Rfe --help
-    - Rterm --help
-    - Rterm --version
+    - Rfe --help # [win]
+    - Rterm --help # [win]
+    - Rterm --version # [win]
     - exit 1 # [osx]
 
 about:
