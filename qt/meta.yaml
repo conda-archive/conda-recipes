@@ -8,11 +8,12 @@ source:
   sha1: ddf9c20ca8309a116e0466c42984238009525da6
   patches:
     - acceptance.patch
-    - qmake-arch.patch   [osx]
-    - wkhtmltopdf.patch  [linux]
+    - qmake-arch.patch                 [osx]
+    - wkhtmltopdf.patch                [linux]
+    - ubuntu_disable_scrollbars.patch  [linux]
 
 build:
-  number: 11
+  number: 12
 
 requirements:
   build:
