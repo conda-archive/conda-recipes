@@ -1,11 +1,11 @@
 package:
   name: spyder
-  version: 2.3.0rc
+  version: 2.3.3
 
 source:
-  fn: spyder-2.3.0rc.zip
-  url: https://bitbucket.org/spyder-ide/spyderlib/downloads/spyder-2.3.0rc.zip
-  sha1: 0a487cf49efc06cb6a2e9532153f901772969870
+  fn:   spyder-2.3.3.zip
+  url:  https://pypi.python.org/packages/source/s/spyder/spyder-2.3.3.zip
+  sha1: a609f7337fbe56052cb2e5f6ff0974613e33e5c6
 
 build:
   osx_is_app: True
@@ -16,12 +16,13 @@ requirements:
     - sphinx
   run:
     - python
-    - pyzmq
-    - ipython
     - rope
     - pyflakes
+    - pyzmq
+    - ipython
     - pygments
     - jinja2
+    - docutils
     - sphinx
     - pep8
     - pylint
@@ -35,5 +36,5 @@ test:
     - spyderlib
 
 about:
-  home: http://code.google.com/p/spyderlib/
+  home: https://github.com/spyder-ide/spyder
   license: MIT
