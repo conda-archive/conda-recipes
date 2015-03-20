@@ -9,12 +9,13 @@ source:
     - qsort_r.patch    [linux]
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:               [linux]
-    - cmake            [linux]
+    - gcc    >=4.8     [linux]
     - qt     >=4.8.6   [linux]
+    - cmake            [linux]
 
   run:
     - qt     >=4.8.6

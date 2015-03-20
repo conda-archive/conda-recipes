@@ -3,6 +3,9 @@
 mkdir build
 cd build
 
+export CC=$PREFIX/bin/gcc
+export CXX=$PREFIX/bin/g++
+
 cmake \
     -DCMAKE_INSTALL_PREFIX:PATH="$PREFIX" \
     -DCMAKE_BUILD_TYPE=Release \
