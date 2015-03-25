@@ -16,10 +16,16 @@ requirements:
     - libxml2
     - ncurses
     - dbus # [osx]
+    - jpeg # [linux]
+    - libpng # [linux]
+    - libtiff # [linux]
   run:
     - libxml2
     - ncurses
     - dbus # [osx]
+    - jpeg # [linux]
+    - libpng # [linux]
+    - libtiff # [linux]
 
 test:
   commands:
