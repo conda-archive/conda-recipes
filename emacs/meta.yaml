@@ -9,6 +9,7 @@ source:
 
 build:
   number: 2 # [osx]
+  number: 1 # [linux32]
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -21,6 +22,7 @@ requirements:
     - libtiff # [linux]
     - giflib # [linux]
     - gcc # [linux]
+    - freetype # [linux]
   run:
     - libxml2
     - ncurses
@@ -29,6 +31,7 @@ requirements:
     - libpng # [linux]
     - libtiff # [linux]
     - giflib # [linux]
+    - freetype # [linux]
 
 test:
   commands:
