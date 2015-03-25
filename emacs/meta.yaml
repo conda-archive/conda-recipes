@@ -20,6 +20,7 @@ requirements:
     - libpng # [linux]
     - libtiff # [linux]
     - giflib # [linux]
+    - gcc # [linux]
   run:
     - libxml2
     - ncurses
