@@ -1,0 +1,26 @@
+package:
+  name: qtcurve
+  version: 1.8.18
+
+source:
+  git_tag: 1.8.18
+  git_url: git://anongit.kde.org/qtcurve
+  patches:
+    - qsort_r.patch    [linux]
+
+build:
+  number: 2
+
+requirements:
+  build:               [linux]
+    - gcc    >=4.8     [linux]
+    - qt     >=4.8.6   [linux]
+    - cmake            [linux]
+
+  run:
+    - qt     >=4.8.6
+
+about:
+  home: https://github.com/QtCurve/qtcurve
+  license: LGPLv2.1+
+  summary: "A theme for Qt applications"
