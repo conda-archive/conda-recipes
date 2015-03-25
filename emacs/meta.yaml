@@ -19,6 +19,7 @@ requirements:
     - jpeg # [linux]
     - libpng # [linux]
     - libtiff # [linux]
+    - giflib # [linux]
   run:
     - libxml2
     - ncurses
@@ -26,6 +27,7 @@ requirements:
     - jpeg # [linux]
     - libpng # [linux]
     - libtiff # [linux]
+    - giflib # [linux]
 
 test:
   commands:
