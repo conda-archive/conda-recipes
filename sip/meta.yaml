@@ -1,14 +1,14 @@
 package:
   name: sip
-  version: 4.16.5
+  version: 4.16.7
 
 source:
-  fn: sip-4.16.5.tar.gz # [unix]
-  url: http://sourceforge.net/projects/pyqt/files/sip/sip-4.16.5/sip-4.16.5.tar.gz # [unix]
-  sha1: d5d7b6765de8634eccf48a250dbd915f01b2a771 # [unix]
-  fn: sip-4.16.5.zip # [win]
-  url: http://sourceforge.net/projects/pyqt/files/sip/sip-4.16.5/sip-4.16.5.zip # [win]
-  sha1: fa6c055a3db805218bd962a9fb182aa0bf91f95e # [win]
+  fn: sip-4.16.7.tar.gz # [unix]
+  url: http://sourceforge.net/projects/pyqt/files/sip/sip-4.16.7/sip-4.16.7.tar.gz # [unix]
+  sha1: ec467c1ca9f9ead16be869eccc2e7cae72750d56 # [unix]
+  fn: sip-4.16.7.zip # [win]
+  url: http://sourceforge.net/projects/pyqt/files/sip/sip-4.16.7/sip-4.16.7.zip # [win]
+  sha1: 52e51893ff5deb9d41efaefc63e2233459680b4c # [win]
 
 requirements:
   build:
