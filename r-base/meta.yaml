@@ -1,12 +1,12 @@
 package:
   name: r # [win]
   name: r-base # [not win]
-  version: 3.1.2
+  version: 3.1.3
 
 source:
-  fn: R-3.1.2.tar.gz
-  url: http://cran.cnr.berkeley.edu/src/base/R-3/R-3.1.2.tar.gz
-  sha1: 93809368e5735a630611633ac1fa99010020c5d6
+  fn: R-3.1.3.tar.gz
+  url: http://cran.cnr.berkeley.edu/src/base/R-3/R-3.1.3.tar.gz
+  sha1: 2c9165060b91e45ac73d8cb7507ee9e52816f8b3
   patches: # [not win]
     - share-make-vars.mk.patch # [not win]
     - mac-unicode.patch # [osx]
@@ -15,7 +15,6 @@ build:
   rpaths:
     - lib/R/lib/
     - lib/
-  number: 2 # [win]
   detect_binary_files_with_prefix: true
 
 requirements:
