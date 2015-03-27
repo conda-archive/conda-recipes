@@ -1,4 +1,4 @@
-# This package is for OS X and Linux only. On Windows, r-recommended is part of r, and there is no r-core.
+# This package is for OS X and Linux only. On Windows, r-recommended is part of r, and there is no r-base.
 package:
   name: r # Let's make this fail on Windows: [not win]
   version: 3.1.3
