@@ -35,7 +35,6 @@ chmod +x configure
             -opensource \
             -confirm-license \
             -shared \
-            -process \
             -nomake examples \
             -nomake tests \
             -fontconfig \
