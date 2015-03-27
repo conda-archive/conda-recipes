@@ -18,6 +18,7 @@ requirements:
     - mpc >=0.8.1
     - isl
     - cloog 0.18.0
+    - gcc
   run:
     - gmp >=4.2
     - mpfr >=2.4.0
