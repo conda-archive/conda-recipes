@@ -29,7 +29,7 @@ build:
 
 requirements:
   build:
-    - r >=2.1
+    - r-base >=2.1
 
   run:
     - r >=2.1
