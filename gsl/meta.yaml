@@ -6,6 +6,9 @@ source:
   fn: gsl-1.16.tar.gz
   url: http://ftp.club.cc.cmu.edu/pub/gnu/gsl/gsl-1.16.tar.gz
 
+build:      # [osx]
+  number: 2 # [osx]
+
 requirements:
   build:
     - gcc
