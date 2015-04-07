@@ -2,13 +2,13 @@ package:
   name: r-zoo
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.7_11"
+  version: "1.7_12"
 
 source:
-  fn: zoo_1.7-11.tar.gz
+  fn: zoo_1.7-12.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/zoo_1.7-11.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/zoo/zoo_1.7-11.tar.gz
+    - http://cran.r-project.org/src/contrib/zoo_1.7-12.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/zoo/zoo_1.7-12.tar.gz
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,7 +19,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1 # [osx]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -29,11 +29,11 @@ build:
 # Suggests: coda, chron, DAAG, fts, its, ggplot2, mondate, scales, strucchange, timeDate, timeSeries, tis, tseries, xts
 requirements:
   build:
-    - r >=2.10.0
+    - r
     - r-lattice >=0.20_27 # [not win]
 
   run:
-    - r >=2.10.0
+    - r
     - r-lattice >=0.20_27 # [not win]
 
 test:
@@ -59,9 +59,9 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: zoo
-# Version: 1.7-11
-# Date: 2014-02-27
-# Title: S3 Infrastructure for Regular and Irregular Time Series (Z's ordered observations)
+# Version: 1.7-12
+# Date: 2015-03-16
+# Title: S3 Infrastructure for Regular and Irregular Time Series (Z's Ordered Observations)
 # Authors@R: c(person(given = "Achim", family = "Zeileis", role = c("aut", "cre"), email = "Achim.Zeileis@R-project.org"), person(given = "Gabor", family = "Grothendieck", role = "aut", email = "ggrothendieck@gmail.com"), person(given = c("Jeffrey", "A."), family = "Ryan", role = "aut", email = "jeff.a.ryan@gmail.com"), person(given = "Felix", family = "Andrews", role = "ctb", email = "felix@nfrac.org"))
 # Description: An S3 class with methods for totally ordered indexed observations. It is particularly aimed at irregular time series of numeric vectors/matrices and factors. zoo's key design goals are independence of a particular index/date/time class and consistency with ts and base R by providing methods to extend standard generics.
 # Depends: R (>= 2.10.0), stats
@@ -69,12 +69,12 @@ about:
 # Imports: utils, graphics, grDevices, lattice (>= 0.20-27)
 # License: GPL-2 | GPL-3
 # URL: http://zoo.R-Forge.R-project.org/
-# Packaged: 2014-02-27 08:32:43 UTC; zeileis
+# Packaged: 2015-03-16 13:27:04 UTC; zeileis
 # Author: Achim Zeileis [aut, cre], Gabor Grothendieck [aut], Jeffrey A. Ryan [aut], Felix Andrews [ctb]
 # Maintainer: Achim Zeileis <Achim.Zeileis@R-project.org>
 # NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2014-02-27 11:46:02
+# Date/Publication: 2015-03-16 19:13:58
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -1,14 +1,14 @@
 package:
-  name: r-codetools
+  name: r-pspline
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.2_10"
+  version: "1.0_16"
 
 source:
-  fn: codetools_0.2-10.tar.gz
+  fn: pspline_1.0-16.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/codetools_0.2-10.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/codetools/codetools_0.2-10.tar.gz
+    - http://cran.r-project.org/src/contrib/pspline_1.0-16.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/pspline/pspline_1.0-16.tar.gz
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,7 +19,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1 # [osx]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -29,16 +29,16 @@ build:
 
 requirements:
   build:
-    - r-base >=2.1
+    - r >=2.0.0
 
   run:
-    - r >=2.1
+    - r >=2.0.0
 
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('codetools')" # [not win]
-    - "\"%R%\" -e \"library('codetools')\"" # [win]
+    - $R -e "library('pspline')" # [not win]
+    - "\"%R%\" -e \"library('pspline')\"" # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -48,24 +48,24 @@ test:
 
 about:
   #home:
-  license: GPL
-  summary: Code analysis tools for R
+  license: Unlimited
+  summary: Smoothing splines with penalties on order m derivatives.
 
 # The original CRAN metadata for this package was:
 
-# Package: codetools
-# Version: 0.2-10
-# Priority: recommended
-# Author: Luke Tierney <luke-tierney@uiowa.edu>
-# Description: Code analysis tools for R
-# Title: Code Analysis Tools for R
-# Depends: R (>= 2.1)
-# Maintainer: Luke Tierney <luke-tierney@uiowa.edu>
-# License: GPL
-# Packaged: 2015-01-16 21:15:47 UTC; luke
-# NeedsCompilation: no
+# Package: pspline
+# Version: 1.0-16
+# Date: 2013-04-16
+# Title: Penalized Smoothing Splines
+# Author: S original by Jim Ramsey <ramsay@psych.mcgill.ca>.  R port by Brian Ripley <ripley@stats.ox.ac.uk>.
+# Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
+# Depends: R (>= 2.0.0), stats, graphics
+# Description: Smoothing splines with penalties on order m derivatives.
+# License: Unlimited
+# Packaged: 2013-04-16 12:55:26 UTC; ripley
+# NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2015-01-17 21:57:31
+# Date/Publication: 2013-04-16 14:58:04
 
 # See
 # http://docs.continuum.io/conda/build.html for

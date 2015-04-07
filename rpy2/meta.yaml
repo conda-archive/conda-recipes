@@ -49,6 +49,7 @@ test:
   requires:
     - ipython
     - r-survival
+    - r-ggplot2
     - numpy
 
 about:

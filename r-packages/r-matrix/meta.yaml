@@ -29,7 +29,7 @@ build:
 # Suggests: expm, MASS
 requirements:
   build:
-    - r >=2.15.2
+    - r-base >=2.15.2
     - r-lattice # [not win]
 
   run:

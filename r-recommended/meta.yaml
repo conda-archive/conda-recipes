@@ -3,23 +3,6 @@ package:
   version: 3.1.3
 
 requirements:
-  build:
-    - r 3.1.3
-    - r-mass
-    - r-lattice
-    - r-matrix
-    - r-nlme
-    - r-survival
-    - r-boot
-    - r-cluster
-    - r-codetools
-    - r-foreign
-    - r-kernsmooth
-    - r-rpart
-    - r-class
-    - r-nnet
-    - r-spatial
-    - r-mgcv
   run:
     - r 3.1.3
     - r-mass

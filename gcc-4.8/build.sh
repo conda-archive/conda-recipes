@@ -1,3 +1,5 @@
+ln -s $PREFIX/lib $PREFIX/lib64
+
 if [ "$(uname)" == "Darwin" ]; then
     export LDFLAGS="-Wl,-headerpad_max_install_names"
     export BOOT_LDFLAGS="-Wl,-headerpad_max_install_names"
@@ -26,3 +28,4 @@ else
 fi
 make
 make install
+rm $PREFIX/lib64
