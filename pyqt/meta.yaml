@@ -13,7 +13,7 @@ source: # [unix]
     - configure.patch   [unix]
 
 build:
-  number: 4
+  number: 5
 
 requirements:
   build:                 [unix]
