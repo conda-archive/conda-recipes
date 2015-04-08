@@ -3,7 +3,7 @@ package:
   version: 0.9.35
 
 build:
-  number: 4
+  number: 5
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -18,7 +18,7 @@ requirements:
     - cairo
     - glib
     - zlib
-    - gcc
+    - libgcc
 
 source:
   url: http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-0.9.35.tar.bz2
