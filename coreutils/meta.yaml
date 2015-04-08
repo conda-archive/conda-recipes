@@ -6,7 +6,7 @@ source:
   fn: coreutils-8.23.tar.xz
   url: https://ftp.gnu.org/gnu/coreutils/coreutils-8.23.tar.xz
 
-requiements:
+requirements:
   build:
     - gcc
 
