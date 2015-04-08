@@ -9,12 +9,9 @@ source:
   fn: icu4c-54_1-Win32-msvc10.zip # [win32]
   url: http://download.icu-project.org/files/icu4c/54.1/icu4c-54_1-Win32-msvc10.zip # [win32]
   md5: 2419927dae9f0ac2498b10de657ff6d3 # [win32]
-  fn: icu4c-54_1-RHEL6-x64.tgz # [linux64]
-  url: http://download.icu-project.org/files/icu4c/54.1/icu4c-54_1-RHEL6-x64.tgz # [linux64]
-  md5: 9ac1a7b4f471e83115b42b7ce80cc06c # [linux64]
-  fn: icu4c-54_1-RHEL6-i386.tgz # [linux32]
-  url: http://download.icu-project.org/files/icu4c/54.1/icu4c-54_1-RHEL6-i386.tgz # [linux32]
-  md5: 535555d4e142f6004be8c602c6104298 # [linux32]
+  fn: icu4c-54_1-src.tgz # [linux]
+  url: http://download.icu-project.org/files/icu4c/54.1/icu4c-54_1-src.tgz # [linux]
+  md5: e844caed8f2ca24c088505b0d6271bc0 # [linux]
 
 about:
     home: http://site.icu-project.org/

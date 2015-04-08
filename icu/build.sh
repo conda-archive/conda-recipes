@@ -1,5 +1,7 @@
 #!/bin/bash
 
-cp -r usr/local/include/ "$PREFIX/include/"
-cp -r usr/local/lib/ "$PREFIX/lib/"
-cp -r usr/local/bin/ "$PREFIX/bin/"
+cd source
+chmod +x runConfigureICU configure install-sh
+./runConfigureICU Linux --prefix="$PREFIX"
+make
+make install
