@@ -14,6 +14,8 @@ requirements:
     - cloog 0.18.0
 
 build:
+  number: 1
+
   always_include_files:
     - lib/libgcc_s.1.dylib # [osx]
     - lib/libgcc_s_ppc64.1.dylib # [osx]
@@ -38,6 +40,12 @@ build:
     - lib/libquadmath.so # [linux]
     - lib/libquadmath.so.0 # [linux]
     - lib/libquadmath.so.0.0.0 # [linux]
+
+    - lib/libstdc++.6.dylib # [osx]
+    - lib/libstdc++.dylib # [osx]
+    - lib/libstdc++.so # [linux]
+    - lib/libstdc++.so.6 # [linux]
+    - lib/libstdc++.so.6.0.19 # [linux]
 
 about:
   home: http://gcc.gnu.org/
