@@ -6,6 +6,10 @@ source:
   fn: coreutils-8.23.tar.xz
   url: https://ftp.gnu.org/gnu/coreutils/coreutils-8.23.tar.xz
 
+requiements:
+  build:
+    - gcc
+
 about:
   home: https://www.gnu.org/software/coreutils/
   summary: The GNU Core Utilities are the basic file, shell and text manipulation utilities of the GNU operating system.
