@@ -5,7 +5,12 @@ mv DESCRIPTION DESCRIPTION.old
 grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
 
 $R CMD INSTALL --build .
-$R -e "IRkernel::installspec(user=F)"
+
+# This installs to the wrong place (/usr/local)
+# $R -e "IRkernel::installspec(user=F)"
+
+mkdir -p $PREFIX/share/jupyter/kernels/ir
+cp inst/kernelspec/* $PREFIX/share/jupyter/kernels/ir/
 
 # Add more build steps here, if they are necessary.
 
