@@ -24,6 +24,7 @@ requirements:
     - gstreamer # [linux]
     - bison # [linux]
     - flex # [linux]
+    - sqlite # [linux]
     - icu
   run:
     - freetype # [unix]
