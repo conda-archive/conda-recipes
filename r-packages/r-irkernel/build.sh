@@ -5,6 +5,7 @@ mv DESCRIPTION DESCRIPTION.old
 grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
 
 $R CMD INSTALL --build .
+$R -e "IRkernel::installspec()"
 
 # Add more build steps here, if they are necessary.
 
