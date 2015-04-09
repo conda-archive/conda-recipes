@@ -32,9 +32,11 @@ build:
 requirements:
   build:
     - r
+    - zmq
 
   run:
     - r
+    - zmq
 
 test:
   commands:
