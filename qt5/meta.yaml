@@ -18,9 +18,11 @@ requirements:
     - freetype # [unix]
     - jom # [win]
     - python # [win]
+    - libxcb # [linux]
     - icu
   run:
     - freetype # [unix]
+    - libxcb # [linux]
     - icu
 
 
