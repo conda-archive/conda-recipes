@@ -42,6 +42,7 @@ chmod +x configure
             -qt-zlib \
             -qt-xcb \
             -qt-pcre \
+            -qt-xkbcommon \
             $CONFIG_OPTS
 
 make -j $MAKE_JOBS

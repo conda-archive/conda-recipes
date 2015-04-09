@@ -18,11 +18,18 @@ requirements:
     - freetype # [unix]
     - jom # [win]
     - python # [win]
+    - gcc # [linux]
     - libxcb # [linux]
+    - fontconfig # [linux]
+    - gstreamer # [linux]
+    - bison # [linux]
+    - flex # [linux]
     - icu
   run:
     - freetype # [unix]
+    - fontconfig # [linux]
     - libxcb # [linux]
+    - gstreamer # [linux]
     - icu
 
 
