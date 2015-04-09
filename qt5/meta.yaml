@@ -16,12 +16,12 @@ build:
 requirements:
   build:
     - freetype # [unix]
-    - icu # [win]
     - jom # [win]
     - python # [win]
+    - icu
   run:
     - freetype # [unix]
-    - icu # [win]
+    - icu
 
 
 about:
