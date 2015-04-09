@@ -1,11 +1,11 @@
 package:
   name: zeromq
-  version: 4.0.5
+  version: 4.0.4
 
 source:
-  fn: zeromq-4.0.5.tar.gz
-  url: http://download.zeromq.org/zeromq-4.0.5.tar.gz
-  sha1: a664ec63661a848ef46114029156a0a6006feecd
+  fn: zeromq-4.0.4.tar.gz
+  url: http://download.zeromq.org/zeromq-4.0.4.tar.gz
+  sha1: 2328014e5990efac31390439b75c5528e38e4490
   patches:
     - pedantic.patch [not win]
 
