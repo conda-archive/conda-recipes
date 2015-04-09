@@ -46,6 +46,7 @@ requirements:
     - r-jsonlite >=0.9.6
     - r-rzmq >=0.7.0
     - r-uuid
+    - ipython-notebook
 
 test:
   commands:
