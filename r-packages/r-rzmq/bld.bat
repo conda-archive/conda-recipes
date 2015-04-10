@@ -1,6 +1,6 @@
 > src\Makevars (
     @echo.PKG_LIBS = -L"%PREFIX%\Library\lib" -llibzmq.lib
-    @echo.PKG_CPPFLAGS = -I"%PREFIX%\Library\include"
+    @echo.PKG_CPPFLAGS = -I"%PREFIX%\Library\include"  -I"%SRC_DIR%\inst\cppzmq"
 )
 
 "%R%" CMD INSTALL --build .
