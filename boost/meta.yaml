@@ -16,9 +16,9 @@ build:
 
 requirements:
   build:
-    - icu
-    - bzip2
     - python
+    - icu               [unix]
+    - bzip2             [unix]
     - libpython         [win]
 
 about:
