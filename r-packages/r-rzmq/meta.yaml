@@ -28,6 +28,8 @@ build:
     - lib/R/lib/
     - lib/
 
+  patches: # [win]
+  - remove_assert.patch # [win]
 
 requirements:
   build:
