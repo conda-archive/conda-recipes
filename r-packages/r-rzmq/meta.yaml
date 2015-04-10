@@ -29,7 +29,7 @@ build:
     - lib/
 
   patches: # [win]
-  - remove_assert.patch # [win]
+    - remove_assert.patch # [win]
 
 requirements:
   build:
