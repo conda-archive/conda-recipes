@@ -8,9 +8,6 @@
 # Hints for OSX:
 # http://stackoverflow.com/questions/20108407/how-do-i-compile-boost-for-os-x-64b-platforms-with-stdlibc
 
-# Build dependencies:
-# - bzip2-devel
-
 mkdir -vp ${PREFIX}/bin;
 
 if [ `uname` == Darwin ]; then
