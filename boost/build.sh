@@ -23,7 +23,7 @@ if [ `uname` == Darwin ]; then
 
     ./b2 \
       variant=release address-model=64 architecture=x86 \
-      threading=multi link=shared toolset=clang \
+      threading=multi link=shared toolset=clang include=${INCLUDE_PATH} \
       cxxflags="${CXXFLAGS}" linkflags="${LINKFLAGS}" \
       -j$(sysctl -n hw.ncpu) \
       install | tee b2.log 2>&1
@@ -36,7 +36,7 @@ if [ `uname` == Linux ]; then
 
   ./b2 \
     variant=release address-model=${ARCH} architecture=x86 \
-    threading=multi link=shared toolset=gcc \
+    threading=multi link=shared toolset=gcc include=${INCLUDE_PATH} \
     -j${CPU_COUNT} \
     install | tee b2.log 2>&1
 fi
