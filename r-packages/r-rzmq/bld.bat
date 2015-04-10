@@ -3,6 +3,8 @@
     @echo.PKG_CPPFLAGS = -I"%PREFIX%\Library\include"  -I"%SRC_DIR%\inst\cppzmq"
 )
 
+copy "%PREFIX%\Library\bin\libzmq.dll" "%SRC_DIR%\src\libzmq.dll"
+
 "%R%" CMD INSTALL --build .
 if errorlevel 1 exit 1
 
