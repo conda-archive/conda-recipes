@@ -16,6 +16,9 @@ requirements:
     - bzip2             [unix]
     - libpython         [win]
 
+  run:
+    - icu               [unix]
+
 about:
   home: http://www.boost.org/
   license: Boost-1.0
