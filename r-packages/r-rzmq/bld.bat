@@ -1,3 +1,8 @@
+> src\Makevars (
+    @echo.PKG_LIBS = -L"%PREFIX%\Library\lib" -llibzmq.lib
+    @echo.PKG_CPPFLAGS = -I"%PREFIX%\Library\include"
+)
+
 "%R%" CMD INSTALL --build .
 if errorlevel 1 exit 1
 
