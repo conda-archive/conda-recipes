@@ -28,7 +28,7 @@ if [ `uname` == Darwin ]; then
       variant=release address-model=64 architecture=x86 \
       threading=multi link=shared toolset=clang \
       cxxflags="${CXXFLAGS}" linkflags="${LINKFLAGS}" \
-      -j${CPU_COUNT} \
+      -j$(sysctl -n hw.ncpu) \
       install | tee b2.log 2>&1
 fi
 
