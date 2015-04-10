@@ -18,6 +18,9 @@ source:
    # List any patch files here
    # - fix.patch
 
+  patches: # [win]
+    - remove_assert.patch # [win]
+
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -27,9 +30,6 @@ build:
   rpaths:
     - lib/R/lib/
     - lib/
-
-  patches: # [win]
-    - remove_assert.patch # [win]
 
 requirements:
   build:
