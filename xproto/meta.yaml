@@ -1,0 +1,12 @@
+package:
+  name: xproto
+  version: 7.0.27
+
+source:
+  fn: xproto-7.0.27.tar.gz # [linux]
+  url: http://xorg.freedesktop.org/releases/individual/proto/xproto-7.0.27.tar.gz # [linux]
+  md5: f04f535b090f3fd05073370740e99193 # [linux]
+
+about:
+    home: http://xorg.freedesktop.org/
+    license: MIT
