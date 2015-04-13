@@ -1,0 +1,18 @@
+package:
+  name: xcb-util
+  version: 0.4.0
+
+source:
+  fn: xcb-util-0.4.0.tar.bz2 # [linux]
+  url: http://xcb.freedesktop.org/dist/xcb-util-0.4.0.tar.bz2 # [linux]
+  md5: 2e97feed81919465a04ccc71e4073313 # [linux]
+
+about:
+    home: http://xcb.freedesktop.org/
+    license: MIT
+
+requirements:
+  build:
+    - libxcb # [linux]
+  run:
+    - libxcb # [linux]
