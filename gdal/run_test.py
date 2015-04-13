@@ -1,3 +1,7 @@
+import sys
+if sys.platform == 'win32':
+    sys.exit(0)
+
 import osgeo._gdal
 import osgeo._gdalconst
 import osgeo._ogr
