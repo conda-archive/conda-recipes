@@ -1,0 +1,20 @@
+package:
+  name: libxfixes
+  version: 5.0.1
+
+source:
+  fn: libXfixes-5.0.1.tar.bz2 # [linux]
+  url: http://xorg.freedesktop.org/releases/individual/lib/libXfixes-5.0.1.tar.bz2 # [linux]
+  md5: b985b85f8b9386c85ddcfe1073906b4d # [linux]
+
+about:
+    home: http://xorg.freedesktop.org/
+    license: MIT
+
+requirements:
+  build:
+    - fixesproto # [linux]
+    - libx11 # [linux]
+  run:
+    - fixesproto # [linux]
+    - libx11 # [linux]

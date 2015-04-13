@@ -1,0 +1,18 @@
+package:
+  name: fixesproto
+  version: 5.0
+
+source:
+  fn: fixesproto-5.0.tar.bz2 # [linux]
+  url: http://xorg.freedesktop.org/releases/individual/proto/fixesproto-5.0.tar.bz2 # [linux]
+  md5: e7431ab84d37b2678af71e29355e101d # [linux]
+
+about:
+    home: http://xorg.freedesktop.org/
+    license: MIT
+
+requirements:
+  build:
+    - xextproto # [linux]
+  run:
+    - xextproto # [linux]

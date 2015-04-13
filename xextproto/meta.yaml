@@ -1,0 +1,12 @@
+package:
+  name: xextproto
+  version: 7.3.0
+
+source:
+  fn: xextproto-7.3.0.tar.gz # [linux]
+  url: http://xorg.freedesktop.org/releases/individual/proto/xextproto-7.3.0.tar.gz # [linux]
+  md5: 37b700baa8c8ea7964702d948dd13821 # [linux]
+
+about:
+    home: http://xorg.freedesktop.org/
+    license: MIT

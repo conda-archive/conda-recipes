@@ -1,0 +1,12 @@
+package:
+  name: inputproto
+  version: 2.3
+
+source:
+  fn: inputproto-2.3.tar.bz2 # [linux]
+  url: http://xorg.freedesktop.org/releases/individual/proto/inputproto-2.3.tar.bz2 # [linux]
+  md5: 94db391e60044e140c9854203d080654 # [linux]
+
+about:
+    home: http://xorg.freedesktop.org/
+    license: MIT
