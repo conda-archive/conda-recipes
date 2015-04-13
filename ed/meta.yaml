@@ -1,0 +1,16 @@
+package:
+  name: ed
+  version: 1.9
+
+source:
+  fn: ed-1.9.tar.gz # [linux]
+  url: http://ftp.gnu.org/gnu/ed/ed-1.9.tar.gz # [linux]
+  md5: 565b6d1d5a9a8816b9b304fc4ed9405d # [linux]
+
+about:
+    home: https://www.gnu.org/software/ed/
+    license: GPL3
+
+test:
+  commands:
+    - ed --help
