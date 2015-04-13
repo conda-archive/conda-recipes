@@ -58,9 +58,9 @@ chmod +x configure
             -fontconfig \
             -qt-libpng \
             -qt-zlib \
-            -qt-xcb \
             -qt-pcre \
             -qt-xkbcommon \
+            -verbose \
             $CONFIG_OPTS
 
 make -j $MAKE_JOBS
