@@ -1,0 +1,22 @@
+package:
+  name: xcb-util-image
+  version: 0.4.0
+
+source:
+  fn: xcb-util-image-0.4.0.tar.gz # [linux]
+  url: http://xcb.freedesktop.org/dist/xcb-util-image-0.4.0.tar.gz # [linux]
+  md5: 32c9c2f72ebd58a2b2e210f27fee86f7 # [linux]
+
+about:
+    home: http://xcb.freedesktop.org/
+    license: MIT
+
+requirements:
+  build:
+    - libxcb # [linux]
+    - xcb-util # [linux]
+    - xproto # [linux]
+  run:
+    - libxcb # [linux]
+    - xcb-util # [linux]
+    - xproto # [linux]
