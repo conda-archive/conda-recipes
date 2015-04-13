@@ -2,6 +2,7 @@
 # os1_hw.py
 # Solution to Open Source week 1 homework -- reading vector data
 # cgarrard 1-31-08
+from __future__ import print_function
 
 import ogr, sys, os
 
@@ -17,7 +18,7 @@ outFile = open(outFn, 'w')
 driver = ogr.GetDriverByName('ESRI Shapefile')
 dataSource = driver.Open(dataFn, 0)
 if dataSource is None:
-  print 'Could not open ' + dataFn
+  print('Could not open ' + dataFn)
   sys.exit(1)
 
 # get the layer and loop through the features
