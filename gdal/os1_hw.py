@@ -2,7 +2,6 @@
 # os1_hw.py
 # Solution to Open Source week 1 homework -- reading vector data
 # cgarrard 1-31-08
-from __future__ import print_function
 
 import ogr, sys, os
 

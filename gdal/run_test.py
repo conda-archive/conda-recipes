@@ -1,4 +1,3 @@
-from __future__ import print_function
 import osgeo._gdal
 import osgeo._gdalconst
 import osgeo._ogr
