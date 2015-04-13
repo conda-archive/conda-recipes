@@ -14,12 +14,14 @@ build:
 
 requirements:
   build:
+    - cairo
     - libpng
     - libtiff
     - freetype
     - jpeg
     - zlib
   run:
+    - cairo
     - libpng
     - libtiff
     - freetype
