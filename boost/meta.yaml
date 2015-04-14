@@ -6,20 +6,18 @@ source:
   fn: boost_1_57_0.tar.bz2
   url: http://sourceforge.net/projects/boost/files/boost/1.57.0/boost_1_57_0.tar.bz2
 
-  patches:
-    - 1.55.0_patches/6bb71fdd.diff                                    [osx]
-    - 1.55.0_patches/e4bde20f.diff                                    [osx]
-    - 1.55.0_patches/0005-Boost.S11n-include-missing-algorithm.patch  [osx]
-
 build:
-  number: 3
+  number: 4
 
 requirements:
   build:
-    - icu
-    - bzip2
     - python
+    - icu               [unix]
+    - bzip2             [unix]
     - libpython         [win]
+
+  run:
+    - icu               [unix]
 
 about:
   home: http://www.boost.org/

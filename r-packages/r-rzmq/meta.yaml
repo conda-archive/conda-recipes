@@ -38,6 +38,7 @@ requirements:
   build:
     - r
     - zeromq # [not win]
+    - patch
 
   run:
     - r

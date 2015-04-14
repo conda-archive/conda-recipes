@@ -15,7 +15,7 @@ if [ `uname` == Darwin ]; then
     CXXFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
     CXXFLAGS="${CXXFLAGS} -std=c++11 -stdlib=libc++"
     LINKFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN} "
-    LINKFLAGS="${LINKFLAGS} -stdlib=libc++"
+    LINKFLAGS="${LINKFLAGS} -stdlib=libc++ -L${LIBRARY_PATH}"
 
     ./bootstrap.sh \
       --prefix="${PREFIX}/" --libdir="${PREFIX}/lib/" \
