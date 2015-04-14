@@ -5,11 +5,14 @@ package:
   version: "0.7.7"
 
 source:
-  fn: rzmq_0.7.7.tar.gz
-  url:
-    - http://cran.r-project.org/src/contrib/rzmq_0.7.7.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/rzmq/rzmq_0.7.7.tar.gz
+  fn: rzmq_0.7.7.tar.gz         # [not win]
+  url:                          # [not win]
+    - http://cran.r-project.org/src/contrib/rzmq_0.7.7.tar.gz # [not win]
+    - http://cran.r-project.org/src/contrib/Archive/rzmq/rzmq_0.7.7.tar.gz # [not win]
 
+  git_url: git://github.com/JanSchulz/rzmq # [win]
+  # https://github.com/armstrtw/rzmq/pull/16
+  git_rev: 5d614cc2a8c1c140470b876a01395201cdbf19ae # [win]
 
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
@@ -34,11 +37,11 @@ build:
 requirements:
   build:
     - r
-    - zeromq
+    - zeromq # [not win]
 
   run:
     - r
-    - zeromq
+    - zeromq # [not win]
 
 test:
   commands:
