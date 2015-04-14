@@ -13,17 +13,25 @@ about:
 
 requirements:
   build:
+    - dri2proto # [linux]
+    - dri3proto # [linux]
     - gcc # [linux]
     - glproto # [linux]
+    - libdrm # [linux]
     - libxi # [linux]
     - libxdamage # [linux]
     - libxmu # [linux]
-    - mako # [linux]
-    - python # [linux]
+    - libxshmfence # [linux]
+    - mako
+    - presentproto # [linux]
+    - python
   run:
+    - dri2proto # [linux]
+    - dri3proto # [linux]
     - glproto # [linux]
+    - libdrm # [linux]
     - libxi # [linux]
     - libxdamage # [linux]
     - libxmu # [linux]
-    - mako # [linux]
-    - python # [linux]
+    - libxshmfence # [linux]
+    - presentproto # [linux]

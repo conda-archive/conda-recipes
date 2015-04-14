@@ -1,0 +1,12 @@
+package:
+  name: gperf
+  version: 3.0.4
+
+source:
+  fn: gperf-3.0.4.tar.gz # [linux]
+  url: http://ftp.gnu.org/pub/gnu/gperf/gperf-3.0.4.tar.gz # [linux]
+  md5: c1f1db32fb6598d6a93e6e88796a8632 # [linux]
+
+about:
+    home: https://www.gnu.org/software/gperf/
+    license: GPL3

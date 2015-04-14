@@ -1,0 +1,12 @@
+package:
+  name: presentproto
+  version: 1.0
+
+source:
+  fn: presentproto-1.0.tar.gz # [linux]
+  url: http://xorg.freedesktop.org/releases/individual/proto/presentproto-1.0.tar.gz # [linux]
+  md5: 57eaf4bb58e86476ec89cfb42d675961 # [linux]
+
+about:
+    home: http://xorg.freedesktop.org/
+    license: MIT
