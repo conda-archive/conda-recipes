@@ -7,6 +7,9 @@ source:
   url: http://dri.freedesktop.org/libdrm/libdrm-2.4.60.tar.bz2 # [linux]
   md5: 13e35a7a1cf38b4c9c0fa0f8c9be6b93 # [linux]
 
+  patches:
+    - cloexec.patch
+
 about:
     home: http://dri.freedesktop.org/
     license: MIT
