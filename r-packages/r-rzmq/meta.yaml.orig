@@ -21,8 +21,8 @@ source:
    # List any patch files here
    # - fix.patch
 
-  # patches: # [win]
-  #   - remove_assert.patch # [win]
+  patches: # [win]
+    - remove_assert.patch # [win]
 
 build:
   # If this is a new build for the same version, increment the build
@@ -37,8 +37,12 @@ build:
 requirements:
   build:
     - r
+<<<<<<< HEAD
     - zeromq # [not win]
+=======
+    - zeromq
     - patch
+>>>>>>> 7c0ad4e00961293ac7e7e10e70b3841ad4ef1477
 
   run:
     - r
