@@ -1,16 +1,15 @@
 package:
   name: uwsgi
-  version: !!str 2.0.2
+  version: !!str 2.0.10
 
 source:
-  fn: uwsgi-2.0.2.tar.gz
-  url: https://pypi.python.org/packages/source/u/uWSGI/uwsgi-2.0.2.tar.gz
-  md5: 297578b2e3ef2102faeadaa0fb8aac6b
+  fn: uwsgi-2.0.10.tar.gz
+  url: https://pypi.python.org/packages/source/u/uWSGI/uwsgi-2.0.10.tar.gz
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
+build:
   #preserve_egg_dir: True
   #entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
@@ -23,23 +22,24 @@ source:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 2
 
 requirements:
   build:
     - python
+    - pcre
     - setuptools
 
   run:
     - python
 
-test:
+# test:
   # Python imports
-  #imports:
+  # imports:
   #  - uwsgi
 
-  commands:
-     - uwsgi --help
+  # commands:
+  #    - uwsgi --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
