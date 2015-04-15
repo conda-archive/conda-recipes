@@ -1,0 +1,5 @@
+#/bin/bash
+
+make USE_THREAD=0 DYNAMIC_ARCH=1 NO_STATIC=1 PREFIX=$PREFIX
+make install PREFIX=$PREFIX
+
