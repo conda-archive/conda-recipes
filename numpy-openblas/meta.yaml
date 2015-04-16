@@ -1,0 +1,25 @@
+package:
+  name: numpy
+  version: 1.9.2
+
+source:
+  fn: numpy-1.9.2.tar.gz
+  url: https://pypi.python.org/packages/source/n/numpy/numpy-1.9.2.tar.gz
+  md5: a1ed53432dbcd256398898d35bc8e645
+
+requirements:
+  build:
+    - python
+    - openblas-libs
+  run:
+    - python
+    - openblas
+    - openblas-libs
+
+build:
+  features:
+    - openblas
+
+about:
+  home: http://numpy.scipy.org/
+  license: BSD
