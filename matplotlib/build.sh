@@ -8,7 +8,7 @@ if [ `uname` == Linux ]; then
 fi
 
 if [ `uname` == Darwin ]; then
-    $REPLACE '#ifdef WITH_NEXT_FRAMEWORK' '#if 1' src/_macosx.m
+    sed s:'#ifdef WITH_NEXT_FRAMEWORK':'#if 1':g -i src/_macosx.m
 fi
 
 cp setup.cfg.template setup.cfg || exit 1
