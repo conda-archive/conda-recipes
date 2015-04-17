@@ -7,6 +7,18 @@ source:
   url: http://downloads.sourceforge.net/project/netpbm/super_stable/10.35.95/netpbm-10.35.95.tgz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fnetpbm%2Ffiles%2F&ts=1429302084&use_mirror=hivelocity
   sha1: f43669061f8792578af68e5332f4e699518c7865
 
+requirements:
+  build:
+    - jpeg
+    - libtiff
+    - libpng
+    - zlib
+  run:
+    - jpeg
+    - libtiff
+    - libpng
+    - zlib
+
 about:
   home: http://netpbm.sourceforge.net/
   summary: Netpbm is a toolkit for manipulation of graphic images, including conversion of images between a variety of different formats.
