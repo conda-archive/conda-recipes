@@ -9,6 +9,13 @@ make package pkgdir=$SRC_DIR/pkg
 # make check pkgdir=$SRC_DIR/pkg
 
 # The netpbm install script is interactive, so just install it manually
+mkdir -p $PREFIX/bin/
+mkdir -p $PREFIX/lib/
+mkdir -p $PREFIX/include/
+mkdir -p $PREFIX/share/man1/
+mkdir -p $PREFIX/share/man3/
+mkdir -p $PREFIX/share/man5/
+mkdir -p $PREFIX/share/web/
 cp -R pkg/bin/* $PREFIX/bin/
 cp -R pkg/lib/* $PREFIX/lib/
 cp -R pkg/link/* $PREFIX/lib/
