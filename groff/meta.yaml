@@ -19,6 +19,11 @@ requirements:
     - psutils
     - netpbm
 
+test:
+  commands:
+    - groff --help
+    - groffer --help
+
 about:
   summary: Groff (GNU troff) is a typesetting system that reads plain text mixed with formatting commands and produces formatted output.
   home: https://www.gnu.org/software/groff/
