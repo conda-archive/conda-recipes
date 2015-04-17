@@ -13,11 +13,17 @@ requirements:
     - libtiff
     - libpng
     - zlib
+    - perl
   run:
     - jpeg
     - libtiff
     - libpng
     - zlib
+
+test:
+  commands:
+    # There are a ton of commands, but just check one to make sure it works.
+    - pnmtopng --version
 
 about:
   home: http://netpbm.sourceforge.net/
