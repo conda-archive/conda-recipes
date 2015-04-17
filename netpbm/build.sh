@@ -5,7 +5,7 @@ cp $RECIPE_DIR/config.mk.linux config.mk
 sed -i -e "s:/usr/local:$PREFIX:g" config.mk
 
 make
-make package pkgdir=pkg
+make package pkgdir=$SRC_DIR/pkg
 make check
 
 # The netpbm install script is interactive, so just install it manually
