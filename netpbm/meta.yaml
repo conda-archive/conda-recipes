@@ -13,13 +13,15 @@ requirements:
     - libtiff
     - libpng
     - zlib
+    - lxml
+
     - perl
   run:
     - jpeg
     - libtiff
     - libpng
     - zlib
-
+    - lxml
 test:
   commands:
     # There are a ton of commands, but just check one to make sure it works.
