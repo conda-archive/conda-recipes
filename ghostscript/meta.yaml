@@ -7,6 +7,10 @@ source:
   url: http://downloads.ghostscript.com/public/ghostscript-9.16.tar.gz
   sha1: cc06fbf8244b9e8d0694cee5bf3be5bdd444b888
 
+test:
+  commands:
+    - gs --help
+
 about:
   home: http://ghostscript.com/
   summary: An interpreter for the PostScript language and for PDF.
