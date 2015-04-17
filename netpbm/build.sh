@@ -6,7 +6,7 @@ sed -i -e "s:/usr/local:$PREFIX:g" config.mk
 
 make
 make package pkgdir=$SRC_DIR/pkg
-make check
+make check pkgdir=$SRC_DIR/pkg
 
 # The netpbm install script is interactive, so just install it manually
 cp -R pkg/bin/* $PREFIX/bin/
