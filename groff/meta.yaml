@@ -13,11 +13,13 @@ requirements:
     - ghostscript
     - psutils
     - netpbm
+    - gcc
   run:
     - perl >=5.6.1
     - ghostscript
     - psutils
     - netpbm
+    - libgcc
 
 test:
   commands:
