@@ -1,7 +1,8 @@
-cp $RECIPE_DIR/Makefile.config.linux Makefile.config
-sed -i -e "s:/usr/local:$PREFIX:g" Makefile.config
-sed -i -e "s:JPEGLIB = NONE:#JPEGLIB = $PREFIX/lib/libjpeg.so:g" Makefile.config
-sed -i -e "s:#JPEGHDR_DIR = $PREFIX/include:JPEGHDR_DIR = $PREFIX/include:g" Makefile.config
+# Generated from configure on the build machine, and then modified to pick up
+# the shared libraries in /usr/local (which is replaced with $PREFIX)
+
+cp $RECIPE_DIR/config.mk.linux config.mk
+sed -i -e "s:/usr/local:$PREFIX:g" config.mk
 
 make
 make install
