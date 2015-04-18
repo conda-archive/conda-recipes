@@ -18,30 +18,21 @@ requirements:
     - freetype # [unix]
     - jom # [win]
     - python # [win]
-    - gcc # [linux]
-    - libxcb # [linux]
-    - xcb-util # [linux]
-    - xcb-util-image # [linux]
-    - xcb-util-keysyms # [linux]
-    - xcb-util-wm # [linux]
-    - libx11 # [linux]
     - fontconfig # [linux]
     - gstreamer # [linux]
     - bison # [linux]
     - flex # [linux]
     - sqlite # [linux]
     - icu
+    - zlib # [linux]
+    - xz # [linux]
   run:
     - freetype # [unix]
     - fontconfig # [linux]
-    - libxcb # [linux]
-    - xcb-util # [linux]
-    - xcb-util-keysyms # [linux]
-    - xcb-util-image # [linux]
-    - xcb-util-wm # [linux]
-    - libx11 # [linux]
     - gstreamer # [linux]
     - icu
+    - zlib # [linux]
+    - xz # [linux]
 
 
 about:

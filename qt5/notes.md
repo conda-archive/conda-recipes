@@ -16,6 +16,14 @@ These may have been optional
 - pcre-devel
 - mesa-libEGL
 
+## Notes concerning CentOS 6
+
+To install all dependencies, simply run:
+- sudo yum install git gcc-g++ *mesa*
+
+All mesa packages are installed, and it turns out the requirements 
+for mesa are the same as the requirements for Qt5 on X11.
+
 ## Notes concerning OS X
 
 - I found it necessary to uninstall the qt4-mac macports package. Qt5 was

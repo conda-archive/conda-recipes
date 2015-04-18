@@ -56,8 +56,7 @@ chmod +x configure
             -nomake examples \
             -nomake tests \
             -fontconfig \
-            -qt-libpng \
-            -qt-zlib \
+            -qt-xcb \
             -qt-pcre \
             -qt-xkbcommon \
             -verbose \
