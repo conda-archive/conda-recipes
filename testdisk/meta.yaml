@@ -13,7 +13,7 @@ requirements:
     - ncurses
     - jpeg
   run:
-    - gcc
+    - libgcc
     - zlib
     - ncurses
     - jpeg
