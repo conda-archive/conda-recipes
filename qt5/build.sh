@@ -49,6 +49,8 @@ chmod +x configure
             -headerdir $PREFIX/include/qt5 \
             -archdatadir $PREFIX/lib/qt5 \
             -datadir $PREFIX/share/qt5 \
+            -L $LIBRARY_PATH \
+            -I $INCLUDE_PATH \
             -release \
             -opensource \
             -confirm-license \
@@ -56,6 +58,7 @@ chmod +x configure
             -nomake examples \
             -nomake tests \
             -fontconfig \
+            -no-libudev \
             -qt-xcb \
             -qt-pcre \
             -qt-xkbcommon \
