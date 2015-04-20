@@ -62,6 +62,7 @@ chmod +x configure
             -qt-xcb \
             -qt-pcre \
             -qt-xkbcommon \
+            -xkb-config-root $LIBRARY_PATH \
             -verbose \
             $CONFIG_OPTS
 
