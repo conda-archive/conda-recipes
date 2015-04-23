@@ -1,2 +1,2 @@
-if "%ARCH%"=="32" (set PY_ARCH=i686) else (set PY_ARCH=x86_64)
-openturns-1.5rc1-py2.7-%PY_ARCH%.exe /userlevel=1 /S /FORCE /D=%PREFIX%
+if "%ARCH%"=="32" (set CPU_ARCH=i686) else (set CPU_ARCH=x86_64)
+openturns-%PKG_VERSION%-py%PY_VER%-%CPU_ARCH%.exe /userlevel=1 /S /FORCE /D=%PREFIX%
