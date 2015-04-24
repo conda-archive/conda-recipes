@@ -13,7 +13,7 @@ requirements:
   build:
     - python
     - numpy
-    - swig 2.0.8
+    - swig
     - cmake
   run:
     - python
