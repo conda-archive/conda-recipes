@@ -1,0 +1,27 @@
+package:
+  name: pypdf2
+  version: "1.24"
+
+source:
+  fn: PyPDF2-1.24.tar.gz
+  url: https://pypi.python.org/packages/source/P/PyPDF2/PyPDF2-1.24.tar.gz
+  md5: 87cbb41c24bd98e6f70a37bb4a97446c
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - PyPDF2
+
+about:
+  home: http://mstamy2.github.com/PyPDF2
+  license: BSD License
+  summary: 'PDF toolkit'
