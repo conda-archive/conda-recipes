@@ -1,0 +1,30 @@
+package:
+  name: paver
+  version: "1.2.4"
+
+source:
+  fn: Paver-1.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/P/Paver/Paver-1.2.4.tar.gz
+  md5: dbb94faf8b004eb9920b632808c20560
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+    - virtualenv
+    - sphinx
+    - cogapp
+
+test:
+  imports:
+    - paver
+
+about:
+  home: http://github.com/paver/paver
+  license: BSD
+  summary: 'Easy build, distribution and deployment scripting'
