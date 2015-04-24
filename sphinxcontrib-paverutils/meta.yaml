@@ -1,0 +1,37 @@
+package:
+  name: sphinxcontrib-paverutils
+  version: "1.7"
+
+source:
+  fn: sphinxcontrib-paverutils-1.7.tar.gz
+  url: https://pypi.python.org/packages/source/s/sphinxcontrib-paverutils/sphinxcontrib-paverutils-1.7.tar.gz
+  md5: 11b5bb2e7774e9a368aa598570084ee9
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pbr
+    - cogapp
+    - docutils
+    - jinja2
+
+  run:
+    - python
+    - pbr
+    - cogapp
+    - docutils
+    - jinja2
+
+test:
+  imports:
+    - sphinxcontrib
+    - sphinxcontrib.paverutils
+
+about:
+  home: https://bitbucket.org/dhellmann/sphinxcontrib-paverutils/
+  license: BSD
+  summary: 'Sphinx/Paver integration'
