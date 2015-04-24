@@ -1,0 +1,35 @@
+package:
+  name: sphinxjp.themes.impressjs
+  version: "0.1.3"
+
+source:
+  fn: sphinxjp.themes.impressjs-0.1.3.tar.gz
+  url: https://pypi.python.org/packages/source/s/sphinxjp.themes.impressjs/sphinxjp.themes.impressjs-0.1.3.tar.gz
+  md5: c6c1090d71337e645e9a70e2dbfa4841
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docutils
+    - sphinx
+
+  run:
+    - python
+    - setuptools
+    - docutils
+    - sphinx
+
+test:
+  imports:
+    - sphinxjp.themes
+    - sphinxjp
+    - sphinxjp.themes.impressjs
+
+about:
+  home: https://github.com/shkumagai/sphinxjp.themes.impressjs
+  license: MIT
+  summary: 'A sphinx theme for HTML presentation style.'
