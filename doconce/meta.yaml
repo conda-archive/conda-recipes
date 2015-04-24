@@ -1,0 +1,46 @@
+package:
+  name: doconce
+  version: "1.0.3"
+
+source:
+  git_url: https://github.com/hplgit/doconce.git
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - pygments
+
+  run:
+    - python
+    - pygments
+    - sphinx
+    - docutils
+    - markdown
+    - preprocess
+    - ptex2tex
+    - mako
+    - publish
+    - sphinxcontrib-paverutils
+    - paver
+    - cogapp
+    - pdftools
+    - cloud_sptheme
+    - sphinx-bootstrap-theme
+    - sphinxjp.themes.solarized
+    - sphinx-sagecell
+
+test:
+  imports:
+    - doconce
+  #commands:
+  #  - cd test && py.test test_mintest.py
+  #requires:
+  #  - pytest
+
+about:
+  home: https://github.com/hplgit/doconce
+  license: BSD
+  summary: 'Lightweight markup language - document once, include anywhere'
