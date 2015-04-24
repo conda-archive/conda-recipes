@@ -7,8 +7,8 @@ package:
 source:
 
 
-  git_url: https://github.com/bokeh/rbokeh
-  git_tag: v0.2.2
+  git_url: https://github.com/bokeh/rbokeh/
+  git_tag: 0.2.1
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
