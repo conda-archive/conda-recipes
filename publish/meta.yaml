@@ -1,0 +1,26 @@
+package:
+  name: publish
+  version: "1.0.1"
+
+source:
+  hg_url: https://bitbucket.org/logg/publish
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+    - lxml
+
+test:
+  imports:
+    - publish
+
+about:
+  home: http://www.loggsystems.se/publish.html
+  license: GPL-3
+  summary: 'publication handling'
