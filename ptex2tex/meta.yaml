@@ -1,0 +1,26 @@
+package:
+  name: ptex2tex
+  version: "0.5"
+
+source:
+  git_url: https://github.com/hplgit/ptex2tex.git
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+    - preprocess
+
+test:
+  imports:
+    - ptex2tex
+
+about:
+  home: https://github.com/hplgit/ptex2tex
+  license: BSD
+  summary: 'Easy generation of (possibly complex) LaTeX environments'
