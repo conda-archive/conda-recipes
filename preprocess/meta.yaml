@@ -1,0 +1,27 @@
+package:
+  name: preprocess
+  version: "1.1.0"
+
+source:
+  fn: preprocess-1.1.0.zip
+  url: https://pypi.python.org/packages/source/p/preprocess/preprocess-1.1.0.zip
+  md5: 868176a25f2924fada7a4d635553dd86
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - preprocess
+
+about:
+  home: http://code.google.com/p/preprocess/
+  license: MIT
+  summary: 'preprocess: a multi-language preprocessor'
