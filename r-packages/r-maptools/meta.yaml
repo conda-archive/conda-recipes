@@ -1,0 +1,90 @@
+package:
+  name: r-maptools
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.8_36"
+
+source:
+  fn: maptools_0.8-36.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/maptools_0.8-36.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/maptools/maptools_0.8-36.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: rgeos (>= 0.1-8), spatstat (>= 1.18), PBSmapping, maps, RColorBrewer
+requirements:
+  build:
+    - r
+    - r-foreign >=0.8 # [not win]
+    - r-lattice # [not win]
+    - r-sp >=1.0_11
+
+  run:
+    - r
+    - r-foreign >=0.8 # [not win]
+    - r-lattice # [not win]
+    - r-sp >=1.0_11
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('maptools')" # [not win]
+    - "\"%R%\" -e \"library('maptools')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://r-forge.r-project.org/projects/maptools/
+  license: GPL (>= 2)
+  summary: Set of tools for manipulating and reading geographic data, in particular ESRI shapefiles;
+    C code used from shapelib. It includes binary access to GSHHG shoreline files. The
+    package also provides interface wrappers for exchanging spatial objects with packages
+    such as PBSmapping, spatstat, maps, RArcInfo, Stata tmap, WinBUGS, Mondrian, and
+    others.
+
+# The original CRAN metadata for this package was:
+
+# Package: maptools
+# Version: 0.8-36
+# Date: 2015-04-24
+# Title: Tools for Reading and Handling Spatial Objects
+# Authors@R: c( person("Roger", "Bivand", role = c("cre", "aut"), email = "Roger.Bivand@nhh.no"), person("Nicholas", "Lewin-Koh", role = "aut"), person("Edzer", "Pebesma", role = "ctb"), person("Eric", "Archer", role = "ctb"), person("Adrian", "Baddeley", role = "ctb"), person("Hans-JÃ¶rg", "Bibiko", role = "ctb"), person("Steven", "Brey", role = "ctb"), person("Jonathan", "Callahan", role = "ctb"), person("German", "Carrillo", role = "ctb"), person("StÃ©phane", "Dray", role = "ctb"), person("David", "Forrest", role = "ctb"), person("Michael", "Friendly", role = "ctb"), person("Patrick", "Giraudoux", role = "ctb"), person("Duncan", "Golicher", role = "ctb"), person("Virgilio", "GÃ³mez Rubio", role = "ctb"), person("Patrick", "Hausmann", role = "ctb"), person("Karl Ove", "Hufthammer", role = "ctb"), person("Thomas", "Jagger", role = "ctb"), person("Sebastian", "Luque", role = "ctb"), person("Don", "MacQueen", role = "ctb"), person("Andrew", "Niccolai", role = "ctb"), person("Edzer", "Pebesma", role = "ctb"), person("Oscar", "PerpiÃ±Ã¡n Lamigueiro", role = "ctb"), person("Tom", "Short", role = "ctb"), person("Greg", "Snow", role = "ctb"), person("Ben", "Stabler", role = "ctb"), person("Murray", "Stokely", role = "ctb"), person("Rolf", "Turner", role = "ctb"))
+# Encoding: UTF-8
+# Depends: R (>= 2.10), sp (>= 1.0-11)
+# Imports: foreign (>= 0.8), methods, grid, lattice, stats
+# Suggests: rgeos (>= 0.1-8), spatstat (>= 1.18), PBSmapping, maps, RColorBrewer
+# Enhances: gpclib, RArcInfo
+# Description: Set of tools for manipulating and reading geographic data, in particular ESRI shapefiles; C code used from shapelib. It includes binary access to GSHHG shoreline files. The package also provides interface wrappers for exchanging spatial objects with packages such as PBSmapping, spatstat, maps, RArcInfo, Stata tmap, WinBUGS, Mondrian, and others.
+# License: GPL (>= 2)
+# URL: http://r-forge.r-project.org/projects/maptools/
+# NeedsCompilation: yes
+# Packaged: 2015-04-24 10:26:10 UTC; rsb
+# Author: Roger Bivand [cre, aut], Nicholas Lewin-Koh [aut], Edzer Pebesma [ctb], Eric Archer [ctb], Adrian Baddeley [ctb], Hans-JÃ¶rg Bibiko [ctb], Steven Brey [ctb], Jonathan Callahan [ctb], German Carrillo [ctb], StÃ©phane Dray [ctb], David Forrest [ctb], Michael Friendly [ctb], Patrick Giraudoux [ctb], Duncan Golicher [ctb], Virgilio GÃ³mez Rubio [ctb], Patrick Hausmann [ctb], Karl Ove Hufthammer [ctb], Thomas Jagger [ctb], Sebastian Luque [ctb], Don MacQueen [ctb], Andrew Niccolai [ctb], Edzer Pebesma [ctb], Oscar PerpiÃ±Ã¡n Lamigueiro [ctb], Tom Short [ctb], Greg Snow [ctb], Ben Stabler [ctb], Murray Stokely [ctb], Rolf Turner [ctb]
+# Maintainer: Roger Bivand <Roger.Bivand@nhh.no>
+# Repository: CRAN
+# Date/Publication: 2015-04-24 14:18:57
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
