@@ -17,9 +17,9 @@ requirements:
     - python
     - lxml
 
-test:
-  imports:
-    - publish
+#test:
+#  imports:
+#    - publish
 
 about:
   home: http://www.loggsystems.se/publish.html
