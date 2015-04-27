@@ -23,7 +23,7 @@ requirements:
     - ptex2tex
     - mako
     - publish
-    - sphinxcontrib-paverutils
+    - sphinxcontrib-paverutils # [not osx]
     - paver
     - cogapp
     - pdftools
