@@ -1,10 +1,10 @@
 package:
   name: mahotas
-  version: !!str 1.2.3
+  version: !!str 1.3.0
 
 source:
   git_url: git://github.com/luispedro/mahotas.git
-  git_tag: release-1.2.3
+  git_tag: release-1.3.0
 #  patches:
    # List any patch files here
    # - fix.patch
