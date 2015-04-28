@@ -17,12 +17,16 @@ requirements:
     - python
     - setuptools
     - numpy
+    - jpeg
+    - libtiff
     - libpng
     - libwebp
 
   run:
     - python
     - numpy
+    - jpeg
+    - libtiff
     - libpng
     - libwebp
 
@@ -35,6 +39,8 @@ test:
   requires:
     - libpng
     - libwebp
+    - jpeg
+    - libtiff
     - nose
     - scipy
 
