@@ -2,13 +2,13 @@ package:
   name: r-irdisplay
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.2"
+  version: "0.3"
 
 source:
 
 
-  git_url: https://github.com/IRkernel/IRdisplay
-  git_tag: 0.2
+  git_url: https://github.com/IRkernel/IRdisplay/
+  git_tag: 0.3
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -31,10 +31,12 @@ requirements:
   build:
     - r
     - r-base64enc
+    - r-repr
 
   run:
     - r
     - r-base64enc
+    - r-repr
 
 test:
   commands:
@@ -59,14 +61,14 @@ about:
 # Package: IRdisplay
 # Title: IPython display machinery
 # Description: This package provides an interface to display rich output in IPython from R code, for the ipyr kernel and IPython R magic.
-# Version: 0.1
-# Authors@R: c(person("Thomas", "Kluver", role = c("aut", "cre"), email = "thomas@kluyver.me.uk"))
+# Version: 0.3
+# Authors@R: c(person("Thomas", "Kluyver", role = c("aut", "cre"), email = "thomas@kluyver.me.uk"), person("Philipp", "A.", role = "aut", email = "flying-sheep@web.de"))
 # Author: Thomas Kluyver <thomas@kluyver.me.uk>
 # Maintainer: Thomas Kluyver <thomas@kluyver.me.uk>
 # Depends: R (>= 3.0.1)
+# Imports: repr, base64enc
 # License: MIT + file LICENSE
 # LazyData: true
-# Imports: base64enc
 
 # See
 # http://docs.continuum.io/conda/build.html for
