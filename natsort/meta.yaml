@@ -1,17 +1,17 @@
 package:
   name: natsort
-  version: !!str 3.3.0
+  version: "3.5.6"
 
 source:
-  fn: natsort-3.3.0.tar.gz
-  url: https://pypi.python.org/packages/source/n/natsort/natsort-3.3.0.tar.gz
-  md5: 19544c23d9f04721bd5bda5ba7d18cca
+  fn: natsort-3.5.6.tar.gz
+  url: https://pypi.python.org/packages/source/n/natsort/natsort-3.5.6.tar.gz
+  md5: 389d2c8da13fd83f9d9d47bab5cba629
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  #preserve_egg_dir: True
+  # preserve_egg_dir: True
   entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
