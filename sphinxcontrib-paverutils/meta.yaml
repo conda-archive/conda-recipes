@@ -14,6 +14,7 @@ requirements:
   build:
     - python
     - setuptools
+    - snowballstemmer
     - pbr
     - cogapp
     - docutils
@@ -21,6 +22,7 @@ requirements:
 
   run:
     - python
+    - snowballstemmer
     - pbr
     - cogapp
     - docutils
