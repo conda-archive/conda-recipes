@@ -1,11 +1,11 @@
 package:
   name: natsort
-  version: "3.5.6"
+  version: "3.5.2"
 
 source:
-  fn: natsort-3.5.6.tar.gz
-  url: https://pypi.python.org/packages/source/n/natsort/natsort-3.5.6.tar.gz
-  md5: 389d2c8da13fd83f9d9d47bab5cba629
+  fn: natsort-3.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/n/natsort/natsort-3.5.2.tar.gz
+  md5: 27c850113c1cca4bcd78cede9930a937
 #  patches:
    # List any patch files here
    # - fix.patch
