@@ -1,11 +1,11 @@
 package:
   name: doit
-  version: "0.28.0"
+  version: "0.27.0"
 
 source:
-  fn: doit-0.28.0.tar.gz
-  url: https://pypi.python.org/packages/source/d/doit/doit-0.28.0.tar.gz
-  md5: ff08327b41d8d0f97bbb7ad1885a366a
+  fn: doit-0.27.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/doit/doit-0.27.0.tar.gz
+  md5: d3171edb1267a915e0ff0c9756d4b0db
 #  patches:
    # List any patch files here
    # - fix.patch
