@@ -43,6 +43,7 @@ requirements:
     - jedi
     - docopt
     - pyzmq >=13
+    - pip
 
 test:
   # Python imports
