@@ -1,6 +1,6 @@
 package:
   name: ipython-qtconsole
-  version: 2.2.0
+  version: 2.3.1
 
 requirements:
   run:

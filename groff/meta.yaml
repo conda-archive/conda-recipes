@@ -1,0 +1,36 @@
+package:
+  name: groff
+  version: 1.22.3
+
+source:
+  fn: groff-1.22.3.tar.gz
+  url: https://ftp.gnu.org/gnu/groff/groff-1.22.3.tar.gz
+  sha1: 61a6808ea1ef715df9fa8e9b424e1f6b9fa8c091
+
+build:
+  number: 1
+  detect_binary_files_with_prefix: true
+
+requirements:
+  build:
+    - perl >=5.6.1
+    - ghostscript
+    - psutils
+    - netpbm
+    - gcc
+  run:
+    - perl >=5.6.1
+    - ghostscript
+    - psutils
+    - netpbm
+    - libgcc
+
+test:
+  commands:
+    - groff --help
+    - groffer --help
+
+about:
+  summary: Groff (GNU troff) is a typesetting system that reads plain text mixed with formatting commands and produces formatted output.
+  home: https://www.gnu.org/software/groff/
+  license: GPL

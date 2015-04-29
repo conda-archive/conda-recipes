@@ -1,11 +1,11 @@
 package:
   name: ipython
-  version: 2.2.0
+  version: 2.3.1
 
 source:
-  fn: ipython-2.2.0.tar.gz
-  url: https://pypi.python.org/packages/source/i/ipython/ipython-2.2.0.tar.gz
-  md5: b91d3724f655a8e16d022772f696cfd5
+  fn: ipython-2.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/ipython/ipython-2.3.1.tar.gz
+  md5: 2b7085525dac11190bfb45bb8ec8dcbf
   patches:
     - cprt.patch
 
@@ -25,7 +25,7 @@ build:
 requirements:
   build:
     - python
-    - setuptools             [win or py3k]
+    - setuptools             [win]
     - pyreadline             [win]
   run:
     - python

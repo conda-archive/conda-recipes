@@ -9,6 +9,9 @@ source:
   fn: icu4c-54_1-Win32-msvc10.zip # [win32]
   url: http://download.icu-project.org/files/icu4c/54.1/icu4c-54_1-Win32-msvc10.zip # [win32]
   md5: 2419927dae9f0ac2498b10de657ff6d3 # [win32]
+  fn: icu4c-54_1-src.tgz # [unix]
+  url: http://download.icu-project.org/files/icu4c/54.1/icu4c-54_1-src.tgz # [unix]
+  md5: e844caed8f2ca24c088505b0d6271bc0 # [unix]
 
 about:
     home: http://site.icu-project.org/

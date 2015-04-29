@@ -1,0 +1,85 @@
+package:
+  name: r-markdown
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.7.7"
+
+source:
+  fn: markdown_0.7.7.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/markdown_0.7.7.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/markdown/markdown_0.7.7.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: knitr, RCurl
+requirements:
+  build:
+    - r
+    - r-mime >=0.3
+
+  run:
+    - r
+    - r-mime >=0.3
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('markdown')" # [not win]
+    - "\"%R%\" -e \"library('markdown')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/rstudio/markdown
+  license: GPL-2
+  summary: Provides R bindings to the 'Sundown' 'Markdown' rendering library (https://github.com/vmg/sundown).
+    'Markdown' is a plain-text formatting syntax that can be converted to 'XHTML' or
+    other formats. See http://en.wikipedia.org/wiki/Markdown for more information about
+    'Markdown'.
+
+# The original CRAN metadata for this package was:
+
+# Package: markdown
+# Type: Package
+# Title: 'Markdown' Rendering for R
+# Version: 0.7.7
+# Date: 2015-04-23
+# Author: JJ Allaire, Jeffrey Horner, Vicent Marti, and Natacha Porte
+# Maintainer: Yihui Xie <xie@yihui.name>
+# Description: Provides R bindings to the 'Sundown' 'Markdown' rendering library (https://github.com/vmg/sundown). 'Markdown' is a plain-text formatting syntax that can be converted to 'XHTML' or other formats. See http://en.wikipedia.org/wiki/Markdown for more information about 'Markdown'.
+# Depends: R (>= 2.11.1)
+# Imports: mime (>= 0.3)
+# Suggests: knitr, RCurl
+# License: GPL-2
+# URL: https://github.com/rstudio/markdown
+# BugReports: https://github.com/rstudio/markdown/issues
+# VignetteBuilder: knitr
+# NeedsCompilation: yes
+# Packaged: 2015-04-22 15:26:12 UTC; yihui
+# Repository: CRAN
+# Date/Publication: 2015-04-22 22:33:46
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

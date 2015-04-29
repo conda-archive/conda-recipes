@@ -1,11 +1,11 @@
 package:
   name: shiboken
-  version: 1.2.1
+  version: 1.2.2
 
 source:
-  fn: shiboken-1.2.1.tar.bz2
-  md5: 06100e2c91ab4433dbf15c26f5bb6c17
-  url: http://download.qt-project.org/official_releases/pyside/shiboken-1.2.1.tar.bz2
+  fn: shiboken-1.2.2.tar.bz2
+  md5: 9f5bee9d414ce51be07ff7a20054a48d
+  url: http://download.qt-project.org/official_releases/pyside/shiboken-1.2.2.tar.bz2
 
 requirements:
   build:
@@ -17,7 +17,7 @@ requirements:
     - python
 
 build:
-  number: 4
+  number: 0
 
 #test:
 #  commands:

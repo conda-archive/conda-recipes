@@ -1,0 +1,26 @@
+package:
+  name: swig
+  version: 3.0.5
+
+source:
+  fn: swig-3.0.5.tar.gz
+  url: http://prdownloads.sourceforge.net/swig/swig-3.0.5.tar.gz
+  md5: dcb9638324461b9baba8e044fe59031d
+
+build:
+  detect_binary_files_with_prefix: True
+
+requirements:
+  build:
+    - pcre
+    - python
+  run:
+    - pcre
+
+test:
+  commands:
+    - swig -help
+
+about:
+    home: http://www.swig.org/
+    license: GPLv3

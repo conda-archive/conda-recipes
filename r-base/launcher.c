@@ -16,6 +16,11 @@
 
 #define DEBUG 0
 
+#if __SIZEOF_POINTER__ == 8
+# define ARCH "x64"
+#else
+# define ARCH "i386"
+#endif
 
 int child_pid=0;
 
@@ -171,7 +176,7 @@ int run(int argc, char **argv, int is_gui)
     *end = '\0';
 
     strcpy(newpath, path);
-    strcat(newpath, "\\R\\bin\\i386\\");
+    strcat(newpath, "\\R\\bin\\" ARCH "\\");
     strcat(newpath, fn);
 
 #if DEBUG
