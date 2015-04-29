@@ -1,17 +1,17 @@
 package:
   name: nikola
-  version: !!str 7.0.1
+  version: "7.3.1.1"
 
 source:
-  fn: nikola-7.0.1.tar.gz
-  url: https://pypi.python.org/packages/source/N/Nikola/nikola-7.0.1.tar.gz
-  md5: c220c2bedf9c12770cf1311e9db211bd
+  fn: nikola-7.3.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/N/Nikola/nikola-7.3.1.1.tar.gz
+  md5: aa6c698a5f6b4922d25056fb7e13eb79
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  preserve_egg_dir: True
+  # preserve_egg_dir: True
   entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
@@ -29,37 +29,38 @@ build:
 requirements:
   build:
     - python
-    - doit >=0.23.0
-    - pygments
-    - pillow >=2.0.0
-    - python-dateutil
-    - docutils
-    - mako >=0.6
-    - unidecode
-    - lxml
-    - yapsy
-    - pyrss2gen
-    - logbook
-    - blinker
     - setuptools
-    - natsort >=3.2.0
+    - doit ==0.27.0
+    - pygments >=1.6
+    - pillow >=2.4.0
+    - python-dateutil ==2.4.1
+    - docutils >=0.12
+    - mako >=1.0.0
+    - unidecode >=0.04.16
+    - lxml >=3.3.5
+    - yapsy >=1.10.423
+    - pyrss2gen >=1.1
+    - logbook >=0.7.0
+    - blinker >=1.3
+    - setuptools >=5.4.1
+    - natsort >=3.5.2
 
   run:
     - python
-    - doit >=0.23.0
-    - pygments
-    - pillow >=2.0.0
-    - python-dateutil
-    - docutils
-    - mako >=0.6
-    - unidecode
-    - lxml
-    - yapsy
-    - pyrss2gen
-    - logbook
-    - blinker
-    - setuptools
-    - natsort >=3.2.0
+    - doit ==0.27.0
+    - pygments >=1.6
+    - pillow >=2.4.0
+    - python-dateutil ==2.4.1
+    - docutils >=0.12
+    - mako >=1.0.0
+    - unidecode >=0.04.16
+    - lxml >=3.3.5
+    - yapsy >=1.10.423
+    - pyrss2gen >=1.1
+    - logbook >=0.7.0
+    - blinker >=1.3
+    - setuptools >=5.4.1
+    - natsort >=3.5.2
 
 test:
   # Python imports
@@ -90,7 +91,7 @@ test:
 
 about:
   home: http://getnikola.com
-  license:  MIT License
+  license: MIT License
   summary: 'A modular, fast, simple, static website generator'
 
 # See
