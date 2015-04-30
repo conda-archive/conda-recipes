@@ -1,11 +1,11 @@
 package:
   name: theano
-  version: 0.6.0
+  version: 0.7.0
 
 source:
-  fn: Theano-0.6.0.tar.gz
-  url: https://pypi.python.org/packages/source/T/Theano/Theano-0.6.0.tar.gz
-  md5: 44df6c476d8012290a2d5bb66611126a
+  fn: Theano-0.7.0.tar.gz
+  url: https://pypi.python.org/packages/source/T/Theano/Theano-0.7.0.tar.gz
+  md5: 099a9575801b71252b5bbbc3c34ed45a
 
 requirements:
   build:
