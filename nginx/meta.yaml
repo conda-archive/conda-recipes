@@ -1,4 +1,3 @@
-
 package:
     name: nginx
     version: 1.4.3
@@ -6,13 +5,14 @@ package:
 source:
     fn: nginx-1.4.3.tar.gz
     url: http://nginx.org/download/nginx-1.4.3.tar.gz
-    #md5:
-   
+
     patches:
        - configure.patch
 
 build:
     number: 5
+    no_link: etc/*
+    detect_binary_files_with_prefix: true
 
 requirements:
     build:
@@ -23,7 +23,7 @@ requirements:
     run:
         - openssl
         - zlib
-        - pcre 
+        - pcre
 
 about:
     home: http://www.nginx.org
