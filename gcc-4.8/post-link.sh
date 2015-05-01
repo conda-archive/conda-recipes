@@ -20,4 +20,29 @@ if [ "$(uname)" != "Darwin" ]; then
             fi
         done
     done
+
+    # Some distros use different system include paths than the ones this gcc binary was built for.
+    # We'll add these to the standard include path by providing a custom "specs file"
+
+    # First create specs file from existing defaults
+    SPECS_DIR=`echo ${PREFIX}/lib/gcc/*/*`
+    SPECS_FILE=${SPECS_DIR}/specs
+    gcc -dumpspecs > ${SPECS_FILE}
+    
+    # Now add extra include paths to the specs file, one at a time.
+    # (So far we only know of one (from Ubuntu).)
+    # TODO: Conceivably, we could extract these paths from the $GCC_CMDS output we obtained above,
+    #       but hard-coding these paths is easier for now.
+    EXTRA_SYSTEM_INCLUDE_DIRS="/usr/include/x86_64-linux-gnu"
+    
+    for INCDIR in ${EXTRA_SYSTEM_INCLUDE_DIRS}; do
+        # The following sed command will replace these two lines:
+        # *cpp:
+        # ... yada yada ...
+        #
+        # With these two lines:
+        # *cpp:
+        # ... yada yada ... -I${INCDIR}
+        sed -i ':a;N;$!ba;s|\(*cpp:\n[^\n]*\)|\1 -I'${INCDIR}'|g' ${SPECS_FILE}
+    done
 fi
