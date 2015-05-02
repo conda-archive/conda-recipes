@@ -1,14 +1,14 @@
 package:
-  name: r-irdisplay
+  name: r-repr
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.3"
+  version: "0.1"
 
 source:
 
 
-  git_url: https://github.com/IRkernel/IRdisplay/
-  git_tag: 0.3
+  git_url: https://github.com/IRkernel/repr
+  git_tag: 0.1
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -26,23 +26,19 @@ build:
     - lib/R/lib/
     - lib/
 
-
+# Suggests: highr
 requirements:
   build:
     - r
-    - r-base64enc
-    - r-repr
 
   run:
     - r
-    - r-base64enc
-    - r-repr
 
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('IRdisplay')" # [not win]
-    - "\"%R%\" -e \"library('IRdisplay')\"" # [win]
+    - $R -e "library('repr')" # [not win]
+    - "\"%R%\" -e \"library('repr')\"" # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -52,23 +48,22 @@ test:
 
 about:
   #home:
-  license: MIT + file LICENSE
-  summary: This package provides an interface to display rich output in IPython from R code,
-    for the ipyr kernel and IPython R magic.
+  license: GPL-3
+  summary: String and binary representations of objects for several formats / mime types.
 
 # The original CRAN metadata for this package was:
 
-# Package: IRdisplay
-# Title: IPython display machinery
-# Description: This package provides an interface to display rich output in IPython from R code, for the ipyr kernel and IPython R magic.
-# Version: 0.3
-# Authors@R: c(person("Thomas", "Kluyver", role = c("aut", "cre"), email = "thomas@kluyver.me.uk"), person("Philipp", "A.", role = "aut", email = "flying-sheep@web.de"))
-# Author: Thomas Kluyver <thomas@kluyver.me.uk>
-# Maintainer: Thomas Kluyver <thomas@kluyver.me.uk>
+# Package: repr
+# Title: Serializable representations
+# Version: 0.1
+# Authors@R: 'Philipp A. <flying-sheep@web.de> [aut, cre]'
+# Description: String and binary representations of objects for several formats / mime types.
 # Depends: R (>= 3.0.1)
-# Imports: repr, base64enc
-# License: MIT + file LICENSE
+# Suggests: highr
+# License: GPL-3
 # LazyData: true
+# Encoding: UTF-8
+# Collate: 'utils.r' 'function.r' 'generics.r' 'help_files_with_topic.r' 'list.r' 'matrix_df.r' 'options.r' 'package.r' 'recordedplot.r' 'vector.r'
 
 # See
 # http://docs.continuum.io/conda/build.html for
