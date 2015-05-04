@@ -1,4 +1,6 @@
-if [ `uname` == Darwin ]; then
+#!/bin/bash
+
+if [[ `uname` == Darwin || `uname -p` == x86_64 ]]; then
     ./configure \
         --prefix=$PREFIX \
         --with-gmp=$PREFIX \
