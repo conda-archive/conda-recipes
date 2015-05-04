@@ -38,3 +38,62 @@ if [ "$(uname)" != "Darwin" ]; then
         sed -i ':a;N;$!ba;s|\(*cpp:\n[^\n]*\)|\1 -I'${INCDIR}'|g' ${SPECS_FILE}
     done
 fi
+
+## TEST: Here we verify that gcc can build a simple "Hello world" program for both C and C++.
+##
+## Note: This tests the gcc package's ability to actually function as a compiler.
+##       Therefore, packages should never depend on the gcc package as a 'run' dependency, 
+##       i.e. just for its packaged libraries (they should depend on 'libgcc' instead).
+##       That way, if there are systems which can't use this gcc package for its
+##       compiler (due to portability issues) can still use packages produced with it.
+
+workdir=`mktemp -d` && cd $workdir
+
+# Write test programs.
+cat > hello.c <<EOF
+#include <stdio.h>
+int main()
+{
+    printf("Hello, world! I can compile C.\n");
+    return 0;
+}
+EOF
+
+cat > hello.cpp <<EOF
+#include <iostream>
+int main()
+{
+    std::cout << "Hello, world! I can compile C++." << std::endl;
+    return 0;
+}
+EOF
+
+set +e
+
+# Compile.
+(
+    set -e
+    gcc -o hello_c.out hello.c
+    g++ -o hello_cpp.out hello.cpp
+)
+SUCCESS=$?
+if [ $SUCCESS -ne 0 ]; then
+    echo "Installation failed: gcc is not able to compile a simple 'Hello, World' program."
+    rm -r $workdir
+    exit 1;
+fi
+
+# Execute the compiled output.
+(
+    set -e
+    ./hello_c.out > /dev/null
+    ./hello_cpp.out > /dev/null
+)
+SUCCESS=$?
+if [ $SUCCESS -ne 0 ]; then
+    echo "Installation failed: Compiled test program did not execute cleanly."
+    rm -r $workdir
+    exit 1;
+fi
+
+rm -r $workdir
