@@ -12,16 +12,20 @@ source:
   fn: VTK-5.10.1.win-amd64-py2.7.exe         [win64 and py27]
 
 build:
-  number: 1                                  [linux]
+  number: 2                                  [linux]
 
 requirements:
   build:
     - cmake                                  [linux]
     - python
+    - pyqt
   run:
     - python
 
 test:
+  requires:
+    - pyqt
+
   commands:
     - vtkpython -h                           [unix]
   imports:
