@@ -9,6 +9,9 @@ source:
   patches:
     - pedantic.patch [not win]
 
+build:
+  number: 1
+
 requirements:
   build:
     - libsodium [not win]
