@@ -31,7 +31,7 @@ $CMAKE \
     -DVTK_USE_OFFSCREEN:BOOL=ON \
     ..
 
-make
+make -j${CPU_COUNT}
 make install
 
 if [ `uname` == Linux ]; then
