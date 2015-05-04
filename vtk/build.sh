@@ -36,8 +36,8 @@ make install
 
 if [ `uname` == Linux ]; then
     mv $PREFIX/lib/vtk-5.10/lib* $PREFIX/lib
-    $REPLACE '/lib/vtk-5.10/lib' '/lib/lib' \
-	     $PREFIX/lib/vtk-5.10/VTKTargets-debug.cmake
+    sed -i 's|/lib/vtk-5.10/lib|/lib/lib|g' \
+        $PREFIX/lib/vtk-5.10/VTKTargets-debug.cmake
 fi
 if [ `uname` == Darwin ]; then
     $SYS_PYTHON $RECIPE_DIR/osx.py
