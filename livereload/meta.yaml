@@ -10,8 +10,8 @@ source:
    # List any patch files here
    # - fix.patch
 
-# build:
-  # preserve_egg_dir: True
+build:
+  preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
@@ -34,6 +34,7 @@ requirements:
   run:
     - python
     - tornado
+    - setuptools
     - argparse # [py26]
 
 test:
