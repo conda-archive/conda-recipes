@@ -2,7 +2,7 @@
 # TEST: Here we verify that gcc can build a simple "Hello world" program for both C and C++.
 #
 
-workdir=`mktemp -d` && cd $workdir
+workdir=`mktemp -d XXXXXXXXXX` && cd $workdir
 
 # Write test programs.
 cat > hello.c <<EOF

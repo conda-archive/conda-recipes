@@ -47,7 +47,7 @@ fi
 ##       That way, if there are systems which can't use this gcc package for its
 ##       compiler (due to portability issues) can still use packages produced with it.
 
-workdir=`mktemp -d` && cd $workdir
+workdir=`mktemp -d XXXXXXXXXX` && cd $workdir
 
 # Write test programs.
 cat > hello.c <<EOF
