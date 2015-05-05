@@ -7,11 +7,13 @@ source:
   url: http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.11.1.tar.bz2
   md5: 824d000eb737af6e16c826dd3b2d6c90
   patches:
-    - fc-cache.patch [linux]
+    - fc-cache.patch   [linux]
+    - fcf.patch        [linux]
 
 build:
-  detect_binary_files_with_prefix: true
-  number: 3
+  number: 4
+  binary_has_prefix_files:
+    - lib/libfontconfig.so.1.8.0 [linux]
 
 requirements:
   build:

@@ -1,7 +1,8 @@
 #!/bin/bash
 
-chmod +x configure
+sed s:'@PREFIX@':"$PREFIX":g -i src/fccfg.c
 
+chmod +x configure
 ./configure --prefix $PREFIX --enable-libxml2 --disable-docs
 
 make
