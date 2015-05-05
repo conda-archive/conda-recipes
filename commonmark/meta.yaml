@@ -36,7 +36,6 @@ test:
   # Python imports
   imports:
     - CommonMark
-    - commonmark
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
