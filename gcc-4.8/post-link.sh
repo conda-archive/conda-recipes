@@ -79,7 +79,7 @@ set +e
 SUCCESS=$?
 if [ $SUCCESS -ne 0 ]; then
     echo "Installation failed: gcc is not able to compile a simple 'Hello, World' program."
-    rm -r $workdir
+    cd .. && rm -r $workdir
     exit 1;
 fi
 
@@ -92,8 +92,8 @@ fi
 SUCCESS=$?
 if [ $SUCCESS -ne 0 ]; then
     echo "Installation failed: Compiled test program did not execute cleanly."
-    rm -r $workdir
+    cd .. && rm -r $workdir
     exit 1;
 fi
 
-rm -r $workdir
+cd .. && rm -r $workdir

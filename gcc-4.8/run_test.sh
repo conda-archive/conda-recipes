@@ -28,13 +28,13 @@ set +e
 # Compile.
 (
     set -e
-    gcc -o hello_c.out hello.c
-    g++ -o hello_cpp.out hello.cpp
+    ${PREFIX}/bin/gcc -o hello_c.out hello.c
+    ${PREFIX}/bin/g++ -o hello_cpp.out hello.cpp
 )
 SUCCESS=$?
 if [ $SUCCESS -ne 0 ]; then
     echo "Build failed: gcc is not able to compile a simple 'Hello, World' program."
-    rm -r $workdir
+    cd .. && rm -r $workdir
     exit 1;
 fi
 
@@ -47,8 +47,9 @@ fi
 SUCCESS=$?
 if [ $SUCCESS -ne 0 ]; then
     echo "Build failed: Compiled test program did not execute cleanly."
-    rm -r $workdir
+    cd .. && rm -r $workdir
     exit 1;
 fi
 
-rm -r $workdir
+cd .. && rm -r $workdir
+
