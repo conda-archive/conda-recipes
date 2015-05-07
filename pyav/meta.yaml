@@ -1,0 +1,29 @@
+package:
+  name: pyav
+  version: v0.2.2
+
+source:
+  git_url: https://github.com/mikeboers/PyAV.git
+  git_rev: v0.2.2
+
+build:
+  string: 0
+
+requirements:
+  build:
+    - ffmpeg
+    - pkg-config
+    - cython
+  run:
+    - ffmpeg
+
+
+test:
+  imports:
+    - av
+
+about:
+  home: http://www.freedesktop.org/wiki/Software/pkg-config/
+  license: GPL 2
+
+# vim:set ts=8 sw=2 sts=2 tw=78 et:
