@@ -1,11 +1,11 @@
 package:
   name: mercurial
-  version: 2.7.0
+  version: 3.4
 
 source:
-  fn: mercurial-2.7.tar.gz
-  url: https://pypi.python.org/packages/source/M/Mercurial/mercurial-2.7.tar.gz
-  md5: 61093c08ca5d8d1310382d17764f0c43
+  fn: mercurial-3.4.tar.gz
+  url: https://pypi.python.org/packages/source/M/Mercurial/mercurial-3.4.tar.gz
+  md5: 4a2dcf2bd9fa11e758d44e481136eab7
 
 build:
 
@@ -24,4 +24,4 @@ test:
 
 about:
   home: http://mercurial.selenic.com/
-  license: GNU General Public License (GPL)
+  license: GNU General Public License Version 2 (GPLv2)
