@@ -2,13 +2,15 @@ package:
   name: r-mime
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.2"
+  version: "0.3"
 
 source:
-  fn: mime_0.2.tar.gz
+  fn: mime_0.3.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/mime_0.2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/mime/mime_0.2.tar.gz
+    - http://cran.r-project.org/src/contrib/mime_0.3.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/mime/mime_0.3.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,7 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1 # [osx]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -48,30 +50,30 @@ test:
 
 about:
   home: https://github.com/yihui/mime
-  license: GPL
-  summary: This package guesses the MIME type from a filename extension using the data derived
-    from /etc/mime.types in UNIX-type systems.
+  license: GPL-2
+  summary: Guesses the MIME type from a filename extension using the data derived from /etc/mime.types
+    in UNIX-type systems.
 
 # The original CRAN metadata for this package was:
 
 # Package: mime
 # Type: Package
-# Title: Map filenames to MIME types
-# Version: 0.2
-# Date: 2014-09-27
+# Title: Map Filenames to MIME Types
+# Version: 0.3
+# Date: 2015-03-29
 # Authors@R: c(person("Jeffrey", "Horner", role = "ctb"), person("Yihui", "Xie", role = c("aut", "cre"), email = "xie@yihui.name"))
 # Maintainer: Yihui Xie <xie@yihui.name>
-# Description: This package guesses the MIME type from a filename extension using the data derived from /etc/mime.types in UNIX-type systems.
+# Description: Guesses the MIME type from a filename extension using the data derived from /etc/mime.types in UNIX-type systems.
 # Imports: tools
-# License: GPL
+# License: GPL-2
 # URL: https://github.com/yihui/mime
 # BugReports: https://github.com/yihui/mime/issues
 # LazyData: TRUE
-# Packaged: 2014-09-26 19:35:03 UTC; yihui
+# Packaged: 2015-03-29 03:46:13 UTC; yihui
 # Author: Jeffrey Horner [ctb], Yihui Xie [aut, cre]
 # NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2014-09-26 23:43:41
+# Date/Publication: 2015-03-29 08:43:01
 
 # See
 # http://docs.continuum.io/conda/build.html for
