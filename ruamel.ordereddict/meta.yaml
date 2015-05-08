@@ -1,0 +1,60 @@
+package:
+  name: ruamel.ordereddict
+  version: "0.4.6"
+
+source:
+  fn: ruamel.ordereddict-0.4.6.tar.gz
+  url: https://pypi.python.org/packages/source/r/ruamel.ordereddict/ruamel.ordereddict-0.4.6.tar.gz
+  md5: 77e89e89b280242eff92d12c2644060d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ruamel.ordereddict = ruamel.ordereddict:main
+    #
+    # Would create an entry point called ruamel.ordereddict that calls ruamel.ordereddict.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - ruamel.ordereddict
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/ruamel/ordereddict
+  license: MIT License
+  summary: 'a version of dict that keeps keys in insertion resp. sorted order'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
