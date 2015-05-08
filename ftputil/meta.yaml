@@ -1,0 +1,59 @@
+package:
+  name: ftputil
+  version: "3.2"
+
+source:
+  fn: ftputil-3.2.tar.gz
+  url: https://pypi.python.org/packages/source/f/ftputil/ftputil-3.2.tar.gz
+  md5: e714790766b753bfdd712955bf3584f8
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ftputil = ftputil:main
+    #
+    # Would create an entry point called ftputil that calls ftputil.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - ftputil
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://ftputil.sschwarzer.net/
+  license: BSD License
+  summary: 'High-level FTP client library (virtual file system and more)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
