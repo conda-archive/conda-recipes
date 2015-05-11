@@ -13,5 +13,4 @@ build:
 about:
   home: http://zlib.net/
   license: zlib (http://zlib.net/zlib_license.html)
-  license_family: Other
   summary: "A Massively Spiffy Yet Delicately Unobtrusive Compression Library"
