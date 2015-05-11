@@ -32,9 +32,10 @@ build:
 requirements:
   build:
     - r
-
+    - jpeg
   run:
     - r
+    - jpeg
 
 test:
   commands:
