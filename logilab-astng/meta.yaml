@@ -1,0 +1,62 @@
+package:
+  name: logilab-astng
+  version: "0.24.3"
+
+source:
+  fn: logilab-astng-0.24.3.tar.gz
+  url: https://pypi.python.org/packages/source/l/logilab-astng/logilab-astng-0.24.3.tar.gz
+  md5: f0dd5dee1d5053939da174e1bfe69388
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - logilab-astng = logilab-astng:main
+    #
+    # Would create an entry point called logilab-astng that calls logilab-astng.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - logilab-common >=0.53.0
+
+  run:
+    - python
+    - logilab-common >=0.53.0
+
+test:
+  # Python imports
+  imports:
+    - logilab.astng
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.logilab.org/project/logilab-astng
+  license: LGPL
+  summary: "rebuild a new abstract syntax tree from Python's ast"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
