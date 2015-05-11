@@ -1,0 +1,76 @@
+package:
+  name: pgcli
+  version: "0.16.3"
+
+source:
+  fn: pgcli-0.16.3.tar.gz
+  url: https://pypi.python.org/packages/source/p/pgcli/pgcli-0.16.3.tar.gz
+  md5: 861191e30595ad0b81ba2388031e65da
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pgcli = pgcli:main
+    #
+    # Would create an entry point called pgcli that calls pgcli.main()
+
+    - pgcli=pgcli.main:cli
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - click >=3.2
+    - pygments >=2.0
+    - jedi ==0.8.1
+    - prompt_toolkit ==0.26
+    - psycopg2 >=2.5.4
+    - sqlparse >=0.1.14
+
+  run:
+    - python
+    - setuptools
+    - click >=3.2
+    - pygments >=2.0
+    - jedi ==0.8.1
+    - prompt_toolkit ==0.26
+    - psycopg2 >=2.5.4
+    - sqlparse >=0.1.14
+
+test:
+  # Python imports
+  imports:
+    - pgcli
+    - pgcli.packages
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pgcli --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pgcli.com
+  license: BSD License
+  summary: 'CLI for Postgres Database. With auto-completion and syntax highlighting.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

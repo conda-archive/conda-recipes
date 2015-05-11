@@ -1,0 +1,29 @@
+package:
+  name: testdisk
+  version: 7.0
+
+source:
+  fn: testdisk-7.0.tar.bz2
+  url: http://www.cgsecurity.org/testdisk-7.0.tar.bz2
+
+requirements:
+  build:
+    - gcc
+    - zlib
+    - ncurses
+    - jpeg
+  run:
+    - libgcc
+    - zlib
+    - ncurses
+    - jpeg
+
+test:
+  commands:
+    - testdisk --help
+    - photorec --help
+
+about:
+  home: http://www.cgsecurity.org/wiki/TestDisk
+  summary: "TestDisk is powerful free data recovery software! It was primarily designed to help recover lost partitions and/or make non-booting disks bootable again when these symptoms are caused by faulty software: certain types of viruses or human error (such as accidentally deleting a Partition Table). Partition table recovery using TestDisk is really easy."
+  license: GPL

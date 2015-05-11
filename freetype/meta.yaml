@@ -1,0 +1,30 @@
+package:
+    name: freetype
+    version: 2.5.2
+
+source:
+  fn: freetype-2.5.2.tar.bz2
+  url: http://download.savannah.gnu.org/releases/freetype/freetype-2.5.2.tar.bz2
+  md5: 10e8f4d6a019b124088d18bc26123a25
+  patches:
+    - update_msvc_sln.patch           [win]
+    - subpixel.patch
+    - multi-thread-violations.patch
+    - double-free.patch
+    - CVE-2014-2240.patch
+    - CVE-2014-2241.patch
+
+build:
+  number: 1
+
+requirements:
+    build:
+        - zlib
+        - libpng
+    run:
+        - zlib
+        - libpng
+
+about:
+  home: http://freetype.sourceforge.net/index2.html
+  license: FreeType License (http://freetype.sourceforge.net/FTL.TXT)

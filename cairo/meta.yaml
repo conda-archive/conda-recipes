@@ -12,12 +12,14 @@ build:
 
 requirements:
   build:
+    - pkg-config
     - freetype
     - fontconfig
     - libpng
     - pixman
     - zlib
   run:
+    - pkg-config
     - freetype
     - fontconfig
     - libpng

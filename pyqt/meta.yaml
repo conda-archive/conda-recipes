@@ -1,27 +1,30 @@
 package:
   name: pyqt
-  version: 4.10.4
+  version: 4.11.3
 
-source:
-  fn: PyQt-mac-gpl-4.10.4.tar.gz                                                               # [osx]
-  url: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10.4/PyQt-mac-gpl-4.10.4.tar.gz # [osx]
-  sha1: ef3bb2a05a5c8c3ab7578a0991ef5a4e17c314c0                                               # [osx]
-  fn: PyQt-x11-gpl-4.10.4.tar.gz                                                               # [linux]
-  url: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10.4/PyQt-x11-gpl-4.10.4.tar.gz # [linux]
-  sha1: 33243462987a0ff135487855e2dcd1de1834d1fa                                               # [linux]
-  patches:
-    - configure.patch
+source: # [unix]
+  fn: PyQt-mac-gpl-4.11.3.tar.gz                                                                 [osx]
+  url: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.11.3/PyQt-mac-gpl-4.11.3.tar.gz   [osx]
+  sha1: 8c53254b38686e5366d74eba81f02f9611f39166                                                 [osx]
+  fn: PyQt-x11-gpl-4.11.3.tar.gz                                                                 [linux]
+  url: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.11.3/PyQt-x11-gpl-4.11.3.tar.gz   [linux]
+  sha1: 28259b175c0befed328087702e8b93b819c99895                                                 [linux]
+  patches:              [unix]
+    - configure.patch   [unix]
+
+build:
+  number: 5
 
 requirements:
-  build:
-    - python
-    - qt
-    - sip
+  build:                 [unix]
+    - python             [unix]
+    - qt      >=4.8.6    [unix]
+    - sip     >=4.16.4   [unix]
 
   run:
     - python
-    - qt
-    - sip
+    - qt      >=4.8.6    [unix]
+    - sip     >=4.16.4
 
 test:
   imports:

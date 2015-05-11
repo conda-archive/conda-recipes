@@ -1,0 +1,32 @@
+package:
+  name: vtk
+  version: 5.10.1
+
+source:
+  url: http://www.vtk.org/files/release/5.10/vtk-5.10.1.tar.gz [not win]
+  fn: vtk-5.10.1.tar.gz                      [not win]
+  md5: 264b0052e65bd6571a84727113508789      [not win]
+  fn: VTK-5.10.1.win32-py2.6.exe             [win32 and py26]
+  fn: VTK-5.10.1.win-amd64-py2.6.exe         [win64 and py26]
+  fn: VTK-5.10.1.win32-py2.7.exe             [win32 and py27]
+  fn: VTK-5.10.1.win-amd64-py2.7.exe         [win64 and py27]
+
+build:
+  number: 1                                  [linux]
+
+requirements:
+  build:
+    - cmake                                  [linux]
+    - python
+  run:
+    - python
+
+test:
+  commands:
+    - vtkpython -h                           [unix]
+  imports:
+    - vtk
+
+about:
+  home: http://www.vtk.org/
+  license: BSD

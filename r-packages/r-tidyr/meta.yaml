@@ -1,0 +1,89 @@
+package:
+  name: r-tidyr
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.2.0"
+
+source:
+  fn: tidyr_0.2.0.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/tidyr_0.2.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/tidyr/tidyr_0.2.0.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: knitr, testthat
+requirements:
+  build:
+    - r
+    - r-dplyr >=0.2
+    - r-lazyeval
+    - r-reshape2
+    - r-stringi
+
+  run:
+    - r
+    - r-dplyr >=0.2
+    - r-lazyeval
+    - r-reshape2
+    - r-stringi
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('tidyr')" # [not win]
+    - "\"%R%\" -e \"library('tidyr')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/hadley/tidyr
+  license: MIT + file LICENSE
+  summary: An evolution of reshape2. It's designed specifically for data tidying (not general
+    reshaping or aggregating) and works well with dplyr data pipelines.
+
+# The original CRAN metadata for this package was:
+
+# Package: tidyr
+# Title: Easily Tidy Data with spread() and gather() Functions.
+# Version: 0.2.0
+# Authors@R: as.person(c( "Hadley Wickham <hadley@rstudio.com> [aut, cre]", "RStudio [cph]" ))
+# Description: An evolution of reshape2. It's designed specifically for data tidying (not general reshaping or aggregating) and works well with dplyr data pipelines.
+# Depends: R (>= 3.1.0)
+# License: MIT + file LICENSE
+# LazyData: true
+# Imports: reshape2, dplyr (>= 0.2), stringi, lazyeval
+# URL: https://github.com/hadley/tidyr
+# BugReports: https://github.com/hadley/tidyr/issues
+# Suggests: knitr, testthat
+# VignetteBuilder: knitr
+# Packaged: 2014-12-05 16:52:20 UTC; hadley
+# Author: Hadley Wickham [aut, cre], RStudio [cph]
+# Maintainer: Hadley Wickham <hadley@rstudio.com>
+# NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2014-12-05 18:03:26
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

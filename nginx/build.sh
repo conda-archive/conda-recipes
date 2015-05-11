@@ -47,13 +47,3 @@ chmod +x configure;
 make || return 1;
 make install || return 1;
 
-# Create list of config files and unlink to prevent hardlinking
-# Re-create these files in post-link.sh
-pushd $PREFIX/etc/nginx;
-for item in `ls *.default`
-do
-    rm -f ${item%%.default}
-done
-popd
-
-

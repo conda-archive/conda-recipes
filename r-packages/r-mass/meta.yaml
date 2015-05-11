@@ -2,13 +2,13 @@ package:
   name: r-mass
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "7.3_37"
+  version: "7.3_40"
 
 source:
-  fn: MASS_7.3-37.tar.gz
+  fn: MASS_7.3-40.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/MASS_7.3-37.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/MASS/MASS_7.3-37.tar.gz
+    - http://cran.r-project.org/src/contrib/MASS_7.3-40.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/MASS/MASS_7.3-40.tar.gz
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,7 +19,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1 # [osx]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -29,10 +29,10 @@ build:
 # Suggests: lattice, nlme, nnet, survival
 requirements:
   build:
-    - r >=3.0.0
+    - r-base >=3.1.0
 
   run:
-    - r >=3.0.0
+    - r >=3.1.0
 
 test:
   commands:
@@ -56,10 +56,10 @@ about:
 
 # Package: MASS
 # Priority: recommended
-# Version: 7.3-37
-# Date: 2015-01-10
-# Revision: $Rev: 3420 $
-# Depends: R (>= 3.0.0), grDevices, graphics, stats, utils
+# Version: 7.3-40
+# Date: 2015-03-21
+# Revision: $Rev: 3441 $
+# Depends: R (>= 3.1.0), grDevices, graphics, stats, utils
 # Suggests: lattice, nlme, nnet, survival
 # Authors@R: c(person("Brian", "Ripley", role = c("aut", "cre", "cph"), email = "ripley@stats.ox.ac.uk"), person("Bill", "Venables", role = "ctb"), person(c("Douglas", "M."), "Bates", role = "ctb"), person("Kurt", "Hornik", role = "trl", comment = "partial port ca 1998"), person("Albrecht", "Gebhardt", role = "trl", comment = "partial port ca 1998"), person("David", "Firth", role = "ctb"))
 # Description: Functions and datasets to support Venables and Ripley, 'Modern Applied Statistics with S' (4th edition, 2002).
@@ -68,12 +68,12 @@ about:
 # ByteCompile: yes
 # License: GPL-2 | GPL-3
 # URL: http://www.stats.ox.ac.uk/pub/MASS4/
-# Packaged: 2015-01-10 08:31:05 UTC; ripley
+# NeedsCompilation: yes
+# Packaged: 2015-03-21 06:59:04 UTC; ripley
 # Author: Brian Ripley [aut, cre, cph], Bill Venables [ctb], Douglas M. Bates [ctb], Kurt Hornik [trl] (partial port ca 1998), Albrecht Gebhardt [trl] (partial port ca 1998), David Firth [ctb]
 # Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
-# NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2015-01-10 12:52:14
+# Date/Publication: 2015-03-21 08:05:55
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -1,11 +1,11 @@
 package:
   name: unidecode
-  version: !!str 0.04.14
+  version: !!str 0.04.17
 
 source:
-  fn: Unidecode-0.04.14.tar.gz
-  url: https://pypi.python.org/packages/source/U/Unidecode/Unidecode-0.04.14.tar.gz
-  md5: d4106bcfdef39625944f4294ef4666de
+  fn: Unidecode-0.04.17.tar.gz
+  url: https://pypi.python.org/packages/source/U/Unidecode/Unidecode-0.04.17.tar.gz
+  md5: 5862c893d5aac49f5eefbd96e9e9e682
 #  patches:
    # List any patch files here
    # - fix.patch

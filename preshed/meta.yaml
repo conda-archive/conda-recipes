@@ -1,0 +1,43 @@
+
+package:
+    name: preshed
+    version: 0.37
+
+source:
+    fn: preshed-0.37.tar.gz
+    url: https://pypi.python.org/packages/source/p/preshed/preshed-0.37.tar.gz
+    md5: d09a01f096151c15401126697de1965c
+    patches:
+        - 0001-Removed-direct-dependencies-from-setup.py.patch
+
+build:
+    number: 0
+
+
+requirements:
+    build:
+        - python
+        - distribute
+        - headers_workaround
+        - cymem
+        - murmurhash
+        - pytest
+
+    run:
+        - python
+        - cython
+        - cymem
+        - murmurhash
+        - pytest
+
+test:
+    imports:
+        - preshed
+
+    #commands:
+    #    -
+
+about:
+    home: https://github.com/syllog1sm/preshed
+    license: MIT
+

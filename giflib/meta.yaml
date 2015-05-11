@@ -1,0 +1,12 @@
+package:
+  name: giflib
+  version: 5.1.1
+
+source:
+  fn: giflib-5.1.1.tar.bz2
+  url: http://downloads.sourceforge.net/project/giflib/giflib-5.1.1.tar.bz2 #?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fgiflib%2F&ts=1427315169&use_mirror=iweb
+
+about:
+  summary: A library and utilities for processing GIFs
+  license: MIT
+  home: http://giflib.sourceforge.net/

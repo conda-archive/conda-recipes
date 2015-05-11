@@ -29,7 +29,7 @@ build:
 # Suggests: MASS
 requirements:
   build:
-    - r >=3.0.0
+    - r-base >=3.0.0
 
   run:
     - r >=3.0.0

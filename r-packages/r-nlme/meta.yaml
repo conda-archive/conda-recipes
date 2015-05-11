@@ -29,7 +29,7 @@ build:
 # Suggests: Hmisc, MASS
 requirements:
   build:
-    - r >=3.0.0
+    - r-base >=3.0.0
     - r-lattice # [not win]
 
   run:

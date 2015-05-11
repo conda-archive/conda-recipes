@@ -1,0 +1,91 @@
+package:
+  name: r-caret
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "6.0_41"
+
+source:
+  fn: caret_6.0-41.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/caret_6.0-41.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/caret/caret_6.0-41.tar.gz
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: e1071, earth (>= 2.2-3), fastICA, gam, ipred, kernlab, klaR, MASS, ellipse, mda, mgcv, mlbench, nnet, party (>= 0.9-99992), pls, pROC, proxy, randomForest, RANN, spls, subselect, pamr, superpc, Cubist, testthat (>= 0.9.1)
+requirements:
+  build:
+    - r >=2.10
+    - r-bradleyterry2
+    - r-car
+    - r-foreach
+    - r-ggplot2
+    - r-lattice >=0.20 # [not win]
+    - r-nlme # [not win]
+    - r-plyr
+    - r-reshape2
+
+  run:
+    - r >=2.10
+    - r-bradleyterry2
+    - r-car
+    - r-foreach
+    - r-ggplot2
+    - r-lattice >=0.20 # [not win]
+    - r-nlme # [not win]
+    - r-plyr
+    - r-reshape2
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('caret')" # [not win]
+    - "\"%R%\" -e \"library('caret')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://caret.r-forge.r-project.org/
+  license: GPL (>= 2)
+  summary: Misc functions for training and plotting classification and regression models
+
+# The original CRAN metadata for this package was:
+
+# Package: caret
+# Version: 6.0-41
+# Date: 2015-01-02
+# Title: Classification and Regression Training
+# Author: Max Kuhn. Contributions from Jed Wing, Steve Weston, Andre Williams, Chris Keefer, Allan Engelhardt, Tony Cooper, Zachary Mayer, Brenton Kenkel, the R Core Team, Michael Benesty, Reynald Lescarbeau, Andrew Ziem, and Luca Scrucca.
+# Description: Misc functions for training and plotting classification and regression models
+# Maintainer: Max Kuhn <Max.Kuhn@pfizer.com>
+# Depends: R (>= 2.10), stats, lattice (>= 0.20), ggplot2
+# URL: http://caret.r-forge.r-project.org/
+# Imports: car, reshape2, foreach, methods, plyr, nlme, BradleyTerry2
+# Suggests: e1071, earth (>= 2.2-3), fastICA, gam, ipred, kernlab, klaR, MASS, ellipse, mda, mgcv, mlbench, nnet, party (>= 0.9-99992), pls, pROC, proxy, randomForest, RANN, spls, subselect, pamr, superpc, Cubist, testthat (>= 0.9.1)
+# License: GPL (>= 2)
+# NeedsCompilation: yes
+# Packaged: 2015-01-02 18:40:43 UTC; kuhna03
+# Repository: CRAN
+# Date/Publication: 2015-01-03 06:58:41
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

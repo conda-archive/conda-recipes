@@ -1,14 +1,13 @@
 package:
   name: emacs
-  version: 24.4
+  version: 24.5
 
 source:
-  fn: emacs-24.4.tar.xz
-  url: http://ftp.gnu.org/gnu/emacs/emacs-24.4.tar.xz
-  md5: ad487658ad7421ad8d7b5152192eb945
+  fn: emacs-24.5.tar.xz
+  url: http://ftp.gnu.org/gnu/emacs/emacs-24.5.tar.xz
+  md5: 50560ee00bac9bb9cf0e822764cd0832
 
 build:
-  number: 2 # [osx]
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -16,10 +15,21 @@ requirements:
     - libxml2
     - ncurses
     - dbus # [osx]
+    - jpeg # [linux]
+    - libpng # [linux]
+    - libtiff # [linux]
+    - giflib # [linux]
+    - gcc # [linux]
+    - freetype # [linux]
   run:
     - libxml2
     - ncurses
     - dbus # [osx]
+    - jpeg # [linux]
+    - libpng # [linux]
+    - libtiff # [linux]
+    - giflib # [linux]
+    - freetype # [linux]
 
 test:
   commands:

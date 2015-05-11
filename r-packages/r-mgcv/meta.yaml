@@ -29,7 +29,7 @@ build:
 # Suggests: splines, parallel, survival, MASS
 requirements:
   build:
-    - r >=2.14.0
+    - r-base >=2.14.0
     - r-matrix # [not win]
     - r-nlme >=3.1_64 # [not win]
 

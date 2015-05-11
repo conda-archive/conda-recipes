@@ -1,16 +1,16 @@
 package:
   name: cachecontrol
-  version: "0.10.7"
+  version: "0.11.2"
 
 source:
-  fn: CacheControl-0.10.7.tar.gz
-  url: https://pypi.python.org/packages/source/C/CacheControl/CacheControl-0.10.7.tar.gz
-  md5: ff259a671b0521117dd9b028c66d23ef
+  fn: CacheControl-0.11.2.tar.gz
+  url: https://pypi.python.org/packages/source/C/CacheControl/CacheControl-0.11.2.tar.gz
+  md5: 7e54c099f42b8291206e1ba3f20e94bf
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
+# build:
   # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
@@ -23,7 +23,7 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
 requirements:
   build:
