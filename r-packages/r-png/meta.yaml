@@ -33,10 +33,13 @@ requirements:
   build:
     - r
     - libpng
+    - zlib
 
   run:
     - r
     - libpng
+    - zlib
+
 test:
   commands:
     # You can put additional test commands to be run here.
