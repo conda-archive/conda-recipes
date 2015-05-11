@@ -32,10 +32,11 @@ build:
 requirements:
   build:
     - r
+    - libpng
 
   run:
     - r
-
+    - libpng
 test:
   commands:
     # You can put additional test commands to be run here.
