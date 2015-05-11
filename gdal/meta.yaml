@@ -12,18 +12,6 @@ requirements:
     - hdf5           [unix]
     - libnetcdf      [unix]
 
-test:
-  files:
-    - os1_hw.py
-    - sites.dbf
-    - sites.sbn
-    - sites.sbx
-    - sites.shp
-    - sites.shx
-  imports:
-    - osgeo.gdal
-    - osgeo.ogr
-
 about:
   home: http://www.gdal.org/
   license: MIT
