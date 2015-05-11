@@ -1,18 +1,18 @@
 package:
   name: pytest-timeout
-  version: !!str 0.3
+  version: "0.4"
 
 source:
-  fn: pytest-timeout-0.3.tar.gz
-  url: https://pypi.python.org/packages/source/p/pytest-timeout/pytest-timeout-0.3.tar.gz
-  md5: 46de81f106ab8a320c39a37d7d8f0429
+  fn: pytest-timeout-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/p/pytest-timeout/pytest-timeout-0.4.tar.gz
+  md5: 03b28aff69cbbfb959ed35ade5fde262
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
-  #preserve_egg_dir: True
-  #entry_points:
+build:
+  preserve_egg_dir: True
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -29,17 +29,18 @@ requirements:
   build:
     - python
     - setuptools
-    - pytest >=2.0
+    - pytest >=2.4
 
   run:
     - python
-    - pytest >=2.0
+    - setuptools
+    - pytest >=2.4
 
-test:
+# test:
   # Python imports
   # imports:
 
-  #commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -53,8 +54,8 @@ test:
 
 about:
   home: http://bitbucket.org/flub/pytest-timeout/
-  license:  MIT License
-  summary: 'pytest plugin to abort tests after a timeout'
+  license: MIT License
+  summary: 'py.test plugin to abort hanging tests'
 
 # See
 # http://docs.continuum.io/conda/build.html for
