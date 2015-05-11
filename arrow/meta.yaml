@@ -1,11 +1,11 @@
 package:
   name: arrow
-  version: 0.3.5
+  version: 0.5.4
 
 source:
-  fn: arrow-0.3.5.tar.gz
-  url: https://pypi.python.org/packages/source/a/arrow/arrow-0.3.5.tar.gz
-  md5: b6ffcc19a8f5a67fb8d18e3b80878137
+  fn: arrow-0.5.4.tar.gz
+  url: https://pypi.python.org/packages/source/a/arrow/arrow-0.5.4.tar.gz
+  md5: 92c69f04a05c5fb03d43597833dcd5fb
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -38,6 +38,7 @@ test:
   # Python imports
   imports:
     - arrow
+    - arrow.arrow
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
