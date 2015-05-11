@@ -7,5 +7,3 @@ fi
 ./configure --prefix=$PREFIX
 make
 make install
-
-rm -rf $PREFIX/share
