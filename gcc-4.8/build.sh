@@ -32,17 +32,7 @@ make
 make install
 rm $PREFIX/lib64
 
-
-# Lastly, remove the headers that gcc "fixed".
-# They kill the gcc binary's portability to other systems,
-#   and shouldn't be necessary on ANSI-compliant systems anyway.
-# More discussion can be found here:
-# https://groups.google.com/a/continuum.io/d/msg/conda/HwUazgD-hJ0/aofO0vD-MhcJ
-# (We can skip this step on Mac, because the "fixed" 
-#  headers on Mac seem to be forward compatible.)
-if [ "$(uname)" != "Darwin" ]; then
-    while read x ; do
-      grep -q 'It has been auto-edited by fixincludes from' "${x}" \
-               && rm -f "${x}"
-    done < <(find ${PREFIX}/lib/gcc/*/*/include*/ -name '*.h')
-fi
+# For reference during post-link.sh, record some
+# details about the OS this binary was produced with.
+mkdir -p ${PREFIX}/share
+cat /etc/*-release > ${PREFIX}/share/conda-gcc-build-machine-os-details
