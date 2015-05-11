@@ -1,18 +1,18 @@
 package:
   name: cov-core
-  version: !!str 1.13.0
+  version: "1.15.0"
 
 source:
-  fn: cov-core-1.13.0.tar.gz
-  url: https://pypi.python.org/packages/source/c/cov-core/cov-core-1.13.0.tar.gz
-  md5: 8999e0bc50bca5a09d7731a3d42bfcd1
+  fn: cov-core-1.15.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/cov-core/cov-core-1.15.0.tar.gz
+  md5: f519d4cb4c4e52856afb14af52919fe6
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
-  #preserve_egg_dir: True
-  #entry_points:
+  # preserve_egg_dir: True
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -35,11 +35,11 @@ requirements:
     - python
     - coverage >=3.6
 
-test:
+# test:
   # Python imports
   # imports:
 
-  #commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -53,7 +53,7 @@ test:
 
 about:
   home: https://github.com/schlamar/cov-core
-  license:  MIT License
+  license: MIT License
   summary: 'plugin core for use by pytest-cov, nose-cov and nose2-cov'
 
 # See
