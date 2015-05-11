@@ -4,7 +4,7 @@ package:
 
 source:
   fn: jpegsrc.v8d.tar.gz
-  url: http://www.ijg.org/files/jpegsrc.v8d.tar.gz
+  url: http://download.openpkg.org/components/cache/jpeg/jpegsrc.v8d.tar.gz
   md5: 52654eb3b2e60c35731ea8fc87f1bd29
 
 build:
