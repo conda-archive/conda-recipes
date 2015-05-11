@@ -8,7 +8,7 @@ source:
     url: http://download.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-20131217-2245-stable.tar.bz2
 
 build:
-    number: 1
+    number: 2
 
 requirements:
     build:

@@ -28,10 +28,32 @@ LinuxInstallation() {
     return 0;
 }
 
+DarwinInstallation() {
+
+    chmod +x configure;
+
+    ./configure \
+        --enable-gpl \
+        --enable-nonfree \
+        --enable-shared \
+        --enable-pic \
+        --enable-libx264 \
+        --enable-openssl \
+        --disable-podpages \
+        --prefix=${PREFIX} || return 1;
+    make || return 1;
+    make install || return 1;
+
+    return 0;
+}
+
 case ${ARCH} in
     'Linux')
         LinuxInstallation || exit 1;
         ;;
+    'Darwin')
+        DarwinInstallation || exit 1;
+	;;
     *)
         echo -e "Unsupported machine type: ${ARCH}";
         exit 1;
