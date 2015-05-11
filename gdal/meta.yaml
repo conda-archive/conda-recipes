@@ -1,21 +1,14 @@
 package:
-  name: gdal
+  name: libgdal
   version: 1.11.2
 
 source:
-  fn: gdal-1.11.2.tar.gz                                         [unix]
-  url:  http://download.osgeo.org/gdal/1.11.2/gdal-1.11.2.tar.gz [unix]
-  md5: 866a46f72b1feadd60310206439c1a76                          [unix]
+  fn: gdal-1.11.2.tar.gz
+  url:  http://download.osgeo.org/gdal/1.11.2/gdal-1.11.2.tar.gz
+  md5: 866a46f72b1feadd60310206439c1a76
 
 requirements:
   build:
-    - python
-    - numpy          [unix]
-    - hdf5           [unix]
-    - libnetcdf      [unix]
-  run:
-    - python
-    - numpy
     - hdf5           [unix]
     - libnetcdf      [unix]
 
@@ -28,10 +21,10 @@ test:
     - sites.shp
     - sites.shx
   imports:
-    - osgeo                [not win]
-    - osgeo._gdal_array    [not win]
+    - osgeo.gdal
+    - osgeo.ogr
 
 about:
   home: http://www.gdal.org/
   license: MIT
-  summary: 'GDAL: Geospatial Data Abstraction Library'
+  summary: Geospatial Data Abstraction Library
