@@ -1,18 +1,18 @@
 package:
   name: path.py
-  version: !!str 5.2
+  version: "7.3"
 
 source:
-  fn: path.py-5.2.zip
-  url: https://pypi.python.org/packages/source/p/path.py/path.py-5.2.zip
-  md5: 96fe002b1797b221c269ff2ed1fdbc28
+  fn: path.py-7.3.zip
+  url: https://pypi.python.org/packages/source/p/path.py/path.py-7.3.zip
+  md5: 9fc7ba8cd4ec90797154d1f5a4380078
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
-  #preserve_egg_dir: True
-  #entry_points:
+  # preserve_egg_dir: True
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -37,7 +37,7 @@ requirements:
   # Python imports
   # imports:
 
-  #commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -51,7 +51,7 @@ requirements:
 
 about:
   home: http://github.com/jaraco/path.py
-  license:  MIT License
+  license: MIT License
   summary: 'A module wrapper for os.path'
 
 # See
