@@ -4,7 +4,7 @@ package:
 
 source:
   fn: libpng-1.6.17.tar.gz
-  url: http://sourceforge.net/projects/libpng/files/libpng15/1.6.17/libpng-1.6.17.tar.gz/download
+  url: ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng16/libpng-1.6.17.tar.gz
   md5: 134282f1752dcf4cd81a37b8ff421cef
 
 requirements:
