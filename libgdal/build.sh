@@ -13,7 +13,7 @@ bash configure \
     --without-python \
     --with-hdf5=$PREFIX \
     --with-netcdf=$PREFIX \
-    --prefix=$PREFIX
+    --prefix=$PREFIX \
     --disable-static
 make
 make install
