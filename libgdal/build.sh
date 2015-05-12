@@ -18,9 +18,9 @@ make
 make install
 
 # strip symbols from library
-strip --strip-unneeded $LIBRARY_LIB/libgdal.so.1.18.2
+strip --strip-unneeded $PREFIX/lib/libgdal.so.1.18.2
 
-rm $LIBRARY_LIB/libgdal.a
+rm $PREFIX/lib/libgdal.a
 
 #ACTIVATE_DIR=$PREFIX/etc/conda/activate.d
 #DEACTIVATE_DIR=$PREFIX/etc/conda/deactivate.d
