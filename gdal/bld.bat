@@ -7,13 +7,9 @@ if errorlevel 1 exit 1
 %PYTHON% setup.py build_scripts
 if errorlevel 1 exit 1
 
-%PYTHON% setup.py install
+%PYTHON% setup.py install --single-version-externally-managed --root=C:\
 if errorlevel 1 exit 1
 
 REM copy gdal111.dll to python directory
-copy %LIBRARY_BIN%\gdal111.dll %SP_DIR%\osgeo\
+copy %LIBRARY_BIN%\gdal111.dll %SP_DIR%\osgeo
 if errorlevel 1 exit 1
-
-if %PY3K%==1 (
-    del %PREFIX%\Lib\lib2to3\*.pickle
-)
