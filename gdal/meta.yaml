@@ -12,14 +12,10 @@ requirements:
     - python
     - libgdal
     - numpy          [unix]
-    - hdf5           [unix]
-    - libnetcdf      [unix]
   run:
     - python
     - libgdal
     - numpy
-    - hdf5           [unix]
-    - libnetcdf      [unix]
 
 test:
   files:

@@ -12,6 +12,10 @@ requirements:
     - hdf5           [unix]
     - libnetcdf      [unix]
 
+  run:
+    - hdf5           [unix]
+    - libnetcdf      [unix]
+
 build:
   detect_binary_files_with_prefix: true
 
