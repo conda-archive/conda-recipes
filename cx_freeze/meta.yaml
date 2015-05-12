@@ -1,0 +1,60 @@
+package:
+  name: cx_freeze
+  version: "4.3.4"
+
+source:
+  fn: cx_Freeze-4.3.4.tar.gz
+  url: https://pypi.python.org/packages/source/c/cx_Freeze/cx_Freeze-4.3.4.tar.gz
+  md5: 5bd662af9aa36e5432e9144da51c6378
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cx_freeze = cx_freeze:main
+    #
+    # Would create an entry point called cx_freeze that calls cx_freeze.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - cx_Freeze
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cx-freeze.sourceforge.net
+  license: Python Software Foundation License
+  summary: 'create standalone executables from Python scripts'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
