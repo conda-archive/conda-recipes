@@ -3,8 +3,8 @@ package:
   version: 1.11.2
 
 source:
-  fn: gdal-1.11.2.tar.gz
-  url:  http://download.osgeo.org/gdal/1.11.2/gdal-1.11.2.tar.gz
+  fn: libgdal-1.11.2.tar.gz
+  url: http://download.osgeo.org/gdal/1.11.2/gdal-1.11.2.tar.gz
   md5: 866a46f72b1feadd60310206439c1a76
 
 requirements:
@@ -17,7 +17,7 @@ requirements:
     - libnetcdf      [unix]
 
 build:
-  detect_binary_files_with_prefix: true
+  detect_binary_files_with_prefix: false
 
 about:
   home: http://www.gdal.org/
