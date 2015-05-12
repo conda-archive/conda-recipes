@@ -28,6 +28,9 @@ test:
   imports:
     - osgeo.ogr
     - osgeo.gdal
+    - osgeo.osr
+    - osgeo.gdal_array
+    - osgeo.gdalconst
 
 about:
   home: https://pypi.python.org/pypi/GDAL/
