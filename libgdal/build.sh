@@ -14,13 +14,12 @@ bash configure \
     --with-hdf5=$PREFIX \
     --with-netcdf=$PREFIX \
     --prefix=$PREFIX
+    --disable-static
 make
 make install
 
 # strip symbols from library
 strip --strip-unneeded $PREFIX/lib/libgdal.so.1.18.2
-
-rm $PREFIX/lib/libgdal.a
 
 #ACTIVATE_DIR=$PREFIX/etc/conda/activate.d
 #DEACTIVATE_DIR=$PREFIX/etc/conda/deactivate.d
