@@ -17,6 +17,11 @@ bash configure \
 make
 make install
 
+# strip symbols from library
+strip --strip-unneeded $LIBRARY_LIB/libgdal.so.1.18.2
+
+rm $LIBRARY_LIB/libgdal.a
+
 #ACTIVATE_DIR=$PREFIX/etc/conda/activate.d
 #DEACTIVATE_DIR=$PREFIX/etc/conda/deactivate.d
 #mkdir -p $ACTIVATE_DIR
