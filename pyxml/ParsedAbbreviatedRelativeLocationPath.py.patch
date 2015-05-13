@@ -1,0 +1,13 @@
+--- xml/xpath/ParsedAbbreviatedRelativeLocationPath.py	2003-03-11 14:01:34.000000000 +0000
++++ xml/xpath/ParsedAbbreviatedRelativeLocationPath.py.new	2015-05-13 15:58:58.705783652 +0000
+@@ -28,8 +28,8 @@
+         self._right = right
+         nt = ParsedNodeTest.ParsedNodeTest('node','')
+         ppl = ParsedPredicateList.ParsedPredicateList([])
+-        as = ParsedAxisSpecifier.ParsedAxisSpecifier('descendant-or-self')
+-        self._middle = ParsedStep.ParsedStep(as, nt, ppl)
++        axs = ParsedAxisSpecifier.ParsedAxisSpecifier('descendant-or-self')
++        self._middle = ParsedStep.ParsedStep(axs, nt, ppl)
+ 
+     def evaluate(self, context):
+         res = []
