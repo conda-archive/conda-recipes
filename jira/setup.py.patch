@@ -1,0 +1,30 @@
+--- setup.py	2015-04-03 12:32:37.000000000 +0000
++++ setup_new.py	2015-05-13 14:01:35.886777103 +0000
+@@ -132,6 +132,13 @@
+             raise RuntimeError(
+                 "Current version of the package is equal or lower than the already published ones (PyPi). Increse version to be able to pass prerelease stage.")
+ 
++INSTALL_REQUIRES=['requests>=2.6.0',
++                  'requests_oauthlib>=0.3.3',
++                  'tlslite>=0.4.4',
++                  'six>=1.9.0',
++                  'requests_toolbelt']
++if sys.version_info[:2] <= (2,6):
++    INSTALL_REQUIRES.append('ordereddict')
+ 
+ setup(
+     name=NAME,
+@@ -141,12 +148,7 @@
+     include_package_data=True,
+ 
+ 
+-    install_requires=['requests>=2.6.0',
+-                      'requests_oauthlib>=0.3.3',
+-                      'tlslite>=0.4.4',
+-                      'six>=1.9.0',
+-                      'requests_toolbelt',
+-                      'ordereddict'],
++    install_requires=INSTALL_REQUIRES,
+     setup_requires=[],
+     tests_require=['pytest', 'tlslite>=0.4.4', 'requests>=2.6.0',
+                    'setuptools', 'pep8', 'autopep8', 'sphinx', 'six>=1.9.0'],

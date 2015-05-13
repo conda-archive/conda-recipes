@@ -1,0 +1,74 @@
+package:
+  name: jira
+  version: "0.47"
+
+source:
+  fn: jira-0.47.tar.gz
+  url: https://pypi.python.org/packages/source/j/jira/jira-0.47.tar.gz
+  md5: 74c9edb6ecec6b6c13aa85d15a5cad6b
+  patches:
+    # List any patch files here
+    - setup.py.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jira = jira:main
+    #
+    # Would create an entry point called jira that calls jira.main()
+
+    - jirashell = jira.jirashell:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests >=2.6.0
+    - requests-oauthlib >=0.3.3
+    - tlslite >=0.4.4
+    - six >=1.9.0
+    - requests-toolbelt
+    - ordereddict # [py26]
+
+  run:
+    - python
+    - requests >=2.6.0
+    - requests-oauthlib >=0.3.3
+    - tlslite >=0.4.4
+    - six >=1.9.0
+    - requests-toolbelt
+    - ordereddict # [py26]
+
+test:
+  # Python imports
+  imports:
+    - jira
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jirashell --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pycontribs/jira
+  license: BSD License
+  summary: 'Python library for interacting with JIRA via REST APIs.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
