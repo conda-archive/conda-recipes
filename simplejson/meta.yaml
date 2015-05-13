@@ -1,16 +1,17 @@
 package:
   name: simplejson
-  version: 3.3.0
+  version: "3.6.5"
 
 source:
-  fn: simplejson-3.3.0.tar.gz
-  url: https://pypi.python.org/packages/source/s/simplejson/simplejson-3.3.0.tar.gz
-  md5: 0e29b393bceac8081fa4e93ff9f6a001
+  fn: simplejson-3.6.5.tar.gz
+  url: https://pypi.python.org/packages/source/s/simplejson/simplejson-3.6.5.tar.gz
+  md5: b65dc21c7aaad14c6b4ad0d9179e437d
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
+  # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
@@ -27,6 +28,7 @@ source:
 requirements:
   build:
     - python
+    - setuptools
 
   run:
     - python
@@ -35,6 +37,7 @@ test:
   # Python imports
   imports:
     - simplejson
+    - simplejson.tests
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -50,7 +53,8 @@ test:
 
 about:
   home: http://github.com/simplejson/simplejson
-  license: ademic Free License (AFL) or MIT License
+  license: MIT License or Academic Free License (AFL)
+  summary: 'Simple, fast, extensible JSON encoder/decoder for Python'
 
 # See
 # http://docs.continuum.io/conda/build.html for
