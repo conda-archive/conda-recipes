@@ -32,9 +32,10 @@ build:
 requirements:
   build:
     - r
-
+    - cairo
   run:
     - r
+    - cairo
 
 test:
   commands:
