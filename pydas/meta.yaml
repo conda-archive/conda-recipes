@@ -27,7 +27,7 @@ test:
     - pydas.dassl
     - pydas.daspk
   commands:
-    - nosetests $SRC_DIR/tests/*.py
+    - cd $SRC_DIR/tests && nosetests *.py
 
 about:
   home: http://github.com/GreenGroup/PyDAS
