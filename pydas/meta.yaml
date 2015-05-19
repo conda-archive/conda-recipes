@@ -10,7 +10,7 @@ requirements:
     - gcc # [unix]
     - python
     - setuptools
-    - cython
+    - cython ==0.21
     - numpy
     - wget
   run:
