@@ -3,19 +3,18 @@ package:
   version: "0.1.0"
 
 source:
-  #git_tag: 0.1.0
   git_url: https://github.com/GreenGroup/PyDAS.git
 
 requirements:
   build:
-    - gcc
+    - gcc # [unix]
     - python
     - setuptools
     - cython
     - numpy
     - wget
   run:
-    - libgcc
+    - libgcc # [unix]
     - python
     - numpy
 
