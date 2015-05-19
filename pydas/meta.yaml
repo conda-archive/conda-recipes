@@ -22,12 +22,13 @@ requirements:
 test:
   requires:
     - nose
+    - matplotlib
   imports:
     - pydas
     - pydas.dassl
     - pydas.daspk
   commands:
-    - cd $SRC_DIR/tests && nosetests *.py
+    - nosetests -P --all-modules -v -w $SRC_DIR/tests
 
 about:
   home: http://github.com/GreenGroup/PyDAS
