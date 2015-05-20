@@ -12,6 +12,10 @@ requirements:
   run:
     - python
 
+test:
+  imports:
+    - z3
+
 about:
   summary: "Z3 is a theorem prover from Microsoft Research."
   license: MIT
