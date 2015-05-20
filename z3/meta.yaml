@@ -9,10 +9,10 @@ source:
 requirements:
   build:
     - python
-    - gcc
+    - gcc  # [linux]
   run:
     - python
-    - libgcc
+    - libgcc # [linux]
 
 test:
   imports:
