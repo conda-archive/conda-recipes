@@ -9,11 +9,10 @@ source:
   patches:
     - acceptance.patch
     - qmake-arch.patch                 [osx]
-    - wkhtmltopdf.patch                [linux]
     - ubuntu_disable_scrollbars.patch  [linux]
 
 build:
-  number: 12
+  number: 14
 
 requirements:
   build:

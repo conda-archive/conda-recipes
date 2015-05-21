@@ -1,19 +1,18 @@
 package:
   name: pyside
-  version: 1.2.1
+  version: 1.2.2
 
 source:
-  fn: pyside-qt4.8+1.2.1.tar.bz2 [unix]
-  md5: 34b05faa7cc44d3c24d5ccadd894bd3c      [unix]
-  url: http://download.qt-project.org/official_releases/pyside/pyside-qt4.8+1.2.1.tar.bz2
+  fn: pyside-qt4.8+1.2.2.tar.bz2 [unix]
+  md5: 1969c2ff90eefaa4b200d234059d2287     [unix]
+  url: http://download.qt-project.org/official_releases/pyside/pyside-qt4.8+1.2.2.tar.bz2
   fn: PySide-1.1.2qt474.win32-py2.7.exe      [win32 and py27]
   fn: PySide-1.1.2qt474.win-amd64-py2.7.exe  [win64 and py27]
   fn: PySide-1.1.2.win32-py3.3.exe           [win32 and py33]
   fn: PySide-1.1.2.win-amd64-py3.3.exe       [win64 and py33]
 
 build:
-  number: 1     [osx]
-  number: 3     [linux]
+  number: 0
 
 requirements:
   build:

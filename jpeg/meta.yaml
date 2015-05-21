@@ -1,0 +1,16 @@
+package:
+  name: jpeg
+  version: 8d
+
+source:
+  fn: jpegsrc.v8d.tar.gz
+  url: http://download.openpkg.org/components/cache/jpeg/jpegsrc.v8d.tar.gz
+  md5: 52654eb3b2e60c35731ea8fc87f1bd29
+
+build:
+  number: 2             # [osx]
+
+about:
+  home: http://www.ijg.org/
+  license: Custom free software license
+  summary: read/write jpeg COM, EXIF, IPTC medata

@@ -12,6 +12,7 @@ source:
     - mac-unicode.patch # [osx]
 
 build:
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
@@ -44,7 +45,7 @@ requirements:
     - libpng    # [not win]
     - libtiff   # [not win]
     - libxml2   # [not win]
-    - gcc       # [not win]
+    - libgcc    # [not win]
     - pcre      # [not win]
 
 test:
