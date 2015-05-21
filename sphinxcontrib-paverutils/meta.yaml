@@ -8,25 +8,21 @@ source:
   md5: 11b5bb2e7774e9a368aa598570084ee9
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
     - python
     - setuptools
-    - snowballstemmer
     - pbr
-    - cogapp
-    - docutils
-    - jinja2
+    - sphinx >=0.6
+    - paver >=1.02.0
 
   run:
     - python
-    - snowballstemmer
     - pbr
-    - cogapp
-    - docutils
-    - jinja2
+    - sphinx >=0.6
+    - paver >=1.02.0
 
 test:
   imports:
