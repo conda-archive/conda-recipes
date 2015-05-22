@@ -20,9 +20,12 @@ build:
     #
     # Would create an entry point called pip that calls pip.main()
 
-    - pip=pip:main
-    - pip2=pip:main
-    - pip2.7=pip:main
+    - pip=pip:main              # skeleton pypi pip default
+    # - pip2=pip:main           # skeleton pypi pip default
+    # - pip2.7=pip:main [py27]  # skeleton pypi pip default
+    - pip-2.7=pip:main [py27]   # conda-recipe/pip
+    - pip-2.6=pip:main [py26]   # conda-recipe/pip
+    - pip-3.3=pip:main [py33]   # conda-recipe/pip
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -82,6 +85,10 @@ test:
     - pip --help
     - pip2 --help
     - pip2.7 --help
+
+    - pip-2.7 --help [py27]
+    - pip-2.6 --help [py26]
+    - pip-3.3 --help [py33]
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
