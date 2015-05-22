@@ -20,12 +20,19 @@ build:
     #
     # Would create an entry point called pip that calls pip.main()
 
-    - pip=pip:main              # skeleton pypi pip default
-    # - pip2=pip:main           # skeleton pypi pip default
-    # - pip2.7=pip:main [py27]  # skeleton pypi pip default
-    - pip-2.7=pip:main [py27]   # conda-recipe/pip
-    - pip-2.6=pip:main [py26]   # conda-recipe/pip
-    - pip-3.3=pip:main [py33]   # conda-recipe/pip
+    - pip=pip:main
+    - pip2=pip:main   [py2k]
+    - pip2.6=pip:main [py26]
+    - pip2.7=pip:main [py27]
+    - pip3=pip:main   [py3k]
+    - pip3.3=pip:main [py33]
+    - pip3.4=pip:main [py34]
+
+    # conda-recipe/pip legacy
+    - pip-2.6=pip:main [py26]
+    - pip-2.7=pip:main [py27]
+    - pip-3.3=pip:main [py33]
+    - pip-3.4=pip:main [py34]
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -82,13 +89,21 @@ test:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+    # 'conda-skeleton pypi pip' defaults (+[py2k])
     - pip --help
-    - pip2 --help
-    - pip2.7 --help
+    - pip2 --help    [py2k]
+    - pip2.6 --help  [py26]
+    - pip2.7 --help  [py27]
+    - pip3 --help    [py3k]
+    - pip3.3 --help  [py33]
+    - pip3.4 --help  [py34]
 
-    - pip-2.7 --help [py27]
+    # conda-recipe/pip legacy
     - pip-2.6 --help [py26]
+    - pip-2.7 --help [py27]
     - pip-3.3 --help [py33]
+    - pip-3.4 --help [py34]
+
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
