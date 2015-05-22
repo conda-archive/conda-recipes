@@ -1,44 +1,42 @@
 package:
-  name: arrow
-  version: 0.5.4
+  name: structlog
+  version: "15.1.0"
 
 source:
-  fn: arrow-0.5.4.tar.gz
-  url: https://pypi.python.org/packages/source/a/arrow/arrow-0.5.4.tar.gz
-  md5: 92c69f04a05c5fb03d43597833dcd5fb
+  fn: structlog-15.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/structlog/structlog-15.1.0.tar.gz
+  md5: c8e2b395b74031202f24e800e10be669
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
+# build:
+  # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - arrow = arrow:main
+    # - structlog = structlog:main
     #
-    # Would create an entry point called arrow that calls arrow.main()
+    # Would create an entry point called structlog that calls structlog.main()
 
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
 requirements:
   build:
     - python
     - setuptools
-    - dateutil
 
   run:
     - python
-    - dateutil
 
 test:
   # Python imports
   imports:
-    - arrow
-    - arrow.arrow
+    - structlog
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -53,8 +51,9 @@ test:
     # - nose
 
 about:
-  home: http://crsmithdev.com/arrow
-  license: Apache 2.0
+  home: http://www.structlog.org/
+  license: Apache Software License or MIT License
+  summary: 'Structured logging for Python.'
 
 # See
 # http://docs.continuum.io/conda/build.html for

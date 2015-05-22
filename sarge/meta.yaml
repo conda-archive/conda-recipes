@@ -1,44 +1,41 @@
 package:
-  name: arrow
-  version: 0.5.4
+  name: sarge
+  version: "0.1.4"
 
 source:
-  fn: arrow-0.5.4.tar.gz
-  url: https://pypi.python.org/packages/source/a/arrow/arrow-0.5.4.tar.gz
-  md5: 92c69f04a05c5fb03d43597833dcd5fb
+  fn: sarge-0.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/s/sarge/sarge-0.1.4.tar.gz
+  md5: 285013875aa908ef1417055d3e74a00a
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
+# build:
+  # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - arrow = arrow:main
+    # - sarge = sarge:main
     #
-    # Would create an entry point called arrow that calls arrow.main()
+    # Would create an entry point called sarge that calls sarge.main()
 
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
 requirements:
   build:
     - python
-    - setuptools
-    - dateutil
 
   run:
     - python
-    - dateutil
 
 test:
   # Python imports
   imports:
-    - arrow
-    - arrow.arrow
+    - sarge
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -53,8 +50,9 @@ test:
     # - nose
 
 about:
-  home: http://crsmithdev.com/arrow
-  license: Apache 2.0
+  home: https://sarge.readthedocs.org/
+  license: BSD License
+  summary: 'A wrapper for subprocess which provides command pipeline functionality.'
 
 # See
 # http://docs.continuum.io/conda/build.html for
