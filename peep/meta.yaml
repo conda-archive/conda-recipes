@@ -21,7 +21,12 @@ build:
     # Would create an entry point called peep that calls peep.main()
 
     - peep = peep:main
-    - peep-2.7 = peep:main
+
+    # conda-recipe/peep
+    - peep-2.6 = peep:main [py26]
+    - peep-2.7 = peep:main [py27]
+    - peep-3.3 = peep:main [py33]
+    - peep-3.4 = peep:main [py34]
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -45,7 +50,12 @@ test:
     # entry points work.
 
     - peep --help
-    - peep-2.7 --help
+
+    # conda-recipe/peep
+    - peep-2.6 --help [py26]
+    - peep-2.7 --help [py27]
+    - peep-3.3 --help [py33]
+    - peep-3.4 --help [py34]
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
