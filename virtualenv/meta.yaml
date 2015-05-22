@@ -1,35 +1,36 @@
 package:
   name: virtualenv
-  version: 1.9.1
+  version: "13.0.0"
 
 source:
-  fn: virtualenv-1.9.1.tar.gz
-  url: https://pypi.python.org/packages/source/v/virtualenv/virtualenv-1.9.1.tar.gz
-  md5: 07e09df0adfca0b2d487e39a4bf2270a
+  fn: virtualenv-13.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/v/virtualenv/virtualenv-13.0.0.tar.gz
+  md5: 721e7f60b830ff74c3763d64e5f01b0a
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # entry_points:
+  # preserve_egg_dir: True
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - virtualenv:main
+    # - virtualenv = virtualenv:main
     #
-    # Would call virtualenv.main()
+    # Would create an entry point called virtualenv that calls virtualenv.main()
+
+    - virtualenv=virtualenv:main
+    - virtualenv-2.7=virtualenv:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
 requirements:
   build:
     - python
-
-    # requirements.
-    #
-    # - setuptools
+    - setuptools
 
   run:
     - python
@@ -38,22 +39,27 @@ test:
   # Python imports
   imports:
     - virtualenv
+    - virtualenv_support
 
-  # commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
+
+    - virtualenv --help
+    - virtualenv-2.7 --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
   # requires:
-    # Put any test requirements here.  For example
+    # Put any additional test requirements here.  For example
     # - nose
 
 about:
-  home: http://www.virtualenv.org
+  home: https://virtualenv.pypa.io/
   license: MIT License
+  summary: 'Virtual Python Environment builder'
 
 # See
-# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# http://docs.continuum.io/conda/build.html for
 # more information about meta.yaml
