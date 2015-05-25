@@ -7,7 +7,8 @@ source:
   url: https://github.com/tpn/pkg-config/archive/pkg-config-0.28.zip
 
 build:
-  number: 1
+  number: 2
+  detect_binary_files_with_prefix: 1
 
 requirements:
   build:

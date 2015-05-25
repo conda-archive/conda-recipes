@@ -10,9 +10,12 @@ source:
     - update_msvc_sln.patch           [win]
     - subpixel.patch
     - multi-thread-violations.patch
+    - double-free.patch
+    - CVE-2014-2240.patch
+    - CVE-2014-2241.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
     build:

@@ -32,9 +32,10 @@ build:
 requirements:
   build:
     - r
-
+    - cairo # [not win]
   run:
     - r
+    - cairo # [not win]
 
 test:
   commands:

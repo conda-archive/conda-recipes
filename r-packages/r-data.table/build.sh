@@ -6,6 +6,11 @@ grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
 
 $R CMD INSTALL --build .
 
+# The build for data.table moves data.table.so to datatable.so, but doesn't
+# change the install name, which confuses the conda-build post build stuff.
+if [ $(uname) = "Darwin" ]; then
+    install_name_tool -id datatable.so $PREFIX/lib/R/library/data.table/libs/datatable.so
+fi
 # Add more build steps here, if they are necessary.
 
 # See
