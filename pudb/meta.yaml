@@ -1,11 +1,11 @@
 package:
   name: pudb
-  version: !!str 2014.1
+  version: "2015.3"
 
 source:
-  fn: pudb-2014.1.tar.gz
-  url: https://pypi.python.org/packages/source/p/pudb/pudb-2014.1.tar.gz
-  md5: 8104db184c9553c568966cd67a7b1b2f
+  fn: pudb-2015.3.tar.gz
+  url: https://pypi.python.org/packages/source/p/pudb/pudb-2015.3.tar.gz
+  md5: ecb4d65fc3f8ba34075a0a05b68bbd2f
 #  patches:
    # List any patch files here
    # - fix.patch
