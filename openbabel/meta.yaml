@@ -1,0 +1,29 @@
+
+package:
+    name: openbabel
+    version: 2.3.2
+
+source:
+    fn: openbabel-2.3.2.tar.gz
+    url: http://sourceforge.net/projects/openbabel/files/openbabel/2.3.2/openbabel-2.3.2.tar.gz [unix]
+
+build:
+    number: 1
+
+requirements:
+    build:
+        - cmake [unix]
+        - zlib [unix]
+        - bzip2 
+        - python 
+        - zlib 
+        - libxml2
+    run:
+        - python 
+        - eigen
+        - zlib
+        - libxml2
+
+about:
+    home: http://www.openbabel.org/
+    license: GPLv2
