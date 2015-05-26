@@ -3,6 +3,10 @@ cmake -DCMAKE_INSTALL_PREFIX=$PREFIX \
       -DPYTHON_LIBRARY=$PREFIX/lib/libpython$PY_VER.dylib \
       -DPYTHON_EXECUTABLE=$PYTHON \
       -DPYTHON_INCLUDE_DIR=$PREFIX/include/python${PY_VER} \
+      -DPYTHON_BINDINGS=ON \
+      -DRUN_SWIG=ON
+
+# false # pause here to see what's going on
 
 #put libxml, eigen, wxwidgets, 
 make -j${CPU_COUNT}
