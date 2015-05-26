@@ -8,6 +8,10 @@ source:
     url: http://sourceforge.net/projects/openbabel/files/openbabel/2.3.2/openbabel-2.3.2.tar.gz [unix]
     sha1: b8831a308617d1c78a790479523e43524f07d50d
 
+    patches:                  # [osx]
+        - ob-2-3-2-patch.diff # [osx]
+        - ob-mavericks.patch  # [osx]
+
 build:
     number: 1
 
