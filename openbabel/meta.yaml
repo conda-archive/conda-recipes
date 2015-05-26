@@ -27,3 +27,4 @@ requirements:
 about:
     home: http://www.openbabel.org/
     license: GPLv2
+    summary: "A chemical toolbox designed to speak the many languages of chemical data"

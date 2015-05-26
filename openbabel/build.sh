@@ -1,11 +1,11 @@
 
 cmake -DCMAKE_INSTALL_PREFIX=$PREFIX \
--DPYTHON_LIBRARY=$PREFIX/lib/libpython$PY_VER.dylib \
--DPYTHON_EXECUTABLE=$PYTHON \
--DPYTHON_INCLUDE_DIR=$PREFIX/include/python${PY_VER}
+      -DPYTHON_LIBRARY=$PREFIX/lib/libpython$PY_VER.dylib \
+      -DPYTHON_EXECUTABLE=$PYTHON \
+      -DPYTHON_INCLUDE_DIR=$PREFIX/include/python${PY_VER} \
 
 #put libxml, eigen, wxwidgets, 
-make -j8 
+make -j${CPU_COUNT}
 make install
 
 #The python library and shared object do not install into site-packages so
