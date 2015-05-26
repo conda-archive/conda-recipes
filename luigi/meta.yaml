@@ -1,59 +1,79 @@
 package:
   name: luigi
-  version: 1.0.5
+  version: "1.2.1"
 
 source:
-  fn: luigi-1.0.5.tar.gz
-  url: https://pypi.python.org/packages/source/l/luigi/luigi-1.0.5.tar.gz
-  md5: 15ab75ef16b5c9164f8cf7dfbbd78ef8
+  fn: luigi-1.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/l/luigi/luigi-1.2.1.tar.gz
+  md5: a147bba0bb1999b5856f4910bf15a9c0
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # entry_points:
+  # preserve_egg_dir: True
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - luigi:main
+    # - luigi = luigi:main
     #
-    # Would call luigi.main()
+    # Would create an entry point called luigi that calls luigi.main()
+
+    - luigi = luigi.cmdline:luigi_run
+    - luigid = luigi.cmdline:luigid
+    - luigi-grep = luigi.tools.luigi_grep:main
+    - luigi-deps = luigi.tools.deps:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
 requirements:
   build:
     - python
-
-    # requirements.
-    #
-    # - setuptools
+    - setuptools
+    - cached-property
+    - pyparsing
+    - tornado
+    - python-daemon
 
   run:
     - python
+    - cached-property
+    - pyparsing
+    - tornado
+    - python-daemon
 
 test:
   # Python imports
   imports:
     - luigi
+    - luigi.contrib
+    - luigi.contrib.hdfs
+    - luigi.tools
 
-  # commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
+
+#    - luigi --help
+    - luigid --help
+    - luigi-grep --help
+ #   - luigi-deps --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
   # requires:
-    # Put any test requirements here.  For example
+    # Put any additional test requirements here.  For example
     # - nose
 
 about:
   home: https://github.com/spotify/luigi
-  license: BAD
+  license: Apache Software License
+  summary: 'Workflow mgmgt + task scheduling + dependency resolution'
 
 # See
-# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# http://docs.continuum.io/conda/build.html for
 # more information about meta.yaml
