@@ -8,19 +8,20 @@ source:
     url: http://sourceforge.net/projects/openbabel/files/openbabel/2.3.2/openbabel-2.3.2.tar.gz [unix]
     sha1: b8831a308617d1c78a790479523e43524f07d50d
 
-    patches:                  # [osx]
+    patches:
         - ob-2-3-2-patch.diff # [osx]
         - ob-mavericks.patch  # [osx]
+        - pybel-test.patch
 
 build:
-    number: 2
+    number: 3
     detect_binary_files_with_prefix: true
 
 requirements:
     build:
-        - cmake [unix]
-        - pkg-config
-        - zlib [unix]
+        - cmake      # [unix]
+        - pkg-config # [unix]
+        - zlib       # [unix]
         - swig
         - eigen
         - bzip2 
@@ -34,6 +35,16 @@ requirements:
         - zlib
         - libxml2
         - cairo
+test:
+  imports:
+    - openbabel
+    - pybel
+  commands:
+    - cd $SRC_DIR/test ; python test_pybel.py
+    - cd $SRC_DIR/test ; python testbabel.py
+    - cd $SRC_DIR/test ; python testkekule.py
+    - cd $SRC_DIR/test ; python testbindings.py
+    - cd $SRC_DIR/test ; python testexample.py
 
 about:
     home: http://www.openbabel.org/

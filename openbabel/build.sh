@@ -19,6 +19,9 @@ make install
 cd scripts/python
 python setup.py install
 
+#cd $SRC_DIR
+#make test | true
+
 #$PREFIX/lib
 #mv openbabel.py python${PY_VER}/site-packages/openbabel.py
 #mv _openbabel.so python${PY_VER}/site-packages/_openbabel.so
