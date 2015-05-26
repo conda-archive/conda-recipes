@@ -12,7 +12,7 @@ source:
     - mac-unicode.patch # [osx]
 
 build:
-  number: 1
+  number: 2
   rpaths:
     - lib/R/lib/
     - lib/
@@ -28,7 +28,7 @@ requirements:
     - cairo     # [linux]
     - pango     # [linux]
     - jpeg      # [not win]
-    - libpng    # [not win]
+    - libpng 1.6* # [not win]
     - libtiff   # [not win]
     - libxml2 # Not really sure if libxml2 is needed [not win]
     - gcc       # [not win]
@@ -42,7 +42,7 @@ requirements:
     - cairo     # [linux]
     - pango     # [linux]
     - jpeg      # [not win]
-    - libpng    # [not win]
+    - libpng 1.6* # [not win]
     - libtiff   # [not win]
     - libxml2   # [not win]
     - libgcc    # [not win]
