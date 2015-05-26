@@ -6,6 +6,7 @@ package:
 source:
     fn: openbabel-2.3.2.tar.gz
     url: http://sourceforge.net/projects/openbabel/files/openbabel/2.3.2/openbabel-2.3.2.tar.gz [unix]
+    sha1: b8831a308617d1c78a790479523e43524f07d50d
 
 build:
     number: 1
@@ -13,16 +14,21 @@ build:
 requirements:
     build:
         - cmake [unix]
+        - pkg-config
         - zlib [unix]
+        - swig
+        - eigen
         - bzip2 
         - python 
         - zlib 
         - libxml2
+        - cairo
     run:
         - python 
         - eigen
         - zlib
         - libxml2
+        - cairo
 
 about:
     home: http://www.openbabel.org/
