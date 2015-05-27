@@ -1,11 +1,11 @@
 package:
   name: pip
-  version: "7.0.0"
+  version: "7.0.1"
 
 source:
-  fn: pip-7.0.0.tar.gz
-  url: https://pypi.python.org/packages/source/p/pip/pip-7.0.0.tar.gz
-  md5: 22d829cc0fab1d829f9374d67ad10c2a
+  fn: pip-7.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pip/pip-7.0.1.tar.gz
+  md5: 5627bb807cf3d898a2eba276685537aa
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -21,18 +21,8 @@ build:
     # Would create an entry point called pip that calls pip.main()
 
     - pip=pip:main
-    - pip2=pip:main   [py2k]
-    - pip2.6=pip:main [py26]
-    - pip2.7=pip:main [py27]
-    - pip3=pip:main   [py3k]
-    - pip3.3=pip:main [py33]
-    - pip3.4=pip:main [py34]
-
-    # conda-recipe/pip legacy
-    - pip-2.6=pip:main [py26]
-    - pip-2.7=pip:main [py27]
-    - pip-3.3=pip:main [py33]
-    - pip-3.4=pip:main [py34]
+    - pip2=pip:main
+    - pip2.7=pip:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -89,21 +79,9 @@ test:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    # 'conda-skeleton pypi pip' defaults (+[py2k])
     - pip --help
-    - pip2 --help    [py2k]
-    - pip2.6 --help  [py26]
-    - pip2.7 --help  [py27]
-    - pip3 --help    [py3k]
-    - pip3.3 --help  [py33]
-    - pip3.4 --help  [py34]
-
-    # conda-recipe/pip legacy
-    - pip-2.6 --help [py26]
-    - pip-2.7 --help [py27]
-    - pip-3.3 --help [py33]
-    - pip-3.4 --help [py34]
-
+    - pip2 --help
+    - pip2.7 --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
