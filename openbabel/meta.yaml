@@ -12,6 +12,7 @@ source:
         - ob-2-3-2-patch.diff # [osx]
         - ob-mavericks.patch  # [osx]
         - pybel-test.patch
+        - fix_library_path_search.diff
 
 build:
     number: 3
