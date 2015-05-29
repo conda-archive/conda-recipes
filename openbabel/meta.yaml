@@ -23,7 +23,6 @@ build:
 requirements:
     build:
         - cmake      # [unix]
-        - pkg-config # [unix]
         - zlib       # [unix]
         - swig
         - eigen
