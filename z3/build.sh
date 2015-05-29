@@ -6,3 +6,6 @@ fi
 cd build
 make
 make install
+
+# https://github.com/Z3Prover/z3/issues/99
+mv $STDLIB_DIR/dist-packages/* $SP_DIR/

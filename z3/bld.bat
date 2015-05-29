@@ -1,3 +1,3 @@
-python scripts/mk_make.py --prefix="%PREFIX%"
+"%PYTHON%" scripts/mk_make.py
 cd build
 nmake

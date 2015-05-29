@@ -1,26 +1,25 @@
 package:
-  name: pudb
-  version: "2015.3"
+  name: cached-property
+  version: "1.2.0"
 
 source:
-  fn: pudb-2015.3.tar.gz
-  url: https://pypi.python.org/packages/source/p/pudb/pudb-2015.3.tar.gz
-  md5: ecb4d65fc3f8ba34075a0a05b68bbd2f
+  fn: cached-property-1.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/cached-property/cached-property-1.2.0.tar.gz
+  md5: 0a5766b45fbf45416d9857f1c215f710
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
-  preserve_egg_dir: True
-  entry_points:
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - pudb = pudb:main
+    # - cached-property = cached-property:main
     #
-    # Would create an entry point called pudb that calls pudb.main()
+    # Would create an entry point called cached-property that calls cached-property.main()
 
-    - pudb = pudb.run:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -30,25 +29,18 @@ requirements:
   build:
     - python
     - setuptools
-    - urwid >=1.1.1
-    - pygments >=1.0
 
   run:
     - python
-    - setuptools
-    - urwid >=1.1.1
-    - pygments >=1.0
 
-test:
+# test:
   # Python imports
-  imports:
-    - pudb
+  # imports:
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - pudb --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -58,9 +50,9 @@ test:
     # - nose
 
 about:
-  home: http://pypi.python.org/pypi/pudb
-  license: MIT License
-  summary: 'A full-screen, console-based Python debugger'
+  home: https://github.com/pydanny/cached-property
+  license: BSD License
+  summary: 'A decorator for caching properties in classes.'
 
 # See
 # http://docs.continuum.io/conda/build.html for
