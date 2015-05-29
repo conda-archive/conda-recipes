@@ -1,6 +1,12 @@
+#!/bin/bash
+if [ `uname` == Darwin ]; then
+    SO_EXT='dylib'
+else
+    SO_EXT='so'
+fi
 
 cmake -DCMAKE_INSTALL_PREFIX=$PREFIX \
-      -DPYTHON_LIBRARY=$PREFIX/lib/libpython$PY_VER.dylib \
+      -DPYTHON_LIBRARY=$PREFIX/lib/libpython${PY_VER}.${SO_EXT} \
       -DPYTHON_EXECUTABLE=$PYTHON \
       -DPYTHON_INCLUDE_DIR=$PREFIX/include/python${PY_VER} \
       -DPYTHON_BINDINGS=ON \
