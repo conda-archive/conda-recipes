@@ -12,7 +12,7 @@ source:
     - ubuntu_disable_scrollbars.patch  [linux]
 
 build:
-  number: 14
+  number: 15
 
 requirements:
   build:
