@@ -32,14 +32,12 @@ requirements:
         - zlib 
         - libxml2
         - cairo
-        - libpng15
     run:
         - python 
         - eigen
         - zlib
         - libxml2
         - cairo
-        - libpng15
 test:
   imports:
     - openbabel
