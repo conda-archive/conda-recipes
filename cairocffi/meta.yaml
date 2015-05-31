@@ -1,0 +1,62 @@
+package:
+  name: cairocffi
+  version: "0.6"
+
+source:
+  fn: cairocffi-0.6.tar.gz
+  url: https://pypi.python.org/packages/source/c/cairocffi/cairocffi-0.6.tar.gz
+  md5: af0e93b31be42a8f2be23b1234336496
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cairocffi = cairocffi:main
+    #
+    # Would create an entry point called cairocffi that calls cairocffi.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cffi >=0.6
+
+  run:
+    - python
+    - cffi >=0.6
+
+test:
+  # Python imports
+  imports:
+    - cairocffi
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/SimonSapin/cairocffi
+  license: BSD License
+  summary: 'cffi-based cairo bindings for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
