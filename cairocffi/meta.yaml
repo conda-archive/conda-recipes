@@ -6,24 +6,13 @@ source:
   fn: cairocffi-0.6.tar.gz
   url: https://pypi.python.org/packages/source/c/cairocffi/cairocffi-0.6.tar.gz
   md5: af0e93b31be42a8f2be23b1234336496
-#  patches:
-   # List any patch files here
-   # - fix.patch
+  patches:
+   - search-conda-libs.diff
 
-# build:
-  # preserve_egg_dir: True
-  # entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - cairocffi = cairocffi:main
-    #
-    # Would create an entry point called cairocffi that calls cairocffi.main()
-
-
+build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 1
 
 requirements:
   build:
@@ -34,6 +23,7 @@ requirements:
   run:
     - python
     - cffi >=0.6
+    - cairo
 
 test:
   # Python imports
