@@ -30,7 +30,6 @@ build:
 requirements:
   build:
     - r-base >=3.0.0
-    - r-mass # [not win]
 
   run:
     - r >=3.0.0
