@@ -29,7 +29,7 @@ build:
 # Suggests: testthat, knitr, reshape2, httr (>= 0.4), rjson, plyr, curl
 requirements:
   build:
-    - r
+    - r-base
 
   run:
     - r

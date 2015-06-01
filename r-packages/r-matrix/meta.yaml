@@ -30,7 +30,6 @@ build:
 requirements:
   build:
     - r-base >=2.15.2
-    - r-lattice # [not win]
 
   run:
     - r >=2.15.2

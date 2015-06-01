@@ -30,11 +30,9 @@ build:
 requirements:
   build:
     - r-base >=3.0.0
-    - r-lattice # [not win]
 
   run:
     - r >=3.0.0
-    - r-lattice # [not win]
 
 test:
   commands:
