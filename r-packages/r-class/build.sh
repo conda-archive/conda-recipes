@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# r-mass recursively depends on r-class, since it is a recommended package, so
+# install it manually
+
+conda install --no-deps r-mass
+
 # R refuses to build packages that mark themselves as Priority: Recommended
 mv DESCRIPTION DESCRIPTION.old
 grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
