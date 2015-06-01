@@ -8,7 +8,7 @@ source:
   md5: ef12dce3770032138d83f6159e7d5c3a
 
 build:
-  no_softlink: bin/python
+  no_link: bin/python
 
 requirements:
   build:
