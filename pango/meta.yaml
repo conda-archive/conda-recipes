@@ -7,7 +7,7 @@ source:
   fn: pango-1.36.8.tar.xz
 
 build:
-  number: 2
+  number: 3
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -18,6 +18,7 @@ requirements:
     - harfbuzz
     - glib
     - libffi
+    - libpng 1.6.*
   run:
     - cairo >=1.12.10
     - fontconfig
@@ -25,6 +26,7 @@ requirements:
     - harfbuzz
     - glib
     - libffi
+    - libpng 1.6.*
 
 about:
   license: LGPL

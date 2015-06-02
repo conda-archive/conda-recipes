@@ -3,7 +3,7 @@ package:
   version: 0.9.35
 
 build:
-  number: 5
+  number: 6
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -13,12 +13,14 @@ requirements:
     - glib
     - zlib
     - gcc
+    - libpng 1.6.*
   run:
     - freetype
     - cairo
     - glib
     - zlib
     - libgcc
+    - libpng 1.6.*
 
 source:
   url: http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-0.9.35.tar.bz2
