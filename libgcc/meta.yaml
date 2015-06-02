@@ -23,6 +23,18 @@ build:
     - lib/libgcc_s.so.1 # [linux]
     - lib/libgcc_s.so # [linux]
 
+    - lib/libgcj.14.dylib # [osx]
+    - lib/libgcj.dylib # [osx]
+    - lib/libgcj.so.14.0.0 # [linux]
+    - lib/libgcj.so.14 # [linux]
+    - lib/libgcj.so # [linux]
+
+    - lib/libgij.14.dylib # [osx]
+    - lib/libgij.dylib # [osx]
+    - lib/libgij.so.14.0.0 # [linux]
+    - lib/libgij.so.14 # [linux]
+    - lib/libgij.so # [linux]
+
     - lib/libgomp.1.dylib # [osx]
     - lib/libgomp.dylib # [osx]
     - lib/libgomp.so # [linux]
