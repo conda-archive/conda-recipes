@@ -33,9 +33,12 @@ requirements:
   build:
     - r
     - cairo # [not win]
+    - libpng 1.6.* # [not win]
   run:
     - r
     - cairo # [not win]
+    - libpng 1.6.* # [not win]
+
 
 test:
   commands:

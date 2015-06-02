@@ -32,12 +32,12 @@ build:
 requirements:
   build:
     - r
-    - libpng
+    - libpng 1.6.*
     - zlib
 
   run:
     - r
-    - libpng
+    - libpng 1.6.*
     - zlib
 
 test:
