@@ -47,6 +47,12 @@ build:
     - lib/libgfortran.so.3 # [linux]
     - lib/libgfortran.so.3.0.0 # [linux]
 
+    - lib/libobjc-gnu.4.dylib # [osx]
+    - lib/libobjc-gnu.dylib # [osx]
+    - lib/libobjc.so.4.0.0 # [linux]
+    - lib/libobjc.so.4 # [linux]
+    - lib/libobjc.so # [linux]
+
     - lib/libquadmath.0.dylib # [osx]
     - lib/libquadmath.dylib # [osx]
     - lib/libquadmath.so # [linux]
