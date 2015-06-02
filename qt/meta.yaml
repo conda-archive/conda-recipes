@@ -19,11 +19,13 @@ requirements:
     - freetype    >=2.5.2    [unix]
     - fontconfig  >=2.11.1   [linux]
     - openssl
+    - libpng      1.6*
 
   run:
     - freetype    >=2.5.2    [unix]
     - fontconfig  >=2.11.1   [linux]
     - openssl
+    - libpng      1.6*
 
 about:
     home: http://qt-project.org
