@@ -6,7 +6,7 @@ source:
   git_url: https://github.com/hplgit/doconce.git
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -31,6 +31,7 @@ requirements:
     - sphinx-bootstrap-theme
     - sphinxjp.themes.solarized
     - sphinx-sagecell
+    - ipython-notebook
 
 test:
   imports:
