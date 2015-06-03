@@ -6,7 +6,7 @@ source:
   hg_url: https://bitbucket.org/logg/publish
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -17,9 +17,9 @@ requirements:
     - python
     - lxml
 
-#test:
-#  imports:
-#    - publish
+test:
+  imports:
+    - publish
 
 about:
   home: http://www.loggsystems.se/publish.html
