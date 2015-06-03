@@ -1,3 +1,7 @@
 #!/bin/bash
 
-echo "Hello, I'm a noarch package" > $PREFIX/hello.txt
+$PYTHON setup.py install
+
+EXAMPLES=$PREFIX/Examples
+mkdir $EXAMPLES
+mv examples $EXAMPLES/bokeh
