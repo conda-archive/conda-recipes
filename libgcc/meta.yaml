@@ -14,7 +14,7 @@ requirements:
     - cloog 0.18.0
 
 build:
-  number: 1
+  number: 2
 
   always_include_files:
     - lib/libgcc_s.1.dylib # [osx]
@@ -22,6 +22,18 @@ build:
     - lib/libgcc_s_x86_64.1.dylib # [osx]
     - lib/libgcc_s.so.1 # [linux]
     - lib/libgcc_s.so # [linux]
+
+    - lib/libgcj.14.dylib # [osx]
+    - lib/libgcj.dylib # [osx]
+    - lib/libgcj.so.14.0.0 # [linux]
+    - lib/libgcj.so.14 # [linux]
+    - lib/libgcj.so # [linux]
+
+    - lib/libgij.14.dylib # [osx]
+    - lib/libgij.dylib # [osx]
+    - lib/libgij.so.14.0.0 # [linux]
+    - lib/libgij.so.14 # [linux]
+    - lib/libgij.so # [linux]
 
     - lib/libgomp.1.dylib # [osx]
     - lib/libgomp.dylib # [osx]
@@ -34,6 +46,12 @@ build:
     - lib/libgfortran.so # [linux]
     - lib/libgfortran.so.3 # [linux]
     - lib/libgfortran.so.3.0.0 # [linux]
+
+    - lib/libobjc-gnu.4.dylib # [osx]
+    - lib/libobjc-gnu.dylib # [osx]
+    - lib/libobjc.so.4.0.0 # [linux]
+    - lib/libobjc.so.4 # [linux]
+    - lib/libobjc.so # [linux]
 
     - lib/libquadmath.0.dylib # [osx]
     - lib/libquadmath.dylib # [osx]
