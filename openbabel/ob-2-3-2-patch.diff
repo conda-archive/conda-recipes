@@ -1,0 +1,24 @@
+ Patch to fix Molecule.draw() in pybel in accordance with upstream commit df59c4a630cf753723d1318c40479d48b7507e1c
+ Taken from the homebrew recipe
+--- scripts/python/pybel.py  2012-10-03 21:08:52.000000000 +0200
++++ scripts/python/pybel.py  2013-06-24 22:40:30.024896494 +0200
+@@ -495,7 +495,9 @@
+ 
+         Tkinter and Python Imaging Library are required for image display.
+         """
+-        if not "png2" in outformats:
++        obconversion = ob.OBConversion()
++        formatok = obconversion.SetOutFormat("_png2")
++        if not formatok:
+             errormessage = ("PNG output format not found. You should compile "
+                             "Open Babel with PNG support. See installation "
+                             "instructions for more information.")
+@@ -529,7 +531,7 @@
+             
+             filedes, filename = tempfile.mkstemp()
+ 
+-        workingmol.write("png2", filename=filename, overwrite=True)
++        workingmol.write("_png2", filename=filename, overwrite=True)
+ 
+         if show:
+             if sys.platform[:4] == "java":
