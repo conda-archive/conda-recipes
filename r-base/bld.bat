@@ -76,7 +76,7 @@ if errorlevel 1 exit 1
 cd "%SRC_DIR%"
 
 @rem Various things that are needed to make the docs work.
-cp doc\html\logo.jpg %TMPDIR%
+copy doc\html\logo.jpg %TMPDIR%
 if errorlevel 1 exit 1
 
 @rem Now actually compile it
