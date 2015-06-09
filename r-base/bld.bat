@@ -13,29 +13,29 @@ if errorlevel 1 exit 1
 mkdir "%PREFIX%\Scripts"
 if errorlevel 1 exit 1
 
-cp launcher.exe "%PREFIX%\Scripts\R.exe"
+copy launcher.exe "%PREFIX%\Scripts\R.exe"
 if errorlevel 1 exit 1
 
-cp launcher.exe "%PREFIX%\Scripts\Rcmd.exe"
+copy launcher.exe "%PREFIX%\Scripts\Rcmd.exe"
 if errorlevel 1 exit 1
 
-cp launcher.exe "%PREFIX%\Scripts\RSetReg.exe"
+copy launcher.exe "%PREFIX%\Scripts\RSetReg.exe"
 if errorlevel 1 exit 1
 
-cp launcher.exe "%PREFIX%\Scripts\Rfe.exe"
+copy launcher.exe "%PREFIX%\Scripts\Rfe.exe"
 if errorlevel 1 exit 1
 
-cp launcher.exe "%PREFIX%\Scripts\Rgui.exe"
+copy launcher.exe "%PREFIX%\Scripts\Rgui.exe"
 if errorlevel 1 exit 1
 
-cp launcher.exe "%PREFIX%\Scripts\Rscript.exe"
+copy launcher.exe "%PREFIX%\Scripts\Rscript.exe"
 if errorlevel 1 exit 1
 
-cp launcher.exe "%PREFIX%\Scripts\Rterm.exe"
+copy launcher.exe "%PREFIX%\Scripts\Rterm.exe"
 if errorlevel 1 exit 1
 
 @rem XXX: Should we skip this one?
-cp launcher.exe "%PREFIX%\Scripts\open.exe"
+copy launcher.exe "%PREFIX%\Scripts\open.exe"
 if errorlevel 1 exit 1
 
 @rem This is relative apparently
@@ -90,18 +90,18 @@ cd src\gnuwin32
 if "%ARCH%"=="64" (
     @rem This is the copied version of MkRules.dist with WIN = 32 changed to WIN =
     @rem 64 and BINDIR64 set to empty and MULTI = 64.
-    cp "%RECIPE_DIR%\MkRules.local" .
+    copy "%RECIPE_DIR%\MkRules.local" .
 )
 make distribution
 cd "%SRC_DIR%"
 
-cp library\graphics\help\figures\pch.pdf doc\manual\
+copy library\graphics\help\figures\pch.pdf doc\manual\
 if errorlevel 1 exit 1
 
-cp library\graphics\help\figures\mai.pdf doc\manual\
+copy library\graphics\help\figures\mai.pdf doc\manual\
 if errorlevel 1 exit 1
 
-cp library\graphics\help\figures\oma.pdf doc\manual\
+copy library\graphics\help\figures\oma.pdf doc\manual\
 if errorlevel 1 exit 1
 
 cd "%SRC_DIR%\src\gnuwin32"
