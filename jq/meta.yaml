@@ -1,11 +1,14 @@
 package:
   name: jq
-  version: 1.3
+  version: 1.4
 
 source:
-  fn: jq-1.3.tar.gz
-  url: http://stedolan.github.io/jq/download/source/jq-1.3.tar.gz
-  md5: 26081b05d22525eca5cbdd8f9f4db17d
+  fn: jq-1.4.tar.gz
+  url: http://stedolan.github.io/jq/download/source/jq-1.4.tar.gz
+  md5: e3c75a4f805bb5342c9f4b3603fb248f
+
+  patches:
+    - configure.patch
 
 build:
   number: 1
