@@ -3,7 +3,7 @@
 #### Download in build because we have to set cookies ####
 # Check if we're on OS X
 if [ $(uname) = "Darwin" ]; then
-	curl -b gpw_e24=http%3A%2F%2Fwww.oracle.com -o jdk.dmg -L 'http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jdk-7u51-macosx-x64.dmg'
+	curl -v -j -k -L -H "Cookie: oraclelicense=accept-securebackup-cookie" -o jdk.dmg -L 'http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jdk-7u51-macosx-x64.dmg'
 
 	# Extract files like in
 	# http://stackoverflow.com/questions/15217200/how-to-install-java-7-on-mac-in-custom-location
