@@ -1,0 +1,24 @@
+package:
+  name: libxi
+  version: 1.7.4
+
+source:
+  fn: libXi-1.7.4.tar.bz2 # [linux]
+  url: http://xorg.freedesktop.org/releases/individual/lib/libXi-1.7.4.tar.bz2 # [linux]
+  md5: 9c4a69c34b19ec1e4212e849549544cb # [linux]
+
+about:
+    home: http://xorg.freedesktop.org/
+    license: MIT
+
+requirements:
+  build:
+    - inputproto # [linux]
+    - libx11 # [linux]
+    - libxext # [linux]
+    - libxfixes # [linux]
+  run:
+    - inputproto # [linux]
+    - libx11 # [linux]
+    - libxext # [linux]
+    - libxfixes # [linux]

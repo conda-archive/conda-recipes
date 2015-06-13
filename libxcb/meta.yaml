@@ -1,0 +1,21 @@
+package:
+  name: libxcb
+  version: 1.11
+
+source:
+  fn: libxcb-1.11.tar.bz2 # [linux]
+  url: http://xcb.freedesktop.org/dist/libxcb-1.11.tar.bz2 # [linux]
+  md5: 5a873ebd383d1a60612dd6ec6b42c781 # [linux]
+
+about:
+    home: http://xcb.freedesktop.org/
+    license: MIT
+
+requirements:
+  build:
+    - python # [linux]
+    - pthread-stubs # [linux]
+    - xcb-proto # [linux]
+  run:
+    - pthread-stubs # [linux]
+    - xcb-proto # [linux]

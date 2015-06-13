@@ -1,0 +1,37 @@
+package:
+  name: mesa
+  version: 10.5.2
+
+source:
+  fn: mesa-10.5.2.tar.xz # [linux]
+  url: ftp://ftp.freedesktop.org/pub/mesa/10.5.2/mesa-10.5.2.tar.xz # [linux]
+  md5: 528b3b0c0ff330766b9788da04a9fabd # [linux]
+
+about:
+    home: http://www.mesa3d.org/
+    license: MIT
+
+requirements:
+  build:
+    - dri2proto # [linux]
+    - dri3proto # [linux]
+    - gcc # [linux]
+    - glproto # [linux]
+    - libdrm # [linux]
+    - libxi # [linux]
+    - libxdamage # [linux]
+    - libxmu # [linux]
+    - libxshmfence # [linux]
+    - mako
+    - presentproto # [linux]
+    - python
+  run:
+    - dri2proto # [linux]
+    - dri3proto # [linux]
+    - glproto # [linux]
+    - libdrm # [linux]
+    - libxi # [linux]
+    - libxdamage # [linux]
+    - libxmu # [linux]
+    - libxshmfence # [linux]
+    - presentproto # [linux]

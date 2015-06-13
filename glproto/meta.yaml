@@ -1,0 +1,12 @@
+package:
+  name: glproto
+  version: 1.4.17
+
+source:
+  fn: glproto-1.4.17.tar.bz2 # [linux]
+  url: http://xorg.freedesktop.org/releases/individual/proto/glproto-1.4.17.tar.bz2 # [linux]
+  md5: 5565f1b0facf4a59c2778229c1f70d10 # [linux]
+
+about:
+    home: http://xorg.freedesktop.org/
+    license: MIT

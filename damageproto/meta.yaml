@@ -1,0 +1,12 @@
+package:
+  name: damageproto
+  version: 1.2.1
+
+source:
+  fn: damageproto-1.2.1.tar.bz2 # [linux]
+  url: http://xorg.freedesktop.org/releases/individual/proto/damageproto-1.2.1.tar.bz2 # [linux]
+  md5: 998e5904764b82642cc63d97b4ba9e95 # [linux]
+
+about:
+    home: http://xorg.freedesktop.org/
+    license: MIT

@@ -1,7 +1,6 @@
 #!/bin/bash
 
 CONFIG_OPTS=" "
-PATH=/usr/bin:/usr/sbin:/bin
 
 if [ `uname` == Linux ]; then
     CONFIG_OPTS+=" -dbus"
@@ -24,6 +23,25 @@ if [ `uname` == Darwin ]; then
     MAKE_JOBS=$(sysctl -n hw.ncpu)
 fi
 
+if [ -f /etc/redhat-release ] && grep "CentOS release 5" /etc/redhat-release; then
+
+    # Disable perf events. This file won't compile because of a broken kernel header in CentOS 5.
+    # See http://lists.qt-project.org/pipermail/interest/2015-February/015306.html for error.
+    sed -i "s/#define QTESTLIB_USE_PERF_EVENTS/#undef QTESTLIB_USE_PERF_EVENTS/g" qtbase/src/testlib/qbenchmark_p.h
+
+    # See http://kate-editor.org/2014/12/22/qt-5-4-on-red-hat-enterprise-5/ for explanation
+    # of these options. Basically, these things are left undefined becuase of CentOS 5
+    # problems.
+    CONFIG_OPTS+=" -D _X_INLINE=inline"  # Fix xcb compilation error
+    CONFIG_OPTS+=" -D XK_dead_currency=0xfe6f"
+    CONFIG_OPTS+=" -D XK_ISO_Level5_Lock=0xfe13"
+    CONFIG_OPTS+=" -D FC_WEIGHT_EXTRABLACK=215"
+    CONFIG_OPTS+=" -D FC_WEIGHT_ULTRABLACK=FC_WEIGHT_EXTRABLACK"
+
+    CONFIG_OPTS+=" -D glXGetProcAddress=glXGetProcAddressARB"
+
+fi
+
 chmod +x configure
 ./configure -prefix $PREFIX \
             -libdir $PREFIX/lib \
@@ -31,6 +49,8 @@ chmod +x configure
             -headerdir $PREFIX/include/qt5 \
             -archdatadir $PREFIX/lib/qt5 \
             -datadir $PREFIX/share/qt5 \
+            -L $LIBRARY_PATH \
+            -I $INCLUDE_PATH \
             -release \
             -opensource \
             -confirm-license \
@@ -38,8 +58,12 @@ chmod +x configure
             -nomake examples \
             -nomake tests \
             -fontconfig \
-            -qt-libpng \
-            -qt-zlib \
+            -no-libudev \
+            -qt-xcb \
+            -qt-pcre \
+            -qt-xkbcommon \
+            -xkb-config-root $LIBRARY_PATH \
+            -verbose \
             $CONFIG_OPTS
 
 make -j $MAKE_JOBS

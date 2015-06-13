@@ -18,10 +18,25 @@ requirements:
     - freetype # [unix]
     - jom # [win]
     - python # [win]
+    - libpng # [linux]
+    - jpeg # [linux]
+    - fontconfig # [linux]
+    - gstreamer # [linux]
+    - bison # [linux]
+    - flex # [linux]
+    - sqlite # [linux]
     - icu
+    - zlib # [linux]
+    - xz # [linux]
   run:
     - freetype # [unix]
+    - libpng # [linux]
+    - jpeg # [linux]
+    - fontconfig # [linux]
+    - gstreamer # [linux]
     - icu
+    - zlib # [linux]
+    - xz # [linux]
 
 
 about:

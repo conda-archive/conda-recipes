@@ -1,0 +1,20 @@
+package:
+  name: xcb-util-keysyms
+  version: 0.4.0
+
+source:
+  fn: xcb-util-keysyms-0.4.0.tar.bz2 # [linux]
+  url: http://xcb.freedesktop.org/dist/xcb-util-keysyms-0.4.0.tar.bz2 # [linux]
+  md5: 1022293083eec9e62d5659261c29e367 # [linux]
+
+about:
+    home: http://xcb.freedesktop.org/
+    license: MIT
+
+requirements:
+  build:
+    - libxcb # [linux]
+    - xproto # [linux]
+  run:
+    - libxcb # [linux]
+    - xproto # [linux]

@@ -1,0 +1,12 @@
+package:
+  name: dri3proto
+  version: 1.0
+
+source:
+  fn: dri3proto-1.0.tar.gz # [linux]
+  url: http://xorg.freedesktop.org/releases/individual/proto/dri3proto-1.0.tar.gz # [linux]
+  md5: 25e84a49a076862277ee12aebd49ff5f # [linux]
+
+about:
+    home: http://xorg.freedesktop.org/
+    license: MIT

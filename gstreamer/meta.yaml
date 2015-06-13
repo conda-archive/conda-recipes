@@ -1,0 +1,21 @@
+package:
+  name: gstreamer
+  version: 1.4.5
+
+source:
+  fn: gstreamer-1.4.5.tar.xz # [linux]
+  url: http://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.4.5.tar.xz # [linux]
+  md5: 88a9289c64a4950ebb4f544980234289 # [linux]
+
+about:
+    home: http://gstreamer.freedesktop.org/
+    license: LGPL
+
+requirements:
+  build:
+    - bison # [linux]
+    - flex # [linux]
+    - glib # [linux]
+  
+  run:
+    - glib # [linux]

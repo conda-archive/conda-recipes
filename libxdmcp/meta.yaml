@@ -1,0 +1,12 @@
+package:
+  name: libxdmcp
+  version: 1.0.2
+
+source:
+  fn: libXdmcp-1.0.2.tar.bz2 # [linux]
+  url: http://xorg.freedesktop.org/releases/individual/lib/libXdmcp-1.0.2.tar.bz2 # [linux]
+  md5: 10facf2bc7cbd5e5c1a698b8a210a582 # [linux]
+
+about:
+    home: http://xorg.freedesktop.org/
+    license: MIT

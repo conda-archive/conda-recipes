@@ -1,0 +1,20 @@
+package:
+  name: libxmu
+  version: 1.1.2
+
+source:
+  fn: libXmu-1.1.2.tar.gz # [linux]
+  url: http://xorg.freedesktop.org/releases/individual/lib/libXmu-1.1.2.tar.gz # [linux]
+  md5: d5be323b02e6851607205c8e941b4e61 # [linux]
+
+about:
+    home: http://xorg.freedesktop.org/
+    license: MIT
+
+requirements:
+  build:
+    - libx11 # [linux]
+    - libxext # [linux]
+  run:
+    - libx11 # [linux]
+    - libxext # [linux]
