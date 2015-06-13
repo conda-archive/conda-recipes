@@ -1,0 +1,77 @@
+package:
+  name: awscli
+  version: "1.7.34"
+
+source:
+  fn: awscli-1.7.34.tar.gz
+  url: https://pypi.python.org/packages/source/a/awscli/awscli-1.7.34.tar.gz
+  md5: 4328f9565c43be51d049b6cd097c7988
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - awscli = awscli:main
+    #
+    # Would create an entry point called awscli that calls awscli.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - botocore ==1.0.0b3
+    - bcdoc >=0.16.0,<0.17.0
+    - colorama >=0.2.5,<=0.3.3
+    - docutils >=0.10
+    - rsa >=3.1.2,<=3.1.4
+
+  run:
+    - python
+    - botocore ==1.0.0b3
+    - bcdoc >=0.16.0,<0.17.0
+    - colorama >=0.2.5,<=0.3.3
+    - docutils >=0.10
+    - rsa >=3.1.2,<=3.1.4
+
+test:
+  # Python imports
+  imports:
+    - awscli
+    - awscli.customizations
+    - awscli.customizations.codedeploy
+    - awscli.customizations.configservice
+    - awscli.customizations.datapipeline
+    - awscli.customizations.emr
+    - awscli.customizations.s3
+    - awscli.customizations.s3.syncstrategy
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://aws.amazon.com/cli/
+  license: Apache Software License
+  summary: 'Universal Command Line Environment for AWS.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
