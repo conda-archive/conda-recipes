@@ -1,24 +1,24 @@
 package:
-  name: python-levenshtein
-  version: !!str 0.11.2
+  name: fredapi
+  version: !!str 0.3.6
 
 source:
-  fn: python-Levenshtein-0.11.2.tar.gz
-  url: https://pypi.python.org/packages/source/p/python-Levenshtein/python-Levenshtein-0.11.2.tar.gz
-  md5: d96e1ebaec65766316da33165cea7362
+  fn: fredapi-0.3.6.tar.gz
+  url: https://pypi.python.org/packages/source/f/fredapi/fredapi-0.3.6.tar.gz
+  md5: f25b85d09ba34379e8ddd18d2baa0825
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
-  preserve_egg_dir: True
+# build:
+  #preserve_egg_dir: True
   #entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - python-levenshtein = python-levenshtein:main
+    # - fredapi = fredapi:main
     #
-    # Would create an entry point called python-levenshtein that calls python-levenshtein.main()
+    # Would create an entry point called fredapi that calls fredapi.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -29,15 +29,16 @@ requirements:
   build:
     - python
     - setuptools
+    - pandas
 
   run:
     - python
-    - setuptools
+    - pandas
 
 test:
   # Python imports
   imports:
-    - Levenshtein
+    - fredapi
 
   #commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -52,9 +53,9 @@ test:
     # - nose
 
 about:
-  home: http://github.com/ztane/python-Levenshtein
-  license: GNU General Public License v2 or later (GPLv2+)
-  summary: 'Python extension for computing string edit distances and similarities.'
+  home: https://github.com/mortada/fredapi
+  license: Apache License Version 2.0
+  summary: 'Python API for Federal Reserve Economic Data (FRED) from St. Louis Fed'
 
 # See
 # http://docs.continuum.io/conda/build.html for
