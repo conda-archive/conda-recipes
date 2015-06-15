@@ -1,0 +1,27 @@
+package:
+  name: go
+  version: "1.4.2"
+
+source:
+  fn: go1.4.2.tar.gz
+  url: http://storage.googleapis.com/golang/go1.4.2.src.tar.gz
+  md5: 907f85c8fa765d31f7f955836fec4049
+
+build:
+  number: 0
+
+  detect_binary_files_with_prefix: true
+
+test:
+  files:
+    - hello.go
+
+  commands:
+    - go help
+    # Compile and run a test program. Need to set GOROOT explicitly see topic "Installing to a custom location". ( http://golang.org/doc/install )
+    - GOROOT=$PREFIX go run hello.go
+
+about:
+  home: http://golang.org
+  license: BSD
+  summary: Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.
