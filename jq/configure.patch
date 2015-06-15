@@ -1,0 +1,18 @@
+diff --git configure configure
+index 44eee99..a5a18d3 100755
+--- configure
++++ configure
+@@ -12958,9 +12958,10 @@ elif $YACC --help | grep -- --warnings >/dev/null; then
+   { $as_echo "$as_me:${as_lineno-$LINENO}: result: ok" >&5
+ $as_echo "ok" >&6; }
+ else
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-  as_fn_error $? "You need bison version 2.5 or more recent." "$LINENO" 5
++  :
++#  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++#$as_echo "no" >&6; }
++#  as_fn_error $? "You need bison version 2.5 or more recent." "$LINENO" 5
+ fi
+ 
+ 
