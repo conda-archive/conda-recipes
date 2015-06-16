@@ -8,9 +8,9 @@ source:
   md5: 907f85c8fa765d31f7f955836fec4049
 
 build:
-  number: 0
+  number: 1
 
-  detect_binary_files_with_prefix: true
+  binary_relocation: false
 
 test:
   files:
@@ -19,7 +19,7 @@ test:
   commands:
     - go help
     # Compile and run a test program. Need to set GOROOT explicitly see topic "Installing to a custom location". ( http://golang.org/doc/install )
-    - GOROOT=$PREFIX go run hello.go
+    - go run hello.go
 
 about:
   home: http://golang.org
