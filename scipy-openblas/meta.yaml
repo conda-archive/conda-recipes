@@ -1,0 +1,28 @@
+package:
+  name: scipy
+  version: 0.15.1
+
+source:
+  fn: scipy-0.15.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/scipy/scipy-0.15.1.tar.gz
+  md5: be56cd8e60591d6332aac792a5880110
+
+requirements:
+  build:
+   - python
+   - numpy
+   - openblas-libs
+
+  run:
+   - python
+   - numpy
+   - openblas-libs
+
+build:
+ string: py{{py}}np{{np}}_0o
+ features:
+  - openblas
+
+about:
+ home: http://www.scipy.org
+ license: BSD
