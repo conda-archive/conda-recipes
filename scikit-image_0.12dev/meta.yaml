@@ -1,0 +1,40 @@
+package:
+  name: scikit-image
+  version: 0.12dev
+
+source:
+  git_url: git://github.com/scikit-image/scikit-image.git
+  git_tag: master
+
+build:
+  number: 1 [win]
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - scipy
+    - distribute
+    - cython
+    - six
+    
+  run:
+    - python
+    - numpy
+    - scipy
+    - pillow
+    - matplotlib
+    - dask
+    - networkx
+    - pillow
+    - dask
+
+test:
+  imports:
+    - skimage
+    
+
+about:
+  home: http://scikit-image.org/
+  license: Modified BSD (http://scikit-image.org/docs/dev/license.html)
