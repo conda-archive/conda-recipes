@@ -95,14 +95,14 @@ if "%ARCH%"=="64" (
 make distribution
 cd "%SRC_DIR%"
 
-copy library\graphics\help\figures\pch.pdf doc\manual\pch.pdf
-if errorlevel 1 exit 1
-
-copy library\graphics\help\figures\mai.pdf doc\manual\mai.pdf
-if errorlevel 1 exit 1
-
-copy library\graphics\help\figures\oma.pdf doc\manual\oma.pdf
-if errorlevel 1 exit 1
+@rem copy library\graphics\help\figures\pch.pdf doc\manual\pch.pdf
+@rem if errorlevel 1 exit 1
+@rem
+@rem copy library\graphics\help\figures\mai.pdf doc\manual\mai.pdf
+@rem if errorlevel 1 exit 1
+@rem
+@rem copy library\graphics\help\figures\oma.pdf doc\manual\oma.pdf
+@rem if errorlevel 1 exit 1
 
 cd "%SRC_DIR%\src\gnuwin32"
 make distribution
