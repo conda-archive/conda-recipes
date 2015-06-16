@@ -8,6 +8,9 @@ cd src
 ./all.bash
 cd ..
 
+# Delete `test` directory as it is no longer needed.
+rm -rf test
+
 # Link binaries.
 mkdir -p $PREFIX/bin
 ln -s $PREFIX/go/bin/go $PREFIX/bin/go
