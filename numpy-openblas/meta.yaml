@@ -13,10 +13,10 @@ requirements:
     - openblas-libs
   run:
     - python
-    - openblas
     - openblas-libs
 
 build:
+  string: py{{py}}_0o
   features:
     - openblas
 
