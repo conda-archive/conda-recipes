@@ -1,6 +1,6 @@
 package:
   name: pathlib
-  version: !!str 1.0.1
+  version: "1.0.1"
 
 source:
   fn: pathlib-1.0.1.tar.gz
