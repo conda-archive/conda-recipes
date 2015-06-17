@@ -1,11 +1,11 @@
 package:
-  name: pathlib
-  version: "1.0.1"
+  name: pypdf2
+  version: !!str 1.24
 
 source:
-  fn: pathlib-1.0.1.tar.gz
-  url: https://pypi.python.org/packages/source/p/pathlib/pathlib-1.0.1.tar.gz
-  md5: 5099ed48be9b1ee29b31c82819240537
+  fn: PyPDF2-1.24.tar.gz
+  url: https://pypi.python.org/packages/source/P/PyPDF2/PyPDF2-1.24.tar.gz
+  md5: 87cbb41c24bd98e6f70a37bb4a97446c
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -16,9 +16,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - pathlib = pathlib:main
+    # - pypdf2 = pypdf2:main
     #
-    # Would create an entry point called pathlib that calls pathlib.main()
+    # Would create an entry point called pypdf2 that calls pypdf2.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -35,7 +35,7 @@ requirements:
 test:
   # Python imports
   imports:
-    - pathlib
+    - PyPDF2
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -50,9 +50,9 @@ test:
     # - nose
 
 about:
-  home: https://pathlib.readthedocs.org/
-  license: MIT License
-  summary: 'Object-oriented filesystem paths'
+  home: http://mstamy2.github.com/PyPDF2
+  license: BSD License
+  summary: 'PDF toolkit'
 
 # See
 # http://docs.continuum.io/conda/build.html for

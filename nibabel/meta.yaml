@@ -1,24 +1,24 @@
 package:
-  name: svg.path
-  version: "2.0b1"
+  name: nibabel
+  version: "2.0.0"
 
 source:
-  fn: svg.path-2.0b1.zip
-  url: https://pypi.python.org/packages/source/s/svg.path/svg.path-2.0b1.zip
-  md5: 900a981902fe0bb09534dcefdbba0ebc
+  fn: nibabel-2.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/n/nibabel/nibabel-2.0.0.tar.gz
+  md5: befa2fcbd242496a83007a47aad538de
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
-  preserve_egg_dir: True
+# build:
+  # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - svg.path = svg.path:main
+    # - nibabel = nibabel:main
     #
-    # Would create an entry point called svg.path that calls svg.path.main()
+    # Would create an entry point called nibabel that calls nibabel.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -28,18 +28,27 @@ build:
 requirements:
   build:
     - python
-    - setuptools
 
   run:
     - python
-    - setuptools
 
 test:
   # Python imports
   imports:
-    - svg
-    - svg.path
-    - svg.path.tests
+    - nibabel
+    - nibabel.benchmarks
+    - nibabel.externals
+    - nibabel.externals.tests
+    - nibabel.freesurfer
+    - nibabel.freesurfer.tests
+    - nibabel.gifti
+    - nibabel.gifti.tests
+    - nibabel.nicom
+    - nibabel.nicom.tests
+    - nibabel.testing
+    - nibabel.tests
+    - nisext
+    - nisext.tests
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -54,9 +63,9 @@ test:
     # - nose
 
 about:
-  home: https://github.com/regebro/svg.path
-  license: CC0 1.0 Universal
-  summary: 'SVG path objects and parser'
+  home: http://nipy.org/nibabel
+  license: MIT License
+  summary: 'Access a multitude of neuroimaging data formats'
 
 # See
 # http://docs.continuum.io/conda/build.html for

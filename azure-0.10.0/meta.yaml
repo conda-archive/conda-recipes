@@ -1,11 +1,11 @@
 package:
-  name: nearpy
-  version: "0.2.2"
+  name: azure
+  version: "0.10.0"
 
 source:
-  fn: NearPy-0.2.2.tar.gz
-  url: https://pypi.python.org/packages/source/N/NearPy/NearPy-0.2.2.tar.gz
-  md5: 6ed07af18e92de9368ddc161ff142d7e
+  fn: azure-0.10.0.zip
+  url: https://pypi.python.org/packages/source/a/azure/azure-0.10.0.zip
+  md5: 305b0036df5696d68369807835f554ae
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -16,9 +16,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - nearpy = nearpy:main
+    # - azure = azure:main
     #
-    # Would create an entry point called nearpy that calls nearpy.main()
+    # Would create an entry point called azure that calls azure.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -28,30 +28,24 @@ source:
 requirements:
   build:
     - python
-    - setuptools
-    - numpy
-    - scipy
-    - redis
-    - bitarray
+    - python-dateutil
+    - pyopenssl
+    - futures
 
   run:
     - python
-    - numpy
-    - scipy
-    - redis
-    - bitarray
+    - python-dateutil
+    - pyopenssl
+    - futures
 
 test:
   # Python imports
   imports:
-    - nearpy
-    - nearpy.distances
-    - nearpy.experiments
-    - nearpy.filters
-    - nearpy.hashes
-    - nearpy.hashes.permutation
-    - nearpy.storage
-    - nearpy.utils
+    - azure
+    - azure.http
+    - azure.servicebus
+    - azure.servicemanagement
+    - azure.storage
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -66,9 +60,9 @@ test:
     # - nose
 
 about:
-  home: http://pypi.python.org/pypi/NearPy/
-  license: LICENSE.txt
-  summary: 'Framework for fast approximated nearest neighbour search.'
+  home: https://github.com/WindowsAzure/azure-sdk-for-python
+  license: Apache Software License
+  summary: 'Microsoft Azure client APIs'
 
 # See
 # http://docs.continuum.io/conda/build.html for

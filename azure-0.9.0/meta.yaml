@@ -1,11 +1,11 @@
 package:
-  name: py2neo
-  version: !!str 1.6.4
+  name: azure
+  version: !!str 0.9.0
 
 source:
-  fn: py2neo-1.6.4.tar.gz
-  url: https://pypi.python.org/packages/source/p/py2neo/py2neo-1.6.4.tar.gz
-  md5: 74a2728405a361cf951abae4966a9932
+  fn: azure-0.9.0.zip
+  url: https://pypi.python.org/packages/source/a/azure/azure-0.9.0.zip
+  md5: 9616767cf45c1c00794624e2a0889f23
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -16,9 +16,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - py2neo = py2neo:main
+    # - azure = azure:main
     #
-    # Would create an entry point called py2neo that calls py2neo.main()
+    # Would create an entry point called azure that calls azure.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -28,19 +28,20 @@ source:
 requirements:
   build:
     - python
-    - setuptools
+    - python-dateutil
 
   run:
     - python
+    - python-dateutil
 
 test:
   # Python imports
   imports:
-    - py2neo
-    - py2neo.packages
-    - py2neo.packages.httpstream
-    - py2neo.packages.jsonstream
-    - py2neo.packages.urimagic
+    - azure
+    - azure.http
+    - azure.servicebus
+    - azure.servicemanagement
+    - azure.storage
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -55,9 +56,9 @@ test:
     # - nose
 
 about:
-  home: http://nigelsmall.com/py2neo
+  home: https://github.com/WindowsAzure/azure-sdk-for-python
   license: Apache Software License
-  summary: 'Python client library for the Neo4j REST server'
+  summary: 'Windows Azure client APIs'
 
 # See
 # http://docs.continuum.io/conda/build.html for

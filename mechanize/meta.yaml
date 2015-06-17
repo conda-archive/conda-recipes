@@ -1,26 +1,25 @@
 package:
-  name: python-keyczar
-  version: "0.715"
+  name: mechanize
+  version: !!str 0.2.5
 
 source:
-  fn: python-keyczar-0.715.tar.gz
-  url: https://pypi.python.org/packages/source/p/python-keyczar/python-keyczar-0.715.tar.gz
-  md5: bdb47448f622fdfea7851327a5f20476
+  fn: mechanize-0.2.5.zip
+  url: https://pypi.python.org/packages/source/m/mechanize/mechanize-0.2.5.zip
+  md5: a497ad4e875f7506ffcf8ad3ada4c2fc
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
+# build:
   # preserve_egg_dir: True
-  entry_points:
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - python-keyczar = python-keyczar:main
+    # - mechanize = mechanize:main
     #
-    # Would create an entry point called python-keyczar that calls python-keyczar.main()
+    # Would create an entry point called mechanize that calls mechanize.main()
 
-    - keyczart = keyczar.keyczart:_main_setuptools
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -30,22 +29,19 @@ requirements:
   build:
     - python
     - setuptools
-    - pycrypto >2.0
-    - pyasn1
 
   run:
     - python
-    - pycrypto >2.0
-    - pyasn1
 
 test:
   # Python imports
   imports:
-    - keyczar
+    - mechanize
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
+
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -55,9 +51,9 @@ test:
     # - nose
 
 about:
-  home: http://www.keyczar.org/
-  license: Apache Software License
-  summary: 'Toolkit for safe and simple cryptography'
+  home: http://wwwsearch.sourceforge.net/mechanize/
+  license: BSD License or Zope Public License
+  summary: 'Stateful programmatic web browsing.'
 
 # See
 # http://docs.continuum.io/conda/build.html for

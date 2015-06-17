@@ -1,11 +1,11 @@
 package:
-  name: pathlib
-  version: "1.0.1"
+  name: requests_futures
+  version: "0.9.5"
 
 source:
-  fn: pathlib-1.0.1.tar.gz
-  url: https://pypi.python.org/packages/source/p/pathlib/pathlib-1.0.1.tar.gz
-  md5: 5099ed48be9b1ee29b31c82819240537
+  fn: requests-futures-0.9.5.tar.gz
+  url: https://pypi.python.org/packages/source/r/requests-futures/requests-futures-0.9.5.tar.gz
+  md5: e20dc6f063c70888a7f8225e349b6682
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -16,9 +16,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - pathlib = pathlib:main
+    # - requests-futures = requests-futures:main
     #
-    # Would create an entry point called pathlib that calls pathlib.main()
+    # Would create an entry point called requests-futures that calls requests-futures.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -28,14 +28,18 @@ source:
 requirements:
   build:
     - python
+    - requests >=1.2.0
+    - futures >=2.1.3
 
   run:
     - python
+    - requests >=1.2.0
+    - futures >=2.1.3
 
 test:
   # Python imports
   imports:
-    - pathlib
+    - requests_futures
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -50,9 +54,9 @@ test:
     # - nose
 
 about:
-  home: https://pathlib.readthedocs.org/
-  license: MIT License
-  summary: 'Object-oriented filesystem paths'
+  home: https://github.com/ross/requests-futures
+  license: Apache Software License
+  summary: 'Asynchronous Python HTTP for Humans.'
 
 # See
 # http://docs.continuum.io/conda/build.html for

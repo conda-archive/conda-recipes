@@ -1,11 +1,11 @@
 package:
-  name: sphinx_rtd_theme
-  version: "0.1.6"
+  name: python-logstash
+  version: !!str 0.4.2
 
 source:
-  fn: sphinx_rtd_theme-0.1.6.tar.gz
-  url: https://pypi.python.org/packages/source/s/sphinx_rtd_theme/sphinx_rtd_theme-0.1.6.tar.gz
-  md5: 8df56a300c8c69f17e1ffbee194b2a26
+  fn: python-logstash-0.4.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-logstash/python-logstash-0.4.2.tar.gz
+  md5: 30350b384a006c1d1adea6f7df90bf47
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -16,9 +16,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - sphinx_rtd_theme = sphinx_rtd_theme:main
+    # - python-logstash = python-logstash:main
     #
-    # Would create an entry point called sphinx_rtd_theme that calls sphinx_rtd_theme.main()
+    # Would create an entry point called python-logstash that calls python-logstash.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -28,17 +28,14 @@ source:
 requirements:
   build:
     - python
-    - setuptools
-    - sphinx >=1.1
 
   run:
     - python
-    - sphinx >=1.1
 
 test:
   # Python imports
   imports:
-    - sphinx_rtd_theme
+    - logstash
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -53,9 +50,9 @@ test:
     # - nose
 
 about:
-  home: https://github.com/snide/sphinx_rtd_theme/
-  license: BSD License
-  summary: 'ReadTheDocs.org theme for Sphinx, 2013 version.'
+  home: https://github.com/vklochan/python-logstash
+  license: MIT License
+  summary: 'Python logging handler for Logstash.'
 
 # See
 # http://docs.continuum.io/conda/build.html for

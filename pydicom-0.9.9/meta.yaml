@@ -1,11 +1,11 @@
 package:
-  name: xport
-  version: "0.1.0"
+  name: pydicom
+  version: !!str 0.9.9
 
 source:
-  fn: xport-0.1.0.tar.gz
-  url: https://pypi.python.org/packages/source/x/xport/xport-0.1.0.tar.gz
-  md5: 427b7b444e750671d5b29af73ed32090
+  fn: pydicom-0.9.9.tar.gz
+  url: https://pypi.python.org/packages/source/p/pydicom/pydicom-0.9.9.tar.gz
+  md5: a66ca6728e69ba565ab9c8a21740eee8
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -16,9 +16,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - xport = xport:main
+    # - pydicom = pydicom:main
     #
-    # Would create an entry point called xport that calls xport.main()
+    # Would create an entry point called pydicom that calls pydicom.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -36,7 +36,13 @@ requirements:
 test:
   # Python imports
   imports:
-    - xport
+    - dicom
+    - dicom.contrib
+    - dicom.examples
+    - dicom.test
+    - dicom.test.performance
+    - dicom.util
+    - pydicom
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -51,9 +57,9 @@ test:
     # - nose
 
 about:
-  home: https://github.com/jcushman/xport
+  home: http://pydicom.googlecode.com
   license: MIT License
-  summary: 'SAS XPORT data file reader.'
+  summary: 'Pure python package for DICOM medical file reading and writing'
 
 # See
 # http://docs.continuum.io/conda/build.html for

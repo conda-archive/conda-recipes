@@ -1,24 +1,24 @@
 package:
-  name: hgtools
-  version: "6.3"
+  name: path.py
+  version: !!str 7.2
 
 source:
-  fn: hgtools-6.3.zip
-  url: https://pypi.python.org/packages/source/h/hgtools/hgtools-6.3.zip
-  md5: 584d74b81b1efae3604c53086d1a3acb
+  fn: path.py-7.2.zip
+  url: https://pypi.python.org/packages/source/p/path.py/path.py-7.2.zip
+  md5: e0c54b25e2199c3bb325520d9f9d047a
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
-  preserve_egg_dir: True
+# build:
+  # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - hgtools = hgtools:main
+    # - path.py = path.py:main
     #
-    # Would create an entry point called hgtools that calls hgtools.main()
+    # Would create an entry point called path.py that calls path.py.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -32,14 +32,10 @@ requirements:
 
   run:
     - python
-    - setuptools
 
-test:
+# test:
   # Python imports
-  imports:
-    - hgtools
-    - hgtools.managers
-    - hgtools.tests
+  # imports:
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -54,9 +50,9 @@ test:
     # - nose
 
 about:
-  home: https://bitbucket.org/jaraco/hgtools/
-  license: GNU General Public License (GPL)
-  summary: 'Classes and setuptools plugin for Mercurial repositories'
+  home: http://github.com/jaraco/path.py
+  license: MIT License
+  summary: 'A module wrapper for os.path'
 
 # See
 # http://docs.continuum.io/conda/build.html for

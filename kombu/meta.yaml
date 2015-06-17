@@ -1,11 +1,11 @@
 package:
-  name: pathlib
-  version: "1.0.1"
+  name: kombu
+  version: "3.0.24"
 
 source:
-  fn: pathlib-1.0.1.tar.gz
-  url: https://pypi.python.org/packages/source/p/pathlib/pathlib-1.0.1.tar.gz
-  md5: 5099ed48be9b1ee29b31c82819240537
+  fn: kombu-3.0.24.tar.gz
+  url: https://pypi.python.org/packages/source/k/kombu/kombu-3.0.24.tar.gz
+  md5: 37c8b5084ac83b8a6f5ff9f157cac0e9
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -16,9 +16,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - pathlib = pathlib:main
+    # - kombu = kombu:main
     #
-    # Would create an entry point called pathlib that calls pathlib.main()
+    # Would create an entry point called kombu that calls kombu.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -28,14 +28,27 @@ source:
 requirements:
   build:
     - python
+    - setuptools
+    - anyjson >=0.3.3
+    - amqp >=1.4.6,<2.0
 
   run:
     - python
+    - anyjson >=0.3.3
+    - amqp >=1.4.6,<2.0
 
 test:
   # Python imports
   imports:
-    - pathlib
+    - kombu
+    - kombu.async
+    - kombu.tests
+    - kombu.tests.async
+    - kombu.tests.transport
+    - kombu.tests.transport.virtual
+    - kombu.tests.utils
+    - kombu.transport
+    - kombu.utils
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -50,9 +63,9 @@ test:
     # - nose
 
 about:
-  home: https://pathlib.readthedocs.org/
-  license: MIT License
-  summary: 'Object-oriented filesystem paths'
+  home: http://kombu.readthedocs.org
+  license: BSD License
+  summary: 'Messaging library for Python'
 
 # See
 # http://docs.continuum.io/conda/build.html for

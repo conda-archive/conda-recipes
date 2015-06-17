@@ -1,11 +1,11 @@
 package:
-  name: pandocfilters
-  version: "1.2.3"
+  name: python_dateutil
+  version: "2.4.0"
 
 source:
-  fn: pandocfilters-1.2.3.tar.gz
-  url: https://pypi.python.org/packages/source/p/pandocfilters/pandocfilters-1.2.3.tar.gz
-  md5: 85ad8f9432071312b214d8a75f20c450
+  fn: python-dateutil-2.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-2.4.0.tar.gz
+  md5: 75714163bb96bedd07685cdb2071b8bc
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -16,9 +16,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - pandocfilters = pandocfilters:main
+    # - python-dateutil = python-dateutil:main
     #
-    # Would create an entry point called pandocfilters that calls pandocfilters.main()
+    # Would create an entry point called python-dateutil that calls python-dateutil.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -28,14 +28,18 @@ source:
 requirements:
   build:
     - python
+    - setuptools
+    - six >=1.5
 
   run:
     - python
+    - six >=1.5
 
 test:
   # Python imports
   imports:
-    - pandocfilters
+    - dateutil
+    - dateutil.zoneinfo
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -50,9 +54,9 @@ test:
     # - nose
 
 about:
-  home: http://github.com/jgm/pandocfilters
+  home: https://dateutil.readthedocs.org
   license: BSD License
-  summary: 'Utilities for writing pandoc filters in python'
+  summary: 'Extensions to the standard Python datetime module'
 
 # See
 # http://docs.continuum.io/conda/build.html for

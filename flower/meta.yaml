@@ -1,25 +1,26 @@
 package:
-  name: zc.lockfile
-  version: !!str 1.1.0
+  name: flower
+  version: "0.7.3"
 
 source:
-  fn: zc.lockfile-1.1.0.zip
-  url: https://pypi.python.org/packages/source/z/zc.lockfile/zc.lockfile-1.1.0.zip
-  md5: 8e46b830417363501363bd09e1af1ecc
+  fn: flower-0.7.3.tar.gz
+  url: https://pypi.python.org/packages/source/f/flower/flower-0.7.3.tar.gz
+  md5: 7c095228ee375fdbbeb5f3d37e033d49
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
   preserve_egg_dir: True
-  # entry_points:
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - zc.lockfile = zc.lockfile:main
+    # - flower = flower:main
     #
-    # Would create an entry point called zc.lockfile that calls zc.lockfile.main()
+    # Would create an entry point called flower that calls flower.main()
 
+    - flower = flower.__main__:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -29,21 +30,28 @@ requirements:
   build:
     - python
     - setuptools
+    - celery
+    - tornado >=3.2.0
 
   run:
     - python
     - setuptools
+    - celery
+    - tornado >=3.2.0
 
 test:
   # Python imports
   imports:
-    - zc
-    - zc.lockfile
+    - flower
+    - flower.api
+    - flower.utils
+    - flower.views
 
-  # commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+    - flower --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -53,9 +61,9 @@ test:
     # - nose
 
 about:
-  home: http://www.python.org/pypi/zc.lockfile
-  license: Zope Public License
-  summary: 'Basic inter-process locks'
+  home: https://github.com/mher/flower
+  license: BSD License
+  summary: 'Celery Flower'
 
 # See
 # http://docs.continuum.io/conda/build.html for

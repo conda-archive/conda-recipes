@@ -1,0 +1,22 @@
+package:
+  name: cachecontrol
+  version: "0.11.1"
+
+source:  
+  git_url: git@github.com:ionrock/cachecontrol.git
+  git_tag: 0.11.1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+  run:
+    - python
+    - requests
+    - lockfile
+
+about:
+  home: https://github.com/ionrock/cachecontrol
+  license: MIT
+  
