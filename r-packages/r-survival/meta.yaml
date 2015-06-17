@@ -32,9 +32,11 @@ build:
 requirements:
   build:
     - r-base
+    - gcc # [not win]
 
   run:
     - r
+    - libgcc # [not win]
 
 test:
   commands:
