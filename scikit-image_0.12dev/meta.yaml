@@ -12,18 +12,20 @@ build:
 requirements:
   build:
     - python
-    - setuptools
     - numpy
     - scipy
-    - distribute
     - cython
     - six
+    - matplotlib
+    - dask
+    - networkx
+    - pillow
+    - dask
     
   run:
     - python
     - numpy
     - scipy
-    - pillow
     - matplotlib
     - dask
     - networkx
