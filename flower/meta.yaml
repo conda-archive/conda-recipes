@@ -1,0 +1,70 @@
+package:
+  name: flower
+  version: "0.7.3"
+
+source:
+  fn: flower-0.7.3.tar.gz
+  url: https://pypi.python.org/packages/source/f/flower/flower-0.7.3.tar.gz
+  md5: 7c095228ee375fdbbeb5f3d37e033d49
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - flower = flower:main
+    #
+    # Would create an entry point called flower that calls flower.main()
+
+    - flower = flower.__main__:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - celery
+    - tornado >=3.2.0
+
+  run:
+    - python
+    - setuptools
+    - celery
+    - tornado >=3.2.0
+
+test:
+  # Python imports
+  imports:
+    - flower
+    - flower.api
+    - flower.utils
+    - flower.views
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - flower --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/mher/flower
+  license: BSD License
+  summary: 'Celery Flower'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
