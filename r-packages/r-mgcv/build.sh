@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# These recursively depend on r-mgcv, since it is a recommended package, so
-# install it manually
-
-conda install --no-deps r-matrix r-nlme r-lattice
-
 # R refuses to build packages that mark themselves as Priority: Recommended
 mv DESCRIPTION DESCRIPTION.old
 grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
+
+# These recursively depend on r-mgcv, since it is a recommended package, so
+# install them manually
+
+conda install --no-deps r-matrix r-nlme
 
 $R CMD INSTALL --build .
 

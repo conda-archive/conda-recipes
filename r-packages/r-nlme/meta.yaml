@@ -2,13 +2,15 @@ package:
   name: r-nlme
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "3.1_119"
+  version: "3.1_120"
 
 source:
-  fn: nlme_3.1-119.tar.gz
+  fn: nlme_3.1-120.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/nlme_3.1-119.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/nlme/nlme_3.1-119.tar.gz
+    - http://cran.r-project.org/src/contrib/nlme_3.1-120.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/nlme/nlme_3.1-120.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,7 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2 # [osx]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -29,10 +31,10 @@ build:
 # Suggests: Hmisc, MASS
 requirements:
   build:
-    - r-base >=3.0.0
+    - r-base
 
   run:
-    - r >=3.0.0
+    - r
 
 test:
   commands:
@@ -54,8 +56,8 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: nlme
-# Version: 3.1-119
-# Date: 2015-01-10
+# Version: 3.1-120
+# Date: 2015-02-20
 # Priority: recommended
 # Title: Linear and Nonlinear Mixed Effects Models
 # Authors@R: c(person("JosÃ©", "Pinheiro", role = "aut", comment = "S version"), person("Douglas", "Bates", role = "aut", comment = "up to 2007"), person("Saikat", "DebRoy", role = "ctb", comment = "up to 2002"), person("Deepayan", "Sarkar", role = "ctb", comment = "up to 2005"), person("EISPACK authors", role = "ctb", comment = "src/rs.f"), person("R-core", email = "R-core@R-project.org", role = c("aut", "cre")))
@@ -68,12 +70,12 @@ about:
 # Encoding: UTF-8
 # License: GPL (>= 2)
 # BugReports: http://bugs.r-project.org
-# Packaged: 2015-01-10 08:38:47 UTC; ripley
+# NeedsCompilation: yes
+# Packaged: 2015-02-20 06:27:53 UTC; ripley
 # Author: JosÃ© Pinheiro [aut] (S version), Douglas Bates [aut] (up to 2007), Saikat DebRoy [ctb] (up to 2002), Deepayan Sarkar [ctb] (up to 2005), EISPACK authors [ctb] (src/rs.f), R-core [aut, cre]
 # Maintainer: R-core <R-core@R-project.org>
-# NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2015-01-10 12:52:26
+# Date/Publication: 2015-02-20 07:36:14
 
 # See
 # http://docs.continuum.io/conda/build.html for

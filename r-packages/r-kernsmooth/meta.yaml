@@ -2,13 +2,15 @@ package:
   name: r-kernsmooth
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "2.23_13"
+  version: "2.23_14"
 
 source:
-  fn: KernSmooth_2.23-13.tar.gz
+  fn: KernSmooth_2.23-14.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/KernSmooth_2.23-13.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/KernSmooth/KernSmooth_2.23-13.tar.gz
+    - http://cran.r-project.org/src/contrib/KernSmooth_2.23-14.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/KernSmooth/KernSmooth_2.23-14.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,7 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2 # [osx]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -29,10 +31,10 @@ build:
 # Suggests: MASS
 requirements:
   build:
-    - r-base >=2.5.0
+    - r-base
 
   run:
-    - r >=2.5.0
+    - r
 
 test:
   commands:
@@ -49,7 +51,7 @@ test:
 about:
   #home:
   license: Unlimited
-  summary: 'functions for kernel smoothing (and density estimation) corresponding to the book:  Wand,
+  summary: 'Functions for kernel smoothing (and density estimation) corresponding to the book:  Wand,
     M.P. and Jones, M.C. (1995) "Kernel Smoothing".'
 
 
@@ -57,21 +59,21 @@ about:
 
 # Package: KernSmooth
 # Priority: recommended
-# Version: 2.23-13
-# Date: 2014-09-13
-# Title: Functions for kernel smoothing for Wand & Jones (1995)
+# Version: 2.23-14
+# Date: 2015-02-07
+# Title: Functions for Kernel Smoothing Supporting Wand & Jones (1995)
 # Authors@R: c(person("Matt", "Wand", role = "aut", email = "Matt.Wand@uts.edu.au"), person("Brian", "Ripley", role = c("trl", "cre", "ctb"), email = "ripley@stats.ox.ac.uk", comment = "R port and updates"))
 # Depends: R (>= 2.5.0), stats
 # Suggests: MASS
-# Description: functions for kernel smoothing (and density estimation) corresponding to the book:  Wand, M.P. and Jones, M.C. (1995) "Kernel Smoothing".
+# Description: Functions for kernel smoothing (and density estimation) corresponding to the book:  Wand, M.P. and Jones, M.C. (1995) "Kernel Smoothing".
 # License: Unlimited
 # ByteCompile: yes
-# Packaged: 2014-09-14 08:51:56 UTC; ripley
+# NeedsCompilation: yes
+# Packaged: 2015-02-11 08:25:09 UTC; ripley
 # Author: Matt Wand [aut], Brian Ripley [trl, cre, ctb] (R port and updates)
 # Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
-# NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2014-09-14 10:53:17
+# Date/Publication: 2015-02-11 09:29:58
 
 # See
 # http://docs.continuum.io/conda/build.html for
