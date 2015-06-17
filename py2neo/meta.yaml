@@ -1,11 +1,11 @@
 package:
-  name: pydicom
-  version: !!str 0.9.9
+  name: py2neo
+  version: !!str 1.6.4
 
 source:
-  fn: pydicom-0.9.9.tar.gz
-  url: https://pypi.python.org/packages/source/p/pydicom/pydicom-0.9.9.tar.gz
-  md5: a66ca6728e69ba565ab9c8a21740eee8
+  fn: py2neo-1.6.4.tar.gz
+  url: https://pypi.python.org/packages/source/p/py2neo/py2neo-1.6.4.tar.gz
+  md5: 74a2728405a361cf951abae4966a9932
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -16,9 +16,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - pydicom = pydicom:main
+    # - py2neo = py2neo:main
     #
-    # Would create an entry point called pydicom that calls pydicom.main()
+    # Would create an entry point called py2neo that calls py2neo.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -36,12 +36,11 @@ requirements:
 test:
   # Python imports
   imports:
-    - dicom
-    - dicom.contrib
-    - dicom.examples
-    - dicom.test
-    - dicom.test.performance
-    - dicom.util
+    - py2neo
+    - py2neo.packages
+    - py2neo.packages.httpstream
+    - py2neo.packages.jsonstream
+    - py2neo.packages.urimagic
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -56,9 +55,9 @@ test:
     # - nose
 
 about:
-  home: http://pydicom.googlecode.com
-  license: MIT License
-  summary: 'Pure python package for DICOM medical file reading and writing'
+  home: http://nigelsmall.com/py2neo
+  license: Apache Software License
+  summary: 'Python client library for the Neo4j REST server'
 
 # See
 # http://docs.continuum.io/conda/build.html for

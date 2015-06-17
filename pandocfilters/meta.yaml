@@ -1,11 +1,11 @@
 package:
-  name: pydicom
-  version: !!str 0.9.9
+  name: pandocfilters
+  version: "1.2.3"
 
 source:
-  fn: pydicom-0.9.9.tar.gz
-  url: https://pypi.python.org/packages/source/p/pydicom/pydicom-0.9.9.tar.gz
-  md5: a66ca6728e69ba565ab9c8a21740eee8
+  fn: pandocfilters-1.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/p/pandocfilters/pandocfilters-1.2.3.tar.gz
+  md5: 85ad8f9432071312b214d8a75f20c450
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -16,9 +16,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - pydicom = pydicom:main
+    # - pandocfilters = pandocfilters:main
     #
-    # Would create an entry point called pydicom that calls pydicom.main()
+    # Would create an entry point called pandocfilters that calls pandocfilters.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -28,7 +28,6 @@ source:
 requirements:
   build:
     - python
-    - setuptools
 
   run:
     - python
@@ -36,12 +35,7 @@ requirements:
 test:
   # Python imports
   imports:
-    - dicom
-    - dicom.contrib
-    - dicom.examples
-    - dicom.test
-    - dicom.test.performance
-    - dicom.util
+    - pandocfilters
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -56,9 +50,9 @@ test:
     # - nose
 
 about:
-  home: http://pydicom.googlecode.com
-  license: MIT License
-  summary: 'Pure python package for DICOM medical file reading and writing'
+  home: http://github.com/jgm/pandocfilters
+  license: BSD License
+  summary: 'Utilities for writing pandoc filters in python'
 
 # See
 # http://docs.continuum.io/conda/build.html for

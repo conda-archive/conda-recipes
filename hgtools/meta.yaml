@@ -1,24 +1,24 @@
 package:
-  name: pydicom
-  version: !!str 0.9.9
+  name: hgtools
+  version: "6.3"
 
 source:
-  fn: pydicom-0.9.9.tar.gz
-  url: https://pypi.python.org/packages/source/p/pydicom/pydicom-0.9.9.tar.gz
-  md5: a66ca6728e69ba565ab9c8a21740eee8
+  fn: hgtools-6.3.zip
+  url: https://pypi.python.org/packages/source/h/hgtools/hgtools-6.3.zip
+  md5: 584d74b81b1efae3604c53086d1a3acb
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
-  # preserve_egg_dir: True
+build:
+  preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - pydicom = pydicom:main
+    # - hgtools = hgtools:main
     #
-    # Would create an entry point called pydicom that calls pydicom.main()
+    # Would create an entry point called hgtools that calls hgtools.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -32,16 +32,14 @@ requirements:
 
   run:
     - python
+    - setuptools
 
 test:
   # Python imports
   imports:
-    - dicom
-    - dicom.contrib
-    - dicom.examples
-    - dicom.test
-    - dicom.test.performance
-    - dicom.util
+    - hgtools
+    - hgtools.managers
+    - hgtools.tests
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -56,9 +54,9 @@ test:
     # - nose
 
 about:
-  home: http://pydicom.googlecode.com
-  license: MIT License
-  summary: 'Pure python package for DICOM medical file reading and writing'
+  home: https://bitbucket.org/jaraco/hgtools/
+  license: GNU General Public License (GPL)
+  summary: 'Classes and setuptools plugin for Mercurial repositories'
 
 # See
 # http://docs.continuum.io/conda/build.html for
