@@ -1,0 +1,75 @@
+package:
+  name: nearpy
+  version: "0.2.2"
+
+source:
+  fn: NearPy-0.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/N/NearPy/NearPy-0.2.2.tar.gz
+  md5: 6ed07af18e92de9368ddc161ff142d7e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - nearpy = nearpy:main
+    #
+    # Would create an entry point called nearpy that calls nearpy.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - scipy
+    - redis
+    - bitarray
+
+  run:
+    - python
+    - numpy
+    - scipy
+    - redis
+    - bitarray
+
+test:
+  # Python imports
+  imports:
+    - nearpy
+    - nearpy.distances
+    - nearpy.experiments
+    - nearpy.filters
+    - nearpy.hashes
+    - nearpy.hashes.permutation
+    - nearpy.storage
+    - nearpy.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pypi.python.org/pypi/NearPy/
+  license: LICENSE.txt
+  summary: 'Framework for fast approximated nearest neighbour search.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

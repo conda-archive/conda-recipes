@@ -1,0 +1,64 @@
+package:
+  name: py2neo
+  version: !!str 1.6.4
+
+source:
+  fn: py2neo-1.6.4.tar.gz
+  url: https://pypi.python.org/packages/source/p/py2neo/py2neo-1.6.4.tar.gz
+  md5: 74a2728405a361cf951abae4966a9932
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - py2neo = py2neo:main
+    #
+    # Would create an entry point called py2neo that calls py2neo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - py2neo
+    - py2neo.packages
+    - py2neo.packages.httpstream
+    - py2neo.packages.jsonstream
+    - py2neo.packages.urimagic
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://nigelsmall.com/py2neo
+  license: Apache Software License
+  summary: 'Python client library for the Neo4j REST server'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

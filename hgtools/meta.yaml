@@ -1,0 +1,63 @@
+package:
+  name: hgtools
+  version: "6.3"
+
+source:
+  fn: hgtools-6.3.zip
+  url: https://pypi.python.org/packages/source/h/hgtools/hgtools-6.3.zip
+  md5: 584d74b81b1efae3604c53086d1a3acb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - hgtools = hgtools:main
+    #
+    # Would create an entry point called hgtools that calls hgtools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - hgtools
+    - hgtools.managers
+    - hgtools.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://bitbucket.org/jaraco/hgtools/
+  license: GNU General Public License (GPL)
+  summary: 'Classes and setuptools plugin for Mercurial repositories'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
