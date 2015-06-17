@@ -29,10 +29,12 @@ build:
 # Suggests: MASS
 requirements:
   build:
-    - r-base >=2.15.0
+    - r-base
+    - gcc # [not win]
 
   run:
-    - r >=2.15.0
+    - r
+    - libgcc # [not win]
 
 test:
   commands:

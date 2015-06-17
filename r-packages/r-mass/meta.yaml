@@ -29,10 +29,12 @@ build:
 # Suggests: lattice, nlme, nnet, survival
 requirements:
   build:
-    - r-base >=3.1.0
+    - r-base
+    - gcc # [not win]
 
   run:
-    - r >=3.1.0
+    - r
+    - libgcc # [not win]
 
 test:
   commands:
