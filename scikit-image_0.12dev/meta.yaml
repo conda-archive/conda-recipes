@@ -3,11 +3,11 @@ package:
   version: 0.12dev
 
 source:
-  git_url: git://github.com/scikit-image/scikit-image.git
-  git_tag: master
+  git_url: git://github.com/clinicalgraphics/scikit-image.git
+  git_tag: fasthog
 
 build:
-  number: 1 [win]
+  number: 2 [win]
 
 requirements:
   build:
