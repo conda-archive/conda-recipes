@@ -15,12 +15,12 @@ source:
   url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.6rc1/openturns-1.6rc1-py2.7-x86_64.exe # [win64 and py27]
   sha1: 7206dd3d72c3235753dc16bd49ffb27ffc827911 # [win64 and py27]
 
-  fn: openturns-1.6rc1-py2.7-i686.exe # [win32 and py34]
-  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.6rc1/openturns-1.6rc1-py2.7-i686.exe # [win32 and py34]
+  fn: openturns-1.6rc1-py3.4-i686.exe # [win32 and py34]
+  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.6rc1/openturns-1.6rc1-py3.4-i686.exe # [win32 and py34]
   sha1: 7f124d373ac5f79202a35399b5553c296aa204ea # [win32 and py34]
 
-  fn: openturns-1.6rc1-py2.7-x86_64.exe # [win64 and py34]
-  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.6rc1/openturns-1.6rc1-py2.7-x86_64.exe # [win64 and py34]
+  fn: openturns-1.6rc1-py3.4-x86_64.exe # [win64 and py34]
+  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.6rc1/openturns-1.6rc1-py3.4-x86_64.exe # [win64 and py34]
   sha1: 8843c8a9ad595985850d2f5ba4804d26e4f23702 # [win64 and py34]
 
 build:
