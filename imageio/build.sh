@@ -1,6 +1,6 @@
 #!/bin/bash
 
-$PYTHON setup.py install
+$PYTHON setup.py build_with_fi install
 
 # Add more build steps here, if they are necessary.
 

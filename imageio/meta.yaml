@@ -21,6 +21,7 @@ source:
 
 requirements:
   build:
+    - numpy
     - python
 
   run:
