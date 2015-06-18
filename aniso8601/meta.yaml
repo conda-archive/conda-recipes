@@ -1,60 +1,60 @@
 package:
-  name: flask-login
-  version: 0.2.11
+  name: aniso8601
+  version: "1.0.0"
 
 source:
-  fn: Flask-Login-0.2.11.tar.gz
-  url: https://pypi.python.org/packages/source/F/Flask-Login/Flask-Login-0.2.11.tar.gz
-  md5: c0a7eaf28623f0aeac4929dc05a7a064
+  fn: aniso8601-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/aniso8601/aniso8601-1.0.0.tar.gz
+  md5: de0dcc6c74613e3efbfcc95e7dcff335
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - flask-login:main
+    # - aniso8601 = aniso8601:main
     #
-    # Would call flask-login.main()
+    # Would create an entry point called aniso8601 that calls aniso8601.main()
+
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
 requirements:
   build:
     - python
-
-    # requirements.
-    #
     - setuptools
-    - flask
 
   run:
     - python
-    - flask
 
 test:
   # Python imports
   imports:
-    - flask_login
+    - aniso8601
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
   # requires:
-    # Put any test requirements here.  For example
+    # Put any additional test requirements here.  For example
     # - nose
 
 about:
-  home: https://github.com/maxcountryman/flask-login
-  license: MIT License
+  home: https://bitbucket.org/nielsenb/aniso8601
+  license: BSD License
+  summary: 'A library for parsing ISO 8601 strings.'
 
 # See
 # http://docs.continuum.io/conda/build.html for
