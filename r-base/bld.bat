@@ -81,20 +81,20 @@ if errorlevel 1 exit 1
 
 @rem Now actually compile it
 
-@rem For whatever reason, these files aren't put in the right place.  They
-@rem files won't exist the first time we try to build, so let's "build" it
-@rem once (without the 'if errorlevel 1 exit 1') and then copy the files after
-@rem it inevitably fails and build it again.
-cd src\gnuwin32
-
-if "%ARCH%"=="64" (
-    @rem This is the copied version of MkRules.dist with WIN = 32 changed to WIN =
-    @rem 64 and BINDIR64 set to empty and MULTI = 64.
-    copy "%RECIPE_DIR%\MkRules.local" .
-)
-make distribution
-cd "%SRC_DIR%"
-
+@rem @rem For whatever reason, these files aren't put in the right place.  They
+@rem @rem files won't exist the first time we try to build, so let's "build" it
+@rem @rem once (without the 'if errorlevel 1 exit 1') and then copy the files after
+@rem @rem it inevitably fails and build it again.
+@rem cd src\gnuwin32
+@rem 
+@rem if "%ARCH%"=="64" (
+@rem     @rem This is the copied version of MkRules.dist with WIN = 32 changed to WIN =
+@rem     @rem 64 and BINDIR64 set to empty and MULTI = 64.
+@rem     copy "%RECIPE_DIR%\MkRules.local" .
+@rem )
+@rem make distribution
+@rem cd "%SRC_DIR%"
+@rem
 @rem copy library\graphics\help\figures\pch.pdf doc\manual\pch.pdf
 @rem if errorlevel 1 exit 1
 @rem
