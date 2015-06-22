@@ -1,11 +1,11 @@
 package:
   name: spyder
-  version: 2.3.3
+  version: 2.3.5
 
 source:
-  fn:   spyder-2.3.3.zip
-  url:  https://pypi.python.org/packages/source/s/spyder/spyder-2.3.3.zip
-  sha1: a609f7337fbe56052cb2e5f6ff0974613e33e5c6
+  fn:   spyder-2.3.5.zip
+  url:  https://pypi.python.org/packages/source/s/spyder/spyder-2.3.5.zip
+  md5: 2b3a201601fcd0e3f4ef31755ddd3ada
 
 build:
   osx_is_app: True
