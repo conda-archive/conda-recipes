@@ -4,11 +4,6 @@
 mv DESCRIPTION DESCRIPTION.old
 grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
 
-# These recursively depend on r-class, since it is a recommended package, so
-# install them manually
-
-conda install --no-deps r-mass
-
 $R CMD INSTALL --build .
 
 # Add more build steps here, if they are necessary.

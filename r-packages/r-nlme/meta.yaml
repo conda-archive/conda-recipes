@@ -2,13 +2,13 @@ package:
   name: r-nlme
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "3.1_120"
+  version: "3.1_121"
 
 source:
-  fn: nlme_3.1-120.tar.gz
+  fn: nlme_3.1-121.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/nlme_3.1-120.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/nlme/nlme_3.1-120.tar.gz
+    - http://cran.r-project.org/src/contrib/nlme_3.1-121.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/nlme/nlme_3.1-121.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -32,10 +32,12 @@ build:
 requirements:
   build:
     - r-base
+    - r-lattice # [not win]
     - gcc # [not win]
 
   run:
     - r
+    - r-lattice # [not win]
     - libgcc # [not win]
 
 test:
@@ -58,8 +60,8 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: nlme
-# Version: 3.1-120
-# Date: 2015-02-20
+# Version: 3.1-121
+# Date: 2015-06-29
 # Priority: recommended
 # Title: Linear and Nonlinear Mixed Effects Models
 # Authors@R: c(person("JosÃ©", "Pinheiro", role = "aut", comment = "S version"), person("Douglas", "Bates", role = "aut", comment = "up to 2007"), person("Saikat", "DebRoy", role = "ctb", comment = "up to 2002"), person("Deepayan", "Sarkar", role = "ctb", comment = "up to 2005"), person("EISPACK authors", role = "ctb", comment = "src/rs.f"), person("R-core", email = "R-core@R-project.org", role = c("aut", "cre")))
@@ -73,11 +75,11 @@ about:
 # License: GPL (>= 2)
 # BugReports: http://bugs.r-project.org
 # NeedsCompilation: yes
-# Packaged: 2015-02-20 06:27:53 UTC; ripley
+# Packaged: 2015-06-29 09:34:59 UTC; ripley
 # Author: JosÃ© Pinheiro [aut] (S version), Douglas Bates [aut] (up to 2007), Saikat DebRoy [ctb] (up to 2002), Deepayan Sarkar [ctb] (up to 2005), EISPACK authors [ctb] (src/rs.f), R-core [aut, cre]
 # Maintainer: R-core <R-core@R-project.org>
 # Repository: CRAN
-# Date/Publication: 2015-02-20 07:36:14
+# Date/Publication: 2015-06-29 17:15:22
 
 # See
 # http://docs.continuum.io/conda/build.html for
