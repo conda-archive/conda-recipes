@@ -7,6 +7,9 @@ source:
   url: http://github.com/xianyi/OpenBLAS/archive/v0.2.14.tar.gz
   md5: 53cda7f420e1ba0ea55de536b24c9701
 
+build:
+ number: 1
+
 about:
   home: http://www.openblas.net
   license: BSD
