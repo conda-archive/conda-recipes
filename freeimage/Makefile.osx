@@ -63,7 +63,6 @@ install:
 	install -m 644 $(HEADER) $(INCDIR)
 	install -m 644 $(SHAREDLIB) $(STATICLIB) $(INSTALLDIR)
 	ranlib -sf $(INSTALLDIR)/$(STATICLIB)
-	ln -sf $(SHAREDLIB) $(INSTALLDIR)/$(LIBNAME)
 
 clean:
 	rm -f core Dist/*.* u2dtmp* $(MODULES_X86_64) $(STATICLIB) $(SHAREDLIB) $(SHAREDLIB)-x86_64
