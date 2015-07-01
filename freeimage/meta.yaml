@@ -14,6 +14,10 @@ source:
     md5: a7e6f2f261e72260ec5b91c2a0f4bde3 [win]
 
 
+    patches:
+        - ImfHuf.h.patch
+        - dcraw_common.cpp.patch
+
 build:
     number: 0
 
