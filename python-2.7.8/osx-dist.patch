@@ -1,0 +1,12 @@
+diff --git Lib/distutils/unixccompiler.py Lib/distutils/unixccompiler.py
+index 2aa1cb1..f952a39 100644
+--- Lib/distutils/unixccompiler.py
++++ Lib/distutils/unixccompiler.py
+@@ -194,6 +194,7 @@ class UnixCCompiler(CCompiler):
+ 
+                 if sys.platform == 'darwin':
+                     linker = _osx_support.compiler_fixup(linker, ld_args)
++                    ld_args = ['-arch', @OSX_ARCH@] + ld_args
+ 
+                 self.spawn(linker + ld_args)
+             except DistutilsExecError, msg:
