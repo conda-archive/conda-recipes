@@ -59,9 +59,9 @@ $(SHAREDLIB)-x86_64: $(MODULES_X86_64)
 	$(CPP_X86_64) $(CPPFLAGS_X86_64) -c $< -o $@
 
 install:
-	install -d -m 755 -o root -g wheel $(INCDIR) $(INSTALLDIR)
-	install -m 644 -o root -g wheel $(HEADER) $(INCDIR)
-	install -m 644 -o root -g wheel $(SHAREDLIB) $(STATICLIB) $(INSTALLDIR)
+	install -d -m 755 $(INCDIR) $(INSTALLDIR)
+	install -m 644 $(HEADER) $(INCDIR)
+	install -m 644 $(SHAREDLIB) $(STATICLIB) $(INSTALLDIR)
 	ranlib -sf $(INSTALLDIR)/$(STATICLIB)
 	ln -sf $(SHAREDLIB) $(INSTALLDIR)/$(LIBNAME)
 
