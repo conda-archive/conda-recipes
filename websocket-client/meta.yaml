@@ -1,15 +1,18 @@
 package:
   name: websocket-client
-  version: 0.16.0
+  version: "0.32.0"
 
 source:
-  git_url: https://github.com/liris/websocket-client.git
-  git_tag: v0.16.0
+  fn: websocket_client-0.32.0.tar.gz
+  url: https://pypi.python.org/packages/source/w/websocket-client/websocket_client-0.32.0.tar.gz
+  md5: b07a897511a3c585251fe2ea85a9d9d9
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
@@ -21,7 +24,7 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
 requirements:
   build:
@@ -31,6 +34,7 @@ requirements:
     - backports.ssl_match_hostname [not py3k]
     - six
     - argparse [py26]
+
   run:
     - python
     - unittest2 [not py3k]
@@ -58,6 +62,7 @@ test:
 about:
   home: https://github.com/liris/websocket-client
   license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'WebSocket client for python. hybi13 is supported.'
 
 # See
 # http://docs.continuum.io/conda/build.html for
