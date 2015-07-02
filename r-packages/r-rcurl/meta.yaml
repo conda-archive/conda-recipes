@@ -34,11 +34,13 @@ requirements:
     - r
     - r-bitops
     - gcc # [not win]
+    - curl # [linux]
 
   run:
     - r
     - r-bitops
     - libgcc # [not win]
+    - curl # [linux]
 
 test:
   commands:
