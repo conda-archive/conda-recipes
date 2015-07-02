@@ -1,14 +1,14 @@
 package:
   name: libxml2
-  version: 2.9.0
+  version: 2.9.2
 
 source:
-  fn: libxml2-2.9.0.tar.gz
-  url: ftp://xmlsoft.org/libxml2/libxml2-2.9.0.tar.gz
-  md5: 5b9bebf4f5d2200ae2c4efe8fa6103f7
+  fn: libxml2-2.9.2.tar.gz
+  url: ftp://xmlsoft.org/libxml2/libxml2-2.9.2.tar.gz
+  md5: 9e6a9aca9d155737868b3dc5fd82f788
 
 build:
-  number: 2 # [osx]
+  number: 1
 
 test:
   files:
