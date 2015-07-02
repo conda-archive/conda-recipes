@@ -5,18 +5,18 @@ package:
 requirements:
   run:
     - r 3.2.0
-    - r-mass
-    - r-lattice
-    - r-matrix
-    - r-nlme
-    - r-survival
     - r-boot
+    - r-class
     - r-cluster
     - r-codetools
     - r-foreign
     - r-kernsmooth
-    - r-rpart
-    - r-class
-    - r-nnet
-    - r-spatial
+    - r-lattice
+    - r-mass
+    - r-matrix
     - r-mgcv
+    - r-nlme
+    - r-nnet
+    - r-rpart
+    - r-spatial
+    - r-survival
