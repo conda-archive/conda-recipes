@@ -2,13 +2,13 @@ package:
   name: r-rpart
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "4.1_9"
+  version: "4.1_10"
 
 source:
-  fn: rpart_4.1-9.tar.gz
+  fn: rpart_4.1-10.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/rpart_4.1-9.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/rpart/rpart_4.1-9.tar.gz
+    - http://cran.r-project.org/src/contrib/rpart_4.1-10.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/rpart/rpart_4.1-10.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -61,8 +61,8 @@ about:
 
 # Package: rpart
 # Priority: recommended
-# Version: 4.1-9
-# Date: 2015-02-24
+# Version: 4.1-10
+# Date: 2015-06-29
 # Authors@R: c(person("Terry", "Therneau", role = "aut", email = "therneau@mayo.edu"), person("Beth", "Atkinson", role = "aut",	 email = "atkinson@mayo.edu"), person("Brian", "Ripley", role = c("aut", "trl", "cre"), email = "ripley@stats.ox.ac.uk", comment = "author of initial R port"))
 # Description: Recursive partitioning for classification,  regression and survival trees.  An implementation of most of the  functionality of the 1984 book by Breiman, Friedman, Olshen and Stone.
 # Title: Recursive Partitioning and Regression Trees
@@ -72,12 +72,12 @@ about:
 # LazyData: yes
 # ByteCompile: yes
 # Note: Maintainers are not available to give advice on using a package they did not author.
-# Packaged: 2015-02-24 10:32:13 UTC; ripley
+# NeedsCompilation: yes
+# Packaged: 2015-06-29 09:13:49 UTC; ripley
 # Author: Terry Therneau [aut], Beth Atkinson [aut], Brian Ripley [aut, trl, cre] (author of initial R port)
 # Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
-# NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2015-02-24 11:32:38
+# Date/Publication: 2015-06-29 17:15:41
 
 # See
 # http://docs.continuum.io/conda/build.html for

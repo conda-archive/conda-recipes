@@ -2,13 +2,15 @@ package:
   name: r-vgam
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.9_6"
+  version: "0.9_8"
 
 source:
-  fn: VGAM_0.9-6.tar.gz
+  fn: VGAM_0.9-8.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/VGAM_0.9-6.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/VGAM/VGAM_0.9-6.tar.gz
+    - http://cran.r-project.org/src/contrib/VGAM_0.9-8.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/VGAM/VGAM_0.9-8.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,7 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1 # [osx]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -29,10 +31,12 @@ build:
 # Suggests: VGAMdata, MASS
 requirements:
   build:
-    - r >=3.0.0
+    - r
+    - gcc # [not win]
 
   run:
-    - r >=3.0.0
+    - r
+    - libgcc # [not win]
 
 test:
   commands:
@@ -47,39 +51,40 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: http://www.stat.auckland.ac.nz/~yee/VGAM
+  home: https://www.stat.auckland.ac.nz/~yee/VGAM
   license: GPL-2
   summary: An implementation of about 6 major classes of statistical regression models. At the
-    heart of it are the vector generalized linear and additive model (VGLM/VGAM) classes.  Many
-    (150+) models and distributions are estimated by maximum likelihood estimation (MLE)
-    or penalized MLE, using Fisher scoring. VGLMs can be loosely thought of as multivariate
-    GLMs. VGAMs are data-driven VGLMs (i.e., with smoothing). The other classes are
-    RR-VGLMs (reduced-rank VGLMs), quadratic RR-VGLMs, reduced-rank VGAMs, RCIMs (row-column
-    interaction models)---these classes perform constrained and unconstrained quadratic
-    ordination (CQO/UQO) models in ecology, as well as constrained additive ordination
-    (CAO). Note that these functions are subject to change, especially before version
-    1.0.0 is released; see the NEWS file for latest changes.
+    heart of it are the vector generalized linear and additive model (VGLM/VGAM) classes.
+    Currently only fixed-effects models are implemented, i.e., no random-effects models.
+    Many (150+) models and distributions are estimated by maximum likelihood estimation
+    (MLE) or penalized MLE, using Fisher scoring. VGLMs can be loosely thought of as
+    multivariate GLMs. VGAMs are data-driven VGLMs (i.e., with smoothing). The other
+    classes are RR-VGLMs (reduced-rank VGLMs), quadratic RR-VGLMs, reduced-rank VGAMs,
+    RCIMs (row-column interaction models)---these classes perform constrained and unconstrained
+    quadratic ordination (CQO/UQO) models in ecology, as well as constrained additive
+    ordination (CAO). Note that these functions are subject to change, especially before
+    version 1.0.0 is released; see the NEWS file for latest changes.
 
 # The original CRAN metadata for this package was:
 
 # Package: VGAM
-# Version: 0.9-6
-# Date: 2014-12-08
+# Version: 0.9-8
+# Date: 2015-05-11
 # Title: Vector Generalized Linear and Additive Models
 # Author: Thomas W. Yee <t.yee@auckland.ac.nz>
 # Maintainer: Thomas Yee <t.yee@auckland.ac.nz>
 # Depends: R (>= 3.0.0), methods, stats, stats4, splines
 # Suggests: VGAMdata, MASS
-# Description: An implementation of about 6 major classes of statistical regression models. At the heart of it are the vector generalized linear and additive model (VGLM/VGAM) classes.  Many (150+) models and distributions are estimated by maximum likelihood estimation (MLE) or penalized MLE, using Fisher scoring. VGLMs can be loosely thought of as multivariate GLMs. VGAMs are data-driven VGLMs (i.e., with smoothing). The other classes are RR-VGLMs (reduced-rank VGLMs), quadratic RR-VGLMs, reduced-rank VGAMs, RCIMs (row-column interaction models)---these classes perform constrained and unconstrained quadratic ordination (CQO/UQO) models in ecology, as well as constrained additive ordination (CAO). Note that these functions are subject to change, especially before version 1.0.0 is released; see the NEWS file for latest changes.
+# Description: An implementation of about 6 major classes of statistical regression models. At the heart of it are the vector generalized linear and additive model (VGLM/VGAM) classes. Currently only fixed-effects models are implemented, i.e., no random-effects models. Many (150+) models and distributions are estimated by maximum likelihood estimation (MLE) or penalized MLE, using Fisher scoring. VGLMs can be loosely thought of as multivariate GLMs. VGAMs are data-driven VGLMs (i.e., with smoothing). The other classes are RR-VGLMs (reduced-rank VGLMs), quadratic RR-VGLMs, reduced-rank VGAMs, RCIMs (row-column interaction models)---these classes perform constrained and unconstrained quadratic ordination (CQO/UQO) models in ecology, as well as constrained additive ordination (CAO). Note that these functions are subject to change, especially before version 1.0.0 is released; see the NEWS file for latest changes.
 # License: GPL-2
-# URL: http://www.stat.auckland.ac.nz/~yee/VGAM
+# URL: https://www.stat.auckland.ac.nz/~yee/VGAM
 # NeedsCompilation: yes
 # BuildVignettes: yes
 # LazyLoad: yes
 # LazyData: yes
-# Packaged: 2014-12-08 03:56:18 UTC; tyee001
+# Packaged: 2015-05-11 03:49:53 UTC; tyee001
 # Repository: CRAN
-# Date/Publication: 2014-12-08 08:23:11
+# Date/Publication: 2015-05-11 11:14:54
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -21,7 +21,8 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1 # [linux]
+  number: 2 # [linux]
+  number: 1 # [not linux]
 
   # This is required to make R link correctly on Linux.
   rpaths:

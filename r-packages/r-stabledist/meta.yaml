@@ -2,13 +2,15 @@ package:
   name: r-stabledist
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.6_6"
+  version: "0.7_0"
 
 source:
-  fn: stabledist_0.6-6.tar.gz
+  fn: stabledist_0.7-0.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/stabledist_0.6-6.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/stabledist/stabledist_0.6-6.tar.gz
+    - http://cran.r-project.org/src/contrib/stabledist_0.7-0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/stabledist/stabledist_0.7-0.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -29,10 +31,10 @@ build:
 # Suggests: Matrix, fBasics, FMStable, RUnit, Rmpfr, sfsmisc
 requirements:
   build:
-    - r >=2.12.0
+    - r
 
   run:
-    - r >=2.12.0
+    - r
 
 test:
   commands:
@@ -55,21 +57,21 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: stabledist
-# Version: 0.6-6
-# Date: 2013-06-12
+# Version: 0.7-0
+# Date: 2015-05-04
 # Title: Stable Distribution Functions
 # Author: Diethelm Wuertz, Martin Maechler and Rmetrics core team members.
 # Maintainer: Martin Maechler <maechler@stat.math.ethz.ch>
-# Depends: R (>= 2.12.0), stats, utils
+# Depends: R (>= 3.1.0), stats, utils
 # Suggests: Matrix, fBasics, FMStable, RUnit, Rmpfr, sfsmisc
 # Description: Density, Probability and Quantile functions, and random number generation for (skew) stable distributions, using the parametrizations of Nolan.
 # LazyData: yes
 # License: GPL (>= 2)
 # URL: http://www.rmetrics.org
-# Packaged: 2013-06-12 10:27:09 UTC; maechler
 # NeedsCompilation: no
+# Packaged: 2015-05-04 13:44:30 UTC; maechler
 # Repository: CRAN
-# Date/Publication: 2013-06-12 12:51:11
+# Date/Publication: 2015-05-04 16:35:50
 
 # See
 # http://docs.continuum.io/conda/build.html for

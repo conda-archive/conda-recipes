@@ -2,13 +2,15 @@ package:
   name: r-tseries
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.10_33"
+  version: "0.10_34"
 
 source:
-  fn: tseries_0.10-33.tar.gz
+  fn: tseries_0.10-34.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/tseries_0.10-33.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/tseries/tseries_0.10-33.tar.gz
+    - http://cran.r-project.org/src/contrib/tseries_0.10-34.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/tseries/tseries_0.10-34.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -29,14 +31,16 @@ build:
 # Suggests: its
 requirements:
   build:
-    - r >=2.10.0
+    - r
     - r-quadprog
     - r-zoo
+    - gcc # [not win]
 
   run:
-    - r >=2.10.0
+    - r
     - r-quadprog
     - r-zoo
+    - libgcc # [not win]
 
 test:
   commands:
@@ -58,7 +62,7 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: tseries
-# Version: 0.10-33
+# Version: 0.10-34
 # Title: Time Series Analysis and Computational Finance
 # Authors@R: c(person("Adrian", "Trapletti", role = "aut", email = "adrian@trapletti.org"), person("Kurt", "Hornik", role = c("aut", "cre"), email = "Kurt.Hornik@R-project.org"), person("Blake", "LeBaron", role = "ctb", comment = "BDS test code"))
 # Description: Time series analysis and computational finance.
@@ -66,12 +70,12 @@ about:
 # Suggests: its
 # Imports: graphics, stats, utils, quadprog, zoo
 # License: GPL-2
-# Packaged: 2015-02-10 17:08:32 UTC; hornik
+# Packaged: 2015-02-20 12:43:13 UTC; hornik
 # Author: Adrian Trapletti [aut], Kurt Hornik [aut, cre], Blake LeBaron [ctb] (BDS test code)
 # Maintainer: Kurt Hornik <Kurt.Hornik@R-project.org>
 # NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2015-02-10 18:36:00
+# Date/Publication: 2015-02-20 14:16:24
 
 # See
 # http://docs.continuum.io/conda/build.html for

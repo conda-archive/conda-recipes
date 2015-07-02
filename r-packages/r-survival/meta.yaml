@@ -2,13 +2,13 @@ package:
   name: r-survival
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "2.38_2"
+  version: "2.38_3"
 
 source:
-  fn: survival_2.38-2.tar.gz
+  fn: survival_2.38-3.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/survival_2.38-2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/survival/survival_2.38-2.tar.gz
+    - http://cran.r-project.org/src/contrib/survival_2.38-3.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/survival/survival_2.38-3.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -63,9 +63,9 @@ about:
 # Maintainer: Terry M Therneau <therneau.terry@mayo.edu>
 # Priority: recommended
 # Package: survival
-# Version: 2.38-2
+# Version: 2.38-3
 # Depends: R (>= 2.13.0), graphics, stats
-# Imports: splines
+# Imports: splines, methods
 # Suggests: cmprsk
 # LazyData: Yes
 # LazyLoad: Yes
@@ -74,10 +74,10 @@ about:
 # Description: Contains the core survival analysis routines, including definition of Surv objects,  Kaplan-Meier and Aalen-Johansen (multi-state) curves, Cox models, and parametric accelerated failure time models.
 # License: LGPL (>= 2)
 # NeedsCompilation: yes
-# Packaged: 2015-06-11 21:53:32 UTC; therneau
+# Packaged: 2015-07-01 21:33:35 UTC; therneau
 # Author: Terry M Therneau [aut, cre], Thomas Lumley [ctb, trl] (original S->R port and maintainer until 2009)
 # Repository: CRAN
-# Date/Publication: 2015-06-12 10:26:46
+# Date/Publication: 2015-07-02 08:40:39
 
 # See
 # http://docs.continuum.io/conda/build.html for

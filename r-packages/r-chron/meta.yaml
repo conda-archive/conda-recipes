@@ -2,13 +2,13 @@ package:
   name: r-chron
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "2.3_45"
+  version: "2.3_47"
 
 source:
-  fn: chron_2.3-45.tar.gz
+  fn: chron_2.3-47.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/chron_2.3-45.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/chron/chron_2.3-45.tar.gz
+    - http://cran.r-project.org/src/contrib/chron_2.3-47.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/chron/chron_2.3-47.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -32,9 +32,11 @@ build:
 requirements:
   build:
     - r
+    - gcc # [not win]
 
   run:
     - r
+    - libgcc # [not win]
 
 test:
   commands:
@@ -51,26 +53,26 @@ test:
 about:
   #home:
   license: GPL-2
-  summary: Chronological objects which can handle dates and times
+  summary: Chronological objects which can handle dates and times.
 
 # The original CRAN metadata for this package was:
 
 # Package: chron
-# Version: 2.3-45
-# Title: Chronological objects which can handle dates and times
-# Description: Chronological objects which can handle dates and times
+# Version: 2.3-47
+# Title: Chronological Objects which can Handle Dates and Times
+# Description: Chronological objects which can handle dates and times.
 # Authors@R: c(person("David", "James", role = "aut", comment = "S original"), person("Kurt", "Hornik", role = c("aut", "trl", "cre"), email = "Kurt.Hornik@R-project.org"), person("Gabor", "Grothendieck", role = "ctb", email = "ggrothendieck@gmail.com"))
 # Depends: R (>= 2.12.0)
 # Imports: graphics, stats
 # Suggests: scales, ggplot2
 # Enhances: zoo
 # License: GPL-2
-# Packaged: 2014-02-11 12:26:30 UTC; hornik
+# NeedsCompilation: yes
+# Packaged: 2015-06-24 15:58:52 UTC; hornik
 # Author: David James [aut] (S original), Kurt Hornik [aut, trl, cre], Gabor Grothendieck [ctb]
 # Maintainer: Kurt Hornik <Kurt.Hornik@R-project.org>
-# NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2014-02-11 13:43:40
+# Date/Publication: 2015-06-24 18:01:27
 
 # See
 # http://docs.continuum.io/conda/build.html for

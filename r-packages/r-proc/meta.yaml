@@ -2,13 +2,15 @@ package:
   name: r-proc
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.7.3"
+  version: "1.8"
 
 source:
-  fn: pROC_1.7.3.tar.gz
+  fn: pROC_1.8.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/pROC_1.7.3.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/pROC/pROC_1.7.3.tar.gz
+    - http://cran.r-project.org/src/contrib/pROC_1.8.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/pROC/pROC_1.8.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -26,17 +28,19 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: microbenchmark, tcltk, MASS, logcondens, doMC, doSNOW
+# Suggests: microbenchmark, tcltk, MASS, logcondens, doParallel
 requirements:
   build:
-    - r >=2.13
-    - r-rcpp
+    - r
+    - r-rcpp >=0.11.1
     - r-plyr
+    - gcc # [not win]
 
   run:
-    - r >=2.13
-    - r-rcpp
+    - r
+    - r-rcpp >=0.11.1
     - r-plyr
+    - libgcc # [not win]
 
 test:
   commands:
@@ -62,13 +66,13 @@ about:
 
 # Package: pROC
 # Type: Package
-# Title: display and analyze ROC curves
-# Version: 1.7.3
-# Date: 2014-06-12
+# Title: Display and Analyze ROC Curves
+# Version: 1.8
+# Date: 2015-05-04
 # Encoding: UTF-8
-# Depends: R (>= 2.13)
+# Depends: R (>= 2.14)
 # Imports: plyr, utils, methods, Rcpp (>= 0.11.1)
-# Suggests: microbenchmark, tcltk, MASS, logcondens, doMC, doSNOW
+# Suggests: microbenchmark, tcltk, MASS, logcondens, doParallel
 # LinkingTo: Rcpp
 # Author: Xavier Robin, Natacha Turck, Alexandre Hainard, Natalia Tiberti, FrÃ©dÃ©rique Lisacek, Jean-Charles Sanchez and Markus MÃ¼ller.
 # Maintainer: Xavier Robin <robin@lindinglab.org>
@@ -76,10 +80,10 @@ about:
 # License: GPL (>= 3)
 # URL: http://expasy.org/tools/pROC/
 # LazyLoad: yes
-# Packaged: 2014-06-12 20:13:46 UTC; xavier
+# Packaged: 2015-05-04 13:43:53 UTC; xavier
 # NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2014-06-13 10:13:41
+# Date/Publication: 2015-05-05 10:30:52
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -2,13 +2,15 @@ package:
   name: r-httr
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.6.1"
+  version: "1.0.0"
 
 source:
-  fn: httr_0.6.1.tar.gz
+  fn: httr_1.0.0.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/httr_0.6.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/httr/httr_0.6.1.tar.gz
+    - http://cran.r-project.org/src/contrib/httr_1.0.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/httr/httr_1.0.0.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,7 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1 # [osx]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -29,18 +31,18 @@ build:
 # Suggests: base64enc, httpuv, jpeg, knitr, PKI (>= 0.1-2), png, testthat (>= 0.8.0), XML
 requirements:
   build:
-    - r >=3.0.0
+    - r
     - r-r6
-    - r-rcurl >=1.95_0
+    - r-curl >=0.6
     - r-digest
     - r-jsonlite
     - r-mime
     - r-stringr >=0.6.1
 
   run:
-    - r >=3.0.0
+    - r
     - r-r6
-    - r-rcurl >=1.95_0
+    - r-curl >=0.6
     - r-digest
     - r-jsonlite
     - r-mime
@@ -68,22 +70,22 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: httr
-# Version: 0.6.1
+# Version: 1.0.0
 # Title: Tools for Working with URLs and HTTP
 # Description: Useful tools for working with HTTP organised by HTTP verbs (GET(), POST(), etc). Configuration functions make it easy to control additional request components (authenticate(), add_headers() and so on).
-# Authors@R: as.person(c( "Hadley Wickham <hadley@rstudio.com> [cre, aut, cph]", "RStudio [cph]" ))
+# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")), person("RStudio", role = "cph") )
 # Depends: R (>= 3.0.0)
-# Imports: digest, jsonlite, methods, mime, RCurl (>= 1.95-0), R6, stringr (>= 0.6.1)
+# Imports: digest, jsonlite, mime, curl (>= 0.6), R6, stringr (>= 0.6.1)
 # Suggests: base64enc, httpuv, jpeg, knitr, PKI (>= 0.1-2), png, testthat (>= 0.8.0), XML
 # VignetteBuilder: knitr
 # License: MIT + file LICENSE
 # URL: https://github.com/hadley/httr
-# Packaged: 2014-12-31 20:19:10 UTC; hadley
-# Author: Hadley Wickham [cre, aut, cph], RStudio [cph]
+# NeedsCompilation: no
+# Packaged: 2015-06-24 20:35:50 UTC; hadley
+# Author: Hadley Wickham [aut, cre], RStudio [cph]
 # Maintainer: Hadley Wickham <hadley@rstudio.com>
-# NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2015-01-01 05:49:55
+# Date/Publication: 2015-06-25 12:14:59
 
 # See
 # http://docs.continuum.io/conda/build.html for

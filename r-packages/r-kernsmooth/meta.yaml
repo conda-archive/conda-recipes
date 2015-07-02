@@ -2,13 +2,13 @@ package:
   name: r-kernsmooth
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "2.23_14"
+  version: "2.23_15"
 
 source:
-  fn: KernSmooth_2.23-14.tar.gz
+  fn: KernSmooth_2.23-15.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/KernSmooth_2.23-14.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/KernSmooth/KernSmooth_2.23-14.tar.gz
+    - http://cran.r-project.org/src/contrib/KernSmooth_2.23-15.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/KernSmooth/KernSmooth_2.23-15.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -61,8 +61,8 @@ about:
 
 # Package: KernSmooth
 # Priority: recommended
-# Version: 2.23-14
-# Date: 2015-02-07
+# Version: 2.23-15
+# Date: 2015-06-29
 # Title: Functions for Kernel Smoothing Supporting Wand & Jones (1995)
 # Authors@R: c(person("Matt", "Wand", role = "aut", email = "Matt.Wand@uts.edu.au"), person("Brian", "Ripley", role = c("trl", "cre", "ctb"), email = "ripley@stats.ox.ac.uk", comment = "R port and updates"))
 # Depends: R (>= 2.5.0), stats
@@ -71,11 +71,11 @@ about:
 # License: Unlimited
 # ByteCompile: yes
 # NeedsCompilation: yes
-# Packaged: 2015-02-11 08:25:09 UTC; ripley
+# Packaged: 2015-06-29 08:37:00 UTC; ripley
 # Author: Matt Wand [aut], Brian Ripley [trl, cre, ctb] (R port and updates)
 # Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
 # Repository: CRAN
-# Date/Publication: 2015-02-11 09:29:58
+# Date/Publication: 2015-06-29 17:15:14
 
 # See
 # http://docs.continuum.io/conda/build.html for
