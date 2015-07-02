@@ -1,0 +1,34 @@
+diff --git Lib/distutils/cygwinccompiler.py Lib/distutils/cygwinccompiler.py
+index 5d11687..d59aee6 100644
+--- Lib/distutils/cygwinccompiler.py
++++ Lib/distutils/cygwinccompiler.py
+@@ -129,11 +129,11 @@ class CygwinCCompiler (UnixCCompiler):
+ 
+         # Hard-code GCC because that's what this is all about.
+         # XXX optimization, warnings etc. should be customizable.
+-        self.set_executables(compiler='gcc -mcygwin -O -Wall',
+-                             compiler_so='gcc -mcygwin -mdll -O -Wall',
+-                             compiler_cxx='g++ -mcygwin -O -Wall',
+-                             linker_exe='gcc -mcygwin',
+-                             linker_so=('%s -mcygwin %s' %
++        self.set_executables(compiler='gcc @DMSW@ -O -Wall',
++                             compiler_so='gcc @DMSW@ -mdll -O -Wall',
++                             compiler_cxx='g++ @DMSW@ -O -Wall',
++                             linker_exe='gcc @DMSW@',
++                             linker_so=('%s @DMSW@ %s' %
+                                         (self.linker_dll, shared_option)))
+ 
+         # cygwin and mingw32 need different sets of libraries
+@@ -319,11 +319,7 @@ class Mingw32CCompiler (CygwinCCompiler):
+         else:
+             entry_point = ''
+ 
+-        if self.gcc_version < '4' or is_cygwingcc():
+-            no_cygwin = ' -mno-cygwin'
+-        else:
+-            no_cygwin = ''
+-
++        no_cygwin = ' @DMSW@'
+         self.set_executables(compiler='gcc%s -O -Wall' % no_cygwin,
+                              compiler_so='gcc%s -mdll -O -Wall' % no_cygwin,
+                              compiler_cxx='g++%s -O -Wall' % no_cygwin,
