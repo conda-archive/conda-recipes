@@ -4,6 +4,9 @@
 mv DESCRIPTION DESCRIPTION.old
 grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
 
+export CFLAGS="$(gsl-config --cflags)"
+export LDFLAGS="$(gsl-config --libs)"
+
 $R CMD INSTALL --build .
 
 # Add more build steps here, if they are necessary.
