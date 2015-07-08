@@ -2,13 +2,13 @@ package:
   name: r-curl
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.9"
+  version: "0.9.1"
 
 source:
-  fn: curl_0.9.tar.gz
+  fn: curl_0.9.1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/curl_0.9.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/curl/curl_0.9.tar.gz
+    - http://cran.r-project.org/src/contrib/curl_0.9.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/curl/curl_0.9.1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -69,7 +69,7 @@ about:
 # Package: curl
 # Type: Package
 # Title: A Modern and Flexible Web Client for R
-# Version: 0.9
+# Version: 0.9.1
 # Authors@R: c( person("Jeroen", "Ooms", , "jeroen.ooms@stat.ucla.edu", role = c("cre", "aut")), person("Hadley", "Wickham", , "hadley@rstudio.com", role = "ctb"), person("RStudio", role = "cph") )
 # Description: The curl() and curl_download() functions provide highly configurable drop-in replacements for base url() and download.file() with better performance, support for encryption (https://, ftps://), 'gzip' compression, authentication, and other 'libcurl' goodies. The core of the package implements a framework for performing fully customized requests where data can be processed either in memory, on disk, or streaming via the callback or connection interfaces. Some knowledge of 'libcurl' is recommended; for a more-user-friendly web client see the 'httr' package which builds on this package with HTTP specific tools and logic.
 # License: MIT + file LICENSE
@@ -81,11 +81,11 @@ about:
 # Depends: R (>= 2.10.0)
 # LazyData: true
 # NeedsCompilation: yes
-# Packaged: 2015-06-19 11:12:00 UTC; jeroen
+# Packaged: 2015-07-04 15:50:22 UTC; jeroen
 # Author: Jeroen Ooms [cre, aut], Hadley Wickham [ctb], RStudio [cph]
 # Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>
 # Repository: CRAN
-# Date/Publication: 2015-06-19 15:18:53
+# Date/Publication: 2015-07-04 19:56:32
 
 # See
 # http://docs.continuum.io/conda/build.html for
