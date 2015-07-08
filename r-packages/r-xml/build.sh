@@ -4,8 +4,8 @@
 mv DESCRIPTION DESCRIPTION.old
 grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
 
-export LIBXML_LIBDIR=$PREFIX/lib
-export LIBXML_INCDIR=$PREFIX/include/libxml2/libxml
+# For whatever reason, it can't link to gsl correctly without this on OS X.
+export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib:$(HOME)/lib:/usr/local/lib:/lib:/usr/lib
 
 $R CMD INSTALL --build .
 
