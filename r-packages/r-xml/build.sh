@@ -4,6 +4,9 @@
 mv DESCRIPTION DESCRIPTION.old
 grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
 
+export LIBXML_LIBDIR=$PREFIX/lib
+export LIBXML_INCDIR=$PREFIX/include
+
 $R CMD INSTALL --build .
 
 # Add more build steps here, if they are necessary.
