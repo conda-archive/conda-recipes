@@ -34,11 +34,13 @@ requirements:
     - r
     - gcc # [not win]
     - libxml2
+    - gsl
 
   run:
     - r
     - libgcc # [not win]
     - libxml2
+    - gsl
 
 test:
   commands:
