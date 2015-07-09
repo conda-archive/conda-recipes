@@ -4,6 +4,8 @@
 mv DESCRIPTION DESCRIPTION.old
 grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
 
+export CURL_INCLUDES=$PREFIX/include
+
 $R CMD INSTALL --build .
 
 # Add more build steps here, if they are necessary.
