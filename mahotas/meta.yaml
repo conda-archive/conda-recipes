@@ -3,7 +3,7 @@ package:
   version: !!str 1.4.0
 
 source:
-  git_url: git://github.com/luispedro/mahotas.git
+  git_url: https://github.com/luispedro/mahotas
   git_tag: release-1.4.0
 #  patches:
    # List any patch files here
