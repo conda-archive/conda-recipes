@@ -23,6 +23,9 @@ requirements:
   run:
     - python
     - numpy
+    - jpeg
+    - libtiff
+    - libpng
 
 build:
     script: python setup.py install
