@@ -25,7 +25,7 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 1
 
 requirements:
   build:
@@ -46,7 +46,6 @@ requirements:
     - setuptools >=5.4.1
     - natsort >=3.5.2
     - requests >=2.2.0
-
   run:
     - python
     - doit ==0.28.0
@@ -64,6 +63,8 @@ requirements:
     - setuptools >=5.4.1
     - natsort >=3.5.2
     - requests >=2.2.0
+    - ws4py
+    - watchdog
 
 test:
   # Python imports
