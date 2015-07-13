@@ -1,16 +1,17 @@
 package:
   name: yapsy
-  version: "1.11.023"
+  version: "1.11.223"
 
 source:
-  fn: Yapsy-1.11.023.tar.gz
-  url: https://pypi.python.org/packages/source/Y/Yapsy/Yapsy-1.11.023.tar.gz
-  md5: e311ddcc90bb82e0bcc40333a0202e85
+  fn: Yapsy-1.11.223.tar.gz
+  url: https://pypi.python.org/packages/source/Y/Yapsy/Yapsy-1.11.223.tar.gz
+  md5: d8b71cd35e6daa36ae83f76874f450aa
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
+  # noarch_python: True
   # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
