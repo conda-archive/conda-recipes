@@ -29,12 +29,14 @@ build:
 # Suggests: tripack, akima, MASS, survival, rgl, logspline, nor1mix, MatrixModels, Matrix, Formula, zoo, dynlm
 requirements:
   build:
-    - r >=2.6
+    - r
     - r-sparsem
+    - gcc # [not win]
 
   run:
-    - r >=2.6
+    - r
     - r-sparsem
+    - libgcc # [not win]
 
 test:
   commands:
