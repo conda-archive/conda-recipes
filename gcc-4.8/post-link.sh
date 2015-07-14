@@ -36,6 +36,11 @@ if [ "$(uname)" != "Darwin" ]; then
         # (The location of these files varies from one system to the next.)
         C_RUNTIME_OBJ_FILES="crt0.o crt1.o crt2.o crt3.o crti.o crtn.o"
         SYSTEM_GCC=/usr/bin/gcc
+
+        if [ ! -e ${SYSTEM_GCC} ]; then
+            >&2 echo "*** Can't install the gcc package unless your system also has gcc pre-installed to /usr/bin/gcc! ***"
+            exit 1
+        fi
     
         for obj_file in $C_RUNTIME_OBJ_FILES; do
             obj_file_full_path=`$SYSTEM_GCC -print-file-name=$obj_file`
