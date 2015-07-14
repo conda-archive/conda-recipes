@@ -30,10 +30,12 @@ build:
 
 requirements:
   build:
-    - r >=1.9.0
+    - r
+    - gcc # [not win]
 
   run:
-    - r >=1.9.0
+    - r
+    - libgcc # [not win]
 
 test:
   commands:
