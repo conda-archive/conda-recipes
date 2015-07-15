@@ -1,16 +1,30 @@
 package:
   name: pymongo
-  version: 2.6.3
+  version: "2.8"
 
 source:
-  fn: pymongo-2.6.3.tar.gz
-  url: https://pypi.python.org/packages/source/p/pymongo/pymongo-2.6.3.tar.gz
-  md5: da4a7d6ee47fe30b3978b8805d266167
+  fn: pymongo-2.8.tar.gz
+  url: https://pypi.python.org/packages/source/p/pymongo/pymongo-2.8.tar.gz
+  md5: 23100361c9af1904eb2d7722f2658114
+#  patches:
+   # List any patch files here
+   # - fix.patch
 
-build:
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pymongo = pymongo:main
+    #
+    # Would create an entry point called pymongo that calls pymongo.main()
+
+
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2
+  # number: 1
 
 requirements:
   build:
@@ -24,12 +38,26 @@ test:
   # Python imports
   imports:
     - bson
-    - pymongo
     - gridfs
+    - pymongo
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - nose
+    # Put any additional test requirements here.  For example
+    # - nose
 
 about:
   home: http://github.com/mongodb/mongo-python-driver
   license: Apache Software License
+  summary: 'Python driver for MongoDB <http://www.mongodb.org>'
 
 # See
 # http://docs.continuum.io/conda/build.html for
