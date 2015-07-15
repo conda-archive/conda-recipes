@@ -28,7 +28,7 @@ else
         --enable-checking=release \
         --disable-multilib
 fi
-make
+make -j$CPU_COUNT
 make install
 rm $PREFIX/lib64
 
