@@ -1,15 +1,18 @@
-mkdir C:\bld
-cd C:\bld
+mkdir C:\b
+cd C:\b
 
 if "%ARCH%" == "32" set "CMAKE_GENERATOR=Visual Studio 9 2008"
-if "%ARCH%" == "64" set "CMAKE_GENERATOR=Visual Studio 9 Win64"
+if "%ARCH%" == "64" set "CMAKE_GENERATOR=Visual Studio 9 2008 Win64"
+
+REM Remove dot from PY_VER for use in library name
+set MY_PY_VER=%PY_VER:.=%
 
 REM Configure Step
 cmake -G "%CMAKE_GENERATOR%" ^
     -D SimpleITK_BUILD_DISTRIBUTE:BOOL=ON ^
-    -D SimpleITK_BUILD_STRIP:BOOL=ON ^
     -D BUILD_SHARED_LIBS:BOOL=OFF ^
     -D BUILD_TESTING:BOOL=OFF ^
+    -D BUILD_EXAMPLES:BOOL=OFF ^
     -D WRAP_CSHARP:BOOL=OFF ^
     -D WRAP_LUA:BOOL=OFF ^
     -D WRAP_PYTHON:BOOL=ON ^
@@ -18,14 +21,14 @@ cmake -G "%CMAKE_GENERATOR%" ^
     -D WRAP_TCL:BOOL=OFF ^
     -D WRAP_R:BOOL=OFF ^
     -D WRAP_RUBY:BOOL=OFF ^
-    -D ITK_USE_SYSTEM_JPEG:BOOL=ON ^
-    -D ITK_USE_SYSTEM_PNG:BOOL=ON ^
-    -D ITK_USE_SYSTEM_TIFF:BOOL=ON ^
-    -D ITK_USE_SYSTEM_ZLIB:BOOL=ON ^
+    -D ITK_USE_SYSTEM_JPEG:BOOL=OFF ^
+    -D ITK_USE_SYSTEM_PNG:BOOL=OFF ^
+    -D ITK_USE_SYSTEM_TIFF:BOOL=OFF ^
+    -D ITK_USE_SYSTEM_ZLIB:BOOL=OFF ^
     -D "CMAKE_SYSTEM_PREFIX_PATH:PATH=%PREFIX%/Library" ^
     -D "PYTHON_EXECUTABLE:FILEPATH=%PYTHON%" ^
     -D "PYTHON_INCLUDE_DIR:PATH=%PREFIX%/include" ^
-    -D "PYTHON_LIBRARY:FILEPATH=%PREFIX%/lib/libpython%PY_VER%.lib" ^
+    -D "PYTHON_LIBRARY:FILEPATH=%PREFIX%/libs/python%MY_PY_VER%.lib" ^
     "%SRC_DIR%/SuperBuild"
 
 if errorlevel 1 exit 1
@@ -38,5 +41,5 @@ REM Install step
 REM cmake --build  . --config Release --target INSTALL
 if errorlevel 1 exit 1
 
-cd %BUILD_DIR%\SimpleITK-build\Wrapping
+cd SimpleITK-build\Wrapping
 %PYTHON% PythonPackage\setup.py install
