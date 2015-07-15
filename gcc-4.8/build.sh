@@ -32,6 +32,9 @@ make -j$CPU_COUNT
 make install
 rm $PREFIX/lib64
 
+# Link cc to gcc
+(cd $PREFIX/bin && ln -s gcc cc)
+
 # For reference during post-link.sh, record some
 # details about the OS this binary was produced with.
 mkdir -p ${PREFIX}/share
