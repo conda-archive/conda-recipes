@@ -1,0 +1,60 @@
+package:
+  name: primesieve
+  version: "0.1.0"
+
+source:
+  fn: primesieve-0.1.0.zip
+  url: https://pypi.python.org/packages/source/p/primesieve/primesieve-0.1.0.zip
+  md5: 98d45213d2b6ab75c66154c2ccaf4047
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - primesieve = primesieve:main
+    #
+    # Would create an entry point called primesieve that calls primesieve.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+# test:
+  # Python imports
+  # imports:
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/hickford/primesieve-python
+  license: MIT
+  summary: 'Fast prime number generator. Python bindings around C++ library primesieve'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
