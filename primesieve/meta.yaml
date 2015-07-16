@@ -30,13 +30,15 @@ requirements:
     - python
     - setuptools
     - cython
+    - pytest
 
   run:
     - python
 
-# test:
+test:
   # Python imports
-  # imports:
+  imports:
+    - primesieve
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
