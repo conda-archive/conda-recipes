@@ -1,0 +1,26 @@
+package:
+  name: xgboost
+  version: 0.4.0
+
+source:
+  git_tag: v0.40
+  git_url: https://github.com/dmlc/xgboost.git
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+    - numpy
+    - scipy
+    - scikit-learn
+
+test:
+  imports:
+    - xgboost
+
+about:
+  home: https://github.com/dmlc/xgboost
+  license: ALv2
+  summary: "An optimized general purpose gradient boosting library."
