@@ -2,5 +2,5 @@
 
 make configure
 ./configure --prefix=$PREFIX
-make
+make all
 make install
