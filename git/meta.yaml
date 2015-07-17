@@ -1,0 +1,33 @@
+package:
+  name: git
+  version: 1.9.0
+
+build:
+  number: 2
+
+source:
+  fn: git-1.9.0.tar.gz
+  url: http://git-core.googlecode.com/files/git-1.9.0.tar.gz
+  sha1: e60667fc16e5a5f1cde46616b0458cc802707743
+
+requirements:
+  build:
+    - python
+    - tk
+    - curl
+    - openssl
+    - zlib
+  run:
+    - python
+    - tk
+    - curl
+    - openssl
+    - zlib
+
+test:
+  commands:
+    - git --version
+
+about:
+  home: http://gitscm.org/
+  license: GPL
