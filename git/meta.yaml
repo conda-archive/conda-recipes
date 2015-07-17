@@ -1,0 +1,22 @@
+package:
+  name: git
+  version: 2.4.6
+
+source:
+  git_url: git@github.com:git/git.git
+  git_tag: v2.4.6
+
+requirements:
+  build:
+    - zlib
+  run:
+    - zlib
+
+test:
+  commands:
+    - git --version
+
+about:
+  home: https://git-scm.com/
+  license: GPL v2 and LGPL 2.1
+  summary: distributed version control system
