@@ -1,18 +1,19 @@
 package:
   name: pytest-cov
-  version: !!str 1.7.0
+  version: "1.8.1"
 
 source:
-  fn: pytest-cov-1.7.0.tar.gz
-  url: https://pypi.python.org/packages/source/p/pytest-cov/pytest-cov-1.7.0.tar.gz
-  md5: c1432814f2e19ed86b563efa374b23a1
+  fn: pytest-cov-1.8.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pytest-cov/pytest-cov-1.8.1.tar.gz
+  md5: 76c778afa2494088270348be42d759fc
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
-  #preserve_egg_dir: True
-  #entry_points:
+build:
+  # noarch_python: True
+  preserve_egg_dir: True
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -29,19 +30,24 @@ requirements:
   build:
     - python
     - setuptools
-    - pytest >=2.5.2
-    - cov-core >=1.12
+    - py >=1.4.22
+    - pytest >=2.6.0
+    - coverage >=3.7.1,<4.0a1
+    - cov-core >=1.14.0
 
   run:
     - python
-    - pytest >=2.5.2
-    - cov-core >=1.12
+    - setuptools
+    - py >=1.4.22
+    - pytest >=2.6.0
+    - coverage >=3.7.1,<4.0a1
+    - cov-core >=1.14.0
 
 # test:
   # Python imports
   # imports:
 
-  #commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -55,7 +61,7 @@ requirements:
 
 about:
   home: https://github.com/schlamar/pytest-cov
-  license:  MIT License
+  license: MIT License
   summary: 'py.test plugin for coverage reporting with support for both centralised and distributed testing, including subprocesses and multiprocessing'
 
 # See
