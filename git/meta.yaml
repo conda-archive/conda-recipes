@@ -8,8 +8,10 @@ source:
 
 requirements:
   build:
+    - openssl
     - zlib
   run:
+    - openssl
     - zlib
 
 test:
