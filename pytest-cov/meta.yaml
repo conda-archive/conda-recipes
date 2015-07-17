@@ -37,7 +37,7 @@ requirements:
     - pytest >=2.5.2
     - cov-core >=1.12
 
-test:
+# test:
   # Python imports
   # imports:
 
