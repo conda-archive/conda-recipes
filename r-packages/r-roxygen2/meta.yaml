@@ -2,13 +2,15 @@ package:
   name: r-roxygen2
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "4.1.0"
+  version: "4.1.1"
 
 source:
-  fn: roxygen2_4.1.0.tar.gz
+  fn: roxygen2_4.1.1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/roxygen2_4.1.0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/roxygen2/roxygen2_4.1.0.tar.gz
+    - http://cran.r-project.org/src/contrib/roxygen2_4.1.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/roxygen2/roxygen2_4.1.1.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,7 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1 # [osx]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -29,18 +31,20 @@ build:
 # Suggests: testthat (>= 0.8.0), knitr
 requirements:
   build:
-    - r >=3.0.2
+    - r
     - r-rcpp >=0.11.0
     - r-brew
     - r-digest
     - r-stringr >=0.5
+    - gcc # [not win]
 
   run:
-    - r >=3.0.2
+    - r
     - r-rcpp >=0.11.0
     - r-brew
     - r-digest
     - r-stringr >=0.5
+    - libgcc # [not win]
 
 test:
   commands:
@@ -57,15 +61,16 @@ test:
 about:
   home: https://github.com/klutometis/roxygen
   license: GPL (>= 2)
-  summary: A Doxygen-like in-source documentation system for Rd, collation, and NAMESPACE.
+  summary: A 'Doxygen'-like in-source documentation system for Rd, collation, and 'NAMESPACE'
+    files.
 
 # The original CRAN metadata for this package was:
 
 # Package: roxygen2
-# Title: In-source Documentation for R
-# Description: A Doxygen-like in-source documentation system for Rd, collation, and NAMESPACE.
+# Title: In-Source Documentation for R
+# Description: A 'Doxygen'-like in-source documentation system for Rd, collation, and 'NAMESPACE' files.
 # URL: https://github.com/klutometis/roxygen
-# Version: 4.1.0
+# Version: 4.1.1
 # License: GPL (>= 2)
 # Authors@R: c( person("Hadley", "Wickham",, "h.wickham@gmail.com", c("aut", "cre", "cph")), person("Peter", "Danenberg",, "pcd@roxygen.org", c("aut", "cph")), person("Manuel", "Eugster", role = c("aut", "cph")), person("RStudio", role = "cph") )
 # Depends: R (>= 3.0.2)
@@ -73,13 +78,13 @@ about:
 # Suggests: testthat (>= 0.8.0), knitr
 # VignetteBuilder: knitr
 # LinkingTo: Rcpp
-# Collate: 'RcppExports.R' 'alias.R' 'description.R' 'family.R' 'inherit-params.R' 'minidesc.R' 'object-defaults.R' 'object-from-call.R' 'object.R' 'order-params.R' 'parse-preref.R' 'parse-registry.R' 'parse.R' 'rc.R' 'rd-escape.R' 'rd-file-api.R' 'rd-parse.R' 'rd-tag-api.R' 'roclet-collate.R' 'roclet-namespace.R' 'roclet-rd.R' 'roclet.R' 'roxygen.R' 'roxygenize.R' 's3.R' 'safety.R' 'source.R' 'template.R' 'topic-name.R' 'topo-sort.R' 'usage.R' 'util-locale.R' 'utils.R'
-# Packaged: 2014-12-12 21:22:06 UTC; hadley
+# Collate: 'RcppExports.R' 'alias.R' 'description.R' 'family.R' 'inherit-params.R' 'minidesc.R' 'object-defaults.R' 'object-from-call.R' 'object.R' 'order-params.R' 'parse-preref.R' 'parse-registry.R' 'parse.R' 'rc.R' 'rd-escape.R' 'rd-file-api.R' 'rd-parse.R' 'rd-tag-api.R' 'roclet-collate.R' 'roclet-namespace.R' 'roclet-rd.R' 'roclet-vignette.R' 'roclet.R' 'roxygen.R' 'roxygenize.R' 's3.R' 'safety.R' 'source.R' 'template.R' 'topic-name.R' 'topo-sort.R' 'usage.R' 'util-locale.R' 'utils.R'
+# Packaged: 2015-04-15 12:00:42 UTC; hadley
 # Author: Hadley Wickham [aut, cre, cph], Peter Danenberg [aut, cph], Manuel Eugster [aut, cph], RStudio [cph]
 # Maintainer: Hadley Wickham <h.wickham@gmail.com>
 # NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2014-12-13 08:33:23
+# Date/Publication: 2015-04-15 21:00:16
 
 # See
 # http://docs.continuum.io/conda/build.html for

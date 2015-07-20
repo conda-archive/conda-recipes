@@ -2,13 +2,15 @@ package:
   name: r-scales
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.2.4"
+  version: "0.2.5"
 
 source:
-  fn: scales_0.2.4.tar.gz
+  fn: scales_0.2.5.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/scales_0.2.4.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/scales/scales_0.2.4.tar.gz
+    - http://cran.r-project.org/src/contrib/scales_0.2.5.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/scales/scales_0.2.5.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,7 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1 # [osx]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -29,20 +31,24 @@ build:
 # Suggests: testthat (>= 0.8)
 requirements:
   build:
-    - r >=2.13
+    - r
     - r-rcolorbrewer
+    - r-rcpp
     - r-dichromat
     - r-labeling
     - r-munsell >=0.2
-    - r-plyr >=1.2
+    - r-plyr
+    - gcc # [not win]
 
   run:
-    - r >=2.13
+    - r
     - r-rcolorbrewer
+    - r-rcpp
     - r-dichromat
     - r-labeling
     - r-munsell >=0.2
-    - r-plyr >=1.2
+    - r-plyr
+    - libgcc # [not win]
 
 test:
   commands:
@@ -59,30 +65,30 @@ test:
 about:
   home: https://github.com/hadley/scales
   license: MIT + file LICENSE
-  summary: Scales map data to aesthetics, and provide methods for automatically determining breaks
-    and labels for axes and legends.
+  summary: Graphical scales map data to aesthetics, and provide methods for automatically determining
+    breaks and labels for axes and legends.
 
 # The original CRAN metadata for this package was:
 
 # Package: scales
-# Type: Package
-# Title: Scale functions for graphics.
-# Version: 0.2.4
-# Author: Hadley Wickham <h.wickham@gmail.com>
-# Maintainer: Hadley Wickham <h.wickham@gmail.com>
-# Description: Scales map data to aesthetics, and provide methods for automatically determining breaks and labels for axes and legends.
+# Version: 0.2.5
+# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")), person("RStudio", role = "cph") )
+# Title: Scale Functions for Visualization
+# Description: Graphical scales map data to aesthetics, and provide methods for automatically determining breaks and labels for axes and legends.
 # URL: https://github.com/hadley/scales
 # BugReports: https://github.com/hadley/scales/issues
 # Depends: R (>= 2.13)
-# Imports: RColorBrewer, dichromat, munsell (>= 0.2), plyr (>= 1.2), labeling, methods
+# Imports: RColorBrewer, dichromat, plyr, munsell (>= 0.2), labeling, methods, Rcpp
+# LinkingTo: Rcpp
 # Suggests: testthat (>= 0.8)
 # License: MIT + file LICENSE
 # LazyLoad: yes
-# BuildManual: yes
-# Packaged: 2014-04-21 22:24:36 UTC; hadley
-# NeedsCompilation: no
+# NeedsCompilation: yes
+# Packaged: 2015-06-12 16:14:42 UTC; hadley
+# Author: Hadley Wickham [aut, cre], RStudio [cph]
+# Maintainer: Hadley Wickham <hadley@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2014-04-22 10:50:55
+# Date/Publication: 2015-06-12 23:50:17
 
 # See
 # http://docs.continuum.io/conda/build.html for

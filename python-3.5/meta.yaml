@@ -1,0 +1,43 @@
+package:
+  name: python
+  version: 3.5.0b2
+
+source:
+  fn: Python-3.5.0b2.tar.xz
+  url: https://www.python.org/ftp/python/3.5.0/Python-3.5.0b2.tar.xz
+  md5: ef12dce3770032138d83f6159e7d5c3a
+
+build:
+  no_link: bin/python
+
+requirements:
+  build:
+    - bzip2       [unix]
+    - zlib        [unix]
+    - sqlite      [unix]
+    - readline    [unix]
+    - tk          [unix]
+    - openssl     [unix]
+    - xz          [unix]
+    - system      [linux]
+  run:
+    - zlib        [unix]
+    - sqlite      [unix]
+    - readline    [unix]
+    - tk          [unix]
+    - openssl     [unix]
+    - xz          [unix]
+    - system      [linux]
+
+test:
+  commands:
+    - python -V               [unix]
+    - python3 -V              [unix]
+    - 2to3 -h
+    - pydoc -h
+    - python3-config --help   [unix]
+
+about:
+  home: http://www.python.org/
+  license: PSF
+  summary: general purpose programming language

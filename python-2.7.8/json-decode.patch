@@ -1,0 +1,13 @@
+diff --git Lib/json/decoder.py Lib/json/decoder.py
+index dfcc628..35a40fc 100644
+--- Lib/json/decoder.py
++++ Lib/json/decoder.py
+@@ -15,7 +15,7 @@ __all__ = ['JSONDecoder']
+ FLAGS = re.VERBOSE | re.MULTILINE | re.DOTALL
+ 
+ def _floatconstants():
+-    _BYTES = '7FF80000000000007FF0000000000000'.decode('hex')
++    _BYTES = '\x7f\xf8\x00\x00\x00\x00\x00\x00\x7f\xf0\x00\x00\x00\x00\x00\x00'
+     if sys.byteorder != 'big':
+         _BYTES = _BYTES[:8][::-1] + _BYTES[8:][::-1]
+     nan, inf = struct.unpack('dd', _BYTES)

@@ -2,13 +2,15 @@ package:
   name: r-matrix
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.1_5"
+  version: "1.2_1"
 
 source:
-  fn: Matrix_1.1-5.tar.gz
+  fn: Matrix_1.2-1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/Matrix_1.1-5.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/Matrix/Matrix_1.1-5.tar.gz
+    - http://cran.r-project.org/src/contrib/Matrix_1.2-1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/Matrix/Matrix_1.2-1.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,7 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1 # [osx]
+  number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -29,12 +31,14 @@ build:
 # Suggests: expm, MASS
 requirements:
   build:
-    - r-base >=2.15.2
+    - r-base
     - r-lattice # [not win]
+    - gcc # [not win]
 
   run:
-    - r >=2.15.2
+    - r
     - r-lattice # [not win]
+    - libgcc # [not win]
 
 test:
   commands:
@@ -51,22 +55,22 @@ test:
 about:
   home: http://Matrix.R-forge.R-project.org/
   license: GPL (>= 2)
-  summary: Classes and methods for dense and sparse matrices and operations on them using LAPACK
-    and SuiteSparse.
+  summary: Classes and methods for dense and sparse matrices and operations on them using 'LAPACK'
+    and 'SuiteSparse'.
 
 # The original CRAN metadata for this package was:
 
 # Package: Matrix
-# Version: 1.1-5
-# Date: 2015-01-18
+# Version: 1.2-1
+# Date: 2015-05-30
 # Priority: recommended
 # Title: Sparse and Dense Matrix Classes and Methods
 # Author: Douglas Bates <bates@stat.wisc.edu> and Martin Maechler
 # Maintainer: Martin Maechler <mmaechler+Matrix@gmail.com>
 # Contact: Doug and Martin <Matrix-authors@R-project.org>
-# Description: Classes and methods for dense and sparse matrices and operations on them using LAPACK and SuiteSparse.
-# Depends: R (>= 2.15.2), methods
-# Imports: graphics, grid, stats, utils, lattice
+# Description: Classes and methods for dense and sparse matrices and operations on them using 'LAPACK' and 'SuiteSparse'.
+# Depends: R (>= 3.0.1)
+# Imports: methods, graphics, grid, stats, utils, lattice
 # Suggests: expm, MASS
 # Enhances: MatrixModels, graph, SparseM, sfsmisc
 # Encoding: UTF-8
@@ -77,10 +81,10 @@ about:
 # License: GPL (>= 2)
 # LicenseNote: The Matrix package includes libraries AMD, CHOLMOD, COLAMD, CSparse and SPQR from the SuiteSparse collection of Tim Davis.  All sections of that code are covered by the GPL or LGPL licenses.  See the directory doc/UFsparse for details.
 # URL: http://Matrix.R-forge.R-project.org/
-# Packaged: 2015-01-17 23:53:55 UTC; maechler
 # NeedsCompilation: yes
+# Packaged: 2015-06-01 10:18:55 UTC; maechler
 # Repository: CRAN
-# Date/Publication: 2015-01-18 19:49:49
+# Date/Publication: 2015-06-01 17:38:08
 
 # See
 # http://docs.continuum.io/conda/build.html for

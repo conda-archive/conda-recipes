@@ -2,13 +2,15 @@ package:
   name: r-lmtest
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.9_33"
+  version: "0.9_34"
 
 source:
-  fn: lmtest_0.9-33.tar.gz
+  fn: lmtest_0.9-34.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/lmtest_0.9-33.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/lmtest/lmtest_0.9-33.tar.gz
+    - http://cran.r-project.org/src/contrib/lmtest_0.9-34.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/lmtest/lmtest_0.9-34.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -29,12 +31,14 @@ build:
 # Suggests: car, strucchange, sandwich, dynlm, stats4, survival, AER
 requirements:
   build:
-    - r >=2.10.0
+    - r
     - r-zoo
+    - gcc # [not win]
 
   run:
-    - r >=2.10.0
+    - r
     - r-zoo
+    - libgcc # [not win]
 
 test:
   commands:
@@ -58,8 +62,8 @@ about:
 
 # Package: lmtest
 # Title: Testing Linear Regression Models
-# Version: 0.9-33
-# Date: 2014-01-23
+# Version: 0.9-34
+# Date: 2015-06-06
 # Authors@R: c(person(given = "Torsten", family = "Hothorn", role = "aut", email = "Torsten.Hothorn@R-project.org"), person(given = "Achim", family = "Zeileis", role = c("aut", "cre"), email = "Achim.Zeileis@R-project.org"), person(given = c("Richard", "W."), family = "Farebrother", role = "aut", comment = "pan.f"), person(given = "Clint", family = "Cummins", role = "aut", comment = "pan.f"), person(given = "Giovanni", family = "Millo", role = "ctb"), person(given = "David", family = "Mitchell", role = "ctb"))
 # Description: A collection of tests, data sets, and examples for diagnostic checking in linear regression models. Furthermore, some generic tools for inference in parametric models are provided.
 # LazyData: yes
@@ -67,12 +71,12 @@ about:
 # Suggests: car, strucchange, sandwich, dynlm, stats4, survival, AER
 # Imports: graphics
 # License: GPL-2 | GPL-3
-# Packaged: 2014-01-23 18:36:48 UTC; zeileis
+# NeedsCompilation: yes
+# Packaged: 2015-06-06 08:59:18 UTC; zeileis
 # Author: Torsten Hothorn [aut], Achim Zeileis [aut, cre], Richard W. Farebrother [aut] (pan.f), Clint Cummins [aut] (pan.f), Giovanni Millo [ctb], David Mitchell [ctb]
 # Maintainer: Achim Zeileis <Achim.Zeileis@R-project.org>
-# NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2014-01-23 19:41:44
+# Date/Publication: 2015-06-06 13:03:26
 
 # See
 # http://docs.continuum.io/conda/build.html for

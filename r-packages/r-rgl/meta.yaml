@@ -2,13 +2,15 @@ package:
   name: r-rgl
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.95.1201"
+  version: "0.95.1247"
 
 source:
-  fn: rgl_0.95.1201.tar.gz
+  fn: rgl_0.95.1247.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/rgl_0.95.1201.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/rgl/rgl_0.95.1201.tar.gz
+    - http://cran.r-project.org/src/contrib/rgl_0.95.1247.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/rgl/rgl_0.95.1247.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,7 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1 # [osx]
+  number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -29,10 +31,10 @@ build:
 # Suggests: MASS, knitr, rmarkdown
 requirements:
   build:
-    - r >=2.15.0
+    - r
 
   run:
-    - r >=2.15.0
+    - r
 
 test:
   commands:
@@ -58,8 +60,8 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: rgl
-# Version: 0.95.1201
-# Title: 3D visualization device system (OpenGL)
+# Version: 0.95.1247
+# Title: 3D Visualization Using OpenGL
 # Author: Daniel Adler <dadler@uni-goettingen.de>, Duncan Murdoch <murdoch@stats.uwo.ca>, and others (see README)
 # Maintainer: Duncan Murdoch <murdoch@stats.uwo.ca>
 # Depends: R (>= 2.15.0),stats,grDevices
@@ -70,10 +72,10 @@ about:
 # SystemRequirements: OpenGL, GLU Library, zlib (optional), libpng (>=1.2.9, optional), FreeType (optional)
 # BugReports: https://r-forge.r-project.org/projects/rgl/
 # VignetteBuilder: knitr
-# Packaged: 2014-12-21 16:23:41 UTC; murdoch
 # NeedsCompilation: yes
+# Packaged: 2015-04-30 17:11:44 UTC; murdoch
 # Repository: CRAN
-# Date/Publication: 2014-12-21 18:26:24
+# Date/Publication: 2015-05-01 10:18:28
 
 # See
 # http://docs.continuum.io/conda/build.html for

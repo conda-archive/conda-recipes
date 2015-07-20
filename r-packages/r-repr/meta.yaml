@@ -2,13 +2,13 @@ package:
   name: r-repr
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.1"
+  version: "0.2"
 
 source:
 
 
   git_url: https://github.com/IRkernel/repr
-  git_tag: 0.1
+  git_tag: 0.2
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -55,7 +55,7 @@ about:
 
 # Package: repr
 # Title: Serializable representations
-# Version: 0.1
+# Version: 0.2
 # Authors@R: 'Philipp A. <flying-sheep@web.de> [aut, cre]'
 # Description: String and binary representations of objects for several formats / mime types.
 # Depends: R (>= 3.0.1)

@@ -2,13 +2,15 @@ package:
   name: r-car
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "2.0_24"
+  version: "2.0_25"
 
 source:
-  fn: car_2.0-24.tar.gz
+  fn: car_2.0-25.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/car_2.0-24.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/car/car_2.0-24.tar.gz
+    - http://cran.r-project.org/src/contrib/car_2.0-25.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/car/car_2.0-25.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -29,7 +31,7 @@ build:
 # Suggests: alr4, boot, leaps, lme4, lmtest, Matrix, MatrixModels, nlme, rgl (>= 0.93.960), sandwich, SparseM, survival, survey
 requirements:
   build:
-    - r >=2.14.0
+    - r
     - r-mass # [not win]
     - r-mgcv # [not win]
     - r-nnet # [not win]
@@ -37,7 +39,7 @@ requirements:
     - r-quantreg
 
   run:
-    - r >=2.14.0
+    - r
     - r-mass # [not win]
     - r-mgcv # [not win]
     - r-nnet # [not win]
@@ -60,15 +62,15 @@ about:
   home: https://r-forge.r-project.org/projects/car/, http://CRAN.R-project.org/package=car,
     http://socserv.socsci.mcmaster.ca/jfox/Books/Companion/index.html
   license: GPL (>= 2)
-  summary: ' This package accompanies J. Fox and S. Weisberg, An R Companion to Applied Regression,  Second
-    Edition, Sage, 2011.'
+  summary: ' Functions and Datasets to Accompany J. Fox and S. Weisberg,  An R Companion to Applied
+    Regression, Second Edition, Sage, 2011.'
 
 
 # The original CRAN metadata for this package was:
 
 # Package: car
-# Version: 2.0-24
-# Date: 2015/01/27
+# Version: 2.0-25
+# Date: 2015/02/20
 # Title: Companion to Applied Regression
 # Authors@R: c(person("John", "Fox", role = c("aut", "cre"), email = "jfox@mcmaster.ca"), person("Sanford", "Weisberg", role = "aut", email = "sandy@umn.edu"), person("Daniel", "Adler", role="ctb"), person("Douglas", "Bates", role = "ctb"), person("Gabriel", "Baud-Bovy", role = "ctb"), person("Steve", "Ellison", role="ctb"), person("David", "Firth", role = "ctb"), person("Michael", "Friendly", role = "ctb"), person("Gregor", "Gorjanc", role = "ctb"), person("Spencer", "Graves", role = "ctb"), person("Richard", "Heiberger", role = "ctb"), person("Rafael", "Laboissiere", role = "ctb"), person("Georges", "Monette", role = "ctb"), person("Duncan", "Murdoch", role="ctb"), person("Henric", "Nilsson", role = "ctb"), person("Derek", "Ogle", role = "ctb"), person("Brian", "Ripley", role = "ctb"), person("William", "Venables", role = "ctb"), person("Achim", "Zeileis", role = "ctb"), person("R-Core", role="ctb"))
 # Depends: R (>= 2.14.0), stats, graphics
@@ -77,17 +79,17 @@ about:
 # ByteCompile: yes
 # LazyLoad: yes
 # LazyData: yes
-# Description:  This package accompanies J. Fox and S. Weisberg, An R Companion to Applied Regression,  Second Edition, Sage, 2011.
+# Description:  Functions and Datasets to Accompany J. Fox and S. Weisberg,  An R Companion to Applied Regression, Second Edition, Sage, 2011.
 # License: GPL (>= 2)
 # URL: https://r-forge.r-project.org/projects/car/, http://CRAN.R-project.org/package=car, http://socserv.socsci.mcmaster.ca/jfox/Books/Companion/index.html
 # Author: John Fox [aut, cre], Sanford Weisberg [aut], Daniel Adler [ctb], Douglas Bates [ctb], Gabriel Baud-Bovy [ctb], Steve Ellison [ctb], David Firth [ctb], Michael Friendly [ctb], Gregor Gorjanc [ctb], Spencer Graves [ctb], Richard Heiberger [ctb], Rafael Laboissiere [ctb], Georges Monette [ctb], Duncan Murdoch [ctb], Henric Nilsson [ctb], Derek Ogle [ctb], Brian Ripley [ctb], William Venables [ctb], Achim Zeileis [ctb], R-Core [ctb]
 # Maintainer: John Fox <jfox@mcmaster.ca>
 # Repository: CRAN
 # Repository/R-Forge/Project: car
-# Repository/R-Forge/Revision: 416
-# Repository/R-Forge/DateTimeStamp: 2015-01-28 17:07:29
-# Date/Publication: 2015-02-02 01:38:04
-# Packaged: 2015-01-28 17:25:47 UTC; rforge
+# Repository/R-Forge/Revision: 420
+# Repository/R-Forge/DateTimeStamp: 2015-02-20 17:40:37
+# Date/Publication: 2015-03-03 22:27:23
+# Packaged: 2015-02-20 17:45:46 UTC; rforge
 # NeedsCompilation: no
 
 # See

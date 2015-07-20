@@ -2,13 +2,15 @@ package:
   name: r-dplyr
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.4.1"
+  version: "0.4.2"
 
 source:
-  fn: dplyr_0.4.1.tar.gz
+  fn: dplyr_0.4.2.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/dplyr_0.4.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/dplyr/dplyr_0.4.1.tar.gz
+    - http://cran.r-project.org/src/contrib/dplyr_0.4.2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/dplyr/dplyr_0.4.2.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,7 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1 # [osx]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -29,24 +31,26 @@ build:
 # Suggests: RSQLite (>= 1.0.0), RMySQL, RPostgreSQL, data.table, testthat, knitr, microbenchmark, ggplot2, mgcv, Lahman (>= 3.0-1), nycflights13, methods
 requirements:
   build:
-    - r >=3.0.2
-    - r-bh >=1.51.0_2
+    - r
+    - r-bh >=1.58.0_1
     - r-dbi >=0.3
     - r-r6
-    - r-rcpp >=0.11.3
+    - r-rcpp >=0.11.6
     - r-assertthat
     - r-lazyeval >=0.1.10
     - r-magrittr
+    - gcc # [not win]
 
   run:
-    - r >=3.0.2
-    - r-bh >=1.51.0_2
+    - r
+    - r-bh >=1.58.0_1
     - r-dbi >=0.3
     - r-r6
-    - r-rcpp >=0.11.3
+    - r-rcpp >=0.11.6
     - r-assertthat
     - r-lazyeval >=0.1.10
     - r-magrittr
+    - libgcc # [not win]
 
 test:
   commands:
@@ -70,26 +74,26 @@ about:
 
 # Package: dplyr
 # Type: Package
-# Version: 0.4.1
+# Version: 0.4.2
 # Title: A Grammar of Data Manipulation
 # Description: A fast, consistent tool for working with data frame like objects, both in memory and out of memory.
 # Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")), person("Romain", "Francois", , "romain@r-enthusiasts.com", role = "aut"), person("RStudio", role = "cph") )
 # URL: https://github.com/hadley/dplyr
 # BugReports: https://github.com/hadley/dplyr/issues
-# Depends: R (>= 3.0.2)
+# Depends: R (>= 3.1.2)
 # Imports: assertthat, utils, R6, Rcpp, magrittr, lazyeval (>= 0.1.10), DBI (>= 0.3)
 # Suggests: RSQLite (>= 1.0.0), RMySQL, RPostgreSQL, data.table, testthat, knitr, microbenchmark, ggplot2, mgcv, Lahman (>= 3.0-1), nycflights13, methods
 # VignetteBuilder: knitr
 # LazyData: yes
-# LinkingTo: Rcpp (>= 0.11.3), BH (>= 1.51.0-2)
+# LinkingTo: Rcpp (>= 0.11.6), BH (>= 1.58.0-1)
 # License: MIT + file LICENSE
 # Collate: 'RcppExports.R' 'all-equal.r' 'bench-compare.r' 'chain.r' 'cluster.R' 'colwise.R' 'compute-collect.r' 'copy-to.r' 'data-lahman.r' 'data-nasa.r' 'data-nycflights13.r' 'data-temp.r' 'data.r' 'dataframe.R' 'dbi-s3.r' 'desc.r' 'distinct.R' 'do.r' 'dplyr.r' 'explain.r' 'failwith.r' 'funs.R' 'glimpse.R' 'group-by.r' 'group-indices.R' 'group-size.r' 'grouped-df.r' 'grouped-dt.r' 'id.r' 'inline.r' 'join.r' 'lead-lag.R' 'location.R' 'manip.r' 'nth-value.R' 'order-by.R' 'over.R' 'partial-eval.r' 'progress.R' 'query.r' 'rank.R' 'rbind.r' 'rowwise.r' 'sample.R' 'select-utils.R' 'select-vars.R' 'sets.r' 'sql-escape.r' 'sql-star.r' 'src-local.r' 'src-mysql.r' 'src-postgres.r' 'src-sql.r' 'src-sqlite.r' 'src.r' 'tally.R' 'tbl-cube.r' 'tbl-df.r' 'tbl-dt.r' 'tbl-sql.r' 'tbl.r' 'top-n.R' 'translate-sql-helpers.r' 'translate-sql-base.r' 'translate-sql-window.r' 'translate-sql.r' 'type-sum.r' 'utils-dt.R' 'utils-format.r' 'utils.r' 'view.r' 'zzz.r'
-# Packaged: 2015-01-13 17:03:29 UTC; hadley
+# NeedsCompilation: yes
+# Packaged: 2015-06-15 22:27:30 UTC; hadley
 # Author: Hadley Wickham [aut, cre], Romain Francois [aut], RStudio [cph]
 # Maintainer: Hadley Wickham <hadley@rstudio.com>
-# NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2015-01-14 07:15:50
+# Date/Publication: 2015-06-16 11:24:05
 
 # See
 # http://docs.continuum.io/conda/build.html for

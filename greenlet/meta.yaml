@@ -1,12 +1,12 @@
 
 package:
     name: greenlet
-    version: 0.4.2
+    version: 0.4.7
 
 source:
-    fn: greenlet-0.4.2.zip
-    url: https://pypi.python.org/packages/source/g/greenlet/greenlet-0.4.2.zip
-    md5: 580a8a5e833351f7abdaedb1a877f7ac
+    fn: greenlet-0.4.7.zip
+    url: https://pypi.python.org/packages/source/g/greenlet/greenlet-0.4.7.zip
+    md5: c2333a8ff30fa75c5d5ec0e67b461086
 
 build:
     number: 0

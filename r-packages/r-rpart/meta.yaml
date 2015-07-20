@@ -2,13 +2,15 @@ package:
   name: r-rpart
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "4.1_8"
+  version: "4.1_10"
 
 source:
-  fn: rpart_4.1-8.tar.gz
+  fn: rpart_4.1-10.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/rpart_4.1-8.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/rpart/rpart_4.1-8.tar.gz
+    - http://cran.r-project.org/src/contrib/rpart_4.1-10.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/rpart/rpart_4.1-10.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,7 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1 # [osx]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -29,10 +31,12 @@ build:
 # Suggests: survival
 requirements:
   build:
-    - r-base >=2.15.0
+    - r-base
+    - gcc # [not win]
 
   run:
-    - r >=2.15.0
+    - r
+    - libgcc # [not win]
 
 test:
   commands:
@@ -57,8 +61,8 @@ about:
 
 # Package: rpart
 # Priority: recommended
-# Version: 4.1-8
-# Date: 2014-03-28
+# Version: 4.1-10
+# Date: 2015-06-29
 # Authors@R: c(person("Terry", "Therneau", role = "aut", email = "therneau@mayo.edu"), person("Beth", "Atkinson", role = "aut",	 email = "atkinson@mayo.edu"), person("Brian", "Ripley", role = c("aut", "trl", "cre"), email = "ripley@stats.ox.ac.uk", comment = "author of initial R port"))
 # Description: Recursive partitioning for classification,  regression and survival trees.  An implementation of most of the  functionality of the 1984 book by Breiman, Friedman, Olshen and Stone.
 # Title: Recursive Partitioning and Regression Trees
@@ -68,12 +72,12 @@ about:
 # LazyData: yes
 # ByteCompile: yes
 # Note: Maintainers are not available to give advice on using a package they did not author.
-# Packaged: 2014-03-28 07:47:41 UTC; ripley
+# NeedsCompilation: yes
+# Packaged: 2015-06-29 09:13:49 UTC; ripley
 # Author: Terry Therneau [aut], Beth Atkinson [aut], Brian Ripley [aut, trl, cre] (author of initial R port)
 # Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
-# NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2014-03-28 09:12:06
+# Date/Publication: 2015-06-29 17:15:41
 
 # See
 # http://docs.continuum.io/conda/build.html for

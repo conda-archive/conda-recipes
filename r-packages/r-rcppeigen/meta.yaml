@@ -2,13 +2,15 @@ package:
   name: r-rcppeigen
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.3.2.3.0"
+  version: "0.3.2.4.0"
 
 source:
-  fn: RcppEigen_0.3.2.3.0.tar.gz
+  fn: RcppEigen_0.3.2.4.0.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/RcppEigen_0.3.2.3.0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/RcppEigen/RcppEigen_0.3.2.3.0.tar.gz
+    - http://cran.r-project.org/src/contrib/RcppEigen_0.3.2.4.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/RcppEigen/RcppEigen_0.3.2.4.0.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -26,17 +28,19 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: inline, RUnit
+# Suggests: inline, RUnit, pkgKitten
 requirements:
   build:
-    - r >=2.15.1
+    - r
     - r-matrix >=1.1_0 # [not win]
-    - r-rcpp >=0.11.0
+    - r-rcpp
+    - gcc # [not win]
 
   run:
-    - r >=2.15.1
+    - r
     - r-matrix >=1.1_0 # [not win]
-    - r-rcpp >=0.11.0
+    - r-rcpp
+    - libgcc # [not win]
 
 test:
   commands:
@@ -70,9 +74,9 @@ about:
 
 # Package: RcppEigen
 # Type: Package
-# Title: Rcpp integration for the Eigen templated linear algebra library.
-# Version: 0.3.2.3.0
-# Date: 2014-12-22
+# Title: Rcpp Integration for the Eigen Templated Linear Algebra Library
+# Version: 0.3.2.4.0
+# Date: 2015-02-26
 # Author: Douglas Bates, Romain Francois and Dirk Eddelbuettel;  the authors of Eigen for the included version of Eigen
 # Maintainer: Dirk Eddelbuettel <edd@debian.org>
 # Copyright: See the file COPYRIGHTS for various Eigen copyright details
@@ -82,12 +86,12 @@ about:
 # LazyLoad: yes
 # LinkingTo: Rcpp
 # Imports: Matrix (>= 1.1-0), Rcpp (>= 0.11.0)
-# Suggests: inline, RUnit
+# Suggests: inline, RUnit, pkgKitten
 # URL: http://eigen.tuxfamily.org
-# Packaged: 2014-12-22 12:25:27.058386 UTC; edd
+# Packaged: 2015-02-26 20:15:55.173116 UTC; edd
 # NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2014-12-23 07:28:50
+# Date/Publication: 2015-02-27 09:03:53
 
 # See
 # http://docs.continuum.io/conda/build.html for

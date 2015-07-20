@@ -1,0 +1,28 @@
+package:
+  name: libxml2
+  version: 2.9.2
+
+source:
+  fn: libxml2-2.9.2.tar.gz
+  url: ftp://xmlsoft.org/libxml2/libxml2-2.9.2.tar.gz
+  md5: 9e6a9aca9d155737868b3dc5fd82f788
+
+build:
+  number: 1
+
+test:
+  files:
+    - test.xml
+  commands:
+    - xmllint test.xml
+
+requirements:
+  build:
+    - zlib                    [unix]
+  run:
+    - zlib                    [unix]
+
+about:
+  home: http://xmlsoft.org/
+  license: MIT
+  summary: The XML C parser and toolkit of Gnome

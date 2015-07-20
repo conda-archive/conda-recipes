@@ -1,0 +1,59 @@
+package:
+  name: cached-property
+  version: "1.2.0"
+
+source:
+  fn: cached-property-1.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/cached-property/cached-property-1.2.0.tar.gz
+  md5: 0a5766b45fbf45416d9857f1c215f710
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cached-property = cached-property:main
+    #
+    # Would create an entry point called cached-property that calls cached-property.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+# test:
+  # Python imports
+  # imports:
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pydanny/cached-property
+  license: BSD License
+  summary: 'A decorator for caching properties in classes.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
