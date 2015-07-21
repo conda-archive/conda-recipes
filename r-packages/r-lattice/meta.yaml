@@ -2,13 +2,13 @@ package:
   name: r-lattice
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.20_31"
+  version: "0.20_33"
 
 source:
-  fn: lattice_0.20-31.tar.gz
+  fn: lattice_0.20-33.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/lattice_0.20-31.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/lattice/lattice_0.20-31.tar.gz
+    - http://cran.r-project.org/src/contrib/lattice_0.20-33.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/lattice/lattice_0.20-33.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -53,21 +53,22 @@ test:
 about:
   home: http://lattice.r-forge.r-project.org/
   license: GPL (>= 2)
-  summary: Lattice is a powerful and elegant high-level data visualization system, with an emphasis
-    on multivariate data, that is sufficient for typical graphics needs, and is also
-    flexible enough to handle most nonstandard requirements.  See ?Lattice for an introduction.
+  summary: A powerful and elegant high-level data visualization system inspired by Trellis graphics,
+    with an emphasis on multivariate data. Lattice is sufficient for typical graphics
+    needs, and is also flexible enough to handle most nonstandard requirements. See
+    ?Lattice for an introduction.
 
 # The original CRAN metadata for this package was:
 
 # Package: lattice
-# Version: 0.20-31
-# Date: 2015/03/30
+# Version: 0.20-33
+# Date: 2015-07-07
 # Priority: recommended
-# Title: Lattice Graphics
+# Title: Trellis Graphics for R
 # Author: Deepayan Sarkar <deepayan.sarkar@r-project.org>
 # Maintainer: Deepayan Sarkar <deepayan.sarkar@r-project.org>
-# Description: Lattice is a powerful and elegant high-level data visualization system, with an emphasis on multivariate data, that is sufficient for typical graphics needs, and is also flexible enough to handle most nonstandard requirements.  See ?Lattice for an introduction.
-# Depends: R (>= 2.15.1)
+# Description: A powerful and elegant high-level data visualization system inspired by Trellis graphics, with an emphasis on multivariate data. Lattice is sufficient for typical graphics needs, and is also flexible enough to handle most nonstandard requirements. See ?Lattice for an introduction.
+# Depends: R (>= 3.0.0)
 # Suggests: KernSmooth, MASS
 # Imports: grid, grDevices, graphics, stats, utils
 # Enhances: chron
@@ -77,9 +78,9 @@ about:
 # URL: http://lattice.r-forge.r-project.org/
 # BugReports: http://r-forge.r-project.org/projects/lattice/
 # NeedsCompilation: yes
-# Packaged: 2015-03-30 07:06:28 UTC; deepayan
+# Packaged: 2015-07-13 09:04:45 UTC; deepayan
 # Repository: CRAN
-# Date/Publication: 2015-03-30 09:53:56
+# Date/Publication: 2015-07-14 15:58:29
 
 # See
 # http://docs.continuum.io/conda/build.html for

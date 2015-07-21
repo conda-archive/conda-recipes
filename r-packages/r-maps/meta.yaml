@@ -2,13 +2,15 @@ package:
   name: r-maps
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "2.3_9"
+  version: "2.3_10"
 
 source:
-  fn: maps_2.3-9.tar.gz
+  fn: maps_2.3-10.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/maps_2.3-9.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/maps/maps_2.3-9.tar.gz
+    - http://cran.r-project.org/src/contrib/maps_2.3-10.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/maps/maps_2.3-10.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,20 +21,22 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: mapproj (>= 1.2-0)
+# Suggests: mapproj (>= 1.2-0), mapdata (>= 2.2-4)
 requirements:
   build:
-    - r >=2.10.0
+    - r
+    - gcc # [not win]
 
   run:
-    - r >=2.10.0
+    - r
+    - libgcc # [not win]
 
 test:
   commands:
@@ -56,19 +60,20 @@ about:
 
 # Package: maps
 # Title: Draw Geographical Maps
-# Version: 2.3-9
-# Date: 2014-09-22
+# Version: 2.3-10
+# Date: 2015-07-08
 # Author: Original S code by Richard A. Becker and Allan R. Wilks. R version by Ray Brownrigg <Ray.Brownrigg@ecs.vuw.ac.nz>. Enhancements by Thomas P Minka <tpminka@media.mit.edu>
 # Description: Display of maps.  Projection code and larger maps are in separate packages (mapproj and mapdata).
-# Depends: R (>= 2.10.0)
-# LazyLoad: yes
-# Suggests: mapproj (>= 1.2-0)
+# Depends: R (>= 2.14.0)
+# Imports: graphics, utils
+# LazyData: yes
+# Suggests: mapproj (>= 1.2-0), mapdata (>= 2.2-4)
 # License: GPL-2
 # Maintainer: Ray Brownrigg <Ray.Brownrigg@ecs.vuw.ac.nz>
-# Packaged: 2014-09-22 03:27:30 UTC; ray
 # NeedsCompilation: yes
+# Packaged: 2015-07-09 00:40:38 UTC; ray
 # Repository: CRAN
-# Date/Publication: 2014-09-22 08:37:18
+# Date/Publication: 2015-07-09 14:47:52
 
 # See
 # http://docs.continuum.io/conda/build.html for

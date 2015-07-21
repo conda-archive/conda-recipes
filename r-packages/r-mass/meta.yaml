@@ -2,13 +2,13 @@ package:
   name: r-mass
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "7.3_42"
+  version: "7.3_43"
 
 source:
-  fn: MASS_7.3-42.tar.gz
+  fn: MASS_7.3-43.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/MASS_7.3-42.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/MASS/MASS_7.3-42.tar.gz
+    - http://cran.r-project.org/src/contrib/MASS_7.3-43.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/MASS/MASS_7.3-43.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -60,9 +60,9 @@ about:
 
 # Package: MASS
 # Priority: recommended
-# Version: 7.3-42
-# Date: 2015-07-01
-# Revision: $Rev: 3445 $
+# Version: 7.3-43
+# Date: 2015-07-16
+# Revision: $Rev: 3448 $
 # Depends: R (>= 3.1.0), grDevices, graphics, stats, utils
 # Imports: methods
 # Suggests: lattice, nlme, nnet, survival
@@ -74,11 +74,11 @@ about:
 # License: GPL-2 | GPL-3
 # URL: http://www.stats.ox.ac.uk/pub/MASS4/
 # NeedsCompilation: yes
-# Packaged: 2015-07-01 17:56:12 UTC; ripley
+# Packaged: 2015-07-16 07:35:57 UTC; ripley
 # Author: Brian Ripley [aut, cre, cph], Bill Venables [ctb], Douglas M. Bates [ctb], Kurt Hornik [trl] (partial port ca 1998), Albrecht Gebhardt [trl] (partial port ca 1998), David Firth [ctb]
 # Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
 # Repository: CRAN
-# Date/Publication: 2015-07-02 06:43:27
+# Date/Publication: 2015-07-16 14:48:06
 
 # See
 # http://docs.continuum.io/conda/build.html for

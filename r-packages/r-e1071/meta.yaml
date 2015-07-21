@@ -2,13 +2,15 @@ package:
   name: r-e1071
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.6_4"
+  version: "1.6_6"
 
 source:
-  fn: e1071_1.6-4.tar.gz
+  fn: e1071_1.6-6.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/e1071_1.6-4.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/e1071/e1071_1.6-4.tar.gz
+    - http://cran.r-project.org/src/contrib/e1071_1.6-6.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/e1071/e1071_1.6-6.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,8 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2 # [osx]
-  number: 1 # [not osx]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -32,10 +33,12 @@ requirements:
   build:
     - r
     - r-class # [not win]
+    - gcc # [not win]
 
   run:
     - r
     - r-class # [not win]
+    - libgcc # [not win]
 
 test:
   commands:
@@ -59,21 +62,20 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: e1071
-# Version: 1.6-4
-# Date: 2014-09-1
-# Title: Misc Functions of the Department of Statistics (e1071), TU Wien
-# Imports: graphics, grDevices, class
+# Version: 1.6-6
+# Title: Misc Functions of the Department of Statistics, Probability Theory Group (Formerly: E1071), TU Wien
+# Imports: graphics, grDevices, class, stats, methods, utils
 # Suggests: cluster, mlbench, nnet, randomForest, rpart, SparseM, xtable, Matrix, MASS
 # Authors@R: c(person(given = "David", family = "Meyer", role = c("aut", "cre"), email = "David.Meyer@R-project.org"), person(given = "Evgenia", family = "Dimitriadou", role = c("aut","cph")), person(given = "Kurt", family = "Hornik", role = "aut"), person(given = "Andreas", family = "Weingessel", role = "aut"), person(given = "Friedrich", family = "Leisch", role = "aut"), person(given = "Chih-Chung", family = "Chang", role = c("ctb","cph"), comment = "libsvm C++-code"), person(given = "Chih-Chen", family = "Lin", role = c("ctb","cph"), comment = "libsvm C++-code"))
 # Description: Functions for latent class analysis, short time Fourier transform, fuzzy clustering, support vector machines, shortest path computation, bagged clustering, naive Bayes classifier, ...
 # License: GPL-2
 # LazyLoad: yes
-# Packaged: 2014-09-01 14:57:32 UTC; david
+# NeedsCompilation: yes
+# Packaged: 2015-07-16 22:09:33 UTC; david
 # Author: David Meyer [aut, cre], Evgenia Dimitriadou [aut, cph], Kurt Hornik [aut], Andreas Weingessel [aut], Friedrich Leisch [aut], Chih-Chung Chang [ctb, cph] (libsvm C++-code), Chih-Chen Lin [ctb, cph] (libsvm C++-code)
 # Maintainer: David Meyer <David.Meyer@R-project.org>
-# NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2014-09-01 20:34:56
+# Date/Publication: 2015-07-17 13:47:18
 
 # See
 # http://docs.continuum.io/conda/build.html for

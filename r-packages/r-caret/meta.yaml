@@ -2,13 +2,13 @@ package:
   name: r-caret
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "6.0_47"
+  version: "6.0_52"
 
 source:
-  fn: caret_6.0-47.tar.gz
+  fn: caret_6.0-52.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/caret_6.0-47.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/caret/caret_6.0-47.tar.gz
+    - http://cran.r-project.org/src/contrib/caret_6.0-52.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/caret/caret_6.0-52.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -67,28 +67,29 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: http://caret.r-forge.r-project.org/
+  home: https://github.com/topepo/caret/
   license: GPL (>= 2)
   summary: Misc functions for training and plotting classification and regression models.
 
 # The original CRAN metadata for this package was:
 
 # Package: caret
-# Version: 6.0-47
-# Date: 2015-05-04
+# Version: 6.0-52
+# Date: 2015-07-16
 # Title: Classification and Regression Training
 # Author: Max Kuhn. Contributions from Jed Wing, Steve Weston, Andre Williams, Chris Keefer, Allan Engelhardt, Tony Cooper, Zachary Mayer, Brenton Kenkel, the R Core Team, Michael Benesty, Reynald Lescarbeau, Andrew Ziem, and Luca Scrucca.
 # Description: Misc functions for training and plotting classification and regression models.
 # Maintainer: Max Kuhn <Max.Kuhn@pfizer.com>
-# Depends: R (>= 2.10), stats, lattice (>= 0.20), ggplot2
-# URL: http://caret.r-forge.r-project.org/
-# Imports: car, reshape2, foreach, methods, plyr, nlme, BradleyTerry2
+# Depends: R (>= 2.10), lattice (>= 0.20), ggplot2
+# URL: https://github.com/topepo/caret/
+# BugReports: https://github.com/topepo/caret/issues
+# Imports: car, reshape2, foreach, methods, plyr, nlme, BradleyTerry2, stats, stats4, utils, grDevices
 # Suggests: e1071, earth (>= 2.2-3), fastICA, gam, ipred, kernlab, klaR, MASS, ellipse, mda, mgcv, mlbench, nnet, party (>= 0.9-99992), pls, pROC (>= 1.8), proxy, randomForest, RANN, spls, subselect, pamr, superpc, Cubist, testthat (>= 0.9.1)
 # License: GPL (>= 2)
+# Packaged: 2015-07-16 22:52:52 UTC; kuhna03
 # NeedsCompilation: yes
-# Packaged: 2015-05-05 10:50:20 UTC; kuhna03
 # Repository: CRAN
-# Date/Publication: 2015-05-06 18:00:28
+# Date/Publication: 2015-07-17 14:31:52
 
 # See
 # http://docs.continuum.io/conda/build.html for
