@@ -37,18 +37,49 @@ if [ "$(uname)" != "Darwin" ]; then
         # Locate the system's C-runtime object files and link them into the gcc 
         #  build so they are automatically on the gcc search path.
         # (The location of these files varies from one system to the next.)
-        C_RUNTIME_OBJ_FILES="crt0.o crt1.o crt2.o crt3.o crti.o crtn.o"    
+        C_RUNTIME_OBJ_FILES="crt0.o crt1.o crt2.o crt3.o crti.o crtn.o"
 
-        for obj_file in $C_RUNTIME_OBJ_FILES; do
-            for libdir in $(/sbin/ldconfig -v 2> /dev/null | grep '^/' | awk '{print $1}'); do
-                # Remove trailing ':'
-                libdir=${libdir:0:${#libdir}-1}
-                if [ -e "$libdir/$obj_file" ]; then
-                    ln -s "$libdir/$obj_file" "${PREFIX}"/lib/gcc/*/*/
-                    break
+        c_runtime_obj_files_found=0
+
+        # Try locating crtXXX.o in default library search paths
+        for library_path in $(ld --verbose | grep SEARCH_DIR | sed -r 's/SEARCH_DIR\("=?([^"]*)"\);/ \1/g'); do
+            for obj_file in $C_RUNTIME_OBJ_FILES; do
+                obj_file_full_path="$library_path/$obj_file"
+                if [[ -e "$obj_file_full_path" ]]; then
+                    ln -s "$obj_file_full_path" "${PREFIX}/lib/gcc/"*/*/
+                    c_runtime_obj_files_found=1
                 fi
             done
+            if [ $c_runtime_obj_files_found -eq 1 ]; then
+                break
+            fi
         done
+
+        # Fallback to locating crtXXX.o with system gcc we if couldn't find it in usual places
+        if [ $c_runtime_obj_files_found -ne 1 ]; then
+            echo "Couldn't locate crtXXX.o in default library search paths. You may not have it " \
+                 "at all. It is usually packaged in libc6-dev/glibc-devel packages. We will try " \
+                 "to locate crtXXX.o with system installed gcc..."
+
+            SYSTEM_GCC=/usr/bin/gcc
+
+            if [ -e "${SYSTEM_GCC}" ]; then
+                for obj_file in $C_RUNTIME_OBJ_FILES; do
+                    obj_file_full_path="$($SYSTEM_GCC -print-file-name=$obj_file)"
+                    if [[ "$obj_file_full_path" != "$obj_file" ]]; then
+                        ln -s "$obj_file_full_path" "${PREFIX}/lib/gcc/"*/*/
+                        c_runtime_obj_files_found=1
+                    fi
+                done
+            else
+                echo "There is no $SYSTEM_GCC"
+            fi
+        fi
+
+        if [ $c_runtime_obj_files_found -ne 1 ]; then
+            >&2 echo "*** Can't install the gcc package unless your system has crtXXX.o. ***"
+            exit 1
+        fi
 
         #
         # Linux Portability Issue #3: Compiler needs to locate system headers
@@ -59,7 +90,7 @@ if [ "$(uname)" != "Darwin" ]; then
     
         # First create specs file from existing defaults
         SPECS_DIR=$(echo "${PREFIX}"/lib/gcc/*/*)
-        SPECS_FILE=${SPECS_DIR}/specs
+        SPECS_FILE="${SPECS_DIR}/specs"
         gcc -dumpspecs > "${SPECS_FILE}"
         
         # Now add extra include paths to the specs file, one at a time.
