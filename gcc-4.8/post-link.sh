@@ -1,13 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ "$(uname)" != "Darwin" ]; then
 
-    build_os_md5=( `md5sum ${PREFIX}/share/conda-gcc-build-machine-os-details` )
-    target_os_md5=( `cat /etc/*-release | md5sum` )
+    build_os_md5=( $(md5sum "${PREFIX}/share/conda-gcc-build-machine-os-details") )
+    target_os_md5=( $(cat /etc/*-release | md5sum) )
 
     # No need to make any portability fixes if 
     # we're deploying to the same OS we built with.
-    if [[ "${build_os_md5[0]}" == "${target_os_md5}" ]]; then
+    if [[ "${build_os_md5[0]}" == "${target_os_md5[0]}" ]]; then
         echo "gcc install OS matches gcc build OS: Skipping post-link portability fixes."
     else
 
@@ -20,12 +20,15 @@ if [ "$(uname)" != "Darwin" ]; then
         # Remove the headers that gcc "fixed" as part of the gcc build process.
         # They kill the gcc binary's portability to other systems,
         #   and shouldn't be necessary on ANSI-compliant systems anyway.
+        # See this informative writeup of the problem:
+        # http://ewontfix.com/12/
+        # 
         # More discussion can be found here:
         # https://groups.google.com/a/continuum.io/d/msg/conda/HwUazgD-hJ0/aofO0vD-MhcJ
-        while read x ; do
+        while read -r x ; do
           grep -q 'It has been auto-edited by fixincludes from' "${x}" \
                    && rm -f "${x}"
-        done < <(find ${PREFIX}/lib/gcc/*/*/include*/ -name '*.h')
+        done < <(find "${PREFIX}"/lib/gcc/*/*/include*/ -name '*.h')
     
         #
         # Linux Portability Issue #2: linker needs to locate crtXXX.o
@@ -37,11 +40,11 @@ if [ "$(uname)" != "Darwin" ]; then
         C_RUNTIME_OBJ_FILES="crt0.o crt1.o crt2.o crt3.o crti.o crtn.o"    
 
         for obj_file in $C_RUNTIME_OBJ_FILES; do
-            for libdir in `/sbin/ldconfig -v 2> /dev/null | grep '^/' | awk '{print $1}'`; do
+            for libdir in $(/sbin/ldconfig -v 2> /dev/null | grep '^/' | awk '{print $1}'); do
                 # Remove trailing ':'
                 libdir=${libdir:0:${#libdir}-1}
-                if [ -e $libdir/$obj_file ]; then
-                    ln -s $libdir/$obj_file ${PREFIX}/lib/gcc/*/*/
+                if [ -e "$libdir/$obj_file" ]; then
+                    ln -s "$libdir/$obj_file" "${PREFIX}"/lib/gcc/*/*/
                     break
                 fi
             done
@@ -55,9 +58,9 @@ if [ "$(uname)" != "Darwin" ]; then
         # We'll add these to the standard include path by providing a custom "specs file"
     
         # First create specs file from existing defaults
-        SPECS_DIR=`echo ${PREFIX}/lib/gcc/*/*`
+        SPECS_DIR=$(echo "${PREFIX}"/lib/gcc/*/*)
         SPECS_FILE=${SPECS_DIR}/specs
-        gcc -dumpspecs > ${SPECS_FILE}
+        gcc -dumpspecs > "${SPECS_FILE}"
         
         # Now add extra include paths to the specs file, one at a time.
         # (So far we only know of one: from Ubuntu.)
@@ -71,7 +74,7 @@ if [ "$(uname)" != "Darwin" ]; then
             # With these two lines:
             # *cpp:
             # ... yada yada ... -I${INCDIR}
-            sed -i ':a;N;$!ba;s|\(*cpp:\n[^\n]*\)|\1 -I'${INCDIR}'|g' ${SPECS_FILE}
+            sed -i ':a;N;$!ba;s|\(*cpp:\n[^\n]*\)|\1 -I'${INCDIR}'|g' "${SPECS_FILE}"
         done
     fi
 fi
@@ -84,7 +87,7 @@ fi
 ##       That way, if there are systems which can't use this gcc package for its
 ##       compiler (due to portability issues) can still use packages produced with it.
 
-workdir=`mktemp -d XXXXXXXXXX` && cd $workdir
+workdir=$(mktemp -d XXXXXXXXXX) && cd "$workdir"
 
 # Write test programs.
 cat > hello.c <<EOF
@@ -110,13 +113,13 @@ set +e
 # Compile.
 (
     set -e
-    ${PREFIX}/bin/gcc -o hello_c.out hello.c
-    ${PREFIX}/bin/g++ -o hello_cpp.out hello.cpp
+    "${PREFIX}/bin/gcc" -o hello_c.out hello.c
+    "${PREFIX}/bin/g++" -o hello_cpp.out hello.cpp
 )
 SUCCESS=$?
 if [ $SUCCESS -ne 0 ]; then
     echo "Installation failed: gcc is not able to compile a simple 'Hello, World' program."
-    cd .. && rm -r $workdir
+    cd .. && rm -r "$workdir"
     exit 1;
 fi
 
@@ -129,8 +132,8 @@ fi
 SUCCESS=$?
 if [ $SUCCESS -ne 0 ]; then
     echo "Installation failed: Compiled test program did not execute cleanly."
-    cd .. && rm -r $workdir
+    cd .. && rm -r "$workdir"
     exit 1;
 fi
 
-cd .. && rm -r $workdir
+cd .. && rm -r "$workdir"
