@@ -1,11 +1,11 @@
 package:
-  name: six
-  version: "1.9.0"
+  name: ws4py
+  version: "0.3.4"
 
 source:
-  fn: six-1.9.0.tar.gz
-  url: https://pypi.python.org/packages/source/s/six/six-1.9.0.tar.gz
-  md5: 476881ef4012262dfc8adc645ee786c4
+  fn: ws4py-0.3.4.tar.gz
+  url: https://pypi.python.org/packages/source/w/ws4py/ws4py-0.3.4.tar.gz
+  md5: 6b47e33cbd13f5c134b04f2a44a480ad
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -17,9 +17,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - six = six:main
+    # - ws4py = ws4py:main
     #
-    # Would create an entry point called six that calls six.main()
+    # Would create an entry point called ws4py that calls ws4py.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -37,7 +37,9 @@ requirements:
 test:
   # Python imports
   imports:
-    - six
+    - ws4py
+    - ws4py.client
+    - ws4py.server
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -52,9 +54,9 @@ test:
     # - nose
 
 about:
-  home: http://pypi.python.org/pypi/six/
-  license: MIT License
-  summary: 'Python 2 and 3 compatibility utilities'
+  home: https://github.com/Lawouach/WebSocket-for-Python
+  license: BSD License
+  summary: 'WebSocket client and server library for Python 2 and 3 as well as PyPy'
 
 # See
 # http://docs.continuum.io/conda/build.html for

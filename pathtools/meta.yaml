@@ -1,11 +1,11 @@
 package:
-  name: six
-  version: "1.9.0"
+  name: pathtools
+  version: "0.1.2"
 
 source:
-  fn: six-1.9.0.tar.gz
-  url: https://pypi.python.org/packages/source/s/six/six-1.9.0.tar.gz
-  md5: 476881ef4012262dfc8adc645ee786c4
+  fn: pathtools-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pathtools/pathtools-0.1.2.tar.gz
+  md5: 9a1af5c605768ea5804b03b734ff0f82
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -17,9 +17,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - six = six:main
+    # - pathtools = pathtools:main
     #
-    # Would create an entry point called six that calls six.main()
+    # Would create an entry point called pathtools that calls pathtools.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -37,7 +37,7 @@ requirements:
 test:
   # Python imports
   imports:
-    - six
+    - pathtools
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -52,9 +52,9 @@ test:
     # - nose
 
 about:
-  home: http://pypi.python.org/pypi/six/
+  home: http://github.com/gorakhargosh/pathtools
   license: MIT License
-  summary: 'Python 2 and 3 compatibility utilities'
+  summary: 'File system general utilities'
 
 # See
 # http://docs.continuum.io/conda/build.html for

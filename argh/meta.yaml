@@ -1,11 +1,11 @@
 package:
-  name: six
-  version: "1.9.0"
+  name: argh
+  version: "0.26.1"
 
 source:
-  fn: six-1.9.0.tar.gz
-  url: https://pypi.python.org/packages/source/s/six/six-1.9.0.tar.gz
-  md5: 476881ef4012262dfc8adc645ee786c4
+  fn: argh-0.26.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/argh/argh-0.26.1.tar.gz
+  md5: 5a97ce2ae74bbe3b63194906213f1184
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -17,9 +17,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - six = six:main
+    # - argh = argh:main
     #
-    # Would create an entry point called six that calls six.main()
+    # Would create an entry point called argh that calls argh.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -37,7 +37,7 @@ requirements:
 test:
   # Python imports
   imports:
-    - six
+    - argh
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -47,14 +47,15 @@ test:
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  # requires:
+  requires:
+    - pytest
     # Put any additional test requirements here.  For example
     # - nose
 
 about:
-  home: http://pypi.python.org/pypi/six/
-  license: MIT License
-  summary: 'Python 2 and 3 compatibility utilities'
+  home: http://github.com/neithere/argh/
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'An unobtrusive argparse wrapper with natural syntax'
 
 # See
 # http://docs.continuum.io/conda/build.html for

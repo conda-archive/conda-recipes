@@ -1,16 +1,17 @@
 package:
   name: nikola
-  version: "7.3.1.1"
+  version: "7.6.0"
 
 source:
-  fn: nikola-7.3.1.1.tar.gz
-  url: https://pypi.python.org/packages/source/N/Nikola/nikola-7.3.1.1.tar.gz
-  md5: aa6c698a5f6b4922d25056fb7e13eb79
+  fn: nikola-7.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/N/Nikola/nikola-7.6.0.tar.gz
+  md5: eabe0c1efd552fb9f9e6dc0f64270619
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
+  # noarch_python: True
   # preserve_egg_dir: True
   entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
@@ -24,54 +25,61 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 1
 
 requirements:
   build:
     - python
     - setuptools
-    - doit ==0.27.0
+    - doit ==0.28.0
     - pygments >=1.6
     - pillow >=2.4.0
-    - python-dateutil ==2.4.1
+    - python-dateutil ==2.4.2
     - docutils >=0.12
     - mako >=1.0.0
     - unidecode >=0.04.16
     - lxml >=3.3.5
-    - yapsy >=1.10.423
+    - yapsy ==1.11.223
     - pyrss2gen >=1.1
     - logbook >=0.7.0
     - blinker >=1.3
     - setuptools >=5.4.1
     - natsort >=3.5.2
-
+    - requests >=2.2.0
   run:
     - python
-    - doit ==0.27.0
+    - doit ==0.28.0
     - pygments >=1.6
     - pillow >=2.4.0
-    - python-dateutil ==2.4.1
+    - python-dateutil ==2.4.2
     - docutils >=0.12
     - mako >=1.0.0
     - unidecode >=0.04.16
     - lxml >=3.3.5
-    - yapsy >=1.10.423
+    - yapsy ==1.11.223
     - pyrss2gen >=1.1
     - logbook >=0.7.0
     - blinker >=1.3
     - setuptools >=5.4.1
     - natsort >=3.5.2
+    - requests >=2.2.0
+    - ws4py
+    - watchdog
 
 test:
   # Python imports
   imports:
     - nikola
+    - nikola.packages
+    - nikola.packages.tzlocal
     - nikola.plugins
     - nikola.plugins.command
+    - nikola.plugins.command.auto
+    - nikola.plugins.command.rst2html
     - nikola.plugins.compile
-    - nikola.plugins.compile.ipynb
     - nikola.plugins.compile.markdown
     - nikola.plugins.compile.rest
+    - nikola.plugins.loghandler
     - nikola.plugins.task
     - nikola.plugins.task.sitemap
     - nikola.plugins.template
@@ -85,12 +93,13 @@ test:
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  # requires:
+  requires:
+    - pytest
     # Put any additional test requirements here.  For example
     # - nose
 
 about:
-  home: http://getnikola.com
+  home: https://getnikola.com/
   license: MIT License
   summary: 'A modular, fast, simple, static website generator'
 

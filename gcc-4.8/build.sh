@@ -14,6 +14,7 @@ if [ "$(uname)" == "Darwin" ]; then
         --with-cloog=$PREFIX \
         --with-boot-ldflags=$LDFLAGS \
         --with-stage1-ldflags=$LDFLAGS \
+        --enable-checking=release \
         --disable-multilib
 else
     ./configure \
@@ -24,6 +25,7 @@ else
         --with-mpc=$PREFIX \
         --with-isl=$PREFIX \
         --with-cloog=$PREFIX \
+        --enable-checking=release \
         --disable-multilib
 fi
 make

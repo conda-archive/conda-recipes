@@ -1,26 +1,27 @@
 package:
-  name: six
-  version: "1.9.0"
+  name: watchdog
+  version: "0.8.3"
 
 source:
-  fn: six-1.9.0.tar.gz
-  url: https://pypi.python.org/packages/source/s/six/six-1.9.0.tar.gz
-  md5: 476881ef4012262dfc8adc645ee786c4
+  fn: watchdog-0.8.3.tar.gz
+  url: https://pypi.python.org/packages/source/w/watchdog/watchdog-0.8.3.tar.gz
+  md5: bb16926bccc98eae2a04535e4512ddf1
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
+build:
   # noarch_python: True
   # preserve_egg_dir: True
-  # entry_points:
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - six = six:main
+    # - watchdog = watchdog:main
     #
-    # Would create an entry point called six that calls six.main()
+    # Would create an entry point called watchdog that calls watchdog.main()
 
+    - watchmedo = watchdog.watchmedo:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -30,31 +31,44 @@ requirements:
   build:
     - python
     - setuptools
+    - pyyaml >=3.10
+    - argh >=0.24.1
+    - pathtools >=0.1.1
 
   run:
     - python
+    - pyyaml >=3.10
+    - argh >=0.24.1
+    - pathtools >=0.1.1
 
 test:
   # Python imports
   imports:
-    - six
+    - watchdog
+    - watchdog.observers
+    - watchdog.tricks
+    - watchdog.utils
 
-  # commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+    - watchmedo --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  # requires:
+  requires:
+    - pytest
+    - pytest-cov
+    - pytest-timeout >=0.3
     # Put any additional test requirements here.  For example
     # - nose
 
 about:
-  home: http://pypi.python.org/pypi/six/
-  license: MIT License
-  summary: 'Python 2 and 3 compatibility utilities'
+  home: http://github.com/gorakhargosh/watchdog
+  license: Apache Software License
+  summary: 'Filesystem events monitoring'
 
 # See
 # http://docs.continuum.io/conda/build.html for
