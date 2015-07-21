@@ -34,21 +34,19 @@ if [ "$(uname)" != "Darwin" ]; then
         # Locate the system's C-runtime object files and link them into the gcc 
         #  build so they are automatically on the gcc search path.
         # (The location of these files varies from one system to the next.)
-        C_RUNTIME_OBJ_FILES="crt0.o crt1.o crt2.o crt3.o crti.o crtn.o"
-        SYSTEM_GCC=/usr/bin/gcc
+        C_RUNTIME_OBJ_FILES="crt0.o crt1.o crt2.o crt3.o crti.o crtn.o"    
 
-        if [ ! -e ${SYSTEM_GCC} ]; then
-            >&2 echo "*** Can't install the gcc package unless your system also has gcc pre-installed to /usr/bin/gcc! ***"
-            exit 1
-        fi
-    
         for obj_file in $C_RUNTIME_OBJ_FILES; do
-            obj_file_full_path=`$SYSTEM_GCC -print-file-name=$obj_file`
-            if [[ $obj_file_full_path != $obj_file ]]; then
-                ln -s $obj_file_full_path ${PREFIX}/lib/gcc/*/*/
-            fi
+            for libdir in `/sbin/ldconfig -v 2> /dev/null | grep '^/' | awk '{print $1}'`; do
+                # Remove trailing ':'
+                libdir=${libdir:0:${#libdir}-1}
+                if [ -e $libdir/$obj_file ]; then
+                    ln -s $libdir/$obj_file ${PREFIX}/lib/gcc/*/*/
+                    break
+                fi
+            done
         done
-        
+
         #
         # Linux Portability Issue #3: Compiler needs to locate system headers
         #
