@@ -10,10 +10,10 @@ source:
 requirements:
   build:
     - python
-    - openblas-libs
+    - openblas
   run:
     - python
-    - openblas-libs
+    - openblas
 
 build:
   # The magic trick here is to add some tag (here 'o') at the end of
