@@ -30,13 +30,13 @@ requirements:
   build:
     - python
     - setuptools
-    - certifi
     - backports.ssl_match_hostname
+    - certifi
 
   run:
     - python
-    - certifi
     - backports.ssl_match_hostname
+    - certifi
 
 test:
   # Python imports
