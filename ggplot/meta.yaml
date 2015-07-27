@@ -30,6 +30,7 @@ requirements:
   build:
     - python
     - mock
+    - nose
     - setuptools
     - six
     - statsmodels
@@ -43,6 +44,7 @@ requirements:
   run:
     - python
     - mock
+    - nose
     - six
     - statsmodels
     - brewer2mpl
