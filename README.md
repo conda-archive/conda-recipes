@@ -7,7 +7,7 @@ Example recipes for the new conda build system.  Use
 You have to use conda >= 1.7
 [conda](https://github.com/continuumio/conda).
 
-See http://docs.continuum.io/conda/build.html for information on how to make a recipe,
+See http://conda.pydata.org/docs/building/build.html for information on how to make a recipe,
 or just look at the examples here.
 
 This project (`conda-recipes`) is in the public domain.   Note that this statement
