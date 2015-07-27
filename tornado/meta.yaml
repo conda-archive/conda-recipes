@@ -11,8 +11,9 @@ source:
    # - fix.patch
 
 # build:
-  #preserve_egg_dir: True
-  #entry_points:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -44,7 +45,7 @@ test:
     - tornado.platform
     - tornado.test
 
-  #commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -58,7 +59,7 @@ test:
 
 about:
   home: http://www.tornadoweb.org/
-  license:  Apache Software License
+  license: Apache Software License
   summary: 'Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed.'
 
 # See
