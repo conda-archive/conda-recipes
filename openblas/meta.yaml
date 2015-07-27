@@ -3,8 +3,8 @@ package:
   version: 0.2.14
 
 source:
-  fn: v0.2.14.tar.gz
-  url: http://github.com/xianyi/OpenBLAS/archive/v0.2.14.tar.gz
+  fn: openblas-0.2.14.tgz
+  url: http://github.com/xianyi/OpenBLAS/tarball/v0.2.14
   md5: 53cda7f420e1ba0ea55de536b24c9701
 
 build:
