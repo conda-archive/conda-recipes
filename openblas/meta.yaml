@@ -13,6 +13,13 @@ build:
   track_features:
     - openblas
 
+requirements:
+  build:
+    - gcc
+
+  run:
+    - libgcc
+
 about:
   home: http://www.openblas.net
   license: BSD
