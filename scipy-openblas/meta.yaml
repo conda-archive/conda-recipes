@@ -11,12 +11,12 @@ requirements:
   build:
    - python
    - numpy
-   - openblas-libs
+   - openblas
 
   run:
    - python
    - numpy
-   - openblas-libs
+   - openblas
 
 build:
  string: py{{py}}np{{np}}_0o
