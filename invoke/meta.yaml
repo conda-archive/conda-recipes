@@ -6,66 +6,33 @@ source:
   fn: invoke-0.10.1.tar.gz
   url: https://pypi.python.org/packages/source/i/invoke/invoke-0.10.1.tar.gz
   md5: 68b5858e2d03e2df00c35d3ae843b45e
-#  patches:
-   # List any patch files here
-   # - fix.patch
 
 build:
-  # noarch_python: True
-  # preserve_egg_dir: True
   entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - invoke = invoke:main
-    #
-    # Would create an entry point called invoke that calls invoke.main()
-
     - invoke = invoke.cli:main
     - inv = invoke.cli:main
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
 
 requirements:
   build:
     - python
     - setuptools
-
   run:
     - python
 
 test:
-  # Python imports
   imports:
     - invoke
     - invoke.parser
     - invoke.vendor
     - invoke.vendor.fluidity
     - invoke.vendor.lexicon
-    - invoke.vendor.yaml2
+    # - invoke.vendor.yaml2 # bug with relative imports
     - invoke.vendor.yaml3
-
   commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
-
     - invoke --help
     - inv --help
-
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any additional test requirements here.  For example
-    # - nose
 
 about:
   home: http://docs.pyinvoke.org
   license: BSD License
   summary: 'Pythonic task execution'
-
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml
