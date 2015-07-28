@@ -13,4 +13,4 @@ make || exit 1;
 mkdir -p ${PREFIX}/lib || exit 1;
 mkdir -p ${PREFIX}/include || exit 1;
 
-make install PREFIX="${PREFIX}" DESTDIR="${PREFIX}" || exit 1;
+make install PREFIX="${PREFIX}" DESTDIR="${PREFIX}" INCDIR="${PREFIX}/include" INSTALLDIR="${PREFIX}/lib" || exit 1;
