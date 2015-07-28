@@ -1,10 +1,10 @@
 package:
   name: r # [win]
   name: r-base # [not win]
-  version: 3.2.0
+  version: 3.2.1
 
 source:
-  fn: R-3.2.0.tar.gz
+  fn: R-3.2.1.tar.gz
   url: http://cran.cnr.berkeley.edu/src/base/R-3/R-3.2.0.tar.gz
   sha1: a6e9a6ca5ef186037a2f8ad2ccc8d7d0147640f1
   patches: # [not win]
