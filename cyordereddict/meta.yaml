@@ -54,7 +54,7 @@ test:
 about:
   home: https://github.com/shoyer/cyordereddict
   license: BSD License
-  summary: u"Cython implementation of Python's collections.OrderedDict"
+  summary: Cython implementation of Python's collections.OrderedDict
 
 # See
 # http://docs.continuum.io/conda/build.html for
