@@ -1,13 +1,12 @@
 diff --git Source/OpenEXR/IlmImf/ImfHuf.h Source/OpenEXR/IlmImf/ImfHuf.h
-index 5134dfd..6cd01b2 100644
+index fa89604..f9ff77b 100755
 --- Source/OpenEXR/IlmImf/ImfHuf.h
 +++ Source/OpenEXR/IlmImf/ImfHuf.h
-@@ -37,7 +37,7 @@
+@@ -37,6 +37,8 @@
  #ifndef INCLUDED_IMF_HUF_H
  #define INCLUDED_IMF_HUF_H
  
--
 +#include <string.h>
- //-----------------------------------------------------------------------------
- //
- //	16-bit Huffman compression and decompression:
++
+ #include "ImfExport.h"
+ #include "ImfNamespace.h"
