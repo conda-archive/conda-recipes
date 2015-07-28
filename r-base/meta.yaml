@@ -5,8 +5,8 @@ package:
 
 source:
   fn: R-3.2.1.tar.gz
-  url: http://cran.cnr.berkeley.edu/src/base/R-3/R-3.2.0.tar.gz
-  sha1: a6e9a6ca5ef186037a2f8ad2ccc8d7d0147640f1
+  url: http://cran.cnr.berkeley.edu/src/base/R-3/R-3.2.1.tar.gz
+  sha1: 74476c4d356f227bf0f17c8c21e63459861fbc93
   patches: # [not win]
     - share-make-vars.mk.patch # [not win]
     - mac-unicode.patch # [osx]
