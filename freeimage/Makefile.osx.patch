@@ -15,8 +15,8 @@ index c56dd9b..8a8cd3f 100755
 -COMPILERFLAGS = -Os -fexceptions -fvisibility=hidden -DNO_LCMS
 -COMPILERFLAGS_PPC = -arch ppc
 -COMPILERFLAGS_I386 = -arch i386
-+CC_X86_64 = gcc
-+CPP_X86_64 = g++
++CC_X86_64 = clang
++CPP_X86_64 = clang++
 +COMPILERFLAGS = -Os -fexceptions -fvisibility=hidden -DNO_LCMS -D__ANSI__ -DDISABLE_PERF_MEASUREMENT
  COMPILERFLAGS_X86_64 = -arch x86_64
  COMPILERPPFLAGS = -Wno-ctor-dtor-privacy
