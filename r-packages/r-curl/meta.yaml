@@ -33,12 +33,12 @@ requirements:
   build:
     - r
     - gcc # [not win]
-    - curl # [linux]
+    - curl # [not win]
 
   run:
     - r
     - libgcc # [not win]
-    - curl # [linux]
+    - curl # [not win]
 
 test:
   commands:
