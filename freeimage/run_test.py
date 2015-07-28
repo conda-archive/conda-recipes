@@ -24,8 +24,8 @@ else:
 lib_fname1 = os.path.join(sys.prefix, libdir, fname_base + '-' + lib_version + ext)
 lib_fname2 = os.path.join(sys.prefix, libdir, fname_base + ext)
 
-assert os.path.isfile(lib_fname1)
-assert os.path.isfile(lib_fname2)
+assert os.path.isfile(lib_fname1), "Could not find file: %s" % lib_fname1
+assert os.path.isfile(lib_fname2), "Could not find file: %s" % lib_fname2
 
 # Load library and get found version
 for fname in (lib_fname1, lib_fname2):
