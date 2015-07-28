@@ -18,7 +18,7 @@ LIPO = lipo
 TARGET = freeimage
 STATICLIB = lib$(TARGET).a
 SHAREDLIB = lib$(TARGET)-$(VER_MAJOR).$(VER_MINOR).dylib
-LIBNAME = lib$(TARGET).$(VER_MAJOR).dylib
+LIBNAME = lib$(TARGET).dylib
 HEADER = Source/FreeImage.h
 
 .SUFFIXES: .o
