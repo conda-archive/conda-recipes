@@ -17,6 +17,7 @@ source:
     patches:
         - ImfHuf.h.patch
         - dcraw_common.cpp.patch
+        - strcodec.h.patch
 
 build:
     number: 0
