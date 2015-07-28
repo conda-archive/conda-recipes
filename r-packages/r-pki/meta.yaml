@@ -2,13 +2,13 @@ package:
   name: r-pki
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.1_1"
+  version: "0.1_3"
 
 source:
-  fn: PKI_0.1-1.tar.gz
+  fn: PKI_0.1-3.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/PKI_0.1-1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/PKI/PKI_0.1-1.tar.gz
+    - http://cran.r-project.org/src/contrib/PKI_0.1-3.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/PKI/PKI_0.1-3.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -21,7 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -34,11 +34,13 @@ requirements:
     - r
     - r-base64enc
     - openssl
+    - gcc # [not win]
 
   run:
     - r
     - r-base64enc
     - openssl
+    - libgcc # [not win]
 
 test:
   commands:
@@ -54,28 +56,27 @@ test:
 
 about:
   home: http://www.rforge.net/PKI
-  license: GPL-2 | GPL-3
-  summary: This package provides PKI functions such as verifyig certificates, RSA encription
-    and signing which can be used to build PKI infrastructure and perform cryptographic
-    tasks.
+  license: GPL-2 | GPL-3 | file LICENSE
+  summary: PKI functions such as verifying certificates, RSA encription and signing which can
+    be used to build PKI infrastructure and perform cryptographic tasks.
 
 # The original CRAN metadata for this package was:
 
 # Package: PKI
-# Version: 0.1-1
-# Title: Public Key Infrastucture for R based on the X.509 standard
+# Version: 0.1-3
+# Title: Public Key Infrastucture for R Based on the X.509 Standard
 # Author: Simon Urbanek <Simon.Urbanek@r-project.org>
 # Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>
 # Depends: R (>= 2.9.0), base64enc
 # Enhances: gmp
-# Description: This package provides PKI functions such as verifyig certificates, RSA encription and signing which can be used to build PKI infrastructure and perform cryptographic tasks.
-# License: GPL-2 | GPL-3
+# Description: PKI functions such as verifying certificates, RSA encription and signing which can be used to build PKI infrastructure and perform cryptographic tasks.
+# License: GPL-2 | GPL-3 | file LICENSE
 # URL: http://www.rforge.net/PKI
 # SystemRequirements: OpenSSL library
-# Packaged: 2013-02-19 22:50:59 UTC; svnuser
 # NeedsCompilation: yes
+# Packaged: 2015-07-27 21:17:45 UTC; svnuser
 # Repository: CRAN
-# Date/Publication: 2013-02-20 07:45:20
+# Date/Publication: 2015-07-28 08:03:29
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -2,13 +2,13 @@ package:
   name: r-uuid
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.1_1"
+  version: "0.1_2"
 
 source:
-  fn: uuid_0.1-1.tar.gz
+  fn: uuid_0.1-2.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/uuid_0.1-1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/uuid/uuid_0.1-1.tar.gz
+    - http://cran.r-project.org/src/contrib/uuid_0.1-2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/uuid/uuid_0.1-2.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -21,7 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -32,9 +32,11 @@ build:
 requirements:
   build:
     - r
+    - gcc # [not win]
 
   run:
     - r
+    - libgcc # [not win]
 
 test:
   commands:
@@ -50,24 +52,24 @@ test:
 
 about:
   home: http://www.rforge.net/uuid
-  license: BSD
-  summary: Tools for generating and handling of UUIDs
+  license: MIT + file LICENSE
+  summary: Tools for generating and handling of UUIDs (Universally Unique Identifiers).
 
 # The original CRAN metadata for this package was:
 
 # Package: uuid
-# Version: 0.1-1
+# Version: 0.1-2
 # Title: Tools for generating and handling of UUIDs
 # Author: Simon Urbanek <Simon.Urbanek@r-project.org> (R package), Theodore Ts'o <tytso@thunk.org> (libuuid)
 # Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>
 # Depends: R (>= 2.9.0)
-# Description: Tools for generating and handling of UUIDs
-# License: BSD
+# Description: Tools for generating and handling of UUIDs (Universally Unique Identifiers).
+# License: MIT + file LICENSE
 # URL: http://www.rforge.net/uuid
-# Packaged: 2013-09-03 22:05:02 UTC; svnuser
 # NeedsCompilation: yes
+# Packaged: 2015-07-27 20:57:43 UTC; svnuser
 # Repository: CRAN
-# Date/Publication: 2013-09-04 07:27:35
+# Date/Publication: 2015-07-28 08:03:46
 
 # See
 # http://docs.continuum.io/conda/build.html for
