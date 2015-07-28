@@ -16,9 +16,6 @@ source:
 
     patches:
         - Makefile.osx.patch
-        - ImfHuf.h.patch
-        - dcraw_common.cpp.patch
-        - strcodec.h.patch
 
 build:
     number: 0
