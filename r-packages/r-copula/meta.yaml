@@ -9,6 +9,8 @@ source:
   url:
     - http://cran.r-project.org/src/contrib/copula_0.999-13.tar.gz
     - http://cran.r-project.org/src/contrib/Archive/copula/copula_0.999-13.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,7 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  number: 2
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -29,7 +31,7 @@ build:
 # Suggests: MASS, KernSmooth, sfsmisc, scatterplot3d, Rmpfr, bbmle, partitions, polynom, rugarch, colorspace, mvnormtest, tseries, zoo
 requirements:
   build:
-    - r >=2.15.2
+    - r
     - r-adgoftest
     - r-matrix # [not win]
     - r-gsl
@@ -37,9 +39,10 @@ requirements:
     - r-mvtnorm
     - r-pspline
     - r-stabledist >=0.6_4
+    - gcc # [not win]
 
   run:
-    - r >=2.15.2
+    - r
     - r-adgoftest
     - r-matrix # [not win]
     - r-gsl
@@ -47,6 +50,7 @@ requirements:
     - r-mvtnorm
     - r-pspline
     - r-stabledist >=0.6_4
+    - libgcc # [not win]
 
 test:
   commands:
