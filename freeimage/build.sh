@@ -6,7 +6,6 @@ export LDFLAGS="-L${PREFIX}/lib"
 cd ${SRC_DIR} || exit 1;
 
 LANG="C" sed -i.bak 's:-o root -g root::' Makefile* || exit 1;
-cp ${RECIPE_DIR}/Makefile.osx Makefile.osx
 
 make || exit 1;
 
