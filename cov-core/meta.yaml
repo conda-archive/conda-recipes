@@ -35,7 +35,7 @@ requirements:
     - python
     - coverage >=3.6
 
-test:
+# test:
   # Python imports
   # imports:
 
