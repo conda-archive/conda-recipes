@@ -7,7 +7,7 @@ source:
   url: http://www.netgull.com/gcc/releases/gcc-4.8.5/gcc-4.8.5.tar.bz2
   md5: 80d2c2982a3392bb0b89673ff136e223
 
-build:
+build:                                  # [not linux32]
   detect_binary_files_with_prefix: true # [not linux32]
 
 requirements:
