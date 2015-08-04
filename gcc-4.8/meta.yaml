@@ -1,15 +1,15 @@
 package:
   name: gcc
-  version: 4.8.4
+  version: 4.8.5
 
 source:
-  fn: gcc-4.8.4.tar.bz2
-  url: http://www.netgull.com/gcc/releases/gcc-4.8.4/gcc-4.8.4.tar.bz2
-  md5: 5a84a30839b2aca22a2d723de2a626ec
+  fn: gcc-4.8.5.tar.bz2
+  url: http://www.netgull.com/gcc/releases/gcc-4.8.5/gcc-4.8.5.tar.bz2
+  md5: 80d2c2982a3392bb0b89673ff136e223
 
 build:
   detect_binary_files_with_prefix: true # [not linux32]
-  number: 3
+  number: 4
 
 requirements:
   build:
