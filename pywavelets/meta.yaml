@@ -1,0 +1,26 @@
+package:
+  name: pywavelets
+  version: "0.3.0"
+
+source:
+  git_url: https://github.com/rgommers/pywt.git
+  git_rev: v0.3.0
+
+requirements:
+  build:
+    - python 2.6*|2.7*|>=3.3
+    - cython
+    - numpy >=1.6.2
+
+  run:
+    - python
+    - numpy
+
+test:
+  requires:
+    - nose
+
+about:
+  home: http://www.pybytes.com/pywavelets/
+  license: MIT
+  summary: "PyWavelets is a free Open Source wavelet transform software for Python programming language. It is written in Python, Cython and C for a mix of easy and powerful high-level interface and the best performance."
