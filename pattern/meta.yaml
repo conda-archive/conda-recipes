@@ -1,11 +1,11 @@
 package:
   name: pattern
-  version: 2.5
+  version: 2.6
 
 source:
-  fn: pattern-2.5.zip
-  url: http://www.clips.ua.ac.be/media/pattern-2.5.zip
-  #md5:
+  fn: pattern-2.6.zip
+  url: http://www.clips.ua.ac.be/media/pattern-2.6.zip
+  md5: 3327561b792720cd3744741c1c1b1939
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -27,6 +27,7 @@ source:
 requirements:
   build:
     - python
+    - setuptools
 
   run:
     - python
