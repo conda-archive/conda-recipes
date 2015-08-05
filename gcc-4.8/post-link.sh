@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$(uname)" == "Darwin" ]; then
-    # This post-link script is to fix portability problems 
+    # This post-link script is to fix portability problems
     # with our gcc package on Linux. It isn't needed on OSX.
     exit 0;
 fi
@@ -9,7 +9,7 @@ fi
 build_os_md5=( $(md5sum "${PREFIX}/share/conda-gcc-build-machine-os-details") )
 target_os_md5=( $(cat /etc/*-release | md5sum) )
 
-# No need to make any portability fixes if 
+# No need to make any portability fixes if
 # we're deploying to the same OS we built with.
 if [[ "${build_os_md5[0]}" == "${target_os_md5[0]}" ]]; then
     echo "gcc install OS matches gcc build OS: Skipping post-link portability fixes."
@@ -26,7 +26,7 @@ else
     #   and shouldn't be necessary on ANSI-compliant systems anyway.
     # See this informative writeup of the problem:
     # http://ewontfix.com/12/
-    # 
+    #
     # More discussion can be found here:
     # https://groups.google.com/a/continuum.io/d/msg/conda/HwUazgD-hJ0/aofO0vD-MhcJ
     while read -r x ; do
@@ -38,7 +38,7 @@ else
     # Linux Portability Issue #2: linker needs to locate crtXXX.o
     #
 
-    # Locate the system's C-runtime object files and link them into the gcc 
+    # Locate the system's C-runtime object files and link them into the gcc
     #  build so they are automatically on the gcc search path.
     # (The location of these files varies from one system to the next.)
     C_RUNTIME_OBJ_FILES="crt0.o crt1.o crt2.o crt3.o crti.o crtn.o"
@@ -96,11 +96,11 @@ else
     SPECS_DIR=$(echo "${PREFIX}"/lib/gcc/*/*)
     SPECS_FILE="${SPECS_DIR}/specs"
     gcc -dumpspecs > "${SPECS_FILE}"
-    
+
     # Now add extra include paths to the specs file, one at a time.
     # (So far we only know of one: from Ubuntu.)
-    EXTRA_SYSTEM_INCLUDE_DIRS="/usr/include/x86_64-linux-gnu"
-    
+    EXTRA_SYSTEM_INCLUDE_DIRS="/usr/include/x86_64-linux-gnu /usr/include/i686-linux-gnu /usr/include/i386-linux-gnu"
+
     for INCDIR in ${EXTRA_SYSTEM_INCLUDE_DIRS}; do
         # The following sed command will replace these two lines:
         # *cpp:
@@ -116,7 +116,7 @@ fi
 ## TEST: Here we verify that gcc can build a simple "Hello world" program for both C and C++.
 ##
 ## Note: This tests the gcc package's ability to actually function as a compiler.
-##       Therefore, packages should never depend on the gcc package as a 'run' dependency, 
+##       Therefore, packages should never depend on the gcc package as a 'run' dependency,
 ##       i.e. just for its packaged libraries (they should depend on 'libgcc' instead).
 ##       That way, if there are systems which can't use this gcc package for its
 ##       compiler (due to portability issues) can still use packages produced with it.
