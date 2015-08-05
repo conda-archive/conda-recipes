@@ -17,6 +17,10 @@ if [ "$(uname)" == "Darwin" ]; then
         --enable-checking=release \
         --disable-multilib
 else
+    # For reference during post-link.sh, record some
+    # details about the OS this binary was produced with.
+    mkdir -p "${PREFIX}/share"
+    cat /etc/*-release > "${PREFIX}/share/conda-gcc-build-machine-os-details"
     ./configure \
         --prefix="$PREFIX" \
         --libdir="$PREFIX"/lib \
@@ -34,8 +38,3 @@ rm "$PREFIX"/lib64
 
 # Link cc to gcc
 (cd "$PREFIX"/bin && ln -s gcc cc)
-
-# For reference during post-link.sh, record some
-# details about the OS this binary was produced with.
-mkdir -p "${PREFIX}/share"
-cat /etc/*-release > "${PREFIX}/share/conda-gcc-build-machine-os-details"
