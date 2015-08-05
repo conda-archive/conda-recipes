@@ -1,18 +1,19 @@
 package:
   name: tornado
-  version: !!str 4.0
+  version: "4.2.1"
 
 source:
-  fn: tornado-4.0.tar.gz
-  url: https://pypi.python.org/packages/source/t/tornado/tornado-4.0.tar.gz
-  md5: 8f4ccc60340b9cd3ae7af6ea7a1e4d0f
+  fn: tornado-4.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/tornado/tornado-4.2.1.tar.gz
+  md5: d523204389cfb70121bb69709f551b20
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
-  #preserve_egg_dir: True
-  #entry_points:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -29,13 +30,13 @@ requirements:
   build:
     - python
     - setuptools
-    - certifi
     - backports.ssl_match_hostname
+    - certifi
 
   run:
     - python
-    - certifi
     - backports.ssl_match_hostname
+    - certifi
 
 test:
   # Python imports
@@ -44,7 +45,7 @@ test:
     - tornado.platform
     - tornado.test
 
-  #commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -58,7 +59,7 @@ test:
 
 about:
   home: http://www.tornadoweb.org/
-  license:  Apache Software License
+  license: Apache Software License
   summary: 'Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed.'
 
 # See
