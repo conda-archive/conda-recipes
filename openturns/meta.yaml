@@ -1,19 +1,27 @@
 package:
   name: openturns
-  version: 1.5
+  version: 1.6rc1
 
 source:
-  fn: openturns-1.5.tar.bz2 # [not win]
-  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.5/openturns-1.5.tar.bz2 # [not win]
-  md5: 2622a0c0884014bf59cb6f34c48e7ff7 # [not win]
+  fn: openturns-1.6rc1.tar.bz2 # [not win]
+  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.6rc1/openturns-1.6rc1.tar.bz2 # [not win]
+  sha1: e424323b8c32e638cee0b3630fc3d531334bf419 # [not win]
 
-  fn: openturns-1.5-py2.7-i686.exe # [win32 and py27]
-  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.5/openturns-1.5-py2.7-i686.exe # [win32 and py27]
-  md5: 3a173aeaf95308f1338ff23817438d9e # [win32 and py27]
+  fn: openturns-1.6rc1-py2.7-i686.exe # [win32 and py27]
+  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.6rc1/openturns-1.6rc1-py2.7-i686.exe # [win32 and py27]
+  sha1: 125fa22022179f92369dd89349e5cb4c9044578b # [win32 and py27]
 
-  fn: openturns-1.5-py2.7-x86_64.exe # [win64 and py27]
-  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.5/openturns-1.5-py2.7-x86_64.exe # [win64 and py27]
-  md5: d57a5e37324e95043787fc25097279ea # [win64 and py27]
+  fn: openturns-1.6rc1-py2.7-x86_64.exe # [win64 and py27]
+  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.6rc1/openturns-1.6rc1-py2.7-x86_64.exe # [win64 and py27]
+  sha1: 7206dd3d72c3235753dc16bd49ffb27ffc827911 # [win64 and py27]
+
+  fn: openturns-1.6rc1-py3.4-i686.exe # [win32 and py34]
+  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.6rc1/openturns-1.6rc1-py3.4-i686.exe # [win32 and py34]
+  sha1: 7f124d373ac5f79202a35399b5553c296aa204ea # [win32 and py34]
+
+  fn: openturns-1.6rc1-py3.4-x86_64.exe # [win64 and py34]
+  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.6rc1/openturns-1.6rc1-py3.4-x86_64.exe # [win64 and py34]
+  sha1: 8843c8a9ad595985850d2f5ba4804d26e4f23702 # [win64 and py34]
 
 build:
   number: 0
