@@ -1,10 +1,10 @@
 package:
   name: libgcc
-  version: 4.8.4
+  version: 4.8.5
 
 requirements:
   build:
-    - gcc 4.8.4
+    - gcc 4.8.5
   run:
     # I'm unsure if these are all still needed but it doesn't hurt to have them.
     - gmp >=4.2
