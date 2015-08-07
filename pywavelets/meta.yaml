@@ -8,7 +8,7 @@ source:
 
 requirements:
   build:
-    - python 2.6*|2.7*|>=3.3
+    - python
     - cython
     - numpy >=1.6.2
 
