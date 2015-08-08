@@ -1,18 +1,16 @@
 package:
-  name: matplotlib
+  name: matplotlib-nogui
   version: 1.4.3
 
 source:
   fn: matplotlib-1.4.3.tar.gz
   url: https://downloads.sourceforge.net/project/matplotlib/matplotlib/matplotlib-1.4.3/matplotlib-1.4.3.tar.gz
   md5: 67a28a359af4919896d1ec74b6e6b3ce
-
   patches:
-    - setupext.patch
-    - cfg.patch
-    - cfg_qt4agg.patch    [not osx]
-    - rctmp_pyside.patch  [not osx]
-    - osx-tk.patch        [osx]
+    - disable_plugins.patch
+
+build:
+  number: 1
 
 requirements:
   build:
@@ -20,17 +18,19 @@ requirements:
     - setuptools
     - numpy
     - python-dateutil
+    - pkg-config          [unix]
     - freetype
     - nose
+    - mock
     - pyparsing
     - pytz
     - py2cairo            [linux and py2k]
     - tornado
     - libpng
     - zlib                [win]
-    - pyqt                [not osx]
   run:
     - python
+    - libgcc              [linux]
     - numpy
     - python-dateutil
     - freetype            [unix]
@@ -38,8 +38,10 @@ requirements:
     - pyparsing
     - py2cairo            [linux and py2k]
     - libpng              [unix]
-    - pyqt                [not osx]
 
 about:
   home: http://matplotlib.sourceforge.net/
   license: PSF-based (http://matplotlib.sourceforge.net/users/license.html)
+  summary: |
+    matplotlib package without any GUI dependencies (no Tk, no Qt, no GTK).
+    https://github.com/salford-systems/conda-recipes

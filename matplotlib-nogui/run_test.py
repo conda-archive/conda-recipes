@@ -12,14 +12,11 @@ import matplotlib._tri
 import matplotlib.backends._backend_agg
 import matplotlib.ft2font
 import matplotlib.ttconv
-import matplotlib.backends._tkagg
 
 import pylab
 import mpl_toolkits
 
 if int(os.getenv('GUI_TEST', 0)):
-    assert matplotlib.rcParams['backend.qt4'] == 'PyQt4'
-
     import matplotlib.pyplot as plt
     plt.ioff()
     plt.title('If this window displays, success: CLOSE TO CONTINUE TESTS')

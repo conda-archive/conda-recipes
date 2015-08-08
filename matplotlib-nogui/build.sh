@@ -1,23 +1,19 @@
 #!/bin/bash
 
-if [ `uname` == Linux ]; then
-    pushd $PREFIX/lib
-    ln -s libtcl8.5.so libtcl.so
-    ln -s libtk8.5.so libtk.so
-    popd
-fi
-
-if [ `uname` == Darwin ]; then
-    sed s:'#ifdef WITH_NEXT_FRAMEWORK':'#if 1':g -i src/_macosx.m
+if [[ "$(uname)" == "Darwin" ]]
+then
+    SED_INPLACE=("sed" "-i" "" "-E")
+    "${SED_INPLACE[@]}" "s:#ifdef WITH_NEXT_FRAMEWORK:#if 1:g" src/_macosx.m
+else
+    SED_INPLACE=("sed" "-i" "-r")
 fi
 
 cp setup.cfg.template setup.cfg || exit 1
 
-sed s:/usr/local:$PREFIX:g -i setupext.py
+"${SED_INPLACE[@]}" "s:/usr/local:$PREFIX:g" setupext.py
 
-$PYTHON setup.py install
+"$PYTHON" setup.py install
 
-rm -rf $SP_DIR/PySide
-rm -rf $SP_DIR/__pycache__
-rm -rf $PREFIX/bin/nose*
-
+rm -rf "$SP_DIR/PySide"
+rm -rf "$SP_DIR/__pycache__"
+rm -rf "$PREFIX/bin/nose"*
