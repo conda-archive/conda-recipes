@@ -8,36 +8,54 @@
 # Hints for OSX:
 # http://stackoverflow.com/questions/20108407/how-do-i-compile-boost-for-os-x-64b-platforms-with-stdlibc
 
-mkdir -vp ${PREFIX}/bin;
+set -x -e
 
-if [ `uname` == Darwin ]; then
+if [ "$(uname)" == "Darwin" ]; then
     MACOSX_VERSION_MIN=10.8
     CXXFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
     CXXFLAGS="${CXXFLAGS} -std=c++11 -stdlib=libc++"
     LINKFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN} "
-    LINKFLAGS="${LINKFLAGS} -stdlib=libc++ -L${LIBRARY_PATH}"
+    LINKFLAGS="${LINKFLAGS} -stdlib=libc++"
 
     ./bootstrap.sh \
-      --prefix="${PREFIX}/" --libdir="${PREFIX}/lib/" \
-      | tee bootstrap.log 2>&1
+        --prefix="${PREFIX}" \
+        | tee bootstrap.log 2>&1
 
     ./b2 \
-      variant=release address-model=64 architecture=x86 \
-      threading=multi link=shared toolset=clang include=${INCLUDE_PATH} \
-      cxxflags="${CXXFLAGS}" linkflags="${LINKFLAGS}" \
-      -j$(sysctl -n hw.ncpu) \
-      install | tee b2.log 2>&1
+        variant=release \
+        address-model=64 \
+        architecture=x86 \
+        threading=multi \
+        link=shared \
+        toolset=clang \
+        cxxflags="${CXXFLAGS}" \
+        linkflags="${LINKFLAGS}" \
+        -j"$(sysctl -n hw.ncpu)" \
+        install | tee b2.log 2>&1
 fi
 
-if [ `uname` == Linux ]; then
-  ./bootstrap.sh \
-    --prefix="${PREFIX}/" --libdir="${PREFIX}/lib/" \
-    | tee bootstrap.log 2>&1
+if [ "$(uname)" == "Linux" ]; then
+    ./bootstrap.sh \
+        --prefix="${PREFIX}" \
+        --with-python="${PYTHON}" \
+        --with-python-root="${PREFIX} : ${PREFIX}/include/python${PY_VER}m ${PREFIX}/include/python${PY_VER}" \
+        --with-icu="${PREFIX}" \
+        | tee bootstrap.log 2>&1
 
-  ./b2 \
-    variant=release address-model=${ARCH} architecture=x86 \
-    threading=multi link=shared toolset=gcc include=${INCLUDE_PATH} \
-    -j${CPU_COUNT} \
-    install | tee b2.log 2>&1
+    ./b2 -q -d0 \
+        variant=release \
+        address-model="${ARCH}" \
+        architecture=x86 \
+        debug-symbols=off \
+        threading=multi \
+        runtime-link=shared \
+        link=shared,static \
+        toolset=gcc \
+        python="${PY_VER}" \
+        cflags="-O3 -I${PREFIX}/include" \
+        cxxflags="-O3 -I${PREFIX}/include" \
+        linkflags="-L${PREFIX}/lib" \
+        --layout=system \
+        -j"${CPU_COUNT}" \
+        install | tee b2.log 2>&1
 fi
-
