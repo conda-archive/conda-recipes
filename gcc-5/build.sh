@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ln -s "$PREFIX/lib" "$PREFIX/lib64"
 
 if [ "$(uname)" == "Darwin" ]; then
@@ -32,9 +34,14 @@ else
         --enable-checking=release \
         --disable-multilib
 fi
-make -j$CPU_COUNT
+make -j"$CPU_COUNT"
 make install
 rm "$PREFIX"/lib64
+
+# Strip debug symbols from binaries to minify the package
+if [ "$(uname)" == "Linux" ]; then
+    find "$PREFIX" -perm /u=x,g=x,o=x -type f -exec strip --strip-debug {} \; || true
+fi
 
 # Link cc to gcc
 (cd "$PREFIX"/bin && ln -s gcc cc)
