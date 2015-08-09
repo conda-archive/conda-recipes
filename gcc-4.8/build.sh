@@ -52,13 +52,8 @@ else
         --disable-multilib
 fi
 make -j"$CPU_COUNT"
-make install
+make install-strip
 rm "$PREFIX"/lib64
-
-# Strip debug symbols from binaries to minify the package
-if [ "$(uname)" == "Linux" ]; then
-    find "$PREFIX" -perm /u=x,g=x,o=x -type f -exec strip --strip-debug {} \; || true
-fi
 
 # Link cc to gcc
 (cd "$PREFIX"/bin && ln -s gcc cc)
