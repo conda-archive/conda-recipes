@@ -4,15 +4,15 @@ package:
 
 build:
   detect_binary_files_with_prefix: true
-  number: 1
+  number: 2
 
 requirements:
   build:
     - atlas  # [linux]
-    - gcc    # [linux]
+    - gcc
   run:
     - atlas  # [linux]
-    - libgcc # [linux]
+    - libgcc
 
 source:
   fn: JAGS-3.4.0.tar.gz
