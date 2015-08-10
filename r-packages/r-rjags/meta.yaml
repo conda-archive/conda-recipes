@@ -23,6 +23,7 @@ build:
   # number. If you do not include this key, it defaults to 0.
   # number: 1
 
+  detect_binary_files_with_prefix: true
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
