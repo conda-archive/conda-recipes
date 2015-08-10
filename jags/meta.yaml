@@ -2,6 +2,10 @@ package:
   name: jags
   version: 3.4.0
 
+build:
+  detect_binary_files_with_prefix: true
+  number: 1
+
 requirements:
   build:
     - atlas  # [linux]
