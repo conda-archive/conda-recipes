@@ -1,0 +1,83 @@
+package:
+  name: r-rjags
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "3_15"
+
+source:
+  fn: rjags_3-15.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/rjags_3-15.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/rjags/rjags_3-15.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: tcltk
+requirements:
+  build:
+    - r
+    - r-coda >=0.13
+    - gcc # [not win]
+
+  run:
+    - r
+    - r-coda >=0.13
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('rjags')" # [not win]
+    - "\"%R%\" -e \"library('rjags')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://mcmc-jags.sourceforge.net
+  license: GPL (== 2)
+  summary: 'Interface to the JAGS MCMC library. '
+
+
+# The original CRAN metadata for this package was:
+
+# Package: rjags
+# Version: 3-15
+# Date: 2015-04-15
+# Title: Bayesian Graphical Models using MCMC
+# Authors@R: c(person("Martyn", "Plummer", role=c("aut","cre"), email="plummerm@iarc.fr"), person("Alexey", "Stukalov", role="ctb"), person("Matt", "Denwood", role="ctb"))
+# Depends: R (>= 2.14.0), coda (>= 0.13)
+# SystemRequirements: JAGS (>= 3.0.0) (see http://mcmc-jags.sourceforge.net)
+# Suggests: tcltk
+# Description: Interface to the JAGS MCMC library.
+# License: GPL (== 2)
+# URL: http://mcmc-jags.sourceforge.net
+# Packaged: 2015-04-15 14:53:21 UTC; martyn
+# Author: Martyn Plummer [aut, cre], Alexey Stukalov [ctb], Matt Denwood [ctb]
+# Maintainer: Martyn Plummer <plummerm@iarc.fr>
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2015-04-15 21:41:11
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

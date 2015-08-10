@@ -1,0 +1,106 @@
+package:
+  name: r-afex
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.13_145"
+
+source:
+  fn: afex_0.13-145.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/afex_0.13-145.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/afex/afex_0.13-145.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: ascii, xtable, parallel, plyr, optimx, nloptr
+requirements:
+  build:
+    - r
+    - r-matrix # [not win]
+    - r-car
+    - r-coin
+    - r-lme4 >=1.0.5
+    - r-pbkrtest >=0.3_6
+    - r-reshape2
+    - r-stringr
+
+  run:
+    - r
+    - r-matrix # [not win]
+    - r-car
+    - r-coin
+    - r-lme4 >=1.0.5
+    - r-pbkrtest >=0.3_6
+    - r-reshape2
+    - r-stringr
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('afex')" # [not win]
+    - "\"%R%\" -e \"library('afex')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://www.psychologie.uni-freiburg.de/Members/singmann/R/afex
+  license: GPL (>= 3)
+  summary: Provides convenience functions for analyzing factorial experiments using ANOVA or
+    mixed models. ez.glm(), aov.car(), and aov4() allow convenient specification of
+    between, within (i.e., repeated-measures), or mixed between-within (i.e., split-plot)
+    ANOVAs for data in long format (i.e., one observation per row), potentially aggregating
+    multiple observations per individual and cell of the design. mixed() fits a mixed
+    model using lme4::lmer() and computes p-values for all effects using either Kenward-Roger
+    approximation for degrees of freedom (LMM only), parametric bootstrap (LMMs and
+    GLMMs), or likelihood ratio tests (LMMs and GLMMs). afex uses type 3 sums of squares
+    as default (imitating commercial statistical software). compare.2.vectors() compares
+    two vectors using a variety of tests (t, Wilcoxon, and permutation).
+
+# The original CRAN metadata for this package was:
+
+# Package: afex
+# Type: Package
+# Title: Analysis of Factorial Experiments
+# Depends: R (>= 3.0.0), car, lme4 (>= 1.0.5), reshape2
+# Suggests: ascii, xtable, parallel, plyr, optimx, nloptr
+# Imports: stringr, coin, Matrix, pbkrtest (>= 0.3-6)
+# Description: Provides convenience functions for analyzing factorial experiments using ANOVA or mixed models. ez.glm(), aov.car(), and aov4() allow convenient specification of between, within (i.e., repeated-measures), or mixed between-within (i.e., split-plot) ANOVAs for data in long format (i.e., one observation per row), potentially aggregating multiple observations per individual and cell of the design. mixed() fits a mixed model using lme4::lmer() and computes p-values for all effects using either Kenward-Roger approximation for degrees of freedom (LMM only), parametric bootstrap (LMMs and GLMMs), or likelihood ratio tests (LMMs and GLMMs). afex uses type 3 sums of squares as default (imitating commercial statistical software). compare.2.vectors() compares two vectors using a variety of tests (t, Wilcoxon, and permutation).
+# URL: http://www.psychologie.uni-freiburg.de/Members/singmann/R/afex
+# License: GPL (>= 3)
+# Encoding: latin1
+# Authors@R: c(person(given="Henrik", family="Singmann", role=c("aut", "cre"), email="singmann+afex@gmail.com"), person(given="Ben", family="Bolker", role=c("aut")), person(given="Jake", family="Westfall", role=c("aut")), person(given="Søren", family="Højsgaard", role=c("ctb")), person(given="John", family="Fox", role=c("ctb")), person(given="Michael A.", family="Lawrence", role=c("ctb")), person(given="Ulf", family="Mertens", role=c("ctb")) )
+# Version: 0.13-145
+# Date: 2015-01-09
+# Author: Henrik Singmann [aut, cre], Ben Bolker [aut], Jake Westfall [aut], Søren Højsgaard [ctb], John Fox [ctb], Michael A. Lawrence [ctb], Ulf Mertens [ctb]
+# Maintainer: Henrik Singmann <singmann+afex@gmail.com>
+# Repository: CRAN
+# Repository/R-Forge/Project: afe
+# Repository/R-Forge/Revision: 145
+# Repository/R-Forge/DateTimeStamp: 2015-01-09 16:17:28
+# Date/Publication: 2015-01-12 22:52:29
+# Packaged: 2015-01-09 16:25:31 UTC; rforge
+# NeedsCompilation: no
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
