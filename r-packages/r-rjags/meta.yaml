@@ -34,11 +34,13 @@ requirements:
     - r
     - r-coda >=0.13
     - gcc # [not win]
+    - jags
 
   run:
     - r
     - r-coda >=0.13
     - libgcc # [not win]
+    - jags
 
 test:
   commands:
