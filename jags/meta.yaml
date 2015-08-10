@@ -2,6 +2,12 @@ package:
   name: jags
   version: 3.4.0
 
+requirements:
+  build:
+    - atlas # [linux]
+  run:
+    - atlas # [linux]
+
 source:
   fn: JAGS-3.4.0.tar.gz
   url: http://sourceforge.net/projects/mcmc-jags/files/JAGS/3.x/Source/JAGS-3.4.0.tar.gz/download
