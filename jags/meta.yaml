@@ -4,9 +4,11 @@ package:
 
 requirements:
   build:
-    - atlas # [linux]
+    - atlas  # [linux]
+    - gcc    # [linux]
   run:
-    - atlas # [linux]
+    - atlas  # [linux]
+    - libgcc # [linux]
 
 source:
   fn: JAGS-3.4.0.tar.gz
