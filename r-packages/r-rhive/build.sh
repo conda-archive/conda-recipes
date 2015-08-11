@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd pkg
+cd RHive
 
 # R refuses to build packages that mark themselves as Priority: Recommended
 mv DESCRIPTION DESCRIPTION.old
