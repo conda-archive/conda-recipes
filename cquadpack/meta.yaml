@@ -1,0 +1,11 @@
+package:
+  name: cquadpack
+  version: 1.0
+
+source:
+  git_url: git@github.com:ESSS/cquadpack.git
+
+requirements:
+  build:
+    - gcc # [linux]
+    - cmake
