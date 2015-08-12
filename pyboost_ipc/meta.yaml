@@ -1,0 +1,21 @@
+package:
+  name: pyboost_ipc
+  version: 0.1
+
+source:
+  git_url: git@github.com:ESSS/pyboost_ipc.git
+
+requirements:
+  build:
+    - python
+    - libpython
+    - gcc [linux]
+    - boost
+    - cmake
+  run:
+    - python
+    - boost
+
+test:
+  imports:
+    - pyboost_ipc

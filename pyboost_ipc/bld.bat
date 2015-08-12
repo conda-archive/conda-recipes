@@ -1,0 +1,16 @@
+if "%CMAKE_GENERATOR%" == "" (
+    echo You should set the variable CMAKE_GENERATOR before building
+    exit 1
+)
+
+mkdir build
+cd build
+
+REM Configure step
+cmake -G "%CMAKE_GENERATOR%" -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% -DCMAKE_INSTALL_PREFIX:PATH=%LIBRARY_PREFIX% -DBUILD_SHARED_LIBS=True %SRC_DIR%
+if errorlevel 1 exit 1
+
+REM Build step
+cmake --build . --config Release --target INSTALL
+REM cmake --build . --config Debug --target INSTALL
+if errorlevel 1 exit 1
