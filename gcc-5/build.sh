@@ -3,6 +3,7 @@
 ln -s "$PREFIX/lib" "$PREFIX/lib64"
 
 if [ "$(uname)" == "Darwin" ]; then
+    export DYLD_LIBRARY_PATH="$PREFIX/lib/"
     export LDFLAGS="-Wl,-headerpad_max_install_names"
     export BOOT_LDFLAGS="-Wl,-headerpad_max_install_names"
 
@@ -14,8 +15,8 @@ if [ "$(uname)" == "Darwin" ]; then
         --with-mpc="$PREFIX" \
         --with-isl="$PREFIX" \
         --with-cloog="$PREFIX" \
-        --with-boot-ldflags=$LDFLAGS \
-        --with-stage1-ldflags=$LDFLAGS \
+        --with-boot-ldflags="$LDFLAGS" \
+        --with-stage1-ldflags="$LDFLAGS" \
         --enable-checking=release \
         --disable-multilib
 else
@@ -25,7 +26,7 @@ else
     cat /etc/*-release > "${PREFIX}/share/conda-gcc-build-machine-os-details"
     ./configure \
         --prefix="$PREFIX" \
-        --libdir="$PREFIX"/lib \
+        --libdir="$PREFIX/lib" \
         --with-gmp="$PREFIX" \
         --with-mpfr="$PREFIX" \
         --with-mpc="$PREFIX" \
@@ -36,7 +37,7 @@ else
 fi
 make -j"$CPU_COUNT"
 make install-strip
-rm "$PREFIX"/lib64
+rm "$PREFIX/lib64"
 
-# Link cc to gcc
-(cd "$PREFIX"/bin && ln -s gcc cc)
+# Link cc to gcc if cc doesn't exist
+[ -e "$PREFIX/bin/cc" ] || ln -s "gcc" "$PREFIX/bin/cc"
