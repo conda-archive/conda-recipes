@@ -4,7 +4,7 @@ package:
 
 requirements:
   build:
-    - gcc 5.2.0
+    - gcc-5 5.2.0
 
 build:
   number: 0
