@@ -1,0 +1,28 @@
+package:
+  name: pylibtiff
+  version: 0.4.0
+
+source:
+  fn: pylibtiff.tar.gz
+  url: https://pypi.python.org/packages/source/l/libtiff/libtiff-0.4.0.tar.gz
+  md5: f7cad14620548b21bf05a276a040f487
+
+requirements:
+  build:
+    - python
+    - numpy
+    - libtiff
+  run:
+    - python
+    - numpy
+    - libtiff
+
+test:
+  requires:
+    - nose
+  imports:
+    - libtiff
+
+about:
+  home: https://github.com/pearu/pylibtiff
+  license: BSD
