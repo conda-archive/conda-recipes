@@ -1,0 +1,26 @@
+diff --git libtiff/libtiff_ctypes.py libtiff/libtiff_ctypes.py
+index e4d48bf..fd02a32 100644
+--- libtiff/libtiff_ctypes.py
++++ libtiff/libtiff_ctypes.py
+@@ -37,10 +37,18 @@ else:
+         lib = '../Frameworks/libtiff.dylib'
+     else:
+         lib = ctypes.util.find_library('tiff')
+-if lib is None:
+-    raise ImportError('Failed to find TIFF library. Make sure that libtiff is installed and its location is listed in PATH|LD_LIBRARY_PATH|..')
+ 
+-libtiff = ctypes.cdll.LoadLibrary(lib)
++libtiff = None if lib is None else ctypes.cdll.LoadLibrary(lib)
++if libtiff is None:
++    try:
++        if sys.platform == "darwin":
++            libtiff = ctypes.cdll.LoadLibrary("libtiff.dylib")
++        elif "win" in sys.platform:
++            libtiff = ctypes.cdll.LoadLibrary("libtiff.dll")
++        else:
++            libtiff = ctypes.cdll.LoadLibrary("libtiff.so")
++    except OSError:
++        raise ImportError('Failed to find TIFF library. Make sure that libtiff is installed and its location is listed in PATH|LD_LIBRARY_PATH|..')
+ 
+ libtiff.TIFFGetVersion.restype = ctypes.c_char_p
+ libtiff.TIFFGetVersion.argtypes = []
