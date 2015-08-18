@@ -6,6 +6,8 @@ source:
   fn: pylibtiff.tar.gz
   url: https://pypi.python.org/packages/source/l/libtiff/libtiff-0.4.0.tar.gz
   md5: f7cad14620548b21bf05a276a040f487
+  patches:
+    - libtiff_ctypes.py.patch
 
 requirements:
   build:
