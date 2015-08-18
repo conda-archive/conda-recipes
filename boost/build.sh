@@ -22,6 +22,8 @@ if [ "$(uname)" == "Darwin" ]; then
 
     ./bootstrap.sh \
         --prefix="${PREFIX}" \
+        --with-python="${PYTHON}" \
+        --with-icu="${PREFIX}" \
         | tee bootstrap.log 2>&1
 
     ./b2 -q \
