@@ -8,7 +8,7 @@ source:
 requirements:
   build:
     - python
-    - libpython
+    - libpython [win]
     - gcc [linux]
     - boost
     - cmake
