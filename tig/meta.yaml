@@ -13,7 +13,7 @@ requirements:
     - gcc
   run:
     - ncurses
-    - gcc
+    - libgcc
 
 test:
   commands:
