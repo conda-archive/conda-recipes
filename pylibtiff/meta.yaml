@@ -19,6 +19,9 @@ requirements:
     - numpy
     - libtiff
 
+build:
+  number: 1
+
 test:
   requires:
     - nose
