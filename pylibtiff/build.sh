@@ -2,6 +2,13 @@
 
 set -e
 
+if [[ `uname` == 'Darwin' ]]; then
+    DYLIB_EXT=dylib
+else
+    DYLIB_EXT=so
+fi
+
+
 python setup.py install --prefix=$PREFIX
 ESC_PREFIX=$(python -c "print(\"${PREFIX}\".replace(\"/\", \"\\/\"))")
 NEWLINE=$'\n'
