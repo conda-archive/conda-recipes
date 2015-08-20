@@ -1,0 +1,7 @@
+package:
+  name: openblas
+  version: 1.0
+
+build:
+  track_features:
+   - openblas
