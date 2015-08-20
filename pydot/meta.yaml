@@ -1,0 +1,51 @@
+package:
+  name: pydot
+  version: !!str 1.0.28
+
+source:
+  fn: pydot-1.0.28.tar.gz
+  url: http://pydot.googlecode.com/files/pydot-1.0.28.tar.gz
+  md5: c0a7a027176a62c412fd0f54951af692
+  patches:
+   # List any patch files here
+    - build.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pydot = pydot:main
+    #
+    # Would create an entry point called pydot that calls pydot.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+requirements:
+  build:
+    - python
+    - pyparsing
+    - setuptools
+
+  run:
+    - python
+    - pyparsing
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - pydot
+
+about:
+  home: http://code.google.com/p/pydot/
+  license: MIT License
+  summary: "Python interface to Graphviz's Dot"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
