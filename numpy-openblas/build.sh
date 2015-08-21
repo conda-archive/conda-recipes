@@ -1,10 +1,7 @@
 #!/bin/bash
 
-sed -e "s,@PREFIX@,$PREFIX," <$RECIPE_DIR/site-openblas.cfg >site.cfg
 
-if [ ! -f site.cfg ]; then
-    echo "ERROR: *** site.cfg missing ***"
-    exit 1
-fi
+unset LDFLAGS
 
 $PYTHON setup.py install
+
