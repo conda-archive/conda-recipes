@@ -8,7 +8,7 @@ source:
   md5: d340dc3d8a03f549ae29488d737b9c30
 
 build:
-  number: 1
+  number: 2
 
   track_features:
     - openblas
