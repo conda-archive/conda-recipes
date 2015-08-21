@@ -1,6 +1,6 @@
 #!/bin/bash
 
-make NO_AFFINITY=1 NUM_THREADS=1 DYNAMIC_ARCH=1 PREFIX=$PREFIX -j${CPU_COUNT}
+make DYNAMIC_ARCH=1 BINARY=${ARCH} NO_LAPACK=0 NO_AFFINITY=1 NUM_THREADS=1 -j${CPU_COUNT}
 make install PREFIX=$PREFIX
 
 ln -fs $PREFIX/lib/libopenblas.a $PREFIX/lib/libblas.a
