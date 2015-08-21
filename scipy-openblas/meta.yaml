@@ -24,5 +24,5 @@ build:
   - openblas
 
 about:
- home: http://www.scipy.org
- license: BSD
+  home: https://www.scipy.org
+  license: BSD
