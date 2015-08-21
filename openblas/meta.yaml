@@ -18,5 +18,5 @@ requirements:
     - libgcc
 
 about:
-  home: http://www.openblas.net
+  home: http://xianyi.github.io/OpenBLAS/
   license: BSD
