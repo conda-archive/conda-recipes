@@ -14,6 +14,7 @@ requirements:
     - numpy
 
   run:
+    - libgcc
     - python
     - openblas
     - numpy
