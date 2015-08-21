@@ -1,11 +1,11 @@
 package:
   name: scipy
-  version: 0.15.1
+  version: 0.16.0
 
 source:
-  fn: scipy-0.15.1.tar.gz
-  url: https://pypi.python.org/packages/source/s/scipy/scipy-0.15.1.tar.gz
-  md5: be56cd8e60591d6332aac792a5880110
+  url: https://pypi.python.org/packages/source/s/scipy/scipy-0.16.0.tar.gz
+  fn: scipy-0.16.0.tar.gz
+  md5: eb95dda0f36cc3096673993a350cde77
 
 requirements:
   build:
@@ -20,7 +20,6 @@ requirements:
     - numpy
 
 build:
-  number: 1
   string: py{{py}}np{{np}}_0o
   features:
     - openblas
