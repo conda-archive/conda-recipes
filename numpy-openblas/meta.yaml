@@ -35,5 +35,5 @@ build:
     - openblas
 
 about:
-  home: http://numpy.scipy.org/
+  home: https://www.numpy.org
   license: BSD
