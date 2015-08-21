@@ -29,6 +29,7 @@ build:
   # Also, this doesn't seem to be enough to trigger automatic
   # reinstall of the packages in case the openblas package gets added
   # or removed.  I have no idea what is required for that.
+  number: 1
 
   string: py{{py}}_0o
   features:
