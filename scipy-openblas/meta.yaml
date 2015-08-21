@@ -9,14 +9,14 @@ source:
 
 requirements:
   build:
-   - python
-   - numpy
-   - openblas
+    - python
+    - openblas
+    - numpy
 
   run:
-   - python
-   - numpy
-   - openblas
+    - python
+    - openblas
+    - numpy
 
 build:
  string: py{{py}}np{{np}}_0o
