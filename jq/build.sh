@@ -4,5 +4,5 @@ chmod +x configure
 
 ./configure --prefix=$PREFIX 
 
-make -j
+make -j${CPU_COUNT}
 make install
