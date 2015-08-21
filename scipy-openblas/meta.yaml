@@ -20,9 +20,9 @@ requirements:
     - numpy
 
 build:
- string: py{{py}}np{{np}}_0o
- features:
-  - openblas
+  string: py{{py}}np{{np}}_0o
+  features:
+    - openblas
 
 about:
   home: https://www.scipy.org
