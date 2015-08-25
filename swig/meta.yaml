@@ -1,11 +1,11 @@
 package:
   name: swig
-  version: 3.0.6
+  version: 3.0.7
 
 source:
-  fn: swig-3.0.6.tar.gz
-  url: http://prdownloads.sourceforge.net/swig/swig-3.0.6.tar.gz
-  md5: df43ae271642bcfa61c1e59f970f9963
+  fn: swig-3.0.7.tar.gz
+  url: http://prdownloads.sourceforge.net/swig/swig-3.0.7.tar.gz
+  md5: 7fff46c84b8c630ede5b0f0827e3d90a
 
 build:
   detect_binary_files_with_prefix: True

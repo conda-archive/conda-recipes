@@ -1,11 +1,11 @@
 package:
   name: python
-  version: 3.5.0b2
+  version: 3.5.0b4
 
 source:
-  fn: Python-3.5.0b2.tar.xz
-  url: https://www.python.org/ftp/python/3.5.0/Python-3.5.0b2.tar.xz
-  md5: ef12dce3770032138d83f6159e7d5c3a
+  fn: Python-3.5.0b4.tar.xz
+  url: https://www.python.org/ftp/python/3.5.0/Python-3.5.0b4.tar.xz
+  md5: 17a44df9ec94cfb00cad7c57256d4208
 
 build:
   no_link: bin/python

@@ -1,0 +1,40 @@
+package:
+  name: numpy
+  version: 1.9.2
+
+source:
+  fn: numpy-1.9.2.tar.gz
+  url: https://pypi.python.org/packages/source/n/numpy/numpy-1.9.2.tar.gz
+  md5: a1ed53432dbcd256398898d35bc8e645
+
+requirements:
+  build:
+    - python
+    - openblas
+
+  run:
+    - python
+    - openblas
+
+build:
+  # The magic trick here is to add some tag (here 'o') at the end of
+  # the build string to differentiate the pacakge from others.  This
+  # way we can have multiple instances of the same "version" with
+  # diffenrent dependencies and conda will select the proper one
+  # according to the current features.
+  #
+  # Unfortunately this means that we have to recreate the whole build
+  # string using a manual template for the usual py<ver> tag.
+  #
+  # Also, this doesn't seem to be enough to trigger automatic
+  # reinstall of the packages in case the openblas package gets added
+  # or removed.  I have no idea what is required for that.
+  number: 1
+
+  string: py{{py}}_0o
+  features:
+    - openblas
+
+about:
+  home: https://www.numpy.org
+  license: BSD
