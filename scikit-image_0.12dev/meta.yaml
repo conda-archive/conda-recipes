@@ -7,7 +7,7 @@ source:
   git_tag: fasthog
 
 build:
-  number: 2 [win]
+  number: 5 [win]
 
 requirements:
   build:

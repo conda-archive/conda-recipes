@@ -1,16 +1,17 @@
 package:
   name: flower
-  version: "0.7.3"
+  version: "0.8.3"
 
 source:
-  fn: flower-0.7.3.tar.gz
-  url: https://pypi.python.org/packages/source/f/flower/flower-0.7.3.tar.gz
-  md5: 7c095228ee375fdbbeb5f3d37e033d49
+  fn: flower-0.8.3.tar.gz
+  url: https://pypi.python.org/packages/source/f/flower/flower-0.8.3.tar.gz
+  md5: 09d4dec422ed6c4a10584b5fce6008d6
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
+  # noarch_python: True
   preserve_egg_dir: True
   entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
@@ -30,14 +31,20 @@ requirements:
   build:
     - python
     - setuptools
-    - celery
-    - tornado >=3.2.0
+    - celery >=2.5.0
+    - tornado >=4.0.0
+    - babel
+    - pytz
+    - futures
 
   run:
     - python
     - setuptools
-    - celery
-    - tornado >=3.2.0
+    - celery >=2.5.0
+    - tornado >=4.0.0
+    - babel
+    - pytz
+    - futures
 
 test:
   # Python imports
@@ -45,6 +52,7 @@ test:
     - flower
     - flower.api
     - flower.utils
+    - flower.utils.backports
     - flower.views
 
   commands:
@@ -56,7 +64,8 @@ test:
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  # requires:
+  requires:
+    - mock
     # Put any additional test requirements here.  For example
     # - nose
 
