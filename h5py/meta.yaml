@@ -17,6 +17,7 @@ source:
 
 requirements:
   build:
+    - python
     - numpy
     - hdf5         [unix]
     - cython       [unix]
@@ -27,5 +28,5 @@ requirements:
     - unittest2    [py26]
 
 about:
-  home: http://code.google.com/p/h5py/
+  home: http://www.h5py.org/
   license: New BSD (http://opensource.org/licenses/bsd-license.php)

@@ -1,16 +1,17 @@
 package:
   name: prompt_toolkit
-  version: "0.31"
+  version: "0.42"
 
 source:
-  fn: prompt_toolkit-0.31.tar.gz
-  url: https://pypi.python.org/packages/source/p/prompt_toolkit/prompt_toolkit-0.31.tar.gz
-  md5: 56c553ba7a07c3f86af14faac26b85fd
+  fn: prompt_toolkit-0.42.tar.gz
+  url: https://pypi.python.org/packages/source/p/prompt_toolkit/prompt_toolkit-0.42.tar.gz
+  md5: 9f690402394e0d6db52773c0a26bcf30
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
+  # noarch_python: True
   # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
@@ -30,13 +31,13 @@ requirements:
     - python
     - setuptools
     - pygments
-    - six >=1.8.0
+    - six >=1.9.0
     - wcwidth
 
   run:
     - python
     - pygments
-    - six >=1.8.0
+    - six >=1.9.0
     - wcwidth
 
 test:
@@ -46,7 +47,10 @@ test:
     - prompt_toolkit.contrib
     - prompt_toolkit.contrib.completers
     - prompt_toolkit.contrib.regular_languages
+    - prompt_toolkit.contrib.telnet
+    - prompt_toolkit.contrib.validators
     - prompt_toolkit.eventloop
+    - prompt_toolkit.filters
     - prompt_toolkit.key_binding
     - prompt_toolkit.key_binding.bindings
     - prompt_toolkit.layout

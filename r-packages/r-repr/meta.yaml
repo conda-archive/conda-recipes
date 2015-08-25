@@ -2,13 +2,13 @@ package:
   name: r-repr
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.1"
+  version: "0.3"
 
 source:
 
 
-  git_url: https://github.com/IRkernel/repr
-  git_tag: 0.1
+  git_url: https://github.com/IRkernel/repr/
+  git_tag: 0.3
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -55,7 +55,7 @@ about:
 
 # Package: repr
 # Title: Serializable representations
-# Version: 0.1
+# Version: 0.3
 # Authors@R: 'Philipp A. <flying-sheep@web.de> [aut, cre]'
 # Description: String and binary representations of objects for several formats / mime types.
 # Depends: R (>= 3.0.1)
@@ -63,7 +63,7 @@ about:
 # License: GPL-3
 # LazyData: true
 # Encoding: UTF-8
-# Collate: 'utils.r' 'function.r' 'generics.r' 'help_files_with_topic.r' 'list.r' 'matrix_df.r' 'options.r' 'package.r' 'recordedplot.r' 'vector.r'
+# Collate: 'generics.r' 'options.r' 'package.r' 'utils.r' 'repr_function.r' 'repr_help_files_with_topic.r' 'repr_list.r' 'repr_matrix_df.r' 'repr_recordedplot.r' 'repr_vector.r'
 
 # See
 # http://docs.continuum.io/conda/build.html for

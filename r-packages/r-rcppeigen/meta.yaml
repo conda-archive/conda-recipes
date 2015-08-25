@@ -2,13 +2,15 @@ package:
   name: r-rcppeigen
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.3.2.3.0"
+  version: "0.3.2.5.0"
 
 source:
-  fn: RcppEigen_0.3.2.3.0.tar.gz
+  fn: RcppEigen_0.3.2.5.0.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/RcppEigen_0.3.2.3.0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/RcppEigen/RcppEigen_0.3.2.3.0.tar.gz
+    - http://cran.r-project.org/src/contrib/RcppEigen_0.3.2.5.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/RcppEigen/RcppEigen_0.3.2.5.0.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -26,17 +28,19 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: inline, RUnit
+# Suggests: inline, RUnit, pkgKitten
 requirements:
   build:
-    - r >=2.15.1
+    - r
     - r-matrix >=1.1_0 # [not win]
     - r-rcpp >=0.11.0
+    - gcc # [not win]
 
   run:
-    - r >=2.15.1
+    - r
     - r-matrix >=1.1_0 # [not win]
     - r-rcpp >=0.11.0
+    - libgcc # [not win]
 
 test:
   commands:
@@ -53,41 +57,42 @@ test:
 about:
   home: http://eigen.tuxfamily.org
   license: GPL (>= 2) | file LICENSE
-  summary: 'R and Eigen integration using Rcpp. Eigen is a C++ template library for linear algebra:
-    matrices, vectors, numerical solvers and related algorithms.  It supports dense
-    and sparse matrices on integer, floating point and complex numbers, decompositions
-    of such matrices, and solutions of linear systems. Its performance on many algorithms
-    is comparable with some of the best implementations based on Lapack and level-3
-    BLAS. . The RcppEigen package includes the header files from the Eigen C++ template
-    library (currently version 3.2.3). Thus users do not need to install Eigen itself
-    in order to use RcppEigen. . Since version 3.1.1, Eigen is licensed under the Mozilla
-    Public License (version 2); earlier version were licensed under the GNU LGPL version
-    3 or later. RcppEigen (the Rcpp bindings/bridge to Eigen) is licensed under the
-    GNU GPL version 2 or later, as is the rest of Rcpp.'
+  summary: 'R and ''Eigen'' integration using ''Rcpp''. ''Eigen'' is a C++ template library for
+    linear algebra: matrices, vectors, numerical solvers and related algorithms.  It
+    supports dense and sparse matrices on integer, floating point and complex numbers,
+    decompositions of such matrices, and solutions of linear systems. Its performance
+    on many algorithms is comparable with some of the best implementations based on
+    ''Lapack'' and level-3 ''BLAS''. . The ''RcppEigen'' package includes the header
+    files from the ''Eigen'' C++ template library (currently version 3.2.5). Thus users
+    do not need to install ''Eigen'' itself in order to use ''RcppEigen''. . Since version
+    3.1.1, ''Eigen'' is licensed under the Mozilla Public License (version 2); earlier
+    version were licensed under the GNU LGPL version 3 or later. ''RcppEigen'' (the
+    ''Rcpp'' bindings/bridge to ''Eigen'') is licensed under the GNU GPL version 2 or
+    later, as is the rest of ''Rcpp''.'
 
 
 # The original CRAN metadata for this package was:
 
 # Package: RcppEigen
 # Type: Package
-# Title: Rcpp integration for the Eigen templated linear algebra library.
-# Version: 0.3.2.3.0
-# Date: 2014-12-22
+# Title: 'Rcpp' Integration for the 'Eigen' Templated Linear Algebra Library
+# Version: 0.3.2.5.0
+# Date: 2015-07-13
 # Author: Douglas Bates, Romain Francois and Dirk Eddelbuettel;  the authors of Eigen for the included version of Eigen
 # Maintainer: Dirk Eddelbuettel <edd@debian.org>
 # Copyright: See the file COPYRIGHTS for various Eigen copyright details
-# Description: R and Eigen integration using Rcpp. Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers and related algorithms.  It supports dense and sparse matrices on integer, floating point and complex numbers, decompositions of such matrices, and solutions of linear systems. Its performance on many algorithms is comparable with some of the best implementations based on Lapack and level-3 BLAS. . The RcppEigen package includes the header files from the Eigen C++ template library (currently version 3.2.3). Thus users do not need to install Eigen itself in order to use RcppEigen. . Since version 3.1.1, Eigen is licensed under the Mozilla Public License (version 2); earlier version were licensed under the GNU LGPL version 3 or later. RcppEigen (the Rcpp bindings/bridge to Eigen) is licensed under the GNU GPL version 2 or later, as is the rest of Rcpp.
+# Description: R and 'Eigen' integration using 'Rcpp'. 'Eigen' is a C++ template library for linear algebra: matrices, vectors, numerical solvers and related algorithms.  It supports dense and sparse matrices on integer, floating point and complex numbers, decompositions of such matrices, and solutions of linear systems. Its performance on many algorithms is comparable with some of the best implementations based on 'Lapack' and level-3 'BLAS'. . The 'RcppEigen' package includes the header files from the 'Eigen' C++ template library (currently version 3.2.5). Thus users do not need to install 'Eigen' itself in order to use 'RcppEigen'. . Since version 3.1.1, 'Eigen' is licensed under the Mozilla Public License (version 2); earlier version were licensed under the GNU LGPL version 3 or later. 'RcppEigen' (the 'Rcpp' bindings/bridge to 'Eigen') is licensed under the GNU GPL version 2 or later, as is the rest of 'Rcpp'.
 # License: GPL (>= 2) | file LICENSE
 # Depends: R (>= 2.15.1)
 # LazyLoad: yes
 # LinkingTo: Rcpp
-# Imports: Matrix (>= 1.1-0), Rcpp (>= 0.11.0)
-# Suggests: inline, RUnit
+# Imports: Matrix (>= 1.1-0), Rcpp (>= 0.11.0), stats, utils
+# Suggests: inline, RUnit, pkgKitten
 # URL: http://eigen.tuxfamily.org
-# Packaged: 2014-12-22 12:25:27.058386 UTC; edd
 # NeedsCompilation: yes
+# Packaged: 2015-07-14 01:07:15.538795 UTC; edd
 # Repository: CRAN
-# Date/Publication: 2014-12-23 07:28:50
+# Date/Publication: 2015-07-14 20:24:18
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -1,0 +1,59 @@
+package:
+  name: setproctitle
+  version: "1.1.8"
+
+source:
+  fn: setproctitle-1.1.8.tar.gz
+  url: https://pypi.python.org/packages/source/s/setproctitle/setproctitle-1.1.8.tar.gz
+  md5: 728f4c8c6031bbe56083a48594027edd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - setproctitle = setproctitle:main
+    #
+    # Would create an entry point called setproctitle that calls setproctitle.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+# test:
+  # Python imports
+  # imports:
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/py-setproctitle/
+  license: BSD License
+  summary: 'A library to allow customization of the process title.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

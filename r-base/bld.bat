@@ -81,28 +81,28 @@ if errorlevel 1 exit 1
 
 @rem Now actually compile it
 
-@rem For whatever reason, these files aren't put in the right place.  They
-@rem files won't exist the first time we try to build, so let's "build" it
-@rem once (without the 'if errorlevel 1 exit 1') and then copy the files after
-@rem it inevitably fails and build it again.
-cd src\gnuwin32
-
-if "%ARCH%"=="64" (
-    @rem This is the copied version of MkRules.dist with WIN = 32 changed to WIN =
-    @rem 64 and BINDIR64 set to empty and MULTI = 64.
-    copy "%RECIPE_DIR%\MkRules.local" .
-)
-make distribution
-cd "%SRC_DIR%"
-
-copy library\graphics\help\figures\pch.pdf doc\manual\pch.pdf
-if errorlevel 1 exit 1
-
-copy library\graphics\help\figures\mai.pdf doc\manual\mai.pdf
-if errorlevel 1 exit 1
-
-copy library\graphics\help\figures\oma.pdf doc\manual\oma.pdf
-if errorlevel 1 exit 1
+@rem @rem For whatever reason, these files aren't put in the right place.  They
+@rem @rem files won't exist the first time we try to build, so let's "build" it
+@rem @rem once (without the 'if errorlevel 1 exit 1') and then copy the files after
+@rem @rem it inevitably fails and build it again.
+@rem cd src\gnuwin32
+@rem 
+@rem if "%ARCH%"=="64" (
+@rem     @rem This is the copied version of MkRules.dist with WIN = 32 changed to WIN =
+@rem     @rem 64 and BINDIR64 set to empty and MULTI = 64.
+@rem     copy "%RECIPE_DIR%\MkRules.local" .
+@rem )
+@rem make distribution
+@rem cd "%SRC_DIR%"
+@rem
+@rem copy library\graphics\help\figures\pch.pdf doc\manual\pch.pdf
+@rem if errorlevel 1 exit 1
+@rem
+@rem copy library\graphics\help\figures\mai.pdf doc\manual\mai.pdf
+@rem if errorlevel 1 exit 1
+@rem
+@rem copy library\graphics\help\figures\oma.pdf doc\manual\oma.pdf
+@rem if errorlevel 1 exit 1
 
 cd "%SRC_DIR%\src\gnuwin32"
 make distribution
@@ -114,5 +114,5 @@ make imagedir
 if errorlevel 1 exit 1
 
 @rem And install it
-xcopy /S /E R-3.1.3 "%PREFIX%\R\"
+xcopy /S /E R-3.2.1 "%PREFIX%\R\"
 if errorlevel 1 exit 1

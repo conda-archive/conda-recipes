@@ -2,13 +2,13 @@ package:
   name: r-gridextra
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.9.1"
+  version: "2.0.0"
 
 source:
-  fn: gridExtra_0.9.1.tar.gz
+  fn: gridExtra_2.0.0.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/gridExtra_0.9.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/gridExtra/gridExtra_0.9.1.tar.gz
+    - http://cran.r-project.org/src/contrib/gridExtra_2.0.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/gridExtra/gridExtra_2.0.0.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -28,13 +28,15 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: RGraphics, pixmap, EBImage, ggplot2, lattice
+# Suggests: ggplot2, lattice, knitr, testthat
 requirements:
   build:
     - r
+    - r-gtable
 
   run:
     - r
+    - r-gtable
 
 test:
   commands:
@@ -49,29 +51,31 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: http://code.google.com/p/gridextra/
+  home: https://github.com/baptiste/gridextra
   license: GPL (>= 2)
-  summary: misc. high-level Grid functions
+  summary: Provides a number of user-level functions to work with "grid" graphics, notably to
+    arrange multiple grid-based plots on a page, and draw tables.
 
 # The original CRAN metadata for this package was:
 
 # Package: gridExtra
-# Maintainer: baptiste <baptiste.auguie@gmail.com>
+# Authors@R: c(person("Baptiste", "Auguie", email = "baptiste.auguie@gmail.com", role = c("aut", "cre")), person("Anton", "Antonov", email = "tonytonov@gmail.com", role = c("ctb")))
 # License: GPL (>= 2)
-# Title: functions in Grid graphics
+# Title: Miscellaneous Functions for "Grid" Graphics
 # Type: Package
-# Author: Baptiste Auguie
-# Description: misc. high-level Grid functions
-# Version: 0.9.1
-# URL: http://code.google.com/p/gridextra/
-# Date: 2012-09-08
-# Depends: R(>= 2.5.0), grid
-# Suggests: RGraphics, pixmap, EBImage, ggplot2, lattice
-# Collate: 'arcText.r' 'arrange.r' 'barbedGrob.r' 'borderGrob.r' 'colorstripGrob.r' 'ebimage.r' 'ellipseGrob.r' 'gridExtra-package.r' 'grob-utils.r' 'polygon.regular.r' 'ngonGrob.r' 'patternGrob.r' 'pixmap.r' 'rpattern.r' 'stextGrob.r' 'tableGrob.r'
-# Packaged: 2012-08-09 00:55:23 UTC; auguieba
-# Repository: CRAN
-# Date/Publication: 2012-08-09 05:38:06
+# Description: Provides a number of user-level functions to work with "grid" graphics, notably to arrange multiple grid-based plots on a page, and draw tables.
+# Version: 2.0.0
+# URL: https://github.com/baptiste/gridextra
+# VignetteBuilder: knitr
+# Imports: gtable, grid, grDevices, graphics, utils
+# Suggests: ggplot2, lattice, knitr, testthat
+# Collate: grob-utils.r arrangeGrob.r gridExtra-package.r tableGrob.r ngonGrob.r
 # NeedsCompilation: no
+# Packaged: 2015-07-14 09:46:27 UTC; baptiste
+# Author: Baptiste Auguie [aut, cre], Anton Antonov [ctb]
+# Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
+# Repository: CRAN
+# Date/Publication: 2015-07-14 20:40:38
 
 # See
 # http://docs.continuum.io/conda/build.html for

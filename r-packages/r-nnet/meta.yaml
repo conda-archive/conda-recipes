@@ -2,13 +2,15 @@ package:
   name: r-nnet
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "7.3_8"
+  version: "7.3_10"
 
 source:
-  fn: nnet_7.3-8.tar.gz
+  fn: nnet_7.3-10.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/nnet_7.3-8.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/nnet/nnet_7.3-8.tar.gz
+    - http://cran.r-project.org/src/contrib/nnet_7.3-10.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/nnet/nnet_7.3-10.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,7 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2 # [osx]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -29,10 +31,12 @@ build:
 # Suggests: MASS
 requirements:
   build:
-    - r-base >=2.14.0
+    - r-base
+    - gcc # [not win]
 
   run:
-    - r >=2.14.0
+    - r
+    - libgcc # [not win]
 
 test:
   commands:
@@ -56,22 +60,22 @@ about:
 
 # Package: nnet
 # Priority: recommended
-# Version: 7.3-8
-# Date: 2014-08-28
+# Version: 7.3-10
+# Date: 2015-06-29
 # Depends: R (>= 2.14.0), stats, utils
 # Suggests: MASS
 # Authors@R: c(person("Brian", "Ripley", role = c("aut", "cre", "cph"), email = "ripley@stats.ox.ac.uk"), person("William", "Venables", role = "cph"))
 # Description: Software for feed-forward neural networks with a single hidden layer, and for multinomial log-linear models.
-# Title: Feed-forward Neural Networks and Multinomial Log-Linear Models
+# Title: Feed-Forward Neural Networks and Multinomial Log-Linear Models
 # ByteCompile: yes
 # License: GPL-2 | GPL-3
 # URL: http://www.stats.ox.ac.uk/pub/MASS4/
-# Packaged: 2014-03-28 07:36:07 UTC; ripley
+# NeedsCompilation: yes
+# Packaged: 2015-06-29 08:47:45 UTC; ripley
 # Author: Brian Ripley [aut, cre, cph], William Venables [cph]
 # Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
-# NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2014-03-28 09:12:04
+# Date/Publication: 2015-06-29 17:15:39
 
 # See
 # http://docs.continuum.io/conda/build.html for

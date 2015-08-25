@@ -4,32 +4,14 @@ mkdir -vp ${PREFIX}/bin;
 
 ARCH="$(uname 2>/dev/null)"
 
-export CFLAGS="-m64 -pipe -O2 -march=x86-64 -fPIC"
-export CXXFLAGS="${CFLAGS}"
-#export CPPFLAGS="-I${PREFIX}/include"
-#export LDFLAGS="-L${PREFIX}/lib"
-
-LinuxInstallation() {
-
-    chmod +x configure;
-
-    ./configure \
-        --disable-static \
-        --enable-linux-lfs \
-        --with-ssl \
-        --with-zlib \
-        --prefix=${PREFIX} || return 1;
-    make || return 1;
-    make install || return 1;
-
-    rm -rf ${PREFIX}/share/hdf4_examples;
-
-    return 0;
-}
-
 case ${ARCH} in
+    'Darwin')
+        export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib
+        export CPPFLAGS="-I${PREFIX}/include"
+        ;;
     'Linux')
-        LinuxInstallation || exit 1;
+        export LDFLAGS="-L$PREFIX/lib $LDFLAGS"
+        export CPPFLAGS="-I${PREFIX}/include -fPIC"
         ;;
     *)
         echo -e "Unsupported machine type: ${ARCH}";
@@ -37,6 +19,19 @@ case ${ARCH} in
         ;;
 esac
 
-#POST_LINK="${PREFIX}/bin/.hdf4-post-link.sh"
-#cp -v ${RECIPE_DIR}/post-link.sh ${POST_LINK};
-#chmod -v 0755 ${POST_LINK};
+chmod +x configure;
+
+./configure \
+    --disable-netcdf \
+    --enable-fortran=no \
+    --with-jpeg=${PREFIX} \
+    --disable-static \
+    --with-zlib \
+    --prefix=${PREFIX} || return 1;
+make  || exit 1;
+make check || exit 1;
+make install || exit 1;
+
+rm -rf ${PREFIX}/share/hdf4_examples;
+
+exit 0;

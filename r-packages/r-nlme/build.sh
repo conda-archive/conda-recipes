@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# r-lattice recursively depends on r-nlme, since it is a recommended package, so
-# install it manually
-
-conda install --no-deps r-lattice
-
 # R refuses to build packages that mark themselves as Priority: Recommended
 mv DESCRIPTION DESCRIPTION.old
 grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION

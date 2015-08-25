@@ -1,0 +1,15 @@
+diff --git a/dot_parser.py b/dot_parser.py
+index dedd61a..8a7ff8b 100644
+--- dot_parser.py
++++ dot_parser.py
+@@ -25,7 +25,9 @@ from pyparsing import __version__ as pyparsing_version
+ from pyparsing import ( nestedExpr, Literal, CaselessLiteral, Word, Upcase, OneOrMore, ZeroOrMore,
+     Forward, NotAny, delimitedList, oneOf, Group, Optional, Combine, alphas, nums,
+     restOfLine, cStyleComment, nums, alphanums, printables, empty, quotedString,
+-    ParseException, ParseResults, CharsNotIn, _noncomma, dblQuotedString, QuotedString, ParserElement )
++    ParseException, ParseResults, CharsNotIn, dblQuotedString, QuotedString, ParserElement )
++    
++_noncomma = "".join( [ c for c in printables if c != "," ] )
+ 
+ 
+ class P_AttrList:

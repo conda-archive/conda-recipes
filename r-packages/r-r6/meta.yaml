@@ -2,13 +2,15 @@ package:
   name: r-r6
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "2.0.1"
+  version: "2.1.0"
 
 source:
-  fn: R6_2.0.1.tar.gz
+  fn: R6_2.1.0.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/R6_2.0.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/R6/R6_2.0.1.tar.gz
+    - http://cran.r-project.org/src/contrib/R6_2.1.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/R6/R6_2.1.0.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,7 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1 # [osx]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -29,10 +31,10 @@ build:
 # Suggests: knitr, microbenchmark, pryr, testthat, ggplot2, scales
 requirements:
   build:
-    - r >=3.0
+    - r
 
   run:
-    - r >=3.0
+    - r
 
 test:
   commands:
@@ -58,9 +60,9 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: R6
-# Title: Classes with reference semantics
-# Version: 2.0.1
-# Authors@R: "Winston Chang <winston@stdout.org> [aut, cre]"
+# Title: Classes with Reference Semantics
+# Version: 2.1.0
+# Authors@R: person("Winston", "Chang", role = c("aut", "cre"), email = "winston@stdout.org")
 # Description: The R6 package allows the creation of classes with reference semantics, similar to R's built-in reference classes. Compared to reference classes, R6 classes are simpler and lighter-weight, and they are not built on S4 classes so they do not require the methods package. These classes allow public and private members, and they support inheritance, even when the classes are defined in different packages.
 # Depends: R (>= 3.0)
 # Suggests: knitr, microbenchmark, pryr, testthat, ggplot2, scales
@@ -68,12 +70,12 @@ about:
 # URL: https://github.com/wch/R6/
 # LazyData: true
 # VignetteBuilder: knitr
-# Packaged: 2014-10-29 15:31:07 UTC; winston
-# Author: "Winston Chang" [aut, cre]
-# Maintainer: "Winston Chang" <winston@stdout.org>
 # NeedsCompilation: no
+# Packaged: 2015-07-03 13:30:23 UTC; winston
+# Author: Winston Chang [aut, cre]
+# Maintainer: Winston Chang <winston@stdout.org>
 # Repository: CRAN
-# Date/Publication: 2014-10-29 19:20:28
+# Date/Publication: 2015-07-04 00:19:07
 
 # See
 # http://docs.continuum.io/conda/build.html for

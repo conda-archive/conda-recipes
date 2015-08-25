@@ -2,13 +2,15 @@ package:
   name: r-forecast
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "5.8"
+  version: "6.1"
 
 source:
-  fn: forecast_5.8.tar.gz
+  fn: forecast_6.1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/forecast_5.8.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/forecast/forecast_5.8.tar.gz
+    - http://cran.r-project.org/src/contrib/forecast_6.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/forecast/forecast_6.1.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -29,7 +31,7 @@ build:
 # Suggests: testthat, fpp
 requirements:
   build:
-    - r >=3.0.2
+    - r
     - r-rcpp >=0.11.0
     - r-rcpparmadillo >=0.2.35
     - r-colorspace
@@ -38,9 +40,10 @@ requirements:
     - r-timedate
     - r-tseries
     - r-zoo
+    - gcc # [not win]
 
   run:
-    - r >=3.0.2
+    - r
     - r-rcpp >=0.11.0
     - r-rcpparmadillo >=0.2.35
     - r-colorspace
@@ -49,6 +52,7 @@ requirements:
     - r-timedate
     - r-tseries
     - r-zoo
+    - libgcc # [not win]
 
 test:
   commands:
@@ -71,9 +75,9 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: forecast
-# Version: 5.8
-# Date: 2015-01-06
-# Title: Forecasting functions for time series and linear models
+# Version: 6.1
+# Date: 2015-05-11
+# Title: Forecasting Functions for Time Series and Linear Models
 # Description: Methods and tools for displaying and analysing univariate time series forecasts including exponential smoothing via state space models and automatic ARIMA modelling.
 # Depends: R (>= 3.0.2), stats, graphics, zoo, timeDate
 # Imports: tseries, fracdiff, Rcpp (>= 0.11.0), nnet, colorspace, parallel
@@ -86,10 +90,10 @@ about:
 # BugReports: https://github.com/robjhyndman/forecast/issues
 # License: GPL (>= 2)
 # URL: http://github.com/robjhyndman/forecast
-# Packaged: 2015-01-06 10:14:10 UTC; hyndman
 # NeedsCompilation: yes
+# Packaged: 2015-05-12 09:56:10 UTC; hyndman
 # Repository: CRAN
-# Date/Publication: 2015-01-06 17:30:51
+# Date/Publication: 2015-05-12 12:37:47
 
 # See
 # http://docs.continuum.io/conda/build.html for
