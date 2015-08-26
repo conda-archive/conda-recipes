@@ -1,0 +1,64 @@
+package:
+  name: moretools
+  version: !!str 0.1a38
+
+source:
+  fn: moretools-0.1a38.tar.gz
+  url: https://pypi.python.org/packages/source/m/moretools/moretools-0.1a38.tar.gz
+  md5: 81674d069902594538f83f69f4d95f26
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - moretools = moretools:main
+    #
+    # Would create an entry point called moretools that calls moretools.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - decorator
+
+  run:
+    - python
+    - six
+    - decorator
+
+test:
+  # Python imports
+  imports:
+    - moretools
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/userzimmermann/python-moretools
+  license:  GNU Library or Lesser General Public License (LGPL)
+  summary: 'Many more basic tools for python 2/3 extending itertools, functools, operator and collections.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

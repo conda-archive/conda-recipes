@@ -1,0 +1,84 @@
+package:
+  name: r-latticeextra
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.6_26"
+
+source:
+  fn: latticeExtra_0.6-26.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/latticeExtra_0.6-26.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/latticeExtra/latticeExtra_0.6-26.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 3 # [osx]
+  number: 2 # [not osx]
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: maps, mapproj, deldir, tripack, quantreg, zoo, MASS, mgcv
+requirements:
+  build:
+    - r
+    - r-rcolorbrewer
+    - r-lattice >=0.18_1 # [not win]
+
+  run:
+    - r
+    - r-rcolorbrewer
+    - r-lattice >=0.18_1 # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('latticeExtra')" # [not win]
+    - "\"%R%\" -e \"library('latticeExtra')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://latticeextra.r-forge.r-project.org/
+  license: GPL (>= 2)
+  summary: Extra graphical utilities based on lattice
+
+# The original CRAN metadata for this package was:
+
+# Package: latticeExtra
+# Version: 0.6-26
+# Date: 2013/08/15
+# Title: Extra Graphical Utilities Based on Lattice
+# Author: Deepayan Sarkar <deepayan.sarkar@r-project.org>, Felix Andrews <felix@nfrac.org>
+# Maintainer: Deepayan Sarkar <deepayan.sarkar@r-project.org>
+# Description: Extra graphical utilities based on lattice
+# Depends: R (>= 2.10.0), RColorBrewer, lattice (>= 0.18-1)
+# Imports: grid
+# Suggests: maps, mapproj, deldir, tripack, quantreg, zoo, MASS, mgcv
+# URL: http://latticeextra.r-forge.r-project.org/
+# LazyLoad: yes
+# LazyData: yes
+# License: GPL (>= 2)
+# Packaged: 2013-08-15 16:03:24 UTC; deepayan
+# NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2013-08-15 18:21:41
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -11,16 +11,17 @@ source:
 
 build:
   number: 3
-  binary_relocation: true
 
 requirements:
   build:
+    - cairo
     - libpng
     - libtiff
     - freetype
     - jpeg
     - zlib
   run:
+    - cairo
     - libpng
     - libtiff
     - freetype

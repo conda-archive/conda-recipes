@@ -1,0 +1,17 @@
+To avoid the need to set LD_LIBRARY_PATH or whatever, we make the script
+also search the anaconda environments /lib folder.
+
+diff --git a/cairocffi/__init__.py b/cairocffi/__init__.py
+index 2b8f82b..6b67d8b 100644
+--- cairocffi/__init__.py
++++ cairocffi/__init__.py
+@@ -38,6 +38,11 @@ ffi = FFI()
+ ffi.cdef(constants._CAIRO_HEADERS)
+ CAIRO_NAMES = ['libcairo.so.2', 'libcairo.2.dylib', 'libcairo-2.dll',
+                'cairo', 'libcairo-2']
++# Also search in anaconda folder, for the purposes of conda environments only
++import os
++CAIRO_NAMES.extend(
++    [os.path.join('/opt/anaconda1anaconda2anaconda3','lib',name)
++     for name in CAIRO_NAMES])
+ cairo = dlopen(ffi, *CAIRO_NAMES)

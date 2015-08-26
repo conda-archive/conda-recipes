@@ -1,10 +1,12 @@
 #!/bin/bash
 
-chmod +x configure
+mkdir $PREFIX/lib
 
-./configure --prefix=$PREFIX \
-    --with-shared --enable-overwrite \
+sh ./configure --prefix=$PREFIX \
     --without-debug --without-ada --without-manpages \
+    --with-shared --disable-overwrite --enable-termcap \
+    --with-termlib
 
-make -j
+
+make -j$(getconf _NPROCESSORS_ONLN)
 make install

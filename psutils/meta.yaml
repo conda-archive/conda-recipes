@@ -1,0 +1,20 @@
+package:
+  name: psutils
+  version: 17
+
+source:
+  fn: psutils.tar.gz
+  url:
+    - ftp://ftp.tardis.ed.ac.uk/users/ajcd/psutils.tar.gz
+    - ftp://ftp.knackered.org/pub/psutils/psutils.tar.gz
+
+requirements:
+  build:
+    - perl
+  run:
+    - perl
+
+about:
+  summary: PSUtils is a collection of useful utilities for manipulating PostScript documents.
+  home: http://knackered.org/angus/psutils/
+  license: PSUtils license (BSD-like)

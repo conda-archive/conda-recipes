@@ -1,0 +1,36 @@
+package:
+  name: geopandas
+  version: !!str 0.1.1
+
+source:
+  fn: geopandas-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/g/geopandas/geopandas-0.1.1.tar.gz
+  md5: a01b5d3eb6bc097665a0ba297c39029f
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pandas
+    - shapely
+    - fiona
+    - descartes
+    - pyproj
+
+  run:
+    - python
+    - pandas
+    - shapely
+    - fiona
+    - descartes
+    - pyproj
+
+test:
+  imports:
+    - geopandas
+    - geopandas.io
+
+about:
+  home: http://geopandas.org
+  license: BSD
+  summary: 'Geographic pandas extensions'

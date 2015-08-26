@@ -1,0 +1,67 @@
+package:
+  name: tornado
+  version: "4.2.1"
+
+source:
+  fn: tornado-4.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/tornado/tornado-4.2.1.tar.gz
+  md5: d523204389cfb70121bb69709f551b20
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tornado = tornado:main
+    #
+    # Would create an entry point called tornado that calls tornado.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - backports.ssl_match_hostname
+    - certifi
+
+  run:
+    - python
+    - backports.ssl_match_hostname
+    - certifi
+
+test:
+  # Python imports
+  imports:
+    - tornado
+    - tornado.platform
+    - tornado.test
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.tornadoweb.org/
+  license: Apache Software License
+  summary: 'Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

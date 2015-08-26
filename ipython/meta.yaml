@@ -1,31 +1,40 @@
 package:
   name: ipython
-  version: 1.0.0rc1
+  version: 2.3.1
 
 source:
-  fn: ipython-1.0.0-rc1.tar.gz
-  url: http://archive.ipython.org/testing/1.0.0/ipython-1.0.0-rc1.tar.gz
+  fn: ipython-2.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/ipython/ipython-2.3.1.tar.gz
+  md5: 2b7085525dac11190bfb45bb8ec8dcbf
+  patches:
+    - cprt.patch
 
 build:
   entry_points:
-    - ipython3 = IPython.terminal.ipapp:launch_new_instance  [py3k]
-    - ipython = IPython.terminal.ipapp:launch_new_instance
-  osx_is_app: True           [py2k]
+    - ipython = IPython:start_ipython
+    - pycolor = IPython.utils.PyColorize:main
+    - ipcontroller = IPython.parallel.apps.ipcontrollerapp:launch_new_instance
+    - ipengine = IPython.parallel.apps.ipengineapp:launch_new_instance
+    - iplogger = IPython.parallel.apps.iploggerapp:launch_new_instance
+    - ipcluster = IPython.parallel.apps.ipclusterapp:launch_new_instance
+    - iptest = IPython.testing.iptestcontroller:main
+    - irunner = IPython.lib.irunner:main
+  number: 1                  [osx]
+  osx_is_app: True
 
 requirements:
   build:
     - python
-    - setuptools             [win or py3k]
+    - setuptools             [win]
     - pyreadline             [win]
   run:
     - python
     - pyreadline             [win]
-    - python.app             [osx and py2k]
+    - python.app             [osx]
 
 test:
   commands:
     - ipython -h
-    - ipython3 -h            [py3k]
   imports:
     - IPython
 

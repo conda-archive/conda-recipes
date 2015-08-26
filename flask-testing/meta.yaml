@@ -1,11 +1,11 @@
 package:
   name: flask-testing
-  version: 0.4.1
+  version: 0.4.2
 
 source:
-  fn: Flask-Testing-0.4.1.tar.gz
-  url: https://pypi.python.org/packages/source/F/Flask-Testing/Flask-Testing-0.4.1.tar.gz#md5=2aba6816869d69eff48641f72a05eb06
-  md5: 2aba6816869d69eff48641f72a05eb06
+  fn: Flask-Testing-0.4.2.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-Testing/Flask-Testing-0.4.2.tar.gz
+  md5: f47d9b859bae7ac43728cf61ca3eaa88
 
 requirements:
   build:

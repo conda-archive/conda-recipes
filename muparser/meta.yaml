@@ -1,0 +1,12 @@
+package:
+  name: muparser
+  version: 2.2.4
+
+source:
+  fn: muparser_v2_2_4.zip
+  url: https://docs.google.com/uc?export=download&id=0BzuB-ydOOoduejdwdTQwcF9JLTA
+  md5: ab5d86af1c75e3946314e76e6018f78d
+
+build:
+  number: 0
+

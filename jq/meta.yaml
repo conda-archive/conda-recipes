@@ -1,0 +1,18 @@
+package:
+  name: jq
+  version: 1.4
+
+source:
+  fn: jq-1.4.tar.gz
+  url: https://github.com/stedolan/jq/releases/download/jq-1.4/jq-1.4.tar.gz
+  md5: e3c75a4f805bb5342c9f4b3603fb248f
+
+  patches:
+    - configure.patch
+
+build:
+  number: 2
+
+about:
+    home: http://stedolan.github.io/jq/
+    license:  MIT

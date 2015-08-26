@@ -1,0 +1,90 @@
+package:
+  name: r-coin
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.0_24"
+
+source:
+  fn: coin_1.0-24.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/coin_1.0-24.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/coin/coin_1.0-24.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: multcomp, xtable, e1071, vcd, TH.data
+requirements:
+  build:
+    - r
+    - r-modeltools >=0.2_9
+    - r-mvtnorm >=0.8_0
+    - r-survival # [not win]
+    - gcc # [not win]
+
+  run:
+    - r
+    - r-modeltools >=0.2_9
+    - r-mvtnorm >=0.8_0
+    - r-survival # [not win]
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('coin')" # [not win]
+    - "\"%R%\" -e \"library('coin')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: GPL-2
+  summary: Conditional inference procedures for the general independence problem including two-sample,
+    K-sample (non-parametric ANOVA), correlation, censored, ordered and multivariate
+    problems.
+
+# The original CRAN metadata for this package was:
+
+# Package: coin
+# Title: Conditional Inference Procedures in a Permutation Test Framework
+# Date: 2014-09-17
+# Version: 1.0-24
+# Authors@R: c(person("Torsten", "Hothorn", role = c("aut", "cre"), email = "Torsten.Hothorn@R-project.org"), person("Kurt", "Hornik", role = "aut"), person("Mark A.", "van de Wiel", role = "aut"), person("Achim", "Zeileis", role = "aut"))
+# Description: Conditional inference procedures for the general independence problem including two-sample, K-sample (non-parametric ANOVA), correlation, censored, ordered and multivariate problems.
+# Depends: R (>= 2.2.0), methods, survival
+# Imports: modeltools (>= 0.2-9), mvtnorm (>= 0.8-0)
+# Suggests: multcomp, xtable, e1071, vcd, TH.data
+# Enhances: Biobase
+# LazyLoad: yes
+# LazyData: yes
+# License: GPL-2
+# Packaged: 2014-09-17 16:07:27 UTC; hothorn
+# Author: Torsten Hothorn [aut, cre], Kurt Hornik [aut], Mark A. van de Wiel [aut], Achim Zeileis [aut]
+# Maintainer: Torsten Hothorn <Torsten.Hothorn@R-project.org>
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2014-09-17 18:30:41
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -7,20 +7,26 @@ source:
   url: https://github.com/tpn/pkg-config/archive/pkg-config-0.28.zip
 
 build:
-  number: 0
+  number: 2
+  detect_binary_files_with_prefix: 1
 
 requirements:
   build:
     - zlib
     - autoconf
     - python
+    - automake
+    - libtool
   run:
     - zlib
-    - python
 
 test:
   commands:
     - pkg-config --help
+    - !!str [ "$(pkg-config freetype2 --cflags)" == "-I$PREFIX/include/freetype2 -I$PREFIX/include" ]
+
+  requires:
+    - freetype
 
 about:
   home: http://www.freedesktop.org/wiki/Software/pkg-config/

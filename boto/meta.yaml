@@ -1,11 +1,11 @@
 package:
   name: boto
-  version: 2.18.0
+  version: 2.32.0
 
 source:
-  fn: boto-2.18.0.tar.gz
-  url: https://pypi.python.org/packages/source/b/boto/boto-2.18.0.tar.gz
-  md5: 087037d477ee71601171d6b4e32856e8
+  fn: boto-2.32.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/boto/boto-2.32.0.tar.gz
+  md5: 8fd30cd04e7c47e67486e2a7ede29ae5
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -33,7 +33,6 @@ requirements:
     - python
 
 test:
-  # Python imports
   imports:
     - boto.contrib
     - boto.ec2.autoscale

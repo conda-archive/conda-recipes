@@ -1,0 +1,94 @@
+package:
+  name: r-gdata
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "2.17.0"
+
+source:
+  fn: gdata_2.17.0.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/gdata_2.17.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/gdata/gdata_2.17.0.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: RUnit
+requirements:
+  build:
+    - r
+    - r-gtools
+
+  run:
+    - r
+    - r-gtools
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('gdata')" # [not win]
+    - "\"%R%\" -e \"library('gdata')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: GPL-2
+  summary: 'Various R programming tools for data manipulation, including: - medical unit conversions
+    (''ConvertMedUnits'', ''MedUnits''), - combining objects (''bindData'', ''cbindX'',
+    ''combine'', ''interleave''), - character vector operations (''centerText'', ''startsWith'',
+    ''trim''), - factor manipulation (''levels'', ''reorder.factor'', ''mapLevels''),
+    - obtaining information about R objects (''object.size'', ''elem'', ''env'', ''humanReadable'',
+    ''is.what'', ''ll'', ''keep'', ''ls.funs'', ''Args'',''nPairs'', ''nobs''), - manipulating
+    MS-Excel formatted files (''read.xls'', ''installXLSXsupport'', ''sheetCount'',
+    ''xlsFormats''), - generating fixed-width format files (''write.fwf''), - extricating
+    components of date & time objects (''getYear'', ''getMonth'', ''getDay'', ''getHour'',
+    ''getMin'', ''getSec''), - operations on columns of data frames  (''matchcols'',
+    ''rename.vars''), - matrix operations (''unmatrix'', ''upperTriangle'', ''lowerTriangle''),
+    - operations on vectors (''case'', ''unknownToNA'', ''duplicated2'', ''trimSum''),
+    - operations on data frames (''frameApply'', ''wideByFactor''), - value of last
+    evaluated expression (''ans''), and - wrapper for ''sample'' that ensures consistent
+    behavior for both scalar and vector arguments (''resample'').'
+
+
+# The original CRAN metadata for this package was:
+
+# Package: gdata
+# Title: Various R Programming Tools for Data Manipulation
+# Description: Various R programming tools for data manipulation, including: - medical unit conversions ('ConvertMedUnits', 'MedUnits'), - combining objects ('bindData', 'cbindX', 'combine', 'interleave'), - character vector operations ('centerText', 'startsWith', 'trim'), - factor manipulation ('levels', 'reorder.factor', 'mapLevels'), - obtaining information about R objects ('object.size', 'elem', 'env', 'humanReadable', 'is.what', 'll', 'keep', 'ls.funs', 'Args','nPairs', 'nobs'), - manipulating MS-Excel formatted files ('read.xls', 'installXLSXsupport', 'sheetCount', 'xlsFormats'), - generating fixed-width format files ('write.fwf'), - extricating components of date & time objects ('getYear', 'getMonth', 'getDay', 'getHour', 'getMin', 'getSec'), - operations on columns of data frames  ('matchcols', 'rename.vars'), - matrix operations ('unmatrix', 'upperTriangle', 'lowerTriangle'), - operations on vectors ('case', 'unknownToNA', 'duplicated2', 'trimSum'), - operations on data frames ('frameApply', 'wideByFactor'), - value of last evaluated expression ('ans'), and - wrapper for 'sample' that ensures consistent behavior for both scalar and vector arguments ('resample').
+# Depends: R (>= 2.3.0)
+# SystemRequirements: perl (>= 5.10.0)
+# Imports: gtools, stats, methods, utils
+# Version: 2.17.0
+# Date: 2015-07-02
+# Author: Gregory R. Warnes, Ben Bolker, Gregor Gorjanc, Gabor Grothendieck, Ales Korosec, Thomas Lumley, Don MacQueen, Arni Magnusson, Jim Rogers, and others
+# Maintainer: Gregory R. Warnes <greg@warnes.net>
+# License: GPL-2
+# NeedsCompilation: no
+# Suggests: RUnit
+# Packaged: 2015-07-03 23:13:13 UTC; warnes
+# Repository: CRAN
+# Date/Publication: 2015-07-04 09:51:58
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

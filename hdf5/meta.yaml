@@ -1,14 +1,20 @@
 package:
   name: hdf5
-  version: 1.8.9
+  version: 1.8.14
 
 source:
-  fn: hdf5-1.8.9.tar.bz2
-  url: http://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.9/src/hdf5-1.8.9.tar.bz2
-  md5: 33e105583417eff1c57fff910a53cd6f
+  fn: hdf5-1.8.14.tar.bz2
+  url: http://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.14/src/hdf5-1.8.14.tar.bz2
+  md5: 719df6d46eea52e42dd97d59dcbf5311
 
 build:
-  number: 2            [osx]
+  number: 0
+
+requirements:
+  build:
+    - zlib
+  run:
+    - zlib
 
 about:
   home: http://www.hdfgroup.org/HDF5/

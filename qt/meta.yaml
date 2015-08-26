@@ -1,24 +1,31 @@
 package:
   name: qt
-  version: 4.8.5
+  version: 4.8.7
 
 source:
-  fn: qt-everywhere-opensource-src-4.8.5.tar.gz # [not osx]
-  url: http://download.qt-project.org/official_releases/qt/4.8/4.8.5/qt-everywhere-opensource-src-4.8.5.tar.gz # [not osx]
-  md5: 1864987bdbb2f58f8ae8b350dfdbe133 # [not osx]
-  # https://github.com/Homebrew/homebrew/blob/master/Library/Formula/qt.rb
-  fn: f44310c25b372f494586dbb5b305f7e81ca63000.tar.gz # [osx]
-  url: https://github.com/qtproject/qt/archive/f44310c25b372f494586dbb5b305f7e81ca63000.tar.gz # [osx]
-  sha1: 51548326463068912fb4d9de04b0f6b2e267d064 # [osx]
+  fn: qt-everywhere-opensource-src-4.8.7.tar.gz
+  url: http://download.qt-project.org/official_releases/qt/4.8/4.8.7/qt-everywhere-opensource-src-4.8.7.tar.gz
+  md5: d990ee66bf7ab0c785589776f35ba6ad
   patches:
     - acceptance.patch
+    - qmake-arch.patch                 [osx]
+    - ubuntu_disable_scrollbars.patch  [linux]
 
 build:
-  number: 2
+  number: 0
 
 requirements:
   build:
-    - freetype
+    - freetype    >=2.5.2    [unix]
+    - fontconfig  >=2.11.1   [linux]
+    - openssl
+    - libpng      1.6*
+
+  run:
+    - freetype    >=2.5.2    [unix]
+    - fontconfig  >=2.11.1   [linux]
+    - openssl
+    - libpng      1.6*
 
 about:
     home: http://qt-project.org

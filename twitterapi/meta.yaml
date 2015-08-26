@@ -1,0 +1,63 @@
+package:
+  name: twitterapi
+  version: !!str 2.2.8
+
+source:
+  fn: TwitterAPI-2.2.8.tar.gz
+  url: https://pypi.python.org/packages/source/T/TwitterAPI/TwitterAPI-2.2.8.tar.gz
+  md5: 9e31a8aa374001600d55ad469f8275dd
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - twitterapi = twitterapi:main
+    #
+    # Would create an entry point called twitterapi that calls twitterapi.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - requests
+    - requests-oauthlib
+
+  run:
+    - python
+    - requests
+    - requests-oauthlib
+
+test:
+  # Python imports
+  imports:
+    - TwitterAPI
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/geduldig/TwitterAPI
+  license: MIT
+  summary: "Minimal wrapper for Twitter's REST and Streaming APIs"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

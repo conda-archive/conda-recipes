@@ -7,6 +7,9 @@ source:
   url: ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-0.12.2.tar.bz2
   sha1: ca98a91e35fb3ded10d080342065919764d6f928
 
+build:
+  number: 1
+
 requirements:
   build:
     - gmp

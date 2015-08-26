@@ -1,0 +1,65 @@
+package:
+  name: jinja2
+  version: !!str 2.7.3
+
+source:
+  fn: Jinja2-2.7.3.tar.gz
+  url: https://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.7.3.tar.gz
+  md5: b9dffd2f3b43d673802fe857c8445b1a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jinja2 = jinja2:main
+    #
+    # Would create an entry point called jinja2 that calls jinja2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - markupsafe
+
+  run:
+    - python
+    - setuptools
+    - markupsafe
+
+test:
+  # Python imports
+  imports:
+    - jinja2
+    - jinja2.testsuite
+    - jinja2.testsuite.res
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://jinja.pocoo.org/
+  license:  BSD License
+  summary: 'A small but fast and easy to use stand-alone template engine written in pure python.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

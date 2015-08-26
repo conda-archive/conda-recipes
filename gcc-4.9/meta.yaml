@@ -1,0 +1,28 @@
+package:
+  name: gcc
+  version: 4.9.1
+
+source:
+  fn: gcc-4.9.1.tar.bz2
+  url: http://www.netgull.com/gcc/releases/gcc-4.9.1/gcc-4.9.1.tar.bz2
+  md5: fddf71348546af523353bd43d34919c1
+
+requirements:
+  build:
+    # These are taken from the output of the configure scripts
+    - gmp >=4.3.2
+    - mpfr >=2.4.2
+    - mpc >=0.8.1
+    - isl 0.12.2
+    - cloog 0.18.1
+  run:
+    - gmp >=4.3.2
+    - mpfr >=2.4.2
+    - mpc >=0.8.1
+    - isl 0.12.2
+    - cloog 0.18.1
+
+about:
+  home: http://gcc.gnu.org/
+  summary: The GNU Compiler Collection
+  license: GPL

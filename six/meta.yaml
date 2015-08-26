@@ -1,18 +1,19 @@
 package:
   name: six
-  version: 1.3.0
+  version: "1.9.0"
 
 source:
-  fn: six-1.3.0.tar.gz
-  url: https://pypi.python.org/packages/source/s/six/six-1.3.0.tar.gz#md5=ec47fe6070a8a64c802363d2c2b1e2ee
-  md5: ec47fe6070a8a64c802363d2c2b1e2ee
+  fn: six-1.9.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/six/six-1.9.0.tar.gz
+  md5: 476881ef4012262dfc8adc645ee786c4
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
-  #preserve_egg_dir: True
-  #entry_points:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -38,7 +39,7 @@ test:
   imports:
     - six
 
-  #commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 

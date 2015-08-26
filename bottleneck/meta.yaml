@@ -1,11 +1,11 @@
 
 package:
     name: bottleneck
-    version: 0.8.0
+    version: 1.0.0
 
 source:
     git_url: https://github.com/kwgoodman/bottleneck.git
-    git_tag: v0.8.0
+    git_tag: v1.0.0
 
 build:
     number: 0
@@ -22,9 +22,6 @@ requirements:
 test:
     imports:
         - bottleneck
-
-    #commands:
-    #    -
 
 about:
     home: http://berkeleyanalytics.com/bottleneck

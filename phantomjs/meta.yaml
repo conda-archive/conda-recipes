@@ -7,9 +7,22 @@ source:
   url: https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-windows.zip [win]
   fn: phantomjs-1.9.7-macosx.zip [osx]
   url: https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-macosx.zip [osx]
+  git_url: git://github.com/ariya/phantomjs.git [linux]
+  git_tag: 1.9.7 [linux]
 
 build:
   number: 0
+
+requirements:
+    build:
+        - openssl [linux]
+
+    run:
+        - openssl [linux]
+
+test:
+    commands:
+        - phantomjs -v
 
 about:
   home: http://phantomjs.org/

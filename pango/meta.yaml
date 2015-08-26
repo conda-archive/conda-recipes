@@ -1,0 +1,34 @@
+package:
+  name: pango
+  version: 1.36.8
+
+source:
+  url: http://ftp.gnome.org/pub/GNOME/sources/pango/1.36/pango-1.36.8.tar.xz
+  fn: pango-1.36.8.tar.xz
+
+build:
+  number: 3
+  detect_binary_files_with_prefix: true
+
+requirements:
+  build:
+    - cairo >=1.12.10
+    - fontconfig
+    - freetype
+    - harfbuzz
+    - glib
+    - libffi
+    - libpng 1.6.*
+  run:
+    - cairo >=1.12.10
+    - fontconfig
+    - freetype
+    - harfbuzz
+    - glib
+    - libffi
+    - libpng 1.6.*
+
+about:
+  license: LGPL
+  home: http://www.pango.org/
+  summary: "Pango is a library for laying out and rendering of text, with an emphasis on internationalization."

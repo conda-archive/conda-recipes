@@ -7,20 +7,85 @@ export CXXLAGS="${CFLAGS}"
 export CPPFLAGS="-I${PREFIX}/include"
 export LDFLAGS="-L${PREFIX}/lib"
 
+export SCALA_HOME="${PREFIX}/share/scala"
+
+export SPARK_HADOOP_VERSION="2.4.0"
+
+# INFO:
+# - https://cwiki.apache.org/confluence/display/MAVEN/OutOfMemoryError
+export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=512M -XX:ReservedCodeCacheSize=512m"
+
 LinuxInstallation() {
     # Build dependencies:
-    # - java-1.7.0-openjdk-devel
+    # - java-1.6.0-openjdk-devel
 
-    local pkgBaseDir="${PKG_NAME}-${PKG_VERSION}-incubating"
+    local javaVersion=''
+    local pkgBaseDir="${PKG_NAME}-${PKG_VERSION}"
+    local aliasPkgBaseDir="${PKG_NAME}"
+    local fullPkgBaseDir="${PREFIX}/share/${pkgBaseDir}"
+    local fullAliasPkgBaseDir="${PREFIX}/share/${aliasPkgBaseDir}"
     local launchWrapperName="launch-symlink"
-    local binLaunchWrapper="${PREFIX}/${pkgBaseDir}/bin/${launchWrapperName}"
-    local sbinLaunchWrapper="${PREFIX}/${pkgBaseDir}/sbin/${launchWrapperName}"
-    local pkgRelBinPath="../${pkgBaseDir}/bin"
-    local pkgRelSbinPath="../${pkgBaseDir}/sbin"
+    local binLaunchWrapper="${fullPkgBaseDir}/bin/${launchWrapperName}"
+    local sbinLaunchWrapper="${fullPkgBaseDir}/sbin/${launchWrapperName}"
+    local pkgRelBinPath="../share/${aliasPkgBaseDir}/bin"
+    local pkgRelSbinPath="../share/${aliasPkgBaseDir}/sbin"
 
-    ./sbt/sbt assembly || return 1;
-    ./make-distribution.sh --tgz || return 1;
-    tar -xvzpf ${pkgBaseDir}*.tar.gz -C ${PREFIX}/ || return 1;
+    shopt -s extglob;
+
+    ${RECIPE_DIR}/latest-java-detector.sh;
+    if [[ ${?} -eq 1 ]]; then
+        ${RECIPE_DIR}/latest-java-detector.sh -d;
+        if [[ ${?} -eq 1 ]]; then
+            echo -e "Unable to setup JAVA_HOME and/or JRE_HOME in built environment";
+            exit 1;
+        else
+            export JAVA_HOME="$(${RECIPE_DIR}/latest-java-detector.sh -d| grep 'export JAVA_HOME='| cut -d '=' -f 2)"
+            export JRE_HOME="$(${RECIPE_DIR}/latest-java-detector.sh -d| grep 'export JRE_HOME='| cut -d '=' -f 2)"
+        fi
+    fi
+
+    # Bug: https://issues.apache.org/jira/browse/SPARK-1911
+    javaVersion="$(${JAVA_HOME}/bin/java -version 2>&1|grep '^java version'|cut -d '"' -f 2)"
+
+    if [[ ! ${javaVersion} =~ 1.6.+([0-9])* ]]; then
+        cat <<NEWEOF
+    Sorry but currently (due to the bug: https://issues.apache.org/jira/browse/SPARK-1911) your java version is NOT supported!
+
+    Your java version:     ${javaVersion}
+    Required java version: 1.6.X
+
+    Please do one of:
+    a) remove from your system all newer java's versions than 1.6.X (if You are using latest-java-detector.sh),
+    b) manually setup JAVA_HOME and JRE_HOME to 1.6.X version of java.
+NEWEOF
+        exit 1;
+    fi
+
+    mkdir -vp ${PREFIX}/bin || exit 1;
+    mkdir -vp ${PREFIX}/share || exit 1;
+    mkdir -vp ${fullPkgBaseDir} || exit 1;
+
+    pushd ${PREFIX}/share || exit 1;
+    ln -sv ${pkgBaseDir} ${aliasPkgBaseDir} || exit  1;
+    popd || exit 1;
+
+    cp -v ${RECIPE_DIR}/latest-java-detector.sh ${PREFIX}/bin/ || exit 1;
+
+    # Build package by using sbt tool (however, there is no target to create distribution - this is mostly for local usage):
+    #./sbt/sbt -Phive assembly || return 1;
+    #./sbt/sbt test || return 1;
+    #./bin/run-example org.apache.spark.examples.SparkLR local[2] || return 1;
+
+    case ${MACHINE} in
+        'Linux')
+            # Build package by using specially preapared script:
+            ./make-distribution.sh --tgz || return 1;
+            tar --strip-components=1 -xvpf ${pkgBaseDir}*.tgz -C ${fullPkgBaseDir}/ || return 1;
+            ;;
+        'Darwin')
+            mv -v ${SRC_DIR}/* ${fullPkgBaseDir}/ || return 1;
+            ;;
+    esac
 
     for bin in ${binLaunchWrapper} ${sbinLaunchWrapper}; do
         cat > ${bin} <<EOF
@@ -37,6 +102,17 @@ if [[ ! -d \${SCRIPT_DIR} ]]; then
 fi
 if [[ ! -f \${SCRIPT_FILE} ]]; then
     echo -e "Problem with launch-wrapper, no file was found: \${SCRIPT_FILE}" && exit 1;
+fi
+
+latest-java-detector.sh;
+if [[ \${?} -eq 1 ]]; then
+    latest-java-detector.sh -d;
+    if [[ \${?} -eq 1 ]]; then
+        echo -e "Unable to setup JAVA_HOME and/or JRE_HOME in environment" && exit 1;
+    else
+        export JAVA_HOME="\$(latest-java-detector.sh -d| grep 'export JAVA_HOME='| cut -d '=' -f 2)"
+        export JRE_HOME="\$(latest-java-detector.sh -d| grep 'export JRE_HOME='| cut -d '=' -f 2)"
+    fi
 fi
 
 echo -e "\nlaunch-wrapper:"
@@ -59,6 +135,7 @@ EOF
         if [[ ${fileName} == ${launchWrapperName} ]]; then
             continue;
         fi
+
         ln -vs ${pkgRelBinPath}/${launchWrapperName} ${fileName} || return 1;
     done
 
@@ -74,8 +151,25 @@ EOF
         if [[ ${fileName} == ${launchWrapperName} ]]; then
             continue;
         fi
+
         ln -vs ${pkgRelSbinPath}/${launchWrapperName} ${fileName} || return 1;
     done
+
+    popd || return 1;
+
+    ### Setup pyspark
+
+    pushd ${SP_DIR}/ || return 1;
+
+    ln -vs ../../../share/spark/python/pyspark/ pyspark || return 1;
+
+    popd || return 1;
+
+    ### Patching
+
+    pushd ${SP_DIR}/pyspark/ || return 1;
+
+    patch -p0 < ${RECIPE_DIR}/0001-Patching_SPARK_HOME_variable.patch || exit 1;
 
     popd || return 1;
 
@@ -83,7 +177,7 @@ EOF
 }
 
 case ${MACHINE} in
-    'Linux')
+    'Linux'|'Darwin')
         LinuxInstallation || exit 1;
         ;;
     *)

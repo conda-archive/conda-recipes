@@ -9,6 +9,7 @@ cmake \
     -DPYTHON_EXECUTABLE=$PYTHON \
     -DLIB_INSTALL_DIR=$PREFIX/lib \
     -DShiboken_DIR=$PREFIX \
+    -DUSE_PYTHON3=$PY3K \
     ..
 make
 make install

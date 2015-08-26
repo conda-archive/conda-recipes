@@ -1,0 +1,72 @@
+diff --git a/PyGMO/algorithm/algorithm.cpp b/PyGMO/algorithm/algorithm.cpp
+index 032e5ba..c00330e 100644
+--- a/PyGMO/algorithm/algorithm.cpp
++++ b/PyGMO/algorithm/algorithm.cpp
+@@ -22,6 +22,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.               *
+  *****************************************************************************/
+
++#include <cmath>
+ #include <Python.h>
+ #include <boost/python/class.hpp>
+ #include <boost/python/module.hpp>
+diff --git a/PyGMO/core/core.cpp b/PyGMO/core/core.cpp
+index d4daf6b..a1754ab 100644
+--- a/PyGMO/core/core.cpp
++++ b/PyGMO/core/core.cpp
+@@ -22,6 +22,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.               *
+  *****************************************************************************/
+
++#include <cmath>
+ #include <Python.h>
+ #include <boost/numeric/conversion/cast.hpp>
+ #include <boost/python/class.hpp>
+diff --git a/PyGMO/migration/migration.cpp b/PyGMO/migration/migration.cpp
+index f4571cc..cd4cb1f 100644
+--- a/PyGMO/migration/migration.cpp
++++ b/PyGMO/migration/migration.cpp
+@@ -22,6 +22,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.               *
+  *****************************************************************************/
+
++#include <cmath>
+ #include <boost/python/class.hpp>
+ #include <boost/python/enum.hpp>
+ #include <boost/python/module.hpp>
+diff --git a/PyGMO/problem/problem.cpp b/PyGMO/problem/problem.cpp
+index c268411..54c374a 100644
+--- a/PyGMO/problem/problem.cpp
++++ b/PyGMO/problem/problem.cpp
+@@ -22,6 +22,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.               *
+  *****************************************************************************/
+
++#include <cmath>
+ #include <Python.h>
+ #include <boost/python/class.hpp>
+ #include <boost/python/copy_const_reference.hpp>
+diff --git a/PyGMO/topology/topology.cpp b/PyGMO/topology/topology.cpp
+index e848cd2..054d1d4 100644
+--- a/PyGMO/topology/topology.cpp
++++ b/PyGMO/topology/topology.cpp
+@@ -22,6 +22,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.               *
+  *****************************************************************************/
+
++#include <cmath>
+ #include <Python.h>
+ #include <boost/numeric/conversion/cast.hpp>
+ #include <boost/python/class.hpp>
+diff --git a/PyGMO/util/util.cpp b/PyGMO/util/util.cpp
+index 7fe9e06..af34281 100644
+--- a/PyGMO/util/util.cpp
++++ b/PyGMO/util/util.cpp
+@@ -22,6 +22,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.               *
+  *****************************************************************************/
+
++#include <cmath>
+ #include <Python.h>
+ #include <boost/numeric/conversion/cast.hpp>
+ #include <boost/python/class.hpp>

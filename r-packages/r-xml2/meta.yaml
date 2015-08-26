@@ -1,0 +1,86 @@
+package:
+  name: r-xml2
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.1.1"
+
+source:
+  fn: xml2_0.1.1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/xml2_0.1.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/xml2/xml2_0.1.1.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, curl
+requirements:
+  build:
+    - r
+    - r-bh
+    - r-rcpp >=0.11.4.6
+    - gcc # [not win]
+    - libxml2
+
+  run:
+    - r
+    - r-bh
+    - r-rcpp >=0.11.4.6
+    - libgcc # [not win]
+    - libxml2
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('xml2')" # [not win]
+    - "\"%R%\" -e \"library('xml2')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: GPL (>= 2)
+  summary: Work with XML files using a simple, consistent interface. Built on top of the 'libxml2'
+    C library.
+
+# The original CRAN metadata for this package was:
+
+# Package: xml2
+# Version: 0.1.1
+# Title: Parse XML
+# Description: Work with XML files using a simple, consistent interface. Built on top of the 'libxml2' C library.
+# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")), person("Jeroen", "Ooms", role = "ctb"), person("RStudio", role = "cph"), person("R Foundation", role = "ctb", comment = "Copy of R-project homepage cached as example") )
+# Depends: R (>= 3.1.0)
+# Imports: Rcpp
+# LinkingTo: Rcpp (>= 0.11.4.6), BH
+# Suggests: testthat, curl
+# License: GPL (>= 2)
+# NeedsCompilation: yes
+# Packaged: 2015-06-01 13:29:35 UTC; hadley
+# Author: Hadley Wickham [aut, cre], Jeroen Ooms [ctb], RStudio [cph], R Foundation [ctb] (Copy of R-project homepage cached as example)
+# Maintainer: Hadley Wickham <hadley@rstudio.com>
+# Repository: CRAN
+# Date/Publication: 2015-06-02 16:59:30
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

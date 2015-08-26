@@ -1,0 +1,29 @@
+
+package:
+    name: selenium
+    version: 2.44.0
+
+source:
+    fn: selenium-2.44.0.tar.gz
+    url: https://pypi.python.org/packages/source/s/selenium/selenium-2.44.0.tar.gz
+    md5: 8802d73fb989d007ba1b43f070361cd1
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - distribute
+
+    run:
+        - python
+
+test:
+    imports:
+        - selenium
+
+about:
+    home: http://www.seleniumhq.org/
+    license: Apache License 2.0
+

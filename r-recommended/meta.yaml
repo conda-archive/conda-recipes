@@ -1,0 +1,22 @@
+package:
+  name: r-recommended
+  version: 3.2.1
+
+requirements:
+  run:
+    - r 3.2.1
+    - r-boot
+    - r-class
+    - r-cluster
+    - r-codetools
+    - r-foreign
+    - r-kernsmooth
+    - r-lattice
+    - r-mass
+    - r-matrix
+    - r-mgcv
+    - r-nlme
+    - r-nnet
+    - r-rpart
+    - r-spatial
+    - r-survival

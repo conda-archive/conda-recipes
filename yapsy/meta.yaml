@@ -1,18 +1,19 @@
 package:
   name: yapsy
-  version: !!str 1.10.223
+  version: "1.11.223"
 
 source:
-  fn: Yapsy-1.10.223.tar.gz
-  url: https://pypi.python.org/packages/source/Y/Yapsy/Yapsy-1.10.223.tar.gz
-  md5: a93762d1a16ca676dadd80739407e66c
+  fn: Yapsy-1.11.223.tar.gz
+  url: https://pypi.python.org/packages/source/Y/Yapsy/Yapsy-1.11.223.tar.gz
+  md5: d8b71cd35e6daa36ae83f76874f450aa
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
-  #preserve_egg_dir: True
-  #entry_points:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -38,7 +39,7 @@ test:
   imports:
     - yapsy
 
-  #commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -53,7 +54,7 @@ test:
 about:
   home: http://yapsy.sourceforge.net
   license: BSD License
-  summary: Yet another plugin system
+  summary: 'Yet another plugin system'
 
 # See
 # http://docs.continuum.io/conda/build.html for

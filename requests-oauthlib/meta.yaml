@@ -1,16 +1,17 @@
 package:
   name: requests-oauthlib
-  version: 0.4.0
+  version: !!str 0.4.2
 
 source:
-  fn: requests-oauthlib-0.4.0.tar.gz
-  url: https://pypi.python.org/packages/source/r/requests-oauthlib/requests-oauthlib-0.4.0.tar.gz
-  md5: 2649560205a02473998e0e7dd881ee5a
+  fn: requests-oauthlib-0.4.2.tar.gz
+  url: https://pypi.python.org/packages/source/r/requests-oauthlib/requests-oauthlib-0.4.2.tar.gz
+  md5: df930abe3971fb418c67a8545de54661
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
+# build:
+  # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
@@ -22,19 +23,19 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
 requirements:
   build:
     - python
     - setuptools
-    - oauthlib
-    - requests
+    - oauthlib >=0.6.2
+    - requests >=2.0.0
 
   run:
     - python
-    - oauthlib
-    - requests
+    - oauthlib >=0.6.2
+    - requests >=2.0.0
 
 test:
   # Python imports
@@ -56,7 +57,8 @@ test:
 
 about:
   home: https://github.com/requests/requests-oauthlib
-  license: ISC
+  license: BSD License
+  summary: 'OAuthlib authentication support for Requests.'
 
 # See
 # http://docs.continuum.io/conda/build.html for

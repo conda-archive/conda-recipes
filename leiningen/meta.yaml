@@ -1,0 +1,21 @@
+package:
+  name: leiningen
+  version: 2.4.2
+
+# source:
+#   fn: lein
+#   url: https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+#   md5: f14b1b0d56aac1da8abb37f30ab70dc3
+
+requirements:
+  build:
+    - curl
+
+test:
+  commands:
+    - lein --help
+
+about:
+  home: http://leiningen.org
+  license: Eclipse Public License
+  summary: "for automating Clojure projects without setting your hair on fire"

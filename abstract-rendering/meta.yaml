@@ -1,0 +1,23 @@
+package:
+  name: abstract-rendering
+  version: 0.2.0
+
+source:
+  git_url: git://github.com/ContinuumIO/abstract_rendering
+  git_tag: 0.2.0
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+    - numpy
+
+test:
+  imports:
+    - abstract_rendering
+    - abstract_rendering.fast_project
+
+about:
+  home: https://github.com/JosephCottam/AbstractRendering
+  license: 3rd-clause BSD (https://github.com/JosephCottam/AbstractRendering/blob/master/LICENSE)

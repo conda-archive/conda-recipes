@@ -1,0 +1,16 @@
+package:
+  name: libpng
+  version: 1.6.17
+
+source:
+  fn: libpng-1.6.17.tar.gz
+  url: ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng16/libpng-1.6.17.tar.gz
+  md5: 134282f1752dcf4cd81a37b8ff421cef
+
+requirements:
+  build:
+    - zlib
+
+about:
+  home: http://www.libpng.org/pub/png/libpng.html
+  license: Open Source (http://www.libpng.org/pub/png/src/libpng-LICENSE.txt)

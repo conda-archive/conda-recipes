@@ -1,0 +1,29 @@
+
+package:
+    name: pyvcf
+    version: 0.6.0
+
+source:
+    fn: PyVCF-0.6.0.tar.gz
+    url: https://pypi.python.org/packages/source/P/PyVCF/PyVCF-0.6.0.tar.gz
+    md5: b0a966bed43bb6371f3d652c01e4741e
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - distribute
+
+    run:
+        - python
+
+test:
+    imports:
+        - vcf
+
+about:
+    home: https://github.com/jamescasbon/PyVCF
+    license: https://github.com/jamescasbon/PyVCF/blob/master/LICENSE
+

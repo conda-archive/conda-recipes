@@ -35,6 +35,7 @@ requirements:
     - jinja2
     - ipython
     - python-levenshtein
+    - jsonschema
 
   run:
     - python
@@ -44,6 +45,7 @@ requirements:
     - python-levenshtein
     - sqlalchemy
     - argparse # [py26]
+    - jsonschema
 
 test:
   # Python imports

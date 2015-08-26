@@ -1,0 +1,27 @@
+From c2207bda943f3a805618a995dca8d62e2fcf3e45 Mon Sep 17 00:00:00 2001
+From: Kamil Kwiek (irritum) <kamil.kwiek@continuum.io>
+Date: Fri, 20 Feb 2015 11:51:01 +0100
+Subject: [PATCH] Removed direct dependencies from setup.py
+
+---
+ setup.py |    4 +---
+ 1 files changed, 1 insertions(+), 3 deletions(-)
+
+diff --git setup.py setup.py
+index 29a7728..1453126 100755
+--- setup.py
++++ setup.py
+@@ -57,9 +57,7 @@ def run_setup(exts):
+                     'Operating System :: OS Independent',
+                     'Intended Audience :: Science/Research',
+                     'Programming Language :: Cython',
+-                    'Topic :: Scientific/Engineering'],
+-        install_requires=["murmurhash", "cymem"],
+-        setup_requires=["headers_workaround"]
++                    'Topic :: Scientific/Engineering']
+     )
+ 
+     import headers_workaround
+-- 
+1.7.1
+

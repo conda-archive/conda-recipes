@@ -1,0 +1,28 @@
+
+package:
+    name: cymem
+    version: 1.11
+
+source:
+    fn: cymem-1.11.tar.gz
+    url: https://pypi.python.org/packages/source/c/cymem/cymem-1.11.tar.gz
+    md5: 6a257e0abca8771db4d2263762fd5d0c
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+
+    run:
+        - python
+        - cython >=0.21
+
+test:
+    imports:
+        - cymem
+
+about:
+    home: http://github.com/syllog1sm/cymem
+    license: MIT

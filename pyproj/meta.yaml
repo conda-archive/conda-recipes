@@ -1,0 +1,24 @@
+package:
+  name: pyproj
+  version: !!str 1.9.3
+
+source:
+  fn: pyproj-1.9.3.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyproj/pyproj-1.9.3.tar.gz
+  md5: ad0ac0602b6373c4203b4d0774445694
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - pyproj
+
+about:
+  home: http://code.google.com/p/pyproj/
+  license: OSI Approved
+  summary: 'Python interface to PROJ.4 library'

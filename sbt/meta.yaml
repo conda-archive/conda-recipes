@@ -1,0 +1,19 @@
+
+package:
+    name: sbt
+    version: 0.13.7
+
+source:
+    fn: sbt-launch.jar
+    url: http://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.13.7/sbt-launch.jar
+
+build:
+    number: 0
+
+test:
+    commands:
+        - sbt -version
+
+about:
+    home: http://www.scala-sbt.org/
+    license: BSD

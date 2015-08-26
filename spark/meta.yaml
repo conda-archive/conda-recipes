@@ -1,11 +1,14 @@
 
 package:
     name: spark
-    version: 0.9.0
+    version: 1.1.1
 
 source:
-    git_url: https://github.com/apache/spark
-    git_tag: v0.9.0-incubating
+    git_url: https://github.com/apache/spark                                               # [linux]
+    git_tag: v1.1.1                                                                        # [linux]
+    fn: spark-1.1.1-bin-hadoop2.4.tgz                                                      # [osx]
+    url: http://www.apache.org/dist/spark/spark-1.1.1/spark-1.1.1-bin-hadoop2.4.tgz        # [osx]
+    md5: ffd5aaf5d06b7b3cf9c9b2ce4b423396                                                  # [osx]
 
 build:
     number: 0
@@ -13,18 +16,21 @@ build:
 requirements:
     build:
         - python
+        - apache-maven  # [linux]
+        - scala 2.10.*  # [linux]
 
     run:
         - python
+        - apache-maven  # [linux]
+        - py4j
 
 test:
-    #imports:
-    #    - spark
+    imports:
+        - pyspark
 
-    #commands:
-    #    -
+    commands:
+        - pyspark --help
 
 about:
-    home: https://spark.incubator.apache.org/
+    home: https://spark.apache.org/
     license: Apache 2.0 license
-

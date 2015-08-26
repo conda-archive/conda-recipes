@@ -1,0 +1,23 @@
+package:
+  name: rstudio
+  version: 0.99.567
+
+source:
+  git_url: git://github.com/rstudio/rstudio.git
+  git_tag: v0.99.567
+
+requirements:
+  build:
+    - cmake
+    - r
+    - qt
+    - boost
+
+  run:
+    - r
+    - qt
+
+about:
+  license: AGPL
+  summary: "RStudio is an integrated development environment (IDE) for R"
+  home: http://www.rstudio.com/
