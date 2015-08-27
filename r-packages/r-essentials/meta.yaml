@@ -5,6 +5,7 @@ package:
 requirements:
   # Not really needed, but just to make sure that they are built
   build:
+    - r
     - r-ggplot2
     - r-plyr
     - r-reshape2
@@ -20,6 +21,7 @@ requirements:
     - r-jsonlite
     - r-zoo
   run:
+    - r
     - r-ggplot2
     - r-plyr
     - r-reshape2
