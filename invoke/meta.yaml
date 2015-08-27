@@ -1,0 +1,39 @@
+package:
+  name: invoke
+  version: {{ environ.get('GIT_DESCRIBE_TAG', 'current') }}
+
+source:
+  git_url: https://github.com/pyinvoke/invoke.git
+
+build:
+  noarch_python: true
+  number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
+  entry_points:
+    - invoke = invoke.cli:main
+    - inv = invoke.cli:main
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+
+  run:
+    - python
+    - six
+
+test:
+  imports:
+    - invoke
+
+  commands:
+    - invoke --help
+    - inv --help
+
+about:
+  home: https://github.com/pyinvoke/invoke/
+  license: BSD License
+  summary: |
+    Invoke is a Python (2.6+ and 3.2+) task execution tool & library, drawing
+    inspiration from various sources to arrive at a powerful & clean feature
+    set.
