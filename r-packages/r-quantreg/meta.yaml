@@ -2,13 +2,15 @@ package:
   name: r-quantreg
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "5.11"
+  version: "5.18"
 
 source:
-  fn: quantreg_5.11.tar.gz
+  fn: quantreg_5.18.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/quantreg_5.11.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/quantreg/quantreg_5.11.tar.gz
+    - http://cran.r-project.org/src/contrib/quantreg_5.18.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/quantreg/quantreg_5.18.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,22 +21,26 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: tripack, akima, MASS, survival, rgl, logspline, nor1mix, MatrixModels, Matrix, Formula, zoo, dynlm
+# Suggests: tripack, akima, MASS, survival, rgl, logspline, nor1mix, Formula, zoo
 requirements:
   build:
     - r
+    - r-matrix # [not win]
+    - r-matrixmodels
     - r-sparsem
     - gcc # [not win]
 
   run:
     - r
+    - r-matrix # [not win]
+    - r-matrixmodels
     - r-sparsem
     - libgcc # [not win]
 
@@ -65,18 +71,19 @@ about:
 # Package: quantreg
 # Title: Quantile Regression
 # Description: Estimation and inference methods for models of conditional quantiles:  Linear and nonlinear parametric and non-parametric (total variation penalized) models  for conditional quantiles of a univariate response and several methods for handling censored survival data.  Portfolio selection methods based on expected shortfall risk are also included.
-# Version: 5.11
+# Version: 5.18
 # Authors@R: c(person("Roger", "Koenker",  role = c("cre","aut"), email =  "rkoenker@illinois.edu"), person("Stephen", "Portnoy",  role = c("ctb"),  comment = "Contributions to Censored QR code", email =  "sportnoy@illinois.edu"), person(c("Pin", "Tian"), "Ng",  role = c("ctb"),  comment = "Contributions to Sparse QR code", email =  "pin.ng@nau.edu"), person("Achim", "Zeileis",  role = c("ctb"),  comment = "Contributions to dynrq code essentially identical to his dynlm code",  email =  "Achim.Zeileis@uibk.ac.at"), person("Philip", "Grosjean",  role = c("ctb"),  comment = "Contributions to nlrq code", email =  "phgrosjean@sciviews.org"), person(c("Brian", "D"), "Ripley",  role = c("trl","ctb"),  comment = "Initial (2001) R port from S (to my everlasting shame --  how could I have been so slow to adopt R!) and for numerous other  suggestions and useful advice", email =  "ripley@stats.ox.ac.uk"))
-# Author: Roger Koenker with contributions from Stephen Portnoy, Pin Ng, Achim Zeileis, Philip Grosjean and Brian Ripley
 # Maintainer: Roger Koenker <rkoenker@illinois.edu>
+# Repository: CRAN
 # Depends: R (>= 2.6), stats, SparseM
-# Suggests: tripack, akima, MASS, survival, rgl, logspline, nor1mix, MatrixModels, Matrix, Formula, zoo, dynlm
+# Imports: methods, graphics, Matrix, MatrixModels
+# Suggests: tripack, akima, MASS, survival, rgl, logspline, nor1mix, Formula, zoo
 # License: GPL (>= 2)
 # URL: http://www.r-project.org
-# Repository: CRAN
-# Date/Publication: 2015-01-11 09:22:56
-# Packaged: 2015-01-10 22:52:07 UTC; roger
 # NeedsCompilation: yes
+# Packaged: 2015-08-16 16:39:33 UTC; roger
+# Author: Roger Koenker [cre, aut], Stephen Portnoy [ctb] (Contributions to Censored QR code), Pin Tian Ng [ctb] (Contributions to Sparse QR code), Achim Zeileis [ctb] (Contributions to dynrq code essentially identical to his dynlm code), Philip Grosjean [ctb] (Contributions to nlrq code), Brian D Ripley [trl, ctb] (Initial (2001) R port from S (to my everlasting shame -- how could I have been so slow to adopt R!) and for numerous other suggestions and useful advice)
+# Date/Publication: 2015-08-16 23:06:03
 
 # See
 # http://docs.continuum.io/conda/build.html for
