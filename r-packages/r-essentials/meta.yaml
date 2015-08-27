@@ -1,0 +1,39 @@
+package:
+  name: r-essentials
+  version: 1.0
+
+requirements:
+  # Not really needed, but just to make sure that they are built
+  build:
+    - r-ggplot2
+    - r-plyr
+    - r-reshape2
+    - r-dplyr
+    - r-tidyr
+    - r-caret
+    - r-randomforest
+    - r-data.table
+    - r-quantmod
+    - r-shiny
+    - r-rmarkdown
+    - r-glmnet
+    - r-jsonlite
+    - r-zoo
+  run:
+    - r-ggplot2
+    - r-plyr
+    - r-reshape2
+    - r-dplyr
+    - r-tidyr
+    - r-caret
+    - r-randomforest
+    - r-data.table
+    - r-quantmod
+    - r-shiny
+    - r-rmarkdown
+    - r-glmnet
+    - r-jsonlite
+    - r-zoo
+
+about:
+  summary: "Some essential packages for working with R"
