@@ -1,0 +1,40 @@
+package:
+  name: nuitka
+  version: "0.5.14"
+
+source:
+  fn: Nuitka-0.5.14.tar.gz
+  url: http://nuitka.net/releases/Nuitka-0.5.14.tar.gz
+  md5: 7b49d4d12cbbb23adee610b6c452c9d6
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - nuitka
+    - nuitka.build
+    - nuitka.codegen
+    - nuitka.codegen.templates
+    - nuitka.finalizations
+    - nuitka.freezer
+    - nuitka.gui
+    - nuitka.nodes
+    - nuitka.optimizations
+    - nuitka.plugins
+    - nuitka.tree
+
+  commands:
+    - nuitka --help
+
+about:
+  home: http://nuitka.net
+  license: Apache License, Version 2.0
+  summary: 'Python compiler with full language support and CPython compatibility'
