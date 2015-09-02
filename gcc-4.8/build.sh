@@ -15,6 +15,7 @@ if [ "$(uname)" == "Darwin" ]; then
         --with-boot-ldflags=$LDFLAGS \
         --with-stage1-ldflags=$LDFLAGS \
         --enable-checking=release \
+        --with-tune=generic \
         --disable-multilib
 else
     # For reference during post-link.sh, record some
@@ -30,6 +31,7 @@ else
         --with-isl="$PREFIX" \
         --with-cloog="$PREFIX" \
         --enable-checking=release \
+        --with-tune=generic \
         --disable-multilib
 fi
 make -j$CPU_COUNT
