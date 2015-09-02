@@ -108,8 +108,8 @@ else
         #
         # With these two lines:
         # *cpp:
-        # ... yada yada ... -I${INCDIR}
-        sed -i ':a;N;$!ba;s|\(*cpp:\n[^\n]*\)|\1 -I'${INCDIR}'|g' "${SPECS_FILE}"
+        # ... yada yada ... -isystem ${INCDIR}
+        sed -i ':a;N;$!ba;s|\(*cpp:\n[^\n]*\)|\1 -isystem '${INCDIR}'|g' "${SPECS_FILE}"
     done
 fi
 
