@@ -1,6 +1,6 @@
 package:
   name: r-essentials
-  version: 1.0
+  version: 1.1
 
 requirements:
   # Not really needed, but just to make sure that they are built
@@ -20,6 +20,8 @@ requirements:
     - r-glmnet
     - r-jsonlite
     - r-zoo
+    - r-irkernel
+    - r-rbokeh
   run:
     - r
     - r-ggplot2
@@ -36,6 +38,8 @@ requirements:
     - r-glmnet
     - r-jsonlite
     - r-zoo
+    - r-irkernel
+    - r-rbokeh
 
 about:
   summary: "Some essential packages for working with R"
