@@ -95,7 +95,7 @@ else
     # First create specs file from existing defaults
     SPECS_DIR=$(echo "${PREFIX}"/lib/gcc/*/*)
     SPECS_FILE="${SPECS_DIR}/specs"
-    gcc -dumpspecs > "${SPECS_FILE}"
+    "${PREFIX}"/bin/gcc -dumpspecs > "${SPECS_FILE}"
 
     # Now add extra include paths to the specs file, one at a time.
     # (So far we only know of one: from Ubuntu.)
