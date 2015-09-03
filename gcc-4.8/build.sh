@@ -11,7 +11,6 @@ ln -s "$PREFIX/lib" "$PREFIX/lib64"
 
 if [ "$(uname)" == "Darwin" ]; then
     export LDFLAGS="-Wl,-headerpad_max_install_names"
-    export BOOT_LDFLAGS="-Wl,-headerpad_max_install_names"
     export DYLD_FALLBACK_LIBRARY_PATH="$PREFIX/lib"
 
     ./configure \
