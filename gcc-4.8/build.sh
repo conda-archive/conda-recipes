@@ -10,8 +10,10 @@ mkdir "$GCC_PREFIX"
 ln -s "$PREFIX/lib" "$PREFIX/lib64"
 
 if [ "$(uname)" == "Darwin" ]; then
-    export LDFLAGS="-Wl,-headerpad_max_install_names"
-    export DYLD_FALLBACK_LIBRARY_PATH="$PREFIX/lib"
+    # On Mac, we expect that the user has installed the xcode command-line utilities (via the 'xcode-select' command).
+    # The system's libstdc++.6.dylib will be located in /usr/lib, and we need to help the gcc build find it.
+    export LDFLAGS="-Wl,-headerpad_max_install_names -Wl,-L${PREFIX}/lib -Wl,-L/usr/lib"
+    export DYLD_FALLBACK_LIBRARY_PATH="$PREFIX/lib:/usr/lib"
 
     ./configure \
         --prefix="$GCC_PREFIX" \
@@ -24,8 +26,8 @@ if [ "$(uname)" == "Darwin" ]; then
         --with-mpc="$PREFIX" \
         --with-isl="$PREFIX" \
         --with-cloog="$PREFIX" \
-        --with-boot-ldflags=$LDFLAGS \
-        --with-stage1-ldflags=$LDFLAGS \
+        --with-boot-ldflags="$LDFLAGS" \
+        --with-stage1-ldflags="$LDFLAGS" \
         --enable-checking=release \
         --with-tune=generic \
         --disable-multilib
