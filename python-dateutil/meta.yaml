@@ -1,18 +1,19 @@
 package:
   name: python-dateutil
-  version: !!str 2.2
+  version: "2.4.2"
 
 source:
-  fn: python-dateutil-2.2.tar.gz
-  url: https://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-2.2.tar.gz
-  md5: c1f654d0ff7e33999380a8ba9783fd5c
+  fn: python-dateutil-2.4.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-2.4.2.tar.gz
+  md5: 4ef68e1c485b09e9f034e10473e5add2
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
-  #preserve_egg_dir: True
-  #entry_points:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -29,11 +30,11 @@ requirements:
   build:
     - python
     - setuptools
-    - six
+    - six >=1.5
 
   run:
     - python
-    - six
+    - six >=1.5
 
 test:
   # Python imports
@@ -41,7 +42,7 @@ test:
     - dateutil
     - dateutil.zoneinfo
 
-  #commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -54,8 +55,9 @@ test:
     # - nose
 
 about:
-  home: http://labix.org/python-dateutil
+  home: https://dateutil.readthedocs.org
   license: BSD License
+  summary: 'Extensions to the standard Python datetime module'
 
 # See
 # http://docs.continuum.io/conda/build.html for
