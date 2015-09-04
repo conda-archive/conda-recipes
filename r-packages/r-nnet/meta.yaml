@@ -2,13 +2,13 @@ package:
   name: r-nnet
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "7.3_10"
+  version: "7.3_11"
 
 source:
-  fn: nnet_7.3-10.tar.gz
+  fn: nnet_7.3-11.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/nnet_7.3-10.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/nnet/nnet_7.3-10.tar.gz
+    - http://cran.r-project.org/src/contrib/nnet_7.3-11.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/nnet/nnet_7.3-11.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -60,8 +60,8 @@ about:
 
 # Package: nnet
 # Priority: recommended
-# Version: 7.3-10
-# Date: 2015-06-29
+# Version: 7.3-11
+# Date: 2015-08-29
 # Depends: R (>= 2.14.0), stats, utils
 # Suggests: MASS
 # Authors@R: c(person("Brian", "Ripley", role = c("aut", "cre", "cph"), email = "ripley@stats.ox.ac.uk"), person("William", "Venables", role = "cph"))
@@ -71,11 +71,11 @@ about:
 # License: GPL-2 | GPL-3
 # URL: http://www.stats.ox.ac.uk/pub/MASS4/
 # NeedsCompilation: yes
-# Packaged: 2015-06-29 08:47:45 UTC; ripley
+# Packaged: 2015-08-28 15:25:36 UTC; ripley
 # Author: Brian Ripley [aut, cre, cph], William Venables [cph]
 # Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
 # Repository: CRAN
-# Date/Publication: 2015-06-29 17:15:39
+# Date/Publication: 2015-08-30 08:59:40
 
 # See
 # http://docs.continuum.io/conda/build.html for

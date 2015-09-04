@@ -2,13 +2,13 @@ package:
   name: r-hexbin
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.27.0"
+  version: "1.27.1"
 
 source:
-  fn: hexbin_1.27.0.tar.gz
+  fn: hexbin_1.27.1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/hexbin_1.27.0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/hexbin/hexbin_1.27.0.tar.gz
+    - http://cran.r-project.org/src/contrib/hexbin_1.27.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/hexbin/hexbin_1.27.1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -21,14 +21,14 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: marray, affy, Biobase
+# Suggests: marray, affy, Biobase, limma
 requirements:
   build:
     - r
@@ -53,7 +53,7 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: http://github.com/edzer/hexbin
   license: GPL-2
   summary: Binning and plotting functions for hexagonal bins. Now uses and relies on grid graphics
     and formal (S4) classes and methods.
@@ -61,21 +61,22 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: hexbin
-# Version: 1.27.0
-# Date: 2014-08-08
+# Version: 1.27.1
+# Date: 2015-08-19
 # Title: Hexagonal Binning Routines
-# Author: Dan Carr <dcarr@voxel.galaxy.gmu.edu>, ported by Nicholas Lewin-Koh and Martin Maechler <maechler@stat.math.ethz.ch>, contains copies of lattice function written by Deepayan Sarkar  <deepayan.sarkar@r-project.org>
+# Author: Dan Carr <dcarr@voxel.galaxy.gmu.edu>, ported by Nicholas Lewin-Koh and Martin Maechler <maechler@stat.math.ethz.ch>, contains copies of lattice functions written by Deepayan Sarkar  <deepayan.sarkar@r-project.org>
 # Maintainer: Edzer Pebesma <edzer.pebesma@uni-muenster.de>
 # Depends: R (>= 2.0.1), methods
 # Imports: lattice, grid, graphics, grDevices, stats, utils
-# Suggests: marray, affy, Biobase
+# Suggests: marray, affy, Biobase, limma
 # Description: Binning and plotting functions for hexagonal bins. Now uses and relies on grid graphics and formal (S4) classes and methods.
 # Collate: lattice.R BTC.R BTY.R grid.hexagons.R grid.hexlegend.R hbox.R hdiffplot.R hexbinList.R hexbinplot.R hexbin.s4.R hexpanel.R hexplom.R hexPlotMA.R hexutil.R hexViewport.R HO.R LINGRAY.R LOCS.R MAG.R RB.R smoothHexbin.R
 # License: GPL-2
 # NeedsCompilation: yes
-# Packaged: 2014-08-09 14:47:07 UTC; edzer
+# URL: http://github.com/edzer/hexbin
+# Packaged: 2015-08-19 15:11:53 UTC; edzer
 # Repository: CRAN
-# Date/Publication: 2014-08-09 16:56:37
+# Date/Publication: 2015-08-19 17:28:20
 
 # See
 # http://docs.continuum.io/conda/build.html for

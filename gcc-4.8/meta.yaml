@@ -9,7 +9,7 @@ source:
 
 build:
   detect_binary_files_with_prefix: true # [not linux32]
-  number: 1 # [linux32]
+  number: 2
 
 requirements:
   build:

@@ -2,13 +2,13 @@ package:
   name: r-raster
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "2.4_15"
+  version: "2.4_18"
 
 source:
-  fn: raster_2.4-15.tar.gz
+  fn: raster_2.4-18.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/raster_2.4-15.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/raster/raster_2.4-15.tar.gz
+    - http://cran.r-project.org/src/contrib/raster_2.4-18.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/raster/raster_2.4-18.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -66,8 +66,8 @@ about:
 # Package: raster
 # Type: Package
 # Title: Geographic Data Analysis and Modeling
-# Version: 2.4-15
-# Date: 2015-6-30
+# Version: 2.4-18
+# Date: 2015-8-6
 # Depends: methods, sp (>= 1.0-13), R (>= 3.0.0)
 # Suggests: rgdal (>= 0.9-1), rgeos (>= 0.3-8), ncdf, ncdf4, igraph, tcltk, parallel, rasterVis
 # LinkingTo: Rcpp
@@ -77,12 +77,15 @@ about:
 # License: GPL (>= 3)
 # URL: http://cran.r-project.org/package=raster
 # ByteCompile: TRUE
-# NeedsCompilation: yes
-# Packaged: 2015-07-01 20:34:15 UTC; rhijmans
 # Author: Robert J. Hijmans [cre, aut], Jacob van Etten [ctb], Joe Cheng [ctb], Matteo Mattiuzzi [ctb], Michael Sumner [ctb], Jonathan A. Greenberg [ctb], Oscar Perpinan Lamigueiro [ctb], Andrew Bevan [ctb], Etienne B. Racine [ctb], Ashton Shortridge [ctb]
 # Maintainer: Robert J. Hijmans <r.hijmans@gmail.com>
 # Repository: CRAN
-# Date/Publication: 2015-07-02 01:32:24
+# Repository/R-Forge/Project: raster
+# Repository/R-Forge/Revision: 3233
+# Repository/R-Forge/DateTimeStamp: 2015-08-14 06:25:22
+# Date/Publication: 2015-08-15 23:12:25
+# NeedsCompilation: yes
+# Packaged: 2015-08-14 06:46:42 UTC; rforge
 
 # See
 # http://docs.continuum.io/conda/build.html for

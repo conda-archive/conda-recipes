@@ -2,13 +2,13 @@ package:
   name: r-lme4
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.1_8"
+  version: "1.1_9"
 
 source:
-  fn: lme4_1.1-8.tar.gz
+  fn: lme4_1.1-9.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/lme4_1.1-8.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/lme4/lme4_1.1-8.tar.gz
+    - http://cran.r-project.org/src/contrib/lme4_1.1-9.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/lme4/lme4_1.1-9.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -39,7 +39,7 @@ requirements:
     - r-lattice # [not win]
     - r-minqa >=1.1.15
     - r-nlme # [not win]
-    - r-nloptr
+    - r-nloptr >=1.0.4
     - gcc # [not win]
 
   run:
@@ -51,7 +51,7 @@ requirements:
     - r-lattice # [not win]
     - r-minqa >=1.1.15
     - r-nlme # [not win]
-    - r-nloptr
+    - r-nloptr >=1.0.4
     - libgcc # [not win]
 
 test:
@@ -77,7 +77,7 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: lme4
-# Version: 1.1-8
+# Version: 1.1-9
 # Title: Linear Mixed-Effects Models using 'Eigen' and S4
 # Authors@R: c(person("Douglas","Bates", role="aut"), person("Martin","Maechler", role="aut"), person("Ben","Bolker",email="bbolker+lme4@gmail.com", role=c("aut","cre")), person("Steven","Walker",role="aut"), person("Rune Haubo Bojesen","Christensen", role="ctb"), person("Henrik","Singmann", role="ctb"), person("Bin", "Dai", role="ctb"), person("Gabor", "Grothendieck", role="ctb"))
 # Maintainer: Ben Bolker <bbolker+lme4@gmail.com>
@@ -86,7 +86,7 @@ about:
 # Description: Fit linear and generalized linear mixed-effects models. The models and their components are represented using S4 classes and methods.  The core computational algorithms are implemented using the 'Eigen' C++ library for numerical linear algebra and 'RcppEigen' "glue".
 # Depends: R (>= 3.0.2), Matrix (>= 1.1.1), methods, stats
 # LinkingTo: Rcpp (>= 0.10.5), RcppEigen
-# Imports: graphics, grid, splines, utils, parallel, MASS, nlme, lattice, minqa (>= 1.1.15), nloptr
+# Imports: graphics, grid, splines, utils, parallel, MASS, nlme, lattice, minqa (>= 1.1.15), nloptr (>= 1.0.4)
 # Suggests: knitr, boot, PKPDmodels, MEMSS, testthat (>= 0.8.1), ggplot2, mlmRev, optimx (>= 2013.8.6), gamm4, pbkrtest, HSAUR2, numDeriv
 # VignetteBuilder: knitr
 # LazyData: yes
@@ -94,9 +94,9 @@ about:
 # URL: https://github.com/lme4/lme4/ http://lme4.r-forge.r-project.org/
 # BugReports: https://github.com/lme4/lme4/issues
 # NeedsCompilation: yes
-# Packaged: 2015-06-20 21:23:09 UTC; bolker
+# Packaged: 2015-08-20 14:45:02 UTC; bolker
 # Repository: CRAN
-# Date/Publication: 2015-06-22 09:09:58
+# Date/Publication: 2015-08-20 23:55:56
 
 # See
 # http://docs.continuum.io/conda/build.html for
