@@ -2,13 +2,13 @@ package:
   name: r-evaluate
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.7"
+  version: "0.7.2"
 
 source:
-  fn: evaluate_0.7.tar.gz
+  fn: evaluate_0.7.2.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/evaluate_0.7.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/evaluate/evaluate_0.7.tar.gz
+    - http://cran.r-project.org/src/contrib/evaluate_0.7.2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/evaluate/evaluate_0.7.2.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -21,7 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -61,22 +61,22 @@ about:
 # Package: evaluate
 # Type: Package
 # Title: Parsing and Evaluation Tools that Provide More Details than the Default
-# Version: 0.7
-# Date: 2015-04-21
+# Version: 0.7.2
+# Date: 2015-08-13
 # Authors@R: c(person("Hadley", "Wickham", role = "aut"), person("Yihui", "Xie", role = c("cre", "ctb"), email = "xie@yihui.name"), person("Barret", "Schloerke", role = "ctb"))
 # Description: Parsing and evaluation tools that make it easy to recreate the command line behaviour of R.
 # License: GPL
 # URL: https://github.com/hadley/evaluate
 # BugReports: https://github.com/hadley/evaluate/issues
 # Depends: R (>= 3.0.2)
-# Imports: stringr (>= 0.6.2)
+# Imports: methods, stringr (>= 0.6.2)
 # Suggests: testthat, lattice, ggplot2
 # NeedsCompilation: no
-# Packaged: 2015-04-21 03:20:51 UTC; yihui
+# Packaged: 2015-08-13 02:33:14 UTC; yihui
 # Author: Hadley Wickham [aut], Yihui Xie [cre, ctb], Barret Schloerke [ctb]
 # Maintainer: Yihui Xie <xie@yihui.name>
 # Repository: CRAN
-# Date/Publication: 2015-04-21 08:54:30
+# Date/Publication: 2015-08-13 08:35:23
 
 # See
 # http://docs.continuum.io/conda/build.html for

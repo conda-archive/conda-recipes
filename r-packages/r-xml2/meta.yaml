@@ -2,13 +2,13 @@ package:
   name: r-xml2
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.1.1"
+  version: "0.1.2"
 
 source:
-  fn: xml2_0.1.1.tar.gz
+  fn: xml2_0.1.2.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/xml2_0.1.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/xml2/xml2_0.1.1.tar.gz
+    - http://cran.r-project.org/src/contrib/xml2_0.1.2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/xml2/xml2_0.1.2.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -33,14 +33,14 @@ requirements:
   build:
     - r
     - r-bh
-    - r-rcpp >=0.11.4.6
+    - r-rcpp
     - gcc # [not win]
     - libxml2
 
   run:
     - r
     - r-bh
-    - r-rcpp >=0.11.4.6
+    - r-rcpp
     - libgcc # [not win]
     - libxml2
 
@@ -57,7 +57,7 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: https://github.com/hadley/xml2/issues/
   license: GPL (>= 2)
   summary: Work with XML files using a simple, consistent interface. Built on top of the 'libxml2'
     C library.
@@ -65,21 +65,23 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: xml2
-# Version: 0.1.1
+# Version: 0.1.2
 # Title: Parse XML
 # Description: Work with XML files using a simple, consistent interface. Built on top of the 'libxml2' C library.
 # Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")), person("Jeroen", "Ooms", role = "ctb"), person("RStudio", role = "cph"), person("R Foundation", role = "ctb", comment = "Copy of R-project homepage cached as example") )
+# URL: https://github.com/hadley/xml2/issues/
+# BugReports: https://github.com/hadley/xml2/issues/
 # Depends: R (>= 3.1.0)
 # Imports: Rcpp
 # LinkingTo: Rcpp (>= 0.11.4.6), BH
 # Suggests: testthat, curl
 # License: GPL (>= 2)
 # NeedsCompilation: yes
-# Packaged: 2015-06-01 13:29:35 UTC; hadley
+# Packaged: 2015-09-01 18:33:51 UTC; hadley
 # Author: Hadley Wickham [aut, cre], Jeroen Ooms [ctb], RStudio [cph], R Foundation [ctb] (Copy of R-project homepage cached as example)
 # Maintainer: Hadley Wickham <hadley@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2015-06-02 16:59:30
+# Date/Publication: 2015-09-01 21:03:33
 
 # See
 # http://docs.continuum.io/conda/build.html for
