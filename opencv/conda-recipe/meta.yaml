@@ -1,0 +1,60 @@
+package:
+  name: keyring
+  version: !!str 5.0
+
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - keyring = keyring:main
+    #
+    # Would create an entry point called keyring that calls keyring.main()
+
+    - keyring=keyring.cli:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - hgtools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - keyring
+    - keyring.backends
+    - keyring.tests
+    - keyring.tests.backends
+    - keyring.util
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - keyring --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/kang/python-keyring-lib
+  license: Python Software Foundation License or MIT License
+  summary: 'Store and access your passwords safely.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

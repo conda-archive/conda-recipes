@@ -1,0 +1,66 @@
+package:
+  name: youtube_dl
+  version: "2015.06.15"
+
+source:
+  fn: youtube_dl-2015.06.15.tar.gz
+  url: https://pypi.python.org/packages/source/y/youtube_dl/youtube_dl-2015.06.15.tar.gz
+  md5: dd03cd71c1a654910de185aa5f080558
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - youtube_dl = youtube_dl:main
+    #
+    # Would create an entry point called youtube_dl that calls youtube_dl.main()
+
+    - youtube-dl = youtube_dl:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - youtube_dl
+    - youtube_dl.downloader
+    - youtube_dl.extractor
+    - youtube_dl.postprocessor
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - youtube-dl --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/rg3/youtube-dl
+  license: UNKNOWN
+  summary: 'YouTube video downloader'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
