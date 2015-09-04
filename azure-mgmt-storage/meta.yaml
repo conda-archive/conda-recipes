@@ -1,0 +1,65 @@
+package:
+  name: azure-mgmt-storage
+  version: "0.20.0"
+
+source:
+  fn: azure-mgmt-storage-0.20.0.zip
+  url: https://pypi.python.org/packages/source/a/azure-mgmt-storage/azure-mgmt-storage-0.20.0.zip
+  md5: 2fc64591ed3ae702e520cee906a76ed6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - azure-mgmt-storage = azure-mgmt-storage:main
+    #
+    # Would create an entry point called azure-mgmt-storage that calls azure-mgmt-storage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - azure-mgmt-common
+
+  run:
+    - python
+    - azure-mgmt-common
+
+test:
+  # Python imports
+  imports:
+    - azure
+    - azure.mgmt
+    - azure.mgmt.storage
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Azure/azure-sdk-for-python
+  license: Apache Software License
+  summary: 'Microsoft Azure Storage Resource Management Client Library for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

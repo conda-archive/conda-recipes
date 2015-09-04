@@ -1,0 +1,68 @@
+package:
+  name: azure
+  version: "1.0.0"
+
+source:
+  fn: azure-1.0.0.zip
+  url: https://pypi.python.org/packages/source/a/azure/azure-1.0.0.zip
+  md5: 962c3565be261b381f41f353b71c705d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - azure = azure:main
+    #
+    # Would create an entry point called azure that calls azure.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - azure-mgmt ==0.20.0
+    - azure-servicebus ==0.20.0
+    - azure-storage ==0.20.0
+    - azure-servicemanagement-legacy ==0.20.0
+
+  run:
+    - python
+    - azure-mgmt ==0.20.0
+    - azure-servicebus ==0.20.0
+    - azure-storage ==0.20.0
+    - azure-servicemanagement-legacy ==0.20.0
+
+# test:
+  # Python imports
+  # imports:
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Azure/azure-sdk-for-python
+  license: Apache Software License
+  summary: 'Microsoft Azure Client Libraries for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

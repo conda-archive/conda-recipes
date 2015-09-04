@@ -1,0 +1,77 @@
+package:
+  name: azure-storage
+  version: "0.20.0"
+
+source:
+  fn: azure-storage-0.20.0.zip
+  url: https://pypi.python.org/packages/source/a/azure-storage/azure-storage-0.20.0.zip
+  md5: 1d67ece73fae17fe29d5d9d0321aa601
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - azure-storage = azure-storage:main
+    #
+    # Would create an entry point called azure-storage that calls azure-storage.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - azure-nspkg
+    - azure-common
+    - python-dateutil
+    - requests
+    - futures
+
+  run:
+    - python
+    - azure-nspkg
+    - azure-common
+    - python-dateutil
+    - requests
+    - futures
+
+test:
+  # Python imports
+  imports:
+    - azure
+    - azure.storage
+    - azure.storage._http
+    - azure.storage.blob
+    - azure.storage.file
+    - azure.storage.queue
+    - azure.storage.table
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Azure/azure-storage-python
+  license: Apache Software License
+  summary: 'Microsoft Azure Storage Client Library for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
