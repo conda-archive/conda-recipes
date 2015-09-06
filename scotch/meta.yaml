@@ -15,3 +15,7 @@ build:
 about:
   home: http://www.labri.fr/perso/pelegrin/scotch/
   license: CeCILL-C
+
+requirements:
+  build:
+    - zlib
