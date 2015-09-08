@@ -2,13 +2,13 @@ package:
   name: r-tidyr
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.2.0"
+  version: "0.3.0"
 
 source:
-  fn: tidyr_0.2.0.tar.gz
+  fn: tidyr_0.3.0.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/tidyr_0.2.0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/tidyr/tidyr_0.2.0.tar.gz
+    - http://cran.r-project.org/src/contrib/tidyr_0.3.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/tidyr/tidyr_0.3.0.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -21,28 +21,32 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: knitr, testthat
+# Suggests: knitr, testthat, data.table, covr
 requirements:
   build:
     - r
-    - r-dplyr >=0.2
+    - r-rcpp
+    - r-dplyr >=0.4
     - r-lazyeval
-    - r-reshape2
+    - r-magrittr
     - r-stringi
+    - gcc # [not win]
 
   run:
     - r
-    - r-dplyr >=0.2
+    - r-rcpp
+    - r-dplyr >=0.4
     - r-lazyeval
-    - r-reshape2
+    - r-magrittr
     - r-stringi
+    - libgcc # [not win]
 
 test:
   commands:
@@ -59,30 +63,31 @@ test:
 about:
   home: https://github.com/hadley/tidyr
   license: MIT + file LICENSE
-  summary: An evolution of reshape2. It's designed specifically for data tidying (not general
-    reshaping or aggregating) and works well with dplyr data pipelines.
+  summary: An evolution of 'reshape2'. It's designed specifically for data tidying (not general
+    reshaping or aggregating) and works well with 'dplyr' data pipelines.
 
 # The original CRAN metadata for this package was:
 
 # Package: tidyr
-# Title: Easily Tidy Data with spread() and gather() Functions.
-# Version: 0.2.0
-# Authors@R: as.person(c( "Hadley Wickham <hadley@rstudio.com> [aut, cre]", "RStudio [cph]" ))
-# Description: An evolution of reshape2. It's designed specifically for data tidying (not general reshaping or aggregating) and works well with dplyr data pipelines.
+# Title: Easily Tidy Data with `spread()` and `gather()` Functions
+# Version: 0.3.0
+# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")), person("RStudio", role = "cph") )
+# Description: An evolution of 'reshape2'. It's designed specifically for data tidying (not general reshaping or aggregating) and works well with 'dplyr' data pipelines.
 # Depends: R (>= 3.1.0)
 # License: MIT + file LICENSE
 # LazyData: true
-# Imports: reshape2, dplyr (>= 0.2), stringi, lazyeval
+# Imports: dplyr (>= 0.4), stringi, lazyeval, magrittr, Rcpp
 # URL: https://github.com/hadley/tidyr
 # BugReports: https://github.com/hadley/tidyr/issues
-# Suggests: knitr, testthat
+# Suggests: knitr, testthat, data.table, covr
 # VignetteBuilder: knitr
-# Packaged: 2014-12-05 16:52:20 UTC; hadley
+# LinkingTo: Rcpp
+# NeedsCompilation: yes
+# Packaged: 2015-09-07 22:33:26 UTC; hadley
 # Author: Hadley Wickham [aut, cre], RStudio [cph]
 # Maintainer: Hadley Wickham <hadley@rstudio.com>
-# NeedsCompilation: no
 # Repository: CRAN
-# Date/Publication: 2014-12-05 18:03:26
+# Date/Publication: 2015-09-08 08:08:44
 
 # See
 # http://docs.continuum.io/conda/build.html for
