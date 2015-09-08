@@ -41,6 +41,12 @@ fi
 # Execute the compiled output.
 (
     set -e
+    if [ "$(uname)" == "Darwin" ]; then
+        # On Mac, compiled executables need help finding libstdc++.dylib
+        # (When building a recipe, conda-build will fix up the dylib links internally,
+        #  so this isn't necesary in recipes.)
+        DYLD_FALLBACK_LIBRARY_PATH="${PREFIX}/lib"
+    fi
     ./hello_c.out > /dev/null
     ./hello_cpp.out > /dev/null
 )

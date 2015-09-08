@@ -20,7 +20,7 @@ requirements:
     - numpy
 
 build:
-  string: py{{py}}np{{np}}_0o
+  string: np{{np}}py{{py}}_o0
   features:
     - openblas
 
