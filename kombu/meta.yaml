@@ -1,0 +1,72 @@
+package:
+  name: kombu
+  version: "3.0.24"
+
+source:
+  fn: kombu-3.0.24.tar.gz
+  url: https://pypi.python.org/packages/source/k/kombu/kombu-3.0.24.tar.gz
+  md5: 37c8b5084ac83b8a6f5ff9f157cac0e9
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - kombu = kombu:main
+    #
+    # Would create an entry point called kombu that calls kombu.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - anyjson >=0.3.3
+    - amqp >=1.4.6,<2.0
+
+  run:
+    - python
+    - anyjson >=0.3.3
+    - amqp >=1.4.6,<2.0
+
+test:
+  # Python imports
+  imports:
+    - kombu
+    - kombu.async
+    - kombu.tests
+    - kombu.tests.async
+    - kombu.tests.transport
+    - kombu.tests.transport.virtual
+    - kombu.tests.utils
+    - kombu.transport
+    - kombu.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://kombu.readthedocs.org
+  license: BSD License
+  summary: 'Messaging library for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

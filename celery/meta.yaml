@@ -1,0 +1,109 @@
+package:
+  name: celery
+  version: "3.1.18"
+
+source:
+  fn: celery-3.1.18.tar.gz
+  url: https://pypi.python.org/packages/source/c/celery/celery-3.1.18.tar.gz
+  md5: 1c25973250f75788fb9c690d4fc68957
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - celery = celery:main
+    #
+    # Would create an entry point called celery that calls celery.main()
+
+    - celery = celery.__main__:main
+    - celeryd = celery.__main__:_compat_worker
+    - celerybeat = celery.__main__:_compat_beat
+    - celeryd-multi = celery.__main__:_compat_multi
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pytz >dev
+    - billiard >=3.3.0.20,<3.4
+    - kombu >=3.0.25,<3.1
+
+  run:
+    - python
+    - pytz >dev
+    - billiard >=3.3.0.20,<3.4
+    - kombu >=3.0.25,<3.1
+
+test:
+  # Python imports
+  imports:
+    - celery
+    - celery.app
+    - celery.apps
+    - celery.backends
+    - celery.backends.database
+    - celery.bin
+    - celery.concurrency
+    - celery.contrib
+    - celery.events
+    - celery.fixups
+    - celery.loaders
+    - celery.security
+    - celery.task
+    - celery.tests
+    - celery.tests.app
+    - celery.tests.backends
+    - celery.tests.bin
+    - celery.tests.bin.proj
+    - celery.tests.compat_modules
+    - celery.tests.concurrency
+    - celery.tests.contrib
+    - celery.tests.events
+    - celery.tests.fixups
+    - celery.tests.functional
+    - celery.tests.security
+    - celery.tests.slow
+    - celery.tests.tasks
+    - celery.tests.utils
+    - celery.tests.worker
+    - celery.utils
+    - celery.utils.dispatch
+    - celery.worker
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - celery --help
+    - celeryd --help
+    - celerybeat --help
+    - celeryd-multi --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - mock >=1.0.1
+    - nose
+    - unittest2 >=0.5.1
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://celeryproject.org
+  license: BSD License
+  summary: 'Distributed Task Queue'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

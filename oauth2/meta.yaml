@@ -1,0 +1,67 @@
+package:
+  name: oauth2
+  version: "1.5.211"
+
+source:
+  fn: oauth2-1.5.211.tar.gz
+  url: https://pypi.python.org/packages/source/o/oauth2/oauth2-1.5.211.tar.gz
+  md5: 987ad7365a70e2286bd1cebb344debbc
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - oauth2 = oauth2:main
+    #
+    # Would create an entry point called oauth2 that calls oauth2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - httplib2
+
+  run:
+    - python
+    - httplib2
+
+test:
+  # Python imports
+  imports:
+    - oauth2
+    - oauth2.clients
+    - tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - coverage
+    - mock
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/simplegeo/python-oauth2
+  license: MIT License
+  summary: 'library for OAuth version 1.0'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
