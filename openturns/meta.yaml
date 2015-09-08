@@ -40,6 +40,7 @@ requirements:
   run:
     - python
     - matplotlib
+    - libgcc        # [not win]
     - lapack        # [not win]
     - libxml2       # [not win]
     - muparser      # [not win]
