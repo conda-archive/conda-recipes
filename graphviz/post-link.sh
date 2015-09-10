@@ -1,4 +1,4 @@
 #!/bin/bash
 
 
-dot -c
+$PREFIX/bin/dot -c
