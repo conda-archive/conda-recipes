@@ -12,10 +12,12 @@ requirements:
   build:
     - python
     - mercurial
+    - future
 
   run:
     - python
     - lxml
+    - future
 
 test:
   imports:
