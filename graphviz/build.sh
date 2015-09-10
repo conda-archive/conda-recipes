@@ -1,7 +1,7 @@
 #!/bin/sh
 # see http://conda.pydata.org/docs/build.html for hacking instructions.
 
-export CFLAGS="-Wall -g -m64 -pipe -O2 -fPIC"
+export CFLAGS="-Wall -g -m${ARCH} -pipe -O2 -fPIC"
 export CXXLAGS="${CFLAGS}"
 export CPPFLAGS="-I${PREFIX}/include"
 export LDFLAGS="-L${PREFIX}/lib"
