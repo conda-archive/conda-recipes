@@ -3,19 +3,19 @@ package:
   version: "1.1.0"
 
 source:
-  fn: preprocess-1.1.0.zip
-  url: https://pypi.python.org/packages/source/p/preprocess/preprocess-1.1.0.zip
-  md5: 868176a25f2924fada7a4d635553dd86
+  git_url: https://github.com/hplgit/preprocess.git
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
     - python
+    - future
 
   run:
     - python
+    - future
 
 test:
   imports:
