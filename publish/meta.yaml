@@ -13,11 +13,13 @@ requirements:
     - python
     - mercurial
     - future
+    - python-levenshtein
 
   run:
     - python
     - lxml
     - future
+    - python-levenshtein
 
 test:
   imports:
