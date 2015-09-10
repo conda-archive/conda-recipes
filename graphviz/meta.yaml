@@ -10,7 +10,7 @@ source:
      - gvconfig_libdir.patch
 
 build:
-  number: 3
+  number: 4
 
 requirements:
   build:
