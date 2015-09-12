@@ -23,6 +23,7 @@ if [ "$(uname)" == "Darwin" ]; then
     ./bootstrap.sh \
         --prefix="${PREFIX}" \
         --with-python="${PYTHON}" \
+        --with-python-root="${PREFIX} : ${PREFIX}/include/python${PY_VER}m ${PREFIX}/include/python${PY_VER}" \
         --with-icu="${PREFIX}" \
         | tee bootstrap.log 2>&1
 
