@@ -46,7 +46,7 @@ http://jrsoftware.org/.  Make sure you get the Unicode one. Install it to
 `C:\packages\Inno` (otherwise you will have to edit the Makefile).
 
 Once you have run `make distribution`, run `cd installer; make imagedir`. This
-will put all the files that should be installed into `R-3.2.1` (in the
+will put all the files that should be installed into `R-3.2.2` (in the
 `installer` directory).  This is what you should "install".
 
 

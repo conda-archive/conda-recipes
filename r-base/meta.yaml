@@ -1,12 +1,12 @@
 package:
   name: r # [win]
   name: r-base # [not win]
-  version: 3.2.1
+  version: 3.2.2
 
 source:
-  fn: R-3.2.1.tar.gz
-  url: http://cran.cnr.berkeley.edu/src/base/R-3/R-3.2.1.tar.gz
-  sha1: 74476c4d356f227bf0f17c8c21e63459861fbc93
+  fn: R-3.2.2.tar.gz
+  url: http://cran.cnr.berkeley.edu/src/base/R-3/R-3.2.2.tar.gz
+  sha1: 68c74db1c5a2f2040280a03b8396e4d28a5a7617
   patches: # [not win]
     - share-make-vars.mk.patch # [not win]
     - mac-unicode.patch # [osx]
