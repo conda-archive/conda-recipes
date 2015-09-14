@@ -2,13 +2,13 @@ package:
   name: r-tidyr
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.3.0"
+  version: "0.3.1"
 
 source:
-  fn: tidyr_0.3.0.tar.gz
+  fn: tidyr_0.3.1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/tidyr_0.3.0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/tidyr/tidyr_0.3.0.tar.gz
+    - http://cran.r-project.org/src/contrib/tidyr_0.3.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/tidyr/tidyr_0.3.1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -70,7 +70,7 @@ about:
 
 # Package: tidyr
 # Title: Easily Tidy Data with `spread()` and `gather()` Functions
-# Version: 0.3.0
+# Version: 0.3.1
 # Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")), person("RStudio", role = "cph") )
 # Description: An evolution of 'reshape2'. It's designed specifically for data tidying (not general reshaping or aggregating) and works well with 'dplyr' data pipelines.
 # Depends: R (>= 3.1.0)
@@ -83,11 +83,11 @@ about:
 # VignetteBuilder: knitr
 # LinkingTo: Rcpp
 # NeedsCompilation: yes
-# Packaged: 2015-09-07 22:33:26 UTC; hadley
+# Packaged: 2015-09-09 23:20:52 UTC; hadley
 # Author: Hadley Wickham [aut, cre], RStudio [cph]
 # Maintainer: Hadley Wickham <hadley@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2015-09-08 08:08:44
+# Date/Publication: 2015-09-10 09:21:12
 
 # See
 # http://docs.continuum.io/conda/build.html for
