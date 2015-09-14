@@ -1,12 +1,12 @@
 package:
   name: preprocess
-  version: "1.1.0"
+  version: "1.2.0"
 
 source:
   git_url: https://github.com/hplgit/preprocess.git
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
