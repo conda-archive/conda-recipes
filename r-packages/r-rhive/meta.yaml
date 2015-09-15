@@ -26,6 +26,8 @@ build:
     - lib/R/lib/
     - lib/
 
+  skip: true # [linux]
+
 # Suggests: RUnit
 requirements:
   build:
