@@ -6,4 +6,4 @@ set -e
 make
 make install
 cd ${SRC_DIR}/src/nrnpython
-$PYTHON setup.py install
+$PYTHON setup.py install --prefix=${PREFIX}

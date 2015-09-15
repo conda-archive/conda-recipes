@@ -10,8 +10,6 @@ requirements:
     build:
         - iv ==19
         - python
-        - readline
     run:
         - iv ==19
         - python
-        - readline
