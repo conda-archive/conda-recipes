@@ -2,7 +2,7 @@
 
 set -e
 
-./configure --with-nrnpython=$PYTHON --with-iv --prefix=${PREFIX}
+./configure --with-nrnpython=$PYTHON --with-iv=${PREFIX} --prefix=${PREFIX}
 make
 make install
 cd ${SRC_DIR}/src/nrnpython
