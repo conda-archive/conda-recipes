@@ -22,12 +22,14 @@ requirements:
     - setuptools
     - argparse # [py26]
     - singledispatch # [not py34]
+    - six
 
   run:
     - python
     - r
     - argparse # [py26]
     - singledispatch # [not py34]
+    - six
 
 test:
   # Python imports
