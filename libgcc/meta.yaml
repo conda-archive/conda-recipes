@@ -2,6 +2,9 @@ package:
   name: libgcc
   version: 4.8.5
 
+build:
+  number: 3
+
 requirements:
   build:
     - gcc 4.8.5
