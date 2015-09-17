@@ -51,8 +51,8 @@ else
         --with-tune=generic \
         --disable-multilib
 fi
-make -j$CPU_COUNT
-make install
+make -j"$CPU_COUNT"
+make install-strip
 rm "$PREFIX"/lib64
 
 # Link cc to gcc

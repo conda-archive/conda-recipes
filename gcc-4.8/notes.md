@@ -1,4 +1,13 @@
-This requires a newish gcc to build. gcc 4.7 will work.
+Tools that are necessary for building GCC:
+https://gcc.gnu.org/install/prerequisites.html
+
+This package is known to be able to build on CentOS 5.11 with gcc 4.1.2.
+The Docker centos:5.11 image was used and the following packages installed:
+
+* required to unpack GCC sources:
+    tar bzip2
+* required to build GCC:
+    gcc gcc-c++ make zip
 
 We do not require gcc as a build dependency because we want to make sure that
 conda build finds all the files installed for this gcc when creating the
