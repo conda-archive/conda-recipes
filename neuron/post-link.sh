@@ -5,10 +5,11 @@ link_files () {
         f_basename="${f##*/}"
         f_dest=$2/$f_basename
         echo "Analyzing file $f_dest" >> $PREFIX/.messages.txt
-        if [ ! -f $f_dest ]; then
-            echo "$f_dest does not exist. Linking" >> $PREFIX/.messages.txt
-            ln -sv $f $f_dest
+        if [ -f $f_dest ]; then
+            echo "$f_dest does exist. Removing for linking" >> $PREFIX/.messages.txt
+            rm $f_dest
         fi
+        ln -sv $f $f_dest
     done    
 }
 
