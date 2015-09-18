@@ -33,14 +33,14 @@ requirements:
   build:
     - r
     - r-bh
-    - r-rcpp
+    - r-rcpp >=0.11.4.6
     - gcc # [not win]
     - libxml2
 
   run:
     - r
     - r-bh
-    - r-rcpp
+    - r-rcpp >=0.11.4.6
     - libgcc # [not win]
     - libxml2
 

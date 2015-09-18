@@ -1,9 +1,9 @@
 # This package is for OS X and Linux only. On Windows, r-recommended is part of r, and there is no r-base.
 package:
   name: r # Let's make this fail on Windows: [not win]
-  version: 3.2.1
+  version: 3.2.2
 
 requirements:
   run:
-    - r-base 3.2.1
-    - r-recommended 3.2.1
+    - r-base 3.2.2
+    - r-recommended 3.2.2

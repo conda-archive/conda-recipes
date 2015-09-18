@@ -28,6 +28,7 @@ build:
     - lib/R/lib/
     - lib/
 
+  skip: true # [linux]
 
 requirements:
   build:

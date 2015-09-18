@@ -28,6 +28,8 @@ build:
     - lib/R/lib/
     - lib/
 
+  skip: true # [osx]
+
 # Suggests: png
 requirements:
   build:
