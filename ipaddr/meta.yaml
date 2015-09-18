@@ -1,11 +1,11 @@
 package:
-  name: xlwings
-  version: "0.4.0"
+  name: ipaddr
+  version: "2.1.11"
 
 source:
-  fn: xlwings-0.4.0.tar.gz
-  url: https://pypi.python.org/packages/source/x/xlwings/xlwings-0.4.0.tar.gz
-  md5: 38cf19791dd71aadf38d3490a274196a
+  fn: ipaddr-2.1.11.tar.gz
+  url: https://pypi.python.org/packages/source/i/ipaddr/ipaddr-2.1.11.tar.gz
+  md5: f2c7852f95862715f92e7d089dc3f2cf
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -17,9 +17,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - xlwings = xlwings:main
+    # - ipaddr = ipaddr:main
     #
-    # Would create an entry point called xlwings that calls xlwings.main()
+    # Would create an entry point called ipaddr that calls ipaddr.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -29,19 +29,13 @@ source:
 requirements:
   build:
     - python
-    - comtypes
-    - pywin32
 
   run:
     - python
-    - comtypes
-    - pywin32
 
-test:
+# test:
   # Python imports
-  imports:
-    - xlwings
-    - xlwings.tests
+  # imports:
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -56,9 +50,9 @@ test:
     # - nose
 
 about:
-  home: http://xlwings.org
-  license: BSD License
-  summary: 'Make Excel fly: Interact with Excel from Python and vice versa.'
+  home: http://code.google.com/p/ipaddr-py/
+  license: Apache Software License
+  summary: "Google's IP address manipulation library"
 
 # See
 # http://docs.continuum.io/conda/build.html for
