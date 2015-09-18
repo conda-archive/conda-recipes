@@ -7,7 +7,7 @@ source:
   url: http://mirrors.ctan.org/systems/win32/miktex/setup/miktex-portable-2.9.5719.exe [win]
 
 build:
-  number: 1
+  number: 2
   binary_relocation: false
   has_prefix_files:                                             [win]
     - Scripts/a5toa4.bat                                   [win]
