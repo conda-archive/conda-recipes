@@ -1,3 +1,8 @@
-%SCRIPTS%\7za x .\miktex-portable-2.9.5719.exe -yo.\miktex-portable-work
-xcopy .\miktex-portable-work\miktex\bin %SCRIPTS% /s /e
-rmdir .\miktex-portable-work /s /q
+mkdir "%PREFIX%\miktex-portable\"
+if errorlevel 1 exit 1
+
+"%SCRIPTS%\7za" x .\miktex-portable-2.9.5719.exe -yo"%PREFIX%\miktex-portable\"
+if errorlevel 1 exit 1
+
+for %%f in ("%PREFIX%\miktex-portable\miktex\bin\*.exe") do echo .\..\miktex-portable\miktex\bin\%%~nxf %%* >> "%SCRIPTS%\%%~nf.bat"
+if errorlevel 1 exit 1

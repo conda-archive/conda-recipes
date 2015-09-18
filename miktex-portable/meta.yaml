@@ -7,12 +7,11 @@ source:
   url: http://mirrors.ctan.org/systems/win32/miktex/setup/miktex-portable-2.9.5719.exe [win]
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
     - 7za 
-# conda config --add channels trent
 
 about:
   home: http://miktex.org/
