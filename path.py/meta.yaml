@@ -1,18 +1,19 @@
 package:
   name: path.py
-  version: !!str 5.2
+  version: "8.1.1"
 
 source:
-  fn: path.py-5.2.zip
-  url: https://pypi.python.org/packages/source/p/path.py/path.py-5.2.zip
-  md5: 96fe002b1797b221c269ff2ed1fdbc28
+  fn: path.py-8.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/path.py/path.py-8.1.1.tar.gz
+  md5: 40a8cba213479bfd053a5aae0b801562
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
-  #preserve_egg_dir: True
-  #entry_points:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -29,15 +30,18 @@ requirements:
   build:
     - python
     - setuptools
+    - setuptools_scm
+    - importlib
 
   run:
     - python
-
+    - importlib
+    
 # test:
   # Python imports
   # imports:
 
-  #commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -51,7 +55,7 @@ requirements:
 
 about:
   home: http://github.com/jaraco/path.py
-  license:  MIT License
+  license: MIT License
   summary: 'A module wrapper for os.path'
 
 # See

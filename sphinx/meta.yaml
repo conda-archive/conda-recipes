@@ -1,0 +1,103 @@
+package:
+  name: sphinx
+  version: "1.3.1"
+
+source:
+  fn: Sphinx-1.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/S/Sphinx/Sphinx-1.3.1.tar.gz
+  md5: 8786a194acf9673464c5455b11fd4332
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # noarch_python: True
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - sphinx = sphinx:main
+    #
+    # Would create an entry point called sphinx that calls sphinx.main()
+
+    - sphinx-build = sphinx:main
+    - sphinx-quickstart = sphinx.quickstart:main
+    - sphinx-apidoc = sphinx.apidoc:main
+    - sphinx-autogen = sphinx.ext.autosummary.generate:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six >=1.4
+    - jinja2 >=2.3
+    - pygments >=2.0
+    - docutils >=0.11
+    - snowballstemmer >=1.1
+    - babel >=1.3
+    - alabaster >=0.7,<0.8
+    - sphinx_rtd_theme >=0.1,<0.2
+    - colorama
+
+  run:
+    - python
+    - setuptools
+    - six >=1.4
+    - jinja2 >=2.3
+    - pygments >=2.0
+    - docutils >=0.11
+    - snowballstemmer >=1.1
+    - babel >=1.3
+    - alabaster >=0.7,<0.8
+    - sphinx_rtd_theme >=0.1,<0.2
+    - colorama
+
+test:
+  # Python imports
+  imports:
+    - sphinx
+    - sphinx.builders
+    - sphinx.directives
+    - sphinx.domains
+    - sphinx.ext
+    - sphinx.ext.autosummary
+    - sphinx.ext.napoleon
+    - sphinx.locale
+    - sphinx.pycode
+    - sphinx.pycode.pgen2
+    - sphinx.search
+    - sphinx.util
+    - sphinx.websupport
+    - sphinx.websupport.search
+    - sphinx.websupport.storage
+    - sphinx.writers
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - sphinx-build --help
+    - sphinx-quickstart --help
+    - sphinx-apidoc --help
+    - sphinx-autogen --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://sphinx-doc.org/
+  license: BSD License
+  summary: 'Python documentation generator'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
