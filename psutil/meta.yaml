@@ -1,11 +1,11 @@
 package:
-  name: xlwings
-  version: "0.4.0"
+  name: psutil
+  version: "3.2.1"
 
 source:
-  fn: xlwings-0.4.0.tar.gz
-  url: https://pypi.python.org/packages/source/x/xlwings/xlwings-0.4.0.tar.gz
-  md5: 38cf19791dd71aadf38d3490a274196a
+  fn: psutil-3.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/psutil/psutil-3.2.1.tar.gz
+  md5: a308816e735021fd4bf6aa561725c1aa
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -17,9 +17,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - xlwings = xlwings:main
+    # - psutil = psutil:main
     #
-    # Would create an entry point called xlwings that calls xlwings.main()
+    # Would create an entry point called psutil that calls psutil.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -29,19 +29,15 @@ source:
 requirements:
   build:
     - python
-    - comtypes
-    - pywin32
+    - setuptools
 
   run:
     - python
-    - comtypes
-    - pywin32
 
 test:
   # Python imports
   imports:
-    - xlwings
-    - xlwings.tests
+    - psutil
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -56,9 +52,9 @@ test:
     # - nose
 
 about:
-  home: http://xlwings.org
+  home: https://github.com/giampaolo/psutil
   license: BSD License
-  summary: 'Make Excel fly: Interact with Excel from Python and vice versa.'
+  summary: 'psutil is a cross-platform library for retrieving information onrunning processes and system utilization (CPU, memory, disks, network)in Python.'
 
 # See
 # http://docs.continuum.io/conda/build.html for

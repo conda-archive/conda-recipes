@@ -1,11 +1,11 @@
 package:
-  name: xlwings
-  version: "0.4.0"
+  name: netifaces
+  version: "0.10.4"
 
 source:
-  fn: xlwings-0.4.0.tar.gz
-  url: https://pypi.python.org/packages/source/x/xlwings/xlwings-0.4.0.tar.gz
-  md5: 38cf19791dd71aadf38d3490a274196a
+  fn: netifaces-0.10.4.tar.gz
+  url: https://pypi.python.org/packages/source/n/netifaces/netifaces-0.10.4.tar.gz
+  md5: 36da76e2cfadd24cc7510c2c0012eb1e
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -17,9 +17,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - xlwings = xlwings:main
+    # - netifaces = netifaces:main
     #
-    # Would create an entry point called xlwings that calls xlwings.main()
+    # Would create an entry point called netifaces that calls netifaces.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -29,19 +29,14 @@ source:
 requirements:
   build:
     - python
-    - comtypes
-    - pywin32
+    - setuptools
 
   run:
     - python
-    - comtypes
-    - pywin32
 
-test:
+# test:
   # Python imports
-  imports:
-    - xlwings
-    - xlwings.tests
+  # imports:
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -56,9 +51,9 @@ test:
     # - nose
 
 about:
-  home: http://xlwings.org
-  license: BSD License
-  summary: 'Make Excel fly: Interact with Excel from Python and vice versa.'
+  home: https://bitbucket.org/al45tair/netifaces
+  license: MIT License
+  summary: 'Portable network interface information.'
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -1,16 +1,18 @@
 package:
   name: pep8
-  version: 1.4.6
+  version: "1.6.2"
 
 source:
-  fn: pep8-1.4.6.tar.gz
-  url: https://pypi.python.org/packages/source/p/pep8/pep8-1.4.6.tar.gz
-  md5: a03bb494859e87b42601b61b1b043a0c
+  fn: pep8-1.6.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pep8/pep8-1.6.2.tar.gz
+  md5: c7a3f57d832484a6295164661fbb1335
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
+  # noarch_python: True
+  # preserve_egg_dir: True
   entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
@@ -23,7 +25,7 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
 requirements:
   build:
@@ -35,8 +37,7 @@ requirements:
 
 test:
   # Python imports
-  imports:
-    - pep8
+  # imports:
 
   commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -54,6 +55,7 @@ test:
 about:
   home: http://pep8.readthedocs.org/
   license: MIT License
+  summary: 'Python style guide checker'
 
 # See
 # http://docs.continuum.io/conda/build.html for

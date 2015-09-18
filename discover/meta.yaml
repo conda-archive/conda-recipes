@@ -1,25 +1,27 @@
 package:
-  name: path.py
-  version: !!str 7.2
+  name: discover
+  version: "0.4.0"
 
 source:
-  fn: path.py-7.2.zip
-  url: https://pypi.python.org/packages/source/p/path.py/path.py-7.2.zip
-  md5: e0c54b25e2199c3bb325520d9f9d047a
+  fn: discover-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/discover/discover-0.4.0.tar.gz
+  md5: 30bb643af4f5ea47fff572b5c346207d
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
+build:
+  # noarch_python: True
   # preserve_egg_dir: True
-  # entry_points:
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - path.py = path.py:main
+    # - discover = discover:main
     #
-    # Would create an entry point called path.py that calls path.py.main()
+    # Would create an entry point called discover that calls discover.main()
 
+    - discover = discover:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -33,14 +35,15 @@ requirements:
   run:
     - python
 
-# test:
+test:
   # Python imports
   # imports:
 
-  # commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+    - discover --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -50,9 +53,9 @@ requirements:
     # - nose
 
 about:
-  home: http://github.com/jaraco/path.py
-  license: MIT License
-  summary: 'A module wrapper for os.path'
+  home: http://pypi.python.org/pypi/discover/
+  license: BSD License
+  summary: 'Test discovery for unittest. Backported from Python 2.7 for Python 2.4+'
 
 # See
 # http://docs.continuum.io/conda/build.html for

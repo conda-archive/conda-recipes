@@ -1,18 +1,19 @@
 package:
   name: pbr
-  version: !!str 0.5.23
+  version: "1.8.0"
 
 source:
-  fn: pbr-0.5.23.tar.gz
-  url: https://pypi.python.org/packages/source/p/pbr/pbr-0.5.23.tar.gz
-  md5: dde40a1c2fefcd901c7c9ee9223ef955
+  fn: pbr-1.8.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/pbr/pbr-1.8.0.tar.gz
+  md5: bc7173f5ccec8e6125e3b68f0285eb8a
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
-  #preserve_egg_dir: True
-  #entry_points:
+build:
+  # noarch_python: True
+  preserve_egg_dir: True
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -20,6 +21,7 @@ source:
     #
     # Would create an entry point called pbr that calls pbr.main()
 
+    - pbr = pbr.cmd.main:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -29,34 +31,27 @@ requirements:
   build:
     - python
     - setuptools
-    - pip
 
   run:
     - python
-    - pip
+    - setuptools
 
 test:
   # Python imports
   imports:
-    - pbr.hooks
-    - pbr.tests
     - pbr
+    - pbr.cmd
+    - pbr.hooks
 
-  #commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
 
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any additional test requirements here.  For example
-    # - nose
-
 about:
-  home: http://pypi.python.org/pypi/pbr
-  license: ache Software License
+  home: https://launchpad.net/pbr
+  license: Apache Software License
+  summary: 'Python Build Reasonableness'
 
 # See
 # http://docs.continuum.io/conda/build.html for
