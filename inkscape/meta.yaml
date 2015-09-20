@@ -1,0 +1,19 @@
+package:
+  name: inkscape
+  version: 0.91
+
+source:
+  fn: inkscape-0.91.msi # [win]
+  url: https://inkscape.org/en/gallery/item/3950/inkscape-0.91.msi # [win]
+  sha1: 3228b0a46925e48a82b542da8ed447c5c1f03c98 # [win]
+
+build:
+  number: 0
+
+test:
+  commands:
+    - inkscape --help
+
+about:
+  home: https://inkscape.org
+  license: GNU General Public License (GPL)
