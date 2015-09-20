@@ -1,0 +1,24 @@
+package:
+  name: miktex
+  version: 2.9.5719
+
+source:
+  fn: miktex-portable-2.9.5719.exe
+  url: http://mirrors.ctan.org/systems/win32/miktex/setup/miktex-portable-2.9.5719.exe
+  sha1: 5e538a564e0d27ac051471888794ece026529291
+
+requirements:
+  build:
+    - 7za
+
+test:
+  commands:
+    - pdflatex --help
+
+build:
+  number: 0
+
+about:
+  home: http://miktex.org/
+  license: GPL
+  summary: implementation of TeX/LaTeX for Windows
