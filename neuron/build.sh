@@ -1,8 +1,6 @@
 #!/bin/bash
 
-set -e
-
-./configure --with-nrnpython=$PYTHON --with-iv=${PREFIX} --prefix=${PREFIX}
+./configure --with-nrnpython=$PYTHON --with-iv=${PREFIX} --prefix=${PREFIX}/nrn
 make
 make install
 cd ${SRC_DIR}/src/nrnpython

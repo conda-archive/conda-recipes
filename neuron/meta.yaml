@@ -13,3 +13,10 @@ requirements:
     run:
         - iv ==19
         - python
+
+test:
+    imports:
+      - neuron
+      - neuron.hoc
+      - neuron.gui
+    
