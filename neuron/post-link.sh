@@ -13,7 +13,7 @@ link_files () {
     done    
 }
 
-#link_files ${PREFIX}/x86_64/lib ${PREFIX}/lib
-#link_files ${PREFIX}/x86_64/bin ${PREFIX}/bin
+link_files ${PREFIX}/x86_64/lib ${PREFIX}/lib
+link_files ${PREFIX}/x86_64/bin ${PREFIX}/bin
 
 
