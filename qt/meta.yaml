@@ -11,9 +11,6 @@ source:
     - qmake-arch.patch                 [osx]
     - ubuntu_disable_scrollbars.patch  [linux]
 
-build:
-  number: 1
-
 requirements:
   build:
     - freetype    >=2.5.2    [unix]
