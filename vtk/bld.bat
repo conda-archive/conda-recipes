@@ -3,16 +3,8 @@
 mkdir build
 cd build
 
-if %PY3K%==1 (
-    if "%PY_VER%"=="3.5" (
-        set CMAKE_GENERATOR=Visual Studio 14 2015
-    ) else (
-        set CMAKE_GENERATOR=Visual Studio 10 2010
-    )
-) else (
-    set CMAKE_GENERATOR=Visual Studio 9 2008
-)
-
+set CMAKE_GENERATOR=Visual Studio 9 2008
+set PYLIB=python27.lib
 
 if %ARCH%==64 (
     set CMAKE_GENERATOR=%CMAKE_GENERATOR% Win64
@@ -33,7 +25,7 @@ cmake .. -G "%CMAKE_GENERATOR%" ^
     -DVTK_WRAP_PYTHON=ON ^
     -DPYTHON_EXECUTABLE=%PYTHON% ^
     -DPYTHON_INCLUDE_PATH=%PREFIX%\\include ^
-    -DPYTHON_LIBRARY=%PREFIX%\\libs\\python27.lib ^
+    -DPYTHON_LIBRARY=%PREFIX%\\libs\\%PYLIB% ^
     -DVTK_INSTALL_PYTHON_MODULE_DIR=%PREFIX%\\Lib\\site-packages ^
     -DVTK_USE_OFFSCREEN=ON ^
     -DModule_vtkRenderingMatplotlib=ON
