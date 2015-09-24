@@ -16,8 +16,10 @@ requirements:
   build:
     - cmake
     - python    <3
+    - mesa      [linux]
   run:
     - python    <3
+    - mesa      [linux]
 
 test:
   imports:
