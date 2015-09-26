@@ -1,5 +1,5 @@
-msiexec /a inkscape-%PKG_VERSION%.msi /qb TARGETDIR=%PREFIX%
-move %PREFIX%\PFiles\Inkscape %PREFIX%\lib
-
-mkdir %SCRIPTS%
-@echo start /b /wait cmd /c ^"%%~dp0..\lib\inkscape.com %%*^" > %SCRIPTS%\inkscape.bat
+7za x Inkscape-0.91-1-win64.7z -o%SRC_DIR%
+rmdir /s/q %LIBRARY_PREFIX%
+move %SRC_DIR%\inkscape %LIBRARY_PREFIX%
+rem mkdir %SCRIPTS%
+@echo start /b /wait cmd /c ^"%%~dp0..\Library\inkscape.com %%*^" > %SCRIPTS%\inkscape.bat

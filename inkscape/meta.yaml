@@ -3,9 +3,13 @@ package:
   version: 0.91
 
 source:
-  fn: inkscape-0.91.msi # [win]
-  url: https://inkscape.org/en/gallery/item/3950/inkscape-0.91.msi # [win]
-  sha1: 3228b0a46925e48a82b542da8ed447c5c1f03c98 # [win]
+  fn: Inkscape-0.91-1-win64.7z # [win64]
+  url: https://inkscape.org/en/gallery/item/3938/Inkscape-0.91-1-win64.7z # [win64]
+  sha1: 724707f66aa48be0a5746d71da5bf328cb2745bf # [win64]
+
+requirements:
+  build:
+  - 7za
 
 build:
   number: 0
