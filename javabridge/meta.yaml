@@ -52,12 +52,8 @@ test:
   # at test time.
 
   requires:
-    - e
-    - n
-    - o
-    - s
     # Put any additional test requirements here.  For example
-    # - nose
+    - nose
 
 about:
   home: http://github.com/CellProfiler/python-javabridge/
