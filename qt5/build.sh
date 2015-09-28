@@ -20,8 +20,6 @@ if [ `uname` == Darwin ]; then
     CONFIG_OPTS+=" -platform macx-g++ -no-framework -no-c++11"
     CONFIG_OPTS+=" -no-mtdev -no-harfbuzz -no-xinput2 -no-xcb-xlib"
     CONFIG_OPTS+=" -no-libudev -no-egl"
-
-    MAKE_JOBS=$(sysctl -n hw.ncpu)
 fi
 
 chmod +x configure
@@ -42,7 +40,7 @@ chmod +x configure
             -qt-zlib \
             $CONFIG_OPTS
 
-make -j $MAKE_JOBS
+make -j ${CPU_COUNT}
 make install
 
 for file in $PREFIX/lib/qt5/bin/*

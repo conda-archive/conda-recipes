@@ -28,6 +28,7 @@ if [ `uname` == Linux ]; then
     # See https://bugreports.qt.io/browse/QTBUG-5385
     LD_LIBRARY_PATH=$SRC_DIR/lib make -j $CPU_COUNT
     
+    make -j${CPU_COUNT}
     make install
 
     cp $SRC_DIR/bin/* $PREFIX/bin/
@@ -53,7 +54,7 @@ if [ `uname` == Darwin ]; then
         -opensource -verbose -openssl -no-framework -system-libpng \
         -arch `uname -m` -L $PREFIX/lib -I $PREFIX/include
 
-    make -j $(sysctl -n hw.ncpu)
+    make -j ${CPU_COUNT}
     make install
 fi
 
