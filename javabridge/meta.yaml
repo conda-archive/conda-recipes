@@ -1,0 +1,69 @@
+package:
+  name: javabridge
+  version: "1.0.11"
+
+source:
+  fn: javabridge-1.0.11.tar.gz
+  url: https://pypi.python.org/packages/source/j/javabridge/javabridge-1.0.11.tar.gz
+  md5: afaa70cc106a4a7fd66d7fbb253e8589
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # noarch_python: True
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - javabridge = javabridge:main
+    #
+    # Would create an entry point called javabridge that calls javabridge.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+
+  run:
+    - python
+    - setuptools
+    - numpy
+
+test:
+  # Python imports
+  imports:
+    - javabridge
+    - javabridge.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - e
+    - n
+    - o
+    - s
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/CellProfiler/python-javabridge/
+  license: BSD License
+  summary: 'Python wrapper for the Java Native Interface'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
