@@ -22,8 +22,8 @@ if [ `uname` == Linux ]; then
         -DVTK_WRAP_PYTHON=ON \
         -DPYTHON_EXECUTABLE=${PYTHON} \
         -DPYTHON_INCLUDE_PATH=${PREFIX}/include/python${PY_VER} \
-        -DPYTHON_LIBRARY=$PREFIX/lib/${PY_LIB} \
-        -DVTK_INSTALL_PYTHON_MODULE_DIR=${PREFIX}/lib/python${PY_VER}/site-packages \
+        -DPYTHON_LIBRARY=${PREFIX}/lib/${PY_LIB} \
+        -DVTK_INSTALL_PYTHON_MODULE_DIR=${SP_DIR} \
         -DVTK_USE_OFFSCREEN=ON \
         -DModule_vtkRenderingMatplotlib=ON \
         -DVTK_USE_X=OFF \
@@ -52,10 +52,10 @@ if [ `uname` == Darwin ]; then
         -DBUILD_EXAMPLES=OFF \
         -DBUILD_SHARED_LIBS=ON \
         -DVTK_WRAP_PYTHON=ON \
-        -DPYTHON_EXECUTABLE=$PYTHON \
-        -DPYTHON_INCLUDE_PATH=$PREFIX/include/python${PY_VER} \
-        -DPYTHON_LIBRARY=$PREFIX/lib/${PY_LIB} \
-        -DVTK_INSTALL_PYTHON_MODULE_DIR=%PREFIX%/lib/python${PY_VER}/site-packages \
+        -DPYTHON_EXECUTABLE=${PYTHON} \
+        -DPYTHON_INCLUDE_PATH=${PREFIX}/include/python${PY_VER} \
+        -DPYTHON_LIBRARY=${PREFIX}/lib/${PY_LIB} \
+        -DVTK_INSTALL_PYTHON_MODULE_DIR=${SP_DIR} \
         -DVTK_USE_OFFSCREEN=ON \
         -DModule_vtkRenderingMatplotlib=ON \
         -DVTK_USE_X=OFF
@@ -63,7 +63,3 @@ fi
 
 make -j${CPU_COUNT}
 make install
-
-if [ `uname` == Darwin ]; then
-    $SYS_PYTHON $RECIPE_DIR/osx.py
-fi
