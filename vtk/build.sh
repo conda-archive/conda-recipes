@@ -38,7 +38,6 @@ if [ `uname` == Darwin ]; then
     CC=cc
     CXX=c++
     PY_LIB="libpython${PY_VER}.dylib"
-    export DYLD_LIBRARY_PATH=$PREFIX/lib
 
     cmake .. \
         -DCMAKE_C_COMPILER=$CC \
