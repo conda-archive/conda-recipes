@@ -1,8 +1,12 @@
 mkdir C:\b
 cd C:\b
 
-if "%ARCH%" == "32" set "CMAKE_GENERATOR=Visual Studio 9 2008"
-if "%ARCH%" == "64" set "CMAKE_GENERATOR=Visual Studio 9 2008 Win64"
+set "CMAKE_GENERATOR=Visual Studio 9 2008"
+if "%PY_VER%" == "3.3" set "CMAKE_GENERATOR=Visual Studio 10"
+if "%PY_VER%" == "3.4" set "CMAKE_GENERATOR=Visual Studio 10"
+if "%PY_VER%" == "3.5" set "CMAKE_GENERATOR=Visual Studio 14"
+
+if "%ARCH%" == "64" set "CMAKE_GENERATOR=%CMAKE_GENERATOR% Win64"
 
 REM Remove dot from PY_VER for use in library name
 set MY_PY_VER=%PY_VER:.=%
