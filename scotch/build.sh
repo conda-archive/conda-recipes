@@ -5,12 +5,7 @@ cd src/
 echo 'prefix = $PREFIX' > Makefile.inc
 echo '' >> Makefile.inc
 if [ `uname` == "Darwin" ]; then
-  cat Make.inc/Makefile.inc.x86-64_pc_linux2 | \
-    sed -e "s/-lz -lm -lrt/-lz -lm/" | \
-    sed -e "s/-DSCOTCH_PTHREAD//" | \
-    sed -e "s/-DCOMMON_PTHREAD//" | \
-    sed -e "s/= -O3/= -fPIC -O3/" >> \
-    Makefile.inc
+  cp -f $RECIPE_DIR/darwin/Makefile.inc Makefile.inc
 else
   cat Make.inc/Makefile.inc.x86-64_pc_linux2 | \
     sed -e "s/= -O3/= -fPIC -O3/" >> \

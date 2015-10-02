@@ -1,11 +1,11 @@
 package:
   name: scotch
-  version: "6.0.0"
+  version: "6.0.4"
 
 source:
-  fn: scotch_6.0.0.tar.gz
-  url: https://gforge.inria.fr/frs/download.php/31831/scotch_6.0.0.tar.gz
-  md5: ba117428c0a6cd97d0c93e8b872bb3fe
+  fn: scotch_6.0.4.tar.gz
+  url: http://gforge.inria.fr/frs/download.php/file/34618/scotch_6.0.4.tar.gz
+  md5: d58b825eb95e1db77efe8c6ff42d329f
   patches:
     - clock_gettime.patch [osx]
 
