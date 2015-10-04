@@ -1,13 +1,14 @@
 package:
   name: spyder
-  version: 2.3.5.2
+  version: 2.3.6
 
 source:
-  fn:   spyder-2.3.5.2.zip
-  url:  https://pypi.python.org/packages/source/s/spyder/spyder-2.3.5.2.zip
-  md5:  debf130130a7bef188b3bdfedb7b3c70
+  fn:   spyder-2.3.6.zip
+  https://pypi.python.org/packages/source/s/spyder/spyder-2.3.6.zip
+  md5: ae4a5e5014cc8c86820b34ba53661847
 
 build:
+  noarch_python: True
   osx_is_app: True
 
 requirements:
@@ -16,17 +17,17 @@ requirements:
     - sphinx
   run:
     - python
+    - pyqt
     - rope
     - pyflakes
-    - pyzmq
-    - ipython
+    - jedi            0.8*
+    - qtconsole
+    - nbconvert
     - pygments
-    - jinja2
-    - docutils
     - sphinx
     - pep8
+    - psutil
     - pylint
-    - pyqt
     - python.app      [osx]
 
 test:
