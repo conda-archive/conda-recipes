@@ -30,12 +30,12 @@ requirements:
   build:
     - python
     - requests
-    - requests_oauthlib
+    - requests-oauthlib
 
   run:
     - python
     - requests
-    - requests_oauthlib
+    - requests-oauthlib
 
 test:
   # Python imports
