@@ -1,18 +1,19 @@
 package:
   name: blinker
-  version: !!str 1.3
+  version: "1.4"
 
 source:
-  fn: blinker-1.3.tar.gz
-  url: https://pypi.python.org/packages/source/b/blinker/blinker-1.3.tar.gz
-  md5: 66e9688f2d287593a0e698cd8a5fbc57
+  fn: blinker-1.4.tar.gz
+  url: https://pypi.python.org/packages/source/b/blinker/blinker-1.4.tar.gz
+  md5: 8b3722381f83c2813c52de3016b68d33
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
-  #preserve_egg_dir: True
-  #entry_points:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -28,6 +29,7 @@ source:
 requirements:
   build:
     - python
+    - setuptools
 
   run:
     - python
@@ -37,7 +39,7 @@ test:
   imports:
     - blinker
 
-  #commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -52,7 +54,7 @@ test:
 about:
   home: http://pythonhosted.org/blinker/
   license: MIT License
-  summary: Fast, simple object-to-object and broadcast signaling
+  summary: 'Fast, simple object-to-object and broadcast signaling'
 
 # See
 # http://docs.continuum.io/conda/build.html for
