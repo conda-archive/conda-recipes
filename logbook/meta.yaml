@@ -1,16 +1,17 @@
 package:
   name: logbook
-  version: "0.9.0"
+  version: "0.11.2"
 
 source:
-  fn: Logbook-0.9.0.tar.gz
-  url: https://pypi.python.org/packages/source/L/Logbook/Logbook-0.9.0.tar.gz
-  md5: 5bd467a7173dd8aac4d33bb49d709464
+  fn: Logbook-0.11.2.tar.gz
+  url: https://pypi.python.org/packages/source/L/Logbook/Logbook-0.11.2.tar.gz
+  md5: 7f2d811b1d3ef73d0e82c45dc5bad666
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
+  # noarch_python: True
   # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
