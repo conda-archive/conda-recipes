@@ -33,12 +33,13 @@ requirements:
     - setuptools
     - tornado
     - six
+    - argparse # [py26]
 
   run:
     - python
     - tornado
     - six
-
+    - argparse # [py26]
 test:
   # Python imports
   imports:
