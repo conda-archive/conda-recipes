@@ -1,16 +1,17 @@
 package:
   name: oauthlib
-  version: !!str 0.7.1
+  version: "1.0.3"
 
 source:
-  fn: oauthlib-0.7.1.tar.gz
-  url: https://pypi.python.org/packages/source/o/oauthlib/oauthlib-0.7.1.tar.gz
-  md5: ef5eda064c5732516c6d199892d7aaec
+  fn: oauthlib-1.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/o/oauthlib/oauthlib-1.0.3.tar.gz
+  md5: 02772867bf246b3b37f4ed22786c41f5
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
+  # noarch_python: True
   # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
@@ -54,7 +55,11 @@ test:
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  # requires:
+  requires:
+    - blinker
+    - cryptography
+    - nose
+    - pyjwt >=1.0.0
     # Put any additional test requirements here.  For example
     # - nose
 
