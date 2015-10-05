@@ -1,18 +1,19 @@
 package:
   name: macfsevents
-  version: !!str 0.3
+  version: "0.4"
 
 source:
-  fn: MacFSEvents-0.3.tar.gz
-  url: https://pypi.python.org/packages/source/M/MacFSEvents/MacFSEvents-0.3.tar.gz
-  md5: 69660eba7e146ad21a4d23253a0fe24a
+  fn: MacFSEvents-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/M/MacFSEvents/MacFSEvents-0.4.tar.gz
+  md5: 2ffe399dc2cbd413f86388ff8d6b0458
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
-  #preserve_egg_dir: True
-  #entry_points:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -33,12 +34,11 @@ requirements:
   run:
     - python
 
-test:
+# test:
   # Python imports
-  imports:
-    - fsevents
+  # imports:
 
-  #commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -51,9 +51,9 @@ test:
     # - nose
 
 about:
-  home: UNKNOWN
+  home: https://github.com/malthe/macfsevents
   license: MIT License
-  summary: Thread-based interface to file system observation primitives.
+  summary: 'Thread-based interface to file system observation primitives.'
 
 # See
 # http://docs.continuum.io/conda/build.html for
