@@ -1,16 +1,17 @@
 package:
   name: wcwidth
-  version: "0.1.4"
+  version: "0.1.5"
 
 source:
-  fn: wcwidth-0.1.4.tar.gz
-  url: https://pypi.python.org/packages/source/w/wcwidth/wcwidth-0.1.4.tar.gz
-  md5: 4fb1d2481c5a849e57ad3fa7018ccbae
+  fn: wcwidth-0.1.5.tar.gz
+  url: https://pypi.python.org/packages/source/w/wcwidth/wcwidth-0.1.5.tar.gz
+  md5: 2282d853074f2f1f465a3387e524d99b
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
+  # noarch_python: True
   # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
