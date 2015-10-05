@@ -1,16 +1,17 @@
 package:
   name: twitter
-  version: !!str 1.15.0
+  version: "1.17.1"
 
 source:
-  fn: twitter-1.15.0.tar.gz
-  url: https://pypi.python.org/packages/source/t/twitter/twitter-1.15.0.tar.gz
-  md5: ba530230d1687a2a8bfd720a963f13c0
+  fn: twitter-1.17.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/twitter/twitter-1.17.1.tar.gz
+  md5: 65219549f09a030719bac6e20b12c3eb
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
+  # noarch_python: True
   preserve_egg_dir: True
   entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
@@ -59,7 +60,8 @@ test:
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  # requires:
+  requires:
+    - nose
     # Put any additional test requirements here.  For example
     # - nose
 
