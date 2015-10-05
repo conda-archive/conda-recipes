@@ -35,13 +35,13 @@ requirements:
     - virtualenv >=1.11.2
     - py >=1.4.17
     - pluggy >=0.3.0,<0.4.0
-
+    - argparse # [py26]
   run:
     - python
     - virtualenv >=1.11.2
     - py >=1.4.17
     - pluggy >=0.3.0,<0.4.0
-
+    - argparse # [py26]
 test:
   # Python imports
   imports:
