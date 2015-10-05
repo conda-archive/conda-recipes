@@ -1,14 +1,13 @@
 package:
   name: spyder
-  version: 2.3.6
+  version: 2.3.7
 
 source:
-  fn:   spyder-2.3.6.zip
-  https://pypi.python.org/packages/source/s/spyder/spyder-2.3.6.zip
-  md5: ae4a5e5014cc8c86820b34ba53661847
+  fn:  spyder-2.3.7.zip
+  url: https://pypi.python.org/packages/source/s/spyder/spyder-2.3.7.zip
+  md5: 33c25c946f863754aa8df8319970b09f
 
 build:
-  noarch_python: True
   osx_is_app: True
 
 requirements:
@@ -39,3 +38,4 @@ test:
 about:
   home: https://github.com/spyder-ide/spyder
   license: MIT
+  summary: Scientific PYthon Development EnviRonment
