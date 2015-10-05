@@ -1,16 +1,17 @@
 package:
   name: ptpython
-  version: "0.5"
+  version: "0.24"
 
 source:
-  fn: ptpython-0.5.tar.gz
-  url: https://pypi.python.org/packages/source/p/ptpython/ptpython-0.5.tar.gz
-  md5: 3456207b68ee8c179a8db17d36b8bf17
+  fn: ptpython-0.24.tar.gz
+  url: https://pypi.python.org/packages/source/p/ptpython/ptpython-0.24.tar.gz
+  md5: b9fb477028518adac80a549537e835e2
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
+  # noarch_python: True
   # preserve_egg_dir: True
   entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
@@ -30,23 +31,22 @@ build:
 requirements:
   build:
     - python
-    - setuptools <8.0 # jedi's version is not PEP 440 compliant
-    - prompt_toolkit ==0.31
-    - jedi >=0.8.1
+    - setuptools
+    - prompt_toolkit ==0.52
+    - jedi >=0.9.0
     - docopt
-    - ipython
 
   run:
     - python
-    - prompt_toolkit ==0.31
-    - jedi >=0.8.1
+    - prompt_toolkit ==0.52
+    - jedi >=0.9.0
     - docopt
-    - ipython
 
 test:
   # Python imports
   imports:
     - ptpython
+    - ptpython.contrib
     - ptpython.entry_points
 
   commands:
@@ -65,7 +65,7 @@ test:
 
 about:
   home: https://github.com/jonathanslenders/ptpython
-  license: BSD
+  license: UNKNOWN
   summary: 'Python REPL build on top of prompt_toolkit'
 
 # See
