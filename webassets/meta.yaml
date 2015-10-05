@@ -31,11 +31,11 @@ requirements:
   build:
     - python
     - setuptools
-
+    - argparse # [py26]
   run:
     - python
     - setuptools
-
+    - argparse # [py26]
 test:
   # Python imports
   imports:
