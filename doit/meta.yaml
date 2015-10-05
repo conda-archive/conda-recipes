@@ -1,16 +1,17 @@
 package:
   name: doit
-  version: "0.27.0"
+  version: "0.29.0"
 
 source:
-  fn: doit-0.27.0.tar.gz
-  url: https://pypi.python.org/packages/source/d/doit/doit-0.27.0.tar.gz
-  md5: d3171edb1267a915e0ff0c9756d4b0db
+  fn: doit-0.29.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/doit/doit-0.29.0.tar.gz
+  md5: 9968e1a669bad0a999212ab9f5c591a3
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
+  # noarch_python: True
   # preserve_egg_dir: True
   entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
@@ -31,14 +32,16 @@ requirements:
     - python
     - setuptools
     - six
+    - cloudpickle
     - macfsevents # [osx]
     - pyinotify  # [linux]
 
   run:
     - python
     - six
+    - cloudpickle
     - macfsevents # [osx]
-    - pyinotify # [linux]
+    - pyinotify  # [linux]
 
 test:
   # Python imports
