@@ -22,7 +22,7 @@ build:
     # Would create an entry point called tox that calls tox.main()
 
     - tox=tox:cmdline
-tox-quickstart=tox._quickstart:main
+    - tox-quickstart=tox._quickstart:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
