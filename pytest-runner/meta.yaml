@@ -1,27 +1,26 @@
 package:
-  name: pyjwt
-  version: "1.4.0"
+  name: pytest-runner
+  version: "2.6.2"
 
 source:
-  fn: PyJWT-1.4.0.tar.gz
-  url: https://pypi.python.org/packages/source/P/PyJWT/PyJWT-1.4.0.tar.gz
-  md5: 2f9bd9226d72b13d19d2c557114d03dc
+  fn: pytest-runner-2.6.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pytest-runner/pytest-runner-2.6.2.tar.gz
+  md5: b81b698289addb13c2ed8d6ba6c8feb4
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
   # noarch_python: True
-  # preserve_egg_dir: True
-  entry_points:
+  preserve_egg_dir: True
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - pyjwt = pyjwt:main
+    # - pytest-runner = pytest-runner:main
     #
-    # Would create an entry point called pyjwt that calls pyjwt.main()
+    # Would create an entry point called pytest-runner that calls pytest-runner.main()
 
-    - jwt = jwt.__main__:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -31,37 +30,31 @@ requirements:
   build:
     - python
     - setuptools
-    - pytest-runner
+
   run:
     - python
-    - pytest-runner
-test:
-  # Python imports
-  imports:
-    - jwt
-    - jwt.contrib
-    - jwt.contrib.algorithms
+    - setuptools
 
-  commands:
+# test:
+  # Python imports
+  # imports:
+
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - jwt --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  requires:
-    - pytest
-    - pytest-cov
-    - pytest-runner
+  # requires:
     # Put any additional test requirements here.  For example
     # - nose
 
 about:
-  home: http://github.com/jpadilla/pyjwt
+  home: https://bitbucket.org/pytest-dev/pytest-runner
   license: MIT License
-  summary: 'JSON Web Token implementation in Python'
+  summary: 'Invoke py.test as distutils command with dependency resolution.'
 
 # See
 # http://docs.continuum.io/conda/build.html for
