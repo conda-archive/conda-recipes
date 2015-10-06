@@ -1,11 +1,11 @@
 package:
   name: glances
-  version: "2.4.2"
+  version: "2.5"
 
 source:
-  fn: Glances-2.4.2.tar.gz
-  url: https://pypi.python.org/packages/source/G/Glances/Glances-2.4.2.tar.gz
-  md5: 21d8ca9d780bb52101a365c33e65869d
+  fn: Glances-2.5.tar.gz
+  url: https://pypi.python.org/packages/source/G/Glances/Glances-2.5.tar.gz
+  md5: 70a7825a7b32048885f18ad3f8500294
 #  patches:
    # List any patch files here
    # - fix.patch
