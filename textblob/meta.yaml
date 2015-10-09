@@ -1,0 +1,27 @@
+package:
+  name: textblob
+  version: 0.10.0
+
+source:
+  git_url: https://github.com/sloria/textblob
+  git_tag: 0.10.0
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nltk
+    - pattern
+
+  run:
+    - python
+    - nltk
+    - pattern
+
+test:
+  imports:
+    - textblob
+
+about:
+  home: https://textblob.readthedocs.org/en/dev/
+  license: MIT
