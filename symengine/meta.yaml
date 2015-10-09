@@ -1,0 +1,31 @@
+package:
+  name: symengine
+  version: 0.1
+
+source:
+  git_url: https://github.com/sympy/symengine
+  git_tag: v0.1.0
+
+requirements:
+  build:
+    - python
+    - cython
+    - numpy
+    - gmp
+    - cmake
+  run:
+    - python
+    - numpy
+    - gmp
+
+test:
+  imports:
+    - symengine
+  requires:
+    - python
+    - pytest
+    - sympy
+
+about:
+    home: https://github.com/sympy/symengine
+    license: BSD
