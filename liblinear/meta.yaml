@@ -1,0 +1,11 @@
+package:
+  name: liblinear
+  version: 210
+
+source:
+  git_url: https://github.com/cjlin1/liblinear/
+  git_rev: v210
+
+about:
+  home: https://www.csie.ntu.edu.tw/~cjlin/liblinear/
+  license: modified BSD
