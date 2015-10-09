@@ -1,0 +1,63 @@
+package:
+  name: topik
+  version: 0.2.0
+build:
+  # Optional Python entry points
+  entry_points:
+    # This creates an entry point named topik that calls
+    # topik.cli.run()
+    - topik = topik.cli:run
+
+source:
+  git_url: git://github.com/ContinuumIO/topik.git
+  git_tag: v0.2.0
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - versioneer
+    - ijson
+    - pysolr
+    - blaze
+    - bokeh
+    - numpy
+    - pandas
+    - gensim
+    - pattern
+    - textblob
+    - click
+    - solrpy
+    - elasticsearch
+    - nltk
+    - pyldavis
+    - matplotlib
+    - smart_open
+
+  run:
+    - python
+    - blaze
+    - bokeh
+    - numpy
+    - pandas
+    - gensim
+    - pattern
+    - textblob
+    - click
+    - solrpy
+    - elasticsearch
+    - nltk
+    - ijson
+    - pysolr
+    - pyldavis
+    - matplotlib
+    - smart_open
+
+test:
+  imports:
+    - topik
+
+about:
+  home: http://github.com/ContinuumIO/topik/
+  license: BSD
+  summary: 'A Python Topic Modeling toolkit'
