@@ -12,6 +12,8 @@ requirements:
   build:
     - python
     - setuptools
+    - liblinear
+    - libsvm
 
   run:
     - python
