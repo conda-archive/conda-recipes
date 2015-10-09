@@ -1,3 +1,3 @@
-#!/usr/bin/env python
+import sys
 import pytest
-pytest.main(['--pyargs', 'symengine'])
+sys.exit(pytest.main(['--pyargs', 'symengine']))

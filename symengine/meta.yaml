@@ -22,7 +22,9 @@ test:
   imports:
     - symengine
   requires:
+    - python
     - pytest
+    - sympy
 
 about:
     home: https://github.com/sympy/symengine
