@@ -10,11 +10,11 @@ requirements:
   build:
     - python
     - setuptools
-    - pandoc
+    - pandoc  [not linux]
 
   run:
     - python
-    - pandoc
+    - pandoc  [not linux]
     
 about:
   home: https://github.com/bebraw/pypandoc
