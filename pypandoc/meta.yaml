@@ -1,0 +1,21 @@
+package:
+  name: pypandoc
+  version: 1.0.4
+
+source:
+  git_url: https://github.com/bebraw/pypandoc
+  git_tag: v1.0.4
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pandoc
+
+  run:
+    - python
+    - pandoc
+    
+about:
+  home: https://github.com/bebraw/pypandoc
+  license: MIT

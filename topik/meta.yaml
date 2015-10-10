@@ -1,6 +1,6 @@
 package:
   name: topik
-  version: 0.2.0
+  version: 0.2.1
 build:
   # Optional Python entry points
   entry_points:
@@ -10,7 +10,7 @@ build:
 
 source:
   git_url: git://github.com/ContinuumIO/topik.git
-  git_tag: v0.2.0
+  git_tag: v0.2.1
 
 requirements:
   build:
@@ -33,6 +33,7 @@ requirements:
     - pyldavis
     - matplotlib
     - smart_open
+    - setuptools-markdown
 
   run:
     - python
