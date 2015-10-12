@@ -1,9 +1,9 @@
-cd build.vc10
+cd build.vc14
 
 if "%ARCH%"=="32" (
-    set PLATFORM="Win32"
+    set PLATFORM=Win32
 ) else (
-    set PLATFORM="x64"
+    set PLATFORM=x64
 )
 
 msbuild lib_mpir_gc\lib_mpir_gc.vcxproj /p:Configuration=Release /p:Platform=%PLATFORM%
