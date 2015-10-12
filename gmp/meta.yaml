@@ -8,7 +8,7 @@ source:
 
 about:
   home: http://gmplib.org/
-  license: GPL 3
+  license: LGPL 3 and GPL 2
 
 test:
   files:
