@@ -11,12 +11,14 @@ requirements:
     - python
     - cython
     - numpy
-    - gmp
+    - gmp [unix]
+    - mpir [win]
     - cmake
   run:
     - python
     - numpy
-    - gmp
+    - gmp [unix]
+    - mpir [win]
 
 test:
   imports:
