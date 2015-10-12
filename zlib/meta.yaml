@@ -1,0 +1,16 @@
+package:
+  name: zlib
+  version: 1.2.8
+
+source:
+  fn: zlib-1.2.8.tar.gz
+  url: http://zlib.net/zlib-1.2.8.tar.gz
+  md5: 44d667c142d7cda120332623eab69f40
+
+build:
+  number: 1
+
+about:
+  home: http://zlib.net/
+  license: zlib (http://zlib.net/zlib_license.html)
+  summary: "A Massively Spiffy Yet Delicately Unobtrusive Compression Library"

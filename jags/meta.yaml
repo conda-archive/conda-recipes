@@ -1,0 +1,26 @@
+package:
+  name: jags
+  version: 3.4.0
+
+build:
+  detect_binary_files_with_prefix: true
+  number: 2
+
+requirements:
+  build:
+    - atlas  # [linux]
+    - gcc
+  run:
+    - atlas  # [linux]
+    - libgcc
+
+source:
+  fn: JAGS-3.4.0.tar.gz
+  url: http://sourceforge.net/projects/mcmc-jags/files/JAGS/3.x/Source/JAGS-3.4.0.tar.gz/download
+  sha1: 129a8f97da91877473f209c67f1f9c5b04173586
+  md5: ac8242931837e4367b2a3de8b231aa0e
+
+about:
+  home: http://mcmc-jags.sourceforge.net/
+  license: GPL
+  summary: "JAGS is Just Another Gibbs Sampler."

@@ -1,0 +1,13 @@
+import vtk.vtkChartsCore
+import vtk.vtkCommonCore
+import vtk.vtkFiltersCore
+import vtk.vtkFiltersGeneric
+import vtk.vtkGeovisCore
+import vtk.vtkFiltersHybrid
+import vtk.vtkIOCore
+import vtk.vtkImagingCore
+import vtk.vtkInfovisCore
+import vtk.vtkRenderingCore
+import vtk.vtkViewsCore
+import vtk.vtkRenderingVolume
+import vtk.vtkInteractionWidgets

@@ -1,0 +1,84 @@
+package:
+  name: r-xts
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.9_7"
+
+source:
+  fn: xts_0.9-7.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/xts_0.9-7.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/xts/xts_0.9-7.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: timeSeries,timeDate,tseries,its,chron,fts,tis
+requirements:
+  build:
+    - r
+    - r-zoo >=1.7_10
+    - gcc # [not win]
+
+  run:
+    - r
+    - r-zoo >=1.7_10
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('xts')" # [not win]
+    - "\"%R%\" -e \"library('xts')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://r-forge.r-project.org/projects/xts/
+  license: GPL (>= 2)
+  summary: Provide for uniform handling of R's different time-based data classes by extending
+    zoo, maximizing native format information preservation and allowing for user level
+    customization and extension, while simplifying cross-class interoperability.
+
+# The original CRAN metadata for this package was:
+
+# Package: xts
+# Type: Package
+# Title: eXtensible Time Series
+# Version: 0.9-7
+# Date: 2013-06-26
+# Author: Jeffrey A. Ryan, Joshua M. Ulrich
+# Depends: zoo (>= 1.7-10)
+# Suggests: timeSeries,timeDate,tseries,its,chron,fts,tis
+# LazyLoad: yes
+# Maintainer: Jeffrey A. Ryan <jeff.a.ryan@gmail.com>
+# Description: Provide for uniform handling of R's different time-based data classes by extending zoo, maximizing native format information preservation and allowing for user level customization and extension, while simplifying cross-class interoperability.
+# License: GPL (>= 2)
+# URL: http://r-forge.r-project.org/projects/xts/
+# Packaged: 2014-01-02 18:00:13 UTC; ripley
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2014-01-02 19:18:28
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

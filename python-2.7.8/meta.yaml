@@ -1,0 +1,45 @@
+package:
+  name: python
+  version: 2.7.8
+
+source:
+  fn: Python-2.7.8.tgz
+  url: https://www.python.org/ftp/python/2.7.8/Python-2.7.8.tgz
+  md5: d4bca0159acb0b44a781292b5231936f
+  patches:
+    - json-decode.patch
+    - osx-dist.patch           [osx]
+    - osx-site.patch           [osx]
+    - win-find_exe.patch       [win]
+    - win-cygwin.patch         [win]
+
+build:
+  no_link: bin/python
+
+requirements:
+  build:
+    - bzip2      [unix]
+    - zlib       [unix]
+    - sqlite     [unix]
+    - readline   [unix]
+    - tk         [unix]
+    - openssl    [unix]
+    - system     [linux]
+  run:
+    - zlib       [unix]
+    - sqlite     [unix]
+    - readline   [unix]
+    - tk         [unix]
+    - openssl    [unix]
+    - system     [linux]
+
+test:
+  commands:
+    - python -V              [unix]
+    - 2to3 -h                [unix]
+    - python-config --help   [unix]
+
+about:
+  home: http://www.python.org/
+  summary: general purpose programming language
+  license: PSF

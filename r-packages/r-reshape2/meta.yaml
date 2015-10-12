@@ -1,0 +1,85 @@
+package:
+  name: r-reshape2
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.4.1"
+
+source:
+  fn: reshape2_1.4.1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/reshape2_1.4.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/reshape2/reshape2_1.4.1.tar.gz
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 2 # [osx]
+  number: 1 # [not osx]
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat (>= 0.8.0), lattice
+requirements:
+  build:
+    - r
+    - r-rcpp
+    - r-plyr >=1.8.1
+    - r-stringr
+
+  run:
+    - r
+    - r-rcpp
+    - r-plyr >=1.8.1
+    - r-stringr
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('reshape2')" # [not win]
+    - "\"%R%\" -e \"library('reshape2')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/hadley/reshape
+  license: MIT + file LICENSE
+  summary: 'Flexibly restructure and aggregate data using just two functions: melt and dcast
+    (or acast).'
+
+
+# The original CRAN metadata for this package was:
+
+# Package: reshape2
+# Title: Flexibly Reshape Data: A Reboot of the Reshape Package.
+# Version: 1.4.1
+# Author: Hadley Wickham <h.wickham@gmail.com>
+# Maintainer: Hadley Wickham <h.wickham@gmail.com>
+# Description: Flexibly restructure and aggregate data using just two functions: melt and dcast (or acast).
+# URL: https://github.com/hadley/reshape
+# BugReports: https://github.com/hadley/reshape/issues
+# LinkingTo: Rcpp
+# Imports: plyr (>= 1.8.1), stringr, Rcpp
+# Suggests: testthat (>= 0.8.0), lattice
+# License: MIT + file LICENSE
+# LazyData: true
+# Packaged: 2014-12-05 16:34:10 UTC; hadley
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2014-12-06 06:56:59
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

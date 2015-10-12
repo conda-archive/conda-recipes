@@ -1,0 +1,31 @@
+package:
+  name: vtk
+  version: 6.3.0
+
+source:
+  url: http://www.vtk.org/files/release/6.3/VTK-6.3.0.tar.gz
+  fn:  vtk-6.3.0.tar.gz
+  patches:
+    - dlls.patch                              [win]
+
+build:
+  has_prefix_files:                           [win]
+    - Lib/site-packages/vtk/__init__.py       [win]
+
+requirements:
+  build:
+    - cmake
+    - python    <3
+    - mesa      [linux]
+  run:
+    - python    <3
+    - mesa      [linux]
+
+test:
+  imports:
+    - vtk
+
+about:
+  home: http://www.vtk.org/
+  license: BSD
+  summary: VTK is an open-source, freely available software system for 3D computer graphics

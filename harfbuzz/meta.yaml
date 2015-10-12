@@ -1,0 +1,32 @@
+package:
+  name: harfbuzz
+  version: 0.9.35
+
+build:
+  number: 6
+  detect_binary_files_with_prefix: true
+
+requirements:
+  build:
+    - freetype
+    - cairo
+    - glib
+    - zlib
+    - gcc
+    - libpng 1.6.*
+  run:
+    - freetype
+    - cairo
+    - glib
+    - zlib
+    - libgcc
+    - libpng 1.6.*
+
+source:
+  url: http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-0.9.35.tar.bz2
+  fn: harfbuzz-0.9.35.tar.bz2
+
+about:
+  home: http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-0.9.35.tar.bz2
+  license: Old MIT
+  summary: "HarfBuzz is an OpenType text shaping engine."

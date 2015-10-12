@@ -1,19 +1,19 @@
 package:
   name: cloud_sptheme
-  version: !!str 1.6
+  version: "1.7"
 
 source:
-  fn: cloud_sptheme-1.6.tar.gz
-  url: https://pypi.python.org/packages/source/c/cloud_sptheme/cloud_sptheme-1.6.tar.gz
-  md5: 23d5fce0b87836d9f29573d6ee6a9bc1
-  patches:
+  fn: cloud_sptheme-1.7.tar.gz
+  url: https://pypi.python.org/packages/source/c/cloud_sptheme/cloud_sptheme-1.7.tar.gz
+  md5: 8693d34d515da5462c03b2269dba20f3
+#  patches:
    # List any patch files here
-   - ext.patch
-   - table_styling.css.patch
+   # - fix.patch
 
 build:
+  # noarch_python: True
   preserve_egg_dir: True
-  entry_points:
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -24,25 +24,26 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2 
+  # number: 1
 
 requirements:
   build:
     - python
     - setuptools
-    - sphinx
+    - sphinx >=1.2
 
   run:
     - python
-    - sphinx
+    - setuptools
+    - sphinx >=1.2
 
 test:
   # Python imports
   imports:
-    - cloud_sptheme.ext
     - cloud_sptheme
+    - cloud_sptheme.ext
 
-  #commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -57,6 +58,7 @@ test:
 about:
   home: https://bitbucket.org/ecollins/cloud_sptheme
   license: BSD License
+  summary: "a nice sphinx theme named 'Cloud', and some related extensions"
 
 # See
 # http://docs.continuum.io/conda/build.html for

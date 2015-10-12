@@ -1,16 +1,17 @@
 package:
   name: oauthlib
-  version: 0.6.0
+  version: !!str 0.7.1
 
 source:
-  fn: oauthlib-0.6.0.tar.gz
-  url: https://pypi.python.org/packages/source/o/oauthlib/oauthlib-0.6.0.tar.gz
-  md5: b7c3e1832ec111e65baaab2de7834aae
+  fn: oauthlib-0.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/o/oauthlib/oauthlib-0.7.1.tar.gz
+  md5: ef5eda064c5732516c6d199892d7aaec
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
+# build:
+  # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
@@ -22,7 +23,7 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2
+  # number: 1
 
 requirements:
   build:
@@ -35,14 +36,15 @@ requirements:
 test:
   # Python imports
   imports:
-    - oauthlib.oauth1.rfc5849
-    - oauthlib.oauth2.rfc6749.clients
-    - oauthlib.oauth2
+    - oauthlib
     - oauthlib.oauth1
+    - oauthlib.oauth1.rfc5849
+    - oauthlib.oauth1.rfc5849.endpoints
+    - oauthlib.oauth2
+    - oauthlib.oauth2.rfc6749
+    - oauthlib.oauth2.rfc6749.clients
     - oauthlib.oauth2.rfc6749.endpoints
     - oauthlib.oauth2.rfc6749.grant_types
-    - oauthlib.oauth1.rfc5849.endpoints
-    - oauthlib.oauth2.rfc6749
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -59,6 +61,7 @@ test:
 about:
   home: https://github.com/idan/oauthlib
   license: BSD License
+  summary: 'A generic, spec-compliant, thorough implementation of the OAuth request-signing logic'
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -1,22 +1,22 @@
 package:
     name: cvxopt
-    version: 1.1.6
+    version: 1.1.7
 
 source:
     git_url: https://github.com/cvxopt/cvxopt.git
-    git_tag: 1.1.6
+    git_tag: 1.1.7
 
 build:
     number: 1
 
 requirements:
     build:
-        - atlas
+        - atlas # [linux]
         - python
         - distribute
 
     run:
-        - atlas
+        - atlas # [linux]
         - python
 
 test:

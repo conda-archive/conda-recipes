@@ -1,0 +1,25 @@
+package:
+  name: tig
+  version: 2.1
+
+source:
+  fn: tig-2.1.tar.gz
+  url: http://jonas.nitro.dk/tig/releases/tig-2.1.tar.gz
+  md5: d6c237aba2c03d85897da79789fd6104
+
+requirements:
+  build:
+    - ncurses
+    - gcc
+  run:
+    - ncurses
+    - libgcc
+
+test:
+  commands:
+    - tig --help
+
+about:
+  summary: Text-mode interface for git
+  license: GPL
+  home: http://jonas.nitro.dk/tig/

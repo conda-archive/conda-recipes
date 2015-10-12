@@ -1,0 +1,78 @@
+package:
+  name: r-randomforest
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "4.6_10"
+
+source:
+  fn: randomForest_4.6-10.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/randomForest_4.6-10.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/randomForest/randomForest_4.6-10.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: RColorBrewer, MASS
+requirements:
+  build:
+    - r
+    - gcc # [not win]
+
+  run:
+    - r
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('randomForest')" # [not win]
+    - "\"%R%\" -e \"library('randomForest')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://stat-www.berkeley.edu/users/breiman/RandomForests
+  license: GPL (>= 2)
+  summary: Classification and regression based on a forest of trees using random inputs.
+
+# The original CRAN metadata for this package was:
+
+# Package: randomForest
+# Title: Breiman and Cutler's random forests for classification and regression
+# Version: 4.6-10
+# Date: 2014-07-17
+# Depends: R (>= 2.5.0), stats
+# Suggests: RColorBrewer, MASS
+# Author: Fortran original by Leo Breiman and Adele Cutler, R port by Andy Liaw and Matthew Wiener.
+# Description: Classification and regression based on a forest of trees using random inputs.
+# Maintainer: Andy Liaw <andy_liaw@merck.com>
+# License: GPL (>= 2)
+# URL: http://stat-www.berkeley.edu/users/breiman/RandomForests
+# Packaged: 2014-07-17 12:18:43 UTC; liawand
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2014-07-17 15:53:29
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

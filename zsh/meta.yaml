@@ -1,0 +1,20 @@
+package:
+    name:       zsh
+    version:    5.0.7
+
+source:
+    fn: zsh-5.0.7.tar.bz2
+    url: http://sourceforge.net/projects/zsh/files/zsh/5.0.7/zsh-5.0.7.tar.bz2
+
+requirements:
+    build:
+        - python
+        - gettext
+    run:
+        - python
+        - gettext
+
+build:
+    number: 0
+
+# vim:set ts=8 sw=4 sts=4 tw=78 et:

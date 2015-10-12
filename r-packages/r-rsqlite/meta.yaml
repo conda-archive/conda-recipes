@@ -1,0 +1,81 @@
+package:
+  name: r-rsqlite
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.0.0"
+
+source:
+  fn: RSQLite_1.0.0.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/RSQLite_1.0.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/RSQLite/RSQLite_1.0.0.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat
+requirements:
+  build:
+    - r
+    - r-dbi >=0.3.1
+
+  run:
+    - r
+    - r-dbi >=0.3.1
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('RSQLite')" # [not win]
+    - "\"%R%\" -e \"library('RSQLite')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/rstats-db/RSQLite
+  license: LGPL (>= 2)
+  summary: This package embeds the SQLite database engine in R and provides an interface compliant
+    with the DBI package. The source for the SQLite engine (version 3.8.6) is included.
+
+# The original CRAN metadata for this package was:
+
+# Package: RSQLite
+# Version: 1.0.0
+# Title: SQLite Interface for R
+# Authors@R: as.person(c( "Hadley Wickham <hadley@rstudio.com> [aut, cre]", "David A. James [aut]", "Seth Falcon [aut]", "SQLite Authors (for the included SQLite sources) [ctb]", "Liam Healy (for the include SQLite extensions) [ctb]", "RStudio [cph]" ))
+# Description: This package embeds the SQLite database engine in R and provides an interface compliant with the DBI package. The source for the SQLite engine (version 3.8.6) is included.
+# Depends: R (>= 2.10.0), DBI (>= 0.3.1), methods
+# Suggests: testthat
+# License: LGPL (>= 2)
+# URL: https://github.com/rstats-db/RSQLite
+# BugReports: https://github.com/rstats-db/RSQLite/issues
+# Collate: 'ConnectionExtensions.R' 'Connection.R' 'Driver.R' 'Connect.R' 'ConnectionRead.R' 'ConnectionTransactions.R' 'ConnectionWrite.R' 'Constants.R' 'Escaping.R' 'Result.R' 'Object.R' 'Summary.R' 'Utils.R' 'datasetsDb.R' 'dbGetInfo.R' 'extensions.R' 'zzz.R'
+# Packaged: 2014-10-24 18:38:41 UTC; hadley
+# Author: Hadley Wickham [aut, cre], David A. James [aut], Seth Falcon [aut], SQLite Authors [ctb] (for the included SQLite sources), Liam Healy [ctb] (for the include SQLite extensions), RStudio [cph]
+# Maintainer: Hadley Wickham <hadley@rstudio.com>
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2014-10-25 01:58:48
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

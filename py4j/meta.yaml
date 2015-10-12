@@ -1,0 +1,28 @@
+
+package:
+    name: py4j
+    version: 0.8.2.1
+
+source:
+    fn: py4j-0.8.2.1.tar.gz
+    url: https://pypi.python.org/packages/source/p/py4j/py4j-0.8.2.1.tar.gz
+    md5: c0284d97a9fde094679c043ab8a32662
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - distribute
+
+    run:
+        - python
+
+test:
+    imports:
+        - py4j
+
+about:
+    home: http://py4j.sourceforge.net/
+    license: BSD

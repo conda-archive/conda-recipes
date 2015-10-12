@@ -1,0 +1,26 @@
+package:
+  name: pyyaml
+  version: 3.11
+
+source:
+  fn: PyYAML-3.11.tar.gz
+  url: https://pypi.python.org/packages/source/P/PyYAML/PyYAML-3.11.tar.gz
+  md5: f50e08ef0fe55178479d3a618efe21db
+
+requirements:
+  build:
+    - python
+    - yaml
+  run:
+    - python
+    - yaml         [unix]
+
+test:
+  imports:
+    - yaml
+    - _yaml        [not (win and py3k)]
+
+about:
+  home: http://pyyaml.org/wiki/PyYAML
+  license: MIT
+  summary: YAML parser and emitter for Python

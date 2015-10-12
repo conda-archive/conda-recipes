@@ -1,0 +1,67 @@
+package:
+  name: pytest-codecheckers
+  version: !!str 0.2
+
+source:
+  fn: pytest-codecheckers-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pytest-codecheckers/pytest-codecheckers-0.2.tar.gz
+  md5: 5e7449fc6cd02d35cc11e21709ce1357
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pytest-codecheckers = pytest-codecheckers:main
+    #
+    # Would create an entry point called pytest-codecheckers that calls pytest-codecheckers.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - py >=1.2.0
+    - pyflakes >=0.4
+    - pep8
+
+  run:
+    - python
+    - setuptools
+    - py >=1.2.0
+    - pyflakes >=0.4
+    - pep8
+
+test:
+  # Python imports
+  imports:
+    - codecheckers
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/RonnyPfannschmidt/pytest-codecheckers/
+  license: UNKNOWN
+  summary: 'pytest plugin to add source code sanity checks (pep8 and friends)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

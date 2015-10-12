@@ -1,18 +1,18 @@
 package:
   name: pyinstrument
-  version: !!str 0.11
+  version: !!str 0.13.1
 
 source:
-  fn: pyinstrument-0.11.tar.gz
-  url: https://pypi.python.org/packages/source/p/pyinstrument/pyinstrument-0.11.tar.gz
-  md5: de3a8b4473a0cfc0bf5ba5d77c1e91d0
+  fn: pyinstrument-0.13.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyinstrument/pyinstrument-0.13.1.tar.gz
+  md5: e347036acc50720c0903dc2221b2605d
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
+build:
   #preserve_egg_dir: True
-  #entry_points:
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -20,6 +20,7 @@ source:
     #
     # Would create an entry point called pyinstrument that calls pyinstrument.main()
 
+    - pyinstrument = pyinstrument.__main__:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -38,10 +39,11 @@ test:
   imports:
     - pyinstrument
 
-  #commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+    - pyinstrument --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -52,7 +54,7 @@ test:
 
 about:
   home: https://github.com/joerick/pyinstrument
-  license: BSD License
+  license:  BSD License
   summary: "A call stack profiler for Python. Inspired by Apple's Instruments.app"
 
 # See

@@ -1,0 +1,65 @@
+package:
+  name: r # [win]
+  name: r-base # [not win]
+  version: 3.2.2
+
+source:
+  fn: R-3.2.2.tar.gz
+  url: http://cran.cnr.berkeley.edu/src/base/R-3/R-3.2.2.tar.gz
+  sha1: 68c74db1c5a2f2040280a03b8396e4d28a5a7617
+  patches: # [not win]
+    - share-make-vars.mk.patch # [not win]
+    - mac-unicode.patch # [osx]
+
+build:
+  rpaths:
+    - lib/R/lib/
+    - lib/
+  detect_binary_files_with_prefix: true
+
+requirements:
+  build:
+    - readline  # [not win]
+    - ncurses   # [not win]
+    - tk        # [not win]
+    - zlib      # [not win]
+    - gsl       # [not win]
+    - cairo     # [linux]
+    - pango     # [linux]
+    - jpeg      # [not win]
+    - libpng 1.6* # [not win]
+    - libtiff   # [not win]
+    - libxml2 # Not really sure if libxml2 is needed [not win]
+    - gcc       # [not win]
+    - pcre      # [not win]
+
+  run:
+    - readline  # [not win]
+    - ncurses   # [not win]
+    - tk        # [not win]
+    - zlib      # [not win]
+    - cairo     # [linux]
+    - pango     # [linux]
+    - jpeg      # [not win]
+    - libpng 1.6* # [not win]
+    - libtiff   # [not win]
+    - libxml2   # [not win]
+    - libgcc    # [not win]
+    - pcre      # [not win]
+
+test:
+  commands:
+    - R -h
+    - R --version
+    - Rscript --version
+    - Rscript -e  'cat("ok\\n")'
+    - open # [win]
+    # There doesn't seem to be a way to test this one
+    # - RSetReg # [win]
+    - Rfe --help # [win]
+    - Rterm --help # [win]
+    - Rterm --version # [win]
+
+about:
+  home: http://www.r-project.org/
+  license: GPL

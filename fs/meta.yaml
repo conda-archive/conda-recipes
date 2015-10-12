@@ -1,0 +1,32 @@
+package:
+  name: fs
+  version: !!str 0.5.0
+
+source:
+  fn: fs-0.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/f/fs/fs-0.5.0.tar.gz
+  md5: 0636988bee49f06db2b9bb1f67396ca5
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+
+  run:
+    - python
+    - setuptools
+    - six
+
+test:
+  imports:
+    - fs
+    - fs.commands
+
+about:
+  home: http://pyfilesystem.org
+  license:  BSD License
+  summary: 'Filesystem abstraction layer'

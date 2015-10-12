@@ -1,0 +1,19 @@
+package:
+  name: fortune
+  version: 9708
+
+source:
+  url: http://ftp.ibiblio.org/pub/linux/games/amusements/fortune/fortune-mod-9708.tar.gz
+  fn: fortune-mod-9708.tar.gz
+  sha1: e9c164677e414c3b649f12185e01f4c7ea2f083c
+
+build:
+  detect_binary_files_with_prefix: true
+
+test:
+  commands:
+    - fortune
+
+about:
+  home: http://ftp.ibiblio.org/pub/linux/games/amusements/fortune/!INDEX.html
+  license: "BSD and Public Domain"

@@ -1,0 +1,20 @@
+package:
+  name: help2man
+  version: 1.46.4
+
+source:
+  fn: help2man-1.46.4.tar.xz
+  url: http://ftp.gnu.org/gnu/help2man/help2man-1.46.4.tar.xz
+  sha1: 7eebb6ead072b19863f28acca051bc3e3c40fdf9
+
+build:
+  number: 3
+
+requirements:
+  run:
+    - perl
+
+test:
+  commands:
+    # Make sure we don't pick up the system perl
+    - PATH=$PREFIX/bin help2man --help

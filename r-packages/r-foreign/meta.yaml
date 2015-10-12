@@ -1,0 +1,84 @@
+package:
+  name: r-foreign
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.8_66"
+
+source:
+  fn: foreign_0.8-66.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/foreign_0.8-66.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/foreign/foreign_0.8-66.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r-base
+    - gcc # [not win]
+
+  run:
+    - r
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('foreign')" # [not win]
+    - "\"%R%\" -e \"library('foreign')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: GPL (>= 2)
+  summary: Functions for reading and writing data stored by some versions of Epi Info, Minitab,
+    S, SAS, SPSS, Stata, Systat and Weka and for reading and writing some dBase files.
+
+# The original CRAN metadata for this package was:
+
+# Package: foreign
+# Priority: recommended
+# Version: 0.8-66
+# Date: 2015-06-28
+# Title: Read Data Stored by Minitab, S, SAS, SPSS, Stata, Systat, Weka, dBase, ...
+# Depends: R (>= 3.0.0)
+# Imports: methods, utils, stats
+# Authors@R: c( person("R Core Team", email = "R-core@R-project.org", role = c("aut", "cph", "cre")), person("Roger", "Bivand", role = c("ctb", "cph")), person(c("Vincent", "J."), "Carey", role = c("ctb", "cph")), person("Saikat", "DebRoy", role = c("ctb", "cph")), person("Stephen", "Eglen", role = c("ctb", "cph")), person("Rajarshi", "Guha", role = c("ctb", "cph")), person("Nicholas", "Lewin-Koh", role = c("ctb", "cph")), person("Mark", "Myatt", role = c("ctb", "cph")), person("Ben", "Pfaff", role = "ctb"), person("Brian", "Quistorff", role = "ctb"), person("Frank", "Warmerdam", role = c("ctb", "cph")), person("Stephen", "Weigand", role = c("ctb", "cph")), person("Free Software Foundation, Inc.", role = "cph"))
+# Copyright: see file COPYRIGHTS
+# Description: Functions for reading and writing data stored by some versions of Epi Info, Minitab, S, SAS, SPSS, Stata, Systat and Weka and for reading and writing some dBase files.
+# ByteCompile: yes
+# Biarch: yes
+# License: GPL (>= 2)
+# BugReports: http://bugs.r-project.org
+# NeedsCompilation: yes
+# Packaged: 2015-08-18 14:20:43 UTC; luke
+# Author: R Core Team [aut, cph, cre], Roger Bivand [ctb, cph], Vincent J. Carey [ctb, cph], Saikat DebRoy [ctb, cph], Stephen Eglen [ctb, cph], Rajarshi Guha [ctb, cph], Nicholas Lewin-Koh [ctb, cph], Mark Myatt [ctb, cph], Ben Pfaff [ctb], Brian Quistorff [ctb], Frank Warmerdam [ctb, cph], Stephen Weigand [ctb, cph], Free Software Foundation, Inc. [cph]
+# Maintainer: R Core Team <R-core@R-project.org>
+# Repository: CRAN
+# Date/Publication: 2015-08-19 11:34:24
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

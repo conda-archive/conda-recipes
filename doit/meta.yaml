@@ -1,18 +1,18 @@
 package:
   name: doit
-  version: !!str 0.24.0
+  version: "0.27.0"
 
 source:
-  fn: doit-0.24.0.tar.gz
-  url: https://pypi.python.org/packages/source/d/doit/doit-0.24.0.tar.gz
-  md5: 6f8a88277fba15607f301014866c06de
+  fn: doit-0.27.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/doit/doit-0.27.0.tar.gz
+  md5: d3171edb1267a915e0ff0c9756d4b0db
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
-  #preserve_egg_dir: True
-  #entry_points:
+build:
+  # preserve_egg_dir: True
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -20,6 +20,7 @@ source:
     #
     # Would create an entry point called doit that calls doit.main()
 
+    - doit = doit.__main__:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -28,6 +29,7 @@ source:
 requirements:
   build:
     - python
+    - setuptools
     - six
     - macfsevents # [osx]
     - pyinotify  # [linux]
@@ -43,10 +45,11 @@ test:
   imports:
     - doit
 
-  #commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+    - doit --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -58,7 +61,7 @@ test:
 about:
   home: http://pydoit.org
   license: MIT License
-  summary: doit - Automation Tool
+  summary: 'doit - Automation Tool'
 
 # See
 # http://docs.continuum.io/conda/build.html for

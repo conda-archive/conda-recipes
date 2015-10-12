@@ -1,0 +1,29 @@
+
+package:
+    name: pdiffer
+    version: 0.0.3
+
+source:
+    fn: pdiffer-0.0.3.tar.gz
+    url: https://pypi.python.org/packages/source/p/pdiffer/pdiffer-0.0.3.tar.gz
+    md5: ffdf9d510f9f5959ce3d80c152838541
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+
+    run:
+        - python
+        - pdiff
+
+test:
+    imports:
+        - pdiffer
+
+about:
+    home: https://github.com/zacharyvoase/pdiffer
+    license: Unlicense
+

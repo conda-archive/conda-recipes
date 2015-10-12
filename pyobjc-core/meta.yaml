@@ -1,0 +1,16 @@
+package:
+  name: pyobjc-core
+  version: !!str 2.5.1
+
+requirements:
+  build:
+    - python
+    - pip
+
+  run:
+    - python
+
+about:
+  home: http://pyobjc.sourceforge.net/
+  license: MIT License
+  summary: Python<->ObjC Interoperability Module

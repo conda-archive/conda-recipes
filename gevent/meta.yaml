@@ -1,0 +1,30 @@
+
+package:
+    name: gevent
+    version: 1.0.2
+
+source:
+    fn: gevent-1.0.2.tar.gz
+    url: https://pypi.python.org/packages/source/g/gevent/gevent-1.0.2.tar.gz
+    md5: 117f135d57ca7416203fba3720bf71c1
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - greenlet
+
+    run:
+        - python
+        - greenlet
+
+test:
+    imports:
+        - gevent
+
+about:
+    home: http://www.gevent.org/
+    license: MIT
+

@@ -1,11 +1,11 @@
 package:
   name: fastcache
-  version: !!str 0.1
+  version: !!str 1.0.1
 
 source:
-  fn: fastcache-0.1.tar.gz
-  url: https://pypi.python.org/packages/source/f/fastcache/fastcache-0.1.tar.gz
-  md5: 10f9526928639ae3de989e9fa0cc1b1f
+  fn: fastcache-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/f/fastcache/fastcache-1.0.1.tar.gz
+  md5: c6a7b2e80e43860851b233e16efa98d3
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -28,6 +28,7 @@ source:
 requirements:
   build:
     - python
+    - setuptools
 
   run:
     - python

@@ -1,0 +1,31 @@
+
+package:
+    name: headers_workaround
+    version: 0.17
+
+source:
+    fn: headers_workaround-0.17.tar.gz
+    url: https://pypi.python.org/packages/source/h/headers_workaround/headers_workaround-0.17.tar.gz
+    md5: 33a2284b4e661698187f37ae4ff528b9
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        #- distribute
+
+    run:
+        - python
+
+test:
+    imports:
+        - headers_workaround
+
+    #commands:
+    #    -
+
+about:
+    home: http://github.com/syllog1sm/headers_workaround
+    license: MIT

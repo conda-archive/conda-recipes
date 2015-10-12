@@ -1,3 +1,4 @@
-%PYTHON% configure.py --platform win32-g++
-make
-make install
+%PYTHON% configure.py --bindir=%PREFIX%\Scripts
+
+nmake
+nmake install

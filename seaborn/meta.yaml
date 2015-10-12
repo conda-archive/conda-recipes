@@ -1,11 +1,11 @@
 package:
   name: seaborn
-  version: !!str 0.2.1
+  version: !!str 0.4.0
 
 source:
-  fn: seaborn-0.2.1.tar.gz
-  url: https://pypi.python.org/packages/source/s/seaborn/seaborn-0.2.1.tar.gz
-  md5: e717341e46b50062a62603d3c88175df
+  fn: seaborn-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/seaborn/seaborn-0.4.0.tar.gz
+  md5: b0a37352524c2363f78aa6780b6d246f
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -29,26 +29,25 @@ requirements:
   build:
     - python
     - setuptools
-    - husl
-    - moss
-    - patsy
     - pandas
-    - statsmodels
-    - six
+    - scipy
+    - numpy
+    - matplotlib
 
   run:
     - python
-    - husl
-    - moss
-    - patsy
     - pandas
+    - scipy
+    - numpy
+    - matplotlib
+    - patsy
     - statsmodels
-    - six
 
 test:
   # Python imports
   imports:
     - seaborn
+    - seaborn.external
     - seaborn.tests
 
   #commands:
@@ -65,8 +64,8 @@ test:
 
 about:
   home: http://stanford.edu/~mwaskom/software/seaborn/
-  license: BSD License
-  summary: 'Seaborn: improved statistical visualization using Matplotlib'
+  license:  BSD License
+  summary: 'Seaborn: statistical data visualization'
 
 # See
 # http://docs.continuum.io/conda/build.html for

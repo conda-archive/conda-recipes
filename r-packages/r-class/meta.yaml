@@ -1,0 +1,84 @@
+package:
+  name: r-class
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "7.3_14"
+
+source:
+  fn: class_7.3-14.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/class_7.3-14.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/class/class_7.3-14.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r-base
+    - r-mass # [not win]
+    - gcc # [not win]
+
+  run:
+    - r
+    - r-mass # [not win]
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('class')" # [not win]
+    - "\"%R%\" -e \"library('class')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://www.stats.ox.ac.uk/pub/MASS4/
+  license: GPL-2 | GPL-3
+  summary: Various functions for classification, including k-nearest neighbour, Learning Vector
+    Quantization and Self-Organizing Maps.
+
+# The original CRAN metadata for this package was:
+
+# Package: class
+# Priority: recommended
+# Version: 7.3-14
+# Date: 2015-08-29
+# Depends: R (>= 3.0.0), stats, utils
+# Imports: MASS
+# Authors@R: c(person("Brian", "Ripley", role = c("aut", "cre", "cph"), email = "ripley@stats.ox.ac.uk"), person("William", "Venables", role = "cph"))
+# Description: Various functions for classification, including k-nearest neighbour, Learning Vector Quantization and Self-Organizing Maps.
+# Title: Functions for Classification
+# ByteCompile: yes
+# License: GPL-2 | GPL-3
+# URL: http://www.stats.ox.ac.uk/pub/MASS4/
+# NeedsCompilation: yes
+# Packaged: 2015-08-28 15:25:36 UTC; ripley
+# Author: Brian Ripley [aut, cre, cph], William Venables [cph]
+# Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
+# Repository: CRAN
+# Date/Publication: 2015-08-30 08:59:38
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

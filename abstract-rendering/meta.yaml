@@ -1,10 +1,10 @@
 package:
   name: abstract-rendering
-  version: master
+  version: 0.2.0
 
 source:
-  git_url: git://github.com/JosephCottam/AbstractRendering.git
-#  git_tag:
+  git_url: git://github.com/ContinuumIO/abstract_rendering
+  git_tag: 0.2.0
 
 requirements:
   build:

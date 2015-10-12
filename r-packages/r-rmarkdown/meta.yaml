@@ -1,0 +1,88 @@
+package:
+  name: r-rmarkdown
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.8"
+
+source:
+  fn: rmarkdown_0.8.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/rmarkdown_0.8.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/rmarkdown/rmarkdown_0.8.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: shiny (>= 0.11), testthat, digest
+requirements:
+  build:
+    - r
+    - r-catools
+    - r-htmltools >=0.2.4
+    - r-knitr >=1.11
+    - r-yaml >=2.1.5
+
+  run:
+    - r
+    - r-catools
+    - r-htmltools >=0.2.4
+    - r-knitr >=1.11
+    - r-yaml >=2.1.5
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('rmarkdown')" # [not win]
+    - "\"%R%\" -e \"library('rmarkdown')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://rmarkdown.rstudio.com
+  license: GPL-3
+  summary: Convert R Markdown documents into a variety of formats.
+
+# The original CRAN metadata for this package was:
+
+# Package: rmarkdown
+# Type: Package
+# Title: Dynamic Documents for R
+# Version: 0.8
+# Date: 2015-08-30
+# Authors@R: c( person("JJ", "Allaire", role = c("aut", "cre"), email = "jj@rstudio.com"), person("Joe", "Cheng", role = "aut", email = "joe@rstudio.com"), person("Yihui", "Xie", role = "aut", email = "yihui@rstudio.com"), person("Jonathan", "McPherson", role = "aut", email = "jonathan@rstudio.com"), person("Winston", "Chang", role = "aut", email = "winston@rstudio.com"), person("Jeff", "Allen", role = "aut", email = "jeff@rstudio.com"), person("Hadley", "Wickham", role = "aut", email = "hadley@rstudio.com"), person("Aron", "Atkins", role = "aut", email = "aron@rstudio.com"), person("Rob", "Hyndman", role = "aut", email = "robjhyndman@gmail.com"), person(family = "RStudio, Inc.", role = "cph"), person(family = "jQuery Foundation", role = "cph", comment = "jQuery library"), person(family = "jQuery contributors", role = c("ctb", "cph"), comment = "jQuery library; authors listed in inst/rmd/h/jquery-AUTHORS.txt"), person("Mark", "Otto", role = "ctb", comment = "Bootstrap library"), person("Jacob", "Thornton", role = "ctb", comment = "Bootstrap library"), person(family = "Bootstrap contributors", role = "ctb", comment = "Bootstrap library"), person(family = "Twitter, Inc", role = "cph", comment = "Bootstrap library"), person("Alexander", "Farkas", role = c("ctb", "cph"), comment = "html5shiv library"), person("Scott", "Jehl", role = c("ctb", "cph"), comment = "Respond.js library"), person("Ivan", "Sagalaev", role = c("ctb", "cph"), comment = "highlight.js library"), person("John", "MacFarlane", role = c("ctb", "cph"), comment = "Pandoc templates"), person(family = "Google, Inc.", role = c("ctb", "cph"), comment = "ioslides library"), person("Dave", "Raggett", role = "ctb", comment = "slidy library"), person(family = "W3C", role = "cph", comment = "slidy library") )
+# Description: Convert R Markdown documents into a variety of formats.
+# Depends: R (>= 3.0)
+# Imports: tools, utils, grDevices, knitr (>= 1.11), yaml (>= 2.1.5), htmltools (>= 0.2.4), caTools
+# Suggests: shiny (>= 0.11), testthat, digest
+# SystemRequirements: pandoc (>= 1.12.3) - http://johnmacfarlane.net/pandoc
+# URL: http://rmarkdown.rstudio.com
+# License: GPL-3
+# NeedsCompilation: no
+# Packaged: 2015-08-30 18:02:08 UTC; jjallaire
+# Author: JJ Allaire [aut, cre], Joe Cheng [aut], Yihui Xie [aut], Jonathan McPherson [aut], Winston Chang [aut], Jeff Allen [aut], Hadley Wickham [aut], Aron Atkins [aut], Rob Hyndman [aut], RStudio, Inc. [cph], jQuery Foundation [cph] (jQuery library), jQuery contributors [ctb, cph] (jQuery library; authors listed in inst/rmd/h/jquery-AUTHORS.txt), Mark Otto [ctb] (Bootstrap library), Jacob Thornton [ctb] (Bootstrap library), Bootstrap contributors [ctb] (Bootstrap library), Twitter, Inc [cph] (Bootstrap library), Alexander Farkas [ctb, cph] (html5shiv library), Scott Jehl [ctb, cph] (Respond.js library), Ivan Sagalaev [ctb, cph] (highlight.js library), John MacFarlane [ctb, cph] (Pandoc templates), Google, Inc. [ctb, cph] (ioslides library), Dave Raggett [ctb] (slidy library), W3C [cph] (slidy library)
+# Maintainer: JJ Allaire <jj@rstudio.com>
+# Repository: CRAN
+# Date/Publication: 2015-08-30 20:52:34
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

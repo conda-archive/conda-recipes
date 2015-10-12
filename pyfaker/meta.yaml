@@ -21,5 +21,4 @@ test:
 about:
   home: http://www.joke2k.net/faker
   license: MIT
-
-# vim:set ts=8 sw=2 sts=2 tw=78 et:
+  summary: "Faker is a Python package that generates fake data for you."

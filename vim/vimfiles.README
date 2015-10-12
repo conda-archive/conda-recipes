@@ -1,0 +1,4 @@
+I've relocated the vimfiles I used to build this repository to tpn/vimfiles.
+So replicate my build, clone that repo in this directory:
+
+    git clone https://github.com/tpn/vimfiles

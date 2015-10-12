@@ -1,0 +1,90 @@
+package:
+  name: ggplot
+  version: "0.6.5"
+
+source:
+  fn: ggplot-0.6.5.tar.gz
+  url: https://pypi.python.org/packages/source/g/ggplot/ggplot-0.6.5.tar.gz
+  md5: c825f9ca48bc9b12c2e2517c7f8b9538
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ggplot = ggplot:main
+    #
+    # Would create an entry point called ggplot that calls ggplot.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - mock
+    - nose
+    - setuptools
+    - six
+    - statsmodels
+    - brewer2mpl
+    - matplotlib
+    - scipy
+    - patsy
+    - pandas
+    - numpy
+
+  run:
+    - python
+    - mock
+    - nose
+    - six
+    - statsmodels
+    - brewer2mpl
+    - matplotlib
+    - scipy
+    - patsy
+    - pandas
+    - numpy
+
+test:
+  # Python imports
+  imports:
+    - ggplot
+    - ggplot.components
+    - ggplot.coords
+    - ggplot.exampledata
+    - ggplot.geoms
+    - ggplot.scales
+    - ggplot.stats
+    - ggplot.tests
+    - ggplot.themes
+    - ggplot.utils
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/yhat/ggplot/
+  license: BSD
+  summary: 'ggplot for python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

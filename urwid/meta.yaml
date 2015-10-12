@@ -1,18 +1,19 @@
 package:
   name: urwid
-  version: !!str 1.2.0
+  version: "1.3.0"
 
 source:
-  fn: urwid-1.2.0.tar.gz
-  url: https://pypi.python.org/packages/source/u/urwid/urwid-1.2.0.tar.gz
-  md5: ea046a0f683bc2d46b08df70b29c7f66
+  fn: urwid-1.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/u/urwid/urwid-1.3.0.tar.gz
+  md5: a989acd54f4ff1a554add464803a9175
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
-  #preserve_egg_dir: True
-  #entry_points:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -36,10 +37,10 @@ requirements:
 test:
   # Python imports
   imports:
-    - urwid.tests
     - urwid
+    - urwid.tests
 
-  #commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 

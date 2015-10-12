@@ -1,0 +1,31 @@
+
+package:
+    name: murmurhash
+    version: 0.24
+
+source:
+    fn: murmurhash-0.24.tar.gz
+    url: https://pypi.python.org/packages/source/m/murmurhash/murmurhash-0.24.tar.gz
+    md5: 182d31e0c4aa34fdf0d57a78f7249108
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - distribute
+
+    run:
+        - python
+
+test:
+    imports:
+        - murmurhash
+
+    #commands:
+    #    -
+
+about:
+    home: http://
+    license: Unknown

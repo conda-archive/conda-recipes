@@ -1,0 +1,79 @@
+package:
+  name: r-iterators
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.0.7"
+
+source:
+  fn: iterators_1.0.7.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/iterators_1.0.7.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/iterators/iterators_1.0.7.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 2
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: RUnit
+requirements:
+  build:
+    - r
+
+  run:
+    - r
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('iterators')" # [not win]
+    - "\"%R%\" -e \"library('iterators')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: Apache License (== 2.0)
+  summary: Support for iterators, which allow a programmer to traverse through all the elements
+    of a vector, list, or other collection of data.
+
+# The original CRAN metadata for this package was:
+
+# Package: iterators
+# Type: Package
+# Title: Iterator construct for R
+# Version: 1.0.7
+# Author: Revolution Analytics
+# Maintainer: Revolution Analytics <packages@revolutionanalytics.com>
+# Description: Support for iterators, which allow a programmer to traverse through all the elements of a vector, list, or other collection of data.
+# Depends: R (>= 2.5.0), utils
+# Suggests: RUnit
+# License: Apache License (== 2.0)
+# Repository: CRAN
+# Repository/R-Forge/Project: foreach
+# Repository/R-Forge/Revision: 25
+# Repository/R-Forge/DateTimeStamp: 2014-04-10 18:54:16
+# Date/Publication: 2014-04-11 07:52:44
+# Packaged: 2014-04-10 20:15:28 UTC; rforge
+# NeedsCompilation: no
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

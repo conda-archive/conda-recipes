@@ -1,0 +1,29 @@
+package:
+  name: scipy
+  version: 0.16.0
+
+source:
+  url: https://pypi.python.org/packages/source/s/scipy/scipy-0.16.0.tar.gz
+  fn: scipy-0.16.0.tar.gz
+  md5: eb95dda0f36cc3096673993a350cde77
+
+requirements:
+  build:
+    - python
+    - openblas
+    - numpy
+
+  run:
+    - libgcc
+    - python
+    - openblas
+    - numpy
+
+build:
+  string: np{{np}}py{{py}}_o0
+  features:
+    - openblas
+
+about:
+  home: https://www.scipy.org
+  license: PSF
