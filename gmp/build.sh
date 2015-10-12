@@ -2,11 +2,7 @@
 
 chmod +x configure
 
-if [ `uname` == Darwin ]; then
-    ./configure --prefix=$PREFIX --enable-cxx
-else
-    ./configure --prefix=$PREFIX --enable-cxx
-fi
+./configure --prefix=$PREFIX --enable-cxx
 
 make
 make check
