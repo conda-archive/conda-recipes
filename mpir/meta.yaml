@@ -9,6 +9,7 @@ source:
 about:
   home: http://mpir.org/
   license: LGPL 3
+  license_file: COPYING
 
 test:
   files:
