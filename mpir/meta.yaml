@@ -1,0 +1,15 @@
+package:
+  name: mpir
+  version: 2.7.0
+
+source:
+  fn: mpir-2.7.0.tar.bz2
+  url: http://mpir.org/mpir-2.7.0.tar.bz2
+
+about:
+  home: http://mpir.org/
+  license: LGPL 3
+
+test:
+  files:
+    - test.c
