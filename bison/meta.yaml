@@ -13,7 +13,8 @@ about:
 
 requirements:
   build:
-    - m4 # [linux]
+    - m4
   
   run:
-    - m4 # [linux]
+    - m4
+
