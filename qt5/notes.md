@@ -6,15 +6,13 @@ git checkout, because conda caches a bare repository, almost all of the source
 exists as submodules, and conda tries to clone the submodules from nonexistent
 directories in its cache. So we are stuck with the compressed source files.
 
-## Packages needed to build with RHEL6
+## Packages needed to build with CentOS 6
 
 - xcb-util-devel
-
-These may have been optional
-
-- libudev-devel
-- pcre-devel
-- mesa-libEGL
+- gtk2-devel
+- freeglut-devel
+- ruby
+- gperf
 
 ## Notes concerning OS X
 

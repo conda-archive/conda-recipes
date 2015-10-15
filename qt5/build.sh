@@ -1,7 +1,8 @@
 #!/bin/bash
 
 CONFIG_OPTS=" "
-PATH=/usr/bin:/usr/sbin:/bin
+BIN=$PREFIX/lib/qt5/bin
+QTCONF=$BIN/qt.conf
 
 if [ `uname` == Linux ]; then
     CONFIG_OPTS+=" -dbus"
@@ -31,24 +32,43 @@ chmod +x configure
             -headerdir $PREFIX/include/qt5 \
             -archdatadir $PREFIX/lib/qt5 \
             -datadir $PREFIX/share/qt5 \
+            -L $PREFIX/lib \
+            -I $PREFIX/include \
             -release \
             -opensource \
             -confirm-license \
             -shared \
             -nomake examples \
             -nomake tests \
-            -fontconfig \
-            -qt-libpng \
-            -qt-zlib \
+            -no-libudev \
+            -gtkstyle \
+            -qt-xcb \
+            -qt-pcre \
+            -qt-xkbcommon \
+            -xkb-config-root $PREFIX/lib \
+            -verbose \
             $CONFIG_OPTS
 
 make -j $MAKE_JOBS
 make install
 
-for file in $PREFIX/lib/qt5/bin/*
+for file in $BIN/*
 do
     ln -sfv ../lib/qt5/bin/$(basename $file) $PREFIX/bin/$(basename $file)-qt5
 done
 
 #removes doc, phrasebooks, and translations
 rm -rf $PREFIX/share/qt5
+
+# Remove static libs
+rm -rf $PREFIX/lib/*.a
+
+# Add qt.conf file to the package to make it fully relocatable
+cat <<EOF >$QTCONF
+[Paths]
+Prefix = $PREFIX/lib/qt5
+Libraries = $PREFIX/lib
+Headers = $PREFIX/include/qt5
+
+EOF
+
