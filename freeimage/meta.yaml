@@ -7,22 +7,15 @@ package:
 
 source:
     fn: FreeImage3170.zip
-    fn: FreeImage3170Win32Win64.zip [win]
     url: http://optimate.dl.sourceforge.net/project/freeimage/Source%20Distribution/3.17.0/FreeImage3170.zip
-    url: http://optimate.dl.sourceforge.net/project/freeimage/Binary%20Distribution/3.17.0/FreeImage3170Win32Win64.zip [win]
     md5: 459e15f0ec75d6efa3c7bd63277ead86
-    md5: a7e6f2f261e72260ec5b91c2a0f4bde3 [win]
-
-
+    
     patches:
-        - Makefile.osx.patch
+        - Makefile.osx.patch  # [osx]
+        - vs2010_omp.patch  # [win and py3k]
 
 build:
-    number: 0
-
-#requirements:
-#    build:
-#        - mingw [win]
+    number: 1
 
 test:
     requires:
