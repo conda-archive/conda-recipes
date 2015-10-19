@@ -28,10 +28,12 @@ source:
 
 requirements:
   build:
+    - mongodb
     - python
     - setuptools
 
   run:
+    - mongodb
     - python
 
 test:
