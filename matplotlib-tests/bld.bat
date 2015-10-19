@@ -1,1 +1,1 @@
-xcopy lib\matplotlib\tests %SP_DIR%\matplotlib /S
+move lib\matplotlib\tests %SP_DIR%\matplotlib\
