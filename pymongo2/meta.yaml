@@ -1,11 +1,11 @@
 package:
   name: pymongo
-  version: "3.0.3"
+  version: "2.8"
 
 source:
-  fn: pymongo-3.0.3.tar.gz
-  url: https://pypi.python.org/packages/source/p/pymongo/pymongo-3.0.3.tar.gz
-  md5: 0425d99c2a453144b9c95cb37dbc46e9
+  fn: pymongo-2.8.tar.gz
+  url: https://pypi.python.org/packages/source/p/pymongo/pymongo-2.8.tar.gz
+  md5: 23100361c9af1904eb2d7722f2658114
 
 requirements:
   build:
@@ -22,6 +22,9 @@ test:
     - bson
     - gridfs
     - pymongo
+
+  requires:
+    - nose
 
 about:
   home: http://github.com/mongodb/mongo-python-driver
