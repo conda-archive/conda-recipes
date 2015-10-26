@@ -1,11 +1,11 @@
 package:
   name: uwsgi
-  version: !!str 2.0.2
+  version: 2.0.11.2
 
 source:
-  fn: uwsgi-2.0.2.tar.gz
-  url: https://pypi.python.org/packages/source/u/uWSGI/uwsgi-2.0.2.tar.gz
-  md5: 297578b2e3ef2102faeadaa0fb8aac6b
+  fn: uwsgi-2.0.11.2.tar.gz
+  url: https://pypi.python.org/packages/source/u/uWSGI/uwsgi-2.0.11.2.tar.gz
+  md5: 1f02dcbee7f6f61de4b1fd68350cf16f
 #  patches:
    # List any patch files here
    # - fix.patch
