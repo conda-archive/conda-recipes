@@ -1,44 +1,58 @@
 #!/bin/bash
 
+mkdir build
+cd build
+
 if [ `uname` == Linux ]; then
     CC=gcc44
     CXX=g++44
-    CMAKE=cmake
-    PY_LIB="libpython2.7.so"
+    PY_LIB="libpython${PY_VER}.so"
+
+    cmake .. \
+        -DCMAKE_C_COMPILER=$CC \
+        -DCMAKE_CXX_COMPILER=$CXX \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
+        -DCMAKE_INSTALL_RPATH:STRING="${PREFIX}/lib" \
+        -DBUILD_DOCUMENTATION=OFF \
+        -DVTK_HAS_FEENABLEEXCEPT=OFF \
+        -DBUILD_TESTING=OFF \
+        -DBUILD_EXAMPLES=OFF \
+        -DBUILD_SHARED_LIBS=ON \
+        -DVTK_WRAP_PYTHON=ON \
+        -DPYTHON_EXECUTABLE=${PYTHON} \
+        -DPYTHON_INCLUDE_PATH=${PREFIX}/include/python${PY_VER} \
+        -DPYTHON_LIBRARY=${PREFIX}/lib/${PY_LIB} \
+        -DVTK_INSTALL_PYTHON_MODULE_DIR=${SP_DIR} \
+        -DModule_vtkRenderingMatplotlib=ON \
+        -DVTK_USE_X=ON
 fi
+
 if [ `uname` == Darwin ]; then
     CC=cc
     CXX=c++
-    CMAKE=$SYS_PREFIX/bin/cmake
-    PY_LIB="libpython2.7.dylib"
-    export DYLD_LIBRARY_PATH=$PREFIX/lib
-fi
+    PY_LIB="libpython${PY_VER}.dylib"
 
-mkdir build
-cd build
-$CMAKE \
-    -DCMAKE_INSTALL_PREFIX:PATH="$PREFIX" \
-    -DCMAKE_INSTALL_RPATH:STRING="$PREFIX/lib" \
-    -DVTK_HAS_FEENABLEEXCEPT:BOOL=OFF \
-    -DBUILD_TESTING:BOOL=OFF \
-    -DBUILD_EXAMPLES:BOOL=OFF \
-    -DBUILD_SHARED_LIBS:BOOL=ON \
-    -DPYTHON_EXECUTABLE:FILEPATH=$PYTHON \
-    -DPYTHON_INCLUDE_PATH:PATH=$PREFIX/include/python2.7 \
-    -DPYTHON_LIBRARY:FILEPATH=$PREFIX/lib/$PY_LIB \
-    -DVTK_USE_X:BOOL=OFF \
-    -DVTK_WRAP_PYTHON:BOOL=ON \
-    -DVTK_USE_OFFSCREEN:BOOL=ON \
-    ..
+    cmake .. \
+        -DCMAKE_C_COMPILER=$CC \
+        -DCMAKE_CXX_COMPILER=$CXX \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX="$PREFIX" \
+        -DCMAKE_INSTALL_RPATH:STRING="$PREFIX/lib" \
+        -DBUILD_DOCUMENTATION=OFF \
+        -DVTK_HAS_FEENABLEEXCEPT=OFF \
+        -DBUILD_TESTING=OFF \
+        -DBUILD_EXAMPLES=OFF \
+        -DBUILD_SHARED_LIBS=ON \
+        -DVTK_WRAP_PYTHON=ON \
+        -DPYTHON_EXECUTABLE=${PYTHON} \
+        -DPYTHON_INCLUDE_PATH=${PREFIX}/include/python${PY_VER} \
+        -DPYTHON_LIBRARY=${PREFIX}/lib/${PY_LIB} \
+        -DVTK_INSTALL_PYTHON_MODULE_DIR=${SP_DIR} \
+        -DVTK_USE_OFFSCREEN=ON \
+        -DModule_vtkRenderingMatplotlib=ON \
+        -DVTK_USE_X=OFF
+fi
 
 make -j${CPU_COUNT}
 make install
-
-if [ `uname` == Linux ]; then
-    mv $PREFIX/lib/vtk-5.10/lib* $PREFIX/lib
-    sed -i 's|/lib/vtk-5.10/lib|/lib/lib|g' \
-        $PREFIX/lib/vtk-5.10/VTKTargets-debug.cmake
-fi
-if [ `uname` == Darwin ]; then
-    $SYS_PYTHON $RECIPE_DIR/osx.py
-fi

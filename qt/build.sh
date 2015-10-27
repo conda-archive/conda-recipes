@@ -21,7 +21,7 @@ if [ `uname` == Linux ]; then
         -release -fast -prefix $PREFIX \
         -no-qt3support -nomake examples -nomake demos -nomake docs \
         -opensource -verbose -openssl -webkit -gtkstyle -dbus \
-        -system-libpng -qt-zlib -L $LIBRARY_PATH -I $INCLUDE_PATH
+        -system-libpng -qt-zlib -L $PREFIX/lib -I $PREFIX/include
 
     # Build on RPM based distros fails without setting LD_LIBRARY_PATH
     # to the build lib dir
@@ -51,7 +51,7 @@ if [ `uname` == Darwin ]; then
         -release -fast -prefix $PREFIX -platform macx-g++ \
         -no-qt3support -nomake examples -nomake demos -nomake docs \
         -opensource -verbose -openssl -no-framework -system-libpng \
-        -arch `uname -m` -L $LIBRARY_PATH -I $INCLUDE_PATH
+        -arch `uname -m` -L $PREFIX/lib -I $PREFIX/include
 
     make -j $(sysctl -n hw.ncpu)
     make install

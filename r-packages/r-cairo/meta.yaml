@@ -2,13 +2,13 @@ package:
   name: r-cairo
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.5_8"
+  version: "1.5_9"
 
 source:
-  fn: Cairo_1.5-8.tar.gz
+  fn: Cairo_1.5-9.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/Cairo_1.5-8.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/Cairo/Cairo_1.5-8.tar.gz
+    - http://cran.r-project.org/src/contrib/Cairo_1.5-9.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/Cairo/Cairo_1.5-9.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -27,6 +27,8 @@ build:
   rpaths:
     - lib/R/lib/
     - lib/
+
+  skip: true # [osx]
 
 # Suggests: png
 requirements:
@@ -70,7 +72,7 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: Cairo
-# Version: 1.5-8
+# Version: 1.5-9
 # Title: R graphics device using cairo graphics library for creating high-quality bitmap (PNG, JPEG, TIFF), vector (PDF, SVG, PostScript) and display (X11 and Win32) output
 # Author: Simon Urbanek <Simon.Urbanek@r-project.org>, Jeffrey Horner <jeff.horner@vanderbilt.edu>
 # Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>
@@ -83,9 +85,9 @@ about:
 # SystemRequirements: cairo (>= 1.2 http://www.cairographics.org/)
 # URL: http://www.rforge.net/Cairo/
 # NeedsCompilation: yes
-# Packaged: 2015-07-29 15:45:51 UTC; svnuser
+# Packaged: 2015-09-25 17:49:11 UTC; svnuser
 # Repository: CRAN
-# Date/Publication: 2015-07-30 06:05:21
+# Date/Publication: 2015-09-26 09:05:40
 
 # See
 # http://docs.continuum.io/conda/build.html for
