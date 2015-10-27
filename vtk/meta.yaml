@@ -9,6 +9,7 @@ source:
     - dlls.patch                              [win]
 
 build:
+  number: 1                                   [linux]
   has_prefix_files:                           [win]
     - Lib/site-packages/vtk/__init__.py       [win]
 
@@ -16,14 +17,25 @@ requirements:
   build:
     - cmake
     - python    <3
-    - mesa      [linux]
   run:
     - python    <3
-    - mesa      [linux]
 
 test:
   imports:
     - vtk
+    - vtk.vtkChartsCore
+    - vtk.vtkCommonCore
+    - vtk.vtkFiltersCore
+    - vtk.vtkFiltersGeneric
+    - vtk.vtkGeovisCore
+    - vtk.vtkFiltersHybrid
+    - vtk.vtkIOCore
+    - vtk.vtkImagingCore
+    - vtk.vtkInfovisCore
+    - vtk.vtkRenderingCore
+    - vtk.vtkViewsCore
+    - vtk.vtkRenderingVolume
+    - vtk.vtkInteractionWidgets
 
 about:
   home: http://www.vtk.org/
