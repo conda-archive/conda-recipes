@@ -15,6 +15,15 @@ requirements:
   run:
     - matplotlib =={{ version }}
 
+  test:
+  requires:
+    - nose
+    - mock
+    - matplotlib
+
+  imports:
+    - matplotlib
+
 about:
   home: http://matplotlib.sourceforge.net/
   license: PSF-based (http://matplotlib.sourceforge.net/users/license.html)

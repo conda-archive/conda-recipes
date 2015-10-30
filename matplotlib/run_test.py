@@ -25,5 +25,3 @@ if int(os.getenv('GUI_TEST', 0)):
     plt.title('If this window displays, success: CLOSE TO CONTINUE TESTS')
     plt.plot([1,2,5,9])
     plt.show()
-
-matplotlib.test()
