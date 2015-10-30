@@ -12,10 +12,10 @@ requirements:
   build:
     - python
     - setuptools
-    - numpy
+    - numpy x.x
   run:
     - python
-    - numpy
+    - numpy x.x
 
 test:
   commands:
