@@ -9,4 +9,6 @@ cmake                              \
     ..
 make
 mkdir -p $PREFIX/lib64
+mkdir -p $PREFIX/include/splm
 cp libsplm.a $PREFIX/lib64/
+cp ../*.h $PREFIX/include/splm/
