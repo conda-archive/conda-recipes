@@ -1,0 +1,32 @@
+package:
+  name: pysparselm
+  version: 0.1.0
+
+source:
+  fn: pysparselm-0.1.0.zip
+  url: http://www.bmp.ds.mpg.de/pysparselm.html?file=tl_files/bmp/software/pysparselm/pysparselm-0.1.0.zip
+  sha1: 5c2de661a976967fd329bc456c0a90ab0d80fdc4
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+    - sparselm
+
+  run:
+    - python
+    - numpy
+    - scipy
+
+test:
+  imports:
+    - pysparselm
+
+about:
+  home: http://www.bmp.ds.mpg.de/pysparselm.html
+  license: GPL
+  summary: Sparse non-linear least-squares solver (Python-bindings to sparselm)
