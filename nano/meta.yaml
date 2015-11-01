@@ -1,0 +1,14 @@
+package:
+  name: nano
+  version: 2.4.2
+
+source:
+  fn: nano-2.4.2.zip
+  url: http://www.nano-editor.org/dist/v2.4/NT/nano-2.4.2.zip
+  md5: e8635cd420dbcbce3a3dba21dbdf41b7
+
+about:
+  home: http://www.nano-editor.org/
+  license: GPLv2
+  license_family: GPL2
+  summary: GNU Nano text editor
