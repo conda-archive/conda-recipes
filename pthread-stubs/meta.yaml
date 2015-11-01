@@ -1,0 +1,13 @@
+package:
+  name: pthread-stubs
+  version: 0.1
+
+source:
+  fn: libpthread-stubs-0.1.tar.bz2
+  url: http://xcb.freedesktop.org/dist/libpthread-stubs-0.1.tar.bz2
+  md5: 774eabaf33440d534efe108ef9130a7d
+
+about:
+    home: http://xcb.freedesktop.org/
+    license: MIT
+

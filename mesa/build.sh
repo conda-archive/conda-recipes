@@ -16,7 +16,6 @@
     --with-egl-platforms="" \
     --enable-gallium-osmesa \
     --enable-gallium-llvm=yes \
-    --with-llvm-shared-libs \
     --prefix=$PREFIX
  
 make -j2

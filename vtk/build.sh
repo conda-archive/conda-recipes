@@ -24,14 +24,8 @@ if [ `uname` == Linux ]; then
         -DPYTHON_INCLUDE_PATH=${PREFIX}/include/python${PY_VER} \
         -DPYTHON_LIBRARY=${PREFIX}/lib/${PY_LIB} \
         -DVTK_INSTALL_PYTHON_MODULE_DIR=${SP_DIR} \
-        -DVTK_USE_OFFSCREEN=ON \
         -DModule_vtkRenderingMatplotlib=ON \
-        -DVTK_USE_X=OFF \
-        -DOPENGL_INCLUDE_DIR=${PREFIX}/include \
-        -DOPENGL_gl_LIBRARY=${PREFIX}/lib/libOSMesa.so \
-        -DVTK_OPENGL_HAS_OSMESA=ON \
-        -DOSMESA_INCLUDE_DIR=${PREFIX}/include \
-        -DOSMESA_LIBRARY=${PREFIX}/lib/libOSMesa.so
+        -DVTK_USE_X=ON
 fi
 
 if [ `uname` == Darwin ]; then
