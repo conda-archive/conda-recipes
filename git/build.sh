@@ -1,7 +1,7 @@
 #!/bin/bash
 
 make configure
-./configure --prefix=$PREFIX --without-tcltk
+CFLAGS="$CFLAGS -m64" CPPFLAGS="$CPPFLAGS -I$PREFIX/include" LDFLAGS="$LDFLAGS -L$PREFIX/lib" ./configure --prefix=$PREFIX --without-tcltk
 make all
 make install
 
