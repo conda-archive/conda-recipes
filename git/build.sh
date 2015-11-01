@@ -1,7 +1,7 @@
 #!/bin/bash
 
 make configure
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --without-tcltk
 make all
 make install
 
