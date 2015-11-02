@@ -1,0 +1,26 @@
+package:
+  name: aniso8601
+  version: 1.1.0
+
+source:
+  git_url: https://bitbucket.org/nielsenb/aniso8601.git
+  git_tag: v1.1.0
+
+requirements:
+  build:
+  - python
+  - setuptools
+  - python-dateutil
+
+  run:
+  - python
+  - setuptools
+  - python-dateutil
+
+test:
+  imports:
+  - aniso8601
+
+about:
+  home: https://bitbucket.org/nielsenb/aniso8601
+  license: BSD
