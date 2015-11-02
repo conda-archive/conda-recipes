@@ -9,24 +9,25 @@ source:
 
 requirements:
   build:
-    - python
-    - setuptools
-    - flask
-    - six
-    - pytz
-    - aniso8601
+  - python
+  - setuptools
+  - flask
+  - six
+  - pytz
+  - aniso8601
 
   run:
-    - python
-    - flask
-    - six
-    - pytz
-    - aniso8601
+  - python
+  - flask
+  - six
+  - pytz
+  - aniso8601
 
 test:
   imports:
-    - flask_restful
+  - flask_restful
 
 about:
   home: https://github.com/flask-restful/flask-restful/
   license: BSD
+  summary: Simple framework for creating REST APIs.
