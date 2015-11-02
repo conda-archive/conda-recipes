@@ -1,6 +1,6 @@
 package:
   name: functools32
-  version: "3.2.3-2"
+  version: "3.2.3.2"
 
 source:
   fn: functools32-3.2.3-2.tar.gz
