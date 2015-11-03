@@ -1,0 +1,37 @@
+package:
+  name: symengine-python
+  version: 0.2.git
+
+source:
+  git_url: https://github.com/symengine/symengine.py
+  git_tag: 19b77b40987882f8538f50d4948bf031e1237030
+
+requirements:
+  build:
+    - symengine
+    - python
+    - cython
+    - numpy
+    - gmp [unix]
+    - mpir [win]
+    - cmake
+  run:
+    - symengine
+    - python
+    - numpy
+    - gmp [unix]
+    - mpir [win]
+
+test:
+  imports:
+    - symengine
+  requires:
+    - symengine
+    - python
+    - pytest
+    - sympy
+
+about:
+    home: https://github.com/symengine/symengine.py
+    license: BSD License
+    summary: 'Python wrappers for SymEngine'

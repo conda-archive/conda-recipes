@@ -9,7 +9,6 @@ mkdir build
 cd build
 
 cmake \
-    -D WITH_PYTHON:BOOL=ON \
     -D COMMON_DIR=$PREFIX \
     -D CMAKE_INSTALL_PREFIX=$PREFIX \
     -D BUILD_TESTS=no \
