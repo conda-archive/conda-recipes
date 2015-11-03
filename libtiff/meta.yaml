@@ -15,12 +15,18 @@ build:
     - vc10    [win and py34]
     - vc14    [win and py35]
 
+build:
+  number: 1
+
 requirements:
   build:
     - zlib
     - jpeg
+    - xz   # provides liblzma
   run:
+    - zlib
     - jpeg
+    - xz   # provides liblzma
 
 about:
   home: http://www.libtiff.org/
