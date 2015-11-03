@@ -10,7 +10,6 @@ if "%ARCH%"=="32" (
 )
 
 cmake -G %GENERATOR% ^
-    -D WITH_PYTHON=ON ^
     -D GMP_DIR=%PREFIX%\mpir\lib\%PLATFORM%\Release ^
     -D CMAKE_INSTALL_PREFIX=%PREFIX% ^
     -D BUILD_TESTS=no ^
