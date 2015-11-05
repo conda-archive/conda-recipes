@@ -10,16 +10,16 @@ source:
     - apple.patch                             [osx]
 
 build:
-  number: 1                                   [not win]
+  number: 1
   has_prefix_files:                           [win]
     - Lib/site-packages/vtk/__init__.py       [win]
 
 requirements:
   build:
     - cmake
-    - python    <3
+    - python
   run:
-    - python    <3
+    - python
 
 test:
   imports:
