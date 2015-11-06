@@ -1,0 +1,65 @@
+package:
+  name: azure-mgmt-resource
+  version: "0.20.0"
+
+source:
+  fn: azure-mgmt-resource-0.20.0.zip
+  url: https://pypi.python.org/packages/source/a/azure-mgmt-resource/azure-mgmt-resource-0.20.0.zip
+  md5: ebaf291fb7f63531f064a7ecf448a939
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - azure-mgmt-resource = azure-mgmt-resource:main
+    #
+    # Would create an entry point called azure-mgmt-resource that calls azure-mgmt-resource.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - azure-mgmt-common
+
+  run:
+    - python
+    - azure-mgmt-common
+
+test:
+  # Python imports
+  imports:
+    - azure
+    - azure.mgmt
+    - azure.mgmt.resource
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Azure/azure-sdk-for-python
+  license: Apache Software License
+  summary: 'Microsoft Azure Resource Management Client Library for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

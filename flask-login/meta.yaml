@@ -1,11 +1,11 @@
 package:
   name: flask-login
-  version: 0.2.6
+  version: 0.2.11
 
 source:
-  fn: Flask-Login-0.2.6.tar.gz
-  url: https://pypi.python.org/packages/source/F/Flask-Login/Flask-Login-0.2.6.tar.gz
-  md5: ed986d7f2a00e7a9c0a9922206394001
+  fn: Flask-Login-0.2.11.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-Login/Flask-Login-0.2.11.tar.gz
+  md5: c0a7eaf28623f0aeac4929dc05a7a064
 #  patches:
    # List any patch files here
    # - fix.patch

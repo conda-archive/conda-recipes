@@ -1,0 +1,64 @@
+package:
+  name: azure-mgmt-nspkg
+  version: "1.0.0"
+
+source:
+  fn: azure-mgmt-nspkg-1.0.0.zip
+  url: https://pypi.python.org/packages/source/a/azure-mgmt-nspkg/azure-mgmt-nspkg-1.0.0.zip
+  md5: 4605b225a393b34292e6fb1bdc77a92c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - azure-mgmt-nspkg = azure-mgmt-nspkg:main
+    #
+    # Would create an entry point called azure-mgmt-nspkg that calls azure-mgmt-nspkg.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - azure-nspkg
+
+  run:
+    - python
+    - azure-nspkg
+
+test:
+  # Python imports
+  imports:
+    - azure
+    - azure.mgmt
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Azure/azure-sdk-for-python
+  license: Apache Software License
+  summary: 'Microsoft Azure Resource Management Namespace Package [Internal]'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

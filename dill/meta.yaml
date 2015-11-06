@@ -1,11 +1,11 @@
 package:
   name: dill
-  version: !!str 0.2b1
+  version: 0.2.2
 
 source:
-  fn: dill-0.2b1.tgz
-  url: https://pypi.python.org/packages/source/d/dill/dill-0.2b1.tgz
-  md5: 75f44a4727017e0c08d8a23daac7a2f2
+  fn: dill-0.2.2.tgz
+  url: https://pypi.python.org/packages/source/d/dill/dill-0.2.2.tgz#md5=c0802fb6a8aca62fa88325fc5f4a48b4
+  md5: c0802fb6a8aca62fa88325fc5f4a48b4
 #  patches:
    # List any patch files here
    # - fix.patch

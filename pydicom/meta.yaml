@@ -1,0 +1,35 @@
+package:
+  name: pydicom
+  version: 0.9.8
+
+source:
+  fn: pydicom-0.9.8.tar.gz
+  url: http://pydicom.googlecode.com/files/pydicom-0.9.8.tar.gz
+  md5: e344ab5b38abeaa462ee79fa04c1c25f
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    #- numpy
+
+test:
+  # Python imports
+  imports:
+    - dicom
+
+about:
+  home: http://code.google.com/p/pydicom/
+  license: MIT License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

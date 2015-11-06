@@ -1,0 +1,60 @@
+package:
+  name: pypdf2
+  version: "1.25.1"
+
+source:
+  fn: PyPDF2-1.25.1.tar.gz
+  url: https://pypi.python.org/packages/source/P/PyPDF2/PyPDF2-1.25.1.tar.gz
+  md5: ee5e5b01d00b120805e5049e56c6fd7c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pypdf2 = pypdf2:main
+    #
+    # Would create an entry point called pypdf2 that calls pypdf2.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - PyPDF2
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mstamy2.github.com/PyPDF2
+  license: BSD License
+  summary: 'PDF toolkit'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

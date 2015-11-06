@@ -1,0 +1,67 @@
+package:
+  name: azure-servicebus
+  version: "0.20.0"
+
+source:
+  fn: azure-servicebus-0.20.0.zip
+  url: https://pypi.python.org/packages/source/a/azure-servicebus/azure-servicebus-0.20.0.zip
+  md5: 9cf3ed8eea1b5ad1fe706640b0d26bdf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - azure-servicebus = azure-servicebus:main
+    #
+    # Would create an entry point called azure-servicebus that calls azure-servicebus.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - azure-common
+    - requests
+
+  run:
+    - python
+    - azure-common
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - azure
+    - azure.servicebus
+    - azure.servicebus._http
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Azure/azure-sdk-for-python
+  license: Apache Software License
+  summary: 'Microsoft Azure Service Bus Client Library for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

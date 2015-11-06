@@ -1,0 +1,59 @@
+package:
+  name: ipaddr
+  version: "2.1.11"
+
+source:
+  fn: ipaddr-2.1.11.tar.gz
+  url: https://pypi.python.org/packages/source/i/ipaddr/ipaddr-2.1.11.tar.gz
+  md5: f2c7852f95862715f92e7d089dc3f2cf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ipaddr = ipaddr:main
+    #
+    # Would create an entry point called ipaddr that calls ipaddr.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+# test:
+  # Python imports
+  # imports:
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/ipaddr-py/
+  license: Apache Software License
+  summary: "Google's IP address manipulation library"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
