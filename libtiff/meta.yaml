@@ -23,10 +23,12 @@ requirements:
     - zlib
     - jpeg
     - xz   # provides liblzma
+    - jbig # [not win]
   run:
     - zlib
     - jpeg
     - xz   # provides liblzma
+    - jbig # [not win]
 
 about:
   home: http://www.libtiff.org/
