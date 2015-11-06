@@ -1,11 +1,10 @@
 package:
   name: matplotlib
-  version: 1.4.3
+  version: 1.5.0rc1
 
 source:
-  fn: matplotlib-1.4.3.tar.gz
-  url: https://downloads.sourceforge.net/project/matplotlib/matplotlib/matplotlib-1.4.3/matplotlib-1.4.3.tar.gz
-  md5: 67a28a359af4919896d1ec74b6e6b3ce
+  git_url: https://github.com/matplotlib/matplotlib.git
+  git_rev: v1.5.0rc1
 
   patches:
     - setupext.patch
@@ -29,6 +28,7 @@ requirements:
     - libpng
     - zlib                [win]
     - pyqt                [not osx]
+    - cycler
   run:
     - python
     - numpy
@@ -39,6 +39,7 @@ requirements:
     - py2cairo            [linux and py2k]
     - libpng              [unix]
     - pyqt                [not osx]
+    - cycler
 
 about:
   home: http://matplotlib.sourceforge.net/
