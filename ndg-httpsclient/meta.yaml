@@ -1,14 +1,11 @@
 package:
   name: ndg-httpsclient
-  version: 0.3.2
+  version: 0.4.0
 
 source:
-  fn: ndg_httpsclient-0.3.2.tar.gz
-  url: https://pypi.python.org/packages/source/n/ndg-httpsclient/ndg_httpsclient-0.3.2.tar.gz
-  md5: 076303c7aa0e41f3b45a7cb43dbb0743
-#  patches:
-   # List any patch files here
-   # - fix.patch
+  fn: ndg_httpsclient-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/n/ndg-httpsclient/ndg_httpsclient-0.4.0.tar.gz
+  md5: 81972c0267d5a47d678211ac854838f5
 
 build:
   entry_points:
@@ -23,7 +20,7 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  number: 0
 
 requirements:
   build:
@@ -59,7 +56,3 @@ test:
 about:
   home: http://ndg-security.ceda.ac.uk/wiki/ndg_httpsclient/
   license: BSD License
-
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml

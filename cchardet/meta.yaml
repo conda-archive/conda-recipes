@@ -1,11 +1,11 @@
 package:
   name: cchardet
-  version: !!str 0.3.5
+  version: !!str 1.0.0
 
 source:
-  fn: cchardet-0.3.5.tar.gz
-  url: https://pypi.python.org/packages/source/c/cchardet/cchardet-0.3.5.tar.gz
-  md5: b1e73ed1e6d6ab775c95f014b127df01
+  fn: cchardet-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/cchardet/cchardet-1.0.0.tar.gz
+  md5: 353f5ca2bc445cef5f103a9a7c2f7599
 #  patches:
    # List any patch files here
    # - fix.patch
