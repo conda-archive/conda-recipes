@@ -1,11 +1,11 @@
 package:
   name: ipdb
-  version: 0.8
+  version: 0.8.1
 
 source:
   fn: ipdb-0.8.zip
-  url: https://pypi.python.org/packages/source/i/ipdb/ipdb-0.8.zip
-  md5: 96dca0712efa01aa5eaf6b22071dd3ed
+  url: https://pypi.python.org/packages/source/i/ipdb/ipdb-0.8.1zip
+  md5: dbaded677eae99ed391fccc83e737c4f
 #  patches:
    # List any patch files here
    # - fix.patch
