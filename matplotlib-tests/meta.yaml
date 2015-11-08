@@ -1,0 +1,30 @@
+{% set version = '1.5.0' %}
+
+package:
+  name: matplotlib-tests
+  version: {{ version }}
+
+source:
+  fn: matplotlib-1.5.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/matplotlib/matplotlib-1.5.0.tar.gz
+  md5: 7952a539418ed77432aa4727409f24cf
+
+requirements:
+  build:
+    - matplotlib =={{ version }}
+
+  run:
+    - matplotlib =={{ version }}
+
+  test:
+  requires:
+    - nose
+    - mock
+    - matplotlib
+
+  imports:
+    - matplotlib
+
+about:
+  home: http://matplotlib.sourceforge.net/
+  license: PSF-based (http://matplotlib.sourceforge.net/users/license.html)
