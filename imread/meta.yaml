@@ -16,7 +16,7 @@ requirements:
   build:
     - python
     - setuptools
-    - numpy
+    - numpy x.x
     - jpeg
     - libtiff
     - libpng
@@ -24,7 +24,7 @@ requirements:
 
   run:
     - python
-    - numpy
+    - numpy x.x
     - jpeg
     - libtiff
     - libpng

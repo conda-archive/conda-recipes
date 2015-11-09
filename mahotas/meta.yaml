@@ -17,12 +17,12 @@ source:
 requirements:
   build:
     - python
+    - numpy x.x
     - setuptools
-    - numpy
 
   run:
     - python
-    - numpy
+    - numpy x.x
     - jpeg
     - libtiff
     - libpng
@@ -38,7 +38,6 @@ test:
     - mahotas.features
     - mahotas.io
     - mahotas.tests
-
 
   requires:
     - nose
