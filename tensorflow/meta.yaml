@@ -3,7 +3,7 @@ package:
   version: "0.5.0"
 
 build:
-  number: 1
+  number: 2
   entry_points:
     - tensorflow_model_cifar10_eval = tensorflow.models.image.cifar10.cifar10_eval:main
     - tensorflow_model_cifar10_multi_gpu_train = tensorflow.models.image.cifar10.cifar10_multi_gpu_train:main
@@ -27,6 +27,6 @@ test:
     - tensorflow
 
 about:
-  home: http://tensorflow.com/
+  home: http://tensorflow.org/
   license: Apache 2.0
   summary: TensorFlow helps the tensors flow
