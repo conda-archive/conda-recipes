@@ -1,14 +1,19 @@
 package:
   name: pixman
-  version: "0.32.6"
+  version: 0.32.6
 
 source:
   fn: pixman-0.32.6.tar.gz
   url: http://cairographics.org/releases/pixman-0.32.6.tar.gz
+  patches:
+    - no_test.patch      [win]
 
 build:
-  number: 0
+  features:
+    - vc9                [win and py27]
+    - vc10               [win and py34]
+    - vc14               [win and py35]
 
 about:
   home: http://cairographics.org
-  license: GNU Lesser General Public License (LGPL) version 2.1 or the Mozilla Public License (MPL) version 1.1 at your option.
+  license: LGPL 2.1 and MPL 1.1
