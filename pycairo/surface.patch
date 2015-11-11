@@ -1,0 +1,32 @@
+--- src/surface.c.old	2010-09-14 07:15:52 -0500
++++ src/surface.c	2015-11-10 22:23:07 -0500
+@@ -467,6 +467,7 @@
+ static cairo_status_t
+ _read_func (void *closure, unsigned char *data, unsigned int length) {
+   char *buffer;
++  int ret;
+   Py_ssize_t str_length;
+   cairo_status_t status = CAIRO_STATUS_READ_ERROR;
+   PyGILState_STATE gstate = PyGILState_Ensure();
+@@ -478,7 +479,8 @@
+      */
+     goto end;
+   }
+-  int ret = PyString_AsStringAndSize(pystr, &buffer, &str_length);
++
++  ret = PyString_AsStringAndSize(pystr, &buffer, &str_length);
+   if (ret == -1 || str_length < length) {
+     goto end;
+   }
+@@ -907,9 +909,10 @@
+ static PyObject *
+ ps_surface_ps_level_to_string (PyObject *self, PyObject *args) {
+   int level;
++  const char *s;
+   if (!PyArg_ParseTuple(args, "i:ps_level_to_string", &level))
+     return NULL;
+-  const char *s = cairo_ps_level_to_string (level);
++  s = cairo_ps_level_to_string (level);
+   if (s == NULL){
+     PyErr_SetString(CairoError, "ps_level_to_string: "
+ 		    "invalid level argument");
