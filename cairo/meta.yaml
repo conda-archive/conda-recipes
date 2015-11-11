@@ -9,19 +9,24 @@ source:
 
 build:
   number: 2
+  features:
+    - vc9                [win and py27]
+    - vc10               [win and py34]
+    - vc14               [win and py35]
 
 requirements:
   build:
-    - pkg-config
-    - freetype
-    - fontconfig
-    - libpng
+    # HACK: The python dep is here to get vc features to work
+    - python             [win]
+    - pkg-config         [unix]
+    - freetype           [unix]
+    - fontconfig         [linux]
     - pixman
+    - libpng
     - zlib
   run:
-    - pkg-config
-    - freetype
-    - fontconfig
+    - freetype           [unix]
+    - fontconfig         [linux]
     - libpng
     - pixman
     - zlib
