@@ -10,9 +10,9 @@ source:
   url: http://cairographics.org/releases/pycairo-1.10.0.tar.bz2      [py34 or py35]
   md5: e6fd3f2f1e6a72e0db0868c4985669c5                              [py34 or py35]
   patches:
-    - font.patch          [win and py27]
-    - matrix.patch        [win and py27]
-    - surface.patch       [win and py27]
+    - font27.patch        [win and py27]
+    - matrix27.patch      [win and py27]
+    - surface27.patch     [win and py27]
     - cairomodule.patch   [win and py34]
     - context.patch       [win and py34]
     - font34.patch        [win and py34]
