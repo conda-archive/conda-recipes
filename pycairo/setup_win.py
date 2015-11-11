@@ -10,6 +10,9 @@ pycairo_version        = '1.10.0'
 python_version_required = (2,7)
 config_file    = 'src/config.h'
 
+PY3 = sys.version[0] == '3'
+
+
 def createConfigFile(ConfigFile):
   print('creating %s' % ConfigFile)
   v = pycairo_version.split('.')
@@ -35,6 +38,14 @@ if sys.version_info < python_version_required:
 
 createConfigFile(config_file)
 
+if PY3:
+    py_ver =    sys.version[:3].replace('.', '')
+    libraries = ['cairo', 'python'+py_ver]
+    include =   ['src/py3cairo.h']
+else:
+    libraries = ['cairo']
+    include =   ['src/pycairo.h']
+
 cairo = dic.Extension(
   name = 'cairo._cairo',
   sources = ['src/cairomodule.c',
@@ -47,7 +58,7 @@ cairo = dic.Extension(
              ],
   include_dirs = [os.environ['PREFIX']+'\\include', os.environ['LIBRARY_INC']+'\\cairo'],
   library_dirs = [os.environ['PREFIX']+'\\Lib', os.environ['LIBRARY_LIB']],
-  libraries    = ['cairo'],
+  libraries    = libraries,
   runtime_library_dirs = []
   )
 
@@ -58,7 +69,7 @@ dic.setup(
   description = "python interface for cairo",
   ext_modules = [cairo],
   data_files = [
-    ('include/pycairo', ['src/pycairo.h']),
+    ('include/pycairo', include),
     (os.path.join(dsy.get_python_lib(), 'cairo'),
      ['src/__init__.py']),
     ],

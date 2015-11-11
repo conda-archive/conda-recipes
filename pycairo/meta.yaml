@@ -6,10 +6,20 @@ source:
   fn:  py2cairo-1.10.0.tar.bz2                                       [py27]
   url: http://cairographics.org/releases/py2cairo-1.10.0.tar.bz2     [py27]
   md5: 20337132c4ab06c1146ad384d55372c5                              [py27]
+  fn:  pycairo-1.10.0.tar.bz2                                        [py34 or py35]
+  url: http://cairographics.org/releases/pycairo-1.10.0.tar.bz2      [py34 or py35]
+  md5: e6fd3f2f1e6a72e0db0868c4985669c5                              [py34 or py35]
   patches:
-    - font.patch       [win and py27]
-    - matrix.patch     [win and py27]
-    - surface.patch    [win and py27]
+    - font.patch          [win and py27]
+    - matrix.patch        [win and py27]
+    - surface.patch       [win and py27]
+    - cairomodule.patch   [win and py34]
+    - context.patch       [win and py34]
+    - font34.patch        [win and py34]
+    - matrix34.patch      [win and py34]
+    - path.patch          [win and py34]
+    - pattern.patch       [win and py34]
+    - surface34.patch     [win and py34]
 
 requirements:
   build:

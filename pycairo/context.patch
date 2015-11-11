@@ -1,0 +1,13 @@
+--- src/context.c.old	2015-11-11 15:28:39 -0500
++++ src/context.c	2015-11-11 15:28:48 -0500
+@@ -1328,8 +1328,9 @@
+   {NULL, NULL, 0, NULL},
+ };
+ 
++#define DEFERRED(X) 0
+ PyTypeObject PycairoContext_Type = {
+-  PyVarObject_HEAD_INIT(&PyType_Type, 0)
++  PyVarObject_HEAD_INIT(DEFERRED(&PyType_Type), 0)
+   //  PyObject_HEAD_INIT(NULL)
+   //0,                                  /* ob_size */
+   "cairo.Context",                    /* tp_name */
