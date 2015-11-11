@@ -1,3 +1,11 @@
+#
+# Based on https://github.com/hydrargyrum/pycairo/blob/master/setup.py
+#
+# Modifications:
+# 1. Don't use pkg-config
+# 2. Make it work for Python 2 and 3
+# 3. This only works for conda-build
+#
 
 import distutils.core      as dic
 import distutils.dir_util  as dut
