@@ -14,12 +14,12 @@ source:
     - matrix27.patch      [win and py27]
     - surface27.patch     [win and py27]
     - cairomodule.patch   [win and py34]
-    - context.patch       [win and py34]
-    - font34.patch        [win and py34]
-    - matrix34.patch      [win and py34]
-    - path.patch          [win and py34]
-    - pattern.patch       [win and py34]
-    - surface34.patch     [win and py34]
+    - context.patch       [(win and py34) or (win and py35)]
+    - font34.patch        [(win and py34) or (win and py35)]
+    - matrix34.patch      [(win and py34) or (win and py35)]
+    - path.patch          [(win and py34) or (win and py35)]
+    - pattern.patch       [(win and py34) or (win and py35)]
+    - surface34.patch     [(win and py34) or (win and py35)]
 
 requirements:
   build:
