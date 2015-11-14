@@ -1,11 +1,11 @@
 package:
   name: yt
-  version: 3.2.1
+  version: 3.2.2
 
 source:
-  fn: yt-3.2.1.tar.gz
-  url: https://pypi.python.org/packages/source/y/yt/yt-3.2.1.tar.gz
-  md5: 5cda4af043d4a9fd557877bfbb29b3e2
+  fn: yt-3.2.2.tar.gz
+  url: https://pypi.python.org/packages/source/y/yt/yt-3.2.2.tar.gz
+  sha1: e9e907dea0124fbb99a0b3291854ae7307b244ad
 
 build:
   entry_points:
