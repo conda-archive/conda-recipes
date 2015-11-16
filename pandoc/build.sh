@@ -19,7 +19,7 @@ if [ `uname` == Linux ]; then
 fi
 
 if [ `uname` == Darwin ]; then
-    pkgutil --expand pandoc-1.13.1.pkg pandoc
+    pkgutil --expand pandoc-$PKG_VERSION.pkg pandoc
     cpio -i -I pandoc/pandoc.pkg/Payload
     mkdir $PREFIX/bin
     cp usr/local/bin/* $PREFIX/bin/
