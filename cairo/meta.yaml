@@ -18,7 +18,7 @@ requirements:
   build:
     # HACK: The python dep is here to get vc features to work
     - python             [win]
-    - pkg-config         [unix]
+    - pkg-config         [osx]
     - freetype           [unix]
     - xz                 [unix]
     - fontconfig         [linux]
