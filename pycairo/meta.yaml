@@ -25,6 +25,7 @@ requirements:
   build:
     - cairo
     - python
+    - pkg-config          [osx]
   run:
     - cairo
     - python
