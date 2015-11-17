@@ -4,8 +4,13 @@ import tempfile
 import os
 
 import cairo
-    
-ps = cairo.SVGSurface(os.path.join(tempfile.gettempdir(), "svgfile.svg"), 390, 60)
+
+svg_file = os.path.join(tempfile.gettempdir(), "svgfile.svg")
+
+if os.path.isfile(svg_file):
+    os.remove(svg_file)
+
+ps = cairo.SVGSurface(svg_file, 390, 60)
 cr = cairo.Context(ps)
 
 cr.set_source_rgb(0, 0, 0)
