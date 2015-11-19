@@ -3,7 +3,7 @@ package:
   version: 1.59.0
 
 source:
-  fn: boost_1_59_0.tar.bz2
+  fn:  boost_1_59_0.tar.bz2
   url: http://sourceforge.net/projects/boost/files/boost/1.59.0/boost_1_59_0.tar.bz2
   md5: 6aa9a5c6a4ca1016edd0ed1178e3cb87
 
@@ -18,7 +18,8 @@ requirements:
     - libpython         [win]
 
   run:
-    # python dependency is here due to libboost-python library that depends on python version
+    # python dependency is here due to libboost-python library that depends on
+    # python version
     - python
     - icu               [unix]
 

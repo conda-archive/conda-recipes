@@ -43,6 +43,8 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 if [ "$(uname)" == "Linux" ]; then
+    echo "using gcc : : /usr/bin/g++44 ; " >> tools/build/src/user-config.jam
+
     ./bootstrap.sh \
         --prefix="${PREFIX}" \
         --with-python="${PYTHON}" \
