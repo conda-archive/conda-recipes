@@ -8,7 +8,8 @@ source:
   md5: 8e4ff32b82c3b39387eb6f5c59ef848e
 
 build:
-  number: 2
+  number: 0              [win or osx]
+  number: 3              [linux]
   features:
     - vc9                [win and py27]
     - vc10               [win and py34]
@@ -34,4 +35,5 @@ requirements:
 
 about:
   home: http://cairographics.org/
-  license: LGPL 2.1 and MPL 1.1
+  license: LGPL 2.1, MPL 1.1
+  summary: Cairo is a 2D graphics library with support for multiple output devices.
