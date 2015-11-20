@@ -59,8 +59,6 @@ test:
     - ipyparallel.client
     - ipyparallel.controller
     - ipyparallel.engine
-    - ipyparallel.nbextension
-    - ipyparallel.tests
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
