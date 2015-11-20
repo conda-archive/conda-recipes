@@ -8,7 +8,6 @@ source:
   md5: 6aa9a5c6a4ca1016edd0ed1178e3cb87
 
 build:
-  number: 5
   features:
     - vc9               [win and py27]
     - vc10              [win and py34]
