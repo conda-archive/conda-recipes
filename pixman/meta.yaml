@@ -5,6 +5,7 @@ package:
 source:
   fn: pixman-0.32.6.tar.gz
   url: http://cairographics.org/releases/pixman-0.32.6.tar.gz
+  md5: 3a30859719a41bd0f5cccffbfefdd4c2
   patches:
     - no_test.patch      [win]
 
@@ -15,5 +16,6 @@ build:
     - vc14               [win and py35]
 
 about:
-  home: http://cairographics.org
-  license: LGPL 2.1 and MPL 1.1
+  home: http://cgit.freedesktop.org/pixman/
+  license: MIT
+  summary: A low-level software library for pixel manipulation
