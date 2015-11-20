@@ -1,11 +1,9 @@
 #!/bin/bash
 
-touch requirements.txt;
+$PYTHON setup.py install
 
-${PYTHON} setup.py install || exit 1;
+# Add more build steps here, if they are necessary.
 
-mkdir -vp ${PREFIX}/bin;
-
-#POST_LINK="${PREFIX}/bin/.pytools-post-link.sh"
-#cp -v ${RECIPE_DIR}/post-link.sh ${POST_LINK};
-#chmod -v 0755 ${POST_LINK};
+# See
+# http://docs.continuum.io/conda/build.html
+# for a list of environment variables that are set during the build process.
