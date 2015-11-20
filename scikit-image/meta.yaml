@@ -1,29 +1,46 @@
 package:
   name: scikit-image
-  version: 0.9.3
+  version: 0.12dev
 
 source:
-  git_url: git://github.com/scikit-image/scikit-image.git
-  git_tag: v0.9.3
+  git_url: git@github.com:ivoflipse/scikit-image.git
+  git_tag: fix_hog
+  patches:
+    - buffer_mismatch.patch
+    - strip_interactive_tests.patch
 
 build:
-  number: 1            [win]
+  number: 5
 
 requirements:
   build:
     - python
-    - numpy
-    - scipy
     - distribute
     - cython
+    - numpy >=1.6.1
+    - scipy >=0.9.0
+    - dask >=0.5.0
+    - matplotlib >=1.1.0
+    - six >=1.4
+    - networkx >=1.8
+    - pillow >=1.7.8
   run:
     - python
-    - numpy
-    - scipy
+    - numpy >=1.6.1
+    - scipy >=0.9.0
+    - dask >=0.5.0
+    - matplotlib >=1.1.0
+    - six >=1.4
+    - networkx >=1.8
+    - pillow >=1.7.8
 
 test:
+  requires:
+    - nose
   imports:
     - skimage
+  commands:
+    - python -c "import nose; nose.main()" -v -s skimage
 
 about:
   home: http://scikit-image.org/
