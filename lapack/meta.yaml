@@ -10,11 +10,10 @@ build:
   number: 1
 
 requirements:
-    build:
-        - cmake
-        - python
+  build:
+    - cmake
 
 about:
-    home: http://www.netlib.org/lapack
-    license: GNU Lesser General Public License (LGPL)
+  home: http://www.netlib.org/lapack
+  license: GNU Lesser General Public License (LGPL)
 
