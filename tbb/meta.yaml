@@ -1,11 +1,11 @@
 package:
   name: tbb
-  version: 4.3.2
+  version: 4.4
 
 source:
-  fn: tbb43_20141204oss_src.tgz
-  url: https://www.threadingbuildingblocks.org/sites/default/files/software_releases/source/tbb43_20141204oss_src.tgz
-  md5: e903dd92d9433701f097fa7ca29a3c1f
+  fn: tbb44_20150728oss_src.tgz
+  url: https://www.threadingbuildingblocks.org/sites/default/files/software_releases/source/tbb44_20150728oss_src.tgz
+  md5: 2ef1d8cb790324c09aa17360d75dd619 
 
 requirements:
   build:
