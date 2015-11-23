@@ -1,6 +1,6 @@
 package:
   name: openturns
-  version: 1.6rc1
+  version: 1.6
 
 source:
   fn: openturns-1.6.tar.bz2 # [not win]
@@ -40,6 +40,7 @@ requirements:
   run:
     - python
     - matplotlib
+    - libgcc        # [not win]
     - lapack        # [not win]
     - libxml2       # [not win]
     - muparser      # [not win]
