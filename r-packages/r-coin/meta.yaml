@@ -2,13 +2,13 @@ package:
   name: r-coin
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.1_0"
+  version: "1.1_2"
 
 source:
-  fn: coin_1.1-0.tar.gz
+  fn: coin_1.1-2.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/coin_1.1-0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/coin/coin_1.1-0.tar.gz
+    - http://cran.r-project.org/src/contrib/coin_1.1-2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/coin/coin_1.1-2.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -68,25 +68,24 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: coin
-# Version: 1.1-0
-# Date: 2015-08-14
+# Version: 1.1-2
+# Date: 2015-11-13
 # Title: Conditional Inference Procedures in a Permutation Test Framework
 # Authors@R: c(person("Torsten", "Hothorn", role = c("aut", "cre"), email = "Torsten.Hothorn@R-project.org"), person("Kurt", "Hornik", role = "aut"), person("Mark A.", "van de Wiel", role = "aut"), person("Henric", "Winell", role = "aut"), person("Achim", "Zeileis", role = "aut"))
 # Description: Conditional inference procedures for the general independence problem including two-sample, K-sample (non-parametric ANOVA), correlation, censored, ordered and multivariate problems.
 # Depends: R (>= 2.14.0), methods, survival
 # Imports: stats, modeltools (>= 0.2-9), mvtnorm (>= 1.0-3), multcomp
 # Suggests: parallel, xtable, e1071, vcd, TH.data
-# Enhances: Biobase
 # LazyData: yes
 # NeedsCompilation: yes
 # ByteCompile: yes
 # License: GPL-2
 # URL: http://coin.r-forge.r-project.org
-# Packaged: 2015-08-14 13:18:53 UTC; hothorn
+# Packaged: 2015-11-16 10:15:00 UTC; hothorn
 # Author: Torsten Hothorn [aut, cre], Kurt Hornik [aut], Mark A. van de Wiel [aut], Henric Winell [aut], Achim Zeileis [aut]
 # Maintainer: Torsten Hothorn <Torsten.Hothorn@R-project.org>
 # Repository: CRAN
-# Date/Publication: 2015-08-16 08:25:27
+# Date/Publication: 2015-11-16 16:20:12
 
 # See
 # http://docs.continuum.io/conda/build.html for

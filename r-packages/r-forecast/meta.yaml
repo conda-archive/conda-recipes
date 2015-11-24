@@ -2,13 +2,13 @@ package:
   name: r-forecast
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "6.1"
+  version: "6.2"
 
 source:
-  fn: forecast_6.1.tar.gz
+  fn: forecast_6.2.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/forecast_6.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/forecast/forecast_6.1.tar.gz
+    - http://cran.r-project.org/src/contrib/forecast_6.2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/forecast/forecast_6.2.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -75,8 +75,7 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: forecast
-# Version: 6.1
-# Date: 2015-05-11
+# Version: 6.2
 # Title: Forecasting Functions for Time Series and Linear Models
 # Description: Methods and tools for displaying and analysing univariate time series forecasts including exponential smoothing via state space models and automatic ARIMA modelling.
 # Depends: R (>= 3.0.2), stats, graphics, zoo, timeDate
@@ -85,15 +84,15 @@ about:
 # LinkingTo: Rcpp (>= 0.11.0), RcppArmadillo (>= 0.2.35)
 # LazyData: yes
 # ByteCompile: TRUE
-# Author: Rob J Hyndman <Rob.Hyndman@monash.edu> with contributions from George Athanasopoulos, Slava Razbash, Drew Schmidt, Zhenyu Zhou, Yousaf Khan,  Christoph Bergmeir, Earo Wang
+# Author: Rob J Hyndman <Rob.Hyndman@monash.edu>.  Contributors include George Athanasopoulos, Christoph Bergmeir,  Carlos Cinelli, Yousaf Khan, Zach Mayer, Slava Razbash,  Drew Schmidt, David Shaub, Yuan Tang, Earo Wang, Zhenyu Zhou.
 # Maintainer: Rob J Hyndman <Rob.Hyndman@monash.edu>
 # BugReports: https://github.com/robjhyndman/forecast/issues
 # License: GPL (>= 2)
 # URL: http://github.com/robjhyndman/forecast
 # NeedsCompilation: yes
-# Packaged: 2015-05-12 09:56:10 UTC; hyndman
+# Packaged: 2015-10-19 22:52:46 UTC; hyndman
 # Repository: CRAN
-# Date/Publication: 2015-05-12 12:37:47
+# Date/Publication: 2015-10-20 08:06:46
 
 # See
 # http://docs.continuum.io/conda/build.html for
