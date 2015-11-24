@@ -10,20 +10,16 @@
 
 set -x -e
 
-INCLUDE_PATH="${PREFIX}/include"
-LIBRARY_PATH="${PREFIX}/lib"
 
 if [ "$(uname)" == "Darwin" ]; then
     MACOSX_VERSION_MIN=10.6
     CXXFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
     CXXFLAGS="${CXXFLAGS} -stdlib=libstdc++"
     LINKFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
-    LINKFLAGS="${LINKFLAGS} -stdlib=libstdc++ -L${LIBRARY_PATH}"
+    LINKFLAGS="${LINKFLAGS} -stdlib=libstdc++"
 
     ./bootstrap.sh \
         --prefix="${PREFIX}" \
-        --with-python="${PYTHON}" \
-        --with-python-root="${PREFIX} : ${PREFIX}/include/python${PY_VER}m ${PREFIX}/include/python${PY_VER}" \
         --with-icu="${PREFIX}" \
         2>&1 | tee bootstrap.log
 
@@ -35,7 +31,6 @@ if [ "$(uname)" == "Darwin" ]; then
         threading=multi \
         link=shared \
         toolset=clang \
-        include="${INCLUDE_PATH}" \
         cxxflags="${CXXFLAGS}" \
         linkflags="${LINKFLAGS}" \
         -j ${CPU_COUNT} \
@@ -47,8 +42,6 @@ if [ "$(uname)" == "Linux" ]; then
 
     ./bootstrap.sh \
         --prefix="${PREFIX}" \
-        --with-python="${PYTHON}" \
-        --with-python-root="${PREFIX} : ${PREFIX}/include/python${PY_VER}m ${PREFIX}/include/python${PY_VER}" \
         --with-icu="${PREFIX}" \
         2>&1 | tee bootstrap.log
 
@@ -61,9 +54,6 @@ if [ "$(uname)" == "Linux" ]; then
         runtime-link=shared \
         link=shared \
         toolset=gcc \
-        python="${PY_VER}" \
-        include="${INCLUDE_PATH}" \
-        linkflags="-L${LIBRARY_PATH}" \
         --layout=system \
         -j ${CPU_COUNT} \
         install 2>&1 | tee b2.log
