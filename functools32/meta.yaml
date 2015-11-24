@@ -9,10 +9,10 @@ source:
 
 requirements:
   build:
-    - python >=2.7,<3
+    - python 2.7.*
 
   run:
-    - python >=2.7,<3
+    - python 2.7.*
 
 test:
   imports:
