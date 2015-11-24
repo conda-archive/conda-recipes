@@ -25,7 +25,7 @@ if [ "$(uname)" == "Darwin" ]; then
         --with-python="${PYTHON}" \
         --with-python-root="${PREFIX} : ${PREFIX}/include/python${PY_VER}m ${PREFIX}/include/python${PY_VER}" \
         --with-icu="${PREFIX}" \
-        | tee bootstrap.log 2>&1
+        2>&1 | tee bootstrap.log
 
     ./b2 -q \
         variant=release \
@@ -38,8 +38,8 @@ if [ "$(uname)" == "Darwin" ]; then
         include="${INCLUDE_PATH}" \
         cxxflags="${CXXFLAGS}" \
         linkflags="${LINKFLAGS}" \
-        -j"$(sysctl -n hw.ncpu)" \
-        install | tee b2.log 2>&1
+        -j ${CPU_COUNT} \
+        install 2>&1 | tee b2.log
 fi
 
 if [ "$(uname)" == "Linux" ]; then
@@ -50,7 +50,7 @@ if [ "$(uname)" == "Linux" ]; then
         --with-python="${PYTHON}" \
         --with-python-root="${PREFIX} : ${PREFIX}/include/python${PY_VER}m ${PREFIX}/include/python${PY_VER}" \
         --with-icu="${PREFIX}" \
-        | tee bootstrap.log 2>&1
+        2>&1 | tee bootstrap.log
 
     ./b2 -q \
         variant=release \
@@ -65,6 +65,6 @@ if [ "$(uname)" == "Linux" ]; then
         include="${INCLUDE_PATH}" \
         linkflags="-L${LIBRARY_PATH}" \
         --layout=system \
-        -j"${CPU_COUNT}" \
-        install | tee b2.log 2>&1
+        -j ${CPU_COUNT} \
+        install 2>&1 | tee b2.log
 fi
