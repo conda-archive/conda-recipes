@@ -12,11 +12,8 @@ set -x -e
 
 
 if [ "$(uname)" == "Darwin" ]; then
-    MACOSX_VERSION_MIN=10.6
-    CXXFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
-    CXXFLAGS="${CXXFLAGS} -stdlib=libstdc++"
-    LINKFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
-    LINKFLAGS="${LINKFLAGS} -stdlib=libstdc++"
+    CXXFLAGS="-stdlib=libstdc++"
+    LINKFLAGS="-stdlib=libstdc++"
 
     ./bootstrap.sh \
         --prefix="${PREFIX}" \
