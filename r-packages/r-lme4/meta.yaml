@@ -2,13 +2,13 @@ package:
   name: r-lme4
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.1_9"
+  version: "1.1_10"
 
 source:
-  fn: lme4_1.1-9.tar.gz
+  fn: lme4_1.1-10.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/lme4_1.1-9.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/lme4/lme4_1.1-9.tar.gz
+    - http://cran.r-project.org/src/contrib/lme4_1.1-10.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/lme4/lme4_1.1-10.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -77,7 +77,7 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: lme4
-# Version: 1.1-9
+# Version: 1.1-10
 # Title: Linear Mixed-Effects Models using 'Eigen' and S4
 # Authors@R: c(person("Douglas","Bates", role="aut"), person("Martin","Maechler", role="aut"), person("Ben","Bolker",email="bbolker+lme4@gmail.com", role=c("aut","cre")), person("Steven","Walker",role="aut"), person("Rune Haubo Bojesen","Christensen", role="ctb"), person("Henrik","Singmann", role="ctb"), person("Bin", "Dai", role="ctb"), person("Gabor", "Grothendieck", role="ctb"))
 # Maintainer: Ben Bolker <bbolker+lme4@gmail.com>
@@ -94,9 +94,9 @@ about:
 # URL: https://github.com/lme4/lme4/ http://lme4.r-forge.r-project.org/
 # BugReports: https://github.com/lme4/lme4/issues
 # NeedsCompilation: yes
-# Packaged: 2015-08-20 14:45:02 UTC; bolker
+# Packaged: 2015-10-05 17:56:37 UTC; bolker
 # Repository: CRAN
-# Date/Publication: 2015-08-20 23:55:56
+# Date/Publication: 2015-10-06 08:08:29
 
 # See
 # http://docs.continuum.io/conda/build.html for

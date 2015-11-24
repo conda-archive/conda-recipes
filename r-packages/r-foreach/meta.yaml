@@ -2,13 +2,13 @@ package:
   name: r-foreach
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.4.2"
+  version: "1.4.3"
 
 source:
-  fn: foreach_1.4.2.tar.gz
+  fn: foreach_1.4.3.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/foreach_1.4.2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/foreach/foreach_1.4.2.tar.gz
+    - http://cran.r-project.org/src/contrib/foreach_1.4.3.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/foreach/foreach_1.4.3.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -21,7 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -66,23 +66,24 @@ about:
 
 # Package: foreach
 # Type: Package
-# Title: Foreach looping construct for R
-# Version: 1.4.2
-# Author: Revolution Analytics, Steve Weston
-# Maintainer: Revolution Analytics <packages@revolutionanalytics.com>
+# Title: Provides Foreach Looping Construct for R
+# Version: 1.4.3
+# Authors@R: c(person("Rich", "Calaway", role="cre", email="richcala@microsoft.com"), person("Revolution", "Analytics", role=c("aut", "cph")), person("Steve", "Weston", role="aut"))
 # Description: Support for the foreach looping construct.  Foreach is an idiom that allows for iterating over elements in a collection, without the use of an explicit loop counter.  This package in particular is intended to be used for its return value, rather than for its side effects.  In that sense, it is similar to the standard lapply function, but doesn't require the evaluation of a function.  Using foreach without side effects also facilitates executing the loop in parallel.
 # Depends: R (>= 2.5.0)
 # Imports: codetools, utils, iterators
 # Suggests: randomForest
 # Enhances: compiler, doMC, RUnit, doParallel
 # License: Apache License (== 2.0)
+# Author: Rich Calaway [cre], Revolution Analytics [aut, cph], Steve Weston [aut]
+# Maintainer: Rich Calaway <richcala@microsoft.com>
 # Repository: CRAN
 # Repository/R-Forge/Project: foreach
-# Repository/R-Forge/Revision: 25
-# Repository/R-Forge/DateTimeStamp: 2014-04-10 18:54:16
-# Date/Publication: 2014-04-11 07:52:42
-# Packaged: 2014-04-10 20:16:29 UTC; rforge
+# Repository/R-Forge/Revision: 27
+# Repository/R-Forge/DateTimeStamp: 2015-10-12 01:37:31
+# Date/Publication: 2015-10-13 09:12:53
 # NeedsCompilation: no
+# Packaged: 2015-10-12 02:26:29 UTC; rforge
 
 # See
 # http://docs.continuum.io/conda/build.html for

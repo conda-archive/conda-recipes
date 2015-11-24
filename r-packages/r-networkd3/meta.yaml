@@ -2,13 +2,13 @@ package:
   name: r-networkd3
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.2.1"
+  version: "0.2.6"
 
 source:
-  fn: networkD3_0.2.1.tar.gz
+  fn: networkD3_0.2.6.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/networkD3_0.2.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/networkD3/networkD3_0.2.1.tar.gz
+    - http://cran.r-project.org/src/contrib/networkD3_0.2.6.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/networkD3/networkD3_0.2.6.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -28,19 +28,15 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: htmltools (>= 0.2.6), RCurl
+# Suggests: htmltools (>= 0.2.6), jsonlite
 requirements:
   build:
     - r
     - r-htmlwidgets >=0.3.2
-    - r-plyr
-    - r-rjson
 
   run:
     - r
     - r-htmlwidgets >=0.3.2
-    - r-plyr
-    - r-rjson
 
 test:
   commands:
@@ -65,22 +61,22 @@ about:
 # Type: Package
 # Title: D3 JavaScript Network Graphs from R
 # Description: Creates 'D3' 'JavaScript' network, tree, dendrogram, and Sankey graphs from 'R'.
-# Version: 0.2.1
-# Date: 2015-08-24
-# Authors@R: c( person("Christopher", "Gandrud", email = "christopher.gandrud@gmail.com", role = c("aut", "cre")), person("J.J.", "Allaire", role = "aut"), person("Kent", "Russel", role = "aut"), person("B.W.", "Lewis", role = "ctb"), person("Kevin", "Kuo", role = "ctb"), person("Charles", "Sese", role = "ctb"), person("Peter", "Ellis", role = "ctb"), person("Jonathan", "Owen", role = "ctb") )
+# Version: 0.2.6
+# Date: 2015-10-09
+# Authors@R: c( person("Christopher", "Gandrud", email = "christopher.gandrud@gmail.com", role = c("aut", "cre")), person("J.J.", "Allaire", role = "aut"), person("Kenton", "Russell", role = "aut"), person("B.W.", "Lewis", role = "ctb"), person("Kevin", "Kuo", role = "ctb"), person("Charles", "Sese", role = "ctb"), person("Peter", "Ellis", role = "ctb"), person("Jonathan", "Owen", role = "ctb"), person("Jennifer","Rogers", role = "ctb") )
 # URL: http://cran.r-project.org/package=networkD3
 # BugReports: https://github.com/christophergandrud/networkD3/issues
 # License: GPL (>= 3)
 # Depends: R (>= 3.0.0)
-# Imports: htmlwidgets (>= 0.3.2), plyr, rjson
-# Suggests: htmltools (>= 0.2.6), RCurl
+# Imports: htmlwidgets (>= 0.3.2)
+# Suggests: htmltools (>= 0.2.6), jsonlite
 # Enhances: knitr, shiny
 # NeedsCompilation: no
-# Packaged: 2015-08-25 13:48:19 UTC; christophergandrud
-# Author: Christopher Gandrud [aut, cre], J.J. Allaire [aut], Kent Russel [aut], B.W. Lewis [ctb], Kevin Kuo [ctb], Charles Sese [ctb], Peter Ellis [ctb], Jonathan Owen [ctb]
+# Packaged: 2015-10-11 08:32:21 UTC; christophergandrud
+# Author: Christopher Gandrud [aut, cre], J.J. Allaire [aut], Kenton Russell [aut], B.W. Lewis [ctb], Kevin Kuo [ctb], Charles Sese [ctb], Peter Ellis [ctb], Jonathan Owen [ctb], Jennifer Rogers [ctb]
 # Maintainer: Christopher Gandrud <christopher.gandrud@gmail.com>
 # Repository: CRAN
-# Date/Publication: 2015-08-25 16:06:32
+# Date/Publication: 2015-10-11 10:47:35
 
 # See
 # http://docs.continuum.io/conda/build.html for

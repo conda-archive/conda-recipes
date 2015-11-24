@@ -2,13 +2,13 @@ package:
   name: r-roxygen2
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "4.1.1"
+  version: "5.0.1"
 
 source:
-  fn: roxygen2_4.1.1.tar.gz
+  fn: roxygen2_5.0.1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/roxygen2_4.1.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/roxygen2/roxygen2_4.1.1.tar.gz
+    - http://cran.r-project.org/src/contrib/roxygen2_5.0.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/roxygen2/roxygen2_5.0.1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -28,21 +28,23 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat (>= 0.8.0), knitr
+# Suggests: testthat (>= 0.8.0), knitr, devtools, rmarkdown
 requirements:
   build:
     - r
-    - r-rcpp >=0.11.0
+    - r-rcpp
     - r-brew
     - r-digest
+    - r-stringi
     - r-stringr >=0.5
     - gcc # [not win]
 
   run:
     - r
-    - r-rcpp >=0.11.0
+    - r-rcpp
     - r-brew
     - r-digest
+    - r-stringi
     - r-stringr >=0.5
     - libgcc # [not win]
 
@@ -70,21 +72,22 @@ about:
 # Title: In-Source Documentation for R
 # Description: A 'Doxygen'-like in-source documentation system for Rd, collation, and 'NAMESPACE' files.
 # URL: https://github.com/klutometis/roxygen
-# Version: 4.1.1
+# Version: 5.0.1
 # License: GPL (>= 2)
-# Authors@R: c( person("Hadley", "Wickham",, "h.wickham@gmail.com", c("aut", "cre", "cph")), person("Peter", "Danenberg",, "pcd@roxygen.org", c("aut", "cph")), person("Manuel", "Eugster", role = c("aut", "cph")), person("RStudio", role = "cph") )
+# Authors@R: c( person("Hadley", "Wickham",, "hadley@rstudio.com", c("aut", "cre", "cph")), person("Peter", "Danenberg",, "pcd@roxygen.org", c("aut", "cph")), person("Manuel", "Eugster", role = c("aut", "cph")), person("RStudio", role = "cph") )
 # Depends: R (>= 3.0.2)
-# Imports: stringr (>= 0.5), brew, digest, methods, Rcpp (>= 0.11.0)
-# Suggests: testthat (>= 0.8.0), knitr
+# Imports: stringr (>= 0.5), stringi, brew, digest, methods, Rcpp (>= 0.11.0)
+# Suggests: testthat (>= 0.8.0), knitr, devtools, rmarkdown
 # VignetteBuilder: knitr
 # LinkingTo: Rcpp
-# Collate: 'RcppExports.R' 'alias.R' 'description.R' 'family.R' 'inherit-params.R' 'minidesc.R' 'object-defaults.R' 'object-from-call.R' 'object.R' 'order-params.R' 'parse-preref.R' 'parse-registry.R' 'parse.R' 'rc.R' 'rd-escape.R' 'rd-file-api.R' 'rd-parse.R' 'rd-tag-api.R' 'roclet-collate.R' 'roclet-namespace.R' 'roclet-rd.R' 'roclet-vignette.R' 'roclet.R' 'roxygen.R' 'roxygenize.R' 's3.R' 'safety.R' 'source.R' 'template.R' 'topic-name.R' 'topo-sort.R' 'usage.R' 'util-locale.R' 'utils.R'
-# Packaged: 2015-04-15 12:00:42 UTC; hadley
-# Author: Hadley Wickham [aut, cre, cph], Peter Danenberg [aut, cph], Manuel Eugster [aut, cph], RStudio [cph]
-# Maintainer: Hadley Wickham <h.wickham@gmail.com>
+# Collate: 'RcppExports.R' 'alias.R' 'default-data-format.R' 'description.R' 'family.R' 'inherit-params.R' 'minidesc.R' 'object-defaults.R' 'object-from-call.R' 'object.R' 'order-params.R' 'parse-preref.R' 'parse.R' 'rc.R' 'rd-escape.R' 'rd-file-api.R' 'rd-parse.R' 'rd-tag-api.R' 'tag-registry.R' 'roclet-collate.R' 'roclet-namespace.R' 'roclet-rd.R' 'roclet-vignette.R' 'roclet.R' 'roxygen-tag.R' 'roxygen.R' 'roxygenize.R' 's3.R' 'safety.R' 'source.R' 'template.R' 'topic-name.R' 'topo-sort.R' 'usage.R' 'util-locale.R' 'utils.R'
+# RoxygenNote: 5.0.1
 # NeedsCompilation: yes
+# Packaged: 2015-11-10 19:54:01 UTC; hadley
+# Author: Hadley Wickham [aut, cre, cph], Peter Danenberg [aut, cph], Manuel Eugster [aut, cph], RStudio [cph]
+# Maintainer: Hadley Wickham <hadley@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2015-04-15 21:00:16
+# Date/Publication: 2015-11-11 00:08:42
 
 # See
 # http://docs.continuum.io/conda/build.html for
