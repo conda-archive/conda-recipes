@@ -12,8 +12,6 @@ set -x -e
 
 
 if [ "$(uname)" == "Darwin" ]; then
-    CXXFLAGS="-stdlib=libstdc++"
-    LINKFLAGS="-stdlib=libstdc++"
 
     ./bootstrap.sh \
         --prefix="${PREFIX}" \
@@ -28,8 +26,6 @@ if [ "$(uname)" == "Darwin" ]; then
         threading=multi \
         link=shared \
         toolset=clang \
-        cxxflags="${CXXFLAGS}" \
-        linkflags="${LINKFLAGS}" \
         -j ${CPU_COUNT} \
         install 2>&1 | tee b2.log
 fi
