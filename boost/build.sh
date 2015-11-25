@@ -10,39 +10,25 @@
 
 set -x -e
 
+case `uname` in
+    Darwin)
+        b2_options=( toolset=clang )
+        ;;
+    Linux)
+        b2_options=( toolset=gcc )
+        ;;
+esac
 
-if [ "$(uname)" == "Darwin" ]; then
+./bootstrap.sh \
+    --prefix="${PREFIX}" \
+    --with-icu="${PREFIX}" \
+    2>&1 | tee bootstrap.log
 
-    ./bootstrap.sh \
-        --prefix="${PREFIX}" \
-        --with-icu="${PREFIX}" \
-        2>&1 | tee bootstrap.log
-
-    ./b2 -q \
-        variant=release \
-        address-model=${ARCH} \
-        architecture=x86 \
-        threading=multi \
-        link=shared \
-        toolset=clang \
-        -j ${CPU_COUNT} \
-        install 2>&1 | tee b2.log
-fi
-
-if [ "$(uname)" == "Linux" ]; then
-
-    ./bootstrap.sh \
-        --prefix="${PREFIX}" \
-        --with-icu="${PREFIX}" \
-        2>&1 | tee bootstrap.log
-
-    ./b2 -q \
-        variant=release \
-        address-model=${ARCH} \
-        architecture=x86 \
-        threading=multi \
-        link=shared \
-        toolset=gcc \
-        -j ${CPU_COUNT} \
-        install 2>&1 | tee b2.log
-fi
+./b2 -q -j ${CPU_COUNT} \
+    variant=release \
+    address-model=${ARCH} \
+    architecture=x86 \
+    threading=multi \
+    link=shared \
+    "${b2_options[@]}" \
+    install 2>&1 | tee b2.log
