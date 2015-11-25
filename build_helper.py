@@ -2,11 +2,13 @@ from __future__ import print_function, unicode_literals, division
 
 import argparse
 import glob
-from os.path import exists, join, abspath, split, walk, isdir
+from os.path import exists, join, abspath, split, isdir
 import subprocess as sp
 import sys
 import time
+import traceback
 import yaml
+
 
 DEFAULT_ANACONDA_ARCH = [
       'linux-32',
@@ -79,92 +81,117 @@ def submit_package(args, top_dir, package_name):
                                     channel=args.channel).split()
     returncode2, out2, err2 = cmd(create, cwd=top_dir)
     if returncode2:
-        raise_or_not(args, '{} failed with {}, {}'.format(create, out2, err2))
+        raise ValueError('{} failed with {}, {}'.format(create, out2, err2))
     returncode3, out3, err3 = cmd(build, cwd=top_dir)
     print('Submitted:',build,'\n\n', out3 + '\n\n' + err3)
     if returncode3:
-        raise_or_not(args, '{} failed with {}, {}'.format(build, out3, err3))
+        raise ValueError('{} failed with {}, {}'.format(build, out3, err3))
 
 def on_each_package(args, top_dir, package_name):
-    meta_file = join(top_dir, package_name, 'meta.yaml')
-    if not exists(meta_file):
-        msg = "Package {} in top_dir {} has no meta.yaml"
-        msg = msg.format(package_name, top_dir)
-        raise_or_not(args, msg)
-    with open(meta_file, 'r') as f:
-        meta = yaml.load(f.read())
-    binstar_yml_file = join(top_dir, package_name, '.binstar.yml')
-    if args.yaml_load_existing and exists(binstar_yml_file):
-        with open(binstar_yml_file, 'r') as f:
-            binstar_yml = yaml.load(f.read())
-    else:
-        binstar_yml = BINSTAR_YAML_TEMPLATE.copy()
-    eng, install = choose_engine_install(meta, args)
-    binstar_yml['engine'], binstar_yml['install'] = eng, install
-    binstar_yml['package'] = package_name
-    binstar_yml['user'] = args.anaconda_upload_user
-    if '{package}' in binstar_yml['after_script'][0]:
-        binstar_yml['after_script'][0] = binstar_yml['after_script'][0].format(package=package_name)
-    for platform in args.anaconda_build_platforms:
-        if not platform in DEFAULT_ANACONDA_ARCH:
-            msg =  'Invalid --anaconda-build-platform: {0}'.format(platform)
-            msg += '.\n\tChoose from {0}'.format(DEFAULT_ANACONDA_ARCH)
-            raise ValueError(msg)
-    binstar_yml['platform'] = args.anaconda_build_platforms
-    with open(binstar_yml_file, 'w') as f:
-        yaml.safe_dump(binstar_yml, f, default_flow_style=False)
-    if args.submit:
+    if args.action == 'edit':
+        meta_file = join(top_dir, package_name, 'meta.yaml')
+        if not exists(meta_file):
+            has_subdirs = False
+            for try_levels in range(1,10):
+                parts = (top_dir, package_name,) + ('*',) * try_levels
+                parts = parts + ('meta.yaml',)
+                if glob.glob(join(*parts)):
+                    has_subdirs = True
+
+            if not has_subdirs:
+                msg = "Package {} in top_dir {} has no meta.yaml"
+                msg = msg.format(package_name, top_dir)
+                raise ValueError(msg)
+            else:
+                return
+        with open(meta_file, 'r') as f:
+            meta = yaml.load(f.read())
+        binstar_yml_file = join(top_dir, package_name, '.binstar.yml')
+        if args.yaml_load_existing and exists(binstar_yml_file):
+            with open(binstar_yml_file, 'r') as f:
+                binstar_yml = yaml.load(f.read())
+        else:
+            binstar_yml = BINSTAR_YAML_TEMPLATE.copy()
+        eng, install = choose_engine_install(meta, args)
+        binstar_yml['engine'], binstar_yml['install'] = eng, install
+        binstar_yml['package'] = package_name
+        binstar_yml['user'] = args.anaconda_upload_user
+        if '{package}' in binstar_yml['after_script'][0]:
+            binstar_yml['after_script'][0] = binstar_yml['after_script'][0].format(package=package_name)
+        binstar_yml['platform'] = args.platforms
+        with open(binstar_yml_file, 'w') as f:
+            yaml.safe_dump(binstar_yml, f, default_flow_style=False)
+    if args.action == 'submit':
         submit_package(args, top_dir, package_name)
 
 def unpack_package_spec(args):
     for package in args.package_spec:
         if isdir(package):
             parts = list(filter(None, split(abspath(package))))
-            print(parts)
             top_dir, package_name = parts
-            print(top_dir, package_name)
             yield top_dir, package_name
 
 
 def cli(parse_this_instead=None):
     parser = argparse.ArgumentParser(description='Tools for anaconda-build with conda-recipes')
-    parser.add_argument('queue',
+    action = parser.add_subparsers(
+        dest="action"
+    )
+
+    submit = action.add_parser('submit')
+    parg = 'package_spec'
+    pkwargs = {'nargs':'+',
+               'help': 'Package(s) to build on anaconda.org'
+               }
+    submit.add_argument(parg, **pkwargs)
+    submit.add_argument('queue',
                         help="anaconda-build queue of the form USERNAME/QUEUE")
-    parser.add_argument('package_spec',
-                        nargs='+',
-                        help='Package(s) to build on anaconda.org')
-    parser.add_argument('anaconda_upload_user',
-                        help='anaconda.org username for .binstar.yml builds')
-    parser.add_argument('--channel',
+    submit.add_argument('--channel',
                         help='Channel in anaconda.org into which to upload.  Default: dev',
                         default='dev')
-    parser.add_argument('--submit',
-                        action="store_true",
-                        help='Submit to anaconda.org')
-    parser.add_argument('--anaconda-build-platforms',
+    edit = action.add_parser('edit')
+    edit.add_argument(parg, **pkwargs)
+
+    edit.add_argument('anaconda_upload_user',
+                        help='anaconda.org username for .binstar.yml builds')
+    edit.add_argument('--platforms',
                         help='Platform(s) on which to build on anaconda.org. '
                              '\n\t\tChoices: %(choices)s'
                              '\n\t\tDefault:%(default)s',
                         default=DEFAULT_ANACONDA_ARCH,
                         nargs="*")
-    parser.add_argument('--yaml-load-existing',
+    edit.add_argument('--yaml-load-existing',
                         action='store_true',
                         help='Do not replace .binstar.yml with '
                              'template but read it as template if existing')
-    parser.add_argument('--top-dir',
-                        help="Packages reside in this directory",
-                        default=abspath('.'))
-    parser.add_argument('--exception-action',
-                        help='"raise" or "stringify" errors',
-                        default="raise")
+    arg = '--exception-action'
+    kwargs = {'help':'"raise" or "stringify" errors',
+     'default':"raise",
+ }
+    edit.add_argument(arg, **kwargs)
+    submit.add_argument(arg, **kwargs)
     if parse_this_instead is None:
         return parser.parse_args()
     return parser.parse(parse_this_instead)
 
 def main(parse_this_instead=None):
     args = cli(parse_this_instead)
+    for platform in args.platforms:
+        if not platform in DEFAULT_ANACONDA_ARCH:
+            msg =  'Invalid --platform: {0}'.format(platform)
+            msg += '.\n\tChoose from {0}'.format(DEFAULT_ANACONDA_ARCH)
+            raise ValueError(msg)
+    failed_packages = []
     for top_dir, package_name in unpack_package_spec(args):
-        on_each_package(args, top_dir, package_name)
+        try:
+            on_each_package(args, top_dir, package_name)
+        except Exception as e:
+            msg = "{}\n\t\t{}".format(repr(e), traceback.format_exc())
+            raise_or_not(args, msg)
+            failed_packages.append((package_name, repr(e)))
+    if failed_packages:
+        failed_str = "\n\t\t".join("\t".join(_) for _ in failed_packages)
+        print('ERROR: Exceptions encountered on packages\n\n\t\t', failed_str)
 
 if __name__ == "__main__":
     main()
