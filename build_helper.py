@@ -73,7 +73,9 @@ create_package_cmd = 'anaconda package --create {username}/{package}'
 build_submit_cmd = 'anaconda build submit {package_file} --queue {queue} --channel {channel}'
 
 def submit_package(args, top_dir, package_name):
-    create = create_package_cmd.format(username=args.anaconda_upload_user,
+    with open(join(top_dir, package_name, '.binstar.yml'), 'r') as f:
+        binstar_yml = yaml.load(f.read())
+    create = create_package_cmd.format(username=binstar_yml['user'],
                                        package=package_name).split()
     fil = join(top_dir, package_name)
     build = build_submit_cmd.format(package_file=fil,
@@ -176,7 +178,7 @@ def cli(parse_this_instead=None):
 
 def main(parse_this_instead=None):
     args = cli(parse_this_instead)
-    for platform in args.platforms:
+    for platform in getattr(args, 'platforms', []):
         if not platform in DEFAULT_ANACONDA_ARCH:
             msg =  'Invalid --platform: {0}'.format(platform)
             msg += '.\n\tChoose from {0}'.format(DEFAULT_ANACONDA_ARCH)
