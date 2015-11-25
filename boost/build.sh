@@ -20,9 +20,8 @@ if [ "$(uname)" == "Darwin" ]; then
 
     ./b2 -q \
         variant=release \
-        address-model=64 \
+        address-model=${ARCH} \
         architecture=x86 \
-        debug-symbols=off \
         threading=multi \
         link=shared \
         toolset=clang \
@@ -31,7 +30,6 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 if [ "$(uname)" == "Linux" ]; then
-    echo "using gcc : : /usr/bin/g++44 ; " >> tools/build/src/user-config.jam
 
     ./bootstrap.sh \
         --prefix="${PREFIX}" \
@@ -40,14 +38,11 @@ if [ "$(uname)" == "Linux" ]; then
 
     ./b2 -q \
         variant=release \
-        address-model="${ARCH}" \
+        address-model=${ARCH} \
         architecture=x86 \
-        debug-symbols=off \
         threading=multi \
-        runtime-link=shared \
         link=shared \
         toolset=gcc \
-        --layout=system \
         -j ${CPU_COUNT} \
         install 2>&1 | tee b2.log
 fi
