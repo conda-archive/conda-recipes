@@ -15,7 +15,10 @@ case `uname` in
         b2_options=( toolset=clang )
         ;;
     Linux)
-        b2_options=( toolset=gcc )
+        b2_options=(
+            toolset=gcc
+            linkflags="'-Wl,-rpath,\$ORIGIN'"
+            )
         ;;
 esac
 
