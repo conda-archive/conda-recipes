@@ -1,11 +1,11 @@
 package:
   name: tbb
-  version: 4.4
+  version: 4.4_20151115
 
 source:
-  fn: tbb44_20150728oss_src.tgz
-  url: https://www.threadingbuildingblocks.org/sites/default/files/software_releases/source/tbb44_20150728oss_src.tgz
-  md5: 2ef1d8cb790324c09aa17360d75dd619 
+  fn: tbb44_20151115oss_src.tgz
+  url: https://www.threadingbuildingblocks.org/sites/default/files/software_releases/source/tbb44_20151115oss_src.tgz
+  md5: 7fae6a6bbca68bbdc18e844d6721d5e4
 
 requirements:
   build:
@@ -14,3 +14,4 @@ requirements:
 about:
   home: http://www.threadingbuildingblocks.org
   license: GPL v2
+  summary: High level abstract threading library
