@@ -1,12 +1,35 @@
 #!/bin/bash
 
-CONFIG_OPTS=" "
 BIN=$PREFIX/lib/qt5/bin
 QTCONF=$BIN/qt.conf
 
+chmod +x configure
+
 if [ `uname` == Linux ]; then
-    CONFIG_OPTS+=" -dbus"
     MAKE_JOBS=$CPU_COUNT
+
+    ./configure -prefix $PREFIX \
+                -libdir $PREFIX/lib \
+                -bindir $PREFIX/lib/qt5/bin \
+                -headerdir $PREFIX/include/qt5 \
+                -archdatadir $PREFIX/lib/qt5 \
+                -datadir $PREFIX/share/qt5 \
+                -L $PREFIX/lib \
+                -I $PREFIX/include \
+                -release \
+                -opensource \
+                -confirm-license \
+                -shared \
+                -nomake examples \
+                -nomake tests \
+                -verbose \
+                -no-libudev \
+                -gtkstyle \
+                -qt-xcb \
+                -qt-pcre \
+                -qt-xkbcommon \
+                -xkb-config-root $PREFIX/lib \
+                -dbus
 fi
 
 if [ `uname` == Darwin ]; then
@@ -17,37 +40,35 @@ if [ `uname` == Darwin ]; then
     done
 
     MACOSX_DEPLOYMENT_TARGET=10.7
-
-    CONFIG_OPTS+=" -platform macx-g++ -no-framework -no-c++11"
-    CONFIG_OPTS+=" -no-mtdev -no-harfbuzz -no-xinput2 -no-xcb-xlib"
-    CONFIG_OPTS+=" -no-libudev -no-egl"
-
     MAKE_JOBS=$(sysctl -n hw.ncpu)
-fi
 
-chmod +x configure
-./configure -prefix $PREFIX \
-            -libdir $PREFIX/lib \
-            -bindir $PREFIX/lib/qt5/bin \
-            -headerdir $PREFIX/include/qt5 \
-            -archdatadir $PREFIX/lib/qt5 \
-            -datadir $PREFIX/share/qt5 \
-            -L $PREFIX/lib \
-            -I $PREFIX/include \
-            -release \
-            -opensource \
-            -confirm-license \
-            -shared \
-            -nomake examples \
-            -nomake tests \
-            -no-libudev \
-            -gtkstyle \
-            -qt-xcb \
-            -qt-pcre \
-            -qt-xkbcommon \
-            -xkb-config-root $PREFIX/lib \
-            -verbose \
-            $CONFIG_OPTS
+    ./configure -prefix $PREFIX \
+                -libdir $PREFIX/lib \
+                -bindir $PREFIX/lib/qt5/bin \
+                -headerdir $PREFIX/include/qt5 \
+                -archdatadir $PREFIX/lib/qt5 \
+                -datadir $PREFIX/share/qt5 \
+                -L $PREFIX/lib \
+                -I $PREFIX/include \
+                -release \
+                -opensource \
+                -confirm-license \
+                -shared \
+                -nomake examples \
+                -nomake tests \
+                -verbose \
+                -skip qtwebengine \
+                -qt-pcre \
+                -platform macx-g++ \
+                -no-c++11 \
+                -no-framework \
+                -no-mtdev \
+                -no-harfbuzz \
+                -no-xinput2 \
+                -no-xcb-xlib \
+                -no-libudev \
+                -no-egl
+fi
 
 make -j $MAKE_JOBS
 make install
