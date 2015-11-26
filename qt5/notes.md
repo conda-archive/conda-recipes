@@ -23,7 +23,6 @@ You need the following packages to build Qt5 on CentOS 6
   for details.
 - The right XCode version for your OS X version is listed
   [here](https://github.com/Homebrew/homebrew/blob/master/Library/Homebrew/os/mac/xcode.rb)
-- Found apparent race conditions when running make with multiple jobs.
 
 ## Notes concerning Windows:
 
