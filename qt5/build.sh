@@ -62,6 +62,7 @@ if [ `uname` == Darwin ]; then
                 -platform macx-g++ \
                 -no-c++11 \
                 -no-framework \
+                -no-dbus \
                 -no-mtdev \
                 -no-harfbuzz \
                 -no-xinput2 \
