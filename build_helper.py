@@ -28,10 +28,7 @@ BINSTAR_YAML_TEMPLATE = {
          'engine': 'engine',
          'package': 'package',
          'platform': DEFAULT_ANACONDA_ARCH,
-         'install': {'r': ['conda build . -c r'],
-                     'python': ['conda build .'],
-                     'other': ['conda build .'],
-         },
+         'install': 'conda build .',
          'user': 'user'
     }
 
@@ -49,7 +46,7 @@ def raise_or_not(args, msg):
         raise ValueError(msg)
     print(msg, file=sys.stderr)
 
-def choose_engine_install(meta, args):
+def choose_engine_install_channels(meta, args):
     reqs = meta.get('requirements', {})
     build_reqs = reqs.get('build', None)
     run_reqs = reqs.get('run', None)
@@ -58,16 +55,14 @@ def choose_engine_install(meta, args):
     if run_reqs is None:
         run_reqs = []
     b = [_.strip().lower() for _ in build_reqs + run_reqs]
-    engine, install = [],[]
+    engine, install_channels = [],['defaults']
     if 'python' in b:
         engine = ['python']
-        install = BINSTAR_YAML_TEMPLATE['install']['python']
+        install_channels += ['python']
     if 'r' in b:
-        engine += ['r -c r']
-        install += BINSTAR_YAML_TEMPLATE['install']['r']
-    if not install:
-        install = BINSTAR_YAML_TEMPLATE['install']['other']
-    return engine, install
+        engine += ['r']
+        install_channels += ['r']
+    return engine, install_channels
 
 create_package_cmd = 'anaconda package --create {username}/{package}'
 build_submit_cmd = 'anaconda build submit {package_file} --queue {queue} --channel {channel}'
@@ -114,8 +109,9 @@ def on_each_package(args, top_dir, package_name):
                 binstar_yml = yaml.load(f.read())
         else:
             binstar_yml = BINSTAR_YAML_TEMPLATE.copy()
-        eng, install = choose_engine_install(meta, args)
-        binstar_yml['engine'], binstar_yml['install'] = eng, install
+        eng, install_channels = choose_engine_install_channels(meta, args)
+        binstar_yml['engine'] = eng
+        binstar_yml['install_channels'] = install_channels
         binstar_yml['package'] = package_name
         binstar_yml['user'] = args.anaconda_upload_user
         if '{package}' in binstar_yml['after_script'][0]:
