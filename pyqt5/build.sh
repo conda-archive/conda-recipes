@@ -5,11 +5,9 @@ if [ `uname` == Darwin ]; then
     MAKE_JOBS=$(sysctl -n hw.ncpu)
 fi
 
-
 if [ `uname` == Linux ]; then
     MAKE_JOBS=$CPU_COUNT
 fi
-
 
 $PYTHON configure.py \
         --verbose \
@@ -19,4 +17,3 @@ $PYTHON configure.py \
 
 make -j $MAKE_JOBS
 make install
-

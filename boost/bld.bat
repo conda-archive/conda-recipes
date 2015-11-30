@@ -1,16 +1,37 @@
-REM Start with boost.build bootstrap
-echo This requires to have Visual Studio C++ compiler installed because
-echo Boost build system (bjam) can't be compiled with MinGW at
-echo the moment
+:: Set the right msvc version according to Python version
+if "%PY_VER%"=="2.7" (
+    set MSVC_VER=9.0
+    set LIB_VER=90
+) else if "%PY_VER%"=="3.4" (
+    set MSVC_VER=10.0
+    set LIB_VER=100
+) else (
+    set MSVC_VER=14.0
+    set LIB_VER=140
+)
+
+:: Start with bootstrap
 call bootstrap.bat
 if errorlevel 1 exit 1
 
-REM Compiling boost with MinGW
-set PATH=%PREFIX%\MinGW\bin;%PATH%
-if "%ARCH%"=="32" (set BOOST_TOOLSET=gcc) else (set BOOST_TOOLSET=gcc address-model=64 cxxflags="-D MS_WIN64 ")
+:: Build step
+.\b2 install ^
+    --build-dir=buildboost ^
+    --prefix=%LIBRARY_PREFIX% ^
+    toolset=msvc-%MSVC_VER% ^
+    address-model=%ARCH% ^
+    variant=release ^
+    threading=multi ^
+    link=shared ^
+    -j%CPU_COUNT% ^
+    -s ZLIB_INCLUDE="%LIBRARY_INC%" ^
+    -s ZLIB_LIBPATH="%LIBRARY_LIB%"
+if errorlevel 1 exit 1
 
-REM Build step
-bjam --build-dir=buildboost toolset=%BOOST_TOOLSET% variant=release threading=multi link=shared --prefix=%LIBRARY_PREFIX% install
+:: Install fix-up for a non version-specific boost include
+move %LIBRARY_INC%\boost-1_59\boost %LIBRARY_INC%
+if errorlevel 1 exit 1
 
-REM Install fix-up for a non version-specific boost include
-move %LIBRARY_INC%\boost-1_57\boost %LIBRARY_INC%
+:: Move dll's to LIBRARY_BIN
+move %LIBRARY_LIB%\*vc%LIB_VER%-mt-1_59.dll "%LIBRARY_BIN%"
+if errorlevel 1 exit 1
