@@ -12,4 +12,7 @@ else
     rm -rf invoke/vendor/yaml2
 fi
 
+# Workaround conda-build issue #251: https://github.com/conda/conda-build/issues/251
+echo "program_run = program.run" >> invoke/main.py
+
 $PYTHON setup.py install
