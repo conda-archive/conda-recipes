@@ -1,33 +1,43 @@
-# Tested on Mac OS X 10.9 using clang compiler provided by XCode
 package:
     name: opencv
-    version: 2.4.9
+    version: 3.0.0
 
 source:
-    fn: opencv-2.4.9.zip
-    url: http://downloads.sourceforge.net/project/opencvlibrary/opencv-unix/2.4.9/opencv-2.4.9.zip
-
-build:
-    number: 0
+    fn: opencv-3.0.0.zip
+    url: https://github.com/Itseez/opencv/archive/3.0.0.zip
+    sha256: 07094ea2f996f2622d572f0f3a162d698c8a547520341ca9109fbaf9363fb001
+    patches:
+      # C++11 workaround for older Windows compilers
+      - video_io_cpp11.patch    [win and py<35]
+      # PThreads not provided on OS X?  Ensure that it is disabled, and use TBB instead.
+      - no-pthreads.patch       [osx]
+      # OpenCV's cmake messes up Conda's link embedding fixer
+      - no-rpath.patch
+      # - line_float_cvt.patch is applied in build.sh.  It applies to other source
+      #    in opencv_contrib, which is cloned in build.sh.
 
 requirements:
     build:
         - cmake
-        - numpy
-        - jpeg
-        - zlib
-        - libpng
+        - numpy  x.x
+        - jpeg   [unix]
+        - zlib   [unix]
+        - libpng [unix]
         - python
+        - curl   [win and py<30]
+        - libtiff [unix]
+        - tbb     [unix]
     run:
         - python
-        - numpy
-        - jpeg
-        - zlib
-        - libpng
+        - numpy  x.x
+        - jpeg   [unix]
+        - zlib   [unix]
+        - libpng [unix]
+        - libtiff [unix]
+        - tbb     [unix]
 test:
     imports:
       - cv2
-      - cv2.cv
 
 about:
     home: http://opencv.org/
