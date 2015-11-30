@@ -1,0 +1,33 @@
+package:
+  name: gdcm
+  version: 2.6.1
+
+source:
+  fn: v2.6.1.zip  # [win]
+  url: https://github.com/malaterre/GDCM/archive/v2.6.1.zip  # [win]
+  fn: v2.6.1.tar.gz  # [not win]
+  url: https://github.com/malaterre/GDCM/archive/v2.6.1.tar.gz  # [not win]
+
+build:
+  number: 7
+  features:
+    - vc9  # [win and (py26 or py27)]
+    - vc10  # [win and (py33 or py34)]
+    - vc14  # [win and py35]
+
+requirements:
+  build:
+    - python
+    - swig
+    - cmake
+  run:
+    - python
+
+test:
+  imports:
+    - gdcm
+
+about:
+  home: https://sourceforge.net/p/gdcm/gdcm/
+  license: BSD
+  summary: Grassroots DICOM, cross-platform DICOM implementation.

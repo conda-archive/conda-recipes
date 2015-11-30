@@ -1,0 +1,68 @@
+package:
+  name: azure-mgmt-common
+  version: "0.20.0"
+
+source:
+  fn: azure-mgmt-common-0.20.0.zip
+  url: https://pypi.python.org/packages/source/a/azure-mgmt-common/azure-mgmt-common-0.20.0.zip
+  md5: f82f47f476964140576576734436ba4d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - azure-mgmt-common = azure-mgmt-common:main
+    #
+    # Would create an entry point called azure-mgmt-common that calls azure-mgmt-common.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - azure-common
+    - azure-mgmt-nspkg
+
+  run:
+    - python
+    - azure-common
+    - azure-mgmt-nspkg
+    - requests
+
+test:
+  # Python imports
+  imports:
+    - azure
+    - azure.mgmt
+    - azure.mgmt.common
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Azure/azure-sdk-for-python
+  license: Apache Software License
+  summary: 'Microsoft Azure Resource Management Client Library for Python (Common)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

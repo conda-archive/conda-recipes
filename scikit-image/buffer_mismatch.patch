@@ -1,0 +1,28 @@
+diff --git skimage/feature/_texture.pyx skimage/feature/_texture.pyx
+index b90ab6d..57d8ec8 100644
+--- skimage/feature/_texture.pyx
++++ skimage/feature/_texture.pyx
+@@ -271,8 +271,8 @@ def _local_binary_pattern(double[:, ::1] image,
+ # Values represent offsets of neighbour rectangles relative to central one.
+ # It has order starting from top left and going clockwise.
+ cdef:
+-    Py_ssize_t[::1] mlbp_r_offsets = np.asarray([-1, -1, -1, 0, 1, 1, 1, 0])
+-    Py_ssize_t[::1] mlbp_c_offsets = np.asarray([-1, 0, 1, 1, 1, 0, -1, -1])
++    Py_ssize_t[::1] mlbp_r_offsets = np.asarray([-1, -1, -1, 0, 1, 1, 1, 0], dtype=np.intp)
++    Py_ssize_t[::1] mlbp_c_offsets = np.asarray([-1, 0, 1, 1, 1, 0, -1, -1], dtype=np.intp)
+ 
+ 
+ def _multiblock_lbp(float[:, ::1] int_image,
+diff --git skimage/transform/_seam_carving.pyx skimage/transform/_seam_carving.pyx
+index 3499514..73306bb 100644
+--- skimage/transform/_seam_carving.pyx
++++ skimage/transform/_seam_carving.pyx
+@@ -180,7 +180,7 @@ def _seam_carve_v(img, energy_map, iters, border):
+     cdef Py_ssize_t seams_left = iters
+     cdef Py_ssize_t seams_removed
+     cdef Py_ssize_t seam_idx
+-    cdef Py_ssize_t[::1] seam_buffer = np.zeros(rows, dtype=np.int)
++    cdef Py_ssize_t[::1] seam_buffer = np.zeros(rows, dtype=np.intp)
+ 
+     cdef cnp.double_t[:, :, ::1] image = img
+     cdef cnp.int8_t[:, ::1] track_img = np.zeros(img.shape[0:2], dtype=np.int8)
