@@ -8,24 +8,32 @@ source:
   md5: 8e4ff32b82c3b39387eb6f5c59ef848e
 
 build:
-  number: 2
+  number: 0              [win or osx]
+  number: 3              [linux]
+  features:
+    - vc9                [win and py27]
+    - vc10               [win and py34]
+    - vc14               [win and py35]
 
 requirements:
   build:
-    - pkg-config
-    - freetype
-    - fontconfig
-    - libpng
-    - pixman
-    - zlib
+    # HACK: The python dep is here to get vc features to work
+    - python                  [win]
+    - pkg-config              [osx]
+    - xz                      [unix]
+    - freetype      2.5.*     [unix]
+    - fontconfig    2.11.*    [linux]
+    - pixman        0.32.*
+    - libpng        1.6.*
+    - zlib          1.2.*
   run:
-    - pkg-config
-    - freetype
-    - fontconfig
-    - libpng
-    - pixman
-    - zlib
+    - freetype      2.5.*     [unix]
+    - fontconfig    2.11.*    [linux]
+    - libpng        1.6.*
+    - pixman        0.32.*
+    - zlib          1.2.*
 
 about:
   home: http://cairographics.org/
-  license: LGPL 2.1 and MPL 1.1
+  license: LGPL 2.1, MPL 1.1
+  summary: Cairo is a 2D graphics library with support for multiple output devices.

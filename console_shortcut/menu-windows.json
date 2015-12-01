@@ -1,0 +1,12 @@
+{
+    "menu_name": "Python Prompts",
+    "menu_items":
+    [
+        {
+            "name": "Conda Env Prompt",
+            "system": "%windir%\\system32\\cmd.exe",
+            "scriptargument": ["/K", "${PYTHON_SCRIPTS}\\activate.bat", "${ENV_NAME}"],
+            "icon": "${MENU_DIR}/Iconleak-Atrous-Console.ico"
+        }
+    ]
+}

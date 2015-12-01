@@ -1,29 +1,11 @@
 package:
   name: python-pptx
-  version: !!str 0.3.2
+  version: !!str 0.5.7
 
 source:
-  fn: python-pptx-0.3.2.tar.gz
-  url: https://pypi.python.org/packages/source/p/python-pptx/python-pptx-0.3.2.tar.gz
-  md5: 614c54073eb99dbe112660516bb75640
-#  patches:
-   # List any patch files here
-   # - fix.patch
-
-# build:
-  #preserve_egg_dir: True
-  #entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - python-pptx = python-pptx:main
-    #
-    # Would create an entry point called python-pptx that calls python-pptx.main()
-
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  fn: python-pptx-0.5.7.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-pptx/python-pptx-0.5.7.tar.gz
+  md5: 80b3a1193e1804fa5d151c17c9c9242c
 
 requirements:
   build:
@@ -38,7 +20,6 @@ requirements:
     - pillow
 
 test:
-  # Python imports
   imports:
     - pptx.oxml
     - pptx.dml
@@ -49,23 +30,7 @@ test:
     - pptx.enum
     - pptx.shapes
 
-  #commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
-
-
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any additional test requirements here.  For example
-    # - nose
-
 about:
   home: http://github.com/scanny/python-pptx
   license: MIT License
   summary: 'Generate and manipulate Open XML PowerPoint (.pptx) files'
-
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml

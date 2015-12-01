@@ -2,7 +2,7 @@ package:
   name: pandoc
   version: 1.12.3 # [linux]
   version: 1.13.1 # [osx]
-
+  version: 1.15.0.6 # [win]
 
 source:
   fn: pandoc-1.12.3.tar.gz # [linux]
@@ -11,6 +11,10 @@ source:
   fn: pandoc-1.13.1.pkg # [osx]
   url: https://github.com/jgm/pandoc/releases/download/1.13.1/pandoc-1.13.1-osx.pkg # [osx]
   sha1: 60a7812fa3d875a43d4cb4cee766425727206a8d # [osx]
+
+  fn: pandoc-1.15.0.6-windows.msi # [win]
+  url: https://github.com/jgm/pandoc/releases/download/1.15.0.6/pandoc-1.15.0.6-windows.msi # [win]
+  sha1: 06c4af2c54f4bf581659ad0545a4f225a6a839e1 # [win]
 
 test:
   commands:

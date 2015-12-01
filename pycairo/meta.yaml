@@ -1,0 +1,41 @@
+package:
+  name: pycairo
+  version: 1.10.0
+
+source:
+  fn:  py2cairo-1.10.0.tar.bz2                                       [py27]
+  url: http://cairographics.org/releases/py2cairo-1.10.0.tar.bz2     [py27]
+  md5: 20337132c4ab06c1146ad384d55372c5                              [py27]
+  fn:  pycairo-1.10.0.tar.bz2                                        [py34 or py35]
+  url: http://cairographics.org/releases/pycairo-1.10.0.tar.bz2      [py34 or py35]
+  md5: e6fd3f2f1e6a72e0db0868c4985669c5                              [py34 or py35]
+  patches:
+    - font27.patch        [win and py27]
+    - matrix27.patch      [win and py27]
+    - surface27.patch     [win and py27]
+    - cairomodule.patch   [win and py34]
+    - context.patch       [(win and py34) or (win and py35)]
+    - font3.patch         [(win and py34) or (win and py35)]
+    - matrix3.patch       [(win and py34) or (win and py35)]
+    - path.patch          [(win and py34) or (win and py35)]
+    - pattern.patch       [(win and py34) or (win and py35)]
+    - surface3.patch      [(win and py34) or (win and py35)]
+
+requirements:
+  build:
+    - cairo
+    - python
+    - pkg-config          [osx]
+  run:
+    - cairo
+    - python
+
+test:
+  imports:
+    - cairo
+    - cairo._cairo
+
+about:
+  home: http://cairographics.org/pycairo/
+  license: LGPL 2.1, MPL 1.1
+  summary: Pycairo is a set of Python bindings for the cairo graphics library

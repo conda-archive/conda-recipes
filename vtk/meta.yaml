@@ -7,18 +7,19 @@ source:
   fn:  vtk-6.3.0.tar.gz
   patches:
     - dlls.patch                              [win]
+    - apple.patch                             [osx]
 
 build:
-  number: 1                                   [linux]
+  number: 1
   has_prefix_files:                           [win]
     - Lib/site-packages/vtk/__init__.py       [win]
 
 requirements:
   build:
     - cmake
-    - python    <3
+    - python
   run:
-    - python    <3
+    - python
 
 test:
   imports:

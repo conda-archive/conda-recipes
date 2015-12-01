@@ -1,0 +1,23 @@
+--- src/path.c.old	2015-11-11 15:42:56 -0500
++++ src/path.c	2015-11-11 15:44:28 -0500
+@@ -163,9 +163,9 @@
+ 
+ static PyObject * path_iter(PyObject *seq); /* forward declaration */
+ 
+-
++#define DEFERRED(X) 0
+ PyTypeObject PycairoPath_Type = {
+-  PyVarObject_HEAD_INIT(&PyType_Type, 0)
++  PyVarObject_HEAD_INIT(DEFERRED(&PyType_Type), 0)
+   //PyObject_HEAD_INIT(NULL)
+   //0,				        /* ob_size */
+   "cairo.Path",			/* tp_name */
+@@ -286,7 +286,7 @@
+ }
+ 
+ PyTypeObject PycairoPathiter_Type = {
+-  PyVarObject_HEAD_INIT(&PyType_Type, 0)
++  PyVarObject_HEAD_INIT(DEFERRED(&PyType_Type), 0)
+   //PyObject_HEAD_INIT(NULL)
+   //0,                                  /* ob_size */
+   "cairo.Pathiter",                   /* tp_name */
