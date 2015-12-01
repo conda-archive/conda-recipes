@@ -32,10 +32,12 @@ build:
 requirements:
   build:
     - r
+    - curl
     - gcc # [not win]
 
   run:
     - r
+    - curl
     - libgcc # [not win]
 
 test:
