@@ -2,13 +2,13 @@ package:
   name: r-dygraphs
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.4.5"
+  version: "0.5"
 
 source:
-  fn: dygraphs_0.4.5.tar.gz
+  fn: dygraphs_0.5.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/dygraphs_0.4.5.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/dygraphs/dygraphs_0.4.5.tar.gz
+    - http://cran.r-project.org/src/contrib/dygraphs_0.5.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/dygraphs/dygraphs_0.5.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -69,8 +69,8 @@ about:
 # Package: dygraphs
 # Type: Package
 # Title: Interface to Dygraphs Interactive Time Series Charting Library
-# Version: 0.4.5
-# Date: 2015-06-11
+# Version: 0.5
+# Date: 2015-10-13
 # Authors@R: c( person("Dan", "Vanderkam", role = c("aut", "cph"), comment = "dygraphs library in htmlwidgets/lib, http://dygraphs.com/"), person("JJ", "Allaire", role = c("aut", "cre"), comment = "R interface", email = "jj@rstudio.com"), person(family = "RStudio", role = "cph"), person(family = "jQuery Foundation", role = "cph", comment = "jQuery library"), person(family = "jQuery contributors", role = c("ctb", "cph"), comment = "jQuery library; authors listed in inst/htmlwidgets/lib/jquery/AUTHORS.txt") )
 # Maintainer: JJ Allaire <jj@rstudio.com>
 # Description: An R interface to the 'dygraphs' JavaScript charting library (a copy of which is included in the package). Provides rich facilities for charting time-series data in R, including highly configurable  series- and axis-display and interactive features like zoom/pan and  series/point highlighting.
@@ -80,10 +80,10 @@ about:
 # Suggests: testthat
 # Enhances: rmarkdown (>= 0.3.3), shiny (>= 0.10.2.1)
 # NeedsCompilation: no
-# Packaged: 2015-06-11 12:00:53 UTC; jjallaire
+# Packaged: 2015-10-19 18:08:39 UTC; jjallaire
 # Author: Dan Vanderkam [aut, cph] (dygraphs library in htmlwidgets/lib, http://dygraphs.com/), JJ Allaire [aut, cre] (R interface), RStudio [cph], jQuery Foundation [cph] (jQuery library), jQuery contributors [ctb, cph] (jQuery library; authors listed in inst/htmlwidgets/lib/jquery/AUTHORS.txt)
 # Repository: CRAN
-# Date/Publication: 2015-06-11 18:31:36
+# Date/Publication: 2015-10-20 08:14:44
 
 # See
 # http://docs.continuum.io/conda/build.html for

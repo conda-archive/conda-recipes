@@ -35,10 +35,12 @@ build:
 requirements:
   build:
     - r
+    - gcc    # [not win]
     - zeromq # [not win]
 
   run:
     - r
+    - libgcc # [not win]
     - zeromq # [not win]
 
 test:
