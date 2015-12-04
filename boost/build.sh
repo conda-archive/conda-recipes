@@ -23,9 +23,18 @@ case `uname` in
         ;;
 esac
 
+# Use python-config or python3-config to determine Python headers path.
+MY_PYTHON_CONFIG="${PREFIX}/bin/python-config"
+if [[ ${PY3K} == 1 ]]; then
+    MY_PYTHON_CONFIG="${PREFIX}/bin/python3-config"
+fi
+MY_PYTHON_INCLUDES="$( "${MY_PYTHON_CONFIG}" --includes | sed s/-I//g )"
+
 ./bootstrap.sh \
     --prefix="${PREFIX}" \
     --with-icu="${PREFIX}" \
+    --with-python="${PYTHON}" \
+    --with-python-root="${PREFIX} : ${MY_PYTHON_INCLUDES}" \
     2>&1 | tee bootstrap.log
 
 ./b2 -q -j ${CPU_COUNT} \
