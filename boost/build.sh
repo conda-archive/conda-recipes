@@ -9,6 +9,7 @@
 # http://stackoverflow.com/questions/20108407/how-do-i-compile-boost-for-os-x-64b-platforms-with-stdlibc
 
 set -x -e
+set -o pipefail
 
 case `uname` in
     Darwin)
