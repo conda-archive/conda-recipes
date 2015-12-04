@@ -31,10 +31,12 @@ requirements:
   build:
     - r
     - r-rcpp >=0.9.10
+    - gcc # [not win]
 
   run:
     - r
     - r-rcpp >=0.9.10
+    - libgcc # [not win]
 
 test:
   commands:

@@ -18,20 +18,20 @@ build:
 requirements:
   build:
     # HACK: The python dep is here to get vc features to work
-    - python             [win]
-    - pkg-config         [osx]
-    - freetype           [unix]
-    - xz                 [unix]
-    - fontconfig         [linux]
-    - pixman
-    - libpng
-    - zlib
+    - python                  [win]
+    - pkg-config              [osx]
+    - xz                      [unix]
+    - freetype      2.5.*     [unix]
+    - fontconfig    2.11.*    [linux]
+    - pixman        0.32.*
+    - libpng        1.6.*
+    - zlib          1.2.*
   run:
-    - freetype           [unix]
-    - fontconfig         [linux]
-    - libpng
-    - pixman
-    - zlib
+    - freetype      2.5.*     [unix]
+    - fontconfig    2.11.*    [linux]
+    - libpng        1.6.*
+    - pixman        0.32.*
+    - zlib          1.2.*
 
 about:
   home: http://cairographics.org/

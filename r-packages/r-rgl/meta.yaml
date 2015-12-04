@@ -2,13 +2,13 @@ package:
   name: r-rgl
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.95.1337"
+  version: "0.95.1367"
 
 source:
-  fn: rgl_0.95.1337.tar.gz
+  fn: rgl_0.95.1367.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/rgl_0.95.1337.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/rgl/rgl_0.95.1337.tar.gz
+    - http://cran.r-project.org/src/contrib/rgl_0.95.1367.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/rgl/rgl_0.95.1367.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -62,7 +62,7 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: rgl
-# Version: 0.95.1337
+# Version: 0.95.1367
 # Title: 3D Visualization Using OpenGL
 # Author: Daniel Adler <dadler@uni-goettingen.de>, Duncan Murdoch <murdoch@stats.uwo.ca>, and others (see README)
 # Maintainer: Duncan Murdoch <murdoch@stats.uwo.ca>
@@ -75,10 +75,13 @@ about:
 # SystemRequirements: OpenGL, GLU Library, zlib (optional), libpng (>=1.2.9, optional), FreeType (optional)
 # BugReports: https://r-forge.r-project.org/projects/rgl/
 # VignetteBuilder: knitr
-# NeedsCompilation: yes
-# Packaged: 2015-09-19 09:30:37 UTC; murdoch
 # Repository: CRAN
-# Date/Publication: 2015-09-19 11:55:01
+# Repository/R-Forge/Project: rgl
+# Repository/R-Forge/Revision: 1367
+# Repository/R-Forge/DateTimeStamp: 2015-10-06 01:31:02
+# Date/Publication: 2015-10-06 15:43:04
+# NeedsCompilation: yes
+# Packaged: 2015-10-06 01:41:01 UTC; rforge
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -1,11 +1,11 @@
 package:
   name: nuitka
-  version: "0.5.14"
+  version: "0.5.16"
 
 source:
-  fn: Nuitka-0.5.14.tar.gz
-  url: http://nuitka.net/releases/Nuitka-0.5.14.tar.gz
-  md5: 7b49d4d12cbbb23adee610b6c452c9d6
+  fn: Nuitka-0.5.16.tar.gz
+  url: http://nuitka.net/releases/Nuitka-0.5.16.tar.gz
+  md5: d29614a51ce6cd75a8f13e3d58e366c5
 
 build:
   number: 0
