@@ -1,0 +1,67 @@
+package:
+  name: rednose
+  version: "0.4.3"
+
+source:
+  fn: rednose-0.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/r/rednose/rednose-0.4.3.tar.gz
+  md5: 0f4d5ff44fc0f64cb5ed5b57f3605f64
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # noarch_python: True
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - rednose = rednose:main
+    #
+    # Would create an entry point called rednose that calls rednose.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools
+    - python-termstyle >=0.1.7
+    - colorama
+
+  run:
+    - python
+    - setuptools
+    - setuptools
+    - python-termstyle >=0.1.7
+    - colorama
+
+# test:
+  # Python imports
+  # imports:
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://gfxmonk.net/dist/0install/rednose.xml
+  license: BSD License
+  summary: 'coloured output for nosetests'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
