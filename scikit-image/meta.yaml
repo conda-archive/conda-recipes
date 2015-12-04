@@ -10,7 +10,11 @@ source:
     - strip_interactive_tests.patch
 
 build:
-  number: 5
+  number: 6
+  features:
+    - vc9  # [win and (py26 or py27)]
+    - vc10  # [win and (py33 or py34)]
+    - vc14  # [win and py35]
 
 requirements:
   build:
@@ -45,3 +49,4 @@ test:
 about:
   home: http://scikit-image.org/
   license: Modified BSD (http://scikit-image.org/docs/dev/license.html)
+  summary: image processing in python
