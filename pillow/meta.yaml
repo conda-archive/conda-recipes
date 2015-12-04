@@ -1,41 +1,61 @@
 package:
   name: pillow
-  version: 2.6.1
+  version: "3.0.0"
 
 source:
-  fn: Pillow-2.6.1.tar.gz
-  url: https://pypi.python.org/packages/source/P/Pillow/Pillow-2.6.1.tar.gz
-  md5: 4b77fb0c81bbe0c8bf90c6eea960e091
-  patches:
-    - windows_multiprocess.patch [win]
-    - osx.patch [osx]
+  fn: Pillow-3.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/P/Pillow/Pillow-3.0.0.tar.gz
+  md5: fc8ac44e93da09678eac7e30c9b7377d
+#  patches:
+   # List any patch files here
+   # - fix.patch
 
-build:                   [win]
-  number: 1              [win]
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pillow = pillow:main
+    #
+    # Would create an entry point called pillow that calls pillow.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
 
 requirements:
   build:
     - python
-    - zlib
-    - libpng
-    - libtiff
-    - jpeg
-    - freetype
-    - distribute
+    - setuptools
+
   run:
     - python
-    - jpeg               [unix]
-    - zlib               [unix]
-    - freetype           [unix]
-    - libtiff            [unix]
 
 test:
+  # Python imports
   imports:
     - PIL
-    - PIL.Image
-    - PIL._imagingtk     [linux]
-    - PIL._imagingft     [unix]
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
 
 about:
-  home: http://python-imaging.github.io/
-  license: Standard PIL license
+  home: http://python-pillow.github.io/
+  license: Standard PIL License
+  summary: 'Python Imaging Library (Fork)'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

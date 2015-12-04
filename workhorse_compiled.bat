@@ -1,8 +1,8 @@
 set TARGET=clinicalgraphics
-set PKG=gdcm
-set VER=2.6.1
-set CONDA_BLD_DIR=%userprofile%\Miniconda\conda-bld
-set BUILD_NR=7
+set PKG=scikit-image
+set VER=0.12dev
+set CONDA_BLD_DIR=%userprofile%\Miniconda2\conda-bld
+set BUILD_NR=0
 
 for %%p in (26 27 33 34 35) do (
     conda build .\%PKG% --python %%p --no-anaconda-upload
