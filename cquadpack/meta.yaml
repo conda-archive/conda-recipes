@@ -4,6 +4,7 @@ package:
 
 source:
   git_url: git@github.com:ESSS/cquadpack.git
+  git_tag: v1.0
 
 requirements:
   build:
