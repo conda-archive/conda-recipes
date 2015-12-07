@@ -35,11 +35,10 @@ BINSTAR_YAML_TEMPLATE = {
 def cmd(args, cwd='.'):
     proc = sp.Popen(args, stdout=sp.PIPE,
                     stderr=sp.PIPE, cwd=cwd)
-    while proc.poll is None:
-        time.sleep(1)
+    returncode = proc.wait()
     out = proc.stdout.read().decode()
     err = proc.stderr.read().decode()
-    return proc.returncode, out, err
+    return returncode, out, err
 
 def raise_or_not(args, msg):
     if args.exception_action == 'raise':
