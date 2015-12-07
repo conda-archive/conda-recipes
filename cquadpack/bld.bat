@@ -1,6 +1,5 @@
 if "%CMAKE_GENERATOR%" == "" (
-    echo You should set the variable CMAKE_GENERATOR before building
-    exit 1
+    set CMAKE_GENERATOR=NMake Makefiles
 )
 mkdir build
 cd build
