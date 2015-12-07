@@ -9,6 +9,8 @@ import time
 import traceback
 import yaml
 
+from conda_build.metadata import MetaData
+
 
 DEFAULT_ANACONDA_ARCH = [
       'linux-32',
@@ -85,7 +87,8 @@ def submit_package(args, top_dir, package_name):
 
 def on_each_package(args, top_dir, package_name):
     if args.action == 'edit':
-        meta_file = join(top_dir, package_name, 'meta.yaml')
+        package_path = join(top_dir, package_name)
+        meta_file = join(package_path, 'meta.yaml')
         if not exists(meta_file):
             has_subdirs = False
             for try_levels in range(1,10):
@@ -100,8 +103,7 @@ def on_each_package(args, top_dir, package_name):
                 raise ValueError(msg)
             else:
                 return
-        with open(meta_file, 'r') as f:
-            meta = yaml.load(f.read())
+        meta = MetaData(package_path).meta
         binstar_yml_file = join(top_dir, package_name, '.binstar.yml')
         if args.yaml_load_existing and exists(binstar_yml_file):
             with open(binstar_yml_file, 'r') as f:
