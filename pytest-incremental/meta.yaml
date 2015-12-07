@@ -1,26 +1,26 @@
 package:
-  name: doit
-  version: "0.29.0"
+  name: pytest-incremental
+  version: "0.4.2"
 
 source:
-  fn: doit-0.29.0.tar.gz
-  url: https://pypi.python.org/packages/source/d/doit/doit-0.29.0.tar.gz
-  md5: 9968e1a669bad0a999212ab9f5c591a3
+  fn: pytest-incremental-0.4.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pytest-incremental/pytest-incremental-0.4.2.tar.gz
+  md5: fc261d18b59736441c7862e3093f3d7a
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # preserve_egg_dir: True
-  entry_points:
+  # noarch_python: True
+  preserve_egg_dir: True
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - doit = doit:main
+    # - pytest-incremental = pytest-incremental:main
     #
-    # Would create an entry point called doit that calls doit.main()
+    # Would create an entry point called pytest-incremental that calls pytest-incremental.main()
 
-    - doit = doit.__main__:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -31,25 +31,24 @@ requirements:
     - python
     - setuptools
     - six
-    - macfsevents # [osx]
-    - pyinotify  # [linux]
+    - doit >=0.28.0
+    - pytest
 
   run:
     - python
+    - setuptools
     - six
-    - macfsevents # [osx]
-    - pyinotify # [linux]
+    - doit >=0.28.0
+    - pytest
 
-test:
+# test:
   # Python imports
-  imports:
-    - doit
+  # imports:
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - doit --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -59,9 +58,9 @@ test:
     # - nose
 
 about:
-  home: http://pydoit.org
+  home: http://pytest-incremental.readthedocs.org
   license: MIT License
-  summary: 'doit - Automation Tool'
+  summary: 'an incremental test runner (pytest plugin)'
 
 # See
 # http://docs.continuum.io/conda/build.html for
