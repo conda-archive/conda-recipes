@@ -1,18 +1,33 @@
 package:
   name: coverage
-  version: 3.7
+  version: "4.0.3"
 
 source:
-  fn: coverage-3.7.tar.gz
-  url: https://pypi.python.org/packages/source/c/coverage/coverage-3.7.tar.gz
-  md5: 055d82e6849d882ec6cf2ae1faca8e56
+  fn: coverage-4.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/c/coverage/coverage-4.0.3.tar.gz
+  md5: c7d3db1882484022c81bf619be7b6365
+#  patches:
+   # List any patch files here
+   # - fix.patch
 
 build:
+  # noarch_python: True
+  # preserve_egg_dir: True
   entry_points:
-    - coverage = coverage:main
-    - coverage2 = coverage:main
-    - coverage-2.7 = coverage:main
-  number: 1
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - coverage = coverage:main
+    #
+    # Would create an entry point called coverage that calls coverage.main()
+
+    - coverage = coverage.cmdline:main
+    - coverage2 = coverage.cmdline:main
+    - coverage-2.7 = coverage.cmdline:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
 
 requirements:
   build:
@@ -23,14 +38,30 @@ requirements:
     - python
 
 test:
+  # Python imports
   imports:
     - coverage
 
   commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
     - coverage --help
     - coverage2 --help
     - coverage-2.7 --help
 
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
 about:
-  home: http://nedbatchelder.com/code/coverage
-  license: BSD License
+  home: https://coverage.readthedocs.org
+  license: Apache Software License
+  summary: 'Code coverage measurement for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

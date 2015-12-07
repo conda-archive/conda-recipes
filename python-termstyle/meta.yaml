@@ -1,25 +1,25 @@
 package:
-  name: blinker
-  version: "1.4"
+  name: python-termstyle
+  version: "0.1.10"
 
 source:
-  fn: blinker-1.4.tar.gz
-  url: https://pypi.python.org/packages/source/b/blinker/blinker-1.4.tar.gz
-  md5: 8b3722381f83c2813c52de3016b68d33
+  fn: python-termstyle-0.1.10.tgz
+  url: https://pypi.python.org/packages/source/p/python-termstyle/python-termstyle-0.1.10.tgz
+  md5: 1ffe4a4fa86448f2a5fec0036ae21802
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
+build:
   # noarch_python: True
-  # preserve_egg_dir: True
+  preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - blinker = blinker:main
+    # - python-termstyle = python-termstyle:main
     #
-    # Would create an entry point called blinker that calls blinker.main()
+    # Would create an entry point called python-termstyle that calls python-termstyle.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -33,11 +33,11 @@ requirements:
 
   run:
     - python
+    - setuptools
 
-test:
+# test:
   # Python imports
-  imports:
-    - blinker
+  # imports:
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -52,9 +52,9 @@ test:
     # - nose
 
 about:
-  home: http://pythonhosted.org/blinker/
-  license: MIT License
-  summary: 'Fast, simple object-to-object and broadcast signaling'
+  home: http://gfxmonk.net/dist/0install/python-termstyle.xml
+  license: BSD License
+  summary: 'console colouring for python'
 
 # See
 # http://docs.continuum.io/conda/build.html for

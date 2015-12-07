@@ -1,29 +1,63 @@
 package:
   name: pymongo
-  version: "3.0.3"
+  version: "3.1.1"
 
 source:
-  fn: pymongo-3.0.3.tar.gz
-  url: https://pypi.python.org/packages/source/p/pymongo/pymongo-3.0.3.tar.gz
-  md5: 0425d99c2a453144b9c95cb37dbc46e9
+  fn: pymongo-3.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pymongo/pymongo-3.1.1.tar.gz
+  md5: 72f5930930141979477f88c809f4022e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pymongo = pymongo:main
+    #
+    # Would create an entry point called pymongo that calls pymongo.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
 
 requirements:
   build:
-    - mongodb
     - python
     - setuptools
 
   run:
-    - mongodb
     - python
 
 test:
+  # Python imports
   imports:
     - bson
     - gridfs
     - pymongo
 
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
 about:
   home: http://github.com/mongodb/mongo-python-driver
   license: Apache Software License
   summary: 'Python driver for MongoDB <http://www.mongodb.org>'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

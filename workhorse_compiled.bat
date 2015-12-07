@@ -2,10 +2,10 @@
 
 REM configure according to your preferences
 set TARGET=clinicalgraphics
-set PKG=gdcm
-set VER=2.6.1
-set CONDA_BLD_DIR=%userprofile%\Miniconda\conda-bld
-set BUILD_NR=7
+set PKG=scikit-image
+set VER=0.12dev
+set CONDA_BLD_DIR=%userprofile%\Miniconda2\conda-bld
+set BUILD_NR=0
 REM configure these lists for the pythons and architectures you want to support
 set pythons=26_vc9 27_vc9 33_vc10 34_vc10 35_vc14
 set architectures=64 32

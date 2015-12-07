@@ -1,11 +1,8 @@
-set TIFF_ROOT=%LIBRARY_PREFIX%
-set JPEG_ROOT=%LIBRARY_PREFIX%
-set ZLIB_ROOT=%LIBRARY_PREFIX%
-set FREETYPE2_ROOT=%LIBRARY_PREFIX%
-set LIB=%LIBRARY_LIB%
-set INCLUDE=%LIBRARY_INC%
-python setup.py install
+"%PYTHON%" setup.py install
 if errorlevel 1 exit 1
 
-rd /s /q %SP_DIR%\__pycache__
-if errorlevel 1 exit 1
+:: Add more build steps here, if they are necessary.
+
+:: See
+:: http://docs.continuum.io/conda/build.html
+:: for a list of environment variables that are set during the build process.

@@ -1,11 +1,11 @@
 package:
-  name: blinker
-  version: "1.4"
+  name: mongoengine
+  version: "0.10.5"
 
 source:
-  fn: blinker-1.4.tar.gz
-  url: https://pypi.python.org/packages/source/b/blinker/blinker-1.4.tar.gz
-  md5: 8b3722381f83c2813c52de3016b68d33
+  fn: mongoengine-0.10.5.tar.gz
+  url: https://pypi.python.org/packages/source/m/mongoengine/mongoengine-0.10.5.tar.gz
+  md5: 51759662a230d37edb5907f4f9082e41
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -17,9 +17,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - blinker = blinker:main
+    # - mongoengine = mongoengine:main
     #
-    # Would create an entry point called blinker that calls blinker.main()
+    # Would create an entry point called mongoengine that calls mongoengine.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -30,14 +30,18 @@ requirements:
   build:
     - python
     - setuptools
+    - pymongo >=2.7.1
 
   run:
     - python
+    - pymongo >=2.7.1
 
 test:
   # Python imports
   imports:
-    - blinker
+    - mongoengine
+    - mongoengine.base
+    - mongoengine.queryset
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -47,14 +51,20 @@ test:
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  # requires:
+  requires:
+    - blinker
+    - coverage ==3.7.1
+    - nose
+    - pillow >=2.0.0
+    - python-dateutil
+    - rednose
     # Put any additional test requirements here.  For example
     # - nose
 
 about:
-  home: http://pythonhosted.org/blinker/
+  home: http://mongoengine.org/
   license: MIT License
-  summary: 'Fast, simple object-to-object and broadcast signaling'
+  summary: 'MongoEngine is a Python Object-Document Mapper for working with MongoDB.'
 
 # See
 # http://docs.continuum.io/conda/build.html for

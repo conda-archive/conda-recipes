@@ -1,25 +1,25 @@
 package:
-  name: blinker
-  version: "1.4"
+  name: rednose
+  version: "0.4.3"
 
 source:
-  fn: blinker-1.4.tar.gz
-  url: https://pypi.python.org/packages/source/b/blinker/blinker-1.4.tar.gz
-  md5: 8b3722381f83c2813c52de3016b68d33
+  fn: rednose-0.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/r/rednose/rednose-0.4.3.tar.gz
+  md5: 0f4d5ff44fc0f64cb5ed5b57f3605f64
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
+build:
   # noarch_python: True
-  # preserve_egg_dir: True
+  preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - blinker = blinker:main
+    # - rednose = rednose:main
     #
-    # Would create an entry point called blinker that calls blinker.main()
+    # Would create an entry point called rednose that calls rednose.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -30,14 +30,20 @@ requirements:
   build:
     - python
     - setuptools
+    - setuptools
+    - python-termstyle >=0.1.7
+    - colorama
 
   run:
     - python
+    - setuptools
+    - setuptools
+    - python-termstyle >=0.1.7
+    - colorama
 
-test:
+# test:
   # Python imports
-  imports:
-    - blinker
+  # imports:
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -52,9 +58,9 @@ test:
     # - nose
 
 about:
-  home: http://pythonhosted.org/blinker/
-  license: MIT License
-  summary: 'Fast, simple object-to-object and broadcast signaling'
+  home: http://gfxmonk.net/dist/0install/rednose.xml
+  license: BSD License
+  summary: 'coloured output for nosetests'
 
 # See
 # http://docs.continuum.io/conda/build.html for
