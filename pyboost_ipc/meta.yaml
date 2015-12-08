@@ -4,6 +4,7 @@ package:
 
 source:
   git_url: git@github.com:ESSS/pyboost_ipc.git
+  git_tag: v0.1
 
 requirements:
   build:
