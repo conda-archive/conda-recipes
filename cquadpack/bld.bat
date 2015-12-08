@@ -1,6 +1,4 @@
-if "%CMAKE_GENERATOR%" == "" (
-    set CMAKE_GENERATOR=NMake Makefiles
-)
+set CMAKE_GENERATOR=NMake Makefiles
 mkdir build
 cd build
 
