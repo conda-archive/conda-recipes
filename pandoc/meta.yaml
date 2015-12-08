@@ -1,37 +1,36 @@
 package:
   name: pandoc
-  version: 1.12.3 # [linux]
-  version: 1.13.1 # [osx]
-  version: 1.15.0.6 # [win]
+  version: 1.12.3     # [linux]
+  version: 1.13.1     # [osx]
+  version: 1.15.0.6   # [win]
 
 source:
-  fn: pandoc-1.12.3.tar.gz # [linux]
-  url: https://pandoc.googlecode.com/files/pandoc-1.12.3.tar.gz # [linux]
-  sha1: f519b5fb8c88ff4374432477dc12f68bbe238510 # [linux]
-  fn: pandoc-1.13.1.pkg # [osx]
-  url: https://github.com/jgm/pandoc/releases/download/1.13.1/pandoc-1.13.1-osx.pkg # [osx]
-  sha1: 60a7812fa3d875a43d4cb4cee766425727206a8d # [osx]
+  fn:   pandoc-1.12.3.tar.gz                                                                  # [linux]
+  url:  https://pandoc.googlecode.com/files/pandoc-1.12.3.tar.gz                              # [linux]
+  sha1: f519b5fb8c88ff4374432477dc12f68bbe238510                                              # [linux]
+  fn:   pandoc-1.13.1.pkg                                                                     # [osx]
+  url:  https://github.com/jgm/pandoc/releases/download/1.13.1/pandoc-1.13.1-osx.pkg          # [osx]
+  sha1: 60a7812fa3d875a43d4cb4cee766425727206a8d                                              # [osx]
+  fn:   pandoc-1.15.0.6-windows.msi                                                           # [win]
+  url:  https://github.com/jgm/pandoc/releases/download/1.15.0.6/pandoc-1.15.0.6-windows.msi  # [win]
+  sha1: 06c4af2c54f4bf581659ad0545a4f225a6a839e1                                              # [win]
 
-  fn: pandoc-1.15.0.6-windows.msi # [win]
-  url: https://github.com/jgm/pandoc/releases/download/1.15.0.6/pandoc-1.15.0.6-windows.msi # [win]
-  sha1: 06c4af2c54f4bf581659ad0545a4f225a6a839e1 # [win]
+build:
+  number: 3    # [linux]
+
+requirements:
+  build:
+    - gmp 4.*           # [linux]
+    - libffi            # [linux]
+    - zlib              # [linux]
+  run:
+    - gmp 4.*           # [linux]
+    - libffi            # [linux]
+    - zlib              # [linux]
 
 test:
   commands:
     - pandoc --help
-
-requirements:           # [linux]
-  build:                # [linux]
-    - gmp 4.*           # [linux]
-    - libffi            # [linux]
-    - zlib              # [linux]
-  run:                  # [linux]
-    - gmp 4.*           # [linux]
-    - libffi            # [linux]
-    - zlib              # [linux]
-
-build:  # [linux]
-  number: 3 # [linux]
 
 about:
   home: http://johnmacfarlane.net/pandoc/
