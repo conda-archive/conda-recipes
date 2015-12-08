@@ -1,49 +1,51 @@
 package:
-  name: pytest-xdist
-  version: 1.13.1
+  name: pytest-incremental
+  version: "0.4.2"
 
 source:
-  fn: pytest-xdist-1.13.1.tar.gz
-  url: https://pypi.python.org/packages/source/p/pytest-xdist/pytest-xdist-1.13.1.tar.gz
-  md5: 7741b4f3adce45f3f3a0ec97cdd8eadf
+  fn: pytest-incremental-0.4.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pytest-incremental/pytest-incremental-0.4.2.tar.gz
+  md5: fc261d18b59736441c7862e3093f3d7a
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
+  # noarch_python: True
   preserve_egg_dir: True
-  #entry_points:
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - pytest-xdist = pytest-xdist:main
+    # - pytest-incremental = pytest-incremental:main
     #
-    # Would create an entry point called pytest-xdist that calls pytest-xdist.main()
+    # Would create an entry point called pytest-incremental that calls pytest-incremental.main()
 
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-
-  number: 0
+  # number: 1
 
 requirements:
   build:
     - python
     - setuptools
-    - execnet
+    - six
+    - doit >=0.28.0
     - pytest
 
   run:
     - python
-    - execnet
+    - setuptools
+    - six
+    - doit >=0.28.0
     - pytest
 
-test:
+# test:
   # Python imports
-  imports:
-    - xdist
+  # imports:
 
-  #commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -56,9 +58,9 @@ test:
     # - nose
 
 about:
-  home: http://bitbucket.org/hpk42/pytest-xdist
+  home: http://pytest-incremental.readthedocs.org
   license: MIT License
-  summary: 'py.test xdist plugin for distributed testing and loop-on-failing modes'
+  summary: 'an incremental test runner (pytest plugin)'
 
 # See
 # http://docs.continuum.io/conda/build.html for
