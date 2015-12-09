@@ -13,7 +13,6 @@ build:
 
 requirements:
   build:
-    - gcc
     - expat
     - curl
     - openssl
