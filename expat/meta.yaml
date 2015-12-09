@@ -7,10 +7,6 @@ source:
   url: http://sourceforge.net/projects/expat/files/expat/2.1.0/expat-2.1.0.tar.gz
   md5: dd7dab7a5fea97d2a6a43f511449b7cd
 
-requirements:
-  build:
-    - gcc
-
 about:
   home: http://expat.sourceforge.net
   license: MIT
