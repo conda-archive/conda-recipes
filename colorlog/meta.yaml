@@ -1,0 +1,30 @@
+package:
+  name: colorlog
+  version: "2.6.0"
+
+source:
+  fn: colorlog-2.6.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/colorlog/colorlog-2.6.0.tar.gz
+  md5: 38c23018fff88653dfdaafb984c8d0fa
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - colorama [win]
+
+  run:
+    - python
+    - colorama [win]
+
+test:
+  imports:
+    - colorlog
+
+about:
+  home: https://github.com/borntyping/python-colorlog
+  license: MIT License
+  summary: 'Log formatting with colors!'
