@@ -1,0 +1,17 @@
+package:
+  name: r-rtools
+  version: "3.3"
+
+source:
+  fn: Rtools33.exe
+  url:
+    - https://cran.r-project.org/bin/windows/Rtools/Rtools33.exe
+
+test:
+  commands:
+    - gcc --version
+
+about:
+  home: https://cran.r-project.org/bin/windows/Rtools/
+  license: GPL-2 | GPL-3
+  summary: Build tools for R on Windows
