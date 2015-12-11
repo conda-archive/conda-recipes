@@ -8,6 +8,15 @@ build:
 requirements: # [not win]
   build:      # [not win]
     - gcc     # [not win]
+    - numpy   # [not win]
+
+  run:
+    - python  # [not win]
+    - numpy   # [not win]
+
+test:
+  imports:
+    - nlopt   # [not win]
 
 source:
   fn: nlopt-2.4.2.tar.gz
