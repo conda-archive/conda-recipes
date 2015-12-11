@@ -10,3 +10,8 @@ source:
 build:
   number: 0
 
+about:
+  home: http://muparser.beltoforion.de/
+  license: MIT 
+  summary: A fast math parser library
+
