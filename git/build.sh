@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export C_INCLUDE_PATH="$PREFIX/include"
+export LIBRARY_PATH="$PREFIX/lib"
 
 # NO_TCLTK disables git-gui
 # NO_PERL disables all perl-based utils:
