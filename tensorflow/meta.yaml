@@ -1,9 +1,9 @@
 package:
   name: tensorflow
-  version: "0.5.0"
+  version: "0.6.0"
 
 build:
-  number: 2
+  number: 0
   entry_points:
     - tensorflow_model_cifar10_eval = tensorflow.models.image.cifar10.cifar10_eval:main
     - tensorflow_model_cifar10_multi_gpu_train = tensorflow.models.image.cifar10.cifar10_multi_gpu_train:main
@@ -15,11 +15,11 @@ requirements:
   build:
     - python
     - pip
-    - numpy >=1.9.2
+    - numpy >=1.8.2
     - six >=1.10.0
   run:
     - python
-    - numpy >=1.9.2
+    - numpy >=1.8.2
     - six >=1.10.0
 
 test:
