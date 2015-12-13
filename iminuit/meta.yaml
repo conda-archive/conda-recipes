@@ -1,59 +1,25 @@
 package:
   name: iminuit
-  version: !!str 1.1.1
+  version: 1.1.1
 
 source:
   fn: iminuit-1.1.1.tar.gz
   url: https://pypi.python.org/packages/source/i/iminuit/iminuit-1.1.1.tar.gz
   md5: d2a05f890eac4bd5a392f49d056ef6a6
-#  patches:
-   # List any patch files here
-   # - fix.patch
-
-# build:
-  # preserve_egg_dir: True
-  # entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - iminuit = iminuit:main
-    #
-    # Would create an entry point called iminuit that calls iminuit.main()
-
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
 
 requirements:
   build:
     - python
-
   run:
     - python
 
 test:
-  # Python imports
   imports:
     - iminuit
-
-  # commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
-
-
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any additional test requirements here.  For example
-    # - nose
+    - iminuit._libiminuit
 
 about:
   home: http://iminuit.github.io/iminuit/
   license: GNU General Public License (GPL) or MIT License
-  summary: 'Interactive Minimization Tools based on MINUIT'
-
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml
+  license_family: GPL2
+  summary: Interactive Minimization Tools based on MINUIT
