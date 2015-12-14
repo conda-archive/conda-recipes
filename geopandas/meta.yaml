@@ -1,6 +1,6 @@
 package:
   name: geopandas
-  version: !!str 0.1.1
+  version: 0.1.1
 
 source:
   fn: geopandas-0.1.1.tar.gz
