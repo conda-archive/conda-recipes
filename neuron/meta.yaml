@@ -1,0 +1,22 @@
+package:
+    name: neuron
+    version: "7.4"
+
+source:
+    url: http://www.neuron.yale.edu/ftp/neuron/versions/v7.4/nrn-7.4.tar.gz
+    fn: nrn-7.4.tar.gz
+    
+requirements:
+    build:
+        - iv ==19
+        - python
+    run:
+        - iv ==19
+        - python
+
+test:
+    imports:
+      - neuron
+      - neuron.hoc
+      - neuron.gui
+    

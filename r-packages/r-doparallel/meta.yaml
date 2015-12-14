@@ -2,13 +2,13 @@ package:
   name: r-doparallel
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.0.8"
+  version: "1.0.10"
 
 source:
-  fn: doParallel_1.0.8.tar.gz
+  fn: doParallel_1.0.10.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/doParallel_1.0.8.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/doParallel/doParallel_1.0.8.tar.gz
+    - http://cran.r-project.org/src/contrib/doParallel_1.0.10.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/doParallel/doParallel_1.0.10.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -61,22 +61,23 @@ about:
 
 # Package: doParallel
 # Type: Package
-# Title: Foreach parallel adaptor for the parallel package
-# Version: 1.0.8
-# Author: Revolution Analytics, Steve Weston
-# Maintainer: Revolution Analytics <packages@revolutionanalytics.com>
+# Title: Foreach Parallel Adaptor for the 'parallel' Package
+# Version: 1.0.10
+# Authors@R: c(person("Rich", "Calaway", role="cre", email="richcala@microsoft.com"), person("Revolution", "Analytics", role=c("aut", "cph")), person("Steve", "Weston", role="aut"), person("Dan", "Tenenbaum", role="ctb"))
 # Description: Provides a parallel backend for the %dopar% function using the parallel package.
 # Depends: R (>= 2.14.0), foreach(>= 1.2.0), iterators(>= 1.0.0), parallel, utils
 # Suggests: caret, mlbench, rpart
 # Enhances: compiler, RUnit
 # License: GPL-2
+# Author: Rich Calaway [cre], Revolution Analytics [aut, cph], Steve Weston [aut], Dan Tenenbaum [ctb]
+# Maintainer: Rich Calaway <richcala@microsoft.com>
 # Repository: CRAN
 # Repository/R-Forge/Project: doparallel
-# Repository/R-Forge/Revision: 13
-# Repository/R-Forge/DateTimeStamp: 2014-02-25 19:30:09
-# Date/Publication: 2014-02-28 20:42:20
-# Packaged: 2014-02-25 23:42:05 UTC; rforge
+# Repository/R-Forge/Revision: 15
+# Repository/R-Forge/DateTimeStamp: 2015-10-13 20:31:22
+# Date/Publication: 2015-10-14 09:53:49
 # NeedsCompilation: no
+# Packaged: 2015-10-13 20:46:30 UTC; rforge
 
 # See
 # http://docs.continuum.io/conda/build.html for

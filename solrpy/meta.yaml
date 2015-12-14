@@ -1,0 +1,23 @@
+package:
+  name: solrpy
+  version: 0.9.7
+
+source:
+  git_url: https://github.com/edsu/solrpy
+  git_tag: rel-0-9-7
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - solr
+
+about:
+  home: http://pythonhosted.org/solrpy/
+  license: Apache 2.0

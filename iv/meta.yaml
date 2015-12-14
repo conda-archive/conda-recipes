@@ -1,0 +1,7 @@
+package:
+    name: iv
+    version: "19"
+
+source:
+    url: http://www.neuron.yale.edu/ftp/neuron/versions/v7.4/iv-19.tar.gz
+    fn: iv-19.tar.gz

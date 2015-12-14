@@ -1,15 +1,3 @@
-You need to install cabal and run
-
-    cabal update
-
-This recipe will install some dependencies into cabal, so you need to have
-write access to it.
-
-On Linux, you need to install zlib.
-
-    sudo apt-get install libghc-zlib-dev
-
-works on Ubuntu.
-
-On OS X it just installs from binary so you don't need to worry about any of
-this.
+* The Linux package doesn't work on systems older than CentOS 6
+* The OS X package works on 10.7+
+* The Windows package works on 32 and 64 bit archs

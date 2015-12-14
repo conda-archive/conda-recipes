@@ -10,9 +10,11 @@ grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
 # than the one in Anaconda. DYLD_FALLBACK_LIBRARY_PATH will only come
 # into play if it cannot find the library via normal means. The default comes
 # from 'man dyld'.
-export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib:$(HOME)/lib:/usr/local/lib:/lib:/usr/lib
+if [ `uname` == Darwin ]; then
+    export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib:$(HOME)/lib:/usr/local/lib:/lib:/usr/lib
+fi
 
-$R CMD INSTALL --build .
+$R CMD INSTALL --build --no-test-load .
 
 # Add more build steps here, if they are necessary.
 

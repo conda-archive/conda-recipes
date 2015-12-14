@@ -1,11 +1,11 @@
 package:
   name: pytest-timeout
-  version: !!str 0.3
+  version: 1.0.0
 
 source:
-  fn: pytest-timeout-0.3.tar.gz
-  url: https://pypi.python.org/packages/source/p/pytest-timeout/pytest-timeout-0.3.tar.gz
-  md5: 46de81f106ab8a320c39a37d7d8f0429
+  fn: pytest-timeout-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/pytest-timeout/pytest-timeout-1.0.0.tar.gz
+  md5: f9f162bd079689980b5614673ddfdae4
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -29,15 +29,16 @@ requirements:
   build:
     - python
     - setuptools
-    - pytest >=2.0
+    - pytest >=2.8
 
   run:
     - python
-    - pytest >=2.0
+    - pytest >=2.8
 
 test:
   # Python imports
-  # imports:
+  imports:
+    - pytest_timeout
 
   #commands:
     # You can put test commands to be run here.  Use this to test that the

@@ -2,13 +2,13 @@ package:
   name: r-domc
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.3.3"
+  version: "1.3.4"
 
 source:
-  fn: doMC_1.3.3.tar.gz
+  fn: doMC_1.3.4.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/doMC_1.3.3.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/doMC/doMC_1.3.3.tar.gz
+    - http://cran.r-project.org/src/contrib/doMC_1.3.4.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/doMC/doMC_1.3.4.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -56,28 +56,29 @@ about:
   #home:
   license: GPL-2
   summary: Provides a parallel backend for the %dopar% function using the multicore functionality
-    of the parallel package..
+    of the parallel package.
 
 # The original CRAN metadata for this package was:
 
 # Package: doMC
 # Type: Package
-# Title: Foreach parallel adaptor for the multicore package
-# Version: 1.3.3
-# Author: Revolution Analytics
-# Maintainer: Revolution Analytics <packages@revolutionanalytics.com>
-# Description: Provides a parallel backend for the %dopar% function using the multicore functionality of the parallel package..
+# Title: Foreach Parallel Adaptor for 'parallel'
+# Version: 1.3.4
+# Authors@R: c(person("Rich", "Calaway", role="cre", email="richcala@microsoft.com"), person("Revolution", "Analytics", role=c("aut", "cph")), person("Steve", "Weston", role="aut"))
+# Description: Provides a parallel backend for the %dopar% function using the multicore functionality of the parallel package.
 # Depends: R (>= 2.14.0), foreach(>= 1.2.0), iterators(>= 1.0.0), parallel
 # Imports: utils
 # Enhances: compiler, RUnit
 # License: GPL-2
+# Author: Rich Calaway [cre], Revolution Analytics [aut, cph], Steve Weston [aut]
+# Maintainer: Rich Calaway <richcala@microsoft.com>
 # Repository: CRAN
 # Repository/R-Forge/Project: domc
-# Repository/R-Forge/Revision: 16
-# Repository/R-Forge/DateTimeStamp: 2014-02-25 19:29:46
-# Date/Publication: 2014-02-28 07:00:48
-# Packaged: 2014-02-25 23:42:04 UTC; rforge
+# Repository/R-Forge/Revision: 17
+# Repository/R-Forge/DateTimeStamp: 2015-10-10 00:31:58
+# Date/Publication: 2015-10-13 09:12:51
 # NeedsCompilation: no
+# Packaged: 2015-10-10 00:46:21 UTC; rforge
 # OS_type: unix
 
 # See

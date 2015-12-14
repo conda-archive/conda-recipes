@@ -1,0 +1,11 @@
+package:
+  name: libsvm
+  version: 320
+
+source:
+  git_url: https://github.com/cjlin1/libsvm/
+  git_rev: v320
+
+about:
+  home: https://www.csie.ntu.edu.tw/~cjlin/libsvm/
+  license: modified BSD

@@ -1,56 +1,25 @@
 package:
   name: amqp
-  version: 1.0.12
+  version: 1.4.7
 
 source:
-  fn: amqp-1.0.12.tar.gz
-  url: https://pypi.python.org/packages/source/a/amqp/amqp-1.0.12.tar.gz
-  md5: 1017ab105af25a6b5b2253adcb7cc5a6
-#  patches:
-   # List any patch files here
-   # - fix.patch
-
-build:
-  # entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - amqp:main
-    #
-    # Would call amqp.main()
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  number: 1
+  fn: amqp-1.4.7.tar.gz
+  url: https://pypi.python.org/packages/source/a/amqp/amqp-1.4.7.tar.gz
+  md5: 5aa44107d142f56385d2375f302cf7b0
 
 requirements:
   build:
-    - python
-    - setuptools
+  - python
+  - setuptools
 
   run:
-    - python
+  - python
 
 test:
-  # Python imports
   imports:
-    - amqp
-
-  # commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
-
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any test requirements here.  For example
-    # - nose
+  - amqp
 
 about:
   home: http://github.com/celery/py-amqp
   license: BSD License or GNU Library or Lesser General Public License (LGPL)
-
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml
+  summary: Low-level AMQP client for Python (fork of amqplib)

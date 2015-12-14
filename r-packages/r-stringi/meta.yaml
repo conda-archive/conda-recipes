@@ -2,13 +2,13 @@ package:
   name: r-stringi
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.5_5"
+  version: "1.0_1"
 
 source:
-  fn: stringi_0.5-5.tar.gz
+  fn: stringi_1.0-1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/stringi_0.5-5.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/stringi/stringi_0.5-5.tar.gz
+    - http://cran.r-project.org/src/contrib/stringi_1.0-1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/stringi/stringi_1.0-1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -57,18 +57,18 @@ about:
     processing in every locale and any native encoding. Owing to the use of the ICU
     library, the package provides R users with platform-independent functions known
     to Java, Perl, Python, PHP, and Ruby programmers. Among available features there
-    are: pattern searching (e.g. via regular expressions), random string generation,
-    string collation, transliteration, concatenation, date-time formatting and parsing,
-    etc.'
+    are: pattern searching (e.g., with ICU Java-like regular expressions or the Unicode
+    Collation Algorithm), random string generation, case mapping, string transliteration,
+    concatenation, Unicode normalization, date-time formatting and parsing, etc.'
 
 
 # The original CRAN metadata for this package was:
 
 # Package: stringi
-# Version: 0.5-5
-# Date: 2015-06-28
+# Version: 1.0-1
+# Date: 2015-10-22
 # Title: Character String Processing Facilities
-# Description: Allows for fast, correct, consistent, portable, as well as convenient character string/text processing in every locale and any native encoding. Owing to the use of the ICU library, the package provides R users with platform-independent functions known to Java, Perl, Python, PHP, and Ruby programmers. Among available features there are: pattern searching (e.g. via regular expressions), random string generation, string collation, transliteration, concatenation, date-time formatting and parsing, etc.
+# Description: Allows for fast, correct, consistent, portable, as well as convenient character string/text processing in every locale and any native encoding. Owing to the use of the ICU library, the package provides R users with platform-independent functions known to Java, Perl, Python, PHP, and Ruby programmers. Among available features there are: pattern searching (e.g., with ICU Java-like regular expressions or the Unicode Collation Algorithm), random string generation, case mapping, string transliteration, concatenation, Unicode normalization, date-time formatting and parsing, etc.
 # URL: http://stringi.rexamine.com/ http://site.icu-project.org/ http://www.unicode.org/
 # BugReports: http://github.com/Rexamine/stringi/issues
 # SystemRequirements: ICU4C (>= 50, optional)
@@ -80,10 +80,10 @@ about:
 # Author: Marek Gagolewski and Bartek Tartanus (stringi source code); IBM and other contributors (ICU4C 55.1 source code); Unicode, Inc. (Unicode Character Database)
 # Maintainer: Marek Gagolewski <gagolews@rexamine.com>
 # NeedsCompilation: yes
-# Packaged: 2015-06-28 20:51:37 UTC; gagolews
+# Packaged: 2015-10-22 14:03:17 UTC; gagolews
 # License_is_FOSS: yes
 # Repository: CRAN
-# Date/Publication: 2015-06-29 07:40:06
+# Date/Publication: 2015-10-22 22:14:43
 
 # See
 # http://docs.continuum.io/conda/build.html for
