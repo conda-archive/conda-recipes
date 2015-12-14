@@ -1,6 +1,6 @@
 package:
   name: descartes
-  version: !!str 1.0.1
+  version: 1.0.1
 
 source:
   fn: descartes-1.0.1.tar.gz
@@ -14,8 +14,8 @@ requirements:
 
   run:
     - python
-    - matplotlib
     - numpy
+    - matplotlib
 
 test:
   requires:
@@ -28,5 +28,5 @@ test:
 
 about:
   home: http://bitbucket.org/sgillies/descartes/
-  license:  BSD License
+  license: BSD License
   summary: 'Use geometric objects as matplotlib paths and patches'
