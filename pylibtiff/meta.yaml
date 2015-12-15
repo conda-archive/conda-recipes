@@ -12,15 +12,15 @@ source:
 requirements:
   build:
     - python
-    - numpy 1.9.*
+    - numpy
     - libtiff <=4.0.3
   run:
     - python
-    - numpy 1.9.*
+    - numpy
     - libtiff <=4.0.3
 
 build:
-  number: 3
+  number: 2
 
 test:
   requires:
