@@ -10,12 +10,12 @@ source:
 requirements:
   build:
     - cmake
-    - zlib
     - python
   run:
-    - zlib
+    - numpy
     - python
 
 about:
   home: http://www.cs.ubc.ca/research/flann/
   license: BSD
+  license_file: COPYING
