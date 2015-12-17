@@ -1,0 +1,27 @@
+package:
+  name: mahotas
+  version: 1.4.0
+
+source:
+  fn: mahotas-1.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/m/mahotas/mahotas-1.4.0.tar.gz
+  md5: f37501cf1dfac022cd1e8610bdd5451e
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+
+  run:
+    - python
+    - numpy
+
+test:
+  imports:
+    - mahotas
+
+about:
+  home: https://github.com/mahotas/
+  summary: "Mahotas: Computer Vision Library"
+  license: MIT
