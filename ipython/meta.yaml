@@ -1,11 +1,11 @@
 package:
   name: ipython
-  version: 2.3.1
+  version: 3.2.1
 
 source:
-  fn: ipython-2.3.1.tar.gz
-  url: https://pypi.python.org/packages/source/i/ipython/ipython-2.3.1.tar.gz
-  md5: 2b7085525dac11190bfb45bb8ec8dcbf
+  fn: ipython-3.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/ipython/ipython-3.2.1.tar.gz
+  md5: 61c2d5665ff1bd65eceb19fa7f1b23c7
   patches:
     - cprt.patch
 
@@ -31,10 +31,11 @@ requirements:
     - python
     - pyreadline             [win]
     - python.app             [osx]
+    - jsonschema
 
 test:
   commands:
-    - ipython -h
+    - ipython -h    
   imports:
     - IPython
 

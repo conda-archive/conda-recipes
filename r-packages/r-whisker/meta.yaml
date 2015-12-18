@@ -57,7 +57,7 @@ about:
 # Package: whisker
 # Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
 # License: GPL-3
-# Title: {{mustache}} for R, logicless templating
+# Title: mustache for R, logicless templating
 # Type: Package
 # LazyLoad: yes
 # Author: Edwin de Jonge

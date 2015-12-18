@@ -1,29 +1,11 @@
 package:
   name: blinker
-  version: !!str 1.3
+  version: "1.4"
 
 source:
-  fn: blinker-1.3.tar.gz
-  url: https://pypi.python.org/packages/source/b/blinker/blinker-1.3.tar.gz
-  md5: 66e9688f2d287593a0e698cd8a5fbc57
-#  patches:
-   # List any patch files here
-   # - fix.patch
-
-# build:
-  #preserve_egg_dir: True
-  #entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - blinker = blinker:main
-    #
-    # Would create an entry point called blinker that calls blinker.main()
-
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  fn: blinker-1.4.tar.gz
+  url: https://pypi.python.org/packages/source/b/blinker/blinker-1.4.tar.gz
+  md5: 8b3722381f83c2813c52de3016b68d33
 
 requirements:
   build:
@@ -33,27 +15,10 @@ requirements:
     - python
 
 test:
-  # Python imports
   imports:
     - blinker
 
-  #commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
-
-
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any additional test requirements here.  For example
-    # - nose
-
 about:
   home: http://pythonhosted.org/blinker/
-  license: MIT License
+  license: MIT
   summary: Fast, simple object-to-object and broadcast signaling
-
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml

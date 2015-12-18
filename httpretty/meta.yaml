@@ -1,0 +1,26 @@
+package:
+  name: httpretty
+  version: 0.8.10
+
+source:
+  fn: httpretty-0.8.10.tar.gz
+  url: https://pypi.python.org/packages/source/h/httpretty/httpretty-0.8.10.tar.gz
+  md5: 9c130b16726cbf85159574ae5761bce7
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - urllib3
+
+  run:
+    - python
+    - urllib3
+
+test:
+  imports:
+    - httpretty
+
+about:
+  home: https://github.com/gabrielfalcao/HTTPretty
+  license: BSD

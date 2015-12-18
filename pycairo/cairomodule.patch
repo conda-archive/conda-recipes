@@ -1,0 +1,30 @@
+--- src/cairomodule.c.old	2015-11-11 11:56:36 -0500
++++ src/cairomodule.c	2015-11-11 14:35:55 -0500
+@@ -201,6 +201,8 @@
+ PyObject *
+ PyInit__cairo(void)
+ {
++  PyObject *m;
++  PyObject *T;
+   if (PyType_Ready(&PycairoContext_Type) < 0)
+     return NULL;
+   if (PyType_Ready(&PycairoFontFace_Type) < 0)
+@@ -266,8 +268,7 @@
+     return NULL;
+ #endif
+ 
+-
+-  PyObject *m = PyModule_Create(&cairomodule);
++  m = PyModule_Create(&cairomodule);
+   if (m==NULL)
+     return NULL;
+   GETSTATE(m)->ErrorObject = PyErr_NewException("cairo.Error", NULL, NULL);
+@@ -527,7 +528,7 @@
+ #undef CONSTANT
+ 
+   /* Create a Capsule containing the CAPI pointer */
+-  PyObject *T = PyCapsule_New((void *)(&CAPI), "cairo.CAPI", 0);
++  T = PyCapsule_New((void *)(&CAPI), "cairo.CAPI", 0);
+   if (T != NULL) {
+     PyModule_AddObject(m, "CAPI", T);
+   }

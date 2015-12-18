@@ -37,6 +37,7 @@ requirements:
     - r-irlba
     - r-magrittr
     - gcc # [not win]
+    - gmp
 
   run:
     - r
@@ -45,6 +46,7 @@ requirements:
     - r-irlba
     - r-magrittr
     - libgcc # [not win]
+    - gmp
 
 test:
   commands:

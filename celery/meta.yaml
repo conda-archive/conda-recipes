@@ -1,0 +1,71 @@
+package:
+  name: celery
+  version: 3.1.19
+
+source:
+  fn: celery-3.1.19.tar.gz
+  url: https://pypi.python.org/packages/source/c/celery/celery-3.1.19.tar.gz
+  md5: fba8c4b269814dc6dbc36abb0e66c384
+
+build:
+  entry_points:
+  - celery = celery.__main__:main
+  - celeryd = celery.__main__:_compat_worker
+  - celerybeat = celery.__main__:_compat_beat
+  - celeryd-multi = celery.__main__:_compat_multi
+
+requirements:
+  build:
+  - python
+  - setuptools
+  - pytz
+  - billiard 3.3.*
+  - kombu 3.0*
+
+  run:
+  - python
+  - pytz
+  - billiard 3.3.*
+  - kombu 3.0*
+
+test:
+  requires:
+  - sqlalchemy
+  imports:
+  - celery
+  - celery.app
+  - celery.apps
+  - celery.backends
+  - celery.backends.database
+  - celery.bin
+  - celery.concurrency
+  - celery.contrib
+  - celery.events
+  - celery.fixups
+  - celery.loaders
+  - celery.security
+  - celery.task
+  - celery.tests
+  - celery.tests.app
+  - celery.tests.backends
+  - celery.tests.bin
+  - celery.tests.bin.proj
+  - celery.tests.compat_modules
+  - celery.tests.concurrency
+  - celery.tests.contrib
+  - celery.tests.events
+  - celery.tests.fixups
+  - celery.tests.functional
+  - celery.tests.security
+  - celery.tests.slow
+  - celery.tests.tasks
+  - celery.tests.utils
+  - celery.tests.worker
+  - celery.utils
+  - celery.utils.dispatch
+  - celery.worker
+
+about:
+  home: http://celeryproject.org
+  license: BSD
+  summary: Distributed Task Queue

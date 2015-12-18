@@ -32,10 +32,12 @@ build:
 requirements:
   build:
     - r
+    - openssl
     - gcc # [not win]
 
   run:
     - r
+    - openssl
     - libgcc # [not win]
 
 test:

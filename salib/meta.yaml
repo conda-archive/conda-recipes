@@ -1,0 +1,28 @@
+package:
+  name: salib
+  version: 0.7
+
+source:
+  fn: v0.7.tar.gz
+  url: https://github.com/SALib/SALib/archive/v0.7.tar.gz
+  md5: 16fc6cc9b6592b4700b6739deaf66dfc
+
+requirements:
+  build:
+    - setuptools
+    - scikit-learn
+    - matplotlib
+  run:
+    - python
+    - scikit-learn
+    - matplotlib
+
+test:
+  imports:
+    - SALib
+
+about:
+  home: http://salib.github.io/SALib/
+  license: MIT
+  summary: Sensitivity Analysis Library
+

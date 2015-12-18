@@ -1,0 +1,30 @@
+package:
+  name: python-mysqlclient
+  version: 1.3.6
+
+source:
+  fn: mysqlclient-1.3.6.tar.gz
+  url: https://pypi.python.org/packages/source/m/mysqlclient/mysqlclient-1.3.6.tar.gz
+  md5: 58d7c9c617a4286a88db290e7857d3aa
+
+build:
+  number: 2
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - mysql
+
+  run:
+    - python
+    - mysql
+
+test:
+  # Python imports
+  imports:
+    - MySQLdb
+
+about:
+  home: https://github.com/PyMySQL/mysqlclient-python
+  license: GPL

@@ -1,0 +1,54 @@
+--- src/matrix.c.old	2015-11-11 15:37:31 -0500
++++ src/matrix.c	2015-11-11 15:39:39 -0500
+@@ -32,8 +32,9 @@
+  */
+ PyObject *
+ PycairoMatrix_FromMatrix (const cairo_matrix_t *matrix) {
++  PyObject *o;
+   assert (matrix != NULL);
+-  PyObject *o = PycairoMatrix_Type.tp_alloc (&PycairoMatrix_Type, 0);
++  o = PycairoMatrix_Type.tp_alloc (&PycairoMatrix_Type, 0);
+   if (o != NULL)
+     ((PycairoMatrix *)o)->matrix = *matrix; // copy struct
+   return o;
+@@ -48,6 +49,7 @@
+ static PyObject *
+ matrix_new (PyTypeObject *type, PyObject *args, PyObject *kwds) {
+   static char *kwlist[] = { "xx", "yx", "xy", "yy", "x0", "y0", NULL };
++  cairo_matrix_t mx;
+   double xx = 1.0, yx = 0.0, xy = 0.0, yy = 1.0, x0 = 0.0, y0 = 0.0;
+ 
+   if (!PyArg_ParseTupleAndKeywords(args, kwds,
+@@ -55,7 +57,6 @@
+ 				   &xx, &yx, &xy, &yy, &x0, &y0))
+     return NULL;
+ 
+-  cairo_matrix_t mx;
+   cairo_matrix_init (&mx, xx, yx, xy, yy, x0, y0);
+   return PycairoMatrix_FromMatrix (&mx);
+ }
+@@ -83,12 +84,12 @@
+ static PyObject *
+ matrix_multiply (PycairoMatrix *o, PyObject *args) {
+   PycairoMatrix *mx2;
++  cairo_matrix_t result;
+ 
+   if (!PyArg_ParseTuple(args, "O!:Matrix.multiply",
+ 			&PycairoMatrix_Type, &mx2))
+     return NULL;
+ 
+-  cairo_matrix_t result;
+   cairo_matrix_multiply (&result, &o->matrix, &mx2->matrix);
+   return PycairoMatrix_FromMatrix (&result);
+ }
+@@ -283,8 +284,9 @@
+   {NULL, NULL, 0, NULL},
+ };
+ 
++#define DEFERRED(X) 0
+ PyTypeObject PycairoMatrix_Type = {
+-  PyVarObject_HEAD_INIT(&PyType_Type, 0)
++  PyVarObject_HEAD_INIT(DEFERRED(&PyType_Type), 0)
+   //PyObject_HEAD_INIT(NULL)
+   //0,                                  /* ob_size */
+   "cairo.Matrix",                     /* tp_name */
