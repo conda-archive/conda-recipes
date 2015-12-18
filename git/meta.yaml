@@ -1,11 +1,14 @@
 package:
   name: git
-  version: 2.6.3
+  version: 2.6.4
 
 source:
-  fn: v2.6.3.tar.gz
-  url: https://github.com/git/git/archive/v2.6.3.tar.gz
-  md5: 65f659fb55ba49f17de03d1d9a859a83
+  fn: v2.6.4.tar.gz                                       [unix]
+  url: https://github.com/git/git/archive/v2.6.4.tar.gz   [unix]
+  sha256: 08e3ccdba87ca55140c8155a07e147f6c1cdd7b574690e960763b18474fd05ed  [unix]
+  fn: PortableGit-2.6.4-32-bit.7z.exe                     [win]
+  url: https://github.com/git-for-windows/git/releases/download/v2.6.4.windows.1/PortableGit-2.6.4-32-bit.7z.exe [win]
+  sha256: 5b0fcea5262db1a7676b5cd21df717cd02f1835a270d7f94d1537028462e61df  [win]
 
 build:
   # git hardcodes paths to external utilities (e.g. curl)
@@ -13,15 +16,16 @@ build:
 
 requirements:
   build:
-    - expat
-    - curl
-    - openssl
-    - zlib
+    - expat     [unix]
+    - curl      [unix]
+    - openssl   [unix]
+    - zlib      [unix]
+    - 7za       [win]
   run:
-    - expat
-    - curl
-    - openssl
-    - zlib
+    - expat     [unix]
+    - curl      [unix]
+    - openssl   [unix]
+    - zlib      [unix]
 
 test:
   commands:
