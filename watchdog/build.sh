@@ -1,5 +1,7 @@
 #!/bin/bash
-export CC=clang
+if [ `uname` == Darwin ]; then
+    export CC=clang
+fi
 $PYTHON setup.py install
 
 # Add more build steps here, if they are necessary.
