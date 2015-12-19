@@ -1,11 +1,11 @@
 package:
   name: nikola
-  version: "7.7.2"
+  version: "7.7.3"
 
 source:
-  fn: nikola-7.7.2.tar.gz
-  url: https://pypi.python.org/packages/source/N/Nikola/nikola-7.7.2.tar.gz
-  md5: aea59990d97bfeebdaa4096a95f81037
+  fn: nikola-7.7.3.tar.gz
+  url: https://pypi.python.org/packages/source/N/Nikola/nikola-7.7.3.tar.gz
+  md5: 899c80ac31add15f197d4be4e88364ca
 #  patches:
    # List any patch files here
    # - fix.patch
