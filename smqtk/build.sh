@@ -1,7 +1,5 @@
 #!/bin/bash
 
-mv python/smqtk/web/geospace/parse_istdata.py python/smqtk/web/geospace/parse_istdata.sh
-
 mkdir build
 cd build
 

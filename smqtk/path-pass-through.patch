@@ -1,11 +1,13 @@
 diff --git CMakeLists.txt CMakeLists.txt
-index 89cf919..1d341c2 100644
+index fbc2643..bb2e5e3 100644
 --- CMakeLists.txt
 +++ CMakeLists.txt
-@@ -30,16 +30,6 @@ endif()
+@@ -28,17 +28,6 @@ else()
+   message(STATUS "Python site-packages to install into: ${python_site_packages}")
+ endif()
  
- 
- ###
+-
+-###
 -# TPL
 -#
 -# local installation control variables
@@ -15,11 +17,10 @@ index 89cf919..1d341c2 100644
 -add_subdirectory( TPL )
 -
 -
--###
+ ###
  # SMQTK Library
  #
- add_subdirectory( src )
-@@ -73,16 +63,6 @@ configure_file("${SMQTK_SOURCE_DIR}/setup_env.install.sh.in"
+@@ -65,16 +54,6 @@ configure_file("${SMQTK_SOURCE_DIR}/setup_env.install.sh.in"
  # System Installation
  #
  
@@ -33,6 +34,6 @@ index 89cf919..1d341c2 100644
 -    FORCE)
 -endif(NOT SMQTK_FIRST_PASS_COMPLETE)
 -
- #+
- # initial empty data and work directories
- install(DIRECTORY DESTINATION var/work)
+ install(DIRECTORY DESTINATION var/data)
+ 
+ if(UNIX)
