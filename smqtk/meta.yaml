@@ -27,7 +27,11 @@ requirements:
     - scikit-learn
     - scipy
 
+test:
+  imports:
+    - smqtk
 
 about:
   home: https://github.com/Kitware/SMQTK
   license: MIT
+  summary: "Python toolkit for pluggable algorithms and data structures for multimedia-based machine learning"
