@@ -3,19 +3,22 @@ package:
   version: 3.0.7
 
 source:
-  fn: swig-3.0.7.tar.gz
-  url: http://prdownloads.sourceforge.net/swig/swig-3.0.7.tar.gz
-  md5: 7fff46c84b8c630ede5b0f0827e3d90a
+  fn: swig-3.0.7.tar.gz   [unix]
+  url: http://prdownloads.sourceforge.net/swig/swig-3.0.7.tar.gz   [unix]
+  md5: 7fff46c84b8c630ede5b0f0827e3d90a  [unix]
+  fn: swigwin-3.0.7.zip   [win]
+  url: http://prdownloads.sourceforge.net/swig/swigwin-3.0.7.zip   [win]
+  sha256: 11423c4a37209ea501d04d2bf7f71c275cf418b93a28cf062c87b3c1fdfbe286 [win]
 
 build:
   detect_binary_files_with_prefix: True
 
 requirements:
   build:
-    - pcre
-    - python
+    - pcre      [unix]
+    - python    [unix]
   run:
-    - pcre
+    - pcre      [unix]
 
 test:
   commands:
