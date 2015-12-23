@@ -11,6 +11,7 @@ build:
 requirements:
   build:
     - curl
+    - 7za     [win]
 
 about:
   home: http://apr.apache.org/
