@@ -1,0 +1,42 @@
+package:
+  name: svn
+  version: 1.9.3
+
+source:
+  fn: subversion-1.9.3.tar.bz2
+  url: http://www.trieuvan.com/apache/subversion/subversion-1.9.3.tar.bz2
+  sha1: 27e8df191c92095f48314a415194ec37c682cbcf
+  patches:
+    # - swig_regex.patch    [win and py>30]
+    #- swig_unicode_2.patch    [win and py>30]
+    #- swig_file_mode.patch    [win and py>30]
+    #- swig_init.patch    [win and py>30]
+    #- swig_gen_base.patch    [win and py>30]
+    #- swig_gen_win.patch    [win and py>30]
+    #- swig_external.patch    [win and py>30]
+    - py3_compat.patch        [py>30]
+
+build:
+  features:
+    - vc9     [win and py27]
+    - vc10    [win and py34]
+    - vc14    [win and py35]
+
+requirements:
+  build:
+    - 7za               [win]
+    - apr      1.5.*    [win]
+    - openssl  1.0.2*   [win]
+    - python            [win]
+    - sqlite   3.9.*    [win]
+    - swig              [win]
+    - zlib     1.2.*    [win]
+
+test:
+  commands:
+    - svn help
+
+about:
+  home: https://subversion.apache.org/
+  summary: "Apache Subversion (centralized) version control software"
+  license: Apache Software License V.2
