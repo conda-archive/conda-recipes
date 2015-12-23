@@ -1,0 +1,25 @@
+package:
+  name: sqlite
+  version: 3.9.2
+
+source:
+  fn: sqlite-amalgamation-3090200.zip
+  url: https://www.sqlite.org/2015/sqlite-amalgamation-3090200.zip
+  sha256: 567139c94375e3808a11f34d81f534d0c257e2c498cddbf4cac283d74b51fe9c
+  patches:
+    - export_win.patch    [win]
+
+build:
+  features:
+    - vc9     [win and py27]
+    - vc10    [win and py34]
+    - vc14    [win and py35]
+
+requirements:
+  build:
+    - python       [win]
+
+about:
+  home: https://www.sqlite.org
+  summary: "SQLite file-based database"
+  license: Public Domain

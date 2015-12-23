@@ -1,0 +1,30 @@
+--- sqlite3.h
++++ sqlite3.h
+@@ -48,8 +48,10 @@ extern "C" {
+ #ifndef SQLITE_EXTERN
+ # define SQLITE_EXTERN extern
+ #endif
+-#ifndef SQLITE_API
+-# define SQLITE_API
++#ifdef SQLITE_EXPORTS
++#define SQLITE_API __declspec(dllexport)
++#else
++#define SQLITE_API __declspec(dllimport)
+ #endif
+ #ifndef SQLITE_CDECL
+ # define SQLITE_CDECL
+--- sqlite3.c
++++ sqlite3.c
+@@ -262,8 +262,10 @@ extern "C" {
+ #ifndef SQLITE_EXTERN
+ # define SQLITE_EXTERN extern
+ #endif
+-#ifndef SQLITE_API
+-# define SQLITE_API
++#ifdef SQLITE_EXPORTS
++#define SQLITE_API __declspec(dllexport)
++#else
++#define SQLITE_API __declspec(dllimport)
+ #endif
+ #ifndef SQLITE_CDECL
+ # define SQLITE_CDECL
