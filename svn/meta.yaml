@@ -24,13 +24,17 @@ build:
 
 requirements:
   build:
-    - 7za               [win]
-    - apr      1.5.*    [win]
-    - openssl  1.0.2*   [win]
-    - python            [win]
-    - sqlite   3.9.*    [win]
-    - swig              [win]
-    - zlib     1.2.*    [win]
+    - apr      1.5.*
+    - openssl  1.0.2*
+    - python
+    - sqlite   3.9.*
+    - swig
+    - zlib     1.2.*
+  run:
+    - apr      1.5.*
+    - openssl  1.0.2*
+    - sqlite   3.9.*
+    - zlib     1.2.*
 
 test:
   commands:

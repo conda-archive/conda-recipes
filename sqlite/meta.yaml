@@ -17,6 +17,7 @@ build:
 
 requirements:
   build:
+    # python is for lining up vc feature (runtime)
     - python       [win]
 
 about:
