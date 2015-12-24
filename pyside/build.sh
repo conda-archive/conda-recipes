@@ -34,4 +34,8 @@ if [ `uname` == Darwin ]; then
     cp /usr/lib/libshiboken-python2.7.1.1.dylib $LIB
     cp /usr/lib/libpyside-python2.7.1.1.dylib $LIB
     cp -r /Library/Python/2.7/site-packages/PySide $SP
+    cp -r /Library/Python/2.7/site-packages/pysideuic $SP
+    cp /usr/bin/pyside-rcc $PREFIX/bin
+    cp /usr/bin/pyside-uic $PREFIX/bin
+    cp /usr/bin/pyside-lupdate $PREFIX/bin
 fi
