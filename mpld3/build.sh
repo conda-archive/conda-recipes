@@ -1,8 +1,9 @@
 #!/bin/bash
 
-mkdir -vp ${PREFIX}/bin;
+$PYTHON setup.py install
 
-touch requirements.txt;
+# Add more build steps here, if they are necessary.
 
-${PYTHON} setup.py submodule || exit 1;
-${PYTHON} setup.py install || exit 1;
+# See
+# http://docs.continuum.io/conda/build.html
+# for a list of environment variables that are set during the build process.
