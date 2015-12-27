@@ -30,6 +30,10 @@ requirements:
 test:
   imports:
     - smqtk
+  requires:
+    - mock
+    - nose
+    - nose-exclude
 
 about:
   home: https://github.com/Kitware/SMQTK
