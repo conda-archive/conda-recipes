@@ -7,7 +7,7 @@ if "%ARCH%"=="32" (
 
 
 :: These are here to map cl.exe version numbers, which we use to figure out which
-::   compiler we are using, and which compiler consumers of Qt need to use, to MSVC
+::   compiler we are using, and which compiler consumers of svn need to use, to MSVC
 ::   year numbers.
 :: Update this with any new MSVC compiler you might use.
 echo @echo 15=2008 >> msvc_versions.bat
