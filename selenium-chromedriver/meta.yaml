@@ -16,6 +16,8 @@ source:
 
 build:
     number: 0
+    script_env:
+        - PYTHONPATH
 
 test:
     commands:
