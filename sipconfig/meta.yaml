@@ -1,0 +1,14 @@
+package:
+  name: sipconfig
+  version: 4.16.2
+
+source:
+  fn: sip-4.16.2.zip
+  url: http://sourceforge.net/projects/pyqt/files/sip/sip-4.16.2/sip-4.16.2.zip
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - python 2.7*

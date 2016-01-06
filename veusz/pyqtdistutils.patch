@@ -1,0 +1,29 @@
+From 6ca1c3735f58622c8ff12e635b6baf92e4d97838 Mon Sep 17 00:00:00 2001
+From: David Li <li.davidm96@gmail.com>
+Date: Mon, 11 Aug 2014 16:58:15 -0700
+Subject: [PATCH] Fix QT_{LIB,INC}_DIR
+
+---
+ pyqtdistutils.py | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/pyqtdistutils.py b/pyqtdistutils.py
+index b45ebd3..e5bea2a 100644
+--- a/pyqtdistutils.py
++++ b/pyqtdistutils.py
+@@ -20,10 +20,8 @@ import PyQt4.QtCore
+ # try to get various useful things we need in order to build
+ # this is likely to break, I'm sure
+ 
+-QT_LIB_DIR = PyQt4.QtCore.QLibraryInfo.location(
+-    PyQt4.QtCore.QLibraryInfo.LibrariesPath)
+-QT_INC_DIR = PyQt4.QtCore.QLibraryInfo.location(
+-    PyQt4.QtCore.QLibraryInfo.HeadersPath)
++QT_LIB_DIR = os.path.join(os.environ['PREFIX'], r'libs\PyQt4')
++QT_INC_DIR = os.path.join(os.environ['PREFIX'], r'include\PyQt4\include')
+ QT_IS_FRAMEWORK = os.path.exists(
+     os.path.join(QT_LIB_DIR, 'QtCore.framework') )
+ 
+-- 
+2.0.4
+

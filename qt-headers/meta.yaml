@@ -1,0 +1,14 @@
+package:
+  name: qt-headers
+  version: 4.8.6
+
+source:
+  fn: qt-opensource-windows-x86-4.8.6.exe                                                                               [py2k]
+  url: http://download.qt-project.org/official_releases/qt/4.8/4.8.6/qt-opensource-windows-x86-vs2008-4.8.6.exe         [py2k]
+
+  fn: qt-opensource-windows-x86-4.8.6.exe                                                                               [py3k]
+  url: http://download.qt-project.org/official_releases/qt/4.8/4.8.6/qt-opensource-windows-x86-vs2010-4.8.6.exe         [py3k]
+
+about:
+  home: https://qt-project.org/
+  license: LGPL
