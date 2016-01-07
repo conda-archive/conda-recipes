@@ -1,0 +1,23 @@
+package:
+    name: dcm4che
+    version: 2.0.29
+
+source:    
+    fn: dcm4che-2.0.29-bin.zip
+    url: http://sourceforge.net/projects/dcm4che/files/dcm4che2/2.0.29/dcm4che-2.0.29-bin.zip
+
+build:
+    number: 0
+
+
+requirements:
+    build:
+      - python  # So we get Scripts
+
+test:
+   commands:
+     - dcmsnd --help
+
+about:
+    home: https://github.com/dcm4che/dcm4che
+    license: Mozilla Public License Version 1.1

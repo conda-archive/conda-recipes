@@ -1,32 +1,36 @@
 package:
     name: dcm4che
-    #version: 3.3.7
-    version: 2.0.29
+    version: 3.3.7
+    # version: 2.0.29
 
-source:
-    #git_tag: 3.3.7
-    #git_url: https://github.com/ClinicalGraphics/dcm4che.git
-    fn: dcm4che-2.0.29-src.zip
-    url: http://sourceforge.net/projects/dcm4che/files/dcm4che2/2.0.29/dcm4che-2.0.29-src.zip
+source:    
+    # We'll just use the compiled binaries from sourceforge
+    fn: dcm4che-3.3.7-bin.zip
+    url: http://sourceforge.net/projects/dcm4che/files/dcm4che3/3.3.7/dcm4che-3.3.7-bin.zip
+    # git_tag: 3.3.7
+    # git_url: https://github.com/ClinicalGraphics/dcm4che.git    
+    # For version 2
+    # fn: dcm4che-2.0.29-src.zip
+    # url: http://sourceforge.net/projects/dcm4che/files/dcm4che2/2.0.29/dcm4che-2.0.29-src.zip
 
 build:
     number: 0
-    binary_relocation: false
 
+# No need to build from source, we can use their binaries
 requirements:
     build:
-      - java-jdk
-      - apache-maven
-      - apache-ant
+      - python  # So we get Scripts
+#       - java-jdk
+#       - apache-maven
+#       - apache-ant
 
-#test:
-    #commands:
-    #    - dcm4che-tool-dcmsnd --version
-    #    - dcm4che-tool-dcmsnd --help
-        
-    #requires:
-    #  - java-jdk
-    #  - apache-maven
+# test:
+#    commands:
+#      - dcm4che-tool-dcmsnd --version
+#      - dcm4che-tool-dcmsnd --help
+#    requires:
+#      - java-jdk
+#      - apache-maven
 
 about:
     home: https://github.com/dcm4che/dcm4che
