@@ -1,18 +1,19 @@
 package:
   name: django
-  version: !!str 1.7
+  version: "1.9"
 
 source:
-  fn: Django-1.7.tar.gz
-  url: https://pypi.python.org/packages/source/D/Django/Django-1.7.tar.gz
-  md5: 03edab6828119aa9b32b2252d25eb38d
+  fn: Django-1.9.tar.gz
+  url: https://pypi.python.org/packages/source/D/Django/Django-1.9.tar.gz
+  md5: 110389cf89196334182295165852e082
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
-  #preserve_egg_dir: True
-  #entry_points:
+build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -20,6 +21,7 @@ source:
     #
     # Would create an entry point called django that calls django.main()
 
+    - django-admin = django.core.management:execute_from_command_line
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -28,177 +30,213 @@ source:
 requirements:
   build:
     - python
-    - pip
     - setuptools
 
   run:
     - python
-    - setuptools
 
 test:
   # Python imports
   imports:
-    - django.http
-    - django.contrib.flatpages.templatetags
+    - django
+    - django.apps
     - django.conf
-    - django.conf.locale.sv
-    - django.conf.locale.ka
-    - django.conf.locale.sr
-    - django.conf.locale.sq
-    - django.conf.locale.ja
-    - django.conf.locale.sl
-    - django.conf.locale.nn
-    - django.conf.locale.sk
-    - django.conf.locale.ga
-    - django.contrib.humanize
-    - django.contrib.webdesign
-    - django.conf.locale.ca
-    - django.contrib.gis.tests.distapp
-    - django.contrib.formtools.wizard
-    - django.core.handlers
-    - django.conf.locale.cy
-    - django.conf.locale.es_MX
-    - django.contrib.contenttypes
-    - django.conf.locale.cs
-    - django.contrib.formtools.tests
-    - django.middleware
-    - django.contrib.flatpages
-    - django.conf.locale.pt
-    - django.contrib
-    - django.core.mail.backends
-    - django.contrib.gis.db
-    - django.contrib.staticfiles.templatetags
-    - django.contrib.sessions.management
-    - django.contrib.messages.storage
-    - django.conf.locale.kn
-    - django.conf.locale.ko
-    - django.conf.locale.km
-    - django.conf.locale.es_NI
-    - django.conf.locale.pl
-    - django.contrib.syndication
-    - django.conf.locale.zh_TW
-    - django.contrib.gis.utils
-    - django.contrib.formtools.wizard.storage
-    - django.conf.locale.en_GB
-    - django.conf.locale.uk
-    - django.contrib.gis.gdal.tests
-    - django.conf.locale.lv
-    - django.conf.locale.lt
-    - django.conf.locale.de
-    - django.db.backends.dummy
-    - django.conf.locale.da
-    - django.contrib.gis.db.backends.mysql
-    - django.core.mail
-    - django.db.backends.oracle
+    - django.conf.app_template.migrations
     - django.conf.locale
-    - django.db.backends.mysql
-    - django.contrib.gis.db.backends
-    - django.conf.locale.ml
-    - django.db
-    - django.conf.urls
-    - django.contrib.gis.tests.geoadmin
-    - django.core.management.commands
-    - django.conf.locale.et
-    - django.conf.locale.eu
-    - django.conf.locale.mn
-    - django.conf.locale.ru
-    - django.contrib.formtools
-    - django.contrib.admindocs.tests
-    - django.conf.locale.es
+    - django.conf.locale.ar
+    - django.conf.locale.az
+    - django.conf.locale.bg
+    - django.conf.locale.bn
+    - django.conf.locale.bs
+    - django.conf.locale.ca
+    - django.conf.locale.cs
+    - django.conf.locale.cy
+    - django.conf.locale.da
+    - django.conf.locale.de
+    - django.conf.locale.de_CH
     - django.conf.locale.el
     - django.conf.locale.en
-    - django.conf.locale.ro
-    - django.conf.locale.mk
-    - django.template
-    - django.contrib.gis.db.backends.postgis
-    - django.conf.locale.bn
-    - django.core.management
-    - django.conf.locale.bg
-    - django.contrib.gis.tests.relatedapp
-    - django.contrib.gis.geos.tests
-    - django.contrib.sessions.backends
-    - django.conf.locale.bs
-    - django.conf.locale.sr_Latn
-    - django.conf.locale.nl
-    - django.contrib.webdesign.templatetags
-    - django.contrib.sites
-    - django.contrib.admindocs
-    - django.contrib.gis.tests.geo3d
-    - django.contrib.redirects
-    - django.conf.locale.nb
-    - django.contrib.sessions
-    - django.utils.unittest
-    - django.contrib.gis.geoip
-    - django.contrib.gis.db.backends.oracle
-    - django.core
-    - django.conf.locale.es_PR
-    - django.conf.locale.vi
-    - django.templatetags
-    - django.core.files
-    - django.contrib.sessions.management.commands
-    - django.conf.locale.th
-    - django.conf.locale.ta
-    - django.conf.locale.gl
-    - django.contrib.gis.tests
-    - django.contrib.gis
-    - django.conf.locale.tr
-    - django
-    - django.contrib.gis.management
-    - django.contrib.gis.tests.layermap
-    - django.conf.locale.de_CH
-    - django.views.decorators
-    - django.contrib.gis.geos
-    - django.contrib.gis.tests.geogapp
-    - django.utils.translation
-    - django.core.servers
-    - django.forms.extras
-    - django.conf.locale.hi
-    - django.conf.locale.zh_CN
-    - django.contrib.messages.tests
-    - django.contrib.gis.geometry
-    - django.conf.locale.he
-    - django.views
-    - django.utils
-    - django.core.checks
-    - django.conf.locale.hr
-    - django.conf.locale.pt_BR
-    - django.conf.locale.hu
-    - django.contrib.gis.maps
-    - django.contrib.gis.gdal
-    - django.db.backends.sqlite3
-    - django.contrib.gis.management.commands
-    - django.db.backends
+    - django.conf.locale.en_AU
+    - django.conf.locale.en_GB
+    - django.conf.locale.eo
+    - django.conf.locale.es
     - django.conf.locale.es_AR
-    - django.contrib.gis.gdal.prototypes
-    - django.contrib.gis.maps.openlayers
-    - django.conf.locale.ar
-    - django.contrib.staticfiles.management.commands
-    - django.core.checks.compatibility
-    - django.conf.locale.te
-    - django.contrib.humanize.templatetags
-    - django.forms
-    - django.contrib.messages
-    - django.conf.locale.fr
-    - django.conf.locale.id
-    - django.template.loaders
-    - django.contrib.staticfiles
-    - django.dispatch
-    - django.contrib.gis.db.backends.spatialite
-    - django.conf.locale.it
+    - django.conf.locale.es_CO
+    - django.conf.locale.es_MX
+    - django.conf.locale.es_NI
+    - django.conf.locale.es_PR
+    - django.conf.locale.et
+    - django.conf.locale.eu
     - django.conf.locale.fa
     - django.conf.locale.fi
+    - django.conf.locale.fr
+    - django.conf.locale.fy
+    - django.conf.locale.ga
+    - django.conf.locale.gd
+    - django.conf.locale.gl
+    - django.conf.locale.he
+    - django.conf.locale.hi
+    - django.conf.locale.hr
+    - django.conf.locale.hu
+    - django.conf.locale.id
+    - django.conf.locale.is
+    - django.conf.locale.it
+    - django.conf.locale.ja
+    - django.conf.locale.ka
+    - django.conf.locale.km
+    - django.conf.locale.kn
+    - django.conf.locale.ko
+    - django.conf.locale.lt
+    - django.conf.locale.lv
+    - django.conf.locale.mk
+    - django.conf.locale.ml
+    - django.conf.locale.mn
+    - django.conf.locale.nb
+    - django.conf.locale.nl
+    - django.conf.locale.nn
+    - django.conf.locale.pl
+    - django.conf.locale.pt
+    - django.conf.locale.pt_BR
+    - django.conf.locale.ro
+    - django.conf.locale.ru
+    - django.conf.locale.sk
+    - django.conf.locale.sl
+    - django.conf.locale.sq
+    - django.conf.locale.sr
+    - django.conf.locale.sr_Latn
+    - django.conf.locale.sv
+    - django.conf.locale.ta
+    - django.conf.locale.te
+    - django.conf.locale.th
+    - django.conf.locale.tr
+    - django.conf.locale.uk
+    - django.conf.locale.vi
+    - django.conf.locale.zh_Hans
+    - django.conf.locale.zh_Hant
+    - django.conf.urls
+    - django.contrib
+    - django.contrib.admin
+    - django.contrib.admin.migrations
+    - django.contrib.admin.templatetags
+    - django.contrib.admin.views
+    - django.contrib.admindocs
+    - django.contrib.admindocs.tests
+    - django.contrib.auth
+    - django.contrib.auth.handlers
+    - django.contrib.auth.management
+    - django.contrib.auth.management.commands
+    - django.contrib.auth.migrations
+    - django.contrib.auth.tests
+    - django.contrib.contenttypes
+    - django.contrib.contenttypes.migrations
+    - django.contrib.flatpages
+    - django.contrib.flatpages.migrations
+    - django.contrib.flatpages.templatetags
+    - django.contrib.gis
+    - django.contrib.gis.admin
+    - django.contrib.gis.db
+    - django.contrib.gis.db.backends
+    - django.contrib.gis.db.backends.base
+    - django.contrib.gis.db.backends.mysql
+    - django.contrib.gis.db.backends.oracle
+    - django.contrib.gis.db.backends.postgis
+    - django.contrib.gis.db.backends.spatialite
+    - django.contrib.gis.db.models
+    - django.contrib.gis.db.models.sql
+    - django.contrib.gis.forms
+    - django.contrib.gis.gdal
+    - django.contrib.gis.gdal.prototypes
+    - django.contrib.gis.gdal.raster
+    - django.contrib.gis.geoip
+    - django.contrib.gis.geoip2
+    - django.contrib.gis.geometry
+    - django.contrib.gis.geometry.backend
+    - django.contrib.gis.geos
+    - django.contrib.gis.geos.prototypes
+    - django.contrib.gis.management
+    - django.contrib.gis.management.commands
+    - django.contrib.gis.maps
+    - django.contrib.gis.maps.google
+    - django.contrib.gis.maps.openlayers
+    - django.contrib.gis.serializers
+    - django.contrib.gis.sitemaps
+    - django.contrib.gis.utils
+    - django.contrib.humanize
+    - django.contrib.humanize.templatetags
+    - django.contrib.messages
+    - django.contrib.messages.storage
+    - django.contrib.postgres
+    - django.contrib.postgres.aggregates
+    - django.contrib.postgres.fields
+    - django.contrib.postgres.forms
+    - django.contrib.redirects
+    - django.contrib.redirects.migrations
+    - django.contrib.sessions
+    - django.contrib.sessions.backends
+    - django.contrib.sessions.management
+    - django.contrib.sessions.management.commands
+    - django.contrib.sessions.migrations
+    - django.contrib.sitemaps
+    - django.contrib.sitemaps.management
+    - django.contrib.sitemaps.management.commands
+    - django.contrib.sites
+    - django.contrib.sites.migrations
+    - django.contrib.staticfiles
     - django.contrib.staticfiles.management
-    - django.contrib.gis.tests.inspectapp
+    - django.contrib.staticfiles.management.commands
+    - django.contrib.staticfiles.templatetags
+    - django.contrib.syndication
+    - django.contrib.webdesign
+    - django.contrib.webdesign.templatetags
+    - django.core
+    - django.core.cache
+    - django.core.cache.backends
+    - django.core.checks
+    - django.core.checks.compatibility
+    - django.core.checks.security
+    - django.core.files
+    - django.core.handlers
+    - django.core.mail
+    - django.core.mail.backends
+    - django.core.management
+    - django.core.management.commands
+    - django.core.serializers
+    - django.core.servers
+    - django.db
+    - django.db.backends
+    - django.db.backends.base
+    - django.db.backends.dummy
+    - django.db.backends.mysql
+    - django.db.backends.oracle
+    - django.db.backends.postgresql
     - django.db.backends.postgresql_psycopg2
-    - django.contrib.gis.tests.geoapp
-    - django.contrib.flatpages.tests
+    - django.db.backends.sqlite3
+    - django.db.migrations
+    - django.db.migrations.operations
+    - django.db.models
+    - django.db.models.fields
+    - django.db.models.sql
+    - django.dispatch
+    - django.forms
+    - django.forms.extras
+    - django.http
+    - django.middleware
+    - django.template
+    - django.template.backends
+    - django.template.loaders
+    - django.templatetags
+    - django.test
+    - django.utils
+    - django.utils.translation
+    - django.views
+    - django.views.decorators
+    - django.views.generic
 
   commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
-    - django-admin --version
-    - django-admin.py --version
 
+    - django-admin --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.

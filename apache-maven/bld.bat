@@ -1,2 +1,14 @@
-python setup.py install
+setlocal enableextensions enabledelayedexpansion
+
+set JAVA_HOME=%PREFIX%\Library
+set JRE_HOME=%JAVA_HOME%\jre
+
+REM Write the batch file to /Scripts/mvn
+echo f | xcopy /f /y %RECIPE_DIR%\mvn-script.py %PREFIX%\Scripts\mvn-script.py
+echo f | xcopy /f /y %RECIPE_DIR%\mvn.bat %PREFIX%\Scripts\mvn.bat
 if errorlevel 1 exit 1
+
+REM Make a share folder and copy the contents into it
+mkdir %PREFIX%\share
+xcopy /i /e "%SRC_DIR%\*.*" "%PREFIX%\share\apache-maven"
+if errorlevel 1 exit /b 1

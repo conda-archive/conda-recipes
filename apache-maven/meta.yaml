@@ -1,24 +1,26 @@
-
 package:
     name: apache-maven
-    version: 3.2.1
+    version: 3.3.9
 
 source:
-    fn: apache-maven-3.2.1-bin.zip
-    url: http://ftp.ps.pl/pub/apache/maven/maven-3/3.2.1/binaries/apache-maven-3.2.1-bin.zip
-    md5: 5d86506f17e5ff0b0c83c648f4093abb
+    fn: apache-maven-3.3.9-bin.tar.gz
+    url: http://apache.hippo.nl/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
 
 build:
-    number: 0
+    number: 1
 
 requirements:
     build:
-
+      - java-jdk
     run:
+      - java-jdk
 
 test:
     commands:
         - mvn --version
+        
+    requires:
+      - java-jdk
 
 about:
     home: http://maven.apache.org/

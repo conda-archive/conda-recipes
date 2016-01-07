@@ -1,71 +1,64 @@
 package:
-  name: invoke
-  version: "0.11.1"
+  name: django-pyodbc
+  version: "0.3.0"
 
 source:
-  fn: invoke-0.11.1.tar.gz
-  url: https://pypi.python.org/packages/source/i/invoke/invoke-0.11.1.tar.gz
-  md5: 3d4ecbe26779ceef1046ecf702c9c4a8
-#  patches:
-   # List any patch files here
-   # - fix.patch
-
+  #git_tag: master
+  #git_url: https://github.com/ClinicalGraphics/django-pyodbc.git
+  path: C:\Development\Projects\django-pyodbc
+  
 build:
   # noarch_python: True
   # preserve_egg_dir: True
-  pyc_compilation: False
-  entry_points:
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - invoke = invoke:main
+    # - django-pyodbc = django-pyodbc:main
     #
-    # Would create an entry point called invoke that calls invoke.main()
+    # Would create an entry point called django-pyodbc that calls django-pyodbc.main()
 
-    - invoke = invoke.cli:main
-    - inv = invoke.cli:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 2
 
 requirements:
   build:
     - python
     - setuptools
+    - pyodbc >=3.0.6,<3.1
 
   run:
     - python
+    - pyodbc >=3.0.6,<3.1
 
 test:
   # Python imports
   imports:
-    - invoke
-    - invoke.parser
-    - invoke.vendor
-    - invoke.vendor.fluidity
-    - invoke.vendor.lexicon
-    - invoke.vendor.yaml2 [py2k]
-    - invoke.vendor.yaml3 [py3k]
+    - django_pyodbc
+    - django_pyodbc.management
+    - django_pyodbc.management.commands
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - invoke --help
-    - inv --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  # requires:
+  requires:
     # Put any additional test requirements here.  For example
     # - nose
+    - python
+    - setuptools
+    - pyodbc >=3.0.6,<3.1
 
 about:
-  home: http://docs.pyinvoke.org
-  license: BSD License
-  summary: 'Pythonic task execution'
+  home: https://github.com/aurorasoftware/django-pyodbc
+  license: See LICENSE
+  summary: 'Django 1.5 SQL Server backend using pyodbc.'
 
 # See
 # http://docs.continuum.io/conda/build.html for

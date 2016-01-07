@@ -1,0 +1,26 @@
+diff --git skimage/viewer/tests/test_utils.py skimage/viewer/tests/test_utils.py
+index ae158a9..83587c1 100644
+--- skimage/viewer/tests/test_utils.py
++++ skimage/viewer/tests/test_utils.py
+@@ -19,21 +19,3 @@ def test_format_filename():
+     assert fname == 'apple'
+     fname = dialogs._format_filename('')
+     assert fname is None
+-
+-
+-@skipif(not has_qt)
+-def test_open_file_dialog():
+-    utils.init_qtapp()
+-    timer = QtCore.QTimer()
+-    timer.singleShot(100, lambda: QtGui.QApplication.quit())
+-    filename = dialogs.open_file_dialog()
+-    assert filename is None
+-
+-
+-@skipif(not has_qt)
+-def test_save_file_dialog():
+-    utils.init_qtapp()
+-    timer = QtCore.QTimer()
+-    timer.singleShot(100, lambda: QtGui.QApplication.quit())
+-    filename = dialogs.save_file_dialog()
+-    assert filename is None

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+CWD="\$(cd "\$(dirname "\${0}")" && pwd -P)"
+export M2_HOME="\$(cd "\${CWD}/../share/${PKG_NAME}" && pwd -P)"
+export M2="\${M2_HOME}/bin"
+export MAVEN_OPTS="-Xms256m -Xmx512m"
+
+echo -e ""
+echo -e "Setting up M2_HOME for mvn to \${M2_HOME} ..."
+echo -e "Launching mvn ..."
+echo -e ""
+\${M2}/mvn "\${@}"

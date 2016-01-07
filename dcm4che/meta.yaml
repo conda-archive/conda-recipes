@@ -1,0 +1,34 @@
+package:
+    name: dcm4che
+    #version: 3.3.7
+    version: 2.0.29
+
+source:
+    #git_tag: 3.3.7
+    #git_url: https://github.com/ClinicalGraphics/dcm4che.git
+    fn: dcm4che-2.0.29-src.zip
+    url: http://sourceforge.net/projects/dcm4che/files/dcm4che2/2.0.29/dcm4che-2.0.29-src.zip
+
+build:
+    number: 0
+    binary_relocation: false
+
+requirements:
+    build:
+      - java-jdk
+      - apache-maven
+      - apache-ant
+
+#test:
+    #commands:
+    #    - dcm4che-tool-dcmsnd --version
+    #    - dcm4che-tool-dcmsnd --help
+        
+    #requires:
+    #  - java-jdk
+    #  - apache-maven
+
+about:
+    home: https://github.com/dcm4che/dcm4che
+    license: Mozilla Public License Version 1.1
+

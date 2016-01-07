@@ -1,17 +1,18 @@
 package:
   name: pytest
-  version: !!str 2.5.1
+  version: "2.8.5"
 
 source:
-  fn: pytest-2.5.1.tar.gz
-  url: http://pypi.python.org/packages/source/p/pytest/pytest-2.5.1.tar.gz
-  md5: 4e155a0134e6757b37cc6698c20f3e9f
+  fn: pytest-2.8.5.zip
+  url: https://pypi.python.org/packages/source/p/pytest/pytest-2.8.5.zip
+  md5: 8493b06f700862f1294298d6c1b715a9
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  #preserve_egg_dir: True
+  # noarch_python: True
+  # preserve_egg_dir: True
   entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
@@ -21,9 +22,7 @@ build:
     # Would create an entry point called pytest that calls pytest.main()
 
     - py.test = pytest:main
-    - py.test-3.3 = pytest:main # [py33]
-    - py.test-2.6 = pytest:main # [py26]
-    - py.test-2.7 = pytest:main # [py27]
+    - py.test-3.5 = pytest:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -33,30 +32,25 @@ requirements:
   build:
     - python
     - setuptools
-    - py
-    - argparse # [py26]
-    - colorama # [win]
+    - py >=1.4.29
 
   run:
     - python
-    - py
-    - argparse # [py26]
+    - py >=1.4.29
 
 test:
   # Python imports
   imports:
-    - _pytest.assertion
     - _pytest
-    - pytest
+    - _pytest.assertion
+    - _pytest.vendored_packages
 
   commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
     - py.test --help
-    - py.test-3.3 --help # [py33]
-    - py.test-2.6 --help # [py26]
-    - py.test-2.7 --help # [py27]
+    - py.test-3.5 --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -68,6 +62,7 @@ test:
 about:
   home: http://pytest.org
   license: MIT License
+  summary: 'pytest: simple powerful testing with Python'
 
 # See
 # http://docs.continuum.io/conda/build.html for

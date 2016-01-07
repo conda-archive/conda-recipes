@@ -1,0 +1,29 @@
+package:
+    name: apache-ant
+    version: 1.9.6
+
+source:
+    fn: apache-ant-1.9.6-bin.tar.gz
+    url: http://apache.cs.uu.nl//ant/binaries/apache-ant-1.9.6-bin.tar.gz
+
+build:
+    number: 0
+
+requirements:
+    build:
+      - java-jdk
+    run:
+      - java-jdk
+
+test:
+    commands:
+        - ant -version
+        - ant -help
+        
+    requires:
+      - java-jdk
+
+about:
+    home: http://ant.apache.org/
+    license: Apache License v2.0
+
