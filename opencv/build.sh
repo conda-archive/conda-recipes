@@ -13,8 +13,8 @@ fi
 
 git clone https://github.com/Itseez/opencv_contrib
 cd opencv_contrib
-git checkout 3.0.0
-# this patch only strictly necessary on Mac, but benign elsewhere
+git checkout tags/${PKG_VERSION}
+# this patch only strictly necessary on Mac, but benign elsewhere.  Added for Version 3.0.0.
 git apply ${RECIPE_DIR}/line_float_cvt.patch
 cd ..
 

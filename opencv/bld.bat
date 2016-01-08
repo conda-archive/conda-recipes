@@ -20,7 +20,7 @@ IF %PY_MAJOR% EQU 3 (GOTO :PY3) else (GOTO :PY2)
 :CPP11
     git clone https://github.com/Itseez/opencv_contrib
     cd opencv_contrib
-    git checkout 3.0.0
+    git checkout tags/%PKG_VERSION%
     cd ..
     set "EXTRA=-DOPENCV_EXTRA_MODULES_PATH=%FORWARD_SLASHED_SRC_DIR%/opencv_contrib/modules"
     set "OBJ_DETECT=-DBUILD_opencv_objdetect=true"
@@ -52,6 +52,8 @@ EXIT 1
 if "%ARCH%" == "64" (
    set "VSTRING=%VSTRING%Win64"
 )
+
+call :TRIM VSTRING %VSTRING%
 
 cd build
 
@@ -103,3 +105,9 @@ RD /S /Q "%LIBRARY_PREFIX%\x64"
 RD /S /Q "%LIBRARY_PREFIX%\x86"
 RD /S /Q "%SRC_DIR%\opencv_contrib"
 exit 0
+
+:TRIM
+  SetLocal EnableDelayedExpansion
+  set Params=%*
+  for /f "tokens=1*" %%a in ("!Params!") do EndLocal & set %1=%%b
+  exit /B
