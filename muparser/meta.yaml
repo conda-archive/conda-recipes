@@ -1,12 +1,17 @@
 package:
   name: muparser
-  version: 2.2.4
+  version: 2.2.5
 
 source:
-  fn: muparser_v2_2_4.zip
-  url: https://docs.google.com/uc?export=download&id=0BzuB-ydOOoduejdwdTQwcF9JLTA
-  md5: ab5d86af1c75e3946314e76e6018f78d
+  fn: v2.2.5.tar.gz
+  url: https://github.com/beltoforion/muparser/archive/v2.2.5.tar.gz 
+  md5: 02dae671aa5ad955fdcbcd3fee313fb7
 
 build:
   number: 0
+
+about:
+  home: http://muparser.beltoforion.de/
+  license: MIT 
+  summary: A fast math parser library
 

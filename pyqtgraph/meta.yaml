@@ -6,17 +6,82 @@ source:
   fn: pyqtgraph-0.9.10.tar.gz
   url: https://pypi.python.org/packages/source/p/pyqtgraph/pyqtgraph-0.9.10.tar.gz
   md5: bd84bf7537c43cf38db81cc1ad4f743a
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyqtgraph = pyqtgraph:main
+    #
+    # Would create an entry point called pyqtgraph that calls pyqtgraph.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
 
 requirements:
   build:
     - python
+    - setuptools
+    - numpy
+
   run:
     - python
     - numpy
     - pyqt
     - pyopengl
 
+test:
+  # Python imports
+  imports:
+    - pyqtgraph
+    - pyqtgraph.GraphicsScene
+    - pyqtgraph.console
+    - pyqtgraph.dockarea
+    - pyqtgraph.examples
+    - pyqtgraph.examples.optics
+    - pyqtgraph.examples.verlet_chain
+    - pyqtgraph.exporters
+    - pyqtgraph.flowchart
+    - pyqtgraph.flowchart.library
+    - pyqtgraph.graphicsItems
+    - pyqtgraph.graphicsItems.PlotItem
+    - pyqtgraph.graphicsItems.ViewBox
+    - pyqtgraph.imageview
+    - pyqtgraph.metaarray
+    - pyqtgraph.multiprocess
+    - pyqtgraph.opengl
+    - pyqtgraph.opengl.items
+    - pyqtgraph.parametertree
+    - pyqtgraph.pixmaps
+    - pyqtgraph.util
+    - pyqtgraph.util.colorama
+    - pyqtgraph.widgets
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
 about:
   home: http://www.pyqtgraph.org
-  license: MIT
-  summary: Scientific graphics and GUI using Qt and numpy
+  license: MIT License
+  summary: 'Scientific Graphics and GUI Library for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

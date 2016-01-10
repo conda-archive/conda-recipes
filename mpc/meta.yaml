@@ -1,10 +1,11 @@
 package:
   name: mpc
-  version: 1.0.1
+  version: "1.0.3"
 
 source:
-  url: http://www.multiprecision.org/mpc/download/mpc-1.0.1.tar.gz
-  fn: mpc-1.0.1.tar.gz
+  fn: mpc-1.0.3.tar.gz
+  url: http://www.multiprecision.org/mpc/download/mpc-1.0.3.tar.gz
+  sha1: b8be66396c726fdc36ebb0f692ed8a8cca3bcc66
 
 requirements:
   build:

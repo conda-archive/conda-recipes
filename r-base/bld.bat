@@ -114,5 +114,5 @@ make imagedir
 if errorlevel 1 exit 1
 
 @rem And install it
-xcopy /S /E R-3.1.3 "%PREFIX%\R\"
+xcopy /S /E R-3.2.2 "%PREFIX%\R\"
 if errorlevel 1 exit 1

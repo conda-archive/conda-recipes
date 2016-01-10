@@ -2,13 +2,15 @@ package:
   name: r-rjava
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.9_6"
+  version: "0.9_7"
 
 source:
-  fn: rJava_0.9-6.tar.gz
+  fn: rJava_0.9-7.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/rJava_0.9-6.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/rJava/rJava_0.9-6.tar.gz
+    - http://cran.r-project.org/src/contrib/rJava_0.9-7.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/rJava/rJava_0.9-7.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,21 +21,23 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2 # [osx]
-  number: 1 # [not osx]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
+  skip: true # [linux]
 
 requirements:
   build:
-    - r >=2.5.0
+    - r
+    - gcc # [not win]
 
   run:
-    - r >=2.5.0
+    - r
+    - libgcc # [not win]
 
 test:
   commands:
@@ -56,19 +60,19 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: rJava
-# Version: 0.9-6
-# Title: Low-level R to Java interface
+# Version: 0.9-7
+# Title: Low-Level R to Java Interface
 # Author: Simon Urbanek <simon.urbanek@r-project.org>
 # Maintainer: Simon Urbanek <simon.urbanek@r-project.org>
 # Depends: R (>= 2.5.0), methods
 # Description: Low-level interface to Java VM very much like .C/.Call and friends. Allows creation of objects, calling methods and accessing fields.
 # License: GPL-2
 # URL: http://www.rforge.net/rJava/
-# SystemRequirements: java
-# Packaged: 2013-12-23 15:17:13 UTC; svnuser
+# SystemRequirements: Java JDK 1.2 or higher (for JRI/REngine JDK 1.4 or higher), GNU make
 # NeedsCompilation: yes
+# Packaged: 2015-07-27 22:46:02 UTC; urbanek
 # Repository: CRAN
-# Date/Publication: 2013-12-24 00:16:48
+# Date/Publication: 2015-07-29 07:21:20
 
 # See
 # http://docs.continuum.io/conda/build.html for

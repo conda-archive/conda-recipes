@@ -1,11 +1,11 @@
 package:
   name: dbf
-  version: 0.95.004
+  version: 0.95.013
 
 source:
-  fn: dbf-0.95.004.tar.gz
-  url: https://pypi.python.org/packages/source/d/dbf/dbf-0.95.004.tar.gz
-  md5: e5b3436d49a2a7c1368ad061ed671f28
+  fn: dbf-0.95.013.tar.gz
+  url: https://pypi.python.org/packages/source/d/dbf/dbf-0.95.013.tar.gz
+  md5: 57a787e173a8580ad6b35a223b85e756
 #  patches:
    # List any patch files here
    # - fix.patch

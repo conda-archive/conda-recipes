@@ -2,13 +2,13 @@ package:
   name: r-mime
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.3"
+  version: "0.4"
 
 source:
-  fn: mime_0.3.tar.gz
+  fn: mime_0.4.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/mime_0.3.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/mime/mime_0.3.tar.gz
+    - http://cran.r-project.org/src/contrib/mime_0.4.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/mime/mime_0.4.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -21,7 +21,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -32,9 +32,11 @@ build:
 requirements:
   build:
     - r
+    - gcc # [not win]
 
   run:
     - r
+    - libgcc # [not win]
 
 test:
   commands:
@@ -59,8 +61,8 @@ about:
 # Package: mime
 # Type: Package
 # Title: Map Filenames to MIME Types
-# Version: 0.3
-# Date: 2015-03-29
+# Version: 0.4
+# Date: 2015-09-03
 # Authors@R: c(person("Jeffrey", "Horner", role = "ctb"), person("Yihui", "Xie", role = c("aut", "cre"), email = "xie@yihui.name"))
 # Maintainer: Yihui Xie <xie@yihui.name>
 # Description: Guesses the MIME type from a filename extension using the data derived from /etc/mime.types in UNIX-type systems.
@@ -69,11 +71,11 @@ about:
 # URL: https://github.com/yihui/mime
 # BugReports: https://github.com/yihui/mime/issues
 # LazyData: TRUE
-# Packaged: 2015-03-29 03:46:13 UTC; yihui
-# Author: Jeffrey Horner [ctb], Yihui Xie [aut, cre]
 # NeedsCompilation: yes
+# Packaged: 2015-09-02 15:25:52 UTC; yihui
+# Author: Jeffrey Horner [ctb], Yihui Xie [aut, cre]
 # Repository: CRAN
-# Date/Publication: 2015-03-29 08:43:01
+# Date/Publication: 2015-09-03 12:20:19
 
 # See
 # http://docs.continuum.io/conda/build.html for

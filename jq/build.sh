@@ -2,7 +2,7 @@
 
 chmod +x configure
 
-./configure --prefix=$PREFIX 
+./configure --disable-maintainer-mode --prefix=$PREFIX --with-oniguruma=$PREFIX
 
-make -j
+make -j${CPU_COUNT}
 make install

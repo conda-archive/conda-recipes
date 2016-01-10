@@ -1,0 +1,30 @@
+package:
+  name: kombu
+  version: 3.0.29
+
+source:
+  fn: kombu-3.0.29.tar.gz
+  url: https://pypi.python.org/packages/source/k/kombu/kombu-3.0.29.tar.gz
+  md5: 892bf89ee247c0d16d2bdd63f1ddf4c5
+
+requirements:
+  build:
+  - python
+  - setuptools
+  - anyjson >=0.3.3
+  - amqp >=1.4.7,<2.0
+
+  run:
+  - python
+  - anyjson >=0.3.3
+  - amqp >=1.4.7,<2.0
+
+test:
+  imports:
+  - kombu
+
+about:
+  home: http://github.com/celery/kombu
+  license: BSD
+  license_file: LICENSE
+  summary: Messaging library for Python

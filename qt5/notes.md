@@ -6,21 +6,23 @@ git checkout, because conda caches a bare repository, almost all of the source
 exists as submodules, and conda tries to clone the submodules from nonexistent
 directories in its cache. So we are stuck with the compressed source files.
 
-## Packages needed to build with RHEL6
+## Notes concerning Linux
+
+You need the following packages to build Qt5 on CentOS 6
 
 - xcb-util-devel
-
-These may have been optional
-
-- libudev-devel
-- pcre-devel
-- mesa-libEGL
+- gtk2-devel
+- freeglut-devel
+- ruby
+- gperf
 
 ## Notes concerning OS X
 
-- I found it necessary to uninstall the qt4-mac macports package. Qt5 was
-  picking up Qt4 headers.
-- Found apparent race conditions when running make with multiple jobs.
+- To build Qt5 you need XCode in your system, Command Line Tools is not
+  accepted. See this [Qt bug](https://bugreports.qt.io/browse/QTBUG-41908)
+  for details.
+- The right XCode version for your OS X version is listed
+  [here](https://github.com/Homebrew/homebrew/blob/master/Library/Homebrew/os/mac/xcode.rb)
 
 ## Notes concerning Windows:
 

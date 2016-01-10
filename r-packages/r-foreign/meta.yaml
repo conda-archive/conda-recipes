@@ -2,13 +2,13 @@ package:
   name: r-foreign
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.8_65"
+  version: "0.8_66"
 
 source:
-  fn: foreign_0.8-65.tar.gz
+  fn: foreign_0.8-66.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/foreign_0.8-65.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/foreign/foreign_0.8-65.tar.gz
+    - http://cran.r-project.org/src/contrib/foreign_0.8-66.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/foreign/foreign_0.8-66.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -60,7 +60,7 @@ about:
 
 # Package: foreign
 # Priority: recommended
-# Version: 0.8-65
+# Version: 0.8-66
 # Date: 2015-06-28
 # Title: Read Data Stored by Minitab, S, SAS, SPSS, Stata, Systat, Weka, dBase, ...
 # Depends: R (>= 3.0.0)
@@ -73,11 +73,11 @@ about:
 # License: GPL (>= 2)
 # BugReports: http://bugs.r-project.org
 # NeedsCompilation: yes
-# Packaged: 2015-07-02 10:53:36 UTC; ripley
+# Packaged: 2015-08-18 14:20:43 UTC; luke
 # Author: R Core Team [aut, cph, cre], Roger Bivand [ctb, cph], Vincent J. Carey [ctb, cph], Saikat DebRoy [ctb, cph], Stephen Eglen [ctb, cph], Rajarshi Guha [ctb, cph], Nicholas Lewin-Koh [ctb, cph], Mark Myatt [ctb, cph], Ben Pfaff [ctb], Brian Quistorff [ctb], Frank Warmerdam [ctb, cph], Stephen Weigand [ctb, cph], Free Software Foundation, Inc. [cph]
 # Maintainer: R Core Team <R-core@R-project.org>
 # Repository: CRAN
-# Date/Publication: 2015-07-02 16:09:14
+# Date/Publication: 2015-08-19 11:34:24
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -1,0 +1,25 @@
+package:
+  name: elasticsearch-py
+  version: 1.7.0
+
+source:
+  git_url: https://github.com/elastic/elasticsearch-py
+  git_tag: 1.7.0
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - urllib3
+
+  run:
+    - python
+    - urllib3
+
+test:
+  imports:
+    - elasticsearch
+
+about:
+  home: http://elasticsearch-py.readthedocs.org/en/master/
+  license: Apache 2.0

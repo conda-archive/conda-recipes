@@ -1,21 +1,14 @@
 package:
   name: libgcc
-  version: 4.8.4
+  version: 4.8.5
+
 
 requirements:
   build:
-    - gcc 4.8.4
-  run:
-    # I'm unsure if these are all still needed but it doesn't hurt to have them.
-    - gmp >=4.2
-    - mpfr >=2.4.0
-    - mpc >=0.8.0
-    - isl
-    - cloog 0.18.0
+    - gcc 4.8.5
 
 build:
   number: 1
-
   always_include_files:
     - lib/libgcc_s.1.dylib # [osx]
     - lib/libgcc_s_ppc64.1.dylib # [osx]

@@ -1,11 +1,11 @@
 package:
   name: zc.buildout
-  version: !!str 2.2.1
+  version: !!str 2.4.7
 
 source:
-  fn: zc.buildout-2.2.1.tar.gz
-  url: https://pypi.python.org/packages/source/z/zc.buildout/zc.buildout-2.2.1.tar.gz
-  md5: 476a06eed08506925c700109119b6e41
+  fn: zc.buildout-2.4.7.tar.gz
+  url: https://pypi.python.org/packages/source/z/zc.buildout/zc.buildout-2.4.7.tar.gz
+  md5: e385a5ce2a6bc4554dbb3eda614893f0
 #  patches:
    # List any patch files here
    # - fix.patch

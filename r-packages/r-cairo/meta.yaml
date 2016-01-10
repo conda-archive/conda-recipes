@@ -2,13 +2,13 @@ package:
   name: r-cairo
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.5_6"
+  version: "1.5_9"
 
 source:
-  fn: Cairo_1.5-6.tar.gz
+  fn: Cairo_1.5-9.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/Cairo_1.5-6.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/Cairo/Cairo_1.5-6.tar.gz
+    - http://cran.r-project.org/src/contrib/Cairo_1.5-9.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/Cairo/Cairo_1.5-9.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -21,13 +21,14 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2 # [linux]
-  number: 1 # [not linux]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
+
+  skip: true # [osx]
 
 # Suggests: png
 requirements:
@@ -35,11 +36,13 @@ requirements:
     - r
     - cairo # [not win]
     - libpng 1.6.* # [not win]
+    - gcc # [not win]
+
   run:
     - r
     - cairo # [not win]
     - libpng 1.6.* # [not win]
-
+    - libgcc # [not win]
 
 test:
   commands:
@@ -56,34 +59,35 @@ test:
 about:
   home: http://www.rforge.net/Cairo/
   license: GPL-2
-  summary: This package provides a Cairo graphics device that can be use to create high-quality
-    vector (PDF, PostScript and SVG) and bitmap output (PNG,JPEG,TIFF), and high-quality
-    rendering in displays (X11 and Win32). Since it uses the same back-end for all output,
-    copying across formats is WYSIWYG. Files are created without the dependence on X11
-    or other external programs. This device supports alpha channel (semi-transparent
-    drawing) and resulting images can contain transparent and semi-transparent regions.
-    It is ideal for use in server environments (file output) and as a replacement for
-    other devices that don't have Cairo's capabilities such as alpha support or anti-aliasing.
-    Backends are modular such that any subset of backends is supported.
+  summary: Cairo graphics device that can be use to create high-quality vector (PDF, PostScript
+    and SVG) and bitmap output (PNG,JPEG,TIFF), and high-quality rendering in displays
+    (X11 and Win32). Since it uses the same back-end for all output, copying across
+    formats is WYSIWYG. Files are created without the dependence on X11 or other external
+    programs. This device supports alpha channel (semi-transparent drawing) and resulting
+    images can contain transparent and semi-transparent regions. It is ideal for use
+    in server environments (file output) and as a replacement for other devices that
+    don't have Cairo's capabilities such as alpha support or anti-aliasing. Backends
+    are modular such that any subset of backends is supported.
 
 # The original CRAN metadata for this package was:
 
 # Package: Cairo
-# Version: 1.5-6
-# Title: R graphics device using cairo graphics library for creating high-quality bitmap (PNG, JPEG, TIFF), vector (PDF, SVG, PostScript) and display (X11 and Win32) output.
+# Version: 1.5-9
+# Title: R graphics device using cairo graphics library for creating high-quality bitmap (PNG, JPEG, TIFF), vector (PDF, SVG, PostScript) and display (X11 and Win32) output
 # Author: Simon Urbanek <Simon.Urbanek@r-project.org>, Jeffrey Horner <jeff.horner@vanderbilt.edu>
 # Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>
 # Depends: R (>= 2.4.0)
+# Imports: grDevices, graphics
 # Suggests: png
 # Enhances: FastRWeb
-# Description: This package provides a Cairo graphics device that can be use to create high-quality vector (PDF, PostScript and SVG) and bitmap output (PNG,JPEG,TIFF), and high-quality rendering in displays (X11 and Win32). Since it uses the same back-end for all output, copying across formats is WYSIWYG. Files are created without the dependence on X11 or other external programs. This device supports alpha channel (semi-transparent drawing) and resulting images can contain transparent and semi-transparent regions. It is ideal for use in server environments (file output) and as a replacement for other devices that don't have Cairo's capabilities such as alpha support or anti-aliasing. Backends are modular such that any subset of backends is supported.
+# Description: Cairo graphics device that can be use to create high-quality vector (PDF, PostScript and SVG) and bitmap output (PNG,JPEG,TIFF), and high-quality rendering in displays (X11 and Win32). Since it uses the same back-end for all output, copying across formats is WYSIWYG. Files are created without the dependence on X11 or other external programs. This device supports alpha channel (semi-transparent drawing) and resulting images can contain transparent and semi-transparent regions. It is ideal for use in server environments (file output) and as a replacement for other devices that don't have Cairo's capabilities such as alpha support or anti-aliasing. Backends are modular such that any subset of backends is supported.
 # License: GPL-2
 # SystemRequirements: cairo (>= 1.2 http://www.cairographics.org/)
 # URL: http://www.rforge.net/Cairo/
-# Packaged: 2014-06-26 14:50:25 UTC; svnuser
 # NeedsCompilation: yes
+# Packaged: 2015-09-25 17:49:11 UTC; svnuser
 # Repository: CRAN
-# Date/Publication: 2014-06-26 17:15:22
+# Date/Publication: 2015-09-26 09:05:40
 
 # See
 # http://docs.continuum.io/conda/build.html for

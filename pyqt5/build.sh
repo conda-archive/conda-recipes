@@ -1,15 +1,13 @@
+#!/bin/bash
+
 if [ `uname` == Darwin ]; then
     export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib
     MAKE_JOBS=$(sysctl -n hw.ncpu)
 fi
 
-
-# Build is running out of memory on Linux with several
-# cores
 if [ `uname` == Linux ]; then
-    MAKE_JOBS=1
+    MAKE_JOBS=$CPU_COUNT
 fi
-
 
 $PYTHON configure.py \
         --verbose \
