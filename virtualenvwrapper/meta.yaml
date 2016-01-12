@@ -1,27 +1,25 @@
 package:
-  name: virtualenv
-  version: "13.0.0"
+  name: virtualenvwrapper
+  version: "4.5.1"
 
 source:
-  fn: virtualenv-13.0.0.tar.gz
-  url: https://pypi.python.org/packages/source/v/virtualenv/virtualenv-13.0.0.tar.gz
-  md5: 721e7f60b830ff74c3763d64e5f01b0a
+  fn: virtualenvwrapper-4.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/v/virtualenvwrapper/virtualenvwrapper-4.5.1.tar.gz
+  md5: 5ff62b23d051767d351484db2c1fcb75
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
+# build:
   # preserve_egg_dir: True
-  entry_points:
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - virtualenv = virtualenv:main
+    # - virtualenvwrapper = virtualenvwrapper:main
     #
-    # Would create an entry point called virtualenv that calls virtualenv.main()
+    # Would create an entry point called virtualenvwrapper that calls virtualenvwrapper.main()
 
-    - virtualenv=virtualenv:main
-    - virtualenv-2.7=virtualenv:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -38,15 +36,12 @@ requirements:
 test:
   # Python imports
   imports:
-    - virtualenv
-    - virtualenv_support
+    - virtualenvwrapper
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - virtualenv --help
-    - virtualenv-2.7 --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -56,9 +51,9 @@ test:
     # - nose
 
 about:
-  home: https://virtualenv.pypa.io/
+  #home: The package home page
   license: MIT License
-  summary: 'Virtual Python Environment builder'
+  summary: 'Enhancements to virtualenv'
 
 # See
 # http://docs.continuum.io/conda/build.html for

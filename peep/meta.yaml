@@ -1,11 +1,11 @@
 package:
-  name: virtualenv
-  version: "13.0.0"
+  name: peep
+  version: "2.4.1"
 
 source:
-  fn: virtualenv-13.0.0.tar.gz
-  url: https://pypi.python.org/packages/source/v/virtualenv/virtualenv-13.0.0.tar.gz
-  md5: 721e7f60b830ff74c3763d64e5f01b0a
+  fn: peep-2.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/peep/peep-2.4.1.tar.gz
+  md5: 92a7425ffda88cda3fba3bb2857fd8b2
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -16,12 +16,17 @@ build:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - virtualenv = virtualenv:main
+    # - peep = peep:main
     #
-    # Would create an entry point called virtualenv that calls virtualenv.main()
+    # Would create an entry point called peep that calls peep.main()
 
-    - virtualenv=virtualenv:main
-    - virtualenv-2.7=virtualenv:main
+    - peep = peep:main
+
+    # conda-recipe/peep
+    - peep-2.6 = peep:main [py26]
+    - peep-2.7 = peep:main [py27]
+    - peep-3.3 = peep:main [py33]
+    - peep-3.4 = peep:main [py34]
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -38,15 +43,19 @@ requirements:
 test:
   # Python imports
   imports:
-    - virtualenv
-    - virtualenv_support
+    - peep
 
   commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - virtualenv --help
-    - virtualenv-2.7 --help
+    - peep --help
+
+    # conda-recipe/peep
+    - peep-2.6 --help [py26]
+    - peep-2.7 --help [py27]
+    - peep-3.3 --help [py33]
+    - peep-3.4 --help [py34]
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -56,9 +65,9 @@ test:
     # - nose
 
 about:
-  home: https://virtualenv.pypa.io/
+  home: https://github.com/erikrose/peep
   license: MIT License
-  summary: 'Virtual Python Environment builder'
+  summary: 'A "pip install" that is cryptographically guaranteed repeatable'
 
 # See
 # http://docs.continuum.io/conda/build.html for

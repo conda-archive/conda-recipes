@@ -1,56 +1,64 @@
 package:
   name: wheel
-  version: 0.22.0
+  version: "0.24.0"
 
 source:
-  fn: wheel-0.22.0.tar.gz
-  url: https://pypi.python.org/packages/source/w/wheel/wheel-0.22.0.tar.gz
-  md5: 16bb8eb3bdd3d93813295463bb949705
+  fn: wheel-0.24.0.tar.gz
+  url: https://pypi.python.org/packages/source/w/wheel/wheel-0.24.0.tar.gz
+  md5: 3b0d66f0d127ea8befaa5d11453107fd
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
+  preserve_egg_dir: True
   entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    - wininst2wheel = wheel.wininst2wheel:main
-    - egg2wheel = wheel.egg2wheel:main
-    - wheel = wheel.tool:main
-    # Can't figure out how to get distutils.commands entry points working
-    # - bdist_wheel = wheel.bdist_wheel:bdist_wheel
+    # - wheel = wheel:main
     #
     # Would create an entry point called wheel that calls wheel.main()
 
+    # conda-skeleton pypi wheel defaults
+    - wheel=wheel.tool:main
+
+    # conda-recipes/wheel
+    - wininst2wheel = wheel.wininst2wheel:main
+    - egg2wheel = wheel.egg2wheel:main
+    # Can't figure out how to get distutils.commands entry points working
+    # - bdist_wheel = wheel.bdist_wheel:bdist_wheel
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 3
+  # number: 1
 
 requirements:
   build:
     - python
     - setuptools
-    - argparse [py26]
 
   run:
     - python
     - setuptools
-    - argparse [py26]
 
 test:
   # Python imports
   imports:
     - wheel
     - wheel.signatures
-    - wheel.tool
     - wheel.test
+    - wheel.tool
 
   commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
+
     - wheel --help
+
+    # conda-recipes/wheel
+    - wininst2wheel --help
+    - egg2wheel --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -60,8 +68,9 @@ test:
     # - nose
 
 about:
-  home: http://bitbucket.org/dholth/wheel/
+  home: http://bitbucket.org/pypa/wheel/
   license: MIT
+  summary: 'A built-package format for Python.'
 
 # See
 # http://docs.continuum.io/conda/build.html for

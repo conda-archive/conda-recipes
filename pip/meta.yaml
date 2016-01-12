@@ -1,16 +1,17 @@
 package:
   name: pip
-  version: 1.4.1
+  version: "7.0.1"
 
 source:
-  fn: pip-1.4.1.tar.gz
-  url: https://pypi.python.org/packages/source/p/pip/pip-1.4.1.tar.gz
-  md5: 6afbb46aeb48abac658d4df742bff714
+  fn: pip-7.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pip/pip-7.0.1.tar.gz
+  md5: 5627bb807cf3d898a2eba276685537aa
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
+  # preserve_egg_dir: True
   entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
@@ -20,9 +21,18 @@ build:
     # Would create an entry point called pip that calls pip.main()
 
     - pip=pip:main
-    - pip-2.7=pip:main [py27]
+    - pip2=pip:main   [py2k]
+    - pip2.6=pip:main [py26]
+    - pip2.7=pip:main [py27]
+    - pip3=pip:main   [py3k]
+    - pip3.3=pip:main [py33]
+    - pip3.4=pip:main [py34]
+
+    # conda-recipe/pip legacy
     - pip-2.6=pip:main [py26]
+    - pip-2.7=pip:main [py27]
     - pip-3.3=pip:main [py33]
+    - pip-3.4=pip:main [py34]
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -39,28 +49,61 @@ requirements:
 test:
   # Python imports
   imports:
-    - pip.backwardcompat
-    - pip.vendor.html5lib.trie
-    - pip.vendor
-    - pip.commands
-    - pip.vendor.html5lib.treebuilders
-    - pip.vendor.html5lib
-    - pip.vendor.html5lib.serializer
-    - pip.vendor.html5lib.treewalkers
-    - pip.vcs
-    - pip.vendor.distlib
-    - pip.vendor.html5lib.filters
-    - pip.vendor.distlib._backport
     - pip
+    - pip._vendor
+    - pip._vendor._markerlib
+    - pip._vendor.cachecontrol
+    - pip._vendor.cachecontrol.caches
+    - pip._vendor.colorama
+    - pip._vendor.distlib
+    - pip._vendor.distlib._backport
+    - pip._vendor.html5lib
+    - pip._vendor.html5lib.filters
+    - pip._vendor.html5lib.serializer
+    - pip._vendor.html5lib.treeadapters
+    - pip._vendor.html5lib.treebuilders
+    - pip._vendor.html5lib.treewalkers
+    - pip._vendor.html5lib.trie
+    - pip._vendor.lockfile
+    - pip._vendor.packaging
+    - pip._vendor.pkg_resources
+    - pip._vendor.pkg_resources.tests
+    - pip._vendor.progress
+    - pip._vendor.requests
+    - pip._vendor.requests.packages
+    - pip._vendor.requests.packages.chardet
+    - pip._vendor.requests.packages.urllib3
+    - pip._vendor.requests.packages.urllib3.contrib
+    - pip._vendor.requests.packages.urllib3.packages
+    - pip._vendor.requests.packages.urllib3.packages.ssl_match_hostname
+    - pip._vendor.requests.packages.urllib3.util
+    - pip.commands
+    - pip.compat
+    - pip.models
+    - pip.operations
+    - pip.req
+    - pip.utils
+    - pip.vcs
 
   commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+    # 'conda-skeleton pypi pip' defaults (+[py2k])
     - pip --help
-    - pip-2.7 --help [py27]
+    - pip2 --help    [py2k]
+    - pip2.6 --help  [py26]
+    - pip2.7 --help  [py27]
+    - pip3 --help    [py3k]
+    - pip3.3 --help  [py33]
+    - pip3.4 --help  [py34]
+
+    # conda-recipe/pip legacy
     - pip-2.6 --help [py26]
+    - pip-2.7 --help [py27]
     - pip-3.3 --help [py33]
+    - pip-3.4 --help [py34]
+
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -70,8 +113,9 @@ test:
     # - nose
 
 about:
-  home: http://www.pip-installer.org
+  home: https://pip.pypa.io/
   license: MIT License
+  summary: 'The PyPA recommended tool for installing Python packages.'
 
 # See
 # http://docs.continuum.io/conda/build.html for
