@@ -34,7 +34,7 @@ requirements:
     - python
     - snappy
 
-# test:
+test:
   imports:
     - snappy  
 
