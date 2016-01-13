@@ -11,7 +11,6 @@ requirements:
   build:
     - python
     - setuptools
-
   run:
     - python
     - psutil
@@ -22,5 +21,5 @@ test:
 
 about:
   home: http://pypi.python.org/pypi/memory_profiler
-  license: BSD License
-  summary: 'A module for monitoring memory usage of a python program'
+  license: BSD
+  summary: module for monitoring memory usage of a python program
