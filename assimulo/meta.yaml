@@ -1,0 +1,41 @@
+package:
+    name: assimulo
+    version: 2.8
+
+build:
+    number: 0
+
+source:
+    fn: Assimulo-2.8.zip
+    url: https://pypi.python.org/packages/source/A/Assimulo/Assimulo-2.8.zip
+    md5: 72ad74096cd55a36c9cb2adbef3b5146
+
+requirements:
+    build:
+        - setuptools
+        - python
+        - cython >=0.18
+        - numpy >1.6.1
+        - scipy
+        - matplotlib
+        - lapack
+        - sundials
+
+    run:
+        - python
+        - cython >=0.18
+        - numpy >1.6.1
+        - scipy
+        - matplotlib
+        - lapack
+        - sundials
+
+test:
+    imports:
+        - assimulo
+        - assimulo.lib
+
+about:
+    home: http://www.jmodelica.org/assimulo
+    license: LGPL
+    summary: A package for solving ordinary differential equations and differential algebraic equations
