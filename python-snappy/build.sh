@@ -1,5 +1,6 @@
 #!/bin/bash
 
+$PYTHON setup.py build_ext -I$PREFIX/include -L$PREFIX/lib
 $PYTHON setup.py install
 
 # Add more build steps here, if they are necessary.
