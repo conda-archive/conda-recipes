@@ -1,62 +1,30 @@
 package:
-  name: simpy
-  version: !!str 3.0.5
+    name: simpy
+    version: 3.0.8
+
+build:
+    number: 0
 
 source:
-  fn: simpy-3.0.5.tar.gz
-  url: https://pypi.python.org/packages/source/s/simpy/simpy-3.0.5.tar.gz
-  md5: 19262488f1b0e6b77556820dd2b42d67
-#  patches:
-   # List any patch files here
-   # - fix.patch
-
-# build:
-  #preserve_egg_dir: True
-  #entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - simpy = simpy:main
-    #
-    # Would create an entry point called simpy that calls simpy.main()
-
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+    fn: simpy-3.0.8.tar.gz
+    url: https://pypi.python.org/packages/source/s/simpy/simpy-3.0.8.tar.gz
+    md5: 477552f5bf81d8d293b3e2bb8668e406
 
 requirements:
-  build:
-    - python
-    - setuptools
+    build:
+        - setuptools
+        - python
 
-  run:
-    - python
+    run:
+        - python
 
 test:
-  # Python imports
-  imports:
-    - simpy
-    - simpy.resources
-    - simpy.test
-
-  #commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
-
-
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any additional test requirements here.  For example
-    # - nose
+    imports:
+        - simpy
+        - simpy.resources
+        - simpy.test
 
 about:
-  home: https://simpy.rtfd.org
-  license:  MIT License
-  summary: 'Event discrete, process based simulation for Python.'
-
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml
+    home: http://simpy.rtfd.org/
+    license: MIT
+    summary: Event discrete simulation for Python
