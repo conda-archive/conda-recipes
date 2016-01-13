@@ -1,0 +1,34 @@
+package:
+    name: pyutilib
+    version: 5.2.3601
+
+build:
+    number: 0
+
+source:
+    fn: PyUtilib-5.2.3601.tar.gz
+    url: https://pypi.python.org/packages/source/P/PyUtilib/PyUtilib-5.2.3601.tar.gz
+    md5: 0c0d54632c70427c84a21d31f56c1a5b
+
+requirements:
+    build:
+        - setuptools
+        - python
+        - six
+        - nose
+        - unittest2 [py26]
+
+    run:
+        - python
+        - six
+        - nose
+        - unittest2 [py26]
+
+test:
+    imports:
+        - pyutilib
+
+about:
+    home: https://software.sandia.gov/trac/pyutilib
+    license: BSD
+    summary: Supports a diverse set of optimization capabilities
