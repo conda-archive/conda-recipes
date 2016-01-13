@@ -1,6 +1,6 @@
 package:
   name: posix_ipc
-  version: "1.0.0"
+  version: 1.0.0
 
 source:
   fn: posix_ipc-1.0.0.tar.gz
@@ -10,7 +10,6 @@ source:
 requirements:
   build:
     - python
-
   run:
     - python
 
@@ -21,5 +20,4 @@ test:
 about:
   home: http://semanchuk.com/philip/posix_ipc/
   license: BSD License
-  summary: 'POSIX IPC primitives (semaphores, shared memory and message queues) for Python'
-
+  summary: POSIX IPC primitives (semaphores, shared memory and message queues) for Python
