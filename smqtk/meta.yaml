@@ -1,10 +1,10 @@
 package:
   name: smqtk
-  version: "0.2.1"
+  version: "0.2.2"
 
 source:
   git_url: https://github.com/Kitware/SMQTK.git
-  git_tag: v0.2.1
+  git_tag: v0.2.2
   patches:
     - path-pass-through.patch
 
