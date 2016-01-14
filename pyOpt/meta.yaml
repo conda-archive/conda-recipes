@@ -1,28 +1,36 @@
 package:
-  name: pyopt     # lower case name of package, may contain '-' but no spaces
-  version: 1.1.0    # version of package. Should use the PEP-386 verlib conventions.
+    name: pyopt
+    version: 1.2.0
+
+build:
+    number: 0
 
 source:
-# The source section specifies where the source code of the package is coming
-# from, it may be coming from a source tarball like:
-  fn: pyOpt-1.1.0.tar.gz
-  url: http://www.pyopt.org/_downloads/pyOpt-1.1.0.tar.gz
+    fn: pyOpt-1.2.0.tar.gz
+    url: http://www.pyopt.org/_downloads/pyOpt-1.2.0.tar.gz
 
+    patches:
+        - 0001-Customize-place-of-swig-files.patch
 
-  
-# The build number should be incremented for new builds of the same version
-build:            # (optional)
-  number: 0                        # (optional, defaults to 0)
+requirements:
+    build:
+        - setuptools
+        - python
+        - numpy
+        - swig ==3.0.8
+        - mpi4py
 
-  
-# the build and runtime requirements:
-requirements:     # (optional)
-  build:
-    - python 
-    - numpy
-  run:
-    - python
-    - numpy
+    run:
+        - python
+        - numpy
+        - swig ==3.0.8
+        - mpi4py
 
-about:            # (optional)
-  home: http://www.pyopt.org/index.html
+test:
+    imports:
+        - pyOpt
+
+about:
+    home: http://www.pyopt.org/
+    license: LGPL
+    summary: Package for formulating and solving nonlinear constrained optimization problems
