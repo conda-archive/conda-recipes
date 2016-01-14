@@ -1,0 +1,27 @@
+package:
+  name: cyrus-sasl
+  version: 2.1.25
+
+source:
+  fn: cyrus-sasl-2.1.25.tar.gz
+  url: http://ftp.andrew.cmu.edu/pub/cyrus-mail/cyrus-sasl-2.1.25.tar.gz
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - openldap
+    - system [linux]
+  run:
+    - openldap
+    - system [linux]
+
+about:
+  home: http://asg.web.cmu.edu/sasl/sasl-library.html
+  # In doc/index.html :
+  # "People considering doing binary distributions that include saslauthd
+  #  should be aware that the code is covered by several slightly different
+  #  (but compatible) licenses, due to how it was contributed. Details can be
+  #  found within the source code."
+  license: Unknown

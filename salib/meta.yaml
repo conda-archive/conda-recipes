@@ -13,6 +13,7 @@ requirements:
     - scikit-learn
     - matplotlib
   run:
+    - python
     - scikit-learn
     - matplotlib
 
@@ -24,3 +25,4 @@ about:
   home: http://salib.github.io/SALib/
   license: MIT
   summary: Sensitivity Analysis Library
+

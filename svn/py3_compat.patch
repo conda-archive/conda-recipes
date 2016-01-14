@@ -1,0 +1,74 @@
+--- build/generator/swig/header_wrappers.py
++++ build/generator/swig/header_wrappers.py
+@@ -265,7 +265,7 @@ class Generator(generator.swig.Generator):
+       self.proxy_filename(base_fname))
+ 
+     # Open a temporary output file
+-    self.ofile = tempfile.TemporaryFile(dir=self.proxy_dir)
++    self.ofile = tempfile.TemporaryFile(dir=self.proxy_dir, mode='w+')
+     self.ofile.write('/* Proxy classes for %s\n' % base_fname)
+     self.ofile.write(' * DO NOT EDIT -- AUTOMATICALLY GENERATED\n')
+     self.ofile.write(' * BY build/generator/swig/header_wrappers.py */\n')
+--- build/generator/swig/__init__.py
++++ build/generator/swig/__init__.py
+@@ -66,7 +66,7 @@ class Generator:
+     """Get the version number of SWIG"""
+ 
+     if not self._swigVersion:
+-      swig_version = _exec.output([self.swig_path, "-version"])
++      swig_version = _exec.output([self.swig_path, "-version"]).decode()
+       m = re.search("Version (\d+).(\d+).(\d+)", swig_version)
+       if m:
+         self._swigVersion = tuple(map(int, m.groups()))
+--- build/generator/gen_win.py
++++ build/generator/gen_win.py
+@@ -159,7 +159,7 @@ class WinGeneratorBase(gen_win_dependencies.GenDependenciesBase):
+     ### implement this from scratch using the algorithms described in
+     ### http://www.webdav.org/specs/draft-leach-uuids-guids-01.txt
+ 
+-    myhash = hashlib_md5(data).hexdigest()
++    myhash = hashlib_md5(data.encode("UTF-8")).hexdigest()
+ 
+     guid = ("{%s-%s-%s-%s-%s}" % (myhash[0:8], myhash[8:12],
+                                   myhash[12:16], myhash[16:20],
+--- build/generator/gen_base.py
++++ build/generator/gen_base.py
+@@ -1003,7 +1002,7 @@ class TargetSQLHeader(Target):
+ 
+     self.gen_obj.graph.add(DT_SQLHDR, output, source)
+ 
+-    for line in fileinput.input(source):
++    for line in fileinput.input(source,False,'',0,'r',fileinput.hook_encoded('utf-8')):
+       match = self._re_sql_include.match(line)
+       if not match:
+         continue
+@@ -1288,7 +1287,7 @@ class IncludeDependencyInfo:
+     Return a dictionary with included full file names as keys and None as
+     values."""
+     hdrs = { }
+-    for line in fileinput.input(fname):
++    for line in fileinput.input(fname,False,'',0,'r',fileinput.hook_encoded('utf-8')):
+       match = self._re_include.match(line)
+       if not match:
+         continue
+
+--- build/generator/gen_win_dependencies.py
++++ build/generator/gen_win_dependencies.py
+@@ -1106,7 +1106,7 @@ class GenDependenciesBase(gen_base.GeneratorBase):
+     try:
+       fp = subprocess.Popen([self.swig_exe, '-version'],
+                             stdout=subprocess.PIPE).stdout
+-      txt = fp.read()
++      txt = fp.read().decode()
+       if txt:
+         vermatch = re.search(r'^SWIG\ Version\ (\d+)\.(\d+)\.(\d+)', txt, re.M)
+       else:
+@@ -1134,7 +1134,7 @@ class GenDependenciesBase(gen_base.GeneratorBase):
+     try:
+       fp = subprocess.Popen([self.swig_exe, '-swiglib'],
+                             stdout=subprocess.PIPE).stdout
+-      lib_dir = fp.readline().strip()
++      lib_dir = fp.readline().strip().decode()
+       fp.close()
+     except OSError:
+       lib_dir = None

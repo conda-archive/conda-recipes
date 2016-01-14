@@ -1,0 +1,27 @@
+package:
+  name: scikit-fmm
+  version: 0.0.7
+
+source:
+  fn: scikit-fmm-0.0.7.zip
+  url: https://pypi.python.org/packages/source/s/scikit-fmm/scikit-fmm-0.0.7.zip
+  md5: c669e98b1b279ce9c4df1866df6a2370
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+
+  run:
+    - python
+    - numpy
+
+test:
+  imports:
+    - skfmm
+
+about:
+  home: https://github.com/scikit-fmm/
+  summary: An extension module implementing the fast marching method
+  license: BSD

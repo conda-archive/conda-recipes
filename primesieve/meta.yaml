@@ -1,0 +1,29 @@
+package:
+  name: primesieve
+  version: "0.1.0"
+
+source:
+  git_url: https://github.com/hickford/primesieve-python
+  git_tag: v0.1.0
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cython
+    - pytest
+
+  run:
+    - python
+
+test:
+  imports:
+    - primesieve
+
+about:
+  home: https://github.com/hickford/primesieve-python
+  license: MIT
+  summary: 'Fast prime number generator. Python bindings around C++ library primesieve'
