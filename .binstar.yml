@@ -22,7 +22,7 @@ engine:
 script:
  - git clone https://github.com/ContinuumIO/ProtoCI/
  - cd ProtoCI && git fetch --all && git checkout feature/as_package && python setup.py install && cd ..
- - protoci-difference-build ."
+ - protoci-difference-build .
 install_channels:
 - defaults
 - python
