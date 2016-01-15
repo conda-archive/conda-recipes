@@ -1,11 +1,11 @@
 package:
   name: msgpack
-  version: 0.4.0
+  version: 0.4.6
 
 source:
-  fn: msgpack-python-0.4.0.tar.gz
-  url: https://pypi.python.org/packages/source/m/msgpack-python/msgpack-python-0.4.0.tar.gz
-  md5: 8b9ce43619fd1428bf7baddf57e38d1a
+  fn: msgpack-python-0.4.6.tar.gz
+  url: https://pypi.python.org/packages/source/m/msgpack-python/msgpack-python-0.4.6.tar.gz
+  md5: 8b317669314cf1bc881716cccdaccb30
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -51,7 +51,7 @@ test:
 
 about:
   home: http://msgpack.org/
-  license: ache Software License
+  license: Apache Software License
 
 # See
 # http://docs.continuum.io/conda/build.html for
