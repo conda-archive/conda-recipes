@@ -1,7 +1,7 @@
 package:
   name: node-webkit
   version: '0.10.1'
-  
+
 build:
   number: 0
   binary_relocation: false
@@ -9,16 +9,16 @@ build:
     - Scripts\node-webkit.bat                                   [win]
 
 source:
-  fn: node-webkit-v0.10.1-linux-ia32.tar.gz                                     [linux32]
+  broken_fn: node-webkit-v0.10.1-linux-ia32.tar.gz                                     [linux32]
   url: http://dl.node-webkit.org/v0.10.1/node-webkit-v0.10.1-linux-ia32.tar.gz  [linux32]
 
-  fn: node-webkit-v0.10.1-linux-x64.tar.gz                                      [linux64]
+  broken_fn: node-webkit-v0.10.1-linux-x64.tar.gz                                      [linux64]
   url: http://dl.node-webkit.org/v0.10.1/node-webkit-v0.10.1-linux-x64.tar.gz   [linux64]
 
-  fn: node-webkit-v0.10.1-osx-x64.zip                                           [osx]
+  broken_fn: node-webkit-v0.10.1-osx-x64.zip                                           [osx]
   url: http://dl.node-webkit.org/v0.10.1/node-webkit-v0.10.1-osx-x64.zip        [osx]
-  
-  fn: node-webkit-v0.10.1-win-ia32.zip                                          [win]
+
+  broken_fn: node-webkit-v0.10.1-win-ia32.zip                                          [win]
   url: http://dl.node-webkit.org/v0.10.1/node-webkit-v0.10.1-win-ia32.zip       [win]
 
 about:
