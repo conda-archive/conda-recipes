@@ -26,4 +26,4 @@ build:
 
 about:
   home: https://www.scipy.org
-  license: PSF
+  license: BSD
