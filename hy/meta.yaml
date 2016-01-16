@@ -6,28 +6,11 @@ source:
   fn: hy-0.11.0.tar.gz
   url: https://pypi.python.org/packages/source/h/hy/hy-0.11.0.tar.gz
   md5: 4ced4b32c0b68f6709182e14a29bfd03
-#  patches:
-   # List any patch files here
-   # - fix.patch
-
 build:
-  # noarch_python: True
-  # preserve_egg_dir: True
   entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - hy = hy:main
-    #
-    # Would create an entry point called hy that calls hy.main()
-
     - hy = hy.cmdline:hy_main
     - hyc = hy.cmdline:hyc_main
     - hy2py = hy.cmdline:hy2py_main
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
 
 requirements:
   build:
@@ -44,7 +27,6 @@ requirements:
     - clint >=0.4
 
 test:
-  # Python imports
   imports:
     - hy
     - hy.contrib
@@ -54,25 +36,11 @@ test:
     - hy.models
 
   commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
-
     - hy --help
     - hyc --help
     - hy2py --help
-
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any additional test requirements here.  For example
-    # - nose
 
 about:
   home: http://hylang.org/
   license: MIT License
   summary: 'Lisp and Python love each other.'
-
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml
