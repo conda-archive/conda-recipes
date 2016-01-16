@@ -1,0 +1,30 @@
+{% set build = 0 %}
+{% set version = '1.7.3' %}
+
+package:
+    name: icdiff
+    version: {{version}}
+
+about:
+    home: http://www.jefftk.com/icdiff
+    license: PSL
+    summary: Improved colored diff.
+
+source:
+    fn: release-{{version}}.tar.gz
+    url: https://github.com/jeffkaufman/icdiff/archive/release-{{version}}.tar.gz
+    md5: c77190ccec98648182e5ca508b570850
+
+requirements:
+    build:
+        - python
+        - setuptools
+
+    run:
+        - python
+
+build:
+    number: {{build}}
+    string: py{{py}}_{{build}}
+    script:
+        - python setup.py install
