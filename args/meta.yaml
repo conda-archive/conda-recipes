@@ -1,0 +1,21 @@
+package:
+  name: args
+  version: "0.1.0"
+
+source:
+  fn: args-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/a/args/args-0.1.0.tar.gz
+  md5: 66faf79ba2511def7b8b81d542482046
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+about:
+  home: https://github.com/kennethreitz/args
+  license: BSD License
+  summary: 'Command Arguments for Humans.'
