@@ -10,7 +10,7 @@ source:
      - gvconfig_libdir.patch
 
 build:
-  number: 4
+  number: 5
 
 requirements:
   build:
@@ -20,6 +20,8 @@ requirements:
     - freetype
     - jpeg
     - zlib
+    - expat
+
   run:
     - cairo
     - libpng
@@ -27,6 +29,7 @@ requirements:
     - freetype
     - jpeg
     - zlib
+    - expat
 
 test:
   commands:
