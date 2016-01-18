@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-$PYTHON setup.py install
+CFLAGS="-I$PREFIX/include" $PYTHON setup.py install
