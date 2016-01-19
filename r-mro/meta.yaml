@@ -1,0 +1,21 @@
+package:
+  name: r-mro
+  version: 3.2.2
+
+about:
+  home: https://mran.revolutionanalytics.com/open/
+  license: GPL
+  summary: Microsoft R Open
+
+source:
+  url: https://mran.revolutionanalytics.com/install/RRO-3.2.2-win.exe   [win]
+  fn: RRO-3.2.2-win.exe   [win]
+  
+  url: https://mran.revolutionanalytics.com/install/RRO-3.2.2-OSX.pkg   [osx]
+  fn: RRO-3.2.2-OSX.pkg   [osx]
+
+  url: https://mran.revolutionanalytics.com/install/RRO-3.2.2.el5.x86_64.rpm   [linux]
+  fn: RRO-3.2.2.el5.x86_64.rpm   [linux]
+
+
+
