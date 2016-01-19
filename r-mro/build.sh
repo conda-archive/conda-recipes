@@ -1,7 +1,6 @@
 
 Darwin() {
-    DARWIN_FN="RRO-3.2.2-OSX.pkg"
-    pkgutil --expand $DARWIN_FN $SRC_DIR/pkg
+    pkgutil --expand rro.pkg $SRC_DIR/pkg
 
     cd $SRC_DIR/pkg/R.frame.pkg
     tar xf Payload
@@ -21,9 +20,8 @@ Darwin() {
 
 
 Linux() {
-    LINUX_FN="RRO-3.2.2.el5.x86_64.rpm"
     mkdir pkg && cd pkg
-    rpm2cpio ../$LINUX_FN | cpio -idm
+    rpm2cpio ../rro.rpm | cpio -idm
 
 }
 
