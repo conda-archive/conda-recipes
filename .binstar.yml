@@ -30,7 +30,7 @@ package: conda-recipes
 platform:
  - osx-64
 
-user: psteinberg
+user: conda-team
 quiet: True
 
 # change
