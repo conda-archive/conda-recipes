@@ -4,24 +4,10 @@ after_script:
 - echo "ProtoCI build was a:$BINSTAR_BUILD_RESULT" | tee artifact1.txt
 after_success:
 - echo "ProtoCI BUILD SUCCESS"
-before_script:
-- echo "Prepare to install networkx PyYAML requests jinja2...."
-- conda install networkx PyYAML requests jinja2
-- echo "Prepare to clone conda and conda-build for metadata reading..."
-- mkdir conda_tmp
-# avoid conflict with conda or conda-build dirs if already there
-- git clone https://github.com/conda/conda-build conda_tmp/conda-build
-- git clone https://github.com/conda/conda conda_tmp/conda
-- export PYTHONPATH=$PYTHONPATH:./conda_tmp/conda-build:./conda_tmp/conda
-- echo "PYTHONPATH below should include ./conda_tmp"
-- echo $PYTHONPATH
-- conda install psutil
 
 engine:
 - python
 script:
- - git clone https://github.com/ContinuumIO/ProtoCI/
- - cd ProtoCI && git fetch --all && git checkout feature/as_package && python setup.py install && cd ..
  - protoci-difference-build .
 install_channels:
 - defaults
