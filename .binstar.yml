@@ -8,6 +8,7 @@ after_success:
 engine:
 - python
 script:
+ - conda install -c psteinberg protoci
  - protoci-difference-build .
 install_channels:
 - defaults
