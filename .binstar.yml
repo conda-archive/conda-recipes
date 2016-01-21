@@ -4,6 +4,16 @@ after_script:
 - echo "ProtoCI build was a:$BINSTAR_BUILD_RESULT" | tee artifact1.txt
 after_success:
 - echo "ProtoCI BUILD SUCCESS"
+before_script:
+- conda install networkx PyYAML requests jinja2
+- echo "Prepare to clone conda and conda-build for metadata reading..."
+- mkdir conda_tmp
+# avoid conflict with conda or conda-build dirs if already there
+- git clone https://github.com/conda/conda-build conda_tmp/conda-build
+- git clone https://github.com/conda/conda conda_tmp/conda
+- export PYTHONPATH=$PYTHONPATH:./conda_tmp/conda-build:./conda_tmp/conda
+- echo "PYTHONPATH below should include ./conda_tmp"
+- echo $PYTHONPATH
 
 engine:
 - python
