@@ -28,7 +28,7 @@ install_channels:
 - python
 package: conda-recipes
 platform:
- - osx-64
+ - linux-64
 
 user: conda-team
 quiet: True
