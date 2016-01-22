@@ -13,6 +13,7 @@ requirements: # [not win]
   run:
     - python  # [not win]
     - numpy   # [not win]
+    - libgcc  # [not win]
 
 test:
   imports:
