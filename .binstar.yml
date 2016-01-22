@@ -29,10 +29,3 @@ platform:
 
 user: conda-team
 quiet: True
-
-# change
-# another change
-
-envvars:
- - AAAAAAAAA=1
- - BBBBBBBBB=2
