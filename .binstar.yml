@@ -5,7 +5,6 @@ after_script:
 after_success:
 - echo "ProtoCI BUILD SUCCESS"
 before_script:
-- conda install networkx PyYAML requests jinja2
 - echo "Prepare to clone conda and conda-build for metadata reading..."
 - mkdir conda_tmp
 # avoid conflict with conda or conda-build dirs if already there
