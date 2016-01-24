@@ -1,36 +1,34 @@
 package:
-    name: freeimage
-    version: 3.17.0
-    # note: also update version in run_test.py
+  name: freeimage
+  version: 3.17.0
 
 source:
-    fn: FreeImage3170.zip
-    url: http://optimate.dl.sourceforge.net/project/freeimage/Source%20Distribution/3.17.0/FreeImage3170.zip
-    md5: 459e15f0ec75d6efa3c7bd63277ead86
-    
-    patches:
-        - Makefile.osx.patch  # [osx]
-        - vs2010_omp.patch    # [win and py3k]
-        - vs_snprintf.patch   # [win and py>=3.5]
+  fn: FreeImage3170.zip
+  url: http://optimate.dl.sourceforge.net/project/freeimage/Source%20Distribution/3.17.0/FreeImage3170.zip
+  md5: 459e15f0ec75d6efa3c7bd63277ead86
+  patches:
+    - Makefile.osx.patch  # [osx]
+    - vs2010_omp.patch    # [win and py3k]
+    - vs_snprintf.patch   # [win and py>=3.5]
 
 build:
-    number: 1
-    features:
-        - vc9                [win and py27]
-        - vc10               [win and py34]
-        - vc14               [win and py35]
+  number:       1
+  features:
+    - vc9                [win and py27]
+    - vc10               [win and py34]
+    - vc14               [win and py35]
 
 requirements:
-    build:
-        # Python here forces tracking of vc features on win.
-        - python             [win]
+  build:
+    # Python here forces tracking of vc features on win.
+    - python             [win]
 
 test:
-    requires:
-        - python
-    commands:
-        - python run_test.py
+  requires:
+    - python
 
 about:
-    home: http://freeimage.sourceforge.net/
-    license: GPLv2 and FreeImage Public License
+  home: http://freeimage.sourceforge.net/
+  license: GPLv2 and FreeImage Public License
+  license_family: GPL2
+  summary: supports popular graphics image formats like PNG, BMP, JPEG, TIFF
