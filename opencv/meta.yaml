@@ -1,11 +1,11 @@
 package:
     name: opencv
-    version: 3.0.0
+    version: 3.1.0
 
 source:
-    fn: opencv-3.0.0.zip
-    url: https://github.com/Itseez/opencv/archive/3.0.0.zip
-    sha256: 07094ea2f996f2622d572f0f3a162d698c8a547520341ca9109fbaf9363fb001
+    fn: opencv-3.1.0.tar.gz
+    url: https://github.com/Itseez/opencv/archive/3.1.0.tar.gz
+    sha256: f00b3c4f42acda07d89031a2ebb5ebe390764a133502c03a511f67b78bbd4fbf
     patches:
       # C++11 workaround for older Windows compilers
       - video_io_cpp11.patch    [win and py<35]
@@ -13,8 +13,9 @@ source:
       - no-pthreads.patch       [osx]
       # OpenCV's cmake messes up Conda's link embedding fixer
       - no-rpath.patch
-      # - line_float_cvt.patch is applied in build.sh.  It applies to other source
-      #    in opencv_contrib, which is cloned in build.sh.
+      # squelch a data initialization error that should be a warning
+      # http://stackoverflow.com/questions/32931856/cv2-3-0-0-cv2-flannbasedmatcher-flann-knnmatch-is-throwing-cv2-error
+      - kill_null_error.patch
 
 requirements:
     build:
@@ -23,18 +24,22 @@ requirements:
         - jpeg   [unix]
         - zlib   [unix]
         - libpng [unix]
+        - ffmpeg
         - python
         - curl   [win and py<30]
         - libtiff [unix]
         - tbb     [unix]
+        - hdf5
     run:
         - python
         - numpy  x.x
+        - ffmpeg
         - jpeg   [unix]
         - zlib   [unix]
         - libpng [unix]
         - libtiff [unix]
         - tbb     [unix]
+        - hdf5
 test:
     imports:
       - cv2

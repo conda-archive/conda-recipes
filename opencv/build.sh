@@ -15,7 +15,7 @@ git clone https://github.com/Itseez/opencv_contrib
 cd opencv_contrib
 git checkout tags/${PKG_VERSION}
 # this patch only strictly necessary on Mac, but benign elsewhere.  Added for Version 3.0.0.
-git apply ${RECIPE_DIR}/line_float_cvt.patch
+# git apply ${RECIPE_DIR}/line_float_cvt.patch
 cd ..
 
 mkdir build
@@ -30,7 +30,7 @@ cmake                                                                           
     -DCMAKE_INSTALL_PREFIX=$PREFIX                                                      \
     -DWITH_CUDA=OFF                                                                     \
     -DWITH_AVFOUNDATION=OFF                                                             \
-    -DWITH_FFMPEG=OFF                                                                   \
+    -DWITH_FFMPEG=ON                                                                    \
     -DWITH_TBB=ON                                                                       \
     -DWITH_VTK=OFF                                                                      \
     -DJPEG_INCLUDE_DIR:PATH=$PREFIX/include                                             \

@@ -6,33 +6,11 @@ set "FORWARD_SLASHED_SRC_DIR=%SRC_DIR:\=/%"
 
 for /f "delims=" %%A in ('%PREFIX%\python -c "import sys; print(sys.version_info.major)"') DO SET PY_MAJOR=%%A
 
-set "OBJ_DETECT=-DBUILD_opencv_objdetect=false"
+git clone https://github.com/Itseez/opencv_contrib
+cd opencv_contrib
+git checkout tags/%PKG_VERSION%
+cd ..
 
-IF %PY_MAJOR% EQU 3 (GOTO :PY3) else (GOTO :PY2)
-
-:PY3
-    REM Get python minor version by running a short script:
-    for /f "delims=" %%A in ('python -c "import sys; print(sys.version_info.minor)"') DO SET PY_MINOR=%%A
-    REM VS < 2013 are incapable of compiling the objdetect module.  Enable it only if PY_MINOR >= 5.
-    if %PY_MINOR% GEQ 5 (GOTO :CPP11)
-    GOTO :PYTHON_SETUP
-
-:CPP11
-    git clone https://github.com/Itseez/opencv_contrib
-    cd opencv_contrib
-    git checkout tags/%PKG_VERSION%
-    cd ..
-    set "EXTRA=-DOPENCV_EXTRA_MODULES_PATH=%FORWARD_SLASHED_SRC_DIR%/opencv_contrib/modules"
-    set "OBJ_DETECT=-DBUILD_opencv_objdetect=true"
-    GOTO :PYTHON_SETUP
-
-:PY2
-    REM Assume 2.7
-    set PY_MINOR=7
-    set EXTRA=""
-    GOTO :PYTHON_SETUP
-
-:PYTHON_SETUP
 
 set PY_LIB=python%PY_MAJOR%%PY_MINOR%.lib
 
@@ -61,7 +39,7 @@ cmake -G "Visual Studio %VSTRING%"^
  -DCMAKE_BUILD_TYPE=Release^
  -DBUILD_TESTS=false^
  -DBUILD_PERF_TESTS=false^
- %OBJ_DETECT%^
+ -DWITH_FFMPEG=ON^
  -DCMAKE_INSTALL_PREFIX=%FORWARD_SLASHED_LIBRARY_PREFIX%^
  -DEXECUTABLE_OUTPUT_PATH=%FORWARD_SLASHED_LIBRARY_PREFIX%/bin^
  -DLIBRARY_OUTPUT_PATH=%FORWARD_SLASHED_LIBRARY_PREFIX%/lib^
@@ -71,7 +49,7 @@ cmake -G "Visual Studio %VSTRING%"^
  -DPYTHON_LIBRARY=%FORWARD_SLASHED_PREFIX%/libs/%PY_LIB%^
  -DPYTHON%PY_MAJOR%_NUMPY_INCLUDE_DIRS=%FORWARD_SLASHED_PREFIX%/Lib/site-packages/numpy/core/include^
  -DCMAKE_INSTALL_PREFIX=%FORWARD_SLASHED_LIBRARY_PREFIX%^
- %EXTRA%^
+ -DOPENCV_EXTRA_MODULES_PATH=%FORWARD_SLASHED_SRC_DIR%/opencv_contrib/modules^
  ..
 
 if errorlevel 1 exit 1
