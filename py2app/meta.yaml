@@ -1,0 +1,75 @@
+package:
+  name: py2app
+  version: "0.9"
+
+source:
+  fn: py2app-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/p/py2app/py2app-0.9.tar.gz
+  md5: eb31f5fefcf80aeaf4d02ec68d5978b4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - py2app = py2app:main
+    #
+    # Would create an entry point called py2app that calls py2app.main()
+
+    - py2applet = py2app.script_py2applet:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - altgraph >=0.12
+    - modulegraph >=0.12
+    - macholib >=1.5
+
+  run:
+    - python
+    - setuptools
+    - altgraph >=0.12
+    - modulegraph >=0.12
+    - macholib >=1.5
+
+test:
+  # Python imports
+  imports:
+    - py2app
+    - py2app.apptemplate
+    - py2app.bootstrap
+    - py2app.bundletemplate
+    - py2app.converters
+    - py2app.recipes
+    - py2app.recipes.PIL
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - py2applet --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/ronaldoussoren/py2app
+  license: MIT License
+  summary: 'Create standalone Mac OS X applications with Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

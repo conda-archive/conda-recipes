@@ -1,0 +1,60 @@
+package:
+  name: altgraph
+  version: "0.12"
+
+source:
+  fn: altgraph-0.12.tar.gz
+  url: https://pypi.python.org/packages/source/a/altgraph/altgraph-0.12.tar.gz
+  md5: 916dca277fb2b747d5b1ec05b54a0825
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - altgraph = altgraph:main
+    #
+    # Would create an entry point called altgraph that calls altgraph.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - altgraph
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://packages.python.org/altgraph
+  license: MIT License
+  summary: 'Python graph (network) package'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
