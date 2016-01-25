@@ -1,0 +1,43 @@
+
+# Notes:
+# This .binstar.yml file controls CI testing of this repo
+# Adaptations for other uses may change the package name
+# or user.
+
+after_failure:
+- echo "After failure message!"
+after_script:
+- echo "ProtoCI build was a:$BINSTAR_BUILD_RESULT" | tee artifact1.txt
+after_success:
+- echo "ProtoCI BUILD SUCCESS"
+before_script:
+- echo "Prepare to clone conda and conda-build for metadata reading..."
+- mkdir conda_tmp
+# avoid conflict with conda or conda-build dirs if already there
+- git clone https://github.com/conda/conda-build conda_tmp/conda-build
+- git clone https://github.com/conda/conda conda_tmp/conda
+- export PYTHONPATH=$PYTHONPATH:./conda_tmp/conda-build:./conda_tmp/conda
+- echo "PYTHONPATH below should include ./conda_tmp"
+- echo $PYTHONPATH
+- conda install -c psteinberg protoci
+engine:
+- python
+- r
+script:
+ - protoci-difference-build .
+install_channels:
+- defaults
+- python
+- r
+package: conda-recipes
+platform:
+ - linux-64
+ - osx-32
+ - osx-64
+ - win-64
+# anaconda.org username or org name:
+user: conda-team
+# suppress print of messages ending in \r (interactive ones)
+quiet: True
+#timeout after N seconds without IO
+iotimeout: 200
