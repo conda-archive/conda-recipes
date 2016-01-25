@@ -1,8 +1,8 @@
 package:
   name: node-webkit
   version: '0.10.1'
-  
-build:
+
+broken_build:
   number: 0
   binary_relocation: false
   has_prefix_files:                                             [win]
@@ -17,10 +17,12 @@ source:
 
   fn: node-webkit-v0.10.1-osx-x64.zip                                           [osx]
   url: http://dl.node-webkit.org/v0.10.1/node-webkit-v0.10.1-osx-x64.zip        [osx]
-  
+
   fn: node-webkit-v0.10.1-win-ia32.zip                                          [win]
   url: http://dl.node-webkit.org/v0.10.1/node-webkit-v0.10.1-win-ia32.zip       [win]
 
 about:
   home: https://github.com/rogerwang/node-webkit
   license: MIT
+
+# ok change
