@@ -2,7 +2,7 @@ package:
   name: node-webkit
   version: '0.10.1'
 
-build:
+broken_build:
   number: 0
   binary_relocation: false
   has_prefix_files:                                             [win]
@@ -25,4 +25,4 @@ about:
   home: https://github.com/rogerwang/node-webkit
   license: MIT
 
-# change
+# ok change

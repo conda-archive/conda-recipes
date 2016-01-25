@@ -28,3 +28,6 @@ platform:
 
 user: conda-team
 quiet: True
+
+#timeout after N seconds without IO
+iotimeout: 110
