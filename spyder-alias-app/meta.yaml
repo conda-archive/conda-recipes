@@ -1,0 +1,28 @@
+package:
+  name: spyder-alias-app
+  version: {{ environ.get('GIT_DESCRIBE_TAG', '').replace('v', '') }}
+
+source:
+  #git_url: https://github.com/spyder-ide/spyder
+  #git_tag: HEAD
+  git_url: https://github.com/stuarteberg/spyder
+  git_tag: osx-alias-mode-app
+
+build:
+  number: {{ environ.get('GIT_DESCRIBE_NUMBER', '0') }}
+  script_env:
+    - USER
+
+requirements:
+  build:
+    - spyder
+    - py2app
+
+  run:
+    - spyder
+  
+about:
+  home: https://github.com/spyder-ide/spyder
+  license: MIT
+  summary: Scientific PYthon Development EnviRonment
+  
