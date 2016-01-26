@@ -5,10 +5,13 @@ set "FORWARD_SLASHED_LIBRARY_PREFIX=%LIBRARY_PREFIX:\=/%"
 set "FORWARD_SLASHED_SRC_DIR=%SRC_DIR:\=/%"
 
 for /f "delims=" %%A in ('%PREFIX%\python -c "import sys; print(sys.version_info.major)"') DO SET PY_MAJOR=%%A
+for /f "delims=" %%A in ('%PREFIX%\python -c "import sys; print(sys.version_info.minor)"') DO SET PY_MINOR=%%A
 
 git clone https://github.com/Itseez/opencv_contrib
 cd opencv_contrib
 git checkout tags/%PKG_VERSION%
+TYPE %RECIPE_DIR%\windows_compiler.patch | MORE /P > contrib.patch
+patch -p0 -i contrib.patch
 cd ..
 
 
@@ -39,7 +42,7 @@ cmake -G "Visual Studio %VSTRING%"^
  -DCMAKE_BUILD_TYPE=Release^
  -DBUILD_TESTS=false^
  -DBUILD_PERF_TESTS=false^
- -DWITH_FFMPEG=ON^
+ -DWITH_FFMPEG=OFF^
  -DCMAKE_INSTALL_PREFIX=%FORWARD_SLASHED_LIBRARY_PREFIX%^
  -DEXECUTABLE_OUTPUT_PATH=%FORWARD_SLASHED_LIBRARY_PREFIX%/bin^
  -DLIBRARY_OUTPUT_PATH=%FORWARD_SLASHED_LIBRARY_PREFIX%/lib^

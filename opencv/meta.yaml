@@ -16,6 +16,9 @@ source:
       # squelch a data initialization error that should be a warning
       # http://stackoverflow.com/questions/32931856/cv2-3-0-0-cv2-flannbasedmatcher-flann-knnmatch-is-throwing-cv2-error
       - kill_null_error.patch
+      # patches for opencv-contrib not compiling in Windows
+      #    applied in bld.bat
+      # - windows_compiler.patch
 
 requirements:
     build:
@@ -24,7 +27,7 @@ requirements:
         - jpeg   [unix]
         - zlib   [unix]
         - libpng [unix]
-        - ffmpeg
+        - ffmpeg [unix]
         - python
         - curl   [win and py<30]
         - libtiff [unix]
@@ -33,7 +36,7 @@ requirements:
     run:
         - python
         - numpy  x.x
-        - ffmpeg
+        - ffmpeg [unix]
         - jpeg   [unix]
         - zlib   [unix]
         - libpng [unix]
