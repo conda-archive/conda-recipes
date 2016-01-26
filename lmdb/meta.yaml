@@ -1,0 +1,14 @@
+package:
+  name: lmdb
+  version: !!str 0.9.17
+
+source:
+  git_url: https://github.com/LMDB/lmdb
+  git_tag: LMDB_0.9.17
+  patches:
+    - prefix.patch
+
+about:
+  home: http://symas.com/mdb/
+  license: BSD 3-clause
+  summary: Command line flags parsing for C++

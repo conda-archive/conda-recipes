@@ -1,0 +1,41 @@
+package:
+  name: google-apputils
+  version: "0.4.2"
+
+source:
+  fn: google-apputils-0.4.2.tar.gz
+  url: https://pypi.python.org/packages/source/g/google-apputils/google-apputils-0.4.2.tar.gz#md5=fb9fadf621dbecf28c8dabb5fe37ddb3
+  md5: fb9fadf621dbecf28c8dabb5fe37ddb3
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-dateutil >=1.4
+    - python-gflags >=1.4
+    - pytz >=2010
+
+  run:
+    - python
+    - setuptools
+    - python-dateutil >=1.4
+    - python-gflags >=1.4
+    - pytz >=2010
+
+test:
+  imports:
+    - google
+    - google.apputils
+
+  requires:
+    - mox >=0.5
+    - python-dateutil >=1.4
+    - python-gflags >=1.4
+    - pytz >=2010
+
+about:
+  home: http://code.google.com/p/google-apputils-python
+  license: Apache V2

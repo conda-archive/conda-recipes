@@ -1,0 +1,36 @@
+
+package:
+    name: caffe
+    version: 1.0.0rc3
+
+source:
+    git_url: https://github.com/BVLC/caffe.git
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - boost
+        - cmake
+        - gflags
+        - glog
+        - hdf5
+        - leveldb
+        - lmdb
+        - opencv
+        - protobuf
+        - snappy
+    run:
+        - boost
+        - hdf5
+        - leveldb
+        - lmdb
+        - opencv
+        - protobuf
+        - snappy
+
+about:
+    home: http://caffe.berkeleyvision.org/
+    license: BSD 2-clause
+    license_family: BSD

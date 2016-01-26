@@ -1,30 +1,27 @@
 package:
   name: protobuf
-  version: !!str 2.5.0
+  version: !!str 2.6.1
 
 source:
-  fn: protobuf-2.5.0.tar.gz
-  url: https://pypi.python.org/packages/source/p/protobuf/protobuf-2.5.0.tar.gz
-  md5: 338813f3629d59e9579fed9035ecd457
-
-build:
-  preserve_egg_dir: True
+  url: https://github.com/google/protobuf/releases/download/v2.6.1/protobuf-2.6.1.tar.bz2
+  fn: protobuf-2.6.1.tar.bz2
+  sha256: ee445612d544d885ae240ffbcbf9267faa9f593b7b101f21d58beceb92661910
 
 requirements:
   build:
     - python
     - setuptools
+    - google-apputils
 
   run:
     - python
-    - setuptools
 
 test:
-  # Python imports
   imports:
     - google.protobuf
 
 about:
   home: http://code.google.com/p/protobuf/
-  license: New BSD License
+  license: 3-clause BSD License
+  license_family: BSD
   summary: 'Protocol Buffers'

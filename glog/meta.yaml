@@ -1,0 +1,17 @@
+package:
+  name: glog
+  version: !!str 0.3.4
+
+source:
+  url: https://github.com/google/glog/archive/v0.3.4.tar.gz
+  fn: glog-0.3.4.tar.gz
+  sha256: ce99d58dce74458f7656a68935d7a0c048fa7b4626566a71b7f4e545920ceb10
+
+requirements:
+  build:
+    - cmake
+
+about:
+  home: https://github.com/google/glog
+  license: BSD 3-clause
+  summary: Google logging library for C++
