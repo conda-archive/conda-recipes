@@ -1,14 +1,15 @@
 package:
   name: gsl
-  version: 1.16
+  version: 2.1
 
 source:
-  fn: gsl-1.16.tar.gz
-  url: http://ftp.club.cc.cmu.edu/pub/gnu/gsl/gsl-1.16.tar.gz
+  fn: gsl-2.1.tar.gz
+  url: http://ftp.club.cc.cmu.edu/pub/gnu/gsl/gsl-2.1.tar.gz
+  md5: d8f70abafd3e9f0bae03c52d1f4e8de5
 
 build:
-  number: 2 # [osx]
-  number: 1 # [linux]
+  number: 0 # [osx]
+  number: 0 # [linux]
 
 requirements:
   build:
