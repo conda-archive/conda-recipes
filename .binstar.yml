@@ -13,7 +13,7 @@ before_script:
 - export PYTHONPATH=$PYTHONPATH:./conda_tmp/conda-build:./conda_tmp/conda
 - echo "PYTHONPATH below should include ./conda_tmp"
 - echo $PYTHONPATH
-
+- conda config --add channels r
 engine:
 - python
 script:
