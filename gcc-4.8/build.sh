@@ -57,5 +57,8 @@ make -j"$CPU_COUNT"
 make install-strip
 rm "$PREFIX"/lib64
 
+#Fix libtool paths
+find -name "$PREFIX"/*.la -print0 | xargs -0  sed -i 's%lib/../lib64%lib%g'
+
 # Link cc to gcc
 (cd "$PREFIX"/bin && ln -s gcc cc)
