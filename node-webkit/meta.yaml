@@ -2,7 +2,7 @@ package:
   name: node-webkit
   version: '0.10.1'
 
-broken_again_build:
+build:
   number: 0
   binary_relocation: false
   has_prefix_files:                                             [win]
