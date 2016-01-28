@@ -171,3 +171,4 @@ if [ $SUCCESS -ne 0 ]; then
 fi
 
 cd .. && rm -r "$workdir"
+ln -s ${PREFIX}/lib ${PREFIX}/lib64
