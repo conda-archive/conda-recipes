@@ -20,9 +20,10 @@ before_script:
 - echo "PYTHONPATH below should include ./conda_tmp"
 - echo $PYTHONPATH
 - conda install -c psteinberg protoci
+- conda config --add channels r
 engine:
-- python
-- r
+- python=2.7
+- python=3.4
 script:
  - protoci-difference-build .
 install_channels:
@@ -32,7 +33,6 @@ install_channels:
 package: conda-recipes
 platform:
  - linux-64
- - osx-32
  - osx-64
  - win-64
 # anaconda.org username or org name:
