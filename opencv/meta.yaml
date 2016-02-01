@@ -31,7 +31,6 @@ requirements:
         - python
         - curl   [win and py<30]
         - libtiff [unix]
-        - tbb     [unix]
         - hdf5
     run:
         - python
@@ -41,7 +40,6 @@ requirements:
         - zlib   [unix]
         - libpng [unix]
         - libtiff [unix]
-        - tbb     [unix]
         - hdf5
 test:
     imports:
