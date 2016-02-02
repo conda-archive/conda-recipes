@@ -3,7 +3,9 @@
 mkdir build
 cd build
 
-set PYLIB=python27.lib
+REM Remove dot from PY_VER for use in library name
+set MY_PY_VER=%PY_VER:.=%
+set PYLIB=python%MY_PY_VER%.lib
 
 cmake .. -G "NMake Makefiles" ^
     -Wno-dev ^
@@ -22,7 +24,8 @@ cmake .. -G "NMake Makefiles" ^
     -DPYTHON_INCLUDE_PATH=%PREFIX%\\include ^
     -DPYTHON_LIBRARY=%PREFIX%\\libs\\%PYLIB% ^
     -DVTK_INSTALL_PYTHON_MODULE_DIR=%PREFIX%\\Lib\\site-packages ^
-    -DModule_vtkRenderingMatplotlib=ON
+    -DModule_vtkRenderingMatplotlib=ON ^
+    -DVTK_PYTHON_VERSION=%PY_VER:~0,1%
 
 cmake --build . --target INSTALL --config Release
 if errorlevel 1 exit 1
