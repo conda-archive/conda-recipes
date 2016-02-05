@@ -44,15 +44,12 @@ if [ `uname` == Darwin ]; then
     # use globs to take into account various possble suffixes: m, u, d
     PY_LIB=`ls ${PREFIX}/lib/libpython${PY_VER}*.dylib | head -n 1`
     PY_INC=`ls -d ${PREFIX}/include/python${PY_VER}* | head -n 1`
-    SDK_PATH="/Developer/SDKs/MacOSX10.6.sdk"
 
     cmake .. \
         -DCMAKE_C_COMPILER=$CC \
         -DCMAKE_CXX_COMPILER=$CXX \
         -DVTK_REQUIRED_OBJCXX_FLAGS='' \
         -DVTK_USE_CARBON=OFF \
-        -DVTK_USE_TK=OFF \
-        -DIOKit:FILEPATH=${SDK_PATH}/System/Library/Frameworks/IOKit.framework \
         -DVTK_USE_COCOA=ON \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX="$PREFIX" \
@@ -70,6 +67,7 @@ if [ `uname` == Darwin ]; then
         -DModule_vtkRenderingMatplotlib=ON \
         -DVTK_USE_X=OFF \
         -DVTK_PYTHON_VERSION=${PY_VER:0:1}
+
 fi
 
 make -j${CPU_COUNT}
