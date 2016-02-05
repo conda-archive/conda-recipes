@@ -5,12 +5,8 @@ cd build
 
 if [ `uname` == Linux ]; then
     # Note: VTK 7 requires gcc >= 4.2
-    CC=gcc  # gcc44
-    CXX=g++ # g++44
-
-    # MY_PY_VER=${PY_VER}
-    # if [ "$PY3K" == "1" ]; then
-    #     MY_PY_VER="${MY_PY_VER}m"
+    CC=gcc
+    CXX=g++
 
     # use globs to take into account all possible suffixes: m, u, d
     PY_LIB=`ls "${PREFIX}/lib/libpython${PY_VER}"*.so | head -n 1`
