@@ -5,8 +5,8 @@ cd build
 
 if [ `uname` == Linux ]; then
     # Note: VTK 7 requires gcc >= 4.2
-    CC=gcc
-    CXX=g++
+    CC=gcc44
+    CXX=g++44
 
     # use globs to take into account all possible suffixes: m, u, d
     PY_LIB=`ls "${PREFIX}/lib/libpython${PY_VER}"*.so | head -n 1`
@@ -45,7 +45,7 @@ if [ `uname` == Darwin ]; then
         -DCMAKE_C_COMPILER=$CC \
         -DCMAKE_CXX_COMPILER=$CXX \
         -DVTK_REQUIRED_OBJCXX_FLAGS='' \
-        -DVTK_USE_CARBON=OFF \
+        -DVTK_USE_TK=OFF \
         -DVTK_USE_COCOA=ON \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX="$PREFIX" \
