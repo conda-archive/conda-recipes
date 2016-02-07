@@ -1,0 +1,13 @@
+diff --git libraries/liblmdb/Makefile libraries/liblmdb/Makefile
+index dbb5d69..1542356 100644
+--- liblmdb/Makefile
++++ liblmdb/Makefile
+@@ -26,7 +26,7 @@ OPT = -O2 -g
+ CFLAGS	= $(THREADS) $(OPT) $(W) $(XCFLAGS)
+ LDLIBS	=
+ SOLIBS	=
+-prefix	= /usr/local
++prefix	= $(PREFIX)
+ mandir = $(prefix)/man
+ 
+ ########################################################################

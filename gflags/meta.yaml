@@ -1,0 +1,17 @@
+package:
+  name: gflags
+  version: !!str 2.1.2
+
+source:
+  url: https://github.com/gflags/gflags/archive/v2.1.2.tar.gz
+  fn: gflags-2.1.2.tar.gz
+  sha256: d8331bd0f7367c8afd5fcb5f5e85e96868a00fd24b7276fa5fcee1e5575c2662
+
+requirements:
+  build:
+    - cmake
+
+about:
+  home: https://github.com/gflags/gflags
+  license: BSD 3-clause
+  summary: Command line flags parsing for C++

@@ -1,0 +1,12 @@
+package:
+  name: leveldb
+  version: !!str 1.18
+
+source:
+  git_url: https://github.com/google/leveldb
+  git_tag: v1.18
+
+about:
+  home: https://github.com/google/leveldb
+  license: BSD 3-clause
+  summary: fast key-value storage library that provides an ordered mapping from string keys to string values
