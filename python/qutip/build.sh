@@ -1,3 +1,3 @@
 #!/bin/bash
 
-$PYTHON setup.py install --with-f90mc
+$PYTHON setup.py install
