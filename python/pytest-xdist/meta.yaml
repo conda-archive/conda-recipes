@@ -1,0 +1,65 @@
+package:
+  name: pytest-xdist
+  version: 1.13.1
+
+source:
+  fn: pytest-xdist-1.13.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pytest-xdist/pytest-xdist-1.13.1.tar.gz
+  md5: 7741b4f3adce45f3f3a0ec97cdd8eadf
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pytest-xdist = pytest-xdist:main
+    #
+    # Would create an entry point called pytest-xdist that calls pytest-xdist.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - execnet
+    - pytest
+
+  run:
+    - python
+    - execnet
+    - pytest
+
+test:
+  # Python imports
+  imports:
+    - xdist
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/hpk42/pytest-xdist
+  license: MIT License
+  summary: 'py.test xdist plugin for distributed testing and loop-on-failing modes'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

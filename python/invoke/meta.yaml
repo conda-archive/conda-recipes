@@ -1,0 +1,38 @@
+package:
+  name: invoke
+  version: "0.10.1"
+
+source:
+  fn: invoke-0.10.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/invoke/invoke-0.10.1.tar.gz
+  md5: 68b5858e2d03e2df00c35d3ae843b45e
+
+build:
+  entry_points:
+    - invoke = invoke.cli:main
+    - inv = invoke.cli:main
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+
+test:
+  imports:
+    - invoke
+    - invoke.parser
+    - invoke.vendor
+    - invoke.vendor.fluidity
+    - invoke.vendor.lexicon
+    # - invoke.vendor.yaml2 # bug with relative imports
+    - invoke.vendor.yaml3
+  commands:
+    - invoke --help
+    - inv --help
+
+about:
+  home: http://docs.pyinvoke.org
+  license: BSD License
+  summary: 'Pythonic task execution'

@@ -1,0 +1,35 @@
+package:
+  name: pyqt5
+  version: 5.5.0
+
+source:
+  fn:   PyQt-gpl-5.5.zip                                                                 [win]
+  url:  http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-5.5/PyQt-gpl-5.5.zip       [win]
+  sha1: 5ccb9f3ff726b07f9dfc5ca32c9505c483e45000                                         [win]
+  fn:   PyQt-gpl-5.5.tar.gz                                                              [unix]
+  url:  http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-5.5/PyQt-gpl-5.5.tar.gz    [unix]
+  sha1: 6de6e23692069dbb934f4decdf86133e54a0cd54                                         [unix]
+
+  patches:
+    - configure.patch       [osx]
+
+requirements:
+  build:
+    - python
+    - qt5     >=5.5.0
+    - sip     >=4.16.7
+    - jom     [win]
+
+  run:
+    - python
+    - qt5     >=5.5.0
+    - sip     >=4.16.7
+
+test:
+  imports:
+    - PyQt5.QtCore
+
+about:
+  home: http://www.riverbankcomputing.co.uk/software/pyqt
+  license: GPL
+

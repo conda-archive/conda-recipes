@@ -1,0 +1,12 @@
+--- configure.py.old.py	2015-11-26 07:42:55.000000000 -0500
++++ configure.py	2015-11-26 07:44:04.000000000 -0500
+@@ -2480,7 +2480,8 @@
+     if not target_config.static:
+         # Make sure these frameworks are already loaded by the time the
+         # libqcocoa.dylib plugin gets loaded.
+-        extra_lflags = 'QMAKE_LFLAGS += "-framework QtPrintSupport -framework QtDBus -framework QtWidgets"\n        ' if mname == 'QtGui' else ''
++        # extra_lflags = 'QMAKE_LFLAGS += "-framework QtPrintSupport -framework QtDBus -framework QtWidgets"\n        ' if mname == 'QtGui' else ''
++        extra_lflags = ''
+ 
+         shared = '''
+ win32 {

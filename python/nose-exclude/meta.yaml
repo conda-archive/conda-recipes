@@ -1,0 +1,23 @@
+package:
+  name: nose-exclude
+  version: 0.4.1
+
+source:
+  fn: nose-exclude-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/n/nose-exclude/nose-exclude-0.4.1.tar.gz
+  md5: 69d263e2480d471a36bf2a41967e7c8e
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - nose
+
+  run:
+    - python
+    - nose
+
+about:
+  home: https://github.com/kgrandis/nose-exclude/
+  license: LGPL
+  summary: "easily specify directories to be excluded from testing"

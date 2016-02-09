@@ -1,17 +1,20 @@
 package:
   name: jq
-  version: 1.4
+  version: 1.5
 
 source:
-  fn: jq-1.4.tar.gz
-  url: https://github.com/stedolan/jq/releases/download/jq-1.4/jq-1.4.tar.gz
-  md5: e3c75a4f805bb5342c9f4b3603fb248f
-
-  patches:
-    - configure.patch
+  fn: jq-1.5.tar.gz
+  url: https://github.com/stedolan/jq/releases/download/jq-1.5/jq-1.5.tar.gz
+  md5: 0933532b086bd8b6a41c1b162b1731f9
 
 build:
-  number: 2
+  number: 1
+
+requirements:
+  build:
+    - oniguruma
+  run:
+    - oniguruma
 
 about:
     home: http://stedolan.github.io/jq/

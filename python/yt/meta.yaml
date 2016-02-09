@@ -1,0 +1,40 @@
+package:
+  name: yt
+  version: 3.2.3
+
+source:
+  fn: yt-3.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/y/yt/yt-3.2.3.tar.gz
+  sha256: 4d6ccf345d9fab965335c9faf8708c7eea79366b81d77f0f302808be3e82c0ed
+
+build:
+  entry_points:
+    - yt = yt.utilities.command_line:run_main
+
+requirements:
+  build:
+    - python
+    - numpy
+    - cython
+    - setuptools 
+    - libpython # [win]
+    - mingw # [win]
+  run:
+    - python
+    - numpy
+    - h5py
+    - sympy
+    - matplotlib
+    - ipython
+
+test:
+  requires:
+    - nose
+  commands:
+    - yt -h
+  imports:
+    - yt
+
+about:
+  home: http://yt-project.org/
+  license: BSD

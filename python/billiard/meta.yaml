@@ -1,0 +1,25 @@
+package:
+  name: billiard
+  version: 3.3.0.21
+
+source:
+  fn: billiard-3.3.0.21.tar.gz
+  url: https://pypi.python.org/packages/source/b/billiard/billiard-3.3.0.21.tar.gz
+  md5: 5304a48344d8f7e821d06f57da8af1f4
+
+requirements:
+  build:
+  - python
+  - setuptools
+
+  run:
+  - python
+
+test:
+  imports:
+  - billiard
+
+about:
+  home: http://github.com/celery/billiard
+  license: BSD
+  summary: Python multiprocessing fork with improvements and bugfixes

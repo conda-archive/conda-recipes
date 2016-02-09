@@ -1,0 +1,22 @@
+package:
+  name: setuptools-markdown
+  version: 0.2
+
+source:
+  fn: setuptools-markdown-0.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/setuptools-markdown/setuptools-markdown-0.2.tar.gz
+  md5: 11f87abab7fd06ba4f504623d03c7cf9
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pypandoc
+
+  run:
+    - python
+    - pypandoc
+    
+about:
+  home: https://github.com/msabramo/setuptools-markdown
+  license: Public Domain

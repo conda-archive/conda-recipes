@@ -1,29 +1,46 @@
 package:
   name: qt5
-  version: 5.4.1
+  version: 5.5.0
 
 source:
-  fn: qt-everywhere-opensource-src-5.4.1.tar.gz # [unix]
-  url: http://download.qt.io/official_releases/qt/5.4/5.4.1/single/qt-everywhere-opensource-src-5.4.1.tar.gz # [unix]
-  sha1: e696b353a80ad53bcfd9535e744b5cd3246f5fd1 # [unix]
-  fn: qt-everywhere-opensource-src-5.4.1.zip # [win]
-  url: http://download.qt.io/official_releases/qt/5.4/5.4.1/single/qt-everywhere-opensource-src-5.4.1.zip # [win]
-  sha1: 40ade5606b42b1cfe9522e04323d2d6e2f3365c0 # [win]
+  fn:   qt-everywhere-opensource-src-5.5.0.tar.xz                                                               [unix]
+  url:  http://download.qt.io/official_releases/qt/5.5/5.5.0/single/qt-everywhere-opensource-src-5.5.0.tar.xz   [unix]
+  md5:  65d5282f3dee0336da9ed1f77148952f                                                                        [unix]
+  fn:   qt-everywhere-opensource-src-5.5.0.zip                                                                  [win]
+  url:  http://download.qt.io/official_releases/qt/5.5/5.5.0/single/qt-everywhere-opensource-src-5.5.0.zip      [win]
+  md5:  299abca0a091b6b06cbbc6387f4fff9f                                                                        [win]
 
 build:
   detect_binary_files_with_prefix: true
 
 requirements:
   build:
-    - freetype # [unix]
-    - jom # [win]
-    - python # [win]
     - icu
-  run:
-    - freetype # [unix]
-    - icu
+    - python
+    - jom                    [win]
+    - freetype               [unix]
+    - openssl                [unix]
+    - libpng        1.6*     [unix]
+    - jpeg                   [unix]
+    - zlib                   [unix]
+    - bison                  [linux]
+    - flex                   [linux]
+    - fontconfig             [linux]
+    - gst-plugins-base       [linux]
+    - libxcb                 [linux]
 
+  run:
+    - icu
+    - freetype               [unix]
+    - zlib                   [unix]
+    - openssl                [unix]
+    - libpng        1.6*     [unix]
+    - jpeg                   [unix]
+    - fontconfig             [linux]
+    - gst-plugins-base       [linux]
+    - libxcb                 [linux]
 
 about:
     home: http://www.qt.io
     license: LGPL
+

@@ -1,0 +1,79 @@
+package:
+  name: prompt_toolkit
+  version: "0.54"
+
+source:
+  fn: prompt_toolkit-0.54.tar.gz
+  url: https://pypi.python.org/packages/source/p/prompt_toolkit/prompt_toolkit-0.54.tar.gz
+  md5: c9b83f8ddc2d887aca78a10779aff623
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - prompt_toolkit = prompt_toolkit:main
+    #
+    # Would create an entry point called prompt_toolkit that calls prompt_toolkit.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pygments
+    - six >=1.9.0
+    - wcwidth
+
+  run:
+    - python
+    - pygments
+    - six >=1.9.0
+    - wcwidth
+
+test:
+  # Python imports
+  imports:
+    - prompt_toolkit
+    - prompt_toolkit.clipboard
+    - prompt_toolkit.contrib
+    - prompt_toolkit.contrib.completers
+    - prompt_toolkit.contrib.regular_languages
+    - prompt_toolkit.contrib.telnet
+    - prompt_toolkit.contrib.validators
+    - prompt_toolkit.eventloop
+    - prompt_toolkit.filters
+    - prompt_toolkit.key_binding
+    - prompt_toolkit.key_binding.bindings
+    - prompt_toolkit.layout
+    - prompt_toolkit.terminal
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/jonathanslenders/python-prompt-toolkit
+  license: LICENSE.txt
+  summary: 'Library for building powerful interactive command lines in Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

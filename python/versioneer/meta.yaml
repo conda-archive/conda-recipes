@@ -1,0 +1,20 @@
+package:
+  name: versioneer
+  version: 0.15
+
+source:
+  git_url: https://github.com/warner/python-versioneer
+  git_tag: 0.15
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+about:
+  home: https://github.com/warner/python-versioneer
+  license: public domain
+  summary: 'Easy VCS-based management of project version strings'

@@ -1,0 +1,36 @@
+package:
+  name: python-pptx
+  version: !!str 0.5.7
+
+source:
+  fn: python-pptx-0.5.7.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-pptx/python-pptx-0.5.7.tar.gz
+  md5: 80b3a1193e1804fa5d151c17c9c9242c
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - lxml
+    - pillow
+
+  run:
+    - python
+    - lxml
+    - pillow
+
+test:
+  imports:
+    - pptx.oxml
+    - pptx.dml
+    - pptx.oxml.dml
+    - pptx.opc
+    - pptx
+    - pptx.parts
+    - pptx.enum
+    - pptx.shapes
+
+about:
+  home: http://github.com/scanny/python-pptx
+  license: MIT License
+  summary: 'Generate and manipulate Open XML PowerPoint (.pptx) files'

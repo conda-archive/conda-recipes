@@ -1,0 +1,31 @@
+package:
+  name: urllib3
+  version: 1.11.0
+
+source:
+  git_url: https://github.com/shazow/urllib3
+  git_tag: 1.11
+  
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - ndg-httpsclient
+    - pyopenssl
+    - pyasn1
+
+test:
+  # Python imports
+  imports:
+    - urllib3.packages.ssl_match_hostname
+    - urllib3.contrib
+    - urllib3.packages
+    - urllib3
+    - urllib3.contrib.pyopenssl
+
+about:
+  home: http://urllib3.readthedocs.org/
+  license: MIT License

@@ -1,0 +1,18 @@
+--- Wrapping/Python/vtk/__init__.py.in	Fri Aug 28 11:55:08 2015
++++ Wrapping/Python/vtk/__init__.py.in	Fri Aug 28 11:59:32 2015
+@@ -4,6 +4,7 @@
+ import os
+ import sys
+ 
++os.environ['PATH'] = r"/opt/anaconda1anaconda2anaconda3\Library\bin" + os.pathsep + os.environ['PATH']
+ 
+ # The dl module is used to force the symbols in the loaded VTK modules to
+ # be global, that is, to force symbols to be shared between modules.  This
+@@ -37,6 +38,7 @@
+ 
+ # --------------------------------------
+ @VTK_PYTHON_IMPORT_ALL@# --------------------------------------
++
+ 
+ # useful macro for getting type names
+ __vtkTypeNameDict = {VTK_VOID:"void",

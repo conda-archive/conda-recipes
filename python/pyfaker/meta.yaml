@@ -1,0 +1,25 @@
+package:
+  name: fake-factory
+  version: 0.5.3
+
+source:
+  fn: fake-factory-0.5.3.tar.gz  
+  url: https://pypi.python.org/packages/source/f/fake-factory/fake-factory-0.5.3.tar.gz
+  md5: 85ecbe613260037fe983806ded208651
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - faker
+
+about:
+  home: http://github.com/joke2k/faker
+  license: MIT
+  summary: "Faker is a Python package that generates fake data for you."

@@ -1,0 +1,76 @@
+package:
+  name: botocore
+  version: "1.0.0b3"
+
+source:
+  fn: botocore-1.0.0b3.tar.gz
+  url: https://pypi.python.org/packages/source/b/botocore/botocore-1.0.0b3.tar.gz
+  md5: fbc663f2ca2979a4b52c9fad15025a2e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - botocore = botocore:main
+    #
+    # Would create an entry point called botocore that calls botocore.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jmespath ==0.7.1
+    - bcdoc >=0.16.0,<0.17.0
+    - python-dateutil >=2.1,<3.0.0
+
+  run:
+    - python
+    - jmespath ==0.7.1
+    - bcdoc >=0.16.0,<0.17.0
+    - python-dateutil >=2.1,<3.0.0
+
+test:
+  # Python imports
+  imports:
+    - botocore
+    - botocore.docs
+    - botocore.vendored
+    - botocore.vendored.requests
+    - botocore.vendored.requests.packages
+    - botocore.vendored.requests.packages.chardet
+    - botocore.vendored.requests.packages.urllib3
+    - botocore.vendored.requests.packages.urllib3.contrib
+    - botocore.vendored.requests.packages.urllib3.packages
+    - botocore.vendored.requests.packages.urllib3.packages.ssl_match_hostname
+    - botocore.vendored.requests.packages.urllib3.util
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/boto/botocore
+  license: Apache Software License
+  summary: 'Low-level, data-driven core of boto 3.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

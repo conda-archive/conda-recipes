@@ -1,0 +1,57 @@
+package:
+  name: dbf
+  version: 0.95.013
+
+source:
+  fn: dbf-0.95.013.tar.gz
+  url: https://pypi.python.org/packages/source/d/dbf/dbf-0.95.013.tar.gz
+  md5: 57a787e173a8580ad6b35a223b85e756
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - dbf = dbf:main
+    #
+    # Would create an entry point called dbf that calls dbf.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - dbf
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://groups.google.com/group/python-dbase
+  license: BSD License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

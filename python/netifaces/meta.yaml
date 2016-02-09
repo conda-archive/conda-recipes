@@ -1,0 +1,32 @@
+package:
+  name: netifaces
+  version: "0.10.4"
+
+source:
+  fn: netifaces-0.10.4.tar.gz
+  url: https://pypi.python.org/packages/source/n/netifaces/netifaces-0.10.4.tar.gz
+  md5: 36da76e2cfadd24cc7510c2c0012eb1e
+
+requirements:
+  build:
+    - python
+    - pip
+
+  run:
+    - python
+
+test:
+  imports:
+    - netifaces
+
+  commands:
+    - python -c "import netifaces; [ netifaces.ifaddresses(iface) for iface in netifaces.interfaces() ]"
+
+about:
+  home: https://bitbucket.org/al45tair/netifaces
+  license: MIT License
+  summary: 'Portable network interface information.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

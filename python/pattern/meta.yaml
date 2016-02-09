@@ -1,0 +1,29 @@
+package:
+  name: pattern
+  version: 2.6
+
+source:
+  git_url: https://github.com/clips/pattern
+  git_tag: 2.6
+  patches:
+    - no_lib_packaging.patch
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - liblinear
+    - libsvm
+
+  run:
+    - python
+    - liblinear
+    - libsvm
+
+test:
+  imports:
+    - pattern
+
+about:
+  home: http://www.clips.ua.ac.be/pages/pattern
+  license: BSD License

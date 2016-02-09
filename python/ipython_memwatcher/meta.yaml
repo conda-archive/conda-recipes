@@ -1,0 +1,32 @@
+package:
+  name: ipython_memwatcher
+  version: "0.2.1"
+
+source:
+  fn: ipython_memwatcher-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/ipython_memwatcher/ipython_memwatcher-0.2.1.tar.gz
+  md5: 2b266a05e22825f8e3676ec341e3861f
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ipython >=2.1
+    - memory_profiler
+
+  run:
+    - python
+    - ipython >=2.1
+    - memory_profiler
+
+test:
+  imports:
+    - ipython_memwatcher
+
+about:
+  home: https://github.com/FrancescAlted/ipython_memwatcher
+  license: BSD 2-Clause
+  summary: 'ipython_memwatcher: display memory usage during IPython execution'

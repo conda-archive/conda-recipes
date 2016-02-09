@@ -1,0 +1,25 @@
+package:
+  name: astor
+  version: "0.5"
+
+source:
+  fn: astor-0.5.tar.gz
+  url: https://pypi.python.org/packages/source/a/astor/astor-0.5.tar.gz
+  md5: 0fa627a7f14e02566e941ec782c03bfc
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - astor
+
+about:
+  home: https://github.com/berkerpeksag/astor
+  license: BSD License
+  summary: 'Read/rewrite/write Python ASTs'

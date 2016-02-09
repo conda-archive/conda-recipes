@@ -1,0 +1,24 @@
+package:
+  name: regex
+  version: 2015.10.29
+
+source:
+  fn: regex-2015.10.29.tar.gz
+  url: https://pypi.python.org/packages/source/r/regex/regex-2015.10.29.tar.gz
+  md5: f47b5682143028a6d66ae582a4c8180f
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports 
+  imports:
+    - regex
+
+about:
+  home: https://code.google.com/p/mrab-regex-hg/
+  license: Python Software Foundation License

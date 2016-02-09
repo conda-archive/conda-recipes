@@ -1,0 +1,19 @@
+--- src/font.c.old	2010-09-18 02:00:28 -0500
++++ src/font.c	2015-11-10 22:19:31 -0500
+@@ -149,6 +149,7 @@
+ 
+ static PyObject *
+ toy_font_face_new (PyTypeObject *type, PyObject *args, PyObject *kwds) {
++  PyObject *o;
+   const char *utf8;
+   cairo_font_slant_t slant   = CAIRO_FONT_SLANT_NORMAL;
+   cairo_font_weight_t weight = CAIRO_FONT_WEIGHT_NORMAL;
+@@ -157,7 +158,7 @@
+ 			 "utf-8", &utf8, &slant, &weight))
+     return NULL;
+ 
+-  PyObject *o = PycairoFontFace_FromFontFace (
++  o = PycairoFontFace_FromFontFace (
+ 		     cairo_toy_font_face_create (utf8, slant, weight));
+   PyMem_Free((void *)utf8);
+   return o;

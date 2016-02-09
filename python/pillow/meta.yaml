@@ -1,0 +1,42 @@
+package:
+  name: pillow
+  version: 2.6.1
+
+source:
+  fn: Pillow-2.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/P/Pillow/Pillow-2.6.1.tar.gz
+  md5: 4b77fb0c81bbe0c8bf90c6eea960e091
+  patches:
+    - windows_multiprocess.patch [win]
+    - osx.patch [osx]
+
+build:                   [win]
+  number: 1              [win]
+
+requirements:
+  build:
+    - python
+    - zlib
+    - libpng
+    - libtiff
+    - jpeg
+    - freetype
+    - distribute
+  run:
+    - python
+    - jpeg               [unix]
+    - zlib               [unix]
+    - freetype           [unix]
+    - libtiff            [unix]
+
+test:
+  imports:
+    - PIL
+    - PIL.Image
+    - PIL.ImageCms
+    - PIL._imagingtk     [linux]
+    - PIL._imagingft     [unix]
+
+about:
+  home: http://python-imaging.github.io/
+  license: Standard PIL license

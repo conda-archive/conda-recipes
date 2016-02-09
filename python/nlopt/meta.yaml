@@ -1,0 +1,29 @@
+package:
+  name: nlopt
+  version: 2.4.2
+
+build:
+  number: 1
+
+requirements: # [not win]
+  build:      # [not win]
+    - gcc     # [not win]
+    - numpy   # [not win]
+
+  run:
+    - python  # [not win]
+    - numpy   # [not win]
+    - libgcc  # [not win]
+
+test:
+  imports:
+    - nlopt   # [not win]
+
+source:
+  fn: nlopt-2.4.2.tar.gz
+  url: http://ab-initio.mit.edu/nlopt/nlopt-2.4.2.tar.gz
+
+about:
+  home: http://ab-initio.mit.edu/nlopt
+  license: GNU Lesser General Public License (LGPL)
+  summary: nonlinear optimization library

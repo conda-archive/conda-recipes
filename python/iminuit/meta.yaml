@@ -1,0 +1,25 @@
+package:
+  name: iminuit
+  version: 1.1.1
+
+source:
+  fn: iminuit-1.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/i/iminuit/iminuit-1.1.1.tar.gz
+  md5: d2a05f890eac4bd5a392f49d056ef6a6
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+
+test:
+  imports:
+    - iminuit
+    - iminuit._libiminuit
+
+about:
+  home: http://iminuit.github.io/iminuit/
+  license: GNU General Public License (GPL) or MIT License
+  license_family: GPL2
+  summary: Interactive Minimization Tools based on MINUIT

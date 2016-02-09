@@ -1,18 +1,18 @@
 package:
   name: icu
-  version: 54.1
+  version: 56.1
 
 source:
-  fn: icu4c-54_1-Win64-msvc10.zip # [win64]
-  url: http://download.icu-project.org/files/icu4c/54.1/icu4c-54_1-Win64-msvc10.zip # [win64]
-  md5: 4d85e1817a5a59582517262b9396c7ba # [win64]
-  fn: icu4c-54_1-Win32-msvc10.zip # [win32]
-  url: http://download.icu-project.org/files/icu4c/54.1/icu4c-54_1-Win32-msvc10.zip # [win32]
-  md5: 2419927dae9f0ac2498b10de657ff6d3 # [win32]
-  fn: icu4c-54_1-src.tgz # [unix]
-  url: http://download.icu-project.org/files/icu4c/54.1/icu4c-54_1-src.tgz # [unix]
-  md5: e844caed8f2ca24c088505b0d6271bc0 # [unix]
+  fn:  icu4c-56_1-Win64-msvc10.zip                                                    [win64]
+  url: http://download.icu-project.org/files/icu4c/56.1/icu4c-56_1-Win64-msvc10.zip   [win64]
+  md5: 480c72491576c048de1218c3c5519399                                               [win64]
+  fn:  icu4c-56_1-Win32-msvc10.zip                                                    [win32]
+  url: http://download.icu-project.org/files/icu4c/56.1/icu4c-56_1-Win32-msvc10.zip   [win32]
+  md5: 45167a240b60e36b59a87eda23490ce4                                               [win32]
+  fn:  icu4c-56_1-src.tgz                                                             [unix]
+  url: http://download.icu-project.org/files/icu4c/56.1/icu4c-56_1-src.tgz            [unix]
+  md5: c4a2d71ff56aec5ebfab2a3f059be99d                                               [unix]
 
 about:
-    home: http://site.icu-project.org/
-    license: MIT
+  home: http://site.icu-project.org/
+  license: MIT

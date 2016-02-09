@@ -1,0 +1,33 @@
+package:
+  name: flask-restful
+  version: 0.3.4
+
+source:
+  fn: Flask-RESTful-0.3.4.tar.gz
+  url: https://pypi.python.org/packages/source/F/Flask-RESTful/Flask-RESTful-0.3.4.tar.gz
+  md5: 896aff2720fcd915aacfd5651eab20d1
+
+requirements:
+  build:
+  - python
+  - setuptools
+  - flask
+  - six
+  - pytz
+  - aniso8601
+
+  run:
+  - python
+  - flask
+  - six
+  - pytz
+  - aniso8601
+
+test:
+  imports:
+  - flask_restful
+
+about:
+  home: https://github.com/flask-restful/flask-restful/
+  license: BSD
+  summary: Simple framework for creating REST APIs.

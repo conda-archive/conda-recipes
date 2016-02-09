@@ -1,0 +1,13 @@
+diff --git setup.py setup.py
+index c56431e..9cfdaf3 100644
+--- setup.py
++++ setup.py
+@@ -45,7 +45,7 @@ setup(
+ 
+     install_requires=[
+         'boto >= 2.32',
+-        'httpretty==0.8.6',
++        'httpretty >= 0.8.6',
+         'bz2file',
+         'requests',
+     ],

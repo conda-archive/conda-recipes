@@ -1,0 +1,13 @@
+diff --git TPL/libsvm-3.1-custom/Makefile.win TPL/libsvm-3.1-custom/Makefile.win
+index 0db46f3..50c751c 100644
+--- TPL/libsvm-3.1-custom/Makefile.win
++++ TPL/libsvm-3.1-custom/Makefile.win
+@@ -26,7 +26,7 @@ svm.obj: svm.cpp svm.h
+ 	$(CXX) $(CFLAGS) -c svm.cpp
+ 
+ lib: svm.cpp svm.h svm.def
+-	$(CXX) $(CFLAGS) -LD svm.cpp -Fe$(TARGET)\libsvm -link -DEF:svm.def 
++	$(CXX) $(CFLAGS) -LD svm.cpp -Fe$(TARGET)\libsvm -link -DLL -DEF:svm.def
+ 
+ clean:
+ 	-erase /Q *.obj $(TARGET)\.

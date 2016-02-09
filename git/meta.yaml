@@ -1,18 +1,31 @@
 package:
   name: git
-  version: 2.4.6
+  version: 2.6.4
 
 source:
-  git_url: git@github.com:git/git.git
-  git_tag: v2.4.6
+  fn: v2.6.4.tar.gz                                       [unix]
+  url: https://github.com/git/git/archive/v2.6.4.tar.gz   [unix]
+  sha256: 08e3ccdba87ca55140c8155a07e147f6c1cdd7b574690e960763b18474fd05ed  [unix]
+  fn: PortableGit-2.6.4-32-bit.7z.exe                     [win]
+  url: https://github.com/git-for-windows/git/releases/download/v2.6.4.windows.1/PortableGit-2.6.4-32-bit.7z.exe [win]
+  sha256: 5b0fcea5262db1a7676b5cd21df717cd02f1835a270d7f94d1537028462e61df  [win]
+
+build:
+  # git hardcodes paths to external utilities (e.g. curl)
+  detect_binary_files_with_prefix: true
 
 requirements:
   build:
-    - openssl
-    - zlib
+    - expat     [unix]
+    - curl      [unix]
+    - openssl   [unix]
+    - zlib      [unix]
+    - 7za       [win]
   run:
-    - openssl
-    - zlib
+    - expat     [unix]
+    - curl      [unix]
+    - openssl   [unix]
+    - zlib      [unix]
 
 test:
   commands:

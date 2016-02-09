@@ -1,0 +1,46 @@
+package:
+  name: nltk
+  version: 3.0.5
+
+source:
+  git_url: https://github.com/nltk/nltk
+  git_tag: 3.0.5
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+    - six
+
+  run:
+    - python
+    - pyyaml
+    - six
+
+test:
+  # Python imports
+  imports:
+    - nltk
+    - nltk.inference
+    - nltk.sem
+    - nltk.cluster
+    - nltk.stem
+    - nltk.metrics
+    - nltk.test
+    - nltk.corpus
+    - nltk.app
+    - nltk.draw
+    - nltk.ccg
+    - nltk.classify
+    - nltk.tag
+    - nltk.corpus.reader
+    - nltk.parse
+    - nltk.chat
+    - nltk.misc
+    - nltk.chunk
+    - nltk.tokenize
+
+about:
+  home: http://nltk.org/
+  license: Apache Software License

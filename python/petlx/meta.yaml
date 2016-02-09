@@ -1,0 +1,31 @@
+
+package:
+  name: petlx
+  version: 1.0.3
+ 
+source:
+  git_rev: v1.0.3
+  git_url: https://github.com/alimanfoo/petlx.git
+ 
+requirements:
+  build:
+    - python
+  run:
+    - python
+    - petl >=1.0
+ 
+test:
+  imports:
+    - petlx
+    - petlx.test
+    - petlx.bio
+    - petlx.test.bio
+  commands:
+    - nosetests -v
+  requires:
+    - nose
+ 
+about:
+  home: https://github.com/alimanfoo/petl
+  license: MIT
+  license_file: LICENSE.txt

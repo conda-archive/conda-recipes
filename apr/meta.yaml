@@ -1,15 +1,17 @@
 package:
   name: apr
-  version: 1.5.0
-
-source:
-  fn: tpn-apr-1.5.0-win32.zip [win]
-  url: https://github.com/tpn/apr-win/archive/1.5.0-vc9.zip [win]
-  fn: apr-1.5.0.tar.bz2 [not win]
-  url: http://apache.mirrors.pair.com/apr/apr-1.5.0.tar.bz2 [not win]
+  version: 1.5.2
 
 build:
-  number: 0
+  features:
+    - vc9     [win and py27]
+    - vc10    [win and py34]
+    - vc14    [win and py35]
+
+requirements:
+  build:
+    - curl
+    - 7za     [win]
 
 about:
   home: http://apr.apache.org/

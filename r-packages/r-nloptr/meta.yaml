@@ -32,10 +32,12 @@ requirements:
   build:
     - r
     - nlopt # [not win]
+    - gcc # [not win]
 
   run:
     - r
     - nlopt # [not win]
+    - libgcc # [not win]
 
 test:
   commands:

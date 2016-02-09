@@ -1,0 +1,34 @@
+package:
+  name: snakeviz
+  version: "0.4.0"
+
+source:
+  fn: snakeviz-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/snakeviz/snakeviz-0.4.0.tar.gz
+  md5: a7f59cded288ac7dab683f718dd34727
+
+build:
+  entry_points:
+    - snakeviz = snakeviz.cli:main
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tornado >=2.0
+
+  run:
+    - python
+    - tornado >=2.0
+
+test:
+  imports:
+    - snakeviz
+
+  commands:
+    - snakeviz --help
+
+about:
+  home: https://github.com/jiffyclub/snakeviz
+  license: BSD License
+  summary: 'A web-based viewer for Python profiler output'

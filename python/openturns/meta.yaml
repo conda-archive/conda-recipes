@@ -1,0 +1,58 @@
+package:
+  name: openturns
+  version: 1.7
+
+source:
+  fn: openturns-1.7.tar.gz # [not win]
+  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.7/openturns-1.7.tar.gz # [not win]
+  sha1: 9535120721b20a45460538f3ed8fa0f0fec1d797 # [not win]
+
+  fn: openturns-1.7-py2.7-i686.exe # [win32 and py27]
+  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.7/openturns-1.7-py2.7-i686.exe # [win32 and py27]
+  sha1: 63f5c17b9be105babc9511f1ae5030a66e375d4b # [win32 and py27]
+
+  fn: openturns-1.7-py2.7-x86_64.exe # [win64 and py27]
+  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.7/openturns-1.7-py2.7-x86_64.exe # [win64 and py27]
+  sha1: b8db4f00e7ecd64d72445b5f37d772a588a75da1 # [win64 and py27]
+
+  fn: openturns-1.7-py3.5-i686.exe # [win32 and py35]
+  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.7/openturns-1.7-py3.5-i686.exe # [win32 and py35]
+  sha1: a32ec13c37b79b51ad4f9b62cfa4cff595c1325f # [win32 and py35]
+
+  fn: openturns-1.7-py3.5-x86_64.exe # [win64 and py35]
+  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.7/openturns-1.7-py3.5-x86_64.exe # [win64 and py35]
+  sha1: 04e182874fe885d9e6ea764b0f8065863fc4f608 # [win64 and py35]
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - cmake         # [not win]
+    - swig          # [not win]
+    - boost         # [not win]
+    - lapack        # [not win]
+    - libxml2       # [not win]
+    - muparser      # [not win]
+    - tbb           # [not win]
+    - nlopt         # [not win]
+
+  run:
+    - python
+    - matplotlib
+    - lapack        # [not win]
+    - libxml2       # [not win]
+    - muparser      # [not win]
+    - tbb           # [not win]
+    - nlopt         # [not win]
+
+test:
+  imports:
+    - openturns
+    - openturns.viewer
+
+about:
+  home: http://openturns.org/
+  license: GNU Lesser General Public License (LGPL)
+  summary: Uncertainty treatment library

@@ -1,0 +1,25 @@
+package:
+  name: amqp
+  version: 1.4.7
+
+source:
+  fn: amqp-1.4.7.tar.gz
+  url: https://pypi.python.org/packages/source/a/amqp/amqp-1.4.7.tar.gz
+  md5: 5aa44107d142f56385d2375f302cf7b0
+
+requirements:
+  build:
+  - python
+  - setuptools
+
+  run:
+  - python
+
+test:
+  imports:
+  - amqp
+
+about:
+  home: http://github.com/celery/py-amqp
+  license: BSD License or GNU Library or Lesser General Public License (LGPL)
+  summary: Low-level AMQP client for Python (fork of amqplib)
