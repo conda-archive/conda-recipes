@@ -1,6 +1,6 @@
 package:
   name: conda
-  version: 3.19.1.{{ environ['GIT_DESCRIBE_NUMBER'] }}.{{ environ['GIT_DESCRIBE_HASH'] }}
+  version: 3.19.1.51.g2ba04a6
 
 source:
   git_url: https://github.com/conda/conda.git
