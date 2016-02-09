@@ -1,9 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 
-if [ `uname` == Darwin ]; then
-    SO_EXT='.dylib'
+if test `uname` = "Darwin"
+then
+  SO_EXT='.dylib'
 else
-    SO_EXT='.so'
+  SO_EXT='.so'
 fi
 
 # handle suffix: python2.7 or python3.5m
@@ -38,5 +39,5 @@ cmake \
   ..
 
 make OT -j${CPU_COUNT}
-make -j2 # memory hungry swig modules
-make install
+make install -j2 # memory hungry swig modules
+ctest -R pyinstallcheck -j${CPU_COUNT}
