@@ -1,0 +1,48 @@
+package:
+  name: otsubset
+  version: 1.2i
+
+source:
+  fn: otsubset-1.2i.tar.gz # [not win]
+  url: https://github.com/openturns/otsubset/archive/v1.2i.tar.gz # [not win]
+  sha1: 23c85157280335caaac73c08e8a75c8b6da62ec5 # [not win]
+
+  fn: otsubset-1.2i-py2.7-i686.exe # [win32 and py27]
+  url: http://downloads.sourceforge.net/openturns/openturns/otsubset-1.2i/otsubset-1.2i-py2.7-i686.exe # [win32 and py27]
+  sha1: 63f5c17b9be105babc9511f1ae5030a66e375d4b # [win32 and py27]
+
+  fn: otsubset-1.2i-py2.7-x86_64.exe # [win64 and py27]
+  url: http://downloads.sourceforge.net/openturns/openturns/otsubset-1.2i/otsubset-1.2i-py2.7-x86_64.exe # [win64 and py27]
+  sha1: b8db4f00e7ecd64d72445b5f37d772a588a75da1 # [win64 and py27]
+
+  fn: otsubset-1.2i-py3.5-i686.exe # [win32 and py35]
+  url: http://downloads.sourceforge.net/openturns/openturns/otsubset-1.2i/otsubset-1.2i-py3.5-i686.exe # [win32 and py35]
+  sha1: a32ec13c37b79b51ad4f9b62cfa4cff595c1325f # [win32 and py35]
+
+  fn: otsubset-1.2i-py3.5-x86_64.exe # [win64 and py35]
+  url: http://downloads.sourceforge.net/openturns/openturns/otsubset-1.2i/otsubset-1.2i-py3.5-x86_64.exe # [win64 and py35]
+  sha1: 04e182874fe885d9e6ea764b0f8065863fc4f608 # [win64 and py35]
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - gcc           # [not win]
+    - cmake         # [not win]
+    - swig          # [not win]
+    - openturns     # [not win]
+
+  run:
+    - python
+    - openturns
+
+test:
+  imports:
+    - otsubset
+
+about:
+  home: http://openturns.org/
+  license: GNU Lesser General Public License (LGPL)
+  summary: Subset simulation module
