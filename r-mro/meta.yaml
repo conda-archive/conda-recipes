@@ -8,12 +8,12 @@ about:
   summary: Microsoft R Open
 
 source:
-  url: https://mran.revolutionanalytics.com/install/RRO-3.2.3-win.exe   [win]
+  url: https://mran.revolutionanalytics.com/install/mro/3.2.3/MRO-3.2.3-win.exe   [win]
   fn: rro.exe   [win]
   
-  url: https://mran.revolutionanalytics.com/install/RRO-3.2.3-OSX.pkg   [osx]
+  url: https://mran.revolutionanalytics.com/install/mro/3.2.3/MRO-3.2.3-OSX.pkg  [osx]
   fn: rro.pkg   [osx]
 
-  url: https://mran.revolutionanalytics.com/install/RRO-3.2.3.el5.x86_64.rpm   [linux]
+  url: https://mran.revolutionanalytics.com/install/mro/3.2.3/MRO-3.2.3.el5.x86_64.rpm   [linux]
   fn: rro.rpm   [linux]
 
