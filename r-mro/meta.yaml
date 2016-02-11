@@ -5,6 +5,7 @@ package:
 about:
   home: https://mran.revolutionanalytics.com/open/
   license: GPL
+  license_file: COPYING
   summary: Microsoft R Open
 
 source:

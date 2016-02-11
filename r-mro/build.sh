@@ -23,6 +23,11 @@ Linux() {
     mkdir pkg && cd pkg
     rpm2cpio ../rro.rpm | cpio -idm
 
+    cd usr/lib/MRO-3.2.3/R-3.2.3/lib64
+    cp -rp R $PREFIX
+
+    cp $SRC_DIR/pkg/usr/lib64/MRO-3.2.3/COPYING $SRC_DIR
+
 }
 
 case `uname` in
