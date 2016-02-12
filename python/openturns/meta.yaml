@@ -29,6 +29,7 @@ build:
 requirements:
   build:
     - python
+    - gcc           # [not win]
     - cmake         # [not win]
     - swig          # [not win]
     - boost         # [not win]
