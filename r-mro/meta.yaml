@@ -18,3 +18,39 @@ source:
   url: https://mran.revolutionanalytics.com/install/mro/3.2.3/MRO-3.2.3.el5.x86_64.rpm   [linux]
   fn: rro.rpm   [linux]
 
+requirements:
+  build:
+    - icu   [linux]
+    - libpng  [linux]
+    - readline   [linux]
+    - libtiff   [linux]
+    - libgfortran  [linux]
+    - cairo    [linux]
+    - pango   [linux]
+  run:
+    - icu   [linux]
+    - libpng  [linux]
+    - readline   [linux]
+    - libtiff   [linux]
+    - libgfortran  [linux]
+    - cairo    [linux]
+    - pango   [linux]
+
+#libpng
+#libjpeg
+#readline
+#libtiff
+#gcc
+#make
+#gcc-gfortran
+#ghostscript-fonts
+#libgfortran
+#cairo
+#curl
+#libicu
+#pango
+#libSM
+#libXt
+#libXmu
+#zip
+#info
