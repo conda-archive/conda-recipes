@@ -5,6 +5,7 @@ Darwin() {
     cd $SRC_DIR/pkg/R.frame.pkg
     tar xf Payload
 
+    cp R.framework/COPYING $SRC_DIR
     cd R.framework/Versions/Current/Resources
     unlink lib/libreadline*
     
