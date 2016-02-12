@@ -1,0 +1,31 @@
+package:
+  name: pygraphviz
+  version: 1.3.1
+
+source:
+  fn: pygraphviz-1.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pygraphviz/pygraphviz-1.3.1.tar.gz
+  md5: 7f690295dfe77edaa9e552d09d98d279
+
+build:
+  number: 2
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pkg-config
+    - graphviz
+
+  run:
+    - python
+    - graphviz
+
+test:
+  imports:
+    - pygraphviz
+
+about:
+  home: https://pygraphviz.github.io/
+  license: BSD
+  summary: 'PyGraphviz is a Python interface to the Graphviz graph layout and visualization package.'
