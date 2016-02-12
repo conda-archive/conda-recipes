@@ -36,6 +36,7 @@ platform:
  - linux-64
  - osx-64
  - win-64
+ - win-32
 # anaconda.org username or org name:
 user: conda-team
 # suppress print of messages ending in \r (interactive ones)
