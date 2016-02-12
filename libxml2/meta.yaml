@@ -1,14 +1,14 @@
 package:
   name: libxml2
-  version: 2.9.2
+  version: 2.9.3
 
 source:
-  fn: libxml2-2.9.2.tar.gz
-  url: ftp://xmlsoft.org/libxml2/libxml2-2.9.2.tar.gz
-  md5: 9e6a9aca9d155737868b3dc5fd82f788
+  fn: libxml2-2.9.3.tar.gz
+  url: ftp://xmlsoft.org/libxml2/libxml2-2.9.3.tar.gz
+  sha1: 0301ce933637e0ceda049047dbefd18714f59b6e
 
 build:
-  number: 1
+  number: 0
 
 test:
   files:
@@ -18,8 +18,10 @@ test:
 
 requirements:
   build:
+    - gcc                     [unix]
     - zlib                    [unix]
   run:
+    - libgcc                  [unix]
     - zlib                    [unix]
 
 about:
