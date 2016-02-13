@@ -18,6 +18,10 @@ source:
   url: https://mran.revolutionanalytics.com/install/mro/3.2.3/MRO-3.2.3.el5.x86_64.rpm   [linux]
   fn: rro.rpm   [linux]
 
+build:
+  rpaths:
+    - R/lib
+
 requirements:
   build:
     - icu   [linux]
