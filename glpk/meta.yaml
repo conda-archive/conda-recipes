@@ -3,13 +3,9 @@ package:
   version: 4.57
 
 source:
-  fn: glpk-4.57.tar.gz [not win]
-  url: http://ftp.gnu.org/gnu/glpk/glpk-4.57.tar.gz [not win]
-  md5: 237531a54f73155842f8defe51aedb0f [not win]
-
-  fn: winglpk-4.57.zip [win]
-  url: http://sourceforge.net/projects/winglpk/files/winglpk/GLPK-4.57/winglpk-4.57.zip [win]
-  md5: a5499826047a72df83203e983a762a0d [win]
+  fn: glpk-4.57.tar.gz
+  url: http://ftp.gnu.org/gnu/glpk/glpk-4.57.tar.gz
+  md5: 237531a54f73155842f8defe51aedb0f
 
 build:
   number: 1
