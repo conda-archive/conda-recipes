@@ -3,11 +3,16 @@ package:
   version: 4.57
 
 source:
-  fn: glpk-4.57.tar.gz
-  url: http://ftp.gnu.org/gnu/glpk/glpk-4.57.tar.gz
-  md5: 237531a54f73155842f8defe51aedb0f
+  fn: glpk-4.57.tar.gz [not win]
+  url: http://ftp.gnu.org/gnu/glpk/glpk-4.57.tar.gz [not win]
+  md5: 237531a54f73155842f8defe51aedb0f [not win]
+
+  fn: winglpk-4.57.zip [win]
+  url: http://sourceforge.net/projects/winglpk/files/winglpk/GLPK-4.57/winglpk-4.57.zip [win]
+  md5: a5499826047a72df83203e983a762a0d [win]
 
 build:
+  number: 1
   features:
     - vc9      [win and py27]
     - vc10     [win and py34]
@@ -16,6 +21,17 @@ build:
 requirements:
   build:
     - gmp      [not win]
+
+test:
+  files:
+    - plan.mps
+    - version.c
+
+  commands:
+    - glpsol --mps plan.mps
+
+    - "cc version.c -I$PREFIX/include -L$PREFIX/lib -lglpk -o version" [not win]
+    - LD_LIBRARY_PATH=$PREFIX/lib ./version [not win]
 
 about:
   home: https://www.gnu.org/software/glpk/
