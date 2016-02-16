@@ -1,3 +1,10 @@
+cd w%ARCH%
+copy config_VC config.h
+
+nmake /f Makefile_VC
+
+cd ..
+
 copy src\glpk.h %LIBRARY_INC%\glpk.h
 copy "w%ARCH%\\*.lib" %LIBRARY_LIB%
 copy "w%ARCH%\\glpk_4_57.lib" %LIBRARY_LIB%\glpk.lib
