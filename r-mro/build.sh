@@ -21,14 +21,26 @@ Darwin() {
 
 
 Linux() {
-    mkdir pkg && cd pkg
-    rpm2cpio ../rro.rpm | cpio -idm
 
-    cd usr/lib64/MRO-3.2.3/R-3.2.3/lib64
-    cp -rp R $PREFIX
+    cd $SRC_DIR/R-src
+    patch -p1 -i $SRC_DIR/RRO-src/patches/relocatable_r.patch
+    ./configure --prefix=$PREFIX --enable-R-shlib --with-tcltk --with-cairo --with-libpng  \
+                --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib  LIBR="-lpthread" \
+                --enable-memory-profiling
 
-    cp $SRC_DIR/pkg/usr/lib64/MRO-3.2.3/COPYING $SRC_DIR
+    make
+    make install
+    mv $PREFIX/lib64/R $PREFIX/R
 
+    # Copy MRO files
+    cp $SRC_DIR/RRO-src/files/OSX/Rprofile.site $PREFIX/R/etc
+
+    # Install the MRO checkpoint package
+    git clone https://github.com/RevolutionAnalytics/checkpoint.git $SRC_DIR/checkpoint
+    cd $SRC_DIR/checkpoint
+    git checkout 0.3.15
+    mkdir -p $PREFIX/R/library/checkpoint
+    cp -r * $PREFIX/R/library/checkpoint
 }
 
 case `uname` in

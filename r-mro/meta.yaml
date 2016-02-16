@@ -12,11 +12,14 @@ source:
   url: https://mran.revolutionanalytics.com/install/mro/3.2.3/MRO-3.2.3-win.exe   [win]
   fn: rro.exe   [win]
   
-  url: https://mran.revolutionanalytics.com/install/mro/3.2.3/MRO-3.2.3-OSX.pkg  [osx]
-  fn: rro.pkg   [osx]
+  #url: https://mran.revolutionanalytics.com/install/mro/3.2.3/MRO-3.2.3-OSX.pkg  [osx]
+  #fn: rro.pkg   [osx]
 
-  url: https://mran.revolutionanalytics.com/install/mro/3.2.3/MRO-3.2.3.el5.x86_64.rpm   [linux]
-  fn: rro.rpm   [linux]
+  #url: https://mran.revolutionanalytics.com/install/mro/3.2.3/MRO-3.2.3.el5.x86_64.rpm   [linux]
+  #fn: rro.rpm   [linux]
+
+  git_url: https://github.com/RevolutionAnalytics/RRO.git   [linux or osx]
+  git_rev: MRO-3.2.3   [linux or osx]
 
 build:
   rpaths:
@@ -39,6 +42,10 @@ requirements:
     - libgfortran  [linux]
     - cairo    [linux]
     - pango   [linux]
+
+test:
+  commands:
+    - $R -e "library()"
 
 #libpng
 #libjpeg
