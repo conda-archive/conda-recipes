@@ -1,22 +1,27 @@
 
 Darwin() {
-    pkgutil --expand rro.pkg $SRC_DIR/pkg
+    #pkgutil --expand rro.pkg $SRC_DIR/pkg
 
-    cd $SRC_DIR/pkg/R.frame.pkg
-    tar xf Payload
+    #cd $SRC_DIR/pkg/R.frame.pkg
+    #tar xf Payload
 
-    cp R.framework/COPYING $SRC_DIR
-    cd R.framework/Versions/Current/Resources
-    unlink lib/libreadline*
+    #cp R.framework/COPYING $SRC_DIR
+    #cd R.framework/Versions/Current/Resources
+    #unlink lib/libreadline*
     
-    mkdir -p $PREFIX/R/library
-    mkdir -p $PREFIX/R/modules
-    cp -Rv bin $PREFIX
-    cp -Rv include $PREFIX
-    cp -Rv lib $PREFIX/lib
-    cp -Rv library $PREFIX/R/library
-    cp -Rv modules $PREFIX/R/modules
-    cp -Rv share $PREFIX
+    #mkdir -p $PREFIX/R/library
+    #mkdir -p $PREFIX/R/modules
+    #cp -Rv bin $PREFIX
+    #cp -Rv include $PREFIX
+    #cp -Rv lib $PREFIX/lib
+    #cp -Rv library $PREFIX/R/library
+    #cp -Rv modules $PREFIX/R/modules
+    #cp -Rv share $PREFIX
+
+    cd $SRC_DIR/R-src
+    ./configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--x-includes=/opt/X11/include/' '--with-libtiff=yes' 'LDFLAGS=-L/opt/X11/lib -L/usr/local/lib /usr/local/lib/libcairo.a /usr/local/lib/libpixman-1.a /usr/local/lib/libfreetype.a /usr/local/lib/libfontconfig.a -lxml2 /usr/local/lib/libreadline.a'
+    make
+    make install
 }
 
 
