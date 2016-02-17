@@ -15,13 +15,17 @@ build:
 
 requirements:
   build:
+    - python   [win]
+    - gmp      [not win]
+
+  run:
     - gmp      [not win]
 
 test:
   files:
     - plan.mps
     - setup.py
-    - spam.pyx
+    - spam.c
 
   commands:
     - glpsol --mps plan.mps

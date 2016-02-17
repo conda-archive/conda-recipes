@@ -1,3 +1,5 @@
+# this should get compiled to spam.c by cython
+
 cdef extern from "glpk.h":
     const char *glp_version()
 
