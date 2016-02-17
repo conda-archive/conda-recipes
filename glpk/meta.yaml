@@ -8,6 +8,7 @@ source:
   md5: 237531a54f73155842f8defe51aedb0f
 
 build:
+  number: 1
   features:
     - vc9      [win and py27]
     - vc10     [win and py34]
@@ -16,6 +17,17 @@ build:
 requirements:
   build:
     - gmp      [not win]
+
+test:
+  files:
+    - plan.mps
+    - version.c
+
+  commands:
+    - glpsol --mps plan.mps
+
+    - "cc version.c -I$PREFIX/include -L$PREFIX/lib -lglpk -o version" [not win]
+    - LD_LIBRARY_PATH=$PREFIX/lib ./version [not win]
 
 about:
   home: https://www.gnu.org/software/glpk/
