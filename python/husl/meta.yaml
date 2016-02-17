@@ -1,18 +1,19 @@
 package:
   name: husl
-  version: !!str 2.1.0
+  version: "4.0.3"
 
 source:
-  fn: husl-2.1.0.tar.gz
-  url: https://pypi.python.org/packages/source/h/husl/husl-2.1.0.tar.gz
-  md5: 0137bca3088a3752e86acd9cccdf1bdf
+  fn: husl-4.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/h/husl/husl-4.0.3.tar.gz
+  md5: 7228a056708ac92a8b1cc20a0ab18639
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
-  #preserve_egg_dir: True
-  #entry_points:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -33,12 +34,11 @@ requirements:
   run:
     - python
 
-test:
+# test:
   # Python imports
-  imports:
-    - husl
+  # imports:
 
-  #commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
@@ -51,7 +51,7 @@ test:
     # - nose
 
 about:
-  home: http://github.com/boronine/pyhusl
+  home: http://www.husl-colors.org
   license: MIT License
   summary: 'Human-friendly HSL'
 

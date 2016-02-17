@@ -1,16 +1,17 @@
 package:
   name: twitterapi
-  version: !!str 2.2.8
+  version: "2.3.4"
 
 source:
-  fn: TwitterAPI-2.2.8.tar.gz
-  url: https://pypi.python.org/packages/source/T/TwitterAPI/TwitterAPI-2.2.8.tar.gz
-  md5: 9e31a8aa374001600d55ad469f8275dd
+  fn: TwitterAPI-2.3.4.tar.gz
+  url: https://pypi.python.org/packages/source/T/TwitterAPI/TwitterAPI-2.3.4.tar.gz
+  md5: fbf8b4617ff4f34cd24e526eaaa1f305
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
+  # noarch_python: True
   # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The

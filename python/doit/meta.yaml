@@ -11,6 +11,7 @@ source:
    # - fix.patch
 
 build:
+  # noarch_python: True
   # preserve_egg_dir: True
   entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
@@ -31,15 +32,18 @@ requirements:
     - python
     - setuptools
     - six
+    - cloudpickle
     - macfsevents # [osx]
     - pyinotify  # [linux]
+    - configparser # [py27]
 
   run:
     - python
     - six
+    - cloudpickle
     - macfsevents # [osx]
-    - pyinotify # [linux]
-
+    - pyinotify  # [linux]
+    - configparser  # [py27]
 test:
   # Python imports
   imports:

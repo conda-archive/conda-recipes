@@ -1,11 +1,11 @@
 package:
-  name: pytools
-  version: "2015.1.6"
+  name: bibtexparser
+  version: "0.6.1"
 
 source:
-  fn: pytools-2015.1.6.tar.gz
-  url: https://pypi.python.org/packages/source/p/pytools/pytools-2015.1.6.tar.gz
-  md5: 2942235bcff7369a00882b29c6bcc3e4
+  fn: bibtexparser-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/b/bibtexparser/bibtexparser-0.6.1.tar.gz
+  md5: 9e1fa92ac059c6a75f7076965267c3f8
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -17,9 +17,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - pytools = pytools:main
+    # - bibtexparser = bibtexparser:main
     #
-    # Would create an entry point called pytools that calls pytools.main()
+    # Would create an entry point called bibtexparser that calls bibtexparser.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -30,20 +30,14 @@ requirements:
   build:
     - python
     - setuptools
-    - decorator >=3.2.0
-    - appdirs >=1.4.0
-    - six >=1.8.0
 
   run:
     - python
-    - decorator >=3.2.0
-    - appdirs >=1.4.0
-    - six >=1.8.0
 
 test:
   # Python imports
   imports:
-    - pytools
+    - bibtexparser
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -58,9 +52,9 @@ test:
     # - nose
 
 about:
-  home: http://pypi.python.org/pypi/pytools
-  license: MIT License
-  summary: 'A collection of tools for Python'
+  home: https://github.com/sciunto-org/python-bibtexparser
+  license: LGPLv3 or BSD
+  summary: 'Bibtex parser for python 2 and 3'
 
 # See
 # http://docs.continuum.io/conda/build.html for

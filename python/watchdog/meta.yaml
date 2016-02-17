@@ -6,9 +6,6 @@ source:
   fn: watchdog-0.8.3.tar.gz
   url: https://pypi.python.org/packages/source/w/watchdog/watchdog-0.8.3.tar.gz
   md5: bb16926bccc98eae2a04535e4512ddf1
-#  patches:
-   # List any patch files here
-   # - fix.patch
 
 build:
   # noarch_python: True

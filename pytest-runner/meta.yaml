@@ -1,25 +1,25 @@
 package:
-  name: pytools
-  version: "2015.1.6"
+  name: pytest-runner
+  version: "2.6.2"
 
 source:
-  fn: pytools-2015.1.6.tar.gz
-  url: https://pypi.python.org/packages/source/p/pytools/pytools-2015.1.6.tar.gz
-  md5: 2942235bcff7369a00882b29c6bcc3e4
+  fn: pytest-runner-2.6.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pytest-runner/pytest-runner-2.6.2.tar.gz
+  md5: b81b698289addb13c2ed8d6ba6c8feb4
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
+build:
   # noarch_python: True
-  # preserve_egg_dir: True
+  preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - pytools = pytools:main
+    # - pytest-runner = pytest-runner:main
     #
-    # Would create an entry point called pytools that calls pytools.main()
+    # Would create an entry point called pytest-runner that calls pytest-runner.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -30,20 +30,15 @@ requirements:
   build:
     - python
     - setuptools
-    - decorator >=3.2.0
-    - appdirs >=1.4.0
-    - six >=1.8.0
-
+    - setuptools_scm
   run:
     - python
-    - decorator >=3.2.0
-    - appdirs >=1.4.0
-    - six >=1.8.0
+    - setuptools
+    - setuptools_scm
 
-test:
+# test:
   # Python imports
-  imports:
-    - pytools
+  # imports:
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -58,9 +53,9 @@ test:
     # - nose
 
 about:
-  home: http://pypi.python.org/pypi/pytools
+  home: https://bitbucket.org/pytest-dev/pytest-runner
   license: MIT License
-  summary: 'A collection of tools for Python'
+  summary: 'Invoke py.test as distutils command with dependency resolution.'
 
 # See
 # http://docs.continuum.io/conda/build.html for

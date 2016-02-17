@@ -1,6 +1,6 @@
 package:
   name: epc
-  version: 0.0.5
+  version: "0.0.5"
 
 source:
   fn: epc-0.0.5.tar.gz
@@ -11,6 +11,8 @@ source:
    # - fix.patch
 
 # build:
+  # noarch_python: True
+  # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
@@ -27,16 +29,17 @@ source:
 requirements:
   build:
     - python
-    - sexpdata
+    - sexpdata >=0.0.3
 
   run:
     - python
-    - sexpdata
+    - sexpdata >=0.0.3
 
 test:
   # Python imports
   imports:
     - epc
+    - epc.tests
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -53,6 +56,7 @@ test:
 about:
   home: https://github.com/tkf/python-epc
   license: GNU General Public License v3 (GPLv3)
+  summary: 'EPC (RPC stack for Emacs Lisp) implementation in Python'
 
 # See
 # http://docs.continuum.io/conda/build.html for

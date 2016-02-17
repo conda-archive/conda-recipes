@@ -1,26 +1,27 @@
 package:
-  name: pytools
-  version: "2015.1.6"
+  name: pyjwt
+  version: "1.4.0"
 
 source:
-  fn: pytools-2015.1.6.tar.gz
-  url: https://pypi.python.org/packages/source/p/pytools/pytools-2015.1.6.tar.gz
-  md5: 2942235bcff7369a00882b29c6bcc3e4
+  fn: PyJWT-1.4.0.tar.gz
+  url: https://pypi.python.org/packages/source/P/PyJWT/PyJWT-1.4.0.tar.gz
+  md5: 2f9bd9226d72b13d19d2c557114d03dc
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
+build:
   # noarch_python: True
   # preserve_egg_dir: True
-  # entry_points:
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - pytools = pytools:main
+    # - pyjwt = pyjwt:main
     #
-    # Would create an entry point called pytools that calls pytools.main()
+    # Would create an entry point called pyjwt that calls pyjwt.main()
 
+    - jwt = jwt.__main__:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -30,37 +31,37 @@ requirements:
   build:
     - python
     - setuptools
-    - decorator >=3.2.0
-    - appdirs >=1.4.0
-    - six >=1.8.0
-
+    - pytest-runner
   run:
     - python
-    - decorator >=3.2.0
-    - appdirs >=1.4.0
-    - six >=1.8.0
-
+    - pytest-runner
 test:
   # Python imports
   imports:
-    - pytools
+    - jwt
+    - jwt.contrib
+    - jwt.contrib.algorithms
 
-  # commands:
+  commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+    - jwt --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  # requires:
+  requires:
+    - pytest
+    - pytest-cov
+    - pytest-runner
     # Put any additional test requirements here.  For example
     # - nose
 
 about:
-  home: http://pypi.python.org/pypi/pytools
+  home: http://github.com/jpadilla/pyjwt
   license: MIT License
-  summary: 'A collection of tools for Python'
+  summary: 'JSON Web Token implementation in Python'
 
 # See
 # http://docs.continuum.io/conda/build.html for

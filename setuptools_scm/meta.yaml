@@ -1,11 +1,11 @@
 package:
-  name: twitter
-  version: "1.17.1"
+  name: setuptools_scm
+  version: "1.8.0"
 
 source:
-  fn: twitter-1.17.1.tar.gz
-  url: https://pypi.python.org/packages/source/t/twitter/twitter-1.17.1.tar.gz
-  md5: 65219549f09a030719bac6e20b12c3eb
+  fn: setuptools_scm-1.8.0.tar.bz2
+  url: https://pypi.python.org/packages/source/s/setuptools_scm/setuptools_scm-1.8.0.tar.bz2
+  md5: 49e83e8fee9ac1d356a634707a62e294
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -13,20 +13,14 @@ source:
 build:
   # noarch_python: True
   preserve_egg_dir: True
-  entry_points:
+  # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - twitter = twitter:main
+    # - setuptools_scm = setuptools_scm:main
     #
-    # Would create an entry point called twitter that calls twitter.main()
+    # Would create an entry point called setuptools_scm that calls setuptools_scm.main()
 
-    - twitter=twitter.cmdline:main
-    - twitterbot=twitter.ircbot:main
-    - twitter-log=twitter.logger:main
-    - twitter-archiver=twitter.archiver:main
-    - twitter-follow=twitter.follow:main
-    - twitter-stream-example=twitter.stream_example:main
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -36,39 +30,32 @@ requirements:
   build:
     - python
     - setuptools
-    - argparse # [py26]
+
   run:
     - python
     - setuptools
-    - argparse # [py26]
+
 test:
   # Python imports
   imports:
-    - twitter
+    - setuptools_scm
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
-    - twitter --help
-    # - twitterbot --help
-    # - twitter-log --help
-    - twitter-archiver --help
-    # - twitter-follow --help
-    - twitter-stream-example --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  requires:
-    - nose
+  # requires:
     # Put any additional test requirements here.  For example
     # - nose
 
 about:
-  home: http://mike.verdone.ca/twitter/
+  home: https://github.com/pypa/setuptools_scm/
   license: MIT License
-  summary: 'An API and command-line toolset for Twitter (twitter.com)'
+  summary: 'the blessed package to manage your versions by scm tags'
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -1,11 +1,11 @@
 package:
-  name: pytools
-  version: "2015.1.6"
+  name: pyphen
+  version: "0.9.2"
 
 source:
-  fn: pytools-2015.1.6.tar.gz
-  url: https://pypi.python.org/packages/source/p/pytools/pytools-2015.1.6.tar.gz
-  md5: 2942235bcff7369a00882b29c6bcc3e4
+  fn: Pyphen-0.9.2.tar.gz
+  url: https://pypi.python.org/packages/source/P/Pyphen/Pyphen-0.9.2.tar.gz
+  md5: 01855cab5bdf8660b8b3a8b648639b2a
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -17,9 +17,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - pytools = pytools:main
+    # - pyphen = pyphen:main
     #
-    # Would create an entry point called pytools that calls pytools.main()
+    # Would create an entry point called pyphen that calls pyphen.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -30,20 +30,13 @@ requirements:
   build:
     - python
     - setuptools
-    - decorator >=3.2.0
-    - appdirs >=1.4.0
-    - six >=1.8.0
 
   run:
     - python
-    - decorator >=3.2.0
-    - appdirs >=1.4.0
-    - six >=1.8.0
 
-test:
+# test:
   # Python imports
-  imports:
-    - pytools
+  # imports:
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -58,9 +51,9 @@ test:
     # - nose
 
 about:
-  home: http://pypi.python.org/pypi/pytools
-  license: MIT License
-  summary: 'A collection of tools for Python'
+  home: https://github.com/Kozea/Pyphen
+  license: GNU General Public License v2 or later (GPLv2+) or GNU Lesser General Public License v2 or later (LGPLv2+) or Mozilla Public License 1.1 (MPL 1.1)
+  summary: 'Pure Python module to hyphenate text'
 
 # See
 # http://docs.continuum.io/conda/build.html for

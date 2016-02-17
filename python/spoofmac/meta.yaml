@@ -1,16 +1,17 @@
 package:
   name: spoofmac
-  version: !!str 2.0.4
+  version: "2.0.6"
 
 source:
-  fn: SpoofMAC-2.0.4.tar.gz
-  url: https://pypi.python.org/packages/source/S/SpoofMAC/SpoofMAC-2.0.4.tar.gz
-  md5: 8700da0490a61964ed0e613fcdf3db35
+  fn: SpoofMAC-2.0.6.tar.gz
+  url: https://pypi.python.org/packages/source/S/SpoofMAC/SpoofMAC-2.0.6.tar.gz
+  md5: b410f8d511d97fee2803fe6541f01704
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
+  # noarch_python: True
   # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The

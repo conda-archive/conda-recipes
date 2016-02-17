@@ -3,7 +3,7 @@ package:
   version: "0.54"
 
 source:
-  fn: prompt_toolkit-0.42.tar.gz
+  fn: prompt_toolkit-0.54.tar.gz
   url: https://pypi.python.org/packages/source/p/prompt_toolkit/prompt_toolkit-0.54.tar.gz
   md5: c9b83f8ddc2d887aca78a10779aff623
 #  patches:
@@ -44,6 +44,7 @@ test:
   # Python imports
   imports:
     - prompt_toolkit
+    - prompt_toolkit.clipboard
     - prompt_toolkit.contrib
     - prompt_toolkit.contrib.completers
     - prompt_toolkit.contrib.regular_languages

@@ -1,11 +1,11 @@
 package:
   name: setproctitle
-  version: "1.1.8"
+  version: "1.1.9"
 
 source:
-  fn: setproctitle-1.1.8.tar.gz
-  url: https://pypi.python.org/packages/source/s/setproctitle/setproctitle-1.1.8.tar.gz
-  md5: 728f4c8c6031bbe56083a48594027edd
+  fn: setproctitle-1.1.9.tar.gz
+  url: https://pypi.python.org/packages/source/s/setproctitle/setproctitle-1.1.9.tar.gz
+  md5: 95d9e56c69437246460a20804961d70d
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -50,9 +50,9 @@ requirements:
     # - nose
 
 about:
-  home: http://code.google.com/p/py-setproctitle/
+  home: https://github.com/dvarrazzo/py-setproctitle
   license: BSD License
-  summary: 'A library to allow customization of the process title.'
+  summary: 'A Python module to customize the process title'
 
 # See
 # http://docs.continuum.io/conda/build.html for
