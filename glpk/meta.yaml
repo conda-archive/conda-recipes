@@ -15,7 +15,21 @@ build:
 
 requirements:
   build:
+    - python   [win]
     - gmp      [not win]
+
+  run:
+    - gmp      [not win]
+
+test:
+  files:
+    - plan.mps
+    - setup.py
+    - spam.c
+
+  commands:
+    - glpsol --mps plan.mps
+    - python setup.py test
 
 about:
   home: https://www.gnu.org/software/glpk/
