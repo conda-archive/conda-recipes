@@ -1,31 +1,27 @@
 package:
   name: h5py
-  version: 2.4.0
+  version: 2.6.0
 
 source:
-  fn: h5py-2.4.0.tar.gz                                                  [unix]
-  url: https://pypi.python.org/packages/source/h/h5py/h5py-2.4.0.tar.gz  [unix]
-  md5: 80c9a94ae31f84885cc2ebe1323d6758                                  [unix]
-  fn: h5py-2.4.0-cp26-none-win32.whl                           [py26 and win32]
-  fn: h5py-2.4.0-cp26-none-win_amd64.whl                       [py26 and win64]
-  fn: h5py-2.4.0-cp27-none-win32.whl                           [py27 and win32]
-  fn: h5py-2.4.0-cp27-none-win_amd64.whl                       [py27 and win64]
-  fn: h5py-2.4.0-cp33-none-win32.whl                           [py33 and win32]
-  fn: h5py-2.4.0-cp33-none-win_amd64.whl                       [py33 and win64]
-  fn: h5py-2.4.0-cp34-none-win32.whl                           [py34 and win32]
-  fn: h5py-2.4.0-cp34-none-win_amd64.whl                       [py34 and win64]
+  fn: h5py-2.6.0.tar.gz
+  url: https://github.com/h5py/h5py/archive/2.6.0.tar.gz
+  md5: 613c5776192eaf02ff96a82dfc6d2e78
 
 requirements:
   build:
     - python
     - numpy
-    - hdf5         [unix]
-    - cython       [unix]
+    - hdf5
+    - cython
+    - six
+    - pkgconfig
+
   run:
     - python
     - numpy
-    - hdf5         [unix]
-    - unittest2    [py26]
+    - hdf5
+    - six
+    - unittest2    #[py26]
 
 about:
   home: http://www.h5py.org/
