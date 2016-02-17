@@ -20,9 +20,12 @@ requirements:
 test:
   files:
     - plan.mps
+    - setup.py
+    - spam.pyx
 
   commands:
     - glpsol --mps plan.mps
+    - python setup.py test
 
 about:
   home: https://www.gnu.org/software/glpk/
