@@ -26,17 +26,18 @@ Darwin() {
 
 
 Linux() {
-
+    ln -s $PREFIX/lib $PREFIX/lib64
     cd $SRC_DIR/R-src
     patch -p1 -i $SRC_DIR/RRO-src/patches/relocatable_r.patch
-    ./configure --prefix=$PREFIX --enable-R-shlib --with-tcltk --with-cairo --with-libpng  \
+    mkdir rd64 && cd rd64
+    ../configure --prefix=$PREFIX --enable-R-shlib --with-tcltk --with-cairo --with-libpng  \
                 --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib  LIBR="-lpthread" \
                 --enable-memory-profiling
 
     make
     make install
-    mv $PREFIX/lib64/R $PREFIX/R
-
+    mv $PREFIX/lib64/R $PREFIX
+    #echo '' > $PREFIX/R/etc/ldpaths
     # Copy MRO files
     cp $SRC_DIR/RRO-src/files/OSX/Rprofile.site $PREFIX/R/etc
 
@@ -46,6 +47,13 @@ Linux() {
     git checkout 0.3.15
     mkdir -p $PREFIX/R/library/checkpoint
     cp -r * $PREFIX/R/library/checkpoint
+
+    # Remove R and Rscript from bin/
+    rm $PREFIX/bin/R
+    rm $PREFIX/bin/Rscript
+    ln -s $PREFIX/R/bin/R $PREFIX/bin/R
+    ln -s $PREFIX/R/bin/Rscript $PREFIX/bin/Rscript
+    unlink $PREFIX/lib64
 }
 
 case `uname` in
@@ -56,3 +64,11 @@ case `uname` in
         Linux
         ;;
 esac
+
+ACTIVATE_DIR=$PREFIX/etc/conda/activate.d
+DEACTIVATE_DIR=$PREFIX/etc/conda/deactivate.d
+mkdir -p $ACTIVATE_DIR
+mkdir -p $DEACTIVATE_DIR
+
+cp $RECIPE_DIR/activate.sh $ACTIVATE_DIR/r-activate.sh
+cp $RECIPE_DIR/deactivate.sh $DEACTIVATE_DIR/r-deactivate.sh
