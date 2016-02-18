@@ -1,27 +1,40 @@
 
 Darwin() {
-    #pkgutil --expand rro.pkg $SRC_DIR/pkg
+    pkgutil --expand rro.pkg $SRC_DIR/pkg
 
-    #cd $SRC_DIR/pkg/R.frame.pkg
-    #tar xf Payload
+    cd $SRC_DIR/pkg/R.frame.pkg
+    tar xf Payload
 
-    #cp R.framework/COPYING $SRC_DIR
-    #cd R.framework/Versions/Current/Resources
-    #unlink lib/libreadline*
+    #apply OSX patch
+    OLD_PWD=$PWD
+    cd $SRC_DIR
+    patch -p0 < $RECIPE_DIR/osx_R.patch
+    cd $OLD_PWD
+
+    cp R.framework/COPYING $SRC_DIR
+    cd R.framework/Versions/Current/Resources
+    unlink lib/libreadline*
     
     #mkdir -p $PREFIX/R/library
     #mkdir -p $PREFIX/R/modules
-    #cp -Rv bin $PREFIX
-    #cp -Rv include $PREFIX
-    #cp -Rv lib $PREFIX/lib
-    #cp -Rv library $PREFIX/R/library
-    #cp -Rv modules $PREFIX/R/modules
-    #cp -Rv share $PREFIX
+    #cp -Rv bin $PREFIX/R
+    #cp -Rv include $PREFIX/R
+    #cp -Rv lib $PREFIX/R
+    #cp -Rv library $PREFIX/R
+    #cp -Rv modules $PREFIX/R
+    #cp -Rv share $PREFIX/R
 
-    cd $SRC_DIR/R-src
-    ./configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--x-includes=/opt/X11/include/' '--with-libtiff=yes' 'LDFLAGS=-L/opt/X11/lib -L/usr/local/lib /usr/local/lib/libcairo.a /usr/local/lib/libpixman-1.a /usr/local/lib/libfreetype.a /usr/local/lib/libfontconfig.a -lxml2 /usr/local/lib/libreadline.a'
-    make
-    make install
+    mkdir -p $PREFIX/R
+    cp -Rv . $PREFIX/R
+
+    mkdir -p $PREFIX/bin
+    ln -s $PREFIX/R/bin/R $PREFIX/bin/R
+    ln -s $PREFIX/R/bin/Rscript $PREFIX/bin/Rscript
+
+    #cd $SRC_DIR/R-src
+    #./configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--x-includes=/opt/X11/include/' '--with-libtiff=yes' 'LDFLAGS=-L/opt/X11/lib -L/usr/local/lib /usr/local/lib/libcairo.a /usr/local/lib/libpixman-1.a /usr/local/lib/libfreetype.a /usr/local/lib/libfontconfig.a -lxml2 /usr/local/lib/libreadline.a'
+    #make
+    #make install
 }
 
 
