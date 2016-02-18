@@ -1,9 +1,9 @@
 package:
   name: tensorflow
-  version: "0.6.0"
+  version: "0.7.0"
 
 build:
-  number: 1
+  number: 0
   entry_points:
     - tensorboard = tensorflow.tensorboard.tensorboard:main
 
