@@ -38,7 +38,6 @@ test:
     - ipyparallel.client
     - ipyparallel.controller
     - ipyparallel.engine
-    - ipyparallel.nbextension
     - ipyparallel.serialize
     - ipyparallel.tests
 
