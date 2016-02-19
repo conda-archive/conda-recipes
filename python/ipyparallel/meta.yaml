@@ -6,25 +6,6 @@ source:
   fn: ipyparallel-5.0.0.tar.gz
   url: https://pypi.python.org/packages/source/i/ipyparallel/ipyparallel-5.0.0.tar.gz
   md5: 1da73215994858bcaf62f1daad6366ef
-#  patches:
-   # List any patch files here
-   # - fix.patch
-
-# build:
-  # noarch_python: True
-  # preserve_egg_dir: True
-  # entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - ipyparallel = ipyparallel:main
-    #
-    # Would create an entry point called ipyparallel that calls ipyparallel.main()
-
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
 
 requirements:
   build:
@@ -34,7 +15,6 @@ requirements:
     - python
 
 test:
-  # Python imports
   imports:
     - ipyparallel
     - ipyparallel.apps
@@ -45,23 +25,7 @@ test:
     - ipyparallel.serialize
     - ipyparallel.tests
 
-  # commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
-
-
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any additional test requirements here.  For example
-    # - nose
-
 about:
   home: http://ipython.org
   license: BSD License
   summary: 'Interactive Parallel Computing with IPython'
-
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml
