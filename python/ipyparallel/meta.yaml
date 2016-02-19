@@ -39,7 +39,6 @@ test:
     - ipyparallel.controller
     - ipyparallel.engine
     - ipyparallel.serialize
-    - ipyparallel.tests
 
 about:
   home: http://ipython.org
