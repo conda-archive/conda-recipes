@@ -10,9 +10,26 @@ source:
 requirements:
   build:
     - python
+    - futures               # [py2k]
+    - decorator
+    - tornado >=4
+    - pyzmq >=13
+    - ipython_genutils
+    - ipython >=4
+    - jupyter_client
+    - ipykernel
+    - tornado >=4
 
   run:
     - python
+    - futures               # [py2k]
+    - decorator
+    - tornado >=4
+    - pyzmq >=13
+    - ipython_genutils
+    - ipython >=4
+    - jupyter_client
+    - ipykernel
 
 test:
   imports:
