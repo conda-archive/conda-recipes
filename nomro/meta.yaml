@@ -1,0 +1,10 @@
+package:
+  name: nomro
+  version: 1.0
+
+build:
+  track_features:
+    - nomro
+
+about:
+  license: GPL
