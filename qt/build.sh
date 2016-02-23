@@ -1,8 +1,7 @@
 #!/bin/bash
 
-BIN=$PREFIX/bin
-QTCONF=$BIN/qt.conf
-
+# Compile
+# -------
 if [ `uname` == Linux ]; then
     chmod +x configure
 
@@ -17,11 +16,27 @@ if [ `uname` == Linux ]; then
     # See https://bugs.webkit.org/show_bug.cgi?id=25836#c5
     CFLAGS="-march=${MARCH}" CXXFLAGS="-march=${MARCH}" \
     CPPFLAGS="-march=${MARCH}" LDFLAGS="-march=${MARCH}" \
-    ./configure \
-        -release -fast -prefix $PREFIX \
-        -no-qt3support -nomake examples -nomake demos -nomake docs \
-        -opensource -verbose -openssl -webkit -gtkstyle -dbus \
-        -system-libpng -qt-zlib -L $PREFIX/lib -I $PREFIX/include
+    ./configure -prefix $PREFIX \
+                -libdir $PREFIX/lib \
+                -bindir $PREFIX/lib/qt4/bin \
+                -headerdir $PREFIX/include/qt4 \
+                -datadir $PREFIX/share/qt4 \
+                -L $PREFIX/lib \
+                -I $PREFIX/include \
+                -release \
+                -fast \
+                -no-qt3support \
+                -nomake examples \
+                -nomake demos \
+                -nomake docs \
+                -opensource \
+                -verbose \
+                -openssl \
+                -webkit \
+                -gtkstyle \
+                -dbus \
+                -system-libpng \
+                -system-zlib
 
     # Build on RPM based distros fails without setting LD_LIBRARY_PATH
     # to the build lib dir
@@ -57,14 +72,36 @@ if [ `uname` == Darwin ]; then
     make install
 fi
 
-# Make sure $BIN exists
-if [ ! -d $BIN ]; then
-  mkdir $BIN
-fi
+
+# Post build setup
+# ----------------
+BIN=$PREFIX/lib/qt4/bin
+QTCONF=$BIN/qt.conf
+
+# Remove binaries that can't be present in $PREFIX/bin
+pushd $PREFIX/bin
+rm -f assistant designer lconvert linguist lrelease lupdate \
+      moc pixeltool qcollectiongenerator qdbuscpp2xml \
+      qdbus qdbusviewer qdbusxml2cpp qdoc3 qhelpconverter \
+      qhelpgenerator qmake qmlplugindump qmlviewer qt3to4 \
+      qtconfig qttracereplay rcc uic xmlpatterns \
+      xmlpatternsvalidator
+popd
+
+# Make symlinks of binaries in $BIN to $PREFIX/bin
+for file in $BIN/*
+do
+    ln -sfv ../lib/qt4/bin/$(basename $file) $PREFIX/bin/$(basename $file)-qt4
+done
+
+# Removes doc, phrasebooks, and translations
+rm -rf $PREFIX/share/qt4
 
 # Add qt.conf file to the package to make it fully relocatable
 cat <<EOF >$QTCONF
 [Paths]
-Prefix = $PREFIX
+Prefix = $PREFIX/lib/qt4
+Libraries = $PREFIX/lib
+Headers = $PREFIX/include/qt4
 
 EOF
