@@ -3,6 +3,12 @@ package:
   name: r # Let's make this fail on Windows: [not win]
   version: 3.2.2
 
+build:
+  features:
+    - nomro
+
+  build: 1
+
 requirements:
   run:
     - r-base 3.2.2
