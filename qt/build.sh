@@ -78,7 +78,6 @@ if [ `uname` == Darwin ]; then
                 -opensource \
                 -verbose \
                 -openssl \
-                -webkit \
                 -system-libpng \
                 -system-zlib \
                 -no-framework \
