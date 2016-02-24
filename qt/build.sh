@@ -33,10 +33,10 @@ if [ `uname` == Linux ]; then
                 -verbose \
                 -openssl \
                 -webkit \
-                -gtkstyle \
-                -dbus \
                 -system-libpng \
-                -system-zlib
+                -system-zlib \
+                -gtkstyle \
+                -dbus
 
     # Build on RPM based distros fails without setting LD_LIBRARY_PATH
     # to the build lib dir
@@ -62,11 +62,28 @@ if [ `uname` == Darwin ]; then
     done
 
     chmod +x configure
-    ./configure \
-        -release -fast -prefix $PREFIX -platform macx-g++ \
-        -no-qt3support -nomake examples -nomake demos -nomake docs \
-        -opensource -verbose -openssl -no-framework -system-libpng \
-        -arch `uname -m` -L $PREFIX/lib -I $PREFIX/include
+    ./configure -prefix $PREFIX \
+                -libdir $PREFIX/lib \
+                -bindir $PREFIX/lib/qt4/bin \
+                -headerdir $PREFIX/include/qt4 \
+                -datadir $PREFIX/share/qt4 \
+                -L $PREFIX/lib \
+                -I $PREFIX/include \
+                -release \
+                -fast \
+                -no-qt3support \
+                -nomake examples \
+                -nomake demos \
+                -nomake docs \
+                -opensource \
+                -verbose \
+                -openssl \
+                -webkit \
+                -system-libpng \
+                -system-zlib \
+                -no-framework \
+                -platform macx-g++ \
+                -arch `uname -m` 
 
     make -j $(sysctl -n hw.ncpu)
     make install
