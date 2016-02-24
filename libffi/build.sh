@@ -6,7 +6,7 @@ make install
 
 cd "$PREFIX"
 rm -rf share
-mv lib/libffi-*/include include
+mv lib/libffi-*/include/* include
 
 if [ "$(uname -m)" == x86_64 ]; then
     mv lib64/* lib/
