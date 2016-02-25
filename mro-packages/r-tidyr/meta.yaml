@@ -1,4 +1,4 @@
-/package:
+package:
   name: r-tidyr
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
