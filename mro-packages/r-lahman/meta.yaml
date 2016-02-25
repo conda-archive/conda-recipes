@@ -39,6 +39,7 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
     - $R -e "library('Lahman')" # [not win]
     - "\"%R%\" -e \"library('Lahman')\"" # [win]
 

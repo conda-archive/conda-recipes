@@ -37,7 +37,6 @@ requirements:
     - r-repr
     - r-rzmq >=0.7.0
     - r-uuid
-    - jupyter
 
   run:
     - r
@@ -48,11 +47,11 @@ requirements:
     - r-repr
     - r-rzmq >=0.7.0
     - r-uuid
-    - jupyter
 
 test:
   commands:
     # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
     - $R -e "library('IRkernel')" # [not win]
     - "\"%R%\" -e \"library('IRkernel')\"" # [win]
 
