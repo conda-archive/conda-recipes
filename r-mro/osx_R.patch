@@ -48,3 +48,56 @@ index b289687..e5a9ffc 100755
  export R_DOC_DIR
  
  # Since this script can be called recursively, we allow R_ARCH to
+--- pkg/R.frame.pkg/R.framework/Versions/3.2/Resources/etc/Makeconf	2016-02-25 19:15:32.000000000 +0000
++++ pkg/R.frame.pkg/R.framework/Versions/3.2/Resources/etc/Makeconf	2016-02-25 19:34:52.000000000 +0000
+@@ -14,10 +14,10 @@
+ AWK = awk
+ BLAS_LIBS = -framework Accelerate
+ C_VISIBILITY = 
+-CC = clang
++CC = gcc
+ CFLAGS = -Wall -mtune=core2 -g -O2 $(LTO)
+ CPICFLAGS = -fPIC
+-CPPFLAGS = -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='"mac.binary.mavericks"'
++CPPFLAGS = -I$(PREFIX)/include -I$(PREFIX)/include/freetype2 -I$(PREFIXX11)/include -DPLATFORM_PKGTYPE='"mac.binary.mavericks"'
+ CXX = clang++
+ CXXCPP = $(CXX) -E
+ CXXFLAGS = -Wall -mtune=core2 -g -O2 $(LTO)
+@@ -42,7 +42,7 @@
+ F77 = gfortran
+ F77_VISIBILITY = 
+ FFLAGS = -g -O2 $(LTO)
+-FLIBS =  -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin13/4.8.2 -L/usr/local/gfortran/lib /usr/local/lib/libcairo.a /usr/local/lib/libpixman-1.a /usr/local/lib/libfreetype.a /usr/local/lib/libfontconfig.a -lxml2 /usr/local/lib/libreadline.a -lgfortran -lquadmath -lm
++FLIBS =  -L$(PREFIXF77)/gfortran/lib/gcc/x86_64-apple-darwin13/4.8.2 -L$(PREFIXF77)/gfortran/lib $(PREFIX)/lib/libcairo.a $(PREFIX)/lib/libpixman-1.a $(PREFIX)/lib/libfreetype.a $(PREFIX)/lib/libfontconfig.a -lxml2 $(PREFIX)/lib/libreadline.a -lgfortran -lquadmath -lm
+ FCPICFLAGS = -fPIC
+ FPICFLAGS = -fPIC
+ FOUNDATION_CPPFLAGS = 
+@@ -68,7 +68,7 @@
+ ## needed by R CMD config
+ LIBnn = lib
+ LIBTOOL = $(SHELL) "$(R_HOME)/bin/libtool"
+-LDFLAGS = -L/opt/X11/lib -L/usr/local/lib /usr/local/lib/libcairo.a /usr/local/lib/libpixman-1.a /usr/local/lib/libfreetype.a /usr/local/lib/libfontconfig.a -lxml2 /usr/local/lib/libreadline.a
++LDFLAGS = -L$(PREFIXX11)/lib -L$(PREFIX)/lib $(PREFIX)/lib/libcairo.a $(PREFIX)/lib/libpixman-1.a $(PREFIX)/lib/libfreetype.a $(PREFIX)/lib/libfontconfig.a -lxml2 $(PREFIX)/lib/libreadline.a
+ LTO = 
+ ## needed to build applications linking to static libR
+ MAIN_LD = $(CC)
+@@ -98,7 +98,7 @@
+ SHLIB_LDFLAGS = -dynamiclib -Wl,-headerpad_max_install_names  -undefined dynamic_lookup -single_module -multiply_defined suppress# $(CFLAGS) $(CPICFLAGS)
+ SHLIB_LIBADD = 
+ ## We want to ensure libR is picked up from $(R_HOME)/lib
+-## before e.g. /usr/local/lib if a version is already installed.
++## before e.g. $(PREFIX)/lib if a version is already installed.
+ SHLIB_LINK = $(SHLIB_LD) $(SHLIB_LDFLAGS) $(LIBR0) $(LDFLAGS)
+ SHLIB_OPENMP_CFLAGS = 
+ SHLIB_OPENMP_CXXFLAGS = 
+@@ -106,8 +106,8 @@
+ SHLIB_OPENMP_FFLAGS = 
+ STRIP_LIBS = strip -x
+ STRIP_STATIC_LIBS = strip -S
+-TCLTK_CPPFLAGS = -I/usr/local/include -I/usr/local/include -I/usr/X11/include
+-TCLTK_LIBS = -L/usr/local/lib -ltcl8.6 -L/usr/local/lib -ltk8.6 -L/usr/X11/lib -lX11 -Wl,-weak-lXss -lXext
++TCLTK_CPPFLAGS = -I$(PREFIX)/include
++TCLTK_LIBS = -L$(PREFIX)/lib -ltcl8.6 -ltk8.6 -L$(PREFIXX11)/lib -lX11 -Wl,-weak-lXss -lXext
+ YACC = bison -y
+ 
+ ## for linking to libR.a
