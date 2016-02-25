@@ -44,13 +44,6 @@ if [ `uname` == Linux ]; then
     LD_LIBRARY_PATH=$SRC_DIR/lib make -j $CPU_COUNT
     
     make install
-
-    cp $SRC_DIR/bin/* $PREFIX/bin/
-    cd $PREFIX
-    rm -rf doc phrasebooks q3porting.xml translations
-    rm -rf demos examples
-    cd $PREFIX/bin
-    rm -f *.bat *.pl qt3to4 qdoc3
 fi
 
 if [ `uname` == Darwin ]; then
@@ -94,24 +87,18 @@ fi
 BIN=$PREFIX/lib/qt4/bin
 QTCONF=$BIN/qt.conf
 
-# Remove binaries that can't be present in $PREFIX/bin
-pushd $PREFIX/bin
-rm -f assistant designer lconvert linguist lrelease lupdate \
-      moc pixeltool qcollectiongenerator qdbuscpp2xml \
-      qdbus qdbusviewer qdbusxml2cpp qdoc3 qhelpconverter \
-      qhelpgenerator qmake qmlplugindump qmlviewer qt3to4 \
-      qtconfig qttracereplay rcc uic xmlpatterns \
-      xmlpatternsvalidator
-popd
+# Remove unneeded files
+if [ `uname` == Linux ]; then
+    pushd $PREFIX/share/qt4
+    rm -rf phrasebooks q3porting.xml
+    popd
+fi
 
 # Make symlinks of binaries in $BIN to $PREFIX/bin
 for file in $BIN/*
 do
     ln -sfv ../lib/qt4/bin/$(basename $file) $PREFIX/bin/$(basename $file)-qt4
 done
-
-# Removes doc, phrasebooks, and translations
-rm -rf $PREFIX/share/qt4
 
 # Add qt.conf file to the package to make it fully relocatable
 cat <<EOF >$QTCONF
