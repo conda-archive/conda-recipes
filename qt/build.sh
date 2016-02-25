@@ -16,11 +16,11 @@ if [ `uname` == Linux ]; then
     # See https://bugs.webkit.org/show_bug.cgi?id=25836#c5
     CFLAGS="-march=${MARCH}" CXXFLAGS="-march=${MARCH}" \
     CPPFLAGS="-march=${MARCH}" LDFLAGS="-march=${MARCH}" \
-    ./configure -prefix $PREFIX \
+    ./configure -prefix $PREFIX/lib/qt4 \
                 -libdir $PREFIX/lib \
                 -bindir $PREFIX/lib/qt4/bin \
                 -headerdir $PREFIX/include/qt4 \
-                -datadir $PREFIX/share/qt4 \
+                -datadir $PREFIX/lib/qt4 \
                 -L $PREFIX/lib \
                 -I $PREFIX/include \
                 -release \
@@ -55,7 +55,7 @@ if [ `uname` == Darwin ]; then
     done
 
     chmod +x configure
-    ./configure -prefix $PREFIX \
+    ./configure -prefix $PREFIX/lib/qt4 \
                 -libdir $PREFIX/lib \
                 -bindir $PREFIX/lib/qt4/bin \
                 -headerdir $PREFIX/include/qt4 \
@@ -89,8 +89,8 @@ QTCONF=$BIN/qt.conf
 
 # Remove unneeded files
 if [ `uname` == Linux ]; then
-    pushd $PREFIX/share/qt4
-    rm -rf phrasebooks q3porting.xml
+    pushd $PREFIX/lib/qt4
+    rm -rf phrasebooks translations q3porting.xml
     popd
 fi
 
