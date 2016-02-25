@@ -1,5 +1,5 @@
 package:
-  name: r-mro
+  name: r
   version: 3.2.3
 
 about:
@@ -24,6 +24,7 @@ source:
 build:
   rpaths:
     - R/lib
+    - lib
 
 requirements:
   build:
