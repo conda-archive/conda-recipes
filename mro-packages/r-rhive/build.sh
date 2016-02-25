@@ -1,4 +1,5 @@
 #!/bin/bash
+export R_HOME=$PREFIX/lib/R
 
 cd RHive
 
