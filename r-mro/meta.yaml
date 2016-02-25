@@ -38,6 +38,7 @@ requirements:
     - libgfortran  [linux]
     - cairo    [linux]
     - pango   [linux]
+    - zlib   [linux]
   run:
     - icu   [linux]
     - libpng  [linux]
@@ -46,6 +47,7 @@ requirements:
     - libgfortran  [linux]
     - cairo    [linux]
     - pango   [linux]
+    - zlib   [linux]
 
 test:
   commands:
