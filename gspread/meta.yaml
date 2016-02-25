@@ -1,0 +1,30 @@
+package:
+    name: gspread
+    version: 0.3.0
+
+source:
+    fn: gspread-0.3.0.tar.gz
+    url: https://pypi.python.org/packages/source/g/gspread/gspread-0.3.0.tar.gz
+    md5: 4f17e1b92edb75055948a84080633cd2
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - requests >=2.2.1
+
+    run:
+        - python
+        - requests >=2.2.1
+
+test:
+    imports:
+        - gspread
+
+about:
+    home: https://github.com/burnash/gspread
+    license: MIT
+    summary: Google Spreadsheets Python API
+
