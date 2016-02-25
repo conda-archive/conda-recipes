@@ -10,8 +10,8 @@ about:
 
 source:
   url: https://mran.revolutionanalytics.com/install/mro/3.2.3/MRO-3.2.3-win.exe   [win]
-  fn: rro.exe   [win]
-  
+  fn: MRO-3.2.3-win.exe   [win]
+
   url: https://mran.revolutionanalytics.com/install/mro/3.2.3/MRO-3.2.3-OSX.pkg  [osx]
   fn: rro.pkg   [osx]
 
@@ -28,6 +28,9 @@ build:
 
 requirements:
   build:
+    - r-rtools ==3.2   [win]
+    - curl   [win]
+    - 7za   [win]
     - icu   [linux]
     - libpng  [linux]
     - readline   [linux]
@@ -35,6 +38,7 @@ requirements:
     - libgfortran  [linux]
     - cairo    [linux]
     - pango   [linux]
+    - zlib   [linux]
   run:
     - icu   [linux]
     - libpng  [linux]
@@ -43,6 +47,7 @@ requirements:
     - libgfortran  [linux]
     - cairo    [linux]
     - pango   [linux]
+    - zlib   [linux]
 
 test:
   commands:

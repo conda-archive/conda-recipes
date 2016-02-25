@@ -4,9 +4,6 @@ package:
   version: 3.2.2
 
 build:
-  features:
-    - nomro
-
   number: 1
 
 requirements:

@@ -1,9 +1,8 @@
 #!env bash
 
-set -e
 # Based on https://github.com/jyypma/nloptr/blob/master/INSTALL.windows
 
-PREFIX=$CYGWIN_PREFIX
+PREFIX=$PREFIXU
 
 R_HOME="$PREFIX/R"
 if [ "$ARCH" == "32" ]; then
@@ -39,7 +38,6 @@ FFLAGS=$("${R_HOME}/bin/${R_ARCH}/R.exe" CMD config FFLAGS)
 # Configure
 ./configure                    \
   --prefix=${PREFIX}/${R_ARCH} \
-  --build=i686-pc-cygwin       \
   --disable-shared             \
   --enable-static              \
   --without-octave             \

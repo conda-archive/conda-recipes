@@ -1,0 +1,21 @@
+package:
+  name: r-rtools [win]
+  version: "3.2"
+
+source:
+  fn: Rtools32.exe
+  url: https://cran.r-project.org/bin/windows/Rtools/Rtools32.exe
+  md5: 68c3322286251457499fd92eb98badae
+
+build:
+  number: 1
+
+test:
+  commands:
+    - sh -c exit 0
+
+about:
+  home: https://cran.r-project.org/bin/windows/Rtools/
+  license: GPL-2 | GPL-3
+  license_file: COPYING
+  summary: Build tools for R on Windows (MRO 3.2.3 compat.)

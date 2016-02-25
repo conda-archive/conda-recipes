@@ -44,6 +44,8 @@ Linux() {
     cd $SRC_DIR/R-src
     patch -p1 -i $SRC_DIR/RRO-src/patches/relocatable_r.patch
     mkdir rd64 && cd rd64
+    # Prevent autotools using the system readline
+    CPPFLAGS=-B${PREFIX} LDFLAGS=-L${PREFIX}/lib \
     ../configure --prefix=$PREFIX --enable-R-shlib --with-tcltk --with-cairo --with-libpng  \
                 --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib  LIBR="-lpthread" \
                 --enable-memory-profiling
