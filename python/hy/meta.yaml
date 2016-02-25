@@ -1,0 +1,46 @@
+package:
+  name: hy
+  version: "0.11.0"
+
+source:
+  fn: hy-0.11.0.tar.gz
+  url: https://pypi.python.org/packages/source/h/hy/hy-0.11.0.tar.gz
+  md5: 4ced4b32c0b68f6709182e14a29bfd03
+build:
+  entry_points:
+    - hy = hy.cmdline:hy_main
+    - hyc = hy.cmdline:hyc_main
+    - hy2py = hy.cmdline:hy2py_main
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - rply >=0.7.0
+    - astor >=0.5
+    - clint >=0.4
+
+  run:
+    - python
+    - rply >=0.7.0
+    - astor >=0.5
+    - clint >=0.4
+
+test:
+  imports:
+    - hy
+    - hy.contrib
+    - hy.contrib.dispatch
+    - hy.core
+    - hy.lex
+    - hy.models
+
+  commands:
+    - hy --help
+    - hyc --help
+    - hy2py --help
+
+about:
+  home: http://hylang.org/
+  license: MIT License
+  summary: 'Lisp and Python love each other.'

@@ -1,0 +1,37 @@
+package:
+  name: astropy-helpers
+  version: "1.1.1"
+
+source:
+  fn: astropy-helpers-1.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/a/astropy-helpers/astropy-helpers-1.1.1.tar.gz
+  md5: 0a44c1c7038efaa065d18691fd768ff1
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - sphinx
+    - pytest
+    - python
+    - setuptools
+
+  run:
+    - sphinx
+    - pytest
+    - python
+
+test:
+  imports:
+    - astropy_helpers
+    - astropy_helpers.commands
+    - astropy_helpers.compat
+    - astropy_helpers.sphinx
+    - astropy_helpers.sphinx.ext
+    - astropy_helpers.sphinx.ext.tests
+
+about:
+  home: http://astropy.org
+  license: BSD License
+  summary: 'Utilities for building and installing Astropy, Astropy affiliated packages, and their respective documentation.'

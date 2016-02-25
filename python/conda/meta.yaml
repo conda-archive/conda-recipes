@@ -1,0 +1,40 @@
+package:
+  name: conda
+  version: 3.19.1.51.g2ba04a6
+
+source:
+  git_url: https://github.com/conda/conda.git
+  git_tag: 2ba04a6b2617227de578f4af54ff11115f97ca5c
+
+build:
+  # These are present when the new environment is created
+  # so we have to exempt them from the list of initial files
+  # for conda-build to realize they should be included.
+  always_include_files:
+    - bin/conda  [unix]
+  string: dev_py{{ environ['CONDA_PY'] }}
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+    - pycosat
+    - pyyaml
+    - requests
+    - conda-env
+    - menuinst   [win]
+
+test:
+  commands:
+    - conda --version
+    - conda info
+  imports:
+    - conda
+
+
+about:
+  home: http://conda.pydata.org/
+  license: BSD
+  license_file: LICENSE.txt
+  summary: cross-platform, Python-agnostic binary package manager

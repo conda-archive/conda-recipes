@@ -1,0 +1,39 @@
+diff --git CMakeLists.txt CMakeLists.txt
+index fbc2643..bb2e5e3 100644
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -28,17 +28,6 @@ else()
+   message(STATUS "Python site-packages to install into: ${python_site_packages}")
+ endif()
+ 
+-
+-###
+-# TPL
+-#
+-# local installation control variables
+-set(TPL_BUILD_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/TPL/build")
+-set(TPL_LOCAL_INSTALL "${CMAKE_CURRENT_BINARY_DIR}/TPL/install")
+-set(TPL_PYTHON_SP "${TPL_LOCAL_INSTALL}/${python_site_packages}")
+-add_subdirectory( TPL )
+-
+-
+ ###
+ # SMQTK Library
+ #
+@@ -65,16 +54,6 @@ configure_file("${SMQTK_SOURCE_DIR}/setup_env.install.sh.in"
+ # System Installation
+ #
+ 
+-# Initially set custom install path
+-# User can change this later as desired after the first configuration pass has
+-#   completed
+-if (NOT SMQTK_FIRST_PASS_COMPLETE)
+-  set(CMAKE_INSTALL_PREFIX "/opt/kitware/SMQTK"
+-    CACHE PATH
+-    "Install path prefix, prepended onto install directories."
+-    FORCE)
+-endif(NOT SMQTK_FIRST_PASS_COMPLETE)
+-
+ install(DIRECTORY DESTINATION var/data)
+ 
+ if(UNIX)

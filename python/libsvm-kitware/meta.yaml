@@ -1,0 +1,28 @@
+package:
+  name: libsvm-kitware
+  version: 3.1custom
+
+source:
+  git_url: https://github.com/Kitware/SMQTK
+  git_tag: v0.2.2
+  patches:
+    - add_log2.patch  [win and py<35]
+    - win_dll.patch   [win]
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+
+test:
+  requires:
+    - python
+  imports:
+    - svm
+    - svmutil
+
+about:
+  home: https://github.com/Kitware/SMQTK/tree/master/TPL/libsvm-3.1-custom
+  license: modified BSD
+  summary: "A Library for Support Vector Machines - Customized by Kitware to add Solr support"
