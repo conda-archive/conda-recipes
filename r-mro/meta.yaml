@@ -23,7 +23,7 @@ source:
 
 build:
   rpaths:
-    - R/lib
+    - lib/R/lib
     - lib
 
 requirements:
