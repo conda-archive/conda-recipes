@@ -1,3 +1,4 @@
+R_HOME=$PREFIX/lib/R
 
 Darwin() {
     pkgutil --expand rro.pkg $SRC_DIR/pkg
@@ -24,12 +25,12 @@ Darwin() {
     #cp -Rv modules $PREFIX/R
     #cp -Rv share $PREFIX/R
 
-    mkdir -p $PREFIX/R
-    cp -Rv . $PREFIX/R
+    mkdir -p ${R_HOME}
+    cp -Rv . ${R_HOME}
 
     mkdir -p $PREFIX/bin
-    ln -s $PREFIX/R/bin/R $PREFIX/bin/R
-    ln -s $PREFIX/R/bin/Rscript $PREFIX/bin/Rscript
+    ln -s ${R_HOME}/bin/R $PREFIX/bin/R
+    ln -s ${R_HOME}/bin/Rscript $PREFIX/bin/Rscript
 
     #cd $SRC_DIR/R-src
     #./configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--x-includes=/opt/X11/include/' '--with-libtiff=yes' 'LDFLAGS=-L/opt/X11/lib -L/usr/local/lib /usr/local/lib/libcairo.a /usr/local/lib/libpixman-1.a /usr/local/lib/libfreetype.a /usr/local/lib/libfontconfig.a -lxml2 /usr/local/lib/libreadline.a'
@@ -40,7 +41,6 @@ Darwin() {
 
 Linux() {
     ln -s $PREFIX/lib $PREFIX/lib64
-    R_HOME=$PREFIX/lib/R
     cd $SRC_DIR/R-src
     patch -p1 -i $SRC_DIR/RRO-src/patches/relocatable_r.patch
     mkdir rd64 && cd rd64
