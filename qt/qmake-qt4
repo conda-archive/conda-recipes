@@ -2,6 +2,4 @@
 
 # Note: We need to run qmake from its own location.
 # Creating a symlink *doesn't* work!
-cd `dirname "$0"`
-cd ../lib/qt4/bin
-./qmake "$@"
+/opt/anaconda1anaconda2anaconda3/lib/qt4/bin/qmake "$@"
