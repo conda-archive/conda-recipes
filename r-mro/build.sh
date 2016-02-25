@@ -50,6 +50,9 @@ Linux() {
 
     make
     make install
+    (cd $PREFIX && patch -p1 -i $RECIPE_DIR/MakeConf.patch)
+    (cd $PREFIX && patch -p1 -i $RECIPE_DIR/R.patch)
+
     # Copy MRO files
     cp $SRC_DIR/RRO-src/files/OSX/Rprofile.site ${R_HOME}/etc
 

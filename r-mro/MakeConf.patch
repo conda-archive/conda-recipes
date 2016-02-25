@@ -1,0 +1,13 @@
+diff --git a/lib/R/etc/Makeconf b/lib/R/etc/Makeconf
+index e072d12..44caad4 100644
+--- a/lib/R/etc/Makeconf
++++ b/lib/R/etc/Makeconf
+@@ -17,7 +17,7 @@ C_VISIBILITY = -fvisibility=hidden
+ CC = gcc -std=gnu99
+ CFLAGS = -g -O2 $(LTO)
+ CPICFLAGS = -fpic
+-CPPFLAGS = -I/usr/local/include
++CPPFLAGS = -I${PREFIX}/include -I${PREFIX}/lib/R/include
+ CXX = g++
+ CXXCPP = $(CXX) -E
+ CXXFLAGS = -g -O2 $(LTO)
