@@ -85,7 +85,6 @@ fi
 # Post build setup
 # ----------------
 BIN=$PREFIX/lib/qt4/bin
-QTCONF=$BIN/qt.conf
 
 # Remove unneeded files
 if [ `uname` == Linux ]; then
@@ -100,11 +99,9 @@ do
     ln -sfv ../lib/qt4/bin/$(basename $file) $PREFIX/bin/$(basename $file)-qt4
 done
 
-# Add qt.conf file to the package to make it fully relocatable
-cat <<EOF >$QTCONF
-[Paths]
-Prefix = $PREFIX/lib/qt4
-Libraries = $PREFIX/lib
-Headers = $PREFIX/include/qt4
+# Remove qmake-qt4 symlink and add qmake-qt4 bash script
+rm -f $PREFIX/bin/qmake-qt4
+cp $RECIPE_DIR/qmake-qt4 $PREFIX/bin/
 
-EOF
+# Add qt.conf file to the package to make it fully relocatable
+cp $RECIPE_DIR/qt.conf $BIN/
