@@ -1,0 +1,82 @@
+package:
+  name: r-rserve
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.7_3"
+
+source:
+  fn: Rserve_1.7-3.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/Rserve_1.7-3.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/Rserve/Rserve_1.7-3.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: RSclient
+requirements:
+  build:
+    - r
+    - gcc # [not win]
+
+  run:
+    - r
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('Rserve')" # [not win]
+    - "\"%R%\" -e \"library('Rserve')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://www.rforge.net/Rserve/
+  license: GPL-2 | file LICENSE
+  summary: Rserve acts as a socket server (TCP/IP or local sockets)  which allows binary requests
+    to be sent to R. Every connection has a separate workspace and working directory.
+    Client-side implementations are available for popular languages such as C/C++ and
+    Java, allowing any application to use facilities of R without the need of linking
+    to R code. Rserve supports remote connection, user authentication and file transfer.
+    A simple R client is included in this package as well.
+
+# The original CRAN metadata for this package was:
+
+# Package: Rserve
+# Version: 1.7-3
+# Title: Binary R server
+# Author: Simon Urbanek <Simon.Urbanek@r-project.org>
+# Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>
+# Depends: R (>= 1.5.0)
+# Suggests: RSclient
+# SystemRequirements: libR, GNU make
+# Description: Rserve acts as a socket server (TCP/IP or local sockets)  which allows binary requests to be sent to R. Every connection has a separate workspace and working directory. Client-side implementations are available for popular languages such as C/C++ and Java, allowing any application to use facilities of R without the need of linking to R code. Rserve supports remote connection, user authentication and file transfer. A simple R client is included in this package as well.
+# License: GPL-2 | file LICENSE
+# URL: http://www.rforge.net/Rserve/
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2013-08-21 23:35:21
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

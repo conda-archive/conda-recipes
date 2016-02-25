@@ -1,0 +1,90 @@
+package:
+  name: r-plyr
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.8.3"
+
+source:
+  fn: plyr_1.8.3.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/plyr_1.8.3.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/plyr/plyr_1.8.3.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: abind, testthat, tcltk, foreach, doParallel, itertools, iterators
+requirements:
+  build:
+    - r
+    - r-rcpp
+    - gcc # [not win]
+
+  run:
+    - r
+    - r-rcpp
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('plyr')" # [not win]
+    - "\"%R%\" -e \"library('plyr')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://had.co.nz/plyr, https://github.com/hadley/plyr
+  license: MIT + file LICENSE
+  summary: 'A set of tools that solves a common set of problems: you need to break a big problem
+    down into manageable pieces, operate on each piece and then put all the pieces back
+    together.  For example, you might want to fit a model to each spatial location or
+    time point in your study, summarise data by panels or collapse high-dimensional
+    arrays to simpler summary statistics. The development of ''plyr'' has been generously
+    supported by ''Becton Dickinson''.'
+
+
+# The original CRAN metadata for this package was:
+
+# Package: plyr
+# Version: 1.8.3
+# Title: Tools for Splitting, Applying and Combining Data
+# Description: A set of tools that solves a common set of problems: you need to break a big problem down into manageable pieces, operate on each piece and then put all the pieces back together.  For example, you might want to fit a model to each spatial location or time point in your study, summarise data by panels or collapse high-dimensional arrays to simpler summary statistics. The development of 'plyr' has been generously supported by 'Becton Dickinson'.
+# Authors@R: person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre"))
+# URL: http://had.co.nz/plyr, https://github.com/hadley/plyr
+# BugReports: https://github.com/hadley/plyr/issues
+# Depends: R (>= 3.1.0)
+# Imports: Rcpp (>= 0.11.0)
+# LinkingTo: Rcpp
+# Suggests: abind, testthat, tcltk, foreach, doParallel, itertools, iterators
+# License: MIT + file LICENSE
+# LazyData: true
+# NeedsCompilation: yes
+# Packaged: 2015-06-11 13:04:58 UTC; hadley
+# Author: Hadley Wickham [aut, cre]
+# Maintainer: Hadley Wickham <hadley@rstudio.com>
+# Repository: CRAN
+# Date/Publication: 2015-06-12 11:05:51
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

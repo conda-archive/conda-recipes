@@ -1,0 +1,77 @@
+package:
+  name: r-jpeg
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.1_8"
+
+source:
+  fn: jpeg_0.1-8.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/jpeg_0.1-8.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/jpeg/jpeg_0.1-8.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r
+    - jpeg
+  run:
+    - r
+    - jpeg
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('jpeg')" # [not win]
+    - "\"%R%\" -e \"library('jpeg')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://www.rforge.net/jpeg/
+  license: GPL-2 | GPL-3
+  summary: This package provides an easy and simple way to read, write and display bitmap images
+    stored in the JPEG format. It can read and write both files and in-memory raw vectors.
+
+# The original CRAN metadata for this package was:
+
+# Package: jpeg
+# Version: 0.1-8
+# Title: Read and write JPEG images
+# Author: Simon Urbanek <Simon.Urbanek@r-project.org>
+# Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>
+# Depends: R (>= 2.9.0)
+# Description: This package provides an easy and simple way to read, write and display bitmap images stored in the JPEG format. It can read and write both files and in-memory raw vectors.
+# License: GPL-2 | GPL-3
+# SystemRequirements: libjpeg
+# URL: http://www.rforge.net/jpeg/
+# Packaged: 2014-01-23 19:05:03 UTC; svnuser
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2014-01-23 20:17:07
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

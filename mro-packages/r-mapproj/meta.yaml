@@ -1,0 +1,79 @@
+package:
+  name: r-mapproj
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.2_4"
+
+source:
+  fn: mapproj_1.2-4.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/mapproj_1.2-4.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/mapproj/mapproj_1.2-4.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r
+    - r-maps >=2.3_0
+    - gcc # [not win]
+
+  run:
+    - r
+    - r-maps >=2.3_0
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('mapproj')" # [not win]
+    - "\"%R%\" -e \"library('mapproj')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: Lucent Public License
+  summary: Converts latitude/longitude into projected coordinates.
+
+# The original CRAN metadata for this package was:
+
+# Package: mapproj
+# Title: Map Projections
+# Version: 1.2-4
+# Date: 2015-08-02
+# Author: Doug McIlroy.  Packaged for R by Ray Brownrigg and Thomas P Minka, transition to Plan 9 codebase by Roger Bivand.
+# Description: Converts latitude/longitude into projected coordinates.
+# Depends: maps (>= 2.3-0)
+# Imports: stats, graphics
+# License: Lucent Public License
+# Maintainer: Alex Deckmyn <alex.deckmyn@meteo.be>
+# NeedsCompilation: yes
+# Packaged: 2015-08-03 08:41:32 UTC; alex
+# Repository: CRAN
+# Date/Publication: 2015-08-03 12:01:02
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

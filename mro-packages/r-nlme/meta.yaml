@@ -1,0 +1,84 @@
+package:
+  name: r-nlme
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "3.1_122"
+
+source:
+  fn: nlme_3.1-122.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/nlme_3.1-122.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/nlme/nlme_3.1-122.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: Hmisc, MASS
+requirements:
+  build:
+    - r
+    - gcc # [not win]
+
+  run:
+    - r
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('nlme')" # [not win]
+    - "\"%R%\" -e \"library('nlme')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: GPL (>= 2)
+  summary: Fit and compare Gaussian linear and nonlinear mixed-effects models.
+
+# The original CRAN metadata for this package was:
+
+# Package: nlme
+# Version: 3.1-122
+# Date: 2015-07-18
+# Priority: recommended
+# Title: Linear and Nonlinear Mixed Effects Models
+# Authors@R: c(person("JosÃ©", "Pinheiro", role = "aut", comment = "S version"), person("Douglas", "Bates", role = "aut", comment = "up to 2007"), person("Saikat", "DebRoy", role = "ctb", comment = "up to 2002"), person("Deepayan", "Sarkar", role = "ctb", comment = "up to 2005"), person("EISPACK authors", role = "ctb", comment = "src/rs.f"), person("R-core", email = "R-core@R-project.org", role = c("aut", "cre")))
+# Description: Fit and compare Gaussian linear and nonlinear mixed-effects models.
+# Depends: graphics, stats, R (>= 3.0.0)
+# Imports: lattice
+# Suggests: Hmisc, MASS
+# LazyData: yes
+# ByteCompile: yes
+# Encoding: UTF-8
+# License: GPL (>= 2)
+# BugReports: http://bugs.r-project.org
+# NeedsCompilation: yes
+# Packaged: 2015-08-18 14:36:47 UTC; luke
+# Author: JosÃ© Pinheiro [aut] (S version), Douglas Bates [aut] (up to 2007), Saikat DebRoy [ctb] (up to 2002), Deepayan Sarkar [ctb] (up to 2005), EISPACK authors [ctb] (src/rs.f), R-core [aut, cre]
+# Maintainer: R-core <R-core@R-project.org>
+# Repository: CRAN
+# Date/Publication: 2015-08-19 11:34:26
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,90 @@
+package:
+  name: r-proc
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.8"
+
+source:
+  fn: pROC_1.8.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/pROC_1.8.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/pROC/pROC_1.8.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: microbenchmark, tcltk, MASS, logcondens, doParallel
+requirements:
+  build:
+    - r
+    - r-rcpp >=0.11.1
+    - r-plyr
+    - gcc # [not win]
+
+  run:
+    - r
+    - r-rcpp >=0.11.1
+    - r-plyr
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('pROC')" # [not win]
+    - "\"%R%\" -e \"library('pROC')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://expasy.org/tools/pROC/
+  license: GPL (>= 3)
+  summary: Tools for visualizing, smoothing and comparing receiver operating characteristic (ROC
+    curves). (Partial) area under the curve (AUC) can be compared with statistical tests
+    based on U-statistics or bootstrap. Confidence intervals can be computed for (p)AUC
+    or ROC curves.
+
+# The original CRAN metadata for this package was:
+
+# Package: pROC
+# Type: Package
+# Title: Display and Analyze ROC Curves
+# Version: 1.8
+# Date: 2015-05-04
+# Encoding: UTF-8
+# Depends: R (>= 2.14)
+# Imports: plyr, utils, methods, Rcpp (>= 0.11.1)
+# Suggests: microbenchmark, tcltk, MASS, logcondens, doParallel
+# LinkingTo: Rcpp
+# Author: Xavier Robin, Natacha Turck, Alexandre Hainard, Natalia Tiberti, FrÃ©dÃ©rique Lisacek, Jean-Charles Sanchez and Markus MÃ¼ller.
+# Maintainer: Xavier Robin <robin@lindinglab.org>
+# Description: Tools for visualizing, smoothing and comparing receiver operating characteristic (ROC curves). (Partial) area under the curve (AUC) can be compared with statistical tests based on U-statistics or bootstrap. Confidence intervals can be computed for (p)AUC or ROC curves.
+# License: GPL (>= 3)
+# URL: http://expasy.org/tools/pROC/
+# LazyLoad: yes
+# Packaged: 2015-05-04 13:43:53 UTC; xavier
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2015-05-05 10:30:52
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
