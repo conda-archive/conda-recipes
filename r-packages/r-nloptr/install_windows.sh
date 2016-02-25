@@ -1,12 +1,9 @@
-#!/bin/bash
+#!env bash
 
-set -x
 set -e
 # Based on https://github.com/jyypma/nloptr/blob/master/INSTALL.windows
 
-# Use Unix style paths
-
-export PREFIX=${PREFIX//\\//}
+PREFIX=$CYGWIN_PREFIX
 
 R_HOME="$PREFIX/R"
 if [ "$ARCH" == "32" ]; then
@@ -39,10 +36,26 @@ CXXCPP=$("${R_HOME}/bin/${R_ARCH}/R.exe" CMD config CXXCPP)
 F77=$("${R_HOME}/bin/${R_ARCH}/R.exe" CMD config F77)
 FFLAGS=$("${R_HOME}/bin/${R_ARCH}/R.exe" CMD config FFLAGS)
 
-echo "./configure --prefix=\"${PREFIX}/${R_ARCH}\" --disable-shared --enable-static --without-octave --without-matlab --without-guile --without-python --with-cxx CC=\"${CC}\" ADD_CFLAGS=\"${CFLAGS}\" CPP=\"${CPP}\" ADD_CPPFLAGS=\"${CPPFLAGS}\" CXX=\"${CXX}\" ADD_CXXFLAGS=\"${CXXFLAGS}\" CXXCPP=\"${CXXCPP}\" F77=\"${F77}\" ADD_FFLAGS=\"${FFLAGS}\""
-
 # Configure
-./configure --prefix="${PREFIX}/${R_ARCH}" --disable-shared --enable-static --without-octave --without-matlab --without-guile --without-python --with-cxx CC="${CC}" ADD_CFLAGS="${CFLAGS}" CPP="${CPP}" ADD_CPPFLAGS="${CPPFLAGS}" CXX="${CXX}" ADD_CXXFLAGS="${CXXFLAGS}" CXXCPP="${CXXCPP}" F77="${F77}" ADD_FFLAGS="${FFLAGS}"
+./configure                    \
+  --prefix=${PREFIX}/${R_ARCH} \
+  --build=i686-pc-cygwin       \
+  --disable-shared             \
+  --enable-static              \
+  --without-octave             \
+  --without-matlab             \
+  --without-guile              \
+  --without-python             \
+  --with-cxx                   \
+  CC="${CC}"                   \
+  ADD_CFLAGS="${CFLAGS}"       \
+  CPP="${CPP}"                 \
+  ADD_CPPFLAGS="${CPPFLAGS}"   \
+  CXX="${CXX}"                 \
+  ADD_CXXFLAGS="${CXXFLAGS}"   \
+  CXXCPP="${CXXCPP}"           \
+  F77="${F77}"                 \
+  ADD_FFLAGS="${FFLAGS}"
 
 # Compile
 make
