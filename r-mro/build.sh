@@ -40,6 +40,7 @@ Darwin() {
 
 Linux() {
     ln -s $PREFIX/lib $PREFIX/lib64
+    R_HOME=$PREFIX/lib/R
     cd $SRC_DIR/R-src
     patch -p1 -i $SRC_DIR/RRO-src/patches/relocatable_r.patch
     mkdir rd64 && cd rd64
@@ -49,23 +50,21 @@ Linux() {
 
     make
     make install
-    mv $PREFIX/lib64/R $PREFIX
-    #echo '' > $PREFIX/R/etc/ldpaths
     # Copy MRO files
-    cp $SRC_DIR/RRO-src/files/OSX/Rprofile.site $PREFIX/R/etc
+    cp $SRC_DIR/RRO-src/files/OSX/Rprofile.site ${R_HOME}/etc
 
     # Install the MRO checkpoint package
     git clone https://github.com/RevolutionAnalytics/checkpoint.git $SRC_DIR/checkpoint
     cd $SRC_DIR/checkpoint
     git checkout 0.3.15
-    mkdir -p $PREFIX/R/library/checkpoint
-    cp -r * $PREFIX/R/library/checkpoint
+    mkdir -p ${R_HOME}/library/checkpoint
+    cp -r * ${R_HOME}/library/checkpoint
 
     # Remove R and Rscript from bin/
     rm $PREFIX/bin/R
     rm $PREFIX/bin/Rscript
-    ln -s $PREFIX/R/bin/R $PREFIX/bin/R
-    ln -s $PREFIX/R/bin/Rscript $PREFIX/bin/Rscript
+    ln -s ${R_HOME}/bin/R $PREFIX/bin/R
+    ln -s ${R_HOME}/bin/Rscript $PREFIX/bin/Rscript
     unlink $PREFIX/lib64
 }
 
