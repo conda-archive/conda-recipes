@@ -50,38 +50,68 @@ index b289687..e5a9ffc 100755
  # Since this script can be called recursively, we allow R_ARCH to
 --- pkg/R.frame.pkg/R.framework/Versions/3.2/Resources/etc/Makeconf	2016-02-25 19:15:32.000000000 +0000
 +++ pkg/R.frame.pkg/R.framework/Versions/3.2/Resources/etc/Makeconf	2016-02-25 19:34:52.000000000 +0000
-@@ -14,10 +14,10 @@
+@@ -14,15 +14,15 @@
  AWK = awk
  BLAS_LIBS = -framework Accelerate
  C_VISIBILITY = 
 -CC = clang
-+CC = gcc
- CFLAGS = -Wall -mtune=core2 -g -O2 $(LTO)
+-CFLAGS = -Wall -mtune=core2 -g -O2 $(LTO)
++CC = clang 
++CFLAGS = -std=c99 -Wall -mtune=core2 -g -O2 $(LTO)
  CPICFLAGS = -fPIC
 -CPPFLAGS = -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='"mac.binary.mavericks"'
+-CXX = clang++
 +CPPFLAGS = -I$(PREFIX)/include -I$(PREFIX)/include/freetype2 -I$(PREFIXX11)/include -DPLATFORM_PKGTYPE='"mac.binary.mavericks"'
- CXX = clang++
++CXX = clang++ 
  CXXCPP = $(CXX) -E
  CXXFLAGS = -Wall -mtune=core2 -g -O2 $(LTO)
+ CXXPICFLAGS = -fPIC
+-CXX1X = clang++
++CXX1X = clang++ 
+ CXX1XFLAGS = -Wall -mtune=core2 -g -O2
+ CXX1XPICFLAGS = -fPIC
+ CXX1XSTD =  -std=c++11
 @@ -42,7 +42,7 @@
  F77 = gfortran
  F77_VISIBILITY = 
  FFLAGS = -g -O2 $(LTO)
 -FLIBS =  -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin13/4.8.2 -L/usr/local/gfortran/lib /usr/local/lib/libcairo.a /usr/local/lib/libpixman-1.a /usr/local/lib/libfreetype.a /usr/local/lib/libfontconfig.a -lxml2 /usr/local/lib/libreadline.a -lgfortran -lquadmath -lm
-+FLIBS =  -L$(PREFIXF77)/gfortran/lib/gcc/x86_64-apple-darwin13/4.8.2 -L$(PREFIXF77)/gfortran/lib $(PREFIX)/lib/libcairo.a $(PREFIX)/lib/libpixman-1.a $(PREFIX)/lib/libfreetype.a $(PREFIX)/lib/libfontconfig.a -lxml2 $(PREFIX)/lib/libreadline.a -lgfortran -lquadmath -lm
++FLIBS =  -L$(PREFIXF77)/gfortran/lib/gcc/x86_64-apple-darwin13/4.8.2 -lgfortran -lquadmath -lm
  FCPICFLAGS = -fPIC
  FPICFLAGS = -fPIC
  FOUNDATION_CPPFLAGS = 
-@@ -68,7 +68,7 @@
+@@ -63,22 +63,25 @@
+ LIBM = 
+ LIBR0 = -L$(R_HOME)/lib$(R_ARCH)
+ LIBR1 = -lR
+-LIBR = -F/Library/Frameworks/R.framework/.. -framework R
++# we (Continuum) have dropped the framework here from our repackaged MRO.
++LIBRL = $(LIBR0) $(LIBR1)
++LIBRF = -F/Library/Frameworks/R.framework/.. -framework R
+ LIBS =  -lbz2 -lz -licucore -lm -liconv
  ## needed by R CMD config
  LIBnn = lib
  LIBTOOL = $(SHELL) "$(R_HOME)/bin/libtool"
 -LDFLAGS = -L/opt/X11/lib -L/usr/local/lib /usr/local/lib/libcairo.a /usr/local/lib/libpixman-1.a /usr/local/lib/libfreetype.a /usr/local/lib/libfontconfig.a -lxml2 /usr/local/lib/libreadline.a
-+LDFLAGS = -L$(PREFIXX11)/lib -L$(PREFIX)/lib $(PREFIX)/lib/libcairo.a $(PREFIX)/lib/libpixman-1.a $(PREFIX)/lib/libfreetype.a $(PREFIX)/lib/libfontconfig.a -lxml2 $(PREFIX)/lib/libreadline.a
++LDFLAGS = -L$(PREFIX)/lib $(R_XTRA_LDFLAGS)
++STATIC_LIBR_LDFLAGS = -L$(PREFIXX11)/lib -L$(PREFIX)/lib $(PREFIX)/lib/libcairo.a $(PREFIX)/lib/libpixman-1.a $(PREFIX)/lib/libfreetype.a $(PREFIX)/lib/libfontconfig.a -lxml2 $(PREFIX)/lib/libreadline.a $(R_XTRA_LDFLAGS)
  LTO = 
  ## needed to build applications linking to static libR
  MAIN_LD = $(CC)
-@@ -98,7 +98,7 @@
+ MAIN_LDFLAGS = 
+-MAIN_LINK = $(MAIN_LD) $(MAIN_LDFLAGS) $(LDFLAGS)
++MAIN_LINK = $(MAIN_LD) $(MAIN_LDFLAGS) $(STATIC_LIBR_LDFLAGS)
+ MKINSTALLDIRS = $(R_HOME)/bin/mkinstalldirs
+-OBJC = clang
++OBJC = clang 
+ OBJCFLAGS = -Wall -mtune=core2 -g -O2 -fobjc-exceptions $(LTO)
+ OBJC_LIBS = -lobjc 
+-OBJCXX = clang++
++OBJCXX = clang++ 
+ R_ARCH = 
+ RANLIB = ranlib
+ SAFE_FFLAGS = -g -O2 -ffloat-store
+@@ -98,7 +101,7 @@
  SHLIB_LDFLAGS = -dynamiclib -Wl,-headerpad_max_install_names  -undefined dynamic_lookup -single_module -multiply_defined suppress# $(CFLAGS) $(CPICFLAGS)
  SHLIB_LIBADD = 
  ## We want to ensure libR is picked up from $(R_HOME)/lib
@@ -90,7 +120,7 @@ index b289687..e5a9ffc 100755
  SHLIB_LINK = $(SHLIB_LD) $(SHLIB_LDFLAGS) $(LIBR0) $(LDFLAGS)
  SHLIB_OPENMP_CFLAGS = 
  SHLIB_OPENMP_CXXFLAGS = 
-@@ -106,8 +106,8 @@
+@@ -106,20 +109,18 @@
  SHLIB_OPENMP_FFLAGS = 
  STRIP_LIBS = strip -x
  STRIP_STATIC_LIBS = strip -S
@@ -101,3 +131,27 @@ index b289687..e5a9ffc 100755
  YACC = bison -y
  
  ## for linking to libR.a
+ STATIC_LIBR = #  "$(R_HOME)/lib$(R_ARCH)/libR.a"  $(BLAS_LIBS) $(FLIBS)  $(LIBINTL) -lreadline -lncurses  $(LIBS)
+ 
+-R_XTRA_CFLAGS = 
+-R_XTRA_CPPFLAGS =  -I$(R_INCLUDE_DIR) -DNDEBUG
+-R_XTRA_CXXFLAGS = 
+-R_XTRA_FFLAGS = 
++R_XTRA_CPPFLAGS2 =  -I$(R_INCLUDE_DIR) -DNDEBUG $(R_XTRA_CPPFLAGS)
++
+ 
+ ALL_CFLAGS = $(R_XTRA_CFLAGS) $(PKG_CFLAGS) $(CPICFLAGS) $(SHLIB_CFLAGS) $(CFLAGS)
+-ALL_CPPFLAGS = $(R_XTRA_CPPFLAGS) $(PKG_CPPFLAGS) $(CPPFLAGS) $(CLINK_CPPFLAGS)
++ALL_CPPFLAGS = $(R_XTRA_CPPFLAGS2) $(PKG_CPPFLAGS) $(CPPFLAGS) $(CLINK_CPPFLAGS)
+ ALL_CXXFLAGS = $(R_XTRA_CXXFLAGS) $(PKG_CXXFLAGS) $(CXXPICFLAGS) $(SHLIB_CXXFLAGS) $(CXXFLAGS)
+ ALL_OBJCFLAGS = $(PKG_OBJCFLAGS) $(CPICFLAGS) $(SHLIB_CFLAGS) $(OBJCFLAGS)
+ ALL_OBJCXXFLAGS = $(PKG_OBJCXXFLAGS) $(CXXPICFLAGS) $(SHLIB_CXXFLAGS) $(OBJCXXFLAGS)
+@@ -149,7 +150,7 @@
+ 	$(OBJC) $(ALL_CPPFLAGS) $(ALL_OBJCFLAGS) -c $< -o $@
+ .m.d:
+ 	@echo "making $@ from $<"
+-	@clang -MM $(ALL_CPPFLAGS) $< > $@
++	@$(OBJC) -MM $(ALL_CPPFLAGS) $< > $@
+ .mm.o:
+ 	$(OBJCXX) $(ALL_CPPFLAGS) $(ALL_OBJCXXFLAGS) -c $< -o $@
+ .M.o:
