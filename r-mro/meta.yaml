@@ -39,15 +39,17 @@ requirements:
     - cairo    [linux]
     - pango   [linux]
     - zlib   [linux]
+    - gcc   [linux]
   run:
+    - libgcc [linux]
     - icu   [linux]
-    - libpng  [linux]
-    - readline   [linux]
-    - libtiff   [linux]
+    - libpng  [unix]
+    - readline   [unix]
+    - libtiff   [unix]
     - libgfortran  [linux]
     - cairo    [linux]
     - pango   [linux]
-    - zlib   [linux]
+    - zlib   [unix]
 
 test:
   commands:
