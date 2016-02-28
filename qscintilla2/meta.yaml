@@ -1,0 +1,27 @@
+package:
+  name: qscintilla2
+  version: 2.9.1
+
+source:
+  fn:   QScintilla-gpl-2.9.1.tar.gz                                   [unix]
+  url:  http://downloads.sourceforge.net/project/pyqt/QScintilla2/QScintilla-2.9.1/QScintilla-gpl-2.9.1.tar.gz                        [unix]
+  md5:  38e6248cb970adf6d05aea7d94f1288e                              [unix]
+  fn:   QScintilla-gpl-2.9.1.tar.gz                                   [win]
+  url:  http://downloads.sourceforge.net/project/pyqt/QScintilla2/QScintilla-2.9.1/QScintilla-gpl-2.9.1.zip                           [win]
+  md5:  d2a12047d90c33c227e82093b2c0e158                              [win]
+
+requirements:
+  build:
+    - python      >=2.7*
+    - qt          >=4.8.7
+    - pyqt        >=4.11.4
+    - sip         >=4.16.4
+
+  run:
+    - python      >=2.7*
+    - qt          >=4.8.7
+    - pyqt        >=4.11.4
+    - sip         >=4.16.4
+about:
+    home: https://www.riverbankcomputing.com/software/qscintilla/intro
+    license: GPLv3
