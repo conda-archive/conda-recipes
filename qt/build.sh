@@ -59,7 +59,7 @@ if [ `uname` == Darwin ]; then
                 -libdir $PREFIX/lib \
                 -bindir $PREFIX/lib/qt4/bin \
                 -headerdir $PREFIX/include/qt4 \
-                -datadir $PREFIX/share/qt4 \
+                -datadir $PREFIX/lib/qt4 \
                 -L $PREFIX/lib \
                 -I $PREFIX/include \
                 -release \
@@ -87,11 +87,9 @@ fi
 BIN=$PREFIX/lib/qt4/bin
 
 # Remove unneeded files
-if [ `uname` == Linux ]; then
-    pushd $PREFIX/lib/qt4
-    rm -rf phrasebooks translations q3porting.xml
-    popd
-fi
+pushd $PREFIX/lib/qt4
+rm -rf phrasebooks translations q3porting.xml
+popd
 
 # Make symlinks of binaries in $BIN to $PREFIX/bin
 for file in $BIN/*
