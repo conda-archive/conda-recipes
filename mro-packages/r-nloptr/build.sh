@@ -5,7 +5,7 @@ export R_HOME=$PREFIX/lib/R
 mv DESCRIPTION DESCRIPTION.old
 grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
 
-export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib:$(HOME)/lib:/usr/local/lib:/lib:/usr/lib
+export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib:${HOME}/lib:/usr/local/lib:/lib:/usr/lib
 
 $R CMD INSTALL --build .
 

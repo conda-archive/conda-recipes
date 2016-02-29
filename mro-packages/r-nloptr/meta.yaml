@@ -33,6 +33,7 @@ requirements:
     - r
     - nlopt # [not win]
     - gcc # [not win]
+    - pkg-config # [unix]
 
   run:
     - r
