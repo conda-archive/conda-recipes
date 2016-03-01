@@ -31,6 +31,7 @@ build:
 requirements:
   build:
     - r
+    - gcc [osx]
 
   run:
     - r
