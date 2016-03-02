@@ -1,0 +1,32 @@
+package:
+    name: openerp-client-lib
+    version: 1.1.2
+
+source:
+    fn: openerp-client-lib-1.1.2.tar.gz
+    url: https://pypi.python.org/packages/source/o/openerp-client-lib/openerp-client-lib-1.1.2.tar.gz
+    md5: 3992ac5865057b7ed57b173f46727fdd
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - distribute
+        - python
+        - xmlrpc2
+
+    run:
+        - distribute
+        - python
+        - xmlrpc2
+
+test:
+    imports:
+        - openerplib
+
+about:
+    home: https://github.com/nicolas-van/openerp-client-lib
+    license: BSD
+    summary: OpenERP Client Library allows to easily interact with OpenERP in Python
+
