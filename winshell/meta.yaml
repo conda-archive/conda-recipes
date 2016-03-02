@@ -1,0 +1,29 @@
+package:
+    name: winshell
+    version: 0.6.4
+
+build:
+    number: 0
+
+source:
+    git_url: https://github.com/tjguk/winshell # [win]
+    git_tag: 0.6.4 # [win]
+
+requirements:
+    build:
+        - setuptools
+        - python
+        - pywin32
+
+    run:
+        - python
+        - pywin32
+
+test:
+    imports:
+        - winshell
+
+about:
+    home: http://simpy.rtfd.org/
+    license: MIT
+    summary: Event discrete simulation for Python
