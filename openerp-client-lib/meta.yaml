@@ -1,11 +1,10 @@
 package:
     name: openerp-client-lib
-    version: 1.1.2
+    version: 0.1
 
 source:
-    fn: openerp-client-lib-1.1.2.tar.gz
-    url: https://pypi.python.org/packages/source/o/openerp-client-lib/openerp-client-lib-1.1.2.tar.gz
-    md5: 3992ac5865057b7ed57b173f46727fdd
+    git_url: https://github.com/OpenERP/openerp-client-lib
+    git_tag: master
 
 build:
     number: 0
