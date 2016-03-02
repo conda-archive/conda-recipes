@@ -1,0 +1,63 @@
+package:
+    name: datagristle
+    version: 0.58
+
+source:
+    git_url: https://github.com/kenfar/DataGristle
+    git_tag: v0.58
+
+    patches:
+        - 0001-Removed-non-required-test-depenedncy.patch
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - distribute
+        - python
+        - appdirs >=1.2.0
+        - sqlalchemy >=0.8.4
+        - envoy >=0.0.2
+        - pytest >=2.5.2
+        - tox >=1.7.0
+        - validictory >=0.9.3
+        - pyyaml >=3.10
+        - cletus
+
+    run:
+        - distribute
+        - python
+        - appdirs >=1.2.0
+        - sqlalchemy >=0.8.4
+        - envoy >=0.0.2
+        - pytest >=2.5.2
+        - tox >=1.7.0
+        - validictory >=0.9.3
+        - pyyaml >=3.10
+        - cletus
+
+test:
+    #imports:
+    #- datagristle
+
+    commands:
+        - gristle_determinator -h
+        - gristle_differ -h
+        - gristle_dir_merger -h
+        - gristle_file_converter -h
+        - gristle_filter -h
+        - gristle_freaker -h
+        - gristle_md_reporter -h
+        - gristle_metadata -h
+        - gristle_processor -h
+        - gristle_scalar -h
+        - gristle_slicer -h
+        - gristle_validator -h
+        - gristle_viewer -h
+
+about:
+    home: https://github.com/kenfar/DataGristle
+    license: BSD
+    summary: A toolbox and library of ETL, data quality, and data analysis tools
+
