@@ -25,5 +25,5 @@ test:
 about:
     home: https://github.com/dateutil/dateutil/
     license: Unknown
-    summary: The dateutil module provides powerful extensions to the standard datetime module, available in Python.
+    summary: Extensions to the standard Python datetime module
 
