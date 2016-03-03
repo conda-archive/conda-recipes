@@ -1,0 +1,90 @@
+package:
+  name: r-visnetwork
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.1.2"
+
+source:
+  fn: visNetwork_0.1.2.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/visNetwork_0.1.2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/visNetwork/visNetwork_0.1.2.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: knitr
+requirements:
+  build:
+    - r
+    - r-htmltools
+    - r-htmlwidgets
+    - r-jsonlite
+    - r-magrittr
+
+  run:
+    - r
+    - r-htmltools
+    - r-htmlwidgets
+    - r-jsonlite
+    - r-magrittr
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('visNetwork')" # [not win]
+    - "\"%R%\" -e \"library('visNetwork')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/DataKnowledge/visNetwork
+  license: MIT + file LICENSE
+  summary: Provides an R interface to the 'vis.js' JavaScript charting library. It allows an
+    interactive visualization of networks.
+
+# The original CRAN metadata for this package was:
+
+# Package: visNetwork
+# Title: Network Visualization using 'vis.js' Library
+# Version: 0.1.2
+# Date: 2015-10-30
+# Authors@R: c( person(family = "Almende B.V.", role = c("aut", "cph"), comment = "vis.js library in htmlwidgets/lib, http://visjs.org, http://www.almende.com/home"), person("Benoit", "Thieurmel", role = c("aut", "cre"), comment = "R interface", email = "bt@datak.fr") )
+# Maintainer: Benoit Thieurmel <bt@datak.fr>
+# Description: Provides an R interface to the 'vis.js' JavaScript charting library. It allows an interactive visualization of networks.
+# BugReports: https://github.com/DataKnowledge/visNetwork/issues
+# URL: https://github.com/DataKnowledge/visNetwork
+# Depends: R (>= 3.0)
+# Imports: htmlwidgets, htmltools, jsonlite, magrittr, utils
+# License: MIT + file LICENSE
+# Suggests: knitr
+# VignetteBuilder: knitr
+# NeedsCompilation: no
+# Packaged: 2015-10-30 10:36:16 UTC; Benoit
+# Author: Almende B.V. [aut, cph] (vis.js library in htmlwidgets/lib, http://visjs.org, http://www.almende.com/home), Benoit Thieurmel [aut, cre] (R interface)
+# Repository: CRAN
+# Date/Publication: 2015-10-31 00:34:44
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

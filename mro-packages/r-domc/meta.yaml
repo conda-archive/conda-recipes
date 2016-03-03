@@ -1,0 +1,87 @@
+package:
+  name: r-domc
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.3.4"
+
+source:
+  fn: doMC_1.3.4.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/doMC_1.3.4.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/doMC/doMC_1.3.4.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r
+    - r-foreach >=1.2.0
+    - r-iterators >=1.0.0
+
+  run:
+    - r
+    - r-foreach >=1.2.0
+    - r-iterators >=1.0.0
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('doMC')" # [not win]
+    - "\"%R%\" -e \"library('doMC')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: GPL-2
+  summary: Provides a parallel backend for the %dopar% function using the multicore functionality
+    of the parallel package.
+
+# The original CRAN metadata for this package was:
+
+# Package: doMC
+# Type: Package
+# Title: Foreach Parallel Adaptor for 'parallel'
+# Version: 1.3.4
+# Authors@R: c(person("Rich", "Calaway", role="cre", email="richcala@microsoft.com"), person("Revolution", "Analytics", role=c("aut", "cph")), person("Steve", "Weston", role="aut"))
+# Description: Provides a parallel backend for the %dopar% function using the multicore functionality of the parallel package.
+# Depends: R (>= 2.14.0), foreach(>= 1.2.0), iterators(>= 1.0.0), parallel
+# Imports: utils
+# Enhances: compiler, RUnit
+# License: GPL-2
+# Author: Rich Calaway [cre], Revolution Analytics [aut, cph], Steve Weston [aut]
+# Maintainer: Rich Calaway <richcala@microsoft.com>
+# Repository: CRAN
+# Repository/R-Forge/Project: domc
+# Repository/R-Forge/Revision: 17
+# Repository/R-Forge/DateTimeStamp: 2015-10-10 00:31:58
+# Date/Publication: 2015-10-13 09:12:51
+# NeedsCompilation: no
+# Packaged: 2015-10-10 00:46:21 UTC; rforge
+# OS_type: unix
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

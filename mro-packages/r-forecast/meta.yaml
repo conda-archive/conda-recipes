@@ -1,0 +1,98 @@
+package:
+  name: r-forecast
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "6.2"
+
+source:
+  fn: forecast_6.2.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/forecast_6.2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/forecast/forecast_6.2.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, fpp
+requirements:
+  build:
+    - r
+    - r-rcpp >=0.11.0
+    - r-rcpparmadillo >=0.2.35
+    - r-colorspace
+    - r-fracdiff
+    - r-timedate
+    - r-tseries
+    - r-zoo
+    - gcc # [not win]
+
+  run:
+    - r
+    - r-rcpp >=0.11.0
+    - r-rcpparmadillo >=0.2.35
+    - r-colorspace
+    - r-fracdiff
+    - r-timedate
+    - r-tseries
+    - r-zoo
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('forecast')" # [not win]
+    - "\"%R%\" -e \"library('forecast')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://github.com/robjhyndman/forecast
+  license: GPL (>= 2)
+  summary: Methods and tools for displaying and analysing univariate time series forecasts including
+    exponential smoothing via state space models and automatic ARIMA modelling.
+
+# The original CRAN metadata for this package was:
+
+# Package: forecast
+# Version: 6.2
+# Title: Forecasting Functions for Time Series and Linear Models
+# Description: Methods and tools for displaying and analysing univariate time series forecasts including exponential smoothing via state space models and automatic ARIMA modelling.
+# Depends: R (>= 3.0.2), stats, graphics, zoo, timeDate
+# Imports: tseries, fracdiff, Rcpp (>= 0.11.0), nnet, colorspace, parallel
+# Suggests: testthat, fpp
+# LinkingTo: Rcpp (>= 0.11.0), RcppArmadillo (>= 0.2.35)
+# LazyData: yes
+# ByteCompile: TRUE
+# Author: Rob J Hyndman <Rob.Hyndman@monash.edu>.  Contributors include George Athanasopoulos, Christoph Bergmeir,  Carlos Cinelli, Yousaf Khan, Zach Mayer, Slava Razbash,  Drew Schmidt, David Shaub, Yuan Tang, Earo Wang, Zhenyu Zhou.
+# Maintainer: Rob J Hyndman <Rob.Hyndman@monash.edu>
+# BugReports: https://github.com/robjhyndman/forecast/issues
+# License: GPL (>= 2)
+# URL: http://github.com/robjhyndman/forecast
+# NeedsCompilation: yes
+# Packaged: 2015-10-19 22:52:46 UTC; hyndman
+# Repository: CRAN
+# Date/Publication: 2015-10-20 08:06:46
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

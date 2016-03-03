@@ -1,0 +1,86 @@
+package:
+  name: r-lahman
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "4.0_1"
+
+source:
+  fn: Lahman_4.0-1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/Lahman_4.0-1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/Lahman/Lahman_4.0-1.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: lattice, ggplot2, googleVis, data.table, vcd, plyr, reshape2, zipcode
+requirements:
+  build:
+    - r
+
+  run:
+    - r
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('Lahman')" # [not win]
+    - "\"%R%\" -e \"library('Lahman')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://lahman.r-forge.r-project.org/
+  license: GPL
+  summary: Provides the tables from Sean Lahman's Baseball Database as a set of R data.frames.
+    It uses the data on pitching, hitting and fielding performance and other tables
+    from 1871 through 2014, as recorded in the 2015 version of the database.
+
+# The original CRAN metadata for this package was:
+
+# Package: Lahman
+# Type: Package
+# Title: Sean Lahman's Baseball Database
+# Version: 4.0-1
+# Date: 2015-09-04
+# Authors@R: c(person(given = "Michael", family = "Friendly", role="aut"),  person(given= "Dennis", family = "Murphy", role="ctb"),  person(given ="Martin", family = "Monkman", role="ctb"), person(given ="Chris", family = "Dalzell", role=c("cre","ctb"), email="cdalzell@gmail.com"))
+# Author: Michael Friendly [aut], Dennis Murphy [ctb],  Martin Monkman [ctb], Chris Dalzell [cre, ctb]
+# Maintainer: Chris Dalzell <cdalzell@gmail.com>
+# Description: Provides the tables from Sean Lahman's Baseball Database as a set of R data.frames. It uses the data on pitching, hitting and fielding performance and other tables from 1871 through 2014, as recorded in the 2015 version of the database.
+# Depends: R (>= 2.10)
+# Suggests: lattice, ggplot2, googleVis, data.table, vcd, plyr, reshape2, zipcode
+# License: GPL
+# URL: http://lahman.r-forge.r-project.org/
+# LazyLoad: yes
+# LazyData: yes
+# Repository: CRAN
+# Repository/R-Forge/Project: lahman
+# Repository/R-Forge/Revision: 39
+# Repository/R-Forge/DateTimeStamp: 2013-06-01 03:33:30
+# Date/Publication: 2015-09-15 08:35:24
+# Packaged: 2015-09-15 00:12:13 UTC; chrisdalzell
+# NeedsCompilation: no
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

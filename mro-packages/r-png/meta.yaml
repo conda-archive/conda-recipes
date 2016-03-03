@@ -1,0 +1,82 @@
+package:
+  name: r-png
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.1_7"
+
+source:
+  fn: png_0.1-7.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/png_0.1-7.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/png/png_0.1-7.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 2 # [linux]
+  number: 1 # [not linux]
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r
+    - libpng 1.6.*
+    - zlib
+
+  run:
+    - r
+    - libpng 1.6.*
+    - zlib
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('png')" # [not win]
+    - "\"%R%\" -e \"library('png')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://www.rforge.net/png/
+  license: GPL-2 | GPL-3
+  summary: This package provides an easy and simple way to read, write and display bitmap images
+    stored in the PNG format. It can read and write both files and in-memory raw vectors.
+
+# The original CRAN metadata for this package was:
+
+# Package: png
+# Version: 0.1-7
+# Title: Read and write PNG images
+# Author: Simon Urbanek <Simon.Urbanek@r-project.org>
+# Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>
+# Depends: R (>= 2.9.0)
+# Description: This package provides an easy and simple way to read, write and display bitmap images stored in the PNG format. It can read and write both files and in-memory raw vectors.
+# License: GPL-2 | GPL-3
+# SystemRequirements: libpng
+# URL: http://www.rforge.net/png/
+# Packaged: 2013-12-03 20:09:14 UTC; svnuser
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2013-12-03 22:25:05
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,75 @@
+package:
+  name: r
+  version: 3.2.3
+
+about:
+  home: https://mran.revolutionanalytics.com/open/
+  license: GPL
+  license_file: COPYING
+  summary: Microsoft R Open
+
+source:
+  url: https://mran.revolutionanalytics.com/install/mro/3.2.3/MRO-3.2.3-win.exe   [win]
+  fn: MRO-3.2.3-win.exe   [win]
+
+  url: https://mran.revolutionanalytics.com/install/mro/3.2.3/MRO-3.2.3-OSX.pkg  [osx]
+  fn: rro.pkg   [osx]
+
+  #url: https://mran.revolutionanalytics.com/install/mro/3.2.3/MRO-3.2.3.el5.x86_64.rpm   [linux]
+  #fn: rro.rpm   [linux]
+
+  git_url: https://github.com/RevolutionAnalytics/RRO.git   [linux]
+  git_rev: MRO-3.2.3   [linux]
+
+build:
+  rpaths:
+    - lib/R/lib
+    - lib
+
+requirements:
+  build:
+    - r-rtools ==3.2   [win]
+    - curl   [win]
+    - 7za   [win]
+    - icu   [linux]
+    - libpng  [linux]
+    - readline   [linux]
+    - libtiff   [linux]
+    - libgfortran  [linux]
+    - cairo    [linux]
+    - pango   [linux]
+    - zlib   [linux]
+    - gcc   [linux]
+  run:
+    - libgcc [linux]
+    - icu   [linux]
+    - libpng  [unix]
+    - readline   [unix]
+    - libtiff   [unix]
+    - libgfortran  [linux]
+    - cairo    [linux]
+    - pango   [linux]
+    - zlib   [unix]
+
+test:
+  commands:
+#    - R -e "library()"
+
+#libpng
+#libjpeg
+#readline
+#libtiff
+#gcc
+#make
+#gcc-gfortran
+#ghostscript-fonts
+#libgfortran
+#cairo
+#curl
+#libicu
+#pango
+#libSM
+#libXt
+#libXmu
+#zip
+#info

@@ -1,0 +1,75 @@
+package:
+  name: r-rstudioapi
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.3.1"
+
+source:
+  fn: rstudioapi_0.3.1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/rstudioapi_0.3.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/rstudioapi/rstudioapi_0.3.1.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r
+
+  run:
+    - r
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('rstudioapi')" # [not win]
+    - "\"%R%\" -e \"library('rstudioapi')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: MIT + file LICENSE
+  summary: Access the RStudio API (if available) and provide informative error messages when
+    it's not.
+
+# The original CRAN metadata for this package was:
+
+# Package: rstudioapi
+# Title: Safely Access the RStudio API
+# Description: Access the RStudio API (if available) and provide informative error messages when it's not.
+# Version: 0.3.1
+# Authors@R: c( person("Hadley", "Wickham", role = c("aut"), email = "hadley@rstudio.com"), person("JJ", "Allaire", role = c("aut", "cre"), email = "jj@rstudio.com"), person(family = "RStudio", role = "cph") )
+# Maintainer: JJ Allaire <jj@rstudio.com>
+# License: MIT + file LICENSE
+# NeedsCompilation: no
+# Packaged: 2015-04-06 16:18:59 UTC; jjallaire
+# Author: Hadley Wickham [aut], JJ Allaire [aut, cre], RStudio [cph]
+# Repository: CRAN
+# Date/Publication: 2015-04-07 00:27:07
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

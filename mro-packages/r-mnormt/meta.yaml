@@ -1,0 +1,82 @@
+package:
+  name: r-mnormt
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.5_3"
+
+source:
+  fn: mnormt_1.5-3.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/mnormt_1.5-3.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/mnormt/mnormt_1.5-3.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r
+    - gcc # [not win]
+
+  run:
+    - r
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('mnormt')" # [not win]
+    - "\"%R%\" -e \"library('mnormt')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://azzalini.stat.unipd.it/SW/Pkg-mnormt
+  license: GPL-2 | GPL-3
+  summary: Functions are provided for computing the density and the distribution function of
+    multivariate normal and "t" random variables, and for generating random vectors
+    sampled from these distributions.   Probabilities are computed via a non-Monte Carlo
+    method. Different routines  are used for the case d=1, d=2, d>2, if d denotes the
+    number of dimensions.
+
+# The original CRAN metadata for this package was:
+
+# Package: mnormt
+# Version: 1.5-3
+# Date: 2015-05-25
+# Title: The Multivariate Normal and t Distributions
+# Author: Fortran code by Alan Genz, R code by Adelchi Azzalini
+# Maintainer: Adelchi Azzalini <adelchi.azzalini@unipd.it>
+# Depends: R (>= 2.2.0)
+# Description: Functions are provided for computing the density and the distribution function of multivariate normal and "t" random variables, and for generating random vectors sampled from these distributions.   Probabilities are computed via a non-Monte Carlo method. Different routines  are used for the case d=1, d=2, d>2, if d denotes the number of dimensions.
+# License: GPL-2 | GPL-3
+# URL: http://azzalini.stat.unipd.it/SW/Pkg-mnormt
+# NeedsCompilation: yes
+# Packaged: 2015-05-25 13:36:39 UTC; aa
+# Repository: CRAN
+# Date/Publication: 2015-05-25 18:31:32
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

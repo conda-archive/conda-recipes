@@ -1,0 +1,27 @@
+diff --git a/lib/R/bin/R b/lib/R/bin/R
+index 20f8b3e..d4a08d8 100755
+--- a/lib/R/bin/R
++++ b/lib/R/bin/R
+@@ -1,19 +1,11 @@
+ #!/bin/sh
+ # Shell wrapper for R executable.
+
+-R_HOME_DIR=$(dirname $(dirname $(readlink /proc/$$/fd/255)))
+-
+-if test -n "${R_HOME}" && \
+-   test "${R_HOME}" != "${R_HOME_DIR}"; then
+-  echo "WARNING: ignoring environment value of R_HOME"
+-fi
+-R_HOME="${R_HOME_DIR}"
+-export R_HOME
+-R_SHARE_DIR="${R_HOME_DIR}/share"
++R_SHARE_DIR="${R_HOME}/share"
+ export R_SHARE_DIR
+-R_INCLUDE_DIR="${R_HOME_DIR}/include"
++R_INCLUDE_DIR="${R_HOME}/include"
+ export R_INCLUDE_DIR
+-R_DOC_DIR="${R_HOME_DIR}/doc"
++R_DOC_DIR="${R_HOME}/doc"
+ export R_DOC_DIR
+
+ # Since this script can be called recursively, we allow R_ARCH to

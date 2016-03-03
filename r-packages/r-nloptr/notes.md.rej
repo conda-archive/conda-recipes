@@ -1,0 +1,12 @@
+--- r-packages/r-nloptr/notes.md
++++ r-packages/r-nloptr/notes.md
+@@ -15,3 +15,9 @@ You may need to download a newer config.guess file, as instructed.
+ 
+ The Windows build for this package will not work if there are spaces in the
+ path (I couldn't figure out how to work around it).
++
++Update: I'm looking to replace all this with MSYS2, but it's in
++progress. The gist currently is install MSYS2 and no compilers to the default
++location. r-rtools is a conda package which you need to install yourself for
++now. This will be added as a build dependency in future once conda skeleton
++learns about it.

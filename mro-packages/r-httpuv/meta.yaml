@@ -1,0 +1,90 @@
+package:
+  name: r-httpuv
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.3.3"
+
+source:
+  fn: httpuv_1.3.3.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/httpuv_1.3.3.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/httpuv/httpuv_1.3.3.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r
+    - r-rcpp
+    - gcc # [not win]
+
+  run:
+    - r
+    - r-rcpp
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('httpuv')" # [not win]
+    - "\"%R%\" -e \"library('httpuv')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/rstudio/httpuv
+  license: GPL-3 | file LICENSE
+  summary: Provides low-level socket and protocol support for handling HTTP and WebSocket requests
+    directly from within R. It is primarily intended as a building block for other packages,
+    rather than making it particularly easy to create complete web applications using
+    httpuv alone. httpuv is built on top of the libuv and http-parser C libraries, both
+    of which were developed by Joyent, Inc. (See LICENSE file for libuv and http-parser
+    license information.)
+
+# The original CRAN metadata for this package was:
+
+# Package: httpuv
+# Type: Package
+# Title: HTTP and WebSocket Server Library
+# Version: 1.3.3
+# Date: 2015-08-03
+# Author: RStudio, Inc.
+# Copyright: RStudio, Inc.; Joyent, Inc.; Nginx Inc.; Igor Sysoev; Niels Provos; Internet Systems Consortium, Inc.; Alexander Chemeris
+# Maintainer: Joe Cheng <joe@rstudio.com>
+# Description: Provides low-level socket and protocol support for handling HTTP and WebSocket requests directly from within R. It is primarily intended as a building block for other packages, rather than making it particularly easy to create complete web applications using httpuv alone. httpuv is built on top of the libuv and http-parser C libraries, both of which were developed by Joyent, Inc. (See LICENSE file for libuv and http-parser license information.)
+# License: GPL-3 | file LICENSE
+# Depends: R (>= 2.15.1), methods
+# Imports: Rcpp (>= 0.11.0), utils
+# LinkingTo: Rcpp
+# URL: https://github.com/rstudio/httpuv
+# SystemRequirements: GNU make
+# NeedsCompilation: yes
+# Packaged: 2015-08-03 18:49:59 UTC; jcheng
+# Repository: CRAN
+# Date/Publication: 2015-08-04 00:32:50
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
