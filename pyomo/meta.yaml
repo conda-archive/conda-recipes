@@ -33,4 +33,4 @@ test:
 about:
     home: http://www.pyomo.org/
     license: BSD
-    summary: Supports a diverse set of optimization capabilities
+    summary: Pyomo: Python Optimization Modeling Objects
