@@ -29,9 +29,9 @@ if errorlevel 1 exit 1
 if errorlevel 1 exit 1
 
 :: Install fix-up for a non version-specific boost include
-move %LIBRARY_INC%\boost-1_59\boost %LIBRARY_INC%
+move %LIBRARY_INC%\boost-1_60\boost %LIBRARY_INC%
 if errorlevel 1 exit 1
 
 :: Move dll's to LIBRARY_BIN
-move %LIBRARY_LIB%\*vc%LIB_VER%-mt-1_59.dll "%LIBRARY_BIN%"
+move %LIBRARY_LIB%\*vc%LIB_VER%-mt-1_60.dll "%LIBRARY_BIN%"
 if errorlevel 1 exit 1

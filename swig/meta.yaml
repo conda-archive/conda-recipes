@@ -1,14 +1,14 @@
 package:
   name: swig
-  version: 3.0.7
+  version: 3.0.8
 
 source:
-  fn: swig-3.0.7.tar.gz   [unix]
-  url: http://prdownloads.sourceforge.net/swig/swig-3.0.7.tar.gz   [unix]
-  md5: 7fff46c84b8c630ede5b0f0827e3d90a  [unix]
-  fn: swigwin-3.0.7.zip   [win]
-  url: http://prdownloads.sourceforge.net/swig/swigwin-3.0.7.zip   [win]
-  sha256: 11423c4a37209ea501d04d2bf7f71c275cf418b93a28cf062c87b3c1fdfbe286 [win]
+  fn: swig-3.0.8.tar.gz   [unix]
+  url: http://prdownloads.sourceforge.net/swig/swig-3.0.8.tar.gz   [unix]
+  sha1: 1f45e96219536b3423b8d4dbd03614ffccca9c33 [unix]
+  fn: swigwin-3.0.8.zip   [win]
+  url: http://prdownloads.sourceforge.net/swig/swigwin-3.0.8.zip   [win]
+  sha1: 13cd3ed0acc6d92d09b960a628fb5282aaa37549 [win]
 
 build:
   detect_binary_files_with_prefix: True    [unix]
@@ -25,5 +25,7 @@ test:
     - swig -help
 
 about:
-    home: http://www.swig.org/
-    license: GPLv3
+  home: http://www.swig.org/
+  license: GPLv3
+  summary: C/C++ parser code generator
+

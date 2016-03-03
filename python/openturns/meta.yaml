@@ -1,27 +1,27 @@
 package:
   name: openturns
-  version: 1.6rc1
+  version: 1.7
 
 source:
-  fn: openturns-1.6.tar.bz2 # [not win]
-  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.6/openturns-1.6.tar.bz2 # [not win]
-  sha1: d937a6f37b4b2ffa0a8c070f865a2e103b9ad2b5 # [not win]
+  fn: openturns-1.7.tar.gz # [not win]
+  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.7/openturns-1.7.tar.gz # [not win]
+  sha1: 9535120721b20a45460538f3ed8fa0f0fec1d797 # [not win]
 
-  fn: openturns-1.6-py2.7-i686.exe # [win32 and py27]
-  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.6/openturns-1.6-py2.7-i686.exe # [win32 and py27]
-  sha1: 93d1d49204f630a42ecce19b5d62fe6343568b31 # [win32 and py27]
+  fn: openturns-1.7-py2.7-i686.exe # [win32 and py27]
+  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.7/openturns-1.7-py2.7-i686.exe # [win32 and py27]
+  sha1: 63f5c17b9be105babc9511f1ae5030a66e375d4b # [win32 and py27]
 
-  fn: openturns-1.6-py2.7-x86_64.exe # [win64 and py27]
-  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.6/openturns-1.6-py2.7-x86_64.exe # [win64 and py27]
-  sha1: 8df73998e1874f8bdec258701863cab1ac1ecdbb # [win64 and py27]
+  fn: openturns-1.7-py2.7-x86_64.exe # [win64 and py27]
+  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.7/openturns-1.7-py2.7-x86_64.exe # [win64 and py27]
+  sha1: b8db4f00e7ecd64d72445b5f37d772a588a75da1 # [win64 and py27]
 
-  fn: openturns-1.6-py3.4-i686.exe # [win32 and py34]
-  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.6/openturns-1.6-py3.4-i686.exe # [win32 and py34]
-  sha1: 4d86c4d110f639c2ca23a6811060fe53b6ddbe16 # [win32 and py34]
+  fn: openturns-1.7-py3.5-i686.exe # [win32 and py35]
+  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.7/openturns-1.7-py3.5-i686.exe # [win32 and py35]
+  sha1: a32ec13c37b79b51ad4f9b62cfa4cff595c1325f # [win32 and py35]
 
-  fn: openturns-1.6-py3.4-x86_64.exe # [win64 and py34]
-  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.6/openturns-1.6-py3.4-x86_64.exe # [win64 and py34]
-  sha1: ad67c432a151e7bf3084933b84d65b2edfb34548 # [win64 and py34]
+  fn: openturns-1.7-py3.5-x86_64.exe # [win64 and py35]
+  url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.7/openturns-1.7-py3.5-x86_64.exe # [win64 and py35]
+  sha1: 04e182874fe885d9e6ea764b0f8065863fc4f608 # [win64 and py35]
 
 build:
   number: 0
@@ -29,6 +29,7 @@ build:
 requirements:
   build:
     - python
+    - gcc           # [not win]
     - cmake         # [not win]
     - swig          # [not win]
     - boost         # [not win]
@@ -36,6 +37,7 @@ requirements:
     - libxml2       # [not win]
     - muparser      # [not win]
     - tbb           # [not win]
+    - nlopt         # [not win]
 
   run:
     - python
@@ -44,6 +46,7 @@ requirements:
     - libxml2       # [not win]
     - muparser      # [not win]
     - tbb           # [not win]
+    - nlopt         # [not win]
 
 test:
   imports:
@@ -53,3 +56,4 @@ test:
 about:
   home: http://openturns.org/
   license: GNU Lesser General Public License (LGPL)
+  summary: Uncertainty treatment library

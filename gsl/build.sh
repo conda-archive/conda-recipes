@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 if [[ "$(uname)" == "Darwin" ]]; then
   # CC=clang otherwise:
   # error: ambiguous instructions require an explicit suffix (could be 'filds', or 'fildl')
@@ -7,6 +8,6 @@ fi
 
 ./configure --prefix=$PREFIX
 
-make
+make -j ${CPU_COUNT}
 make check
 make install

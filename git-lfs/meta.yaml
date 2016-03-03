@@ -1,0 +1,25 @@
+package:
+  name: git-lfs
+  version: 1.0.2
+
+build:
+  number: 0
+
+source:
+  fn: git-lfs-linux-amd64-1.0.2.tar.gz # [linux64]
+  url: https://github.com/github/git-lfs/releases/download/v1.0.2/git-lfs-linux-amd64-1.0.2.tar.gz # [linux64]
+  sha256: 3786850065dfd3c4aa9866b866ca620899b98fe3613392f3b56ac23a8cfa1307 # [linux64]
+  fn: git-lfs-darwin-amd64-1.0.2.tar.gz # [osx]
+  url: https://github.com/github/git-lfs/releases/download/v1.0.2/git-lfs-darwin-amd64-1.0.2.tar.gz # [osx]
+  sha256: d9c8a61f6d5961e9d7e976c4a50069d89039d65ac7058a715cc47ed6766d73ed # [osx]
+
+requirements:
+  run:
+    - git
+
+about:
+  home: https://git-lfs.github.com/
+  license: MIT
+  summary: |
+    Git LFS is a command line extension and specification for managing large
+    files with Git.

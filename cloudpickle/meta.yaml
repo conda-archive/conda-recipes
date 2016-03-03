@@ -1,0 +1,28 @@
+package:
+  name: cloudpickle
+  version: "0.1.1"
+
+source:
+  fn: cloudpickle-0.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/cloudpickle/cloudpickle-0.1.1.tar.gz
+  md5: 47376a2fa209283b5e6d05b36eecdb5a
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - cloudpickle
+
+about:
+  home: https://github.com/cloudpipe/cloudpickle
+  license: BSD License
+  summary: 'Extended pickling support for Python objects'

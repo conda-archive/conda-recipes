@@ -1,5 +1,4 @@
-python setup.py install
-if errorlevel 1 exit 1
+set CONDA_DEFAULT_ENV=
 
-del %SCRIPTS%\conda-init
+%PYTHON% setup.py install
 if errorlevel 1 exit 1
