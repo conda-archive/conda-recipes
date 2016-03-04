@@ -1,0 +1,79 @@
+package:
+  name: r-stabledist
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.7_0"
+
+source:
+  fn: stabledist_0.7-0.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/stabledist_0.7-0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/stabledist/stabledist_0.7-0.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: Matrix, fBasics, FMStable, RUnit, Rmpfr, sfsmisc
+requirements:
+  build:
+    - r
+
+  run:
+    - r
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('stabledist')" # [not win]
+    - "\"%R%\" -e \"library('stabledist')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://www.rmetrics.org
+  license: GPL (>= 2)
+  summary: Density, Probability and Quantile functions, and random number generation for (skew)
+    stable distributions, using the parametrizations of Nolan.
+
+# The original CRAN metadata for this package was:
+
+# Package: stabledist
+# Version: 0.7-0
+# Date: 2015-05-04
+# Title: Stable Distribution Functions
+# Author: Diethelm Wuertz, Martin Maechler and Rmetrics core team members.
+# Maintainer: Martin Maechler <maechler@stat.math.ethz.ch>
+# Depends: R (>= 3.1.0), stats, utils
+# Suggests: Matrix, fBasics, FMStable, RUnit, Rmpfr, sfsmisc
+# Description: Density, Probability and Quantile functions, and random number generation for (skew) stable distributions, using the parametrizations of Nolan.
+# LazyData: yes
+# License: GPL (>= 2)
+# URL: http://www.rmetrics.org
+# NeedsCompilation: no
+# Packaged: 2015-05-04 13:44:30 UTC; maechler
+# Repository: CRAN
+# Date/Publication: 2015-05-04 16:35:50
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

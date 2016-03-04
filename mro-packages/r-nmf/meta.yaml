@@ -1,0 +1,114 @@
+package:
+  name: r-nmf
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.20.6"
+
+source:
+  fn: NMF_0.20.6.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/NMF_0.20.6.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/NMF/NMF_0.20.6.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: RcppOctave (>= 0.11), fastICA, doMPI, bigmemory (>= 4.2), synchronicity, corpcor, xtable, devtools, knitr, bibtex, RUnit, mail, Biobase
+requirements:
+  build:
+    - r
+    - r-rcolorbrewer
+    - r-colorspace
+    - r-digest
+    - r-doparallel
+    - r-foreach
+    - r-ggplot2
+    - r-gridbase
+    - r-pkgmaker >=0.20
+    - r-registry
+    - r-reshape2
+    - r-rngtools >=1.2.3
+    - r-stringr >=1.0.0
+    - gcc # [not win]
+
+  run:
+    - r
+    - r-rcolorbrewer
+    - r-colorspace
+    - r-digest
+    - r-doparallel
+    - r-foreach
+    - r-ggplot2
+    - r-gridbase
+    - r-pkgmaker >=0.20
+    - r-registry
+    - r-reshape2
+    - r-rngtools >=1.2.3
+    - r-stringr >=1.0.0
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('NMF')" # [not win]
+    - "\"%R%\" -e \"library('NMF')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://renozao.github.io/NMF
+  license: GPL (>= 2)
+  summary: Provides a framework to perform Non-negative Matrix Factorization (NMF). The package
+    implements a set of already published algorithms and seeding methods, and provides
+    a framework to test, develop and plug new/custom algorithms. Most of the built-in
+    algorithms have been optimized in C++, and the main interface function provides
+    an easy way of performing parallel computations on multicore machines.
+
+# The original CRAN metadata for this package was:
+
+# Package: NMF
+# Type: Package
+# Title: Algorithms and Framework for Nonnegative Matrix Factorization (NMF)
+# Version: 0.20.6
+# Date: 2015-05-25
+# Author: Renaud Gaujoux, Cathal Seoighe
+# Maintainer: Renaud Gaujoux <renaud@tx.technion.ac.il>
+# Description: Provides a framework to perform Non-negative Matrix Factorization (NMF). The package implements a set of already published algorithms and seeding methods, and provides a framework to test, develop and plug new/custom algorithms. Most of the built-in algorithms have been optimized in C++, and the main interface function provides an easy way of performing parallel computations on multicore machines.
+# License: GPL (>= 2)
+# URL: http://renozao.github.io/NMF
+# BugReports: http://github.com/renozao/NMF/issues
+# SCM: github:renozao, r-forge
+# LazyLoad: yes
+# VignetteBuilder: knitr
+# Depends: R (>= 3.0.0), methods, utils, pkgmaker (>= 0.20), registry, rngtools (>= 1.2.3), cluster
+# Imports: graphics, stats, stringr (>= 1.0.0), digest, grid, grDevices, gridBase, colorspace, RColorBrewer, foreach, doParallel, ggplot2, reshape2
+# Suggests: RcppOctave (>= 0.11), fastICA, doMPI, bigmemory (>= 4.2), synchronicity, corpcor, xtable, devtools, knitr, bibtex, RUnit, mail, Biobase
+# Collate: 'rmatrix.R' 'nmf-package.R' 'utils.R' 'versions.R' 'algorithmic.R' 'options.R' 'grid.R' 'colorcode.R' 'atracks.R' 'aheatmap.R' 'NMF-class.R' 'transforms.R' 'Bioc-layer.R' 'NMFstd-class.R' 'NMFOffset-class.R' 'registry.R' 'heatmaps.R' 'NMFns-class.R' 'nmfModel.R' 'fixed-terms.R' 'NMFfit-class.R' 'NMFSet-class.R' 'NMFStrategy-class.R' 'NMFSeed-class.R' 'NMFStrategyFunction-class.R' 'NMFStrategyIterative-class.R' 'NMFStrategyOctave-class.R' 'NMFplots.R' 'registry-algorithms.R' 'algorithms-base.R' 'algorithms-brunet.R' 'algorithms-lnmf.R' 'algorithms-lsnmf.R' 'algorithms-pe-nmf.R' 'algorithms-siNMF.R' 'algorithms-snmf.R' 'data.R' 'extractFeatures.R' 'registry-seed.R' 'parallel.R' 'nmf.R' 'rnmf.R' 'run.R' 'seed-base.R' 'seed-ica.R' 'seed-nndsvd.R' 'setNMFClass.R' 'simulation.R' 'tests.R'
+# Packaged: 2015-05-25 21:34:47 UTC; renaud
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2015-05-26 08:12:33
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

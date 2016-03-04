@@ -1,0 +1,83 @@
+package:
+  name: r-manipulate
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.0.1"
+
+source:
+  fn: manipulate_1.0.1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/manipulate_1.0.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/manipulate/manipulate_1.0.1.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r
+
+  run:
+    - r
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('manipulate')" # [not win]
+    - "\"%R%\" -e \"library('manipulate')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: GPL-2
+  summary: Interactive plotting functions for use within RStudio. The manipulate function accepts
+    a plotting expression and a set of controls (e.g. slider, picker, checkbox, or button)
+    which are used to dynamically change values within the expression. When a value
+    is changed using its corresponding control the expression is automatically re-executed
+    and the plot is redrawn.
+
+# The original CRAN metadata for this package was:
+
+# Package: manipulate
+# Type: Package
+# Title: Interactive Plots for RStudio
+# Version: 1.0.1
+# Date: 2014-12-23
+# Authors@R: c( person("JJ", "Allaire", role = c("aut", "cre"), comment = "R interface", email = "jj@rstudio.com"), person(family = "RStudio", role = "cph") )
+# Maintainer: JJ Allaire <jj@rstudio.com>
+# Description: Interactive plotting functions for use within RStudio. The manipulate function accepts a plotting expression and a set of controls (e.g. slider, picker, checkbox, or button) which are used to dynamically change values within the expression. When a value is changed using its corresponding control the expression is automatically re-executed and the plot is redrawn.
+# Depends: R (>= 2.11.1)
+# SystemRequirements: RStudio - http://www.rstudio.com/products/rstudio/
+# License: GPL-2
+# LazyLoad: yes
+# Packaged: 2014-12-23 18:00:41 UTC; jjallaire
+# Author: JJ Allaire [aut, cre] (R interface), RStudio [cph]
+# NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2014-12-24 01:18:44
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

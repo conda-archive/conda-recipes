@@ -1,0 +1,78 @@
+package:
+  name: r-memoise
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.2.1"
+
+source:
+  fn: memoise_0.2.1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/memoise_0.2.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/memoise/memoise_0.2.1.tar.gz
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 2 # [osx]
+  number: 1 # [not osx]
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r
+    - r-digest
+
+  run:
+    - r
+    - r-digest
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('memoise')" # [not win]
+    - "\"%R%\" -e \"library('memoise')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://github.com/hadley/memoise
+  license: MIT + file LICENSE
+  summary: Cache the results of a function so that when you call it again with the same arguments
+    it returns the pre-computed value.
+
+# The original CRAN metadata for this package was:
+
+# Package: memoise
+# Title: Memoise functions
+# Version: 0.2.1
+# Author: Hadley Wickham <h.wickham@gmail.com>
+# Maintainer: Hadley Wickham <h.wickham@gmail.com>
+# Description: Cache the results of a function so that when you call it again with the same arguments it returns the pre-computed value.
+# URL: http://github.com/hadley/memoise
+# BugReports: http://github.com/hadley/memoise/issues
+# Imports: digest
+# License: MIT + file LICENSE
+# Packaged: 2014-04-21 22:42:55 UTC; hadley
+# NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2014-04-22 07:23:30
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

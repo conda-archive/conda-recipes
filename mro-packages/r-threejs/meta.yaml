@@ -1,0 +1,85 @@
+package:
+  name: r-threejs
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.2.1"
+
+source:
+  fn: threejs_0.2.1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/threejs_0.2.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/threejs/threejs_0.2.1.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: htmltools (>= 0.2.6), RCurl, maps, sp
+requirements:
+  build:
+    - r
+    - r-base64enc
+    - r-htmlwidgets >=0.3.2
+
+  run:
+    - r
+    - r-base64enc
+    - r-htmlwidgets >=0.3.2
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('threejs')" # [not win]
+    - "\"%R%\" -e \"library('threejs')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://bwlewis.github.io/rthreejs
+  license: MIT + file LICENSE
+  summary: Create interactive 3D scatter plots and globes using the 'three.js' visualization
+    library ("http://threejs.org").
+
+# The original CRAN metadata for this package was:
+
+# Package: threejs
+# Type: Package
+# Title: Interactive 3D Scatter Plots and Globes
+# Description: Create interactive 3D scatter plots and globes using the 'three.js' visualization library ("http://threejs.org").
+# Version: 0.2.1
+# Date: 2015-04-24
+# Author: B. W. Lewis <blewis@illposed.net>
+# Maintainer: B. W. Lewis <blewis@illposed.net>
+# URL: http://bwlewis.github.io/rthreejs
+# License: MIT + file LICENSE
+# Depends: R (>= 3.0.0)
+# Imports: htmlwidgets (>= 0.3.2), base64enc
+# Suggests: htmltools (>= 0.2.6), RCurl, maps, sp
+# Enhances: knitr, shiny
+# NeedsCompilation: no
+# Packaged: 2015-05-19 02:34:45 UTC; blewis
+# Repository: CRAN
+# Date/Publication: 2015-05-19 06:13:04
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

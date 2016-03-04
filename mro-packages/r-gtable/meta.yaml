@@ -1,0 +1,78 @@
+package:
+  name: r-gtable
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.1.2"
+
+source:
+  fn: gtable_0.1.2.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/gtable_0.1.2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/gtable/gtable_0.1.2.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 3 # [osx]
+  number: 2 # [not osx]
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, plyr
+requirements:
+  build:
+    - r
+
+  run:
+    - r
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('gtable')" # [not win]
+    - "\"%R%\" -e \"library('gtable')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: GPL-2
+  summary: Tools to make it easier to work with "tables" of grobs.
+
+# The original CRAN metadata for this package was:
+
+# Package: gtable
+# Type: Package
+# Title: Arrange grobs in tables.
+# Version: 0.1.2
+# Author: Hadley Wickham <h.wickham@gmail.com>
+# Maintainer: Hadley Wickham <h.wickham@gmail.com>
+# Description: Tools to make it easier to work with "tables" of grobs.
+# Depends: R (>= 2.14), grid
+# Suggests: testthat, plyr
+# License: GPL-2
+# Collate: 'add-grob.r' 'add-rows-cols.r' 'add-space.r' 'grid.r' 'gtable-layouts.r' 'gtable.r' 'rbind-cbind.r' 'utils.r' 'trim.r' 'filter.r' 'align.r' 'padding.r' 'z.r'
+# Packaged: 2012-12-04 23:12:46 UTC; hadley
+# Repository: CRAN
+# Date/Publication: 2012-12-05 13:11:37
+# NeedsCompilation: no
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

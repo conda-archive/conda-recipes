@@ -7,7 +7,7 @@ build:
 
 requirements: # [not win]
   build:      # [not win]
-    - gcc     # [not win]
+    - gcc     # [linux]
     - numpy   # [not win]
 
   run:

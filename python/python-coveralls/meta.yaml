@@ -29,19 +29,19 @@ requirements:
   build:
     - python
     - setuptools
-    - argparse [py26]
+    - argparse    #[py26]
     - pyyaml
     - requests
-    - coverage
+    - coverage <4
     - six
     - sh
 
   run:
     - python
-    - argparse [py26]
+    - argparse    #[py26]
     - pyyaml
     - requests
-    - coverage
+    - coverage <4
     - six
     - sh
 

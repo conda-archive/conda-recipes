@@ -1,0 +1,82 @@
+package:
+  name: r-reshape
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.8.5"
+
+source:
+  fn: reshape_0.8.5.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/reshape_0.8.5.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/reshape/reshape_0.8.5.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r
+    - r-plyr
+
+  run:
+    - r
+    - r-plyr
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('reshape')" # [not win]
+    - "\"%R%\" -e \"library('reshape')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://had.co.nz/reshape
+  license: MIT + file LICENSE
+  summary: 'Reshape lets you flexibly restructure and aggregate data using just two functions:
+    melt and cast.'
+
+
+# The original CRAN metadata for this package was:
+
+# Package: reshape
+# Type: Package
+# Title: Flexibly reshape data.
+# Version: 0.8.5
+# Author: Hadley Wickham <h.wickham@gmail.com>
+# Maintainer: Hadley Wickham <h.wickham@gmail.com>
+# Description: Reshape lets you flexibly restructure and aggregate data using just two functions: melt and cast.
+# URL: http://had.co.nz/reshape
+# Depends: R (>= 2.6.1)
+# Imports: plyr
+# License: MIT + file LICENSE
+# LazyData: true
+# Packaged: 2014-04-22 14:44:28 UTC; hadley
+# NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2014-04-23 01:52:33
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

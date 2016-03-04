@@ -1,0 +1,83 @@
+package:
+  name: r-formatr
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.2.1"
+
+source:
+  fn: formatR_1.2.1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/formatR_1.2.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/formatR/formatR_1.2.1.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: codetools, shiny, testit, knitr
+requirements:
+  build:
+    - r
+
+  run:
+    - r
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('formatR')" # [not win]
+    - "\"%R%\" -e \"library('formatR')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://yihui.name/formatR
+  license: GPL
+  summary: Provides a function tidy_source() to format R source code. Spaces and indent will
+    be added to the code automatically, and comments will be preserved under certain
+    conditions, so that R code will be more human-readable and tidy. There is also a
+    Shiny app as a user interface in this package (see tidy_app()).
+
+# The original CRAN metadata for this package was:
+
+# Package: formatR
+# Type: Package
+# Title: Format R Code Automatically
+# Version: 1.2.1
+# Date: 2015-09-18
+# Author: Yihui Xie
+# Maintainer: Yihui Xie <xie@yihui.name>
+# Description: Provides a function tidy_source() to format R source code. Spaces and indent will be added to the code automatically, and comments will be preserved under certain conditions, so that R code will be more human-readable and tidy. There is also a Shiny app as a user interface in this package (see tidy_app()).
+# Depends: R (>= 3.0.2)
+# Suggests: codetools, shiny, testit, knitr
+# License: GPL
+# URL: http://yihui.name/formatR
+# BugReports: https://github.com/yihui/formatR/issues
+# VignetteBuilder: knitr
+# NeedsCompilation: no
+# Packaged: 2015-09-18 01:50:40 UTC; yihui
+# Repository: CRAN
+# Date/Publication: 2015-09-18 08:58:36
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
