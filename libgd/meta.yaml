@@ -1,0 +1,28 @@
+package:
+  version: 2.1.1
+  name: libgd
+
+source:
+  git_url: https://github.com/libgd/libgd.git
+  git_tag: gd-2.1.1
+
+
+requirements:
+  build:
+    - cmake
+    - libpng  1.6.*
+    - libtiff 4.0.*
+    - jpeg 
+    - freetype  2.5.*
+    - libwebp  0.5.*
+  run:
+    - libpng  1.6.*
+    - libtiff 4.0.*
+    - jpeg
+    - freetype 2.5.*
+    - libwebp 0.5.*
+about:
+  home: https://github.com/libgd/libgd
+  summary: GD graphics library
+  license: Other
+  license_file: COPYING
