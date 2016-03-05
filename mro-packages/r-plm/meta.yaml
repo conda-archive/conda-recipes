@@ -61,7 +61,7 @@ about:
   home: http://www.R-project.org
   license: GPL (>= 2)
   summary: A set of estimators and tests for panel data.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: plm

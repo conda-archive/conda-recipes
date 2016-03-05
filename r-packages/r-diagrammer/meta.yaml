@@ -60,7 +60,7 @@ about:
   home: https://github.com/rich-iannone/DiagrammeR
   license: MIT + file LICENSE
   summary: Create graph diagrams and flowcharts using R.
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: DiagrammeR

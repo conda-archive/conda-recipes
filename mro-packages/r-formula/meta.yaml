@@ -54,7 +54,7 @@ about:
   license: GPL-2 | GPL-3
   summary: Infrastructure for extended formulas with multiple parts on the right-hand side and/or
     multiple responses on the left-hand side.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: Formula

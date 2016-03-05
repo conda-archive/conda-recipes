@@ -57,7 +57,7 @@ about:
   license: MIT + file LICENSE
   summary: Query the main 'R' 'SVN' repository to find the versions 'r-release' and 'r-oldrel'
     refer to, and also all previous 'R' versions and their release dates.
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: rversions

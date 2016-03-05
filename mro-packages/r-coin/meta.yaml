@@ -63,7 +63,7 @@ about:
   summary: Conditional inference procedures for the general independence problem including two-sample,
     K-sample (non-parametric ANOVA), correlation, censored, ordered and multivariate
     problems.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: coin

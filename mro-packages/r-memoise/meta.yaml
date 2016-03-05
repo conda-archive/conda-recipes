@@ -55,7 +55,7 @@ about:
   license: MIT + file LICENSE
   summary: Cache the results of a function so that when you call it again with the same arguments
     it returns the pre-computed value.
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: memoise

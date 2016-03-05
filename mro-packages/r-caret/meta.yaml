@@ -65,7 +65,7 @@ about:
   home: https://github.com/topepo/caret/
   license: GPL (>= 2)
   summary: Misc functions for training and plotting classification and regression models.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: caret

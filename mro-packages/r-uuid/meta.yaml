@@ -55,7 +55,7 @@ about:
   home: http://www.rforge.net/uuid
   license: MIT + file LICENSE
   summary: Tools for generating and handling of UUIDs (Universally Unique Identifiers).
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: uuid

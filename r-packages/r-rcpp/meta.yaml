@@ -60,7 +60,7 @@ about:
     several vignettes included in this package, via the  'Rcpp Gallery' site at <http://gallery.rcpp.org>,
     the paper by Eddelbuettel and  Francois (2011, JSS), and the book by Eddelbuettel
     (2013, Springer); see  'citation("Rcpp")' for details on these last two.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: Rcpp

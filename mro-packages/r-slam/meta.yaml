@@ -56,7 +56,7 @@ about:
   license: GPL-2
   summary: Data structures and algorithms for sparse arrays and matrices, based on index arrays
     and simple triplet representations, respectively.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: slam

@@ -62,7 +62,7 @@ about:
     regression and the Cox model. Two recent additions are the multiple-response Gaussian,
     and the grouped multinomial. The algorithm uses cyclical coordinate descent in a
     path-wise fashion, as described in the paper linked to via the URL below. '
-
+  license_family: GPL2
 
 # The original CRAN metadata for this package was:
 

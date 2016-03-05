@@ -75,6 +75,7 @@ about:
     approximation for degrees of freedom (LMM only), parametric bootstrap (LMMs and
     GLMMs), or likelihood ratio tests (LMMs and GLMMs). afex uses type 3 sums of squares
     as default (imitating commercial statistical software).
+  license_family: GPL3
 
 # The original CRAN metadata for this package was:
 

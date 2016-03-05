@@ -55,7 +55,7 @@ about:
   license: BSD_2_clause + file LICENSE
   summary: Provides infrastructure to accurately measure and compare the execution time of R
     expressions.
-
+  license_family: BSD
 # The original CRAN metadata for this package was:
 
 # Package: microbenchmark

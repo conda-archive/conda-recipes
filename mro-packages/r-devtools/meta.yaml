@@ -77,7 +77,7 @@ about:
   home: https://github.com/hadley/devtools
   license: GPL (>= 2)
   summary: Collection of package development tools.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: devtools

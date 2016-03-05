@@ -50,7 +50,7 @@ about:
   #home:
   license: GPL-3
   summary: String and binary representations of objects for several formats / mime types.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: repr

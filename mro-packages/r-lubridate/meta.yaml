@@ -65,7 +65,7 @@ about:
     days, hours, minutes, and seconds), perform accurate math on date-times, handle
     time zones and Daylight Savings Time. Lubridate has a consistent, memorable syntax,
     that makes working with dates fun instead of frustrating.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: lubridate

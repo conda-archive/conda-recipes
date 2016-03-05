@@ -61,7 +61,7 @@ about:
   summary: Many approaches for both reading and creating XML (and HTML) documents (including
     DTDs), both local and accessible via HTTP or FTP.  Also offers access to an 'XPath'
     "interpreter".
-
+  license_family: BSD
 # The original CRAN metadata for this package was:
 
 # Package: XML

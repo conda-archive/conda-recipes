@@ -54,7 +54,7 @@ about:
   home: http://cran.r-project.org/package=networkD3
   license: GPL (>= 3)
   summary: Creates 'D3' 'JavaScript' network, tree, dendrogram, and Sankey graphs from 'R'.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: networkD3

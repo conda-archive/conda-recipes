@@ -65,7 +65,7 @@ about:
     custom pseudo-data representations can be specified and used for model fitting.
     Functions are provided for the construction of confidence intervals for the reduced-bias
     estimates.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: brglm

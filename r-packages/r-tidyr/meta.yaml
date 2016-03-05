@@ -65,7 +65,7 @@ about:
   license: MIT + file LICENSE
   summary: An evolution of 'reshape2'. It's designed specifically for data tidying (not general
     reshaping or aggregating) and works well with 'dplyr' data pipelines.
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: tidyr

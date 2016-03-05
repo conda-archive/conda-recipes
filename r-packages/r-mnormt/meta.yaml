@@ -58,7 +58,7 @@ about:
     sampled from these distributions.   Probabilities are computed via a non-Monte Carlo
     method. Different routines  are used for the case d=1, d=2, d>2, if d denotes the
     number of dimensions.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: mnormt

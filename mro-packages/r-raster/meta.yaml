@@ -61,7 +61,7 @@ about:
   summary: Reading, writing, manipulating, analyzing and modeling of gridded spatial data. The
     package implements basic and high-level functions. Processing of very large files
     is supported.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: raster

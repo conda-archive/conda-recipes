@@ -63,7 +63,7 @@ about:
     in the package). Provides rich facilities for charting time-series data in R, including
     highly configurable  series- and axis-display and interactive features like zoom/pan
     and  series/point highlighting.
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: dygraphs

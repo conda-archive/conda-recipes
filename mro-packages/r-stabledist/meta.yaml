@@ -54,7 +54,7 @@ about:
   license: GPL (>= 2)
   summary: Density, Probability and Quantile functions, and random number generation for (skew)
     stable distributions, using the parametrizations of Nolan.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: stabledist

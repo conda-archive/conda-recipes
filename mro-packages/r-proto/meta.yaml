@@ -53,7 +53,7 @@ about:
   license: GPL-2
   summary: An object oriented system using object-based, also called prototype-based, rather
     than class-based object oriented ideas.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: proto

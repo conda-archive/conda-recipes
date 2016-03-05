@@ -55,7 +55,7 @@ about:
   license: MIT + file LICENSE
   summary: This package provides an interface to display rich output in IPython from R code,
     for the ipyr kernel and IPython R magic.
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: IRdisplay

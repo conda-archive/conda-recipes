@@ -67,7 +67,7 @@ about:
     ordination (CQO/UQO) models in ecology, as well as constrained additive ordination
     (CAO). Note that these functions are subject to change; see the NEWS and ChangeLog
     files for latest changes.'
-
+  license_family: GPL3
 
 # The original CRAN metadata for this package was:
 

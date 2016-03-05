@@ -55,7 +55,7 @@ about:
   home: http://mvtnorm.R-forge.R-project.org
   license: GPL-2
   summary: Computes multivariate normal and t probabilities, quantiles, random deviates and densities.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: mvtnorm

@@ -59,7 +59,7 @@ about:
   home: http://tm.r-forge.r-project.org/
   license: GPL-3
   summary: A framework for text mining applications within R.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: tm

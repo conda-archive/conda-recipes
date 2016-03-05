@@ -54,7 +54,7 @@ about:
   license: GPL
   summary: Provides two convenience functions assert() and test_pkg() to facilitate testing R
     packages.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: testit

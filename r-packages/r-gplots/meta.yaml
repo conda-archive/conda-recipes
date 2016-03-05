@@ -72,7 +72,7 @@ about:
     style plots (''ooplot''), - plotting multiple data sets on same region, with separate
     axes (''overplot''), - plotting means and confidence intervals (''plotCI'', ''plotmeans''),
     - spacing points in an x-y plot so they don''t overlap (''space'').'
-
+  license_family: GPL2
 
 # The original CRAN metadata for this package was:
 

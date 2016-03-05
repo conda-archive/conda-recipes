@@ -58,7 +58,7 @@ about:
   summary: Provide for uniform handling of R's different time-based data classes by extending
     zoo, maximizing native format information preservation and allowing for user level
     customization and extension, while simplifying cross-class interoperability.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: xts

@@ -56,7 +56,7 @@ about:
   license: MIT + file LICENSE
   summary: Parsing and evaluation tools that make it easy to recreate the command line behaviour
     of R.
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: evaluate

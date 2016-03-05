@@ -63,7 +63,7 @@ about:
     conditional quantiles of a univariate response and several methods for handling
     censored survival data.  Portfolio selection methods based on expected shortfall
     risk are also included.'
-
+  license_family: GPL3
 
 # The original CRAN metadata for this package was:
 

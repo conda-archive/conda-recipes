@@ -55,7 +55,7 @@ about:
     be added to the code automatically, and comments will be preserved under certain
     conditions, so that R code will be more human-readable and tidy. There is also a
     Shiny app as a user interface in this package (see tidy_app()).
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: formatR

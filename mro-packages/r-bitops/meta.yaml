@@ -52,7 +52,7 @@ about:
   #home:
   license: GPL (>= 2)
   summary: Functions for bitwise operations on integer vectors.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: bitops

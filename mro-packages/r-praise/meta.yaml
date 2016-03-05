@@ -54,7 +54,7 @@ about:
   license: MIT + file LICENSE
   summary: Build friendly R packages that praise their users if they have done something good,
     or they just need it to feel better.
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: praise

@@ -65,7 +65,7 @@ about:
     several methods handling incomplete distance matrices (NJ*, BIONJ*, MVR*, and the
     corresponding triangle method). Some functions call external applications (PhyML,
     Clustal, T-Coffee, Muscle) whose results are returned into R.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: ape

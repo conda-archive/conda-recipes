@@ -65,7 +65,7 @@ about:
   summary: Routines for simple graphs and network analysis. It can handle large graphs very well
     and provides functions for generating random and regular graphs, graph visualization,
     centrality methods and much more.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: igraph

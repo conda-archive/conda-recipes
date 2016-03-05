@@ -57,7 +57,7 @@ about:
   license: GPL-2
   summary: Low-level interface to Java VM very much like .C/.Call and friends. Allows creation
     of objects, calling methods and accessing fields.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: rJava

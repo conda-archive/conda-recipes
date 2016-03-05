@@ -69,7 +69,7 @@ about:
     in server environments (file output) and as a replacement for other devices that
     don't have Cairo's capabilities such as alpha support or anti-aliasing. Backends
     are modular such that any subset of backends is supported.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: Cairo

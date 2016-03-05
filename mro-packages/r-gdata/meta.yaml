@@ -53,6 +53,7 @@ test:
 
 about:
   #home:
+  license_family: GPL2
   license: GPL-2
   summary: 'Various R programming tools for data manipulation, including: - medical unit conversions
     (''ConvertMedUnits'', ''MedUnits''), - combining objects (''bindData'', ''cbindX'',

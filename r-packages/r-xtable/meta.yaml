@@ -52,7 +52,7 @@ about:
   home: http://xtable.r-forge.r-project.org/
   license: GPL (>= 2)
   summary: Coerce data to LaTeX and HTML tables.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: xtable

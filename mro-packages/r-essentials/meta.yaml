@@ -43,3 +43,4 @@ requirements:
 
 about:
   summary: "Some essential packages for working with R"
+  license_family: Other

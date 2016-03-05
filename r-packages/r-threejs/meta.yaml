@@ -57,7 +57,7 @@ about:
   license: MIT + file LICENSE
   summary: Create interactive 3D scatter plots and globes using the 'three.js' visualization
     library ("http://threejs.org").
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: threejs

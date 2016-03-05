@@ -74,7 +74,7 @@ about:
   summary: Create and customize interactive maps using the 'Leaflet' JavaScript library and the
     'htmlwidgets' package. These maps can be used directly from the R console, from
     'RStudio', in Shiny apps and R Markdown documents.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: leaflet

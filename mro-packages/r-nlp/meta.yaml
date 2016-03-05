@@ -53,7 +53,7 @@ about:
   #home:
   license: GPL-3
   summary: Basic classes and methods for Natural Language Processing.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: NLP

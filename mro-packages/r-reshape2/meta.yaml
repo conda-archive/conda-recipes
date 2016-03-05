@@ -59,7 +59,7 @@ about:
   license: MIT + file LICENSE
   summary: 'Flexibly restructure and aggregate data using just two functions: melt and dcast
     (or acast).'
-
+  license_family: MIT
 
 # The original CRAN metadata for this package was:
 

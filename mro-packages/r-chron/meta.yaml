@@ -55,7 +55,7 @@ about:
   #home:
   license: GPL-2
   summary: Chronological objects which can handle dates and times.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: chron

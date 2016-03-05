@@ -53,7 +53,7 @@ about:
   license: GPL-2
   summary: Provides tools for determining estimability of linear functions of regression coefficients,  and
     'epredict' methods that handle non-estimable cases correctly.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: estimability

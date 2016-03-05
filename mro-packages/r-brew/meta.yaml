@@ -54,7 +54,7 @@ about:
   summary: brew implements a templating framework for mixing text and R code for report generation.
     brew template syntax is similar to PHP, Ruby's erb module, Java Server Pages, and
     Python's psp module.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: brew
