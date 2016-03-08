@@ -1,0 +1,78 @@
+package:
+  name: r-setwidth
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.0_4"
+
+source:
+  fn: setwidth_1.0-4.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/setwidth_1.0-4.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/setwidth/setwidth_1.0-4.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r
+    - gcc # [not win]
+
+  run:
+    - r
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('setwidth')" # [not win]
+    - "\"%R%\" -e \"library('setwidth')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: GPL (>= 2)
+  summary: Automatically sets the value of options("width") when the terminal emulator is resized.
+    The functions of this package only work if R is compiled for Linux systems and it
+    is running interactively in a terminal emulator.
+
+# The original CRAN metadata for this package was:
+
+# Package: setwidth
+# Version: 1.0-4
+# Date: 2015-07-07
+# Title: Automatically Set the Width Option on Terminal Emulators
+# Author: Jakson Aquino
+# Maintainer: Jakson Alves de Aquino <jalvesaq@gmail.com>
+# OS_type: unix
+# Description: Automatically sets the value of options("width") when the terminal emulator is resized. The functions of this package only work if R is compiled for Linux systems and it is running interactively in a terminal emulator.
+# License: GPL (>= 2)
+# NeedsCompilation: yes
+# Packaged: 2015-07-07 08:24:07 UTC; root
+# Repository: CRAN
+# Date/Publication: 2015-07-07 13:17:51
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
