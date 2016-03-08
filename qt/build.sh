@@ -1,8 +1,7 @@
 #!/bin/bash
 
-BIN=$PREFIX/bin
-QTCONF=$BIN/qt.conf
-
+# Compile
+# -------
 if [ `uname` == Linux ]; then
     chmod +x configure
 
@@ -17,11 +16,27 @@ if [ `uname` == Linux ]; then
     # See https://bugs.webkit.org/show_bug.cgi?id=25836#c5
     CFLAGS="-march=${MARCH}" CXXFLAGS="-march=${MARCH}" \
     CPPFLAGS="-march=${MARCH}" LDFLAGS="-march=${MARCH}" \
-    ./configure \
-        -release -fast -prefix $PREFIX \
-        -no-qt3support -nomake examples -nomake demos -nomake docs \
-        -opensource -verbose -openssl -webkit -gtkstyle -dbus \
-        -system-libpng -qt-zlib -L $PREFIX/lib -I $PREFIX/include
+    ./configure -prefix $PREFIX/lib/qt4 \
+                -libdir $PREFIX/lib \
+                -bindir $PREFIX/lib/qt4/bin \
+                -headerdir $PREFIX/include/qt4 \
+                -datadir $PREFIX/lib/qt4 \
+                -L $PREFIX/lib \
+                -I $PREFIX/include \
+                -release \
+                -fast \
+                -no-qt3support \
+                -nomake examples \
+                -nomake demos \
+                -nomake docs \
+                -opensource \
+                -verbose \
+                -openssl \
+                -webkit \
+                -system-libpng \
+                -system-zlib \
+                -gtkstyle \
+                -dbus
 
     # Build on RPM based distros fails without setting LD_LIBRARY_PATH
     # to the build lib dir
@@ -29,13 +44,6 @@ if [ `uname` == Linux ]; then
     LD_LIBRARY_PATH=$SRC_DIR/lib make -j $CPU_COUNT
     
     make install
-
-    cp $SRC_DIR/bin/* $PREFIX/bin/
-    cd $PREFIX
-    rm -rf doc phrasebooks q3porting.xml translations
-    rm -rf demos examples
-    cd $PREFIX/bin
-    rm -f *.bat *.pl qt3to4 qdoc3
 fi
 
 if [ `uname` == Darwin ]; then
@@ -47,24 +55,51 @@ if [ `uname` == Darwin ]; then
     done
 
     chmod +x configure
-    ./configure \
-        -release -fast -prefix $PREFIX -platform macx-g++ \
-        -no-qt3support -nomake examples -nomake demos -nomake docs \
-        -opensource -verbose -openssl -no-framework -system-libpng \
-        -arch `uname -m` -L $PREFIX/lib -I $PREFIX/include
+    ./configure -prefix $PREFIX/lib/qt4 \
+                -libdir $PREFIX/lib \
+                -bindir $PREFIX/lib/qt4/bin \
+                -headerdir $PREFIX/include/qt4 \
+                -datadir $PREFIX/lib/qt4 \
+                -L $PREFIX/lib \
+                -I $PREFIX/include \
+                -release \
+                -fast \
+                -no-qt3support \
+                -nomake examples \
+                -nomake demos \
+                -nomake docs \
+                -opensource \
+                -verbose \
+                -openssl \
+                -system-libpng \
+                -system-zlib \
+                -no-framework \
+                -platform macx-g++ \
+                -arch `uname -m` 
 
     make -j $(sysctl -n hw.ncpu)
     make install
 fi
 
-# Make sure $BIN exists
-if [ ! -d $BIN ]; then
-  mkdir $BIN
-fi
+
+# Post build setup
+# ----------------
+BIN=$PREFIX/lib/qt4/bin
+
+# Remove unneeded files
+pushd $PREFIX/lib/qt4
+rm -rf phrasebooks translations q3porting.xml
+popd
+
+# Make symlinks of binaries in $BIN to $PREFIX/bin
+for file in $BIN/*
+do
+    ln -sfv ../lib/qt4/bin/$(basename $file) $PREFIX/bin/$(basename $file)-qt4
+done
+
+# Remove qmake-qt4 symlink and add qmake-qt4 bash script
+rm -f $PREFIX/bin/qmake-qt4
+cp $RECIPE_DIR/qmake-qt4 $PREFIX/bin/
 
 # Add qt.conf file to the package to make it fully relocatable
-cat <<EOF >$QTCONF
-[Paths]
-Prefix = $PREFIX
-
-EOF
+cp $RECIPE_DIR/qt.conf $BIN/

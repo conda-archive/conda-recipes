@@ -12,15 +12,18 @@ source:                                                                         
   patches:              [unix]
     - configure.patch   [unix]
 
+build:
+  number:      2        [unix]
+
 requirements:
   build:                 [unix]
     - python             [unix]
-    - qt      >=4.8.6    [unix]
+    - qt      >=4.8.7    [unix]
     - sip     >=4.16.4   [unix]
 
   run:
     - python
-    - qt      >=4.8.6    [unix]
+    - qt      >=4.8.7    [unix]
     - sip     >=4.16.4
 
 test:
