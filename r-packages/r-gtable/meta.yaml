@@ -2,13 +2,13 @@ package:
   name: r-gtable
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.1.2"
+  version: "0.2.0"
 
 source:
-  fn: gtable_0.1.2.tar.gz
+  fn: gtable_0.2.0.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/gtable_0.1.2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/gtable/gtable_0.1.2.tar.gz
+    - http://cran.r-project.org/src/contrib/gtable_0.2.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/gtable/gtable_0.2.0.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -21,15 +21,14 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 3 # [osx]
-  number: 2 # [not osx]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat, plyr
+# Suggests: testthat, covr
 requirements:
   build:
     - r
@@ -52,25 +51,27 @@ test:
 about:
   #home:
   license: GPL-2
-  summary: Tools to make it easier to work with "tables" of grobs.
+  summary: Tools to make it easier to work with "tables" of 'grobs'.
 
 # The original CRAN metadata for this package was:
 
 # Package: gtable
-# Type: Package
-# Title: Arrange grobs in tables.
-# Version: 0.1.2
-# Author: Hadley Wickham <h.wickham@gmail.com>
-# Maintainer: Hadley Wickham <h.wickham@gmail.com>
-# Description: Tools to make it easier to work with "tables" of grobs.
-# Depends: R (>= 2.14), grid
-# Suggests: testthat, plyr
+# Version: 0.2.0
+# Title: Arrange 'Grobs' in Tables
+# Description: Tools to make it easier to work with "tables" of 'grobs'.
+# Authors@R: person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre"))
+# Depends: R (>= 2.14)
+# Imports: grid
+# Suggests: testthat, covr
 # License: GPL-2
 # Collate: 'add-grob.r' 'add-rows-cols.r' 'add-space.r' 'grid.r' 'gtable-layouts.r' 'gtable.r' 'rbind-cbind.r' 'utils.r' 'trim.r' 'filter.r' 'align.r' 'padding.r' 'z.r'
-# Packaged: 2012-12-04 23:12:46 UTC; hadley
-# Repository: CRAN
-# Date/Publication: 2012-12-05 13:11:37
+# RoxygenNote: 5.0.1
 # NeedsCompilation: no
+# Packaged: 2016-02-26 13:06:10 UTC; hadley
+# Author: Hadley Wickham [aut, cre]
+# Maintainer: Hadley Wickham <hadley@rstudio.com>
+# Repository: CRAN
+# Date/Publication: 2016-02-26 15:23:14
 
 # See
 # http://docs.continuum.io/conda/build.html for
