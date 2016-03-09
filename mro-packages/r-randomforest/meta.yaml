@@ -55,7 +55,7 @@ about:
   home: https://www.stat.berkeley.edu/~breiman/RandomForests/
   license: GPL (>= 2)
   summary: Classification and regression based on a forest of trees using random inputs.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: randomForest

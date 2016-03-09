@@ -63,7 +63,7 @@ about:
     functions to stream, validate, and prettify JSON data. The unit tests included with
     the package verify that all edge cases are encoded and decoded consistently for
     use with dynamic data in systems and applications.
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: jsonlite

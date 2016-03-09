@@ -55,7 +55,7 @@ about:
   summary: Provides the tables from Sean Lahman's Baseball Database as a set of R data.frames.
     It uses the data on pitching, hitting and fielding performance and other tables
     from 1871 through 2014, as recorded in the 2015 version of the database.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: Lahman

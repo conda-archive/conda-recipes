@@ -64,7 +64,7 @@ about:
   #home:
   license: Apache License (== 2.0)
   summary: Supports the map reduce programming model on top of hadoop streaming
-
+  license_family: Apache
 # The original CRAN metadata for this package was:
 
 # Package: rmr2

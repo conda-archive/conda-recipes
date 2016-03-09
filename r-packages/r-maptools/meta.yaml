@@ -64,7 +64,7 @@ about:
     package also provides interface wrappers for exchanging spatial objects with packages
     such as PBSmapping, spatstat, maps, RArcInfo, Stata tmap, WinBUGS, Mondrian, and
     others.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: maptools

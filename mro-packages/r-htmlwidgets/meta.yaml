@@ -60,7 +60,7 @@ about:
   license: MIT + file LICENSE
   summary: A framework for creating HTML widgets that render in various contexts including the
     R console, 'R Markdown' documents, and 'Shiny' web applications.
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: htmlwidgets

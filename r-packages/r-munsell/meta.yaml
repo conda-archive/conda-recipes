@@ -53,7 +53,7 @@ about:
   #home:
   license: MIT + file LICENSE
   summary: Functions for exploring and using the Munsell colour system
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: munsell

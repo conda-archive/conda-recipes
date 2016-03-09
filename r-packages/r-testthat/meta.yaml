@@ -60,7 +60,7 @@ about:
   home: https://github.com/hadley/testthat
   license: MIT + file LICENSE
   summary: A unit testing system designed to be fun, flexible and easy to set up.
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: testthat

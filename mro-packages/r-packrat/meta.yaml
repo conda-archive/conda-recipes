@@ -54,7 +54,7 @@ about:
   license: GPL-2
   summary: Manage the R packages your project depends on in an isolated, portable, and reproducible
     way.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: packrat

@@ -62,7 +62,7 @@ about:
     models, including  linear, generalized linear, linear mixed effects, and survival
     models. The package includes demos reproducing analyzes presented in the book "Multiple
     Comparisons Using R" (Bretz, Hothorn,  Westfall, 2010, CRC Press).
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: multcomp

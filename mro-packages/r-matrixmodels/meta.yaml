@@ -54,7 +54,7 @@ about:
   license: GPL (>= 2)
   summary: Modelling with sparse and dense 'Matrix' matrices, using modular prediction and response
     module classes.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: MatrixModels

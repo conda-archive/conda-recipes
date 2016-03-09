@@ -64,7 +64,7 @@ about:
     ''Armadillo'' itself in order to use ''RcppArmadillo''. ''Armadillo'' is licensed
     under the MPL 2.0, while ''RcppArmadillo'' (the ''Rcpp'' bindings/bridge to Armadillo)
     is licensed under the GNU GPL version 2 or later, as is the rest of ''Rcpp''.'
-
+  license_family: GPL3
 
 # The original CRAN metadata for this package was:
 

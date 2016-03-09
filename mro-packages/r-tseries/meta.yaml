@@ -59,7 +59,7 @@ about:
   #home:
   license: GPL-2
   summary: Time series analysis and computational finance.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: tseries

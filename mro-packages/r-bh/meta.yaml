@@ -58,7 +58,7 @@ about:
     libraries  for template use among CRAN package. By placing these libraries in  this
     package, we offer a more efficient distribution system for CRAN  as replication
     of this code in the sources of other packages is  avoided. '
-
+  license_family: Other
 
 # The original CRAN metadata for this package was:
 

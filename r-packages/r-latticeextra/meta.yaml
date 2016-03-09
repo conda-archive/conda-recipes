@@ -57,7 +57,7 @@ about:
   home: http://latticeextra.r-forge.r-project.org/
   license: GPL (>= 2)
   summary: Extra graphical utilities based on lattice
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: latticeExtra

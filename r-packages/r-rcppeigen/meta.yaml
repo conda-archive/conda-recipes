@@ -69,7 +69,7 @@ about:
     version were licensed under the GNU LGPL version 3 or later. ''RcppEigen'' (the
     ''Rcpp'' bindings/bridge to ''Eigen'') is licensed under the GNU GPL version 2 or
     later, as is the rest of ''Rcpp''.'
-
+  license_family: GPL3
 
 # The original CRAN metadata for this package was:
 

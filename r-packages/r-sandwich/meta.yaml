@@ -55,7 +55,7 @@ about:
   license: GPL-2 | GPL-3
   summary: Model-robust standard error estimators for cross-sectional, time series, and longitudinal
     data.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: sandwich

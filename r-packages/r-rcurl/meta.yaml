@@ -65,7 +65,7 @@ about:
     R socket connections.  Additionally, the underlying implementation is robust and
     extensive, supporting FTP/FTPS/TFTP (uploads and downloads), SSL/HTTPS, telnet,
     dict, ldap, and also supports cookies, redirects, authentication, etc.
-
+  license_family: BSD
 # The original CRAN metadata for this package was:
 
 # Package: RCurl

@@ -69,7 +69,7 @@ about:
   summary: Makes it incredibly easy to build interactive web applications with R. Automatic "reactive"
     binding between inputs and outputs and extensive pre-built widgets make it possible
     to build beautiful, responsive, and powerful applications with minimal effort.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: shiny

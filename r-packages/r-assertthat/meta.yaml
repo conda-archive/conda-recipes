@@ -53,7 +53,7 @@ about:
   summary: assertthat is an extension to stopifnot() that makes it easy to declare the pre and
     post conditions that you code should satisfy, while also producing friendly error
     messages so that your users know what they've done wrong.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: assertthat

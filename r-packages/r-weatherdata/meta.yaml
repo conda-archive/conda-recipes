@@ -57,7 +57,7 @@ about:
   summary: Functions that help in fetching weather data from websites. Given a location and a
     date range, these functions help fetch weather data (temperature, pressure etc.)
     for any weather related analysis.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: weatherData

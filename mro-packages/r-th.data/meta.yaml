@@ -53,7 +53,7 @@ about:
   #home:
   license: GPL-3
   summary: Contains data sets used in other packages Torsten Hothorn maintains.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: TH.data

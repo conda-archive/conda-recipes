@@ -56,7 +56,7 @@ about:
     terse, but packages `coin' and `party' have some working examples. However, if you
     find the implemented ideas interesting we would be very interested in a discussion
     of this proposal. Contributions are more than welcome!
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: modeltools

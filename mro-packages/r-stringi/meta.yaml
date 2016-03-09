@@ -61,7 +61,7 @@ about:
     are: pattern searching (e.g., with ICU Java-like regular expressions or the Unicode
     Collation Algorithm), random string generation, case mapping, string transliteration,
     concatenation, Unicode normalization, date-time formatting and parsing, etc.'
-
+  license_family: Other
 
 # The original CRAN metadata for this package was:
 

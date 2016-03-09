@@ -75,7 +75,7 @@ about:
     options. Merged former package ''nacopula'' for nested Archimedean copulas: Efficient
     sampling algorithms, various estimators, goodness-of-fit tests and related tools
     and special functions.'
-
+  license_family: GPL3
 
 # The original CRAN metadata for this package was:
 

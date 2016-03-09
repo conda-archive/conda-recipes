@@ -55,7 +55,7 @@ about:
   license: LGPL (>= 2)
   summary: This package embeds the SQLite database engine in R and provides an interface compliant
     with the DBI package. The source for the SQLite engine (version 3.8.6) is included.
-
+  license_family: LGPL
 # The original CRAN metadata for this package was:
 
 # Package: RSQLite

@@ -53,7 +53,7 @@ about:
   #home:
   license: GPL
   summary: Integration of base and grid graphics
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: gridBase

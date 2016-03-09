@@ -60,7 +60,7 @@ about:
     or heuristic metrics (jaro, jaro-winkler). An implementation of soundex is provided
     as well. Distances can be computed between character vectors while taking proper
     care of encoding or between integer vectors representing generic sequences.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: stringdist

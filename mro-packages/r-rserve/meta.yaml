@@ -60,7 +60,7 @@ about:
     Java, allowing any application to use facilities of R without the need of linking
     to R code. Rserve supports remote connection, user authentication and file transfer.
     A simple R client is included in this package as well.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: Rserve

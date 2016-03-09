@@ -59,7 +59,7 @@ about:
   license: GPL (>= 2)
   summary: ' Functions and Datasets to Accompany J. Fox and S. Weisberg,  An R Companion to Applied
     Regression, Second Edition, Sage, 2011.'
-
+  license_family: GPL2
 
 # The original CRAN metadata for this package was:
 

@@ -56,7 +56,7 @@ about:
   license: GPL-2
   summary: Derivative-free optimization by quadratic approximation based on an interface to Fortran
     implementations by M. J. D. Powell.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: minqa

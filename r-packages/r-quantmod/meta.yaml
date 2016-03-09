@@ -60,7 +60,7 @@ about:
   home: http://www.quantmod.com https://github.com/joshuaulrich/quantmod
   license: GPL-3
   summary: Specify, build, trade, and analyse quantitative financial trading strategies.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: quantmod

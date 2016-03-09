@@ -65,7 +65,7 @@ about:
   summary: Obtain least-squares means for many linear, generalized linear,  and mixed models.
     Compute contrasts or linear functions of least-squares means, and comparisons of
     slopes. Plots and compact letter displays.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: lsmeans

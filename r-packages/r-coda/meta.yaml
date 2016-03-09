@@ -56,7 +56,7 @@ about:
   summary: Provides functions for summarizing and plotting the output from Markov Chain Monte
     Carlo (MCMC) simulations, as well as diagnostic tests of convergence to the equilibrium
     distribution of the Markov chain.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: coda

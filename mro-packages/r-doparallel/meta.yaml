@@ -57,7 +57,7 @@ about:
   #home:
   license: GPL-2
   summary: Provides a parallel backend for the %dopar% function using the parallel package.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: doParallel

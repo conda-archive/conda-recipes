@@ -56,7 +56,7 @@ about:
   license: GPL (>= 2)
   summary: Provides a number of user-level functions to work with "grid" graphics, notably to
     arrange multiple grid-based plots on a page, and draw tables.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: gridExtra

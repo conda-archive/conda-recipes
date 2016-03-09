@@ -62,7 +62,7 @@ about:
     httpuv alone. httpuv is built on top of the libuv and http-parser C libraries, both
     of which were developed by Joyent, Inc. (See LICENSE file for libuv and http-parser
     license information.)
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: httpuv

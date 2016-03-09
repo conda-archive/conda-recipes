@@ -54,7 +54,7 @@ about:
   license: GPL (>= 2)
   summary: Environment for teaching  "Financial Engineering and Computational Finance". Managing
     chronological and calendar objects.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: timeDate

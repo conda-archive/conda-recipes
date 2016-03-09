@@ -68,6 +68,7 @@ about:
     Day is used. . Please note that this package is not meant to be deployed for  cryptographic
     purposes for which more comprehensive (and widely  tested) libraries such as OpenSSL
     should be used.
+  license_family: GPL2
 
 # The original CRAN metadata for this package was:
 

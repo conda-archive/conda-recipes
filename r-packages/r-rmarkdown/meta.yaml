@@ -60,7 +60,7 @@ about:
   home: http://rmarkdown.rstudio.com
   license: GPL-3
   summary: Convert R Markdown documents into a variety of formats.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: rmarkdown

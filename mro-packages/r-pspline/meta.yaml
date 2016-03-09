@@ -55,7 +55,7 @@ about:
   #home:
   license: Unlimited
   summary: Smoothing splines with penalties on order m derivatives.
-
+  license_family: Other
 # The original CRAN metadata for this package was:
 
 # Package: pspline

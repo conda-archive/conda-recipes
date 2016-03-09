@@ -61,7 +61,7 @@ about:
     Gnu Scientific Library (http://www.gnu.org/software/gsl/).  See gsl-package.Rd for
     details of  overall package organization, and Misc.Rd for some functions that are
     widely used in the package, and some tips on installation.'
-
+  license_family: GPL2
 
 # The original CRAN metadata for this package was:
 

@@ -60,7 +60,7 @@ about:
     its side effects.  In that sense, it is similar to the standard lapply function,
     but doesn't require the evaluation of a function.  Using foreach without side effects
     also facilitates executing the loop in parallel.
-
+  license_family: Apache
 # The original CRAN metadata for this package was:
 
 # Package: foreach

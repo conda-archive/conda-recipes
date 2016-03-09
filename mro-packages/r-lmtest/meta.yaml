@@ -58,7 +58,7 @@ about:
   license: GPL-2 | GPL-3
   summary: A collection of tests, data sets, and examples for diagnostic checking in linear regression
     models. Furthermore, some generic tools for inference in parametric models are provided.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: lmtest

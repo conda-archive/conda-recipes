@@ -57,7 +57,7 @@ about:
   home: https://github.com/kevinushey/rex
   license: MIT + file LICENSE
   summary: A friendly interface for the construction of regular expressions.
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: rex

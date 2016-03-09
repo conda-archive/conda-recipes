@@ -66,7 +66,7 @@ about:
   summary: Useful tools for working with HTTP organised by HTTP verbs (GET(), POST(), etc). Configuration
     functions make it easy to control additional request components (authenticate(),
     add_headers() and so on).
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: httr

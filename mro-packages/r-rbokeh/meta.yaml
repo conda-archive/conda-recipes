@@ -63,7 +63,7 @@ about:
   #home:
   license: MIT + file LICENSE
   summary: R interface for creating plots in Bokeh.  Bokeh by Continuum Analytics, \url{http://bokeh.pydata.org/en/latest/}.
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: rbokeh

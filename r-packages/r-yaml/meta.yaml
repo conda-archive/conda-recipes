@@ -51,7 +51,7 @@ about:
   license: BSD_3_clause + file LICENSE
   summary: This package implements the libyaml YAML 1.1 parser and emitter (http://pyyaml.org/wiki/LibYAML)
     for R.
-
+  license_family: BSD
 # The original CRAN metadata for this package was:
 
 # Package: yaml

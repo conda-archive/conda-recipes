@@ -55,7 +55,7 @@ about:
   summary: profileModel provides tools that can be used to calculate, evaluate, plot and use
     for inference the profiles of *arbitrary* inference functions for *arbitrary* 'glm'-like
     fitted models with linear predictors.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: profileModel

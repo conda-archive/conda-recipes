@@ -52,7 +52,7 @@ about:
   #home:
   license: MIT + file LICENSE | Unlimited
   summary: Provides a range of axis labeling algorithms
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: labeling

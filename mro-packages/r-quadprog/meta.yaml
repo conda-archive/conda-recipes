@@ -54,7 +54,7 @@ about:
   license: GPL (>= 2)
   summary: This package contains routines and documentation for solving quadratic programming
     problems.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: quadprog

@@ -65,7 +65,7 @@ about:
     a performance plot can be quickly adjusted using a flexible parameter dispatching
     mechanism. Despite its flexibility, ROCR is easy to use, with only three commands
     and reasonable default values for all optional parameters.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: ROCR

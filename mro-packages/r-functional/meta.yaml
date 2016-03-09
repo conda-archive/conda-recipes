@@ -53,7 +53,7 @@ about:
   #home:
   license: GPL (>= 2)
   summary: Curry, Compose, and other higher-order functions
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: functional

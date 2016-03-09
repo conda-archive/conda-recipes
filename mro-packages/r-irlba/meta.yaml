@@ -54,7 +54,7 @@ about:
   license: GPL
   summary: Fast and memory efficient methods for truncated singular and eigenvalue decompositions
     and principal component analysis of large sparse or dense matrices.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: irlba

@@ -70,7 +70,7 @@ about:
     implements a sophisticated multidimensional conditioning system and a consistent
     interface to map data to aesthetic attributes. See http://ggplot2.org for more information,
     documentation and examples.'
-
+  license_family: GPL2
 
 # The original CRAN metadata for this package was:
 

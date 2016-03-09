@@ -55,7 +55,7 @@ about:
   license: GPL (>= 2)
   summary: Data and examples from a multilevel modelling software review as well as other well-known
     data sets from the multilevel modelling literature.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: mlmRev

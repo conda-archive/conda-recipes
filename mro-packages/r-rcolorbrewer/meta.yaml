@@ -55,7 +55,7 @@ about:
   license: Apache License 2.0
   summary: Provides color schemes for maps (and other graphics) designed by Cynthia Brewer as
     described at http://colorbrewer2.org
-
+  license_family: Apache
 # The original CRAN metadata for this package was:
 
 # Package: RColorBrewer

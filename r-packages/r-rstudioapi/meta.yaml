@@ -53,7 +53,7 @@ about:
   license: MIT + file LICENSE
   summary: Access the RStudio API (if available) and provide informative error messages when
     it's not.
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: rstudioapi

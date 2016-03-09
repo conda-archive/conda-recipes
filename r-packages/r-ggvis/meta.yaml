@@ -68,7 +68,7 @@ about:
   summary: An implementation of an interactive grammar of graphics, taking the best parts of
     'ggplot2', combining them with the reactive framework from 'shiny' and web graphics
     from 'vega'.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: ggvis

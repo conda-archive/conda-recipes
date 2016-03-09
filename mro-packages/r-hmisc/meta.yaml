@@ -74,7 +74,7 @@ about:
     functions for computing sample size and power, importing and annotating datasets,
     imputing missing values, advanced table making, variable clustering, character string
     manipulation, conversion of R objects to LaTeX code, and recoding variables.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: Hmisc
