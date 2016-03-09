@@ -52,6 +52,7 @@ test:
 
 about:
   #home:
+  license_family: GPL2
   license: GPL-2
   summary: 'Functions to assist in R programming, including: - assist in developing, updating,
     and maintaining R and R packages (''ask'', ''checkRVersion'', ''getDependencies'',

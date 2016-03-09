@@ -10,6 +10,9 @@ source:
 requirements:
   build:
     - python
+    - gcc
+  run:
+    - libgcc
 
 about:
   home: http://www.threadingbuildingblocks.org

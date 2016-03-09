@@ -61,7 +61,7 @@ about:
   license: GPL (>= 2)
   summary: Work with XML files using a simple, consistent interface. Built on top of the 'libxml2'
     C library.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: xml2

@@ -1,0 +1,83 @@
+package:
+  name: r-mime
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.4"
+
+source:
+  fn: mime_0.4.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/mime_0.4.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/mime/mime_0.4.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r
+    - gcc # [not win]
+
+  run:
+    - r
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('mime')" # [not win]
+    - "\"%R%\" -e \"library('mime')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/yihui/mime
+  license: GPL-2
+  summary: Guesses the MIME type from a filename extension using the data derived from /etc/mime.types
+    in UNIX-type systems.
+  license_family: GPL2
+# The original CRAN metadata for this package was:
+
+# Package: mime
+# Type: Package
+# Title: Map Filenames to MIME Types
+# Version: 0.4
+# Date: 2015-09-03
+# Authors@R: c(person("Jeffrey", "Horner", role = "ctb"), person("Yihui", "Xie", role = c("aut", "cre"), email = "xie@yihui.name"))
+# Maintainer: Yihui Xie <xie@yihui.name>
+# Description: Guesses the MIME type from a filename extension using the data derived from /etc/mime.types in UNIX-type systems.
+# Imports: tools
+# License: GPL-2
+# URL: https://github.com/yihui/mime
+# BugReports: https://github.com/yihui/mime/issues
+# LazyData: TRUE
+# NeedsCompilation: yes
+# Packaged: 2015-09-02 15:25:52 UTC; yihui
+# Author: Jeffrey Horner [ctb], Yihui Xie [aut, cre]
+# Repository: CRAN
+# Date/Publication: 2015-09-03 12:20:19
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

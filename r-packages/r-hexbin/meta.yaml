@@ -57,7 +57,7 @@ about:
   license: GPL-2
   summary: Binning and plotting functions for hexagonal bins. Now uses and relies on grid graphics
     and formal (S4) classes and methods.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: hexbin

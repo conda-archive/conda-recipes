@@ -1,11 +1,17 @@
 package:
   name: cmake
-  version: 3.3.1
+  version: 3.4.3
 
 source:
-  fn: cmake-3.3.1.tar.gz
-  url: http://www.cmake.org/files/v3.3/cmake-3.3.1.tar.gz 
-  md5: 52638576f4e1e621fed6c3410d3a1b12 
+  fn: cmake-3.4.3.tar.gz
+  url: http://www.cmake.org/files/v3.4/cmake-3.4.3.tar.gz 
+  sha1: 49e4f05d46d4752e514b19ba36bf97d20a7da66a
+
+requirements:
+  build:
+    - gcc         # [unix]
+  run:
+    - libgcc      # [unix]
 
 test:
   commands:
@@ -14,3 +20,4 @@ test:
 about:
   home: http://www.cmake.org/
   license: BSD
+  summary: A cross-platform open-source make system

@@ -1,0 +1,97 @@
+package:
+  name: r-pkgmaker
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.22"
+
+source:
+  fn: pkgmaker_0.22.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/pkgmaker_0.22.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/pkgmaker/pkgmaker_0.22.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: devtools (>= 0.8), bibtex, RUnit, testthat, knitr, ReportingTools, hwriter, argparse
+requirements:
+  build:
+    - r
+    - r-digest
+    - r-registry
+    - r-stringr
+    - r-xtable
+
+  run:
+    - r
+    - r-digest
+    - r-registry
+    - r-stringr
+    - r-xtable
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('pkgmaker')" # [not win]
+    - "\"%R%\" -e \"library('pkgmaker')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://renozao.github.io/pkgmaker
+  license: GPL (>= 2)
+  summary: This package provides some low-level utilities to use for package development. It
+    currently provides managers for multiple package specific options and registries,
+    vignette, unit test and bibtex related utilities. It serves as a base package for
+    packages like NMF, RcppOctave, doRNG, and as an incubator package for other general
+    purposes utilities, that will eventually be packaged separately. It is still under
+    heavy development and changes in the interface(s) are more than likely to happen.
+  license_family: GPL3
+# The original CRAN metadata for this package was:
+
+# Package: pkgmaker
+# Type: Package
+# Title: Package development utilities
+# Version: 0.22
+# Date: 2013-09-17
+# Author: Renaud Gaujoux
+# Maintainer: Renaud Gaujoux <renaud@tx.technion.ac.il>
+# Description: This package provides some low-level utilities to use for package development. It currently provides managers for multiple package specific options and registries, vignette, unit test and bibtex related utilities. It serves as a base package for packages like NMF, RcppOctave, doRNG, and as an incubator package for other general purposes utilities, that will eventually be packaged separately. It is still under heavy development and changes in the interface(s) are more than likely to happen.
+# License: GPL (>= 2)
+# URL: https://renozao.github.io/pkgmaker
+# BugReports: http://github.com/renozao/pkgmaker/issues
+# SCM: github:renozao, r-forge
+# LazyLoad: yes
+# Depends: R (>= 3.0.0), stats, registry
+# Imports: methods, tools, codetools, digest, stringr, xtable, grDevices
+# Suggests: devtools (>= 0.8), bibtex, RUnit, testthat, knitr, ReportingTools, hwriter, argparse
+# Collate: 'utils.R' 'logging.R' 'unitTests.R' 'data.R' 'namespace.R' 'devutils.R' 'package.R' 'options.R' 'is.R' 'registry.R' 'bibtex.R' 'packages.R' 'vignette.R' 'files.R' 'package-extra.R' 'colors.R' 'graphics.R' 'rd.R' 'project.R' 'CLI.R' 'knitr.R' 'repositories.R'
+# VignetteBuilder: knitr
+# Packaged: 2014-05-14 11:49:09 UTC; renaud
+# NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2014-05-14 16:18:51
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

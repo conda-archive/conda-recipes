@@ -73,7 +73,7 @@ about:
     are represented using S4 classes and methods.  The core computational algorithms
     are implemented using the 'Eigen' C++ library for numerical linear algebra and 'RcppEigen'
     "glue".
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: lme4

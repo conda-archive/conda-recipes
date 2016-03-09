@@ -53,7 +53,7 @@ about:
   license: Apache License (== 2.0)
   summary: Support for iterators, which allow a programmer to traverse through all the elements
     of a vector, list, or other collection of data.
-
+  license_family: Apache
 # The original CRAN metadata for this package was:
 
 # Package: iterators

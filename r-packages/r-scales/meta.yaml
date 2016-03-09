@@ -67,7 +67,7 @@ about:
   license: MIT + file LICENSE
   summary: Graphical scales map data to aesthetics, and provide methods for automatically determining
     breaks and labels for axes and legends.
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: scales

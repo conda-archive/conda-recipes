@@ -1,0 +1,89 @@
+package:
+  name: r-multcomp
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.4_1"
+
+source:
+  fn: multcomp_1.4-1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/multcomp_1.4-1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/multcomp/multcomp_1.4-1.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: lme4 (>= 0.999375-16), nlme, robustbase, coin, MASS, car, foreign, xtable, lmtest, coxme (>= 2.2-1), SimComp, ISwR
+requirements:
+  build:
+    - r
+    - r-th.data >=1.0_2
+    - r-mvtnorm >=1.0_3
+    - r-sandwich >=2.3_0
+
+  run:
+    - r
+    - r-th.data >=1.0_2
+    - r-mvtnorm >=1.0_3
+    - r-sandwich >=2.3_0
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('multcomp')" # [not win]
+    - "\"%R%\" -e \"library('multcomp')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://multcomp.R-forge.R-project.org The publishers web page is http://www.crcpress.com/product/isbn/9781584885740
+  license: GPL-2
+  summary: Simultaneous tests and confidence intervals for general linear hypotheses in parametric
+    models, including  linear, generalized linear, linear mixed effects, and survival
+    models. The package includes demos reproducing analyzes presented in the book "Multiple
+    Comparisons Using R" (Bretz, Hothorn,  Westfall, 2010, CRC Press).
+  license_family: GPL2
+# The original CRAN metadata for this package was:
+
+# Package: multcomp
+# Title: Simultaneous Inference in General Parametric Models
+# Version: 1.4-1
+# Date: 2015-07-20
+# Authors@R: c(person("Torsten", "Hothorn", role = c("aut", "cre"),  email = "Torsten.Hothorn@R-project.org"),  person("Frank", "Bretz", role = "aut"),  person("Peter", "Westfall", role = "aut"), person("Richard M.", "Heiberger", role = "ctb"), person("Andre", "Schuetzenmeister", role = "ctb"), person("Susan", "Scheibe", role = "ctb"))
+# Description: Simultaneous tests and confidence intervals for general linear hypotheses in parametric models, including  linear, generalized linear, linear mixed effects, and survival models. The package includes demos reproducing analyzes presented in the book "Multiple Comparisons Using R" (Bretz, Hothorn,  Westfall, 2010, CRC Press).
+# Depends: stats, graphics, mvtnorm (>= 1.0-3), survival (>= 2.35-7), TH.data (>= 1.0-2)
+# Imports: sandwich (>= 2.3-0), codetools
+# Suggests: lme4 (>= 0.999375-16), nlme, robustbase, coin, MASS, car, foreign, xtable, lmtest, coxme (>= 2.2-1), SimComp, ISwR
+# URL: http://multcomp.R-forge.R-project.org The publishers web page is http://www.crcpress.com/product/isbn/9781584885740
+# LazyData: yes
+# License: GPL-2
+# NeedsCompilation: no
+# Packaged: 2015-07-22 14:59:27 UTC; hothorn
+# Author: Torsten Hothorn [aut, cre], Frank Bretz [aut], Peter Westfall [aut], Richard M. Heiberger [ctb], Andre Schuetzenmeister [ctb], Susan Scheibe [ctb]
+# Maintainer: Torsten Hothorn <Torsten.Hothorn@R-project.org>
+# Repository: CRAN
+# Date/Publication: 2015-07-23 05:46:01
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

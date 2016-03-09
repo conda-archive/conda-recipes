@@ -1,0 +1,80 @@
+package:
+  name: r-profilemodel
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.5_9"
+
+source:
+  fn: profileModel_0.5-9.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/profileModel_0.5-9.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/profileModel/profileModel_0.5-9.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 2
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: MASS, gnm
+requirements:
+  build:
+    - r
+
+  run:
+    - r
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('profileModel')" # [not win]
+    - "\"%R%\" -e \"library('profileModel')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://www.ucl.ac.uk/~ucakiko/index.html
+  license: GPL (>= 2)
+  summary: profileModel provides tools that can be used to calculate, evaluate, plot and use
+    for inference the profiles of *arbitrary* inference functions for *arbitrary* 'glm'-like
+    fitted models with linear predictors.
+  license_family: GPL3
+# The original CRAN metadata for this package was:
+
+# Package: profileModel
+# Type: Package
+# Title: Tools for profiling inference functions for various model classes
+# Version: 0.5-9
+# Date: 2013-08-07
+# Author: Ioannis Kosmidis <i.kosmidis@ucl.ac.uk>
+# Maintainer: Ioannis Kosmidis <i.kosmidis@ucl.ac.uk>
+# URL: http://www.ucl.ac.uk/~ucakiko/index.html
+# Description: profileModel provides tools that can be used to calculate, evaluate, plot and use for inference the profiles of *arbitrary* inference functions for *arbitrary* 'glm'-like fitted models with linear predictors.
+# License: GPL (>= 2)
+# Depends: R (>= 2.6.0)
+# Suggests: MASS, gnm
+# Packaged: 2013-08-14 23:43:03 UTC; yiannis
+# NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2013-08-17 09:49:42
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

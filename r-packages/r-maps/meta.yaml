@@ -55,7 +55,7 @@ about:
   license: GPL-2
   summary: Display of maps.  Projection code and larger maps are in separate packages ('mapproj'
     and 'mapdata').
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: maps

@@ -1,0 +1,59 @@
+package:
+    name: metl
+    version: 1.0.6
+
+source:
+    fn: mETL-1.0.6.tar.gz
+    url: https://pypi.python.org/packages/source/m/mETL/mETL-1.0.6.tar.gz
+    md5: 89c5d266a9489ad6b302c8e7a849df40
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - python-dateutil
+        - xlrd
+        - gdata
+        - demjson
+        - pyyaml
+        - sqlalchemy >=0.8
+        - xlwt
+        - nltk
+        - xlutils
+        - xmlsquash
+        - gspread
+        - py2neo
+        - dm
+
+    run:
+        - python
+        - python-dateutil
+        - xlrd
+        - gdata
+        - demjson
+        - pyyaml
+        - sqlalchemy >=0.8
+        - xlwt
+        - nltk
+        - xlutils
+        - xmlsquash
+        - gspread
+        - py2neo
+        - dm
+
+test:
+    imports:
+        - metl
+
+    commands:
+        - metl-generate --help
+
+    #commands:
+    #    -
+
+about:
+    home: https://github.com/ceumicrodata/mETL/
+    license: GPL
+    summary: ETL processes with easy config

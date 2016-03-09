@@ -62,7 +62,7 @@ about:
     current RNG, or RNG data that are embedded into objects for reproducibility. Notably,
     convenient default methods greatly facilitate the way current RNG settings can be
     changed.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: rngtools

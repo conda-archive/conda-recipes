@@ -1,0 +1,40 @@
+package:
+    name: pyfmi
+    version: 2.2
+
+build:
+    number: 0
+
+source:
+    fn: PyFMI-2.2.zip
+    url: https://pypi.python.org/packages/source/P/PyFMI/PyFMI-2.2.zip
+    md5: 8c66bf54ca5927ecbb684dcdee29250d
+
+requirements:
+    build:
+        - setuptools
+        - python
+        - fmilib >=2.0.1
+        - numpy >=1.6.2
+        - scipy >=0.10.1
+        - lxml >=2.3
+        - assimulo >=2.6
+        - cython >=0.18
+
+    run:
+        - python
+        - fmilib >=2.0.1
+        - numpy >=1.6.2
+        - scipy >=0.10.1
+        - lxml >=2.3
+        - assimulo >=2.6
+        - cython >=0.18
+
+test:
+    imports:
+        - pyfmi
+
+about:
+    home: http://www.jmodelica.org/
+    license: LGPL
+    summary: PyFMI is a package for loading and interacting with Functional Mock-Up Units

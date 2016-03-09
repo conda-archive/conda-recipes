@@ -1,0 +1,87 @@
+package:
+  name: r-ttr
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.23_0"
+
+source:
+  fn: TTR_0.23-0.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/TTR_0.23-0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/TTR/TTR_0.23-0.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: RUnit
+requirements:
+  build:
+    - r
+    - r-xts >=0.9_3
+    - r-zoo
+    - gcc # [not win]
+
+  run:
+    - r
+    - r-xts >=0.9_3
+    - r-zoo
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('TTR')" # [not win]
+    - "\"%R%\" -e \"library('TTR')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/joshuaulrich/TTR
+  license: GPL-2
+  summary: Functions and data to construct technical trading rules with R.
+  license_family: GPL2
+# The original CRAN metadata for this package was:
+
+# Package: TTR
+# Type: Package
+# Title: Technical Trading Rules
+# Version: 0.23-0
+# Date: 2015-07-09
+# Author: Joshua Ulrich
+# Maintainer: Joshua Ulrich <josh.m.ulrich@gmail.com>
+# Imports: xts (>= 0.9-3), zoo
+# LinkingTo: xts
+# Enhances: quantmod
+# Suggests: RUnit
+# Description: Functions and data to construct technical trading rules with R.
+# License: GPL-2
+# URL: https://github.com/joshuaulrich/TTR
+# BugReports: https://github.com/joshuaulrich/TTR/issues
+# NeedsCompilation: yes
+# Packaged: 2015-07-10 01:22:47 UTC; josh
+# Repository: CRAN
+# Date/Publication: 2015-07-10 20:15:41
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

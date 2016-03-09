@@ -1,0 +1,89 @@
+package:
+  name: r-foreach
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.4.3"
+
+source:
+  fn: foreach_1.4.3.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/foreach_1.4.3.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/foreach/foreach_1.4.3.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: randomForest
+requirements:
+  build:
+    - r
+    - r-iterators
+
+  run:
+    - r
+    - r-iterators
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('foreach')" # [not win]
+    - "\"%R%\" -e \"library('foreach')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: Apache License (== 2.0)
+  summary: Support for the foreach looping construct.  Foreach is an idiom that allows for iterating
+    over elements in a collection, without the use of an explicit loop counter.  This
+    package in particular is intended to be used for its return value, rather than for
+    its side effects.  In that sense, it is similar to the standard lapply function,
+    but doesn't require the evaluation of a function.  Using foreach without side effects
+    also facilitates executing the loop in parallel.
+  license_family: Apache
+# The original CRAN metadata for this package was:
+
+# Package: foreach
+# Type: Package
+# Title: Provides Foreach Looping Construct for R
+# Version: 1.4.3
+# Authors@R: c(person("Rich", "Calaway", role="cre", email="richcala@microsoft.com"), person("Revolution", "Analytics", role=c("aut", "cph")), person("Steve", "Weston", role="aut"))
+# Description: Support for the foreach looping construct.  Foreach is an idiom that allows for iterating over elements in a collection, without the use of an explicit loop counter.  This package in particular is intended to be used for its return value, rather than for its side effects.  In that sense, it is similar to the standard lapply function, but doesn't require the evaluation of a function.  Using foreach without side effects also facilitates executing the loop in parallel.
+# Depends: R (>= 2.5.0)
+# Imports: codetools, utils, iterators
+# Suggests: randomForest
+# Enhances: compiler, doMC, RUnit, doParallel
+# License: Apache License (== 2.0)
+# Author: Rich Calaway [cre], Revolution Analytics [aut, cph], Steve Weston [aut]
+# Maintainer: Rich Calaway <richcala@microsoft.com>
+# Repository: CRAN
+# Repository/R-Forge/Project: foreach
+# Repository/R-Forge/Revision: 27
+# Repository/R-Forge/DateTimeStamp: 2015-10-12 01:37:31
+# Date/Publication: 2015-10-13 09:12:53
+# NeedsCompilation: no
+# Packaged: 2015-10-12 02:26:29 UTC; rforge
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -51,6 +51,7 @@ about:
   #home:
   license: MIT + file LICENSE
   summary: ACE and AVAS methods for choosing regression transformations.
+  license_family: MIT
 
 # The original CRAN metadata for this package was:
 

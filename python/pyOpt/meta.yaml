@@ -1,0 +1,36 @@
+package:
+    name: pyopt
+    version: 1.2.0
+
+build:
+    number: 0
+
+source:
+    fn: pyOpt-1.2.0.tar.gz
+    url: http://www.pyopt.org/_downloads/pyOpt-1.2.0.tar.gz
+
+    patches:
+        - 0001-Customize-place-of-swig-files.patch
+
+requirements:
+    build:
+        - setuptools
+        - python
+        - numpy
+        - swig ==3.0.8
+        - mpi4py
+
+    run:
+        - python
+        - numpy
+        - swig ==3.0.8
+        - mpi4py
+
+test:
+    imports:
+        - pyOpt
+
+about:
+    home: http://www.pyopt.org/
+    license: LGPL
+    summary: Package for formulating and solving nonlinear constrained optimization problems

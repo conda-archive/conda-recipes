@@ -1,0 +1,27 @@
+
+package:
+    name: selenium-chromedriver
+    version: 2.20.0
+
+source:
+    fn: chromedriver_linux64.zip                                                        # [linux64]
+    url: http://chromedriver.storage.googleapis.com/2.20/chromedriver_linux64.zip       # [linux64]
+    md5: 245858cc984bd946df6a1e6719c8e6f5                                               # [linux64]
+    fn: chromedriver_linux32.zip                                                        # [linux32]
+    url: http://chromedriver.storage.googleapis.com/2.20/chromedriver_linux32.zip       # [linux32]
+    md5: 1e8cbdb84c5b70f86030297c4be3a5f9                                               # [linux32]
+    fn: chromedriver_win32.zip                                                          # [win32]
+    url: http://chromedriver.storage.googleapis.com/2.20/chromedriver_win32.zip         # [win32]
+    md5: 028ee452b8e23890ec5ec6b0717fd295                                               # [win32]
+
+build:
+    number: 0
+
+test:
+    commands:
+        - chromedriver --help
+
+about:
+    home: https://code.google.com/p/selenium/wiki/ChromeDriver
+    license: New BSD License
+    summary: 'Google ChromeDriver: webdriver for testing your website'

@@ -52,7 +52,7 @@ about:
   #home:
   license: GPL-2 | GPL-3
   summary: Server-side and client-side tools for task views to CRAN-style repositories
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: ctv

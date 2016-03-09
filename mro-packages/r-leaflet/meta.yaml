@@ -1,0 +1,102 @@
+package:
+  name: r-leaflet
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.0.0"
+
+source:
+  fn: leaflet_1.0.0.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/leaflet_1.0.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/leaflet/leaflet_1.0.0.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: knitr, maps, shiny, testit (>= 0.4), rgdal, R6, RJSONIO
+requirements:
+  build:
+    - r
+    - r-rcolorbrewer
+    - r-base64enc
+    - r-htmltools
+    - r-htmlwidgets
+    - r-magrittr
+    - r-markdown
+    - r-png
+    - r-raster
+    - r-scales >=0.2.5
+    - r-sp
+
+  run:
+    - r
+    - r-rcolorbrewer
+    - r-base64enc
+    - r-htmltools
+    - r-htmlwidgets
+    - r-magrittr
+    - r-markdown
+    - r-png
+    - r-raster
+    - r-scales >=0.2.5
+    - r-sp
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('leaflet')" # [not win]
+    - "\"%R%\" -e \"library('leaflet')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://rstudio.github.io/leaflet/
+  license: GPL-3 | file LICENSE
+  summary: Create and customize interactive maps using the 'Leaflet' JavaScript library and the
+    'htmlwidgets' package. These maps can be used directly from the R console, from
+    'RStudio', in Shiny apps and R Markdown documents.
+  license_family: GPL3
+# The original CRAN metadata for this package was:
+
+# Package: leaflet
+# Type: Package
+# Title: Create Interactive Web Maps with the JavaScript 'Leaflet' Library
+# Version: 1.0.0
+# Date: 2015-06-19
+# Authors@R: c( person("Joe", "Cheng", email = "joe@rstudio.com", role = c("aut", "cre")), person("Yihui", "Xie", role = c("aut")), person("Hadley", "Wickham", role = c("ctb")), person("jQuery Foundation and contributors", role = c("ctb", "cph"), comment = "jQuery library"), person("Vladimir", "Agafonkin", role = c("ctb", "cph"), comment = "Leaflet library"), person("CloudMade", role = c("cph"), comment = "Leaflet library"), person("Leaflet contributors", role = c("ctb"), comment = "Leaflet library"), person("Leaflet Providers contributors", role = c("ctb", "cph"), comment = "Leaflet Providers plugin"), person("RStudio", role = c("cph")) )
+# Maintainer: Joe Cheng <joe@rstudio.com>
+# Description: Create and customize interactive maps using the 'Leaflet' JavaScript library and the 'htmlwidgets' package. These maps can be used directly from the R console, from 'RStudio', in Shiny apps and R Markdown documents.
+# License: GPL-3 | file LICENSE
+# URL: http://rstudio.github.io/leaflet/
+# BugReports: https://github.com/rstudio/leaflet/issues
+# Imports: base64enc, htmlwidgets, htmltools, magrittr, markdown, png, RColorBrewer, raster, scales (>= 0.2.5), sp
+# Suggests: knitr, maps, shiny, testit (>= 0.4), rgdal, R6, RJSONIO
+# NeedsCompilation: no
+# Packaged: 2015-06-23 19:42:53 UTC; jcheng
+# Author: Joe Cheng [aut, cre], Yihui Xie [aut], Hadley Wickham [ctb], jQuery Foundation and contributors [ctb, cph] (jQuery library), Vladimir Agafonkin [ctb, cph] (Leaflet library), CloudMade [cph] (Leaflet library), Leaflet contributors [ctb] (Leaflet library), Leaflet Providers contributors [ctb, cph] (Leaflet Providers plugin), RStudio [cph]
+# Repository: CRAN
+# Date/Publication: 2015-06-24 00:56:10
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

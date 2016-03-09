@@ -62,7 +62,7 @@ about:
     of JSON content. This package uses libjson rather than implementing yet another
     JSON parser. The aim is to support other general projects by building on their work,
     providing feedback and benefit from their ongoing development.
-
+  license_family: BSD
 # The original CRAN metadata for this package was:
 
 # Package: RJSONIO

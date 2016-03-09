@@ -1,0 +1,108 @@
+package:
+  name: r-copula
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.999_14"
+
+source:
+  fn: copula_0.999-14.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/copula_0.999-14.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/copula/copula_0.999-14.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: MASS, KernSmooth, sfsmisc, scatterplot3d, Rmpfr, bbmle, knitr, parallel, mvnormtest, partitions, polynom, randtoolbox, rugarch, Runuran, tseries, VGAM, VineCopula, zoo
+requirements:
+  build:
+    - r
+    - r-adgoftest
+    - r-colorspace
+    - r-gsl
+    - r-mvtnorm
+    - r-pspline
+    - r-stabledist >=0.6_4
+    - gcc # [not win]
+
+  run:
+    - r
+    - r-adgoftest
+    - r-colorspace
+    - r-gsl
+    - r-mvtnorm
+    - r-pspline
+    - r-stabledist >=0.6_4
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('copula')" # [not win]
+    - "\"%R%\" -e \"library('copula')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://copula.r-forge.r-project.org/
+  license: GPL (>= 3) | file LICENCE
+  summary: 'Classes (S4) of commonly used elliptical, Archimedean, extreme value and some more
+    copula families.  Methods for density, distribution, random number generation, bivariate
+    dependence measures, perspective and contour plots.  Fitting copula models including
+    variance estimates. Independence and serial (univariate and multivariate) independence
+    tests, and other copula related tests. Empirical copula and multivariate CDF. Goodness-of-fit
+    tests for copulas based on multipliers, the parametric bootstrap with several transformation
+    options. Merged former package ''nacopula'' for nested Archimedean copulas: Efficient
+    sampling algorithms, various estimators, goodness-of-fit tests and related tools
+    and special functions.'
+  license_family: GPL3
+
+# The original CRAN metadata for this package was:
+
+# Package: copula
+# Version: 0.999-14
+# VersionNote: LastCran: 0.999-13 on 2015-03-05
+# Date: $Date: 2015-10-26 15:14:37 +0100 (Mon, 26. Oct 2015) $, subversion $Revision: 1198 $ <<-- don't forget inst/NEWS.Rd !
+# Title: Multivariate Dependence with Copulas
+# Author: Marius Hofert <marius.hofert@uwaterloo.ca>, Ivan Kojadinovic <ivan.kojadinovic@univ-pau.fr>, Martin Maechler <maechler@stat.math.ethz.ch>, and Jun Yan <jun.yan@uconn.edu>
+# Maintainer: Martin Maechler <maechler@stat.math.ethz.ch>
+# Depends: R (>= 3.0.1)
+# Imports: stats, graphics, methods, stats4, Matrix, lattice, colorspace, gsl, ADGofTest, stabledist (>= 0.6-4), mvtnorm, pspline
+# Suggests: MASS, KernSmooth, sfsmisc, scatterplot3d, Rmpfr, bbmle, knitr, parallel, mvnormtest, partitions, polynom, randtoolbox, rugarch, Runuran, tseries, VGAM, VineCopula, zoo
+# SuggestsNote: the last line packages {parallel, ..., zoo} are only used in vignettes and demos.
+# Enhances: nor1mix
+# Description: Classes (S4) of commonly used elliptical, Archimedean, extreme value and some more copula families.  Methods for density, distribution, random number generation, bivariate dependence measures, perspective and contour plots.  Fitting copula models including variance estimates. Independence and serial (univariate and multivariate) independence tests, and other copula related tests. Empirical copula and multivariate CDF. Goodness-of-fit tests for copulas based on multipliers, the parametric bootstrap with several transformation options. Merged former package 'nacopula' for nested Archimedean copulas: Efficient sampling algorithms, various estimators, goodness-of-fit tests and related tools and special functions.
+# License: GPL (>= 3) | file LICENCE
+# ByteCompile: yes
+# VignetteBuilder: knitr
+# Collate: AllClass.R Classes.R Copula.R Auxiliaries.R aux-acopula.R special-func.R cop_objects.R nacopula.R derCdfPdf.R amhCopula.R amhExpr.R An.R archmCopula.R asymCopula.R asymExplicitCopula.R claytonCopula.R claytonExpr.R ellipCopula.R empcop.R empPsi.R acR.R estimation.R evCopula.R evTests.R exchTests.R fgmCopula.R fitCopula.R fitMvdc.R frankCopula.R frankExpr.R galambosCopula.R galambosExpr-math.R galambosExpr.R ggraph-tools.R pairsRosenblatt.R gofTrafos.R gofEVTests.R gofTests.R graphics.R gumbelCopula.R gumbelExpr.R huslerReissCopula.R huslerReissExpr.R indepCopula.R indepTests.R joeCopula.R K.R logseries.R mvdc.R normalCopula.R plackettCopula.R plackettExpr.R rstable1.R safeUroot.R schlatherCopula.R stable.R timing.R trafos.R tCopula.R tawnCopula.R tawnExpr.R tevCopula.R wrapper.R zzz.R
+# Encoding: UTF-8
+# URL: http://copula.r-forge.r-project.org/
+# NeedsCompilation: yes
+# Packaged: 2015-10-26 15:03:01 UTC; maechler
+# Repository: CRAN
+# Date/Publication: 2015-10-26 17:07:26
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

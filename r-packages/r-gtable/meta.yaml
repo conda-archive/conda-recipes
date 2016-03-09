@@ -53,7 +53,7 @@ about:
   #home:
   license: GPL-2
   summary: Tools to make it easier to work with "tables" of grobs.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: gtable

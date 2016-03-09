@@ -1,0 +1,25 @@
+From 969cb3c54c7cd655456a8c7a405b88a2ae6b89d8 Mon Sep 17 00:00:00 2001
+From: "Kamil Kwiek (irritum)" <kamil.kwiek@continuum.io>
+Date: Wed, 2 Mar 2016 09:32:04 +0100
+Subject: [PATCH] Corrected version from future of one dependency
+
+---
+ requirements.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git requirements.txt requirements.txt
+index faa4068..375cf83 100644
+--- requirements.txt
++++ requirements.txt
+@@ -2,7 +2,7 @@ PyYAML      >= 3.0
+ appdirs     >= 1.3.0
+ pytest      >= 2.6.0
+ tox         >= 1.8.0
+-envoy       >= 0.0.3
++envoy       >= 0.0.2
+ py          >= 1.4.0
+ validictory >= 0.9.0
+ 
+-- 
+2.0.5
+

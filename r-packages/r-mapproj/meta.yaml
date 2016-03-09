@@ -56,7 +56,7 @@ about:
   #home:
   license: Lucent Public License
   summary: Converts latitude/longitude into projected coordinates.
-
+  license_family: Other
 # The original CRAN metadata for this package was:
 
 # Package: mapproj

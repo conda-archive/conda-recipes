@@ -1,0 +1,84 @@
+package:
+  name: r-pki
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.1_3"
+
+source:
+  fn: PKI_0.1-3.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/PKI_0.1-3.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/PKI/PKI_0.1-3.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r
+    - r-base64enc
+    - openssl
+    - gcc # [not win]
+
+  run:
+    - r
+    - r-base64enc
+    - openssl
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('PKI')" # [not win]
+    - "\"%R%\" -e \"library('PKI')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://www.rforge.net/PKI
+  license: GPL-2 | GPL-3 | file LICENSE
+  summary: PKI functions such as verifying certificates, RSA encription and signing which can
+    be used to build PKI infrastructure and perform cryptographic tasks.
+  license_family: GPL3
+# The original CRAN metadata for this package was:
+
+# Package: PKI
+# Version: 0.1-3
+# Title: Public Key Infrastucture for R Based on the X.509 Standard
+# Author: Simon Urbanek <Simon.Urbanek@r-project.org>
+# Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>
+# Depends: R (>= 2.9.0), base64enc
+# Enhances: gmp
+# Description: PKI functions such as verifying certificates, RSA encription and signing which can be used to build PKI infrastructure and perform cryptographic tasks.
+# License: GPL-2 | GPL-3 | file LICENSE
+# URL: http://www.rforge.net/PKI
+# SystemRequirements: OpenSSL library
+# NeedsCompilation: yes
+# Packaged: 2015-07-27 21:17:45 UTC; svnuser
+# Repository: CRAN
+# Date/Publication: 2015-07-28 08:03:29
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

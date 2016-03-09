@@ -54,7 +54,7 @@ about:
   home: http://r-forge.r-project.org
   license: LGPL-2
   summary: 'This is a special case of sparse matrices, used by coxme '
-
+  license_family: LGPL
 
 # The original CRAN metadata for this package was:
 

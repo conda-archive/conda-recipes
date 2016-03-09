@@ -1,0 +1,26 @@
+package:
+  name: rply
+  version: "0.7.4"
+
+source:
+  fn: rply-0.7.4.tar.gz
+  url: https://pypi.python.org/packages/source/r/rply/rply-0.7.4.tar.gz
+  md5: 9647256c1ca4c107e0190feca2dca935
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - appdirs
+
+  run:
+    - python
+    - appdirs
+
+test:
+  imports:
+    - rply
+
+about:
+  license: BSD
+  summary: 'A pure Python Lex/Yacc that works with RPython'

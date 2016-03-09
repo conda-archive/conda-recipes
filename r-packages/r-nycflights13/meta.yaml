@@ -53,7 +53,7 @@ about:
   license: CC0
   summary: Airline on-time data for all flights departing NYC in 2013. Also includes useful metadata
     on airlines, airports, weather, and planes.
-
+  license_family: Other
 # The original CRAN metadata for this package was:
 
 # Package: nycflights13

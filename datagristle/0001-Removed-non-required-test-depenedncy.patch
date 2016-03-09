@@ -1,0 +1,25 @@
+From f289d68af921873d8261a7b046b3b4009840cc4c Mon Sep 17 00:00:00 2001
+From: "Kamil Kwiek (irritum)" <kamil.kwiek@continuum.io>
+Date: Wed, 2 Mar 2016 10:17:03 +0100
+Subject: [PATCH] Removed non required test depenedncy
+
+---
+ setup.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git setup.py setup.py
+index a6d08bf..ceb9de2 100755
+--- setup.py
++++ setup.py
+@@ -56,7 +56,6 @@ setup(name             = 'datagristle'     ,
+                               'tox         >= 1.7.0' ,
+                               'validictory >= 0.9.3' ,
+                               'pyyaml      >= 3.10'  ,
+-                              'cletus'               ,
+-                              'unittest2'           ],
++                              'cletus'                ],
+       packages     = find_packages(),
+      )
+-- 
+2.0.5
+

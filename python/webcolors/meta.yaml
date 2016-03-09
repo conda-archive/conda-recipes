@@ -1,0 +1,20 @@
+package:
+  name: webcolors
+  version: "1.5"
+
+source:
+  fn: webcolors-1.5.tar.gz
+  url: https://pypi.python.org/packages/source/w/webcolors/webcolors-1.5.tar.gz
+  md5: 2e9da1bbb7a087c6108e05be64640afb
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+about:
+  home: https://github.com/ubernostrum/webcolors
+  license: BSD License
+  summary: 'A library for working with color names and color value formats defined by the HTML and CSS specifications for use in documents on the Web.'

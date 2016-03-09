@@ -58,7 +58,7 @@ about:
   license: GPL-3
   summary: Provide R functions to read/write/format Excel 2007 and Excel 97/2000/XP/2003 file
     formats.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: xlsx

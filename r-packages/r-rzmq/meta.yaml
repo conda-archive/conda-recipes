@@ -60,7 +60,7 @@ about:
   license: GPL-3
   summary: Interface to the ZeroMQ lightweight messaging kernel (see <http://www.zeromq.org/>
     for more information).
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: rzmq

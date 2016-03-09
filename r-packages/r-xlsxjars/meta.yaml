@@ -56,7 +56,7 @@ about:
   license: GPL-3
   summary: The xlsxjars package collects all the external jars required for the xlxs package.
     This release corresponds to POI 3.10.1.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: xlsxjars

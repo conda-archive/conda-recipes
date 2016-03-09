@@ -57,7 +57,7 @@ about:
     Simple difference is (usually) less accurate but is much quicker than Richardson''s
     extrapolation and provides a  useful cross-check.  Methods are provided for real
     scalar and vector valued functions. '
-
+  license_family: GPL2
 
 # The original CRAN metadata for this package was:
 

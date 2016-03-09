@@ -69,7 +69,7 @@ about:
   license: MIT + file LICENSE
   summary: A fast, consistent tool for working with data frame like objects, both in memory and
     out of memory.
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: dplyr

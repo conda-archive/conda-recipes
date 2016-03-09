@@ -1,0 +1,89 @@
+package:
+  name: r-quantmod
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.4_5"
+
+source:
+  fn: quantmod_0.4-5.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/quantmod_0.4-5.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/quantmod/quantmod_0.4-5.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: DBI,RMySQL,RSQLite,timeSeries,its,XML,downloader
+requirements:
+  build:
+    - r
+    - r-ttr >=0.2
+    - r-xts >=0.9_0
+    - r-zoo
+    - gcc # [not win]
+
+  run:
+    - r
+    - r-ttr >=0.2
+    - r-xts >=0.9_0
+    - r-zoo
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('quantmod')" # [not win]
+    - "\"%R%\" -e \"library('quantmod')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://www.quantmod.com https://github.com/joshuaulrich/quantmod
+  license: GPL-3
+  summary: Specify, build, trade, and analyse quantitative financial trading strategies.
+  license_family: GPL3
+# The original CRAN metadata for this package was:
+
+# Package: quantmod
+# Type: Package
+# Title: Quantitative Financial Modelling Framework
+# Version: 0.4-5
+# Date: 2015-07-23
+# Authors@R: c( person(given=c("Jeffrey","A."), family="Ryan", role=c("aut","cph")), person(given=c("Joshua","M."), family="Ulrich", role=c("cre","ctb"), email="josh.m.ulrich@gmail.com"), person(given="Wouter", family="Thielen", role="ctb") )
+# Depends: xts(>= 0.9-0), zoo, TTR(>= 0.2), methods
+# Suggests: DBI,RMySQL,RSQLite,timeSeries,its,XML,downloader
+# Description: Specify, build, trade, and analyse quantitative financial trading strategies.
+# LazyLoad: yes
+# License: GPL-3
+# URL: http://www.quantmod.com https://github.com/joshuaulrich/quantmod
+# BugReports: https://github.com/joshuaulrich/quantmod/issues
+# NeedsCompilation: yes
+# Packaged: 2015-07-24 18:51:50 UTC; josh
+# Author: Jeffrey A. Ryan [aut, cph], Joshua M. Ulrich [cre, ctb], Wouter Thielen [ctb]
+# Maintainer: Joshua M. Ulrich <josh.m.ulrich@gmail.com>
+# Repository: CRAN
+# Date/Publication: 2015-07-24 21:10:42
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

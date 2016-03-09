@@ -60,7 +60,7 @@ about:
     See http://ab-initio.mit.edu/wiki/index.php/NLopt_Introduction for more information
     on the available algorithms. During installation on Unix the NLopt code is downloaded
     and compiled from the NLopt website.'
-
+  license_family: LGPL
 
 # The original CRAN metadata for this package was:
 

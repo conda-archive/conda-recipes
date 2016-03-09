@@ -1,0 +1,29 @@
+From 8b4ba4051fef1153d4dd2d1982105d6a70133e26 Mon Sep 17 00:00:00 2001
+From: "Kamil Kwiek (irritum)" <kamil.kwiek@continuum.io>
+Date: Thu, 14 Jan 2016 10:53:18 +0100
+Subject: [PATCH] Customize place of swig files
+
+---
+ pyOpt/pyNSGA2/setup.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git pyOpt/pyNSGA2/setup.py pyOpt/pyNSGA2/setup.py
+index f0f2f5b..fdc212c 100644
+--- pyOpt/pyNSGA2/setup.py
++++ pyOpt/pyNSGA2/setup.py
+@@ -100,8 +100,11 @@ def swig_sources(self, sources, extension):
+ 	for d in target_dirs:
+ 		self.mkpath(d)
+ 
++        ext_prefix1 = os.path.join(os.environ['PREFIX'], 'share/swig/3.0.8')
++        ext_prefix2 = os.path.join(ext_prefix1, 'python')
++
+ 	swig = self.swig or self.find_swig()
+-	swig_cmd = [swig, "-python", "-noproxy"]
++	swig_cmd = [swig, "-python", "-noproxy", "-I{}".format(ext_prefix1), "-I{}".format(ext_prefix2)]
+ 	if is_cpp:
+ 		swig_cmd.append('-c++')
+ 	for d in extension.include_dirs:
+-- 
+2.0.5
+

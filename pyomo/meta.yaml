@@ -1,0 +1,36 @@
+package:
+    name: pyomo
+    version: 4.2.10784
+
+build:
+    number: 0
+
+source:
+    fn: Pyomo-4.2.10784.tar.gz
+    url: https://pypi.python.org/packages/source/P/Pyomo/Pyomo-4.2.10784.tar.gz
+    md5: b5d0ffcb19a8b55904b8e42a28c3bf09
+
+requirements:
+    build:
+        - setuptools
+        - python
+        - six >=1.6.1
+        - nose
+        - ply
+        - pyutilib >=5.2.3601
+
+    run:
+        - python
+        - six >=1.6.1
+        - nose
+        - ply
+        - pyutilib >=5.2.3601
+
+test:
+    imports:
+        - pyomo
+
+about:
+    home: http://www.pyomo.org/
+    license: BSD
+    summary: Pyomo: Python Optimization Modeling Objects

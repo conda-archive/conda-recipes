@@ -1,0 +1,99 @@
+package:
+  name: r-gtools
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "3.5.0"
+
+source:
+  fn: gtools_3.5.0.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/gtools_3.5.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/gtools/gtools_3.5.0.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r
+    - gcc # [not win]
+
+  run:
+    - r
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('gtools')" # [not win]
+    - "\"%R%\" -e \"library('gtools')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license_family: GPL2
+  license: GPL-2
+  summary: 'Functions to assist in R programming, including: - assist in developing, updating,
+    and maintaining R and R packages (''ask'', ''checkRVersion'', ''getDependencies'',
+    ''keywords'', ''scat''), - calculate the logit and inverse logit transformations
+    (''logit'', ''inv.logit''), - test if a value is missing, empty or contains only
+    NA and NULL values (''invalid''), - manipulate R''s .Last function (''addLast''),
+    - define macros (''defmacro''), - detect odd and even integers (''odd'', ''even''),
+    - convert strings containing non-ASCII characters (like single quotes) to plain
+    ASCII (''ASCIIfy''), - perform a binary search (''binsearch''), - sort strings containing
+    both numeric and character components (''mixedsort''), - create a factor variable
+    from the quantiles of a continuous variable (''quantcut''), - enumerate permutations
+    and combinations (''combinations'', ''permutation''), - calculate and convert between
+    fold-change and log-ratio (''foldchange'', ''logratio2foldchange'', ''foldchange2logratio''),
+    - calculate probabilities and generate random numbers from Dirichlet distributions
+    (''rdirichlet'', ''ddirichlet''), - apply a function over adjacent subsets of a
+    vector (''running''), - modify the TCP\_NODELAY (''de-Nagle'') flag for socket objects,
+    - efficient ''rbind'' of data frames, even if the column names don''t match (''smartbind''),
+    - generate significance stars from p-values (''stars.pval''), - convert characters
+    to/from ASCII codes.'
+
+
+# The original CRAN metadata for this package was:
+
+# Package: gtools
+# Title: Various R Programming Tools
+# Description: Functions to assist in R programming, including: - assist in developing, updating, and maintaining R and R packages ('ask', 'checkRVersion', 'getDependencies', 'keywords', 'scat'), - calculate the logit and inverse logit transformations ('logit', 'inv.logit'), - test if a value is missing, empty or contains only NA and NULL values ('invalid'), - manipulate R's .Last function ('addLast'), - define macros ('defmacro'), - detect odd and even integers ('odd', 'even'), - convert strings containing non-ASCII characters (like single quotes) to plain ASCII ('ASCIIfy'), - perform a binary search ('binsearch'), - sort strings containing both numeric and character components ('mixedsort'), - create a factor variable from the quantiles of a continuous variable ('quantcut'), - enumerate permutations and combinations ('combinations', 'permutation'), - calculate and convert between fold-change and log-ratio ('foldchange', 'logratio2foldchange', 'foldchange2logratio'), - calculate probabilities and generate random numbers from Dirichlet distributions ('rdirichlet', 'ddirichlet'), - apply a function over adjacent subsets of a vector ('running'), - modify the TCP\_NODELAY ('de-Nagle') flag for socket objects, - efficient 'rbind' of data frames, even if the column names don't match ('smartbind'), - generate significance stars from p-values ('stars.pval'), - convert characters to/from ASCII codes.
+# Version: 3.5.0
+# Date: 2015-05-26
+# Author: Gregory R. Warnes, Ben Bolker, and Thomas Lumley
+# Maintainer: Gregory R. Warnes <greg@warnes.net>
+# License: GPL-2
+# Repository: CRAN
+# Repository/R-Forge/Project: r-gregmisc
+# Repository/R-Forge/Revision: 2048
+# Repository/R-Forge/DateTimeStamp: 2015-05-27 16:38:37
+# Date/Publication: 2015-05-29 10:36:40
+# NeedsCompilation: yes
+# Packaged: 2015-05-27 16:45:10 UTC; rforge
+# Depends: R (>= 2.10)
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

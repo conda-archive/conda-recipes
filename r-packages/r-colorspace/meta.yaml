@@ -56,7 +56,7 @@ about:
   summary: Carries out mapping between assorted color spaces including RGB, HSV, HLS, CIEXYZ,
     CIELUV, HCL (polar CIELUV), CIELAB and polar CIELAB. Qualitative, sequential, and
     diverging color palettes based on HCL colors are provided.
-
+  license_family: BSD
 # The original CRAN metadata for this package was:
 
 # Package: colorspace

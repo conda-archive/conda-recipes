@@ -55,7 +55,7 @@ about:
   license: GPL-2
   summary: Guesses the MIME type from a filename extension using the data derived from /etc/mime.types
     in UNIX-type systems.
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: mime

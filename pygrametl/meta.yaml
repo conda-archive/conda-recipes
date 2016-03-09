@@ -1,0 +1,31 @@
+package:
+    name: pygrametl
+    version: 2.2
+
+source:
+    fn: pygrametl-2.2.tar.gz
+    url: https://pypi.python.org/packages/source/p/pygrametl/pygrametl-2.2.tar.gz
+    md5: a8cd7a779d4b7e90f22aaff2b5e6fe8e
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        #- distribute
+
+    run:
+        - python
+
+test:
+    imports:
+        - pygrametl
+
+    #commands:
+    #    -
+
+about:
+    home: http://pygrametl.org/
+    license: BSD
+    summary: ETL programming in Python

@@ -75,7 +75,7 @@ about:
   license: MIT + file LICENSE
   summary: Checks adherence to a given style, syntax errors and possible semantic issues.  Supports
     on the fly checking of R code edited with Emacs, Vim and Sublime Text.
-
+  license_family: MIT
 # The original CRAN metadata for this package was:
 
 # Package: lintr

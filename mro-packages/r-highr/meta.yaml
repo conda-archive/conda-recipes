@@ -1,0 +1,83 @@
+package:
+  name: r-highr
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.5.1"
+
+source:
+  fn: highr_0.5.1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/highr_0.5.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/highr/highr_0.5.1.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: knitr, testit
+requirements:
+  build:
+    - r
+
+  run:
+    - r
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('highr')" # [not win]
+    - "\"%R%\" -e \"library('highr')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/yihui/highr
+  license: GPL
+  summary: Provides syntax highlighting for R source code. Currently it supports LaTeX and HTML
+    output. Source code of other languages is supported via Andre Simon's highlight
+    package (http://www.andre-simon.de).
+  license_family: GPL3
+# The original CRAN metadata for this package was:
+
+# Package: highr
+# Type: Package
+# Title: Syntax Highlighting for R Source Code
+# Version: 0.5.1
+# Date: 2015-09-18
+# Authors@R: c(person("Christopher", "Gandrud", role = "ctb"), person("Qiang", "Li", role = "ctb"), person("Yixuan", "Qiu", role = "aut"), person("Yihui", "Xie", email = "xie@yihui.name", role = c("aut", "cre")))
+# Maintainer: Yihui Xie <xie@yihui.name>
+# Description: Provides syntax highlighting for R source code. Currently it supports LaTeX and HTML output. Source code of other languages is supported via Andre Simon's highlight package (http://www.andre-simon.de).
+# Depends: R (>= 3.0.2)
+# Suggests: knitr, testit
+# License: GPL
+# URL: https://github.com/yihui/highr
+# BugReports: https://github.com/yihui/highr/issues
+# VignetteBuilder: knitr
+# NeedsCompilation: no
+# Packaged: 2015-09-18 01:50:34 UTC; yihui
+# Author: Christopher Gandrud [ctb], Qiang Li [ctb], Yixuan Qiu [aut], Yihui Xie [aut, cre]
+# Repository: CRAN
+# Date/Publication: 2015-09-18 08:58:39
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

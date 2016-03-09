@@ -60,7 +60,7 @@ about:
   summary: Specify and fit the Bradley-Terry model, including structured versions in which the
     parameters are related to explanatory variables through a linear predictor and versions
     with contest-specific effects, such as a home advantage.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: BradleyTerry2

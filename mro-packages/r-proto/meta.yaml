@@ -1,0 +1,76 @@
+package:
+  name: r-proto
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.3_10"
+
+source:
+  fn: proto_0.3-10.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/proto_0.3-10.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/proto/proto_0.3-10.tar.gz
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 2 # [osx]
+  number: 1 # [not osx]
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: graph, Rgraphviz
+requirements:
+  build:
+    - r
+
+  run:
+    - r
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('proto')" # [not win]
+    - "\"%R%\" -e \"library('proto')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://r-proto.googlecode.com
+  license: GPL-2
+  summary: An object oriented system using object-based, also called prototype-based, rather
+    than class-based object oriented ideas.
+  license_family: GPL2
+# The original CRAN metadata for this package was:
+
+# Package: proto
+# Version: 0.3-10
+# Date: 2012-12-21
+# Title: Prototype object-based programming
+# Author: Louis Kates, Thomas Petzoldt
+# Maintainer: Gabor Grothendieck <ggrothendieck@gmail.com>
+# Description: An object oriented system using object-based, also called prototype-based, rather than class-based object oriented ideas.
+# Suggests: graph, Rgraphviz
+# License: GPL-2
+# URL: http://r-proto.googlecode.com
+# Packaged: 2012-12-22 16:03:20 UTC; Louis
+# Repository: CRAN
+# Date/Publication: 2012-12-22 21:51:44
+# NeedsCompilation: no
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

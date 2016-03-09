@@ -1,0 +1,82 @@
+package:
+  name: r-packrat
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.4.6_1"
+
+source:
+  fn: packrat_0.4.6-1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/packrat_0.4.6-1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/packrat/packrat_0.4.6-1.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat (>= 0.7), devtools, httr, knitr
+requirements:
+  build:
+    - r
+
+  run:
+    - r
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - export R_HOME=$PREFIX/lib/R #[not win]
+    - $R -e "library('packrat')" # [not win]
+    - "\"%R%\" -e \"library('packrat')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/rstudio/packrat/
+  license: GPL-2
+  summary: Manage the R packages your project depends on in an isolated, portable, and reproducible
+    way.
+  license_family: GPL2
+# The original CRAN metadata for this package was:
+
+# Package: packrat
+# Type: Package
+# Title: A Dependency Management System for Projects and their R Package Dependencies
+# Version: 0.4.6-1
+# Author: Kevin Ushey, Jonathan McPherson, Joe Cheng, Aron Atkins, JJ Allaire
+# Maintainer: Kevin Ushey <kevin@rstudio.com>
+# Description: Manage the R packages your project depends on in an isolated, portable, and reproducible way.
+# License: GPL-2
+# Depends: R (>= 3.0.0)
+# Imports: tools, utils
+# Suggests: testthat (>= 0.7), devtools, httr, knitr
+# Enhances: BiocInstaller
+# URL: https://github.com/rstudio/packrat/
+# BugReports: https://github.com/rstudio/packrat/issues
+# RoxygenNote: 5.0.0
+# NeedsCompilation: no
+# Packaged: 2015-11-04 19:52:03 UTC; kevin
+# Repository: CRAN
+# Date/Publication: 2015-11-05 08:31:55
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

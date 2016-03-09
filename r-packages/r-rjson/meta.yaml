@@ -54,7 +54,7 @@ about:
   #home:
   license: GPL-2
   summary: Converts R object into JSON objects and vice-versa
-
+  license_family: GPL2
 # The original CRAN metadata for this package was:
 
 # Package: rjson

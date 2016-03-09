@@ -59,7 +59,7 @@ about:
   license: GPL-2 | GPL-3 | file LICENSE
   summary: PKI functions such as verifying certificates, RSA encription and signing which can
     be used to build PKI infrastructure and perform cryptographic tasks.
-
+  license_family: GPL3
 # The original CRAN metadata for this package was:
 
 # Package: PKI

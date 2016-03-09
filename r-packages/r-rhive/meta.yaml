@@ -57,7 +57,7 @@ about:
   license: Apache License (== 2.0)
   summary: RHive is an R extension facilitating distributed computing via HIVE query. It provides
     an easy to use HQL like SQL and R objects and functions in HQL.
-
+  license_family: Apache
 # The original CRAN metadata for this package was:
 
 # Package: RHive
