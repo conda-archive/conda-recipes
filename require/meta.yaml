@@ -1,0 +1,28 @@
+package:
+    name: require
+    version: 0.1.1
+
+source:
+    fn: require-0.1.1.tar.gz
+    url: https://pypi.python.org/packages/source/r/require/require-0.1.1.tar.gz
+    md5: 32a0a940f472550c2477f18bd8819e14
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - distribute
+        - python
+
+    run:
+        - python
+
+test:
+    imports:
+        - require
+
+about:
+    home: http://dev.open-desk.net/projects/require
+    license: GPLv3
+    summary: A framework for module definitions

@@ -1,0 +1,28 @@
+package:
+    name: py2neo
+    version: 2.0.8
+
+source:
+    fn: py2neo-2.0.8.tar.gz
+    url: https://pypi.python.org/packages/source/p/py2neo/py2neo-2.0.8.tar.gz
+    md5: 3dd2ec898e1bdf61c84e9a57646257b7
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+
+    run:
+        - python
+
+test:
+    imports:
+        - py2neo
+
+about:
+    home: http://py2neo.org/
+    license: Apache 2.0
+    summary: Python client library and toolkit for Neo4j
+

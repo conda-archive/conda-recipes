@@ -1,0 +1,34 @@
+package:
+    name: sshtunnel
+    version: 0.0.7
+
+source:
+    fn: sshtunnel-0.0.7.tar.gz
+    url: https://pypi.python.org/packages/source/s/sshtunnel/sshtunnel-0.0.7.tar.gz
+    md5: 1ceb56afb42c40dcc6ee5417fed17d90
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        #- distribute
+        - paramiko >=1.15.2
+
+    run:
+        - python
+        - paramiko >=1.15.2
+
+test:
+    imports:
+        - sshtunnel
+
+    #commands:
+    #    -
+
+about:
+    home: https://github.com/pahaz/sshtunnel
+    license: MIT
+    summary: Pure python SSH tunnels
+

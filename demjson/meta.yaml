@@ -1,0 +1,32 @@
+package:
+    name: demjson
+    version: 2.2.4
+
+source:
+    fn: demjson-2.2.4.tar.gz
+    url: https://pypi.python.org/packages/source/d/demjson/demjson-2.2.4.tar.gz
+    md5: 8b535b073e0de95e63f83a93b98dbc48
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        #- distribute
+
+    run:
+        - python
+
+test:
+    imports:
+        - demjson
+
+    #commands:
+    #    -
+
+about:
+    home: http://deron.meranda.us/python/demjson/
+    license: LGPL 3.0
+    summary: Encoder, decoder, and lint/validator for JSON (JavaScript Object Notation) compliant with RFC 7159
+

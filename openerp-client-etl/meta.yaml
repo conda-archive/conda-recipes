@@ -1,0 +1,36 @@
+package:
+    name: openerp-client-etl
+    version: 1.1.1
+
+source:
+    fn: openerp-client-etl-1.1.1.tar.gz
+    url: https://pypi.python.org/packages/source/o/openerp-client-etl/openerp-client-etl-1.1.1.tar.gz
+    md5: e958554967eb212a6caf161b45cbe84f
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - distribute
+        - python
+        - pyodbc
+        - openerp-client-lib
+        - psycopg2
+
+    run:
+        - distribute
+        - python
+        - pyodbc
+        - openerp-client-lib
+        - psycopg2
+
+test:
+    imports:
+        - openerpetl
+
+about:
+    home: http://cubicerp.com/
+    license: BSD
+    summary: OpenERP ETL Client allows to extract, transform and load data from any data source
+

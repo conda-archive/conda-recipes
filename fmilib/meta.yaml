@@ -1,0 +1,30 @@
+package:
+    name: fmilib
+    version: 2.0.1
+
+build:
+    number: 0
+
+source:
+    fn: FMILibrary-2.0.1-src.zip # [unix]
+    fn: FMILibrary-2.0.1-win32.zip # [win]
+    url: http://www.jmodelica.org/downloads/FMIL/FMILibrary-2.0.1-src.zip # [unix]
+    url: http://www.jmodelica.org/downloads/FMIL/FMILibrary-2.0.1-win32.zip # [win]
+
+requirements:
+    build:
+        - zlib
+        - cmake >=2.8.4
+        - expat
+
+    run:
+        - expat
+
+#test:
+#    command:
+#        - 
+
+about:
+    home: http://www.jmodelica.org/FMILibrary
+    license: BSD
+    summary: Package written in C that enables integration of Functional Mock-up Units

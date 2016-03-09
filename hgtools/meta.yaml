@@ -1,0 +1,29 @@
+package:
+    name: hgtools
+    version: 6.5.1
+
+source:
+    fn: hgtools-6.5.1.tar.gz
+    url: https://pypi.python.org/packages/source/h/hgtools/hgtools-6.5.1.tar.gz
+    md5: ce8413687e43d5626cdcfee5024a9bc0
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - setuptools_scm >=1.9
+
+    run:
+        - python
+        - setuptools_scm >=1.9
+
+test:
+    imports:
+        - hgtools
+
+about:
+    home: https://github.com/jaraco/hgtools
+    license: GPL
+    summary: Classes and setuptools plugin for Mercurial and Git repositories

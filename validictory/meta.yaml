@@ -1,0 +1,27 @@
+package:
+    name: validictory
+    version: 1.0.1
+
+source:
+    git_url: http://github.com/jamesturk/validictory
+    git_tag: 1.0.1
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - distribute
+        - python
+
+    run:
+        - python
+
+test:
+    imports:
+        - validictory
+
+about:
+    home: http://github.com/jamesturk/validictory
+    license: MIT
+    summary: General purpose python data validator

@@ -1,28 +1,27 @@
 package:
-    name: simpy
-    version: 3.0.8
+    name: winshell
+    version: 0.6.4
 
 build:
     number: 0
 
 source:
-    fn: simpy-3.0.8.tar.gz
-    url: https://pypi.python.org/packages/source/s/simpy/simpy-3.0.8.tar.gz
-    md5: 477552f5bf81d8d293b3e2bb8668e406
+    git_url: https://github.com/tjguk/winshell # [win]
+    git_tag: 0.6.4 # [win]
 
 requirements:
     build:
         - setuptools
         - python
+        - pywin32
 
     run:
         - python
+        - pywin32
 
 test:
     imports:
-        - simpy
-        - simpy.resources
-        - simpy.test
+        - winshell
 
 about:
     home: http://simpy.rtfd.org/

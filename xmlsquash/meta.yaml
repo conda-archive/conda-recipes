@@ -1,0 +1,28 @@
+package:
+    name: xmlsquash
+    version: 1.0
+
+source:
+    fn: xmlsquash-1.0.tar.gz
+    url: https://pypi.python.org/packages/source/x/xmlsquash/xmlsquash-1.0.tar.gz
+    md5: 3be743bd145ff3279d23291fb3ddb513
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+
+    run:
+        - python
+
+test:
+    imports:
+        - xmlsquash
+
+about:
+    home: http://bfaludi.com/
+    license: GPL
+    summary: XML 2 Dict converter
+

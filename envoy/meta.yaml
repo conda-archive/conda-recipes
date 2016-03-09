@@ -1,0 +1,26 @@
+package:
+    name: envoy
+    version: 0.0.2
+
+source:
+    git_url: https://github.com/kennethreitz/envoy
+    git_tag: v0.0.2
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+
+    run:
+        - python
+
+test:
+    imports:
+        - envoy
+
+about:
+    home: https://github.com/kennethreitz/envoy
+    license: MIT
+    summary: Simple API for running external processes.
