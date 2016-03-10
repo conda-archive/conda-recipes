@@ -1,11 +1,11 @@
 package:
   name: numpy
-  version: 1.10.0
+  version: 1.10.4
 
 source:
-  fn: numpy-1.10.0.tar.gz
-  url: https://pypi.python.org/packages/source/n/numpy/numpy-1.10.0.tar.gz
-  md5: 116c65ae392e9b50aad713f42158f32a
+  fn: numpy-1.10.4.tar.gz
+  url: https://pypi.python.org/packages/source/n/numpy/numpy-1.10.4.tar.gz
+  md5: aed294de0aa1ac7bd3f9745f4f1968ad
 
 requirements:
   build:
