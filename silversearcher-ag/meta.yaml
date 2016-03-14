@@ -1,0 +1,32 @@
+{% set build = 0 %}
+{% set version = '0.31.0' %}
+
+package:
+    name: silversearcher-ag
+    version: {{version}}
+
+about:
+    home: http://geoff.greer.fm/ag/
+    license: Apache License
+    summary: A code-searching tool similar to ack, but faster.
+
+source:
+    fn: the_silver_searcher-{{version}}.tar.gz
+    url: https://github.com/ggreer/the_silver_searcher/archive/{{version}}.tar.gz
+    md5: a51b041dcc18fb16bd9128225d8d5c87
+
+requirements:
+    build:
+        - pcre
+        - pkgconfig
+        - xz
+        - zlib
+
+    run:
+        - pcre
+        - pkgconfig
+        - xz
+        - zlib
+
+build:
+    number: {{build}}
