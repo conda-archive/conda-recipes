@@ -8,7 +8,7 @@ build:
   no_link: .*\.(pyd|dll)        [win]
 
 source:
-  hg_url: ssh://hg@bitbucket.org/kalefranz/yaml
+  hg_url: https://kalefranz@bitbucket.org/kalefranz/yaml
   hg_tag: 22f1212
 
 requirements:
