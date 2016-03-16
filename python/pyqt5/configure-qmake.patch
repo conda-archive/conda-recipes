@@ -1,0 +1,73 @@
+--- configure.py~	2016-02-21 06:58:37.062442872 +0000
++++ configure.py	2016-02-21 07:01:43.867428359 +0000
+@@ -790,16 +790,10 @@
+ 
+         # Check the Qt version number as soon as possible.
+         if self.qt_version < 0x050000:
+-            if sys.platform == 'win32':
+-                error(
+-                        "PyQt5 requires Qt v5.0 or later. You seem to be "
+-                        "using v%s. Make sure the correct version of qmake is "
+-                        "on your PATH." % qt_version_str)
+-            else:
+-                error(
+-                        "PyQt5 requires Qt v5.0 or later. You seem to be "
+-                        "using v%s. Use the --qmake flag to specify the "
+-                        "correct version of qmake." % qt_version_str)
++            error(
++                    "PyQt5 requires Qt v5.0 or later. You seem to be "
++                    "using v%s. Use the --qmake flag to specify the "
++                    "correct version of qmake." % qt_version_str)
+ 
+         self.designer_plugin_dir = qt_config.QT_INSTALL_PLUGINS + '/designer'
+         self.qml_plugin_dir = qt_config.QT_INSTALL_PLUGINS + '/PyQt5'
+@@ -851,25 +845,12 @@
+             self.sysroot = opts.sysroot
+ 
+         # Determine how to run qmake.
+-        try:
+-            qmake = opts.qmake
+-        except AttributeError:
+-            # Windows.
+-            qmake = None
+-
+-        if qmake is not None:
++        if opts.qmake is not None:
+-            self.qmake = qmake
++            self.qmake = opts.qmake
+-        elif self.qmake is None:
+-            # Under Windows qmake and the Qt DLLs must be on the system PATH
+-            # otherwise the dynamic linker won't be able to resolve the
+-            # symbols.  On other systems we assume we can just run qmake by
+-            # using its full pathname.
+-            if sys.platform == 'win32':
+-                error("Make sure you have a working Qt qmake on your PATH.")
+-            else:
+-                error(
+-                        "Use the --qmake argument to explicitly specify a "
+-                        "working Qt qmake.")
++        else:
++            error(
++                    "Use the --qmake argument to explicitly specify a "
++                    "working Qt qmake.")
+ 
+         if opts.qmakespec is not None:
+             self.qmake_spec = opts.qmakespec
+@@ -1126,12 +1107,11 @@
+                     "wrapper is FILE [default: %s]" %
+                             target_config.pyuic_interpreter)
+ 
+-    if sys.platform != 'win32':
+-        g.add_option("--qmake", "-q", dest='qmake', type='string',
+-                default=None, action='callback', callback=store_abspath_exe,
+-                metavar="FILE",
+-                help="the pathname of qmake is FILE [default: "
+-                        "%s]" % (target_config.qmake or "search PATH"))
++    g.add_option("--qmake", "-q", dest='qmake', type='string',
++            default=None, action='callback', callback=store_abspath_exe,
++            metavar="FILE",
++            help="the pathname of qmake is FILE [default: "
++                    "%s]" % (target_config.qmake or "search PATH"))
+ 
+     g.add_option("--sip", dest='sip', type='string', default=None,
+             action='callback', callback=store_abspath_exe, metavar="FILE",

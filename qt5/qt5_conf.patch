@@ -1,0 +1,11 @@
+--- a/qtbase/src/corelib/global/qlibraryinfo.cpp       2016-02-19 09:58:19.756650713 +0000
++++ b/qtbase/src/corelib/global/qlibraryinfo.cpp       2016-02-19 10:00:33.137317670 +0000
+@@ -182,7 +182,7 @@
+ #endif
+     if (QCoreApplication::instance()) {
+         QDir pwd(QCoreApplication::applicationDirPath());
+-        qtconfig = pwd.filePath(QLatin1String("qt.conf"));
++        qtconfig = pwd.filePath(QLatin1String("qt5.conf"));
+         if (QFile::exists(qtconfig))
+             return new QSettings(qtconfig, QSettings::IniFormat);
+     }

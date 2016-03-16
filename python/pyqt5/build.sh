@@ -12,8 +12,8 @@ fi
 $PYTHON configure.py \
         --verbose \
         --confirm-license \
-        --assume-shared \
-        -q $PREFIX/bin/qmake-qt5
+        --qmake=$PREFIX/bin/qmake-qt5 \
+        --assume-shared
 
 make -j $MAKE_JOBS
 make install
