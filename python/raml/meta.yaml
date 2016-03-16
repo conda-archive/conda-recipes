@@ -1,15 +1,15 @@
 package:
   name: raml
-  version: 0.0.0
+  version: 0.11.7
 
 build:
   number: 0
-  # Windows has issues updating stuff if conda is using files itself.  Copy rather than link.
+  # Windows has issues updating stuff if conda is using files itself. Copy rather than link.
   no_link: .*\.(pyd|dll)        [win]
 
 source:
   hg_url: ssh://hg@bitbucket.org/kalefranz/yaml
-  hg_tag: tip
+  hg_tag: 22f1212
 
 requirements:
   build:
@@ -18,7 +18,7 @@ requirements:
     - yaml
   run:
     - python
-    - yaml
+    - yaml     [unix]
 
 test:
   requires:
@@ -26,7 +26,7 @@ test:
     - pytest
   imports:
     - raml
-    # - _raml   [not (win and py3k)]  # this fails right now but should not
+    - raml.ext._raml
 
 about:
   home: https://bitbucket.org/ruamel/yaml
