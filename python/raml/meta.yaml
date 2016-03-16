@@ -15,8 +15,10 @@ requirements:
   build:
     - python
     - cython
+    - yaml
   run:
     - python
+    - yaml
 
 test:
   requires:
@@ -25,8 +27,6 @@ test:
   imports:
     - raml
     # - _raml   [not (win and py3k)]  # this fails right now but should not
-  commands:
-    - python -m py.test $SRC_DIR/_test/test_*.py || true  # TODO: remove the || true part
 
 about:
   home: https://bitbucket.org/ruamel/yaml
