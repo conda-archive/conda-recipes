@@ -9,7 +9,7 @@ build:
 
 source:
   hg_url: https://kalefranz@bitbucket.org/kalefranz/yaml
-  hg_tag: 22f1212
+  hg_tag: 95e1475
 
 requirements:
   build:
