@@ -1,6 +1,3 @@
-#!/bin/bash
-
-mkdir -vp ${PREFIX}/bin;
+#!/bin/sh
 
 ${PYTHON} setup.py install || exit 1;
-
