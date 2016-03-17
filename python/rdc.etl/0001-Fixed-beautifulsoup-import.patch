@@ -1,0 +1,25 @@
+From 94753e0a3eff5c5116c699bb10d7fd4d490a62ab Mon Sep 17 00:00:00 2001
+From: "Kamil Kwiek (irritum)" <kamil.kwiek@continuum.io>
+Date: Thu, 17 Mar 2016 12:05:06 +0100
+Subject: [PATCH] Fixed beautifulsoup import
+
+---
+ rdc/etl/util.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git rdc/etl/util.py rdc/etl/util.py
+index 9bd4da2..daa7311 100644
+--- rdc/etl/util.py
++++ rdc/etl/util.py
+@@ -21,7 +21,7 @@ import re
+ import requests
+ import types
+ import unidecode
+-from BeautifulSoup import BeautifulSoup
++from bs4 import BeautifulSoup
+ from blessings import Terminal as _Terminal
+ from datetime import datetime
+ from lxml import etree
+-- 
+2.0.5
+
