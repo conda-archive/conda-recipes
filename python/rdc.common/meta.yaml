@@ -1,0 +1,37 @@
+package:
+    name: rdc.common
+    version: 0.1.0
+
+source:
+    git_url: https://github.com/rdcli/rdc.common
+    git_tag: master
+
+    patches:
+        - 0001-Fixed-setup.py-file.patch
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - distribute
+        - python
+        - requests
+        - unidecode
+        - blessings
+
+    run:
+        - distribute
+        - python
+        - requests
+        - unidecode
+        - blessings
+
+test:
+    imports:
+        - rdc.common
+
+about:
+    home: https://github.com/rdcli/rdc.common
+    license: Apache 2.0
+    summary: Contains a few simple general purpose utilities that are used by various different projects

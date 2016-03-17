@@ -1,0 +1,24 @@
+From 3ec7faa5b18e07079a9c3a36b27542db9f4a490b Mon Sep 17 00:00:00 2001
+From: "Kamil Kwiek (irritum)" <kamil.kwiek@continuum.io>
+Date: Thu, 17 Mar 2016 11:23:28 +0100
+Subject: [PATCH] Fixed setup.py file
+
+---
+ setup.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git setup.py setup.py
+index da9d6f2..cd965e4 100644
+--- setup.py
++++ setup.py
+@@ -21,7 +21,6 @@ version = read('version.txt')
+ 
+ setup(
+     name='rdc.common',
+-    namespace_packages = ['rdc'],
+     version=version,
+     description="Common tools",
+     long_description=read('README.rst'),
+-- 
+2.0.5
+
