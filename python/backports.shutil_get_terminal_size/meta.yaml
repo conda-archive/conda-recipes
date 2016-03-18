@@ -1,0 +1,62 @@
+package:
+  name: backports.shutil_get_terminal_size
+  version: "1.0.0"
+
+source:
+  fn: backports.shutil_get_terminal_size-1.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/b/backports.shutil_get_terminal_size/backports.shutil_get_terminal_size-1.0.0.tar.gz
+  md5: 03267762480bd86b50580dc19dff3c66
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - backports.shutil_get_terminal_size = backports.shutil_get_terminal_size:main
+    #
+    # Would create an entry point called backports.shutil_get_terminal_size that calls backports.shutil_get_terminal_size.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - backports
+    - backports.shutil_get_terminal_size
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/chrippa/backports.shutil_get_terminal_size
+  license: MIT License
+  summary: "A backport of the get_terminal_size function from Python 3.3's shutil."
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
