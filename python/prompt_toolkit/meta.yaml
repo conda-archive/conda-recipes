@@ -1,11 +1,11 @@
 package:
   name: prompt_toolkit
-  version: "0.54"
+  version: "0.60"
 
 source:
-  fn: prompt_toolkit-0.54.tar.gz
-  url: https://pypi.python.org/packages/source/p/prompt_toolkit/prompt_toolkit-0.54.tar.gz
-  md5: c9b83f8ddc2d887aca78a10779aff623
+  fn: prompt_toolkit-0.60.tar.gz
+  url: https://pypi.python.org/packages/source/p/prompt_toolkit/prompt_toolkit-0.60.tar.gz
+  md5: 516826aff6a09536037b6d02a9a3451d
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -30,13 +30,11 @@ requirements:
   build:
     - python
     - setuptools
-    - pygments
     - six >=1.9.0
     - wcwidth
 
   run:
     - python
-    - pygments
     - six >=1.9.0
     - wcwidth
 
@@ -55,6 +53,7 @@ test:
     - prompt_toolkit.key_binding
     - prompt_toolkit.key_binding.bindings
     - prompt_toolkit.layout
+    - prompt_toolkit.styles
     - prompt_toolkit.terminal
 
   # commands:
@@ -71,7 +70,7 @@ test:
 
 about:
   home: https://github.com/jonathanslenders/python-prompt-toolkit
-  license: LICENSE.txt
+  license: BSD License
   summary: 'Library for building powerful interactive command lines in Python'
 
 # See
