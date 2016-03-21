@@ -1,62 +1,29 @@
 package:
-  name: python-dateutil
-  version: !!str 2.2
+    name: python-dateutil
+    version: 2.3
 
 source:
-  fn: python-dateutil-2.2.tar.gz
-  url: https://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-2.2.tar.gz
-  md5: c1f654d0ff7e33999380a8ba9783fd5c
-#  patches:
-   # List any patch files here
-   # - fix.patch
+    git_url: https://github.com/dateutil/dateutil
+    git_tag: 2.3
 
-# build:
-  #preserve_egg_dir: True
-  #entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - python-dateutil = python-dateutil:main
-    #
-    # Would create an entry point called python-dateutil that calls python-dateutil.main()
-
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+build:
+    number: 0
 
 requirements:
-  build:
-    - python
-    - setuptools
-    - six
+    build:
+        - python
+        - six >=1.5
 
-  run:
-    - python
-    - six
+    run:
+        - python
+        - six >=1.5
 
 test:
-  # Python imports
-  imports:
-    - dateutil
-    - dateutil.zoneinfo
-
-  #commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
-
-
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any additional test requirements here.  For example
-    # - nose
+    imports:
+        - dateutil
 
 about:
-  home: http://labix.org/python-dateutil
-  license: BSD License
+    home: https://github.com/dateutil/dateutil/
+    license: BSD
+    summary: Extensions to the standard Python datetime module
 
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml
