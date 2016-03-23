@@ -1,0 +1,73 @@
+package:
+    name: pysimulator
+    version: 0.61
+
+build:
+    number: 0
+
+source:
+    git_url: https://github.com/PySimulator/PySimulator/
+    git_tag: 0.61
+
+requirements:
+    build:
+        - setuptools <=20
+        - python
+        - pyside >=1.1
+        - traits >=4.2
+        - enable >=4.2
+        - chaco >=4.2
+        - configobj >=4.7
+        - winshell >=0.6        # [win]
+        - matplotlib >=1.0
+        - numpy >=1.6
+        - pyparsing
+        - pil ==1.1.7
+        - scipy
+        - pillow
+        - h5py
+        - pytz
+        - python-dateutil
+        - six
+        - tornado
+        - kiwisolver
+        - ompython
+          #- assimulo
+          #- sundials
+
+    run:
+        - setuptools <=20
+        - python
+        - pyside >=1.1
+        - traits >=4.2
+        - enable >=4.2
+        - chaco >=4.2
+        - configobj >=4.7
+        - winshell >=0.6        # [win]
+        - matplotlib >=1.0
+        - numpy >=1.6
+        - pyparsing
+        - pil ==1.1.7
+        - scipy
+        - pillow
+        - h5py
+        - pytz
+        - python-dateutil
+        - six
+        - tornado
+        - kiwisolver
+        - ompython
+          #- assimulo
+          #- sundials
+
+test:
+    imports:
+        - PySimulator.PySimulator
+
+    commands:
+        - pysimulator /h        # [win]
+
+about:
+    home: http://www.pysimulator.org/
+    license: LGPL
+    summary: Simulation and Analysis Environment in Python with Plugin Infrastructur

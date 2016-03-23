@@ -1,0 +1,33 @@
+package: pysimulator
+#user: blaze
+
+platform:
+    - linux-64
+    - linux-32
+    - osx-64
+    - win-32
+    - win-64
+engine:
+    - python=2.7
+    - python=3.3
+    - python=3.4
+
+before_script:
+    - python -V
+
+install:
+    #- conda config --add channels mutirri
+
+script:
+    - conda build .
+
+env:
+    - LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+
+iotimeout: 120
+
+build_targets: conda
+
+notifications:
+    email:
+        recipients: ['kamil.kwiek@continuum.com']
