@@ -1,5 +1,5 @@
 package:
-  name: raml
+  name: ruamel_yaml
   version: 0.11.7
 
 build:
@@ -9,7 +9,7 @@ build:
 
 source:
   hg_url: https://kalefranz@bitbucket.org/kalefranz/yaml
-  hg_tag: 95e1475
+  hg_tag: b6e24dd
 
 requirements:
   build:
@@ -25,8 +25,8 @@ test:
     - python
     - pytest
   imports:
-    - raml
-    - raml.ext._raml
+    - ruamel_yaml
+    - ruamel_yaml.ext._ruamel_yaml
 
 about:
   home: https://bitbucket.org/ruamel/yaml
