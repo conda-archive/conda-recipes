@@ -8,12 +8,13 @@ source:
   sha1: 7e993de16d80d52b22b6093465eeb90c93c7a2e7
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
     - cmake
-    - gcc
+    #https://github.com/conda/conda-recipes/issues/510
+    - gcc           [not linux32|win]
 
   run:
     - libgcc

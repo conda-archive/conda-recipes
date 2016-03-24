@@ -1,5 +1,5 @@
-mkdir build
-cd build
+mkdir build || exit 1;
+cd build || exit 1;
 
 cmake \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
