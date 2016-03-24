@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "install" | $PYTHON setup.py install
+echo "install" | $PYTHON setup.py build_ext install
 
 # Add more build steps here, if they are necessary.
 

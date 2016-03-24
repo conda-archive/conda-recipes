@@ -12,6 +12,7 @@ requirements:
     - setuptools
     - numpy
     - theano
+    - cython
 
   run:
     - python
