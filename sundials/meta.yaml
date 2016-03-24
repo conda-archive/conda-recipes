@@ -1,26 +1,30 @@
 package:
-  name: sundials
-  version: "2.6.2"
+    name: sundials
+    version: "2.6.2"
 
 source:
-  fn: sundials-2.6.2.tar.gz
-  # Downloading directly from llnl server requires online registration. Hence we use fedoras mirror:
-  url: http://pkgs.fedoraproject.org/repo/pkgs/sundials/sundials-2.6.2.tar.gz/3deeb0ede9f514184c6bd83ecab77d95/sundials-2.6.2.tar.gz
-  md5: 3deeb0ede9f514184c6bd83ecab77d95
+    fn: sundials-2.6.2.tar.gz
+    # Downloading directly from llnl server requires online registration. Hence we use fedoras mirror:
+    url: http://pkgs.fedoraproject.org/repo/pkgs/sundials/sundials-2.6.2.tar.gz/3deeb0ede9f514184c6bd83ecab77d95/sundials-2.6.2.tar.gz
+    md5: 3deeb0ede9f514184c6bd83ecab77d95
+
+build:
+    number: 2
 
 # Note that lapack is not a hard requirement, but currently build.sh enables a lapack build.
 requirements:
-  run:
-    - lapack
-  build:
-    - cmake
-    - lapack
+    run:
+        - lapack
+
+    build:
+        - cmake
+        - lapack
 
 test:
-  files:
-    - cvRoberts_dns.c
+    files:
+        - cvRoberts_dns.c
 
 about:
-  home: http://computation.llnl.gov/casc/sundials/main.html
-  license: BSD
-  summary: 'SUit of Nonlinear and DIfferential/ALgebraic equation Solvers'
+    home: http://computation.llnl.gov/casc/sundials/main.html
+    license: BSD
+    summary: 'SUit of Nonlinear and DIfferential/ALgebraic equation Solvers'
