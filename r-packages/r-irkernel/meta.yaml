@@ -37,7 +37,6 @@ requirements:
     - r-repr
     - r-rzmq >=0.7.0
     - r-uuid
-    - jupyter
 
   run:
     - r
@@ -48,7 +47,6 @@ requirements:
     - r-repr
     - r-rzmq >=0.7.0
     - r-uuid
-    - jupyter
 
 test:
   commands:
