@@ -21,4 +21,4 @@ touch $SRC_DIR/ruamel_yaml/ext/__init__.py
 
 cp $RECIPE_DIR/setup.py $SRC_DIR/
 cp $RECIPE_DIR/__init__.py $SRC_DIR/ruamel_yaml/
-sed -i -e '' 's/__version__.*/__version__ = "$VERSION"/' $SRC_DIR/ruamel_yaml/__init__.py
+sed -i -e 's/__version__.*/__version__ = "$VERSION"/' $SRC_DIR/ruamel_yaml/__init__.py
