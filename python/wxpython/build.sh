@@ -2,7 +2,7 @@
 
 mkdir -vp ${PREFIX}/bin;
 
-ARCH="$(uname 2>/dev/null)"
+MYARCH="$(uname 2>/dev/null)"
 
 export CFLAGS="-m64 -pipe -O2 -march=x86-64 -fPIC"
 export CXXFLAGS="${CFLAGS} -std=c++11"
@@ -58,12 +58,12 @@ LinuxInstallation() {
     return 0;
 }
 
-case ${ARCH} in
+case ${MYARCH} in
     'Linux')
         LinuxInstallation || exit 1;
         ;;
     *)
-        echo -e "Unsupported machine type: ${ARCH}";
+        echo -e "Unsupported machine type: ${MYARCH}";
         exit 1;
         ;;
 esac
