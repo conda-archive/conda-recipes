@@ -3,6 +3,7 @@
 mkdir -vp ${PREFIX}/bin;
 
 MYARCH="$(uname 2>/dev/null)"
+MYNCPU=$(( (CPU_COUNT > 8) ? 8 : CPU_COUNT ))
 
 MYCFLAGS=""
 if [[ ${ARCH} == 64 ]]; then
@@ -44,7 +45,7 @@ LinuxInstallation() {
         --with-regex=builtin \
         --with-zlib=builtin \
         --prefix="${PREFIX}" || return 1;
-    make || return 1;
+    make -j ${MYNCPU} || return 1;
     make install || return 1;
 
     pushd wxPython/;
@@ -70,7 +71,3 @@ case ${MYARCH} in
         exit 1;
         ;;
 esac
-
-#POST_LINK="${PREFIX}/bin/.wxpython-post-link.sh"
-#cp -v ${RECIPE_DIR}/post-link.sh ${POST_LINK};
-#chmod -v 0755 ${POST_LINK};
