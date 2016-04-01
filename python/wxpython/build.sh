@@ -53,12 +53,6 @@ LinuxInstallation() {
         --record installed_files.txt --prefix="${PREFIX}" || return 1;
     popd;
 
-    rm ${PREFIX}/bin/wx-config || return 1;
-
-    pushd ${PREFIX};
-    ln -vs ../lib/wx/config/inplace-gtk2-unicode-3.0 wx-config || return 1;
-    popd;
-
     return 0;
 }
 
