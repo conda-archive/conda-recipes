@@ -4,11 +4,14 @@ mkdir -vp ${PREFIX}/bin;
 
 MYARCH="$(uname 2>/dev/null)"
 
-export CFLAGS="-m64 -pipe -O2 -march=x86-64 -fPIC"
+MYCFLAGS=""
+if [[ ${ARCH} == 64 ]]; then
+    MYCFLAGS="-m64 -march=x86-64"
+fi
+
+export CFLAGS="${MYCFLAGS} -pipe -O2 -fPIC"
 export CXXFLAGS="${CFLAGS} -std=c++11"
 export CPPFLAGS="${CFLAGS} -std=c++11"
-#export CPPFLAGS="-I${PREFIX}/include"
-#export LDFLAGS="-L${PREFIX}/lib64"
 
 LinuxInstallation() {
     # Build dependencies:
