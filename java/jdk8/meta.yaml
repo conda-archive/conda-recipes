@@ -1,0 +1,15 @@
+package:
+  name: jdk8
+  version: !!str 8.u77
+
+requirements:
+  build:
+    - curl
+
+test:
+  commands:
+    - java -version
+
+about:
+  home: http://www.oracle.com/technetwork/java/javase/
+  license: Oracle Binary Code License Agreement
