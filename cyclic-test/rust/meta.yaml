@@ -1,0 +1,11 @@
+package:
+  name: rust
+  version: 5.0.0
+
+build:
+  number: 1
+
+requirements:
+  run:
+    - rust-base 5.0.0
+    - rust-recommended 5.0.0

@@ -1,0 +1,12 @@
+package:
+  name: rust-pkg3
+  version: "1"
+
+requirements:
+  build:
+    - rust-base
+    - rust-pkg1
+    - rust-pkg2
+
+  run:
+    - rust

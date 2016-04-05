@@ -1,0 +1,10 @@
+package:
+  name: rust-recommended
+  version: 5.0.0
+
+requirements:
+  run:
+    - rust 5.0.0
+    - rust-pkg1
+    - rust-pkg2
+    - rust-pkg3

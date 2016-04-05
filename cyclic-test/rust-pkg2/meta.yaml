@@ -1,0 +1,11 @@
+package:
+  name: rust-pkg2
+  version: "1"
+
+requirements:
+  build:
+    - rust-base
+    - rust-pkg1
+
+  run:
+    - rust
