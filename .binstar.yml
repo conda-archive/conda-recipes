@@ -7,7 +7,7 @@
 after_failure:
 - echo "After failure message!"
 after_script:
-- echo "ProtoCI build was a:$BINSTAR_BUILD_RESULT" | tee artifact1.txt
+- echo "ProtoCI build was a:$BINSTAR_BUILD_RESULT"
 after_success:
 - echo "ProtoCI BUILD SUCCESS"
 before_script:
