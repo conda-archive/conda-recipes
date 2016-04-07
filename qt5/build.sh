@@ -2,6 +2,15 @@
 
 BIN=$PREFIX/lib/qt5/bin
 QTCONF=$BIN/qt.conf
+VER=$PKG_VERSION
+
+# Download QtWebkit
+curl "http://linorg.usp.br/Qt/community_releases/5.6/${VER}/qtwebkit-opensource-src-${VER}.tar.xz" > qtwebkit.tar.xz
+unxz qtwebkit.tar.xz
+tar xf qtwebkit.tar
+mv qtwebkit-opensource-src* qtwebkit
+rm qtwebkit.tar
+
 
 chmod +x configure
 
@@ -23,13 +32,30 @@ if [ `uname` == Linux ]; then
                 -nomake examples \
                 -nomake tests \
                 -verbose \
+                -skip webengine \
+                -skip enginio \
+                -skip location \
+                -skip sensors \
+                -skip serialport \
+                -skip script \
+                -skip declarative \
+                -skip serialbus \
+                -skip quickcontrols2 \
+                -skip wayland \
+                -skip canvas3d \
+                -qt-pcre \
+                -no-linuxfb \
                 -no-libudev \
                 -gtkstyle \
                 -qt-xcb \
-                -qt-pcre \
                 -qt-xkbcommon \
                 -xkb-config-root $PREFIX/lib \
                 -dbus
+                #-no-evdev \
+                #-DGLX_GLXEXT_LEGACY \
+                #-D_X_INLINE=inline \
+                #-DXK_dead_currency=0xfe6f \
+                #-DXK_ISO_Level5_Lock=0xfe13
 fi
 
 if [ `uname` == Darwin ]; then
