@@ -16,6 +16,7 @@ requirements:
     - bison
     - flex
     - glib
+    - xz
   
   run:
     - glib
