@@ -50,6 +50,10 @@ script:
 - echo "PYTHONPATH below should include ./conda_tmp"
 - echo %PYTHONPATH%
  - protoci-difference-build .
+engine:
+- python=2.7
+- python=3.4
+- python=3.5
 ---
 platform: win-64
 script:
@@ -57,3 +61,7 @@ script:
 - echo "PYTHONPATH below should include ./conda_tmp"
 - echo %PYTHONPATH%
 - protoci-difference-build .
+engine:
+- python=2.7
+- python=3.4
+- python=3.5
