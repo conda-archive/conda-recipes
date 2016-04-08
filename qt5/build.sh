@@ -38,7 +38,6 @@ if [ `uname` == Linux ]; then
                 -skip sensors \
                 -skip serialport \
                 -skip script \
-                -skip declarative \
                 -skip serialbus \
                 -skip quickcontrols2 \
                 -skip wayland \
@@ -57,7 +56,12 @@ if [ `uname` == Linux ]; then
                 #-D_X_INLINE=inline \
                 #-DXK_dead_currency=0xfe6f \
                 #-DXK_ISO_Level5_Lock=0xfe13
+
+    LD_LIBRARY_PATH=$PREFIX/lib make -j $MAKE_JOBS
+    make install
+
 fi
+
 
 if [ `uname` == Darwin ]; then
     # Let Qt set its own flags and vars
@@ -96,10 +100,11 @@ if [ `uname` == Darwin ]; then
                 -no-xcb-xlib \
                 -no-libudev \
                 -no-egl
-fi
 
-make -j $MAKE_JOBS
-make install
+    make -j $MAKE_JOBS
+    make install
+
+fi
 
 for file in $BIN/*
 do
