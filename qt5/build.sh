@@ -43,14 +43,15 @@ if [ `uname` == Linux ]; then
                 -skip quickcontrols2 \
                 -skip wayland \
                 -skip canvas3d \
+                -skip 3d \
                 -qt-pcre \
                 -no-linuxfb \
                 -no-libudev \
-                -gtkstyle \
                 -qt-xcb \
                 -qt-xkbcommon \
                 -xkb-config-root $PREFIX/lib \
                 -dbus
+                #-gtkstyle \
                 #-no-evdev \
                 #-DGLX_GLXEXT_LEGACY \
                 #-D_X_INLINE=inline \

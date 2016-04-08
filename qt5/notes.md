@@ -13,6 +13,7 @@ You need the following packages to build Qt5 on CentOS 6
 - xcb-util-devel
 - gtk2-devel
 - freeglut-devel
+- libxml2-devel
 - ruby
 - gperf
 

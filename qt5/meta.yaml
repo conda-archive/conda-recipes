@@ -15,34 +15,33 @@ build:
 
 requirements:
   build:
-    - icu
+    - icu           54*
     - python
-    - jom                    [win]
-    - freetype               [unix]
-    - openssl                [unix]
-    - libpng        1.6*     [unix]
-    - jpeg                   [unix]
-    - zlib                   [unix]
-    - xz                     [unix]
-    - bison                  [linux]
-    - flex                   [linux]
-    - fontconfig             [linux]
-    - gst-plugins-base       [linux]
-    - libxcb                 [linux]
-    - gcc                    [linux]
-    - pkg-config             [linux]
+    - jom                         [win]
+    - freetype                    [unix]
+    - openssl                     [unix]
+    - libpng        1.6*          [unix]
+    - jpeg                        [unix]
+    - zlib                        [unix]
+    - xz                          [unix]
+    - bison                       [linux]
+    - flex                        [linux]
+    - fontconfig                  [linux]
+    - gst-plugins-base   1.8*     [linux]
+    - libxcb                      [linux]
+    - gcc                         [linux]
 
   run:
-    - icu
-    - freetype               [unix]
-    - zlib                   [unix]
-    - openssl                [unix]
-    - libpng        1.6*     [unix]
-    - jpeg                   [unix]
-    - fontconfig             [linux]
-    - gst-plugins-base       [linux]
-    - libxcb                 [linux]
-    - libgcc                 [linux]
+    - icu           54*
+    - freetype                    [unix]
+    - zlib                        [unix]
+    - openssl                     [unix]
+    - libpng        1.6*          [unix]
+    - jpeg                        [unix]
+    - fontconfig                  [linux]
+    - gst-plugins-base   1.8*     [linux]
+    - libxcb                      [linux]
+    - libgcc                      [linux]
 
 about:
     home: http://www.qt.io
