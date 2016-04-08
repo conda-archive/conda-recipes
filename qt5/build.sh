@@ -1,10 +1,14 @@
 #!/bin/bash
 
+# Main variables
+# --------------
 BIN=$PREFIX/lib/qt5/bin
 QTCONF=$BIN/qt.conf
 VER=$PKG_VERSION
 
+
 # Download QtWebkit
+# -----------------
 curl "http://linorg.usp.br/Qt/community_releases/5.6/${VER}/qtwebkit-opensource-src-${VER}.tar.xz" > qtwebkit.tar.xz
 unxz qtwebkit.tar.xz
 tar xf qtwebkit.tar
@@ -12,6 +16,8 @@ mv qtwebkit-opensource-src* qtwebkit
 rm qtwebkit.tar
 
 
+# Compile
+# -------
 chmod +x configure
 
 if [ `uname` == Linux ]; then
@@ -106,13 +112,17 @@ if [ `uname` == Darwin ]; then
 
 fi
 
+# Post build setup
+# ----------------
+
+# Remove unneeded files
+rm -rf $PREFIX/share/qt5
+
+# Make symlinks of binaries in $BIN to $PREFIX/bin
 for file in $BIN/*
 do
     ln -sfv ../lib/qt5/bin/$(basename $file) $PREFIX/bin/$(basename $file)-qt5
 done
-
-#removes doc, phrasebooks, and translations
-rm -rf $PREFIX/share/qt5
 
 # Remove static libs
 rm -rf $PREFIX/lib/*.a
