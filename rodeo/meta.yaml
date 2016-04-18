@@ -63,9 +63,8 @@ test:
     # Put any additional test requirements here.  For example
     # - nose
 app:
-  entry: rodeo .                              [win]
+  entry: rodeo .                              [not osx]
   entry: open ${PREFIX}/bin/rodeo_mac.command [osx]
-  entry: rodeo ${HOME}                        [linux]
   icon: logo.png
   summary: Rodeo Data Science IDE
   type: web
