@@ -70,9 +70,14 @@ app:
   type: web
 
 about:
-  home: https://github.com/yhat/rodeo/
+  home: http://rodeo.yhat.com/
   license: BSD
-  summary: 'an ide for data analysis in python'
+  summary: 'A web-based environment for interactive Data Science'
+  description: |
+    Rodeo is an IDE that was built expressly for doing data science in Python.
+    Think of it as a light weight alternative to the IPython Notebook.
+  doc_url: http://rodeo.yhat.com/docs/
+  dev_url: https://github.com/yhat/rodeo
 
 # See
 # http://docs.continuum.io/conda/build.html for
