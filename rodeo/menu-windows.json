@@ -3,8 +3,8 @@
     "menu_items":
     [
     {
-        "name": "Rodeo Web App",
-        "pywscript": "${PYTHON_SCRIPTS}/rodeo-script.py",
+        "name": "Rodeo",
+        "pyscript": "${PYTHON_SCRIPTS}/rodeo-script.py %HOMEPATH%",
         "icon": "${MENU_DIR}/rodeo.ico"
     }
     ]
