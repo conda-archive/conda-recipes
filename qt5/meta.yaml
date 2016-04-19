@@ -18,8 +18,6 @@ requirements:
     - icu           54*
     - python
     - jom                         [win]
-    - freetype                    [unix]
-    - openssl                     [unix]
     - libpng        1.6*          [unix]
     - jpeg                        [unix]
     - zlib                        [unix]
@@ -30,18 +28,20 @@ requirements:
     - gst-plugins-base   1.8*     [linux]
     - libxcb                      [linux]
     - gcc                         [linux]
+    - freetype                    [linux]
+    - openssl                     [linux]
 
   run:
     - icu           54*
-    - freetype                    [unix]
     - zlib                        [unix]
-    - openssl                     [unix]
     - libpng        1.6*          [unix]
     - jpeg                        [unix]
     - fontconfig                  [linux]
     - gst-plugins-base   1.8*     [linux]
     - libxcb                      [linux]
     - libgcc                      [linux]
+    - freetype                    [linux]
+    - openssl                     [linux]
 
 about:
     home: http://www.qt.io

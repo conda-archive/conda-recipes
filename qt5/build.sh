@@ -94,8 +94,19 @@ if [ `uname` == Darwin ]; then
                 -nomake examples \
                 -nomake tests \
                 -verbose \
-                -skip qtwebengine \
+                -skip webengine \
+                -skip enginio \
+                -skip location \
+                -skip sensors \
+                -skip serialport \
+                -skip script \
+                -skip serialbus \
+                -skip quickcontrols2 \
+                -skip wayland \
+                -skip canvas3d \
+                -skip 3d \
                 -qt-pcre \
+                -qt-freetype \
                 -platform macx-g++ \
                 -no-c++11 \
                 -no-framework \
@@ -107,7 +118,7 @@ if [ `uname` == Darwin ]; then
                 -no-libudev \
                 -no-egl
 
-    make -j $MAKE_JOBS
+    DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib make -j $MAKE_JOBS
     make install
 
 fi
