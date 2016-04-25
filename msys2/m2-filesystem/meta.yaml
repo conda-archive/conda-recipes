@@ -19,6 +19,9 @@ extra:
       srcpkg: msys/filesystem
       url: http://repo.msys2.org/msys/i686/filesystem-2016.04-3-i686.pkg.tar.xz
       md5: f8264e5a90115b3e0d5afc80ca6c83c0
+      patches:
+      - 0001-Remove-etc-post-install-07-pacman-key-post.patch
+      - 0002-Use-Windows-users-temporary-directory-as-tmp.patch
       mv-srcs:
       - '*'
       mv-dsts:
@@ -27,6 +30,9 @@ extra:
       srcpkg: msys/filesystem
       url: http://repo.msys2.org/msys/x86_64/filesystem-2016.04-3-x86_64.pkg.tar.xz
       md5: 621936d70f4b7f690ee7e2e4744a9d0f
+      patches:
+      - 0001-Remove-etc-post-install-07-pacman-key-post.patch
+      - 0002-Use-Windows-users-temporary-directory-as-tmp.patch
       mv-srcs:
       - '*'
       mv-dsts:
