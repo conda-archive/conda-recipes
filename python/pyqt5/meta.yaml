@@ -1,28 +1,28 @@
 package:
   name: pyqt5
-  version: 5.5.0
+  version: 5.5.1
 
 source:
-  fn:   PyQt-gpl-5.5.zip                                                                 [win]
-  url:  http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-5.5/PyQt-gpl-5.5.zip       [win]
-  sha1: 5ccb9f3ff726b07f9dfc5ca32c9505c483e45000                                         [win]
-  fn:   PyQt-gpl-5.5.tar.gz                                                              [unix]
-  url:  http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-5.5/PyQt-gpl-5.5.tar.gz    [unix]
-  sha1: 6de6e23692069dbb934f4decdf86133e54a0cd54                                         [unix]
+  fn:   PyQt-gpl-5.5.1.zip                                                                 [win]
+  url:  http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-5.5.1/PyQt-gpl-5.5.1.zip       [win]
+  sha1: 54bf5c6ef5ecbe436d18ebebd2c7cda3a8cab35d                                         [win]
+  fn:   PyQt-gpl-5.5.1.tar.gz                                                              [unix]
+  url:  http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-5.5.1/PyQt-gpl-5.5.1.tar.gz    [unix]
+  sha1: d54cd7cf26b10f0b59fddce4a6a742f9697a94ff                                         [unix]
 
   patches:
-    - configure.patch       [osx]
+    - configure-qmake.patch       [win]
 
 requirements:
   build:
     - python
-    - qt5     >=5.5.0
+    - qt5     >=5.5.1
     - sip     >=4.16.7
     - jom     [win]
 
   run:
     - python
-    - qt5     >=5.5.0
+    - qt5     >=5.5.1
     - sip     >=4.16.7
 
 test:

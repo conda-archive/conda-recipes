@@ -1,13 +1,10 @@
 #!/bin/bash
 
 cd source
-chmod +x configure install-sh
+chmod +x runConfigureICU configure install-sh
 
 if [ "$(uname)" == "Linux" ]; then
-    export CC=gcc44
-    export CXX=g++44
-
-    ./configure --prefix="$PREFIX"
+    ./runConfigureICU Linux --prefix="$PREFIX"
 fi
 
 if [ "$(uname)" == "Darwin" ]; then
@@ -24,3 +21,4 @@ fi
 
 make
 make install
+

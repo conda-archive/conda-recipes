@@ -1,46 +1,41 @@
 package:
   name: qt5
-  version: 5.5.0
+  version: 5.5.1
 
 source:
-  fn:   qt-everywhere-opensource-src-5.5.0.tar.xz                                                               [unix]
-  url:  http://download.qt.io/official_releases/qt/5.5/5.5.0/single/qt-everywhere-opensource-src-5.5.0.tar.xz   [unix]
-  md5:  65d5282f3dee0336da9ed1f77148952f                                                                        [unix]
-  fn:   qt-everywhere-opensource-src-5.5.0.zip                                                                  [win]
-  url:  http://download.qt.io/official_releases/qt/5.5/5.5.0/single/qt-everywhere-opensource-src-5.5.0.zip      [win]
-  md5:  299abca0a091b6b06cbbc6387f4fff9f                                                                        [win]
+  fn:   qt-everywhere-opensource-src-5.5.1.tar.xz                                                               [unix]
+  url:  http://download.qt.io/official_releases/qt/5.5/5.5.1/single/qt-everywhere-opensource-src-5.5.1.tar.xz   [unix]
+  md5:  c2a249e8795d45200d997d96860d0353                                                                        [unix]
+  fn:   qt-everywhere-opensource-src-5.5.1.zip                                                                  [win]
+  url:  http://download.qt.io/official_releases/qt/5.5/5.5.1/single/qt-everywhere-opensource-src-5.5.1.zip      [win]
+  md5:  d071cdaa1b8f34fb49f6deac94039c2c                                                                        [win]
 
 build:
-  detect_binary_files_with_prefix: true
+  number: 1
 
 requirements:
   build:
+    - zlib
+    - libpng        1.6*
+    - jpeg
     - icu
-    - python
+    - patch                  [win]
+    - python                 [win]
     - jom                    [win]
-    - freetype               [unix]
     - openssl                [unix]
-    - libpng        1.6*     [unix]
-    - jpeg                   [unix]
-    - zlib                   [unix]
-    - bison                  [linux]
-    - flex                   [linux]
+    - freetype               [unix]
     - fontconfig             [linux]
-    - gst-plugins-base       [linux]
-    - libxcb                 [linux]
+    # also needed on [linux]: apt-get install flex bison gperf libx11-dev libxext-dev libxfixes-dev libxi-dev libxrender-dev libxcb1-dev libx11-xcb-dev libxcb-glx0-dev libxcb-keysyms1-dev libxcb-image0-dev libxcb-shm0-dev libxcb-icccm4-dev libxcb-sync0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-randr0-dev libxcb-render-util0-dev libxkbcommon-dev libxkbcommon-x11-dev
 
   run:
+    - zlib
+    - libpng        1.6*
+    - jpeg
     - icu
-    - freetype               [unix]
-    - zlib                   [unix]
     - openssl                [unix]
-    - libpng        1.6*     [unix]
-    - jpeg                   [unix]
+    - freetype               [unix]
     - fontconfig             [linux]
-    - gst-plugins-base       [linux]
-    - libxcb                 [linux]
 
 about:
-    home: http://www.qt.io
-    license: LGPL
-
+  home: http://www.qt.io
+  license: LGPL
