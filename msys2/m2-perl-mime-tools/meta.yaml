@@ -1,0 +1,36 @@
+package:
+  name: m2-perl-mime-tools
+  version: '5.506'
+source:
+  url: http://repo.msys2.org/msys/sources/perl-MIME-tools-5.506-1.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-perl-mailtools
+  - m2-perl-io-stringy
+  - m2-perl-convert-binhex
+about:
+  home: http://search.cpan.org/dist/MIME-tools
+  license: GPL, PerlArtistic
+  summary: Parses streams to create MIME entities
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/perl-MIME-tools
+      url: http://repo.msys2.org/msys/i686/perl-MIME-tools-5.506-1-any.pkg.tar.xz
+      md5: e941c123716f70cad2aa3b0b46e89fe6
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/perl-MIME-tools
+      url: http://repo.msys2.org/msys/x86_64/perl-MIME-tools-5.506-1-any.pkg.tar.xz
+      md5: 44587a96ee80677f8870e868f05fbb7f
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

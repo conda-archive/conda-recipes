@@ -1,0 +1,46 @@
+package:
+  name: m2-git
+  version: 2.8.1
+source:
+  url: http://repo.msys2.org/msys/sources/git-2.8.1-1.src.tar.gz
+  md5: 411a4bf7383b301940a9e75a57e2783e
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-curl
+  - m2-expat
+  - m2-libpcre
+  - m2-vim
+  - m2-openssh
+  - m2-openssl
+  - m2-perl-error
+  - m2-perl
+  - m2-perl-authen-sasl
+  - m2-perl-libwww
+  - m2-perl-mime-tools
+  - m2-perl-net-smtp-ssl
+  - m2-perl-termreadkey
+about:
+  home: https://git-scm.com/
+  license: GPL, GPL2
+  summary: The fast distributed version control system
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/git
+      url: http://repo.msys2.org/msys/i686/git-2.8.1-1-i686.pkg.tar.xz
+      md5: 782a7ddddc879710f7368c7a34df9b53
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/git
+      url: http://repo.msys2.org/msys/x86_64/git-2.8.1-1-x86_64.pkg.tar.xz
+      md5: 3542d6c3555e037cf990bc9b5915fd36
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

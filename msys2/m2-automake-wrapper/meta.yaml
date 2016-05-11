@@ -1,0 +1,46 @@
+package:
+  name: m2-automake-wrapper
+  version: '10'
+source:
+  url: http://repo.msys2.org/msys/sources/automake-wrapper-10-1.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-bash
+  - m2-gawk
+  - m2-automake1.6
+  - m2-automake1.7
+  - m2-automake1.7
+  - m2-automake1.8
+  - m2-automake1.9
+  - m2-automake1.10
+  - m2-automake1.11
+  - m2-automake1.12
+  - m2-automake1.13
+  - m2-automake1.14
+  - m2-automake1.15
+about:
+  home: http://www.gentoo.org
+  license: GPL
+  summary: Wrapper scripts for automake and aclocal
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/automake-wrapper
+      url: http://repo.msys2.org/msys/i686/automake-wrapper-10-1-any.pkg.tar.xz
+      md5: b76ce20b712be6c257d04d7c43a1e320
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/automake-wrapper
+      url: http://repo.msys2.org/msys/x86_64/automake-wrapper-10-1-any.pkg.tar.xz
+      md5: a5d33ca358269592e7eb36f68076b196
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

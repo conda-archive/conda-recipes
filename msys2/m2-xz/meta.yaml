@@ -1,0 +1,36 @@
+package:
+  name: m2-xz
+  version: 5.2.2
+source:
+  url: http://repo.msys2.org/msys/sources/xz-5.2.2-1.src.tar.gz
+  md5: 0e2295f12d9ab1358ba2c66c6fecbe76
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-liblzma
+  - m2-libiconv
+  - m2-libintl
+about:
+  home: http://tukaani.org/xz/
+  license: GPL, LGPL, custom
+  summary: Library and command line tools for XZ and LZMA compressed files
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/xz
+      url: http://repo.msys2.org/msys/i686/xz-5.2.2-1-i686.pkg.tar.xz
+      md5: 2b1da7c7ea032fd57e622ed3a0e52d89
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/xz
+      url: http://repo.msys2.org/msys/x86_64/xz-5.2.2-1-x86_64.pkg.tar.xz
+      md5: 32fbaedf26855c63ea5c9c702fec019e
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

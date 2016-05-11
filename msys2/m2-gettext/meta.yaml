@@ -1,0 +1,36 @@
+package:
+  name: m2-gettext
+  version: 0.19.7
+source:
+  url: http://repo.msys2.org/msys/sources/gettext-0.19.7-3.src.tar.gz
+  md5: c79f1314c7cdd085adc2d516ca47a6e1
+build:
+  number: '3'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-libintl
+  - m2-libgettextpo
+  - m2-libasprintf
+about:
+  home: https://www.gnu.org/software/gettext/
+  license: GPL
+  summary: GNU internationalization library
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/gettext
+      url: http://repo.msys2.org/msys/i686/gettext-0.19.7-3-i686.pkg.tar.xz
+      md5: 8d878c2f8b9be34181cae499b57fff39
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/gettext
+      url: http://repo.msys2.org/msys/x86_64/gettext-0.19.7-3-x86_64.pkg.tar.xz
+      md5: 4c08eb3f5772671e523558bad3908388
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

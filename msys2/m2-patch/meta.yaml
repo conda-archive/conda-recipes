@@ -1,0 +1,34 @@
+package:
+  name: m2-patch
+  version: 2.7.5
+source:
+  url: http://repo.msys2.org/msys/sources/patch-2.7.5-1.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-msys2-runtime
+about:
+  home: http://www.gnu.org/software/patch/patch.html
+  license: GPL
+  summary: A utility to apply patch files to original sources
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/patch
+      url: http://repo.msys2.org/msys/i686/patch-2.7.5-1-i686.pkg.tar.xz
+      md5: a06746e3e60fa1a9762794726885f12b
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/patch
+      url: http://repo.msys2.org/msys/x86_64/patch-2.7.5-1-x86_64.pkg.tar.xz
+      md5: c5ec9698bb214fe0643c76a951438b50
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

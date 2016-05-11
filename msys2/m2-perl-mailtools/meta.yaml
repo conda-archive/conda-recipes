@@ -1,0 +1,34 @@
+package:
+  name: m2-perl-mailtools
+  version: '2.14'
+source:
+  url: http://repo.msys2.org/msys/sources/perl-MailTools-2.14-1.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-perl-timedate
+about:
+  home: https://metacpan.org/release/MailTools
+  license: PerlArtistic, GPL
+  summary: Various e-mail related modules
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/perl-MailTools
+      url: http://repo.msys2.org/msys/i686/perl-MailTools-2.14-1-any.pkg.tar.xz
+      md5: 5565ad3c8074cafbd2e13c0cf05969f9
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/perl-MailTools
+      url: http://repo.msys2.org/msys/x86_64/perl-MailTools-2.14-1-any.pkg.tar.xz
+      md5: 9f50147343b4e8fcab6b54b7c188c19c
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

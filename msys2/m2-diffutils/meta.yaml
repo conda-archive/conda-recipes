@@ -1,0 +1,35 @@
+package:
+  name: m2-diffutils
+  version: '3.3'
+source:
+  url: http://repo.msys2.org/msys/sources/diffutils-3.3-3.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '3'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-msys2-runtime
+  - m2-bash
+about:
+  home: http://www.gnu.org/software/diffutils
+  license: GPL, GPL3
+  summary: Utility programs used for creating patch files
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/diffutils
+      url: http://repo.msys2.org/msys/i686/diffutils-3.3-3-i686.pkg.tar.xz
+      md5: 42c1a437a8b94f85e7b448bc8ef129ff
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/diffutils
+      url: http://repo.msys2.org/msys/x86_64/diffutils-3.3-3-x86_64.pkg.tar.xz
+      md5: 9c780eea84fad48e118bccc64f38e9c2
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

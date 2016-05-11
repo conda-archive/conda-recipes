@@ -1,0 +1,34 @@
+package:
+  name: m2-libcrypt
+  version: '1.3'
+source:
+  url: http://repo.msys2.org/msys/sources/libcrypt-1.3-1.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-gcc-libs
+about:
+  home: https://cygwin.com/
+  license: GPL, custom
+  summary: Encryption/Decryption utility and library
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/libcrypt
+      url: http://repo.msys2.org/msys/i686/libcrypt-1.3-1-i686.pkg.tar.xz
+      md5: 6a6e33d7d31c0d208906e747f5342ca7
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/libcrypt
+      url: http://repo.msys2.org/msys/x86_64/libcrypt-1.3-1-x86_64.pkg.tar.xz
+      md5: 1d43b2bf5ee612e1b05ff75a72065f32
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

@@ -1,0 +1,40 @@
+package:
+  name: m2-gnupg
+  version: 1.4.20
+source:
+  url: http://repo.msys2.org/msys/sources/gnupg-1.4.20-1.src.tar.gz
+  md5: f9c8ba683d399f3b306c330f41fc69dd
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-bzip2
+  - m2-libbz2
+  - m2-libcurl
+  - m2-libiconv
+  - m2-libintl
+  - m2-libreadline
+  - m2-zlib
+about:
+  home: https://gnupg.org/
+  license: GPL
+  summary: Complete and free implementation of the OpenPGP standard
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/gnupg
+      url: http://repo.msys2.org/msys/i686/gnupg-1.4.20-1-i686.pkg.tar.xz
+      md5: bc5d22af35ae55e0d35790ef97ce3922
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/gnupg
+      url: http://repo.msys2.org/msys/x86_64/gnupg-1.4.20-1-x86_64.pkg.tar.xz
+      md5: f7cb9452c37374805463fb7cca9b15a3
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

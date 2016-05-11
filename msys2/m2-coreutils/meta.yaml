@@ -1,0 +1,37 @@
+package:
+  name: m2-coreutils
+  version: '8.25'
+source:
+  url: http://repo.msys2.org/msys/sources/coreutils-8.25-1.src.tar.gz
+  md5: 4e3ab371d3e3953744cd2c3543a87dfa
+build:
+  number: '101'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-gmp
+  - m2-libiconv
+  - m2-libintl
+about:
+  home: https://www.gnu.org/software/coreutils
+  license: GPL, GPL3
+  summary: The basic file, shell and text manipulation utilities of the GNU operating
+    system
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/coreutils
+      url: http://repo.msys2.org/msys/i686/coreutils-8.25-1-i686.pkg.tar.xz
+      md5: 3f3bca3894bc3a0bbc713058b45dec04
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/coreutils
+      url: http://repo.msys2.org/msys/x86_64/coreutils-8.25-1-x86_64.pkg.tar.xz
+      md5: efb013d9f311b879a1e22660f6503642
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

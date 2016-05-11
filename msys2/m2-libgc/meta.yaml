@@ -1,0 +1,34 @@
+package:
+  name: m2-libgc
+  version: 7.2.d
+source:
+  url: http://repo.msys2.org/msys/sources/libgc-7.2.d-1.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-gcc-libs
+about:
+  home: http://www.hpl.hp.com/personal/Hans_Boehm/gc/
+  license: GPL
+  summary: A garbage collector for C and C++
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/libgc
+      url: http://repo.msys2.org/msys/i686/libgc-7.2.d-1-i686.pkg.tar.xz
+      md5: d203f2d8ca3f462d0ec4c23a5eeedcb7
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/libgc
+      url: http://repo.msys2.org/msys/x86_64/libgc-7.2.d-1-x86_64.pkg.tar.xz
+      md5: 733d6e7ada47f0ee568b42610d099b50
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

@@ -1,0 +1,33 @@
+package:
+  name: m2-msys2-keyring
+  version: 9.397a52e
+source:
+  url: http://repo.msys2.org/msys/sources/msys2-keyring-r9.397a52e-1.src.tar.gz
+  md5: 1355280a63adabdba09cca98dd37a8d6
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+about:
+  home: https://github.com/Alexpux/MSYS2-keyring
+  license: GPL
+  summary: MSYS2 PGP keyring
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/msys2-keyring
+      url: http://repo.msys2.org/msys/i686/msys2-keyring-r9.397a52e-1-any.pkg.tar.xz
+      md5: e490357f2953f01ba4eb78476aaad461
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/msys2-keyring
+      url: http://repo.msys2.org/msys/x86_64/msys2-keyring-r9.397a52e-1-any.pkg.tar.xz
+      md5: 5258227a3311a7e1f82b195e2adb147d
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

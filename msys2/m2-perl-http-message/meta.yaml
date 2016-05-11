@@ -1,0 +1,39 @@
+package:
+  name: m2-perl-http-message
+  version: '6.06'
+source:
+  url: http://repo.msys2.org/msys/sources/perl-HTTP-Message-6.06-2.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '2'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-perl
+  - m2-perl-encode-locale
+  - m2-perl-html-parser
+  - m2-perl-http-date
+  - m2-perl-lwp-mediatypes
+  - m2-perl-uri
+about:
+  home: http://search.cpan.org/dist/HTTP-Message
+  license: PerlArtistic, GPL
+  summary: HTTP style messages
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/perl-HTTP-Message
+      url: http://repo.msys2.org/msys/i686/perl-HTTP-Message-6.06-2-any.pkg.tar.xz
+      md5: 7c5cc770ec5b9e519d0a3a39fbae9f36
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/perl-HTTP-Message
+      url: http://repo.msys2.org/msys/x86_64/perl-HTTP-Message-6.06-2-any.pkg.tar.xz
+      md5: d334731b6ecde98434d4e89da0e5c026
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

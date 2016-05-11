@@ -1,0 +1,34 @@
+package:
+  name: m2-time
+  version: '1.7'
+source:
+  url: http://repo.msys2.org/msys/sources/time-1.7-1.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-msys2-runtime
+about:
+  home: http://www.gnu.org/directory/time.html
+  license: GPL
+  summary: Utility for monitoring a program's use of system resources
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/time
+      url: http://repo.msys2.org/msys/i686/time-1.7-1-i686.pkg.tar.xz
+      md5: bb6d5e80fb7d4237e4f3f9a2048fea33
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/time
+      url: http://repo.msys2.org/msys/x86_64/time-1.7-1-x86_64.pkg.tar.xz
+      md5: f1777cc7422cf79dfa61595b0d1fd231
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

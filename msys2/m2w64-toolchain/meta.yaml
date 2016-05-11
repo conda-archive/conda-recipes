@@ -1,0 +1,23 @@
+package:
+  name: m2w64-toolchain
+  version: 5.3.0
+build:
+  number: '6'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2w64-binutils
+  - m2w64-crt-git
+  - m2w64-gcc
+  - m2w64-gcc-ada
+  - m2w64-gcc-fortran
+  - m2w64-gcc-libgfortran
+  - m2w64-gcc-libs
+  - m2w64-gcc-objc
+  - m2w64-headers-git
+  - m2w64-libmangle-git
+  - m2w64-libwinpthread-git
+  - m2w64-make
+  - m2w64-pkg-config
+  - m2w64-tools-git
+  - m2w64-winpthreads-git

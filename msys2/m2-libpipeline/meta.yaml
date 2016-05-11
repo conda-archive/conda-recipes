@@ -1,0 +1,35 @@
+package:
+  name: m2-libpipeline
+  version: 1.4.0
+source:
+  url: http://repo.msys2.org/msys/sources/libpipeline-1.4.0-1.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-gcc-libs
+about:
+  home: http://libpipeline.nongnu.org/
+  license: GPL, BSD
+  summary: a C library for manipulating pipelines of subprocesses in a flexible and
+    convenient way
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/libpipeline
+      url: http://repo.msys2.org/msys/i686/libpipeline-1.4.0-1-i686.pkg.tar.xz
+      md5: 973d38bc96ceee796eb1f328e005d362
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/libpipeline
+      url: http://repo.msys2.org/msys/x86_64/libpipeline-1.4.0-1-x86_64.pkg.tar.xz
+      md5: 85a1e5a0eca7895edef6b5829fcea3c4
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

@@ -1,0 +1,34 @@
+package:
+  name: m2w64-gcc-objc
+  version: 5.3.0
+source:
+  url: http://repo.msys2.org/mingw/sources/mingw-w64-gcc-objc-5.3.0-5.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '5'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2w64-gcc
+about:
+  home: https://gcc.gnu.org
+  license: GPL, LGPL, FDL, custom
+  summary: GNU Compiler Collection (ObjC,Obj-C++) for MinGW-w64
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: mingw32/mingw-w64-i686-gcc-objc
+      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-gcc-objc-5.3.0-5-any.pkg.tar.xz
+      md5: 02001935d0e71c4ba4cb91a6a4e39b9b
+      mv-srcs:
+      - mingw32
+      mv-dsts:
+      - Library/mingw-w64
+    win-64:
+      srcpkg: mingw64/mingw-w64-x86_64-gcc-objc
+      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-gcc-objc-5.3.0-5-any.pkg.tar.xz
+      md5: 21b730ea7b7651948f06a9822b4367c7
+      mv-srcs:
+      - mingw64
+      mv-dsts:
+      - Library/mingw-w64
