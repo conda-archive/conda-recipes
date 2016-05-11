@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-formatr
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.2.1"
+  version: "1.3"
 
 source:
-  fn: formatR_1.2.1.tar.gz
+  fn: formatR_1.3.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/formatR_1.2.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/formatR/formatR_1.2.1.tar.gz
+    - http://cran.r-project.org/src/contrib/formatR_1.3.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/formatR/formatR_1.3.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,10 +34,10 @@ build:
 # Suggests: codetools, shiny, testit, knitr
 requirements:
   build:
-    - r
+    - r-base
 
   run:
-    - r
+    - r-base
 
 test:
   commands:
@@ -56,13 +59,14 @@ about:
     conditions, so that R code will be more human-readable and tidy. There is also a
     Shiny app as a user interface in this package (see tidy_app()).
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: formatR
 # Type: Package
 # Title: Format R Code Automatically
-# Version: 1.2.1
-# Date: 2015-09-18
+# Version: 1.3
+# Date: 2016-03-04
 # Author: Yihui Xie
 # Maintainer: Yihui Xie <xie@yihui.name>
 # Description: Provides a function tidy_source() to format R source code. Spaces and indent will be added to the code automatically, and comments will be preserved under certain conditions, so that R code will be more human-readable and tidy. There is also a Shiny app as a user interface in this package (see tidy_app()).
@@ -72,10 +76,11 @@ about:
 # URL: http://yihui.name/formatR
 # BugReports: https://github.com/yihui/formatR/issues
 # VignetteBuilder: knitr
+# RoxygenNote: 5.0.1
 # NeedsCompilation: no
-# Packaged: 2015-09-18 01:50:40 UTC; yihui
+# Packaged: 2016-03-05 06:33:36 UTC; yihui
 # Repository: CRAN
-# Date/Publication: 2015-09-18 08:58:36
+# Date/Publication: 2016-03-05 09:20:39
 
 # See
 # http://docs.continuum.io/conda/build.html for

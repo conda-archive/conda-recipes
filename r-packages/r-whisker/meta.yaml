@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-whisker
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -9,6 +12,8 @@ source:
   url:
     - http://cran.r-project.org/src/contrib/whisker_0.3-2.tar.gz
     - http://cran.r-project.org/src/contrib/Archive/whisker/whisker_0.3-2.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,8 +24,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2 # [osx]
-  number: 1 # [not osx]
+  number: 2
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -30,10 +34,10 @@ build:
 # Suggests: markdown
 requirements:
   build:
-    - r
+    - r-base
 
   run:
-    - r
+    - r-base
 
 test:
   commands:
@@ -52,6 +56,7 @@ about:
   license: GPL-3
   summary: logicless templating, reuse templates in many programming languages including R
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: whisker

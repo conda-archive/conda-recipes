@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-nycflights13
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -21,7 +24,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  number: 2
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -31,10 +34,10 @@ build:
 # Suggests: dplyr
 requirements:
   build:
-    - r
+    - r-base
 
   run:
-    - r
+    - r-base
 
 test:
   commands:
@@ -53,7 +56,8 @@ about:
   license: CC0
   summary: Airline on-time data for all flights departing NYC in 2013. Also includes useful metadata
     on airlines, airports, weather, and planes.
-  license_family: Other
+  license_family: Public-Domain
+
 # The original CRAN metadata for this package was:
 
 # Package: nycflights13

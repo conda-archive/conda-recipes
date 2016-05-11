@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-stabledist
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,10 +34,10 @@ build:
 # Suggests: Matrix, fBasics, FMStable, RUnit, Rmpfr, sfsmisc
 requirements:
   build:
-    - r
+    - r-base
 
   run:
-    - r
+    - r-base
 
 test:
   commands:
@@ -54,6 +57,7 @@ about:
   summary: Density, Probability and Quantile functions, and random number generation for (skew)
     stable distributions, using the parametrizations of Nolan.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: stabledist

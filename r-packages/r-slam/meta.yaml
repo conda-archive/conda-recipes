@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-slam
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,12 +34,13 @@ build:
 
 requirements:
   build:
-    - r
-    - gcc # [not win]
+    - r-base
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
-    - libgcc # [not win]
+    - r-base
 
 test:
   commands:
@@ -56,6 +60,7 @@ about:
   summary: Data structures and algorithms for sparse arrays and matrices, based on index arrays
     and simple triplet representations, respectively.
   license_family: GPL2
+
 # The original CRAN metadata for this package was:
 
 # Package: slam

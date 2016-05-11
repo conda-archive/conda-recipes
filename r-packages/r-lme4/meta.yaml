@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-lme4
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.1_10"
+  version: "1.1_11"
 
 source:
-  fn: lme4_1.1-10.tar.gz
+  fn: lme4_1.1-11.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/lme4_1.1-10.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/lme4/lme4_1.1-10.tar.gz
+    - http://cran.r-project.org/src/contrib/lme4_1.1-11.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/lme4/lme4_1.1-11.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,28 +34,29 @@ build:
 # Suggests: knitr, boot, PKPDmodels, MEMSS, testthat (>= 0.8.1), ggplot2, mlmRev, optimx (>= 2013.8.6), gamm4, pbkrtest, HSAUR2, numDeriv
 requirements:
   build:
-    - r
-    - r-mass # [not win]
-    - r-matrix >=1.1.1 # [not win]
+    - r-base
+    - r-mass
+    - r-matrix >=1.1.1
     - r-rcpp >=0.10.5
     - r-rcppeigen
-    - r-lattice # [not win]
+    - r-lattice
     - r-minqa >=1.1.15
-    - r-nlme # [not win]
+    - r-nlme >=3.1_123
     - r-nloptr >=1.0.4
-    - gcc # [not win]
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
-    - r-mass # [not win]
-    - r-matrix >=1.1.1 # [not win]
+    - r-base
+    - r-mass
+    - r-matrix >=1.1.1
     - r-rcpp >=0.10.5
     - r-rcppeigen
-    - r-lattice # [not win]
+    - r-lattice
     - r-minqa >=1.1.15
-    - r-nlme # [not win]
+    - r-nlme >=3.1_123
     - r-nloptr >=1.0.4
-    - libgcc # [not win]
 
 test:
   commands:
@@ -74,19 +78,18 @@ about:
     are implemented using the 'Eigen' C++ library for numerical linear algebra and 'RcppEigen'
     "glue".
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: lme4
-# Version: 1.1-10
+# Version: 1.1-11
 # Title: Linear Mixed-Effects Models using 'Eigen' and S4
-# Authors@R: c(person("Douglas","Bates", role="aut"), person("Martin","Maechler", role="aut"), person("Ben","Bolker",email="bbolker+lme4@gmail.com", role=c("aut","cre")), person("Steven","Walker",role="aut"), person("Rune Haubo Bojesen","Christensen", role="ctb"), person("Henrik","Singmann", role="ctb"), person("Bin", "Dai", role="ctb"), person("Gabor", "Grothendieck", role="ctb"))
-# Maintainer: Ben Bolker <bbolker+lme4@gmail.com>
+# Authors@R: c(person("Douglas","Bates", role="aut"), person("Martin","Maechler", role="aut"), person("Ben","Bolker",email="bbolker+lme4@gmail.com", role=c("aut","cre")), person("Steven","Walker",role="aut"), person("Rune Haubo Bojesen","Christensen", role="ctb"), person("Henrik","Singmann", role="ctb"), person("Bin", "Dai", role="ctb"), person("Gabor", "Grothendieck", role="ctb"), person("Peter", "Green", role="ctb"))
 # Contact: LME4 Authors <lme4-authors@lists.r-forge.r-project.org>
-# Author: Douglas Bates [aut], Martin Maechler [aut], Ben Bolker [aut, cre], Steven Walker [aut], Rune Haubo Bojesen Christensen [ctb], Henrik Singmann [ctb], Bin Dai [ctb], Gabor Grothendieck [ctb]
 # Description: Fit linear and generalized linear mixed-effects models. The models and their components are represented using S4 classes and methods.  The core computational algorithms are implemented using the 'Eigen' C++ library for numerical linear algebra and 'RcppEigen' "glue".
 # Depends: R (>= 3.0.2), Matrix (>= 1.1.1), methods, stats
 # LinkingTo: Rcpp (>= 0.10.5), RcppEigen
-# Imports: graphics, grid, splines, utils, parallel, MASS, nlme, lattice, minqa (>= 1.1.15), nloptr (>= 1.0.4)
+# Imports: graphics, grid, splines, utils, parallel, MASS, lattice, nlme (>= 3.1-123), minqa (>= 1.1.15), nloptr (>= 1.0.4)
 # Suggests: knitr, boot, PKPDmodels, MEMSS, testthat (>= 0.8.1), ggplot2, mlmRev, optimx (>= 2013.8.6), gamm4, pbkrtest, HSAUR2, numDeriv
 # VignetteBuilder: knitr
 # LazyData: yes
@@ -94,9 +97,11 @@ about:
 # URL: https://github.com/lme4/lme4/ http://lme4.r-forge.r-project.org/
 # BugReports: https://github.com/lme4/lme4/issues
 # NeedsCompilation: yes
-# Packaged: 2015-10-05 17:56:37 UTC; bolker
+# Packaged: 2016-02-12 00:05:22 UTC; bolker
+# Author: Douglas Bates [aut], Martin Maechler [aut], Ben Bolker [aut, cre], Steven Walker [aut], Rune Haubo Bojesen Christensen [ctb], Henrik Singmann [ctb], Bin Dai [ctb], Gabor Grothendieck [ctb], Peter Green [ctb]
+# Maintainer: Ben Bolker <bbolker+lme4@gmail.com>
 # Repository: CRAN
-# Date/Publication: 2015-10-06 08:08:29
+# Date/Publication: 2016-02-12 07:40:55
 
 # See
 # http://docs.continuum.io/conda/build.html for

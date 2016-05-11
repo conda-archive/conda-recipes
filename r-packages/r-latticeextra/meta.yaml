@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-latticeextra
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.6_26"
+  version: "0.6_28"
 
 source:
-  fn: latticeExtra_0.6-26.tar.gz
+  fn: latticeExtra_0.6-28.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/latticeExtra_0.6-26.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/latticeExtra/latticeExtra_0.6-26.tar.gz
+    - http://cran.r-project.org/src/contrib/latticeExtra_0.6-28.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/latticeExtra/latticeExtra_0.6-28.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -21,25 +24,24 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 3 # [osx]
-  number: 2 # [not osx]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: maps, mapproj, deldir, tripack, quantreg, zoo, MASS, mgcv
+# Suggests: maps, mapproj, deldir, tripack, zoo, MASS, quantreg, mgcv
 requirements:
   build:
-    - r
+    - r-base
     - r-rcolorbrewer
-    - r-lattice >=0.18_1 # [not win]
+    - r-lattice
 
   run:
-    - r
+    - r-base
     - r-rcolorbrewer
-    - r-lattice >=0.18_1 # [not win]
+    - r-lattice
 
 test:
   commands:
@@ -56,28 +58,31 @@ test:
 about:
   home: http://latticeextra.r-forge.r-project.org/
   license: GPL (>= 2)
-  summary: Extra graphical utilities based on lattice
+  summary: Building on the infrastructure provided by the lattice package, this package provides
+    several new high-level functions and methods, as well as additional utilities such
+    as panel and axis annotation functions.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: latticeExtra
-# Version: 0.6-26
-# Date: 2013/08/15
+# Version: 0.6-28
+# Date: 2016-01-09
 # Title: Extra Graphical Utilities Based on Lattice
 # Author: Deepayan Sarkar <deepayan.sarkar@r-project.org>, Felix Andrews <felix@nfrac.org>
 # Maintainer: Deepayan Sarkar <deepayan.sarkar@r-project.org>
-# Description: Extra graphical utilities based on lattice
-# Depends: R (>= 2.10.0), RColorBrewer, lattice (>= 0.18-1)
-# Imports: grid
-# Suggests: maps, mapproj, deldir, tripack, quantreg, zoo, MASS, mgcv
+# Description: Building on the infrastructure provided by the lattice package, this package provides several new high-level functions and methods, as well as additional utilities such as panel and axis annotation functions.
+# Depends: R (>= 2.10.0), lattice, RColorBrewer
+# Imports: grid, stats, utils, grDevices
+# Suggests: maps, mapproj, deldir, tripack, zoo, MASS, quantreg, mgcv
 # URL: http://latticeextra.r-forge.r-project.org/
 # LazyLoad: yes
 # LazyData: yes
 # License: GPL (>= 2)
-# Packaged: 2013-08-15 16:03:24 UTC; deepayan
 # NeedsCompilation: no
+# Packaged: 2016-02-09 11:06:00 UTC; deepayan
 # Repository: CRAN
-# Date/Publication: 2013-08-15 18:21:41
+# Date/Publication: 2016-02-09 14:36:31
 
 # See
 # http://docs.continuum.io/conda/build.html for

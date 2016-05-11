@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-copula
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,28 +34,29 @@ build:
 # Suggests: MASS, KernSmooth, sfsmisc, scatterplot3d, Rmpfr, bbmle, knitr, parallel, mvnormtest, partitions, polynom, randtoolbox, rugarch, Runuran, tseries, VGAM, VineCopula, zoo
 requirements:
   build:
-    - r
+    - r-base
     - r-adgoftest
-    - r-matrix # [not win]
+    - r-matrix
     - r-colorspace
     - r-gsl
-    - r-lattice # [not win]
+    - r-lattice
     - r-mvtnorm
     - r-pspline
     - r-stabledist >=0.6_4
-    - gcc # [not win]
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
+    - r-base
     - r-adgoftest
-    - r-matrix # [not win]
+    - r-matrix
     - r-colorspace
     - r-gsl
-    - r-lattice # [not win]
+    - r-lattice
     - r-mvtnorm
     - r-pspline
     - r-stabledist >=0.6_4
-    - libgcc # [not win]
 
 test:
   commands:
@@ -78,6 +82,7 @@ about:
     options. Merged former package ''nacopula'' for nested Archimedean copulas: Efficient
     sampling algorithms, various estimators, goodness-of-fit tests and related tools
     and special functions.'
+
   license_family: GPL3
 
 # The original CRAN metadata for this package was:

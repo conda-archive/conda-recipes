@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-kernsmooth
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -32,11 +35,12 @@ build:
 requirements:
   build:
     - r-base
-    - gcc # [not win]
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
-    - libgcc # [not win]
+    - r-base
 
 test:
   commands:
@@ -56,6 +60,7 @@ about:
   summary: 'Functions for kernel smoothing (and density estimation) corresponding to the book:  Wand,
     M.P. and Jones, M.C. (1995) "Kernel Smoothing".'
 
+  license_family: Public-Domain
 
 # The original CRAN metadata for this package was:
 

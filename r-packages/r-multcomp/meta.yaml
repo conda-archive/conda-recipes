@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-multcomp
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.4_1"
+  version: "1.4_4"
 
 source:
-  fn: multcomp_1.4-1.tar.gz
+  fn: multcomp_1.4-4.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/multcomp_1.4-1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/multcomp/multcomp_1.4-1.tar.gz
+    - http://cran.r-project.org/src/contrib/multcomp_1.4-4.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/multcomp/multcomp_1.4-4.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,20 +34,20 @@ build:
 # Suggests: lme4 (>= 0.999375-16), nlme, robustbase, coin, MASS, car, foreign, xtable, lmtest, coxme (>= 2.2-1), SimComp, ISwR
 requirements:
   build:
-    - r
+    - r-base
     - r-th.data >=1.0_2
-    - r-codetools # [not win]
+    - r-codetools
     - r-mvtnorm >=1.0_3
     - r-sandwich >=2.3_0
-    - r-survival >=2.35_7 # [not win]
+    - r-survival >=2.35_7
 
   run:
-    - r
+    - r-base
     - r-th.data >=1.0_2
-    - r-codetools # [not win]
+    - r-codetools
     - r-mvtnorm >=1.0_3
     - r-sandwich >=2.3_0
-    - r-survival >=2.35_7 # [not win]
+    - r-survival >=2.35_7
 
 test:
   commands:
@@ -66,12 +69,13 @@ about:
     models. The package includes demos reproducing analyzes presented in the book "Multiple
     Comparisons Using R" (Bretz, Hothorn,  Westfall, 2010, CRC Press).
   license_family: GPL2
+
 # The original CRAN metadata for this package was:
 
 # Package: multcomp
 # Title: Simultaneous Inference in General Parametric Models
-# Version: 1.4-1
-# Date: 2015-07-20
+# Version: 1.4-4
+# Date: 2016-02-17
 # Authors@R: c(person("Torsten", "Hothorn", role = c("aut", "cre"),  email = "Torsten.Hothorn@R-project.org"),  person("Frank", "Bretz", role = "aut"),  person("Peter", "Westfall", role = "aut"), person("Richard M.", "Heiberger", role = "ctb"), person("Andre", "Schuetzenmeister", role = "ctb"), person("Susan", "Scheibe", role = "ctb"))
 # Description: Simultaneous tests and confidence intervals for general linear hypotheses in parametric models, including  linear, generalized linear, linear mixed effects, and survival models. The package includes demos reproducing analyzes presented in the book "Multiple Comparisons Using R" (Bretz, Hothorn,  Westfall, 2010, CRC Press).
 # Depends: stats, graphics, mvtnorm (>= 1.0-3), survival (>= 2.35-7), TH.data (>= 1.0-2)
@@ -81,11 +85,11 @@ about:
 # LazyData: yes
 # License: GPL-2
 # NeedsCompilation: no
-# Packaged: 2015-07-22 14:59:27 UTC; hothorn
+# Packaged: 2016-02-17 14:22:07 UTC; hothorn
 # Author: Torsten Hothorn [aut, cre], Frank Bretz [aut], Peter Westfall [aut], Richard M. Heiberger [ctb], Andre Schuetzenmeister [ctb], Susan Scheibe [ctb]
 # Maintainer: Torsten Hothorn <Torsten.Hothorn@R-project.org>
 # Repository: CRAN
-# Date/Publication: 2015-07-23 05:46:01
+# Date/Publication: 2016-02-17 16:15:33
 
 # See
 # http://docs.continuum.io/conda/build.html for

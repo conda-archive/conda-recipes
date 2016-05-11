@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-rcurl
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.95_4.7"
+  version: "1.95_4.8"
 
 source:
-  fn: RCurl_1.95-4.7.tar.gz
+  fn: RCurl_1.95-4.8.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/RCurl_1.95-4.7.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/RCurl/RCurl_1.95-4.7.tar.gz
+    - http://cran.r-project.org/src/contrib/RCurl_1.95-4.8.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/RCurl/RCurl_1.95-4.8.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,16 +34,17 @@ build:
 # Suggests: Rcompression, XML
 requirements:
   build:
-    - r
+    - r-base
     - r-bitops
-    - gcc # [not win]
-    - curl # [linux]
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
+    - {{native}}curl      # [not osx]
 
   run:
-    - r
+    - r-base
     - r-bitops
-    - libgcc # [not win]
-    - curl # [linux]
+    - {{native}}curl      # [not osx]
 
 test:
   commands:
@@ -55,7 +59,7 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: http://www.omegahat.org/RCurl
+  home: http://www.omegahat.net/RCurl
   license: BSD
   summary: A wrapper for 'libcurl' <http://curl.haxx.se/libcurl/> Provides functions to allow
     one to compose general HTTP requests and provides convenient functions to fetch
@@ -66,10 +70,11 @@ about:
     extensive, supporting FTP/FTPS/TFTP (uploads and downloads), SSL/HTTPS, telnet,
     dict, ldap, and also supports cookies, redirects, authentication, etc.
   license_family: BSD
+
 # The original CRAN metadata for this package was:
 
 # Package: RCurl
-# Version: 1.95-4.7
+# Version: 1.95-4.8
 # Title: General Network (HTTP/FTP/...) Client Interface for R
 # Author: Duncan Temple Lang and the CRAN team
 # SystemRequirements: GNU make, libcurl
@@ -78,16 +83,16 @@ about:
 # License: BSD
 # Depends: R (>= 3.0.0), methods, bitops
 # Suggests: Rcompression, XML
-# URL: http://www.omegahat.org/RCurl
-# Additional_repositories: http://www.omegahat.org/R/
+# URL: http://www.omegahat.net/RCurl
+# Additional_repositories: http://www.omegahat.net/R/
 # Limitations: One doesn't yet have full control over the contents of a POST form such as specifying files, content type. Error handling uses a single global variable at present.
 # Note: This will be used generally to communicate with HTTP servers and specifically in the SOAP package, HTML forms and for accessing data on Web sites that require more state information than simply URL access (e.g. cookies).
 # Check: To run R CMD check, one really needs network access. It is an HTTP client! This can be problematic as a Web site may be down when you run but the real tests are important.
 # Collate: aclassesEnums.R bitClasses.R xbits.R base64.R binary.S classes.S curl.S curlAuthConstants.R curlEnums.R curlError.R curlInfo.S dynamic.R form.S getFormParams.R getURLContent.R header.R http.R httpError.R httpErrors.R iconv.R info.S mime.R multi.S options.S scp.R support.S upload.R urlExists.R zclone.R zzz.R
 # NeedsCompilation: yes
-# Packaged: 2015-06-30 10:26:34 UTC; ripley
+# Packaged: 2016-03-01 07:37:59 UTC; ripley
 # Repository: CRAN
-# Date/Publication: 2015-06-30 14:32:11
+# Date/Publication: 2016-03-01 10:54:28
 
 # See
 # http://docs.continuum.io/conda/build.html for

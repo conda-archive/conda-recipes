@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-repr
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.3"
+  version: "0.4"
 
 source:
 
 
   git_url: https://github.com/IRkernel/repr/
-  git_tag: 0.3
+  git_tag: 0.4
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -29,10 +32,12 @@ build:
 # Suggests: highr
 requirements:
   build:
-    - r
+    - r-base
+    - posix               # [win]
+    - {{posix}}git        # [win]
 
   run:
-    - r
+    - r-base
 
 test:
   commands:
@@ -51,11 +56,12 @@ about:
   license: GPL-3
   summary: String and binary representations of objects for several formats / mime types.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: repr
 # Title: Serializable representations
-# Version: 0.3
+# Version: 0.4
 # Authors@R: 'Philipp A. <flying-sheep@web.de> [aut, cre]'
 # Description: String and binary representations of objects for several formats / mime types.
 # Depends: R (>= 3.0.1)

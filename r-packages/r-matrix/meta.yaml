@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-matrix
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.2_2"
+  version: "1.2_4"
 
 source:
-  fn: Matrix_1.2-2.tar.gz
+  fn: Matrix_1.2-4.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/Matrix_1.2-2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/Matrix/Matrix_1.2-2.tar.gz
+    - http://cran.r-project.org/src/contrib/Matrix_1.2-4.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/Matrix/Matrix_1.2-4.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -32,13 +35,14 @@ build:
 requirements:
   build:
     - r-base
-    - r-lattice # [not win]
-    - gcc # [not win]
+    - r-lattice
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
-    - r-lattice # [not win]
-    - libgcc # [not win]
+    - r-base
+    - r-lattice
 
 test:
   commands:
@@ -54,15 +58,16 @@ test:
 
 about:
   home: http://Matrix.R-forge.R-project.org/
-  license: GPL (>= 2)
+  license: GPL (>= 2) | file LICENCE
   summary: Classes and methods for dense and sparse matrices and operations on them using 'LAPACK'
     and 'SuiteSparse'.
+  license_family: GPL3
 
 # The original CRAN metadata for this package was:
 
 # Package: Matrix
-# Version: 1.2-2
-# Date: 2015-07-03
+# Version: 1.2-4
+# Date: 2016-03-02
 # Priority: recommended
 # Title: Sparse and Dense Matrix Classes and Methods
 # Author: Douglas Bates <bates@stat.wisc.edu> and Martin Maechler
@@ -78,13 +83,12 @@ about:
 # LazyDataNote: not possible, since we use data/*.R *and* our classes
 # ByteCompile: yes
 # BuildResaveData: no
-# License: GPL (>= 2)
-# LicenseNote: The Matrix package includes libraries AMD, CHOLMOD, COLAMD, CSparse and SPQR from the SuiteSparse collection of Tim Davis.  All sections of that code are covered by the GPL or LGPL licenses.  See the directory doc/UFsparse for details.
+# License: GPL (>= 2) | file LICENCE
 # URL: http://Matrix.R-forge.R-project.org/
 # NeedsCompilation: yes
-# Packaged: 2015-07-03 21:27:51 UTC; maechler
+# Packaged: 2016-03-02 10:23:02 UTC; maechler
 # Repository: CRAN
-# Date/Publication: 2015-07-08 09:35:36
+# Date/Publication: 2016-03-02 16:10:51
 
 # See
 # http://docs.continuum.io/conda/build.html for

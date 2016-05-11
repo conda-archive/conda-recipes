@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-devtools
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.9.1"
+  version: "1.10.0"
 
 source:
-  fn: devtools_1.9.1.tar.gz
+  fn: devtools_1.10.0.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/devtools_1.9.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/devtools/devtools_1.9.1.tar.gz
+    - http://cran.r-project.org/src/contrib/devtools_1.10.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/devtools/devtools_1.10.0.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -28,37 +31,32 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat (>= 0.7), BiocInstaller, Rcpp (>= 0.10.0), MASS, rmarkdown, knitr, lintr (>= 0.2.1), bitops
+# Suggests: curl (>= 0.9), testthat (>= 0.7), BiocInstaller, Rcpp (>= 0.10.0), MASS, rmarkdown, knitr, lintr (>= 0.2.1), bitops, roxygen2 (>= 5.0.0), evaluate, rversions
 requirements:
   build:
-    - r
-    - r-curl >=0.9
+    - r-base
     - r-digest
-    - r-evaluate
     - r-git2r >=0.11.0
     - r-httr >=0.4
     - r-jsonlite
     - r-memoise
-    - r-roxygen2 >=4.1.0
     - r-rstudioapi >=0.2.0
-    - r-rversions
     - r-whisker
-    - gcc # [not win]
+    - r-withr
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
-    - r-curl >=0.9
+    - r-base
     - r-digest
-    - r-evaluate
     - r-git2r >=0.11.0
     - r-httr >=0.4
     - r-jsonlite
     - r-memoise
-    - r-roxygen2 >=4.1.0
     - r-rstudioapi >=0.2.0
-    - r-rversions
     - r-whisker
-    - libgcc # [not win]
+    - r-withr
 
 test:
   commands:
@@ -77,26 +75,28 @@ about:
   license: GPL (>= 2)
   summary: Collection of package development tools.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: devtools
 # Title: Tools to Make Developing R Packages Easier
-# Version: 1.9.1
+# Version: 1.10.0
 # Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")), person("Winston", "Chang", role = "aut"), person("RStudio", role = "cph"), person("R Core team", role = "ctb", comment = "Some namespace and vignette code extracted from base R") )
 # Description: Collection of package development tools.
 # URL: https://github.com/hadley/devtools
 # BugReports: https://github.com/hadley/devtools/issues
 # Depends: R (>= 3.0.2)
-# Imports: httr (>= 0.4), curl (>= 0.9), utils, tools, methods, memoise, whisker, evaluate, digest, rstudioapi (>= 0.2.0), jsonlite, roxygen2 (>= 4.1.0), rversions, stats, git2r (>= 0.11.0)
-# Suggests: testthat (>= 0.7), BiocInstaller, Rcpp (>= 0.10.0), MASS, rmarkdown, knitr, lintr (>= 0.2.1), bitops
+# Imports: httr (>= 0.4), utils, tools, methods, memoise, whisker, digest, rstudioapi (>= 0.2.0), jsonlite, stats, git2r (>= 0.11.0), withr
+# Suggests: curl (>= 0.9), testthat (>= 0.7), BiocInstaller, Rcpp (>= 0.10.0), MASS, rmarkdown, knitr, lintr (>= 0.2.1), bitops, roxygen2 (>= 5.0.0), evaluate, rversions
 # License: GPL (>= 2)
 # VignetteBuilder: knitr
+# RoxygenNote: 5.0.1
 # NeedsCompilation: yes
-# Packaged: 2015-09-11 15:05:55 UTC; hadley
+# Packaged: 2016-01-22 15:20:53 UTC; hadley
 # Author: Hadley Wickham [aut, cre], Winston Chang [aut], RStudio [cph], R Core team [ctb] (Some namespace and vignette code extracted from base R)
 # Maintainer: Hadley Wickham <hadley@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2015-09-11 17:41:09
+# Date/Publication: 2016-01-23 14:39:06
 
 # See
 # http://docs.continuum.io/conda/build.html for

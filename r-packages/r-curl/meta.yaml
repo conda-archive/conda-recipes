@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-curl
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.9.4"
+  version: "0.9.6"
 
 source:
-  fn: curl_0.9.4.tar.gz
+  fn: curl_0.9.6.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/curl_0.9.4.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/curl/curl_0.9.4.tar.gz
+    - http://cran.r-project.org/src/contrib/curl_0.9.6.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/curl/curl_0.9.6.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,14 +34,15 @@ build:
 # Suggests: testthat, knitr, jsonlite, rmarkdown, magrittr
 requirements:
   build:
-    - r
-    - curl
-    - gcc # [not win]
+    - r-base
+    - {{native}}curl
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
-    - curl
-    - libgcc # [not win]
+    - r-base
+    - {{native}}curl
 
 test:
   commands:
@@ -53,39 +57,41 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: https://github.com/jeroenooms/curl, https://www.opencpu.org/posts/curl-release-0-8/
+  home: https://github.com/jeroenooms/curl https://www.opencpu.org/posts/curl-release-0-8/
   license: MIT + file LICENSE
   summary: The curl() and curl_download() functions provide highly configurable drop-in replacements
     for base url() and download.file() with better performance, support for encryption
-    (https://, ftps://), 'gzip' compression, authentication, and other 'libcurl' goodies.
-    The core of the package implements a framework for performing fully customized requests
+    (https, ftps), gzip compression, authentication, and other libcurl goodies. The
+    core of the package implements a framework for performing fully customized requests
     where data can be processed either in memory, on disk, or streaming via the callback
-    or connection interfaces. Some knowledge of 'libcurl' is recommended; for a more-user-friendly
-    web client see the 'httr' package which builds on this package with HTTP specific
+    or connection interfaces. Some knowledge of libcurl is recommended; for a more-user-friendly
+    web client see the 'httr' package which builds on this package with http specific
     tools and logic.
   license_family: MIT
+
 # The original CRAN metadata for this package was:
 
 # Package: curl
 # Type: Package
 # Title: A Modern and Flexible Web Client for R
-# Version: 0.9.4
+# Version: 0.9.6
 # Authors@R: c( person("Jeroen", "Ooms", , "jeroen.ooms@stat.ucla.edu", role = c("cre", "aut")), person("Hadley", "Wickham", , "hadley@rstudio.com", role = "ctb"), person("RStudio", role = "cph") )
-# Description: The curl() and curl_download() functions provide highly configurable drop-in replacements for base url() and download.file() with better performance, support for encryption (https://, ftps://), 'gzip' compression, authentication, and other 'libcurl' goodies. The core of the package implements a framework for performing fully customized requests where data can be processed either in memory, on disk, or streaming via the callback or connection interfaces. Some knowledge of 'libcurl' is recommended; for a more-user-friendly web client see the 'httr' package which builds on this package with HTTP specific tools and logic.
+# Description: The curl() and curl_download() functions provide highly configurable drop-in replacements for base url() and download.file() with better performance, support for encryption (https, ftps), gzip compression, authentication, and other libcurl goodies. The core of the package implements a framework for performing fully customized requests where data can be processed either in memory, on disk, or streaming via the callback or connection interfaces. Some knowledge of libcurl is recommended; for a more-user-friendly web client see the 'httr' package which builds on this package with http specific tools and logic.
 # License: MIT + file LICENSE
 # SystemRequirements: libcurl: libcurl-devel (rpm) or libcurl4-openssl-dev (deb).
-# URL: https://github.com/jeroenooms/curl, https://www.opencpu.org/posts/curl-release-0-8/
+# URL: https://github.com/jeroenooms/curl https://www.opencpu.org/posts/curl-release-0-8/
 # BugReports: https://github.com/jeroenooms/curl/issues
 # Suggests: testthat, knitr, jsonlite, rmarkdown, magrittr
 # VignetteBuilder: knitr
-# Depends: R (>= 2.10.0)
+# Depends: R (>= 3.0.0)
 # LazyData: true
+# RoxygenNote: 5.0.1
 # NeedsCompilation: yes
-# Packaged: 2015-11-20 11:16:49 UTC; jeroen
+# Packaged: 2016-02-17 20:25:48 UTC; jeroen
 # Author: Jeroen Ooms [cre, aut], Hadley Wickham [ctb], RStudio [cph]
 # Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>
 # Repository: CRAN
-# Date/Publication: 2015-11-20 18:08:01
+# Date/Publication: 2016-02-17 23:08:23
 
 # See
 # http://docs.continuum.io/conda/build.html for

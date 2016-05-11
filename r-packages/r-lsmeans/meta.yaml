@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-lsmeans
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "2.20_23"
+  version: "2.23"
 
 source:
-  fn: lsmeans_2.20-23.tar.gz
+  fn: lsmeans_2.23.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/lsmeans_2.20-23.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/lsmeans/lsmeans_2.20-23.tar.gz
+    - http://cran.r-project.org/src/contrib/lsmeans_2.23.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/lsmeans/lsmeans_2.23.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -28,25 +31,27 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: car, lattice, MCMCpack, mediation, multcompView, ordinal, pbkrtest (>= 0.4-1), CARBayes, coxme, gee, geepack, glmmADMB, lme4.0, lme4, MASS, MCMCglmm, nnet, survival
+# Suggests: car, lattice, MCMCpack, mediation, multcompView, ordinal, pbkrtest (>= 0.4-1), CARBayes, coxme, gee, geepack, glmmADMB, lme4.0, lme4, MASS, MCMCglmm, nnet, pscl, survival
 requirements:
   build:
-    - r
+    - r-base
     - r-coda >=0.17
     - r-estimability
     - r-multcomp
     - r-mvtnorm
-    - r-nlme # [not win]
+    - r-nlme
     - r-plyr
+    - r-xtable >=1.8_2
 
   run:
-    - r
+    - r-base
     - r-coda >=0.17
     - r-estimability
     - r-multcomp
     - r-mvtnorm
-    - r-nlme # [not win]
+    - r-nlme
     - r-plyr
+    - r-xtable >=1.8_2
 
 test:
   commands:
@@ -67,28 +72,29 @@ about:
     Compute contrasts or linear functions of least-squares means, and comparisons of
     slopes. Plots and compact letter displays.
   license_family: GPL2
+
 # The original CRAN metadata for this package was:
 
 # Package: lsmeans
 # Type: Package
 # Title: Least-Squares Means
-# Version: 2.20-23
-# Date: 2015-10-09
-# Authors@R: c(person("Russell", "Lenth", role = c("aut", "cre"),  email = "russell-lenth@uiowa.edu"), person("Maxime", "Herv\\'e", role = "ctb"))
-# Depends: estimability, methods, R (>= 3.0)
-# Suggests: car, lattice, MCMCpack, mediation, multcompView, ordinal, pbkrtest (>= 0.4-1), CARBayes, coxme, gee, geepack, glmmADMB, lme4.0, lme4, MASS, MCMCglmm, nnet, survival
-# Imports: graphics, stats, utils, nlme, coda (>= 0.17), multcomp, plyr, mvtnorm
+# Version: 2.23
+# Date: 2016-03-09
+# Authors@R: c(person("Russell", "Lenth", role = c("aut", "cre"),  email = "russell-lenth@uiowa.edu"))
+# Depends: estimability, methods, R (>= 3.2)
+# Suggests: car, lattice, MCMCpack, mediation, multcompView, ordinal, pbkrtest (>= 0.4-1), CARBayes, coxme, gee, geepack, glmmADMB, lme4.0, lme4, MASS, MCMCglmm, nnet, pscl, survival
+# Imports: graphics, stats, utils, nlme, coda (>= 0.17), multcomp, plyr, mvtnorm, xtable (>= 1.8-2)
 # Additional_repositories: http://glmmadmb.r-forge.r-project.org/repos, http://lme4.0.r-forge.r-project.org/repos
 # LazyData: yes
 # ByteCompile: yes
 # Description: Obtain least-squares means for many linear, generalized linear,  and mixed models. Compute contrasts or linear functions of least-squares means, and comparisons of slopes. Plots and compact letter displays.
 # License: GPL-2
 # NeedsCompilation: no
-# Packaged: 2015-10-09 21:02:24 UTC; rlenth
-# Author: Russell Lenth [aut, cre], Maxime Herv\'e [ctb]
+# Packaged: 2016-03-09 23:09:13 UTC; rlenth
+# Author: Russell Lenth [aut, cre]
 # Maintainer: Russell Lenth <russell-lenth@uiowa.edu>
 # Repository: CRAN
-# Date/Publication: 2015-10-10 22:50:43
+# Date/Publication: 2016-03-10 08:00:28
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-forecast
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "6.2"
+  version: "7.0"
 
 source:
-  fn: forecast_6.2.tar.gz
+  fn: forecast_7.0.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/forecast_6.2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/forecast/forecast_6.2.tar.gz
+    - http://cran.r-project.org/src/contrib/forecast_7.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/forecast/forecast_7.0.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,28 +34,31 @@ build:
 # Suggests: testthat, fpp
 requirements:
   build:
-    - r
+    - r-base
     - r-rcpp >=0.11.0
     - r-rcpparmadillo >=0.2.35
     - r-colorspace
     - r-fracdiff
-    - r-nnet # [not win]
+    - r-ggplot2 >=2.0.0
+    - r-nnet
     - r-timedate
     - r-tseries
     - r-zoo
-    - gcc # [not win]
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
+    - r-base
     - r-rcpp >=0.11.0
     - r-rcpparmadillo >=0.2.35
     - r-colorspace
     - r-fracdiff
-    - r-nnet # [not win]
+    - r-ggplot2 >=2.0.0
+    - r-nnet
     - r-timedate
     - r-tseries
     - r-zoo
-    - libgcc # [not win]
 
 test:
   commands:
@@ -72,27 +78,29 @@ about:
   summary: Methods and tools for displaying and analysing univariate time series forecasts including
     exponential smoothing via state space models and automatic ARIMA modelling.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: forecast
-# Version: 6.2
+# Version: 7.0
 # Title: Forecasting Functions for Time Series and Linear Models
 # Description: Methods and tools for displaying and analysing univariate time series forecasts including exponential smoothing via state space models and automatic ARIMA modelling.
 # Depends: R (>= 3.0.2), stats, graphics, zoo, timeDate
-# Imports: tseries, fracdiff, Rcpp (>= 0.11.0), nnet, colorspace, parallel
+# Imports: tseries, fracdiff, Rcpp (>= 0.11.0), nnet, colorspace, parallel, ggplot2 (>= 2.0.0)
 # Suggests: testthat, fpp
 # LinkingTo: Rcpp (>= 0.11.0), RcppArmadillo (>= 0.2.35)
 # LazyData: yes
 # ByteCompile: TRUE
-# Author: Rob J Hyndman <Rob.Hyndman@monash.edu>.  Contributors include George Athanasopoulos, Christoph Bergmeir,  Carlos Cinelli, Yousaf Khan, Zach Mayer, Slava Razbash,  Drew Schmidt, David Shaub, Yuan Tang, Earo Wang, Zhenyu Zhou.
-# Maintainer: Rob J Hyndman <Rob.Hyndman@monash.edu>
+# Authors@R: c(person(given="Rob", family="Hyndman", role=c("aut", "cre", "cph"), email="Rob.Hyndman@monash.edu"))
 # BugReports: https://github.com/robjhyndman/forecast/issues
 # License: GPL (>= 2)
 # URL: http://github.com/robjhyndman/forecast
 # NeedsCompilation: yes
-# Packaged: 2015-10-19 22:52:46 UTC; hyndman
+# Packaged: 2016-04-03 22:35:26 UTC; hyndman
+# Author: Rob Hyndman [aut, cre, cph]
+# Maintainer: Rob Hyndman <Rob.Hyndman@monash.edu>
 # Repository: CRAN
-# Date/Publication: 2015-10-20 08:06:46
+# Date/Publication: 2016-04-04 01:21:21
 
 # See
 # http://docs.continuum.io/conda/build.html for

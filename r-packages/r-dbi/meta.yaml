@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-dbi
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -21,8 +24,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 3 # [osx]
-  number: 2 # [not osx]
+  number: 2
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -32,10 +34,10 @@ build:
 # Suggests: testthat, RSQLite
 requirements:
   build:
-    - r
+    - r-base
 
   run:
-    - r
+    - r-base
 
 test:
   commands:
@@ -56,6 +58,7 @@ about:
     management systems.  All classes in this package are virtual and need to be extended
     by the various R/DBMS implementations.
   license_family: LGPL
+
 # The original CRAN metadata for this package was:
 
 # Package: DBI

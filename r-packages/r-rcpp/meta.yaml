@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-rcpp
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.12.2"
+  version: "0.12.4"
 
 source:
-  fn: Rcpp_0.12.2.tar.gz
+  fn: Rcpp_0.12.4.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/Rcpp_0.12.2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/Rcpp/Rcpp_0.12.2.tar.gz
+    - http://cran.r-project.org/src/contrib/Rcpp_0.12.4.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/Rcpp/Rcpp_0.12.4.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,12 +34,13 @@ build:
 # Suggests: RUnit, inline, rbenchmark, highlight, pkgKitten (>= 0.1.2)
 requirements:
   build:
-    - r
-    - gcc # [not win]
+    - r-base
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
-    - libgcc # [not win]
+    - r-base
 
 test:
   commands:
@@ -61,12 +65,13 @@ about:
     the paper by Eddelbuettel and  Francois (2011, JSS), and the book by Eddelbuettel
     (2013, Springer); see  'citation("Rcpp")' for details on these last two.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: Rcpp
 # Title: Seamless R and C++ Integration
-# Version: 0.12.2
-# Date: 2015-11-14
+# Version: 0.12.4
+# Date: 2016-03-22
 # Author: Dirk Eddelbuettel, Romain Francois, JJ Allaire, Kevin Ushey,  Qiang Kou, Douglas Bates and John Chambers
 # Maintainer: Dirk Eddelbuettel <edd@debian.org>
 # Description: The 'Rcpp' package provides R functions as well as C++ classes which offer a seamless integration of R and C++. Many R data types and objects can be mapped back and forth to C++ equivalents which facilitates both writing of new code as well as easier integration of third-party libraries. Documentation  about 'Rcpp' is provided by several vignettes included in this package, via the  'Rcpp Gallery' site at <http://gallery.rcpp.org>, the paper by Eddelbuettel and  Francois (2011, JSS), and the book by Eddelbuettel (2013, Springer); see  'citation("Rcpp")' for details on these last two.
@@ -79,9 +84,9 @@ about:
 # BugReports: https://github.com/RcppCore/Rcpp/issues
 # MailingList: Please send questions and comments regarding Rcpp to rcpp-devel@lists.r-forge.r-project.org
 # NeedsCompilation: yes
-# Packaged: 2015-11-14 14:50:33.472707 UTC; edd
+# Packaged: 2016-03-22 11:26:27.784601 UTC; edd
 # Repository: CRAN
-# Date/Publication: 2015-11-15 22:07:02
+# Date/Publication: 2016-03-26 21:39:42
 
 # See
 # http://docs.continuum.io/conda/build.html for

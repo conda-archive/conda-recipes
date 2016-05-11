@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-tseries
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,16 +34,17 @@ build:
 # Suggests: its
 requirements:
   build:
-    - r
+    - r-base
     - r-quadprog
     - r-zoo
-    - gcc # [not win]
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
+    - r-base
     - r-quadprog
     - r-zoo
-    - libgcc # [not win]
 
 test:
   commands:
@@ -59,6 +63,7 @@ about:
   license: GPL-2
   summary: Time series analysis and computational finance.
   license_family: GPL2
+
 # The original CRAN metadata for this package was:
 
 # Package: tseries

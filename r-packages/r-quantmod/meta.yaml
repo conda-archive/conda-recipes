@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-quantmod
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -21,7 +24,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 2
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -31,18 +34,19 @@ build:
 # Suggests: DBI,RMySQL,RSQLite,timeSeries,its,XML,downloader
 requirements:
   build:
-    - r
+    - r-base
     - r-ttr >=0.2
     - r-xts >=0.9_0
     - r-zoo
-    - gcc # [not win]
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
+    - r-base
     - r-ttr >=0.2
     - r-xts >=0.9_0
     - r-zoo
-    - libgcc # [not win]
 
 test:
   commands:
@@ -61,6 +65,7 @@ about:
   license: GPL-3
   summary: Specify, build, trade, and analyse quantitative financial trading strategies.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: quantmod

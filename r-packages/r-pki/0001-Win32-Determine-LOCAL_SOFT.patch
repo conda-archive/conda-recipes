@@ -1,0 +1,11 @@
+--- configure.win	2015-07-27 22:17:40.000000000 +0100
++++ configure.win.new	2016-04-09 13:59:56.385248500 +0100
+@@ -3,6 +3,8 @@
+ echo "  checking openssl headers and libraries"
+ allok=yes
+ 
++LOCAL_SOFT=$(${R_HOME}/bin/R.exe CMD config LOCAL_SOFT)
++
+ if [ -e "${LOCAL_SOFT}/include/openssl/ssl.h" ]; then
+     echo " --- Using local version of openssl found in LOCAL_SOFT: ${LOCAL_SOFT}"
+     echo " --- Proceed at your own risk, if in doubt unset LOCAL_SOFT to use our binary."

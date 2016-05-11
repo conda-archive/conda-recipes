@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-aer
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,21 +34,21 @@ build:
 # Suggests: boot, dynlm, effects, foreign, ineq, KernSmooth, lattice, MASS, mlogit, nlme, nnet, np, plm, pscl, quantreg, ROCR, sampleSelection, scatterplot3d, strucchange, systemfit, rgl, truncreg, tseries, urca
 requirements:
   build:
-    - r
+    - r-base
     - r-formula >=0.2_0
     - r-car >=2.0_1
     - r-lmtest
     - r-sandwich
-    - r-survival >=2.37_5 # [not win]
+    - r-survival >=2.37_5
     - r-zoo
 
   run:
-    - r
+    - r-base
     - r-formula >=0.2_0
     - r-car >=2.0_1
     - r-lmtest
     - r-sandwich
-    - r-survival >=2.37_5 # [not win]
+    - r-survival >=2.37_5
     - r-zoo
 
 test:
@@ -66,8 +69,8 @@ about:
   summary: Functions, data sets, examples, demos, and vignettes for the book Christian Kleiber
     and Achim Zeileis (2008), Applied Econometrics with R, Springer-Verlag, New York.
     ISBN 978-0-387-77316-2. (See the vignette for a package overview.)
-
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: AER
