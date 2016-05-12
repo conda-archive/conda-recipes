@@ -1,0 +1,98 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-oce
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.9_18"
+
+source:
+  fn: oce_0.9-18.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/oce_0.9-18.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/oce/oce_0.9-18.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: ocedata, foreign, mapproj, ncdf4, tiff, akima, RSQLite, DBI, rgdal, R.utils, testthat, knitr
+requirements:
+  build:
+    - r-base
+    - r-gsw
+    - {{posix}}base       # [win]
+    - {{posix}}zip        # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
+
+  run:
+    - r-base
+    - r-gsw
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('oce')" # [not win]
+    - "\"%R%\" -e \"library('oce')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://dankelley.github.com/oce/
+  license: GPL (>= 2)
+  summary: Supports the analysis of Oceanographic data, including 'ADCP' measurements, measurements
+    made with 'argo' floats, 'CTD' measurements, sectional data, sea-level time series,
+    coastline and topographic data, etc. Provides specialized functions for calculating
+    seawater properties such as potential temperature in either the 'UNESCO' or 'TEOS-10'
+    equation of state. Produces graphical displays that conform to the conventions of
+    the Oceanographic literature.
+  license_family: GPL2
+
+# The original CRAN metadata for this package was:
+
+# Package: oce
+# Version: 0.9-18
+# Date: 2016-02-11
+# Title: Analysis of Oceanographic Data
+# Authors@R: c(person(given="Dan", family="Kelley", email="Dan.Kelley@Dal.Ca", role=c("aut", "cre")), person(given="Clark", family="Richards", email="clark.richards@gmail.com", role=c("aut")), person(given="Chantelle", family="Layton", email="chantelle.layton@dal.ca", role=c("ctb","cph"), comment="curl() coauthor"), person(given="British Geological Survey", role=c("ctb","cph"), comment="magnetic-field fortran subroutine"))
+# Maintainer: Dan Kelley <Dan.Kelley@Dal.Ca>
+# Depends: R (>= 2.15), utils, methods, gsw
+# Suggests: ocedata, foreign, mapproj, ncdf4, tiff, akima, RSQLite, DBI, rgdal, R.utils, testthat, knitr
+# BugReports: https://github.com/dankelley/oce/issues? sort=created&direction=desc&state=open
+# Description: Supports the analysis of Oceanographic data, including 'ADCP' measurements, measurements made with 'argo' floats, 'CTD' measurements, sectional data, sea-level time series, coastline and topographic data, etc. Provides specialized functions for calculating seawater properties such as potential temperature in either the 'UNESCO' or 'TEOS-10' equation of state. Produces graphical displays that conform to the conventions of the Oceanographic literature.
+# License: GPL (>= 2)
+# URL: http://dankelley.github.com/oce/
+# LazyLoad: yes
+# LazyData: no
+# Packaged: 2016-02-11 14:51:57.294 UTC; kelley
+# Encoding: UTF-8
+# RoxygenNote: 5.0.1
+# VignetteBuilder: knitr
+# NeedsCompilation: yes
+# Author: Dan Kelley [aut, cre], Clark Richards [aut], Chantelle Layton [ctb, cph] (curl() coauthor), British Geological Survey [ctb, cph] (magnetic-field fortran subroutine)
+# Repository: CRAN
+# Date/Publication: 2016-02-12 01:36:29
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
