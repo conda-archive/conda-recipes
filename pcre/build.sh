@@ -1,13 +1,10 @@
 #!/bin/bash
 
-MACHINE="$(uname 2>/dev/null)"
+export CFLAGS="-I$PREFIX/include"
+export CPPFLAGS="-I$PREFIX/include"
+export LDFLAGS="-L$PREFIX/lib"
 
-export CPPFLAGS="-I${PREFIX}/include"
-export LDFLAGS="-L${PREFIX}/lib"
-
-mkdir -p ${PREFIX}/bin || exit 1;
-
-./configure --prefix="${PREFIX}" || return 1;
-make || return 1;
-make install || return 1;
+./configure --enable-utf --enable-unicode-properties --enable-pcregrep-libz --enable-pcregrep-libbz2 --enable-pcre16 --enable-pcre32 --prefix=$PREFIX
+make
+make install
 
