@@ -5,13 +5,13 @@ package:
   name: r-zoo
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.7_12"
+  version: "1.7_13"
 
 source:
-  fn: zoo_1.7-12.tar.gz
+  fn: zoo_1.7-13.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/zoo_1.7-12.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/zoo/zoo_1.7-12.tar.gz
+    - http://cran.r-project.org/src/contrib/zoo_1.7-13.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/zoo/zoo_1.7-13.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -68,8 +68,8 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: zoo
-# Version: 1.7-12
-# Date: 2015-03-16
+# Version: 1.7-13
+# Date: 2016-05-03
 # Title: S3 Infrastructure for Regular and Irregular Time Series (Z's Ordered Observations)
 # Authors@R: c(person(given = "Achim", family = "Zeileis", role = c("aut", "cre"), email = "Achim.Zeileis@R-project.org"), person(given = "Gabor", family = "Grothendieck", role = "aut", email = "ggrothendieck@gmail.com"), person(given = c("Jeffrey", "A."), family = "Ryan", role = "aut", email = "jeff.a.ryan@gmail.com"), person(given = "Felix", family = "Andrews", role = "ctb", email = "felix@nfrac.org"))
 # Description: An S3 class with methods for totally ordered indexed observations. It is particularly aimed at irregular time series of numeric vectors/matrices and factors. zoo's key design goals are independence of a particular index/date/time class and consistency with ts and base R by providing methods to extend standard generics.
@@ -78,12 +78,12 @@ about:
 # Imports: utils, graphics, grDevices, lattice (>= 0.20-27)
 # License: GPL-2 | GPL-3
 # URL: http://zoo.R-Forge.R-project.org/
-# Packaged: 2015-03-16 13:27:04 UTC; zeileis
+# NeedsCompilation: yes
+# Packaged: 2016-05-03 15:50:22 UTC; zeileis
 # Author: Achim Zeileis [aut, cre], Gabor Grothendieck [aut], Jeffrey A. Ryan [aut], Felix Andrews [ctb]
 # Maintainer: Achim Zeileis <Achim.Zeileis@R-project.org>
-# NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2015-03-16 19:13:58
+# Date/Publication: 2016-05-03 17:52:16
 
 # See
 # http://docs.continuum.io/conda/build.html for

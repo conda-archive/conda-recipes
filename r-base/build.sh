@@ -159,10 +159,10 @@ Mingw_w64_makefiles() {
     # The hoops we must jump through to get innosetup installed in an unattended way.
     curl -C - -o ${DLCACHE}/innoextract-1.6-windows.zip -SLO http://constexpr.org/innoextract/files/innoextract-1.6/innoextract-1.6-windows.zip
     unzip -o ${DLCACHE}/innoextract-1.6-windows.zip -d ${PWD}
-    curl -C - -o ${DLCACHE}/isetup-5.5.8-unicode.exe -SLO http://files.jrsoftware.org/is/5/isetup-5.5.8-unicode.exe || true
-    ./innoextract.exe ${DLCACHE}/isetup-5.5.8-unicode.exe
+    curl -C - -o ${DLCACHE}/innosetup-5.5.9-unicode.exe -SLO http://files.jrsoftware.org/is/5/innosetup-5.5.9-unicode.exe || true
+    echo MSYS2_ARG_CONV_EXCL is $MSYS2_ARG_CONV_EXCL
+    strace -f ./innoextract.exe ${DLCACHE}/innosetup-5.5.9-unicode.exe 2>&1
     mv app isdir
-
     if [[ "${_use_msys2_mingw_w64_tcltk}" == "yes" ]]; then
         # I wanted to go for the following unusual approach here of using conda install (in copy mode)
         # and using MSYS2's mingw-w64 tcl/tk packages, but this is something for longer-term as there
@@ -282,7 +282,7 @@ Mingw_w64_makefiles() {
     # make check-all -j1 > make-check.log 2>&1 || make check-all -j1 > make-check.2.log 2>&1 || make check-all -j1 > make-check.3.log 2>&1
     cd installer
     make imagedir
-    cp -Rf R-3.2.4revised "${PREFIX}"/R
+    cp -Rf R-3.3.0 "${PREFIX}"/R
     # Remove the recommeded libraries, we package them separately as-per the other platforms now.
     rm -Rf "${PREFIX}"/R/library/{MASS,lattice,Matrix,nlme,survival,boot,cluster,codetools,foreign,KernSmooth,rpart,class,nnet,spatial,mgcv}
     # * Here we force our MSYS2/mingw-w64 sysroot to be looked in for libraies during r-packages builds.

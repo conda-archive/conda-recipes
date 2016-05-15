@@ -5,13 +5,13 @@ package:
   name: r-slam
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.1_32"
+  version: "0.1_34"
 
 source:
-  fn: slam_0.1-32.tar.gz
+  fn: slam_0.1-34.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/slam_0.1-32.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/slam/slam_0.1-32.tar.gz
+    - http://cran.r-project.org/src/contrib/slam_0.1-34.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/slam/slam_0.1-34.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -64,7 +64,7 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: slam
-# Version: 0.1-32
+# Version: 0.1-34
 # Title: Sparse Lightweight Arrays and Matrices
 # Authors@R: c(person("Kurt", "Hornik", role = c("aut", "cre"), email = "Kurt.Hornik@R-project.org"), person("David", "Meyer", role = "aut"), person("Christian", "Buchta", role = "aut"))
 # Description: Data structures and algorithms for sparse arrays and matrices, based on index arrays and simple triplet representations, respectively.
@@ -72,12 +72,12 @@ about:
 # Imports: stats
 # Enhances: Matrix, SparseM, spam
 # License: GPL-2
-# Packaged: 2014-04-01 17:52:46 UTC; hornik
+# NeedsCompilation: yes
+# Packaged: 2016-05-04 10:24:06 UTC; hornik
 # Author: Kurt Hornik [aut, cre], David Meyer [aut], Christian Buchta [aut]
 # Maintainer: Kurt Hornik <Kurt.Hornik@R-project.org>
-# NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2014-04-02 08:44:58
+# Date/Publication: 2016-05-04 13:27:23
 
 # See
 # http://docs.continuum.io/conda/build.html for

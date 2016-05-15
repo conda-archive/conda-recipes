@@ -5,13 +5,13 @@ package:
   name: r-caret
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "6.0_64"
+  version: "6.0_68"
 
 source:
-  fn: caret_6.0-64.tar.gz
+  fn: caret_6.0-68.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/caret_6.0-64.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/caret/caret_6.0-64.tar.gz
+    - http://cran.r-project.org/src/contrib/caret_6.0-68.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/caret/caret_6.0-68.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -77,8 +77,8 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: caret
-# Version: 6.0-64
-# Date: 2016-01-04
+# Version: 6.0-68
+# Date: 2016-04-10
 # Title: Classification and Regression Training
 # Author: Max Kuhn. Contributions from Jed Wing, Steve Weston, Andre Williams, Chris Keefer, Allan Engelhardt, Tony Cooper, Zachary Mayer, Brenton Kenkel, the R Core Team, Michael Benesty, Reynald Lescarbeau, Andrew Ziem, Luca Scrucca, Yuan Tang, and Can Candan.
 # Description: Misc functions for training and plotting classification and regression models.
@@ -90,9 +90,9 @@ about:
 # Suggests: BradleyTerry2, e1071, earth (>= 2.2-3), fastICA, gam, ipred, kernlab, klaR, MASS, ellipse, mda, mgcv, mlbench, nnet, party (>= 0.9-99992), pls, pROC (>= 1.8), proxy, randomForest, RANN, spls, subselect, pamr, superpc, Cubist, testthat (>= 0.9.1)
 # License: GPL (>= 2)
 # NeedsCompilation: yes
-# Packaged: 2016-01-05 15:47:04 UTC; kuhna03
+# Packaged: 2016-04-10 14:37:08 UTC; kuhna03
 # Repository: CRAN
-# Date/Publication: 2016-01-06 10:08:57
+# Date/Publication: 2016-04-11 09:06:33
 
 # See
 # http://docs.continuum.io/conda/build.html for

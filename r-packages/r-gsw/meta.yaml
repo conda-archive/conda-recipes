@@ -35,8 +35,7 @@ build:
 requirements:
   build:
     - r-base
-    - {{posix}}base       # [win]
-    - {{posix}}zip        # [win]
+    - posix               # [win]
     - {{native}}toolchain # [win]
     - gcc                 # [not win]
 
@@ -62,7 +61,7 @@ about:
     Matlab and other code written by WG127 (Working Group 127) of SCOR/IAPSO (Scientific
     Committee on Oceanic Research / International Association for the Physical Sciences
     of the Oceans).
-  license_family: GPL2
+  license_family: GPL3
 
 # The original CRAN metadata for this package was:
 

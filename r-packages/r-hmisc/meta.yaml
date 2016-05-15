@@ -5,13 +5,13 @@ package:
   name: r-hmisc
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "3.17_3"
+  version: "3.17_4"
 
 source:
-  fn: Hmisc_3.17-3.tar.gz
+  fn: Hmisc_3.17-4.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/Hmisc_3.17-3.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/Hmisc/Hmisc_3.17-3.tar.gz
+    - http://cran.r-project.org/src/contrib/Hmisc_3.17-4.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/Hmisc/Hmisc_3.17-4.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -38,6 +38,7 @@ requirements:
     - r-formula
     - r-acepack
     - r-cluster
+    - r-data.table
     - r-foreign
     - r-ggplot2 >=2.0
     - r-gridextra
@@ -56,6 +57,7 @@ requirements:
     - r-formula
     - r-acepack
     - r-cluster
+    - r-data.table
     - r-foreign
     - r-ggplot2 >=2.0
     - r-gridextra
@@ -90,22 +92,22 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: Hmisc
-# Version: 3.17-3
-# Date: 2016-04-03
+# Version: 3.17-4
+# Date: 2016-05-02
 # Title: Harrell Miscellaneous
 # Author: Frank E Harrell Jr <f.harrell@vanderbilt.edu>, with contributions from Charles Dupont and many others.
 # Maintainer: Frank E Harrell Jr <f.harrell@vanderbilt.edu>
 # Depends: lattice, survival (>= 2.37-6), Formula, ggplot2 (>= 2.0)
-# Imports: methods, latticeExtra, cluster, rpart, nnet, acepack, foreign, gtable, grid, gridExtra
+# Imports: methods, latticeExtra, cluster, rpart, nnet, acepack, foreign, gtable, grid, gridExtra, data.table
 # Suggests: chron, rms, mice, tables, knitr, ff, ffbase, htmltools
 # Description: Contains many functions useful for data analysis, high-level graphics, utility operations, functions for computing sample size and power, importing and annotating datasets, imputing missing values, advanced table making, variable clustering, character string manipulation, conversion of R objects to LaTeX code, and recoding variables.
 # License: GPL (>= 2)
 # LazyLoad: Yes
 # URL: http://biostat.mc.vanderbilt.edu/Hmisc, https://github.com/harrelfe/Hmisc
 # NeedsCompilation: yes
-# Packaged: 2016-04-03 15:57:55 UTC; harrelfe
+# Packaged: 2016-05-02 14:10:51 UTC; harrelfe
 # Repository: CRAN
-# Date/Publication: 2016-04-03 19:37:16
+# Date/Publication: 2016-05-02 17:28:19
 
 # See
 # http://docs.continuum.io/conda/build.html for

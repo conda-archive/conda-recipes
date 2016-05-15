@@ -36,8 +36,7 @@ requirements:
   build:
     - r-base
     - r-gsw
-    - {{posix}}base       # [win]
-    - {{posix}}zip        # [win]
+    - posix               # [win]
     - {{native}}toolchain # [win]
     - gcc                 # [not win]
 
@@ -66,7 +65,7 @@ about:
     seawater properties such as potential temperature in either the 'UNESCO' or 'TEOS-10'
     equation of state. Produces graphical displays that conform to the conventions of
     the Oceanographic literature.
-  license_family: GPL2
+  license_family: GPL3
 
 # The original CRAN metadata for this package was:
 

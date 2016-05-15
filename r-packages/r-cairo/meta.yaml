@@ -38,7 +38,6 @@ requirements:
   build:
     - r-base
     - posix               # [win]
-    - {{posix}}tar        # [win]
     - {{native}}toolchain # [win]
     - gcc                 # [not win]
     - cairo               # [not win]

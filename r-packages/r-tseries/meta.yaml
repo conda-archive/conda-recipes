@@ -5,13 +5,13 @@ package:
   name: r-tseries
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.10_34"
+  version: "0.10_35"
 
 source:
-  fn: tseries_0.10-34.tar.gz
+  fn: tseries_0.10-35.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/tseries_0.10-34.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/tseries/tseries_0.10-34.tar.gz
+    - http://cran.r-project.org/src/contrib/tseries_0.10-35.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/tseries/tseries_0.10-35.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -67,7 +67,7 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: tseries
-# Version: 0.10-34
+# Version: 0.10-35
 # Title: Time Series Analysis and Computational Finance
 # Authors@R: c(person("Adrian", "Trapletti", role = "aut", email = "adrian@trapletti.org"), person("Kurt", "Hornik", role = c("aut", "cre"), email = "Kurt.Hornik@R-project.org"), person("Blake", "LeBaron", role = "ctb", comment = "BDS test code"))
 # Description: Time series analysis and computational finance.
@@ -75,12 +75,12 @@ about:
 # Suggests: its
 # Imports: graphics, stats, utils, quadprog, zoo
 # License: GPL-2
-# Packaged: 2015-02-20 12:43:13 UTC; hornik
+# NeedsCompilation: yes
+# Packaged: 2016-05-02 07:49:42 UTC; hornik
 # Author: Adrian Trapletti [aut], Kurt Hornik [aut, cre], Blake LeBaron [ctb] (BDS test code)
 # Maintainer: Kurt Hornik <Kurt.Hornik@R-project.org>
-# NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2015-02-20 14:16:24
+# Date/Publication: 2016-05-02 13:58:30
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -5,13 +5,13 @@ package:
   name: r-forecast
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "7.0"
+  version: "7.1"
 
 source:
-  fn: forecast_7.0.tar.gz
+  fn: forecast_7.1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/forecast_7.0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/forecast/forecast_7.0.tar.gz
+    - http://cran.r-project.org/src/contrib/forecast_7.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/forecast/forecast_7.1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,7 +31,7 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat, fpp
+# Suggests: testthat
 requirements:
   build:
     - r-base
@@ -82,12 +82,12 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: forecast
-# Version: 7.0
+# Version: 7.1
 # Title: Forecasting Functions for Time Series and Linear Models
 # Description: Methods and tools for displaying and analysing univariate time series forecasts including exponential smoothing via state space models and automatic ARIMA modelling.
 # Depends: R (>= 3.0.2), stats, graphics, zoo, timeDate
 # Imports: tseries, fracdiff, Rcpp (>= 0.11.0), nnet, colorspace, parallel, ggplot2 (>= 2.0.0)
-# Suggests: testthat, fpp
+# Suggests: testthat
 # LinkingTo: Rcpp (>= 0.11.0), RcppArmadillo (>= 0.2.35)
 # LazyData: yes
 # ByteCompile: TRUE
@@ -96,11 +96,11 @@ about:
 # License: GPL (>= 2)
 # URL: http://github.com/robjhyndman/forecast
 # NeedsCompilation: yes
-# Packaged: 2016-04-03 22:35:26 UTC; hyndman
+# Packaged: 2016-04-14 05:35:26 UTC; hyndman
 # Author: Rob Hyndman [aut, cre, cph]
 # Maintainer: Rob Hyndman <Rob.Hyndman@monash.edu>
 # Repository: CRAN
-# Date/Publication: 2016-04-04 01:21:21
+# Date/Publication: 2016-04-14 14:53:40
 
 # See
 # http://docs.continuum.io/conda/build.html for

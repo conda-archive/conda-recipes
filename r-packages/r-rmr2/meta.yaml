@@ -10,7 +10,7 @@ package:
 source:
 
 
-  git_url: https://github.com/RevolutionAnalytics/rmr2/
+  git_url: https://github.com/RevolutionAnalytics/rmr2
   git_tag: 3.3.1
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
@@ -84,7 +84,7 @@ about:
 # Author: Revolution Analytics
 # Depends: R (>= 2.6.0), methods
 # Imports: Rcpp, RJSONIO (>= 0.8-2), digest, functional, reshape2, stringr, plyr, caTools (>= 1.16)
-# Suggests: quickcheck (>= 3.1.0), ravro, rhdfs, testthat
+# Suggests: quickcheck (>= 3.0.0), ravro, rhdfs, testthat
 # Collate: basic.R extras.R hdfs.R keyval.R IO.R local.R mapreduce.R parse-url.R quickcheck-rmr.R streaming.R
 # Maintainer: Revolution Analytics <rhadoop@revolutionanalytics.com>
 # Description: Supports the map reduce programming model on top of hadoop streaming

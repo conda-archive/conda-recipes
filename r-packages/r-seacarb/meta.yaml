@@ -58,7 +58,7 @@ about:
   license: GPL (>= 2)
   summary: Calculates parameters of the seawater carbonate system and assists the design of ocean
     acidification perturbation experiments.
-  license_family: GPL2
+  license_family: GPL3
 
 # The original CRAN metadata for this package was:
 

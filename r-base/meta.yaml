@@ -2,15 +2,14 @@
 
 package:
   name: r-base
-  version: 3.2.4
+  version: 3.3.0
 
 source:
-  fn: R-3.2.4-revised.tar.gz
-  url: http://cran.cnr.berkeley.edu/src/base/R-3/R-3.2.4-revised.tar.gz
-  sha1: 54d8b02b4564655f1be84b4a830813f8452b5e9c
+  fn: R-3.3.0.tar.gz
+  url: http://cran.cnr.berkeley.edu/src/base/R-3/R-3.3.0.tar.gz
+  sha1: 166a25a7996150c9c83cdafcc89bfcd81578a887
   patches:
     - mac-unicode.patch # [osx]
-    - 0001-Win32-Stop-confusing-PECOFF_SHLIBS-with-CYGWIN_BUILD.patch
     - 0002-Win32-Fix-trio-config-h-include-depth-issue.patch
     - 0003-Win32-Do-not-static-libgcc-link.patch              # This patch is only correct if using MSYS2's tcltk.
     - 0004-Win32-Use-TCL_VERSION_86.patch                     # This patch is only correct if using MSYS2's tcltk.

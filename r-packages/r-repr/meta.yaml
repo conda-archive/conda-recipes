@@ -5,13 +5,13 @@ package:
   name: r-repr
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.4"
+  version: "0.7"
 
 source:
 
 
-  git_url: https://github.com/IRkernel/repr/
-  git_tag: 0.4
+  git_url: https://github.com/IRkernel/repr
+  git_tag: 0.7
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -29,7 +29,7 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: highr
+# Suggests: highr, Cairo, testthat
 requirements:
   build:
     - r-base
@@ -60,16 +60,20 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: repr
-# Title: Serializable representations
-# Version: 0.4
-# Authors@R: 'Philipp A. <flying-sheep@web.de> [aut, cre]'
+# Title: Serializable Representations
+# Version: 0.7
+# Authors@R: c( person('Philipp', 'A.', email = 'flying-sheep@web.de', role = c('aut', 'cre')), person('Thomas', 'Kluyver', email = 'thomas@kluyver.me.uk', role = 'aut'), person('Jan', 'Schulz', email = 'jasc@gmx.net', role = 'aut'), person('abielr', role = 'ctb'), person('Denilson', 'Figueiredo de Sa', role = 'ctb'), person('Jim', 'Hester', role = 'ctb'), person('karldw', role = 'ctb') )
+# Maintainer: Philipp A. <flying-sheep@web.de>
 # Description: String and binary representations of objects for several formats / mime types.
 # Depends: R (>= 3.0.1)
-# Suggests: highr
+# Imports: utils, grDevices
+# Suggests: highr, Cairo, testthat
+# Enhances: data.table, dplyr, htmlwidgets
 # License: GPL-3
 # LazyData: true
 # Encoding: UTF-8
-# Collate: 'generics.r' 'options.r' 'package.r' 'utils.r' 'repr_function.r' 'repr_help_files_with_topic.r' 'repr_list.r' 'repr_matrix_df.r' 'repr_recordedplot.r' 'repr_vector.r'
+# Collate: 'generics.r' 'options.r' 'package.r' 'utils.r' 'repr_function.r' 'repr_help_files_with_topic.r' 'repr_htmlwidget.r' 'repr_list.r' 'repr_matrix_df.r' 'repr_packageIQR.r' 'repr_recordedplot.r' 'repr_vector.r'
+# RoxygenNote: 5.0.1
 
 # See
 # http://docs.continuum.io/conda/build.html for

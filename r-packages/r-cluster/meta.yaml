@@ -5,13 +5,13 @@ package:
   name: r-cluster
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "2.0.3"
+  version: "2.0.4"
 
 source:
-  fn: cluster_2.0.3.tar.gz
+  fn: cluster_2.0.4.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/cluster_2.0.3.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/cluster/cluster_2.0.3.tar.gz
+    - http://cran.r-project.org/src/contrib/cluster_2.0.4.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/cluster/cluster_2.0.4.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -65,15 +65,15 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: cluster
-# Version: 2.0.3
-# Date: 2015-07-20
+# Version: 2.0.4
+# Date: 2016-04-16
 # Priority: recommended
 # Title: "Finding Groups in Data": Cluster Analysis Extended Rousseeuw et al.
 # Description: Methods for Cluster analysis.  Much extended the original from Peter Rousseeuw, Anja Struyf and Mia Hubert, based on Kaufman and Rousseeuw (1990) "Finding Groups in Data".
 # Maintainer: Martin Maechler <maechler@stat.math.ethz.ch>
 # Authors@R: c(person("Martin","Maechler", role=c("aut","cre"), email="maechler@stat.math.ethz.ch") ,person("Peter", "Rousseeuw", role="aut", email="rousse@uia.ua.ac.be", comment = "Fortran original") ,person("Anja", "Struyf", role="aut", comment= "S original") ,person("Mia", "Hubert", role="aut", email= "Mia.Hubert@uia.ua.ac.be", comment= "S original") ,person("Kurt", "Hornik", role=c("trl", "ctb"), email="Kurt.Hornik@R-project.org", comment="port to R; maintenance(1999-2000)") ,person("Matthias", "Studer", role="ctb") ,person("Pierre", "Roudier", role="ctb") )
-# Depends: R (>= 2.15.0), utils
-# Imports: graphics, grDevices, stats
+# Depends: R (>= 3.0.1)
+# Imports: graphics, grDevices, stats, utils
 # Suggests: MASS
 # SuggestsNote: two small examples using MASS' cov.rob() and mvrnorm()
 # LazyLoad: yes
@@ -82,10 +82,10 @@ about:
 # BuildResaveData: no
 # License: GPL (>= 2)
 # NeedsCompilation: yes
-# Packaged: 2015-07-20 08:32:32 UTC; maechler
+# Packaged: 2016-04-16 20:54:33 UTC; maechler
 # Author: Martin Maechler [aut, cre], Peter Rousseeuw [aut] (Fortran original), Anja Struyf [aut] (S original), Mia Hubert [aut] (S original), Kurt Hornik [trl, ctb] (port to R; maintenance(1999-2000)), Matthias Studer [ctb], Pierre Roudier [ctb]
 # Repository: CRAN
-# Date/Publication: 2015-07-21 07:53:10
+# Date/Publication: 2016-04-18 08:11:05
 
 # See
 # http://docs.continuum.io/conda/build.html for

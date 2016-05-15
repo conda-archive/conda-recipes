@@ -5,13 +5,13 @@ package:
   name: r-openssl
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.9.2"
+  version: "0.9.3"
 
 source:
-  fn: openssl_0.9.2.tar.gz
+  fn: openssl_0.9.3.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/openssl_0.9.2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/openssl/openssl_0.9.2.tar.gz
+    - http://cran.r-project.org/src/contrib/openssl_0.9.3.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/openssl/openssl_0.9.3.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,7 +31,7 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat, digest, knitr, jsonlite
+# Suggests: testthat, digest, knitr, rmarkdown, jsonlite
 requirements:
   build:
     - r-base
@@ -55,7 +55,7 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: https://github.com/jeroenooms/openssl
+  home: https://github.com/jeroenooms/openssl#readme
   license: MIT + file LICENSE
   summary: Bindings to OpenSSL libssl and libcrypto, plus custom SSH pubkey parsers. Supports
     RSA, DSA and NIST curves P-256, P-384 and P-521. Cryptographic signatures can either
@@ -72,22 +72,22 @@ about:
 # Package: openssl
 # Type: Package
 # Title: Toolkit for Encryption, Signatures and Certificates Based on OpenSSL
-# Version: 0.9.2
+# Version: 0.9.3
 # Authors@R: c( person("Jeroen", "Ooms", , "jeroen.ooms@stat.ucla.edu", role = c("cre", "aut")), person("Oliver", "Keyes", role = "ctb"))
 # Description: Bindings to OpenSSL libssl and libcrypto, plus custom SSH pubkey parsers. Supports RSA, DSA and NIST curves P-256, P-384 and P-521. Cryptographic signatures can either be created and verified manually or via x509 certificates. AES block cipher is used in CBC mode for symmetric encryption; RSA for asymmetric (public key) encryption. High-level envelope functions combine RSA and AES for encrypting arbitrary sized data. Other utilities include key generators, hash functions (md5, sha1, sha256, etc), base64 encoder, a secure random number generator, and 'bignum' math methods for manually performing crypto calculations on large multibyte integers.
 # License: MIT + file LICENSE
-# URL: https://github.com/jeroenooms/openssl
+# URL: https://github.com/jeroenooms/openssl#readme
 # BugReports: https://github.com/jeroenooms/openssl/issues
 # SystemRequirements: OpenSSL >= 1.0.0
 # VignetteBuilder: knitr
-# Suggests: testthat, digest, knitr, jsonlite
+# Suggests: testthat, digest, knitr, rmarkdown, jsonlite
 # RoxygenNote: 5.0.1
 # NeedsCompilation: yes
-# Packaged: 2016-02-26 15:13:45 UTC; jeroen
+# Packaged: 2016-05-04 12:09:19 UTC; jeroen
 # Author: Jeroen Ooms [cre, aut], Oliver Keyes [ctb]
 # Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>
 # Repository: CRAN
-# Date/Publication: 2016-02-26 17:29:14
+# Date/Publication: 2016-05-04 18:04:26
 
 # See
 # http://docs.continuum.io/conda/build.html for

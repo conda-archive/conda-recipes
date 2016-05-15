@@ -36,7 +36,6 @@ build:
 requirements:
   build:
     - r-base
-    - {{posix}}unzip      # [win]
     - {{posix}}curl       # [win]
     - r-rjava
 

@@ -5,13 +5,13 @@ package:
   name: r-multcomp
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.4_4"
+  version: "1.4_5"
 
 source:
-  fn: multcomp_1.4-4.tar.gz
+  fn: multcomp_1.4-5.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/multcomp_1.4-4.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/multcomp/multcomp_1.4-4.tar.gz
+    - http://cran.r-project.org/src/contrib/multcomp_1.4-5.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/multcomp/multcomp_1.4-5.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -74,8 +74,8 @@ about:
 
 # Package: multcomp
 # Title: Simultaneous Inference in General Parametric Models
-# Version: 1.4-4
-# Date: 2016-02-17
+# Version: 1.4-5
+# Date: 2016-05-03
 # Authors@R: c(person("Torsten", "Hothorn", role = c("aut", "cre"),  email = "Torsten.Hothorn@R-project.org"),  person("Frank", "Bretz", role = "aut"),  person("Peter", "Westfall", role = "aut"), person("Richard M.", "Heiberger", role = "ctb"), person("Andre", "Schuetzenmeister", role = "ctb"), person("Susan", "Scheibe", role = "ctb"))
 # Description: Simultaneous tests and confidence intervals for general linear hypotheses in parametric models, including  linear, generalized linear, linear mixed effects, and survival models. The package includes demos reproducing analyzes presented in the book "Multiple Comparisons Using R" (Bretz, Hothorn,  Westfall, 2010, CRC Press).
 # Depends: stats, graphics, mvtnorm (>= 1.0-3), survival (>= 2.35-7), TH.data (>= 1.0-2)
@@ -85,11 +85,11 @@ about:
 # LazyData: yes
 # License: GPL-2
 # NeedsCompilation: no
-# Packaged: 2016-02-17 14:22:07 UTC; hothorn
+# Packaged: 2016-05-04 08:33:40 UTC; hothorn
 # Author: Torsten Hothorn [aut, cre], Frank Bretz [aut], Peter Westfall [aut], Richard M. Heiberger [ctb], Andre Schuetzenmeister [ctb], Susan Scheibe [ctb]
 # Maintainer: Torsten Hothorn <Torsten.Hothorn@R-project.org>
 # Repository: CRAN
-# Date/Publication: 2016-02-17 16:15:33
+# Date/Publication: 2016-05-04 12:46:48
 
 # See
 # http://docs.continuum.io/conda/build.html for

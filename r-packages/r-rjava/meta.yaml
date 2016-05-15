@@ -36,7 +36,6 @@ requirements:
   build:
     - r-base
     - posix               # [win]
-    - {{posix}}unzip      # [win]
     - {{posix}}curl       # [win]
     - {{native}}toolchain # [win]
     - gcc                 # [not win]
@@ -48,7 +47,7 @@ test:
   commands:
     # You can put additional test commands to be run here.
     - $R -e "library('rJava')" # [not win]
-    # - "\"%R%\" -e \"library('rJava')\"" # [win] # I'm not installing Oracle's software while I've got other things to do.
+    - "\"%R%\" -e \"library('rJava')\"" # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.

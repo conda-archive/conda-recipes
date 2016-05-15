@@ -5,13 +5,13 @@ package:
   name: r-dygraphs
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.8"
+  version: "0.9"
 
 source:
-  fn: dygraphs_0.8.tar.gz
+  fn: dygraphs_0.9.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/dygraphs_0.8.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/dygraphs/dygraphs_0.8.tar.gz
+    - http://cran.r-project.org/src/contrib/dygraphs_0.9.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/dygraphs/dygraphs_0.9.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -73,8 +73,8 @@ about:
 # Package: dygraphs
 # Type: Package
 # Title: Interface to 'Dygraphs' Interactive Time Series Charting Library
-# Version: 0.8
-# Date: 2016-03-08
+# Version: 0.9
+# Date: 2016-04-24
 # Authors@R: c( person("Dan", "Vanderkam", role = c("aut", "cph"), comment = "dygraphs library in htmlwidgets/lib, http://dygraphs.com/"), person("JJ", "Allaire", role = c("aut", "cre"), comment = "R interface", email = "jj@rstudio.com"), person(family = "RStudio", role = "cph"), person("Jonathan", "Owen", role = c("aut", "cph")), person("Daniel", "Gromer", role = c("aut", "cph")), person("Petr", "Shevtsov", role = c("aut", "cph")), person("Benoit", "Thieurmel", role = c("aut", "cph")), person(family = "jQuery Foundation", role = "cph", comment = "jQuery library"), person(family = "jQuery contributors", role = c("ctb", "cph"), comment = "jQuery library; authors listed in inst/htmlwidgets/lib/jquery/AUTHORS.txt") )
 # Maintainer: JJ Allaire <jj@rstudio.com>
 # Description: An R interface to the 'dygraphs' JavaScript charting library (a copy of which is included in the package). Provides rich facilities for charting time-series data in R, including highly configurable series- and axis-display and interactive features like zoom/pan and series/point highlighting.
@@ -85,10 +85,10 @@ about:
 # Enhances: rmarkdown (>= 0.3.3), shiny (>= 0.10.2.1)
 # RoxygenNote: 5.0.1
 # NeedsCompilation: no
-# Packaged: 2016-03-08 20:03:27 UTC; jjallaire
+# Packaged: 2016-04-24 20:01:47 UTC; jjallaire
 # Author: Dan Vanderkam [aut, cph] (dygraphs library in htmlwidgets/lib, http://dygraphs.com/), JJ Allaire [aut, cre] (R interface), RStudio [cph], Jonathan Owen [aut, cph], Daniel Gromer [aut, cph], Petr Shevtsov [aut, cph], Benoit Thieurmel [aut, cph], jQuery Foundation [cph] (jQuery library), jQuery contributors [ctb, cph] (jQuery library; authors listed in inst/htmlwidgets/lib/jquery/AUTHORS.txt)
 # Repository: CRAN
-# Date/Publication: 2016-03-09 01:09:07
+# Date/Publication: 2016-04-24 23:22:32
 
 # See
 # http://docs.continuum.io/conda/build.html for

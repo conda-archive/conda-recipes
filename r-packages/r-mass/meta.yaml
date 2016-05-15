@@ -79,11 +79,11 @@ about:
 # License: GPL-2 | GPL-3
 # URL: http://www.stats.ox.ac.uk/pub/MASS4/
 # NeedsCompilation: yes
-# Packaged: 2015-11-10 08:16:21 UTC; ripley
+# Packaged: 2016-04-21 09:06:13 UTC; ripley
 # Author: Brian Ripley [aut, cre, cph], Bill Venables [ctb], Douglas M. Bates [ctb], Kurt Hornik [trl] (partial port ca 1998), Albrecht Gebhardt [trl] (partial port ca 1998), David Firth [ctb]
 # Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
 # Repository: CRAN
-# Date/Publication: 2015-11-10 15:43:06
+# Date/Publication: 2016-04-21 11:13:45
 
 # See
 # http://docs.continuum.io/conda/build.html for

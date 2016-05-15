@@ -5,13 +5,13 @@ package:
   name: r-matrix
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.2_4"
+  version: "1.2_6"
 
 source:
-  fn: Matrix_1.2-4.tar.gz
+  fn: Matrix_1.2-6.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/Matrix_1.2-4.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/Matrix/Matrix_1.2-4.tar.gz
+    - http://cran.r-project.org/src/contrib/Matrix_1.2-6.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/Matrix/Matrix_1.2-6.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -66,8 +66,8 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: Matrix
-# Version: 1.2-4
-# Date: 2016-03-02
+# Version: 1.2-6
+# Date: 2016-04-28
 # Priority: recommended
 # Title: Sparse and Dense Matrix Classes and Methods
 # Author: Douglas Bates <bates@stat.wisc.edu> and Martin Maechler
@@ -86,9 +86,9 @@ about:
 # License: GPL (>= 2) | file LICENCE
 # URL: http://Matrix.R-forge.R-project.org/
 # NeedsCompilation: yes
-# Packaged: 2016-03-02 10:23:02 UTC; maechler
+# Packaged: 2016-04-28 14:49:36 UTC; maechler
 # Repository: CRAN
-# Date/Publication: 2016-03-02 16:10:51
+# Date/Publication: 2016-05-02 15:51:43
 
 # See
 # http://docs.continuum.io/conda/build.html for
