@@ -6,7 +6,7 @@ package:
 
 source:
   fn: R-3.3.0.tar.gz
-  url: http://cran.cnr.berkeley.edu/src/base/R-3/R-3.3.0.tar.gz
+  url: https://cran.r-project.org/src/base/R-3/R-3.3.0.tar.gz
   sha1: 166a25a7996150c9c83cdafcc89bfcd81578a887
   patches:
     - mac-unicode.patch # [osx]
