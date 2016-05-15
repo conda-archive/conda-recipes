@@ -1,0 +1,35 @@
+package:
+  name: m2-automake1.15
+  version: '1.15'
+source:
+  url: http://repo.msys2.org/msys/sources/automake1.15-1.15-2.src.tar.gz
+  md5: ff5ed54db5885e2a9a857c995a8f0242
+build:
+  number: '2'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-perl
+  - m2-bash
+about:
+  home: http://www.gnu.org/software/automake
+  license: GPL
+  summary: A GNU tool for automatically creating Makefiles
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/automake1.15
+      url: http://repo.msys2.org/msys/i686/automake1.15-1.15-2-any.pkg.tar.xz
+      md5: cbe510dade2420d042a6d13fdf07068a
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/automake1.15
+      url: http://repo.msys2.org/msys/x86_64/automake1.15-1.15-2-any.pkg.tar.xz
+      md5: ef023680290cafab947bbc3bbd332f91
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

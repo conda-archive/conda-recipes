@@ -1,0 +1,36 @@
+package:
+  name: m2-m4
+  version: 1.4.17
+source:
+  url: http://repo.msys2.org/msys/sources/m4-1.4.17-4.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '4'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-bash
+  - m2-gcc-libs
+  - m2-msys2-runtime
+about:
+  home: http://www.gnu.org/software/m4
+  license: GPL, GPL3
+  summary: The GNU macro processor
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/m4
+      url: http://repo.msys2.org/msys/i686/m4-1.4.17-4-i686.pkg.tar.xz
+      md5: 1bb2a8b3a98c14e4bc436e5f14af96fb
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/m4
+      url: http://repo.msys2.org/msys/x86_64/m4-1.4.17-4-x86_64.pkg.tar.xz
+      md5: cfa9444f32d5d4fcca4668ece749a7d8
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

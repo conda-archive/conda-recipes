@@ -1,0 +1,36 @@
+package:
+  name: m2-catgets
+  version: '1.1'
+source:
+  url: http://repo.msys2.org/msys/sources/catgets-1.1-2.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '2'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-libiconv
+  - m2-libintl
+  - m2-libcatgets
+about:
+  home: http://www.gnu.org/software/libc/
+  license: GPL, custom
+  summary: catgets message catalog API
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/catgets
+      url: http://repo.msys2.org/msys/i686/catgets-1.1-2-i686.pkg.tar.xz
+      md5: b9dcd40db56ec75577aa61222ca4c20c
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/catgets
+      url: http://repo.msys2.org/msys/x86_64/catgets-1.1-2-x86_64.pkg.tar.xz
+      md5: a63d6fad9eea7425bba9fb6c611d9f69
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

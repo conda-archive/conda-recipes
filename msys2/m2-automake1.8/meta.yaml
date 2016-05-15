@@ -1,0 +1,35 @@
+package:
+  name: m2-automake1.8
+  version: 1.8.5
+source:
+  url: http://repo.msys2.org/msys/sources/automake1.8-1.8.5-3.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '3'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-perl
+  - m2-bash
+about:
+  home: http://www.gnu.org/software/automake
+  license: GPL
+  summary: A GNU tool for automatically creating Makefiles
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/automake1.8
+      url: http://repo.msys2.org/msys/i686/automake1.8-1.8.5-3-any.pkg.tar.xz
+      md5: 8f358cbc497d75b1120f2894c7c292d8
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/automake1.8
+      url: http://repo.msys2.org/msys/x86_64/automake1.8-1.8.5-3-any.pkg.tar.xz
+      md5: c4e829155fcd1d61b3a9cb35aea24e1e
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

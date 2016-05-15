@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-iterators
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,10 +34,10 @@ build:
 # Suggests: RUnit
 requirements:
   build:
-    - r
+    - r-base
 
   run:
-    - r
+    - r-base
 
 test:
   commands:
@@ -54,6 +57,7 @@ about:
   summary: Support for iterators, which allow a programmer to traverse through all the elements
     of a vector, list, or other collection of data.
   license_family: Apache
+
 # The original CRAN metadata for this package was:
 
 # Package: iterators

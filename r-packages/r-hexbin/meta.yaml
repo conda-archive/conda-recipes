@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-hexbin
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,14 +34,15 @@ build:
 # Suggests: marray, affy, Biobase, limma
 requirements:
   build:
-    - r
-    - r-lattice # [not win]
-    - gcc # [not win]
+    - r-base
+    - r-lattice
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
-    - r-lattice # [not win]
-    - libgcc # [not win]
+    - r-base
+    - r-lattice
 
 test:
   commands:
@@ -58,6 +62,7 @@ about:
   summary: Binning and plotting functions for hexagonal bins. Now uses and relies on grid graphics
     and formal (S4) classes and methods.
   license_family: GPL2
+
 # The original CRAN metadata for this package was:
 
 # Package: hexbin

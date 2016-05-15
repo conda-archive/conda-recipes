@@ -1,0 +1,34 @@
+package:
+  name: m2-gcc-libs
+  version: 5.3.0
+source:
+  url: http://repo.msys2.org/msys/sources/gcc-libs-5.3.0-3.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '3'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-msys2-runtime
+about:
+  home: http://gcc.gnu.org
+  license: GPL, LGPL, FDL, custom
+  summary: Runtime libraries shipped by GCC
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/gcc-libs
+      url: http://repo.msys2.org/msys/i686/gcc-libs-5.3.0-3-i686.pkg.tar.xz
+      md5: 132521776fb451d5143b09a3334023c5
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/gcc-libs
+      url: http://repo.msys2.org/msys/x86_64/gcc-libs-5.3.0-3-x86_64.pkg.tar.xz
+      md5: b38351b395ee8da2bd6a5d396bd656d4
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

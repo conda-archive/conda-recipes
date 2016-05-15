@@ -1,0 +1,36 @@
+package:
+  name: m2-libedit
+  version: '3.1'
+source:
+  url: http://repo.msys2.org/msys/sources/libedit-3.1-20150325.src.tar.gz
+  md5: 1bc93e2f7dfc1191e77e1c578d840a7f
+build:
+  number: '20150325'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-msys2-runtime
+  - m2-ncurses
+  - m2-bash
+about:
+  home: http://www.thrysoee.dk/editline/
+  license: GPL, BSD
+  summary: Libedit is an autotool- and libtoolized port of the NetBSD Editline library.
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/libedit
+      url: http://repo.msys2.org/msys/i686/libedit-3.1-20150325-i686.pkg.tar.xz
+      md5: c3edad631870c021e1d458a5f2ce2b6f
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/libedit
+      url: http://repo.msys2.org/msys/x86_64/libedit-3.1-20150325-x86_64.pkg.tar.xz
+      md5: 24ef02a0aa1dd88c6eebdadf3be00b20
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

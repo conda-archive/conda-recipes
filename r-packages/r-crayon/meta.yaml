@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-crayon
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,11 +34,11 @@ build:
 # Suggests: testthat
 requirements:
   build:
-    - r
+    - r-base
     - r-memoise
 
   run:
-    - r
+    - r-base
     - r-memoise
 
 test:
@@ -58,6 +61,7 @@ about:
     Colors and highlighting can be combined and nested. New styles can also be created
     easily. This package was inspired by the 'chalk' 'JavaScript' project.
   license_family: MIT
+
 # The original CRAN metadata for this package was:
 
 # Package: crayon

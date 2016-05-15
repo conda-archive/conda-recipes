@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-gridextra
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "2.0.0"
+  version: "2.2.1"
 
 source:
-  fn: gridExtra_2.0.0.tar.gz
+  fn: gridExtra_2.2.1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/gridExtra_2.0.0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/gridExtra/gridExtra_2.0.0.tar.gz
+    - http://cran.r-project.org/src/contrib/gridExtra_2.2.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/gridExtra/gridExtra_2.2.1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,11 +34,11 @@ build:
 # Suggests: ggplot2, lattice, knitr, testthat
 requirements:
   build:
-    - r
+    - r-base
     - r-gtable
 
   run:
-    - r
+    - r-base
     - r-gtable
 
 test:
@@ -56,6 +59,7 @@ about:
   summary: Provides a number of user-level functions to work with "grid" graphics, notably to
     arrange multiple grid-based plots on a page, and draw tables.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: gridExtra
@@ -64,18 +68,18 @@ about:
 # Title: Miscellaneous Functions for "Grid" Graphics
 # Type: Package
 # Description: Provides a number of user-level functions to work with "grid" graphics, notably to arrange multiple grid-based plots on a page, and draw tables.
-# Version: 2.0.0
+# Version: 2.2.1
 # URL: https://github.com/baptiste/gridextra
 # VignetteBuilder: knitr
 # Imports: gtable, grid, grDevices, graphics, utils
 # Suggests: ggplot2, lattice, knitr, testthat
-# Collate: grob-utils.r arrangeGrob.r gridExtra-package.r tableGrob.r ngonGrob.r
+# Collate: gtable.r grob-utils.r arrangeGrob.r gridExtra-package.r tableGrob.r ngonGrob.r
 # NeedsCompilation: no
-# Packaged: 2015-07-14 09:46:27 UTC; baptiste
+# Packaged: 2016-02-29 01:44:48 UTC; auguieba
 # Author: Baptiste Auguie [aut, cre], Anton Antonov [ctb]
 # Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
 # Repository: CRAN
-# Date/Publication: 2015-07-14 20:40:38
+# Date/Publication: 2016-02-29 11:39:24
 
 # See
 # http://docs.continuum.io/conda/build.html for

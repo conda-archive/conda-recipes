@@ -1,0 +1,33 @@
+package:
+  name: m2-libltdl
+  version: 2.4.6
+source:
+  url: http://repo.msys2.org/msys/sources/libltdl-2.4.6-2.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '2'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+about:
+  home: https://www.gnu.org/software/libtool
+  license: GPL
+  summary: A system independent dlopen wrapper for GNU libtool
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/libltdl
+      url: http://repo.msys2.org/msys/i686/libltdl-2.4.6-2-i686.pkg.tar.xz
+      md5: 1715fd692a48d00fca9685fbcba30883
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/libltdl
+      url: http://repo.msys2.org/msys/x86_64/libltdl-2.4.6-2-x86_64.pkg.tar.xz
+      md5: 9061db9359cf37c577f3be7311bf9340
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

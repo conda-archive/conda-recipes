@@ -1,14 +1,19 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-rbokeh
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.2.2"
+  version: "0.4.2"
 
 source:
+  fn: rbokeh_0.4.2.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/rbokeh_0.4.2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/rbokeh/rbokeh_0.4.2.tar.gz
 
 
-  git_url: https://github.com/bokeh/rbokeh
-  git_tag: v0.2.2
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -26,25 +31,35 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat, knitr (>= 1.8)
+# Suggests: testthat, data.table, lattice, roxygen2 (>= 5.0.0)
 requirements:
   build:
-    - r
-    - r-rjsonio
+    - r-base
     - r-digest
+    - r-ggplot2
+    - r-gistr
     - r-hexbin
-    - r-htmlwidgets
+    - r-htmlwidgets >=0.5
+    - r-jsonlite
+    - r-lazyeval
     - r-magrittr
     - r-maps
+    - r-pryr
+    - r-scales
 
   run:
-    - r
-    - r-rjsonio
+    - r-base
     - r-digest
+    - r-ggplot2
+    - r-gistr
     - r-hexbin
-    - r-htmlwidgets
+    - r-htmlwidgets >=0.5
+    - r-jsonlite
+    - r-lazyeval
     - r-magrittr
     - r-maps
+    - r-pryr
+    - r-scales
 
 test:
   commands:
@@ -59,22 +74,32 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: https://hafen.github.io/rbokeh
   license: MIT + file LICENSE
-  summary: R interface for creating plots in Bokeh.  Bokeh by Continuum Analytics, \url{http://bokeh.pydata.org/en/latest/}.
+  summary: R interface for creating plots in Bokeh. Bokeh by Continuum Analytics, \url{http://bokeh.pydata.org/en/latest/}.
   license_family: MIT
+
 # The original CRAN metadata for this package was:
 
 # Package: rbokeh
 # Title: R Interface for Bokeh
-# Version: 0.2.2
-# Authors@R: "Ryan Hafen <rhafen@gmail.com> [aut, cre]"
-# Description: R interface for creating plots in Bokeh.  Bokeh by Continuum Analytics, \url{http://bokeh.pydata.org/en/latest/}.
+# Version: 0.4.2
+# Authors@R: c( person("Ryan", "Hafen", email = "rhafen@gmail.com", role = c("aut", "cre")), person("Kenton", "Russell", email = "kent.russell@timelyportfolio.com", role = "ctb"), person("Jonathan", "Owen", email = "jonathanro@gmail.com", role = "ctb"), person("Barret", "Schloerkep", email = "schloerke@gmail.com", role = "ctb"), person("Saptasrhi", "Guha", email = "saptarshi.guha@gmail.com", role = "ctb"), person("Continuum Analytics, Inc.", role = c("aut", "cph"), comment = "Bokeh library in htmlwidgets/lib, http://bokeh.pydata.org" ))
+# Description: R interface for creating plots in Bokeh. Bokeh by Continuum Analytics, \url{http://bokeh.pydata.org/en/latest/}.
+# URL: https://hafen.github.io/rbokeh
+# BugReports: https://github.com/hafen/rbokeh/issues
 # License: MIT + file LICENSE
 # LazyData: true
-# Imports: htmlwidgets, maps, methods, RJSONIO, digest, hexbin, magrittr
-# Suggests: testthat, knitr (>= 1.8)
-# Enhances: shiny (>= 0.10.2.1)
+# NeedsCompilation: no
+# Imports: htmlwidgets (>= 0.5), maps, methods, jsonlite, digest, hexbin, lazyeval, pryr, magrittr, ggplot2, scales, gistr
+# Suggests: testthat, data.table, lattice, roxygen2 (>= 5.0.0)
+# Enhances: shiny (>= 0.12)
+# RoxygenNote: 5.0.1
+# Packaged: 2016-03-04 18:40:24 UTC; hafen
+# Author: Ryan Hafen [aut, cre], Kenton Russell [ctb], Jonathan Owen [ctb], Barret Schloerkep [ctb], Saptasrhi Guha [ctb], Continuum Analytics, Inc. [aut, cph] (Bokeh library in htmlwidgets/lib, http://bokeh.pydata.org)
+# Maintainer: Ryan Hafen <rhafen@gmail.com>
+# Repository: CRAN
+# Date/Publication: 2016-03-09 01:06:25
 
 # See
 # http://docs.continuum.io/conda/build.html for

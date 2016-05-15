@@ -1,0 +1,37 @@
+package:
+  name: m2w64-pcre
+  version: '8.38'
+source:
+  url: http://repo.msys2.org/mingw/sources/mingw-w64-pcre-8.38-1.src.tar.gz
+  md5: e1d8571c124870133b642e2fd3a830e5
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2w64-gcc-libs
+  - m2w64-bzip2
+  - m2w64-wineditline
+  - m2w64-zlib
+about:
+  home: http://pcre.org
+  license: BSD
+  summary: A library that implements Perl 5-style regular expressions (mingw-w64)
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: mingw32/mingw-w64-i686-pcre
+      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-pcre-8.38-1-any.pkg.tar.xz
+      md5: f700b9234efd41ffa3e97ff1c834d134
+      mv-srcs:
+      - mingw32
+      mv-dsts:
+      - Library/mingw-w64
+    win-64:
+      srcpkg: mingw64/mingw-w64-x86_64-pcre
+      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-pcre-8.38-1-any.pkg.tar.xz
+      md5: b67e2e09f64ff708564a0f1fc901f8a6
+      mv-srcs:
+      - mingw64
+      mv-dsts:
+      - Library/mingw-w64

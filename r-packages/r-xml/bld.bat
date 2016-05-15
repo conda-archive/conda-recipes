@@ -1,3 +1,8 @@
+@rem :: Prevent interpretation of \? as escaped character.
+@rem :: (where I'm not sure which character ? represents)
+set PREFIXS=%PREFIX:\=/%
+set LIB_XML=%PREFIXS%/Library/mingw-w64
+
 "%R%" CMD INSTALL --build .
 if errorlevel 1 exit 1
 

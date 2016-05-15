@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-evaluate
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.8"
+  version: "0.9"
 
 source:
-  fn: evaluate_0.8.tar.gz
+  fn: evaluate_0.9.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/evaluate_0.8.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/evaluate/evaluate_0.8.tar.gz
+    - http://cran.r-project.org/src/contrib/evaluate_0.9.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/evaluate/evaluate_0.9.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,11 +34,11 @@ build:
 # Suggests: testthat, lattice, ggplot2
 requirements:
   build:
-    - r
+    - r-base
     - r-stringr >=0.6.2
 
   run:
-    - r
+    - r-base
     - r-stringr >=0.6.2
 
 test:
@@ -56,14 +59,15 @@ about:
   summary: Parsing and evaluation tools that make it easy to recreate the command line behaviour
     of R.
   license_family: MIT
+
 # The original CRAN metadata for this package was:
 
 # Package: evaluate
 # Type: Package
 # Title: Parsing and Evaluation Tools that Provide More Details than the Default
-# Version: 0.8
-# Date: 2015-09-18
-# Authors@R: c(person("Hadley", "Wickham", role = "aut"), person("Yihui", "Xie", role = c("cre", "ctb"), email = "xie@yihui.name"), person("Barret", "Schloerke", role = "ctb"))
+# Version: 0.9
+# Date: 2016-04-29
+# Authors@R: c( person("Hadley", "Wickham", role = "aut"), person("Yihui", "Xie", role = c("cre", "ctb"), email = "xie@yihui.name"), person("Michael", "Lawrence", role = "ctb"), person("Thomas", "Kluyver", role = "ctb"), person("Barret", "Schloerke", role = "ctb") )
 # Description: Parsing and evaluation tools that make it easy to recreate the command line behaviour of R.
 # License: MIT + file LICENSE
 # URL: https://github.com/hadley/evaluate
@@ -71,12 +75,13 @@ about:
 # Depends: R (>= 3.0.2)
 # Imports: methods, stringr (>= 0.6.2)
 # Suggests: testthat, lattice, ggplot2
+# RoxygenNote: 5.0.1
 # NeedsCompilation: no
-# Packaged: 2015-09-18 01:12:48 UTC; yihui
-# Author: Hadley Wickham [aut], Yihui Xie [cre, ctb], Barret Schloerke [ctb]
+# Packaged: 2016-04-29 06:08:35 UTC; yihui
+# Author: Hadley Wickham [aut], Yihui Xie [cre, ctb], Michael Lawrence [ctb], Thomas Kluyver [ctb], Barret Schloerke [ctb]
 # Maintainer: Yihui Xie <xie@yihui.name>
 # Repository: CRAN
-# Date/Publication: 2015-09-18 08:58:32
+# Date/Publication: 2016-04-29 12:11:45
 
 # See
 # http://docs.continuum.io/conda/build.html for

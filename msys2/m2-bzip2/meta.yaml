@@ -1,0 +1,34 @@
+package:
+  name: m2-bzip2
+  version: 1.0.6
+source:
+  url: http://repo.msys2.org/msys/sources/bzip2-1.0.6-2.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '2'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-libbz2
+about:
+  home: http://sources.redhat.com/bzip2
+  license: GPL, custom
+  summary: A high-quality data compression program
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/bzip2
+      url: http://repo.msys2.org/msys/i686/bzip2-1.0.6-2-i686.pkg.tar.xz
+      md5: 0afbbf1afb63bdb8a5a9082257bd6e32
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/bzip2
+      url: http://repo.msys2.org/msys/x86_64/bzip2-1.0.6-2-x86_64.pkg.tar.xz
+      md5: 968a58e964d7d5b00f2a023e3e65b5fc
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

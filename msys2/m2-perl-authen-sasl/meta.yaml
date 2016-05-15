@@ -1,0 +1,34 @@
+package:
+  name: m2-perl-authen-sasl
+  version: '2.16'
+source:
+  url: http://repo.msys2.org/msys/sources/perl-Authen-SASL-2.16-2.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '2'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-perl
+about:
+  home: http://search.cpan.org/dist/Authen-SASL/
+  license: GPL, PerlArtistic
+  summary: 'Perl/CPAN Module Authen::SASL : SASL authentication framework'
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/perl-Authen-SASL
+      url: http://repo.msys2.org/msys/i686/perl-Authen-SASL-2.16-2-any.pkg.tar.xz
+      md5: 07ae5170ec05b9b6c305b511f395e6aa
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/perl-Authen-SASL
+      url: http://repo.msys2.org/msys/x86_64/perl-Authen-SASL-2.16-2-any.pkg.tar.xz
+      md5: e6026a6b3ddc0dc34f27b2ca140cd12c
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

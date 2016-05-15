@@ -1,0 +1,41 @@
+package:
+  name: m2-autogen
+  version: 5.18.4
+source:
+  url: http://repo.msys2.org/msys/sources/autogen-5.18.4-2.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '2'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-gcc-libs
+  - m2-gmp
+  - m2-libcrypt
+  - m2-libffi
+  - m2-libgc
+  - m2-libguile
+  - m2-libxml2
+about:
+  home: http://autogen.sourceforge.net/
+  license: GPL, GPL3
+  summary: A tool designed to simplify the creation and maintenance of programs that
+    contain large amounts of repetitious text
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/autogen
+      url: http://repo.msys2.org/msys/i686/autogen-5.18.4-2-i686.pkg.tar.xz
+      md5: 3a2e91fb338ebc61c60be44735c6933c
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/autogen
+      url: http://repo.msys2.org/msys/x86_64/autogen-5.18.4-2-x86_64.pkg.tar.xz
+      md5: 19cab152bb2aaab23e15899bfd19ef55
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

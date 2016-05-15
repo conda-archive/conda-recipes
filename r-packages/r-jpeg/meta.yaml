@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-jpeg
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -21,7 +24,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  number: 2
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -31,11 +34,17 @@ build:
 
 requirements:
   build:
-    - r
-    - jpeg
+    - r-base
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
+    - {{native}}libjpeg-turbo # [win]
+    - jpeg                 # [not win]
+
   run:
-    - r
-    - jpeg
+    - r-base
+    - jpeg                 # [not win]
+    - {{native}}libjpeg-turbo # [win]
 
 test:
   commands:
@@ -55,6 +64,7 @@ about:
   summary: This package provides an easy and simple way to read, write and display bitmap images
     stored in the JPEG format. It can read and write both files and in-memory raw vectors.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: jpeg
