@@ -160,8 +160,7 @@ Mingw_w64_makefiles() {
     curl -C - -o ${DLCACHE}/innoextract-1.6-windows.zip -SLO http://constexpr.org/innoextract/files/innoextract-1.6/innoextract-1.6-windows.zip
     unzip -o ${DLCACHE}/innoextract-1.6-windows.zip -d ${PWD}
     curl -C - -o ${DLCACHE}/innosetup-5.5.9-unicode.exe -SLO http://files.jrsoftware.org/is/5/innosetup-5.5.9-unicode.exe || true
-    echo MSYS2_ARG_CONV_EXCL is $MSYS2_ARG_CONV_EXCL
-    strace -f ./innoextract.exe ${DLCACHE}/innosetup-5.5.9-unicode.exe 2>&1
+    ./innoextract.exe ${DLCACHE}/innosetup-5.5.9-unicode.exe 2>&1
     mv app isdir
     if [[ "${_use_msys2_mingw_w64_tcltk}" == "yes" ]]; then
         # I wanted to go for the following unusual approach here of using conda install (in copy mode)
@@ -282,12 +281,14 @@ Mingw_w64_makefiles() {
     # make check-all -j1 > make-check.log 2>&1 || make check-all -j1 > make-check.2.log 2>&1 || make check-all -j1 > make-check.3.log 2>&1
     cd installer
     make imagedir
-    cp -Rf R-3.3.0 "${PREFIX}"/R
+    cp -Rf R-3.3.0 R
+    cp -Rf R "${PREFIX}"/
     # Remove the recommeded libraries, we package them separately as-per the other platforms now.
     rm -Rf "${PREFIX}"/R/library/{MASS,lattice,Matrix,nlme,survival,boot,cluster,codetools,foreign,KernSmooth,rpart,class,nnet,spatial,mgcv}
     # * Here we force our MSYS2/mingw-w64 sysroot to be looked in for libraies during r-packages builds.
     for _makeconf in $(find "${PREFIX}"/R -name Makeconf); do
         sed -i 's|LOCAL_SOFT = |LOCAL_SOFT = \$(R_HOME)/../Library/mingw-w64|g' ${_makeconf}
+        sed -i 's|^BINPREF ?= .*$|BINPREF ?= \$(R_HOME)/../Library/mingw-w64/bin/|g' ${_makeconf}
     done
     return 0
 }
