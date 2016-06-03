@@ -3,30 +3,45 @@ package:
   version: "2.38.0"
 
 source:
-  fn: graphviz-2.38.0.tar.gz
-  url: http://www.graphviz.org/pub/graphviz/stable/SOURCES/graphviz-2.38.0.tar.gz
-  md5: 5b6a829b2ac94efcd5fa3c223ed6d3ae
+  git_url: https://github.com/ellson/graphviz
+  git_rev: f54ac2c9313ae80ccf76ef4ac6aa9be820a23126 # "2.38 stable release"
+
   patches:
      - gvconfig_libdir.patch
 
 build:
-  number: 4
+  number: 5
 
 requirements:
   build:
-    - cairo
+    - autoconf
+    - automake
+    - pkg-config
+    - libtool
+    - expat
+    - tk
     - libpng
     - libtiff
     - freetype
     - jpeg
     - zlib
+    - cairo # [linux]
+
+    # No conda package for these yet.
+    # Bison and Flex must be available on the build system.
+    # - bison
+    # - flex
+
   run:
-    - cairo
+    - libtool
+    - expat
+    - tk
     - libpng
     - libtiff
     - freetype
     - jpeg
     - zlib
+    - cairo # [linux]
 
 test:
   commands:
