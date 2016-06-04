@@ -7,7 +7,7 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 build_os_md5=( $(md5sum "${PREFIX}/share/conda-gcc-build-machine-os-details") )
-target_os_md5=( $(cat /etc/*-release | md5sum) )
+target_os_md5=( $(lsb_release -a | md5sum) )
 
 # No need to make any portability fixes if
 # we're deploying to the same OS we built with.
