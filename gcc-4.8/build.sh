@@ -58,7 +58,8 @@ make install-strip
 rm "$PREFIX"/lib64
 
 #Fix libtool paths
-find "$PREFIX"  -name '*.la' -print0 | xargs -0  sed -i 's%lib/../lib64%lib%g'
+find "$PREFIX" -name '*.la' -print0 | xargs -0  sed -i.backup 's%lib/../lib64%lib%g'
+find "$PREFIX" -name '*la.backup' -print0 | xargs -0  rm -f
 
 # Link cc to gcc
 (cd "$PREFIX"/bin && ln -s gcc cc)
