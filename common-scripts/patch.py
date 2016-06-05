@@ -382,6 +382,8 @@ class PatchSet(object):
 
         headscan = False
         # switch to filenames state
+        srcname = None
+        tgtname = None
         filenames = True
 
       line = fe.line
@@ -461,10 +463,16 @@ class PatchSet(object):
           # switch to hunkhead state
           hunkskip = False
           hunkhead = True
-        elif line.startswith(b"--- "):
-          # switch to filenames state
+        elif line.startswith(b"--- ") or line.startswith(b"diff"):
           hunkskip = False
-          filenames = True
+          if line.startswith(b"--- "):
+            # switch to filenames state
+            srcname = None
+            tgtname = None
+            filenames = True
+          else:
+            # switch to headscan state
+            headscan  = True
           if debugmode and len(self.items) > 0:
             debug("- %2d hunks for %s" % (len(p.hunks), p.source))
 
