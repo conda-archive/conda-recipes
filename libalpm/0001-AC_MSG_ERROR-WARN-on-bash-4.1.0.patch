@@ -1,0 +1,41 @@
+From 39ea1502f73b87ac3303e007301c441ac2b56805 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Wed, 9 Mar 2016 21:23:53 +0000
+Subject: [PATCH 1/2] AC_MSG_ERROR -> WARN on bash < 4.1.0
+
+Since we only want libalpm and not pacman itself, that
+the bash scripts won't work isn't a problem.
+
+We want libalpm for converting MSYS2 packages to Conda
+packages.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git configure.ac configure.ac
+index dd4ac04..76555ba 100644
+--- configure.ac
++++ configure.ac
+@@ -203,7 +203,7 @@ AS_IF([test "x$BASH_SHELL" = "xfalse"],
+ 		ok=no
+ 	fi
+ 	if test "$ok" = "no"; then
+-		AC_MSG_ERROR([*** bash >= 4.1.0 is required for pacman scripts])
++		AC_MSG_WARN([*** bash >= 4.1.0 is required for pacman scripts])
+ 	fi
+ 	unset bash_version_major bash_version_minor ok])
+ 
+--- configure
++++ configure
+@@ -13084,7 +13084,8 @@
+ 		ok=no
+ 	fi
+ 	if test "$ok" = "no"; then
+-		as_fn_error $? "*** bash >= 4.1.0 is required for pacman scripts" "$LINENO" 5
++		{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: *** bash >= 4.1.0 is required for pacman scripts" >&5
++$as_echo "$as_me: WARNING: *** bash >= 4.1.0 is required for pacman scripts" >&2;}
+ 	fi
+ 	unset bash_version_major bash_version_minor ok
+ fi
+ --
+ 2.5.4 (Apple Git-61)
