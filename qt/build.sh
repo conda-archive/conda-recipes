@@ -64,6 +64,7 @@ if [ `uname` == Darwin ]; then
                 -I $PREFIX/include \
                 -release \
                 -fast \
+                -no-pch \
                 -no-qt3support \
                 -nomake examples \
                 -nomake demos \

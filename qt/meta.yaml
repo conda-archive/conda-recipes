@@ -8,24 +8,29 @@ source:
   md5: d990ee66bf7ab0c785589776f35ba6ad
   patches:
     - acceptance.patch
-    - qmake-arch.patch                 [osx]
-    - ubuntu_disable_scrollbars.patch  [linux]
+    - qmake-arch.patch                           # [osx]
+    - ubuntu_disable_scrollbars.patch            # [linux]
+    - qpaintengine_mac.diff                      # [osx]
+    - mac-webkit-Wno-unused-local-typedef.patch  # [osx]
+    # If you build on a VM without accelerated gfx then a webkit test fails:
+    # https://bugs.webkit.org/show_bug.cgi?id=105820
+    - changeset_141575.diff                      # [osx]
 
 build:
-  number: 1 [linux32]
-  number: 2 [linux64 or osx]
+  number: 2  # [linux32]
+  number: 3  # [linux64 or osx]
 
 requirements:
   build:
-    - freetype    >=2.5.2    [unix]
-    - fontconfig  >=2.11.1   [linux]
+    - freetype    >=2.5.2    # [unix]
+    - fontconfig  >=2.11.1   # [linux]
     - openssl
     - libpng      1.6*
     - zlib
 
   run:
-    - freetype    >=2.5.2    [unix]
-    - fontconfig  >=2.11.1   [linux]
+    - freetype    >=2.5.2    # [unix]
+    - fontconfig  >=2.11.1   # [linux]
     - openssl
     - libpng      1.6*
     - zlib
