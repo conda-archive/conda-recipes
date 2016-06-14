@@ -103,4 +103,4 @@ rm -f $PREFIX/bin/qmake-qt4
 cp $RECIPE_DIR/qmake-qt4 $PREFIX/bin/
 
 # Add qt.conf file to the package to make it fully relocatable
-cp $RECIPE_DIR/qt.conf $BIN/
+cp $RECIPE_DIR/qt.conf $PREFIX/bin/
