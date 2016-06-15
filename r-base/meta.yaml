@@ -16,6 +16,7 @@ source:
     - 0005-Win32-Extend-sqrt-NA_real_-hack-to-all-GCC-versions.patch
     - 0006-Win32-GCC-5.3-Fix-ISNAN-int-emits-UD2-insn.patch
     - 0007-Win32-MSYS2-ENV_CONV_EXCL_R_ARCH.patch
+    - 0008-Darwin-set-DYLD_FALLBACK_LIBRARY_PATH.patch
 
 build:
   rpaths:
@@ -36,6 +37,7 @@ requirements:
     - pango                # [linux]
     - gcc                  # [not win]
     - jpeg                 # [not win]
+    - curl                 # [not win]
     - {{pfx}}libjpeg-turbo # [win]
     - {{pfx}}toolchain     # [win]
     - {{pfx}}bzip2         # [win]
@@ -63,6 +65,7 @@ requirements:
     - libgcc               # [not win]
     - {{pfx}}gcc-libs      # [win]
     - jpeg                 # [not win]
+    - curl                 # [not win]
     - {{pfx}}libjpeg-turbo # [win]
     - {{pfx}}bzip2         # [win]
     - {{pfx}}libiconv      # [win]
