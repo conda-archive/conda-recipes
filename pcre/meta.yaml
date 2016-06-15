@@ -1,12 +1,11 @@
 
 package:
     name: pcre
-    version: 8.36
+    version: 8.39
 
 source:
-    fn: pcre-8.36.tar.gz
-    url: ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.36.tar.gz
-    md5: ff7b4bb14e355f04885cf18ff4125c98
+    url: ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz
+    sha1: b3aec1f643d9701841e2f9d57ac121a7ff448fc8
 
 build:
     number: 0
