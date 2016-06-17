@@ -1,14 +1,17 @@
 package:
   name: libpng
-  version: 1.6.17
+  version: 1.6.23
 
 source:
-  fn: libpng-1.6.17.tar.gz
-  url: ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng16/libpng-1.6.17.tar.gz
-  md5: 134282f1752dcf4cd81a37b8ff421cef
+  fn: libpng-1.6.23.tar.gz
+  url: ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng16/libpng-1.6.23.tar.gz
+  sha1: 26c68ff9905dbeb85d1cc9c673726e9e0669e7a0
 
 requirements:
   build:
+    - zlib
+
+  run:
     - zlib
 
 about:
