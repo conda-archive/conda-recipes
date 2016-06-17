@@ -40,6 +40,7 @@ requirements:
     - r-r6
     - pkg-config
     - posix               # [win]
+    - pkg-config          # [not win]
     - {{native}}toolchain # [win]
     - gcc                 # [not win]
     - {{native}}zeromq    # [not win]
