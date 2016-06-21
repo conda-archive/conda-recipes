@@ -5,13 +5,13 @@ package:
   name: r-lazyeval
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.1.10"
+  version: "0.2.0"
 
 source:
-  fn: lazyeval_0.1.10.tar.gz
+  fn: lazyeval_0.2.0.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/lazyeval_0.1.10.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/lazyeval/lazyeval_0.1.10.tar.gz
+    - http://cran.r-project.org/src/contrib/lazyeval_0.2.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/lazyeval/lazyeval_0.2.0.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -24,14 +24,14 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: knitr, rmarkdown (>= 0.2.65), microbenchmark, testthat
+# Suggests: knitr, rmarkdown (>= 0.2.65), testthat, covr
 requirements:
   build:
     - r-base
@@ -57,27 +57,30 @@ test:
 about:
   #home:
   license: GPL-3
-  summary: A disciplined approach to non-standard evaluation.
+  summary: An alternative approach to non-standard evaluation using formulas. Provides a full
+    implementation of LISP style 'quasiquotation', making it easier to generate code
+    with other code.
   license_family: GPL3
 
 # The original CRAN metadata for this package was:
 
 # Package: lazyeval
-# Version: 0.1.10
+# Version: 0.2.0
 # Title: Lazy (Non-Standard) Evaluation
-# Description: A disciplined approach to non-standard evaluation.
-# Authors@R: as.person(c( "Hadley Wickham <hadley@rstudio.com> [aut,cre]", "RStudio [cph]" ))
+# Description: An alternative approach to non-standard evaluation using formulas. Provides a full implementation of LISP style 'quasiquotation', making it easier to generate code with other code.
+# Authors@R: c( person("Hadley", "Wickham", ,"hadley@rstudio.com", c("aut", "cre")), person("RStudio", role = "cph") )
 # License: GPL-3
 # LazyData: true
 # Depends: R (>= 3.1.0)
-# Suggests: knitr, rmarkdown (>= 0.2.65), microbenchmark, testthat
+# Suggests: knitr, rmarkdown (>= 0.2.65), testthat, covr
 # VignetteBuilder: knitr
-# Packaged: 2015-01-02 16:57:33 UTC; hadley
+# RoxygenNote: 5.0.1
+# NeedsCompilation: yes
+# Packaged: 2016-06-10 21:38:52 UTC; hadley
 # Author: Hadley Wickham [aut, cre], RStudio [cph]
 # Maintainer: Hadley Wickham <hadley@rstudio.com>
-# NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2015-01-02 18:01:12
+# Date/Publication: 2016-06-12 19:03:08
 
 # See
 # http://docs.continuum.io/conda/build.html for

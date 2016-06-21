@@ -5,13 +5,13 @@ package:
   name: r-ape
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "3.4"
+  version: "3.5"
 
 source:
-  fn: ape_3.4.tar.gz
+  fn: ape_3.5.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/ape_3.4.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/ape/ape_3.4.tar.gz
+    - http://cran.r-project.org/src/contrib/ape_3.5.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/ape/ape_3.5.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -77,8 +77,8 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: ape
-# Version: 3.4
-# Date: 2015-11-29
+# Version: 3.5
+# Date: 2016-05-23
 # Title: Analyses of Phylogenetics and Evolution
 # Authors@R: c(person("Emmanuel", "Paradis", role = c("aut", "cre", "cph"), email = "Emmanuel.Paradis@ird.fr"), person("Simon", "Blomberg", role = c("aut", "cph")), person("Ben", "Bolker", role = c("aut", "cph")), person("Julien", "Claude", role = c("aut", "cph")), person("Hoa Sien", "Cuong", role = c("aut", "cph")), person("Richard", "Desper", role = c("aut", "cph")), person("Gilles", "Didier", role = c("aut", "cph")), person("Benoit", "Durand", role = c("aut", "cph")), person("Julien", "Dutheil", role = c("aut", "cph")), person("Olivier", "Gascuel", role = c("aut", "cph")), person("Christoph", "Heibl", role = c("aut", "cph")), person("Anthony", "Ives", role = c("aut", "cph")), person("Daniel", "Lawson", role = c("aut", "cph")), person("Vincent", "Lefort", role = c("aut", "cph")), person("Pierre", "Legendre", role = c("aut", "cph")), person("Jim", "Lemon", role = c("aut", "cph")), person("Rosemary", "McCloskey", role = c("aut", "cph")), person("Johan", "Nylander", role = c("aut", "cph")), person("Rainer", "Opgen-Rhein", role = c("aut", "cph")), person("Andrei-Alin", "Popescu", role = c("aut", "cph")), person("Manuela", "Royer-Carenzi", role = c("aut", "cph")), person("Klaus", "Schliep", role = c("aut", "cph")), person("Korbinian", "Strimmer", role = c("aut", "cph")), person("Damien", "de Vienne", role = c("aut", "cph")))
 # Depends: R (>= 3.0.0)
@@ -89,11 +89,11 @@ about:
 # License: GPL (>= 2)
 # URL: http://ape-package.ird.fr/
 # NeedsCompilation: yes
-# Packaged: 2015-11-29 08:54:16 UTC; paradis
+# Packaged: 2016-05-23 07:32:24 UTC; paradis
 # Author: Emmanuel Paradis [aut, cre, cph], Simon Blomberg [aut, cph], Ben Bolker [aut, cph], Julien Claude [aut, cph], Hoa Sien Cuong [aut, cph], Richard Desper [aut, cph], Gilles Didier [aut, cph], Benoit Durand [aut, cph], Julien Dutheil [aut, cph], Olivier Gascuel [aut, cph], Christoph Heibl [aut, cph], Anthony Ives [aut, cph], Daniel Lawson [aut, cph], Vincent Lefort [aut, cph], Pierre Legendre [aut, cph], Jim Lemon [aut, cph], Rosemary McCloskey [aut, cph], Johan Nylander [aut, cph], Rainer Opgen-Rhein [aut, cph], Andrei-Alin Popescu [aut, cph], Manuela Royer-Carenzi [aut, cph], Klaus Schliep [aut, cph], Korbinian Strimmer [aut, cph], Damien de Vienne [aut, cph]
 # Maintainer: Emmanuel Paradis <Emmanuel.Paradis@ird.fr>
 # Repository: CRAN
-# Date/Publication: 2015-11-29 19:14:31
+# Date/Publication: 2016-05-24 05:38:54
 
 # See
 # http://docs.continuum.io/conda/build.html for

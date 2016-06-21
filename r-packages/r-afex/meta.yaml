@@ -94,13 +94,13 @@ about:
 # License: GPL (>= 3)
 # Encoding: UTF-8
 # VignetteBuilder: knitr
-# Authors@R: c(person(given="Henrik", family="Singmann", role=c("aut", "cre"), email="singmann+afex@gmail.com"), person(given="Ben", family="Bolker", role=c("aut")), person(given="Jake", family="Westfall", role=c("aut")), person(given="Frederik", family="Aust", role=c("aut")), person(given="SA ren", family="HA jsgaard", role=c("ctb")), person(given="John", family="Fox", role=c("ctb")), person(given="Michael A.", family="Lawrence", role=c("ctb")), person(given="Ulf", family="Mertens", role=c("ctb")) )
+# Authors@R: c(person(given="Henrik", family="Singmann", role=c("aut", "cre"), email="singmann+afex@gmail.com"), person(given="Ben", family="Bolker", role=c("aut")), person(given="Jake", family="Westfall", role=c("aut")), person(given="Frederik", family="Aust", role=c("aut")), person(given="Sren", family="Hjsgaard", role=c("ctb")), person(given="John", family="Fox", role=c("ctb")), person(given="Michael A.", family="Lawrence", role=c("ctb")), person(given="Ulf", family="Mertens", role=c("ctb")) )
 # Version: 0.16-1
 # Date: 2016-04-04
 # RoxygenNote: 5.0.1
 # NeedsCompilation: no
 # Packaged: 2016-04-03 22:10:13 UTC; henrik
-# Author: Henrik Singmann [aut, cre], Ben Bolker [aut], Jake Westfall [aut], Frederik Aust [aut], SA ren HA jsgaard [ctb], John Fox [ctb], Michael A. Lawrence [ctb], Ulf Mertens [ctb]
+# Author: Henrik Singmann [aut, cre], Ben Bolker [aut], Jake Westfall [aut], Frederik Aust [aut], Sren Hjsgaard [ctb], John Fox [ctb], Michael A. Lawrence [ctb], Ulf Mertens [ctb]
 # Maintainer: Henrik Singmann <singmann+afex@gmail.com>
 # Repository: CRAN
 # Date/Publication: 2016-04-04 01:11:31

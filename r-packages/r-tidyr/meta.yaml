@@ -5,13 +5,13 @@ package:
   name: r-tidyr
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.4.1"
+  version: "0.5.1"
 
 source:
-  fn: tidyr_0.4.1.tar.gz
+  fn: tidyr_0.5.1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/tidyr_0.4.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/tidyr/tidyr_0.4.1.tar.gz
+    - http://cran.r-project.org/src/contrib/tidyr_0.5.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/tidyr/tidyr_0.5.1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,7 +31,7 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: knitr, testthat, data.table, covr, gapminder, rmarkdown
+# Suggests: knitr, testthat, covr, gapminder, rmarkdown
 requirements:
   build:
     - r-base
@@ -40,6 +40,7 @@ requirements:
     - r-lazyeval
     - r-magrittr
     - r-stringi
+    - r-tibble
     - posix               # [win]
     - {{native}}toolchain # [win]
     - gcc                 # [not win]
@@ -51,6 +52,7 @@ requirements:
     - r-lazyeval
     - r-magrittr
     - r-stringi
+    - r-tibble
 
 test:
   commands:
@@ -75,25 +77,25 @@ about:
 
 # Package: tidyr
 # Title: Easily Tidy Data with `spread()` and `gather()` Functions
-# Version: 0.4.1
+# Version: 0.5.1
 # Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")), person("RStudio", role = "cph") )
 # Description: An evolution of 'reshape2'. It's designed specifically for data tidying (not general reshaping or aggregating) and works well with 'dplyr' data pipelines.
 # Depends: R (>= 3.1.0)
 # License: MIT + file LICENSE
 # LazyData: true
-# Imports: dplyr (>= 0.4), stringi, lazyeval, magrittr, Rcpp
+# Imports: tibble, dplyr (>= 0.4), stringi, lazyeval, magrittr, Rcpp
 # URL: https://github.com/hadley/tidyr
 # BugReports: https://github.com/hadley/tidyr/issues
-# Suggests: knitr, testthat, data.table, covr, gapminder, rmarkdown
+# Suggests: knitr, testthat, covr, gapminder, rmarkdown
 # VignetteBuilder: knitr
 # LinkingTo: Rcpp
 # RoxygenNote: 5.0.1
 # NeedsCompilation: yes
-# Packaged: 2016-02-05 17:08:15 UTC; hadley
+# Packaged: 2016-06-14 12:40:46 UTC; hadley
 # Author: Hadley Wickham [aut, cre], RStudio [cph]
 # Maintainer: Hadley Wickham <hadley@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2016-02-05 21:46:58
+# Date/Publication: 2016-06-14 15:22:49
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -5,13 +5,13 @@ package:
   name: r-openssl
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.9.3"
+  version: "0.9.4"
 
 source:
-  fn: openssl_0.9.3.tar.gz
+  fn: openssl_0.9.4.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/openssl_0.9.3.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/openssl/openssl_0.9.3.tar.gz
+    - http://cran.r-project.org/src/contrib/openssl_0.9.4.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/openssl/openssl_0.9.4.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -58,13 +58,14 @@ about:
   home: https://github.com/jeroenooms/openssl#readme
   license: MIT + file LICENSE
   summary: Bindings to OpenSSL libssl and libcrypto, plus custom SSH pubkey parsers. Supports
-    RSA, DSA and NIST curves P-256, P-384 and P-521. Cryptographic signatures can either
-    be created and verified manually or via x509 certificates. AES block cipher is used
-    in CBC mode for symmetric encryption; RSA for asymmetric (public key) encryption.
-    High-level envelope functions combine RSA and AES for encrypting arbitrary sized
-    data. Other utilities include key generators, hash functions (md5, sha1, sha256,
-    etc), base64 encoder, a secure random number generator, and 'bignum' math methods
-    for manually performing crypto calculations on large multibyte integers.
+    RSA, DSA and EC curves P-256, P-384 and P-521. Cryptographic signatures can either
+    be created and verified manually or via x509 certificates. AES can be used in cbc,
+    ctr or gcm mode for symmetric encryption; RSA for asymmetric (public key) encryption
+    or EC for Diffie Hellman. High-level envelope functions combine RSA and AES for
+    encrypting arbitrary sized data. Other utilities include key generators, hash functions
+    (md5, sha1, sha256, etc), base64 encoder, a secure random number generator, and
+    'bignum' math methods for manually performing crypto calculations on large multibyte
+    integers.
   license_family: MIT
 
 # The original CRAN metadata for this package was:
@@ -72,9 +73,9 @@ about:
 # Package: openssl
 # Type: Package
 # Title: Toolkit for Encryption, Signatures and Certificates Based on OpenSSL
-# Version: 0.9.3
+# Version: 0.9.4
 # Authors@R: c( person("Jeroen", "Ooms", , "jeroen.ooms@stat.ucla.edu", role = c("cre", "aut")), person("Oliver", "Keyes", role = "ctb"))
-# Description: Bindings to OpenSSL libssl and libcrypto, plus custom SSH pubkey parsers. Supports RSA, DSA and NIST curves P-256, P-384 and P-521. Cryptographic signatures can either be created and verified manually or via x509 certificates. AES block cipher is used in CBC mode for symmetric encryption; RSA for asymmetric (public key) encryption. High-level envelope functions combine RSA and AES for encrypting arbitrary sized data. Other utilities include key generators, hash functions (md5, sha1, sha256, etc), base64 encoder, a secure random number generator, and 'bignum' math methods for manually performing crypto calculations on large multibyte integers.
+# Description: Bindings to OpenSSL libssl and libcrypto, plus custom SSH pubkey parsers. Supports RSA, DSA and EC curves P-256, P-384 and P-521. Cryptographic signatures can either be created and verified manually or via x509 certificates. AES can be used in cbc, ctr or gcm mode for symmetric encryption; RSA for asymmetric (public key) encryption or EC for Diffie Hellman. High-level envelope functions combine RSA and AES for encrypting arbitrary sized data. Other utilities include key generators, hash functions (md5, sha1, sha256, etc), base64 encoder, a secure random number generator, and 'bignum' math methods for manually performing crypto calculations on large multibyte integers.
 # License: MIT + file LICENSE
 # URL: https://github.com/jeroenooms/openssl#readme
 # BugReports: https://github.com/jeroenooms/openssl/issues
@@ -83,11 +84,11 @@ about:
 # Suggests: testthat, digest, knitr, rmarkdown, jsonlite
 # RoxygenNote: 5.0.1
 # NeedsCompilation: yes
-# Packaged: 2016-05-04 12:09:19 UTC; jeroen
+# Packaged: 2016-05-25 18:24:20 UTC; jeroen
 # Author: Jeroen Ooms [cre, aut], Oliver Keyes [ctb]
 # Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>
 # Repository: CRAN
-# Date/Publication: 2016-05-04 18:04:26
+# Date/Publication: 2016-05-25 23:29:53
 
 # See
 # http://docs.continuum.io/conda/build.html for
