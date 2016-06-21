@@ -39,10 +39,10 @@ requirements:
     - r-nmf
     - r-irlba
     - r-magrittr
+    - {{native}}gmp
     - posix               # [win]
     - {{native}}toolchain # [win]
     - gcc                 # [not win]
-    - {{native}}gmp       # [win]
     - {{native}}libxml2   # [win]
 
   run:
@@ -51,7 +51,7 @@ requirements:
     - r-nmf
     - r-irlba
     - r-magrittr
-    - {{native}}gmp       # [win]
+    - {{native}}gmp
     - {{native}}libxml2   # [win]
 
 test:
