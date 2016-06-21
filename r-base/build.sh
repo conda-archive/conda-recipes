@@ -42,6 +42,8 @@ Linux() {
                 --with-x                        \
                 --with-pic                      \
                 --with-cairo                    \
+                --with-curses                   \
+                --with-readline                 \
                 --with-recommended-packages=no  \
                 LIBnn=lib
 
