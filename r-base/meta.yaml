@@ -1,13 +1,13 @@
 {% set pfx = 'm2w64-' if win else '' %}
+{% set ver= '3.3.1' %}
 
 package:
   name: r-base
-  version: 3.3.0
+  version: {{ ver }}
 
 source:
-  fn: R-3.3.0.tar.gz
-  url: https://cran.r-project.org/src/base/R-3/R-3.3.0.tar.gz
-  sha1: 166a25a7996150c9c83cdafcc89bfcd81578a887
+  url: https://cran.r-project.org/src/base/R-3/R-{{ ver }}.tar.gz
+  sha1: df853188d3e2b1c2d32393016401c432a5192c4d
   patches:
     - mac-unicode.patch # [osx]
     - 0002-Win32-Fix-trio-config-h-include-depth-issue.patch
@@ -27,29 +27,30 @@ build:
 
 requirements:
   build:
-    - posix                # [win]
-    - m2-texinfo-tex       # [win]
-    - m2-texinfo           # [win]
-    - m2-curl              # [win]
-    - m2-p7zip             # [win]
-    - readline             # [not win]
-    - ncurses              # [not win]
-    - cairo                # [linux]
-    - pango                # [linux]
-    - gcc                  # [not win]
-    - jpeg                 # [not win]
-    - curl                 # [not win]
-    - {{pfx}}bzip2         # [not osx]
-    - {{pfx}}libjpeg-turbo # [win]
-    - {{pfx}}toolchain     # [win]
-    - {{pfx}}libiconv      # [win]
-    - {{pfx}}gmp           # [win]
-    - {{pfx}}fftw          # [win]
-    - {{pfx}}xz            # [win]
-    - {{pfx}}mpfr          # [win]
-    - {{pfx}}libsndfile    # [win]
-    - {{pfx}}bwidget       # [win]
-    - {{pfx}}tktable       # [win]
+    - posix                 # [win]
+    - m2-texinfo-tex        # [win]
+    - m2-texinfo            # [win]
+    - m2-curl               # [win]
+    - m2-p7zip              # [win]
+    - readline              # [not win]
+    - ncurses               # [not win]
+    - cairo                 # [linux]
+    - pango                 # [linux]
+    - gcc                   # [not win]
+    - jpeg                  # [not win]
+    - curl                  # [not win]
+    - {{pfx}}bzip2          # [not osx]
+    - {{pfx}}libjpeg-turbo  # [win]
+    - {{pfx}}toolchain      # [win]
+    - {{pfx}}libiconv       # [win]
+    - {{pfx}}gmp            # [win]
+    - {{pfx}}fftw           # [win]
+    - {{pfx}}xz             # [win]
+    - xz 5.2.*              # [not win]
+    - {{pfx}}mpfr           # [win]
+    - {{pfx}}libsndfile     # [win]
+    - {{pfx}}bwidget        # [win]
+    - {{pfx}}tktable        # [win]
     - {{pfx}}tk
     - {{pfx}}zlib
     - {{pfx}}gsl
@@ -59,24 +60,25 @@ requirements:
     - {{pfx}}pcre
 
   run:
-    - readline             # [not win]
-    - ncurses              # [not win]
-    - cairo                # [linux]
-    - pango                # [linux]
-    - libgcc               # [not win]
-    - {{pfx}}gcc-libs      # [win]
-    - jpeg                 # [not win]
-    - curl                 # [not win]
-    - {{pfx}}bzip2         # [not osx]
-    - {{pfx}}libjpeg-turbo # [win]
-    - {{pfx}}libiconv      # [win]
-    - {{pfx}}gmp           # [win]
-    - {{pfx}}fftw          # [win]
-    - {{pfx}}xz            # [win]
-    - {{pfx}}mpfr          # [win]
-    - {{pfx}}libsndfile    # [win]
-    - {{pfx}}bwidget       # [win]
-    - {{pfx}}tktable       # [win]
+    - readline              # [not win]
+    - ncurses               # [not win]
+    - cairo                 # [linux]
+    - pango                 # [linux]
+    - libgcc                # [not win]
+    - {{pfx}}gcc-libs       # [win]
+    - jpeg                  # [not win]
+    - curl                  # [not win]
+    - {{pfx}}bzip2          # [not osx]
+    - {{pfx}}libjpeg-turbo  # [win]
+    - {{pfx}}libiconv       # [win]
+    - {{pfx}}gmp            # [win]
+    - {{pfx}}fftw           # [win]
+    - {{pfx}}xz             # [win]
+    - xz 5.2.*              # [not win]
+    - {{pfx}}mpfr           # [win]
+    - {{pfx}}libsndfile     # [win]
+    - {{pfx}}bwidget        # [win]
+    - {{pfx}}tktable        # [win]
     - {{pfx}}tk
     - {{pfx}}zlib
     - {{pfx}}gsl
