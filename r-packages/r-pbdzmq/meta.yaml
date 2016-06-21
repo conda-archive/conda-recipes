@@ -38,6 +38,7 @@ requirements:
   build:
     - r-base
     - r-r6
+    - pkg-config
     - posix               # [win]
     - {{native}}toolchain # [win]
     - gcc                 # [not win]
