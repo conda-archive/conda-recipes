@@ -8,6 +8,13 @@ package:
   name: nlopt-static
   version: {{ version }}
 
+requirements:
+  build:
+    - gcc
+
+  run:
+    - libgcc
+
 source:
   fn: nlopt-{{ version }}.tar.gz
   url: http://ab-initio.mit.edu/nlopt/nlopt-{{ version }}.tar.gz
