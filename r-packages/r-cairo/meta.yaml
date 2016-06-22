@@ -33,10 +33,13 @@ build:
 
   skip: true # [osx]
 
+# pkg-config is ineffective on Linux currently since our cairo.pc
+# requires xrender.pc which we do not build. Bodge it in build.sh
 # Suggests: png
 requirements:
   build:
     - r-base
+    - pkg-config          # [not win]
     - posix               # [win]
     - {{native}}toolchain # [win]
     - gcc                 # [not win]
