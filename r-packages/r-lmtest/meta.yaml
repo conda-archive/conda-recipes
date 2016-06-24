@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-lmtest
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,14 +34,15 @@ build:
 # Suggests: car, strucchange, sandwich, dynlm, stats4, survival, AER
 requirements:
   build:
-    - r
+    - r-base
     - r-zoo
-    - gcc # [not win]
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
+    - r-base
     - r-zoo
-    - libgcc # [not win]
 
 test:
   commands:
@@ -58,6 +62,7 @@ about:
   summary: A collection of tests, data sets, and examples for diagnostic checking in linear regression
     models. Furthermore, some generic tools for inference in parametric models are provided.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: lmtest

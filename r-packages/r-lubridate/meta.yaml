@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-lubridate
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.3.3"
+  version: "1.5.6"
 
 source:
-  fn: lubridate_1.3.3.tar.gz
+  fn: lubridate_1.5.6.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/lubridate_1.3.3.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/lubridate/lubridate_1.3.3.tar.gz
+    - http://cran.r-project.org/src/contrib/lubridate_1.5.6.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/lubridate/lubridate_1.5.6.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -28,21 +31,18 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat, knitr
+# Suggests: testthat, knitr, covr
 requirements:
   build:
-    - r
-    - r-memoise
-    - r-plyr
+    - r-base
     - r-stringr
-    - gcc # [not win]
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
-    - r-memoise
-    - r-plyr
+    - r-base
     - r-stringr
-    - libgcc # [not win]
 
 test:
   commands:
@@ -58,36 +58,39 @@ test:
 
 about:
   #home:
-  license: GPL
-  summary: Lubridate makes it easier to work with dates and times by providing functions to identify
-    and parse date-time data, extract and modify components of a date-time (years, months,
-    days, hours, minutes, and seconds), perform accurate math on date-times, handle
-    time zones and Daylight Savings Time. Lubridate has a consistent, memorable syntax,
-    that makes working with dates fun instead of frustrating.
-  license_family: GPL3
+  license: GPL-2
+  summary: 'Functions to work with date-times and timespans: fast and user friendly parsing of
+    date-time data, extraction and updating of components of a date-time (years, months,
+    days, hours, minutes, and seconds), algebraic manipulation on date-time and timespan
+    objects. The ''lubridate'' package has a consistent and memorable syntax that makes
+    working with dates easy and fun.'
+
+  license_family: GPL2
+
 # The original CRAN metadata for this package was:
 
 # Package: lubridate
-# Imports: plyr, stringr, memoise
-# Maintainer: Garrett Grolemund <garrett@rstudio.com>
-# License: GPL
-# Title: Make dealing with dates a little easier
+# Maintainer: Vitalie Spinu <spinuvit@gmail.com>
+# License: GPL-2
+# Title: Make Dealing with Dates a Little Easier
 # LazyData: true
 # Type: Package
-# Authors@R: c(person("Garrett", "Grolemund", email = "garrett@rstudio.com", role = c("aut", "cre")), person("Hadley", "Wickham", role = "aut"), person("Vitalie", "Spinu", role = "ctb"), person("Imanuel", "Constigan", role = "ctb"), person("Chel Hee", "Lee", role = "ctb"), person("Richard", "Cotton", role = "ctb"), person("Ian", "Lyttle", role = "ctb"), person("Winston", "Chang", role = "ctb"))
-# Description: Lubridate makes it easier to work with dates and times by providing functions to identify and parse date-time data, extract and modify components of a date-time (years, months, days, hours, minutes, and seconds), perform accurate math on date-times, handle time zones and Daylight Savings Time. Lubridate has a consistent, memorable syntax, that makes working with dates fun instead of frustrating.
+# Authors@R: c(person("Garrett", "Grolemund", role = "aut"), person("Vitalie", "Spinu", email = "spinuvit@gmail.com", role = c("aut","cre")), person("Hadley", "Wickham", role = "aut"), person("Jan", "Lyttle", role="ctb"), person("Imanuel", "Constigan", role = "ctb"), person("Jason", "Law", role="ctb"), person("Doug","Mitarotonda", role="ctb"), person("Joseph", "Larmarange", role="ctb"), person("Jonathan", "Boiser", role="ctb"), person("Chel Hee", "Lee", role = "ctb"))
+# Description: Functions to work with date-times and timespans: fast and user friendly parsing of date-time data, extraction and updating of components of a date-time (years, months, days, hours, minutes, and seconds), algebraic manipulation on date-time and timespan objects. The 'lubridate' package has a consistent and memorable syntax that makes working with dates easy and fun.
 # Enhances: chron, timeDate, zoo, xts, its, tis, timeSeries, fts, tseries
-# Version: 1.3.3
+# Version: 1.5.6
 # Depends: methods, R (>= 3.0.0)
-# Suggests: testthat, knitr
+# Imports: stringr
+# Suggests: testthat, knitr, covr
 # BugReports: https://github.com/hadley/lubridate/issues
 # VignetteBuilder: knitr
-# Collate: 'time-zones.r' 'POSIXt.r' 'timespans.r' 'numeric.r' 'util.r' 'durations.r' 'periods.r' 'intervals.r' 'difftimes.r' 'Dates.r' 'coercion.r' 'ops-addition.r' 'ops-division.r' 'ops-integer-division.r' 'ops-modulo.r' 'ops-multiplication.r' 'ops-subtraction.r' 'accessors-day.r' 'accessors-dst.r' 'accessors-hour.r' 'accessors-minute.r' 'accessors-month.r' 'accessors-second.r' 'accessors-tz.r' 'accessors-week.r' 'accessors-year.r' 'am-pm.r' 'decimal-dates.r' 'epochs.r' 'help.r' 'instants.r' 'leap-years.r' 'parse.r' 'pretty.r' 'round.r' 'update.r' 'data.r' 'guess.r' 'stamp.r' 'ops-%m+%.r' 'accessors-quarter.r'
-# Packaged: 2013-12-26 20:51:01 UTC; garrettgrolemund
-# Author: Garrett Grolemund [aut, cre], Hadley Wickham [aut], Vitalie Spinu [ctb], Imanuel Constigan [ctb], Chel Hee Lee [ctb], Richard Cotton [ctb], Ian Lyttle [ctb], Winston Chang [ctb]
+# Collate: 'Dates.r' 'POSIXt.r' 'timespans.r' 'intervals.r' 'difftimes.r' 'durations.r' 'util.r' 'periods.r' 'accessors-date.R' 'accessors-day.r' 'accessors-dst.r' 'accessors-hour.r' 'accessors-minute.r' 'accessors-month.r' 'accessors-quarter.r' 'accessors-second.r' 'accessors-tz.r' 'accessors-week.r' 'accessors-year.r' 'am-pm.r' 'time-zones.r' 'numeric.r' 'coercion.r' 'constants.r' 'data.r' 'decimal-dates.r' 'deprecated.r' 'guess.r' 'help.r' 'instants.r' 'leap-years.r' 'ops-addition.r' 'ops-%m+%.r' 'ops-division.r' 'ops-integer-division.r' 'ops-modulo.r' 'ops-multiplication.r' 'ops-subtraction.r' 'parse.r' 'pretty.r' 'round.r' 'stamp.r' 'update.r'
+# RoxygenNote: 5.0.1
 # NeedsCompilation: yes
+# Packaged: 2016-04-05 23:15:56 UTC; vspinu
+# Author: Garrett Grolemund [aut], Vitalie Spinu [aut, cre], Hadley Wickham [aut], Jan Lyttle [ctb], Imanuel Constigan [ctb], Jason Law [ctb], Doug Mitarotonda [ctb], Joseph Larmarange [ctb], Jonathan Boiser [ctb], Chel Hee Lee [ctb]
 # Repository: CRAN
-# Date/Publication: 2013-12-31 16:24:04
+# Date/Publication: 2016-04-06 01:24:41
 
 # See
 # http://docs.continuum.io/conda/build.html for

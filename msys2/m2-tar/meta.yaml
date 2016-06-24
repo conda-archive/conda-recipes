@@ -1,0 +1,37 @@
+package:
+  name: m2-tar
+  version: '1.28'
+source:
+  url: http://repo.msys2.org/msys/sources/tar-1.28-3.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '3'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-msys2-runtime
+  - m2-libiconv
+  - m2-libintl
+  - m2-bash
+about:
+  home: http://www.gnu.org/software/tar/tar.html
+  license: GPL, GPL3
+  summary: Utility used to store, backup, and transport files
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/tar
+      url: http://repo.msys2.org/msys/i686/tar-1.28-3-i686.pkg.tar.xz
+      md5: 6afa7cc6fff0d7045bb8f5371edfb6ab
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/tar
+      url: http://repo.msys2.org/msys/x86_64/tar-1.28-3-x86_64.pkg.tar.xz
+      md5: acded7bb5518a65a4abc92f7fc3b7a48
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

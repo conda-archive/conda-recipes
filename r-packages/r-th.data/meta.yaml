@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-th.data
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.0_6"
+  version: "1.0_7"
 
 source:
-  fn: TH.data_1.0-6.tar.gz
+  fn: TH.data_1.0-7.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/TH.data_1.0-6.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/TH.data/TH.data_1.0-6.tar.gz
+    - http://cran.r-project.org/src/contrib/TH.data_1.0-7.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/TH.data/TH.data_1.0-7.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -21,7 +24,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -31,10 +34,14 @@ build:
 # Suggests: dplyr, gdata, plyr
 requirements:
   build:
-    - r
+    - r-base
+    - r-mass
+    - r-survival
 
   run:
-    - r
+    - r-base
+    - r-mass
+    - r-survival
 
 test:
   commands:
@@ -53,24 +60,25 @@ about:
   license: GPL-3
   summary: Contains data sets used in other packages Torsten Hothorn maintains.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: TH.data
 # Title: TH's Data Archive
-# Date: 2014-12-19
-# Version: 1.0-6
+# Date: 2016-01-19
+# Version: 1.0-7
 # Authors@R: c(person("Torsten", "Hothorn", role = c("aut", "cre"), email = "Torsten.Hothorn@R-project.org"))
 # Description: Contains data sets used in other packages Torsten Hothorn maintains.
-# Depends: R (>= 2.10.0)
+# Depends: R (>= 2.10.0), survival, MASS
 # Suggests: dplyr, gdata, plyr
 # LazyData: yes
 # License: GPL-3
-# Packaged: 2015-01-05 12:52:37 UTC; hothorn
+# NeedsCompilation: no
+# Packaged: 2016-01-28 08:58:38 UTC; hothorn
 # Author: Torsten Hothorn [aut, cre]
 # Maintainer: Torsten Hothorn <Torsten.Hothorn@R-project.org>
-# NeedsCompilation: no
 # Repository: CRAN
-# Date/Publication: 2015-01-05 17:33:36
+# Date/Publication: 2016-01-28 10:16:26
 
 # See
 # http://docs.continuum.io/conda/build.html for

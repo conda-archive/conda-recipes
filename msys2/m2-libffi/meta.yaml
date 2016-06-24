@@ -1,0 +1,33 @@
+package:
+  name: m2-libffi
+  version: 3.2.1
+source:
+  url: http://repo.msys2.org/msys/sources/libffi-3.2.1-1.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+about:
+  home: http://sourceware.org/libffi/
+  license: GPL, MIT
+  summary: Portable, high level programming interface to various calling conventions
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/libffi
+      url: http://repo.msys2.org/msys/i686/libffi-3.2.1-1-i686.pkg.tar.xz
+      md5: 39a70ec04faaa818a9322063f8e9a1a5
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/libffi
+      url: http://repo.msys2.org/msys/x86_64/libffi-3.2.1-1-x86_64.pkg.tar.xz
+      md5: 9370f53c5e46ebe986d01426dea6167b
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

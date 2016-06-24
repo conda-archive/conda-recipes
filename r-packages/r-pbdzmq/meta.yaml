@@ -1,0 +1,104 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-pbdzmq
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.2_2"
+
+source:
+  fn: pbdZMQ_0.2-2.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/pbdZMQ_0.2-2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/pbdZMQ/pbdZMQ_0.2-2.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# unlike r-rzmq, this package pre-bakes a whole set of Windows
+# Makefiles, and so it doesn't depend on our shared
+# m2-mingw-w64-zeromq package. This is beyond horrible.
+requirements:
+  build:
+    - r-base
+    - r-r6
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
+    - {{native}}zeromq    # [not win]
+
+  run:
+    - r-base
+    - r-r6
+    - {{native}}zeromq    # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('pbdZMQ')" # [not win]
+    - "\"%R%\" -e \"library('pbdZMQ')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://r-pbd.org/
+  license: GPL-3
+  summary: '''ZeroMQ'' is a well-known library for high-performance asynchronous messaging in
+    scalable, distributed applications.  This package provides high level R wrapper
+    functions to easily utilize ''ZeroMQ''. We mainly focus on interactive client/server
+    programming frameworks. For convenience, a minimal ''ZeroMQ'' library (4.1.0 rc1)
+    is shipped with ''pbdZMQ'', which can be used if no system installation of ''ZeroMQ''
+    is available.  A few wrapper functions compatible with ''rzmq'' are also provided.'
+
+  license_family: GPL3
+
+# The original CRAN metadata for this package was:
+
+# Package: pbdZMQ
+# Version: 0.2-2
+# Date: 2016-04-23
+# Title: Programming with Big Data -- Interface to ZeroMQ
+# Authors@R: c(person("Wei-Chen", "Chen", role = c("aut", "cre"), email = "wccsnow@gmail.com"), person("Drew", "Schmidt", role = "aut"), person("Christian", "Heckendorf", role = "aut", comment = "file transfer"), person("George", "Ostrouchov", role = "aut", comment = "Mac OSX"), person("Whit", "Armstrong", role = "ctb", comment = "some functions are modified from the rzmq package for backwards compatibility"), person("Brian", "Ripley", role = "ctb", comment = "C code of shellexec, and Solaris"), person("R Core team", role = "ctb", comment = "some functions are modified from the R source code"))
+# Depends: R (>= 3.0.0)
+# Imports: R6
+# LazyLoad: yes
+# LazyData: yes
+# Copyright: See files AUTHORS, COPYING, COPYING.LESSER, and MAINTAINERS in pbdZMQ/inst/zmq_copyright/ for the ZeroMQ source files in src/zmq_src/ which are under GPL-3.
+# Description: 'ZeroMQ' is a well-known library for high-performance asynchronous messaging in scalable, distributed applications.  This package provides high level R wrapper functions to easily utilize 'ZeroMQ'. We mainly focus on interactive client/server programming frameworks. For convenience, a minimal 'ZeroMQ' library (4.1.0 rc1) is shipped with 'pbdZMQ', which can be used if no system installation of 'ZeroMQ' is available.  A few wrapper functions compatible with 'rzmq' are also provided.
+# SystemRequirements: Linux, Mac OSX, and Windows, or ZeroMQ library >= 4.0.4. Solaris 10 needs ZeroMQ library 4.0.7 and OpenCSW.
+# License: GPL-3
+# URL: http://r-pbd.org/
+# BugReports: http://group.r-pbd.org/
+# MailingList: Please send questions and comments regarding pbdR to RBigData@gmail.com
+# NeedsCompilation: yes
+# ByteCompile: yes
+# RoxygenNote: 5.0.1
+# Packaged: 2016-04-24 20:55:52 UTC; snoweye
+# Author: Wei-Chen Chen [aut, cre], Drew Schmidt [aut], Christian Heckendorf [aut] (file transfer), George Ostrouchov [aut] (Mac OSX), Whit Armstrong [ctb] (some functions are modified from the rzmq package for backwards compatibility), Brian Ripley [ctb] (C code of shellexec, and Solaris), R Core team [ctb] (some functions are modified from the R source code)
+# Maintainer: Wei-Chen Chen <wccsnow@gmail.com>
+# Repository: CRAN
+# Date/Publication: 2016-04-25 08:59:03
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

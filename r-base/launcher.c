@@ -13,6 +13,7 @@
 #include <windows.h>
 #include <tchar.h>
 #include <fcntl.h>
+#include <process.h>
 
 #define DEBUG 0
 
@@ -157,7 +158,8 @@ char* join_executable_and_args(char *executable, char **args, int argc)
 
 int run(int argc, char **argv, int is_gui)
 {
-    char path[256], newpath[256];
+    char path[MAX_PATH], newpath[MAX_PATH];
+    char *PATH, *newPATH;
     char **newargs, **newargsp; /* argument array for exec */
     char *fn, *end;     /* working pointers for string manipulation */
     char *cmdline;
@@ -175,6 +177,27 @@ int run(int argc, char **argv, int is_gui)
         end--;
     *end = '\0';
 
+    /* This is only temporary until {Ana,Mini,}conda activate does
+       the job for us and can be assumed to have been rolled out.. */
+    PATH = getenv("PATH");
+    if (PATH != NULL)
+    {
+        #define MINGW_W64_PATH "\\Library\\mingw-w64\\bin"
+        #define MSYS2_PATH     "\\Library\\usr\\bin"
+        if (!strstr(PATH, MINGW_W64_PATH) ||
+            !strstr(PATH, MSYS2_PATH))
+        {
+            size_t newPATHsize = 5 + 1 + strlen(PATH); /* PATH= and NULL terminator. */
+            newPATHsize += strlen(path) + strlen(MINGW_W64_PATH) + 1;
+            newPATHsize += strlen(path) + strlen(MSYS2_PATH) + 1;
+            newPATH = calloc(newPATHsize, sizeof(char));
+            if (newPATH == NULL)
+                return fail("Could not calloc new PATH (%s)", PATH);
+            sprintf(newPATH, "PATH=%s" MINGW_W64_PATH ";%s" MSYS2_PATH ";%s", path, path, PATH);
+            if (putenv(newPATH))
+                return fail("Could putenv newPATH (%s)", newPATH);
+        }
+    }
     strcpy(newpath, path);
     strcat(newpath, "\\R\\bin\\" ARCH "\\");
     strcat(newpath, fn);
@@ -200,7 +223,7 @@ int run(int argc, char **argv, int is_gui)
 
     if (is_gui) {
         /* Use exec, we don't need to wait for the GUI to finish */
-        execv(newpath, (const char * const *) (newargs));
+        execv(newpath, (char * const *) (newargs));
         return fail("Could not exec %s", newpath); /* shouldn't get here! */
     }
 

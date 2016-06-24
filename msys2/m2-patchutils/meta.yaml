@@ -1,0 +1,34 @@
+package:
+  name: m2-patchutils
+  version: 0.3.3
+source:
+  url: http://repo.msys2.org/msys/sources/patchutils-0.3.3-2.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '2'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-msys2-runtime
+about:
+  home: http://cyberelk.net/tim/software/patchutils/
+  license: GPL
+  summary: Utilities to work with patches
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/patchutils
+      url: http://repo.msys2.org/msys/i686/patchutils-0.3.3-2-i686.pkg.tar.xz
+      md5: a5ca3d892623ca1c9ddaef32851d1095
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/patchutils
+      url: http://repo.msys2.org/msys/x86_64/patchutils-0.3.3-2-x86_64.pkg.tar.xz
+      md5: 2c91473853a30e69c078703027ea0fb6
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

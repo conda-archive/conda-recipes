@@ -1,26 +1,39 @@
+{% set version = "0.47" %}
+
 package:
   name: xgboost
-  version: 0.4.0
+  version: {{ version }}
 
 source:
-  git_tag: v0.40
   git_url: https://github.com/dmlc/xgboost.git
+  git_tag: {{ version }}
+
+build:
+  number: 0
 
 requirements:
   build:
     - python
-    - setuptools
+    - numpy
+    - scipy
+    - scikit-learn
+    - matplotlib
+    - gcc 4.8*  # [osx]
   run:
     - python
     - numpy
     - scipy
     - scikit-learn
+    - matplotlib
+    - libgcc
 
 test:
   imports:
     - xgboost
+  commands:
+    - python -c "import xgboost;"
 
 about:
   home: https://github.com/dmlc/xgboost
-  license: ALv2
-  summary: "An optimized general purpose gradient boosting library."
+  license: Apache-2
+  summary: 'Scalable, Portable and Distributed Gradient Boosting (GBDT, GBRT or GBM) Library, for Python, R, Java, Scala, C++ and more. Runs on single machine, Hadoop, Spark, Flink and DataFlow'

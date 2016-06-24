@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-foreign
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -32,11 +35,12 @@ build:
 requirements:
   build:
     - r-base
-    - gcc # [not win]
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
-    - libgcc # [not win]
+    - r-base
 
 test:
   commands:
@@ -55,6 +59,7 @@ about:
   license: GPL (>= 2)
   summary: Functions for reading and writing data stored by some versions of Epi Info, Minitab,
     S, SAS, SPSS, Stata, Systat and Weka and for reading and writing some dBase files.
+  license_family: GPL3
 
 # The original CRAN metadata for this package was:
 

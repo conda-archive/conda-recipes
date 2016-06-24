@@ -1,0 +1,35 @@
+package:
+  name: m2-p7zip
+  version: 9.38.1
+source:
+  url: http://repo.msys2.org/msys/sources/p7zip-9.38.1-1.src.tar.gz
+  md5: 5665b402e8732d3e862f6253c82ff327
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-gcc-libs
+  - m2-bash
+about:
+  home: http://p7zip.sourceforge.net/
+  license: GPL, custom
+  summary: Command-line version of the 7zip compressed file archiver
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/p7zip
+      url: http://repo.msys2.org/msys/i686/p7zip-9.38.1-1-i686.pkg.tar.xz
+      md5: f200424a6cbaa6a38b74e9a095892254
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/p7zip
+      url: http://repo.msys2.org/msys/x86_64/p7zip-9.38.1-1-x86_64.pkg.tar.xz
+      md5: 759b94e8ec83a9c2726e8f2e87bd40d3
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

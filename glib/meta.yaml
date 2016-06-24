@@ -16,6 +16,7 @@ requirements:
     - python
     - gcc
     - libffi >=3.0.0
+    - xz
     - zlib
   run:
     - libffi >=3.0.0

@@ -1,0 +1,33 @@
+package:
+  name: m2w64-make
+  version: 4.1.2351.a80a8b8
+source:
+  url: http://repo.msys2.org/mingw/sources/mingw-w64-make-4.1.2351.a80a8b8-1.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+about:
+  home: http://www.gnu.org/software/make
+  license: GPL3
+  summary: GNU make utility to maintain groups of programs (mingw-w64)
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: mingw32/mingw-w64-i686-make
+      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-make-4.1.2351.a80a8b8-1-any.pkg.tar.xz
+      md5: 2db601d2660e2e4c3afae569c1d9cde8
+      mv-srcs:
+      - mingw32
+      mv-dsts:
+      - Library/mingw-w64
+    win-64:
+      srcpkg: mingw64/mingw-w64-x86_64-make
+      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-make-4.1.2351.a80a8b8-1-any.pkg.tar.xz
+      md5: a7c87dfa55d4db7e8f233f1ae9bc9087
+      mv-srcs:
+      - mingw64
+      mv-dsts:
+      - Library/mingw-w64

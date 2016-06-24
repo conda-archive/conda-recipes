@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-threejs
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.2.1"
+  version: "0.2.2"
 
 source:
-  fn: threejs_0.2.1.tar.gz
+  fn: threejs_0.2.2.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/threejs_0.2.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/threejs/threejs_0.2.1.tar.gz
+    - http://cran.r-project.org/src/contrib/threejs_0.2.2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/threejs/threejs_0.2.2.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -28,17 +31,21 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: htmltools (>= 0.2.6), RCurl, maps, sp
+# Suggests: htmltools (>= 0.2.6), maps, igraph
 requirements:
   build:
-    - r
+    - r-base
+    - r-matrix
     - r-base64enc
     - r-htmlwidgets >=0.3.2
+    - r-jsonlite
 
   run:
-    - r
+    - r-base
+    - r-matrix
     - r-base64enc
     - r-htmlwidgets >=0.3.2
+    - r-jsonlite
 
 test:
   commands:
@@ -55,29 +62,33 @@ test:
 about:
   home: http://bwlewis.github.io/rthreejs
   license: MIT + file LICENSE
-  summary: Create interactive 3D scatter plots and globes using the 'three.js' visualization
-    library ("http://threejs.org").
+  summary: Create interactive 3D scatter plots, network plots, and globes using the 'three.js'
+    visualization library ("http://threejs.org").
   license_family: MIT
+
 # The original CRAN metadata for this package was:
 
 # Package: threejs
 # Type: Package
-# Title: Interactive 3D Scatter Plots and Globes
-# Description: Create interactive 3D scatter plots and globes using the 'three.js' visualization library ("http://threejs.org").
-# Version: 0.2.1
-# Date: 2015-04-24
-# Author: B. W. Lewis <blewis@illposed.net>
-# Maintainer: B. W. Lewis <blewis@illposed.net>
+# Title: Interactive 3D Scatter Plots, Networks and Globes
+# Description: Create interactive 3D scatter plots, network plots, and globes using the 'three.js' visualization library ("http://threejs.org").
+# Version: 0.2.2
+# Date: 2016-03-30
+# Authors@R: c( person("B. W.", "Lewis", role=c("aut","cre"), email="blewis@illposed.net"), person(given="Three.js authors", role="cph", comment="three.js JavaScript library"), person("Alexey", "Stukalov", role=("ctb"), email="astukalov@gmail.com"), person("Yihui","Xie", role=("ctb"), email="xie@yihui.name"), person("Andreas", "Briese", role=("ctb"), email="ab@edutoolbox.de"), person("David", "Piegza", role="cph") )
 # URL: http://bwlewis.github.io/rthreejs
+# BugReports: https://github.com/bwlewis/rthreejs/issues
 # License: MIT + file LICENSE
 # Depends: R (>= 3.0.0)
-# Imports: htmlwidgets (>= 0.3.2), base64enc
-# Suggests: htmltools (>= 0.2.6), RCurl, maps, sp
+# Imports: htmlwidgets (>= 0.3.2), base64enc, Matrix, stats, methods, jsonlite
+# Suggests: htmltools (>= 0.2.6), maps, igraph
 # Enhances: knitr, shiny
+# RoxygenNote: 5.0.0
 # NeedsCompilation: no
-# Packaged: 2015-05-19 02:34:45 UTC; blewis
+# Packaged: 2016-03-31 20:57:12 UTC; blewis
+# Author: B. W. Lewis [aut, cre], Three.js authors [cph] (three.js JavaScript library), Alexey Stukalov [ctb], Yihui Xie [ctb], Andreas Briese [ctb], David Piegza [cph]
+# Maintainer: B. W. Lewis <blewis@illposed.net>
 # Repository: CRAN
-# Date/Publication: 2015-05-19 06:13:04
+# Date/Publication: 2016-04-01 10:41:46
 
 # See
 # http://docs.continuum.io/conda/build.html for

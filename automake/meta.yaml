@@ -13,11 +13,10 @@ requirements:
   build:
     - m4
     - autoconf
-    - perl
   run:
     - m4
     - autoconf
-    - perl
+
 test:
   commands:
     - automake --help

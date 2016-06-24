@@ -1,0 +1,34 @@
+package:
+  name: m2w64-gsl
+  version: '2.1'
+source:
+  url: http://repo.msys2.org/mingw/sources/mingw-w64-gsl-2.1-1.src.tar.gz
+  md5: 3633caf353d8138dced7fa78e4400ef9
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+about:
+  home: http://www.gnu.org/software/gsl/gsl.html
+  license: GPL
+  summary: The GNU Scientific Library (GSL) is a modern numerical library for C and
+    C++ programmers (mingw-w64)
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: mingw32/mingw-w64-i686-gsl
+      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-gsl-2.1-1-any.pkg.tar.xz
+      md5: f5b8a0b8f9f0917ebab595d3aedfaed6
+      mv-srcs:
+      - mingw32
+      mv-dsts:
+      - Library/mingw-w64
+    win-64:
+      srcpkg: mingw64/mingw-w64-x86_64-gsl
+      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-gsl-2.1-1-any.pkg.tar.xz
+      md5: 969c0547f943d2899c7a17236f103a00
+      mv-srcs:
+      - mingw64
+      mv-dsts:
+      - Library/mingw-w64

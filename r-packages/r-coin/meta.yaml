@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-coin
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,20 +34,21 @@ build:
 # Suggests: parallel, xtable, e1071, vcd, TH.data
 requirements:
   build:
-    - r
+    - r-base
     - r-modeltools >=0.2_9
     - r-multcomp
     - r-mvtnorm >=1.0_3
-    - r-survival # [not win]
-    - gcc # [not win]
+    - r-survival
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
+    - r-base
     - r-modeltools >=0.2_9
     - r-multcomp
     - r-mvtnorm >=1.0_3
-    - r-survival # [not win]
-    - libgcc # [not win]
+    - r-survival
 
 test:
   commands:
@@ -65,6 +69,7 @@ about:
     K-sample (non-parametric ANOVA), correlation, censored, ordered and multivariate
     problems.
   license_family: GPL2
+
 # The original CRAN metadata for this package was:
 
 # Package: coin

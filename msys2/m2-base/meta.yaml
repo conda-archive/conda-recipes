@@ -1,0 +1,34 @@
+package:
+  name: m2-base
+  version: 1.0.0
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-bash
+  - m2-bash-completion
+  - m2-catgets
+  - m2-coreutils
+  - m2-dash
+  - m2-file
+  - m2-filesystem
+  - m2-findutils
+  - m2-gawk
+  - m2-gcc-libs
+  - m2-grep
+  - m2-gzip
+  - m2-inetutils
+  - m2-info
+  - m2-less
+  - m2-mintty
+  - m2-msys2-launcher-git
+  - m2-msys2-runtime
+  - m2-ncurses
+  - m2-sed
+  - m2-time
+  - m2-ttyrec
+  - m2-tzcode
+  - m2-util-linux
+  - m2-which
+  - m2-libxml2

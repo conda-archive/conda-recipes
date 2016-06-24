@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-kohonen
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,16 +34,17 @@ build:
 
 requirements:
   build:
-    - r
-    - r-mass # [not win]
-    - r-class # [not win]
-    - gcc # [not win]
+    - r-base
+    - r-mass
+    - r-class
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
-    - r-mass # [not win]
-    - r-class # [not win]
-    - libgcc # [not win]
+    - r-base
+    - r-mass
+    - r-class
 
 test:
   commands:
@@ -61,6 +65,7 @@ about:
     of the maps and prediction using trained maps are supported. The name of the package
     refers to Teuvo Kohonen, the inventor of the SOM.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: kohonen

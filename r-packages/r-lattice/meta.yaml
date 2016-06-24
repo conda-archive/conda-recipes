@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-lattice
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -32,11 +35,12 @@ build:
 requirements:
   build:
     - r-base
-    - gcc # [not win]
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
-    - libgcc # [not win]
+    - r-base
 
 test:
   commands:
@@ -57,6 +61,7 @@ about:
     with an emphasis on multivariate data. Lattice is sufficient for typical graphics
     needs, and is also flexible enough to handle most nonstandard requirements. See
     ?Lattice for an introduction.
+  license_family: GPL3
 
 # The original CRAN metadata for this package was:
 

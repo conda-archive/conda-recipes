@@ -1,15 +1,21 @@
+{% set pfx = 'm2w64-' if win else '' %}
+
 package:
-  name: r # [win]
-  name: r-base # [not win]
-  version: 3.2.2
+  name: r-base
+  version: 3.3.0
 
 source:
-  fn: R-3.2.2.tar.gz
-  url: http://cran.cnr.berkeley.edu/src/base/R-3/R-3.2.2.tar.gz
-  sha1: 68c74db1c5a2f2040280a03b8396e4d28a5a7617
-  patches: # [not win]
-    - share-make-vars.mk.patch # [not win]
+  fn: R-3.3.0.tar.gz
+  url: https://cran.r-project.org/src/base/R-3/R-3.3.0.tar.gz
+  sha1: 166a25a7996150c9c83cdafcc89bfcd81578a887
+  patches:
     - mac-unicode.patch # [osx]
+    - 0002-Win32-Fix-trio-config-h-include-depth-issue.patch
+    - 0003-Win32-Do-not-static-libgcc-link.patch              # This patch is only correct if using MSYS2's tcltk.
+    - 0004-Win32-Use-TCL_VERSION_86.patch                     # This patch is only correct if using MSYS2's tcltk.
+    - 0005-Win32-Extend-sqrt-NA_real_-hack-to-all-GCC-versions.patch
+    - 0006-Win32-GCC-5.3-Fix-ISNAN-int-emits-UD2-insn.patch
+    - 0007-Win32-MSYS2-ENV_CONV_EXCL_R_ARCH.patch
 
 build:
   rpaths:
@@ -19,33 +25,61 @@ build:
 
 requirements:
   build:
-    - readline  # [not win]
-    - ncurses   # [not win]
-    - tk        # [not win]
-    - zlib      # [not win]
-    - gsl       # [not win]
-    - cairo     # [linux]
-    - pango     # [linux]
-    - jpeg      # [not win]
-    - libpng 1.6* # [not win]
-    - libtiff   # [not win]
-    - libxml2 # Not really sure if libxml2 is needed [not win]
-    - gcc       # [not win]
-    - pcre      # [not win]
+    - posix                # [win]
+    - m2-texinfo-tex       # [win]
+    - m2-texinfo           # [win]
+    - m2-curl              # [win]
+    - m2-p7zip             # [win]
+    - readline             # [not win]
+    - ncurses              # [not win]
+    - cairo                # [linux]
+    - pango                # [linux]
+    - gcc                  # [not win]
+    - jpeg                 # [not win]
+    - {{pfx}}libjpeg-turbo # [win]
+    - {{pfx}}toolchain     # [win]
+    - {{pfx}}bzip2         # [win]
+    - {{pfx}}libiconv      # [win]
+    - {{pfx}}gmp           # [win]
+    - {{pfx}}fftw          # [win]
+    - {{pfx}}xz            # [win]
+    - {{pfx}}mpfr          # [win]
+    - {{pfx}}libsndfile    # [win]
+    - {{pfx}}bwidget       # [win]
+    - {{pfx}}tktable       # [win]
+    - {{pfx}}tk
+    - {{pfx}}zlib
+    - {{pfx}}gsl
+    - {{pfx}}libpng
+    - {{pfx}}libtiff
+    - {{pfx}}libxml2
+    - {{pfx}}pcre
 
   run:
-    - readline  # [not win]
-    - ncurses   # [not win]
-    - tk        # [not win]
-    - zlib      # [not win]
-    - cairo     # [linux]
-    - pango     # [linux]
-    - jpeg      # [not win]
-    - libpng 1.6* # [not win]
-    - libtiff   # [not win]
-    - libxml2   # [not win]
-    - libgcc    # [not win]
-    - pcre      # [not win]
+    - readline             # [not win]
+    - ncurses              # [not win]
+    - cairo                # [linux]
+    - pango                # [linux]
+    - libgcc               # [not win]
+    - {{pfx}}gcc-libs      # [win]
+    - jpeg                 # [not win]
+    - {{pfx}}libjpeg-turbo # [win]
+    - {{pfx}}bzip2         # [win]
+    - {{pfx}}libiconv      # [win]
+    - {{pfx}}gmp           # [win]
+    - {{pfx}}fftw          # [win]
+    - {{pfx}}xz            # [win]
+    - {{pfx}}mpfr          # [win]
+    - {{pfx}}libsndfile    # [win]
+    - {{pfx}}bwidget       # [win]
+    - {{pfx}}tktable       # [win]
+    - {{pfx}}tk
+    - {{pfx}}zlib
+    - {{pfx}}gsl
+    - {{pfx}}libpng
+    - {{pfx}}libtiff
+    - {{pfx}}libxml2
+    - {{pfx}}pcre
 
 test:
   commands:

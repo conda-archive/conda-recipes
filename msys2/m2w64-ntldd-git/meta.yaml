@@ -1,0 +1,33 @@
+package:
+  name: m2w64-ntldd-git
+  version: 15.e7622f6
+source:
+  url: http://repo.msys2.org/mingw/sources/mingw-w64-ntldd-git-r15.e7622f6-2.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '2'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+about:
+  home: https://github.com/LRN/ntldd
+  license: GPL3
+  summary: Tracks dependencides in Windows PE binaries (mingw-w64)
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: mingw32/mingw-w64-i686-ntldd-git
+      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-ntldd-git-r15.e7622f6-2-any.pkg.tar.xz
+      md5: 530f37d8f6cdcb1849bf1486760f14a1
+      mv-srcs:
+      - mingw32
+      mv-dsts:
+      - Library/mingw-w64
+    win-64:
+      srcpkg: mingw64/mingw-w64-x86_64-ntldd-git
+      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-ntldd-git-r15.e7622f6-2-any.pkg.tar.xz
+      md5: 22d9ac428820198a4cd9e96e74623132
+      mv-srcs:
+      - mingw64
+      mv-dsts:
+      - Library/mingw-w64

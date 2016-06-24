@@ -1,0 +1,36 @@
+package:
+    name: google-api-python-client
+    version: 1.5.1
+
+source:
+    git_url: https://github.com/google/google-api-python-client/
+    git_tag: v1.5.1
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - setuptools
+        - python
+        - six
+        - httplib2
+        - uritemplate
+        - oauth2client
+
+    run:
+        - python
+        - six
+        - httplib2
+        - uritemplate
+        - oauth2client
+
+test:
+    imports:
+        - googleapiclient
+
+about:
+    home: https://github.com/google/google-api-python-client/
+    license: Apache 2.0
+    summary: Google API Client Library for Python
+

@@ -1,0 +1,34 @@
+package:
+  name: m2w64-crt-git
+  version: 5.0.0.4636.2595836
+source:
+  url: http://repo.msys2.org/mingw/sources/mingw-w64-crt-git-5.0.0.4636.2595836-1.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2w64-headers-git
+about:
+  home: http://mingw-w64.sourceforge.net
+  license: custom
+  summary: MinGW-w64 CRT for Windows
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: mingw32/mingw-w64-i686-crt-git
+      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-crt-git-5.0.0.4636.f97302f-1-any.pkg.tar.xz
+      md5: 4377ceff6d25f02b68532dafd7e41b47
+      mv-srcs:
+      - mingw32
+      mv-dsts:
+      - Library/mingw-w64
+    win-64:
+      srcpkg: mingw64/mingw-w64-x86_64-crt-git
+      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-crt-git-5.0.0.4636.2595836-1-any.pkg.tar.xz
+      md5: aa19d9a1d9249331bf215674d1e2042f
+      mv-srcs:
+      - mingw64
+      mv-dsts:
+      - Library/mingw-w64

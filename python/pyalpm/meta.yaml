@@ -1,0 +1,42 @@
+package:
+  name: pyalpm
+  version: 0.8
+
+source:
+  fn: pyalpm-0.8.tar.gz
+  url: https://sources.archlinux.org/other/pyalpm/pyalpm-0.8.tar.gz
+  # url: https://projects.archlinux.org/git/users/remy/pyalpm.git
+  # url: https://sources.archlinux.org/sources/packages/pyalpm-0.8-1.src.tar.gz
+  md5: d77d0b3596aca2e7f44b7462c0e8a7ce
+  patches:
+    - 0001-Python2-compat-Module-initialization.patch
+    - 0002-Python2-compat-Use-Py_BuildValue-s-file-name.patch
+    - 0003-Python2-compat-pycman-from-__future__-import-print_f.patch
+    - 0004-Python2-compat-python3-python-coding-utf-8.patch
+    - 0005-Use-pkg-config-add-LIBALPM_STATIC-env.-var.patch
+
+requirements:
+  build:
+    - python
+    - gcc         # [not win]
+    - curl
+    - libarchive
+    - libalpm
+    - pkg-config  # [not linux]
+
+  run:
+    - curl
+    - libarchive
+    - libalpm
+
+build:
+  number: 0
+
+test:
+  imports:
+    - pyalpm
+
+about:
+  home: http://projects.archlinux.org/users/remy/pyalpm.git/
+  summary: Python 3 bindings for libalpm
+  license: GPL

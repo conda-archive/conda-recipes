@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-dt
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,13 +34,13 @@ build:
 # Suggests: jsonlite (>= 0.9.16), knitr (>= 1.8), shiny (>= 0.12.0)
 requirements:
   build:
-    - r
+    - r-base
     - r-htmltools
     - r-htmlwidgets >=0.4
     - r-magrittr
 
   run:
-    - r
+    - r-base
     - r-htmltools
     - r-htmlwidgets >=0.4
     - r-magrittr
@@ -61,6 +64,7 @@ about:
     (typically via R Markdown or Shiny). The 'DataTables' library has been included
     in this R package. The package name 'DT' is an abbreviation of 'DataTables'.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: DT
