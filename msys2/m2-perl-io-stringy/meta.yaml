@@ -1,0 +1,34 @@
+package:
+  name: m2-perl-io-stringy
+  version: '2.111'
+source:
+  url: http://repo.msys2.org/msys/sources/perl-IO-stringy-2.111-1.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-perl
+about:
+  home: http://search.cpan.org/dist/IO-stringy
+  license: GPL, PerlArtistic
+  summary: I/O on in-core objects like strings/arrays
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/perl-IO-stringy
+      url: http://repo.msys2.org/msys/i686/perl-IO-stringy-2.111-1-any.pkg.tar.xz
+      md5: 04fe82b2b5d7a905bb2c59ceb3ff79db
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/perl-IO-stringy
+      url: http://repo.msys2.org/msys/x86_64/perl-IO-stringy-2.111-1-any.pkg.tar.xz
+      md5: 62a45a9d433ae18c396a8fca931b7aa3
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

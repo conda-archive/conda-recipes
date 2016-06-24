@@ -1,0 +1,35 @@
+package:
+  name: m2-libtasn1
+  version: '4.7'
+source:
+  url: http://repo.msys2.org/msys/sources/libtasn1-4.7-1.src.tar.gz
+  md5: 1cbfea56b3bc972bcdaedfefaac2671c
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-info
+about:
+  home: http://www.gnu.org/software/libtasn1/
+  license: GPL, GPL3, LGPL
+  summary: A library for Abstract Syntax Notation One (ASN.1) and Distinguish Encoding
+    Rules (DER) manipulation.
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/libtasn1
+      url: http://repo.msys2.org/msys/i686/libtasn1-4.7-1-i686.pkg.tar.xz
+      md5: 76789e02b3334176be74eddf4cb76e68
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/libtasn1
+      url: http://repo.msys2.org/msys/x86_64/libtasn1-4.7-1-x86_64.pkg.tar.xz
+      md5: c9a68a1ca134646fb796cf449b8970a7
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

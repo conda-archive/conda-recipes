@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-maptools
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.8_37"
+  version: "0.8_39"
 
 source:
-  fn: maptools_0.8-37.tar.gz
+  fn: maptools_0.8-39.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/maptools_0.8-37.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/maptools/maptools_0.8-37.tar.gz
+    - http://cran.r-project.org/src/contrib/maptools_0.8-39.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/maptools/maptools_0.8-39.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,18 +34,19 @@ build:
 # Suggests: rgeos (>= 0.1-8), spatstat (>= 1.18), PBSmapping, maps, RColorBrewer, raster, polyclip
 requirements:
   build:
-    - r
-    - r-foreign >=0.8 # [not win]
-    - r-lattice # [not win]
+    - r-base
+    - r-foreign >=0.8
+    - r-lattice
     - r-sp >=1.0_11
-    - gcc # [not win]
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
-    - r-foreign >=0.8 # [not win]
-    - r-lattice # [not win]
+    - r-base
+    - r-foreign >=0.8
+    - r-lattice
     - r-sp >=1.0_11
-    - libgcc # [not win]
 
 test:
   commands:
@@ -65,13 +69,14 @@ about:
     such as PBSmapping, spatstat, maps, RArcInfo, Stata tmap, WinBUGS, Mondrian, and
     others.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: maptools
-# Version: 0.8-37
-# Date: 2015-09-28
+# Version: 0.8-39
+# Date: 2016-01-28
 # Title: Tools for Reading and Handling Spatial Objects
-# Authors@R: c( person("Roger", "Bivand", role = c("cre", "aut"), email = "Roger.Bivand@nhh.no"), person("Nicholas", "Lewin-Koh", role = "aut"), person("Edzer", "Pebesma", role = "ctb"), person("Eric", "Archer", role = "ctb"), person("Adrian", "Baddeley", role = "ctb"), person("Nick", "Bearman", role = "ctb"), person("Hans-JArg", "Bibiko", role = "ctb"), person("Steven", "Brey", role = "ctb"), person("Jonathan", "Callahan", role = "ctb"), person("German", "Carrillo", role = "ctb"), person("StAphane", "Dray", role = "ctb"), person("David", "Forrest", role = "ctb"), person("Michael", "Friendly", role = "ctb"), person("Patrick", "Giraudoux", role = "ctb"), person("Duncan", "Golicher", role = "ctb"), person("Virgilio", "GA3mez Rubio", role = "ctb"), person("Patrick", "Hausmann", role = "ctb"), person("Karl Ove", "Hufthammer", role = "ctb"), person("Thomas", "Jagger", role = "ctb"), person("Sebastian", "Luque", role = "ctb"), person("Don", "MacQueen", role = "ctb"), person("Andrew", "Niccolai", role = "ctb"), person("Edzer", "Pebesma", role = "ctb"), person("Oscar", "PerpiAAn Lamigueiro", role = "ctb"), person("Tom", "Short", role = "ctb"), person("Greg", "Snow", role = "ctb"), person("Ben", "Stabler", role = "ctb"), person("Murray", "Stokely", role = "ctb"), person("Rolf", "Turner", role = "ctb"))
+# Authors@R: c( person("Roger", "Bivand", role = c("cre", "aut"), email = "Roger.Bivand@nhh.no"), person("Nicholas", "Lewin-Koh", role = "aut"), person("Edzer", "Pebesma", role = "ctb"), person("Eric", "Archer", role = "ctb"), person("Adrian", "Baddeley", role = "ctb"), person("Nick", "Bearman", role = "ctb"), person("Hans-JArg", "Bibiko", role = "ctb"), person("Steven", "Brey", role = "ctb"), person("Jonathan", "Callahan", role = "ctb"), person("German", "Carrillo", role = "ctb"), person("StAphane", "Dray", role = "ctb"), person("David", "Forrest", role = "ctb"), person("Michael", "Friendly", role = "ctb"), person("Patrick", "Giraudoux", role = "ctb"), person("Duncan", "Golicher", role = "ctb"), person("Virgilio", "GA3mez Rubio", role = "ctb"), person("Patrick", "Hausmann", role = "ctb"), person("Karl Ove", "Hufthammer", role = "ctb"), person("Thomas", "Jagger", role = "ctb"), person("Kent", "Johnson", role = "ctb"), person("Sebastian", "Luque", role = "ctb"), person("Don", "MacQueen", role = "ctb"), person("Andrew", "Niccolai", role = "ctb"), person("Edzer", "Pebesma", role = "ctb"), person("Oscar", "PerpiAAn Lamigueiro", role = "ctb"), person("Tom", "Short", role = "ctb"), person("Greg", "Snow", role = "ctb"), person("Ben", "Stabler", role = "ctb"), person("Murray", "Stokely", role = "ctb"), person("Rolf", "Turner", role = "ctb"))
 # Encoding: UTF-8
 # Depends: R (>= 2.10), sp (>= 1.0-11)
 # Imports: foreign (>= 0.8), methods, grid, lattice, stats, utils, grDevices
@@ -81,11 +86,11 @@ about:
 # License: GPL (>= 2)
 # URL: http://r-forge.r-project.org/projects/maptools/
 # NeedsCompilation: yes
-# Packaged: 2015-09-28 22:21:07 UTC; rsb
-# Author: Roger Bivand [cre, aut], Nicholas Lewin-Koh [aut], Edzer Pebesma [ctb], Eric Archer [ctb], Adrian Baddeley [ctb], Nick Bearman [ctb], Hans-JArg Bibiko [ctb], Steven Brey [ctb], Jonathan Callahan [ctb], German Carrillo [ctb], StAphane Dray [ctb], David Forrest [ctb], Michael Friendly [ctb], Patrick Giraudoux [ctb], Duncan Golicher [ctb], Virgilio GA3mez Rubio [ctb], Patrick Hausmann [ctb], Karl Ove Hufthammer [ctb], Thomas Jagger [ctb], Sebastian Luque [ctb], Don MacQueen [ctb], Andrew Niccolai [ctb], Edzer Pebesma [ctb], Oscar PerpiAAn Lamigueiro [ctb], Tom Short [ctb], Greg Snow [ctb], Ben Stabler [ctb], Murray Stokely [ctb], Rolf Turner [ctb]
+# Packaged: 2016-01-29 08:38:18 UTC; rsb
+# Author: Roger Bivand [cre, aut], Nicholas Lewin-Koh [aut], Edzer Pebesma [ctb], Eric Archer [ctb], Adrian Baddeley [ctb], Nick Bearman [ctb], Hans-JArg Bibiko [ctb], Steven Brey [ctb], Jonathan Callahan [ctb], German Carrillo [ctb], StAphane Dray [ctb], David Forrest [ctb], Michael Friendly [ctb], Patrick Giraudoux [ctb], Duncan Golicher [ctb], Virgilio GA3mez Rubio [ctb], Patrick Hausmann [ctb], Karl Ove Hufthammer [ctb], Thomas Jagger [ctb], Kent Johnson [ctb], Sebastian Luque [ctb], Don MacQueen [ctb], Andrew Niccolai [ctb], Edzer Pebesma [ctb], Oscar PerpiAAn Lamigueiro [ctb], Tom Short [ctb], Greg Snow [ctb], Ben Stabler [ctb], Murray Stokely [ctb], Rolf Turner [ctb]
 # Maintainer: Roger Bivand <Roger.Bivand@nhh.no>
 # Repository: CRAN
-# Date/Publication: 2015-09-29 09:44:37
+# Date/Publication: 2016-01-30 00:08:33
 
 # See
 # http://docs.continuum.io/conda/build.html for

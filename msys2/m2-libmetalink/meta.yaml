@@ -1,0 +1,36 @@
+package:
+  name: m2-libmetalink
+  version: 0.1.2
+source:
+  url: http://repo.msys2.org/msys/sources/libmetalink-0.1.2-2.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '2'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-msys2-runtime
+  - m2-libexpat
+  - m2-bash
+about:
+  home: https://launchpad.net/libmetalink
+  license: GPL, MIT
+  summary: Metalink XML parser library.
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/libmetalink
+      url: http://repo.msys2.org/msys/i686/libmetalink-0.1.2-2-i686.pkg.tar.xz
+      md5: faaf33b04c22b3b3ff0b3e0ae03b3e7c
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/libmetalink
+      url: http://repo.msys2.org/msys/x86_64/libmetalink-0.1.2-2-x86_64.pkg.tar.xz
+      md5: ad3a6d5b34b6ada61617367d9e521094
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

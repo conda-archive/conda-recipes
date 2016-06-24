@@ -1,0 +1,32 @@
+package:
+  name: pytest-qt
+  version: "1.11.0"
+
+source:
+  fn:  pytest-qt-1.11.0.zip
+  url: https://pypi.python.org/packages/3e/b8/81d1ad651c6970722600dbc7766f1469db678d7fa6ee61c96f276d0ac3f8/pytest-qt-1.11.0.zip
+  md5: c1be9518ab1915e22f8b8a6710d31626
+
+build:
+  # noarch_python: True
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pytest >=2.7.0
+
+  run:
+    - python
+    - setuptools
+    - pytest >=2.7.0
+
+test:
+  imports:
+    - pytestqt
+
+about:
+  home: https://github.com/pytest-dev/pytest-qt
+  license: LGPL License
+  summary: 'Pytest plugin for Qt (PyQt4, PyQt5 and PySide) application testing'

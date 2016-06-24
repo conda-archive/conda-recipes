@@ -1,0 +1,36 @@
+package:
+  name: m2-libssh2
+  version: 1.6.0
+source:
+  url: http://repo.msys2.org/msys/sources/libssh2-1.6.0-1.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-ca-certificates
+  - m2-openssl
+  - m2-zlib
+about:
+  home: http://www.libssh2.org/
+  license: GPL, BSD
+  summary: Multi-protocol file transfer library (runtime)
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/libssh2
+      url: http://repo.msys2.org/msys/i686/libssh2-1.6.0-1-i686.pkg.tar.xz
+      md5: 0eca3408ee247be05d72f3c010c2de83
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/libssh2
+      url: http://repo.msys2.org/msys/x86_64/libssh2-1.6.0-1-x86_64.pkg.tar.xz
+      md5: 6dedaa5ae7988a83469cb204addd3cb2
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

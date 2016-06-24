@@ -35,7 +35,9 @@ else
     # For reference during post-link.sh, record some
     # details about the OS this binary was produced with.
     mkdir -p "${PREFIX}/share"
-    cat /etc/*-release > "${PREFIX}/share/conda-gcc-build-machine-os-details"
+	# lsb_release can complain about LSB modules in stderr, so we
+	# ignore that.
+    lsb_release -a 1> "${PREFIX}/share/conda-gcc-build-machine-os-details"
     ./configure \
         --prefix="$GCC_PREFIX" \
         --with-gxx-include-dir="$GCC_PREFIX/include/c++" \
@@ -54,6 +56,10 @@ fi
 make -j"$CPU_COUNT"
 make install-strip
 rm "$PREFIX"/lib64
+
+#Fix libtool paths
+find "$PREFIX" -name '*.la' -print0 | xargs -0  sed -i.backup 's%lib/../lib64%lib%g'
+find "$PREFIX" -name '*la.backup' -print0 | xargs -0  rm -f
 
 # Link cc to gcc
 (cd "$PREFIX"/bin && ln -s gcc cc)

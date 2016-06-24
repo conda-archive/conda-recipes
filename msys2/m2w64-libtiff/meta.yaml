@@ -1,0 +1,37 @@
+package:
+  name: m2w64-libtiff
+  version: 4.0.6
+source:
+  url: http://repo.msys2.org/mingw/sources/mingw-w64-libtiff-4.0.6-1.src.tar.gz
+  md5: 429da511d0cc1931a9f035df1cf6a362
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2w64-gcc-libs
+  - m2w64-libjpeg-turbo
+  - m2w64-xz
+  - m2w64-zlib
+about:
+  home: http://www.remotesensing.org/libtiff
+  license: MIT
+  summary: Library for manipulation of TIFF images (mingw-w64)
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: mingw32/mingw-w64-i686-libtiff
+      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-libtiff-4.0.6-1-any.pkg.tar.xz
+      md5: 54a63936c21244b05991983b6003facd
+      mv-srcs:
+      - mingw32
+      mv-dsts:
+      - Library/mingw-w64
+    win-64:
+      srcpkg: mingw64/mingw-w64-x86_64-libtiff
+      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-libtiff-4.0.6-1-any.pkg.tar.xz
+      md5: abdd867b90c40e617a98fd4976016c22
+      mv-srcs:
+      - mingw64
+      mv-dsts:
+      - Library/mingw-w64

@@ -1,0 +1,33 @@
+package:
+  name: libarchive
+  version: 3.1.2
+
+source:
+  fn: libarchive-v3.1.2.tar.gz
+  url: https://github.com/libarchive/libarchive/archive/v3.1.2.tar.gz
+  md5: 3b604ac624206652f9cd2856ee6d11a0
+
+requirements:
+  build:
+#   - cmake
+    - autoconf  # [not linux]
+    - automake  # [not linux]
+    - libtool   # [not linux]
+    - bzip2
+    - expat
+    - xz
+    - zlib
+
+  run:
+    - bzip2
+    - expat
+    - xz
+    - zlib
+
+build:
+  number: 0
+
+about:
+  home: http://www.libarchive.org/
+  summary: Multi-format archive and compression library
+  license: New BSD License

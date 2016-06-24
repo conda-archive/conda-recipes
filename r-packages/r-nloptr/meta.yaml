@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-nloptr
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -9,6 +12,8 @@ source:
   url:
     - http://cran.r-project.org/src/contrib/nloptr_1.0.4.tar.gz
     - http://cran.r-project.org/src/contrib/Archive/nloptr/nloptr_1.0.4.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,8 +24,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2 # [osx]
-  number: 1 # [not osx]
+  number: 2
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -30,14 +34,15 @@ build:
 # Suggests: testthat (>= 0.8.1)
 requirements:
   build:
-    - r
-    - nlopt # [not win]
-    - gcc # [not win]
+    - r-base
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - {{native}}nlopt
+    - gcc                 # [not win]
 
   run:
-    - r
-    - nlopt # [not win]
-    - libgcc # [not win]
+    - r-base
+    - {{native}}nlopt
 
 test:
   commands:
@@ -60,6 +65,7 @@ about:
     See http://ab-initio.mit.edu/wiki/index.php/NLopt_Introduction for more information
     on the available algorithms. During installation on Unix the NLopt code is downloaded
     and compiled from the NLopt website.'
+
   license_family: LGPL
 
 # The original CRAN metadata for this package was:

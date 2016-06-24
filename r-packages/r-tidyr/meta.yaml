@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-tidyr
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.3.1"
+  version: "0.4.1"
 
 source:
-  fn: tidyr_0.3.1.tar.gz
+  fn: tidyr_0.4.1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/tidyr_0.3.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/tidyr/tidyr_0.3.1.tar.gz
+    - http://cran.r-project.org/src/contrib/tidyr_0.4.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/tidyr/tidyr_0.4.1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -28,25 +31,26 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: knitr, testthat, data.table, covr
+# Suggests: knitr, testthat, data.table, covr, gapminder, rmarkdown
 requirements:
   build:
-    - r
+    - r-base
     - r-rcpp
     - r-dplyr >=0.4
     - r-lazyeval
     - r-magrittr
     - r-stringi
-    - gcc # [not win]
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
+    - r-base
     - r-rcpp
     - r-dplyr >=0.4
     - r-lazyeval
     - r-magrittr
     - r-stringi
-    - libgcc # [not win]
 
 test:
   commands:
@@ -66,11 +70,12 @@ about:
   summary: An evolution of 'reshape2'. It's designed specifically for data tidying (not general
     reshaping or aggregating) and works well with 'dplyr' data pipelines.
   license_family: MIT
+
 # The original CRAN metadata for this package was:
 
 # Package: tidyr
 # Title: Easily Tidy Data with `spread()` and `gather()` Functions
-# Version: 0.3.1
+# Version: 0.4.1
 # Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")), person("RStudio", role = "cph") )
 # Description: An evolution of 'reshape2'. It's designed specifically for data tidying (not general reshaping or aggregating) and works well with 'dplyr' data pipelines.
 # Depends: R (>= 3.1.0)
@@ -79,15 +84,16 @@ about:
 # Imports: dplyr (>= 0.4), stringi, lazyeval, magrittr, Rcpp
 # URL: https://github.com/hadley/tidyr
 # BugReports: https://github.com/hadley/tidyr/issues
-# Suggests: knitr, testthat, data.table, covr
+# Suggests: knitr, testthat, data.table, covr, gapminder, rmarkdown
 # VignetteBuilder: knitr
 # LinkingTo: Rcpp
+# RoxygenNote: 5.0.1
 # NeedsCompilation: yes
-# Packaged: 2015-09-09 23:20:52 UTC; hadley
+# Packaged: 2016-02-05 17:08:15 UTC; hadley
 # Author: Hadley Wickham [aut, cre], RStudio [cph]
 # Maintainer: Hadley Wickham <hadley@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2015-09-10 09:21:12
+# Date/Publication: 2016-02-05 21:46:58
 
 # See
 # http://docs.continuum.io/conda/build.html for

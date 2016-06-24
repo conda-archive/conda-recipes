@@ -1,0 +1,36 @@
+package:
+  name: m2-perl-io-socket-ssl
+  version: '2.016'
+source:
+  url: http://repo.msys2.org/msys/sources/perl-IO-Socket-SSL-2.016-1.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-perl-net-ssleay
+  - m2-perl
+  - m2-perl-uri
+about:
+  home: http://search.cpan.org/dist/IO-Socket-SSL/
+  license: GPL, PerlArtistic
+  summary: Nearly transparent SSL encapsulation for IO::Socket::INET
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/perl-IO-Socket-SSL
+      url: http://repo.msys2.org/msys/i686/perl-IO-Socket-SSL-2.016-1-any.pkg.tar.xz
+      md5: c128aed19387f5096d49449909136f3a
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/perl-IO-Socket-SSL
+      url: http://repo.msys2.org/msys/x86_64/perl-IO-Socket-SSL-2.016-1-any.pkg.tar.xz
+      md5: 7d6922263168714570dd239047a8e7b5
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-formula
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,10 +34,10 @@ build:
 
 requirements:
   build:
-    - r
+    - r-base
 
   run:
-    - r
+    - r-base
 
 test:
   commands:
@@ -54,6 +57,7 @@ about:
   summary: Infrastructure for extended formulas with multiple parts on the right-hand side and/or
     multiple responses on the left-hand side.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: Formula

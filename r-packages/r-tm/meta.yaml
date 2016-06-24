@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-tm
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,16 +34,17 @@ build:
 # Suggests: filehash, methods, Rcampdf, Rgraphviz, Rpoppler, SnowballC, tm.lexicon.GeneralInquirer, XML
 requirements:
   build:
-    - r
+    - r-base
     - r-nlp >=0.1_6.2
     - r-slam >=0.1_31
-    - gcc # [not win]
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
+    - r-base
     - r-nlp >=0.1_6.2
     - r-slam >=0.1_31
-    - libgcc # [not win]
 
 test:
   commands:
@@ -59,6 +63,7 @@ about:
   license: GPL-3
   summary: A framework for text mining applications within R.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: tm

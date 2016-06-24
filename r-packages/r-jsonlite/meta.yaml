@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-jsonlite
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.9.17"
+  version: "0.9.20"
 
 source:
-  fn: jsonlite_0.9.17.tar.gz
+  fn: jsonlite_0.9.20.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/jsonlite_0.9.17.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/jsonlite/jsonlite_0.9.17.tar.gz
+    - http://cran.r-project.org/src/contrib/jsonlite_0.9.20.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/jsonlite/jsonlite_0.9.20.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -28,15 +31,16 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: curl (>= 0.5), plyr, testthat, knitr, rmarkdown, R.rsp
+# Suggests: httr, curl, plyr, testthat, knitr, rmarkdown, R.rsp
 requirements:
   build:
-    - r
-    - gcc # [not win]
+    - r-base
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
-    - libgcc # [not win]
+    - r-base
 
 test:
   commands:
@@ -63,10 +67,11 @@ about:
     the package verify that all edge cases are encoded and decoded consistently for
     use with dynamic data in systems and applications.
   license_family: MIT
+
 # The original CRAN metadata for this package was:
 
 # Package: jsonlite
-# Version: 0.9.17
+# Version: 0.9.20
 # Title: A Robust, High Performance JSON Parser and Generator for R
 # License: MIT + file LICENSE
 # NeedsCompilation: yes
@@ -77,10 +82,11 @@ about:
 # Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>
 # VignetteBuilder: knitr, R.rsp
 # Description: A fast JSON parser and generator optimized for statistical data and the web. Started out as a fork of 'RJSONIO', but has been completely rewritten in recent versions. The package offers flexible, robust, high performance tools for working with JSON in R and is particularly powerful for building pipelines and interacting with a web API. The implementation is based on the mapping described in the vignette (Ooms, 2014). In addition to converting JSON data from/to R objects, 'jsonlite' contains functions to stream, validate, and prettify JSON data. The unit tests included with the package verify that all edge cases are encoded and decoded consistently for use with dynamic data in systems and applications.
-# Suggests: curl (>= 0.5), plyr, testthat, knitr, rmarkdown, R.rsp
-# Packaged: 2015-09-06 15:12:14 UTC; jeroen
+# Suggests: httr, curl, plyr, testthat, knitr, rmarkdown, R.rsp
+# RoxygenNote: 5.0.1
+# Packaged: 2016-05-09 22:10:57 UTC; jeroen
 # Repository: CRAN
-# Date/Publication: 2015-09-06 19:30:57
+# Date/Publication: 2016-05-10 06:56:49
 
 # See
 # http://docs.continuum.io/conda/build.html for

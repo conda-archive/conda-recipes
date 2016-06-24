@@ -1,0 +1,34 @@
+package:
+  name: m2-icu
+  version: '56.1'
+source:
+  url: http://repo.msys2.org/msys/sources/icu-56.1-1.src.tar.gz
+  md5: 067a6c715e5c087246b8c69c31ea6aea
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-gcc-libs
+about:
+  home: http://www.icu-project.org/
+  license: GPL, custom:"icu"
+  summary: International Components for Unicode library
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/icu
+      url: http://repo.msys2.org/msys/i686/icu-56.1-1-i686.pkg.tar.xz
+      md5: c3c6e56c42803c8ccdb76a50b2d54a65
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/icu
+      url: http://repo.msys2.org/msys/x86_64/icu-56.1-1-x86_64.pkg.tar.xz
+      md5: 8fe156ae5aeff60981ea3513fbaeec92
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

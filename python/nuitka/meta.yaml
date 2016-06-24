@@ -1,11 +1,11 @@
 package:
   name: nuitka
-  version: "0.5.16"
+  version: "0.5.20"
 
 source:
-  fn: Nuitka-0.5.16.tar.gz
-  url: http://nuitka.net/releases/Nuitka-0.5.16.tar.gz
-  md5: d29614a51ce6cd75a8f13e3d58e366c5
+  fn: Nuitka-0.5.20.tar.gz
+  url: http://nuitka.net/releases/Nuitka-0.5.20.tar.gz
+  md5: 95508d2293ddb0cedd7bfd504e1b27e1
 
 build:
   number: 0
@@ -23,13 +23,16 @@ test:
     - nuitka.build
     - nuitka.codegen
     - nuitka.codegen.templates
+    - nuitka.containers
     - nuitka.finalizations
     - nuitka.freezer
     - nuitka.gui
     - nuitka.nodes
     - nuitka.optimizations
     - nuitka.plugins
+    - nuitka.profiler
     - nuitka.tree
+    - nuitka.utils
 
   commands:
     - nuitka --help

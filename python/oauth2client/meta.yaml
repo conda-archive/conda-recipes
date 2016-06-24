@@ -1,0 +1,38 @@
+package:
+    name: oauth2client
+    version: 2.2.0
+
+source:
+    git_url: https://github.com/google/oauth2client
+    git_tag: v2.2.0
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - setuptools
+        - python
+        - httplib2
+        - pyasn1
+        - pyasn1-modules
+        - six
+        - rsa
+
+    run:
+        - python
+        - httplib2
+        - pyasn1
+        - pyasn1-modules
+        - six
+        - rsa
+
+test:
+    imports:
+        - oauth2client
+
+about:
+    home: https://github.com/google/oauth2client
+    license: Apache 2.0
+    summary: This is a client library for accessing resources protected by OAuth 2.0.
+

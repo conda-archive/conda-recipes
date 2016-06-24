@@ -1,2 +1,2 @@
-bash $SRC_DIR/altdist/prepare.bash
+bash $RECIPE_DIR/prepare.bash
 $PYTHON setup.py install

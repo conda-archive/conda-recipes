@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-cairo
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -33,16 +36,17 @@ build:
 # Suggests: png
 requirements:
   build:
-    - r
-    - cairo # [not win]
-    - libpng 1.6.* # [not win]
-    - gcc # [not win]
+    - r-base
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
+    - cairo               # [not win]
+    - libpng 1.6.*        # [not win]
 
   run:
-    - r
-    - cairo # [not win]
-    - libpng 1.6.* # [not win]
-    - libgcc # [not win]
+    - r-base
+    - cairo               # [not win]
+    - libpng 1.6.*        # [not win]
 
 test:
   commands:
@@ -69,6 +73,7 @@ about:
     don't have Cairo's capabilities such as alpha support or anti-aliasing. Backends
     are modular such that any subset of backends is supported.
   license_family: GPL2
+
 # The original CRAN metadata for this package was:
 
 # Package: Cairo

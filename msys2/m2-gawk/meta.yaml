@@ -1,0 +1,37 @@
+package:
+  name: m2-gawk
+  version: 4.1.3
+source:
+  url: http://repo.msys2.org/msys/sources/gawk-4.1.3-1.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-bash
+  - m2-mpfr
+  - m2-libintl
+  - m2-libreadline
+about:
+  home: http://www.gnu.org/software/gawk/
+  license: GPL
+  summary: GNU version of awk
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/gawk
+      url: http://repo.msys2.org/msys/i686/gawk-4.1.3-1-i686.pkg.tar.xz
+      md5: 4dadbcbf6140d29d339cbdbcbb97cef4
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/gawk
+      url: http://repo.msys2.org/msys/x86_64/gawk-4.1.3-1-x86_64.pkg.tar.xz
+      md5: eb4fc57b07ecb9f484850877117c6374
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

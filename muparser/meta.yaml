@@ -10,8 +10,14 @@ source:
 build:
   number: 0
 
+requirements:
+  build:
+    - gcc    # [not win]
+  run:
+    - libgcc # [not win]
+
 about:
   home: http://muparser.beltoforion.de/
-  license: MIT 
+  license: MIT
   summary: A fast math parser library
 

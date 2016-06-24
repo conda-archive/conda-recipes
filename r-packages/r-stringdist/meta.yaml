@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-stringdist
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.9.4"
+  version: "0.9.4.1"
 
 source:
-  fn: stringdist_0.9.4.tar.gz
+  fn: stringdist_0.9.4.1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/stringdist_0.9.4.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/stringdist/stringdist_0.9.4.tar.gz
+    - http://cran.r-project.org/src/contrib/stringdist_0.9.4.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/stringdist/stringdist_0.9.4.1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,12 +34,13 @@ build:
 # Suggests: testthat
 requirements:
   build:
-    - r
-    - gcc # [not win]
+    - r-base
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
-    - libgcc # [not win]
+    - r-base
 
 test:
   commands:
@@ -55,11 +59,12 @@ about:
   license: GPL-3
   summary: Implements an approximate string matching version of R's native 'match' function.
     Can calculate various string distances based on edits (damerau-levenshtein, hamming,
-    levenshtein, optimal sting alignment), qgrams (q-gram, cosine, jaccard distance)
+    levenshtein, optimal sting alignment), qgrams (q- gram, cosine, jaccard distance)
     or heuristic metrics (jaro, jaro-winkler). An implementation of soundex is provided
     as well. Distances can be computed between character vectors while taking proper
     care of encoding or between integer vectors representing generic sequences.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: stringdist
@@ -70,19 +75,20 @@ about:
 # Type: Package
 # LazyLoad: yes
 # Authors@R: c( person("Mark", "van der Loo", role=c("aut","cre"),email="mark.vanderloo@gmail.com") , person("Jan", "van der Laan", role="ctb"),person("R Core Team","",role=c("ctb")),person("Nick","Logan",role="ctb"))
-# Description: Implements an approximate string matching version of R's native 'match' function. Can calculate various string distances based on edits (damerau-levenshtein, hamming, levenshtein, optimal sting alignment), qgrams (q-gram, cosine, jaccard distance) or heuristic metrics (jaro, jaro-winkler). An implementation of soundex is provided as well. Distances can be computed between character vectors while taking proper care of encoding or between integer vectors representing generic sequences.
-# Version: 0.9.4
+# Description: Implements an approximate string matching version of R's native 'match' function. Can calculate various string distances based on edits (damerau-levenshtein, hamming, levenshtein, optimal sting alignment), qgrams (q- gram, cosine, jaccard distance) or heuristic metrics (jaro, jaro-winkler). An implementation of soundex is provided as well. Distances can be computed between character vectors while taking proper care of encoding or between integer vectors representing generic sequences.
+# Version: 0.9.4.1
 # Depends: R (>= 2.15.3)
 # Imports: parallel
 # URL: https://github.com/markvanderloo/stringdist
 # BugReports: https://github.com/markvanderloo/stringdist/issues
-# Date: 2015-06-23
+# Date: 2015-12-30
 # Suggests: testthat
+# RoxygenNote: 5.0.1
 # NeedsCompilation: yes
-# Packaged: 2015-10-26 08:53:20 UTC; mark
+# Packaged: 2016-01-02 17:12:44 UTC; mark
 # Author: Mark van der Loo [aut, cre], Jan van der Laan [ctb], R Core Team [ctb], Nick Logan [ctb]
 # Repository: CRAN
-# Date/Publication: 2015-10-26 15:58:56
+# Date/Publication: 2016-01-02 18:53:29
 
 # See
 # http://docs.continuum.io/conda/build.html for

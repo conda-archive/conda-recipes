@@ -1,14 +1,19 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-munsell
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.4.2"
+  version: "0.4.3"
 
 source:
-  fn: munsell_0.4.2.tar.gz
+  fn: munsell_0.4.3.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/munsell_0.4.2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/munsell/munsell_0.4.2.tar.gz
+    - http://cran.r-project.org/src/contrib/munsell_0.4.3.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/munsell/munsell_0.4.3.tar.gz
+
+
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -19,22 +24,21 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2 # [osx]
-  number: 1 # [not osx]
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: ggplot2 (>= 0.9.2)
+# Suggests: ggplot2, testthat
 requirements:
   build:
-    - r
+    - r-base
     - r-colorspace
 
   run:
-    - r
+    - r-base
     - r-colorspace
 
 test:
@@ -52,25 +56,29 @@ test:
 about:
   #home:
   license: MIT + file LICENSE
-  summary: Functions for exploring and using the Munsell colour system
+  summary: Provides easy access to, and manipulation of, the Munsell  colours. Provides a mapping
+    between Munsell's  original notation (e.g. "5R 5/10") and hexadecimal strings suitable  for
+    use directly in R graphics. Also provides utilities  to explore slices through the
+    Munsell colour tree, to transform  Munsell colours and display colour palettes.
   license_family: MIT
+
 # The original CRAN metadata for this package was:
 
 # Package: munsell
 # Type: Package
-# Title: Munsell colour system
-# Version: 0.4.2
+# Title: Utilities for Using Munsell Colours
+# Version: 0.4.3
 # Author: Charlotte Wickham <cwickham@gmail.com>
 # Maintainer: Charlotte Wickham <cwickham@gmail.com>
-# Description: Functions for exploring and using the Munsell colour system
-# Suggests: ggplot2 (>= 0.9.2)
-# Imports: colorspace
+# Description: Provides easy access to, and manipulation of, the Munsell  colours. Provides a mapping between Munsell's  original notation (e.g. "5R 5/10") and hexadecimal strings suitable  for use directly in R graphics. Also provides utilities  to explore slices through the Munsell colour tree, to transform  Munsell colours and display colour palettes.
+# Suggests: ggplot2, testthat
+# Imports: colorspace, methods
 # License: MIT + file LICENSE
-# Collate: 'alter.r' 'check.r' 'convert.r' 'munsell.r' 'plot.r'
-# Packaged: 2013-07-08 19:19:22 UTC; wickhamc
+# RoxygenNote: 5.0.1
 # NeedsCompilation: no
+# Packaged: 2016-02-12 19:58:18 UTC; wickhamc
 # Repository: CRAN
-# Date/Publication: 2013-07-11 20:15:53
+# Date/Publication: 2016-02-13 00:46:00
 
 # See
 # http://docs.continuum.io/conda/build.html for

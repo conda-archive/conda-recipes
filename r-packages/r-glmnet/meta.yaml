@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-glmnet
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "2.0_2"
+  version: "2.0_5"
 
 source:
-  fn: glmnet_2.0-2.tar.gz
+  fn: glmnet_2.0-5.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/glmnet_2.0-2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/glmnet/glmnet_2.0-2.tar.gz
+    - http://cran.r-project.org/src/contrib/glmnet_2.0-5.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/glmnet/glmnet_2.0-5.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,16 +34,17 @@ build:
 # Suggests: survival, knitr, lars
 requirements:
   build:
-    - r
-    - r-matrix >=1.0_6 # [not win]
+    - r-base
+    - r-matrix >=1.0_6
     - r-foreach
-    - gcc # [not win]
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
-    - r-matrix >=1.0_6 # [not win]
+    - r-base
+    - r-matrix >=1.0_6
     - r-foreach
-    - libgcc # [not win]
 
 test:
   commands:
@@ -62,6 +66,7 @@ about:
     regression and the Cox model. Two recent additions are the multiple-response Gaussian,
     and the grouped multinomial. The algorithm uses cyclical coordinate descent in a
     path-wise fashion, as described in the paper linked to via the URL below. '
+
   license_family: GPL2
 
 # The original CRAN metadata for this package was:
@@ -69,20 +74,21 @@ about:
 # Package: glmnet
 # Type: Package
 # Title: Lasso and Elastic-Net Regularized Generalized Linear Models
-# Version: 2.0-2
-# Date: 2015-4-11
+# Version: 2.0-5
+# Date: 2016-3-15
 # Author: Jerome Friedman, Trevor Hastie, Noah Simon, Rob Tibshirani
 # Maintainer: Trevor Hastie <hastie@stanford.edu>
 # Depends: Matrix (>= 1.0-6), utils, foreach
+# Imports: methods
 # Suggests: survival, knitr, lars
 # Description: Extremely efficient procedures for fitting the entire lasso or elastic-net regularization path for linear regression, logistic and multinomial regression models, Poisson regression and the Cox model. Two recent additions are the multiple-response Gaussian, and the grouped multinomial. The algorithm uses cyclical coordinate descent in a path-wise fashion, as described in the paper linked to via the URL below.
 # License: GPL-2
 # VignetteBuilder: knitr
 # URL: http://www.jstatsoft.org/v33/i01/.
-# Packaged: 2015-04-11 10:00:57 UTC; hastie
 # NeedsCompilation: yes
+# Packaged: 2016-03-16 21:07:09 UTC; hastie
 # Repository: CRAN
-# Date/Publication: 2015-04-12 00:56:25
+# Date/Publication: 2016-03-17 14:00:48
 
 # See
 # http://docs.continuum.io/conda/build.html for
