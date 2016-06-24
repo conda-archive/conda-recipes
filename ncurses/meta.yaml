@@ -11,10 +11,17 @@ source:
     - fix.patch
 
 build:
-  number: 5 # [linux64]
-  number: 6 # [linux32]
+  number: 7 # [linux64]
+  number: 7 # [linux32]
   number: 1 # [osx]
   detect_binary_files_with_prefix: true
+
+requirements:
+  build:
+    - pkg-config
+    - gcc
+  run:
+    - libgcc
 
 about:
   home: http://www.gnu.org/software/ncurses/
