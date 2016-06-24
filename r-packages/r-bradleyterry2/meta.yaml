@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-bradleyterry2
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,13 +34,13 @@ build:
 # Suggests: prefmod
 requirements:
   build:
-    - r
+    - r-base
     - r-brglm
     - r-gtools
     - r-lme4 >=1.0
 
   run:
-    - r
+    - r-base
     - r-brglm
     - r-gtools
     - r-lme4 >=1.0
@@ -61,6 +64,7 @@ about:
     parameters are related to explanatory variables through a linear predictor and versions
     with contest-specific effects, such as a home advantage.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: BradleyTerry2

@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-microbenchmark
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.4_2"
+  version: "1.4_2.1"
 
 source:
-  fn: microbenchmark_1.4-2.tar.gz
+  fn: microbenchmark_1.4-2.1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/microbenchmark_1.4-2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/microbenchmark/microbenchmark_1.4-2.tar.gz
+    - http://cran.r-project.org/src/contrib/microbenchmark_1.4-2.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/microbenchmark/microbenchmark_1.4-2.1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -21,7 +24,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -31,11 +34,14 @@ build:
 # Suggests: multcomp
 requirements:
   build:
-    - r
+    - r-base
     - r-ggplot2
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
+    - r-base
     - r-ggplot2
 
 test:
@@ -56,6 +62,7 @@ about:
   summary: Provides infrastructure to accurately measure and compare the execution time of R
     expressions.
   license_family: BSD
+
 # The original CRAN metadata for this package was:
 
 # Package: microbenchmark
@@ -63,17 +70,18 @@ about:
 # Description: Provides infrastructure to accurately measure and compare the execution time of R expressions.
 # Authors@R: c( person("Olaf", "Mersmann", role=c("aut", "cre"), email="olafm@p-value.net"), person("Claudia", "Beleites", role=c("ctb")), person("Rainer", "Hurling", role=c("ctb")), person("Ari", "Friedman", role=c("ctb")))
 # License: BSD_2_clause + file LICENSE
-# Imports: graphics, ggplot2
+# Imports: graphics, ggplot2, stats
 # Suggests: multcomp
 # ByteCompile: yes
 # LazyData: yes
-# Version: 1.4-2
-# Packaged: 2014-09-28 13:28:24 UTC; olafm
+# Version: 1.4-2.1
+# SystemRequirements: GNU Make
+# NeedsCompilation: yes
+# Packaged: 2015-11-25 10:59:00 UTC; ligges
 # Author: Olaf Mersmann [aut, cre], Claudia Beleites [ctb], Rainer Hurling [ctb], Ari Friedman [ctb]
 # Maintainer: Olaf Mersmann <olafm@p-value.net>
-# NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2014-09-28 18:38:41
+# Date/Publication: 2015-11-25 12:02:00
 
 # See
 # http://docs.continuum.io/conda/build.html for

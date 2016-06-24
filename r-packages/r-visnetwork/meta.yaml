@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-visnetwork
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.1.2"
+  version: "1.0.0"
 
 source:
-  fn: visNetwork_0.1.2.tar.gz
+  fn: visNetwork_1.0.0.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/visNetwork_0.1.2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/visNetwork/visNetwork_0.1.2.tar.gz
+    - http://cran.r-project.org/src/contrib/visNetwork_1.0.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/visNetwork/visNetwork_1.0.0.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -28,17 +31,17 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: knitr
+# Suggests: knitr, igraph
 requirements:
   build:
-    - r
+    - r-base
     - r-htmltools
     - r-htmlwidgets
     - r-jsonlite
     - r-magrittr
 
   run:
-    - r
+    - r-base
     - r-htmltools
     - r-htmlwidgets
     - r-jsonlite
@@ -57,32 +60,34 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: https://github.com/DataKnowledge/visNetwork
+  home: https://github.com/datastorm-open/visNetwork
   license: MIT + file LICENSE
   summary: Provides an R interface to the 'vis.js' JavaScript charting library. It allows an
     interactive visualization of networks.
   license_family: MIT
+
 # The original CRAN metadata for this package was:
 
 # Package: visNetwork
 # Title: Network Visualization using 'vis.js' Library
-# Version: 0.1.2
-# Date: 2015-10-30
-# Authors@R: c( person(family = "Almende B.V.", role = c("aut", "cph"), comment = "vis.js library in htmlwidgets/lib, http://visjs.org, http://www.almende.com/home"), person("Benoit", "Thieurmel", role = c("aut", "cre"), comment = "R interface", email = "bt@datak.fr") )
-# Maintainer: Benoit Thieurmel <bt@datak.fr>
+# Version: 1.0.0
+# Date: 2016-04-29
+# Authors@R: c( person(family = "Almende B.V.", role = c("aut", "cph"), comment = "vis.js library in htmlwidgets/lib, http://visjs.org, http://www.almende.com/home"), person("Benoit", "Thieurmel", role = c("aut", "cre"), comment = "R interface", email = "benoit.thieurmel@datastorm.fr") )
+# Maintainer: Benoit Thieurmel <benoit.thieurmel@datastorm.fr>
 # Description: Provides an R interface to the 'vis.js' JavaScript charting library. It allows an interactive visualization of networks.
-# BugReports: https://github.com/DataKnowledge/visNetwork/issues
-# URL: https://github.com/DataKnowledge/visNetwork
+# BugReports: https://github.com/datastorm-open/visNetwork/issues
+# URL: https://github.com/datastorm-open/visNetwork
 # Depends: R (>= 3.0)
-# Imports: htmlwidgets, htmltools, jsonlite, magrittr, utils
+# Imports: htmlwidgets, htmltools, jsonlite, magrittr, utils, methods
 # License: MIT + file LICENSE
-# Suggests: knitr
+# Suggests: knitr, igraph
 # VignetteBuilder: knitr
+# RoxygenNote: 5.0.1
 # NeedsCompilation: no
-# Packaged: 2015-10-30 10:36:16 UTC; Benoit
+# Packaged: 2016-05-02 12:35:30 UTC; Benoit
 # Author: Almende B.V. [aut, cph] (vis.js library in htmlwidgets/lib, http://visjs.org, http://www.almende.com/home), Benoit Thieurmel [aut, cre] (R interface)
 # Repository: CRAN
-# Date/Publication: 2015-10-31 00:34:44
+# Date/Publication: 2016-05-02 15:03:50
 
 # See
 # http://docs.continuum.io/conda/build.html for

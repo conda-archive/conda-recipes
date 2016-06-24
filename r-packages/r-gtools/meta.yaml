@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-gtools
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,12 +34,13 @@ build:
 
 requirements:
   build:
-    - r
-    - gcc # [not win]
+    - r-base
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
-    - libgcc # [not win]
+    - r-base
 
 test:
   commands:
@@ -52,7 +56,6 @@ test:
 
 about:
   #home:
-  license_family: GPL2
   license: GPL-2
   summary: 'Functions to assist in R programming, including: - assist in developing, updating,
     and maintaining R and R packages (''ask'', ''checkRVersion'', ''getDependencies'',
@@ -73,6 +76,7 @@ about:
     - generate significance stars from p-values (''stars.pval''), - convert characters
     to/from ASCII codes.'
 
+  license_family: GPL2
 
 # The original CRAN metadata for this package was:
 

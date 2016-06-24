@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-gdata
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,11 +34,11 @@ build:
 # Suggests: RUnit
 requirements:
   build:
-    - r
+    - r-base
     - r-gtools
 
   run:
-    - r
+    - r-base
     - r-gtools
 
 test:
@@ -52,7 +55,6 @@ test:
 
 about:
   #home:
-  license_family: GPL2
   license: GPL-2
   summary: 'Various R programming tools for data manipulation, including: - medical unit conversions
     (''ConvertMedUnits'', ''MedUnits''), - combining objects (''bindData'', ''cbindX'',
@@ -70,6 +72,7 @@ about:
     evaluated expression (''ans''), and - wrapper for ''sample'' that ensures consistent
     behavior for both scalar and vector arguments (''resample'').'
 
+  license_family: GPL2
 
 # The original CRAN metadata for this package was:
 

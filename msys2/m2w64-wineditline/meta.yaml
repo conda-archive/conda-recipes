@@ -1,0 +1,33 @@
+package:
+  name: m2w64-wineditline
+  version: '2.101'
+source:
+  url: http://repo.msys2.org/mingw/sources/mingw-w64-wineditline-2.101-4.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '4'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+about:
+  home: http://mingweditline.sourceforge.net
+  license: BSD
+  summary: port of the NetBSD Editline library (mingw-w64)
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: mingw32/mingw-w64-i686-wineditline
+      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-wineditline-2.101-4-any.pkg.tar.xz
+      md5: 76851d61f1c6ef55d44c7054755bec56
+      mv-srcs:
+      - mingw32
+      mv-dsts:
+      - Library/mingw-w64
+    win-64:
+      srcpkg: mingw64/mingw-w64-x86_64-wineditline
+      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-wineditline-2.101-4-any.pkg.tar.xz
+      md5: 7c7cbf51bc21b60815d4be21dfe04f6f
+      mv-srcs:
+      - mingw64
+      mv-dsts:
+      - Library/mingw-w64

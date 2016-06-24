@@ -1,64 +1,35 @@
 package:
-  name: pyasn1
-  version: 0.1.7
+    name: pyasn1
+    version: 0.1.9
 
 source:
-  fn: pyasn1-0.1.7.tar.gz
-  url: https://pypi.python.org/packages/source/p/pyasn1/pyasn1-0.1.7.tar.gz
-  md5: 2cbd80fcd4c7b1c82180d3d76fee18c8
-#  patches:
-   # List any patch files here
-   # - fix.patch
+    fn: pyasn1-0.1.9.tar.gz 
+    url: https://pypi.python.org/packages/f7/83/377e3dd2e95f9020dbd0dfd3c47aaa7deebe3c68d3857a4e51917146ae8b/pyasn1-0.1.9.tar.gz
+    md5: f00a02a631d4016818659d1cc38d229a
 
 build:
-  # entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - pyasn1 = pyasn1:main
-    #
-    # Would create an entry point called pyasn1 that calls pyasn1.main()
-
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  number: 1
+    number: 0
 
 requirements:
-  build:
-    - python
-    - setuptools
+    build:
+        - setuptools
+        - python
 
-  run:
-    - python
+    run:
+        - python
 
 test:
-  # Python imports
-  imports:
-    - pyasn1
-    - pyasn1.type
-    - pyasn1.codec.der
-    - pyasn1.codec
-    - pyasn1.compat
-    - pyasn1.codec.ber
-    - pyasn1.codec.cer
-
-  # commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
-
-
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any additional test requirements here.  For example
-    # - nose
+    imports:
+        - pyasn1
+        - pyasn1.type
+        - pyasn1.codec.der
+        - pyasn1.codec
+        - pyasn1.compat
+        - pyasn1.codec.ber
+        - pyasn1.codec.cer
 
 about:
-  home:
-  license: BSD License
+    home: https://sourceforge.net/projects/pyasn1/
+    license: BSD License
+    summary: ASN.1 types and codecs
 
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml

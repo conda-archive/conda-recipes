@@ -1,2 +1,4 @@
 *~
 *.swp
+.binstar.yaml
+.binstar.yml

@@ -1,0 +1,36 @@
+package:
+  name: m2-make
+  version: '4.1'
+source:
+  url: http://repo.msys2.org/msys/sources/make-4.1-4.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '4'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-msys2-runtime
+  - m2-libintl
+  - m2-bash
+about:
+  home: http://www.gnu.org/software/make
+  license: GPL, GPL3
+  summary: GNU make utility to maintain groups of programs
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/make
+      url: http://repo.msys2.org/msys/i686/make-4.1-4-i686.pkg.tar.xz
+      md5: abda511b40d53049b4f9ba7433033932
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/make
+      url: http://repo.msys2.org/msys/x86_64/make-4.1-4-x86_64.pkg.tar.xz
+      md5: 7467f54b8cb57c47ff0b2c5f6d9c97af
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

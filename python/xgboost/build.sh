@@ -1,3 +1,12 @@
+#!/usr/bin/env bash
+
+# To use OpenMP
+if [[ `uname` == Darwin ]]; then
+    export CC=gcc
+    export CXX=g++
+fi
+
 ./build.sh
-cd wrapper
-$PYTHON setup.py install
+
+cd python-package
+python setup.py install

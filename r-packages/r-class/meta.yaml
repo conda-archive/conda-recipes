@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-class
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -32,13 +35,14 @@ build:
 requirements:
   build:
     - r-base
-    - r-mass # [not win]
-    - gcc # [not win]
+    - r-mass
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
-    - r-mass # [not win]
-    - libgcc # [not win]
+    - r-base
+    - r-mass
 
 test:
   commands:
@@ -57,6 +61,7 @@ about:
   license: GPL-2 | GPL-3
   summary: Various functions for classification, including k-nearest neighbour, Learning Vector
     Quantization and Self-Organizing Maps.
+  license_family: GPL3
 
 # The original CRAN metadata for this package was:
 

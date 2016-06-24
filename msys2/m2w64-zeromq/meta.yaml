@@ -1,0 +1,35 @@
+package:
+  name: m2w64-zeromq
+  version: 4.1.4
+source:
+  url: http://repo.msys2.org/mingw/sources/mingw-w64-zeromq-4.1.4-1.src.tar.gz
+  md5: 516b75989af4823d66922813ea81529b
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2w64-libsodium
+about:
+  home: http://www.zeromq.org
+  license: LGPL
+  summary: Fast messaging system built on sockets, C and C++ bindings. aka 0MQ, ZMQ
+    (mingw-w64)
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: mingw32/mingw-w64-i686-zeromq
+      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-zeromq-4.1.4-1-any.pkg.tar.xz
+      md5: 2ea7144977fcf8434add114432cfa1f2
+      mv-srcs:
+      - mingw32
+      mv-dsts:
+      - Library/mingw-w64
+    win-64:
+      srcpkg: mingw64/mingw-w64-x86_64-zeromq
+      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-zeromq-4.1.4-1-any.pkg.tar.xz
+      md5: c7ea167e8ce4d61b9847333ffb139248
+      mv-srcs:
+      - mingw64
+      mv-dsts:
+      - Library/mingw-w64

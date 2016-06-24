@@ -12,7 +12,8 @@ source:
     - ubuntu_disable_scrollbars.patch  [linux]
 
 build:
-  number: 2
+  number: 1 [linux32]
+  number: 2 [linux64 or osx]
 
 requirements:
   build:

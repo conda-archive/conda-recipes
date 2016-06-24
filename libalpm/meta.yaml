@@ -1,0 +1,31 @@
+package:
+  name: libalpm
+  version: 5.0.1
+
+source:
+  fn: pacman-5.0.1.tar.gz
+  url: https://sources.archlinux.org/other/pacman/pacman-5.0.1.tar.gz
+  md5: 377a2664d6007d72d6d8a126add83bcf
+  patches:
+    - 0001-AC_MSG_ERROR-WARN-on-bash-4.1.0.patch
+    - 0002-ifndef-HAVE_LIBGPGME-silently-convert-ALPM_SIG_PACKA.patch
+
+requirements:
+  build:
+    - autoconf    # [not linux]
+    - automake    # [not linux]
+    - pkg-config  # [not linux]
+    - gettext     # [not unix]
+    - pkg-config  # [win]
+    - msys2-gcc   # [win]
+    - libarchive
+    - curl
+#   - gpgme       # [not osx]
+
+build:
+  number: 0
+
+about:
+  home: http://www.archlinux.org/pacman/
+  summary: A library-based package manager with dependency support (lib only)
+  license: GPL

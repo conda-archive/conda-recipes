@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-rex
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.0.1"
+  version: "1.1.1"
 
 source:
-  fn: rex_1.0.1.tar.gz
+  fn: rex_1.1.1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/rex_1.0.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/rex/rex_1.0.1.tar.gz
+    - http://cran.r-project.org/src/contrib/rex_1.1.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/rex/rex_1.1.1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -28,15 +31,15 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat, knitr, rmarkdown, dplyr, ggplot2, lintr, Hmisc, stringr, rvest
+# Suggests: testthat, knitr, rmarkdown, dplyr, ggplot2, lintr, Hmisc, stringr, rvest, roxygen2
 requirements:
   build:
-    - r
+    - r-base
     - r-lazyeval
     - r-magrittr
 
   run:
-    - r
+    - r-base
     - r-lazyeval
     - r-magrittr
 
@@ -57,13 +60,13 @@ about:
   license: MIT + file LICENSE
   summary: A friendly interface for the construction of regular expressions.
   license_family: MIT
+
 # The original CRAN metadata for this package was:
 
 # Package: rex
 # Type: Package
 # Title: Friendly Regular Expressions
-# Version: 1.0.1
-# Date: 2015-4-27
+# Version: 1.1.1
 # Authors@R: c( person("Kevin", "Ushey", email = "kevinushey@gmail.com", role = "aut"), person("Jim", "Hester", email = "james.f.hester@gmail.com", role = c("aut", "cre")), person("Robert", "Krzyzanowski", email = "rkrzyzanowski@gmail.com", role = "aut") )
 # Maintainer: Jim Hester <james.f.hester@gmail.com>
 # URL: https://github.com/kevinushey/rex
@@ -71,14 +74,15 @@ about:
 # Description: A friendly interface for the construction of regular expressions.
 # Imports: magrittr, lazyeval
 # License: MIT + file LICENSE
-# Suggests: testthat, knitr, rmarkdown, dplyr, ggplot2, lintr, Hmisc, stringr, rvest
+# Suggests: testthat, knitr, rmarkdown, dplyr, ggplot2, lintr, Hmisc, stringr, rvest, roxygen2
 # VignetteBuilder: knitr
 # Collate: 'aaa.R' 'utils.R' 'escape.R' 'capture.R' 'character_class.R' 'counts.R' 'lookarounds.R' 'match.R' 'or.R' 'rex-mode.R' 'rex.R' 'shortcuts.R' 'wildcards.R' 'zzz.R'
+# RoxygenNote: 5.0.1.9000
 # NeedsCompilation: no
-# Packaged: 2015-04-27 18:49:01 UTC; jhester
+# Packaged: 2016-03-10 22:45:34 UTC; jhester
 # Author: Kevin Ushey [aut], Jim Hester [aut, cre], Robert Krzyzanowski [aut]
 # Repository: CRAN
-# Date/Publication: 2015-04-28 00:31:26
+# Date/Publication: 2016-03-11 00:40:20
 
 # See
 # http://docs.continuum.io/conda/build.html for

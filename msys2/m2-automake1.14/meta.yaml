@@ -1,0 +1,35 @@
+package:
+  name: m2-automake1.14
+  version: 1.14.1
+source:
+  url: http://repo.msys2.org/msys/sources/automake1.14-1.14.1-3.src.tar.gz
+  md5: 14957867e30d15a7063eefbcc8b2fb92
+build:
+  number: '3'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-perl
+  - m2-bash
+about:
+  home: http://www.gnu.org/software/automake
+  license: GPL
+  summary: A GNU tool for automatically creating Makefiles
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/automake1.14
+      url: http://repo.msys2.org/msys/i686/automake1.14-1.14.1-3-any.pkg.tar.xz
+      md5: d0e1a123176498fc5e4ac9dcee6f8562
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/automake1.14
+      url: http://repo.msys2.org/msys/x86_64/automake1.14-1.14.1-3-any.pkg.tar.xz
+      md5: ff72ad712c7e31e6eca1050e58899481
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

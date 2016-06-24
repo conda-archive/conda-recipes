@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-raster
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "2.4_20"
+  version: "2.5_2"
 
 source:
-  fn: raster_2.4-20.tar.gz
+  fn: raster_2.5-2.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/raster_2.4-20.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/raster/raster_2.4-20.tar.gz
+    - http://cran.r-project.org/src/contrib/raster_2.5-2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/raster/raster_2.5-2.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -28,19 +31,20 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: rgdal (>= 0.9-1), rgeos (>= 0.3-8), ncdf, ncdf4, igraph, tcltk, parallel, rasterVis
+# Suggests: rgdal (>= 0.9-1), rgeos (>= 0.3-8), ncdf4, igraph, tcltk, parallel, rasterVis
 requirements:
   build:
-    - r
+    - r-base
     - r-rcpp
     - r-sp >=1.2_0
-    - gcc # [not win]
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
+    - r-base
     - r-rcpp
     - r-sp >=1.2_0
-    - libgcc # [not win]
 
 test:
   commands:
@@ -61,15 +65,16 @@ about:
     package implements basic and high-level functions. Processing of very large files
     is supported.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: raster
 # Type: Package
 # Title: Geographic Data Analysis and Modeling
-# Version: 2.4-20
-# Date: 2015-9-5
+# Version: 2.5-2
+# Date: 2015-12-18
 # Depends: methods, sp (>= 1.2-0), R (>= 3.0.0)
-# Suggests: rgdal (>= 0.9-1), rgeos (>= 0.3-8), ncdf, ncdf4, igraph, tcltk, parallel, rasterVis
+# Suggests: rgdal (>= 0.9-1), rgeos (>= 0.3-8), ncdf4, igraph, tcltk, parallel, rasterVis
 # LinkingTo: Rcpp
 # Imports: Rcpp
 # Authors@R: c( person("Robert J.", "Hijmans", role = c("cre", "aut"),  email = "r.hijmans@gmail.com"), person("Jacob", "van Etten", role = "ctb"), person("Joe", "Cheng", role = "ctb"), person("Matteo", "Mattiuzzi", role = "ctb"), person("Michael", "Sumner", role = "ctb"), person("Jonathan A.", "Greenberg", role = "ctb"), person("Oscar", "Perpinan Lamigueiro", role = "ctb"), person("Andrew", "Bevan", role = "ctb"), person("Etienne B.", "Racine", role = "ctb"), person("Ashton", "Shortridge", role = "ctb"))
@@ -78,11 +83,11 @@ about:
 # URL: http://cran.r-project.org/package=raster
 # ByteCompile: TRUE
 # NeedsCompilation: yes
-# Packaged: 2015-09-08 01:16:26 UTC; Robert
+# Packaged: 2015-12-18 23:48:31 UTC; rhijmans
 # Author: Robert J. Hijmans [cre, aut], Jacob van Etten [ctb], Joe Cheng [ctb], Matteo Mattiuzzi [ctb], Michael Sumner [ctb], Jonathan A. Greenberg [ctb], Oscar Perpinan Lamigueiro [ctb], Andrew Bevan [ctb], Etienne B. Racine [ctb], Ashton Shortridge [ctb]
 # Maintainer: Robert J. Hijmans <r.hijmans@gmail.com>
 # Repository: CRAN
-# Date/Publication: 2015-09-08 11:01:18
+# Date/Publication: 2015-12-19 09:59:36
 
 # See
 # http://docs.continuum.io/conda/build.html for

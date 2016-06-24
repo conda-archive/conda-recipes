@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-r6
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "2.1.1"
+  version: "2.1.2"
 
 source:
-  fn: R6_2.1.1.tar.gz
+  fn: R6_2.1.2.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/R6_2.1.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/R6/R6_2.1.1.tar.gz
+    - http://cran.r-project.org/src/contrib/R6_2.1.2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/R6/R6_2.1.2.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,10 +34,10 @@ build:
 # Suggests: knitr, microbenchmark, pryr, testthat, ggplot2, scales
 requirements:
   build:
-    - r
+    - r-base
 
   run:
-    - r
+    - r-base
 
 test:
   commands:
@@ -57,11 +60,12 @@ about:
     the methods package. These classes allow public and private members, and they support
     inheritance, even when the classes are defined in different packages.
   license_family: MIT
+
 # The original CRAN metadata for this package was:
 
 # Package: R6
 # Title: Classes with Reference Semantics
-# Version: 2.1.1
+# Version: 2.1.2
 # Authors@R: person("Winston", "Chang", role = c("aut", "cre"), email = "winston@stdout.org")
 # Description: The R6 package allows the creation of classes with reference semantics, similar to R's built-in reference classes. Compared to reference classes, R6 classes are simpler and lighter-weight, and they are not built on S4 classes so they do not require the methods package. These classes allow public and private members, and they support inheritance, even when the classes are defined in different packages.
 # Depends: R (>= 3.0)
@@ -71,11 +75,11 @@ about:
 # LazyData: true
 # VignetteBuilder: knitr
 # NeedsCompilation: no
-# Packaged: 2015-08-18 22:19:06 UTC; winston
+# Packaged: 2016-01-25 18:40:15 UTC; winston
 # Author: Winston Chang [aut, cre]
 # Maintainer: Winston Chang <winston@stdout.org>
 # Repository: CRAN
-# Date/Publication: 2015-08-19 00:30:18
+# Date/Publication: 2016-01-26 00:30:15
 
 # See
 # http://docs.continuum.io/conda/build.html for

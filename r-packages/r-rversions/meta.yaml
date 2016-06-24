@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-rversions
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,12 +34,12 @@ build:
 
 requirements:
   build:
-    - r
+    - r-base
     - r-curl
     - r-xml2
 
   run:
-    - r
+    - r-base
     - r-curl
     - r-xml2
 
@@ -58,6 +61,7 @@ about:
   summary: Query the main 'R' 'SVN' repository to find the versions 'r-release' and 'r-oldrel'
     refer to, and also all previous 'R' versions and their release dates.
   license_family: MIT
+
 # The original CRAN metadata for this package was:
 
 # Package: rversions

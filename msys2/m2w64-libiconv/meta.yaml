@@ -1,0 +1,33 @@
+package:
+  name: m2w64-libiconv
+  version: '1.14'
+source:
+  url: http://repo.msys2.org/mingw/sources/mingw-w64-libiconv-1.14-5.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '5'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+about:
+  home: http://www.gnu.org/software/libiconv/
+  license: LGPL2, documentation:GPL3
+  summary: Character encoding conversion library (mingw-w64)
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: mingw32/mingw-w64-i686-libiconv
+      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-libiconv-1.14-5-any.pkg.tar.xz
+      md5: 2c99a163689ba8257627bb07274b3f86
+      mv-srcs:
+      - mingw32
+      mv-dsts:
+      - Library/mingw-w64
+    win-64:
+      srcpkg: mingw64/mingw-w64-x86_64-libiconv
+      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-libiconv-1.14-5-any.pkg.tar.xz
+      md5: 37418c6be92ef20be17cdc9fe844af35
+      mv-srcs:
+      - mingw64
+      mv-dsts:
+      - Library/mingw-w64

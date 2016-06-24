@@ -1,0 +1,14 @@
+package:
+  name: posix
+  version: 1.0.0
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-base
+  - m2-make
+  - m2-tar
+  - m2-zip
+  - m2-unzip
+  - m2-diffutils

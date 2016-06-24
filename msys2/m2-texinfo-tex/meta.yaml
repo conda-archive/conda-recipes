@@ -1,0 +1,36 @@
+package:
+  name: m2-texinfo-tex
+  version: '6.0'
+source:
+  url: http://repo.msys2.org/msys/sources/texinfo-tex-6.0-1.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-perl
+  - m2-bash
+about:
+  home: http://www.gnu.org/software/texinfo/
+  license: GPL, GPL3
+  summary: Utilities to work with and produce manuals, ASCII text, and on-line documentation
+    from a single source file
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/texinfo-tex
+      url: http://repo.msys2.org/msys/i686/texinfo-tex-6.0-1-i686.pkg.tar.xz
+      md5: 76c29da656ca90996269d4d5512baa4e
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/texinfo-tex
+      url: http://repo.msys2.org/msys/x86_64/texinfo-tex-6.0-1-x86_64.pkg.tar.xz
+      md5: f6f62edb2b93c0648c4289a5ecbedac7
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

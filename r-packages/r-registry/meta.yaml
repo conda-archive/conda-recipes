@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-registry
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,10 +34,10 @@ build:
 
 requirements:
   build:
-    - r
+    - r-base
 
   run:
-    - r
+    - r-base
 
 test:
   commands:
@@ -53,6 +56,7 @@ about:
   license: GPL-2
   summary: Provides a generic infrastructure for creating and using registries.
   license_family: GPL2
+
 # The original CRAN metadata for this package was:
 
 # Package: registry

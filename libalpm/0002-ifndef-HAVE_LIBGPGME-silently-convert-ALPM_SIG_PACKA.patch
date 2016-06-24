@@ -1,0 +1,48 @@
+From 10c048e7fdd4c17c3b87966ccdf3da810b66f831 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Tue, 15 Mar 2016 11:23:35 +0000
+Subject: [PATCH 2/2] ifndef HAVE_LIBGPGME silently convert
+ 0 to ALPM_SIG_USE_DEFAULT
+
+Added for pyalpm on Anaconda
+
+.. since it's the default value that's passed by:
+
+PacmanConfig.apply(h)
+    .. to
+    ..
+    h.register_syncdb(repo, 0)
+---
+ lib/libalpm/be_sync.c | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
+diff --git lib/libalpm/be_sync.c lib/libalpm/be_sync.c
+index 32a669d..651d6b2 100644
+--- lib/libalpm/be_sync.c
++++ lib/libalpm/be_sync.c
+@@ -765,7 +765,21 @@ alpm_db_t *_alpm_db_register_sync(alpm_handle_t *handle, const char *treename,
+ 	_alpm_log(handle, ALPM_LOG_DEBUG, "registering sync database '%s'\n", treename);
+ 
+ #ifndef HAVE_LIBGPGME
+-	if(level != ALPM_SIG_USE_DEFAULT) {
++        /* Silently convert 0 to ALPM_SIG_USE_DEFAULT
++
++           Added for pyalpm on Anaconda
++
++           .. since it's the value that's passed by:
++
++           PacmanConfig.apply(h)
++               .. to
++               ..
++               h.register_syncdb(repo, 0)
++        */
++        if (level == 0)
++            level = ALPM_SIG_USE_DEFAULT;
++
++        if(level != ALPM_SIG_USE_DEFAULT) {
+ 		RET_ERR(handle, ALPM_ERR_WRONG_ARGS, NULL);
+ 	}
+ #endif
+-- 
+2.5.4 (Apple Git-61)
+

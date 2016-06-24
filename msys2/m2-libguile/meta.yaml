@@ -1,0 +1,39 @@
+package:
+  name: m2-libguile
+  version: 2.0.11
+source:
+  url: http://repo.msys2.org/msys/sources/libguile-2.0.11-3.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '3'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-gmp
+  - m2-libltdl
+  - m2-ncurses
+  - m2-libunistring
+  - m2-libgc
+  - m2-libffi
+about:
+  home: http://www.gnu.org/software/guile/
+  license: GPL
+  summary: a portable, embeddable Scheme implementation written in C
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/libguile
+      url: http://repo.msys2.org/msys/i686/libguile-2.0.11-3-i686.pkg.tar.xz
+      md5: cc129ea9403abbfbf555ed529455c39b
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/libguile
+      url: http://repo.msys2.org/msys/x86_64/libguile-2.0.11-3-x86_64.pkg.tar.xz
+      md5: 4bb85b1ddc5c8a6905922eb992f47336
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

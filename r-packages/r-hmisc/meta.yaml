@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-hmisc
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "3.17_0"
+  version: "3.17_4"
 
 source:
-  fn: Hmisc_3.17-0.tar.gz
+  fn: Hmisc_3.17-4.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/Hmisc_3.17-0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/Hmisc/Hmisc_3.17-0.tar.gz
+    - http://cran.r-project.org/src/contrib/Hmisc_3.17-4.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/Hmisc/Hmisc_3.17-4.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,40 +34,39 @@ build:
 # Suggests: chron, rms, mice, tables, knitr, ff, ffbase, htmltools
 requirements:
   build:
-    - r
+    - r-base
     - r-formula
     - r-acepack
-    - r-cluster # [not win]
-    - r-foreign # [not win]
-    - r-ggplot2
+    - r-cluster
+    - r-data.table
+    - r-foreign
+    - r-ggplot2 >=2.0
     - r-gridextra
     - r-gtable
-    - r-lattice # [not win]
+    - r-lattice
     - r-latticeextra
-    - r-nnet # [not win]
-    - r-proto
-    - r-rpart # [not win]
-    - r-scales
-    - r-survival >=2.37_6 # [not win]
-    - gcc # [not win]
+    - r-nnet
+    - r-rpart
+    - r-survival >=2.37_6
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
+    - r-base
     - r-formula
     - r-acepack
-    - r-cluster # [not win]
-    - r-foreign # [not win]
-    - r-ggplot2
+    - r-cluster
+    - r-data.table
+    - r-foreign
+    - r-ggplot2 >=2.0
     - r-gridextra
     - r-gtable
-    - r-lattice # [not win]
+    - r-lattice
     - r-latticeextra
-    - r-nnet # [not win]
-    - r-proto
-    - r-rpart # [not win]
-    - r-scales
-    - r-survival >=2.37_6 # [not win]
-    - libgcc # [not win]
+    - r-nnet
+    - r-rpart
+    - r-survival >=2.37_6
 
 test:
   commands:
@@ -86,25 +88,26 @@ about:
     imputing missing values, advanced table making, variable clustering, character string
     manipulation, conversion of R objects to LaTeX code, and recoding variables.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: Hmisc
-# Version: 3.17-0
-# Date: 2015-09-20
+# Version: 3.17-4
+# Date: 2016-05-02
 # Title: Harrell Miscellaneous
 # Author: Frank E Harrell Jr <f.harrell@vanderbilt.edu>, with contributions from Charles Dupont and many others.
 # Maintainer: Frank E Harrell Jr <f.harrell@vanderbilt.edu>
-# Depends: grid, lattice, survival (>= 2.37-6), Formula, ggplot2
-# Imports: methods, proto, scales, latticeExtra, cluster, rpart, nnet, acepack, foreign, gtable, gridExtra
+# Depends: lattice, survival (>= 2.37-6), Formula, ggplot2 (>= 2.0)
+# Imports: methods, latticeExtra, cluster, rpart, nnet, acepack, foreign, gtable, grid, gridExtra, data.table
 # Suggests: chron, rms, mice, tables, knitr, ff, ffbase, htmltools
 # Description: Contains many functions useful for data analysis, high-level graphics, utility operations, functions for computing sample size and power, importing and annotating datasets, imputing missing values, advanced table making, variable clustering, character string manipulation, conversion of R objects to LaTeX code, and recoding variables.
 # License: GPL (>= 2)
 # LazyLoad: Yes
 # URL: http://biostat.mc.vanderbilt.edu/Hmisc, https://github.com/harrelfe/Hmisc
 # NeedsCompilation: yes
-# Packaged: 2015-09-20 16:59:08 UTC; harrelfe
+# Packaged: 2016-05-02 14:10:51 UTC; harrelfe
 # Repository: CRAN
-# Date/Publication: 2015-09-21 21:35:54
+# Date/Publication: 2016-05-02 17:28:19
 
 # See
 # http://docs.continuum.io/conda/build.html for
