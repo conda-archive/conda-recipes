@@ -1,59 +1,27 @@
 package:
-  name: uritemplate.py
-  version: !!str 0.3.0
+    name: uritemplate
+    version: 0.6
 
 source:
-  fn: uritemplate.py-0.3.0.tar.gz
-  url: https://pypi.python.org/packages/source/u/uritemplate.py/uritemplate.py-0.3.0.tar.gz
-  md5: 4dd14904ba502c6ff8d6276e004404de
-#  patches:
-   # List any patch files here
-   # - fix.patch
+    git_url: https://github.com/uri-templates/uritemplate-py
+    git_tag: uri-template-py-0.6
 
-# build:
-  #preserve_egg_dir: True
-  #entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - uritemplate.py = uritemplate.py:main
-    #
-    # Would create an entry point called uritemplate.py that calls uritemplate.py.main()
-
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+build:
+    number: 0
 
 requirements:
-  build:
-    - python
+    build:
+        - setuptools
+        - python
 
-  run:
-    - python
+    run:
+        - python
 
 test:
-  # Python imports
-  imports:
-    - uritemplate
-
-  #commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
-
-
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any additional test requirements here.  For example
-    # - nose
+    imports:
+        - uritemplate
 
 about:
-  home: https://uritemplate.readthedocs.org
-  license: BSD
-  summary: 'URI templates'
-
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml
+  home: https://github.com/uri-templates/uritemplate-py
+  license: Apache License 2.0
+  summary: This is a Python implementation of RFC6570, URI Template, and can expand templates up to and including Level 4 in that specification.
