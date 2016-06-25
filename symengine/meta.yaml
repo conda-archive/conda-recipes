@@ -1,0 +1,22 @@
+package:
+  name: symengine
+  version: 0.2.git
+
+source:
+  git_url: https://github.com/symengine/symengine
+  git_tag: 3a1152fdafc83f8d1f35004b5bcda08f355e57c3
+
+requirements:
+  build:
+    - gmp [unix]
+    - mpir [win]
+    - cmake
+  run:
+    - gmp [unix]
+    - mpir [win]
+
+
+about:
+    home: https://github.com/symengine/symengine
+    license: BSD License
+    summary: 'SymEngine is a fast symbolic manipulation library, written in C++'
