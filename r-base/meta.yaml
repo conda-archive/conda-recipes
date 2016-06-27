@@ -52,6 +52,7 @@ requirements:
     - {{pfx}}libsndfile     # [win]
     - {{pfx}}bwidget        # [win]
     - {{pfx}}tktable        # [win]
+    - {{pfx}}icu
     - {{pfx}}tk
     - {{pfx}}zlib
     - {{pfx}}gsl
@@ -80,6 +81,7 @@ requirements:
     - {{pfx}}libsndfile     # [win]
     - {{pfx}}bwidget        # [win]
     - {{pfx}}tktable        # [win]
+    - {{pfx}}icu
     - {{pfx}}tk
     - {{pfx}}zlib
     - {{pfx}}gsl
