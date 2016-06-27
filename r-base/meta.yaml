@@ -18,6 +18,7 @@ source:
     - 0007-Win32-MSYS2-ENV_CONV_EXCL_R_ARCH.patch
     - 0008-Darwin-set-DYLD_FALLBACK_LIBRARY_PATH.patch
     - 0009-R-3.3.0-Use-AC_SEARCH_LIBS-to-search-for-ncurses.patch
+    - 0010-configure-Fix-typo-CPPLAGS.patch
 
 build:
   rpaths:
