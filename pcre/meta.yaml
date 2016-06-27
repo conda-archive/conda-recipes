@@ -4,7 +4,7 @@ package:
     version: 8.39
 
 source:
-    url: ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz
+    url: http://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz
     sha1: b3aec1f643d9701841e2f9d57ac121a7ff448fc8
 
 build:
