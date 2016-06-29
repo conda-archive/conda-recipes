@@ -21,6 +21,7 @@ source:
     - 0010-configure-Fix-typo-CPPLAGS.patch
 
 build:
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
@@ -52,7 +53,8 @@ requirements:
     - {{pfx}}libsndfile     # [win]
     - {{pfx}}bwidget        # [win]
     - {{pfx}}tktable        # [win]
-    - {{pfx}}icu
+    - {{pfx}}icu 54.*       # [not win]
+    - {{pfx}}icu            # [win]
     - {{pfx}}tk
     - {{pfx}}zlib
     - {{pfx}}gsl
@@ -81,7 +83,8 @@ requirements:
     - {{pfx}}libsndfile     # [win]
     - {{pfx}}bwidget        # [win]
     - {{pfx}}tktable        # [win]
-    - {{pfx}}icu
+    - {{pfx}}icu 54.*       # [not win]
+    - {{pfx}}icu            # [win]
     - {{pfx}}tk
     - {{pfx}}zlib
     - {{pfx}}gsl

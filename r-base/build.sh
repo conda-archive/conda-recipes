@@ -269,13 +269,14 @@ Mingw_w64_makefiles() {
     cd "${SRC_DIR}/src/gnuwin32"
     if [[ "${_use_msys2_mingw_w64_tcltk}" == "yes" ]]; then
         # rinstaller and crandir would come after manuals (if it worked with MSYS2/mingw-w64-{tcl,tk}, in which case we'd just use make distribution anyway)
-        echo "***** Build started *****" > make_staged.log
+        echo "***** R-${PACKAGE_VERSION} Build started *****"
         for _stage in all cairodevices recommended vignettes manuals; do
-            echo "***** Stage started ${_stage} *****" >> make_staged.log
-            make ${_stage} -j${CPU_COUNT} >> make_staged.log 2>&1
+            echo "***** R-${PACKAGE_VERSION} Stage started: ${_stage} *****"
+            make ${_stage} -j${CPU_COUNT}
         done
     else
-        make distribution -j${CPU_COUNT} > make_distribution.log 2>&1
+    echo "***** R-${PACKAGE_VERSION} Stage started: distribution *****"
+        make distribution -j${CPU_COUNT}
     fi
     # The flakiness mentioned below can be seen if the values are hacked to:
     # supremum error =  0.022  with p-value= 1e-04
@@ -290,7 +291,7 @@ Mingw_w64_makefiles() {
     # make check-all -j1 > make-check.log 2>&1 || make check-all -j1 > make-check.2.log 2>&1 || make check-all -j1 > make-check.3.log 2>&1
     cd installer
     make imagedir
-    cp -Rf R-3.3.0 R
+    cp -Rf R-${PKG_VERSION} R
     cp -Rf R "${PREFIX}"/
     # Remove the recommeded libraries, we package them separately as-per the other platforms now.
     rm -Rf "${PREFIX}"/R/library/{MASS,lattice,Matrix,nlme,survival,boot,cluster,codetools,foreign,KernSmooth,rpart,class,nnet,spatial,mgcv}
