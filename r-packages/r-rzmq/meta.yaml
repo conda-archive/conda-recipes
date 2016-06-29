@@ -36,7 +36,7 @@ requirements:
   build:
     - r-base
     - posix               # [win]
-    - pkg-config
+    - {{posix}}pkg-config
     - {{native}}toolchain # [win]
     - gcc                 # [not win]
     - {{native}}zeromq
