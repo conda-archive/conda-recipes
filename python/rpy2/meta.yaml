@@ -1,11 +1,15 @@
+{% set version = '2.8.0' %}
+{% set versionu = '2_8_0' %}
+{% set pfx = 'm2w64-' if win else '' %}
+
 package:
   name: rpy2
-  version: "2.7.6"
+  version: "{{version}}"
 
 source:
-  fn: rpy2-2.7.6.tar.gz
-  url: https://pypi.python.org/packages/source/r/rpy2/rpy2-2.7.6.tar.gz
-  md5: e2fdcbc5bbd3803256c39568c423dcd9
+  fn: rpy2-{{version}}.tar.gz
+  url: https://bitbucket.org/rpy2/rpy2/get/RELEASE_{{versionu}}.tar.bz2
+  sha1: 39c574797a2212c87f053ee664f94c8246987b44
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -17,21 +21,23 @@ build:
 
 requirements:
   build:
+    # Note, until the build env. is activated properly, you'll need posix in your
+    # root env. too. Proper activation is in-progress though.
+    - posix             # [win]
+    - {{pfx}}toolchain  # [win]
     - python
     - r
     - setuptools
-    - argparse # [py26]
-    - singledispatch # [not (py34 or py35)]
+    - singledispatch    # [not (py34 or py35)]
     - six
-    - readline
+    - readline          # [not win]
 
   run:
     - python
     - r
-    - argparse # [py26]
-    - singledispatch # [not (py34 or py35)]
+    - singledispatch    # [not (py34 or py35)]
     - six
-    - readline
+    - readline          # [not win]
 
 test:
   # Python imports
@@ -51,8 +57,7 @@ test:
     - rpy2.robjects.tests
 
   commands:
-    - echo
-    # - python -m rpy2.tests
+    - python -m rpy2.tests
 
   requires:
     - ipython
