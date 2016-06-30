@@ -1,5 +1,5 @@
-{% set version = '2.8.0' %}
-{% set versionu = '2_8_0' %}
+{% set version = '2.8.1' %}
+{% set versionu = '2_8_1' %}
 {% set pfx = 'm2w64-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ package:
 source:
   fn: rpy2-{{version}}.tar.gz
   url: https://bitbucket.org/rpy2/rpy2/get/RELEASE_{{versionu}}.tar.bz2
-  sha1: 39c574797a2212c87f053ee664f94c8246987b44
+  sha1: e1fd16c5a1515c155c2d8fd6a308dbe458b1454e
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -25,6 +25,7 @@ requirements:
     # root env. too. Proper activation is in-progress though.
     - posix             # [win]
     - {{pfx}}toolchain  # [win]
+    - gcc               # [not win]
     - python
     - r
     - setuptools
@@ -38,6 +39,8 @@ requirements:
     - singledispatch    # [not (py34 or py35)]
     - six
     - readline          # [not win]
+    - {{pfx}}gcc-libs   # [win]
+    - libgcc            # [not win]
 
 test:
   # Python imports
@@ -56,8 +59,10 @@ test:
     - rpy2.robjects.lib.tests
     - rpy2.robjects.tests
 
+  # Excluded for linux32 since this win32 (bit?)  bug also happens there:
+  # https://bitbucket.org/rpy2/rpy2/issues/347/testscalar-errors
   commands:
-    - python -m rpy2.tests
+    - python -m rpy2.tests  # [not linux32]
 
   requires:
     - ipython
