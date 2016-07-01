@@ -1,0 +1,24 @@
+{% set pkgname = 'pciutils' %}
+{% set ver= '3.5.1' %}
+
+package:
+  name: {{ pkgname }}
+  version: {{ ver }}
+
+source:
+  url: https://www.kernel.org/pub/software/utils/{{ pkgname }}/{{ pkgname }}-{{ ver }}.tar.gz
+  sha1: 021f58fd080df0cb4991ab4e96d80f67b7883a70
+  patches:
+
+build:
+  detect_binary_files_with_prefix: true
+
+requirements:
+  build:
+    - gcc
+  run:
+    - libgcc
+
+about:
+  home: http://mj.ucw.cz/sw/pciutils/
+  license: GPL2
