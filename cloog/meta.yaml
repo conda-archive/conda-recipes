@@ -6,11 +6,27 @@ source:
   fn: cloog-0.18.1.tar.gz
   url: http://www.bastoul.net/cloog/pages/download/count.php3?url=./cloog-0.18.1.tar.gz
 
+build:
+  number: 0
+
 requirements:
   build:
     - gmp >=5.0.2
     - isl
-
   run:
     - gmp
     - isl
+
+about:
+  home: http://www.bastoul.net/cloog/
+  license: GPL-3
+  license_family: GPL3
+  summary: "The CLooG Code Generator in the Polyhedral Model"
+  description: |
+    CLooG is a free software and library to generate code for scanning
+    Z-polyhedra. That is, it finds a code (e.g. in C, FORTRAN...) that
+    reaches each integral point of one or more parameterized polyhedra.
+    CLooG has been originally written to solve the code generation problem
+    for optimizing compilers based on the polytope model.
+  doc_url: http://www.bastoul.net/cloog/documentation.php
+  dev_url: http://repo.or.cz/w/cloog.git
