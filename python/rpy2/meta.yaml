@@ -10,11 +10,11 @@ source:
   fn: rpy2-{{version}}.tar.gz
   url: https://bitbucket.org/rpy2/rpy2/get/RELEASE_{{versionu}}.tar.bz2
   sha1: e1fd16c5a1515c155c2d8fd6a308dbe458b1454e
-#  patches:
-   # List any patch files here
-   # - fix.patch
+  patches:
+    - 0001-Fix-rmagic-failing-to-load-with-ipython-5-e2f29d.patch
 
 build:
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/

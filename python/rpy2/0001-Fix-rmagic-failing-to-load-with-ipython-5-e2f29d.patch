@@ -1,0 +1,24 @@
+# HG changeset patch
+# User Laurent Gautier <lgautier@gmail.com>
+# Date 1468165619 14400
+# Branch version_2.8.x
+# Node ID e2f29da423310fd5dac7f73ee4975c977ce5f4bf
+# Parent  53be377ee402d181ffd6b61630e666fa418c5610
+Fix for issue #359
+
+diff --git a/rpy/ipython/rmagic.py b/rpy/ipython/rmagic.py
+--- a/rpy/ipython/rmagic.py
++++ b/rpy/ipython/rmagic.py
+@@ -785,5 +785,10 @@
+     ip.register_magics(RMagics)
+     # Initialising rpy2 interferes with readline. Since, at this point, we've
+     # probably just loaded rpy2, we reset the delimiters. See issue gh-2759.
+-    if ip.has_readline:
+-        ip.readline.set_completer_delims(ip.readline_delims)
++    if hasattr(ip, 'has_readline'):
++        if ip.has_readline:
++            ip.readline.set_completer_delims(ip.readline_delims)
++    else:
++        # ipython >= 5.0.0
++        # not doing anything (for now)
++        pass
