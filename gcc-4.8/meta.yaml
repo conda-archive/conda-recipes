@@ -6,10 +6,14 @@ source:
   fn: gcc-4.8.5.tar.bz2
   url: http://www.netgull.com/gcc/releases/gcc-4.8.5/gcc-4.8.5.tar.bz2
   md5: 80d2c2982a3392bb0b89673ff136e223
+  patches:
+    - 0001-Libiberty-normalize-split-directories.patch
 
+# GCC relocates itself correctly under most circumstances, and 0001-.patch
+# along with using ${GCC_PREFIX}/.. fixes the issues with our configuration.
 build:
-  detect_binary_files_with_prefix: true # [not linux32]
-  number: 5
+  detect_binary_files_with_prefix: false
+  number: 6
 
 requirements:
   build:

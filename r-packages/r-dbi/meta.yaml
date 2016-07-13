@@ -66,7 +66,7 @@ about:
 # Date: 2016-05-07
 # Title: R Database Interface
 # Description: A database interface definition for communication between R and relational database management systems.  All classes in this package are virtual and need to be extended by the various R/DBMS implementations.
-# Authors@R: c( person("R Special Interest Group on Databases (R-SIG-DB)", role = "aut"), person("Hadley", "Wickham", role = "aut"), person("Kirill", "MA14ller", email = "krlmlr+r@mailbox.org", role = c("aut", "cre")) )
+# Authors@R: c( person("R Special Interest Group on Databases (R-SIG-DB)", role = "aut"), person("Hadley", "Wickham", role = "aut"), person("Kirill", "Muller", email = "krlmlr+r@mailbox.org", role = c("aut", "cre")) )
 # Depends: R (>= 2.15.0), methods
 # Suggests: testthat, RSQLite, knitr, covr
 # Encoding: UTF-8
@@ -78,8 +78,8 @@ about:
 # RoxygenNote: 5.0.1
 # NeedsCompilation: no
 # Packaged: 2016-05-07 13:24:22 UTC; muelleki
-# Author: R Special Interest Group on Databases (R-SIG-DB) [aut], Hadley Wickham [aut], Kirill MA14ller [aut, cre]
-# Maintainer: Kirill MA14ller <krlmlr+r@mailbox.org>
+# Author: R Special Interest Group on Databases (R-SIG-DB) [aut], Hadley Wickham [aut], Kirill Muller [aut, cre]
+# Maintainer: Kirill Muller <krlmlr+r@mailbox.org>
 # Repository: CRAN
 # Date/Publication: 2016-05-08 09:53:30
 

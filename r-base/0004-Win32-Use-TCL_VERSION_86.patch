@@ -1,7 +1,7 @@
 diff -urN src/gnuwin32/fixed/etc/Makeconf src.new/gnuwin32/fixed/etc/Makeconf
 --- src/gnuwin32/fixed/etc/Makeconf	2016-03-30 18:55:32.114800100 +0100
 +++ src.new/gnuwin32/fixed/etc/Makeconf	2016-03-30 19:12:47.189673300 +0100
-@@ -57,7 +57,7 @@
+@@ -58,7 +58,7 @@
  
  ## For use in packages
  GRAPHAPP_LIB = -lRgraphapp

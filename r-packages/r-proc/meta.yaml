@@ -79,7 +79,7 @@ about:
 # Imports: plyr, utils, methods, Rcpp (>= 0.11.1)
 # Suggests: microbenchmark, tcltk, MASS, logcondens, doParallel
 # LinkingTo: Rcpp
-# Author: Xavier Robin, Natacha Turck, Alexandre Hainard, Natalia Tiberti, FrAdArique Lisacek, Jean-Charles Sanchez and Markus MA14ller.
+# Author: Xavier Robin, Natacha Turck, Alexandre Hainard, Natalia Tiberti, Frederique Lisacek, Jean-Charles Sanchez and Markus Muller.
 # Maintainer: Xavier Robin <robin@lindinglab.org>
 # Description: Tools for visualizing, smoothing and comparing receiver operating characteristic (ROC curves). (Partial) area under the curve (AUC) can be compared with statistical tests based on U-statistics or bootstrap. Confidence intervals can be computed for (p)AUC or ROC curves.
 # License: GPL (>= 3)

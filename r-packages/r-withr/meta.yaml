@@ -5,13 +5,13 @@ package:
   name: r-withr
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.0.1"
+  version: "1.0.2"
 
 source:
-  fn: withr_1.0.1.tar.gz
+  fn: withr_1.0.2.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/withr_1.0.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/withr/withr_1.0.1.tar.gz
+    - http://cran.r-project.org/src/contrib/withr_1.0.2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/withr/withr_1.0.2.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -64,8 +64,8 @@ about:
 # Encoding: UTF-8
 # Package: withr
 # Title: Run Code 'With' Temporarily Modified Global State
-# Version: 1.0.1
-# Authors@R: c( person("Jim", "Hester", , "james.f.hester@gmail.com", role = c("aut", "cre")), person("Kirill", "MA14ller", , "krlmlr+r@mailbox.org", role = "aut"), person("Hadley", "Wickham", , "hadley@rstudio.com", role = "aut"), person("Winston", "Chang", role = "aut"), person("RStudio", role = "cph"))
+# Version: 1.0.2
+# Authors@R: c( person("Jim", "Hester", , "james.f.hester@gmail.com", role = c("aut", "cre")), person("Kirill", "MAzller", , "krlmlr+r@mailbox.org", role = "aut"), person("Hadley", "Wickham", , "hadley@rstudio.com", role = "aut"), person("Winston", "Chang", role = "aut"), person("RStudio", role = "cph"))
 # Description: A set of functions to run code 'with' safely and temporarily modified global state. Many of these functions were originally a part of the 'devtools' package, this provides a simple package with limited dependencies to provide access to these functions.
 # URL: http://github.com/jimhester/withr
 # BugReports: http://github.com/jimhester/withr/issues
@@ -77,11 +77,11 @@ about:
 # Collate: 'with_.R' 'collate.R' 'dir.R' 'env.R' 'libpaths.R' 'locale.R' 'makevars.R' 'options.R' 'par.R' 'path.R' 'wrap.R' 'sink.R' 'with.R'
 # RoxygenNote: 5.0.1
 # NeedsCompilation: no
-# Packaged: 2016-02-04 15:42:19 UTC; jhester
-# Author: Jim Hester [aut, cre], Kirill MA14ller [aut], Hadley Wickham [aut], Winston Chang [aut], RStudio [cph]
+# Packaged: 2016-06-20 12:49:55 UTC; jhester
+# Author: Jim Hester [aut, cre], Kirill MAzller [aut], Hadley Wickham [aut], Winston Chang [aut], RStudio [cph]
 # Maintainer: Jim Hester <james.f.hester@gmail.com>
 # Repository: CRAN
-# Date/Publication: 2016-02-04 17:58:33
+# Date/Publication: 2016-06-20 17:32:02
 
 # See
 # http://docs.continuum.io/conda/build.html for

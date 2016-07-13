@@ -1,0 +1,17 @@
+Index: qt-everywhere-opensource-src-4.8.7/src/3rdparty/webkit/Source/WebKit/qt/tests/qgraphicswebview/tst_qgraphicswebview.cpp
+===================================================================
+--- qt-everywhere-opensource-src-4.8.7/src/3rdparty/webkit/Source/WebKit/qt/tests/qgraphicswebview/tst_qgraphicswebview.cpp	(revision 141574)
++++ qt-everywhere-opensource-src-4.8.7/src/3rdparty/webkit/Source/WebKit/qt/tests/qgraphicswebview/tst_qgraphicswebview.cpp	(revision 141575)
+@@ -572,4 +572,5 @@
+ void tst_QGraphicsWebView::webglSoftwareFallbackVerticalOrientation()
+ {
++    QSKIP("Hangs on X11 -- https://bugs.webkit.org/show_bug.cgi?id=105820");
+     QSize canvasSize(100, 100);
+     QImage reference(canvasSize, QImage::Format_ARGB32);
+@@ -591,4 +592,5 @@
+ void tst_QGraphicsWebView::webglSoftwareFallbackHorizontalOrientation()
+ {
++    QSKIP("Hangs on X11 -- https://bugs.webkit.org/show_bug.cgi?id=105820");
+     QSize canvasSize(100, 100);
+     QImage reference(canvasSize, QImage::Format_ARGB32);
+ 

@@ -66,7 +66,7 @@ about:
 # Package: memoise
 # Title: Memoisation of Functions
 # Version: 1.0.0
-# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", role = "aut"), person("Jim", "Hester", , "jim.hester@rstudio.com", role = c("aut", "cre")), person("Kirill", "MA14ller", , "krlmlr+r@mailbox.org", role = "aut"))
+# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", role = "aut"), person("Jim", "Hester", , "jim.hester@rstudio.com", role = c("aut", "cre")), person("Kirill", "MAzller", , "krlmlr+r@mailbox.org", role = "aut"))
 # Description: Cache the results of a function so that when you call it again with the same arguments it returns the pre-computed value.
 # URL: https://github.com/hadley/memoise
 # BugReports: https://github.com/hadley/memoise/issues
@@ -76,7 +76,7 @@ about:
 # RoxygenNote: 5.0.1
 # NeedsCompilation: no
 # Packaged: 2016-01-28 19:30:15 UTC; jhester
-# Author: Hadley Wickham [aut], Jim Hester [aut, cre], Kirill MA14ller [aut]
+# Author: Hadley Wickham [aut], Jim Hester [aut, cre], Kirill MAzller [aut]
 # Maintainer: Jim Hester <jim.hester@rstudio.com>
 # Repository: CRAN
 # Date/Publication: 2016-01-29 05:58:01

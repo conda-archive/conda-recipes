@@ -5,13 +5,13 @@ package:
   name: r-plyr
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.8.3"
+  version: "1.8.4"
 
 source:
-  fn: plyr_1.8.3.tar.gz
+  fn: plyr_1.8.4.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/plyr_1.8.3.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/plyr/plyr_1.8.3.tar.gz
+    - http://cran.r-project.org/src/contrib/plyr_1.8.4.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/plyr/plyr_1.8.4.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,7 +31,7 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: abind, testthat, tcltk, foreach, doParallel, itertools, iterators
+# Suggests: abind, testthat, tcltk, foreach, doParallel, itertools, iterators, covr
 requirements:
   build:
     - r-base
@@ -71,7 +71,7 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: plyr
-# Version: 1.8.3
+# Version: 1.8.4
 # Title: Tools for Splitting, Applying and Combining Data
 # Description: A set of tools that solves a common set of problems: you need to break a big problem down into manageable pieces, operate on each piece and then put all the pieces back together.  For example, you might want to fit a model to each spatial location or time point in your study, summarise data by panels or collapse high-dimensional arrays to simpler summary statistics. The development of 'plyr' has been generously supported by 'Becton Dickinson'.
 # Authors@R: person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre"))
@@ -80,15 +80,16 @@ about:
 # Depends: R (>= 3.1.0)
 # Imports: Rcpp (>= 0.11.0)
 # LinkingTo: Rcpp
-# Suggests: abind, testthat, tcltk, foreach, doParallel, itertools, iterators
+# Suggests: abind, testthat, tcltk, foreach, doParallel, itertools, iterators, covr
 # License: MIT + file LICENSE
 # LazyData: true
+# RoxygenNote: 5.0.1
 # NeedsCompilation: yes
-# Packaged: 2015-06-11 13:04:58 UTC; hadley
+# Packaged: 2016-06-07 19:58:36 UTC; hadley
 # Author: Hadley Wickham [aut, cre]
 # Maintainer: Hadley Wickham <hadley@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2015-06-12 11:05:51
+# Date/Publication: 2016-06-08 10:40:15
 
 # See
 # http://docs.continuum.io/conda/build.html for

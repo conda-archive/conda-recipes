@@ -1,37 +1,46 @@
+{% set version = '2.8.1' %}
+{% set versionu = '2_8_1' %}
+{% set pfx = 'm2w64-' if win else '' %}
+
 package:
   name: rpy2
-  version: "2.7.6"
+  version: "{{version}}"
 
 source:
-  fn: rpy2-2.7.6.tar.gz
-  url: https://pypi.python.org/packages/source/r/rpy2/rpy2-2.7.6.tar.gz
-  md5: e2fdcbc5bbd3803256c39568c423dcd9
-#  patches:
-   # List any patch files here
-   # - fix.patch
+  fn: rpy2-{{version}}.tar.gz
+  url: https://bitbucket.org/rpy2/rpy2/get/RELEASE_{{versionu}}.tar.bz2
+  sha1: e1fd16c5a1515c155c2d8fd6a308dbe458b1454e
+  patches:
+    - 0001-Fix-rmagic-failing-to-load-with-ipython-5-e2f29d.patch
 
 build:
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
+    # Note, until the build env. is activated properly, you'll need posix in your
+    # root env. too. Proper activation is in-progress though.
+    - posix             # [win]
+    - {{pfx}}toolchain  # [win]
+    - gcc               # [not win]
     - python
     - r
     - setuptools
-    - argparse # [py26]
-    - singledispatch # [not (py34 or py35)]
+    - singledispatch    # [not (py34 or py35)]
     - six
-    - readline
+    - readline          # [not win]
 
   run:
     - python
     - r
-    - argparse # [py26]
-    - singledispatch # [not (py34 or py35)]
+    - singledispatch    # [not (py34 or py35)]
     - six
-    - readline
+    - readline          # [not win]
+    - {{pfx}}gcc-libs   # [win]
+    - libgcc            # [not win]
 
 test:
   # Python imports
@@ -50,9 +59,10 @@ test:
     - rpy2.robjects.lib.tests
     - rpy2.robjects.tests
 
+  # Excluded for linux32 since this win32 (bit?)  bug also happens there:
+  # https://bitbucket.org/rpy2/rpy2/issues/347/testscalar-errors
   commands:
-    - echo
-    # - python -m rpy2.tests
+    - python -m rpy2.tests  # [not linux32]
 
   requires:
     - ipython

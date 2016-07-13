@@ -20,6 +20,13 @@ export TK_LIBRARY=$PREFIX/lib/tk8.5
 
 Linux() {
     # There's probably a much better way to do this.
+    # 1. Why bother with java.rc? Presumably R uses it until `R CMD javareconf`?
+    # 2. Why bother with readlink, that seems to maket his inflexible.
+    # 3. It definitely doesn't work for ArchLinux which has no /usr/lib/jvm/java
+    #JVMFOLDER=$(readlink -f /usr/lib/jvm/java)
+    JVMFOLDER=/usr/lib/jvm/java
+    echo "export JDK_HOME=${JVMFOLDER}"       > ${RECIPE_DIR}/java.rc
+    echo "export JAVA_HOME=\${JDK_HOME}/jre" >> ${RECIPE_DIR}/java.rc
     . ${RECIPE_DIR}/java.rc
     if [ -n "$JDK_HOME" -a -n "$JAVA_HOME" ]; then
         export JAVA_CPPFLAGS="-I$JDK_HOME/include -I$JDK_HOME/include/linux"
@@ -42,6 +49,8 @@ Linux() {
                 --with-x                        \
                 --with-pic                      \
                 --with-cairo                    \
+                --with-curses                   \
+                --with-readline                 \
                 --with-recommended-packages=no  \
                 LIBnn=lib
 
@@ -260,13 +269,14 @@ Mingw_w64_makefiles() {
     cd "${SRC_DIR}/src/gnuwin32"
     if [[ "${_use_msys2_mingw_w64_tcltk}" == "yes" ]]; then
         # rinstaller and crandir would come after manuals (if it worked with MSYS2/mingw-w64-{tcl,tk}, in which case we'd just use make distribution anyway)
-        echo "***** Build started *****" > make_staged.log
+        echo "***** R-${PACKAGE_VERSION} Build started *****"
         for _stage in all cairodevices recommended vignettes manuals; do
-            echo "***** Stage started ${_stage} *****" >> make_staged.log
-            make ${_stage} -j${CPU_COUNT} >> make_staged.log 2>&1
+            echo "***** R-${PACKAGE_VERSION} Stage started: ${_stage} *****"
+            make ${_stage} -j${CPU_COUNT}
         done
     else
-        make distribution -j${CPU_COUNT} > make_distribution.log 2>&1
+    echo "***** R-${PACKAGE_VERSION} Stage started: distribution *****"
+        make distribution -j${CPU_COUNT}
     fi
     # The flakiness mentioned below can be seen if the values are hacked to:
     # supremum error =  0.022  with p-value= 1e-04
@@ -281,7 +291,7 @@ Mingw_w64_makefiles() {
     # make check-all -j1 > make-check.log 2>&1 || make check-all -j1 > make-check.2.log 2>&1 || make check-all -j1 > make-check.3.log 2>&1
     cd installer
     make imagedir
-    cp -Rf R-3.3.0 R
+    cp -Rf R-${PKG_VERSION} R
     cp -Rf R "${PREFIX}"/
     # Remove the recommeded libraries, we package them separately as-per the other platforms now.
     rm -Rf "${PREFIX}"/R/library/{MASS,lattice,Matrix,nlme,survival,boot,cluster,codetools,foreign,KernSmooth,rpart,class,nnet,spatial,mgcv}
@@ -299,9 +309,15 @@ Darwin() {
     # that have older versions of libjpeg than the one we are using
     # here. DYLD_FALLBACK_LIBRARY_PATH will only come into play if it cannot
     # find the library via normal means. The default comes from 'man dyld'.
-    export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib:$(HOME)/lib:/usr/local/lib:/lib:/usr/lib
-
+    export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib:/usr/local/lib:/lib:/usr/lib
     # Prevent configure from finding Fink or Homebrew.
+    # [*] Since R 3.0, the configure script prevents using any DYLD_* on Darwin,
+    # after a certain point, claiming each dylib had an absolute ID path.
+    # Patch 008-Darwin-set-DYLD_FALLBACK_LIBRARY_PATH.patch corrects this and uses
+    # the same mechanism as Linux (and others) where configure transfers path from
+    # LDFLAGS=-L<path> into DYLD_FALLBACK_LIBRARY_PATH. Note we need to use both
+    # DYLD_FALLBACK_LIBRARY_PATH and LDFLAGS for different stages of configure.
+    export LDFLAGS=$LDFLAGS" -L${PREFIX}"
 
     export PATH=$PREFIX/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
@@ -312,12 +328,19 @@ F77=gfortran
 OBJC=clang
 EOF
 
+    # --without-internal-tzcode to avoid warnings:
+    # unknown timezone 'Europe/London'
+    # unknown timezone 'GMT'
+    # https://stat.ethz.ch/pipermail/r-devel/2014-April/068745.html
+
     ./configure --prefix=$PREFIX                    \
                 --with-blas="-framework Accelerate" \
                 --with-lapack                       \
                 --enable-R-shlib                    \
                 --without-x                         \
-                --enable-R-framework=no
+                --without-internal-tzcode           \
+                --enable-R-framework=no             \
+                --with-recommended-packages=no
 
     make -j${CPU_COUNT}
     # echo "Running make check-all, this will take some time ..."

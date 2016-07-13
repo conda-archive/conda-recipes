@@ -35,14 +35,15 @@ build:
 requirements:
   build:
     - r-base
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - {{native}}nlopt
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - {{native}}nlopt      # [win]
+    - nlopt-static         # [not win]
+    - gcc                  # [not win]
 
   run:
     - r-base
-    - {{native}}nlopt
+    - {{native}}nlopt      # [win]
 
 test:
   commands:
