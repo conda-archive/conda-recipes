@@ -39,6 +39,6 @@ MY_PYTHON_INCLUDES="$( "${MY_PYTHON_CONFIG}" --includes | sed s/-I//g )"
     address-model=${ARCH} \
     architecture=x86 \
     threading=multi \
-    link=shared \
+    link=static,shared \
     "${b2_options[@]}" \
     install 2>&1 | tee b2.log
