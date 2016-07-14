@@ -33,7 +33,7 @@ if [ "$(uname)" == "Darwin" ]; then
         architecture=x86 \
         debug-symbols=off \
         threading=multi \
-        link=shared \
+        link=static,shared \
         toolset=clang \
         include="${INCLUDE_PATH}" \
         cxxflags="${CXXFLAGS}" \
@@ -57,7 +57,7 @@ if [ "$(uname)" == "Linux" ]; then
         debug-symbols=off \
         threading=multi \
         runtime-link=shared \
-        link=shared \
+        link=static,shared \
         toolset=gcc \
         python="${PY_VER}" \
         include="${INCLUDE_PATH}" \
