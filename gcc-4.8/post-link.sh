@@ -111,6 +111,13 @@ else
         # ... yada yada ... -isystem ${INCDIR}
         sed -i ':a;N;$!ba;s|\(*cpp:\n[^\n]*\)|\1 -isystem '${INCDIR}'|g' "${SPECS_FILE}"
     done
+
+    #
+    # Linux Portability Issue #2.5: linker also needs to find the rest of libc (i.e. libc.so in addition to crtXXX.o)
+    #
+    for library_path in $(/usr/bin/ld --verbose | grep SEARCH_DIR | sed -r 's/SEARCH_DIR\("=?([^"]*)"\);/ \1/g'); do
+         sed -i ':a;N;$!ba;s|\(*link_libgcc:\n[^\n]*\)|\1 -L'${library_path}'|g' "${SPECS_FILE}"
+    done
 fi
 
 ## TEST: Here we verify that gcc can build a simple "Hello world" program for both C and C++.
