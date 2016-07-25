@@ -1,13 +1,6 @@
 mkdir C:\b
 cd C:\b
 
-set "CMAKE_GENERATOR=Visual Studio 9 2008"
-if "%PY_VER%" == "3.3" set "CMAKE_GENERATOR=Visual Studio 10"
-if "%PY_VER%" == "3.4" set "CMAKE_GENERATOR=Visual Studio 10"
-if "%PY_VER%" == "3.5" set "CMAKE_GENERATOR=Visual Studio 14"
-
-if "%ARCH%" == "64" set "CMAKE_GENERATOR=%CMAKE_GENERATOR% Win64"
-
 REM Remove dot from PY_VER for use in library name
 set MY_PY_VER=%PY_VER:.=%
 
@@ -25,10 +18,11 @@ cmake -G "%CMAKE_GENERATOR%" ^
     -D WRAP_TCL:BOOL=OFF ^
     -D WRAP_R:BOOL=OFF ^
     -D WRAP_RUBY:BOOL=OFF ^
-    -D ITK_USE_SYSTEM_JPEG:BOOL=OFF ^
-    -D ITK_USE_SYSTEM_PNG:BOOL=OFF ^
-    -D ITK_USE_SYSTEM_TIFF:BOOL=OFF ^
-    -D ITK_USE_SYSTEM_ZLIB:BOOL=OFF ^
+    -D USE_SYSTEM_SWIG:BOOL=ON ^
+    -D ITK_USE_SYSTEM_JPEG:BOOL=ON ^
+    -D ITK_USE_SYSTEM_PNG:BOOL=ON ^
+    -D ITK_USE_SYSTEM_TIFF:BOOL=ON ^
+    -D ITK_USE_SYSTEM_ZLIB:BOOL=ON ^
     -D "CMAKE_SYSTEM_PREFIX_PATH:PATH=%PREFIX%/Library" ^
     -D "PYTHON_EXECUTABLE:FILEPATH=%PYTHON%" ^
     -D "PYTHON_INCLUDE_DIR:PATH=%PREFIX%/include" ^
@@ -45,5 +39,5 @@ REM Install step
 REM cmake --build  . --config Release --target INSTALL
 if errorlevel 1 exit 1
 
-cd SimpleITK-build\Wrapping
-%PYTHON% PythonPackage\setup.py install
+cd SimpleITK-build\Wrapping\Python
+%PYTHON% Packaging\setup.py install
