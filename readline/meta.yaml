@@ -15,8 +15,8 @@ build:
 
 requirements:
   build:
-    - ncurses >=5.9
+    - ncurses >=5.9-8
   run:
-    - ncurses >=5.9
+    - ncurses >=5.9-8
 
 # vim:set ts=8 sw=2 sts=2 tw=78 et:
