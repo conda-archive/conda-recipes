@@ -1,0 +1,133 @@
+From bafc9d4edb7a4d3891ae7adab5b64a78724cb762 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Tue, 9 Aug 2016 11:43:37 +0100
+Subject: [PATCH 02/42] Fix program_options for Boost >= 1.59
+
+You need to use '--var=value' to avoid running into:
+
+'too many positional options have been specified on the command line'
+
+Refs:
+http://lists.boost.org/boost-users/2015/09/85130.php
+https://github.com/boostorg/program_options/commit/88dea3
+---
+ src/cpp/core/system/PosixSystem.cpp        |  5 +++--
+ src/cpp/desktop-mac/SessionLauncher.mm     | 17 ++++++-----------
+ src/cpp/desktop/DesktopSessionLauncher.cpp | 16 ++++++----------
+ 3 files changed, 15 insertions(+), 23 deletions(-)
+
+diff --git a/src/cpp/core/system/PosixSystem.cpp b/src/cpp/core/system/PosixSystem.cpp
+index d6b40f1..9ac7859 100644
+--- a/src/cpp/core/system/PosixSystem.cpp
++++ b/src/cpp/core/system/PosixSystem.cpp
+@@ -1414,9 +1414,10 @@ Error launchChildProcess(std::string path,
+            it != config.args.end();
+            ++it)
+       {
+-         argVector.push_back(it->first);
+          if (!it->second.empty())
+-            argVector.push_back(it->second);
++            argVector.push_back(it->first + "=" + it->second);
++         else
++            argVector.push_back(it->first);
+       }
+ 
+       // allocate ProcessArgs on heap so memory stays around after we exec
+diff --git a/src/cpp/desktop-mac/SessionLauncher.mm b/src/cpp/desktop-mac/SessionLauncher.mm
+index 59dce4c..d9e6475 100644
+--- a/src/cpp/desktop-mac/SessionLauncher.mm
++++ b/src/cpp/desktop-mac/SessionLauncher.mm
+@@ -119,8 +119,7 @@ Error SessionLauncher::launchFirstSession(const std::string& filename)
+    buildLaunchContext(&host, &port, &argList, &appUrl);
+ 
+    // show help home for first session
+-   argList.push_back("--show-help-home");
+-   argList.push_back("1");
++   argList.push_back("--show-help-home=1");
+    
+    RUN_DIAGNOSTICS_LOG("\nAttempting to launch R session...");
+    logEnvVar("RSTUDIO_WHICH_R");
+@@ -320,29 +319,25 @@ void SessionLauncher::buildLaunchContext(std::string* pHost,
+    *pUrl = "http://" + *pHost + ":" + *pPort + "/";
+            
+    
+-   pArgList->push_back("--config-file");
+    if (!confPath_.empty())
+    {
+-      pArgList->push_back(confPath_.absolutePath());
++      pArgList->push_back("--config-file=" + confPath_.absolutePath());
+    }
+    else
+    {
+       // explicitly pass "none" so that rsession doesn't read an
+       // /etc/rstudio/rsession.conf file which may be sitting around
+       // from a previous configuratin or install
+-      pArgList->push_back("none");
++      pArgList->push_back("--config-file=none");
+    }
+    
+-   pArgList->push_back("--program-mode");
+-   pArgList->push_back("desktop");
++   pArgList->push_back("--program-mode=desktop");
+ 
+-   pArgList->push_back("--www-port");
+-   pArgList->push_back(*pPort);
++   pArgList->push_back("--www-port=" + *pPort);
+    
+    if (desktop::options().runDiagnostics())
+    {
+-      pArgList->push_back("--verify-installation");
+-      pArgList->push_back("1");
++      pArgList->push_back("--verify-installation=1");
+    }
+ }
+    
+diff --git a/src/cpp/desktop/DesktopSessionLauncher.cpp b/src/cpp/desktop/DesktopSessionLauncher.cpp
+index 7414e1f..2761e55 100644
+--- a/src/cpp/desktop/DesktopSessionLauncher.cpp
++++ b/src/cpp/desktop/DesktopSessionLauncher.cpp
+@@ -84,8 +84,7 @@ Error SessionLauncher::launchFirstSession(const QString& filename,
+    buildLaunchContext(&host, &port, &argList, &url);
+ 
+    // show help home on first run
+-   argList.push_back(QString::fromUtf8("--show-help-home"));
+-   argList.push_back(QString::fromUtf8("1"));
++   argList.push_back(QString::fromUtf8("--show-help-home=1"));
+ 
+    RUN_DIAGNOSTICS_LOG("\nAttempting to launch R session...");
+    logEnvVar("RSTUDIO_WHICH_R");
+@@ -382,7 +381,7 @@ void SessionLauncher::buildLaunchContext(QString* pHost,
+ 
+    if (!confPath_.empty())
+    {
+-      *pArgList << QString::fromUtf8("--config-file") <<
++      *pArgList << QString::fromUtf8("--config-file=") +
+                    QString::fromUtf8(confPath_.absolutePath().c_str());
+    }
+    else
+@@ -390,18 +389,15 @@ void SessionLauncher::buildLaunchContext(QString* pHost,
+       // explicitly pass "none" so that rsession doesn't read an
+       // /etc/rstudio/rsession.conf file which may be sitting around
+       // from a previous configuratin or install
+-      *pArgList << QString::fromUtf8("--config-file") <<
+-                   QString::fromUtf8("none");
++      *pArgList << QString::fromUtf8("--config-file=none");
+    }
+ 
+-   *pArgList << QString::fromUtf8("--program-mode") <<
+-                QString::fromUtf8("desktop");
++   *pArgList << QString::fromUtf8("--program-mode=desktop");
+ 
+-   *pArgList << QString::fromUtf8("--www-port") << *pPort;
++   *pArgList << QString::fromUtf8("--www-port=") + *pPort;
+ 
+    if (options().runDiagnostics())
+-      *pArgList << QString::fromUtf8("--verify-installation") <<
+-                   QString::fromUtf8("1");
++      *pArgList << QString::fromUtf8("--verify-installation=1");
+ }
+ 
+ 
+-- 
+2.10.1
+

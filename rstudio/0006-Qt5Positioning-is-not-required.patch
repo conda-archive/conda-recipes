@@ -1,0 +1,32 @@
+From d5ac618883cf625fa1406b35e3abf0520bed68ee Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Wed, 10 Aug 2016 14:34:20 +0100
+Subject: [PATCH 06/42] Qt5Positioning is not required
+
+---
+ src/cpp/desktop/CMakeLists.txt | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/cpp/desktop/CMakeLists.txt b/src/cpp/desktop/CMakeLists.txt
+index bf451f5..43e0621 100644
+--- a/src/cpp/desktop/CMakeLists.txt
++++ b/src/cpp/desktop/CMakeLists.txt
+@@ -81,7 +81,6 @@ find_package(Qt5WebKit REQUIRED)
+ find_package(Qt5WebKitWidgets REQUIRED)
+ find_package(Qt5PrintSupport REQUIRED)
+ find_package(Qt5Quick REQUIRED)
+-find_package(Qt5Positioning REQUIRED)
+ find_package(Qt5Sensors REQUIRED)
+ find_package(Qt5Svg REQUIRED)
+ find_package(Qt5Xml REQUIRED)
+@@ -308,7 +307,6 @@ if(NOT APPLE)
+       WebKitWidgets
+       PrintSupport
+       Quick
+-      Positioning
+       Sensors
+       Svg
+       Xml
+-- 
+2.10.1
+

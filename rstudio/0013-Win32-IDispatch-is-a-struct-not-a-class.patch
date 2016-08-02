@@ -1,0 +1,27 @@
+From 8e823318d28368c7f83b3af00b43d131b1631389 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Fri, 28 Oct 2016 13:56:05 +0100
+Subject: [PATCH 13/42] Win32: IDispatch is a struct, not a class
+
+MSVC fails to compile this reporting:
+type name first seen using 'class' now seen using 'struct'
+---
+ src/cpp/desktop/DesktopWordViewer.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/cpp/desktop/DesktopWordViewer.hpp b/src/cpp/desktop/DesktopWordViewer.hpp
+index 54e731a..8ff1c42 100644
+--- a/src/cpp/desktop/DesktopWordViewer.hpp
++++ b/src/cpp/desktop/DesktopWordViewer.hpp
+@@ -20,7 +20,7 @@
+ #include <boost/utility.hpp>
+ #include <core/Error.hpp>
+ 
+-class IDispatch;
++struct IDispatch;
+ 
+ namespace rstudio {
+ namespace desktop {
+-- 
+2.10.1
+

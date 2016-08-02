@@ -1,0 +1,256 @@
+From ff58d6ff2f46f67e7d883d8427b2e8bbd141eae0 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Tue, 8 Nov 2016 14:05:19 +0000
+Subject: [PATCH 41/42] Remove debug output and forced 28080 port number
+
+---
+ src/cpp/desktop-mac/AppDelegate.mm                            |  3 ---
+ src/cpp/desktop-mac/SessionLauncher.mm                        | 10 ++--------
+ src/cpp/desktop/DesktopBrowserWindow.cpp                      |  2 --
+ src/cpp/desktop/DesktopOptions.cpp                            |  1 -
+ src/cpp/desktop/DesktopSessionLauncher.cpp                    |  6 ------
+ src/cpp/desktop/DesktopWebPage.cpp                            |  4 ----
+ src/cpp/session/SessionMain.cpp                               | 11 -----------
+ src/cpp/session/SessionOptions.cpp                            |  7 -------
+ src/gwt/src/org/rstudio/core/client/jsonrpc/RpcRequest.java   |  4 +---
+ .../org/rstudio/studio/client/server/remote/RemoteServer.java |  1 -
+ 10 files changed, 3 insertions(+), 46 deletions(-)
+
+diff --git a/src/cpp/desktop-mac/AppDelegate.mm b/src/cpp/desktop-mac/AppDelegate.mm
+index 5474e5e..8784fe2 100644
+--- a/src/cpp/desktop-mac/AppDelegate.mm
++++ b/src/cpp/desktop-mac/AppDelegate.mm
+@@ -370,9 +370,6 @@ bool prepareEnvironment(Options& options)
+    
+    // initailize the session launcher and launch the first session
+    sessionLauncher().init(sessionPath, confPath);
+-   std::cerr << "filename is " << filename << std::endl;
+-   std::cerr << "sessionPath is " << sessionPath.absolutePath() << std::endl;
+-   std::cerr << "scriptsPath is " << scriptsPath.absolutePath() << std::endl;
+    error = sessionLauncher().launchFirstSession(filename);
+    if (error)
+    {
+diff --git a/src/cpp/desktop-mac/SessionLauncher.mm b/src/cpp/desktop-mac/SessionLauncher.mm
+index 7010672..a2a3999 100644
+--- a/src/cpp/desktop-mac/SessionLauncher.mm
++++ b/src/cpp/desktop-mac/SessionLauncher.mm
+@@ -354,20 +354,14 @@ Error SessionLauncher::launchSession(const std::string& host,
+    
+    boost::function<void(const core::system::ProcessResult&)> onCompleted =
+                   boost::bind(&SessionLauncher::onRSessionExited, this, _1);
+-   std::cerr << sessionPath_.absolutePath() << std::endl;
++   
+    error = launchProcess(sessionPath_.absolutePath(), args, onCompleted);
+    if (error)
+       return error;
+    
+    // session process is active
+    sessionProcessActive_ = true;
+-
+-   std::cerr << "waitWithTimeout" << std::endl;
+-   for(std::vector<std::string>::iterator it = args.begin(); it != args.end(); ++it)
+-   {
+-      std::cerr << "arg=" << *it << std::endl;
+-   }
+-
++   
+    // wait for process to be available
+    return waitWithTimeout(boost::bind(serverReady, host, port), 50, 25, 10);
+ }
+diff --git a/src/cpp/desktop/DesktopBrowserWindow.cpp b/src/cpp/desktop/DesktopBrowserWindow.cpp
+index 345fb48..45615c0 100644
+--- a/src/cpp/desktop/DesktopBrowserWindow.cpp
++++ b/src/cpp/desktop/DesktopBrowserWindow.cpp
+@@ -43,8 +43,6 @@ BrowserWindow::BrowserWindow(bool showToolbar,
+    adjustTitle_ = adjustTitle;
+    progress_ = 0;
+ 
+-   qDebug() << "BrowserWindow::BrowserWindow: name:" << name << " baseUrl: " << baseUrl.toString() << " allowExternalNavigate: " << allowExternalNavigate;
+-
+    pView_ = new WebView(baseUrl, this, allowExternalNavigate);
+    QWebFrame* mainFrame = pView_->page()->mainFrame();
+    connect(mainFrame, SIGNAL(javaScriptWindowObjectCleared()),
+diff --git a/src/cpp/desktop/DesktopOptions.cpp b/src/cpp/desktop/DesktopOptions.cpp
+index 3e1c7b5..a4ed145 100644
+--- a/src/cpp/desktop/DesktopOptions.cpp
++++ b/src/cpp/desktop/DesktopOptions.cpp
+@@ -86,7 +86,6 @@ QString Options::portNumber() const
+       // instances of rdesktop-launched rsessions
+       int base = std::abs(core::random::uniformRandomInteger<int>());
+       portNumber_ = QString::number((base % 40000) + 8080);
+-      portNumber_ = QString::number(28080);
+ 
+       // recalculate the local peer and set RS_LOCAL_PEER so that
+       // rsession and it's children can use it
+diff --git a/src/cpp/desktop/DesktopSessionLauncher.cpp b/src/cpp/desktop/DesktopSessionLauncher.cpp
+index 795a9d5..3129a67 100644
+--- a/src/cpp/desktop/DesktopSessionLauncher.cpp
++++ b/src/cpp/desktop/DesktopSessionLauncher.cpp
+@@ -100,7 +100,6 @@ Error SessionLauncher::launchFirstSession(const QString& filename,
+    logEnvVar("PATH");
+    logEnvVar("HOME");
+    logEnvVar("R_USER");
+-    RUN_DIAGNOSTICS_LOG("\nSessionLauncher::launchFirstSession .. filename: " + filename.toStdString() + "\n");
+ 
+    // launch the process
+    Error error = launchSession(argList, &pRSessionProcess_);
+@@ -300,9 +299,6 @@ Error SessionLauncher::launchSession(const QStringList& argList,
+    if (error)
+       LOG_ERROR(error);
+ 
+-   RUN_DIAGNOSTICS_LOG("\nSessionLauncher::launch: " + sessionPath_.absolutePath() + "\n");
+-
+-
+    return  parent_process_monitor::wrapFork(
+          boost::bind(launchProcess,
+                      sessionPath_.absolutePath(),
+@@ -384,8 +380,6 @@ void SessionLauncher::buildLaunchContext(QString* pHost,
+    *pUrl = QUrl(QString::fromUtf8("http://") + *pHost +
+                 QString::fromUtf8(":") + *pPort + QString::fromUtf8("/"));
+ 
+-   qDebug() << "SessionLauncher::buildLaunchContext: pUrl->toString(): " << pUrl->toString() << " pHost: " << *pHost << " pPort: " << *pPort;
+-
+    if (!confPath_.empty())
+    {
+       *pArgList << QString::fromUtf8("--config-file=") +
+diff --git a/src/cpp/desktop/DesktopWebPage.cpp b/src/cpp/desktop/DesktopWebPage.cpp
+index 3801e80..2794f0a 100644
+--- a/src/cpp/desktop/DesktopWebPage.cpp
++++ b/src/cpp/desktop/DesktopWebPage.cpp
+@@ -210,8 +210,6 @@ bool WebPage::acceptNavigationRequest(QWebFrame* pWebFrame,
+ {
+    QUrl url = request.url();
+ 
+-   qDebug() << "WebPage::acceptNavigationRequest: " << url.toString();
+-
+    if (url.toString() == QString::fromUtf8("about:blank"))
+       return true;
+ 
+@@ -376,8 +374,6 @@ void WebPage::handleBase64Download(QWebFrame* pWebFrame, QUrl url)
+ 
+ void WebPage::setViewerUrl(const QString& viewerUrl)
+ {
+-   qDebug() << "WebPage::setViewerUrl: " << viewerUrl;
+-
+    // record about:blank literally
+    if (viewerUrl == QString::fromUtf8("about:blank"))
+    {
+diff --git a/src/cpp/session/SessionMain.cpp b/src/cpp/session/SessionMain.cpp
+index db62fec..f96efef 100644
+--- a/src/cpp/session/SessionMain.cpp
++++ b/src/cpp/session/SessionMain.cpp
+@@ -28,8 +28,6 @@
+ #include <csignal>
+ #include <limits>
+ 
+-#include <iostream>
+-
+ #include <boost/shared_ptr.hpp>
+ #include <boost/function.hpp>
+ #include <boost/lexical_cast.hpp>
+@@ -176,9 +174,6 @@ extern "C" const char *locale2charset(const char *);
+ 
+ #include <tests/TestRunner.hpp>
+ 
+-#include <iostream>
+-#include <fstream>
+-
+ using namespace rstudio;
+ using namespace rstudio::core;
+ 
+@@ -955,11 +950,6 @@ void handleConnection(boost::shared_ptr<HttpConnection> ptrConnection,
+    std::string uri = request.uri();
+    http::UriAsyncHandlerFunction uriHandler = s_uriHandlers.handlerFor(uri);
+ 
+-   if (uri.find("rpc") != -1)
+-   {
+-	   std::cout << "hmm uri is " << uri << std::endl;
+-   }
+-
+    if (uriHandler) // uri handler
+    {
+       // r code may execute - ensure session is initialized
+@@ -3160,7 +3150,6 @@ bool ensureUtf8Charset()
+ // run session
+ int main (int argc, char * const argv[]) 
+ { 
+-   std::ofstream tmp_log; tmp_log.open("C:/Users/ray/rstudio-log.txt", std::ios::app); tmp_log << "Hello from main():" << std::endl; tmp_log.close();
+    try
+    {      
+       // initialize log so we capture all errors including ones which occur
+diff --git a/src/cpp/session/SessionOptions.cpp b/src/cpp/session/SessionOptions.cpp
+index 961e861..0a772b9 100644
+--- a/src/cpp/session/SessionOptions.cpp
++++ b/src/cpp/session/SessionOptions.cpp
+@@ -41,9 +41,6 @@
+ #include <session/SessionScopes.hpp>
+ #include <session/projects/SessionProjectSharing.hpp>
+ 
+-#include <iostream>
+-#include <fstream>
+-
+ #include "session-config.h"
+ 
+ using namespace rstudio::core ;
+@@ -137,8 +134,6 @@ core::ProgramStatus Options::read(int argc, char * const argv[])
+       return ProgramStatus::exitFailure();
+    }
+ 
+-   std::ofstream tmp_log; tmp_log.open("C:/Users/ray/rstudio-log.txt", std::ios::app); tmp_log << "resourcePath_: " << resourcePath_.absolutePath() << std::endl; tmp_log.close();
+-
+    // detect running in OSX bundle and tweak resource path
+ #if defined(__APPLE__) && !defined(CONDA_BUILD)
+    if (resourcePath_.complete("Info.plist").exists())
+@@ -683,7 +678,6 @@ void Options::bundleOrCondaResolvePath(const FilePath& resourcePath,
+    {
+       resolvePath(resourcePath, pPath);
+    }
+-   std::ofstream tmp_log; tmp_log.open("C:/Users/ray/rstudio-log.txt", std::ios::app); tmp_log << "default: " << defaultPath << " .. resolved: " << *pPath << std::endl; tmp_log.close();
+ }
+ 
+ void Options::resolveIDEPath(const std::string& cppRelativeLocation,
+@@ -723,7 +717,6 @@ void Options::resolveIDEPath(const std::string& cppRelativeLocation,
+       if (it->exists())
+       {
+          *pPath = it->absolutePath();
+-          std::ofstream tmp_log; tmp_log.open("C:/Users/ray/rstudio-log.txt", std::ios::app); tmp_log << "resolveIDEPath: exeName: " << *pPath << std::endl; tmp_log.close();
+          return;
+       }
+    }
+diff --git a/src/gwt/src/org/rstudio/core/client/jsonrpc/RpcRequest.java b/src/gwt/src/org/rstudio/core/client/jsonrpc/RpcRequest.java
+index 5e1db4e..6ff19ca 100644
+--- a/src/gwt/src/org/rstudio/core/client/jsonrpc/RpcRequest.java
++++ b/src/gwt/src/org/rstudio/core/client/jsonrpc/RpcRequest.java
+@@ -29,7 +29,7 @@ import org.rstudio.core.client.jsonrpc.RequestLogEntry.ResponseType;
+ // for retries after network or authentication errors)
+ public class RpcRequest 
+ {
+-   public static final boolean TRACE = true ;
++   public static final boolean TRACE = false ;
+    
+    public RpcRequest(String url, 
+                      String method, 
+@@ -93,8 +93,6 @@ public class RpcRequest
+       {
+          String requestString = request.toString();
+          if (TRACE)
+-            Debug.log("RpcRequest url_: " + url_) ;
+-         if (TRACE)
+             Debug.log("Request: " + requestString) ;
+ 
+          requestLogEntry_ = RequestLog.log(requestId,
+diff --git a/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java b/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java
+index cd1bac8..a0674c9 100644
+--- a/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java
++++ b/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java
+@@ -394,7 +394,6 @@ public class RemoteServer implements Server
+       ensureListeningForEvents();
+       
+       // return the url
+-      Debug.log("GWT.getHostPageBaseURL(): " + GWT.getHostPageBaseURL() + "StringUtil.trailingSlashSlashToSlash(GWT.getHostPageBaseURL())" + StringUtil.trailingSlashSlashToSlash(GWT.getHostPageBaseURL())) ;
+       return StringUtil.trailingSlashSlashToSlash(GWT.getHostPageBaseURL()) + pathName;
+    }
+    
+-- 
+2.10.1
+

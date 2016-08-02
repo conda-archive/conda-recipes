@@ -1,0 +1,113 @@
+From 067a5da8914095a561fcc211557c5f6cc568e498 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Tue, 9 Aug 2016 11:45:58 +0100
+Subject: [PATCH 04/42] Win32: Add LibExtern to RInterface.hpp, add + fix
+ extern "C" blocks
+
+---
+ src/cpp/r/RExec.cpp                  | 12 +++++++-----
+ src/cpp/r/include/r/RInterface.hpp   | 29 ++++++++++++++++-------------
+ src/cpp/r/session/REmbeddedWin32.cpp |  9 ++++++---
+ src/cpp/r/session/RSession.cpp       |  2 +-
+ 4 files changed, 30 insertions(+), 22 deletions(-)
+
+diff --git a/src/cpp/r/RExec.cpp b/src/cpp/r/RExec.cpp
+index fcefae8..4845dd6 100644
+--- a/src/cpp/r/RExec.cpp
++++ b/src/cpp/r/RExec.cpp
+@@ -28,11 +28,13 @@
+ #include <R_ext/Parse.h>
+ 
+ #include <R_ext/libextern.h> 
+-LibExtern Rboolean R_interrupts_suspended;
+-LibExtern int R_interrupts_pending;
+-#ifdef _WIN32
+-LibExtern int UserBreak;
+-#endif
++extern "C" {
++   LibImport Rboolean R_interrupts_suspended;
++   LibImport int R_interrupts_pending;
++   #ifdef _WIN32
++   LibImport int UserBreak;
++   #endif
++}
+ 
+ using namespace rstudio::core ;
+ 
+diff --git a/src/cpp/r/include/r/RInterface.hpp b/src/cpp/r/include/r/RInterface.hpp
+index e6d87ca..1fc7bd6 100644
+--- a/src/cpp/r/include/r/RInterface.hpp
++++ b/src/cpp/r/include/r/RInterface.hpp
+@@ -23,19 +23,22 @@
+ 
+ #include <R_ext/Boolean.h>
+ #include <R_ext/RStartup.h>
+-
+-extern "C" void R_RestoreGlobalEnvFromFile(const char *, Rboolean);
+-extern "C" void R_SaveGlobalEnvToFile(const char *);
+-extern "C" void R_Suicide(const char *);
+-extern "C" char *R_HomeDir(void);
+-extern "C" void Rf_jump_to_toplevel(void);
+-extern "C" void Rf_onintr(void);
+-#define R_ClearerrConsole void
+-extern "C" void R_FlushConsole();
+-extern "C" int R_SignalHandlers;
+-extern "C" void run_Rmainloop();
+-extern "C" void Rf_mainloop(void);
+-extern "C" void* R_GlobalContext;
++#include <R_ext/libextern.h>
++
++extern "C" {
++  LibExtern void R_RestoreGlobalEnvFromFile(const char *, Rboolean);
++  LibExtern void R_SaveGlobalEnvToFile(const char *);
++  LibExtern void R_Suicide(const char *);
++  LibExtern char *R_HomeDir(void);
++  LibImport void Rf_jump_to_toplevel(void);
++  void Rf_onintr(void);
++  #define R_ClearerrConsole void
++  LibExtern void R_FlushConsole();
++  LibImport int R_SignalHandlers;
++  LibExtern void run_Rmainloop();
++  LibExtern void Rf_mainloop(void);
++  LibImport void* R_GlobalContext;
++}
+ 
+ typedef struct SEXPREC *SEXP;
+ 
+diff --git a/src/cpp/r/session/REmbeddedWin32.cpp b/src/cpp/r/session/REmbeddedWin32.cpp
+index 2cf7984..0bee0ea 100644
+--- a/src/cpp/r/session/REmbeddedWin32.cpp
++++ b/src/cpp/r/session/REmbeddedWin32.cpp
+@@ -40,10 +40,13 @@
+ 
+ #include <Rembedded.h>
+ #include <graphapp.h>
++#include <R_ext/libextern.h>
+ 
+-extern "C" void R_ProcessEvents(void);
+-extern "C" void R_CleanUp(SA_TYPE, int, int);
+-extern "C" UImode CharacterMode;
++extern "C" {
++   LibExtern void R_ProcessEvents(void);
++   LibExtern void R_CleanUp(SA_TYPE, int, int);
++   LibImport UImode CharacterMode;
++}
+ 
+ using namespace rstudio::core;
+ 
+diff --git a/src/cpp/r/session/RSession.cpp b/src/cpp/r/session/RSession.cpp
+index 4bc2565..d61451c 100644
+--- a/src/cpp/r/session/RSession.cpp
++++ b/src/cpp/r/session/RSession.cpp
+@@ -61,7 +61,7 @@
+ #include <R_ext/Utils.h>
+ #include <R_ext/Rdynload.h>
+ #include <R_ext/RStartup.h>
+-extern "C" SA_TYPE SaveAction;
++extern "C" LibImport SA_TYPE SaveAction;
+ 
+ #define CTXT_BROWSER 16
+ 
+-- 
+2.10.1
+

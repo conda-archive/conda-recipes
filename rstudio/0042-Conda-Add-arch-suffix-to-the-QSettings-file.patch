@@ -1,0 +1,44 @@
+From 2aa59ad1ce991af6f9cbdf587e5bf8a0c288b0af Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Wed, 9 Nov 2016 17:52:56 +0000
+Subject: [PATCH 42/42] Conda: Add arch suffix to the QSettings file
+
+---
+ src/cpp/desktop/DesktopOptions.hpp | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/src/cpp/desktop/DesktopOptions.hpp b/src/cpp/desktop/DesktopOptions.hpp
+index b6ea3a6..52b63ff 100644
+--- a/src/cpp/desktop/DesktopOptions.hpp
++++ b/src/cpp/desktop/DesktopOptions.hpp
+@@ -33,6 +33,18 @@
+ #define FORMAT QSettings::IniFormat
+ #endif
+ 
++#if defined(CONDA_BUILD)
++// We do not want the x64 settings being loaded by i686 RStudio and vice-versa because
++// they will point at different R installations.
++#if defined(__x86_64) || defined(__x86_64__) || defined(_M_X64) || defined(_M_AMD64)
++#define ARCH_SUFFIX "-x64"
++#else
++#define ARCH_SUFFIX "-i686"
++#endif
++#else
++#define ARCH_SUFFIX ""
++#endif
++
+ namespace rstudio {
+ namespace desktop {
+ 
+@@ -90,7 +102,7 @@ public:
+ private:
+    Options() : settings_(FORMAT, QSettings::UserScope,
+                          QString::fromUtf8("RStudio"),
+-                         QString::fromUtf8("desktop")),
++                         QString::fromUtf8("desktop" ARCH_SUFFIX)),
+                runDiagnostics_(false)
+    {
+    }
+-- 
+2.10.1
+

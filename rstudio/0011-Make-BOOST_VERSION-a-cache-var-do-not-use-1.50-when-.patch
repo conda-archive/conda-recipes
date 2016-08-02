@@ -1,0 +1,108 @@
+From edc4a18cb66f68bd105ad89bc3a891b55f148c2b Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Fri, 28 Oct 2016 13:48:45 +0100
+Subject: [PATCH 11/42] Make BOOST_VERSION a cache var, do not use 1.50 when
+ DEFINED ENV{CONDA_BUILD}
+
+---
+ dependencies/common/install-common                         |  4 +++-
+ dependencies/windows/install-dependencies.cmd              | 12 +++++++-----
+ src/cpp/CMakeLists.txt                                     | 13 +++++++++----
+ src/cpp/session/http/SessionHttpConnectionListenerImpl.hpp |  2 +-
+ 4 files changed, 20 insertions(+), 11 deletions(-)
+
+diff --git a/dependencies/common/install-common b/dependencies/common/install-common
+index dbeac78..fb030a7 100755
+--- a/dependencies/common/install-common
++++ b/dependencies/common/install-common
+@@ -20,7 +20,9 @@ set -e
+ ./install-gwt
+ ./install-dictionaries
+ ./install-mathjax
+-./install-boost
++if [[ -z ${CONDA_BUILD} ]]; then
++  ./install-boost
++fi
+ ./install-pandoc
+ ./install-libclang
+ ./install-packages
+diff --git a/dependencies/windows/install-dependencies.cmd b/dependencies/windows/install-dependencies.cmd
+index 79e90b7..27c274a 100644
+--- a/dependencies/windows/install-dependencies.cmd
++++ b/dependencies/windows/install-dependencies.cmd
+@@ -45,11 +45,13 @@ if not "%CONDA_BUILD%" == "1" (
+   )
+ )
+ 
+-if not exist boost-1.50-win-rtools33-gcc493 (
+-  wget %WGET_ARGS% "%BASEURL%%BOOST_GCC493_FILE%"
+-  echo Unzipping %BOOST_GCC493_FILE%
+-  unzip %UNZIP_ARGS% "%BOOST_GCC493_FILE%" -d boost-1.50-win-rtools33-gcc493
+-  del "%BOOST_GCC493_FILE%"
++if not "%CONDA_BUILD%" == "1" (
++  if not exist boost-1.50-win-rtools33-gcc493 (
++    wget %WGET_ARGS% "%BASEURL%%BOOST_GCC493_FILE%"
++    echo Unzipping %BOOST_GCC493_FILE%
++    unzip %UNZIP_ARGS% "%BOOST_GCC493_FILE%" -d boost-1.50-win-rtools33-gcc493
++    del "%BOOST_GCC493_FILE%"
++  )
+ )
+ 
+ if not exist gnudiff (
+diff --git a/src/cpp/CMakeLists.txt b/src/cpp/CMakeLists.txt
+index 798cd9c..1f5693f 100644
+--- a/src/cpp/CMakeLists.txt
++++ b/src/cpp/CMakeLists.txt
+@@ -115,6 +115,9 @@ else()
+ 
+ endif()
+ 
++# Boost.Signals is no longer being maintained and is now deprecated. Please switch to Boost.Signals2
++add_definitions(-DBOOST_SIGNALS_NO_DEPRECATION_WARNING)
++
+ # determine whether we should statically link boost. we always do this
+ # unless we are building a non-packaged build on linux (in which case
+ # boost dynamic libraries are presumed to be installed on the system ldpath)
+@@ -122,8 +125,8 @@ if(APPLE OR WIN32 OR RSTUDIO_PACKAGE_BUILD OR DEFINED ENV{CONDA_BUILD})
+    set(Boost_USE_STATIC_LIBS ON)
+ endif()
+ 
+-# require boost 1.50
+-set(BOOST_VERSION 1.50.0)
++# default to boost 1.50 but let the user override it.
++set(BOOST_VERSION 1.50.0 CACHE STRING "Boost version to use")
+ 
+ list(APPEND BOOST_LIBS
+    date_time
+@@ -135,10 +138,12 @@ list(APPEND BOOST_LIBS
+    system
+    thread
+    chrono
++   timer
++   locale
+ )
+ 
+-# UNIX BOOST
+-if(UNIX)
++# UNIX BOOST (OR MSVC, FOR CONDA)
++if(UNIX OR MSVC OR DEFINED ENV{CONDA_BUILD})
+    # prefer static link to our custom built version
+    set(RSTUDIO_TOOLS_BOOST /opt/rstudio-tools/boost/boost_1_50_0)
+    if(EXISTS ${RSTUDIO_TOOLS_BOOST})
+diff --git a/src/cpp/session/http/SessionHttpConnectionListenerImpl.hpp b/src/cpp/session/http/SessionHttpConnectionListenerImpl.hpp
+index 248081b..75c3b1d 100644
+--- a/src/cpp/session/http/SessionHttpConnectionListenerImpl.hpp
++++ b/src/cpp/session/http/SessionHttpConnectionListenerImpl.hpp
+@@ -24,8 +24,8 @@
+ #include <boost/asio/placeholders.hpp>
+ #include <boost/algorithm/string/predicate.hpp>
+ 
+-#include <core/Macros.hpp>
+ #include <core/BoostThread.hpp>
++#include <core/Macros.hpp>
+ #include <core/FilePath.hpp>
+ #include <core/FileLock.hpp>
+ #include <core/Error.hpp>
+-- 
+2.10.1
+

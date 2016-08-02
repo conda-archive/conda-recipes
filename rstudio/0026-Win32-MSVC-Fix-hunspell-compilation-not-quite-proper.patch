@@ -1,0 +1,59 @@
+From c80ad509f3dde8b6e26b59106fee18f7fe4104e5 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Sat, 29 Oct 2016 17:44:28 +0100
+Subject: [PATCH 26/42] Win32 (MSVC): Fix hunspell compilation (not quite
+ properly)
+
+---
+ src/cpp/core/spelling/hunspell/CMakeLists.txt | 12 +++++++++++-
+ src/cpp/core/spelling/hunspell/hunvisapi.h    |  4 +++-
+ 2 files changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/src/cpp/core/spelling/hunspell/CMakeLists.txt b/src/cpp/core/spelling/hunspell/CMakeLists.txt
+index c25e9ae..383e4f2 100644
+--- a/src/cpp/core/spelling/hunspell/CMakeLists.txt
++++ b/src/cpp/core/spelling/hunspell/CMakeLists.txt
+@@ -54,7 +54,17 @@ add_library(rstudio-core-hunspell STATIC
+    ${CORE_HUNSPELL_SOURCE_FILES}
+    ${CORE_HUNSPELL_HEADER_FILES})
+ 
++ add_compile_options($<TARGET_NAME:rstudio-core-hunspell>
++    -DHUNSPELL_STATIC -DBUILDING_LIBHUNSPELL
++)
++
++# .. the consumers of the static library need to define this (this *may* be
++# a CMake >=3 feature, and we may need instead to add this to the consumers
++# directly)
++set_target_properties(rstudio-core-hunspell PROPERTIES
++   INTERFACE_COMPILE_DEFINITIONS HUNSPELL_STATIC
++)
++
+ # link dependencies
+ target_link_libraries(rstudio-core-hunspell
+-
+ )
+diff --git a/src/cpp/core/spelling/hunspell/hunvisapi.h b/src/cpp/core/spelling/hunspell/hunvisapi.h
+index 4712280..db63615 100644
+--- a/src/cpp/core/spelling/hunspell/hunvisapi.h
++++ b/src/cpp/core/spelling/hunspell/hunvisapi.h
+@@ -1,6 +1,8 @@
+ #ifndef _HUNSPELL_VISIBILITY_H_
+ #define _HUNSPELL_VISIBILITY_H_
+ 
++// Unfortunately, my CMake changes are not working right.
++#define HUNSPELL_STATIC
+ #if defined(HUNSPELL_STATIC)
+ #  define LIBHUNSPELL_DLL_EXPORTED
+ #elif defined(_MSC_VER)
+@@ -9,7 +11,7 @@
+ #  else
+ #    define LIBHUNSPELL_DLL_EXPORTED __declspec(dllimport)
+ #  endif
+-#elif BUILDING_LIBHUNSPELL && 1
++#elif BUILDING_LIBHUNSPELL && !defined(_MSC_VER)
+ #  define LIBHUNSPELL_DLL_EXPORTED __attribute__((__visibility__("default")))
+ #else
+ #  define LIBHUNSPELL_DLL_EXPORTED
+-- 
+2.10.1
+

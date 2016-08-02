@@ -1,0 +1,272 @@
+From 1a8b91cf64bc4531e848a968efdfd53c9031e362 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Tue, 8 Nov 2016 12:40:15 +0000
+Subject: [PATCH 40/42] GWT: Hacky attempt to work around double-slash issue
+
+GWT.getHostPageBaseURL() is returning URLs that end with // on Windows
+and I have no idea why. I think Qt is to blame here, and I need to build
+it with debug symbols to find out.
+---
+ src/gwt/src/org/rstudio/core/client/StringUtil.java     | 17 ++++++++++++++++-
+ .../org/rstudio/core/client/command/ShortcutViewer.java |  3 ++-
+ .../rstudio/studio/client/application/Application.java  | 10 +++++-----
+ .../studio/client/application/ApplicationQuit.java      |  2 +-
+ .../studio/client/application/ApplicationUtils.java     |  5 +++--
+ .../studio/client/common/impl/DesktopWindowOpener.java  |  3 ++-
+ .../studio/client/common/impl/WebWindowOpener.java      |  5 +++--
+ .../org/rstudio/studio/client/projects/Projects.java    |  3 ++-
+ .../studio/client/server/remote/RemoteServer.java       |  4 ++--
+ .../studio/client/shiny/ui/ShinyApplicationPanel.java   |  2 +-
+ .../studio/client/workbench/model/SessionInfo.java      |  2 +-
+ 11 files changed, 38 insertions(+), 18 deletions(-)
+
+diff --git a/src/gwt/src/org/rstudio/core/client/StringUtil.java b/src/gwt/src/org/rstudio/core/client/StringUtil.java
+index a2e460e..0fc6b8c 100644
+--- a/src/gwt/src/org/rstudio/core/client/StringUtil.java
++++ b/src/gwt/src/org/rstudio/core/client/StringUtil.java
+@@ -1124,7 +1124,22 @@ public class StringUtil
+ 
+       return ((crc ^ (-1)) >>> 0).toString(16);
+    }-*/;
+-   
++
++   /**
++    * This is a hack to work around the fact that getHostPageBaseURL()
++    * is returning URLs with double trailing forward slashes on Windows
++    * and I have no idea why. I suspect Qt, and I need to rebuild it with
++    * debug symbols to find out. Linux doesn't suffer from this problem.
++    */
++   public static String trailingSlashSlashToSlash(String value)
++   {
++      if (value.length() <= 2 || !value.endsWith("//"))
++         return value;
++
++      return value.substring(0, value.length()-1);
++   }
++
++
+    private static final NumberFormat FORMAT = NumberFormat.getFormat("0.#");
+    private static final NumberFormat PRETTY_NUMBER_FORMAT = NumberFormat.getFormat("#,##0.#####");
+    private static final DateTimeFormat DATE_FORMAT
+diff --git a/src/gwt/src/org/rstudio/core/client/command/ShortcutViewer.java b/src/gwt/src/org/rstudio/core/client/command/ShortcutViewer.java
+index a96f4d5..a88e370 100644
+--- a/src/gwt/src/org/rstudio/core/client/command/ShortcutViewer.java
++++ b/src/gwt/src/org/rstudio/core/client/command/ShortcutViewer.java
+@@ -16,6 +16,7 @@
+ package org.rstudio.core.client.command;
+ 
+ 
++import org.rstudio.core.client.StringUtil;
+ import org.rstudio.core.client.widget.ShortcutInfoPanel;
+ import org.rstudio.core.client.widget.VimKeyInfoPanel;
+ import org.rstudio.studio.client.application.Desktop;
+@@ -129,7 +130,7 @@ public class ShortcutViewer implements NativePreviewHandler
+ 
+    private void openApplicationURL(String relativeURL)
+    {
+-      String url = GWT.getHostPageBaseURL() + relativeURL;
++      String url = StringUtil.trailingSlashSlashToSlash(GWT.getHostPageBaseURL()) + relativeURL;
+       globalDisplay_.openWindow(url);
+    }
+    
+diff --git a/src/gwt/src/org/rstudio/studio/client/application/Application.java b/src/gwt/src/org/rstudio/studio/client/application/Application.java
+index e102540..0ce67e5 100644
+--- a/src/gwt/src/org/rstudio/studio/client/application/Application.java
++++ b/src/gwt/src/org/rstudio/studio/client/application/Application.java
+@@ -524,7 +524,7 @@ public class Application implements ApplicationEventHandlers
+          public void run()
+          { 
+             if (baseUrlOnly)
+-               Window.Location.replace(GWT.getHostPageBaseURL());
++               Window.Location.replace(StringUtil.trailingSlashSlashToSlash(GWT.getHostPageBaseURL()));
+             else
+                Window.Location.reload();
+          }
+@@ -565,7 +565,7 @@ public class Application implements ApplicationEventHandlers
+    {
+       // calculate the url without the scope
+       InvalidSessionInfo info = event.getInfo();
+-      String baseURL = GWT.getHostPageBaseURL();
++      String baseURL = StringUtil.trailingSlashSlashToSlash(GWT.getHostPageBaseURL());
+       String scopePath = info.getScopePath();
+       int loc = baseURL.indexOf(scopePath);
+       if (loc != -1)
+@@ -623,7 +623,7 @@ public class Application implements ApplicationEventHandlers
+                      server_.quitSession(false,
+                                          null,
+                                          null,
+-                                         GWT.getHostPageBaseURL(),
++                                         StringUtil.trailingSlashSlashToSlash(GWT.getHostPageBaseURL()),
+                                          new SimpleRequestCallback<Boolean>());
+                   }
+                   else
+@@ -665,8 +665,8 @@ public class Application implements ApplicationEventHandlers
+     
+       // ensure there is no session context if requested
+       String url = includeContext ? 
+-            GWT.getHostPageBaseURL() :
+-            ApplicationUtils.getHostPageBaseURLWithoutContext(true);
++            StringUtil.trailingSlashSlashToSlash(GWT.getHostPageBaseURL()) :
++            StringUtil.trailingSlashSlashToSlash(ApplicationUtils.getHostPageBaseURLWithoutContext(true));
+             
+       // add relative URL
+       url += relativeUrl;
+diff --git a/src/gwt/src/org/rstudio/studio/client/application/ApplicationQuit.java b/src/gwt/src/org/rstudio/studio/client/application/ApplicationQuit.java
+index 090144b..71f1f11 100644
+--- a/src/gwt/src/org/rstudio/studio/client/application/ApplicationQuit.java
++++ b/src/gwt/src/org/rstudio/studio/client/application/ApplicationQuit.java
+@@ -699,7 +699,7 @@ public class ApplicationQuit implements SaveActionChangedHandler,
+                   saveChanges_,
+                   switchToProject,
+                   switchToRVersion_,
+-                  GWT.getHostPageBaseURL(),
++                  StringUtil.trailingSlashSlashToSlash(GWT.getHostPageBaseURL()),
+                   new ServerRequestCallback<Boolean>()
+                   {
+                      @Override
+diff --git a/src/gwt/src/org/rstudio/studio/client/application/ApplicationUtils.java b/src/gwt/src/org/rstudio/studio/client/application/ApplicationUtils.java
+index 8e612a0..9dcfdee 100644
+--- a/src/gwt/src/org/rstudio/studio/client/application/ApplicationUtils.java
++++ b/src/gwt/src/org/rstudio/studio/client/application/ApplicationUtils.java
+@@ -19,6 +19,7 @@ import java.util.ArrayList;
+ import java.util.List;
+ import java.util.Map;
+ 
++import org.rstudio.core.client.StringUtil;
+ import org.rstudio.core.client.Debug;
+ import org.rstudio.core.client.dom.WindowEx;
+ import org.rstudio.core.client.regex.Pattern;
+@@ -33,7 +34,7 @@ public class ApplicationUtils
+    public static String getHostPageBaseURLWithoutContext(boolean includeSlash)
+    {
+       String replaceWith = includeSlash ? "/" : "";
+-      String url = GWT.getHostPageBaseURL();
++      String url = StringUtil.trailingSlashSlashToSlash(GWT.getHostPageBaseURL());
+       Pattern pattern = Pattern.create("/s/[A-Fa-f0-9]{5}[A-Fa-f0-9]{8}[A-Fa-f0-9]{8}/");
+       return pattern.replaceAll(url, replaceWith);
+    }
+@@ -93,7 +94,7 @@ public class ApplicationUtils
+    public static void removeQueryParams(List<String> removeKeys)
+    {
+       // determine the new URL
+-      String url = GWT.getHostPageBaseURL();
++      String url = StringUtil.trailingSlashSlashToSlash(GWT.getHostPageBaseURL());
+       String queryString = getRemainingQueryString(removeKeys);
+       if (queryString.length() > 0)
+          url = url + "?" + queryString;
+diff --git a/src/gwt/src/org/rstudio/studio/client/common/impl/DesktopWindowOpener.java b/src/gwt/src/org/rstudio/studio/client/common/impl/DesktopWindowOpener.java
+index 23952c5..5717c2a 100644
+--- a/src/gwt/src/org/rstudio/studio/client/common/impl/DesktopWindowOpener.java
++++ b/src/gwt/src/org/rstudio/studio/client/common/impl/DesktopWindowOpener.java
+@@ -14,6 +14,7 @@
+  */
+ package org.rstudio.studio.client.common.impl;
+ 
++import org.rstudio.core.client.StringUtil;
+ import org.rstudio.core.client.Point;
+ import org.rstudio.studio.client.application.Desktop;
+ import org.rstudio.studio.client.common.GlobalDisplay;
+@@ -44,7 +45,7 @@ public class DesktopWindowOpener extends WebWindowOpener
+          {
+             if (url.startsWith("/"))
+                url = url.substring(1);
+-            url = GWT.getHostPageBaseURL() + url;
++            url = StringUtil.trailingSlashSlashToSlash(GWT.getHostPageBaseURL()) + url;
+          }
+          
+          super.openWindow(globalDisplay, 
+diff --git a/src/gwt/src/org/rstudio/studio/client/common/impl/WebWindowOpener.java b/src/gwt/src/org/rstudio/studio/client/common/impl/WebWindowOpener.java
+index 4fca46f..cddd036 100644
+--- a/src/gwt/src/org/rstudio/studio/client/common/impl/WebWindowOpener.java
++++ b/src/gwt/src/org/rstudio/studio/client/common/impl/WebWindowOpener.java
+@@ -18,6 +18,7 @@ import com.google.gwt.core.client.GWT;
+ import com.google.gwt.http.client.UrlBuilder;
+ import com.google.gwt.user.client.Window;
+ 
++import org.rstudio.core.client.StringUtil;
+ import org.rstudio.core.client.Point;
+ import org.rstudio.core.client.dom.WindowEx;
+ import org.rstudio.core.client.regex.Pattern;
+@@ -105,7 +106,7 @@ public class WebWindowOpener implements WindowOpener
+    
+    protected boolean isAppUrl(String url)
+    {
+-      return url.startsWith(GWT.getHostPageBaseURL());
++      return url.startsWith(StringUtil.trailingSlashSlashToSlash(GWT.getHostPageBaseURL()));
+    }
+    
+    // enable callers to prevent subclass implementations from taking
+@@ -159,7 +160,7 @@ public class WebWindowOpener implements WindowOpener
+       // against the JavaScript file location, not the window.location like
+       // the other browsers do
+       final String absUrl = Pattern.create("^/|([a-zA-Z]+:)").match(url, 0) == null
+-                            ? GWT.getHostPageBaseURL() + url
++                            ? StringUtil.trailingSlashSlashToSlash(GWT.getHostPageBaseURL()) + url
+                             : url;
+ 
+       final String finalName = name;
+diff --git a/src/gwt/src/org/rstudio/studio/client/projects/Projects.java b/src/gwt/src/org/rstudio/studio/client/projects/Projects.java
+index 9959759..9a9799b 100644
+--- a/src/gwt/src/org/rstudio/studio/client/projects/Projects.java
++++ b/src/gwt/src/org/rstudio/studio/client/projects/Projects.java
+@@ -15,6 +15,7 @@
+ package org.rstudio.studio.client.projects;
+ 
+ 
++import org.rstudio.core.client.StringUtil;
+ import org.rstudio.core.client.Debug;
+ import org.rstudio.core.client.SerializedCommand;
+ import org.rstudio.core.client.SerializedCommandQueue;
+@@ -878,7 +879,7 @@ public class Projects implements OpenProjectFileHandler,
+                                              final Command onSuccess)
+    {
+       appServer_.getNewSessionUrl(
+-                    GWT.getHostPageBaseURL(),
++                    StringUtil.trailingSlashSlashToSlash(GWT.getHostPageBaseURL()),
+                     true,
+                     project.getParentPathString(), 
+                     rVersion,
+diff --git a/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java b/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java
+index e65470d..cd1bac8 100644
+--- a/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java
++++ b/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java
+@@ -394,8 +394,8 @@ public class RemoteServer implements Server
+       ensureListeningForEvents();
+       
+       // return the url
+-      Debug.log("GWT.getHostPageBaseURL(): " + GWT.getHostPageBaseURL()) ;
+-      return GWT.getHostPageBaseURL() + pathName;
++      Debug.log("GWT.getHostPageBaseURL(): " + GWT.getHostPageBaseURL() + "StringUtil.trailingSlashSlashToSlash(GWT.getHostPageBaseURL())" + StringUtil.trailingSlashSlashToSlash(GWT.getHostPageBaseURL())) ;
++      return StringUtil.trailingSlashSlashToSlash(GWT.getHostPageBaseURL()) + pathName;
+    }
+    
+    public void suspendForRestart(SuspendOptions options,
+diff --git a/src/gwt/src/org/rstudio/studio/client/shiny/ui/ShinyApplicationPanel.java b/src/gwt/src/org/rstudio/studio/client/shiny/ui/ShinyApplicationPanel.java
+index 656d961..bf3a68c 100644
+--- a/src/gwt/src/org/rstudio/studio/client/shiny/ui/ShinyApplicationPanel.java
++++ b/src/gwt/src/org/rstudio/studio/client/shiny/ui/ShinyApplicationPanel.java
+@@ -80,7 +80,7 @@ public class ShinyApplicationPanel extends SatelliteFramePanel<RStudioFrame>
+       
+       // ensure that we display a full url in server mode
+       if (!url.startsWith("http"))
+-         url = GWT.getHostPageBaseURL() + url;
++         url = StringUtil.trailingSlashSlashToSlash(GWT.getHostPageBaseURL()) + url;
+       urlBox_.setText(url);
+ 
+       showUrl(url);
+diff --git a/src/gwt/src/org/rstudio/studio/client/workbench/model/SessionInfo.java b/src/gwt/src/org/rstudio/studio/client/workbench/model/SessionInfo.java
+index 67eced1..0a96fa3 100644
+--- a/src/gwt/src/org/rstudio/studio/client/workbench/model/SessionInfo.java
++++ b/src/gwt/src/org/rstudio/studio/client/workbench/model/SessionInfo.java
+@@ -466,7 +466,7 @@ public class SessionInfo extends JavaScriptObject
+    {
+       String url = getUserHomePageUrlNative();
+       if (url != null)
+-         url = ApplicationUtils.getHostPageBaseURLWithoutContext(false) + url;
++         url = StringUtil.trailingSlashSlashToSlash(ApplicationUtils.getHostPageBaseURLWithoutContext(false)) + url;
+       return url;
+    }
+    
+-- 
+2.10.1
+
