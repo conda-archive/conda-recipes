@@ -1,0 +1,20 @@
+package:
+  name: clink
+  version: 0.4.5
+
+build:
+  number: 0
+  
+source:
+  fn: clink_0.4.5.zip
+  url: https://github.com/mridgers/clink/releases/download/0.4.5/clink_0.4.5.zip [win]
+  sha256: ea52e6f5272d1f9534db2c86550ab9ad98103f636c9e63b14926b555a3158f3d
+
+test:
+  commands:
+    - call clink --help
+
+about:
+  home: http://mridgers.github.io/clink/
+  license: GPL
+  summary: Clink combines the native Windows shell cmd.exe with the powerful command line editing features of the GNU Readline library, which provides rich completion, history, and line-editing capabilities.
