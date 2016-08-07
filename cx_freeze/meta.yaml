@@ -1,0 +1,28 @@
+package:
+  name: cx_freeze
+  version: 4.3.1
+
+source:
+  fn: cx_Freeze-4.3.1.tar.gz
+  url: http://downloads.sourceforge.net/project/cx-freeze/4.3.1/cx_Freeze-4.3.1.tar.gz?r=&ts=1381152643&use_mirror=dfn
+
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - cx_Freeze
+
+about:
+  home: http://cx-freeze.sourceforge.net/
+  license: cx-freeze license
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
