@@ -1,0 +1,21 @@
+package:
+  name: git_windows
+  version: 2.6.1
+
+source:
+  fn: PortableGit-2.6.1-32-bit.7z.exe
+  url: https://github.com/git-for-windows/git/releases/download/v2.6.1.windows.1/PortableGit-2.6.1-32-bit.7z.exe
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - 7za
+  run:
+    - menuinst  >=1.2.1
+
+about:
+  home: https://git-for-windows.github.io/
+  license: GPL2
+  summary: A console implementation of the Git version control system for Windows
