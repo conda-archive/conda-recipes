@@ -41,9 +41,8 @@ Linux() {
                 --enable-shared                 \
                 --enable-R-shlib                \
                 --enable-BLAS-shlib             \
-                --disable-R-profiling           \
                 --disable-prebuilt-html         \
-                --disable-memory-profiling      \
+                --enable-memory-profiling       \
                 --with-tk-config=${TK_CONFIG}   \
                 --with-tcl-config=${TCL_CONFIG} \
                 --with-x                        \
@@ -88,9 +87,8 @@ Mingw_w64_autotools() {
                 --enable-shared                 \
                 --enable-R-shlib                \
                 --enable-BLAS-shlib             \
-                --disable-R-profiling           \
                 --disable-prebuilt-html         \
-                --disable-memory-profiling      \
+                --enable-memory-profiling       \
                 --with-tk-config=$TK_CONFIG     \
                 --with-tcl-config=$TCL_CONFIG   \
                 --with-x=no                     \
@@ -337,6 +335,7 @@ EOF
                 --with-blas="-framework Accelerate" \
                 --with-lapack                       \
                 --enable-R-shlib                    \
+                --enable-memory-profiling           \
                 --without-x                         \
                 --without-internal-tzcode           \
                 --enable-R-framework=no             \

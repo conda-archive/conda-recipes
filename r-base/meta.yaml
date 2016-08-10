@@ -22,7 +22,7 @@ source:
     - 0010-configure-Fix-typo-CPPLAGS.patch
 
 build:
-  number: 1
+  number: 3
   rpaths:
     - lib/R/lib/
     - lib/
@@ -36,7 +36,7 @@ requirements:
     - m2-curl                  # [win]
     - m2-p7zip                 # [win]
     - readline                 # [not win]
-    - ncurses >=5.9-8          # [not win]
+    - ncurses >=5.9.*          # [not win]
     - pango                    # [linux]
     - gcc                      # [not win]
     - jpeg                     # [not win]
@@ -67,7 +67,7 @@ requirements:
 
   run:
     - readline                 # [not win]
-    - ncurses >=5.9-8          # [not win]
+    - ncurses >=5.9.*          # [not win]
     - cairo                    # [linux]
     - pango                    # [linux]
     - libgcc                   # [not win]
