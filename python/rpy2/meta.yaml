@@ -1,5 +1,5 @@
-{% set version = '2.8.1' %}
-{% set versionu = '2_8_1' %}
+{% set version = '2.8.2' %}
+{% set versionu = '2_8_2' %}
 {% set pfx = 'm2w64-' if win else '' %}
 
 package:
@@ -9,12 +9,21 @@ package:
 source:
   fn: rpy2-{{version}}.tar.gz
   url: https://bitbucket.org/rpy2/rpy2/get/RELEASE_{{versionu}}.tar.bz2
-  sha1: e1fd16c5a1515c155c2d8fd6a308dbe458b1454e
+  sha1: 5441487d341df4a6736e6b0a3823b0567acbcfd4
+  # Regenerate the patches using the following command:
+  # mercurial_program export -r 3066:3072 -o 000%n-%m.patch -g
   patches:
-    - 0001-Fix-rmagic-failing-to-load-with-ipython-5-e2f29d.patch
+    - 0001-ResetConsole_is_not_a_member_of_structRstart.patch
+    - 0002-Win32__Add_missing_jump_to_toplevel___extern.patch
+    - 0003-Win32__Fix_incorrect_type_of__buf__parameter_to_EmbeddedR_ReadConsole__.patch
+    - 0004-Win32__Add_missing__include__stdlib_h_.patch
+    - 0005-Win32__Hack_sysconfig_so_that__CC__is_set_to__gcc_.patch
+    - 0006-Win32__Add___MINGW_USE_ANSI_STDIO_1_for___zd__in__rinterface_c.patch
+    - 0007-Turn_off_some_pedantic_warnings__unused_variables_and_functions_.patch
+    - 0008-Win32__Change_R_USER_check_for_HOMEDIR_to_HOMEDRIVE.patch
+    - 0009-Win32__Use_get_R_HOME___if_R_HOME_is_not_set_.patch
 
 build:
-  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
@@ -28,7 +37,6 @@ requirements:
     - gcc               # [not win]
     - python
     - r
-    - setuptools
     - singledispatch    # [not (py34 or py35)]
     - six
     - readline          # [not win]
@@ -59,7 +67,7 @@ test:
     - rpy2.robjects.lib.tests
     - rpy2.robjects.tests
 
-  # Excluded for linux32 since this win32 (bit?)  bug also happens there:
+  # Excluded for linux32 since this win32 (bit?) bug also happens there:
   # https://bitbucket.org/rpy2/rpy2/issues/347/testscalar-errors
   commands:
     - python -m rpy2.tests  # [not linux32]
@@ -68,6 +76,7 @@ test:
     - ipython
     - r-survival
     - r-ggplot2
+    - r-dplyr
     - numpy
     - pandas
 
