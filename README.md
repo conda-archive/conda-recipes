@@ -6,6 +6,8 @@ The full list of conda-forge feedstocks is at https://github.com/conda-forge/fee
 
 Learn more about conda-forge at https://conda-forge.github.io/
 
+For issues with packages from the defaults channel, please post to https://github.com/continuumIO/anaconda-issues
+
 ## Important Note
 
 This repository has grown to well over 500 packages, and we are doing some housekeeping.  We are currently in the process of moving most/all python packages into the `python` root directory.  From there, we'll continue tidying up the root diretory with categories as appropriate.
