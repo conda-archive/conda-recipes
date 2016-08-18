@@ -18,12 +18,13 @@ source:
     - 0003-Win32__Fix_incorrect_type_of__buf__parameter_to_EmbeddedR_ReadConsole__.patch
     - 0004-Win32__Add_missing__include__stdlib_h_.patch
     - 0005-Win32__Hack_sysconfig_so_that__CC__is_set_to__gcc_.patch
-    - 0006-Win32__Add___MINGW_USE_ANSI_STDIO_1_for___zd__in__rinterface_c.patch
+    - 0006-Win32__Add___MINGW_USE_ANSI_STDIO_1_and__Wno-format_for___zd__in__rinterface_c.patch
     - 0007-Turn_off_some_pedantic_warnings__unused_variables_and_functions_.patch
     - 0008-Win32__Change_R_USER_check_for_HOMEDIR_to_HOMEDRIVE.patch
     - 0009-Win32__Use_get_R_HOME___if_R_HOME_is_not_set_.patch
 
 build:
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
@@ -36,6 +37,7 @@ requirements:
     - {{pfx}}toolchain  # [win]
     - gcc               # [not win]
     - python
+    - setuptools
     - r
     - singledispatch    # [not (py34 or py35)]
     - six
