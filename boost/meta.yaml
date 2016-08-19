@@ -16,7 +16,7 @@ build:
 requirements:
   build:
     - python
-    - icu               [unix]
+    - icu 54.*          [unix]
     - bzip2             [unix]
     - zlib
 
@@ -24,7 +24,7 @@ requirements:
     # python dependency is here due to libboost-python library that depends on
     # python version
     - python
-    - icu               [unix]
+    - icu 54.*          [unix]
     - zlib
 
 about:
