@@ -1,0 +1,76 @@
+package:
+  name: impyla
+  version: "0.13.8"
+
+source:
+  fn: impyla-0.13.8.tar.gz
+  url: https://pypi.python.org/packages/36/35/bcf5ac18e3689948e980e2a0b33d48f46cb8569e1d0f2b17ea7147e88356/impyla-0.13.8.tar.gz
+  md5: c2a71ec00447832aabcd53b1dd7c5ecb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # noarch_python: True
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - impyla = impyla:main
+    #
+    # Would create an entry point called impyla that calls impyla.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - bitarray
+    # Until Apache release the next version of Thrift (which will supoport
+    # Python 3 we need to use thrifypy also).
+    - thrift      # [py2k]
+    - thriftpy    # [not py2k]
+
+  run:
+    - python
+    - setuptools
+    - six
+    - bitarray
+    - thrift
+    - thrift      # [py2k]
+    - thriftpy    # [not py2k]
+
+test:
+  # Python imports
+  imports:
+    - impala
+    - impala.tests
+    - impala.thrift
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/cloudera/impyla
+  license: Apache License, Version 2.0
+  summary: 'Python client for the Impala distributed query engine'
+  license_family: Apache
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
