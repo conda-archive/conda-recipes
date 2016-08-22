@@ -1,0 +1,42 @@
+From 776df4f30f6b30c588c64b045859b16546ae7703 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Fri, 12 Aug 2016 12:58:18 +0100
+Subject: [PATCH] Update some deps / resolutions
+
+alpaca deps: grunt * => ^0.4.5
+bower resolutions: bootstrap 3.2.0 => 3.3.2, jquery 1.11.1 => 1.11.3
+---
+ bower.json   | 4 ++--
+ package.json | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/bower.json b/bower.json
+index 503e8c8..d215b0b 100644
+--- a/bower.json
++++ b/bower.json
+@@ -70,7 +70,7 @@
+     "spectrum": "~1.7.1"
+   },
+   "resolutions": {
+-    "bootstrap": "3.2.0",
+-    "jquery": "1.11.1"
++    "bootstrap": "3.3.2",
++    "jquery": "1.11.3"
+   }
+ }
+diff --git a/package.json b/package.json
+index 58ae155..135fee9 100644
+--- a/package.json
++++ b/package.json
+@@ -18,7 +18,7 @@
+     "event-stream": "*",
+     "express": "3.5.1",
+     "handlebars": "4.0.5",
+-    "grunt": "*",
++    "grunt": "^0.4.5",
+     "grunt-aws-s3": "^0.9.4",
+     "grunt-cloudfront": "^0.2.0",
+     "grunt-invalidate-cloudfront": "^0.1.5",
+-- 
+2.9.2
+
