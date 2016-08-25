@@ -1,29 +1,22 @@
+
+{% set name = "qscintilla2" %}
+{% set version = "2.9.3" %}
+{% set md5 = "3b1cdbce9ef6c28cd868bcc58219f96e" %}
+
 package:
-  name: qscintilla2
-  version: 2.9.3
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  fn:   QScintilla-gpl-2.9.3.tar.gz                                                                             [unix]
+  fn:   QScintilla-gpl-2.9.3.tar.gz [unix]
   url:  http://downloads.sourceforge.net/project/pyqt/QScintilla2/QScintilla-2.9.3/QScintilla_gpl-2.9.3.tar.gz  [unix]
-  md5:  3b1cdbce9ef6c28cd868bcc58219f96e                                                                        [unix]
-  fn:   QScintilla-gpl-2.9.3.zip                                                                                [win]
+  md5:  {{ md5 }}                  [unix]
+  fn:   QScintilla-gpl-2.9.3.zip   [win]
   url:  http://downloads.sourceforge.net/project/pyqt/QScintilla2/QScintilla-2.9.3/QScintilla_gpl-2.9.3.zip     [win]
-  md5:  2b0da639a8ec3d4a37c69a5539d22569                                                                        [win]
-
-requirements:
-  build:
-    - python     
-    - sip         >=4.18
-    - qt          >=5.6
-    - pyqt        >=5.6 
-
-  run:
-    - python
-    - sip         >=4.18
-    - qt          >=5.6
-    - pyqt        >=5.6
+  md5:  2b0da639a8ec3d4a37c69a5539d22569  [win]
 
 build:
+  number: 0
   features:
     - vc9           [win and py27]
     - vc10          [win and py34]
@@ -31,11 +24,33 @@ build:
   script_env:
     - LOCALAPPDATA  [win and py27]
 
+requirements:
+  build:
+    - python     
+    - sip
+    - qt
+    - pyqt
+
+  run:
+    - python
+    - sip
+    - qt
+    - pyqt
+
 test:
   imports:
     - PyQt5.Qsci
 
 about:
-    home: https://www.riverbankcomputing.com/software/qscintilla/intro
-    summary: "Qscintilla2 editor for PyQt package"
-    license: GPLv3
+  home: https://www.riverbankcomputing.com/software/qscintilla/intro
+  license: GPL-3.0
+  summary: "Qscintilla2 editor for Qt"
+  description: |
+    QScintilla is a port to Qt of Neil Hodgson's Scintilla C++ editor control.
+    As well as features found in standard text editing components, QScintilla includes features especially useful when editing and debugging source code. These include support for syntax styling, error indicators, code completion and call tips. The selection margin can contain markers like those used in debuggers to indicate breakpoints and the current line. Styling choices are more open than with many editors, allowing the use of proportional fonts, bold and italics, multiple foreground and background colours and multiple fonts.
+  doc_url: http://pyqt.sourceforge.net/Docs/QScintilla2/annotated.html
+  dev_url: https://www.riverbankcomputing.com/software/qscintilla/download
+
+extra:
+  recipe-maintainers:
+    - dschreij
