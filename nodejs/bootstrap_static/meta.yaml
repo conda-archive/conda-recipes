@@ -1,0 +1,36 @@
+package:
+  name: bootstrap_static
+  version: 3.3.1
+
+source:
+  git_url: https://github.com/twbs/bootstrap.git
+  git_rev: v3.3.1
+  # patches:
+  #   - 0001-Update-some-deps-resolutions.patch
+
+build:
+# number: 2
+  noarch: True
+
+requirements:
+  build:
+    - m2-filesystem  [win]
+    - m2-git         [win]
+    - nodejs
+  run:
+    - jquery_static
+
+about:
+  home: http://getbootstrap.com/
+  license: MIT license
+  license_family: MIT
+  summary: HTML, CSS, and JavaScript framework
+  description: |
+    Bootstrap is a sleek, intuitive, and powerful
+    front-end framework for faster and easier web
+    development, created by Mark Otto and
+    Jacob Thornton, and maintained by the core team
+    with the massive support and involvement of the
+    community.
+  doc_url: http://getbootstrap.com/getting-started/
+  dev_url: https://github.com/twbs/bootstrap.git
