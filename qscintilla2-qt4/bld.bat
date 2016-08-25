@@ -46,7 +46,7 @@ if errorlevel 1 exit 1
 cd %SRC_DIR%\Python
 :: Use configure.py to generate a MAKEFILE
 @echo Configuring with python
-%PYTHON% configure.py --pyqt=PyQtn
+%PYTHON% configure.py
 if errorlevel 1 exit 1
 :: Build and install
 @echo Compiling python modules

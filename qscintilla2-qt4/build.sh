@@ -1,14 +1,5 @@
 #!/bin/bash
 BIN=$PREFIX/bin
-QT_MAJOR_VER=`qmake -v | sed -n 's/.*Qt version \([0-9])*\).*/\1/p'`
-if [ -z "$QT_MAJOR_VER" ]; then
-	echo "Could not determine Qt version of string provided by qmake:"
-	echo `qmake -v`
-	echo "Aborting..."
-	exit 1
-else
-	echo "Building Qscintilla for Qt${QT_MAJOR_VER}"
-fi
 
 # Set build specs depending on current platform (Mac OS X or Linux)
 if [ `uname` == Darwin ]; then
@@ -20,7 +11,7 @@ fi
 # Go to Qscintilla source dir and then to its Qt4Qt5 folder.
 cd ${SRC_DIR}/Qt4Qt5
 # Build the makefile with qmake, specify llvm as the compiler
-# The normal g++ compiler on Mac causes an __Unwind_Resume error at linking phase
+# The normal g++ compiler causes an __Unwind_Resume error at linking phase
 ${BIN}/qmake qscintilla.pro -spec ${BUILD_SPEC}
 # Build Qscintilla
 make
@@ -32,7 +23,7 @@ make install
 # Go to python folder
 cd ${SRC_DIR}/Python
 # Configure compilation of Python Qsci module
-${PYTHON} configure.py --pyqt=PyQt${QT_MAJOR_VER} --qmake=${BIN}/qmake --sip=${BIN}/sip --qsci-incdir=${PREFIX}/include/qt --qsci-libdir=${PREFIX}/lib --spec=${BUILD_SPEC} --no-qsci-api 
+${PYTHON} configure.py --qmake=${BIN}/qmake --sip=${BIN}/sip --qsci-incdir=${PREFIX}/include --qsci-libdir=${PREFIX}/lib --spec=${BUILD_SPEC} --no-qsci-api 
 # make it
 make
 
