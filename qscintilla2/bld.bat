@@ -15,8 +15,18 @@ if "%PY_VER%"=="2.7" (
 )
 if errorlevel 1 exit 1
 
+:: Determine Qt Major verion (4 or 5)
+for /f "tokens=4" %%i in ('%LIBRARY_BIN%\qmake -v ^| find "Qt version"') do (
+	set QT_MAJOR_VER=%%i
+	set QT_MAJOR_VER=!QT_MAJOR_VER:~0,1!
+)
+if [!QT_MAJOR_VER!] == [] Exit /B 1
+
+@echo Building for Qt!QT_MAJOR_VER!
+
 :: Set QMAKESPEC to the appropriate MSVC compiler
-set QMAKESPEC=%LIBRARY_PREFIX%\mkspecs\win32-msvc-default
+:: Not really necessary in windows
+:: set QMAKESPEC=%LIBRARY_PREFIX%\mkspecs\win32-msvc-default
 
 @echo ====================================================
 @echo Building Qscintilla2
@@ -46,7 +56,7 @@ if errorlevel 1 exit 1
 cd %SRC_DIR%\Python
 :: Use configure.py to generate a MAKEFILE
 @echo Configuring with python
-%PYTHON% configure.py --pyqt=PyQtn
+%PYTHON% configure.py --pyqt=PyQt!QT_MAJOR_VER!
 if errorlevel 1 exit 1
 :: Build and install
 @echo Compiling python modules

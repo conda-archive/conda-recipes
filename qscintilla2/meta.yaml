@@ -30,7 +30,6 @@ build:
     - vc14          [win and py35]
   script_env:
     - LOCALAPPDATA  [win and py27]
-    - QT_API
 
 test:
   imports:
