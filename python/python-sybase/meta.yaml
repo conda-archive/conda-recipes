@@ -1,0 +1,48 @@
+package:
+  name: python-sybase
+  version: "0.40"
+
+source:
+  url: http://sourceforge.net/projects/python-sybase/files/python-sybase-0.40.tar.gz
+  md5: 0ac7eb9a2ec56ef04a1510832f45821d
+  patches:
+    - 0001-Win32-Do-not-link-to-libblk-when-using-FreeTDS.patch
+
+requirements:
+  build:
+    - python 2.7.*
+    - setuptools
+    - freetds >=1.00.9
+
+  run:
+    - python 2.7.*
+    - setuptools
+    - freetds >=1.00.9
+
+test:
+  # Python imports
+  imports:
+    - Sybase
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - nose
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://python-sybase.sourceforge.net/
+  license: BSD License
+  summary: 'Python interface to the Sybase relational database system'
+  license_family: BSD
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
