@@ -1,0 +1,11 @@
+--- pymssql-2.1.3/setup.py.orig	2016-08-31 23:10:09.252141276 +0100
++++ pymssql-2.1.3/setup.py	2016-08-31 23:10:16.132353458 +0100
+@@ -472,7 +472,7 @@
+       "Operating System :: Unix",
+     ],
+     zip_safe = False,
+-    setup_requires=['setuptools_git'],
++    setup_requires=['setuptools'],
+     tests_require=['pytest', 'unittest2'],
+     ext_modules = ext_modules(),
+ 
