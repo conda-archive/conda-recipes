@@ -12,5 +12,6 @@ build:
 about:
   home: http://www.7-zip.org
   license: LGPL
+  summary: 7-zip command line interface for Windows
 
 # vim:set ts=8 sw=2 sts=2 tw=78 et:
