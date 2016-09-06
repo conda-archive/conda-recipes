@@ -1,25 +1,25 @@
 package:
-  name: thrift
-  version: "0.9.3"
+  name: impyla
+  version: "0.13.8"
 
 source:
-  fn: thrift-0.9.3.tar.gz
-  url: https://pypi.python.org/packages/ae/58/35e3f0cd290039ff862c2c9d8ae8a76896665d70343d833bdc2f748b8e55/thrift-0.9.3.tar.gz
-  md5: b519551d7a086bb0b4f222a8f566b7e8
+  fn: impyla-0.13.8.tar.gz
+  url: https://pypi.python.org/packages/36/35/bcf5ac18e3689948e980e2a0b33d48f46cb8569e1d0f2b17ea7147e88356/impyla-0.13.8.tar.gz
+  md5: c2a71ec00447832aabcd53b1dd7c5ecb
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
+build:
   # noarch_python: True
-  # preserve_egg_dir: True
+  preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - thrift = thrift:main
+    # - impyla = impyla:main
     #
-    # Would create an entry point called thrift that calls thrift.main()
+    # Would create an entry point called impyla that calls impyla.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -30,17 +30,28 @@ requirements:
   build:
     - python
     - setuptools
+    - six
+    - bitarray
+    # Until Apache release the next version of Thrift (which will supoport
+    # Python 3 we need to use thrifypy also).
+    - thrift      # [py2k]
+    - thriftpy    # [not py2k]
 
   run:
     - python
+    - setuptools
+    - six
+    - bitarray
+    - thrift
+    - thrift      # [py2k]
+    - thriftpy    # [not py2k]
 
 test:
   # Python imports
   imports:
-    - thrift
-    - thrift.protocol
-    - thrift.server
-    - thrift.transport
+    - impala
+    - impala.tests
+    - impala.thrift
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -55,9 +66,9 @@ test:
     # - nose
 
 about:
-  home: http://thrift.apache.org
-  license: Apache License 2.0
-  summary: 'Python bindings for the Apache Thrift RPC system'
+  home: https://github.com/cloudera/impyla
+  license: Apache License, Version 2.0
+  summary: 'Python client for the Impala distributed query engine'
   license_family: Apache
 
 # See

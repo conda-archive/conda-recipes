@@ -22,7 +22,7 @@ source:
     - 0010-configure-Fix-typo-CPPLAGS.patch
 
 build:
-  number: 1
+  number: 4
   rpaths:
     - lib/R/lib/
     - lib/
@@ -36,10 +36,10 @@ requirements:
     - m2-curl                  # [win]
     - m2-p7zip                 # [win]
     - readline                 # [not win]
-    - ncurses                  # [not win]
+    - ncurses >=5.9.*          # [not win]
     - pango                    # [linux]
     - gcc                      # [not win]
-    - jpeg                     # [not win]
+    - jpeg 8d*                 # [not win]
     - curl                     # [not win]
     - xz 5.2.*                 # [not win]
     - {{posix}}pkg-config
@@ -57,22 +57,23 @@ requirements:
     - {{native}}cairo          # [not osx]
     - {{native}}icu 54.*       # [not win]
     - {{native}}icu            # [win]
+    - {{native}}pcre 8.39*     # [not win]
+    - {{native}}pcre           # [win]
     - {{native}}tk
     - {{native}}zlib
     - {{native}}gsl
     - {{native}}libpng
     - {{native}}libtiff
     - {{native}}libxml2
-    - {{native}}pcre
 
   run:
     - readline                 # [not win]
-    - ncurses                  # [not win]
+    - ncurses >=5.9.*          # [not win]
     - cairo                    # [linux]
     - pango                    # [linux]
     - libgcc                   # [not win]
     - {{pfx}}gcc-libs          # [win]
-    - jpeg                     # [not win]
+    - jpeg 8d*                 # [not win]
     - curl                     # [not win]
     - xz 5.2.*                 # [not win]
     - {{native}}bzip2          # [not osx]
@@ -88,13 +89,14 @@ requirements:
     - {{native}}cairo          # [not osx]
     - {{native}}icu 54.*       # [not win]
     - {{native}}icu            # [win]
+    - {{native}}pcre 8.39*     # [not win]
+    - {{native}}pcre           # [win]
     - {{native}}tk
     - {{native}}zlib
     - {{native}}gsl
     - {{native}}libpng
     - {{native}}libtiff
     - {{native}}libxml2
-    - {{native}}pcre
 
 test:
   commands:

@@ -1,0 +1,103 @@
+From df84bf8fc86840439bfc4cfa3cf9a42e6f2d55a2 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Thu, 1 Sep 2016 18:50:42 +0100
+Subject: [PATCH 1/4] Dynamically load libjvm.so before importing _javabridge
+
+.. as it is very unlikely that the machine you run javabridge on
+is the same machine that you built javabridge on, and it is also
+unlikely even in that case that you would not update java on the
+same machine at some point.
+
+This is done using a function in locate to find the jvm shared
+library. This function is also reused in setup.py.
+---
+ javabridge/__init__.py | 10 ++++++++++
+ javabridge/locate.py   | 21 +++++++++++++++++++++
+ setup.py               |  7 +++----
+ 3 files changed, 34 insertions(+), 4 deletions(-)
+
+diff --git a/javabridge/__init__.py b/javabridge/__init__.py
+index 20e4aaa..de894e6 100644
+--- a/javabridge/__init__.py
++++ b/javabridge/__init__.py
+@@ -17,6 +17,16 @@ except ImportError:
+     # We're running in a tree that doesn't have a _version.py, so we don't know what our version is.
+     __version__ = "0.0.0"
+ 
++# We must dynamically find libjvm.so since its unlikely to be in the same place
++# as it was on the distribution on which javabridge was built.
++import sys
++if sys.platform.startswith('linux'):
++    from .locate import find_jre_bin_jdk_so
++    _, jdk_so = find_jre_bin_jdk_so()
++    if jdk_so:
++        import ctypes
++        ctypes.cdll.LoadLibrary(jdk_so)
++
+ _jars_dir = os.path.join(os.path.dirname(__file__), 'jars')
+ 
+ #: List of absolute paths to JAR files that are required for the
+diff --git a/javabridge/locate.py b/javabridge/locate.py
+index 851dac5..e1fab1e 100644
+--- a/javabridge/locate.py
++++ b/javabridge/locate.py
+@@ -153,3 +153,24 @@ def find_jar_cmd():
+     else:
+         # will be along path for other platforms
+         return "jar"
++
++
++def find_jre_bin_jdk_so():
++    """Finds the jre bin dir and the jdk shared library file"""
++    jvm_dir = None
++    java_home = find_javahome()
++    if java_home is not None:
++        found_jvm = False
++        for jre_home in (java_home, os.path.join(java_home, "jre")):
++            jre_bin = os.path.join(jre_home, 'bin')
++            jre_libexec = os.path.join(jre_home, 'bin' if is_win else 'lib')
++            arches = ('amd64', 'i386') if is_linux else ('',)
++            lib_prefix = '' if is_win else 'lib'
++            lib_suffix = '.dll' if is_win else ('.dylib' if is_mac else '.so')
++            for arch in arches:
++                for place_to_look in ('client','server'):
++                    jvm_dir = os.path.join(jre_libexec, arch, place_to_look)
++                    jvm_so = os.path.join(jvm_dir, lib_prefix + "jvm" + lib_suffix)
++                    if os.path.isfile(jvm_so):
++                        return (jre_bin, jvm_so)
++    return (jre_bin, None)
+diff --git a/setup.py b/setup.py
+index c321db7..f6e306e 100644
+--- a/setup.py
++++ b/setup.py
+@@ -98,6 +98,7 @@ def ext_modules():
+     libraries = None
+     library_dirs = None
+     javabridge_sources = ['_javabridge.c']
++    _, jvm_so = find_jre_bin_jdk_so()
+     if is_mac:
+         javabridge_sources += ['_javabridge_mac.c']
+     else:
+@@ -109,7 +110,7 @@ def ext_modules():
+             # This assumes that we're using mingw32 for build
+             #
+             cmd = ["dlltool", "--dllname",
+-                   os.path.join(jdk_home,"jre\\bin\\client\\jvm.dll"),
++                   jvm_so,
+                    "--output-lib","libjvm.a",
+                    "--input-def","jvm.def",
+                    "--kill-at"]
+@@ -129,9 +130,7 @@ def ext_modules():
+     elif is_mac:
+         javabridge_sources += [ "mac_javabridge_utils.c" ]
+     elif is_linux:
+-        library_dirs = [os.path.join(java_home,'jre','lib', arch, cs)
+-                        for arch in ['amd64', 'i386']
+-                        for cs in ['client', 'server']]
++        library_dirs = [os.path.dirname(jvm_so)]
+         libraries = ["jvm"]
+     extension_kwargs = dict(
+         name="javabridge._javabridge",
+-- 
+2.8.4
+

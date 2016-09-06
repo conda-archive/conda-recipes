@@ -7,7 +7,8 @@ source:
   sha1: e1d3dedd1d2b7305464d6892579fee3ad9639355
 
 build:
-  number: 1
+  number: 3
+  detect_binary_files_with_prefix: true
 
 requirements:
   build:

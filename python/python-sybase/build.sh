@@ -1,6 +1,9 @@
 #!/bin/bash
 
-$PYTHON setup.py install --single-version-externally-managed --record=record.txt
+SYBASE=${PREFIX} \
+  $PYTHON setup.py build_ext -D HAVE_FREETDS
+SYBASE=${PREFIX} \
+  $PYTHON setup.py install --single-version-externally-managed --record=record.txt
 
 # Add more build steps here, if they are necessary.
 

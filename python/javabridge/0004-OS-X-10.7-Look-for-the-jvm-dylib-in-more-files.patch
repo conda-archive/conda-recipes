@@ -1,0 +1,45 @@
+From fdd83ae23a2809de9e1bc8fa0a02e1cc238ae722 Mon Sep 17 00:00:00 2001
+From: ray <ray@rays-Mac.local>
+Date: Tue, 6 Sep 2016 10:19:24 +0100
+Subject: [PATCH 4/4] OS X 10.7: Look for the jvm dylib in more files
+
+---
+ javabridge/locate.py | 22 ++++++++++++++--------
+ 1 file changed, 14 insertions(+), 8 deletions(-)
+
+diff --git a/javabridge/locate.py b/javabridge/locate.py
+index 474cc93..0a3f04b 100644
+--- a/javabridge/locate.py
++++ b/javabridge/locate.py
+@@ -44,14 +44,20 @@ def find_javahome():
+             for place_to_look in (
+                 os.path.join(os.path.dirname(path), "Libraries"),
+                 os.path.join(path, "jre", "lib", "server")):
+-                lib = os.path.join(place_to_look, "libjvm.dylib")
+-                #
+-                # dlopen_preflight checks to make sure libjvm.dylib
+-                # can be loaded in the current architecture
+-                #
+-                if os.path.exists(lib):
+-                    if libc.dlopen_preflight(lib.encode('utf-8')) != 0:
+-                        return path
++                # On OS X 10.7, libjvm.dylib is a symlink to libclient.dylib which
++                # is i686 only, whereas libserver.dylib contains both architectures.
++                for file_to_look in ('libjvm.dylib',
++                                     'libclient.dylib',
++                                     'libserver.dylib'):
++                    lib = os.path.join(place_to_look, file_to_look)
++                    #
++                    # dlopen_preflight checks to make sure the dylib
++                    # can be loaded in the current architecture
++                    #
++                    if os.path.exists(lib):
++                        if libc.dlopen_preflight(lib.encode('utf-8')) != 0:
++                            print('was ok')
++                            return path
+             else:
+                 logger.error("Could not find Java JRE compatible with %s architecture" % arch)
+                 if arch == "i386":
+-- 
+2.8.4
+

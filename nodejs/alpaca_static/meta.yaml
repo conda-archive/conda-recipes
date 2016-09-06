@@ -1,0 +1,46 @@
+package:
+  name: alpaca_static
+  version: 1.5.17
+
+source:
+  git_url: https://github.com/gitana/alpaca.git
+  git_rev: 1.5.17
+  patches:
+    - 0001-Update-some-deps-resolutions.patch
+
+build:
+  number: 3
+  noarch: True
+
+requirements:
+  build:
+    - m2-filesystem  [win]
+    - m2-git         [win]
+    - nodejs
+    - gcc            [linux]
+    - python 2.7.*
+  run:
+    - jquery_static
+    - handlebars_static >=3.0.3
+    - bootstrap_static >=3.2.0
+
+about:
+  home: http://www.alpacajs.org/
+  license: Apache License 2.0
+  license_family: Apache
+  summary: Easy Forms for jQuery
+  description: |
+    Alpaca provides the easiest way to generate interactive
+    HTML5 forms for web and mobile applications. It uses
+    JSON Schema and simple Handlebars templates to generate
+    great looking user interfaces on top of Twitter
+    Bootstrap, jQuery UI, jQuery Mobile and HTML5.
+    Everything you need is provided out of the box. Alpaca
+    comes pre-stocked with a large library of controls,
+    templates, layouts and features to make rendering
+    JSON-driven forms easy. It is designed around an
+    extensible object-oriented pattern, allowing you to
+    implement new controls, templates, I18N bundles and
+    custom data persistence for your projects.
+  doc_url: http://www.alpacajs.org/documentation.html
+  dev_url: https://github.com/gitana/alpaca

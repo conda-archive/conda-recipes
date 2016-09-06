@@ -1,0 +1,46 @@
+package:
+  name: freetds
+  version: 1.00.9
+
+source:
+  url: ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.00.9.tar.bz2
+  md5: 51e8941fbb537092e29c944e39c92f68
+  patches:
+    - 0001-CMake-install-targets.patch
+    - 0002-CMake-install-headers.patch
+
+build:
+  features:
+    - vc9               [win and py27]
+    - vc10              [win and py34]
+    - vc14              [win and py35]
+
+requirements:
+  build:
+    - openssl 1.0.*
+    - readline          [not win]
+    - cmake             [win]
+    - jom               [win]
+    - vc   9            [win and py27]
+    - vc  10            [win and py34]
+    - vc  14            [win and py>34]
+  run:
+    - openssl 1.0.*
+    - readline          [not win]
+    - vc   9            [win and py27]
+    - vc  10            [win and py34]
+    - vc  14            [win and py>34]
+
+about:
+  home: http://www.freetds.org/index.html
+  license: GNU Library or Lesser General Public License (LGPL)
+  license_family: LGPL
+  summary: 'Natively talk to Microsoft SQL Server and Sybase databases'
+  description: |
+    FreeTDS is an open source implementation of the TDS (Tabular Data Stream)
+    protocol used by these databases for their own clients. It supports many
+    different flavors of the protocol and three APIs to access it.
+    Additionally FreeTDS works with other software such as Perl and PHP,
+    providing access from those languages as well.
+  doc_url: http://www.freetds.org/docs.html
+  dev_url: https://github.com/FreeTDS/freetds/

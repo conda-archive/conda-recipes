@@ -1,0 +1,81 @@
+package:
+  name: javabridge
+  version: "1.0.14"
+
+source:
+  git_url: https://github.com/LeeKamentsky/python-javabridge.git
+  git_tag: 1.0.14
+  patches:
+    - 0001-Dynamically-load-libjvm.so-before-importing-_javabri.patch
+    - 0002-OS-X-bytes-fix-for-subprocess.check_output.patch
+    - 0003-OS-X-ctypes-Py-3-fix-encode-strings-as-utf-8.patch
+    - 0004-OS-X-10.7-Look-for-the-jvm-dylib-in-more-files.patch
+
+build:
+  # noarch_python: True
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - javabridge = javabridge:main
+    #
+    # Would create an entry point called javabridge that calls javabridge.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+  script_env:        # [win]
+    - JAVA_HOME      # [win]
+    - JDK_HOME       # [win]
+
+requirements:
+  build:
+    - m2-git         # [win]
+    - m2-filesystem  # [win]
+    - python
+    - cython
+    - setuptools
+    - numpy
+
+  run:
+    - python
+    - setuptools
+    - numpy
+
+test:
+  # Python imports
+  imports:
+    - javabridge
+    - javabridge.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - nose
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/LeeKamentsky/python-javabridge
+  license: BSD License
+  summary: 'Python wrapper for the Java Native Interface'
+  description: |
+    Makes it easy to start a Java virtual machine (JVM) from
+    Python and interact with it. Python code can interact
+    with the JVM using a low-level API or a more convenient
+    high-level API.
+  license_family: BSD
+  doc_url: http://pythonhosted.org/javabridge/
+  dev_url: https://github.com/LeeKamentsky/python-javabridge
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

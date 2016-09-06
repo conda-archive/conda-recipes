@@ -1,0 +1,29 @@
+From 92da24881b33b8258de633557fc3fa4de4c5aedb Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Mon, 5 Sep 2016 23:49:28 +0100
+Subject: [PATCH 3/4] OS X ctypes / Py 3 fix - encode strings as utf-8
+
+---
+ javabridge/locate.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/javabridge/locate.py b/javabridge/locate.py
+index 750ecbe..474cc93 100644
+--- a/javabridge/locate.py
++++ b/javabridge/locate.py
+@@ -49,9 +49,9 @@ def find_javahome():
+                 # dlopen_preflight checks to make sure libjvm.dylib
+                 # can be loaded in the current architecture
+                 #
+-                if os.path.exists(lib) and \
+-                   libc.dlopen_preflight(lib) !=0:
+-                    return path
++                if os.path.exists(lib):
++                    if libc.dlopen_preflight(lib.encode('utf-8')) != 0:
++                        return path
+             else:
+                 logger.error("Could not find Java JRE compatible with %s architecture" % arch)
+                 if arch == "i386":
+-- 
+2.8.4
+
