@@ -1,6 +1,6 @@
 package:
   name: r-essentials
-  version: 1.4
+  version: 1.4.1
 
 requirements:
   # Not really needed, but just to make sure that they are built
@@ -24,6 +24,7 @@ requirements:
     - r-irkernel >=0.6.1
     - r-rbokeh >=0.4.2
   run:
+    - r-base
     - r-base >=3.3.1
     - r-recommended >=3.3.1
     - r-ggplot2 >=2.1.0
