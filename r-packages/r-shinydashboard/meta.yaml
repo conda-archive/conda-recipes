@@ -1,0 +1,81 @@
+package:
+  name: r-shinydashboard
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.5.1"
+
+source:
+  path: shinydashboard
+  #url:
+  #  - http://cran.r-project.org/src/contrib/shinydashboard_0.5.1.tar.gz
+  #  - http://cran.r-project.org/src/contrib/Archive/shinydashboard/shinydashboard_0.5.1.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r
+    - r-htmltools >=0.2.6
+    - r-shiny >=0.11.1
+
+  run:
+    - r
+    - r-htmltools >=0.2.6
+    - r-shiny >=0.11.1
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('shinydashboard')" # [not win]
+    - "\"%R%\" -e \"library('shinydashboard')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://rstudio.github.io/shinydashboard/
+  license: GPL-2 | file LICENSE
+  summary: Create dashboards with 'Shiny'. This package provides a theme on top of 'Shiny', making
+    it easy to create attractive dashboards.
+
+# The original CRAN metadata for this package was:
+
+# Package: shinydashboard
+# Title: Create Dashboards with 'Shiny'
+# Version: 0.5.1
+# Authors@R: c( person("Winston", "Chang", role = c("aut", "cre"), email = "winston@rstudio.com"), person(family = "RStudio", role = "cph"), person(family = "Almasaeed Studio", role = c("ctb", "cph"), comment = "AdminLTE theme for Bootstrap"), person(family = "Adobe Systems Incorporated", role = c("ctb", "cph"), comment = "Source Sans Pro font") )
+# Description: Create dashboards with 'Shiny'. This package provides a theme on top of 'Shiny', making it easy to create attractive dashboards.
+# URL: http://rstudio.github.io/shinydashboard/
+# Depends: R (>= 3.0)
+# License: GPL-2 | file LICENSE
+# Imports: utils, shiny (>= 0.11.1), htmltools (>= 0.2.6)
+# NeedsCompilation: no
+# Packaged: 2015-09-08 21:49:09 UTC; winston
+# Author: Winston Chang [aut, cre], RStudio [cph], Almasaeed Studio [ctb, cph] (AdminLTE theme for Bootstrap), Adobe Systems Incorporated [ctb, cph] (Source Sans Pro font)
+# Maintainer: Winston Chang <winston@rstudio.com>
+# Repository: CRAN
+# Date/Publication: 2015-09-09 09:17:22
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
