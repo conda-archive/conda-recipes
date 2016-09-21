@@ -1,6 +1,6 @@
 package:
   name: r-essentials
-  version: 1.4.1
+  version: 1.4.2
 
 requirements:
   # Not really needed, but just to make sure that they are built
@@ -21,7 +21,7 @@ requirements:
     - r-glmnet >=2.0_5
     - r-jsonlite >=0.9.22
     - r-zoo >=1.7_13
-    - r-irkernel >=0.6.1
+    - r-irkernel >=0.7
     - r-rbokeh >=0.4.2
   run:
     - r-base
@@ -41,7 +41,7 @@ requirements:
     - r-glmnet >=2.0_5
     - r-jsonlite >=0.9.22
     - r-zoo >=1.7_13
-    - r-irkernel >=0.6.1
+    - r-irkernel >=0.7
     - r-rbokeh >=0.4.2
 
 about:
