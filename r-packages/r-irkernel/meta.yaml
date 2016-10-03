@@ -23,7 +23,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  number: 2
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -36,7 +36,7 @@ requirements:
     - r-base
     - posix               # [win]
     - {{posix}}git        # [win]
-    - r-irdisplay
+    - r-irdisplay >=0.4
     - r-digest
     - r-evaluate >=0.5.4
     - r-jsonlite >=0.9.6
@@ -47,7 +47,7 @@ requirements:
 
   run:
     - r-base
-    - r-irdisplay
+    - r-irdisplay >=0.4
     - r-digest
     - r-evaluate >=0.5.4
     - r-jsonlite >=0.9.6
