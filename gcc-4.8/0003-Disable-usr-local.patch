@@ -1,0 +1,13 @@
+diff -urN gcc-4.8.5.orig/gcc/cppdefault.c gcc-4.8.5/gcc/cppdefault.c
+--- gcc-4.8.5.orig/gcc/cppdefault.c	2016-10-25 10:46:42.848329208 +0100
++++ gcc-4.8.5/gcc/cppdefault.c	2016-10-25 11:08:08.809102425 +0100
+@@ -35,6 +35,9 @@
+ # undef CROSS_INCLUDE_DIR
+ #endif
+ 
++/* This is mostly for macOS where Homebrew tends to live in /usr/local */
++#undef LOCAL_INCLUDE_DIR
++
+ const struct default_include cpp_include_defaults[]
+ #ifdef INCLUDE_DEFAULTS
+ = INCLUDE_DEFAULTS;
