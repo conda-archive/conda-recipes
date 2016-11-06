@@ -1,15 +1,18 @@
-./configure --prefix=$PREFIX || exit 1
-make || exit 1
-make install || exit 1
+#!/bin/bash
 
-cd $PREFIX
+./configure --prefix="$PREFIX"
+make
+make install
+
+cd "$PREFIX"
 rm -rf share
-mv lib/libffi-*/include include
+mv lib/libffi-*/include/* include
 
-if [ `uname -m` == x86_64 ]; then
+if [ "$(uname -m)" == x86_64 ]; then
     mv lib64/* lib/
     rmdir lib64
 fi
 
+# shellcheck disable=SC2016
 sed -i s/'includedir=.*'/'includedir=\${exec_prefix}\/include'/g lib/pkgconfig/libffi.pc
 
