@@ -1,14 +1,14 @@
 package:
   name: jpeg
-  version: 8d
+  version: 9b
 
 source:
-  fn: jpegsrc.v8d.tar.gz
-  url: http://download.openpkg.org/components/cache/jpeg/jpegsrc.v8d.tar.gz
-  md5: 52654eb3b2e60c35731ea8fc87f1bd29
+  fn: jpegsrc.v9b.tar.gz
+  url: http://www.ijg.org/files/jpegsrc.v9b.tar.gz
+  md5: 6a9996ce116ec5c52b4870dbcd6d3ddb
 
 build:
-  number: 2             # [osx]
+  number: 0
 
 about:
   home: http://www.ijg.org/
