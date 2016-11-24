@@ -1,0 +1,31 @@
+From db98be9700a066b8dc71f26e88e7324d49f51c75 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Fri, 25 Nov 2016 12:53:15 +0000
+Subject: [PATCH 2/2] Win32: Use -W4, not -Wall on MSVC
+
+---
+ CMakeLists.txt | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f6ec583..382c064 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,7 +4,13 @@ PROJECT(libgpuarray C)
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMakeModules/")
+ 
+-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
++# -Wall is unbelieveably noisy with Visual Studio:
++# http://stackoverflow.com/q/4001736/3257826
++if(MSVC)
++    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -W4")
++else()
++    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
++endif()
+ 
+ enable_testing()
+ 
+-- 
+2.10.1
+
