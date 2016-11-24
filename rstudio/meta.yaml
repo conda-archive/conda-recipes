@@ -51,6 +51,12 @@ source:
     - 0041-Remove-debug-output-and-forced-28080-port-number.patch
     - 0042-Conda-Add-arch-suffix-to-the-QSettings-file.patch
 
+build:
+  skip: True           # [win and py<35]
+  number: 1            # [win]
+  features:
+    - vc14             # [win and py35]
+
 requirements:
   build:
     # Need to debug rsession, this seems like the easiest way:
@@ -71,6 +77,7 @@ requirements:
     - m2w64-grep       # [win]
     - m2w64-diffutils  # [win]
     - m2-openssh       # [win]
+    - vs2015_runtime   # [win]
     - r-essentials
 
 app:
