@@ -66,14 +66,14 @@ requirements:
     - jom              # [win]
     - m2w64-tools-git  # [win]
     - ant              # [osx]
-    - qt >=5.6
+    - qt >=5.6         # [not osx]
     - cmake
     - boost >=1.61
     - r-base >=3.3.1
   run:
     - libgcc           # [not win]
     - libuuid          # [linux]
-    - qt >=5.6
+    - qt >=5.6         # [not osx]
     - m2w64-grep       # [win]
     - m2w64-diffutils  # [win]
     - m2-openssh       # [win]
