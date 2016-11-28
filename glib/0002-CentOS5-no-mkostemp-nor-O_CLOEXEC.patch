@@ -1,0 +1,15 @@
+--- glib-2.50.2/glib/gmessages.c.orig	2016-11-30 12:38:20.000000000 +0000
++++ glib-2.50.2/glib/gmessages.c	2016-11-30 12:40:08.000000000 +0000
+@@ -181,6 +181,12 @@
+ #include <sys/un.h>
+ #include <fcntl.h>
+ #include <sys/uio.h>
++/**
++ * Conda hack, CentOS 5.11 is too old and has
++ * neither mkostemp nor O_CLOEXEC, so drop it
++ * This is far from ideal.
++ */
++#define mkostemp(x,y) mkstemp(x)
+ #endif
+ 
+ #include "glib-init.h"

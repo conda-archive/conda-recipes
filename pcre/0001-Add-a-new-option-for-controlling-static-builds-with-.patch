@@ -1,0 +1,71 @@
+From e4b4f4a81dd8c4086ea327c552a388d969a4280b Mon Sep 17 00:00:00 2001
+From: ph10 <ph10@2f5784b3-3f2a-0410-8824-cb99058d5e15>
+Date: Fri, 24 Jun 2016 09:01:23 +0000
+Subject: [PATCH] Add a new option for controlling static builds with MSVC. See
+ Bugzilla #1681.
+
+git-svn-id: svn://vcs.exim.org/pcre/code/trunk@1659 2f5784b3-3f2a-0410-8824-cb99058d5e15
+---
+ CMakeLists.txt | 10 +++++++---
+ ChangeLog      |  3 +++
+ 2 files changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ce6b167..42451ad 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -66,6 +66,7 @@
+ # 2013-10-08 PH got rid of the "source" command, which is a bash-ism (use ".")
+ # 2013-11-05 PH added support for PARENS_NEST_LIMIT
+ # 2016-03-01 PH applied Chris Wilson's patch for MSVC static build
++# 2016-06-24 PH applied Chris Wilson's revised patch (adds a separate option)
+ 
+ PROJECT(PCRE C CXX)
+ 
+@@ -190,6 +191,9 @@ IF (MINGW)
+ ENDIF(MINGW)
+ 
+ IF(MSVC)
++  OPTION(PCRE_STATIC_RUNTIME
++	"ON=Compile against the static runtime (/MT)."
++	OFF)
+   OPTION(INSTALL_MSVC_PDB
+          "ON=Install .pdb files built by MSVC, if generated"
+          OFF)
+@@ -573,8 +577,8 @@ ENDIF(MSVC AND NOT PCRE_STATIC)
+ # Fix static compilation with MSVC: https://bugs.exim.org/show_bug.cgi?id=1681
+ # This code was taken from the CMake wiki, not from WebM.
+ 
+-IF(MSVC AND PCRE_STATIC)
+-  MESSAGE(STATUS "** MSVC and PCRE_STATIC: modifying compiler flags to use static runtime library")
++IF(MSVC AND PCRE_STATIC_RUNTIME)
++  MESSAGE(STATUS "** MSVC and PCRE_STATIC_RUNTIME: modifying compiler flags to use static runtime library")
+   foreach(flag_var
+           CMAKE_C_FLAGS CMAKE_C_FLAGS_DEBUG CMAKE_C_FLAGS_RELEASE
+           CMAKE_C_FLAGS_MINSIZEREL CMAKE_C_FLAGS_RELWITHDEBINFO
+@@ -582,7 +586,7 @@ IF(MSVC AND PCRE_STATIC)
+           CMAKE_CXX_FLAGS_MINSIZEREL CMAKE_CXX_FLAGS_RELWITHDEBINFO)
+     string(REGEX REPLACE "/MD" "/MT" ${flag_var} "${${flag_var}}")
+   endforeach()
+-ENDIF(MSVC AND PCRE_STATIC)
++ENDIF(MSVC AND PCRE_STATIC_RUNTIME)
+ 
+ SET(PCRECPP_HEADERS
+   pcrecpp.h
+diff --git a/ChangeLog b/ChangeLog
+index 1588319..08b80a3 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -4,6 +4,9 @@
+ Note that the PCRE 8.xx series (PCRE1) is now in a bugfix-only state. All
+ development is happening in the PCRE2 10.xx series.
+ 
++1.  Applied Chris Wilson's second patch (Bugzilla #1681) to CMakeLists.txt for
++    MSVC static compilation, putting the first patch under a new option.
++
+ Version 8.39 14-June-2016
+ -------------------------
+
+-- 
+2.9.1
+ 

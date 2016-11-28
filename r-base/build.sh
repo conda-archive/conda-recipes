@@ -25,6 +25,9 @@ Linux() {
     # 3. It definitely doesn't work for ArchLinux which has no /usr/lib/jvm/java
     #JVMFOLDER=$(readlink -f /usr/lib/jvm/java)
     JVMFOLDER=/usr/lib/jvm/java
+    # This is needed to force pkg-config to *also* search for system libraries.
+    # We cannot use cairo without this since it depends on a good few X11 things.
+    export PKG_CONFIG_PATH=/usr/lib/pkgconfig
     echo "export JDK_HOME=${JVMFOLDER}"       > ${RECIPE_DIR}/java.rc
     echo "export JAVA_HOME=\${JDK_HOME}/jre" >> ${RECIPE_DIR}/java.rc
     . ${RECIPE_DIR}/java.rc
