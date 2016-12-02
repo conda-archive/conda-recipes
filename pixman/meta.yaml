@@ -1,24 +1,22 @@
 package:
   name: pixman
-  version: 0.32.6
+  version: 0.34.0
 
 source:
-  url: http://cairographics.org/releases/pixman-0.32.6.tar.gz
-  md5: 3a30859719a41bd0f5cccffbfefdd4c2
-  patches:
-    - no_test.patch      # [win]
+  url: http://cairographics.org/releases/pixman-0.34.0.tar.gz
+  md5: e80ebae4da01e77f68744319f01d52a3
+  patches:               [win]
+    - no_test.patch      [win]
 
-build:
-  features:
-    - vc9                # [win and py27]
-    - vc10               # [win and py34]
-    - vc14               # [win and py35]
+build:                   [win]
+  features:              [win]
+    - vc9                [win and py27]
+    - vc10               [win and py34]
+    - vc14               [win and py35]
 
 requirements:
   build:
-    - gcc                # [not win]
-  run:
-    - libgcc             # [not win]
+    - python             [win]
 
 about:
   home: http://cgit.freedesktop.org/pixman/

@@ -1,0 +1,58 @@
+From 08ad496bcd4abaad007d8d5649816bf338192868 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Fri, 28 Oct 2016 12:56:13 +0100
+Subject: [PATCH 10/42] Win32: Do not use Rtools when DEFINED ENV{CONDA_BUILD}
+
+---
+ CMakeCompiler.txt                             |  2 +-
+ dependencies/windows/install-dependencies.cmd | 21 ++++++++++++---------
+ 2 files changed, 13 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeCompiler.txt b/CMakeCompiler.txt
+index ec0a113..f7d1a59 100644
+--- a/CMakeCompiler.txt
++++ b/CMakeCompiler.txt
+@@ -27,7 +27,7 @@ if(APPLE)
+ endif()
+ 
+ # use Rtools on Windows (mainly for Qt Creator)
+-if(WIN32 AND NOT DEFINED RSTUDIO_PACKAGE_BUILD)
++if(WIN32 AND NOT DEFINED RSTUDIO_PACKAGE_BUILD AND NOT DEFINED ENV{CONDA_BUILD})
+   set(RTOOLS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../dependencies/windows/Rtools33")
+   string(REGEX REPLACE "/" "\\\\" RTOOLS_TOOLCHAIN_32BIT_PATH "${RTOOLS_PATH}/mingw_32/bin")
+   set(ENV{PATH} "${RTOOLS_TOOLCHAIN_32BIT_PATH}")
+diff --git a/dependencies/windows/install-dependencies.cmd b/dependencies/windows/install-dependencies.cmd
+index 7f0de78..79e90b7 100644
+--- a/dependencies/windows/install-dependencies.cmd
++++ b/dependencies/windows/install-dependencies.cmd
+@@ -30,15 +30,18 @@ set LIBCLANG_HEADERS=builtin-headers
+ set LIBCLANG_HEADERS_FILE=libclang-%LIBCLANG_HEADERS%.zip
+ 
+ set RTOOLS_DIR=%RTOOLS_FILE:.exe=%
+-if not exist %RTOOLS_DIR% (
+-  wget %WGET_ARGS% "%BASEURL%%RTOOLS_FILE%"
+-  echo Installing '%RTOOLS_FILE%' -- please wait...
+-  start /wait Rtools33.exe /verysilent /dir=%CD%\%RTOOLS_DIR%
+-  if %ERRORLEVEL% EQU 0 (
+-    echo '%RTOOLS_FILE%' successfully installed!
+-    del %RTOOLS_FILE%
+-  ) else (
+-    echo Failed to install '%RTOOLS_FILE%'!
++
++if not "%CONDA_BUILD%" == "1" (
++  if not exist %RTOOLS_DIR% (
++    wget %WGET_ARGS% "%BASEURL%%RTOOLS_FILE%"
++    echo Installing '%RTOOLS_FILE%' -- please wait...
++    start /wait Rtools33.exe /verysilent /dir=%CD%\%RTOOLS_DIR%
++    if %ERRORLEVEL% EQU 0 (
++      echo '%RTOOLS_FILE%' successfully installed!
++      del %RTOOLS_FILE%
++    ) else (
++      echo Failed to install '%RTOOLS_FILE%'!
++    )
+   )
+ )
+ 
+-- 
+2.10.1
+

@@ -1,0 +1,41 @@
+From e60c00051f178a66136ccd758739bef42b1d67ca Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Fri, 25 Nov 2016 12:40:56 +0000
+Subject: [PATCH 1/2] Win32: Explicitly include <stdint.h> for old MSVC
+
+This is not necessary for VS2015 (but should be harmless). VS2010 comes
+with stdint.h but it needs to be explicitly included. For VS2008 you need
+to get stdint.h from another package. Conda uses the conda-forge derived
+msinttypes package.
+---
+ src/cache.h                 | 1 +
+ src/util/integerfactoring.c | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/cache.h b/src/cache.h
+index f2059e7..7cfc356 100644
+--- a/src/cache.h
++++ b/src/cache.h
+@@ -2,6 +2,7 @@
+ #define CACHE_H
+ 
+ #include <stdlib.h>
++#include <stdint.h>
+ #include <gpuarray/config.h>
+ #include "private_config.h"
+ 
+diff --git a/src/util/integerfactoring.c b/src/util/integerfactoring.c
+index e587637..74f347d 100644
+--- a/src/util/integerfactoring.c
++++ b/src/util/integerfactoring.c
+@@ -1,6 +1,7 @@
+ /* Includes */
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <stdint.h>
+ #include <string.h>
+ #include "integerfactoring.h"
+ 
+-- 
+2.10.1
+

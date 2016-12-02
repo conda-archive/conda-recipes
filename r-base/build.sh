@@ -21,10 +21,13 @@ export TK_LIBRARY=$PREFIX/lib/tk8.5
 Linux() {
     # There's probably a much better way to do this.
     # 1. Why bother with java.rc? Presumably R uses it until `R CMD javareconf`?
-    # 2. Why bother with readlink, that seems to maket his inflexible.
+    # 2. Why bother with readlink, that seems to make this inflexible.
     # 3. It definitely doesn't work for ArchLinux which has no /usr/lib/jvm/java
     #JVMFOLDER=$(readlink -f /usr/lib/jvm/java)
     JVMFOLDER=/usr/lib/jvm/java
+    # This is needed to force pkg-config to *also* search for system libraries.
+    # We cannot use cairo without this since it depends on a good few X11 things.
+    export PKG_CONFIG_PATH=/usr/lib/pkgconfig
     echo "export JDK_HOME=${JVMFOLDER}"       > ${RECIPE_DIR}/java.rc
     echo "export JAVA_HOME=\${JDK_HOME}/jre" >> ${RECIPE_DIR}/java.rc
     . ${RECIPE_DIR}/java.rc

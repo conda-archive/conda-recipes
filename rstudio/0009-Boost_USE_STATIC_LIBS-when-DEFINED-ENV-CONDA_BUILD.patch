@@ -1,0 +1,25 @@
+From 1173293e31d2b104f8ed62bb2d51f9fe160f7e9c Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Sat, 22 Oct 2016 18:37:40 +0100
+Subject: [PATCH 09/42] Boost_USE_STATIC_LIBS when DEFINED ENV{CONDA_BUILD}
+
+---
+ src/cpp/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/cpp/CMakeLists.txt b/src/cpp/CMakeLists.txt
+index 1f3f813..798cd9c 100644
+--- a/src/cpp/CMakeLists.txt
++++ b/src/cpp/CMakeLists.txt
+@@ -118,7 +118,7 @@ endif()
+ # determine whether we should statically link boost. we always do this
+ # unless we are building a non-packaged build on linux (in which case
+ # boost dynamic libraries are presumed to be installed on the system ldpath)
+-if(APPLE OR WIN32 OR RSTUDIO_PACKAGE_BUILD)
++if(APPLE OR WIN32 OR RSTUDIO_PACKAGE_BUILD OR DEFINED ENV{CONDA_BUILD})
+    set(Boost_USE_STATIC_LIBS ON)
+ endif()
+ 
+-- 
+2.10.1
+

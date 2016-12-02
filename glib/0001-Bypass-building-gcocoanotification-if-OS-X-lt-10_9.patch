@@ -1,0 +1,255 @@
+--- glib-2.50.2.orig/configure.ac	2016-12-01 14:30:52.000000000 +0000
++++ glib-2.50.2/configure.ac	2016-12-01 14:30:47.000000000 +0000
+@@ -223,22 +223,19 @@
+ ], [CARBON_LIBS=""])
+ 
+ AC_SUBST([CARBON_LIBS])
+-
++ac_cv_have_os_x_9_or_later="no"
+ AS_IF([test "x$glib_have_cocoa" = "xyes"], [
+   AC_DEFINE(HAVE_COCOA, 1, [define to 1 if Cocoa is available])
+   COCOA_LIBS="-Wl,-framework,Foundation"
+   LDFLAGS="$LDFLAGS $COCOA_LIBS"
+-
+-  osx_version=`sw_vers -productVersion`
+-  osx_min_version="10.9.0"
+-  AC_MSG_CHECKING([OSX version >= $osx_min_version])
+-  AS_VERSION_COMPARE([$osx_version], [$osx_min_version], [
+-    AC_MSG_RESULT([no])
+-    AC_MSG_ERROR([OSX version is too old!])
+-  ])
+-  AC_MSG_RESULT([yes])
++  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++#include <AvailabilityMacros.h>
++#if MAC_OS_X_VERSION_MIN_REQUIRED < 1090
++#error Compiling for minimum OS X version before 10.9
++#endif
++  ]])],[ac_cv_have_os_x_9_or_later="yes"])
+ ], [COCOA_LIBS=""])
+-
++AM_CONDITIONAL([MAC_OS_X_9], [test "x$ac_cv_have_os_x_9_or_later" = xyes])
+ AC_SUBST([COCOA_LIBS])
+ 
+ dnl declare --enable-* args and collect ac_help strings
+--- glib-2.50.2.orig/gio/Makefile.am	2016-12-01 14:30:56.000000000 +0000
++++ glib-2.50.2/gio/Makefile.am	2016-12-01 14:30:51.000000000 +0000
+@@ -280,8 +280,10 @@
+ appinfo_sources += $(unix_appinfo_sources)
+ 
+ if OS_COCOA
++if MAC_OS_X_9
+ unix_sources += gcocoanotificationbackend.c
+ endif
++endif
+ 
+ giounixincludedir=$(includedir)/gio-unix-2.0/gio
+ giounixinclude_HEADERS = \
+--- glib-2.50.2.orig/gio/giomodule.c	2016-12-01 14:30:56.000000000 +0000
++++ glib-2.50.2/gio/giomodule.c	2016-12-01 14:30:51.000000000 +0000
+@@ -47,6 +47,10 @@
+ #include "gdesktopappinfo.h"
+ #endif
+ 
++#ifdef HAVE_COCOA
++#include <AvailabilityMacros.h>
++#endif
++
+ /**
+  * SECTION:giomodule
+  * @short_description: Loadable GIO Modules
+@@ -918,7 +922,7 @@
+ extern GType g_network_monitor_portal_get_type (void);
+ #endif
+ 
+-#ifdef HAVE_COCOA
++#ifdef AVAILABLE_MAC_OS_X_VERSION_10_9_AND_LATER
+ extern GType g_cocoa_notification_backend_get_type (void);
+ #endif
+ 
+@@ -1121,7 +1125,7 @@
+       g_type_ensure (g_network_monitor_portal_get_type ());
+       g_type_ensure (g_proxy_resolver_portal_get_type ());
+ #endif
+-#ifdef HAVE_COCOA
++#ifdef AVAILABLE_MAC_OS_X_VERSION_10_9_AND_LATER
+       g_type_ensure (g_cocoa_notification_backend_get_type ());
+ #endif
+ #ifdef G_OS_WIN32
+--- glib-2.50.2.orig/configure	2016-12-01 14:30:52.000000000 +0000
++++ glib-2.50.2/configure	2016-12-01 14:30:47.000000000 +0000
+@@ -565,66 +565,6 @@
+ # Sed expression to map a string onto a valid variable name.
+ as_tr_sh="eval sed 'y%*+%pp%;s%[^_$as_cr_alnum]%_%g'"
+ 
+-as_awk_strverscmp='
+-  # Use only awk features that work with 7th edition Unix awk (1978).
+-  # My, what an old awk you have, Mr. Solaris!
+-  END {
+-    while (length(v1) && length(v2)) {
+-      # Set d1 to be the next thing to compare from v1, and likewise for d2.
+-      # Normally this is a single character, but if v1 and v2 contain digits,
+-      # compare them as integers and fractions as strverscmp does.
+-      if (v1 ~ /^[0-9]/ && v2 ~ /^[0-9]/) {
+-	# Split v1 and v2 into their leading digit string components d1 and d2,
+-	# and advance v1 and v2 past the leading digit strings.
+-	for (len1 = 1; substr(v1, len1 + 1) ~ /^[0-9]/; len1++) continue
+-	for (len2 = 1; substr(v2, len2 + 1) ~ /^[0-9]/; len2++) continue
+-	d1 = substr(v1, 1, len1); v1 = substr(v1, len1 + 1)
+-	d2 = substr(v2, 1, len2); v2 = substr(v2, len2 + 1)
+-	if (d1 ~ /^0/) {
+-	  if (d2 ~ /^0/) {
+-	    # Compare two fractions.
+-	    while (d1 ~ /^0/ && d2 ~ /^0/) {
+-	      d1 = substr(d1, 2); len1--
+-	      d2 = substr(d2, 2); len2--
+-	    }
+-	    if (len1 != len2 && ! (len1 && len2 && substr(d1, 1, 1) == substr(d2, 1, 1))) {
+-	      # The two components differ in length, and the common prefix
+-	      # contains only leading zeros.  Consider the longer to be less.
+-	      d1 = -len1
+-	      d2 = -len2
+-	    } else {
+-	      # Otherwise, compare as strings.
+-	      d1 = "x" d1
+-	      d2 = "x" d2
+-	    }
+-	  } else {
+-	    # A fraction is less than an integer.
+-	    exit 1
+-	  }
+-	} else {
+-	  if (d2 ~ /^0/) {
+-	    # An integer is greater than a fraction.
+-	    exit 2
+-	  } else {
+-	    # Compare two integers.
+-	    d1 += 0
+-	    d2 += 0
+-	  }
+-	}
+-      } else {
+-	# The normal case, without worrying about digits.
+-	d1 = substr(v1, 1, 1); v1 = substr(v1, 2)
+-	d2 = substr(v2, 1, 1); v2 = substr(v2, 2)
+-      }
+-      if (d1 < d2) exit 1
+-      if (d1 > d2) exit 2
+-    }
+-    # Beware Solaris /usr/xgp4/bin/awk (at least through Solaris 10),
+-    # which mishandles some comparisons of empty strings to integers.
+-    if (length(v2)) exit 1
+-    if (length(v1)) exit 2
+-  }
+-'
+ SHELL=${CONFIG_SHELL-/bin/sh}
+ 
+ 
+@@ -893,6 +833,8 @@
+ ENABLE_INSTALLED_TESTS_FALSE
+ ENABLE_INSTALLED_TESTS_TRUE
+ COCOA_LIBS
++MAC_OS_X_9_FALSE
++MAC_OS_X_9_TRUE
+ CARBON_LIBS
+ MS_LIB_AVAILABLE_FALSE
+ MS_LIB_AVAILABLE_TRUE
+@@ -6035,7 +5977,7 @@
+ fi
+ 
+ 
+-
++ac_cv_have_os_x_9_or_later="no"
+ if test "x$glib_have_cocoa" = "xyes"; then :
+ 
+ 
+@@ -6043,34 +5985,37 @@
+ 
+   COCOA_LIBS="-Wl,-framework,Foundation"
+   LDFLAGS="$LDFLAGS $COCOA_LIBS"
++  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
+ 
+-  osx_version=`sw_vers -productVersion`
+-  osx_min_version="10.9.0"
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: checking OSX version >= $osx_min_version" >&5
+-$as_echo_n "checking OSX version >= $osx_min_version... " >&6; }
+-  as_arg_v1=$osx_version
+-as_arg_v2=$osx_min_version
+-awk "$as_awk_strverscmp" v1="$as_arg_v1" v2="$as_arg_v2" /dev/null
+-case $? in #(
+-  1) :
++#include <AvailabilityMacros.h>
++#if MAC_OS_X_VERSION_MIN_REQUIRED < 1090
++#error Compiling for minimum OS X version before 10.9
++#endif
+ 
+-    { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-    as_fn_error $? "OSX version is too old!" "$LINENO" 5
+-   ;; #(
+-  0) :
+-     ;; #(
+-  2) :
+-     ;; #(
+-  *) :
+-     ;;
+-esac
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+-$as_echo "yes" >&6; }
++int
++main ()
++{
++
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_compile "$LINENO"; then :
++  ac_cv_have_os_x_9_or_later="yes"
++fi
++rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+ 
+ else
+   COCOA_LIBS=""
+ fi
++ if test "x$ac_cv_have_os_x_9_or_later" = xyes; then
++  MAC_OS_X_9_TRUE=
++  MAC_OS_X_9_FALSE='#'
++else
++  MAC_OS_X_9_TRUE='#'
++  MAC_OS_X_9_FALSE=
++fi
+ 
+ 
+ 
+@@ -29476,6 +29421,10 @@
+   as_fn_error $? "conditional \"MS_LIB_AVAILABLE\" was never defined.
+ Usually this means the macro was only invoked conditionally." "$LINENO" 5
+ fi
++if test -z "${MAC_OS_X_9_TRUE}" && test -z "${MAC_OS_X_9_FALSE}"; then
++  as_fn_error $? "conditional \"MAC_OS_X_9\" was never defined.
++Usually this means the macro was only invoked conditionally." "$LINENO" 5
++fi
+ if test -z "${ENABLE_INSTALLED_TESTS_TRUE}" && test -z "${ENABLE_INSTALLED_TESTS_FALSE}"; then
+   as_fn_error $? "conditional \"ENABLE_INSTALLED_TESTS\" was never defined.
+ Usually this means the macro was only invoked conditionally." "$LINENO" 5
+--- glib-2.50.2.orig/gio/Makefile.in	2016-12-01 14:30:55.000000000 +0000
++++ glib-2.50.2/gio/Makefile.in	2016-12-01 14:30:51.000000000 +0000
+@@ -172,7 +172,7 @@
+ @OS_UNIX_TRUE@am__append_29 = xdgmime/libxdgmime.la
+ @OS_UNIX_TRUE@am__append_30 = xdgmime/libxdgmime.la
+ @OS_UNIX_TRUE@am__append_31 = $(unix_appinfo_sources)
+-@OS_COCOA_TRUE@@OS_UNIX_TRUE@am__append_32 = gcocoanotificationbackend.c
++@MAC_OS_X_9_TRUE@@OS_COCOA_TRUE@@OS_UNIX_TRUE@am__append_32 = gcocoanotificationbackend.c
+ @HAVE_NETLINK_TRUE@@OS_UNIX_TRUE@am__append_33 = \
+ @HAVE_NETLINK_TRUE@@OS_UNIX_TRUE@	gnetworkmonitornetlink.c \
+ @HAVE_NETLINK_TRUE@@OS_UNIX_TRUE@	gnetworkmonitornetlink.h \
+@@ -521,7 +521,7 @@
+ am__objects_12 = libgio_2_0_la-gnetworkmonitorportal.lo \
+ 	libgio_2_0_la-gproxyresolverportal.lo $(am__objects_11) \
+ 	$(am__objects_1)
+-@OS_COCOA_TRUE@@OS_UNIX_TRUE@am__objects_13 = libgio_2_0_la-gcocoanotificationbackend.lo
++@MAC_OS_X_9_TRUE@@OS_COCOA_TRUE@@OS_UNIX_TRUE@am__objects_13 = libgio_2_0_la-gcocoanotificationbackend.lo
+ @HAVE_NETLINK_TRUE@@OS_UNIX_TRUE@am__objects_14 = libgio_2_0_la-gnetworkmonitornetlink.lo \
+ @HAVE_NETLINK_TRUE@@OS_UNIX_TRUE@	libgio_2_0_la-gnetworkmonitornm.lo \
+ @HAVE_NETLINK_TRUE@@OS_UNIX_TRUE@	$(am__objects_1)

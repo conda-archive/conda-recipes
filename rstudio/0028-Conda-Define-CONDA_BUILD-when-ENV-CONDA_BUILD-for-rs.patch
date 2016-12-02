@@ -1,0 +1,76 @@
+From ab3d9f056db2a76cd15e53ea31f36e2f859fee78 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Mon, 31 Oct 2016 11:56:29 +0000
+Subject: [PATCH 28/42] Conda: Define CONDA_BUILD when ENV{CONDA_BUILD} for
+ rstudio and rsession
+
+A subsequent commit will check this and put all resources under a
+`share/rstudio/` folder instead of `resources/`
+---
+ src/cpp/core/CMakeLists.txt        | 4 ++++
+ src/cpp/desktop-mac/CMakeLists.txt | 2 ++
+ src/cpp/desktop/CMakeLists.txt     | 4 ++++
+ src/cpp/session/CMakeLists.txt     | 4 ++++
+ 4 files changed, 14 insertions(+)
+
+diff --git a/src/cpp/core/CMakeLists.txt b/src/cpp/core/CMakeLists.txt
+index d7678d4..061892d 100644
+--- a/src/cpp/core/CMakeLists.txt
++++ b/src/cpp/core/CMakeLists.txt
+@@ -313,6 +313,10 @@ target_link_libraries(
+    ${CORE_SYSTEM_LIBRARIES}
+ )
+ 
++if(DEFINED ENV{CONDA_BUILD})
++   target_compile_definitions(rstudio-core PRIVATE "-DCONDA_BUILD")
++endif()
++
+ # define executable (for running unit tests)
+ if (RSTUDIO_UNIT_TESTS_ENABLED)
+ 
+diff --git a/src/cpp/desktop-mac/CMakeLists.txt b/src/cpp/desktop-mac/CMakeLists.txt
+index 83cf1a1..a74c687 100644
+--- a/src/cpp/desktop-mac/CMakeLists.txt
++++ b/src/cpp/desktop-mac/CMakeLists.txt
+@@ -105,6 +105,8 @@ else()
+       ${OPENGL_LIBRARY}
+       ${WEBKIT_LIBRARY})
+ 
++   target_compile_definitions(rstudio PRIVATE "-DCONDA_BUILD")
++
+    # install target
+    install(TARGETS rstudio DESTINATION ${RSTUDIO_INSTALL_BIN})
+ 
+diff --git a/src/cpp/desktop/CMakeLists.txt b/src/cpp/desktop/CMakeLists.txt
+index a1f51ed..74e75ab 100644
+--- a/src/cpp/desktop/CMakeLists.txt
++++ b/src/cpp/desktop/CMakeLists.txt
+@@ -337,6 +337,10 @@ if(NOT APPLE OR DEFINED ENV{CONDA_BUILD})
+       ${LINK_FLAGS}
+    )
+ 
++   if(DEFINED ENV{CONDA_BUILD})
++      target_compile_definitions(rstudio PRIVATE "-DCONDA_BUILD")
++   endif()
++
+    # install target
+    install(TARGETS rstudio DESTINATION ${RSTUDIO_INSTALL_BIN})
+ 
+diff --git a/src/cpp/session/CMakeLists.txt b/src/cpp/session/CMakeLists.txt
+index 7f21a6b..ea7a6ab 100644
+--- a/src/cpp/session/CMakeLists.txt
++++ b/src/cpp/session/CMakeLists.txt
+@@ -336,6 +336,10 @@ if(RSTUDIO_DEVELOPMENT OR RSTUDIO_RUN_IN_PLACE)
+    set_target_properties(rsession PROPERTIES SKIP_BUILD_RPATH TRUE)
+ endif()
+ 
++if(DEFINED ENV{CONDA_BUILD})
++   target_compile_definitions(rsession PRIVATE "-DCONDA_BUILD")
++endif()
++
+ # add origin rpath for suse/sles
+ if(RSTUDIO_PACKAGE_BUILD_SLES)
+    set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
+-- 
+2.10.1
+

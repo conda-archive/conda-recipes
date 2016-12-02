@@ -2672,28 +2672,6 @@ diff -urN ncurses-5.9/Ada95/configure ncurses-5.9.new/Ada95/configure
  echo "$as_me: $ac_file is unchanged" >&6;}
      else
        ac_dir=`$as_expr X"$ac_file" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
-diff -urN ncurses-5.9/conda_build.sh ncurses-5.9.new/conda_build.sh
---- ncurses-5.9/conda_build.sh	1970-01-01 01:00:00.000000000 +0100
-+++ ncurses-5.9.new/conda_build.sh	2016-06-28 00:42:56.000000000 +0100
-@@ -0,0 +1,18 @@
-+source activate /home/ray/mc-x64-3.5/envs/_build_placehold_placehold_placehold_placehold_placeho
-+#!/bin/bash
-+
-+exit 1
-+
-+sh ./configure --prefix=${PREFIX} \
-+    --without-debug --without-ada --without-manpages \
-+    --with-shared --disable-overwrite --enable-termcap \
-+    --enable-pc-files --enable-widec \
-+    --with-pkg-config-libdir=${PREFIX}/pc
-+
-+make -j$(getconf _NPROCESSORS_ONLN)
-+make install
-+
-+for _LIB in ncurses ncurses++ form panel menu; do
-+  echo "INPUT(-l${_LIB}w)" > ${PREFIX}/lib/lib${_LIB}.so
-+  ln -s ${_LIB}w.pc ${PREFIX}/lib/pkgconfig/${_LIB}.pc
-+done
 diff -urN ncurses-5.9/configure ncurses-5.9.new/configure
 --- ncurses-5.9/configure	2011-04-01 00:35:51.000000000 +0100
 +++ ncurses-5.9.new/configure	2016-06-28 00:43:23.000000000 +0100

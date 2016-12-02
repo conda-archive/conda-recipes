@@ -1,0 +1,59 @@
+From ffbc88a39ceb4bf2f7e93a02d0d2704ea1975d98 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Mon, 31 Oct 2016 18:25:35 -0400
+Subject: [PATCH 33/42] Conda: LD_LIBRARY_PATH considered harmful
+
+(and DYLD_FALLBACK_LIBRARY_PATH useless due to SIP)
+---
+ src/cpp/core/r_util/REnvironmentPosix.cpp |  2 ++
+ src/cpp/session/CMakeLists.txt            | 15 +++++++++++++++
+ 2 files changed, 17 insertions(+)
+
+diff --git a/src/cpp/core/r_util/REnvironmentPosix.cpp b/src/cpp/core/r_util/REnvironmentPosix.cpp
+index 8cf3bd0..dcbc45a 100644
+--- a/src/cpp/core/r_util/REnvironmentPosix.cpp
++++ b/src/cpp/core/r_util/REnvironmentPosix.cpp
+@@ -684,12 +684,14 @@ bool detectREnvironment(const FilePath& whichRScript,
+                                    resolveRPath(rHomePath,
+                                                 scriptVars["R_DOC_DIR"])));
+ 
++#if !defined(CONDA_BUILD) // This breaks everything on Linux (LD_LIBRARY_PATH ends up without /usr/lib64 etc).
+    // determine library path (existing + r lib dir + r extra lib dirs)
+    std::string libraryPath = rLibraryPath(rHomePath,
+                                           rLibPath,
+                                           ldPathsScript,
+                                           ldLibraryPath);
+    pVars->push_back(std::make_pair(kLibraryPathEnvVariable, libraryPath));
++#endif
+ 
+    // set R_ARCH on the mac if we are running against CRAN R
+ #ifdef __APPLE__
+diff --git a/src/cpp/session/CMakeLists.txt b/src/cpp/session/CMakeLists.txt
+index ea7a6ab..ca575bd 100644
+--- a/src/cpp/session/CMakeLists.txt
++++ b/src/cpp/session/CMakeLists.txt
+@@ -328,6 +328,21 @@ if(WIN32)
+    endif()
+ endif()
+ 
++if(DEFINED ENV{CONDA_BUILD})
++   # use, i.e. don't skip the full RPATH for the build tree
++   set(CMAKE_SKIP_BUILD_RPATH FALSE)
++
++   # when building, don't use the install RPATH already
++   # (but later on when installing)
++   set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
++
++   set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
++
++   # add the automatically determined parts of the RPATH
++   # which point to directories outside the build tree to the install RPATH
++   set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
++endif()
++
+ # define executable
+ add_executable(rsession ${SESSION_SOURCE_FILES} ${SESSION_HEADER_FILES})
+ 
+-- 
+2.10.1
+

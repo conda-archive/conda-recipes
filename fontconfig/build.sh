@@ -1,11 +1,13 @@
 #!/bin/bash
 
-sed s:'@PREFIX@':"$PREFIX":g -i src/fccfg.c
-
 chmod +x configure
-./configure --prefix $PREFIX --enable-libxml2 --disable-docs
+./configure --prefix $PREFIX --enable-libxml2 --disable-docs --disable-iconv
 
-make
+if [[ $(uname) == Darwin ]]; then
+    export DYLD_FALLBACK_LIBRARY_PATH=${PREFIX}/lib
+fi
+
+make V=1
 make install
 
 # Remove computed cache with local fonts

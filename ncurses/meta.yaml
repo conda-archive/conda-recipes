@@ -12,15 +12,12 @@ source:
     - 0001-ncurses-5.9-patch-20121222.patch
 
 build:
-  number: 8
+  number: 10
   detect_binary_files_with_prefix: true
 
 requirements:
   build:
     - pkg-config
-    - gcc
-  run:
-    - libgcc
 
 about:
   home: http://www.gnu.org/software/ncurses/

@@ -1,0 +1,19 @@
+{% set version = '8' %}
+
+package:
+  name: openjdk
+  version: {{ version }}
+
+source:
+  hg_url: http://hg.openjdk.java.net/jdk8/jdk8
+
+build:
+  number: 0
+  skip: True  # [win or osx]
+
+requirements:
+  build:
+    - gcc
+    - mercurial
+  run:
+    - libgcc
