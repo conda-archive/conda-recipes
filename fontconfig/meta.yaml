@@ -11,15 +11,35 @@ source:
 
 requirements:
   build:
-    - freetype  >=2.5.2
-    - libxml2
-    - libpng
+    - freetype 2.5.*
+    - libxml2 2.9.*
+    - libpng 1.6.*
+    - libiconv 1.14.*
     - pkg-config
   run:
-    - freetype  >=2.5.2
-    - libxml2
-    - libpng
+    - freetype 2.5.*
+    - libxml2 2.9.*
+    - libpng 1.6.*
+    - libiconv 1.14.*
+
+test:
+  commands:
+    - fc-cache --help
+    - fc-cat --help
+    - fc-list --help
+    - fc-match --help
+    - fc-pattern --help
+    - fc-query --help
+    - fc-scan --help
+    - fc-validate --help
 
 about:
-    home: http://www.freedesktop.org/wiki/Software/fontconfig/
-    license: BSD
+  home: http://www.freedesktop.org/wiki/Software/fontconfig/
+  license: BSD
+  license_file: COPYING
+  summary: A library for configuring and customizing font access
+  description: |
+    Fontconfig is a library designed to provide system-wide font configuration,
+    customization and application access.
+  doc_url: https://www.freedesktop.org/software/fontconfig/fontconfig-user.html
+  dev_url: https://cgit.freedesktop.org/fontconfig/

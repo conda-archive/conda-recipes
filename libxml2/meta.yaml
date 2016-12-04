@@ -14,15 +14,24 @@ test:
 
 requirements:
   build:
-    - libiconv                [unix]
-    - gcc                     [linux]
-    - zlib                    [unix]
+    - python
+    - libiconv
+    - zlib 1.2.*
   run:
-    - libiconv                [unix]
-    - libgcc                  [linux]
-    - zlib                    [unix]
+    - python
+    - libiconv
+    - zlib 1.2.*
 
 about:
   home: http://xmlsoft.org/
   license: MIT
+  license_family: MIT
+  license_file: COPYING
   summary: The XML C parser and toolkit of Gnome
+  description: |
+     Libxml2 is the XML C parser and toolkit developed for the
+     Gnome project (but usable outside of the Gnome platform).
+     Though the library is written in C a variety of language
+     bindings make it available in other environments.
+  doc_url: http://xmlsoft.org/docs.html
+  dev_url: https://git.gnome.org/browse/libxml2/

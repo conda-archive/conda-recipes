@@ -6,8 +6,8 @@ source:
   url: http://cairographics.org/releases/cairo-1.14.6.tar.xz
   md5: 23a0b2f0235431d35238df1d3a517fdb
 
-build:                   [win]
-  features:              [win]
+build:
+  features:
     - vc9                [win and py27]
     - vc10               [win and py34]
     - vc14               [win and py35]
@@ -33,4 +33,12 @@ requirements:
 about:
   home: http://cairographics.org/
   license: LGPL 2.1, MPL 1.1
-  summary: Cairo is a 2D graphics library with support for multiple output devices.
+  license_family: LGPL
+  license_file: COPYING
+  summary: A 2D graphics library with support for multiple output devices
+  description: |
+    Cairo is a 2D graphics library with support for multiple output devices.
+    It is designed to produce consistent output on all output media while
+    taking advantage of display hardware acceleration when available.
+  doc_url: http://cairographics.org/documentation/
+  dev_url: https://cgit.freedesktop.org/cairo/

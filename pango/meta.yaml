@@ -6,29 +6,34 @@ source:
   url: http://ftp.gnome.org/pub/GNOME/sources/pango/1.40/pango-1.40.3.tar.xz
   md5: 17c26720f5a862a12f7e1745e2f1d966
 
-build:
-  number: 3
-  detect_binary_files_with_prefix: true
-
 requirements:
   build:
     - cairo 1.14.*
-    - fontconfig
+    - fontconfig 2.12.*
     - freetype 2.5.*
     - harfbuzz
     - glib 2.50.*
-    - libffi              [linux]
     - libpng 1.6.*
+    - xz
   run:
     - cairo 1.14.*
-    - fontconfig
+    - fontconfig 2.12.*
     - freetype 2.5.*
-    - harfbuzz
+    - harfbuzz 0.9.*
     - glib 2.50.*
-    - libffi              [linux]
     - libpng 1.6.*
 
 about:
-  license: LGPL
   home: http://www.pango.org/
-  summary: "Pango is a lib for laying out and rendering of text with emphasis on i18n"
+  license: LGPL
+  license_family: LGPL
+  license_file: COPYING
+  summary: Text layout and rendering engine
+  description: |
+    Pango is a library for laying out and rendering of text, with an emphasis
+    on internationalization. Pango can be used anywhere that text layout is
+    needed, though most of the work on Pango so far has been done in the
+    context of the GTK+ widget toolkit. Pango forms the core of text and font
+    handling for GTK+-2.x.
+  doc_url: http://www.pango.org/Manual
+  dev_url: http://git.gnome.org/cgit/pango/

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 declare -a _extra_config
 
@@ -17,3 +17,10 @@ make install || exit 1
 cd $PREFIX
 sed -i.bak 's|lib/../lib64|lib|g' lib/*.la lib/pkgconfig/*.pc
 rm lib/*.la.bak lib/pkgconfig/*.pc.bak
+# The glib build system compiles these.
+# (meta.yaml must also refer to them in
+# build/skip_compile_pyc)
+rm -rf share/glib-2.0/codegen/*.pyc
+rm -rf share/glib-2.0/*.pyc
+rm -rf share/glib-2.0/gdb/*.pyc
+rm -rf share/gdb/auto-load/*

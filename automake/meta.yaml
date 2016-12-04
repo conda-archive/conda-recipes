@@ -20,10 +20,11 @@ test:
 about:
   home: http://www.gnu.org/software/automake/
   license: GPL3
+  license_family: GPL3
   license_file: COPYING
   summary: Tool to automatically generate Makefile.in files
   description: |
     Automake automatically generates Makefile.in files compliant with
     the GNU Coding Standards. Note: Automake requires the use of Autoconf.
   doc_url: https://www.gnu.org/software/automake/#documentation
-
+  dev_url: http://savannah.gnu.org/git/?group=automake
