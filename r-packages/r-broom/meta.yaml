@@ -1,0 +1,105 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-broom
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.4.1"
+
+source:
+  fn: broom_0.4.1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/broom_0.4.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/broom/broom_0.4.1.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: knitr, boot, survival, gam, glmnet, lfe, Lahman, MASS, sp, maps, maptools, multcomp, testthat, lme4, zoo, lmtest, plm, biglm, ggplot2, nnet, geepack, AUC, ergm, network, statnet.common, xergm, btergm, binGroup, Hmisc, bbmle, gamlss, rstan, rstanarm, coda, gmm, Matrix, ks, purrr, orcutt, mgcv, lmodel2, poLCA, mclust, covr
+requirements:
+  build:
+    - r-base
+    - r-dplyr
+    - r-nlme
+    - r-plyr
+    - r-psych
+    - r-reshape2
+    - r-stringr
+    - r-tidyr
+
+  run:
+    - r-base
+    - r-dplyr
+    - r-nlme
+    - r-plyr
+    - r-psych
+    - r-reshape2
+    - r-stringr
+    - r-tidyr
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('broom')" # [not win]
+    - "\"%R%\" -e \"library('broom')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://github.com/dgrtwo/broom
+  license: MIT + file LICENSE
+  summary: 'Convert statistical analysis objects from R into tidy data frames, so that they can
+    more easily be combined, reshaped and otherwise processed with tools like ''dplyr'',
+    ''tidyr'' and ''ggplot2''. The package provides three S3 generics: tidy, which summarizes
+    a model''s statistical findings such as coefficients of a regression; augment, which
+    adds columns to the original data such as predictions, residuals and cluster assignments;
+    and glance, which provides a one-row summary of model-level statistics.'
+
+  license_family: MIT
+
+# The original CRAN metadata for this package was:
+
+# Package: broom
+# Type: Package
+# Title: Convert Statistical Analysis Objects into Tidy Data Frames
+# Version: 0.4.1
+# Date: 2016-06-24
+# Authors@R: c( person("David", "Robinson", email = "admiral.david@gmail.com", role = c("aut", "cre")), person("Matthieu", "Gomez", email = "mattg@princeton.edu", role = "ctb"), person("Boris", "Demeshev", email = "boris.demeshev@gmail.com", role = "ctb"), person("Dieter", "Menne", email = "dieter.menne@menne-biomed.de", role = "ctb"), person("Benjamin", "Nutter", email = "nutter@battelle.org", role = "ctb"), person("Luke", "Johnston", email = "luke.johnston@mail.utoronto.ca", role = "ctb"), person("Ben", "Bolker", email = "bolker@mcmaster.ca", role = "ctb"), person("Francois", "Briatte", email = "f.briatte@gmail.com", role = "ctb"), person("Jeffrey", "Arnold", email = "jeffrey.arnold@gmail.com", role = "ctb"), person("Jonah", "Gabry", email = "jsg2201@columbia.edu", role = "ctb"), person("Luciano", "Selzer", email = "luciano.selzer@gmail.com", role = "ctb"), person("Gavin", "Simpson", email = "ucfagls@gmail.com", role = "ctb"), person("Jens", "Preussner", email = " jens.preussner@mpi-bn.mpg.de", role = "ctb"), person("Jay", "Hesselberth", email = "jay.hesselberth@gmail.com", role = "ctb"), person("Hadley", "Wickham", email = "hadley@rstudio.com", role = "ctb") )
+# Maintainer: David Robinson <admiral.david@gmail.com>
+# Description: Convert statistical analysis objects from R into tidy data frames, so that they can more easily be combined, reshaped and otherwise processed with tools like 'dplyr', 'tidyr' and 'ggplot2'. The package provides three S3 generics: tidy, which summarizes a model's statistical findings such as coefficients of a regression; augment, which adds columns to the original data such as predictions, residuals and cluster assignments; and glance, which provides a one-row summary of model-level statistics.
+# Imports: plyr, dplyr, tidyr, psych, stringr, reshape2, nlme, methods
+# Suggests: knitr, boot, survival, gam, glmnet, lfe, Lahman, MASS, sp, maps, maptools, multcomp, testthat, lme4, zoo, lmtest, plm, biglm, ggplot2, nnet, geepack, AUC, ergm, network, statnet.common, xergm, btergm, binGroup, Hmisc, bbmle, gamlss, rstan, rstanarm, coda, gmm, Matrix, ks, purrr, orcutt, mgcv, lmodel2, poLCA, mclust, covr
+# URL: http://github.com/dgrtwo/broom
+# BugReports: http://github.com/dgrtwo/broom/issues
+# VignetteBuilder: knitr
+# License: MIT + file LICENSE
+# RoxygenNote: 5.0.1
+# NeedsCompilation: no
+# Packaged: 2016-06-24 13:38:00 UTC; dgrtwo
+# Author: David Robinson [aut, cre], Matthieu Gomez [ctb], Boris Demeshev [ctb], Dieter Menne [ctb], Benjamin Nutter [ctb], Luke Johnston [ctb], Ben Bolker [ctb], Francois Briatte [ctb], Jeffrey Arnold [ctb], Jonah Gabry [ctb], Luciano Selzer [ctb], Gavin Simpson [ctb], Jens Preussner [ctb], Jay Hesselberth [ctb], Hadley Wickham [ctb]
+# Repository: CRAN
+# Date/Publication: 2016-06-24 19:14:04
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

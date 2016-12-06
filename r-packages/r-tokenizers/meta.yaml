@@ -1,0 +1,99 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-tokenizers
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.1.4"
+
+source:
+  fn: tokenizers_0.1.4.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/tokenizers_0.1.4.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/tokenizers/tokenizers_0.1.4.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, covr, knitr, rmarkdown
+requirements:
+  build:
+    - r-base
+    - r-rcpp >=0.12.3
+    - r-snowballc >=0.5.1
+    - r-stringi >=1.0.1
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
+
+  run:
+    - r-base
+    - r-rcpp >=0.12.3
+    - r-snowballc >=0.5.1
+    - r-stringi >=1.0.1
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('tokenizers')" # [not win]
+    - "\"%R%\" -e \"library('tokenizers')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/ropensci/tokenizers
+  license: MIT + file LICENSE
+  summary: Convert natural language text into tokens. The tokenizers have a consistent interface
+    and are compatible with Unicode, thanks to being built on the 'stringi' package.
+    Includes tokenizers for shingled n-grams, skip n-grams, words, word stems, sentences,
+    paragraphs, characters, lines, and regular expressions.
+  license_family: MIT
+
+# The original CRAN metadata for this package was:
+
+# Package: tokenizers
+# Type: Package
+# Title: A Consistent Interface to Tokenize Natural Language Text
+# Version: 0.1.4
+# Description: Convert natural language text into tokens. The tokenizers have a consistent interface and are compatible with Unicode, thanks to being built on the 'stringi' package. Includes tokenizers for shingled n-grams, skip n-grams, words, word stems, sentences, paragraphs, characters, lines, and regular expressions.
+# License: MIT + file LICENSE
+# LazyData: yes
+# Authors@R: c(person("Lincoln", "Mullen", role = c("aut", "cre"), email = "lincoln@lincolnmullen.com"), person("Dmitriy", "Selivanov", role = c("ctb"), email = "selivanov.dmitriy@gmail.com"))
+# URL: https://github.com/ropensci/tokenizers
+# BugReports: https://github.com/ropensci/tokenizers/issues
+# RoxygenNote: 5.0.1
+# Depends: R (>= 3.1.3)
+# Imports: stringi (>= 1.0.1), Rcpp (>= 0.12.3), SnowballC (>= 0.5.1)
+# LinkingTo: Rcpp
+# Suggests: testthat, covr, knitr, rmarkdown
+# VignetteBuilder: knitr
+# NeedsCompilation: yes
+# Packaged: 2016-08-29 19:15:04 UTC; lmullen
+# Author: Lincoln Mullen [aut, cre], Dmitriy Selivanov [ctb]
+# Maintainer: Lincoln Mullen <lincoln@lincolnmullen.com>
+# Repository: CRAN
+# Date/Publication: 2016-08-29 22:59:29
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
