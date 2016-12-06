@@ -56,7 +56,7 @@ about:
   license: GPL
   summary: Anderson-Darling GoF test with p-value calculation based on Marsaglia's 2004 paper
     "Evaluating the Anderson-Darling Distribution"
-  license_family: GPL3
+  license_family: GPL
 
 # The original CRAN metadata for this package was:
 

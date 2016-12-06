@@ -5,13 +5,13 @@ package:
   name: r-reshape2
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.4.1"
+  version: "1.4.2"
 
 source:
-  fn: reshape2_1.4.1.tar.gz
+  fn: reshape2_1.4.2.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/reshape2_1.4.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/reshape2/reshape2_1.4.1.tar.gz
+    - http://cran.r-project.org/src/contrib/reshape2_1.4.2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/reshape2/reshape2_1.4.2.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -24,7 +24,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -63,19 +63,19 @@ test:
 about:
   home: https://github.com/hadley/reshape
   license: MIT + file LICENSE
-  summary: 'Flexibly restructure and aggregate data using just two functions: melt and dcast
-    (or acast).'
+  summary: 'Flexibly restructure and aggregate data using just two functions: melt and ''dcast''
+    (or ''acast'').'
 
   license_family: MIT
 
 # The original CRAN metadata for this package was:
 
 # Package: reshape2
-# Title: Flexibly Reshape Data: A Reboot of the Reshape Package.
-# Version: 1.4.1
+# Title: Flexibly Reshape Data: A Reboot of the Reshape Package
+# Version: 1.4.2
 # Author: Hadley Wickham <h.wickham@gmail.com>
 # Maintainer: Hadley Wickham <h.wickham@gmail.com>
-# Description: Flexibly restructure and aggregate data using just two functions: melt and dcast (or acast).
+# Description: Flexibly restructure and aggregate data using just two functions: melt and 'dcast' (or 'acast').
 # URL: https://github.com/hadley/reshape
 # BugReports: https://github.com/hadley/reshape/issues
 # LinkingTo: Rcpp
@@ -83,10 +83,11 @@ about:
 # Suggests: testthat (>= 0.8.0), lattice
 # License: MIT + file LICENSE
 # LazyData: true
-# Packaged: 2014-12-05 16:34:10 UTC; hadley
+# RoxygenNote: 5.0.1.9000
 # NeedsCompilation: yes
+# Packaged: 2016-10-21 19:43:35 UTC; hadley
 # Repository: CRAN
-# Date/Publication: 2014-12-06 06:56:59
+# Date/Publication: 2016-10-22 12:17:37
 
 # See
 # http://docs.continuum.io/conda/build.html for

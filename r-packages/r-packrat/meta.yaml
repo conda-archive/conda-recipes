@@ -5,13 +5,13 @@ package:
   name: r-packrat
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.4.7_1"
+  version: "0.4.8_1"
 
 source:
-  fn: packrat_0.4.7-1.tar.gz
+  fn: packrat_0.4.8-1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/packrat_0.4.7-1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/packrat/packrat_0.4.7-1.tar.gz
+    - http://cran.r-project.org/src/contrib/packrat_0.4.8-1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/packrat/packrat_0.4.8-1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -63,7 +63,7 @@ about:
 # Package: packrat
 # Type: Package
 # Title: A Dependency Management System for Projects and their R Package Dependencies
-# Version: 0.4.7-1
+# Version: 0.4.8-1
 # Author: Kevin Ushey, Jonathan McPherson, Joe Cheng, Aron Atkins, JJ Allaire
 # Maintainer: Kevin Ushey <kevin@rstudio.com>
 # Description: Manage the R packages your project depends on in an isolated, portable, and reproducible way.
@@ -74,11 +74,11 @@ about:
 # Enhances: BiocInstaller
 # URL: https://github.com/rstudio/packrat/
 # BugReports: https://github.com/rstudio/packrat/issues
-# RoxygenNote: 5.0.0
+# RoxygenNote: 5.0.1
 # NeedsCompilation: no
-# Packaged: 2016-03-28 17:07:31 UTC; kevinushey
+# Packaged: 2016-09-07 21:30:04 UTC; kevin
 # Repository: CRAN
-# Date/Publication: 2016-03-28 23:49:40
+# Date/Publication: 2016-09-07 23:37:52
 
 # See
 # http://docs.continuum.io/conda/build.html for

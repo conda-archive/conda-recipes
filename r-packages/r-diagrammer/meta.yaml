@@ -5,13 +5,13 @@ package:
   name: r-diagrammer
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.8.2"
+  version: "0.8.4"
 
 source:
-  fn: DiagrammeR_0.8.2.tar.gz
+  fn: DiagrammeR_0.8.4.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/DiagrammeR_0.8.2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/DiagrammeR/DiagrammeR_0.8.2.tar.gz
+    - http://cran.r-project.org/src/contrib/DiagrammeR_0.8.4.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/DiagrammeR/DiagrammeR_0.8.4.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,23 +31,27 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: knitr, testthat
+# Suggests: DiagrammeRsvg, knitr, magrittr, rsvg, testthat
 requirements:
   build:
     - r-base
-    - r-htmlwidgets >=0.5
-    - r-rstudioapi >=0.3.1
-    - r-scales >=0.3.0
+    - r-htmlwidgets >=0.6
+    - r-igraph >=1.0.0
+    - r-influencer >=0.1.0
+    - r-rstudioapi >=0.6
+    - r-scales >=0.4.0
     - r-stringr >=1.0.0
-    - r-visnetwork >=0.1.2
+    - r-visnetwork >=1.0.0
 
   run:
     - r-base
-    - r-htmlwidgets >=0.5
-    - r-rstudioapi >=0.3.1
-    - r-scales >=0.3.0
+    - r-htmlwidgets >=0.6
+    - r-igraph >=1.0.0
+    - r-influencer >=0.1.0
+    - r-rstudioapi >=0.6
+    - r-scales >=0.4.0
     - r-stringr >=1.0.0
-    - r-visnetwork >=0.1.2
+    - r-visnetwork >=1.0.0
 
 test:
   commands:
@@ -72,22 +76,22 @@ about:
 # Package: DiagrammeR
 # Type: Package
 # Title: Create Graph Diagrams and Flowcharts Using R
-# Version: 0.8.2
-# Date: 2016-02-01
+# Version: 0.8.4
+# Date: 2016-07-16
 # Authors@R: c( person( "Knut", "Sveidqvist" , role = c("aut", "cph") , comment = "mermaid.js library in htmlwidgets/lib, http://github.com/knsv/mermaid/" ), person( "Mike", "Bostock" , role = c("aut", "cph") , comment = "d3.js library in htmlwidgets/lib, http://d3js.org" ), person( "Chris", "Pettitt" , role = c("aut", "cph") , comment = "dagre-d3.js library in htmlwidgets/lib, http://github.com/cpettitt/dagre-d3" ), person( "Mike", "Daines" , role = c("aut", "cph") , comment = "viz.js library in htmlwidgets/lib, http://github.com/mdaines/viz.js/" ), person( "Andrei", "Kashcha" , role = c("aut", "cph") , comment = "vivagraphjs library in htmlwidgets/lib, https://github.com/anvaka/VivaGraphJS" ), person( "Richard", "Iannone" , role = c("aut", "cre") , comment = "R interface" , email = "riannone@me.com" ) )
 # Maintainer: Richard Iannone <riannone@me.com>
 # Description: Create graph diagrams and flowcharts using R.
 # License: MIT + file LICENSE
-# Imports: htmlwidgets (>= 0.5), rstudioapi (>= 0.3.1), stringr (>= 1.0.0), visNetwork (>= 0.1.2), scales (>= 0.3.0)
+# Imports: htmlwidgets (>= 0.6), igraph (>= 1.0.0), influenceR (>= 0.1.0), rstudioapi (>= 0.6), stringr (>= 1.0.0), visNetwork (>= 1.0.0), scales (>= 0.4.0)
 # URL: https://github.com/rich-iannone/DiagrammeR
 # BugReports: https://github.com/rich-iannone/DiagrammeR/issues
-# Suggests: knitr, testthat
-# RoxygenNote: 5.0.0
+# Suggests: DiagrammeRsvg, knitr, magrittr, rsvg, testthat
+# RoxygenNote: 5.0.1
 # NeedsCompilation: no
-# Packaged: 2016-02-01 18:26:58 UTC; riannone
+# Packaged: 2016-07-17 01:14:14 UTC; riannone
 # Author: Knut Sveidqvist [aut, cph] (mermaid.js library in htmlwidgets/lib, http://github.com/knsv/mermaid/), Mike Bostock [aut, cph] (d3.js library in htmlwidgets/lib, http://d3js.org), Chris Pettitt [aut, cph] (dagre-d3.js library in htmlwidgets/lib, http://github.com/cpettitt/dagre-d3), Mike Daines [aut, cph] (viz.js library in htmlwidgets/lib, http://github.com/mdaines/viz.js/), Andrei Kashcha [aut, cph] (vivagraphjs library in htmlwidgets/lib, https://github.com/anvaka/VivaGraphJS), Richard Iannone [aut, cre] (R interface)
 # Repository: CRAN
-# Date/Publication: 2016-02-01 21:46:56
+# Date/Publication: 2016-07-17 16:09:19
 
 # See
 # http://docs.continuum.io/conda/build.html for

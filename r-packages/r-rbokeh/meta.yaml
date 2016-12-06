@@ -5,13 +5,13 @@ package:
   name: r-rbokeh
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.4.2"
+  version: "0.5.0"
 
 source:
-  fn: rbokeh_0.4.2.tar.gz
+  fn: rbokeh_0.5.0.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/rbokeh_0.4.2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/rbokeh/rbokeh_0.4.2.tar.gz
+    - http://cran.r-project.org/src/contrib/rbokeh_0.5.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/rbokeh/rbokeh_0.5.0.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,7 +31,7 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat, data.table, lattice, roxygen2 (>= 5.0.0)
+# Suggests: testthat, data.table, lattice, lintr, roxygen2 (>= 5.0.0), knitr
 requirements:
   build:
     - r-base
@@ -74,32 +74,34 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: https://hafen.github.io/rbokeh
+  home: https://hafen.github.io/rbokeh https://github.com/bokeh/rbokeh
   license: MIT + file LICENSE
-  summary: R interface for creating plots in Bokeh. Bokeh by Continuum Analytics, \url{http://bokeh.pydata.org/en/latest/}.
+  summary: A native R plotting library that provides a flexible declarative interface for creating
+    interactive web-based graphics, backed by the Bokeh visualization library <http://bokeh.pydata.org/>.
   license_family: MIT
 
 # The original CRAN metadata for this package was:
 
 # Package: rbokeh
 # Title: R Interface for Bokeh
-# Version: 0.4.2
-# Authors@R: c( person("Ryan", "Hafen", email = "rhafen@gmail.com", role = c("aut", "cre")), person("Kenton", "Russell", email = "kent.russell@timelyportfolio.com", role = "ctb"), person("Jonathan", "Owen", email = "jonathanro@gmail.com", role = "ctb"), person("Barret", "Schloerkep", email = "schloerke@gmail.com", role = "ctb"), person("Saptasrhi", "Guha", email = "saptarshi.guha@gmail.com", role = "ctb"), person("Continuum Analytics, Inc.", role = c("aut", "cph"), comment = "Bokeh library in htmlwidgets/lib, http://bokeh.pydata.org" ))
-# Description: R interface for creating plots in Bokeh. Bokeh by Continuum Analytics, \url{http://bokeh.pydata.org/en/latest/}.
-# URL: https://hafen.github.io/rbokeh
-# BugReports: https://github.com/hafen/rbokeh/issues
+# Version: 0.5.0
+# Authors@R: c( person("Ryan", "Hafen", email = "rhafen@gmail.com", role = c("aut", "cre")), person("Kenton", "Russell", email = "kent.russell@timelyportfolio.com", role = "ctb"), person("Jonathan", "Owen", email = "jonathanro@gmail.com", role = "ctb"), person("Barret", "Schloerke", email = "schloerke@gmail.com", role = "ctb"), person("Saptasrhi", "Guha", email = "saptarshi.guha@gmail.com", role = "ctb"), person("Continuum Analytics, Inc.", role = c("aut", "cph"), comment = "Bokeh library in htmlwidgets/lib, http://bokeh.pydata.org" ))
+# Description: A native R plotting library that provides a flexible declarative interface for creating interactive web-based graphics, backed by the Bokeh visualization library <http://bokeh.pydata.org/>.
+# URL: https://hafen.github.io/rbokeh https://github.com/bokeh/rbokeh
+# BugReports: https://github.com/bokeh/rbokeh/issues
 # License: MIT + file LICENSE
 # LazyData: true
 # NeedsCompilation: no
 # Imports: htmlwidgets (>= 0.5), maps, methods, jsonlite, digest, hexbin, lazyeval, pryr, magrittr, ggplot2, scales, gistr
-# Suggests: testthat, data.table, lattice, roxygen2 (>= 5.0.0)
+# Suggests: testthat, data.table, lattice, lintr, roxygen2 (>= 5.0.0), knitr
 # Enhances: shiny (>= 0.12)
 # RoxygenNote: 5.0.1
-# Packaged: 2016-03-04 18:40:24 UTC; hafen
-# Author: Ryan Hafen [aut, cre], Kenton Russell [ctb], Jonathan Owen [ctb], Barret Schloerkep [ctb], Saptasrhi Guha [ctb], Continuum Analytics, Inc. [aut, cph] (Bokeh library in htmlwidgets/lib, http://bokeh.pydata.org)
+# VignetteBuilder: knitr
+# Packaged: 2016-10-11 17:12:44 UTC; hafen
+# Author: Ryan Hafen [aut, cre], Kenton Russell [ctb], Jonathan Owen [ctb], Barret Schloerke [ctb], Saptasrhi Guha [ctb], Continuum Analytics, Inc. [aut, cph] (Bokeh library in htmlwidgets/lib, http://bokeh.pydata.org)
 # Maintainer: Ryan Hafen <rhafen@gmail.com>
 # Repository: CRAN
-# Date/Publication: 2016-03-09 01:06:25
+# Date/Publication: 2016-10-12 00:08:32
 
 # See
 # http://docs.continuum.io/conda/build.html for

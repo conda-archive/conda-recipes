@@ -5,13 +5,13 @@ package:
   name: r-coin
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.1_2"
+  version: "1.1_3"
 
 source:
-  fn: coin_1.1-2.tar.gz
+  fn: coin_1.1-3.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/coin_1.1-2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/coin/coin_1.1-2.tar.gz
+    - http://cran.r-project.org/src/contrib/coin_1.1-3.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/coin/coin_1.1-3.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,13 +31,13 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: parallel, xtable, e1071, vcd, TH.data
+# Suggests: parallel, xtable, e1071, vcd, TH.data (>= 1.0-7)
 requirements:
   build:
     - r-base
     - r-modeltools >=0.2_9
     - r-multcomp
-    - r-mvtnorm >=1.0_3
+    - r-mvtnorm >=1.0_5
     - r-survival
     - posix               # [win]
     - {{native}}toolchain # [win]
@@ -47,7 +47,7 @@ requirements:
     - r-base
     - r-modeltools >=0.2_9
     - r-multcomp
-    - r-mvtnorm >=1.0_3
+    - r-mvtnorm >=1.0_5
     - r-survival
 
 test:
@@ -73,24 +73,24 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: coin
-# Version: 1.1-2
-# Date: 2015-11-13
+# Version: 1.1-3
+# Date: 2016-11-24
 # Title: Conditional Inference Procedures in a Permutation Test Framework
 # Authors@R: c(person("Torsten", "Hothorn", role = c("aut", "cre"), email = "Torsten.Hothorn@R-project.org"), person("Kurt", "Hornik", role = "aut"), person("Mark A.", "van de Wiel", role = "aut"), person("Henric", "Winell", role = "aut"), person("Achim", "Zeileis", role = "aut"))
 # Description: Conditional inference procedures for the general independence problem including two-sample, K-sample (non-parametric ANOVA), correlation, censored, ordered and multivariate problems.
 # Depends: R (>= 2.14.0), methods, survival
-# Imports: stats, modeltools (>= 0.2-9), mvtnorm (>= 1.0-3), multcomp
-# Suggests: parallel, xtable, e1071, vcd, TH.data
+# Imports: stats, modeltools (>= 0.2-9), mvtnorm (>= 1.0-5), multcomp
+# Suggests: parallel, xtable, e1071, vcd, TH.data (>= 1.0-7)
 # LazyData: yes
 # NeedsCompilation: yes
 # ByteCompile: yes
 # License: GPL-2
 # URL: http://coin.r-forge.r-project.org
-# Packaged: 2015-11-16 10:15:00 UTC; hothorn
+# Packaged: 2016-11-28 08:48:45 UTC; hothorn
 # Author: Torsten Hothorn [aut, cre], Kurt Hornik [aut], Mark A. van de Wiel [aut], Henric Winell [aut], Achim Zeileis [aut]
 # Maintainer: Torsten Hothorn <Torsten.Hothorn@R-project.org>
 # Repository: CRAN
-# Date/Publication: 2015-11-16 16:20:12
+# Date/Publication: 2016-11-28 13:04:30
 
 # See
 # http://docs.continuum.io/conda/build.html for

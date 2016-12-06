@@ -1,6 +1,6 @@
 {% set native = 'm2w64-' if win else '' %}
 {% set posix= 'm24-' if win else '' %}
-{% set ver= '3.3.1' %}
+{% set ver= '3.3.2' %}
 
 package:
   name: r-base
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://cran.r-project.org/src/base/R-3/R-{{ ver }}.tar.gz
-  sha1: df853188d3e2b1c2d32393016401c432a5192c4d
+  sha1: 0e39e9c2d28fe6bab9c55ca23e08ba8727fd2fca
   patches:
     - mac-unicode.patch # [osx]
     - 0002-Win32-Fix-trio-config-h-include-depth-issue.patch
@@ -19,12 +19,10 @@ source:
     - 0007-Win32-MSYS2-ENV_CONV_EXCL_R_ARCH.patch
     - 0008-Darwin-set-DYLD_FALLBACK_LIBRARY_PATH.patch
     - 0009-R-3.3.0-Use-AC_SEARCH_LIBS-to-search-for-ncurses.patch
-    - 0010-configure-Fix-typo-CPPLAGS.patch
     - 0011-Linux-Do-not-modify-LD_LIBRARY_PATH.patch
     - 0012-macOS-include-cairo_h-not-cairo-xlib_h.patch
 
 build:
-  number: 6
   rpaths:
     - lib/R/lib/
     - lib/
@@ -62,6 +60,7 @@ requirements:
     - {{native}}icu            # [win]
     - {{native}}pcre 8.39*     # [not win]
     - {{native}}pcre           # [win]
+    - mkl
     - {{native}}tk
     - {{native}}zlib
     - {{native}}gsl
@@ -94,6 +93,7 @@ requirements:
     - {{native}}icu            # [win]
     - {{native}}pcre 8.39*     # [not win]
     - {{native}}pcre           # [win]
+    - mkl
     - {{native}}tk
     - {{native}}zlib
     - {{native}}gsl

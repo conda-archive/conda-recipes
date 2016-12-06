@@ -5,13 +5,13 @@ package:
   name: r-rstudioapi
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.5"
+  version: "0.6"
 
 source:
-  fn: rstudioapi_0.5.tar.gz
+  fn: rstudioapi_0.6.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/rstudioapi_0.5.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/rstudioapi/rstudioapi_0.5.tar.gz
+    - http://cran.r-project.org/src/contrib/rstudioapi_0.6.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/rstudioapi/rstudioapi_0.6.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -63,18 +63,17 @@ about:
 # Package: rstudioapi
 # Title: Safely Access the RStudio API
 # Description: Access the RStudio API (if available) and provide informative error messages when it's not.
-# Version: 0.5
-# Date: 2016-01-24
+# Version: 0.6
 # Authors@R: c( person("Hadley", "Wickham", role = c("aut"), email = "hadley@rstudio.com"), person("JJ", "Allaire", role = c("aut", "cre"), email = "jj@rstudio.com"), person("Kevin", "Ushey", role = c("ctb"), email = "kevin@rstudio.com"), person(family = "RStudio", role = "cph") )
 # Maintainer: JJ Allaire <jj@rstudio.com>
 # License: MIT + file LICENSE
 # RoxygenNote: 5.0.1
 # Suggests: testthat
 # NeedsCompilation: no
-# Packaged: 2016-01-24 12:04:57 UTC; jjallaire
+# Packaged: 2016-06-27 03:13:50 UTC; jjallaire
 # Author: Hadley Wickham [aut], JJ Allaire [aut, cre], Kevin Ushey [ctb], RStudio [cph]
 # Repository: CRAN
-# Date/Publication: 2016-01-24 15:45:34
+# Date/Publication: 2016-06-27 07:00:05
 
 # See
 # http://docs.continuum.io/conda/build.html for

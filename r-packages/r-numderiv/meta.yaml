@@ -5,13 +5,13 @@ package:
   name: r-numderiv
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "2014.2_1"
+  version: "2016.8_1"
 
 source:
-  fn: numDeriv_2014.2-1.tar.gz
+  fn: numDeriv_2016.8-1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/numDeriv_2014.2-1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/numDeriv/numDeriv_2014.2-1.tar.gz
+    - http://cran.r-project.org/src/contrib/numDeriv_2016.8-1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/numDeriv/numDeriv_2016.8-1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -55,32 +55,32 @@ about:
   home: http://optimizer.r-forge.r-project.org/
   license: GPL-2
   summary: 'Methods for calculating (usually) accurate numerical first and second order derivatives.
-    Accurate calculations  are done using Richardson''s extrapolation or, when applicable,
-    a complex step derivative is available. A simple difference  method is also provided.
-    Simple difference is (usually) less accurate but is much quicker than Richardson''s
-    extrapolation and provides a  useful cross-check.  Methods are provided for real
-    scalar and vector valued functions. '
+    Accurate calculations  are done using ''Richardson''''s'' extrapolation or, when
+    applicable, a complex step derivative is available. A simple difference  method
+    is also provided. Simple difference is (usually) less accurate but is much quicker
+    than ''Richardson''''s'' extrapolation and provides a  useful cross-check.  Methods
+    are provided for real scalar and vector valued functions. '
 
   license_family: GPL2
 
 # The original CRAN metadata for this package was:
 
 # Package: numDeriv
-# Version: 2014.2-1
+# Version: 2016.8-1
 # Title: Accurate Numerical Derivatives
-# Description: Methods for calculating (usually) accurate numerical first and second order derivatives. Accurate calculations  are done using Richardson's extrapolation or, when applicable, a complex step derivative is available. A simple difference  method is also provided. Simple difference is (usually) less accurate but is much quicker than Richardson's extrapolation and provides a  useful cross-check.  Methods are provided for real scalar and vector valued functions.
+# Description: Methods for calculating (usually) accurate numerical first and second order derivatives. Accurate calculations  are done using 'Richardson''s' extrapolation or, when applicable, a complex step derivative is available. A simple difference  method is also provided. Simple difference is (usually) less accurate but is much quicker than 'Richardson''s' extrapolation and provides a  useful cross-check.  Methods are provided for real scalar and vector valued functions.
 # Depends: R (>= 2.11.1)
 # LazyLoad: yes
 # ByteCompile: yes
 # License: GPL-2
-# Copyright: 2006-2011, Bank of Canada. 2012-2015, Paul Gilbert
+# Copyright: 2006-2011, Bank of Canada. 2012-2016, Paul Gilbert
 # Author: Paul Gilbert and Ravi Varadhan
 # Maintainer: Paul Gilbert <pgilbert.ttv9z@ncf.ca>
 # URL: http://optimizer.r-forge.r-project.org/
 # NeedsCompilation: no
-# Packaged: 2015-04-24 19:07:06 UTC; paul
+# Packaged: 2016-08-21 23:03:32 UTC; paul
 # Repository: CRAN
-# Date/Publication: 2015-05-04 23:41:52
+# Date/Publication: 2016-08-27 00:25:32
 
 # See
 # http://docs.continuum.io/conda/build.html for

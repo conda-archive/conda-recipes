@@ -5,13 +5,13 @@ package:
   name: r-ggvis
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.4.2"
+  version: "0.4.3"
 
 source:
-  fn: ggvis_0.4.2.tar.gz
+  fn: ggvis_0.4.3.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/ggvis_0.4.2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/ggvis/ggvis_0.4.2.tar.gz
+    - http://cran.r-project.org/src/contrib/ggvis_0.4.3.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/ggvis/ggvis_0.4.3.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -69,30 +69,31 @@ about:
   home: http://ggvis.rstudio.com/
   license: GPL-2 | file LICENSE
   summary: An implementation of an interactive grammar of graphics, taking the best parts of
-    'ggplot2', combining them with the reactive framework from 'shiny' and web graphics
-    from 'vega'.
+    'ggplot2', combining them with the reactive framework of 'shiny' and drawing web
+    graphics using 'vega'.
   license_family: GPL2
 
 # The original CRAN metadata for this package was:
 
 # Package: ggvis
 # Title: Interactive Grammar of Graphics
-# Description: An implementation of an interactive grammar of graphics, taking the best parts of 'ggplot2', combining them with the reactive framework from 'shiny' and web graphics from 'vega'.
-# Version: 0.4.2
-# Authors@R: c( person("Winston", "Chang", role = c("aut", "cre"), email = "winston@rstudio.com"), person("Hadley", "Wickham", role = "aut", email = "hadley@rstudio.com"), person(family = "RStudio", role = "cph"), person(family = "jQuery Foundation", role = "cph", comment = "jQuery library and jQuery UI library"), person(family = "jQuery contributors", role = c("ctb", "cph"), comment = "jQuery library; authors listed in inst/www/lib/jquery/AUTHORS.txt"), person(family = "jQuery UI contributors", role = c("ctb", "cph"), comment = "jQuery UI library; authors listed in inst/www/lib/jquery-ui/AUTHORS.txt"), person("Mike", "Bostock", role = c("ctb", "cph"), comment = "D3 library"), person(family = "D3 contributors", role = "ctb", comment = "D3 library; authors listed at https://github.com/mbostock/d3/graphs/contributors"), person(family = "Trifacta Inc.", role = "cph", comment = "Vega library"), person(family = "Vega contributors", role = "ctb", comment = "Vega library; authors listed at https://github.com/trifacta/vega/graphs/contributors"), person("Sebasti<c3><a1>n", "D<c3><a9>cima", role = c("ctb", "cph"), comment = "javascript-detect-element-resize library") )
+# Description: An implementation of an interactive grammar of graphics, taking the best parts of 'ggplot2', combining them with the reactive framework of 'shiny' and drawing web graphics using 'vega'.
+# Version: 0.4.3
+# Authors@R: c( person("Winston", "Chang", role = c("aut", "cre"), email = "winston@rstudio.com"), person("Hadley", "Wickham", role = "aut", email = "hadley@rstudio.com"), person(family = "RStudio", role = "cph"), person(family = "jQuery Foundation", role = "cph", comment = "jQuery library and jQuery UI library"), person(family = "jQuery contributors", role = c("ctb", "cph"), comment = "jQuery library; authors listed in inst/www/lib/jquery/AUTHORS.txt"), person(family = "jQuery UI contributors", role = c("ctb", "cph"), comment = "jQuery UI library; authors listed in inst/www/lib/jquery-ui/AUTHORS.txt"), person("Mike", "Bostock", role = c("ctb", "cph"), comment = "D3 library"), person(family = "D3 contributors", role = "ctb", comment = "D3 library; authors listed at https://github.com/mbostock/d3/graphs/contributors"), person(family = "Trifacta Inc.", role = "cph", comment = "Vega library"), person(family = "Vega contributors", role = "ctb", comment = "Vega library; authors listed at https://github.com/trifacta/vega/graphs/contributors"), person("Sebastian", "Decima", role = c("ctb", "cph"), comment = "javascript-detect-element-resize library") )
 # URL: http://ggvis.rstudio.com/
 # Depends: R (>= 3.0)
-# Imports: assertthat, jsonlite (>= 0.9.11), shiny (>= 0.11.1), magrittr, dplyr (>= 0.4.0), lazyeval, htmltools (>= 0.2.4)
+# Imports: assertthat, jsonlite (>= 0.9.11), shiny (>= 0.11.1), magrittr, dplyr (>= 0.4.0), lazyeval, htmltools (>= 0.2.4), methods
 # Suggests: MASS, mgcv, lubridate, testthat (>= 0.8.1), knitr (>= 1.6), rmarkdown
-# VignetteBuilder: knitr
+# Encoding: UTF-8
 # License: GPL-2 | file LICENSE
 # LazyData: true
+# RoxygenNote: 5.0.1
 # NeedsCompilation: no
-# Packaged: 2015-06-04 22:27:35 UTC; winston
-# Author: Winston Chang [aut, cre], Hadley Wickham [aut], RStudio [cph], jQuery Foundation [cph] (jQuery library and jQuery UI library), jQuery contributors [ctb, cph] (jQuery library; authors listed in inst/www/lib/jquery/AUTHORS.txt), jQuery UI contributors [ctb, cph] (jQuery UI library; authors listed in inst/www/lib/jquery-ui/AUTHORS.txt), Mike Bostock [ctb, cph] (D3 library), D3 contributors [ctb] (D3 library; authors listed at https://github.com/mbostock/d3/graphs/contributors), Trifacta Inc. [cph] (Vega library), Vega contributors [ctb] (Vega library; authors listed at https://github.com/trifacta/vega/graphs/contributors), Sebasti<c3><a1>n D<c3><a9>cima [ctb, cph] (javascript-detect-element-resize library)
+# Packaged: 2016-07-22 16:15:28 UTC; winston
+# Author: Winston Chang [aut, cre], Hadley Wickham [aut], RStudio [cph], jQuery Foundation [cph] (jQuery library and jQuery UI library), jQuery contributors [ctb, cph] (jQuery library; authors listed in inst/www/lib/jquery/AUTHORS.txt), jQuery UI contributors [ctb, cph] (jQuery UI library; authors listed in inst/www/lib/jquery-ui/AUTHORS.txt), Mike Bostock [ctb, cph] (D3 library), D3 contributors [ctb] (D3 library; authors listed at https://github.com/mbostock/d3/graphs/contributors), Trifacta Inc. [cph] (Vega library), Vega contributors [ctb] (Vega library; authors listed at https://github.com/trifacta/vega/graphs/contributors), Sebastian Decima [ctb, cph] (javascript-detect-element-resize library)
 # Maintainer: Winston Chang <winston@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2015-06-06 01:26:57
+# Date/Publication: 2016-07-22 18:45:42
 
 # See
 # http://docs.continuum.io/conda/build.html for

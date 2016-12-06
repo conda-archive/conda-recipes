@@ -5,13 +5,13 @@ package:
   name: r-rversions
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.0.2"
+  version: "1.0.3"
 
 source:
-  fn: rversions_1.0.2.tar.gz
+  fn: rversions_1.0.3.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/rversions_1.0.2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/rversions/rversions_1.0.2.tar.gz
+    - http://cran.r-project.org/src/contrib/rversions_1.0.3.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/rversions/rversions_1.0.3.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -36,12 +36,12 @@ requirements:
   build:
     - r-base
     - r-curl
-    - r-xml2
+    - r-xml2 >=1.0.0
 
   run:
     - r-base
     - r-curl
-    - r-xml2
+    - r-xml2 >=1.0.0
 
 test:
   commands:
@@ -66,19 +66,21 @@ about:
 
 # Package: rversions
 # Title: Query 'R' Versions, Including 'r-release' and 'r-oldrel'
-# Version: 1.0.2
+# Version: 1.0.3
 # Authors@R: c( person("Gabor", "Csardi", , "csardi.gabor@gmail.com", role = c("aut", "cre")), person("Jeroen", "Ooms", , "jeroen.ooms@stat.ucla.edu", role = "ctb"))
 # Description: Query the main 'R' 'SVN' repository to find the versions 'r-release' and 'r-oldrel' refer to, and also all previous 'R' versions and their release dates.
 # License: MIT + file LICENSE
 # URL: https://github.com/metacran/rversions
 # BugReports: https://github.com/metacran/rversions/issues
-# Imports: curl, xml2, utils
+# Imports: curl, xml2 (>= 1.0.0), utils
+# Encoding: UTF-8
+# RoxygenNote: 5.0.1
 # NeedsCompilation: no
-# Packaged: 2015-07-13 00:49:49 UTC; gaborcsardi
+# Packaged: 2016-08-02 07:56:18 UTC; gaborcsardi
 # Author: Gabor Csardi [aut, cre], Jeroen Ooms [ctb]
 # Maintainer: Gabor Csardi <csardi.gabor@gmail.com>
 # Repository: CRAN
-# Date/Publication: 2015-07-13 03:50:31
+# Date/Publication: 2016-08-02 13:05:29
 
 # See
 # http://docs.continuum.io/conda/build.html for

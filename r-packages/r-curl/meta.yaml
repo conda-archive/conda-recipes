@@ -5,13 +5,13 @@ package:
   name: r-curl
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.9.7"
+  version: "2.3"
 
 source:
-  fn: curl_0.9.7.tar.gz
+  fn: curl_2.3.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/curl_0.9.7.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/curl/curl_0.9.7.tar.gz
+    - http://cran.r-project.org/src/contrib/curl_2.3.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/curl/curl_2.3.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,7 +31,7 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat, knitr, jsonlite, rmarkdown, magrittr
+# Suggests: testthat (>= 1.0.0), knitr, jsonlite, rmarkdown, magrittr
 requirements:
   build:
     - r-base
@@ -57,14 +57,14 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: https://github.com/jeroenooms/curl https://www.opencpu.org/posts/curl-release-0-8/
+  home: https://github.com/jeroenooms/curl#readme
   license: MIT + file LICENSE
   summary: The curl() and curl_download() functions provide highly configurable drop-in replacements
     for base url() and download.file() with better performance, support for encryption
-    (https, ftps), gzip compression, authentication, and other libcurl goodies. The
+    (https, ftps), gzip compression, authentication, and other 'libcurl' goodies. The
     core of the package implements a framework for performing fully customized requests
     where data can be processed either in memory, on disk, or streaming via the callback
-    or connection interfaces. Some knowledge of libcurl is recommended; for a more-user-friendly
+    or connection interfaces. Some knowledge of 'libcurl' is recommended; for a more-user-friendly
     web client see the 'httr' package which builds on this package with http specific
     tools and logic.
   license_family: MIT
@@ -74,24 +74,24 @@ about:
 # Package: curl
 # Type: Package
 # Title: A Modern and Flexible Web Client for R
-# Version: 0.9.7
+# Version: 2.3
 # Authors@R: c( person("Jeroen", "Ooms", , "jeroen.ooms@stat.ucla.edu", role = c("cre", "aut")), person("Hadley", "Wickham", , "hadley@rstudio.com", role = "ctb"), person("RStudio", role = "cph") )
-# Description: The curl() and curl_download() functions provide highly configurable drop-in replacements for base url() and download.file() with better performance, support for encryption (https, ftps), gzip compression, authentication, and other libcurl goodies. The core of the package implements a framework for performing fully customized requests where data can be processed either in memory, on disk, or streaming via the callback or connection interfaces. Some knowledge of libcurl is recommended; for a more-user-friendly web client see the 'httr' package which builds on this package with http specific tools and logic.
+# Description: The curl() and curl_download() functions provide highly configurable drop-in replacements for base url() and download.file() with better performance, support for encryption (https, ftps), gzip compression, authentication, and other 'libcurl' goodies. The core of the package implements a framework for performing fully customized requests where data can be processed either in memory, on disk, or streaming via the callback or connection interfaces. Some knowledge of 'libcurl' is recommended; for a more-user-friendly web client see the 'httr' package which builds on this package with http specific tools and logic.
 # License: MIT + file LICENSE
 # SystemRequirements: libcurl: libcurl-devel (rpm) or libcurl4-openssl-dev (deb).
-# URL: https://github.com/jeroenooms/curl https://www.opencpu.org/posts/curl-release-0-8/
+# URL: https://github.com/jeroenooms/curl#readme
 # BugReports: https://github.com/jeroenooms/curl/issues
-# Suggests: testthat, knitr, jsonlite, rmarkdown, magrittr
+# Suggests: testthat (>= 1.0.0), knitr, jsonlite, rmarkdown, magrittr
 # VignetteBuilder: knitr
 # Depends: R (>= 3.0.0)
 # LazyData: true
-# RoxygenNote: 5.0.1
+# RoxygenNote: 5.0.1.9000
 # NeedsCompilation: yes
-# Packaged: 2016-04-10 08:36:55 UTC; jeroen
+# Packaged: 2016-11-23 16:25:15 UTC; jeroen
 # Author: Jeroen Ooms [cre, aut], Hadley Wickham [ctb], RStudio [cph]
 # Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>
 # Repository: CRAN
-# Date/Publication: 2016-04-10 16:09:01
+# Date/Publication: 2016-11-24 12:15:31
 
 # See
 # http://docs.continuum.io/conda/build.html for

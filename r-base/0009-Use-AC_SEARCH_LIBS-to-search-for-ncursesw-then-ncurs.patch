@@ -12,7 +12,7 @@ diff --git a/configure b/configure
 index e1abd4b..cfb18c9 100755
 --- a/configure
 +++ b/configure
-@@ -22737,42 +22737,59 @@ fi
+@@ -22745,42 +22745,59 @@
    if test "${use_readline}" = no; then
      ## only need ncurses if libreadline is not statically linked against it
      unset ac_cv_lib_readline_rl_callback_read_char
@@ -92,25 +92,7 @@ index e1abd4b..cfb18c9 100755
  
  else
    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -ltermcap" >&5
-@@ -25063,7 +25080,7 @@ _ACEOF
- # flags.
- r_save_CFLAGS=$CFLAGS
- CFLAGS="$CFLAGS $r_verb"
--(eval echo $as_me:25066: \"$ac_link\") >&5
-+(eval echo $as_me:25083: \"$ac_link\") >&5
- r_c_v_output=`eval $ac_link 5>&1 2>&1 | grep -v 'Driving:'`
- echo "$r_c_v_output" >&5
- CFLAGS=$r_save_CFLAGS
-@@ -25138,7 +25155,7 @@ _ACEOF
- # flags.
- r_save_CFLAGS=$CFLAGS
- CFLAGS="$CFLAGS $r_cv_prog_c_v"
--(eval echo $as_me:25141: \"$ac_link\") >&5
-+(eval echo $as_me:25158: \"$ac_link\") >&5
- r_c_v_output=`eval $ac_link 5>&1 2>&1 | grep -v 'Driving:'`
- echo "$r_c_v_output" >&5
- CFLAGS=$r_save_CFLAGS
-@@ -41669,7 +41686,6 @@ fi
+@@ -41674,7 +41691,6 @@
  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $MKDIR_P" >&5
  $as_echo "$MKDIR_P" >&6; }
  
@@ -122,7 +104,7 @@ diff --git a/configure.ac b/configure.ac
 index 4a28294..52900b7 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -764,7 +764,7 @@ if test "${use_readline}" = yes; then
+@@ -769,7 +769,7 @@ if test "${use_readline}" = yes; then
    if test "${use_readline}" = no; then
      ## only need ncurses if libreadline is not statically linked against it
      unset ac_cv_lib_readline_rl_callback_read_char

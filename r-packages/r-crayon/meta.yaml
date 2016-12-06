@@ -5,13 +5,13 @@ package:
   name: r-crayon
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.3.1"
+  version: "1.3.2"
 
 source:
-  fn: crayon_1.3.1.tar.gz
+  fn: crayon_1.3.2.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/crayon_1.3.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/crayon/crayon_1.3.1.tar.gz
+    - http://cran.r-project.org/src/contrib/crayon_1.3.2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/crayon/crayon_1.3.2.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -35,11 +35,9 @@ build:
 requirements:
   build:
     - r-base
-    - r-memoise
 
   run:
     - r-base
-    - r-memoise
 
 test:
   commands:
@@ -66,22 +64,24 @@ about:
 
 # Package: crayon
 # Title: Colored Terminal Output
-# Version: 1.3.1
-# Authors@R: person("Gabor", "Csardi", , "csardi.gabor@gmail.com", role = c("aut", "cre"))
+# Version: 1.3.2
+# Authors@R: c( person("Gabor", "Csardi", , "csardi.gabor@gmail.com", role = c("aut", "cre")), person( "Brodie", "Gaslam", email="brodie.gaslam@yahoo.com", role=c("ctb")) )
 # Description: Colored terminal output on terminals that support 'ANSI' color and highlight codes. It also works in 'Emacs' 'ESS'. 'ANSI' color support is automatically detected. Colors and highlighting can be combined and nested. New styles can also be created easily. This package was inspired by the 'chalk' 'JavaScript' project.
 # License: MIT + file LICENSE
 # LazyData: true
 # URL: https://github.com/gaborcsardi/crayon
 # BugReports: https://github.com/gaborcsardi/crayon/issues
-# Collate: 'ansi-256.r' 'combine.r' 'utils.r' 'string.r' 'crayon-package.r' 'disposable.r' 'has_ansi.r' 'has_color.r' 'styles.r' 'machinery.r' 'parts.r' 'print.r' 'style-var.r' 'show.r' 'string_operations.r'
-# Imports: memoise, grDevices, methods, utils
+# Collate: 'ansi-256.r' 'combine.r' 'string.r' 'utils.r' 'crayon-package.r' 'disposable.r' 'has_ansi.r' 'has_color.r' 'styles.r' 'machinery.r' 'parts.r' 'print.r' 'style-var.r' 'show.r' 'string_operations.r'
+# Imports: grDevices, methods, utils
 # Suggests: testthat
+# RoxygenNote: 5.0.1
+# Encoding: UTF-8
 # NeedsCompilation: no
-# Packaged: 2015-07-13 00:29:52 UTC; gaborcsardi
-# Author: Gabor Csardi [aut, cre]
+# Packaged: 2016-06-28 17:18:56 UTC; gaborcsardi
+# Author: Gabor Csardi [aut, cre], Brodie Gaslam [ctb]
 # Maintainer: Gabor Csardi <csardi.gabor@gmail.com>
 # Repository: CRAN
-# Date/Publication: 2015-07-13 04:05:12
+# Date/Publication: 2016-06-28 20:16:37
 
 # See
 # http://docs.continuum.io/conda/build.html for

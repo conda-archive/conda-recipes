@@ -5,13 +5,13 @@ package:
   name: r-mime
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.4"
+  version: "0.5"
 
 source:
-  fn: mime_0.4.tar.gz
+  fn: mime_0.5.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/mime_0.4.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/mime/mime_0.4.tar.gz
+    - http://cran.r-project.org/src/contrib/mime_0.5.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/mime/mime_0.5.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -56,31 +56,32 @@ test:
 
 about:
   home: https://github.com/yihui/mime
-  license: GPL-2
+  license: GPL
   summary: Guesses the MIME type from a filename extension using the data derived from /etc/mime.types
     in UNIX-type systems.
-  license_family: GPL2
+  license_family: GPL
 
 # The original CRAN metadata for this package was:
 
 # Package: mime
 # Type: Package
 # Title: Map Filenames to MIME Types
-# Version: 0.4
-# Date: 2015-09-03
+# Version: 0.5
+# Date: 2016-07-07
 # Authors@R: c(person("Jeffrey", "Horner", role = "ctb"), person("Yihui", "Xie", role = c("aut", "cre"), email = "xie@yihui.name"))
 # Maintainer: Yihui Xie <xie@yihui.name>
 # Description: Guesses the MIME type from a filename extension using the data derived from /etc/mime.types in UNIX-type systems.
 # Imports: tools
-# License: GPL-2
+# License: GPL
 # URL: https://github.com/yihui/mime
 # BugReports: https://github.com/yihui/mime/issues
 # LazyData: TRUE
+# RoxygenNote: 5.0.1
 # NeedsCompilation: yes
-# Packaged: 2015-09-02 15:25:52 UTC; yihui
+# Packaged: 2016-07-07 04:44:41 UTC; yihui
 # Author: Jeffrey Horner [ctb], Yihui Xie [aut, cre]
 # Repository: CRAN
-# Date/Publication: 2015-09-03 12:20:19
+# Date/Publication: 2016-07-07 07:38:00
 
 # See
 # http://docs.continuum.io/conda/build.html for

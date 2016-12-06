@@ -1,6 +1,6 @@
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
-{% set version = '0.4.3' %}
+{% set version = '0.4.4' %}
 
 package:
   name: r-irdisplay
@@ -23,25 +23,23 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2
+  # number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-
+# Suggests: testthat, withr
 requirements:
   build:
     - r-base
     - posix               # [win]
     - {{posix}}git        # [win]
-    - r-base64enc
     - r-repr
 
   run:
     - r-base
-    - r-base64enc
     - r-repr
 
 test:
@@ -59,23 +57,23 @@ test:
 about:
   #home:
   license: MIT + file LICENSE
-  summary: This package provides an interface to display rich output in IPython from R code,
-    for the ipyr kernel and IPython R magic.
+  summary: An interface to the rich display capabilities of 'Jupyter' front-ends (e.g. 'Jupyter
+    Notebook'). Designed to be used from a running 'IRkernel'.
   license_family: MIT
 
 # The original CRAN metadata for this package was:
 
 # Package: IRdisplay
-# Title: IPython display machinery
-# Description: This package provides an interface to display rich output in IPython from R code, for the ipyr kernel and IPython R magic.
-# Version: 0.3
-# Authors@R: c(person("Thomas", "Kluyver", role = c("aut", "cre"), email = "thomas@kluyver.me.uk"), person("Philipp", "A.", role = "aut", email = "flying-sheep@web.de"))
-# Author: Thomas Kluyver <thomas@kluyver.me.uk>
-# Maintainer: Thomas Kluyver <thomas@kluyver.me.uk>
+# Title: 'Jupyter' Display Machinery
+# Description: An interface to the rich display capabilities of 'Jupyter' front-ends (e.g. 'Jupyter Notebook'). Designed to be used from a running 'IRkernel'.
+# Version: 0.4.4
+# Authors@R: c(person("Thomas", "Kluyver", role = c("aut"), email = "thomas@kluyver.me.uk"), person("Philipp", "Angerer", role = c("aut", "cre"), email = "phil.angerer@gmail.com"), person("Jan", "Schulz", role = "aut", email = "jasc@gmx.net"))
 # Depends: R (>= 3.0.1)
-# Imports: repr, base64enc
+# Suggests: testthat, withr
+# Imports: repr
 # License: MIT + file LICENSE
 # LazyData: true
+# RoxygenNote: 5.0.1
 
 # See
 # http://docs.continuum.io/conda/build.html for

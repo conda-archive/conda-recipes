@@ -5,13 +5,13 @@ package:
   name: r-caret
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "6.0_70"
+  version: "6.0_73"
 
 source:
-  fn: caret_6.0-70.tar.gz
+  fn: caret_6.0-73.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/caret_6.0-70.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/caret/caret_6.0-70.tar.gz
+    - http://cran.r-project.org/src/contrib/caret_6.0-73.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/caret/caret_6.0-73.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,10 +31,11 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: BradleyTerry2, e1071, earth (>= 2.2-3), fastICA, gam, ipred, kernlab, klaR, MASS, ellipse, mda, mgcv, mlbench, nnet, party (>= 0.9-99992), pls, pROC (>= 1.8), proxy, randomForest, RANN, spls, subselect, pamr, superpc, Cubist, testthat (>= 0.9.1)
+# Suggests: BradleyTerry2, e1071, earth (>= 2.2-3), fastICA, gam, ipred, kernlab, klaR, MASS, ellipse, mda, mgcv, mlbench, MLmetrics, nnet, party (>= 0.9-99992), pls, pROC, proxy, randomForest, RANN, spls, subselect, pamr, superpc, Cubist, testthat (>= 0.9.1)
 requirements:
   build:
     - r-base
+    - r-modelmetrics >=1.1.0
     - r-car
     - r-foreach
     - r-ggplot2
@@ -48,6 +49,7 @@ requirements:
 
   run:
     - r-base
+    - r-modelmetrics >=1.1.0
     - r-car
     - r-foreach
     - r-ggplot2
@@ -77,22 +79,23 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: caret
-# Version: 6.0-70
-# Date: 2016-06-09
+# Version: 6.0-73
+# Date: 2016-11-08
 # Title: Classification and Regression Training
-# Author: Max Kuhn. Contributions from Jed Wing, Steve Weston, Andre Williams, Chris Keefer, Allan Engelhardt, Tony Cooper, Zachary Mayer, Brenton Kenkel, the R Core Team, Michael Benesty, Reynald Lescarbeau, Andrew Ziem, Luca Scrucca, Yuan Tang, and Can Candan.
+# Author: Max Kuhn. Contributions from Jed Wing, Steve Weston, Andre Williams, Chris Keefer, Allan Engelhardt, Tony Cooper, Zachary Mayer, Brenton Kenkel, the R Core Team, Michael Benesty, Reynald Lescarbeau, Andrew Ziem, Luca Scrucca, Yuan Tang, Can Candan, and Tyler Hunt.
 # Description: Misc functions for training and plotting classification and regression models.
-# Maintainer: Max Kuhn <Max.Kuhn@pfizer.com>
+# Maintainer: Max Kuhn <mxkuhn@gmail.com>
 # Depends: R (>= 2.10), lattice (>= 0.20), ggplot2
 # URL: https://github.com/topepo/caret/
 # BugReports: https://github.com/topepo/caret/issues
-# Imports: car, foreach, methods, plyr, nlme, reshape2, stats, stats4, utils, grDevices
-# Suggests: BradleyTerry2, e1071, earth (>= 2.2-3), fastICA, gam, ipred, kernlab, klaR, MASS, ellipse, mda, mgcv, mlbench, nnet, party (>= 0.9-99992), pls, pROC (>= 1.8), proxy, randomForest, RANN, spls, subselect, pamr, superpc, Cubist, testthat (>= 0.9.1)
+# Imports: car, foreach, methods, plyr, ModelMetrics (>= 1.1.0), nlme, reshape2, stats, stats4, utils, grDevices
+# Suggests: BradleyTerry2, e1071, earth (>= 2.2-3), fastICA, gam, ipred, kernlab, klaR, MASS, ellipse, mda, mgcv, mlbench, MLmetrics, nnet, party (>= 0.9-99992), pls, pROC, proxy, randomForest, RANN, spls, subselect, pamr, superpc, Cubist, testthat (>= 0.9.1)
 # License: GPL (>= 2)
+# RoxygenNote: 5.0.1
 # NeedsCompilation: yes
-# Packaged: 2016-06-13 10:50:50 UTC; kuhna03
+# Packaged: 2016-11-09 08:31:15 UTC; kuhna03
 # Repository: CRAN
-# Date/Publication: 2016-06-13 16:03:41
+# Date/Publication: 2016-11-10 08:18:44
 
 # See
 # http://docs.continuum.io/conda/build.html for
