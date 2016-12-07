@@ -2,16 +2,18 @@
 {% set native = 'm2w64-' if win else '' %}
 
 package:
-  name: r-shinysky
+  name: r-shinybs
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "2.0.0"
+  version: "0.61"
 
 source:
+  fn: shinyBS_0.61.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/shinyBS_0.61.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/shinyBS/shinyBS_0.61.tar.gz
 
 
-  git_url: https://github.com/mingwandroid/ShinySky
-  git_tag: 2.0.0
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -33,21 +35,19 @@ build:
 requirements:
   build:
     - r-base
-    - r-rjsonio
-    - r-plyr
-    - r-shiny
+    - r-htmltools
+    - r-shiny >=0.11
 
   run:
     - r-base
-    - r-rjsonio
-    - r-plyr
-    - r-shiny
+    - r-htmltools
+    - r-shiny >=0.11
 
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('shinysky')" # [not win]
-    - "\"%R%\" -e \"library('shinysky')\"" # [win]
+    - $R -e "library('shinyBS')" # [not win]
+    - "\"%R%\" -e \"library('shinyBS')\"" # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -56,25 +56,30 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: https://github.com/AnalytixWare/ShinySky
-  license: MIT + file LICENSE
-  summary: A set of Shiny UI components includings alerts and styled buttons
-  license_family: MIT
+  home: https://ebailey78.github.io/shinyBS
+  license: GPL-3
+  summary: 'Adds additional Twitter Bootstrap components to Shiny. '
+
+  license_family: GPL3
 
 # The original CRAN metadata for this package was:
 
-# Package: shinysky
+# Package: shinyBS
 # Type: Package
-# Title: A set of Shiny UI components/widgets.
-# Version: 2.0.0
-# Date: 2016-8-25
-# Author: AnalytixWare
-# Maintainer: ZJ <dzj@analytixware.com>
-# Description: A set of Shiny UI components includings alerts and styled buttons
-# License: MIT + file LICENSE
-# Depends: shiny, RJSONIO, plyr
-# URL: https://github.com/AnalytixWare/ShinySky
-# RoxygenNote: 5.0.1
+# Title: Twitter Bootstrap Components for Shiny
+# Version: 0.61
+# Date: 2015-03-30
+# Author: Eric Bailey
+# Maintainer: Eric Bailey <ebailey@idem.in.gov>
+# Description: Adds additional Twitter Bootstrap components to Shiny.
+# Imports: shiny (>= 0.11), htmltools
+# URL: https://ebailey78.github.io/shinyBS
+# BugReports: https://github.com/ebailey78/shinyBS/issues
+# License: GPL-3
+# Packaged: 2015-03-30 12:16:24 UTC; ebailey
+# NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2015-03-31 07:52:38
 
 # See
 # http://docs.continuum.io/conda/build.html for
