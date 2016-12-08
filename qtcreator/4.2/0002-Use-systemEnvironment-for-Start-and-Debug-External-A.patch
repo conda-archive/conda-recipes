@@ -1,0 +1,25 @@
+From f782fbbbacb7ee35a16c6133d973d1297c0b30e0 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Thu, 8 Dec 2016 23:26:56 +0000
+Subject: [PATCH 2/2] Use systemEnvironment for Start and Debug External
+ Application
+
+---
+ src/plugins/debugger/debuggerplugin.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/plugins/debugger/debuggerplugin.cpp b/src/plugins/debugger/debuggerplugin.cpp
+index e1346f9..1fb8c4a 100644
+--- a/src/plugins/debugger/debuggerplugin.cpp
++++ b/src/plugins/debugger/debuggerplugin.cpp
+@@ -1961,6 +1961,7 @@ void DebuggerPluginPrivate::onCurrentProjectChanged(Project *project)
+ void DebuggerPluginPrivate::startAndDebugApplication()
+ {
+     DebuggerRunParameters rp;
++    rp.inferior.environment = Utils::Environment::systemEnvironment();
+     Kit *kit;
+     if (StartApplicationDialog::run(ICore::dialogParent(), &rp, &kit))
+         createAndScheduleRun(rp, kit);
+-- 
+2.9.3
+

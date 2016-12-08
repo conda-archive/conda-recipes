@@ -1,0 +1,190 @@
+From 331210b7487dd2fa80201360959305246491920f Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Thu, 8 Dec 2016 23:25:26 +0000
+Subject: [PATCH 1/2] macOS: Disable app bundle
+
+If ever hope to upstream, this needs to less of a hack
+---
+ qtcreator.pri                                      |  4 ++--
+ qtcreator.pro                                      | 11 +++++++----
+ src/app/app.pro                                    |  3 ++-
+ src/app/main.cpp                                   |  4 ++--
+ src/plugins/coreplugin/icore.cpp                   |  2 +-
+ src/plugins/qbsprojectmanager/qbsprojectparser.cpp |  2 +-
+ src/plugins/qmldesigner/qmldesignerplugin.cpp      |  2 +-
+ src/plugins/qtsupport/baseqtversion.cpp            |  6 +++---
+ src/plugins/welcome/welcomeplugin.cpp              |  2 +-
+ 9 files changed, 20 insertions(+), 16 deletions(-)
+
+diff --git a/qtcreator.pri b/qtcreator.pri
+index 36badac..81851e8 100644
+--- a/qtcreator.pri
++++ b/qtcreator.pri
+@@ -85,8 +85,8 @@ isEmpty(IDE_BUILD_TREE) {
+ }
+ 
+ IDE_APP_PATH = $$IDE_BUILD_TREE/bin
+-osx {
+-    IDE_APP_TARGET   = "Qt Creator"
++osx_no_thanks {
++    IDE_APP_TARGET   = qtcreator
+ 
+     # check if IDE_BUILD_TREE is actually an existing Qt Creator.app,
+     # for building against a binary package
+diff --git a/qtcreator.pro b/qtcreator.pro
+index b713170..7a05afb 100644
+--- a/qtcreator.pro
++++ b/qtcreator.pro
+@@ -45,7 +45,7 @@ exists(src/shared/qbs/qbs.pro) {
+     cache(QBS_RESOURCES_BUILD_DIR)
+     QBS_RESOURCES_INSTALL_DIR = $$INSTALL_DATA_PATH/qbs
+     cache(QBS_RESOURCES_INSTALL_DIR)
+-    macx {
++    macx_no_thanks {
+         QBS_PLUGINS_BUILD_DIR = $${IDE_PLUGIN_PATH}
+         QBS_APPS_RPATH_DIR = @loader_path/../Frameworks
+     } else {
+@@ -94,14 +94,17 @@ macx:INSTALLER_NAME = "qt-creator-$${QTCREATOR_VERSION}"
+ else:INSTALLER_NAME = "$${BASENAME}"
+ 
+ macx {
+-    APPBUNDLE = "$$OUT_PWD/bin/Qt Creator.app"
+-    BINDIST_SOURCE = "$$OUT_PWD/bin/Qt Creator.app"
+-    BINDIST_INSTALLER_SOURCE = $$BINDIST_SOURCE
++    # APPBUNDLE = "$$OUT_PWD/bin/Qt Creator.app"
++    # BINDIST_SOURCE = "$$OUT_PWD/bin/Qt Creator.app"
++    # BINDIST_INSTALLER_SOURCE = $$BINDIST_SOURCE
++    BINDIST_SOURCE = "$(INSTALL_ROOT)$$QTC_PREFIX"
++    BINDIST_INSTALLER_SOURCE = "$$BINDIST_SOURCE/*"
+     deployqt.commands = $$PWD/scripts/deployqtHelper_mac.sh \"$${APPBUNDLE}\" \"$$[QT_INSTALL_BINS]\" \"$$[QT_INSTALL_TRANSLATIONS]\" \"$$[QT_INSTALL_PLUGINS]\" \"$$[QT_INSTALL_IMPORTS]\" \"$$[QT_INSTALL_QML]\"
+     codesign.commands = codesign --deep -s \"$(SIGNING_IDENTITY)\" $(SIGNING_FLAGS) \"$${APPBUNDLE}\"
+     dmg.commands = $$PWD/scripts/makedmg.sh $$OUT_PWD/bin $${BASENAME}.dmg
+     #dmg.depends = deployqt
+     QMAKE_EXTRA_TARGETS += codesign dmg
++    CONFIG -= app_bundle
+ } else {
+     BINDIST_SOURCE = "$(INSTALL_ROOT)$$QTC_PREFIX"
+     BINDIST_INSTALLER_SOURCE = "$$BINDIST_SOURCE/*"
+diff --git a/src/app/app.pro b/src/app/app.pro
+index b86678a..685c8fe 100644
+--- a/src/app/app.pro
++++ b/src/app/app.pro
+@@ -21,7 +21,7 @@ QT_BREAKPAD_ROOT_PATH = $$(QT_BREAKPAD_ROOT_PATH)
+ }
+ win32 {
+     RC_FILE = qtcreator.rc
+-} else:macx {
++} else:macx_no_thanks {
+     LIBS += -framework CoreFoundation
+     ASSETCATALOG.files = $$PWD/qtcreator.xcassets
+     macx-xcode {
+@@ -59,3 +59,4 @@ DISTFILES += qtcreator.rc \
+ QMAKE_SUBSTITUTES += $$PWD/app_version.h.in
+ 
+ CONFIG += no_batch
++CONFIG -= app_bundle
+diff --git a/src/app/main.cpp b/src/app/main.cpp
+index de23bea..4d9491e 100644
+--- a/src/app/main.cpp
++++ b/src/app/main.cpp
+@@ -204,7 +204,7 @@ static inline QStringList getPluginPaths()
+     rootDir.cdUp();
+     const QString rootDirPath = rootDir.canonicalPath();
+     QString pluginPath;
+-    if (Utils::HostOsInfo::isMacHost()) {
++    if (false && Utils::HostOsInfo::isMacHost()) {
+         // 1) "PlugIns" (OS X)
+         pluginPath = rootDirPath + QLatin1String("/PlugIns");
+         rc.push_back(pluginPath);
+@@ -227,7 +227,7 @@ static inline QStringList getPluginPaths()
+     pluginPath += QLatin1Char('/')
+             + QLatin1String(Core::Constants::IDE_SETTINGSVARIANT_STR)
+             + QLatin1Char('/');
+-    pluginPath += QLatin1String(Utils::HostOsInfo::isMacHost() ? "Qt Creator" : "qtcreator");
++    pluginPath += QLatin1String((false && Utils::HostOsInfo::isMacHost()) ? "Qt Creator" : "qtcreator");
+     pluginPath += QLatin1String("/plugins/");
+     pluginPath += QLatin1String(Core::Constants::IDE_VERSION_LONG);
+     rc.push_back(pluginPath);
+diff --git a/src/plugins/coreplugin/icore.cpp b/src/plugins/coreplugin/icore.cpp
+index ee810e5..7d2d60f 100644
+--- a/src/plugins/coreplugin/icore.cpp
++++ b/src/plugins/coreplugin/icore.cpp
+@@ -402,7 +402,7 @@ QString ICore::userInterfaceLanguage()
+ 
+ QString ICore::resourcePath()
+ {
+-    const QString sharePath = QLatin1String(Utils::HostOsInfo::isMacHost()
++    const QString sharePath = QLatin1String((false && Utils::HostOsInfo::isMacHost())
+                                             ? "/../Resources" : "/../share/qtcreator");
+     return QDir::cleanPath(QCoreApplication::applicationDirPath() + sharePath);
+ }
+diff --git a/src/plugins/qbsprojectmanager/qbsprojectparser.cpp b/src/plugins/qbsprojectmanager/qbsprojectparser.cpp
+index eeb24d5..a8fdbfb 100644
+--- a/src/plugins/qbsprojectmanager/qbsprojectparser.cpp
++++ b/src/plugins/qbsprojectmanager/qbsprojectparser.cpp
+@@ -218,7 +218,7 @@ QString QbsProjectParser::pluginsBaseDirectory() const
+ 
+     if (!qbsInstallDir.isEmpty())
+         return qbsInstallDir + QLatin1Char('/') + qbsLibDirName;
+-    if (HostOsInfo::isMacHost())
++    if (false && HostOsInfo::isMacHost())
+         return QDir::cleanPath(QCoreApplication::applicationDirPath()
+                                + QLatin1String("/../PlugIns"));
+     else
+diff --git a/src/plugins/qmldesigner/qmldesignerplugin.cpp b/src/plugins/qmldesigner/qmldesignerplugin.cpp
+index 0cca310..8a2c527 100644
+--- a/src/plugins/qmldesigner/qmldesignerplugin.cpp
++++ b/src/plugins/qmldesigner/qmldesignerplugin.cpp
+@@ -206,7 +206,7 @@ bool QmlDesignerPlugin::initialize(const QStringList & /*arguments*/, QString *e
+     command->setDefaultKeySequence(QKeySequence(Qt::Key_F4));
+ 
+     // adding default path to item library plugins
+-    const QString pluginPath = Utils::HostOsInfo::isMacHost()
++    const QString pluginPath = (false && Utils::HostOsInfo::isMacHost())
+             ? QString(QCoreApplication::applicationDirPath() + "/../PlugIns/QmlDesigner")
+             : QString(QCoreApplication::applicationDirPath() + "/../"
+                       + QLatin1String(IDE_LIBRARY_BASENAME) + "/qtcreator/plugins/qmldesigner");
+diff --git a/src/plugins/qtsupport/baseqtversion.cpp b/src/plugins/qtsupport/baseqtversion.cpp
+index 459e07d..412eda4 100644
+--- a/src/plugins/qtsupport/baseqtversion.cpp
++++ b/src/plugins/qtsupport/baseqtversion.cpp
+@@ -922,20 +922,20 @@ QString BaseQtVersion::findQtBinary(Binaries binary) const
+         possibleCommands << HostOsInfo::withExecutableSuffix(QLatin1String("qmlscene"));
+         break;
+     case QmlViewer: {
+-        if (HostOsInfo::isMacHost())
++        if (false && HostOsInfo::isMacHost())
+             possibleCommands << QLatin1String("QMLViewer.app/Contents/MacOS/QMLViewer");
+         else
+             possibleCommands << HostOsInfo::withExecutableSuffix(QLatin1String("qmlviewer"));
+     }
+         break;
+     case Designer:
+-        if (HostOsInfo::isMacHost())
++        if (false && HostOsInfo::isMacHost())
+             possibleCommands << QLatin1String("Designer.app/Contents/MacOS/Designer");
+         else
+             possibleCommands << HostOsInfo::withExecutableSuffix(QLatin1String("designer"));
+         break;
+     case Linguist:
+-        if (HostOsInfo::isMacHost())
++        if (false && HostOsInfo::isMacHost())
+             possibleCommands << QLatin1String("Linguist.app/Contents/MacOS/Linguist");
+         else
+             possibleCommands << HostOsInfo::withExecutableSuffix(QLatin1String("linguist"));
+diff --git a/src/plugins/welcome/welcomeplugin.cpp b/src/plugins/welcome/welcomeplugin.cpp
+index bb445eb..8b97b99 100644
+--- a/src/plugins/welcome/welcomeplugin.cpp
++++ b/src/plugins/welcome/welcomeplugin.cpp
+@@ -279,7 +279,7 @@ void WelcomeMode::facilitateQml(QQmlEngine *engine)
+         engine->setOutputWarningsToStandardError(false);
+ 
+     QString pluginPath = applicationDirPath();
+-    if (HostOsInfo::isMacHost())
++    if (false && HostOsInfo::isMacHost())
+         pluginPath += QLatin1String("/../PlugIns");
+     else
+         pluginPath += QLatin1String("/../" IDE_LIBRARY_BASENAME "/qtcreator");
+-- 
+2.9.3
+
