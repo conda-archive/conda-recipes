@@ -31,8 +31,6 @@ build:
     - lib/R/lib/
     - lib/
 
-  skip: true # [osx]
-
 # pkg-config is ineffective on Linux currently since our cairo.pc
 # requires xrender.pc which we do not build. Bodge it in build.sh
 # Suggests: png
