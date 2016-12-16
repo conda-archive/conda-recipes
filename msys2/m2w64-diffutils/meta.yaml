@@ -2,7 +2,7 @@ package:
   name: m2w64-diffutils
   version: 3.3.2
 source:
-  url: file:///C:/Users/ray/gd.cio/msys2/pkgs/mingw-w64-diffutils-3.3-2.src.tar.gz
+  url: file://C:/Users/ray/gd.cio/msys2/pkgs/mingw-w64-diffutils-3.3-2.src.tar.gz
   md5: 9b0818af0e804f354a30430a1666b806
 build:
   number: '1'
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-diffutils
-      url: file:///C:/Users/ray/gd.cio/msys2/pkgs/mingw-w64-i686-diffutils-3.3-2-any.pkg.tar.xz
+      url: file://C:/Users/ray/gd.cio/msys2/pkgs/mingw-w64-i686-diffutils-3.3-2-any.pkg.tar.xz
       md5: 9a67bdc1a7eec63aaeb33c2a2332a096
       mv-srcs:
       - mingw32
@@ -26,7 +26,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-diffutils
-      url: file:///C:/Users/ray/gd.cio/msys2/pkgs/mingw-w64-x86_64-diffutils-3.3-2-any.pkg.tar.xz
+      url: file://C:/Users/ray/gd.cio/msys2/pkgs/mingw-w64-x86_64-diffutils-3.3-2-any.pkg.tar.xz
       md5: 0cd9e78bd1e64ba2a5f587968ca59a79
       mv-srcs:
       - mingw64
