@@ -17,6 +17,11 @@ source:
     # - 4.0/0001-Disable-app-build.patch                                               # [osx]
     # - 4.0/0002-Use-systemEnvironment-For-Start-and-Debug-External-Application.patch
 
+build:
+  skip: True         # [win and py<35]
+  features:
+    - vc14           # [win and py35]
+
 requirements:
   build:
     - python
@@ -26,11 +31,6 @@ requirements:
   run:
     - qt 5.6.*
     - vs2015_runtime # [win]
-
-build:
-  skip: True         # [win and py<35]
-  features:
-    - vc14           # [win and py35]
 
   # These are only necessary for the qtcreator executable itself.
   # It would be better if were possible to filter the application
