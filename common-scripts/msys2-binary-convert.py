@@ -20,7 +20,7 @@ def get_tar_xz(url, md5):
     sig = hashlib.md5()
     tmp_tar_xz = join(tmpdir, fname)
     if urlparts.scheme == 'file':
-        path = re.compile('^file:///').sub('', url).replace('/', os.sep)
+        path = re.compile('^file://').sub('', url).replace('/', os.sep)
         copy(path, tmp_tar_xz)
         with open(tmp_tar_xz, "rb") as tar_xz:
             for block in iter(lambda: tar_xz.read(1024), b""):
