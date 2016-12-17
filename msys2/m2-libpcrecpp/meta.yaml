@@ -2,10 +2,10 @@ package:
   name: m2-libpcrecpp
   version: '8.38'
 source:
-  url: http://repo.msys2.org/msys/sources/libpcrecpp-8.38-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libpcrecpp-8.38-1.src.tar.gz
+  md5: b02505586bcd667b6031f2ea67a7a4a4
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libpcrecpp
-      url: http://repo.msys2.org/msys/i686/libpcrecpp-8.38-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libpcrecpp-8.38-1-i686.pkg.tar.xz
       md5: 8c81a7a8aa5c2133d9aa1db815b80af2
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libpcrecpp
-      url: http://repo.msys2.org/msys/x86_64/libpcrecpp-8.38-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libpcrecpp-8.38-1-x86_64.pkg.tar.xz
       md5: b677c0544b2c3c68aa98d594e8d3e1a8
       mv-srcs:
       - '*'

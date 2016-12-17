@@ -2,10 +2,10 @@ package:
   name: m2w64-curl
   version: 7.48.0
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-curl-7.48.0-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-curl-7.48.0-1.src.tar.gz
   md5: 64dc448ef8e349bd7c6e1336d5a90e71
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -27,7 +27,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-curl
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-curl-7.48.0-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-curl-7.48.0-1-any.pkg.tar.xz
       md5: c63ebeeafcf7cd2efd785767d9f11050
       mv-srcs:
       - mingw32
@@ -35,7 +35,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-curl
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-curl-7.48.0-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-curl-7.48.0-1-any.pkg.tar.xz
       md5: e9fbb18a0956e7147fb6283daa35892a
       mv-srcs:
       - mingw64

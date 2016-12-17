@@ -2,10 +2,10 @@ package:
   name: m2-perl-net-ssleay
   version: '1.72'
 source:
-  url: http://repo.msys2.org/msys/sources/perl-Net-SSLeay-1.72-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/perl-Net-SSLeay-1.72-1.src.tar.gz
   md5: 245037e4fa0097f7d71c3317bdd0aa26
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/perl-Net-SSLeay
-      url: http://repo.msys2.org/msys/i686/perl-Net-SSLeay-1.72-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/perl-Net-SSLeay-1.72-1-i686.pkg.tar.xz
       md5: f625519b212d7dfdbd63150365a9324b
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/perl-Net-SSLeay
-      url: http://repo.msys2.org/msys/x86_64/perl-Net-SSLeay-1.72-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/perl-Net-SSLeay-1.72-1-x86_64.pkg.tar.xz
       md5: d4a63228a67c798ec23a931ee1ea7c7c
       mv-srcs:
       - '*'

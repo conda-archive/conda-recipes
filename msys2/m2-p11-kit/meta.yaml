@@ -2,10 +2,10 @@ package:
   name: m2-p11-kit
   version: 0.23.2
 source:
-  url: http://repo.msys2.org/msys/sources/p11-kit-0.23.2-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/p11-kit-0.23.2-1.src.tar.gz
   md5: 56662a53c30c876b1b4f961fb9429903
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -20,7 +20,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/p11-kit
-      url: http://repo.msys2.org/msys/i686/p11-kit-0.23.2-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/p11-kit-0.23.2-1-i686.pkg.tar.xz
       md5: 807966f4567c45c3c9837de8e8845ed0
       mv-srcs:
       - '*'
@@ -28,7 +28,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/p11-kit
-      url: http://repo.msys2.org/msys/x86_64/p11-kit-0.23.2-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/p11-kit-0.23.2-1-x86_64.pkg.tar.xz
       md5: 7ad8d0e7c9f4b17185b9b94345c23de7
       mv-srcs:
       - '*'

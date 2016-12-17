@@ -2,10 +2,10 @@ package:
   name: m2-bzip2
   version: 1.0.6
 source:
-  url: http://repo.msys2.org/msys/sources/bzip2-1.0.6-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/bzip2-1.0.6-2.src.tar.gz
+  md5: 51ea05594b09861e4f00eb6053f0f3b6
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/bzip2
-      url: http://repo.msys2.org/msys/i686/bzip2-1.0.6-2-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/bzip2-1.0.6-2-i686.pkg.tar.xz
       md5: 0afbbf1afb63bdb8a5a9082257bd6e32
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/bzip2
-      url: http://repo.msys2.org/msys/x86_64/bzip2-1.0.6-2-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/bzip2-1.0.6-2-x86_64.pkg.tar.xz
       md5: 968a58e964d7d5b00f2a023e3e65b5fc
       mv-srcs:
       - '*'

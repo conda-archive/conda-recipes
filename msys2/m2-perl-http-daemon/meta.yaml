@@ -2,10 +2,10 @@ package:
   name: m2-perl-http-daemon
   version: '6.01'
 source:
-  url: http://repo.msys2.org/msys/sources/perl-HTTP-Daemon-6.01-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/perl-HTTP-Daemon-6.01-2.src.tar.gz
+  md5: 9ab89ed7d67423e8f9479bb2e32f3ca8
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -21,7 +21,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/perl-HTTP-Daemon
-      url: http://repo.msys2.org/msys/i686/perl-HTTP-Daemon-6.01-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/perl-HTTP-Daemon-6.01-2-any.pkg.tar.xz
       md5: 7cc608a455b7b47a50ff25273c1ee9b0
       mv-srcs:
       - '*'
@@ -29,7 +29,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/perl-HTTP-Daemon
-      url: http://repo.msys2.org/msys/x86_64/perl-HTTP-Daemon-6.01-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/perl-HTTP-Daemon-6.01-2-any.pkg.tar.xz
       md5: b5acfb87dbeec408b0277278a77a2191
       mv-srcs:
       - '*'

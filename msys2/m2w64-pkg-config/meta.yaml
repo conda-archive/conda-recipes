@@ -2,10 +2,10 @@ package:
   name: m2w64-pkg-config
   version: 0.29.1
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-pkg-config-0.29.1-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-pkg-config-0.29.1-1.src.tar.gz
   md5: 98d3161955b1728f628b5697ff3db45e
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-pkg-config
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-pkg-config-0.29.1-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-pkg-config-0.29.1-1-any.pkg.tar.xz
       md5: d6abf7565d0119724350cc943e3c0016
       mv-srcs:
       - mingw32
@@ -26,7 +26,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-pkg-config
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-pkg-config-0.29.1-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-pkg-config-0.29.1-1-any.pkg.tar.xz
       md5: bc2ee66ec1c011e8c87f373fd8be501b
       mv-srcs:
       - mingw64

@@ -2,10 +2,10 @@ package:
   name: m2w64-tktable
   version: '2.10'
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-tktable-2.10-4.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-tktable-2.10-4.src.tar.gz
+  md5: 2faff6ebabc878348cdf97efc4d7aa3f
 build:
-  number: '4'
+  number: 5
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-tktable
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-tktable-2.10-4-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-tktable-2.10-4-any.pkg.tar.xz
       md5: 727cc2928bd4d0d2bcf1a34d4b20fdc6
       mv-srcs:
       - mingw32
@@ -26,7 +26,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-tktable
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-tktable-2.10-4-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-tktable-2.10-4-any.pkg.tar.xz
       md5: c4e428aca54a7c3b3d767c3e0fa76d27
       mv-srcs:
       - mingw64

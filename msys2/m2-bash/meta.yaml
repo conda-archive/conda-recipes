@@ -2,10 +2,10 @@ package:
   name: m2-bash
   version: 4.3.042
 source:
-  url: http://repo.msys2.org/msys/sources/bash-4.3.042-4.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/bash-4.3.042-4.src.tar.gz
   md5: 6c8dce79f157d2173c7ffbd35a216029
 build:
-  number: '4'
+  number: 5
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/bash
-      url: http://repo.msys2.org/msys/i686/bash-4.3.042-4-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/bash-4.3.042-4-i686.pkg.tar.xz
       md5: f500e98783fc0d0b4f443d91889ab0d3
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/bash
-      url: http://repo.msys2.org/msys/x86_64/bash-4.3.042-4-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/bash-4.3.042-4-x86_64.pkg.tar.xz
       md5: 974802d3710643a0462fa9dce2a7d923
       mv-srcs:
       - '*'

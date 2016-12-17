@@ -2,10 +2,10 @@ package:
   name: m2-libbz2
   version: 1.0.6
 source:
-  url: http://repo.msys2.org/msys/sources/libbz2-1.0.6-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libbz2-1.0.6-2.src.tar.gz
+  md5: d88c45b4af9b3a7038cc073faed99b5b
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libbz2
-      url: http://repo.msys2.org/msys/i686/libbz2-1.0.6-2-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libbz2-1.0.6-2-i686.pkg.tar.xz
       md5: 5c51495c143e3b581bd680513815009c
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libbz2
-      url: http://repo.msys2.org/msys/x86_64/libbz2-1.0.6-2-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libbz2-1.0.6-2-x86_64.pkg.tar.xz
       md5: 7ce9693d119c727a01b8c54685f913f4
       mv-srcs:
       - '*'

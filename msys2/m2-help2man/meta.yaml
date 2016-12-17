@@ -2,10 +2,10 @@ package:
   name: m2-help2man
   version: 1.47.3
 source:
-  url: http://repo.msys2.org/msys/sources/help2man-1.47.3-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/help2man-1.47.3-1.src.tar.gz
   md5: d865e4349fdf5015ab667a768bb7f6b2
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/help2man
-      url: http://repo.msys2.org/msys/i686/help2man-1.47.3-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/help2man-1.47.3-1-i686.pkg.tar.xz
       md5: 734cbfcb1c7e193e1bc344413ca291d5
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/help2man
-      url: http://repo.msys2.org/msys/x86_64/help2man-1.47.3-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/help2man-1.47.3-1-x86_64.pkg.tar.xz
       md5: 4334b7d9fb5896dc8ee18e8f304db425
       mv-srcs:
       - '*'

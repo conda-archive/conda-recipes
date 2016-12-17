@@ -2,10 +2,10 @@ package:
   name: m2-which
   version: '2.21'
 source:
-  url: http://repo.msys2.org/msys/sources/which-2.21-2.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/which-2.21-2.src.tar.gz
   md5: c7f93558252fb2cd62088e481218aa60
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/which
-      url: http://repo.msys2.org/msys/i686/which-2.21-2-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/which-2.21-2-i686.pkg.tar.xz
       md5: 3b818117f90142047be54b0dd090d15c
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/which
-      url: http://repo.msys2.org/msys/x86_64/which-2.21-2-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/which-2.21-2-x86_64.pkg.tar.xz
       md5: 7a46e4eecbf16cf7254ff6316e3b9a69
       mv-srcs:
       - '*'

@@ -2,10 +2,10 @@ package:
   name: m2-libidn
   version: '1.32'
 source:
-  url: http://repo.msys2.org/msys/sources/libidn-1.32-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libidn-1.32-1.src.tar.gz
   md5: 27a58878a448bc57411b2101c5b0759a
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libidn
-      url: http://repo.msys2.org/msys/i686/libidn-1.32-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libidn-1.32-1-i686.pkg.tar.xz
       md5: c71501792a9b57b618753afb22b28906
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libidn
-      url: http://repo.msys2.org/msys/x86_64/libidn-1.32-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libidn-1.32-1-x86_64.pkg.tar.xz
       md5: 0feaea949d0171839498b182980cddcf
       mv-srcs:
       - '*'

@@ -2,10 +2,10 @@ package:
   name: m2-perl-encode-locale
   version: '1.04'
 source:
-  url: http://repo.msys2.org/msys/sources/perl-Encode-Locale-1.04-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/perl-Encode-Locale-1.04-1.src.tar.gz
+  md5: f74feb063d86ff9b0e8751795718aeb4
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/perl-Encode-Locale
-      url: http://repo.msys2.org/msys/i686/perl-Encode-Locale-1.04-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/perl-Encode-Locale-1.04-1-any.pkg.tar.xz
       md5: db955b95d1ebf2f2597ba3097c96e126
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/perl-Encode-Locale
-      url: http://repo.msys2.org/msys/x86_64/perl-Encode-Locale-1.04-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/perl-Encode-Locale-1.04-1-any.pkg.tar.xz
       md5: 8b85775f64ab0ab320ad19fae9fe869c
       mv-srcs:
       - '*'

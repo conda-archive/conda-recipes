@@ -2,10 +2,10 @@ package:
   name: m2-perl-xml-parser
   version: '2.44'
 source:
-  url: http://repo.msys2.org/msys/sources/perl-XML-Parser-2.44-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/perl-XML-Parser-2.44-1.src.tar.gz
+  md5: 2e07369443e55bc37f05eef787a8d5db
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -20,7 +20,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/perl-XML-Parser
-      url: http://repo.msys2.org/msys/i686/perl-XML-Parser-2.44-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/perl-XML-Parser-2.44-1-i686.pkg.tar.xz
       md5: 7b28122d19238dc1ebfdb01498d9afff
       mv-srcs:
       - '*'
@@ -28,7 +28,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/perl-XML-Parser
-      url: http://repo.msys2.org/msys/x86_64/perl-XML-Parser-2.44-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/perl-XML-Parser-2.44-1-x86_64.pkg.tar.xz
       md5: a5e48df08cf123bfae3288bb176b90a0
       mv-srcs:
       - '*'

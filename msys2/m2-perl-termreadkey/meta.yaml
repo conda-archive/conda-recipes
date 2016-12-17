@@ -2,10 +2,10 @@ package:
   name: m2-perl-termreadkey
   version: '2.33'
 source:
-  url: http://repo.msys2.org/msys/sources/perl-TermReadKey-2.33-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/perl-TermReadKey-2.33-1.src.tar.gz
   md5: 78d241f4979cfbd5242817647e71ea18
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/perl-TermReadKey
-      url: http://repo.msys2.org/msys/i686/perl-TermReadKey-2.33-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/perl-TermReadKey-2.33-1-i686.pkg.tar.xz
       md5: 20ae085e980c7844ad0bc66fca44f488
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/perl-TermReadKey
-      url: http://repo.msys2.org/msys/x86_64/perl-TermReadKey-2.33-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/perl-TermReadKey-2.33-1-x86_64.pkg.tar.xz
       md5: b7e74d5fe02dd287eb8dab4f9a48f0fd
       mv-srcs:
       - '*'

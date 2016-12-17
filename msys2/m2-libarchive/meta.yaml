@@ -2,10 +2,10 @@ package:
   name: m2-libarchive
   version: 3.1.2
 source:
-  url: http://repo.msys2.org/msys/sources/libarchive-3.1.2-5.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libarchive-3.1.2-5.src.tar.gz
+  md5: f4302437e62e5ff7c1f37fe2d0e915bb
 build:
-  number: '5'
+  number: 6
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -25,7 +25,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libarchive
-      url: http://repo.msys2.org/msys/i686/libarchive-3.1.2-5-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libarchive-3.1.2-5-i686.pkg.tar.xz
       md5: 3f04117cda5c925119b43cc9b7fd2978
       mv-srcs:
       - '*'
@@ -33,7 +33,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libarchive
-      url: http://repo.msys2.org/msys/x86_64/libarchive-3.1.2-5-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libarchive-3.1.2-5-x86_64.pkg.tar.xz
       md5: c3f29be3563f33237cc14d38beed0523
       mv-srcs:
       - '*'

@@ -2,10 +2,10 @@ package:
   name: m2-automake1.13
   version: 1.13.4
 source:
-  url: http://repo.msys2.org/msys/sources/automake1.13-1.13.4-4.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/automake1.13-1.13.4-4.src.tar.gz
   md5: 7464418de425eee5148e918b4418e035
 build:
-  number: '4'
+  number: 5
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/automake1.13
-      url: http://repo.msys2.org/msys/i686/automake1.13-1.13.4-4-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/automake1.13-1.13.4-4-any.pkg.tar.xz
       md5: e3f5b57fefb8ecfe8166a30041fa90ef
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/automake1.13
-      url: http://repo.msys2.org/msys/x86_64/automake1.13-1.13.4-4-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/automake1.13-1.13.4-4-any.pkg.tar.xz
       md5: 55baa6ce61f9dc9768b03a1dddd1c84b
       mv-srcs:
       - '*'

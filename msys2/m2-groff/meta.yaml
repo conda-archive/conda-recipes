@@ -2,10 +2,10 @@ package:
   name: m2-groff
   version: 1.22.3
 source:
-  url: http://repo.msys2.org/msys/sources/groff-1.22.3-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/groff-1.22.3-1.src.tar.gz
+  md5: 9bacd0a8a93bdcf6d33349ee3a1fa297
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/groff
-      url: http://repo.msys2.org/msys/i686/groff-1.22.3-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/groff-1.22.3-1-i686.pkg.tar.xz
       md5: d411f9fc7a70c69b12681ca316278efb
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/groff
-      url: http://repo.msys2.org/msys/x86_64/groff-1.22.3-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/groff-1.22.3-1-x86_64.pkg.tar.xz
       md5: 7369f097806658403af2cdc7a5eac359
       mv-srcs:
       - '*'

@@ -5,7 +5,7 @@ source:
   url: file://C:/Users/ray/gd.cio/msys2/pkgs/mingw-w64-diffutils-3.3-2.src.tar.gz
   md5: 9b0818af0e804f354a30430a1666b806
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -13,7 +13,8 @@ requirements:
 about:
   home: http://www.gnu.org/software/diffutils
   license: GPL3
-  summary: GNU Diffutils is a package of several programs related to finding differences between files (mingw-w64)
+  summary: GNU Diffutils is a package of several programs related to finding differences
+    between files (mingw-w64)
 extra:
   msys2-binaries:
     win-32:

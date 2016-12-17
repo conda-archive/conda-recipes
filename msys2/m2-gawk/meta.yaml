@@ -2,10 +2,10 @@ package:
   name: m2-gawk
   version: 4.1.3
 source:
-  url: http://repo.msys2.org/msys/sources/gawk-4.1.3-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/gawk-4.1.3-1.src.tar.gz
+  md5: 5437b37516aa36ff71d8323cbe0fe92b
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -21,7 +21,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/gawk
-      url: http://repo.msys2.org/msys/i686/gawk-4.1.3-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/gawk-4.1.3-1-i686.pkg.tar.xz
       md5: 4dadbcbf6140d29d339cbdbcbb97cef4
       mv-srcs:
       - '*'
@@ -29,7 +29,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/gawk
-      url: http://repo.msys2.org/msys/x86_64/gawk-4.1.3-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/gawk-4.1.3-1-x86_64.pkg.tar.xz
       md5: eb4fc57b07ecb9f484850877117c6374
       mv-srcs:
       - '*'

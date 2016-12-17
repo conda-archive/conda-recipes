@@ -2,10 +2,10 @@ package:
   name: m2-perl-libwww
   version: '6.13'
 source:
-  url: http://repo.msys2.org/msys/sources/perl-libwww-6.13-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/perl-libwww-6.13-1.src.tar.gz
+  md5: f207d6682cd9d646785558021466d761
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -30,7 +30,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/perl-libwww
-      url: http://repo.msys2.org/msys/i686/perl-libwww-6.13-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/perl-libwww-6.13-1-any.pkg.tar.xz
       md5: acde07b93a969922d01c3fa70823a7ba
       mv-srcs:
       - '*'
@@ -38,7 +38,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/perl-libwww
-      url: http://repo.msys2.org/msys/x86_64/perl-libwww-6.13-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/perl-libwww-6.13-1-any.pkg.tar.xz
       md5: 301d32a11498ff5e1c8687a2a1911ea7
       mv-srcs:
       - '*'

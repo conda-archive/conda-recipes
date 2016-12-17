@@ -2,10 +2,10 @@ package:
   name: m2-perl-locale-gettext
   version: '1.05'
 source:
-  url: http://repo.msys2.org/msys/sources/perl-Locale-Gettext-1.05-4.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/perl-Locale-Gettext-1.05-4.src.tar.gz
+  md5: 674f2a02c62c00103562bc5359413c74
 build:
-  number: '4'
+  number: 5
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/perl-Locale-Gettext
-      url: http://repo.msys2.org/msys/i686/perl-Locale-Gettext-1.05-4-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/perl-Locale-Gettext-1.05-4-i686.pkg.tar.xz
       md5: cde0fc1f7e8420b9cab0d0f805b32173
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/perl-Locale-Gettext
-      url: http://repo.msys2.org/msys/x86_64/perl-Locale-Gettext-1.05-4-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/perl-Locale-Gettext-1.05-4-x86_64.pkg.tar.xz
       md5: d07adaa0adcf32a89f883d0ad12146fa
       mv-srcs:
       - '*'

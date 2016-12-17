@@ -2,14 +2,14 @@ package:
   name: m2w64-gcc-libgfortran
   version: 5.3.0
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-gcc-libgfortran-5.3.0-5.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-gcc-libgfortran-5.3.0-5.src.tar.gz
+  md5: 4698350ad11d86459ffc4843fe1c951f
 build:
-  number: '5'
+  number: 6
 requirements:
   run:
   - msys2-conda-epoch >=20160418
-  - m2w64-gcc-libs
+  - m2w64-gcc-libs-core
 about:
   home: https://gcc.gnu.org
   license: GPL, LGPL, FDL, custom
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-gcc-libgfortran
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-gcc-libgfortran-5.3.0-5-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-gcc-libgfortran-5.3.0-5-any.pkg.tar.xz
       md5: 55031f066d5c6ab9caa96de590ffb8be
       mv-srcs:
       - mingw32
@@ -26,7 +26,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-gcc-libgfortran
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-gcc-libgfortran-5.3.0-5-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-gcc-libgfortran-5.3.0-5-any.pkg.tar.xz
       md5: 79b96eb048ea42b30538a665c6469e97
       mv-srcs:
       - mingw64

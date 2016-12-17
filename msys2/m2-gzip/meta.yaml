@@ -2,10 +2,10 @@ package:
   name: m2-gzip
   version: '1.7'
 source:
-  url: http://repo.msys2.org/msys/sources/gzip-1.7-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/gzip-1.7-1.src.tar.gz
   md5: 1556a90c181bb5e744f273a53b9b3c30
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -20,7 +20,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/gzip
-      url: http://repo.msys2.org/msys/i686/gzip-1.7-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/gzip-1.7-1-i686.pkg.tar.xz
       md5: 42ff55c8611e2b8a20ae5a43f53f9fd3
       mv-srcs:
       - '*'
@@ -28,7 +28,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/gzip
-      url: http://repo.msys2.org/msys/x86_64/gzip-1.7-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/gzip-1.7-1-x86_64.pkg.tar.xz
       md5: 50736a094ecac930853691e0f050956c
       mv-srcs:
       - '*'

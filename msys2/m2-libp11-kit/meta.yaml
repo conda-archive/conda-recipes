@@ -2,10 +2,10 @@ package:
   name: m2-libp11-kit
   version: 0.23.2
 source:
-  url: http://repo.msys2.org/msys/sources/libp11-kit-0.23.2-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libp11-kit-0.23.2-1.src.tar.gz
+  md5: 56662a53c30c876b1b4f961fb9429903
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libp11-kit
-      url: http://repo.msys2.org/msys/i686/libp11-kit-0.23.2-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libp11-kit-0.23.2-1-i686.pkg.tar.xz
       md5: f63ab396e76b3e286ca0313c46465677
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libp11-kit
-      url: http://repo.msys2.org/msys/x86_64/libp11-kit-0.23.2-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libp11-kit-0.23.2-1-x86_64.pkg.tar.xz
       md5: 4bdae0853ed150d5cd8ab5b89af91e6f
       mv-srcs:
       - '*'

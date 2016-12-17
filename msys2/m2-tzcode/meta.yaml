@@ -2,10 +2,10 @@ package:
   name: m2-tzcode
   version: 2015.e
 source:
-  url: http://repo.msys2.org/msys/sources/tzcode-2015.e-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/tzcode-2015.e-1.src.tar.gz
+  md5: 416ae39f971c213b4b2268a4a18934b5
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -20,7 +20,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/tzcode
-      url: http://repo.msys2.org/msys/i686/tzcode-2015.e-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/tzcode-2015.e-1-i686.pkg.tar.xz
       md5: 33304239bb680bcc588142326dc6cf80
       mv-srcs:
       - '*'
@@ -28,7 +28,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/tzcode
-      url: http://repo.msys2.org/msys/x86_64/tzcode-2015.e-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/tzcode-2015.e-1-x86_64.pkg.tar.xz
       md5: c8e79f8d6a9015bf97b75e8ad0337809
       mv-srcs:
       - '*'

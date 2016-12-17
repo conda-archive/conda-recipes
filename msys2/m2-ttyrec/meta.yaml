@@ -2,10 +2,10 @@ package:
   name: m2-ttyrec
   version: 1.0.8
 source:
-  url: http://repo.msys2.org/msys/sources/ttyrec-1.0.8-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/ttyrec-1.0.8-1.src.tar.gz
   md5: f03ef1926f01ac1a18cc4c6793c528ac
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/ttyrec
-      url: http://repo.msys2.org/msys/i686/ttyrec-1.0.8-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/ttyrec-1.0.8-1-i686.pkg.tar.xz
       md5: 0bec919d158bc4ac00ec213af05a5d43
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/ttyrec
-      url: http://repo.msys2.org/msys/x86_64/ttyrec-1.0.8-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/ttyrec-1.0.8-1-x86_64.pkg.tar.xz
       md5: fd926776c450bdd319e71aafc4ac2c65
       mv-srcs:
       - '*'

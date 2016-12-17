@@ -5,7 +5,7 @@ source:
   url: file://C:/Users/ray/gd.cio/msys2/pkgs/mingw-w64-grep-2.24-1.src.tar.gz
   md5: 6bc1b50b00b4fc984562b8116a3f6643
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -13,7 +13,8 @@ requirements:
 about:
   home: https://www.gnu.org/software/grep/
   license: GPL3
-  summary: Grep searches one or more input files for lines containing a match to a specified pattern (mingw-w64)
+  summary: Grep searches one or more input files for lines containing a match to a
+    specified pattern (mingw-w64)
 extra:
   msys2-binaries:
     win-32:

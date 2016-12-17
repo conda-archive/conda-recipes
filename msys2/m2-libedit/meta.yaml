@@ -2,10 +2,10 @@ package:
   name: m2-libedit
   version: '3.1'
 source:
-  url: http://repo.msys2.org/msys/sources/libedit-3.1-20150325.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libedit-3.1-20150325.src.tar.gz
   md5: 1bc93e2f7dfc1191e77e1c578d840a7f
 build:
-  number: '20150325'
+  number: 20150326
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -20,7 +20,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libedit
-      url: http://repo.msys2.org/msys/i686/libedit-3.1-20150325-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libedit-3.1-20150325-i686.pkg.tar.xz
       md5: c3edad631870c021e1d458a5f2ce2b6f
       mv-srcs:
       - '*'
@@ -28,7 +28,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libedit
-      url: http://repo.msys2.org/msys/x86_64/libedit-3.1-20150325-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libedit-3.1-20150325-x86_64.pkg.tar.xz
       md5: 24ef02a0aa1dd88c6eebdadf3be00b20
       mv-srcs:
       - '*'

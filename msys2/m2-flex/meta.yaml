@@ -2,10 +2,10 @@ package:
   name: m2-flex
   version: 2.6.0
 source:
-  url: http://repo.msys2.org/msys/sources/flex-2.6.0-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/flex-2.6.0-1.src.tar.gz
   md5: fa0c8933aec5b81e3df5c44243bddd01
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -21,7 +21,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/flex
-      url: http://repo.msys2.org/msys/i686/flex-2.6.0-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/flex-2.6.0-1-i686.pkg.tar.xz
       md5: 13d9a8b91ef1b9d87a5e5d92589c6909
       mv-srcs:
       - '*'
@@ -29,7 +29,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/flex
-      url: http://repo.msys2.org/msys/x86_64/flex-2.6.0-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/flex-2.6.0-1-x86_64.pkg.tar.xz
       md5: 9b4e7d1bd644565b85648d7e7dbec99a
       mv-srcs:
       - '*'

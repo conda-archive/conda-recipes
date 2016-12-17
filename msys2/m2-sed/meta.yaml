@@ -2,10 +2,10 @@ package:
   name: m2-sed
   version: 4.2.2
 source:
-  url: http://repo.msys2.org/msys/sources/sed-4.2.2-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/sed-4.2.2-2.src.tar.gz
+  md5: da4aabcc00714b533009d4d4fe951435
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/sed
-      url: http://repo.msys2.org/msys/i686/sed-4.2.2-2-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/sed-4.2.2-2-i686.pkg.tar.xz
       md5: 24d0944b8158139f1c1923188c451d55
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/sed
-      url: http://repo.msys2.org/msys/x86_64/sed-4.2.2-2-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/sed-4.2.2-2-x86_64.pkg.tar.xz
       md5: 7742e58b285cbc4a686e40c9b9aaf638
       mv-srcs:
       - '*'

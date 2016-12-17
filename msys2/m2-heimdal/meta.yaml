@@ -2,10 +2,10 @@ package:
   name: m2-heimdal
   version: 1.5.3
 source:
-  url: http://repo.msys2.org/msys/sources/heimdal-1.5.3-9.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/heimdal-1.5.3-9.src.tar.gz
   md5: 0866de42d65e7cdda778fd03a17f2d3a
 build:
-  number: '9'
+  number: 10
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/heimdal
-      url: http://repo.msys2.org/msys/i686/heimdal-1.5.3-9-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/heimdal-1.5.3-9-i686.pkg.tar.xz
       md5: a822b511e19d402504762124eb8c3d91
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/heimdal
-      url: http://repo.msys2.org/msys/x86_64/heimdal-1.5.3-9-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/heimdal-1.5.3-9-x86_64.pkg.tar.xz
       md5: 6a38525fe5bc03ac551056165763b34a
       mv-srcs:
       - '*'

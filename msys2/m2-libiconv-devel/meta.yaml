@@ -2,10 +2,10 @@ package:
   name: m2-libiconv-devel
   version: '1.14'
 source:
-  url: http://repo.msys2.org/msys/sources/libiconv-devel-1.14-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libiconv-devel-1.14-2.src.tar.gz
+  md5: 43fc195dae3c36ca66180203346c826a
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libiconv-devel
-      url: http://repo.msys2.org/msys/i686/libiconv-devel-1.14-2-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libiconv-devel-1.14-2-i686.pkg.tar.xz
       md5: eed8aeaab38a4d343a3e3fb22927d268
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libiconv-devel
-      url: http://repo.msys2.org/msys/x86_64/libiconv-devel-1.14-2-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libiconv-devel-1.14-2-x86_64.pkg.tar.xz
       md5: 9f42411c3e55d78b02c846bbad287fc7
       mv-srcs:
       - '*'

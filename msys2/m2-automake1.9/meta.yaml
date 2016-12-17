@@ -2,10 +2,10 @@ package:
   name: m2-automake1.9
   version: 1.9.6
 source:
-  url: http://repo.msys2.org/msys/sources/automake1.9-1.9.6-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/automake1.9-1.9.6-2.src.tar.gz
+  md5: 687a758c7cef35544c5acdaf04e0e9e1
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/automake1.9
-      url: http://repo.msys2.org/msys/i686/automake1.9-1.9.6-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/automake1.9-1.9.6-2-any.pkg.tar.xz
       md5: 2e7695beceba4bd101a3d75679328def
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/automake1.9
-      url: http://repo.msys2.org/msys/x86_64/automake1.9-1.9.6-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/automake1.9-1.9.6-2-any.pkg.tar.xz
       md5: f225464f89487e587aadb4df41d1becc
       mv-srcs:
       - '*'

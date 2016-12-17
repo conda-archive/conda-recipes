@@ -2,10 +2,10 @@ package:
   name: m2-autoconf2.13
   version: '2.13'
 source:
-  url: http://repo.msys2.org/msys/sources/autoconf2.13-2.13-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/autoconf2.13-2.13-2.src.tar.gz
+  md5: 0d60f4ebc23283039209bb9cd2b58af0
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -21,7 +21,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/autoconf2.13
-      url: http://repo.msys2.org/msys/i686/autoconf2.13-2.13-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/autoconf2.13-2.13-2-any.pkg.tar.xz
       md5: ce32391a758692e549d3381cda815428
       mv-srcs:
       - '*'
@@ -29,7 +29,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/autoconf2.13
-      url: http://repo.msys2.org/msys/x86_64/autoconf2.13-2.13-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/autoconf2.13-2.13-2-any.pkg.tar.xz
       md5: 872bbad6f2d0439577912d41d8890a17
       mv-srcs:
       - '*'

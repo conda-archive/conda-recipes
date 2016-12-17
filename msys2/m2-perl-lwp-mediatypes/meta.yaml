@@ -2,10 +2,10 @@ package:
   name: m2-perl-lwp-mediatypes
   version: '6.02'
 source:
-  url: http://repo.msys2.org/msys/sources/perl-LWP-MediaTypes-6.02-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/perl-LWP-MediaTypes-6.02-2.src.tar.gz
+  md5: 509657b6a3c54d3192b02dbc1cae89f5
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/perl-LWP-MediaTypes
-      url: http://repo.msys2.org/msys/i686/perl-LWP-MediaTypes-6.02-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/perl-LWP-MediaTypes-6.02-2-any.pkg.tar.xz
       md5: c8bed90d2b94828f69b276d3b2b26c08
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/perl-LWP-MediaTypes
-      url: http://repo.msys2.org/msys/x86_64/perl-LWP-MediaTypes-6.02-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/perl-LWP-MediaTypes-6.02-2-any.pkg.tar.xz
       md5: 133f1ce26030dee956eb497962d8b8da
       mv-srcs:
       - '*'

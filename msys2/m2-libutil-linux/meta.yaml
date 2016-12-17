@@ -2,10 +2,10 @@ package:
   name: m2-libutil-linux
   version: 2.26.2
 source:
-  url: http://repo.msys2.org/msys/sources/libutil-linux-2.26.2-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libutil-linux-2.26.2-1.src.tar.gz
+  md5: f37afbfff6f781f1b3265b310f9306ce
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -20,7 +20,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libutil-linux
-      url: http://repo.msys2.org/msys/i686/libutil-linux-2.26.2-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libutil-linux-2.26.2-1-i686.pkg.tar.xz
       md5: 60451d51f468c4f1ae05e5f342e2809b
       mv-srcs:
       - '*'
@@ -28,7 +28,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libutil-linux
-      url: http://repo.msys2.org/msys/x86_64/libutil-linux-2.26.2-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libutil-linux-2.26.2-1-x86_64.pkg.tar.xz
       md5: c923605dfb8d73ffbbfab377bf4c3ed5
       mv-srcs:
       - '*'

@@ -2,10 +2,10 @@ package:
   name: m2-vim
   version: 7.4.1721
 source:
-  url: http://repo.msys2.org/msys/sources/vim-7.4.1721-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/vim-7.4.1721-1.src.tar.gz
   md5: 375076962ef08830fb3b4db0680be031
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/vim
-      url: http://repo.msys2.org/msys/i686/vim-7.4.1721-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/vim-7.4.1721-1-i686.pkg.tar.xz
       md5: 12fbb74a82275d333b1f1dc80253f532
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/vim
-      url: http://repo.msys2.org/msys/x86_64/vim-7.4.1721-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/vim-7.4.1721-1-x86_64.pkg.tar.xz
       md5: c39147111a1408ae314a61c594acf7a6
       mv-srcs:
       - '*'

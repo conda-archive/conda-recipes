@@ -2,10 +2,10 @@ package:
   name: m2-man-db
   version: 2.7.4
 source:
-  url: http://repo.msys2.org/msys/sources/man-db-2.7.4-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/man-db-2.7.4-1.src.tar.gz
   md5: 032b798cd228fb2ae7ed86f74dc490d9
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -23,7 +23,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/man-db
-      url: http://repo.msys2.org/msys/i686/man-db-2.7.4-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/man-db-2.7.4-1-i686.pkg.tar.xz
       md5: 7aea08558ec86a2e2764733c17691fc4
       mv-srcs:
       - '*'
@@ -31,7 +31,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/man-db
-      url: http://repo.msys2.org/msys/x86_64/man-db-2.7.4-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/man-db-2.7.4-1-x86_64.pkg.tar.xz
       md5: 05ed7bd7bdad6d7a13b74a9d060676b1
       mv-srcs:
       - '*'

@@ -2,10 +2,10 @@ package:
   name: m2-libasprintf
   version: 0.19.7
 source:
-  url: http://repo.msys2.org/msys/sources/libasprintf-0.19.7-3.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libasprintf-0.19.7-3.src.tar.gz
+  md5: c79f1314c7cdd085adc2d516ca47a6e1
 build:
-  number: '3'
+  number: 4
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libasprintf
-      url: http://repo.msys2.org/msys/i686/libasprintf-0.19.7-3-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libasprintf-0.19.7-3-i686.pkg.tar.xz
       md5: 3e3270bc1a7223d1e44e93d1944de753
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libasprintf
-      url: http://repo.msys2.org/msys/x86_64/libasprintf-0.19.7-3-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libasprintf-0.19.7-3-x86_64.pkg.tar.xz
       md5: 06ca6c6e2eb98cd5e0bf8d4330a03827
       mv-srcs:
       - '*'

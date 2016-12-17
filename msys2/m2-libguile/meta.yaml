@@ -2,10 +2,10 @@ package:
   name: m2-libguile
   version: 2.0.11
 source:
-  url: http://repo.msys2.org/msys/sources/libguile-2.0.11-3.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libguile-2.0.11-3.src.tar.gz
+  md5: 1a5012b18a4fc06cfcbf7fc1d5fac00a
 build:
-  number: '3'
+  number: 4
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -23,7 +23,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libguile
-      url: http://repo.msys2.org/msys/i686/libguile-2.0.11-3-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libguile-2.0.11-3-i686.pkg.tar.xz
       md5: cc129ea9403abbfbf555ed529455c39b
       mv-srcs:
       - '*'
@@ -31,7 +31,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libguile
-      url: http://repo.msys2.org/msys/x86_64/libguile-2.0.11-3-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libguile-2.0.11-3-x86_64.pkg.tar.xz
       md5: 4bb85b1ddc5c8a6905922eb992f47336
       mv-srcs:
       - '*'

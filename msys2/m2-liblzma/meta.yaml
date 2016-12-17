@@ -2,10 +2,10 @@ package:
   name: m2-liblzma
   version: 5.2.2
 source:
-  url: http://repo.msys2.org/msys/sources/liblzma-5.2.2-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/liblzma-5.2.2-1.src.tar.gz
+  md5: 0e2295f12d9ab1358ba2c66c6fecbe76
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -20,7 +20,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/liblzma
-      url: http://repo.msys2.org/msys/i686/liblzma-5.2.2-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/liblzma-5.2.2-1-i686.pkg.tar.xz
       md5: 35d98ba855e0a81ad85448a52df95233
       mv-srcs:
       - '*'
@@ -28,7 +28,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/liblzma
-      url: http://repo.msys2.org/msys/x86_64/liblzma-5.2.2-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/liblzma-5.2.2-1-x86_64.pkg.tar.xz
       md5: 0fe016b87607c41569248477574b919d
       mv-srcs:
       - '*'

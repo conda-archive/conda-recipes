@@ -2,10 +2,10 @@ package:
   name: m2-gnupg
   version: 1.4.20
 source:
-  url: http://repo.msys2.org/msys/sources/gnupg-1.4.20-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/gnupg-1.4.20-1.src.tar.gz
   md5: f9c8ba683d399f3b306c330f41fc69dd
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -24,7 +24,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/gnupg
-      url: http://repo.msys2.org/msys/i686/gnupg-1.4.20-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/gnupg-1.4.20-1-i686.pkg.tar.xz
       md5: bc5d22af35ae55e0d35790ef97ce3922
       mv-srcs:
       - '*'
@@ -32,7 +32,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/gnupg
-      url: http://repo.msys2.org/msys/x86_64/gnupg-1.4.20-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/gnupg-1.4.20-1-x86_64.pkg.tar.xz
       md5: f7cb9452c37374805463fb7cca9b15a3
       mv-srcs:
       - '*'

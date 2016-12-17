@@ -2,10 +2,10 @@ package:
   name: m2-pcre
   version: '8.38'
 source:
-  url: http://repo.msys2.org/msys/sources/pcre-8.38-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/pcre-8.38-1.src.tar.gz
   md5: b02505586bcd667b6031f2ea67a7a4a4
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -25,7 +25,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/pcre
-      url: http://repo.msys2.org/msys/i686/pcre-8.38-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/pcre-8.38-1-i686.pkg.tar.xz
       md5: 85d102da40fd75f86e69d0a834bc05c2
       mv-srcs:
       - '*'
@@ -33,7 +33,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/pcre
-      url: http://repo.msys2.org/msys/x86_64/pcre-8.38-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/pcre-8.38-1-x86_64.pkg.tar.xz
       md5: 9c2df12f1fe4fd8e4993d0ee40ab3b9b
       mv-srcs:
       - '*'

@@ -2,10 +2,10 @@ package:
   name: m2-util-linux
   version: 2.26.2
 source:
-  url: http://repo.msys2.org/msys/sources/util-linux-2.26.2-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/util-linux-2.26.2-1.src.tar.gz
+  md5: f37afbfff6f781f1b3265b310f9306ce
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -20,7 +20,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/util-linux
-      url: http://repo.msys2.org/msys/i686/util-linux-2.26.2-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/util-linux-2.26.2-1-i686.pkg.tar.xz
       md5: 54583392d1b32d7cb4f836ec440325c0
       mv-srcs:
       - '*'
@@ -28,7 +28,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/util-linux
-      url: http://repo.msys2.org/msys/x86_64/util-linux-2.26.2-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/util-linux-2.26.2-1-x86_64.pkg.tar.xz
       md5: f235cce5e25b98d3c552d1b829e0f627
       mv-srcs:
       - '*'

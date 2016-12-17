@@ -2,10 +2,10 @@ package:
   name: m2-libxslt
   version: 1.1.28
 source:
-  url: http://repo.msys2.org/msys/sources/libxslt-1.1.28-7.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libxslt-1.1.28-7.src.tar.gz
+  md5: f7535638e805075664035b4440cf3d04
 build:
-  number: '7'
+  number: 8
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libxslt
-      url: http://repo.msys2.org/msys/i686/libxslt-1.1.28-7-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libxslt-1.1.28-7-i686.pkg.tar.xz
       md5: d94b8be19bb894827f4671eade6609ec
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libxslt
-      url: http://repo.msys2.org/msys/x86_64/libxslt-1.1.28-7-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libxslt-1.1.28-7-x86_64.pkg.tar.xz
       md5: bb625158455111551acac27d1acf734b
       mv-srcs:
       - '*'
