@@ -11,6 +11,7 @@ requirements:
   - msys2-conda-epoch >=20160418
   - m2w64-gmp
   - m2w64-gcc-libs-core
+  - m2w64-gcc-libgfortran
   - m2w64-libwinpthread-git
 about:
   home: https://gcc.gnu.org
