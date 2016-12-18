@@ -10,9 +10,9 @@ diff -urN R-3.3.1.old/configure R-3.3.1/configure
  DYLIB_UNDEFINED_ALLOWED_TRUE
  INTERNET_LIBS
 @@ -22355,7 +22356,7 @@
- 
+
  ### * Checks for libraries.
- 
+
 -## Set up LD_LIBRARY_PATH or equivalent.
 +## Add -Wl,-rpath, entries to RPATH_LDFLAGS.
  ## <FIXME>
@@ -35,7 +35,7 @@ diff -urN R-3.3.1.old/configure R-3.3.1/configure
 @@ -22407,13 +22415,20 @@
      Rshlibpath_var=${shlibpath_var}
  esac
- 
+
 -## Export LD_LIBRARY_PATH or equivalent.
 +## Export LD_LIBRARY_PATH or equivalent (except we do not want to do that
 +## instead we want to use -Wl,-rpath .. only doing this for Linux for now).
@@ -52,8 +52,8 @@ diff -urN R-3.3.1.old/configure R-3.3.1/configure
 +    eval "export ${Rshlibpath_var}"
 +    ;;
 +esac
- 
- 
+
+
  ## record how to strip shared/dynamic libraries.
 @@ -25074,7 +25089,7 @@
  # flags.
@@ -77,9 +77,9 @@ diff -urN R-3.3.1.old/configure.ac R-3.3.1/configure.ac
 --- R-3.3.1.old/configure.ac	2016-10-21 13:04:45.171835484 +0100
 +++ R-3.3.1/configure.ac	2016-10-21 13:10:13.000000000 +0100
 @@ -663,7 +663,7 @@
- 
+
  ### * Checks for libraries.
- 
+
 -## Set up LD_LIBRARY_PATH or equivalent.
 +## Add -Wl,-rpath, entries to RPATH_LDFLAGS.
  ## <FIXME>
@@ -114,10 +114,10 @@ diff -urN R-3.3.1.old/configure.ac R-3.3.1/configure.ac
 +    ;;
 +esac
  AC_SUBST(Rshlibpath_var)
- 
+
  ## record how to strip shared/dynamic libraries.
 @@ -1706,6 +1714,7 @@
- 
+
  AC_SUBST(MAIN_LD)
  AC_SUBST(MAIN_LDFLAGS)
 +AC_SUBST(RPATH_LDFLAGS)
@@ -139,7 +139,7 @@ diff -urN R-3.3.1.old/etc/ldpaths.in R-3.3.1/etc/ldpaths.in
 +# it calls execve() with an environment which
 +# has these modifications to LD_LIBRARY_PATH
 +# removed which may be tricky to orchestrate
-+if [ "$(uname -s)" == "Linux" ]; then
++if [ "$(uname -s)" = "Linux" ]; then
 +  return 0
 +fi
  : ${JAVA_HOME=@JAVA_HOME@}
