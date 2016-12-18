@@ -619,10 +619,12 @@ class PatchSet(object):
         else: # extra data at the end of file
           pass
       else:
-        warning("error: patch stream is incomplete!")
-        self.errors += 1
-        if len(self.items) == 0:
-          return False
+        # if this is the deletion of a binary file, that is not a problem.
+        if not p or (p and p.target != b'/dev/null'):
+          warning("error: patch stream is incomplete!")
+          self.errors += 1
+          if len(self.items) == 0:
+            return False
 
     if debugmode and len(self.items) > 0:
         debug("- %2d hunks for %s" % (len(p.hunks), p.source))
@@ -903,6 +905,10 @@ class PatchSet(object):
       # validate before patching
       f2fp = open(filename, 'rb')
       hunkno = 0
+      # short-circuit for binary file deletion.
+      if not p.hunks and p.target == b'/dev/null':
+        os.unlink(filename)
+        continue
       hunk = p.hunks[hunkno]
       hunkfind = []
       hunkreplace = []
