@@ -24,11 +24,11 @@ extra:
       patches:
       - 0001-mingw32-Remove-gcc-libs-non-core.patch
       mv-srcs:
-      - mingw32/share/licenses/gcc-libs
       - mingw32
+      - Library/mingw-w64/share/licenses/gcc-libs
       mv-dsts:
-      - Library/mingw-w64/share/licenses/gcc-libs-core
       - Library/mingw-w64
+      - Library/mingw-w64/share/licenses/gcc-libs-core
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-gcc-libs
       url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-gcc-libs-5.3.0-5-any.pkg.tar.xz
@@ -36,8 +36,8 @@ extra:
       patches:
       - 0001-mingw64-Remove-gcc-libs-non-core.patch
       mv-srcs:
-      - mingw64/share/licenses/gcc-libs
       - mingw64
+      - Library/mingw-w64/share/licenses/gcc-libs
       mv-dsts:
-      - Library/mingw-w64/share/licenses/gcc-libs-core
       - Library/mingw-w64
+      - Library/mingw-w64/share/licenses/gcc-libs-core

@@ -11,7 +11,7 @@ requirements:
   - msys2-conda-epoch >=20160418
   - m2w64-libtre-git
 about:
-  home: null
+  home: https://sourceforge.net/projects/msys2/
   license: BSD
   summary: Wrapper library around TRE that provides POSIX API (mingw-w64)
 extra:

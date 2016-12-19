@@ -90,7 +90,7 @@ def main():
         mv_srcs = glob(join(prefix, normpath(mv_src)))
         # Prevent the 'Scripts' subfolder from being moved into the final package.
         print('post-glob mv_srcs %s' % mv_srcs)
-        mv_srcs = [m for m in mv_srcs if m != 'Scripts']
+        mv_srcs = [m for m in mv_srcs if not re.match('.*\\Scripts$', m)]
         print('post-filter mv_srcs %s' % mv_srcs)
         if '*' in mv_src or mv_dst.endswith('/') or len(mv_srcs) > 1:
             mv_dst_definitely_dir = True

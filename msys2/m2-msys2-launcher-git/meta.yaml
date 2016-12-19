@@ -10,7 +10,7 @@ requirements:
   run:
   - msys2-conda-epoch >=20160418
 about:
-  home: null
+  home: https://sourceforge.net/projects/msys2/
   license: GPL, MIT
   summary: Helper for launching MSYS2 shells
 extra:

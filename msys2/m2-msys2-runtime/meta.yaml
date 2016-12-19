@@ -5,12 +5,12 @@ source:
   url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/msys2-runtime-2.5.0.17080.65c939c-1.src.tar.gz
   md5: 4d735859c1c3c1603373755e482d4e6b
 build:
-  number: 2
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
 about:
-  home: null
+  home: https://sourceforge.net/projects/msys2/
   license: GPL
   summary: Posix emulation engine for Windows
 extra:
