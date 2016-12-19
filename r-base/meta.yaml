@@ -58,13 +58,13 @@ requirements:
     - {{native}}icu 54.*       # [not win]
     - {{native}}pcre 8.39*     # [not win]
     - {{native}}pcre           # [win]
-    - mkl
     - {{native}}tk
     - {{native}}zlib
     - {{native}}gsl
     - {{native}}libpng
     - {{native}}libtiff
     - {{native}}libxml2
+#   - mkl
 
   run:
     - readline                 # [not win]
@@ -89,13 +89,13 @@ requirements:
     - {{native}}icu 54.*       # [not win]
     - {{native}}pcre 8.39*     # [not win]
     - {{native}}pcre           # [win]
-    - mkl
     - {{native}}tk
     - {{native}}zlib
     - {{native}}gsl
     - {{native}}libpng
     - {{native}}libtiff
     - {{native}}libxml2
+#   - mkl
 
 test:
   commands:
