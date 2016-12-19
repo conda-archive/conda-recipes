@@ -25,7 +25,7 @@ extra:
       md5: f0e867e51a73dc66929d5bdafe17c1cf
       # Breaks up cyclic dependency
       patches:
-      - 0001-Remove-gcc-libs-core.patch
+      - 0001-mingw32-Remove-gcc-libs-core.patch
       mv-srcs:
       - mingw32
       mv-dsts:
@@ -36,7 +36,7 @@ extra:
       md5: 071cd392ca1e2e15fe1612b925bd5172
       # Breaks up cyclic dependency
       patches:
-      - 0001-Remove-gcc-libs-core.patch
+      - 0001-mingw64-Remove-gcc-libs-core.patch
       mv-srcs:
       - mingw64
       mv-dsts:
