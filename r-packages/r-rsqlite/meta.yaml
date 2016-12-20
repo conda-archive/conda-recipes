@@ -5,13 +5,13 @@ package:
   name: r-rsqlite
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.1"
+  version: "1.1_1"
 
 source:
-  fn: RSQLite_1.1.tar.gz
+  fn: RSQLite_1.1-1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/RSQLite_1.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/RSQLite/RSQLite_1.1.tar.gz
+    - https://cran.r-project.org/src/contrib/RSQLite_1.1-1.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/RSQLite/RSQLite_1.1-1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
