@@ -1,6 +1,6 @@
 package:
   name: r-essentials
-  version: 1.5.0
+  version: 1.5.1
 
 requirements:
   # Not really needed, but just to make sure that they are built
@@ -25,6 +25,27 @@ requirements:
     - r-rbokeh >=0.5.0
     - r-formatr >=1.4
     - notebook >=4.2.3
+    - r-tidyverse >=1.0.0
+    - r-dbi >=0.5_1
+    - r-broom >=0.4.1
+    - r-forcats >=0.1.1
+    - r-haven >=1.0.0
+    - r-hms >=0.3
+    - r-httr >=1.2.1
+    - r-jsonlite >=1.1
+    - r-lubridate >=1.6.0
+    - r-magrittr >=1.5
+    - r-modelr >=0.1.0
+    - r-purrr >=0.2.2
+    - r-readr >=1.0.0
+    - r-readxl >=0.1.1
+    - r-rvest >=0.3.2
+    - r-stringr >=1.1.0
+    - r-tibble >=1.2
+    - r-tidyr >=0.6.0
+    - r-xml2 >=1.0.0
+
+
   run:
     - r-base >=3.3.2
     - r-recommended >=3.3.2
@@ -46,6 +67,25 @@ requirements:
     - r-rbokeh >=0.5.0
     - r-formatr >=1.4
     - notebook >=4.2.3
+    - r-tidyverse >=1.0.0
+    - r-dbi >=0.5_1
+    - r-broom >=0.4.1
+    - r-forcats >=0.1.1
+    - r-haven >=1.0.0
+    - r-hms >=0.3
+    - r-httr >=1.2.1
+    - r-jsonlite >=1.1
+    - r-lubridate >=1.6.0
+    - r-magrittr >=1.5
+    - r-modelr >=0.1.0
+    - r-purrr >=0.2.2
+    - r-readr >=1.0.0
+    - r-readxl >=0.1.1
+    - r-rvest >=0.3.2
+    - r-stringr >=1.1.0
+    - r-tibble >=1.2
+    - r-tidyr >=0.6.0
+    - r-xml2 >=1.0.0
 
 about:
   summary: "Some essential packages for working with R"
