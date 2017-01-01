@@ -1,0 +1,35 @@
+package:
+  name: m2-ncurses
+  version: 6.0.20160220
+source:
+  url: http://repo.msys2.org/msys/sources/ncurses-6.0.20160220-1.src.tar.gz
+  md5: 064e14d409c79a8a99509d598ada021c
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-msys2-runtime
+  - m2-gcc-libs
+about:
+  home: https://www.gnu.org/software/ncurses/
+  license: GPL, MIT
+  summary: System V Release 4.0 curses emulation library
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/ncurses
+      url: http://repo.msys2.org/msys/i686/ncurses-6.0.20160220-1-i686.pkg.tar.xz
+      md5: 97f68cf33ec89ee2cf1c058c56bff194
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/ncurses
+      url: http://repo.msys2.org/msys/x86_64/ncurses-6.0.20160220-1-x86_64.pkg.tar.xz
+      md5: 2fd250fadfa9fce62fe7cb4c22bda990
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

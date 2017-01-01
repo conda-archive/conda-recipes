@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CFLAGS="-I$PREFIX/include" $PYTHON setup.py install
+CFLAGS="-I${PREFIX}/include ${CFLAGS}" "${PYTHON}" setup.py install --single-version-externally-managed --record=record.txt
 
 # Add more build steps here, if they are necessary.
 

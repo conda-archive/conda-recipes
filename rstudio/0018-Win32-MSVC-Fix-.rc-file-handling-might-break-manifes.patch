@@ -1,0 +1,172 @@
+From 251a5df7c59da00efe3ac4ff95a84a14fd3d4c44 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Fri, 28 Oct 2016 15:07:10 +0100
+Subject: [PATCH 18/42] Win32 (MSVC): Fix .rc file handling (might break
+ manifests on mingw-w64)
+
+---
+ src/cpp/desktop/CMakeLists.txt                    | 3 +++
+ src/cpp/desktop/rstudio.rc.in                     | 1 -
+ src/cpp/desktop/synctex/rsinverse/CMakeLists.txt  | 3 +++
+ src/cpp/desktop/synctex/rsinverse/rsinverse.rc.in | 1 -
+ src/cpp/desktop/urlopener/CMakeLists.txt          | 3 +++
+ src/cpp/desktop/urlopener/urlopener.rc.in         | 1 -
+ src/cpp/diagnostics/CMakeLists.txt                | 2 ++
+ src/cpp/diagnostics/diagnostics.rc.in             | 1 -
+ src/cpp/session/CMakeLists.txt                    | 2 ++
+ src/cpp/session/consoleio/CMakeLists.txt          | 2 ++
+ src/cpp/session/consoleio/consoleio.rc.in         | 1 -
+ src/cpp/session/rsession.rc.in                    | 1 -
+ 12 files changed, 15 insertions(+), 6 deletions(-)
+
+diff --git a/src/cpp/desktop/CMakeLists.txt b/src/cpp/desktop/CMakeLists.txt
+index 3880efd..ee57271 100644
+--- a/src/cpp/desktop/CMakeLists.txt
++++ b/src/cpp/desktop/CMakeLists.txt
+@@ -263,6 +263,9 @@ if(WIN32)
+       set(DESKTOP_SOURCE_FILES
+          ${DESKTOP_SOURCE_FILES}
+          "${CMAKE_CURRENT_BINARY_DIR}/res.o")
++   elseif(MSVC)
++      set(LINK_FLAGS -SUBSYSTEM:WINDOWS ${_l}version)
++      set(DESKTOP_SOURCE_FILES ${DESKTOP_SOURCE_FILES} "${CMAKE_CURRENT_BINARY_DIR}/rstudio.rc")
+    endif(MINGW)
+ 
+    if(NOT RSTUDIO_SESSION_WIN64)
+diff --git a/src/cpp/desktop/rstudio.rc.in b/src/cpp/desktop/rstudio.rc.in
+index 3efb7bb..1bafd7f 100644
+--- a/src/cpp/desktop/rstudio.rc.in
++++ b/src/cpp/desktop/rstudio.rc.in
+@@ -3,7 +3,6 @@
+ 1 ICON RStudio.ico
+ 2 ICON RProject.ico
+ 
+-1 RT_MANIFEST "rstudio.exe.manifest"
+ 1 VERSIONINFO
+ FILEVERSION ${CPACK_PACKAGE_VERSION_MAJOR},${CPACK_PACKAGE_VERSION_MINOR},${CPACK_PACKAGE_VERSION_PATCH},0
+ PRODUCTVERSION ${CPACK_PACKAGE_VERSION_MAJOR},${CPACK_PACKAGE_VERSION_MINOR},${CPACK_PACKAGE_VERSION_PATCH},0
+diff --git a/src/cpp/desktop/synctex/rsinverse/CMakeLists.txt b/src/cpp/desktop/synctex/rsinverse/CMakeLists.txt
+index 5180b36..28b5b1b 100644
+--- a/src/cpp/desktop/synctex/rsinverse/CMakeLists.txt
++++ b/src/cpp/desktop/synctex/rsinverse/CMakeLists.txt
+@@ -52,6 +52,9 @@ if(MINGW)
+       ${RSINVERSE_SOURCE_FILES}
+       "${CMAKE_CURRENT_BINARY_DIR}/res.o")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -mwindows")
++elseif(MSVC)
++   set(LINK_FLAGS -SUBSYSTEM:WINDOWS ${_l}version)
++   set(RSINVERSE_SOURCE_FILES ${RSINVERSE_SOURCE_FILES} ${CMAKE_CURRENT_BINARY_DIR}/rsinverse.rc)
+ endif(MINGW)
+ 
+ add_executable(rsinverse
+diff --git a/src/cpp/desktop/synctex/rsinverse/rsinverse.rc.in b/src/cpp/desktop/synctex/rsinverse/rsinverse.rc.in
+index ec4916b..1519417 100644
+--- a/src/cpp/desktop/synctex/rsinverse/rsinverse.rc.in
++++ b/src/cpp/desktop/synctex/rsinverse/rsinverse.rc.in
+@@ -1,6 +1,5 @@
+ #include "winuser.h"
+ 
+-1 RT_MANIFEST "rsinverse.exe.manifest"
+ 1 VERSIONINFO
+ FILEVERSION ${CPACK_PACKAGE_VERSION_MAJOR},${CPACK_PACKAGE_VERSION_MINOR},${CPACK_PACKAGE_VERSION_PATCH},0
+ PRODUCTVERSION ${CPACK_PACKAGE_VERSION_MAJOR},${CPACK_PACKAGE_VERSION_MINOR},${CPACK_PACKAGE_VERSION_PATCH},0
+diff --git a/src/cpp/desktop/urlopener/CMakeLists.txt b/src/cpp/desktop/urlopener/CMakeLists.txt
+index a91ea2e..148e49f 100644
+--- a/src/cpp/desktop/urlopener/CMakeLists.txt
++++ b/src/cpp/desktop/urlopener/CMakeLists.txt
+@@ -51,6 +51,9 @@ if(MINGW)
+    set(URLOPENER_SOURCE_FILES
+       ${URLOPENER_SOURCE_FILES}
+       "${CMAKE_CURRENT_BINARY_DIR}/res.o")
++elseif(MSVC)
++   set(LINK_FLAGS -SUBSYSTEM:WINDOWS ${_l}version)
++   set(URLOPENER_SOURCE_FILES ${URLOPENER_SOURCE_FILES} ${CMAKE_CURRENT_BINARY_DIR}/urlopener.rc)
+ endif(MINGW)
+ 
+ add_executable(urlopener
+diff --git a/src/cpp/desktop/urlopener/urlopener.rc.in b/src/cpp/desktop/urlopener/urlopener.rc.in
+index 4042d13..e1d5506 100644
+--- a/src/cpp/desktop/urlopener/urlopener.rc.in
++++ b/src/cpp/desktop/urlopener/urlopener.rc.in
+@@ -1,6 +1,5 @@
+ #include "winuser.h"
+ 
+-1 RT_MANIFEST "urlopener.exe.manifest"
+ 1 VERSIONINFO
+ FILEVERSION ${CPACK_PACKAGE_VERSION_MAJOR},${CPACK_PACKAGE_VERSION_MINOR},${CPACK_PACKAGE_VERSION_PATCH},0
+ PRODUCTVERSION ${CPACK_PACKAGE_VERSION_MAJOR},${CPACK_PACKAGE_VERSION_MINOR},${CPACK_PACKAGE_VERSION_PATCH},0
+diff --git a/src/cpp/diagnostics/CMakeLists.txt b/src/cpp/diagnostics/CMakeLists.txt
+index 2c6756e..07c110f 100644
+--- a/src/cpp/diagnostics/CMakeLists.txt
++++ b/src/cpp/diagnostics/CMakeLists.txt
+@@ -55,6 +55,8 @@ if(WIN32)
+       set(DIAGNOSTICS_SOURCE_FILES
+          ${DIAGNOSTICS_SOURCE_FILES}
+          "${CMAKE_CURRENT_BINARY_DIR}/res.o")
++   elseif(MSVC)
++      set(DIAGNOSTICS_SOURCE_FILES ${DIAGNOSTICS_SOURCE_FILES} ${CMAKE_CURRENT_BINARY_DIR}/diagnostics.rc)
+    endif(MINGW)
+ endif()
+ 
+diff --git a/src/cpp/diagnostics/diagnostics.rc.in b/src/cpp/diagnostics/diagnostics.rc.in
+index 5f9b6f1..681f4d3 100644
+--- a/src/cpp/diagnostics/diagnostics.rc.in
++++ b/src/cpp/diagnostics/diagnostics.rc.in
+@@ -1,6 +1,5 @@
+ #include "winuser.h"
+ 
+-1 RT_MANIFEST "diagnostics.exe.manifest"
+ 1 VERSIONINFO
+ FILEVERSION ${CPACK_PACKAGE_VERSION_MAJOR},${CPACK_PACKAGE_VERSION_MINOR},${CPACK_PACKAGE_VERSION_PATCH},0
+ PRODUCTVERSION ${CPACK_PACKAGE_VERSION_MAJOR},${CPACK_PACKAGE_VERSION_MINOR},${CPACK_PACKAGE_VERSION_PATCH},0
+diff --git a/src/cpp/session/CMakeLists.txt b/src/cpp/session/CMakeLists.txt
+index a48dc3f..648e61f 100644
+--- a/src/cpp/session/CMakeLists.txt
++++ b/src/cpp/session/CMakeLists.txt
+@@ -320,6 +320,8 @@ if(WIN32)
+       set(SESSION_SOURCE_FILES
+          ${SESSION_SOURCE_FILES}
+          "${CMAKE_CURRENT_BINARY_DIR}/res.o")
++   elseif(MSVC)
++      set(SESSION_SOURCE_FILES ${SESSION_SOURCE_FILES} ${CMAKE_CURRENT_BINARY_DIR}/rsession.rc)
+    endif(MINGW)
+    if(NOT RSTUDIO_SESSION_WIN64)
+       add_subdirectory(consoleio)
+diff --git a/src/cpp/session/consoleio/CMakeLists.txt b/src/cpp/session/consoleio/CMakeLists.txt
+index 0f51e89..342aa12 100644
+--- a/src/cpp/session/consoleio/CMakeLists.txt
++++ b/src/cpp/session/consoleio/CMakeLists.txt
+@@ -50,6 +50,8 @@ if(MINGW)
+    set(CONSOLEIO_SOURCE_FILES
+       ${CONSOLEIO_SOURCE_FILES}
+       "${CMAKE_CURRENT_BINARY_DIR}/res.o")
++elseif(MSVC)
++   set(CONSOLEIO_SOURCE_FILES ${CONSOLEIO_SOURCE_FILES} ${CMAKE_CURRENT_BINARY_DIR}/consoleio.rc)
+ endif(MINGW)
+ 
+ add_executable(consoleio
+diff --git a/src/cpp/session/consoleio/consoleio.rc.in b/src/cpp/session/consoleio/consoleio.rc.in
+index 238056b..32a2ef7 100644
+--- a/src/cpp/session/consoleio/consoleio.rc.in
++++ b/src/cpp/session/consoleio/consoleio.rc.in
+@@ -1,6 +1,5 @@
+ #include "winuser.h"
+ 
+-1 RT_MANIFEST "consoleio.exe.manifest"
+ 1 VERSIONINFO
+ FILEVERSION ${CPACK_PACKAGE_VERSION_MAJOR},${CPACK_PACKAGE_VERSION_MINOR},${CPACK_PACKAGE_VERSION_PATCH},0
+ PRODUCTVERSION ${CPACK_PACKAGE_VERSION_MAJOR},${CPACK_PACKAGE_VERSION_MINOR},${CPACK_PACKAGE_VERSION_PATCH},0
+diff --git a/src/cpp/session/rsession.rc.in b/src/cpp/session/rsession.rc.in
+index 664196e..b5a4034 100644
+--- a/src/cpp/session/rsession.rc.in
++++ b/src/cpp/session/rsession.rc.in
+@@ -1,6 +1,5 @@
+ #include "winuser.h"
+ 
+-1 RT_MANIFEST "rsession.exe.manifest"
+ 1 VERSIONINFO
+ FILEVERSION ${CPACK_PACKAGE_VERSION_MAJOR},${CPACK_PACKAGE_VERSION_MINOR},${CPACK_PACKAGE_VERSION_PATCH},0
+ PRODUCTVERSION ${CPACK_PACKAGE_VERSION_MAJOR},${CPACK_PACKAGE_VERSION_MINOR},${CPACK_PACKAGE_VERSION_PATCH},0
+-- 
+2.10.1
+

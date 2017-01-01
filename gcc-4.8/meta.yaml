@@ -6,10 +6,22 @@ source:
   fn: gcc-4.8.5.tar.bz2
   url: http://www.netgull.com/gcc/releases/gcc-4.8.5/gcc-4.8.5.tar.bz2
   md5: 80d2c2982a3392bb0b89673ff136e223
+  patches:
+    # 0001- no longer needed. GCC_PREFIX is gone (though c++ headers still in `${PREFIX}/gcc`)
+    # - 0001-Libiberty-normalize-split-directories.patch
+    # --print-search-dirs needs to agree with conda's library layout for various reasons.
+    # One being that otherwise `-lsomelib` will not find the library in `$CONDA_PREFIX/lib`
+    # An example of where this is critical is in CMake which omits the full filepath when it
+    # assumes the compiler will find it without that. This is *also* a bug in CMake as it
+    # should have asked the compiler for its real library search dirs via `--print-search-dirs`
+    # instead of assuming `$PREFIX/lib`.
+    - 0002-Disable-multiarch-like-suffixed-lib-dirs.patch
+    # We never want local software (or Homebrew) leaking into our software.
+    - 0003-Disable-usr-local.patch
 
 build:
-  detect_binary_files_with_prefix: true # [not linux32]
-  number: 4
+  detect_binary_files_with_prefix: false
+  number: 7
 
 requirements:
   build:

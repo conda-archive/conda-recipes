@@ -1,0 +1,36 @@
+package:
+  name: m2w64-libsndfile
+  version: 1.0.26
+source:
+  url: http://repo.msys2.org/mingw/sources/mingw-w64-libsndfile-1.0.26-1.src.tar.gz
+  md5: 45c8bd723a2de0f49aba94c808c83339
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2w64-flac
+  - m2w64-libvorbis
+  - m2w64-speex
+about:
+  home: http://www.mega-nerd.com/libsndfile
+  license: LGPL
+  summary: A C library for reading and writing files containing sampled sound (mingw-w64)
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: mingw32/mingw-w64-i686-libsndfile
+      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-libsndfile-1.0.26-1-any.pkg.tar.xz
+      md5: 25f2c6703c3f36fbf1d84e9f20a69f64
+      mv-srcs:
+      - mingw32
+      mv-dsts:
+      - Library/mingw-w64
+    win-64:
+      srcpkg: mingw64/mingw-w64-x86_64-libsndfile
+      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-libsndfile-1.0.26-1-any.pkg.tar.xz
+      md5: 4f70debec96c6c93791e85eec1f647e5
+      mv-srcs:
+      - mingw64
+      mv-dsts:
+      - Library/mingw-w64

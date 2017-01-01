@@ -9,13 +9,28 @@ source:
   patches:
     # http://lists.gnu.org/archive/html/bug-ncurses/2011-04/txtkWQqiQvcZe.txt
     - fix.patch
+    - 0001-ncurses-5.9-patch-20121222.patch
 
 build:
-  number: 5 # [linux64]
-  number: 6 # [linux32]
-  number: 1 # [osx]
+  number: 10
   detect_binary_files_with_prefix: true
+
+requirements:
+  build:
+    - pkg-config
 
 about:
   home: http://www.gnu.org/software/ncurses/
-  license:  Free software (X11 License)
+  license:  Free software - X11 License
+  license_family: Other
+  summary: Free software emulation of curses
+  description: |
+    The ncurses (new curses) library is a free software
+    emulation of curses in System V Release 4.0 (SVr4),
+    and more. It uses terminfo format, supports pads and
+    color and multiple highlights and forms characters and
+    function-key mapping, and has all the other SVr4-curses
+    enhancements over BSD curses. SVr4 curses is better
+    known today as X/Open Curses
+  doc_url: http://invisible-island.net/ncurses/NCURSES-Programming-HOWTO.html
+  dev_url: http://invisible-island.net/ncurses/

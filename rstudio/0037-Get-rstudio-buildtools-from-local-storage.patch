@@ -1,0 +1,162 @@
+From 8fd47c5773f0adcabe16204f2af37f04d41b9900 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Tue, 1 Nov 2016 15:13:54 +0000
+Subject: [PATCH 37/42] Get rstudio-buildtools from local storage
+
+s3.amazonaws.com has been flaky and slow for me lately.
+---
+ dependencies/common/gin-1.5.zip          |  0
+ dependencies/common/install-dictionaries | 10 ++++------
+ dependencies/common/install-gwt          | 10 ++++------
+ dependencies/common/install-libclang     | 10 ++++------
+ dependencies/common/install-mathjax      | 10 ++++------
+ dependencies/common/install-pandoc       | 10 ++++------
+ 6 files changed, 20 insertions(+), 30 deletions(-)
+ create mode 100644 dependencies/common/gin-1.5.zip
+
+diff --git a/dependencies/common/gin-1.5.zip b/dependencies/common/gin-1.5.zip
+new file mode 100644
+index 0000000..e69de29
+diff --git a/dependencies/common/install-dictionaries b/dependencies/common/install-dictionaries
+index c7ef3c0..d4664ad 100755
+--- a/dependencies/common/install-dictionaries
++++ b/dependencies/common/install-dictionaries
+@@ -17,6 +17,9 @@
+ 
+ set -e
+ 
++URL=https://s3.amazonaws.com/rstudio-dictionaries
++URL=file://${HOME}/gd.cio/r-language/rstudio/rstudio-buildtools
++
+ # install dir
+ INSTALL_DIR=`pwd`
+ 
+@@ -26,12 +29,7 @@ PLATFORM=`uname`
+ # use curl or wget as appropriate
+ download()
+ {
+-  if [ "$PLATFORM" == "Darwin" ]
+-  then
+-    curl -L https://s3.amazonaws.com/rstudio-dictionaries/$1 > $1
+-  else
+-    wget https://s3.amazonaws.com/rstudio-dictionaries/$1 -O $1
+-  fi
++  curl -L ${URL}/$1 -o $1
+ }
+ 
+ # download and extract the dictionaries if necessary
+diff --git a/dependencies/common/install-gwt b/dependencies/common/install-gwt
+index d630f66..9c708be 100755
+--- a/dependencies/common/install-gwt
++++ b/dependencies/common/install-gwt
+@@ -17,6 +17,9 @@
+ 
+ set -e
+ 
++URL=https://s3.amazonaws.com/rstudio-buildtools
++URL=file://${HOME}/gd.cio/r-language/rstudio/rstudio-buildtools
++
+ # install dir
+ INSTALL_DIR=`pwd`
+ 
+@@ -25,12 +28,7 @@ PLATFORM=`uname`
+ 
+ download()
+ {
+-  if [ "$PLATFORM" == "Darwin" ]
+-  then
+-    curl -L https://s3.amazonaws.com/rstudio-buildtools/$1 > $1
+-  else
+-    wget https://s3.amazonaws.com/rstudio-buildtools/$1 -O $1
+-  fi
++  curl -L ${URL}/$1 -o $1
+ }
+ 
+ # target directory for gwt
+diff --git a/dependencies/common/install-libclang b/dependencies/common/install-libclang
+index 5c17015..de1c43d 100755
+--- a/dependencies/common/install-libclang
++++ b/dependencies/common/install-libclang
+@@ -17,6 +17,9 @@
+ 
+ set -e
+ 
++URL=https://s3.amazonaws.com/rstudio-buildtools
++URL=file://${HOME}/gd.cio/r-language/rstudio/rstudio-buildtools
++
+ # install dir
+ INSTALL_DIR=`pwd`
+ 
+@@ -26,12 +29,7 @@ PLATFORM=`uname`
+ # use curl or wget as appropriate
+ download()
+ {
+-  if [ "$PLATFORM" == "Darwin" ]
+-  then
+-    curl -L https://s3.amazonaws.com/rstudio-buildtools/$1 > $1
+-  else
+-    wget https://s3.amazonaws.com/rstudio-buildtools/$1 -O $1
+-  fi
++  curl -L ${URL}/$1 -o $1
+ }
+ 
+ # determine target platform
+diff --git a/dependencies/common/install-mathjax b/dependencies/common/install-mathjax
+index 44bdcba..4a8873f 100755
+--- a/dependencies/common/install-mathjax
++++ b/dependencies/common/install-mathjax
+@@ -17,6 +17,9 @@
+ 
+ set -e
+ 
++URL=https://s3.amazonaws.com/rstudio-buildtools
++URL=file://${HOME}/gd.cio/r-language/rstudio/rstudio-buildtools
++
+ # install dir
+ INSTALL_DIR=`pwd`
+ 
+@@ -26,12 +29,7 @@ PLATFORM=`uname`
+ # use curl or wget as appropriate
+ download()
+ {
+-  if [ "$PLATFORM" == "Darwin" ]
+-  then
+-    curl -L https://s3.amazonaws.com/rstudio-buildtools/$1 > $1
+-  else
+-    wget https://s3.amazonaws.com/rstudio-buildtools/$1 -O $1
+-  fi
++  curl -L ${URL}/$1 -o $1
+ }
+ 
+ # download and extract mathjax if necessary
+diff --git a/dependencies/common/install-pandoc b/dependencies/common/install-pandoc
+index c2d67bf..3626c24 100755
+--- a/dependencies/common/install-pandoc
++++ b/dependencies/common/install-pandoc
+@@ -17,6 +17,9 @@
+ 
+ set -e
+ 
++URL=https://s3.amazonaws.com/rstudio-buildtools
++URL=file://${HOME}/gd.cio/r-language/rstudio/rstudio-buildtools
++
+ # install dir
+ INSTALL_DIR=`pwd`
+ 
+@@ -26,12 +29,7 @@ PLATFORM=`uname`
+ # use curl or wget as appropriate
+ download()
+ {
+-  if [ "$PLATFORM" == "Darwin" ]
+-  then
+-    curl -L https://s3.amazonaws.com/rstudio-buildtools/$1 > $1
+-  else
+-    wget https://s3.amazonaws.com/rstudio-buildtools/$1 -O $1
+-  fi
++  curl -L ${URL}/$1 -o $1
+ }
+ 
+ # get pandoc
+-- 
+2.10.1
+

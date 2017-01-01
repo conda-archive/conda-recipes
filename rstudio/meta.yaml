@@ -1,23 +1,103 @@
+{% set version = '1.0.44' %}
+
 package:
   name: rstudio
-  version: 0.99.567
+  version: {{ version }}
 
 source:
-  git_url: git://github.com/rstudio/rstudio.git
-  git_tag: v0.99.567
+  git_url: https://github.com/rstudio/rstudio.git
+  git_tag: v{{ version }}
+  patches:
+    - 0001-macOS-Allow-disabling-R-framework.patch
+    - 0002-Fix-program_options-for-Boost-1.59.patch
+    - 0003-Boost-Define-MOVE_THREAD-t-as-t.move.patch
+    - 0004-Win32-Add-LibExtern-to-RInterface.hpp-add-fix-extern.patch
+    - 0005-Debugging.patch
+    - 0006-Qt5Positioning-is-not-required.patch
+    - 0007-Qt5Sensors-is-not-required.patch
+    - 0008-Look-for-bin-R-in-CONDA_PREFIX.patch
+    - 0009-Boost_USE_STATIC_LIBS-when-DEFINED-ENV-CONDA_BUILD.patch
+    - 0010-Win32-Do-not-use-Rtools-when-DEFINED-ENV-CONDA_BUILD.patch
+    - 0011-Make-BOOST_VERSION-a-cache-var-do-not-use-1.50-when-.patch
+    - 0012-Add-missing-include-set.patch
+    - 0013-Win32-IDispatch-is-a-struct-not-a-class.patch
+    - 0014-Fix-SessionSource-macro-scoping-syntax-error-ifndef-.patch
+    - 0015-Win32-MSVC-Do-not-use-lfoo-to-link-to-foo.patch
+    - 0016-Tidy-mingw-w64-compiler-linker-flags.patch
+    - 0017-Win32-MSVC-Add-CMakeLists.txt-support.patch
+    - 0018-Win32-MSVC-Fix-.rc-file-handling-might-break-manifes.patch
+    - 0019-Win32-MSVC-Add-and-fix-includes.patch
+    - 0020-Win32-MSVC-Define-UN-LIKELY.patch
+    - 0021-Win32-MSVC-Define-STD-IN-OUT-ERR-_FILENO.patch
+    - 0022-Win32-MSVC-Workaround-poor-handling-of-const-std-str.patch
+    - 0023-Conda-Fix-macOS-and-Windows-layout-do-not-bundle-dep.patch
+    - 0024-Fix-version-comparison.patch
+    - 0025-Win32-MSVC-Add-WinMain-for-rstudio-executable.patch
+    - 0026-Win32-MSVC-Fix-hunspell-compilation-not-quite-proper.patch
+    - 0027-Win32-MSVC-Fix-SYNCTEX_DECLARE_CHARINDEX-not-sure-wh.patch
+    - 0028-Conda-Define-CONDA_BUILD-when-ENV-CONDA_BUILD-for-rs.patch
+    - 0029-Conda-Put-resources-in-share-rstudio.patch
+    - 0030-Conda-macOS-Do-not-call-runningApplicationsWithBundl.patch
+    - 0031-Conda-macOS-Use-bundleIdentifier-to-detect-running-f.patch
+    - 0032-Do-not-do-weird-fix-up-of-rpostbackPath.patch
+    - 0033-Conda-LD_LIBRARY_PATH-considered-harmful.patch
+    - 0034-Add-RSTUDIO_SUPPORTING_FILE_PATH-env-var-for-debuggi.patch
+    - 0035-Conda-Allow-symlinks-in-gwt-html-js.patch
+    - 0036-Win32-MSVC-Cannot-use-variadic-token-pasting-GNU-ext.patch
+    - 0037-Get-rstudio-buildtools-from-local-storage.patch
+    - 0038-more-debugging.patch
+    - 0039-GWT-Debug-rpc-issues.patch
+    - 0040-GWT-Hacky-attempt-to-work-around-double-slash-issue.patch
+    - 0041-Remove-debug-output-and-forced-28080-port-number.patch
+    - 0042-Conda-Add-arch-suffix-to-the-QSettings-file.patch
+
+build:
+  skip: True           # [win and py<35]
+  number: 1            # [win]
+  features:
+    - vc14             # [win and py35]
 
 requirements:
   build:
+    # Need to debug rsession, this seems like the easiest way:
+    - qtcreator        # [win]
+    - gcc              # [not win]
+    - libuuid          # [linux]
+    - jom              # [win]
+    - m2w64-tools-git  # [win]
+    - ant              # [osx]
+    - qt >=5.6         # [not osx]
     - cmake
-    - r
-    - qt
-    - boost
-
+    - boost >=1.61
+    - r-base >=3.3.1
   run:
-    - r
-    - qt
+    - libgcc           # [not win]
+    - libuuid          # [linux]
+    - qt >=5.6         # [not osx]
+    - m2w64-grep       # [win]
+    - m2w64-diffutils  # [win]
+    - m2-openssh       # [win]
+    - vs2015_runtime   # [win]
+    - r-essentials
+
+app:
+  entry: ${PREFIX}/Library/bin/rstudio.exe  [win]
+  entry: ${PREFIX}/bin/rstudio              [linux]
+  entry: open ${PREFIX}/RStudio.app         [osx]
+  icon: rstudio.png
+  summary: A set of integrated tools designed to help you be more productive with R
+  type: desk
 
 about:
-  license: AGPL
-  summary: "RStudio is an integrated development environment (IDE) for R"
-  home: http://www.rstudio.com/
+  home: https://www.rstudio.com/
+  license: Commercial or AGPLv3
+  license_family: GPL
+  summary: A set of integrated tools designed to help you be more productive with R
+  description: |
+    RStudio is an integrated development environment (IDE)
+    for R. It includes a console, syntax-highlighting
+    editor that supports direct code execution, as well
+    as tools for plotting, history, debugging and
+    workspace management.
+  doc_url: https://support.rstudio.com/hc/en-us/sections/200107586-Using-RStudio
+  dev_url: https://github.com/rstudio/rstudio

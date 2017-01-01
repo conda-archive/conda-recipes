@@ -1,6 +1,8 @@
 #!/bin/bash -e
 
-TMPFILE=$(mktemp tmp.XXXXXXXXXX.c)
+TMPFILE=$(mktemp tmp.XXXXXXXXXX)
+mv ${TMPFILE} ${TMPFILE}.c
+TMPFILE=${TMPFILE}.c
 
 cleanup() {
     rm a.out $TMPFILE
@@ -132,8 +134,11 @@ main (void)
 }
 EOF
 
+if [[ $(uname -s) == Darwin ]]; then
+  RPATH="-Xlinker -rpath -Xlinker ${PREFIX}/lib"
+fi
 
-${CC:-gcc} -I${PREFIX}/include -L${PREFIX}/lib $TMPFILE -lgsl -lgslcblas -lm
+${CC:-gcc} -I${PREFIX}/include -L${PREFIX}/lib $TMPFILE -lgsl -lgslcblas -lm $RPATH
 ./a.out >/dev/null
 
 cleanup

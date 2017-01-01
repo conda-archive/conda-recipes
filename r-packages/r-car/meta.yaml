@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-car
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "2.1_0"
+  version: "2.1_2"
 
 source:
-  fn: car_2.1-0.tar.gz
+  fn: car_2.1-2.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/car_2.1-0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/car/car_2.1-0.tar.gz
+    - http://cran.r-project.org/src/contrib/car_2.1-2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/car/car_2.1-2.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -28,22 +31,22 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: alr4, boot, leaps, lme4, lmtest, Matrix, MatrixModels, nlme, rgl (>= 0.93.960), sandwich, SparseM, survival, survey
+# Suggests: alr4, boot, coxme, leaps, lme4, lmtest, Matrix, MatrixModels, nlme, rgl (>= 0.93.960), sandwich, SparseM, survival, survey
 requirements:
   build:
-    - r
-    - r-mass # [not win]
-    - r-mgcv # [not win]
-    - r-nnet # [not win]
-    - r-pbkrtest >=0.3_2
+    - r-base
+    - r-mass
+    - r-mgcv
+    - r-nnet
+    - r-pbkrtest >=0.4_4
     - r-quantreg
 
   run:
-    - r
-    - r-mass # [not win]
-    - r-mgcv # [not win]
-    - r-nnet # [not win]
-    - r-pbkrtest >=0.3_2
+    - r-base
+    - r-mass
+    - r-mgcv
+    - r-nnet
+    - r-pbkrtest >=0.4_4
     - r-quantreg
 
 test:
@@ -64,33 +67,34 @@ about:
   license: GPL (>= 2)
   summary: ' Functions and Datasets to Accompany J. Fox and S. Weisberg,  An R Companion to Applied
     Regression, Second Edition, Sage, 2011.'
-  license_family: GPL2
+
+  license_family: GPL3
 
 # The original CRAN metadata for this package was:
 
 # Package: car
-# Version: 2.1-0
-# Date: 2015-08-31
+# Version: 2.1-2
+# Date: 2016-03-22
 # Title: Companion to Applied Regression
-# Authors@R: c(person("John", "Fox", role = c("aut", "cre"), email = "jfox@mcmaster.ca"), person("Sanford", "Weisberg", role = "aut", email = "sandy@umn.edu"), person("Daniel", "Adler", role="ctb"), person("Douglas", "Bates", role = "ctb"), person("Gabriel", "Baud-Bovy", role = "ctb"), person("Steve", "Ellison", role="ctb"), person("David", "Firth", role = "ctb"), person("Michael", "Friendly", role = "ctb"), person("Gregor", "Gorjanc", role = "ctb"), person("Spencer", "Graves", role = "ctb"), person("Richard", "Heiberger", role = "ctb"), person("Rafael", "Laboissiere", role = "ctb"), person("Georges", "Monette", role = "ctb"), person("Duncan", "Murdoch", role="ctb"), person("Henric", "Nilsson", role = "ctb"), person("Derek", "Ogle", role = "ctb"), person("Brian", "Ripley", role = "ctb"), person("William", "Venables", role = "ctb"), person("Achim", "Zeileis", role = "ctb"), person("R-Core", role="ctb"))
+# Authors@R: c(person("John", "Fox", role = c("aut", "cre"), email = "jfox@mcmaster.ca"), person("Sanford", "Weisberg", role = "aut", email = "sandy@umn.edu"), person("Daniel", "Adler", role="ctb"), person("Douglas", "Bates", role = "ctb"), person("Gabriel", "Baud-Bovy", role = "ctb"), person("Steve", "Ellison", role="ctb"), person("David", "Firth", role = "ctb"), person("Michael", "Friendly", role = "ctb"), person("Gregor", "Gorjanc", role = "ctb"), person("Spencer", "Graves", role = "ctb"), person("Richard", "Heiberger", role = "ctb"), person("Rafael", "Laboissiere", role = "ctb"), person("Georges", "Monette", role = "ctb"), person("Duncan", "Murdoch", role="ctb"), person("Henric", "Nilsson", role = "ctb"), person("Derek", "Ogle", role = "ctb"), person("Brian", "Ripley", role = "ctb"), person("William", "Venables", role = "ctb"), person("David", "Winsemius", role="ctb"), person("Achim", "Zeileis", role = "ctb"), person("R-Core", role="ctb"))
 # Depends: R (>= 3.2.0)
-# Imports: MASS, mgcv, nnet, pbkrtest (>= 0.3-2), quantreg, grDevices, utils, stats, graphics
-# Suggests: alr4, boot, leaps, lme4, lmtest, Matrix, MatrixModels, nlme, rgl (>= 0.93.960), sandwich, SparseM, survival, survey
+# Imports: MASS, mgcv, nnet, pbkrtest (>= 0.4-4), quantreg, grDevices, utils, stats, graphics
+# Suggests: alr4, boot, coxme, leaps, lme4, lmtest, Matrix, MatrixModels, nlme, rgl (>= 0.93.960), sandwich, SparseM, survival, survey
 # ByteCompile: yes
 # LazyLoad: yes
 # LazyData: yes
 # Description:  Functions and Datasets to Accompany J. Fox and S. Weisberg,  An R Companion to Applied Regression, Second Edition, Sage, 2011.
 # License: GPL (>= 2)
 # URL: https://r-forge.r-project.org/projects/car/, http://CRAN.R-project.org/package=car, http://socserv.socsci.mcmaster.ca/jfox/Books/Companion/index.html
-# Author: John Fox [aut, cre], Sanford Weisberg [aut], Daniel Adler [ctb], Douglas Bates [ctb], Gabriel Baud-Bovy [ctb], Steve Ellison [ctb], David Firth [ctb], Michael Friendly [ctb], Gregor Gorjanc [ctb], Spencer Graves [ctb], Richard Heiberger [ctb], Rafael Laboissiere [ctb], Georges Monette [ctb], Duncan Murdoch [ctb], Henric Nilsson [ctb], Derek Ogle [ctb], Brian Ripley [ctb], William Venables [ctb], Achim Zeileis [ctb], R-Core [ctb]
+# Author: John Fox [aut, cre], Sanford Weisberg [aut], Daniel Adler [ctb], Douglas Bates [ctb], Gabriel Baud-Bovy [ctb], Steve Ellison [ctb], David Firth [ctb], Michael Friendly [ctb], Gregor Gorjanc [ctb], Spencer Graves [ctb], Richard Heiberger [ctb], Rafael Laboissiere [ctb], Georges Monette [ctb], Duncan Murdoch [ctb], Henric Nilsson [ctb], Derek Ogle [ctb], Brian Ripley [ctb], William Venables [ctb], David Winsemius [ctb], Achim Zeileis [ctb], R-Core [ctb]
 # Maintainer: John Fox <jfox@mcmaster.ca>
 # Repository: CRAN
 # Repository/R-Forge/Project: car
-# Repository/R-Forge/Revision: 432
-# Repository/R-Forge/DateTimeStamp: 2015-08-31 14:21:54
-# Date/Publication: 2015-09-03 13:26:41
+# Repository/R-Forge/Revision: 445
+# Repository/R-Forge/DateTimeStamp: 2016-03-22 12:04:03
+# Date/Publication: 2016-03-25 14:39:18
 # NeedsCompilation: no
-# Packaged: 2015-08-31 14:28:33 UTC; rforge
+# Packaged: 2016-03-22 12:25:44 UTC; rforge
 
 # See
 # http://docs.continuum.io/conda/build.html for

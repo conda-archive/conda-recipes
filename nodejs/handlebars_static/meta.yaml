@@ -1,0 +1,29 @@
+package:
+  name: handlebars_static
+  version: 4.0.5
+
+source:
+  git_url: https://github.com/wycats/handlebars.js
+  git_rev: v4.0.5
+
+build:
+  noarch: True
+
+requirements:
+  build:
+    - m2-filesystem  [win]
+    - m2-git         [win]
+    - nodejs >=4.4.1
+    - gcc            [linux]
+
+about:
+  home: http://handlebarsjs.com/
+  license: MIT license
+  license_family: MIT
+  summary: Extension to the Mustache templating language
+  description: |
+    Handlebars.js and Mustache are both logicless
+    templating languages that keep the view and the
+    code separated like we all know they should be.
+  doc_url: http://handlebarsjs.com/
+  dev_url: https://github.com/wycats/handlebars.js

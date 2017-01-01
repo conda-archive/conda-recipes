@@ -1,0 +1,31 @@
+--- pymssql-2.1.3/setup.py.orig	2016-09-04 19:07:43.033279900 +0100
++++ pymssql-2.1.3/setup.py	2016-09-04 19:16:31.135243100 +0100
+@@ -59,7 +59,7 @@
+ from setuptools.command.test import test as TestCommand
+ 
+ LINK_FREETDS_STATICALLY = True
+-LINK_OPENSSL = False
++LINK_OPENSSL = True
+ 
+ ROOT = osp.abspath(osp.dirname(__file__))
+ 
+@@ -296,8 +296,8 @@
+                     ]
+                     if LINK_OPENSSL:
+                         libraries.extend([
+-                            'libeay{}MD'.format(BITNESS),
+-                            'ssleay{}MD'.format(BITNESS)
++                            'libeay32',
++                            'ssleay32'
+                         ])
+                 else:
+                     libraries = [
+@@ -305,7 +305,7 @@
+                         'ws2_32', 'wsock32', 'kernel32', 'shell32',
+                     ]
+                     if LINK_OPENSSL:
+-                        libraries.extend(['libeay32MD', 'ssleay32MD'])
++                        libraries.extend(['libeay32', 'ssleay32'])
+ 
+             FREETDS = fpath('freetds', '{0}_{1}'.format(freetds_dir, BITNESS))
+             suffix = '' if BITNESS == 32 else '64'

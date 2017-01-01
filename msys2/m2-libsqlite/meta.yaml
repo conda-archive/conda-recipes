@@ -1,0 +1,36 @@
+package:
+  name: m2-libsqlite
+  version: 3.10.0.0
+source:
+  url: http://repo.msys2.org/msys/sources/libsqlite-3.10.0.0-1.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-libreadline
+  - m2-icu
+  - m2-zlib
+about:
+  home: http://www.sqlite.org/
+  license: GPL, PublicDomain
+  summary: Sqlite3 library
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/libsqlite
+      url: http://repo.msys2.org/msys/i686/libsqlite-3.10.0.0-1-i686.pkg.tar.xz
+      md5: 829cb8a02b30ee759c3baf958600095e
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/libsqlite
+      url: http://repo.msys2.org/msys/x86_64/libsqlite-3.10.0.0-1-x86_64.pkg.tar.xz
+      md5: 6d9195c375a5d5ce7ab0ca2faa72ccd0
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

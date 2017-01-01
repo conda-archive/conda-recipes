@@ -1,0 +1,78 @@
+diff -urN freetds-1.00.9.orig/src/apps/CMakeLists.txt freetds-1.00.9/src/apps/CMakeLists.txt
+--- freetds-1.00.9.orig/src/apps/CMakeLists.txt	2016-09-03 12:28:52.287102400 +0100
++++ freetds-1.00.9/src/apps/CMakeLists.txt	2016-09-03 12:29:12.049890000 +0100
+@@ -15,3 +15,4 @@
+ 
+ add_executable(bsqlodbc bsqlodbc.c)
+ target_link_libraries(bsqlodbc tdsodbc replacements ${libs})
++install(TARGETS freebcp bsqldb defncopy datacopy bsqlodbc tsql RUNTIME DESTINATION bin)
+diff -urN freetds-1.00.9.orig/src/ctlib/CMakeLists.txt freetds-1.00.9/src/ctlib/CMakeLists.txt
+--- freetds-1.00.9.orig/src/ctlib/CMakeLists.txt	2016-09-03 12:28:52.177727100 +0100
++++ freetds-1.00.9/src/ctlib/CMakeLists.txt	2016-09-03 12:29:12.049890000 +0100
+@@ -31,3 +31,4 @@
+ if(MINGW OR CYGWIN)
+ 	set_target_properties(ct PROPERTIES LINK_FLAGS "--static")
+ endif(MINGW OR CYGWIN)
++install(TARGETS ct-static ct ARCHIVE DESTINATION lib RUNTIME DESTINATION bin LIBRARY DESTINATION lib)
+diff -urN freetds-1.00.9.orig/src/dblib/CMakeLists.txt freetds-1.00.9/src/dblib/CMakeLists.txt
+--- freetds-1.00.9.orig/src/dblib/CMakeLists.txt	2016-09-03 12:28:52.208977500 +0100
++++ freetds-1.00.9/src/dblib/CMakeLists.txt	2016-09-03 12:40:16.285967900 +0100
+@@ -1,8 +1,10 @@
+ add_subdirectory(unittests)
+ 
++set(static_lib_name sybdb)
+ if(WIN32)
+ 	add_definitions(-DDLL_EXPORT)
+ 	set(win_SRCS winmain.c dblib.def dbopen.c)
++	set(static_lib_name libsybdb)
+ endif()
+ 
+ # TODO add dbopen.c if necessary
+@@ -12,10 +14,16 @@
+ )
+ target_link_libraries(sybdb tds replacements ${lib_NETWORK} ${lib_BASE})
+ 
+-add_library(db-lib STATIC
++add_library(sybdb-static STATIC
+ 	dblib.c dbutil.c rpc.c bcp.c xact.c dbpivot.c buffering.h
+ )
+-target_link_libraries(db-lib tds replacements ${lib_NETWORK} ${lib_BASE})
++
++# See http://www.cmake.org/Wiki/CMake_FAQ#How_do_I_make_my_shared_and_static_libraries_have_the_same_root_name.2C_but_different_suffixes.3F
++SET_TARGET_PROPERTIES(sybdb-static PROPERTIES OUTPUT_NAME ${static_lib_name})
++SET_TARGET_PROPERTIES(sybdb PROPERTIES CLEAN_DIRECT_OUTPUT 1)
++SET_TARGET_PROPERTIES(sybdb-static PROPERTIES CLEAN_DIRECT_OUTPUT 1)
++
++target_link_libraries(sybdb-static tds replacements ${lib_NETWORK} ${lib_BASE})
+ 
+ if(NOT WIN32)
+ 	set_target_properties(sybdb PROPERTIES SOVERSION "5.0.0")
+@@ -24,3 +32,4 @@
+ if(MINGW OR CYGWIN)
+ 	set_target_properties(sybdb PROPERTIES LINK_FLAGS "--static")
+ endif(MINGW OR CYGWIN)
++install(TARGETS sybdb-static sybdb ARCHIVE DESTINATION lib RUNTIME DESTINATION bin LIBRARY DESTINATION lib)
+diff -urN freetds-1.00.9.orig/src/odbc/CMakeLists.txt freetds-1.00.9/src/odbc/CMakeLists.txt
+--- freetds-1.00.9.orig/src/odbc/CMakeLists.txt	2016-09-03 12:28:52.302726800 +0100
++++ freetds-1.00.9/src/odbc/CMakeLists.txt	2016-09-03 12:29:12.065516500 +0100
+@@ -33,3 +33,4 @@
+ if(MINGW OR CYGWIN)
+ 	set_target_properties(tdsodbc PROPERTIES LINK_FLAGS "--static -Wl,--kill-at -Wl,--enable-stdcall-fixup")
+ endif(MINGW OR CYGWIN)
++install(TARGETS tdsodbc RUNTIME DESTINATION bin)
+diff -urN freetds-1.00.9.orig/src/replacements/CMakeLists.txt freetds-1.00.9/src/replacements/CMakeLists.txt
+--- freetds-1.00.9.orig/src/replacements/CMakeLists.txt	2016-05-18 21:02:15.000000000 +0100
++++ freetds-1.00.9/src/replacements/CMakeLists.txt	2016-09-04 18:26:46.790959400 +0100
+@@ -26,3 +26,4 @@
+ endif()
+ 
+ add_subdirectory(unittests)
++install(TARGETS replacements ARCHIVE DESTINATION lib)
+diff -urN freetds-1.00.9.orig/src/tds/CMakeLists.txt freetds-1.00.9/src/tds/CMakeLists.txt
+--- freetds-1.00.9.orig/src/tds/CMakeLists.txt	2016-05-18 21:02:15.000000000 +0100
++++ freetds-1.00.9/src/tds/CMakeLists.txt	2016-09-04 18:26:12.322089000 +0100
+@@ -47,3 +47,4 @@
+ if (NOT WIN32)
+ 	set_target_properties(tds PROPERTIES COMPILE_FLAGS -fPIC)
+ endif()
++install(TARGETS tds ARCHIVE DESTINATION lib)

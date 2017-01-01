@@ -1,25 +1,20 @@
 package:
   name: fontconfig
-  version: 2.11.1
+  version: 2.12.1
 
 source:
-  fn: fontconfig-2.11.1.tar.bz2
-  url: http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.11.1.tar.bz2
-  md5: 824d000eb737af6e16c826dd3b2d6c90
+  url: https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.12.1.tar.bz2
+  md5: b5af5a423ee3b5cfc34846838963c058
   patches:
-    - fc-cache.patch   [linux]
-    - fcf.patch        [linux]
-
-build:
-  number: 4
-  binary_has_prefix_files:
-    - lib/libfontconfig.so.1.8.0 [linux]
+    - fcf.patch
+    - patch-2.12.1-fccache.diff
 
 requirements:
   build:
     - freetype  >=2.5.2
     - libxml2
     - libpng
+    - pkg-config
   run:
     - freetype  >=2.5.2
     - libxml2

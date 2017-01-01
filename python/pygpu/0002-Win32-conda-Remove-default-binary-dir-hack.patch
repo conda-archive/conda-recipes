@@ -1,0 +1,25 @@
+From cc9c955adac34c5a18a7062891cd10052c6a59af Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Fri, 25 Nov 2016 14:25:29 +0000
+Subject: [PATCH 2/2] Win32 + conda: Remove default binary dir hack
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 22cd96f..6dad78f 100644
+--- a/setup.py
++++ b/setup.py
+@@ -70,7 +70,7 @@ del to_del
+ 
+ include_dirs = [np.get_include()]
+ library_dirs = []
+-if sys.platform == 'win32':
++if sys.platform == 'win32' and not os.getenv('CONDA_BUILD'):
+     # This is a hack so users don't need to do many steps for windows install
+     # Just use the default location.
+     current_dir = os.path.abspath(os.path.dirname(__file__))
+-- 
+2.10.1
+

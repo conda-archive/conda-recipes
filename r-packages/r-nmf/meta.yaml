@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-nmf
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,9 +34,9 @@ build:
 # Suggests: RcppOctave (>= 0.11), fastICA, doMPI, bigmemory (>= 4.2), synchronicity, corpcor, xtable, devtools, knitr, bibtex, RUnit, mail, Biobase
 requirements:
   build:
-    - r
+    - r-base
     - r-rcolorbrewer
-    - r-cluster # [not win]
+    - r-cluster
     - r-colorspace
     - r-digest
     - r-doparallel
@@ -45,12 +48,14 @@ requirements:
     - r-reshape2
     - r-rngtools >=1.2.3
     - r-stringr >=1.0.0
-    - gcc # [not win]
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
+    - r-base
     - r-rcolorbrewer
-    - r-cluster # [not win]
+    - r-cluster
     - r-colorspace
     - r-digest
     - r-doparallel
@@ -62,7 +67,6 @@ requirements:
     - r-reshape2
     - r-rngtools >=1.2.3
     - r-stringr >=1.0.0
-    - libgcc # [not win]
 
 test:
   commands:
@@ -85,6 +89,7 @@ about:
     algorithms have been optimized in C++, and the main interface function provides
     an easy way of performing parallel computations on multicore machines.
   license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: NMF

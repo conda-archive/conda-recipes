@@ -1,3 +1,13 @@
+## Deprecation notice
+
+With the great success of Conda Forge (presently about 1000 recipes), this recipe collection is being deprecated.  It is left here for reference purposes, but we are not accepting new PRs, nor responding to issues here.
+
+The full list of conda-forge feedstocks is at https://github.com/conda-forge/feedstocks/tree/master/feedstocks
+
+Learn more about conda-forge at https://conda-forge.github.io/
+
+For issues with packages from the defaults channel, please post to https://github.com/continuumIO/anaconda-issues
+
 ## Important Note
 
 This repository has grown to well over 500 packages, and we are doing some housekeeping.  We are currently in the process of moving most/all python packages into the `python` root directory.  From there, we'll continue tidying up the root diretory with categories as appropriate.

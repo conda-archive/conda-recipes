@@ -1,0 +1,46 @@
+package:
+  name: m2-perl-libwww
+  version: '6.13'
+source:
+  url: http://repo.msys2.org/msys/sources/perl-libwww-6.13-1.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '1'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-perl
+  - m2-perl-encode-locale
+  - m2-perl-file-listing
+  - m2-perl-html-parser
+  - m2-perl-http-cookies
+  - m2-perl-http-daemon
+  - m2-perl-http-date
+  - m2-perl-http-negotiate
+  - m2-perl-lwp-mediatypes
+  - m2-perl-net-http
+  - m2-perl-uri
+  - m2-perl-www-robotrules
+  - m2-perl-http-message
+about:
+  home: https://metacpan.org/release/libwww-perl
+  license: PerlArtistic, GPL
+  summary: The World-Wide Web library for Perl
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/perl-libwww
+      url: http://repo.msys2.org/msys/i686/perl-libwww-6.13-1-any.pkg.tar.xz
+      md5: acde07b93a969922d01c3fa70823a7ba
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/perl-libwww
+      url: http://repo.msys2.org/msys/x86_64/perl-libwww-6.13-1-any.pkg.tar.xz
+      md5: 301d32a11498ff5e1c8687a2a1911ea7
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

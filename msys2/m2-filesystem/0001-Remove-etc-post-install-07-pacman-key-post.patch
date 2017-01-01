@@ -1,0 +1,17 @@
+diff -urN filesystem.orig/etc/post-install/07-pacman-key.post filesystem.new/etc/post-install/07-pacman-key.post
+--- filesystem.orig/etc/post-install/07-pacman-key.post	2015-04-26 11:33:58.000000000 +0100
++++ filesystem.new/etc/post-install/07-pacman-key.post	1970-01-01 01:00:00.000000000 +0100
+@@ -1,13 +0,0 @@
+-maybe_init_keyring ()
+-{
+-  if [ ! -d /etc/pacman.d/gnupg ]
+-  then
+-    /usr/bin/pacman-key --init
+-    /usr/bin/pacman-key --populate msys2 || true
+-    /usr/bin/pacman-key --refresh-keys || true
+-    
+-    MAYBE_FIRST_START=true
+-  fi
+-}
+-
+-maybe_init_keyring

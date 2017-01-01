@@ -1,16 +1,13 @@
 package:
   name: cairo
-  version: 1.12.18
+  version: 1.14.6
 
 source:
-  fn: cairo-1.12.18.tar.xz
-  url: http://cairographics.org/releases/cairo-1.12.18.tar.xz
-  md5: 8e4ff32b82c3b39387eb6f5c59ef848e
+  url: http://cairographics.org/releases/cairo-1.14.6.tar.xz
+  md5: 23a0b2f0235431d35238df1d3a517fdb
 
-build:
-  number: 0              [win or osx]
-  number: 3              [linux]
-  features:
+build:                   [win]
+  features:              [win]
     - vc9                [win and py27]
     - vc10               [win and py34]
     - vc14               [win and py35]
@@ -22,15 +19,15 @@ requirements:
     - pkg-config              [osx]
     - xz                      [unix]
     - freetype      2.5.*     [unix]
-    - fontconfig    2.11.*    [linux]
-    - pixman        0.32.*
+    - fontconfig    2.12.*    [unix]
+    - pixman        0.34.*
     - libpng        1.6.*
     - zlib          1.2.*
   run:
     - freetype      2.5.*     [unix]
-    - fontconfig    2.11.*    [linux]
+    - fontconfig    2.12.*    [unix]
     - libpng        1.6.*
-    - pixman        0.32.*
+    - pixman        0.34.*
     - zlib          1.2.*
 
 about:

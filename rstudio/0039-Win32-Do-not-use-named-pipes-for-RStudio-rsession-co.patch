@@ -1,0 +1,50 @@
+From 291621552d69468afc65d2e052f1947e929be03b Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Sat, 5 Nov 2016 00:59:07 +0000
+Subject: [PATCH 39/39] Win32: Do not use named pipes for RStudio/rsession
+ comms
+
+Mostly because I can snoop on TCP/IP more easily than on named pipes
+---
+ src/cpp/desktop/DesktopOptions.cpp                      | 2 +-
+ src/cpp/session/include/session/http/SessionRequest.hpp | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/cpp/desktop/DesktopOptions.cpp b/src/cpp/desktop/DesktopOptions.cpp
+index 3e1c7b5..c8ba202 100644
+--- a/src/cpp/desktop/DesktopOptions.cpp
++++ b/src/cpp/desktop/DesktopOptions.cpp
+@@ -90,7 +90,7 @@ QString Options::portNumber() const
+ 
+       // recalculate the local peer and set RS_LOCAL_PEER so that
+       // rsession and it's children can use it
+-#ifdef _WIN32
++#ifdef _WIN32_USING_NAMED_PIPES
+       QString localPeer = QString::fromUtf8("\\\\.\\pipe\\") +
+                           portNumber_ + QString::fromUtf8("-rsession");
+ #else
+diff --git a/src/cpp/session/include/session/http/SessionRequest.hpp b/src/cpp/session/include/session/http/SessionRequest.hpp
+index 7e6313f..3b866f7 100644
+--- a/src/cpp/session/include/session/http/SessionRequest.hpp
++++ b/src/cpp/session/include/session/http/SessionRequest.hpp
+@@ -21,7 +21,7 @@
+ 
+ #include <session/http/SessionRequest.hpp>
+ 
+-#if !defined(_WIN32)
++#if !defined(_WIN32_USING_NAMED_PIPES)
+ #include <core/http/TcpIpBlockingClient.hpp>
+ #include <core/http/LocalStreamBlockingClient.hpp>
+ #include <core/http/ConnectionRetryProfile.hpp>
+@@ -53,7 +53,7 @@ inline core::Error sendSessionRequest(const std::string& uri,
+    request.setHeader("Connection", "close");
+    request.setBody(body);
+ 
+-#ifdef _WIN32
++#ifdef _WIN32_USING_NAMED_PIPES
+    // get local peer
+    std::string pipeName = core::system::getenv("RS_LOCAL_PEER");
+    request.setHeader("X-Shared-Secret",
+-- 
+2.9.1
+

@@ -7,10 +7,23 @@ source:
   url: ftp://ftp.gnu.org/gnu/gmp/gmp-6.1.0.tar.bz2
   md5: 86ee6e54ebfc4a90b643a65e402c4048
 
-about:
-  home: http://gmplib.org/
-  license: GPL 3
+build:
+  number: 0
 
 test:
   files:
     - test.c
+
+about:
+  home: http://gmplib.org/
+  license: GPL-3
+  license_family: GPL3
+  summary: "The GNU Multiple Precision Arithmetic Library"
+  description: |
+    GMP is a free library for arbitrary precision arithmetic, operating on
+    signed integers, rational numbers, and floating-point numbers. There is
+    no practical limit to the precision except the ones implied by the
+    available memory in the machine GMP runs on. GMP has a rich set of
+    functions, and the functions have a regular interface.
+  doc_url: https://gmplib.org/manual/
+  dev_url: https://gmplib.org/repo/

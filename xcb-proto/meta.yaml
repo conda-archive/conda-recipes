@@ -1,16 +1,22 @@
 package:
   name: xcb-proto
-  version: 1.11
+  version: 1.12
 
 source:
-  fn:  xcb-proto-1.11.tar.bz2
-  url: http://xcb.freedesktop.org/dist/xcb-proto-1.11.tar.bz2
-  md5: 6bf2797445dc6d43e9e4707c082eff9c
+  fn:  xcb-proto-1.12.tar.bz2
+  url: http://xcb.freedesktop.org/dist/xcb-proto-1.12.tar.bz2
+  md5: 14e60919f859560f28426a685a555962
 
 requirements:
   build:
-    - python
+    - python 2.7.*
+
+test:
+  commands:
+    - test -f $PREFIX/lib/pkgconfig/xcb-proto.pc
+    - test -d $PREFIX/lib/python2.7/site-packages/xcbgen
 
 about:
     home: http://xcb.freedesktop.org/
     license: MIT
+    summary: protocol descriptions that libxcb uses to generate the majority of its code

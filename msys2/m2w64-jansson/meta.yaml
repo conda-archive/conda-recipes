@@ -1,0 +1,33 @@
+package:
+  name: m2w64-jansson
+  version: '2.7'
+source:
+  url: http://repo.msys2.org/mingw/sources/mingw-w64-jansson-2.7-2.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '2'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+about:
+  home: http://www.digip.org/jansson/
+  license: MIT
+  summary: A C library for encoding, decoding and manipulating JSON data (mingw-w64)
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: mingw32/mingw-w64-i686-jansson
+      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-jansson-2.7-2-any.pkg.tar.xz
+      md5: 95f7abbbc51673b2454232ed8f7ffe25
+      mv-srcs:
+      - mingw32
+      mv-dsts:
+      - Library/mingw-w64
+    win-64:
+      srcpkg: mingw64/mingw-w64-x86_64-jansson
+      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-jansson-2.7-2-any.pkg.tar.xz
+      md5: 35fcb6cded8b77677f533f59fc8c60bd
+      mv-srcs:
+      - mingw64
+      mv-dsts:
+      - Library/mingw-w64

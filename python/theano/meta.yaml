@@ -1,62 +1,76 @@
 package:
   name: theano
-  version: 0.7.0
+  version: 0.9rc1
 
 source:
-  fn: Theano-0.7.0.tar.gz
-  url: https://pypi.python.org/packages/source/T/Theano/Theano-0.7.0.tar.gz
-  md5: 099a9575801b71252b5bbbc3c34ed45a
+#  git_url: https://github.com/Theano/Theano.git
+#  git_tag: rel-0.8.2
+  git_url: https://github.com/mingwandroid/Theano.git
+  git_tag: conda-fixes
+
+build:
+  script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
   build:
+    - m2-filesystem    [win]
+    - m2-git           [win]
+    - git              [not win]
     - python
     - setuptools
-    - numpy
-    - scipy
+    - six >=1.9.0
+    - numpy >=1.9.1
+    - scipy >=0.14.0
+    - pygpu 0.2.*
 
   run:
     - python
-    - numpy
-    - scipy
+    - mkl-service
+    - libpython >=2.0  [win]
+    - m2w64-toolchain  [win]
+    - six >=1.9.0
+    - numpy >=1.9.1
+    - scipy >=0.14.0
+    - pygpu 0.2.*
 
 test:
-  # Python imports
+  requires:
+    - nose >=1.3.0
+    - nose-parameterized >=0.5.0
+
   imports:
-    - theano.scan_module
-    - theano.tensor.nnet
+    - theano
+    - theano.compile
+    - theano.compile.sandbox
+    - theano.compile.tests
+    - theano.gof
+    - theano.gof.tests
     - theano.misc
-    - theano.sandbox.gpuarray
-    - theano.tensor.signal
+    - theano.sandbox
+    - theano.sandbox.cuda
+    - theano.sandbox.cuda.tests
+    - theano.scalar
     - theano.scalar.tests
     - theano.sparse
-    - theano.compile.sandbox
-    - theano.compile
-    - theano.sparse.sandbox
-    - theano.sandbox.linalg
-    - theano.sandbox.scan_module.tests
-    - theano.tensor.deprecated
-    - theano.gof
-    - theano.compat
-    - theano.tensor.nnet.tests
-    - theano.scalar
-    - theano.sandbox.cuda.tests
-    - theano.sandbox.cuda
-    - theano.tensor.tests
-    - theano.tensor.signal.tests
-    - theano
-    - theano.sandbox.gpuarray.tests
-    - theano.sandbox.scan_module
-    - theano.misc.tests
-    - theano.compile.tests
-    - theano.sandbox.linalg.tests
-    - theano.sandbox
-    - theano.gof.tests
     - theano.sparse.tests
-    - theano.scan_module.tests
-    - theano.tests
     - theano.tensor
+    - theano.tensor.nnet
+    - theano.tensor.nnet.tests
+    - theano.tensor.signal
+    - theano.tensor.signal.tests
+    - theano.tensor.tests
+    - theano.tests
 
 about:
   home: http://deeplearning.net/software/theano/
-  license: BSD License
-
+  license: BSD 3-Clause
+  license_family: BSD
+  summary: Optimizing compiler for evaluating mathematical expressions on CPUs and GPUs.
+  description: |
+    Theano is a Python library that allows you to define, optimize, and
+    evaluate mathematical expressions involving multi-dimensional arrays
+    efficiently, featuring tight integration with NumPy, transparent use
+    of a GPU, efficient symbolic differentiation, speed and stability
+    optimizations and dynamic C code generation.
+  dev_url: https://github.com/Theano/Theano
+  doc_url: http://deeplearning.net/software/theano/

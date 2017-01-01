@@ -1,0 +1,566 @@
+From 71b9604f3c22290a0bbe29ad197e2185efd6b847 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Mon, 31 Oct 2016 12:01:00 +0000
+Subject: [PATCH 29/42] Conda: Put resources in share/rstudio
+
+..on all platforms.
+
+Do not Put binaries (or anything else) in an .app bundle on macOS
+Add RS_DIAGNOSTICS_PATH env var
+Add FilePath::lexically_normalized (requires Boost>=1.60)
+Add resolveIDEPath for Xcode and/or QtCreator debugging
+---
+ CMakeGlobals.txt                                   |   2 +-
+ src/cpp/core/FilePath.cpp                          |   6 +
+ src/cpp/core/include/core/FilePath.hpp             |   3 +
+ src/cpp/core/system/Win32System.cpp                |   2 +-
+ src/cpp/desktop-mac/AppDelegate.mm                 |  16 +++
+ src/cpp/desktop-mac/Main.mm                        |   8 ++
+ src/cpp/desktop-mac/Options.mm                     |   4 +
+ src/cpp/desktop/DesktopMain.cpp                    |  45 +++++++
+ src/cpp/desktop/DesktopOptions.cpp                 |   6 +
+ src/cpp/r/R/Diagnostics.R                          |  13 +-
+ src/cpp/session/SessionMain.cpp                    |   6 +
+ src/cpp/session/SessionOptions.cpp                 | 147 +++++++++++++++------
+ src/cpp/session/include/session/SessionOptions.hpp |  16 +++
+ 13 files changed, 216 insertions(+), 58 deletions(-)
+
+diff --git a/CMakeGlobals.txt b/CMakeGlobals.txt
+index 1d0b8b8..5e13b3a 100644
+--- a/CMakeGlobals.txt
++++ b/CMakeGlobals.txt
+@@ -123,7 +123,7 @@ else()
+    else()
+      set(RSTUDIO_INSTALL_BIN bin)
+    endif()
+-   set(RSTUDIO_INSTALL_SUPPORTING .)
++   set(RSTUDIO_INSTALL_SUPPORTING share/rstudio)
+ endif()
+ 
+ # if the install prefix is /usr/local then tweak as appropriate
+diff --git a/src/cpp/core/FilePath.cpp b/src/cpp/core/FilePath.cpp
+index 3d002df..e50ad3c 100644
+--- a/src/cpp/core/FilePath.cpp
++++ b/src/cpp/core/FilePath.cpp
+@@ -391,6 +391,12 @@ bool FilePath::hasExtensionLowerCase(const std::string& ext) const
+    return extensionLowerCase() == ext;
+ }
+ 
++FilePath FilePath::lexically_normalized() const
++{
++   path_t path = pImpl_->path.lexically_normal();
++   return FilePath(BOOST_FS_PATH2STR(path));
++}
++
+ namespace {
+ 
+ struct MimeType
+diff --git a/src/cpp/core/include/core/FilePath.hpp b/src/cpp/core/include/core/FilePath.hpp
+index b6b08a3..2898d6b 100644
+--- a/src/cpp/core/include/core/FilePath.hpp
++++ b/src/cpp/core/include/core/FilePath.hpp
+@@ -166,6 +166,9 @@ public:
+    // to this one; if input path is absolute returns that path)
+    FilePath complete(const std::string& path) const;
+    
++   // Return lexically normalized version of the input path. Requires boost >= 1.60.
++   FilePath lexically_normalized() const;
++
+    // get child path relative to this one.
+    FilePath childPath(const std::string& path) const ;
+    
+diff --git a/src/cpp/core/system/Win32System.cpp b/src/cpp/core/system/Win32System.cpp
+index 961c559..3d5bef8 100644
+--- a/src/cpp/core/system/Win32System.cpp
++++ b/src/cpp/core/system/Win32System.cpp
+@@ -588,7 +588,7 @@ Error installPath(const std::string& relativeToExecutable,
+    if (relativeToExecutable == "..") // common case
+      *pInstallationPath = exePath.parent().parent();
+    else
+-     *pInstallationPath = exePath.parent().complete(relativeToExecutable);
++     *pInstallationPath = exePath.parent().complete(relativeToExecutable).lexically_normalized();
+ 
+    return Success();
+ }
+diff --git a/src/cpp/desktop-mac/AppDelegate.mm b/src/cpp/desktop-mac/AppDelegate.mm
+index ebf2049..bef97ea 100644
+--- a/src/cpp/desktop-mac/AppDelegate.mm
++++ b/src/cpp/desktop-mac/AppDelegate.mm
+@@ -339,6 +339,22 @@ bool prepareEnvironment(Options& options)
+          sessionPath = installPath.complete("MacOS/rsession");
+          scriptsPath = installPath.complete("MacOS");
+       }
++
++      // debugging in Xcode => some minor path manipulation, the #NDEBUG bit above
++      // could be used too I guess, but it doesn't allow debugging release builds
++      // and requires setting the current working directory.
++      if (!sessionPath.exists())
++      {
++         FilePath executablePath;
++         error = core::system::installPath("", NULL, &executablePath);
++         if (!error)
++         {
++            std::string dirname = executablePath.filename();
++            FilePath stubPath = installPath.parent();
++            sessionPath = stubPath.complete("session/" + dirname + "/rsession");
++            scriptsPath = stubPath.complete("desktop-mac");
++         }
++      }
+    }
+    
+    // set the scripts path in options
+diff --git a/src/cpp/desktop-mac/Main.mm b/src/cpp/desktop-mac/Main.mm
+index 2f069a9..31d550e 100644
+--- a/src/cpp/desktop-mac/Main.mm
++++ b/src/cpp/desktop-mac/Main.mm
+@@ -40,6 +40,14 @@ int main(int argc, char* argv[])
+    
+    // initialize application instance
+    NSApplication* app = [NSApplication sharedApplication];
++
++   // https://www.cocoawithlove.com/2010/09/minimalist-cocoa-programming.html
++   // As conda build RStudio without an .app bundle. This is necessary
++   // to allow windows, menus and NSAlert dialogs to appear.
++   if ([[NSRunningApplication currentApplication] bundleIdentifier] == nil)
++   {
++      [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
++   }
+    
+    // create our app delegate
+    AppDelegate* appDelegate = [[[AppDelegate alloc] init] autorelease];
+diff --git a/src/cpp/desktop-mac/Options.mm b/src/cpp/desktop-mac/Options.mm
+index 0d96d83..7636bb1 100644
+--- a/src/cpp/desktop-mac/Options.mm
++++ b/src/cpp/desktop-mac/Options.mm
+@@ -157,12 +157,16 @@ FilePath Options::supportingFilePath() const
+ {
+    if (supportingFilePath_.empty())
+    {
++#if !defined(CONDA_BUILD)
+       // default to install path
+       core::system::installPath("..", NULL, &supportingFilePath_);
+       
+       // adapt for OSX resource bundles
+       if (supportingFilePath_.complete("Info.plist").exists())
+          supportingFilePath_ = supportingFilePath_.complete("Resources");
++#else
++      core::system::installPath("../share/rstudio", NULL, &supportingFilePath_);
++#endif
+    }
+    return supportingFilePath_;
+ }
+diff --git a/src/cpp/desktop/DesktopMain.cpp b/src/cpp/desktop/DesktopMain.cpp
+index 46b6df3..888d768 100644
+--- a/src/cpp/desktop/DesktopMain.cpp
++++ b/src/cpp/desktop/DesktopMain.cpp
+@@ -46,6 +46,12 @@
+ #include <TCHAR.h>
+ #endif
+ 
++#ifdef _WIN32
++#define EXE_SUFFIX ".exe"
++#else
++#define EXE_SUFFIX ""
++#endif
++
+ QProcess* pRSessionProcess;
+ QString sharedSecret;
+ 
+@@ -345,6 +351,45 @@ int main(int argc, char* argv[])
+       }
+       core::system::fixupExecutablePath(&sessionPath);
+ 
++      // debugging in Visual Studio built with jom.
++#if defined(_WIN32) && defined(CONDA_BUILD)
++      if (!sessionPath.exists())
++      {
++         const std::string cppRelativeLocation("session");
++         const std::string exeName("rsession" EXE_SUFFIX);
++         std::string sessionFilename = sessionPath.filename();
++         FilePath executablePath;
++         FilePath cppFolder("");
++         std::string configDirname("");
++         error = core::system::installPath("", NULL, &executablePath);
++         if (!error)
++         {
++            // Find the cpp folder.
++            FilePath oldFolder;
++            cppFolder = executablePath;
++            configDirname = executablePath.filename();
++            do
++            {
++               oldFolder = cppFolder;
++               cppFolder = cppFolder.parent();
++            } while (cppFolder.filename() != "cpp" && cppFolder != oldFolder);
++         }
++         std::vector<FilePath> searchPaths;
++         if (cppFolder.filename() == "cpp")
++         {
++            searchPaths.push_back(cppFolder.complete(cppRelativeLocation + "/" + configDirname + "/" + exeName)); // Xcode + Visual Studio
++            searchPaths.push_back(cppFolder.complete(cppRelativeLocation + "/" + exeName)); // QtCreator (macOS) + jom (Win32)
++         }
++         for (std::vector<FilePath>::const_iterator it = searchPaths.begin(); it != searchPaths.end(); ++it)
++         {
++            if (it->exists())
++            {
++               sessionPath = FilePath(it->absolutePath());
++               break;
++            }
++         }
++      }
++#endif
+       // set the scripts path in options
+       desktop::options().setScriptsPath(scriptsPath);
+ 
+diff --git a/src/cpp/desktop/DesktopOptions.cpp b/src/cpp/desktop/DesktopOptions.cpp
+index 72ac532..a4ed145 100644
+--- a/src/cpp/desktop/DesktopOptions.cpp
++++ b/src/cpp/desktop/DesktopOptions.cpp
+@@ -290,6 +290,7 @@ FilePath Options::supportingFilePath() const
+ {
+    if (supportingFilePath_.empty())
+    {
++#if !defined(CONDA_BUILD)
+       // default to install path
+       core::system::installPath("..",
+                                 QApplication::arguments().at(0).toUtf8(),
+@@ -300,6 +301,11 @@ FilePath Options::supportingFilePath() const
+          if (supportingFilePath_.complete("Info.plist").exists())
+             supportingFilePath_ = supportingFilePath_.complete("Resources");
+ #endif
++#else
++      core::system::installPath("../share/rstudio",
++                                QApplication::arguments().at(0).toUtf8(),
++                                &supportingFilePath_);
++#endif
+    }
+    return supportingFilePath_;
+ }
+diff --git a/src/cpp/r/R/Diagnostics.R b/src/cpp/r/R/Diagnostics.R
+index 1668a3e..4e127b9 100644
+--- a/src/cpp/r/R/Diagnostics.R
++++ b/src/cpp/r/R/Diagnostics.R
+@@ -44,18 +44,7 @@ capture.output({
+   print(search())
+   
+   # locate diagonstics binary and run it
+-  sysName <- Sys.info()[['sysname']]
+-  ext <- ifelse(identical(sysName, "Windows"), ".exe", "")
+-  
+-  # first look for debug version
+-  cppDiag <- paste("../../../qtcreator-build/diagnostics/diagnostics",
+-                ext, sep="")
+-  if (!file.exists(cppDiag)) {
+-    if (identical(sysName, "Darwin"))
+-      cppDiag <- "../../MacOS/diagnostics"
+-    else
+-      cppDiag <- paste("../bin/diagnostics", ext, sep="")
+-  }
++  cppDiag <- Sys.getenv("RS_DIAGNOSTICS_PATH")
+   
+   if (file.exists(cppDiag))
+     diag <- system(cppDiag, intern=TRUE)
+diff --git a/src/cpp/session/SessionMain.cpp b/src/cpp/session/SessionMain.cpp
+index e790e74..ddfe7b2 100644
+--- a/src/cpp/session/SessionMain.cpp
++++ b/src/cpp/session/SessionMain.cpp
+@@ -3296,6 +3296,12 @@ int main (int argc, char * const argv[])
+             "RS_RPOSTBACK_PATH",
+             string_utils::utf8ToSystem(rpostback.absolutePath()));
+ 
++      // set the diagnostics absolute path
++      FilePath diagnostics = options.diagnosticsPath();
++      core::system::setenv(
++            "RS_DIAGNOSTICS_PATH",
++            string_utils::utf8ToSystem(diagnostics.absolutePath()));
++
+       // ensure that the user scratch path exists
+       FilePath userScratchPath = options.userScratchPath();
+       error = userScratchPath.ensureDirectory();
+diff --git a/src/cpp/session/SessionOptions.cpp b/src/cpp/session/SessionOptions.cpp
+index c2dfca5..de8e635 100644
+--- a/src/cpp/session/SessionOptions.cpp
++++ b/src/cpp/session/SessionOptions.cpp
+@@ -49,9 +49,38 @@ namespace rstudio {
+ namespace session {  
+ 
+ namespace {
++#ifdef _WIN32
++#define EXE_SUFFIX ".exe"
++#else
++#define EXE_SUFFIX ""
++#endif
++
++// Annoyingly, sometimes these paths refer to executables (consoleio, diagnostics)
++// and sometimes the refer to folders in which executables should live (the rest).
++#if !defined(CONDA_BUILD)
+ const char* const kDefaultPandocPath = "bin/pandoc";
+-const char* const kDefaultPostbackPath = "bin/postback/rpostback";
++const char* const kDefaultPostbackPath = "bin/rpostback";
++const char* const kDefaultDiagnosticsPath = "bin/diagnostics";
++const char* const kDefaultConsoleIoPath = "bin/consoleio";
+ const char* const kDefaultRsclangPath = "bin/rsclang";
++const char* const kDefaultGnuDiffPath = "bin/gnudiff";
++const char* const kDefaultGnuGrepPath = "bin/gnugrep";
++const char* const kDefaultMsysSshPath = "bin/msys-ssh-1000-18";
++#else
++// Condas build of RStudio puts resources in share/rstudio (on all platforms).
++// and the binaries in prefix/bin. These paths are interpreted relative to the
++// resources directory so this gets us to prefix/bin
++// For gnudiff, gnugrep and msysssh we use conda's
++// m2w64-diffutils, m2w64-grep and m2-openssh respectively.
++const char* const kDefaultPandocPath = "../../bin/pandoc";
++const char* const kDefaultPostbackPath = "../../bin/rpostback";
++const char* const kDefaultDiagnosticsPath = "../../bin/diagnostics";
++const char* const kDefaultConsoleIoPath = "../../bin/consoleio";
++const char* const kDefaultRsclangPath = "../../bin/rsclang";
++const char* const kDefaultGnuDiffPath = "../../mingw-w64/bin";
++const char* const kDefaultGnuGrepPath = "../../mingw-w64/bin";
++const char* const kDefaultMsysSshPath = "../../usr/bin";
++#endif
+ 
+ void ensureDefaultDirectory(std::string* pDirectory,
+                             const std::string& userHomePath)
+@@ -86,7 +115,11 @@ core::ProgramStatus Options::read(int argc, char * const argv[])
+    core::system::unsetenv(kMonitorSharedSecretEnvVar);
+ 
+    // compute the resource path
++#ifndef CONDA_BUILD
+    Error error = core::system::installPath("..", argv[0], &resourcePath_);
++#else
++   Error error = core::system::installPath("../share/rstudio", argv[0], &resourcePath_);
++#endif
+    if (error)
+    {
+       LOG_ERROR_MESSAGE("Unable to determine install path: "+error.summary());
+@@ -94,13 +127,13 @@ core::ProgramStatus Options::read(int argc, char * const argv[])
+    }
+ 
+    // detect running in OSX bundle and tweak resource path
+-#ifdef __APPLE__
++#if defined(__APPLE__) && !defined(CONDA_BUILD)
+    if (resourcePath_.complete("Info.plist").exists())
+       resourcePath_ = resourcePath_.complete("Resources");
+ #endif
+ 
+    // detect running in x64 directory and tweak resource path
+-#ifdef _WIN32
++#if defined(_WIN32) && !defined(CONDA_BUILD)
+    if (resourcePath_.complete("x64").exists())
+       resourcePath_ = resourcePath_.parent();
+ #endif
+@@ -301,17 +334,20 @@ core::ProgramStatus Options::read(int argc, char * const argv[])
+       ("external-rpostback-path", 
+        value<std::string>(&rpostbackPath_)->default_value(kDefaultPostbackPath),
+        "Path to rpostback executable")
++      ("external-diagnostics-path",
++       value<std::string>(&diagnosticsPath_)->default_value(kDefaultDiagnosticsPath),
++       "Path to diagnostics executable")
+       ("external-consoleio-path",
+-       value<std::string>(&consoleIoPath_)->default_value("bin/consoleio.exe"),
++       value<std::string>(&consoleIoPath_)->default_value(kDefaultConsoleIoPath),
+        "Path to consoleio executable")
+       ("external-gnudiff-path",
+-       value<std::string>(&gnudiffPath_)->default_value("bin/gnudiff"),
++       value<std::string>(&gnudiffPath_)->default_value(kDefaultGnuDiffPath),
+        "Path to gnudiff utilities (windows-only)")
+       ("external-gnugrep-path",
+-       value<std::string>(&gnugrepPath_)->default_value("bin/gnugrep"),
++       value<std::string>(&gnugrepPath_)->default_value(kDefaultGnuGrepPath),
+        "Path to gnugrep utilities (windows-only)")
+       ("external-msysssh-path",
+-       value<std::string>(&msysSshPath_)->default_value("bin/msys-ssh-1000-18"),
++       value<std::string>(&msysSshPath_)->default_value(kDefaultMsysSshPath),
+        "Path to msys_ssh utilities (windows-only)")
+       ("external-sumatra-path",
+        value<std::string>(&sumatraPath_)->default_value("bin/sumatra"),
+@@ -490,6 +526,7 @@ core::ProgramStatus Options::read(int argc, char * const argv[])
+    resolvePath(resourcePath_, &sessionLibraryPath_);
+    resolvePath(resourcePath_, &sessionPackageArchivesPath_);
+    resolvePostbackPath(resourcePath_, &rpostbackPath_);
++   resolveDiagnosticsPath(resourcePath_, &diagnosticsPath_);
+ #ifdef _WIN32
+    resolvePath(resourcePath_, &consoleIoPath_);
+    resolvePath(resourcePath_, &gnudiffPath_);
+@@ -611,21 +648,23 @@ void Options::resolvePath(const FilePath& resourcePath,
+                           std::string* pPath)
+ {
+    if (!pPath->empty())
+-      *pPath = resourcePath.complete(*pPath).absolutePath();
++      *pPath = resourcePath.complete(*pPath).lexically_normalized().absolutePath();
+ }
+ 
+-#ifdef __APPLE__
+-
+-void Options::resolvePostbackPath(const FilePath& resourcePath,
+-                                  std::string* pPath)
++void Options::bundleOrCondaResolvePath(const FilePath& resourcePath,
++                                       const std::string& defaultPath,
++                                       const std::string& bundlePath,
++                                       std::string* pPath)
+ {
+-   // On OSX we keep the postback scripts over in the MacOS directory
+-   // rather than in the Resources directory -- make this adjustment
+-   // when the default postback path has been passed
+-   if (*pPath == kDefaultPostbackPath)
++   if (*pPath == defaultPath)
+    {
+-      FilePath path = resourcePath.parent().complete("MacOS/postback/rpostback");
++#if !defined(CONDA_BUILD) && defined(__APPLE__)
++      FilePath path = resourcePath.parent().complete(bundlePath);
+       *pPath = path.absolutePath();
++#else
++      (void)bundlePath;
++      resolvePath(resourcePath, pPath);
++#endif
+    }
+    else
+    {
+@@ -633,54 +672,74 @@ void Options::resolvePostbackPath(const FilePath& resourcePath,
+    }
+ }
+ 
+-void Options::resolvePandocPath(const FilePath& resourcePath,
+-                                std::string* pPath)
++void Options::resolveIDEPath(const std::string& cppRelativeLocation,
++                             const std::string& exeName,
++                             bool preferIDEPath,
++                             std::string* pPath)
+ {
+-   if (*pPath == kDefaultPandocPath)
++   FilePath path(*pPath);
++   FilePath executablePath;
++   FilePath cppFolder("");
++   std::string configDirname("");
++   Error error = core::system::installPath("", NULL, &executablePath);
++   if (!error)
+    {
+-      FilePath path = resourcePath.parent().complete("MacOS/pandoc");
+-      *pPath = path.absolutePath();
+-   }
+-   else
+-   {
+-      resolvePath(resourcePath, pPath);
++      // Find the cpp folder.
++      FilePath oldFolder;
++      cppFolder = executablePath;
++      configDirname = executablePath.filename();
++      do
++      {
++         oldFolder = cppFolder;
++         cppFolder = cppFolder.parent();
++      } while(cppFolder.filename() != "cpp" && cppFolder != oldFolder);
+    }
+-}
+-
+-void Options::resolveRsclangPath(const FilePath& resourcePath,
+-                                 std::string* pPath)
+-{
+-   if (*pPath == kDefaultRsclangPath)
++   std::vector<FilePath> searchPaths;
++   if (!preferIDEPath)
++      searchPaths.push_back(path);
++   if (cppFolder.filename() == "cpp")
+    {
+-      FilePath path = resourcePath.parent().complete("MacOS/rsclang");
+-      *pPath = path.absolutePath();
++      searchPaths.push_back(cppFolder.complete(cppRelativeLocation + "/" + configDirname + "/" + exeName)); // Xcode
++      searchPaths.push_back(cppFolder.complete(cppRelativeLocation + "/" + exeName)); // QtCreator (macOS) + jom (Win32)
+    }
+-   else
++   if (preferIDEPath)
++      searchPaths.push_back(path);
++   for (std::vector<FilePath>::const_iterator it = searchPaths.begin(); it != searchPaths.end(); ++it)
+    {
+-      resolvePath(resourcePath, pPath);
++      if (it->exists())
++      {
++         *pPath = it->absolutePath();
++         return;
++      }
+    }
++   LOG_ERROR_MESSAGE("Unable to locate executable " + exeName);
+ }
+ 
+-#else
+-
+ void Options::resolvePostbackPath(const FilePath& resourcePath,
+                                   std::string* pPath)
+ {
+-   resolvePath(resourcePath, pPath);
++   bundleOrCondaResolvePath(resourcePath, kDefaultPostbackPath, "MacOS/rpostback", pPath);
++   resolveIDEPath("session/postback", "rpostback" EXE_SUFFIX, false, pPath);
+ }
+ 
+-void Options::resolvePandocPath(const FilePath& resourcePath,
++void Options::resolveDiagnosticsPath(const FilePath& resourcePath,
+                                   std::string* pPath)
+ {
+-   resolvePath(resourcePath, pPath);
++   bundleOrCondaResolvePath(resourcePath, kDefaultDiagnosticsPath, "MacOS/diagnostics", pPath);
++   resolveIDEPath("diagnostics", "diagnostics" EXE_SUFFIX, true, pPath);
++}
++
++void Options::resolvePandocPath(const FilePath& resourcePath,
++                                std::string* pPath)
++{
++   bundleOrCondaResolvePath(resourcePath, kDefaultPandocPath, "MacOS/pandoc", pPath);
+ }
+ 
+ void Options::resolveRsclangPath(const FilePath& resourcePath,
+                                  std::string* pPath)
+ {
+-   resolvePath(resourcePath, pPath);
++   bundleOrCondaResolvePath(resourcePath, kDefaultRsclangPath, "MacOS/rsclang", pPath);
+ }
+-#endif
+-   
++
+ } // namespace session
+ } // namespace rstudio
+diff --git a/src/cpp/session/include/session/SessionOptions.hpp b/src/cpp/session/include/session/SessionOptions.hpp
+index 9f21a72..bcb9c65 100644
+--- a/src/cpp/session/include/session/SessionOptions.hpp
++++ b/src/cpp/session/include/session/SessionOptions.hpp
+@@ -241,6 +241,11 @@ public:
+       return core::FilePath(rpostbackPath_.c_str());
+    }
+ 
++   core::FilePath diagnosticsPath() const
++   {
++      return core::FilePath(diagnosticsPath_.c_str());
++   }
++
+    core::FilePath consoleIoPath() const
+    {
+       return core::FilePath(consoleIoPath_.c_str());
+@@ -475,8 +480,18 @@ public:
+ private:
+    void resolvePath(const core::FilePath& resourcePath,
+                     std::string* pPath);
++   void resolveIDEPath(const std::string& projectName,
++                       const std::string& exeName,
++                       bool preferIDEPath,
++                       std::string* pPath);
++   void bundleOrCondaResolvePath(const core::FilePath& resourcePath,
++                                 const std::string& defaultPath,
++                                 const std::string& bundlePath,
++                                 std::string* pPath);
+    void resolvePostbackPath(const core::FilePath& resourcePath,
+                             std::string* pPath);
++   void resolveDiagnosticsPath(const core::FilePath& resourcePath,
++                               std::string* pPath);
+    void resolvePandocPath(const core::FilePath& resourcePath, std::string* pPath);
+ 
+    void resolveRsclangPath(const core::FilePath& resourcePath, std::string* pPath);
+@@ -553,6 +568,7 @@ private:
+    
+    // external
+    std::string rpostbackPath_;
++   std::string diagnosticsPath_;
+    std::string consoleIoPath_;
+    std::string gnudiffPath_;
+    std::string gnugrepPath_;
+-- 
+2.10.1
+

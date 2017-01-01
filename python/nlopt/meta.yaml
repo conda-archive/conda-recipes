@@ -3,15 +3,16 @@ package:
   version: 2.4.2
 
 build:
-  number: 1
+  number: 2
 
 requirements: # [not win]
   build:      # [not win]
+    - python {{PY_VER}}* # [not win]
     - gcc     # [linux]
     - numpy   # [not win]
 
   run:
-    - python  # [not win]
+    - python {{PY_VER}}*  # [not win]
     - numpy   # [not win]
     - libgcc  # [not win]
 

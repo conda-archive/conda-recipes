@@ -1,0 +1,31 @@
+package:
+  name: pygpu
+  version: "0.2.1"
+
+source:
+  git_url: https://github.com/Theano/libgpuarray.git
+  patches:
+    - 0001-Win32-Actually-print-default_bin_dir-in-exception.patch
+    - 0002-Win32-conda-Remove-default-binary-dir-hack.patch
+
+requirements:
+  build:
+    - m2-git         [win]
+    - m2-filesystem  [win]
+    - git            [not win]
+    - python
+    - cython
+    - numpy
+    - mako
+    - libgpuarray >=0.6.0rc1
+    - setuptools
+
+  run:
+    - python
+    - libgpuarray
+    - numpy
+    - mako
+
+
+about:
+  license: BSD

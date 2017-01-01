@@ -1,0 +1,28 @@
+From d35e21cda3385724760a1ab5d17eb39539a9dab4 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Wed, 19 Oct 2016 14:57:45 +0100
+Subject: [PATCH 01/42] macOS: Allow disabling R framework
+
+---
+ cmake/modules/FindLibR.cmake | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/modules/FindLibR.cmake b/cmake/modules/FindLibR.cmake
+index d6a0556..ddbcd24 100644
+--- a/cmake/modules/FindLibR.cmake
++++ b/cmake/modules/FindLibR.cmake
+@@ -17,8 +17,10 @@
+ # LIBR_DOC_DIR
+ # LIBR_LIBRARIES
+ 
++set(USE_MACOS_R_FRAMEWORK TRUE CACHE BOOL "Look for R framework on macOS")
++
+ # detection for OSX (look for R framework)
+-if(APPLE)
++if(APPLE AND USE_MACOS_R_FRAMEWORK)
+ 
+    find_library(LIBR_LIBRARIES R)
+    if(LIBR_LIBRARIES)
+-- 
+2.10.1
+

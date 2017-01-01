@@ -17,5 +17,18 @@ requirements:
     - gmp
 
 about:
+  home: http://isl.gforge.inria.fr/
   license: MIT
+  license_family: MIT
   summary: "isl is a thread-safe C library for manipulating sets and relations of integer points bounded by affine constraints."
+  description: |
+    isl is a library for manipulating sets and relations of integer points
+    bounded by linear constraints. Supported operations on sets include
+    intersection, union, set difference, emptiness check, convex hull,
+    (integer) affine hull, integer projection, computing the lexicographic
+    minimum using parametric integer programming, coalescing and parametric
+    vertex enumeration. It also includes an ILP solver based on generalized
+    basis reduction, transitive closures on maps (which may encode infinite
+    graphs), dependence analysis and bounds on piecewise step-polynomials.
+  doc_url: http://isl.gforge.inria.fr/user.html
+  dev_url: http://repo.or.cz/w/isl.git

@@ -1,0 +1,28 @@
+From 92ca5f988b33349438aa0f591ebaadd80c2319f1 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Mon, 31 Oct 2016 13:48:13 +0000
+Subject: [PATCH 32/42] Do not do weird fix-up of rpostbackPath()
+
+I am not sure this is correct, but it looked very strange.
+---
+ src/cpp/session/SessionMain.cpp | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/cpp/session/SessionMain.cpp b/src/cpp/session/SessionMain.cpp
+index ddfe7b2..f96efef 100644
+--- a/src/cpp/session/SessionMain.cpp
++++ b/src/cpp/session/SessionMain.cpp
+@@ -3289,9 +3289,7 @@ int main (int argc, char * const argv[])
+          core::thread::safeLaunchThread(detectParentTermination);
+ 
+       // set the rpostback absolute path
+-      FilePath rpostback = options.rpostbackPath()
+-                           .parent().parent()
+-                           .childPath("rpostback");
++      FilePath rpostback = options.rpostbackPath();
+       core::system::setenv(
+             "RS_RPOSTBACK_PATH",
+             string_utils::utf8ToSystem(rpostback.absolutePath()));
+-- 
+2.10.1
+

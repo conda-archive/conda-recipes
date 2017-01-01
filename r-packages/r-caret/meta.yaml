@@ -1,14 +1,17 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-caret
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "6.0_62"
+  version: "6.0_70"
 
 source:
-  fn: caret_6.0-62.tar.gz
+  fn: caret_6.0-70.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/caret_6.0-62.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/caret/caret_6.0-62.tar.gz
+    - http://cran.r-project.org/src/contrib/caret_6.0-70.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/caret/caret_6.0-70.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -28,29 +31,30 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: BradleyTerry2, e1071, earth (>= 2.2-3), fastICA, gam, ipred, kernlab, klaR, MASS, ellipse, mda, mgcv, mlbench, nnet, party (>= 0.9-99992), pls, pROC (>= 1.8), proxy, randomForest, RANN, spls, subselect, pamr, superpc, Cubist, testthat (>= 0.9.1), rPython
+# Suggests: BradleyTerry2, e1071, earth (>= 2.2-3), fastICA, gam, ipred, kernlab, klaR, MASS, ellipse, mda, mgcv, mlbench, nnet, party (>= 0.9-99992), pls, pROC (>= 1.8), proxy, randomForest, RANN, spls, subselect, pamr, superpc, Cubist, testthat (>= 0.9.1)
 requirements:
   build:
-    - r
+    - r-base
     - r-car
     - r-foreach
     - r-ggplot2
-    - r-lattice >=0.20 # [not win]
-    - r-nlme # [not win]
+    - r-lattice >=0.20
+    - r-nlme
     - r-plyr
     - r-reshape2
-    - gcc # [not win]
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
+    - r-base
     - r-car
     - r-foreach
     - r-ggplot2
-    - r-lattice >=0.20 # [not win]
-    - r-nlme # [not win]
+    - r-lattice >=0.20
+    - r-nlme
     - r-plyr
     - r-reshape2
-    - libgcc # [not win]
 
 test:
   commands:
@@ -68,12 +72,13 @@ about:
   home: https://github.com/topepo/caret/
   license: GPL (>= 2)
   summary: Misc functions for training and plotting classification and regression models.
-  license_family: GPL2
+  license_family: GPL3
+
 # The original CRAN metadata for this package was:
 
 # Package: caret
-# Version: 6.0-62
-# Date: 2015-11-23
+# Version: 6.0-70
+# Date: 2016-06-09
 # Title: Classification and Regression Training
 # Author: Max Kuhn. Contributions from Jed Wing, Steve Weston, Andre Williams, Chris Keefer, Allan Engelhardt, Tony Cooper, Zachary Mayer, Brenton Kenkel, the R Core Team, Michael Benesty, Reynald Lescarbeau, Andrew Ziem, Luca Scrucca, Yuan Tang, and Can Candan.
 # Description: Misc functions for training and plotting classification and regression models.
@@ -82,12 +87,12 @@ about:
 # URL: https://github.com/topepo/caret/
 # BugReports: https://github.com/topepo/caret/issues
 # Imports: car, foreach, methods, plyr, nlme, reshape2, stats, stats4, utils, grDevices
-# Suggests: BradleyTerry2, e1071, earth (>= 2.2-3), fastICA, gam, ipred, kernlab, klaR, MASS, ellipse, mda, mgcv, mlbench, nnet, party (>= 0.9-99992), pls, pROC (>= 1.8), proxy, randomForest, RANN, spls, subselect, pamr, superpc, Cubist, testthat (>= 0.9.1), rPython
+# Suggests: BradleyTerry2, e1071, earth (>= 2.2-3), fastICA, gam, ipred, kernlab, klaR, MASS, ellipse, mda, mgcv, mlbench, nnet, party (>= 0.9-99992), pls, pROC (>= 1.8), proxy, randomForest, RANN, spls, subselect, pamr, superpc, Cubist, testthat (>= 0.9.1)
 # License: GPL (>= 2)
 # NeedsCompilation: yes
-# Packaged: 2015-11-23 15:26:45 UTC; kuhna03
+# Packaged: 2016-06-13 10:50:50 UTC; kuhna03
 # Repository: CRAN
-# Date/Publication: 2015-11-23 17:35:38
+# Date/Publication: 2016-06-13 16:03:41
 
 # See
 # http://docs.continuum.io/conda/build.html for

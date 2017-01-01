@@ -1,0 +1,30 @@
+From e086938caa5df930cb148f8cb72c564e70020b42 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Mon, 31 Oct 2016 12:14:23 +0000
+Subject: [PATCH 30/42] Conda (macOS): Do not call
+ runningApplicationsWithBundleIdentifier when no bundleIdentifier
+
+---
+ src/cpp/desktop-mac/MainFrameController.mm | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/cpp/desktop-mac/MainFrameController.mm b/src/cpp/desktop-mac/MainFrameController.mm
+index 724c350..aff513d 100644
+--- a/src/cpp/desktop-mac/MainFrameController.mm
++++ b/src/cpp/desktop-mac/MainFrameController.mm
+@@ -228,8 +228,10 @@ bool setWindowGeometry(NSWindow* window, NSString* geometry)
+ 
+ - (void) updateDockTileShowLabel
+ {
+-   if ([[NSRunningApplication runningApplicationsWithBundleIdentifier:
+-         [[NSBundle mainBundle] bundleIdentifier]] count] > 1) {
++    NSString* bundleId = [[NSRunningApplication currentApplication] bundleIdentifier];
++
++   if (bundleId != nil && [[NSRunningApplication runningApplicationsWithBundleIdentifier:
++                            [[NSBundle mainBundle] bundleIdentifier]] count] > 1) {
+       [dockTile_ setShowLabel: TRUE];
+    }
+    else {
+-- 
+2.10.1
+

@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-mass
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -32,11 +35,12 @@ build:
 requirements:
   build:
     - r-base
-    - gcc # [not win]
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
 
   run:
-    - r
-    - libgcc # [not win]
+    - r-base
 
 test:
   commands:
@@ -55,6 +59,7 @@ about:
   license: GPL-2 | GPL-3
   summary: Functions and datasets to support Venables and Ripley, "Modern Applied Statistics
     with S" (4th edition, 2002).
+  license_family: GPL3
 
 # The original CRAN metadata for this package was:
 
@@ -74,11 +79,11 @@ about:
 # License: GPL-2 | GPL-3
 # URL: http://www.stats.ox.ac.uk/pub/MASS4/
 # NeedsCompilation: yes
-# Packaged: 2015-11-10 08:16:21 UTC; ripley
+# Packaged: 2016-04-21 09:06:13 UTC; ripley
 # Author: Brian Ripley [aut, cre, cph], Bill Venables [ctb], Douglas M. Bates [ctb], Kurt Hornik [trl] (partial port ca 1998), Albrecht Gebhardt [trl] (partial port ca 1998), David Firth [ctb]
 # Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
 # Repository: CRAN
-# Date/Publication: 2015-11-10 15:43:06
+# Date/Publication: 2016-04-21 11:13:45
 
 # See
 # http://docs.continuum.io/conda/build.html for

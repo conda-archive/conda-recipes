@@ -1,0 +1,28 @@
+From 4eaab1fab3896666a88ee60e99c7d43e1d31b76b Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Mon, 5 Sep 2016 22:06:03 +0100
+Subject: [PATCH 2/4] OS X bytes fix for subprocess.check_output
+
+---
+ javabridge/locate.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/javabridge/locate.py b/javabridge/locate.py
+index e1fab1e..750ecbe 100644
+--- a/javabridge/locate.py
++++ b/javabridge/locate.py
+@@ -40,9 +40,9 @@ def find_javahome():
+             arch = "x86_64"
+         try:
+             result = subprocess.check_output(["/usr/libexec/java_home", "--arch", arch])
+-            path = result.strip()
++            path = result.decode('utf-8').strip()
+             for place_to_look in (
+-                os.path.join(os.path.dirname(path), "Libraries"), 
++                os.path.join(os.path.dirname(path), "Libraries"),
+                 os.path.join(path, "jre", "lib", "server")):
+                 lib = os.path.join(place_to_look, "libjvm.dylib")
+                 #
+-- 
+2.8.4
+

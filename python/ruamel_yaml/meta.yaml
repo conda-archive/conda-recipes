@@ -1,0 +1,33 @@
+package:
+  name: ruamel_yaml
+  version: 0.11.7
+
+build:
+  number: 0
+  # Windows has issues updating stuff if conda is using files itself. Copy rather than link.
+  no_link: .*\.(pyd|dll)        [win]
+
+source:
+  hg_url: https://kalefranz@bitbucket.org/ruamel/yaml
+  hg_tag: 1cbc6a8
+
+requirements:
+  build:
+    - python
+    - cython
+    - yaml
+  run:
+    - python
+    - yaml     [unix]
+
+test:
+  requires:
+    - python
+    - pytest
+  imports:
+    - ruamel_yaml
+    - ruamel_yaml.ext._ruamel_yaml
+
+about:
+  home: https://bitbucket.org/ruamel/yaml
+  license: MIT

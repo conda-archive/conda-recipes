@@ -1,0 +1,26 @@
+package:
+    name: pyasn1-modules
+    version: 0.0.8
+
+source:
+    fn: pyasn1-modules-0.0.8.tar.gz
+    url: https://pypi.python.org/packages/source/p/pyasn1-modules/pyasn1-modules-0.0.8.tar.gz
+    md5: 178129bc7fbf07215c25230c5f053f81
+
+requirements:
+    build:
+        - python
+        - setuptools
+        - pyasn1 >=0.1.8
+    run:
+        - python
+        - pyasn1 >=0.1.8
+
+test:
+    imports:
+        - pyasn1_modules
+
+about:
+    home: http://sourceforge.net/projects/pyasn1/
+    license: BSD
+    summary: Collection of ASN.1-based protocols modules

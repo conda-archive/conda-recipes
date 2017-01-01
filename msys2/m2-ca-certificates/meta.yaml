@@ -1,0 +1,39 @@
+package:
+  name: m2-ca-certificates
+  version: '20150426'
+source:
+  url: http://repo.msys2.org/msys/sources/ca-certificates-20150426-1.src.tar.gz
+  md5: 936524317a13f7da01ff4676bdb271e2
+build:
+  number: '102'
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2-bash
+  - m2-openssl
+  - m2-findutils
+  - m2-coreutils
+  - m2-sed
+  - m2-p11-kit
+about:
+  home: http://www.mozilla.org/projects/security/certs/
+  license: MPL, GPL
+  summary: Common CA certificates
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: msys/ca-certificates
+      url: http://repo.msys2.org/msys/i686/ca-certificates-20150426-1-any.pkg.tar.xz
+      md5: bf0a485ac68cd73bbd0bb1c9ea345c64
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/
+    win-64:
+      srcpkg: msys/ca-certificates
+      url: http://repo.msys2.org/msys/x86_64/ca-certificates-20150426-1-any.pkg.tar.xz
+      md5: f41511bb6d0902b7316efc88605d8382
+      mv-srcs:
+      - '*'
+      mv-dsts:
+      - Library/

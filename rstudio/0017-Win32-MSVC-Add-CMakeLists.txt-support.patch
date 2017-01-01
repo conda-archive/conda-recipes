@@ -1,0 +1,79 @@
+From e54f168dc44c5d1783761c7fbe9021a7fb375539 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Sat, 29 Oct 2016 16:30:47 +0100
+Subject: [PATCH 17/42] Win32 (MSVC): Add CMakeLists.txt support
+
+---
+ src/cpp/CMakeLists.txt | 53 ++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 51 insertions(+), 2 deletions(-)
+
+diff --git a/src/cpp/CMakeLists.txt b/src/cpp/CMakeLists.txt
+index 1141967..f2a1b36 100644
+--- a/src/cpp/CMakeLists.txt
++++ b/src/cpp/CMakeLists.txt
+@@ -99,11 +99,60 @@ else()
+       set(NEEDS_LARGE_ADDRESS "")
+       add_definitions(-D_WIN64)
+    else()
+-      set(NEEDS_LARGE_ADDRESS "--large-address-aware")
++      if(MINGW)
++         set(NEEDS_LARGE_ADDRESS "--large-address-aware")
++      elseif(MSVC)
++         set(NEEDS_LARGE_ADDRESS "-LARGEADDRESSAWARE")
++      endif(MINGW)
+    endif()
+    # increase stack size to 20MB, avoid mingw auto-importing warning,
+    # and ensure that we are large address aware
+-   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--stack=0x01400000,--enable-auto-import,${NEEDS_LARGE_ADDRESS},--allow-multiple-definition")
++   if(MINGW)
++      set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--stack=0x01400000,--enable-auto-import,${NEEDS_LARGE_ADDRESS},--allow-multiple-definition")
++   elseif(MSVC)
++
++      # 1. Flags passed to MSVC to prevent build failures:
++
++      # error C2589: '(': illegal token on right side of '::'
++      add_definitions(-DNOMINMAX)
++
++      # json_spirit_reader.cpp : fatal error C1128: number of sections exceeded object file format limit: compile with /bigobj
++      add_compile_options("-bigobj")
++
++      # 2. Flags passed to MSVC to silence pedantic or noisy warning messages:
++
++      # conversion from '<bigger>' to '<smaller>', possible loss of data
++      add_compile_options("-wd4244")
++
++      # conversion from 'size_t' to '<smaller>', possible loss of data
++      add_compile_options("-wd4267")
++
++      # 305: 'argument': truncation from 'size_t' to 'int'
++      # '__declspec(dllimport)': ignored on left of '<identifier>' when no variable is declared
++      add_compile_options("-wd4091")
++
++      # ';': empty controlled statement found; is this the intent?
++      add_compile_options("-wd4390")
++
++      # forcing value to bool 'true' or 'false'
++      add_compile_options("-wd4800")
++
++      # 3. Flags passed to MSVC to silence helpful security warnings (these should be fixed instead):
++
++      # 'fopen,freopen,sprintf,strcat,strcpy,strerror,strncpy,wcstok': This function or variable may be unsafe. Consider using _s instead
++      add_definitions(-D_CRT_SECURE_NO_WARNINGS)
++
++      # Call to 'std::copy' with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct
++      # 'std::basic_string<charstd::char_traits<char>,std::allocator<char>>::copy': Function call with parameters that may be unsafe  - this call relies on the caller to check that the passed values are correct
++      add_definitions(-D_SCL_SECURE_NO_WARNINGS)
++
++      # 'close,getpid,open,read,wcstok,write': This function or variable may be unsafe. Consider using _s instead
++      add_compile_options("-wd4996")
++
++      set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -STACK:0x01400000 ${NEEDS_LARGE_ADDRESS}")
++
++   endif(MINGW)
++
+ endif()
+ 
+ # Boost.Signals is no longer being maintained and is now deprecated. Please switch to Boost.Signals2
+-- 
+2.10.1
+

@@ -1,11 +1,11 @@
 package:
   name: boost
-  version: 1.60.0
+  version: 1.61.0
 
 source:
-  fn:  boost_1_60_0.tar.bz2
-  url: http://sourceforge.net/projects/boost/files/boost/1.60.0/boost_1_60_0.tar.bz2
-  md5: 65a840e1a0b13a558ff19eeb2c4f0cbe
+  fn:  boost_1_61_0.tar.bz2
+  url: http://sourceforge.net/projects/boost/files/boost/1.61.0/boost_1_61_0.tar.bz2
+  md5: 6095876341956f65f9d35939ccea1a9f
 
 build:
   features:
@@ -16,7 +16,7 @@ build:
 requirements:
   build:
     - python
-    - icu               [unix]
+    - icu 54.*          [unix]
     - bzip2             [unix]
     - zlib
 
@@ -24,7 +24,7 @@ requirements:
     # python dependency is here due to libboost-python library that depends on
     # python version
     - python
-    - icu               [unix]
+    - icu 54.*          [unix]
     - zlib
 
 about:

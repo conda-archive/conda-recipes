@@ -4,7 +4,7 @@ package:
 
 source:
   fn: libtool-2.4.2.tar.gz
-  url: http://ftpmirror.gnu.org/libtool/libtool-2.4.2.tar.gz [not win]
+  url: https://ftp.gnu.org/gnu/libtool/libtool-2.4.2.tar.gz [not win]
 
 build:
   number: 0

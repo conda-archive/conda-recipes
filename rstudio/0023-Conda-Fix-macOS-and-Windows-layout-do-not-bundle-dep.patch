@@ -1,0 +1,295 @@
+From 410eeda01b9d8f1b86b0545ac6f5a8802ebea02b Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Sat, 29 Oct 2016 17:39:52 +0100
+Subject: [PATCH 23/42] Conda: Fix macOS and Windows layout, do not bundle deps
+
+---
+ CMakeGlobals.txt                              |  2 +-
+ dependencies/windows/install-dependencies.cmd | 47 ++++++++++++---------
+ package/win32/CMakeLists.txt                  |  3 +-
+ src/cpp/desktop-mac/CMakeLists.txt            | 60 ++++++++++++++++++---------
+ src/cpp/desktop/CMakeLists.txt                | 31 +++++++-------
+ src/cpp/desktop/DesktopMain.cpp               |  4 +-
+ src/cpp/session/CMakeLists.txt                |  7 +++-
+ 7 files changed, 92 insertions(+), 62 deletions(-)
+
+diff --git a/CMakeGlobals.txt b/CMakeGlobals.txt
+index 7729a8c..1d0b8b8 100644
+--- a/CMakeGlobals.txt
++++ b/CMakeGlobals.txt
+@@ -114,7 +114,7 @@ if(WIN32)
+ endif()
+ 
+ # special install directories for apple desktop
+-if (APPLE AND RSTUDIO_DESKTOP)
++if (APPLE AND RSTUDIO_DESKTOP AND NOT DEFINED ENV{CONDA_BUILD})
+    set(RSTUDIO_INSTALL_BIN RStudio.app/Contents/MacOS)
+    set(RSTUDIO_INSTALL_SUPPORTING RStudio.app/Contents/Resources)
+ else()
+diff --git a/dependencies/windows/install-dependencies.cmd b/dependencies/windows/install-dependencies.cmd
+index 27c274a..99580c3 100644
+--- a/dependencies/windows/install-dependencies.cmd
++++ b/dependencies/windows/install-dependencies.cmd
+@@ -54,28 +54,34 @@ if not "%CONDA_BUILD%" == "1" (
+   )
+ )
+ 
+-if not exist gnudiff (
+-  wget %WGET_ARGS% "%BASEURL%%GNUDIFF_FILE%"
+-  mkdir gnudiff
+-  echo Unzipping %GNUDIFF_FILE%
+-  unzip %UNZIP_ARGS% "%GNUDIFF_FILE%" -d gnudiff
+-  del "%GNUDIFF_FILE%"
++if not "%CONDA_BUILD%" == "1" (
++  if not exist gnudiff (
++    wget %WGET_ARGS% "%BASEURL%%GNUDIFF_FILE%"
++    mkdir gnudiff
++    echo Unzipping %GNUDIFF_FILE%
++    unzip %UNZIP_ARGS% "%GNUDIFF_FILE%" -d gnudiff
++    del "%GNUDIFF_FILE%"
++  )
+ )
+ 
+-if not exist gnugrep (
+-  wget %WGET_ARGS% "%BASEURL%%GNUGREP_FILE%"
+-  mkdir gnugrep
+-  echo Unzipping %GNUGREP_FILE%
+-  unzip %UNZIP_ARGS% "%GNUGREP_FILE%" -d gnugrep
+-  del "%GNUGREP_FILE%"
++if not "%CONDA_BUILD%" == "1" (
++  if not exist gnugrep (
++    wget %WGET_ARGS% "%BASEURL%%GNUGREP_FILE%"
++    mkdir gnugrep
++    echo Unzipping %GNUGREP_FILE%
++    unzip %UNZIP_ARGS% "%GNUGREP_FILE%" -d gnugrep
++    del "%GNUGREP_FILE%"
++  )
+ )
+ 
+-if not exist msys-ssh-1000-18 (
+-  wget %WGET_ARGS% "%BASEURL%%MSYS_SSH_FILE%"
+-  mkdir msys-ssh-1000-18
+-  echo Unzipping %MSYS_SSH_FILE%
+-  unzip %UNZIP_ARGS% "%MSYS_SSH_FILE%" -d msys-ssh-1000-18
+-  del "%MSYS_SSH_FILE%"
++if not "%CONDA_BUILD%" == "1" (
++  if not exist msys-ssh-1000-18 (
++    wget %WGET_ARGS% "%BASEURL%%MSYS_SSH_FILE%"
++    mkdir msys-ssh-1000-18
++    echo Unzipping %MSYS_SSH_FILE%
++    unzip %UNZIP_ARGS% "%MSYS_SSH_FILE%" -d msys-ssh-1000-18
++    del "%MSYS_SSH_FILE%"
++  )
+ )
+ 
+ if not exist sumatra\3.1.1 (
+@@ -174,8 +180,9 @@ if not exist libclang\%LIBCLANG_HEADERS% (
+ )
+ 
+ 
+-
+-install-packages.cmd
++if not "%CONDA_BUILD%" == "1" (
++  install-packages.cmd
++)
+ 
+ popd
+ 
+diff --git a/package/win32/CMakeLists.txt b/package/win32/CMakeLists.txt
+index f8e047c..4c7acab 100644
+--- a/package/win32/CMakeLists.txt
++++ b/package/win32/CMakeLists.txt
+@@ -3,7 +3,8 @@
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
+ 
+ # install ssh-console batch file into msys_ssh directory (called by shortcut)
+-if(NOT RSTUDIO_SESSION_WIN64)
++# (I have seen no evidence that this is used anywhere by RStudio nowadays)
++if(NOT RSTUDIO_SESSION_WIN64 AND NOT ENV{CONDA_BUILD})
+    install(PROGRAMS src/ssh-console.bat
+            DESTINATION "${RSTUDIO_INSTALL_BIN}/msys_ssh")
+ endif()
+diff --git a/src/cpp/desktop-mac/CMakeLists.txt b/src/cpp/desktop-mac/CMakeLists.txt
+index 00b1f99..83cf1a1 100644
+--- a/src/cpp/desktop-mac/CMakeLists.txt
++++ b/src/cpp/desktop-mac/CMakeLists.txt
+@@ -70,26 +70,46 @@ file(GLOB PNG_FILES ${CMAKE_CURRENT_SOURCE_DIR}/resources/png/*.png)
+ set_source_files_properties(${PNG_FILES}
+    PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+ 
+-# define bundle name and executable
+-set(MACOSX_BUNDLE_BUNDLE_NAME "RStudio")
+-
+-add_executable(RStudio MACOSX_BUNDLE
+-   ${DESKTOP_MAC_SOURCE_FILES}
+-   ${DESKTOP_MAC_HEADER_FILES}
+-   ${ICNS_FILES}
+-   ${PNG_FILES})
+-
+-
+-target_link_libraries(RStudio
+-   rstudio-core
+-   ${APPKIT_LIBRARY}
+-   ${OPENGL_LIBRARY}
+-   ${WEBKIT_LIBRARY})
+-
+-# install target (OSX install goes into the bundle)
+-set_target_properties(RStudio PROPERTIES
+-  MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_BINARY_DIR}/Info.plist)
+-install(TARGETS RStudio BUNDLE DESTINATION .)
++if(NOT DEFINED ENV{CONDA_BUILD})
++   # define bundle name and executable
++   set(MACOSX_BUNDLE_BUNDLE_NAME "RStudio")
++
++   add_executable(RStudio MACOSX_BUNDLE
++      ${DESKTOP_MAC_SOURCE_FILES}
++      ${DESKTOP_MAC_HEADER_FILES}
++      ${ICNS_FILES}
++      ${PNG_FILES})
++
++
++   target_link_libraries(RStudio
++      rstudio-core
++      ${APPKIT_LIBRARY}
++      ${OPENGL_LIBRARY}
++      ${WEBKIT_LIBRARY})
++
++
++   # install target (OSX install goes into the bundle)
++   set_target_properties(RStudio PROPERTIES
++     MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_BINARY_DIR}/Info.plist)
++   install(TARGETS RStudio BUNDLE DESTINATION .)
++
++else()
++   add_executable(rstudio
++      ${DESKTOP_MAC_SOURCE_FILES}
++      ${DESKTOP_MAC_HEADER_FILES}
++   )
++
++   target_link_libraries(rstudio
++      rstudio-core
++      ${APPKIT_LIBRARY}
++      ${OPENGL_LIBRARY}
++      ${WEBKIT_LIBRARY})
++
++   # install target
++   install(TARGETS rstudio DESTINATION ${RSTUDIO_INSTALL_BIN})
++
++endif(NOT DEFINED ENV{CONDA_BUILD})
++
+ 
+ # install mac-terminal script
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/mac-terminal.in
+diff --git a/src/cpp/desktop/CMakeLists.txt b/src/cpp/desktop/CMakeLists.txt
+index ee57271..a1f51ed 100644
+--- a/src/cpp/desktop/CMakeLists.txt
++++ b/src/cpp/desktop/CMakeLists.txt
+@@ -284,14 +284,15 @@ endif(WIN32)
+ # bundle it unless we are building on linux and NOT linking against the
+ # qtsdk -- in that case we are linking against system versions of the
+ # qt libraries which should therefore not be bundled
+-if(APPLE OR WIN32 OR
+-   RSTUDIO_PACKAGE_BUILD OR
+-   (${QT_LIBRARY_DIR} MATCHES ".*QtSDK.*"))
++if(NOT DEFINED ENV{CONDA_BUILD} AND
++   (APPLE OR
++    RSTUDIO_PACKAGE_BUILD OR
++    (${QT_LIBRARY_DIR} MATCHES ".*QtSDK.*")))
+   set(RSTUDIO_BUNDLE_QT TRUE)
+ endif()
+ 
+-# define executable (Windows & Linux)
+-if(NOT APPLE)
++# define executable (Windows, Linux and any conda)
++if(NOT APPLE OR DEFINED ENV{CONDA_BUILD})
+ 
+    add_executable(rstudio
+       ${DESKTOP_SOURCE_FILES}
+@@ -336,8 +337,11 @@ if(NOT APPLE)
+       ${LINK_FLAGS}
+    )
+ 
++   # install target
++   install(TARGETS rstudio DESTINATION ${RSTUDIO_INSTALL_BIN})
++
+ # for OSX we create a bundle
+-else()
++elseif(APPLE)
+ 
+    # configure Info.plist
+    configure_file (${CMAKE_CURRENT_SOURCE_DIR}/Info.plist.in
+@@ -370,17 +374,12 @@ else()
+       ${COCOA_LIBRARY}
+       ${SECURITY_LIBRARY})
+ 
+-endif()
+-
++   # install target (OSX install goes into the bundle)
++   set_target_properties(RStudio PROPERTIES
++      MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_BINARY_DIR}/Info.plist)
++   install(TARGETS RStudio BUNDLE DESTINATION .)
+ 
+-# install target (OSX install goes into the bundle)
+-if(APPLE)
+-  set_target_properties(RStudio PROPERTIES
+-     MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_BINARY_DIR}/Info.plist)
+-  install(TARGETS RStudio BUNDLE DESTINATION .)
+-else()
+-  install(TARGETS rstudio DESTINATION ${RSTUDIO_INSTALL_BIN})
+-endif()
++endif(NOT APPLE OR DEFINED ENV{CONDA_BUILD})
+ 
+ # bundle qt dependencies if this is a package build
+ if(RSTUDIO_BUNDLE_QT)
+diff --git a/src/cpp/desktop/DesktopMain.cpp b/src/cpp/desktop/DesktopMain.cpp
+index 69dab92..e0e35fd 100644
+--- a/src/cpp/desktop/DesktopMain.cpp
++++ b/src/cpp/desktop/DesktopMain.cpp
+@@ -309,7 +309,7 @@ int main(int argc, char* argv[])
+          confPath = currentPath.complete("conf/rdesktop-dev.conf");
+          sessionPath = currentPath.complete("session/rsession");
+          scriptsPath = currentPath.complete("desktop");
+-#ifdef _WIN32
++#if defined(_WIN32) && !defined(CONDA_BUILD)
+          if (version.architecture() == ArchX64)
+             sessionPath = installPath.complete("session/x64/rsession");
+ #endif
+@@ -324,7 +324,7 @@ int main(int argc, char* argv[])
+          scriptsPath = installPath.complete("bin");
+ 
+          // check for win64 binary on windows
+-#ifdef _WIN32
++#if defined(_WIN32) && !defined(CONDA_BUILD)
+          if (version.architecture() == ArchX64)
+             sessionPath = installPath.complete("bin/x64/rsession");
+ #endif
+diff --git a/src/cpp/session/CMakeLists.txt b/src/cpp/session/CMakeLists.txt
+index 648e61f..7f21a6b 100644
+--- a/src/cpp/session/CMakeLists.txt
++++ b/src/cpp/session/CMakeLists.txt
+@@ -484,8 +484,9 @@ if (NOT RSTUDIO_SESSION_WIN64)
+       endif()
+    endif()
+ 
+-   # install gnudiff, mysys_ssh, and sumatra-pdf on windows
+-   if(WIN32)
++   # install gnudiff, mysys_ssh, and sumatra-pdf on windows. Conda builds provide their
++   # own m2w64-diffutils, m2w64-grep and m2-openssh pacakges.
++   if(WIN32 AND NOT DEFINED ENV{CONDA_BUILD})
+       install(DIRECTORY "${RSTUDIO_WINDOWS_DEPENDENCIES_DIR}/gnudiff"
+               USE_SOURCE_PERMISSIONS
+               DESTINATION  ${RSTUDIO_INSTALL_BIN})
+@@ -495,8 +496,10 @@ if (NOT RSTUDIO_SESSION_WIN64)
+       install(DIRECTORY "${RSTUDIO_WINDOWS_DEPENDENCIES_DIR}/msys-ssh-1000-18"
+               USE_SOURCE_PERMISSIONS
+               DESTINATION  ${RSTUDIO_INSTALL_BIN})
++   endif(WIN32 AND NOT DEFINED ENV{CONDA_BUILD})
+ 
+ 
++   if(WIN32)
+       install(PROGRAMS "${RSTUDIO_WINDOWS_DEPENDENCIES_DIR}/sumatra/3.1.1/SumatraPDF.exe"
+               DESTINATION  "${RSTUDIO_INSTALL_BIN}/sumatra")
+       install(FILES resources/sumatrapdfrestrict.ini
+-- 
+2.10.1
+

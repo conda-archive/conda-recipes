@@ -1,18 +1,21 @@
 package:
   name: dbus
-  version: 1.8.8
+  version: 1.11.2
 
 source:
-  url: http://dbus.freedesktop.org/releases/dbus/dbus-1.8.8.tar.gz
-  fn: dbus-1.8.8.tar.gz
-  sha1: e0d10e8b4494383c7e366ac80a942ba45a705a96
+  url: http://dbus.freedesktop.org/releases/dbus/dbus-1.11.2.tar.gz
+  sha1: e1d3dedd1d2b7305464d6892579fee3ad9639355
 
 build:
-  number: 1
+  number: 3
+  detect_binary_files_with_prefix: true
 
 requirements:
   build:
+    - expat
     - python
+  run:
+    - expat
 
 test:
   commands:

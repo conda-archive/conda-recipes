@@ -1,0 +1,127 @@
+From 829b552430da552a2b33c4ff6add06668f4928e8 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Mon, 7 Nov 2016 16:41:01 +0000
+Subject: [PATCH 39/42] GWT: Debug rpc issues
+
+For some reason my RPC uri is coming through to SessionMain.cpp as
+`//rpc/some_function` instead of `/rpc/some_function`. This should
+help debug that.
+---
+ src/cpp/desktop/DesktopBrowserWindow.cpp                           | 2 ++
+ src/cpp/desktop/DesktopSessionLauncher.cpp                         | 2 ++
+ src/cpp/desktop/DesktopWebPage.cpp                                 | 4 ++++
+ src/cpp/session/SessionMain.cpp                                    | 7 +++++++
+ src/gwt/src/org/rstudio/core/client/jsonrpc/RpcRequest.java        | 4 +++-
+ .../src/org/rstudio/studio/client/server/remote/RemoteServer.java  | 1 +
+ 6 files changed, 19 insertions(+), 1 deletion(-)
+
+diff --git a/src/cpp/desktop/DesktopBrowserWindow.cpp b/src/cpp/desktop/DesktopBrowserWindow.cpp
+index 45615c0..345fb48 100644
+--- a/src/cpp/desktop/DesktopBrowserWindow.cpp
++++ b/src/cpp/desktop/DesktopBrowserWindow.cpp
+@@ -43,6 +43,8 @@ BrowserWindow::BrowserWindow(bool showToolbar,
+    adjustTitle_ = adjustTitle;
+    progress_ = 0;
+ 
++   qDebug() << "BrowserWindow::BrowserWindow: name:" << name << " baseUrl: " << baseUrl.toString() << " allowExternalNavigate: " << allowExternalNavigate;
++
+    pView_ = new WebView(baseUrl, this, allowExternalNavigate);
+    QWebFrame* mainFrame = pView_->page()->mainFrame();
+    connect(mainFrame, SIGNAL(javaScriptWindowObjectCleared()),
+diff --git a/src/cpp/desktop/DesktopSessionLauncher.cpp b/src/cpp/desktop/DesktopSessionLauncher.cpp
+index 0154aa1..795a9d5 100644
+--- a/src/cpp/desktop/DesktopSessionLauncher.cpp
++++ b/src/cpp/desktop/DesktopSessionLauncher.cpp
+@@ -384,6 +384,8 @@ void SessionLauncher::buildLaunchContext(QString* pHost,
+    *pUrl = QUrl(QString::fromUtf8("http://") + *pHost +
+                 QString::fromUtf8(":") + *pPort + QString::fromUtf8("/"));
+ 
++   qDebug() << "SessionLauncher::buildLaunchContext: pUrl->toString(): " << pUrl->toString() << " pHost: " << *pHost << " pPort: " << *pPort;
++
+    if (!confPath_.empty())
+    {
+       *pArgList << QString::fromUtf8("--config-file=") +
+diff --git a/src/cpp/desktop/DesktopWebPage.cpp b/src/cpp/desktop/DesktopWebPage.cpp
+index 2794f0a..3801e80 100644
+--- a/src/cpp/desktop/DesktopWebPage.cpp
++++ b/src/cpp/desktop/DesktopWebPage.cpp
+@@ -210,6 +210,8 @@ bool WebPage::acceptNavigationRequest(QWebFrame* pWebFrame,
+ {
+    QUrl url = request.url();
+ 
++   qDebug() << "WebPage::acceptNavigationRequest: " << url.toString();
++
+    if (url.toString() == QString::fromUtf8("about:blank"))
+       return true;
+ 
+@@ -374,6 +376,8 @@ void WebPage::handleBase64Download(QWebFrame* pWebFrame, QUrl url)
+ 
+ void WebPage::setViewerUrl(const QString& viewerUrl)
+ {
++   qDebug() << "WebPage::setViewerUrl: " << viewerUrl;
++
+    // record about:blank literally
+    if (viewerUrl == QString::fromUtf8("about:blank"))
+    {
+diff --git a/src/cpp/session/SessionMain.cpp b/src/cpp/session/SessionMain.cpp
+index 1aa75d6..db62fec 100644
+--- a/src/cpp/session/SessionMain.cpp
++++ b/src/cpp/session/SessionMain.cpp
+@@ -28,6 +28,8 @@
+ #include <csignal>
+ #include <limits>
+ 
++#include <iostream>
++
+ #include <boost/shared_ptr.hpp>
+ #include <boost/function.hpp>
+ #include <boost/lexical_cast.hpp>
+@@ -953,6 +955,11 @@ void handleConnection(boost::shared_ptr<HttpConnection> ptrConnection,
+    std::string uri = request.uri();
+    http::UriAsyncHandlerFunction uriHandler = s_uriHandlers.handlerFor(uri);
+ 
++   if (uri.find("rpc") != -1)
++   {
++	   std::cout << "hmm uri is " << uri << std::endl;
++   }
++
+    if (uriHandler) // uri handler
+    {
+       // r code may execute - ensure session is initialized
+diff --git a/src/gwt/src/org/rstudio/core/client/jsonrpc/RpcRequest.java b/src/gwt/src/org/rstudio/core/client/jsonrpc/RpcRequest.java
+index 6ff19ca..5e1db4e 100644
+--- a/src/gwt/src/org/rstudio/core/client/jsonrpc/RpcRequest.java
++++ b/src/gwt/src/org/rstudio/core/client/jsonrpc/RpcRequest.java
+@@ -29,7 +29,7 @@ import org.rstudio.core.client.jsonrpc.RequestLogEntry.ResponseType;
+ // for retries after network or authentication errors)
+ public class RpcRequest 
+ {
+-   public static final boolean TRACE = false ;
++   public static final boolean TRACE = true ;
+    
+    public RpcRequest(String url, 
+                      String method, 
+@@ -93,6 +93,8 @@ public class RpcRequest
+       {
+          String requestString = request.toString();
+          if (TRACE)
++            Debug.log("RpcRequest url_: " + url_) ;
++         if (TRACE)
+             Debug.log("Request: " + requestString) ;
+ 
+          requestLogEntry_ = RequestLog.log(requestId,
+diff --git a/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java b/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java
+index f97f82b..e65470d 100644
+--- a/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java
++++ b/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java
+@@ -394,6 +394,7 @@ public class RemoteServer implements Server
+       ensureListeningForEvents();
+       
+       // return the url
++      Debug.log("GWT.getHostPageBaseURL(): " + GWT.getHostPageBaseURL()) ;
+       return GWT.getHostPageBaseURL() + pathName;
+    }
+    
+-- 
+2.10.1
+

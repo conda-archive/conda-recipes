@@ -22,16 +22,22 @@ if errorlevel 1 exit 1
     address-model=%ARCH% ^
     variant=release ^
     threading=multi ^
-    link=shared ^
+    link=static,shared ^
     -j%CPU_COUNT% ^
     -s ZLIB_INCLUDE="%LIBRARY_INC%" ^
     -s ZLIB_LIBPATH="%LIBRARY_LIB%"
 if errorlevel 1 exit 1
 
+for /F "tokens=1,2,3 delims=." %%a in ("%PKG_VERSION%") do (
+   set PKG_VERSION_MAJOR=%%a
+   set PKG_VERSION_MINOR=%%b
+   set PKG_VERSION_PATCH=%%c
+)
+
 :: Install fix-up for a non version-specific boost include
-move %LIBRARY_INC%\boost-1_60\boost %LIBRARY_INC%
+move %LIBRARY_INC%\boost-%PKG_VERSION_MAJOR%_%PKG_VERSION_MINOR%\boost %LIBRARY_INC%
 if errorlevel 1 exit 1
 
 :: Move dll's to LIBRARY_BIN
-move %LIBRARY_LIB%\*vc%LIB_VER%-mt-1_60.dll "%LIBRARY_BIN%"
+move %LIBRARY_LIB%\*vc%LIB_VER%-mt-%PKG_VERSION_MAJOR%_%PKG_VERSION_MINOR%.dll "%LIBRARY_BIN%"
 if errorlevel 1 exit 1

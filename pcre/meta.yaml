@@ -1,17 +1,25 @@
-
 package:
-    name: pcre
-    version: 8.36
+  name: pcre
+  version: 8.39
 
 source:
-    fn: pcre-8.36.tar.gz
-    url: ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.36.tar.gz
-    md5: ff7b4bb14e355f04885cf18ff4125c98
+  url: http://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz
+  sha1: b3aec1f643d9701841e2f9d57ac121a7ff448fc8
+  patches:
+    - 0001-Add-a-new-option-for-controlling-static-builds-with-.patch
 
 build:
-    number: 0
+  number: 1
+
+requirements:
+  build:
+    - cmake       [win]
+    - zlib 1.2.*
+    - bzip2
+  run:
+    - zlib 1.2.*
 
 about:
-    home:  http://www.pcre.org/
-    license: 3-clause BSD License
-
+  home:  http://www.pcre.org/
+  license: 3-clause BSD License
+  license_family: BSD

@@ -1,3 +1,6 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
 package:
   name: r-foreach
   # Note that conda versions cannot contain -, so any -'s in the version have
@@ -31,13 +34,13 @@ build:
 # Suggests: randomForest
 requirements:
   build:
-    - r
-    - r-codetools # [not win]
+    - r-base
+    - r-codetools
     - r-iterators
 
   run:
-    - r
-    - r-codetools # [not win]
+    - r-base
+    - r-codetools
     - r-iterators
 
 test:
@@ -62,6 +65,7 @@ about:
     but doesn't require the evaluation of a function.  Using foreach without side effects
     also facilitates executing the loop in parallel.
   license_family: Apache
+
 # The original CRAN metadata for this package was:
 
 # Package: foreach

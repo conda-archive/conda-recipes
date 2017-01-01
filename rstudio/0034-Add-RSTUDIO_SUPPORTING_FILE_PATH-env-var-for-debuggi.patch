@@ -1,0 +1,86 @@
+From 893d31419d9c776086a1efea89b602a314e9b85a Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Wed, 2 Nov 2016 12:46:50 +0000
+Subject: [PATCH 34/42] Add RSTUDIO_SUPPORTING_FILE_PATH env var for debugging
+
+Typically, for a CONDA_BUILD, this will be `share/rstudio` from a previous
+installation, e.g. `${CONDA_PREFIX}/share/rstudio`
+---
+ src/cpp/desktop-mac/Options.mm             | 8 ++++++++
+ src/cpp/desktop-mac/SessionLauncher.mm     | 1 +
+ src/cpp/desktop/DesktopSessionLauncher.cpp | 1 +
+ src/cpp/session/SessionOptions.cpp         | 8 ++++++++
+ 4 files changed, 18 insertions(+)
+
+diff --git a/src/cpp/desktop-mac/Options.mm b/src/cpp/desktop-mac/Options.mm
+index 7636bb1..d7e2090 100644
+--- a/src/cpp/desktop-mac/Options.mm
++++ b/src/cpp/desktop-mac/Options.mm
+@@ -18,6 +18,7 @@
+ #include <core/Random.hpp>
+ #include <core/SafeConvert.hpp>
+ #include <core/system/System.hpp>
++#include <core/system/Environment.hpp>
+ 
+ #import <Foundation/NSString.h>
+ #import <Foundation/NSUserDefaults.h>
+@@ -167,6 +168,13 @@ FilePath Options::supportingFilePath() const
+ #else
+       core::system::installPath("../share/rstudio", NULL, &supportingFilePath_);
+ #endif
++      // debugging in Xcode/QtCreator => some minor path manipulation.
++      if (!supportingFilePath_.exists())
++      {
++         supportingFilePath_ = FilePath(core::system::getenv("RSTUDIO_SUPPORTING_FILE_PATH"));
++         if (!supportingFilePath_.exists())
++            supportingFilePath_ = FilePath("RSTUDIO_SUPPORTING_FILE_PATH_NOT_FOUND");
++      }
+    }
+    return supportingFilePath_;
+ }
+diff --git a/src/cpp/desktop-mac/SessionLauncher.mm b/src/cpp/desktop-mac/SessionLauncher.mm
+index d9e6475..a2a3999 100644
+--- a/src/cpp/desktop-mac/SessionLauncher.mm
++++ b/src/cpp/desktop-mac/SessionLauncher.mm
+@@ -123,6 +123,7 @@ Error SessionLauncher::launchFirstSession(const std::string& filename)
+    
+    RUN_DIAGNOSTICS_LOG("\nAttempting to launch R session...");
+    logEnvVar("RSTUDIO_WHICH_R");
++   logEnvVar("RSTUDIO_SUPPORTING_FILE_PATH");
+    logEnvVar("R_HOME");
+    logEnvVar("R_DOC_DIR");
+    logEnvVar("R_INCLUDE_DIR");
+diff --git a/src/cpp/desktop/DesktopSessionLauncher.cpp b/src/cpp/desktop/DesktopSessionLauncher.cpp
+index d83ac65..0154aa1 100644
+--- a/src/cpp/desktop/DesktopSessionLauncher.cpp
++++ b/src/cpp/desktop/DesktopSessionLauncher.cpp
+@@ -88,6 +88,7 @@ Error SessionLauncher::launchFirstSession(const QString& filename,
+ 
+    RUN_DIAGNOSTICS_LOG("\nAttempting to launch R session...");
+    logEnvVar("RSTUDIO_WHICH_R");
++   logEnvVar("RSTUDIO_SUPPORTING_FILE_PATH");
+    logEnvVar("R_HOME");
+    logEnvVar("R_DOC_DIR");
+    logEnvVar("R_INCLUDE_DIR");
+diff --git a/src/cpp/session/SessionOptions.cpp b/src/cpp/session/SessionOptions.cpp
+index de8e635..0a772b9 100644
+--- a/src/cpp/session/SessionOptions.cpp
++++ b/src/cpp/session/SessionOptions.cpp
+@@ -120,6 +120,14 @@ core::ProgramStatus Options::read(int argc, char * const argv[])
+ #else
+    Error error = core::system::installPath("../share/rstudio", argv[0], &resourcePath_);
+ #endif
++   if (error || !resourcePath_.exists())
++   {
++      // debugging in Xcode/QtCreator/Visual Studio => some minor path manipulation.
++      FilePath& supportingFilePath_ = resourcePath_;
++      supportingFilePath_ = FilePath(core::system::getenv("RSTUDIO_SUPPORTING_FILE_PATH"));
++      if (error && supportingFilePath_.exists())
++         error = Success();
++   }
+    if (error)
+    {
+       LOG_ERROR_MESSAGE("Unable to determine install path: "+error.summary());
+-- 
+2.10.1
+

@@ -1,0 +1,145 @@
+From d7584cfd62b6ba29b10491d50c2ec09f375c7e4f Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Sat, 29 Oct 2016 16:48:46 +0100
+Subject: [PATCH 19/42] Win32 (MSVC): Add and fix includes
+
+src/cpp/core/RegexUtils.cpp:
+Add missing sstream include.
+
+src/cpp/core/file_lock/LinkBasedFileLock.cpp:
+src/cpp/core/zlib/zconf.h:
+unistd.h doesn't exist in MSVC.
+
+src/cpp/core/include/core/system/System.hpp:
+Including windef.h directly on MSVC leads to:
+C:\Program Files(x86)\Windows Kits\8.1\Include\um\winnt.h(147) : fatal error C1189 : #error:  "No Target Architecture"
+so include windows.h instead.
+
+src/cpp/core/system/Win32OutputCapture.cpp:
+Add missing io.h include.
+
+src/cpp/core/zlib/gzguts.h:
+io.h is needed on all MSVC versions.
+
+src/cpp/r/session/graphics/RGraphicsDevDesc.hpp
+Prevent 'warning C4068: unknown pragma' which happens as a result of
+including R headers before Window's <cstdlib> and <cstring>
+---
+ src/cpp/core/RegexUtils.cpp                     | 1 +
+ src/cpp/core/file_lock/LinkBasedFileLock.cpp    | 2 ++
+ src/cpp/core/include/core/system/System.hpp     | 2 +-
+ src/cpp/core/system/Win32OutputCapture.cpp      | 3 +++
+ src/cpp/core/zlib/gzguts.h                      | 3 +--
+ src/cpp/core/zlib/zconf.h                       | 4 ++++
+ src/cpp/r/session/graphics/RGraphicsDevDesc.hpp | 5 +++++
+ 7 files changed, 17 insertions(+), 3 deletions(-)
+
+diff --git a/src/cpp/core/RegexUtils.cpp b/src/cpp/core/RegexUtils.cpp
+index 599e566..f1f55c8 100644
+--- a/src/cpp/core/RegexUtils.cpp
++++ b/src/cpp/core/RegexUtils.cpp
+@@ -25,6 +25,7 @@
+ #include <boost/iostreams/filtering_stream.hpp>
+ 
+ #include <core/StringUtils.hpp>
++#include <sstream>
+ 
+ namespace rstudio {
+ namespace core {
+diff --git a/src/cpp/core/file_lock/LinkBasedFileLock.cpp b/src/cpp/core/file_lock/LinkBasedFileLock.cpp
+index f2f15e7..92493e4 100644
+--- a/src/cpp/core/file_lock/LinkBasedFileLock.cpp
++++ b/src/cpp/core/file_lock/LinkBasedFileLock.cpp
+@@ -19,7 +19,9 @@
+ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#if !defined(_MSC_VER)
+ #include <unistd.h>
++#endif
+ #include <fcntl.h>
+ 
+ #include <set>
+diff --git a/src/cpp/core/include/core/system/System.hpp b/src/cpp/core/include/core/system/System.hpp
+index cdbfedb..e784c85 100644
+--- a/src/cpp/core/include/core/system/System.hpp
++++ b/src/cpp/core/include/core/system/System.hpp
+@@ -18,7 +18,7 @@
+ 
+ 
+ #if defined(_WIN32)
+-#include <windef.h>
++#include <windows.h>
+ typedef DWORD PidType;
+ #else  // UNIX
+ #include <sys/types.h>
+diff --git a/src/cpp/core/system/Win32OutputCapture.cpp b/src/cpp/core/system/Win32OutputCapture.cpp
+index ffad56e..4866b30 100644
+--- a/src/cpp/core/system/Win32OutputCapture.cpp
++++ b/src/cpp/core/system/Win32OutputCapture.cpp
+@@ -20,6 +20,9 @@
+ 
+ #include <stdio.h>
+ #include <fcntl.h>
++#ifdef _MSC_VER
++#include <io.h>
++#endif
+ 
+ 
+ #include <core/Log.hpp>
+diff --git a/src/cpp/core/zlib/gzguts.h b/src/cpp/core/zlib/gzguts.h
+index 3107c36..f8dd9ad 100644
+--- a/src/cpp/core/zlib/gzguts.h
++++ b/src/cpp/core/zlib/gzguts.h
+@@ -27,7 +27,7 @@
+ #endif
+ #include <fcntl.h>
+ 
+-#ifdef __TURBOC__
++#if defined(__TURBOC__) || defined(_MSC_VER)
+ #  include <io.h>
+ #endif
+ 
+@@ -66,7 +66,6 @@
+ /* In Win32, vsnprintf is available as the "non-ANSI" _vsnprintf. */
+ #    if !defined(vsnprintf) && !defined(NO_vsnprintf)
+ #      if !defined(_MSC_VER) || ( defined(_MSC_VER) && _MSC_VER < 1500 )
+-#         include <io.h>
+ #         define vsnprintf _vsnprintf
+ #      endif
+ #    endif
+diff --git a/src/cpp/core/zlib/zconf.h b/src/cpp/core/zlib/zconf.h
+index 4fdf9d9..e34a8ab 100644
+--- a/src/cpp/core/zlib/zconf.h
++++ b/src/cpp/core/zlib/zconf.h
+@@ -8,7 +8,11 @@
+ #ifndef ZCONF_H
+ #define ZCONF_H
+ /* #undef Z_PREFIX */
++#if defined(_MSC_VER)
++/* #undef Z_HAVE_UNISTD_H */
++#else
+ #define Z_HAVE_UNISTD_H
++#endif
+ 
+ /*
+  * If you *really* need a unique prefix for all types and library functions,
+diff --git a/src/cpp/r/session/graphics/RGraphicsDevDesc.hpp b/src/cpp/r/session/graphics/RGraphicsDevDesc.hpp
+index f978da5..841da72 100644
+--- a/src/cpp/r/session/graphics/RGraphicsDevDesc.hpp
++++ b/src/cpp/r/session/graphics/RGraphicsDevDesc.hpp
+@@ -16,6 +16,11 @@
+ #ifndef R_SESSION_GRAPHICS_DEV_DESC_HPP
+ #define R_SESSION_GRAPHICS_DEV_DESC_HPP
+ 
++#ifdef _MSC_VER
++#include <cstdlib>
++#include <cstring>
++#endif
++
+ #include <Rinternals.h>
+ 
+ #include <R_ext/Boolean.h>
+-- 
+2.10.1
+

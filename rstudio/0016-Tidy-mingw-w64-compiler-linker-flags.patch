@@ -1,0 +1,83 @@
+From d8e838da52b4b235cb219ea4681e85d0fbb22913 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Sat, 29 Oct 2016 15:11:22 +0100
+Subject: [PATCH 16/42] Tidy mingw-w64 compiler/linker flags
+
+Microsoft (and mingw-w64) do not use _WIN64_* flags in headers,
+because the API is called WIN32, even for 64-bit variants.
+
+Also, use CMAKE_SIZEOF_VOID_P instead of RSTUDIO_SESSION_WIN64 to
+detect 64-bit Windows when setting compiler/linker flags.
+---
+ src/cpp/CMakeLists.txt | 39 +++++++++++++++------------------------
+ 1 file changed, 15 insertions(+), 24 deletions(-)
+
+diff --git a/src/cpp/CMakeLists.txt b/src/cpp/CMakeLists.txt
+index 1f5693f..1141967 100644
+--- a/src/cpp/CMakeLists.txt
++++ b/src/cpp/CMakeLists.txt
+@@ -89,30 +89,21 @@ if(UNIX)
+ 
+ # Win32 specific global directives
+ else()
+-   add_definitions(-DWINVER=0x501)
+-
+-   if(RSTUDIO_SESSION_WIN64)
+-
+-      # increase stack size to 20MB, avoid mingw auto-importing warning,
+-      set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--stack=0x01400000,--enable-auto-import,--allow-multiple-definition")
+-
+-      add_definitions(-D_WIN64
+-                      -D_WIN64_WINNT=0x0501
+-                      -D_WIN64_IE=0x600
+-                      -DWIN64_LEAN_AND_MEAN
+-                      -DBOOST_USE_WINDOWS_H)
++   add_definitions(-DWINVER=0x501
++                   -D_WIN32_WINNT=0x0501
++                   -D_WIN32_IE=0x600
++                   -DWIN32_LEAN_AND_MEAN
++                   -DBOOST_USE_WINDOWS_H)
++
++   if(CMAKE_SIZEOF_VOID_P EQUAL 8)
++      set(NEEDS_LARGE_ADDRESS "")
++      add_definitions(-D_WIN64)
+    else()
+-
+-      # increase stack size to 20MB, avoid mingw auto-importing warning,
+-      # and ensure that we are large address aware
+-      set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--stack=0x01400000,--enable-auto-import,--large-address-aware,--allow-multiple-definition")
+-
+-      add_definitions(-D_WIN32_WINNT=0x0501
+-                      -D_WIN32_IE=0x600
+-                      -DWIN32_LEAN_AND_MEAN
+-                      -DBOOST_USE_WINDOWS_H)
++      set(NEEDS_LARGE_ADDRESS "--large-address-aware")
+    endif()
+-
++   # increase stack size to 20MB, avoid mingw auto-importing warning,
++   # and ensure that we are large address aware
++   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--stack=0x01400000,--enable-auto-import,${NEEDS_LARGE_ADDRESS},--allow-multiple-definition")
+ endif()
+ 
+ # Boost.Signals is no longer being maintained and is now deprecated. Please switch to Boost.Signals2
+@@ -165,7 +156,7 @@ if(UNIX OR MSVC OR DEFINED ENV{CONDA_BUILD})
+ else()
+      # hard-code to our own prebuilt boost libs
+      set(Boost_COMPILER "-mgw49")
+-     if(RSTUDIO_SESSION_WIN64)
++     if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+         set(BOOST_ARCH "64")
+      else()
+         set(BOOST_ARCH "32")
+@@ -215,7 +206,7 @@ else()
+    if(NOT RSTUDIO_CONFIG_MONITOR_ONLY)
+ 
+       # find LibR
+-      if(RSTUDIO_SESSION_WIN64)
++      if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+          set(LIBR_FIND_WINDOWS_64BIT TRUE)
+       endif()
+       find_package(LibR REQUIRED)
+-- 
+2.10.1
+

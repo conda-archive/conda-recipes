@@ -1,16 +1,18 @@
 package:
   name: thrift
-  version: 0.9.1
+  version: "0.9.3"
 
 source:
-  fn: thrift-0.9.1.tar.gz
-  url: https://pypi.python.org/packages/source/t/thrift/thrift-0.9.1.tar.gz
-  md5: 8989a8a96b0e3a3380cfb89c44e172a6
+  fn: thrift-0.9.3.tar.gz
+  url: https://pypi.python.org/packages/ae/58/35e3f0cd290039ff862c2c9d8ae8a76896665d70343d833bdc2f748b8e55/thrift-0.9.3.tar.gz
+  md5: b519551d7a086bb0b4f222a8f566b7e8
 #  patches:
    # List any patch files here
    # - fix.patch
 
-build:
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
@@ -22,7 +24,7 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  # number: 1
 
 requirements:
   build:
@@ -35,10 +37,10 @@ requirements:
 test:
   # Python imports
   imports:
+    - thrift
+    - thrift.protocol
     - thrift.server
     - thrift.transport
-    - thrift.protocol
-    - thrift
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -55,6 +57,8 @@ test:
 about:
   home: http://thrift.apache.org
   license: Apache License 2.0
+  summary: 'Python bindings for the Apache Thrift RPC system'
+  license_family: Apache
 
 # See
 # http://docs.continuum.io/conda/build.html for

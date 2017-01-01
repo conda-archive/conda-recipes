@@ -1,0 +1,36 @@
+package:
+  name: jquery_static
+  version: 1.11.1
+
+source:
+  git_url: https://github.com/jquery/jquery.git
+  git_rev: 1.11.1
+  # patches:
+  #   - 0001-Update-some-deps-resolutions.patch
+
+build:
+# number: 2
+  noarch: True
+
+requirements:
+  build:
+    - m2-filesystem  [win]
+    - m2-git         [win]
+    - nodejs
+    - gcc            [linux]
+
+about:
+  home: http://jquery.com/
+  license: MIT license
+  license_family: MIT
+  summary: Fast, small, and feature-rich JavaScript library
+  description: |
+    jQuery makes things like HTML document traversal
+    and manipulation, event handling, animation, and
+    Ajax much simpler with an easy-to-use API that
+    works across a multitude of browsers. With a
+    combination of versatility and extensibility,
+    jQuery has changed the way that millions of
+    people write JavaScript.
+  doc_url: http://api.jquery.com/
+  dev_url: https://github.com/jquery/jquery.git

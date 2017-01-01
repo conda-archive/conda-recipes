@@ -1,25 +1,32 @@
 package:
   name: glib
-  version: 2.43.0
+  version: 2.50.2
 
 source:
-  fn: glib-2.43.0.tar.xz
-  url: http://ftp.gnome.org/pub/gnome/sources/glib/2.43/glib-2.43.0.tar.xz
-  sha256: b01efba5a9301a4ae32f5d5623bcda31917839d4f1bfe879775b2df34c8cfdd7
+  url: https://ftp.gnome.org/pub/gnome/sources/glib/2.50/glib-2.50.2.tar.xz
+  sha256: be68737c1f268c05493e503b3b654d2b7f43d7d0b8c5556f7e4651b870acfbf5
+  patches:
+    - 0001-Bypass-building-gcocoanotification-if-OS-X-lt-10_9.patch
+    - 0002-CentOS5-no-mkostemp-nor-O_CLOEXEC.patch
 
 build:
-  number: 2
   detect_binary_files_with_prefix: true
 
 requirements:
   build:
+    - automake >=1.15
+    - pkg-config
     - python
-    - gcc
-    - libffi >=3.0.0
+    - libffi >=3.2.1
+    - gettext         [osx]
+    - xz
     - zlib
+    - pcre >=8.39 1
   run:
-    - libffi >=3.0.0
+    - libffi >=3.2.1
+    - gettext         [osx]
     - zlib
+    - pcre >=8.39 1
 
 about:
   license: LGPL

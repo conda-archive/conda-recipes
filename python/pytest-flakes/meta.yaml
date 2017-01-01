@@ -1,0 +1,68 @@
+package:
+  name: pytest-flakes
+  version: "1.0.1"
+
+source:
+  fn: pytest-flakes-1.0.1.tar.gz
+  url: https://pypi.python.org/packages/73/2d/61b0b7159b477def3ebb95b05e2ec4240b070bbda9725efe88b3e040269a/pytest-flakes-1.0.1.tar.gz
+  md5: 5f30b57e4b047450b078d0f1a4bbd9fa
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # noarch_python: True
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pytest-cov = pytest-cov:main
+    #
+    # Would create an entry point called pytest-cov that calls pytest-cov.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pytest >=2.4.0
+    - pytest-cache
+    - pyflakes
+
+  run:
+    - python
+    - setuptools
+    - pytest >=2.4.0
+    - pytest-cache
+    - pyflakes
+
+test:
+  # Python imports
+  imports:
+    - pytest_flakes
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/fschulze/pytest-flakes
+  license: MIT License
+  summary: 'Pytest plugin to check source code with pyflakes.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
