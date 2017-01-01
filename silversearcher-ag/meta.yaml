@@ -1,5 +1,5 @@
 {% set build = 0 %}
-{% set version = '0.31.0' %}
+{% set version = '1.0.2' %}
 
 package:
     name: silversearcher-ag
@@ -13,7 +13,7 @@ about:
 source:
     fn: the_silver_searcher-{{version}}.tar.gz
     url: https://github.com/ggreer/the_silver_searcher/archive/{{version}}.tar.gz
-    md5: a51b041dcc18fb16bd9128225d8d5c87
+    md5: 8b7164dbcb1ae7d084179db7913d8c56
 
 requirements:
     build:
