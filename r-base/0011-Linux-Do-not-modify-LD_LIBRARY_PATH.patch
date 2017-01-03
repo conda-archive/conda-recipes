@@ -12,7 +12,7 @@ diff -urN R-3.3.2.orig/configure R-3.3.2/configure
 @@ -22363,7 +22364,7 @@
  
  ### * Checks for libraries.
-
+ 
 -## Set up LD_LIBRARY_PATH or equivalent.
 +## Add -Wl,-rpath, entries to RPATH_LDFLAGS.
  ## <FIXME>
@@ -35,7 +35,7 @@ diff -urN R-3.3.2.orig/configure R-3.3.2/configure
 @@ -22415,13 +22423,20 @@
      Rshlibpath_var=${shlibpath_var}
  esac
-
+ 
 -## Export LD_LIBRARY_PATH or equivalent.
 +## Export LD_LIBRARY_PATH or equivalent (except we do not want to do that
 +## instead we want to use -Wl,-rpath .. only doing this for Linux for now).
@@ -52,8 +52,8 @@ diff -urN R-3.3.2.orig/configure R-3.3.2/configure
 +    eval "export ${Rshlibpath_var}"
 +    ;;
 +esac
-
-
+ 
+ 
  ## record how to strip shared/dynamic libraries.
 @@ -25082,7 +25097,7 @@
  # flags.
@@ -79,7 +79,7 @@ diff -urN R-3.3.2.orig/configure.ac R-3.3.2/configure.ac
 @@ -668,7 +668,7 @@
  
  ### * Checks for libraries.
-
+ 
 -## Set up LD_LIBRARY_PATH or equivalent.
 +## Add -Wl,-rpath, entries to RPATH_LDFLAGS.
  ## <FIXME>
@@ -114,7 +114,7 @@ diff -urN R-3.3.2.orig/configure.ac R-3.3.2/configure.ac
 +    ;;
 +esac
  AC_SUBST(Rshlibpath_var)
-
+ 
  ## record how to strip shared/dynamic libraries.
 @@ -1714,6 +1722,7 @@
  
