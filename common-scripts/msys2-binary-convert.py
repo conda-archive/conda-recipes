@@ -56,7 +56,6 @@ def main():
     msys2_tar_xz = get_tar_xz(msys2_tar_xz_url, msys2_md5)
     tar = tarfile.open(msys2_tar_xz, 'r|xz')
     tar.extractall(path=prefix)
-    print('extracted to %s' % prefix)
     for pacman_file in ('.BUILDINFO', '.MTREE', '.PKGINFO', '.INSTALL'):
         try:
             os.remove(join(prefix, pacman_file))
@@ -86,12 +85,9 @@ def main():
     # .. however, if no mv_srcs exist we don't makedirs at all.
     for mv_src, mv_dst in zip(mv_srcs_list, mv_dsts_list):
         mv_dst_definitely_dir = False
-        print('mv_src, mv_dst = %s, %s' % (mv_src, mv_dst))
         mv_srcs = glob(join(prefix, normpath(mv_src)))
         # Prevent the 'Scripts' subfolder from being moved into the final package.
-        print('post-glob mv_srcs %s' % mv_srcs)
         mv_srcs = [m for m in mv_srcs if not re.match('.*\\Scripts$', m)]
-        print('post-filter mv_srcs %s' % mv_srcs)
         if '*' in mv_src or mv_dst.endswith('/') or len(mv_srcs) > 1:
             mv_dst_definitely_dir = True
         if len(mv_srcs):
@@ -104,7 +100,6 @@ def main():
             except:
                 pass
             for mv_src_item in mv_srcs:
-                print('moving %s => %s' % (mv_src_item, mv_dst))
                 move(mv_src_item, mv_dst)
     tar.close()
 
