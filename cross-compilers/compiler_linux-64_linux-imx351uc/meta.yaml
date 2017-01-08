@@ -1,0 +1,14 @@
+package:
+  name: compiler_linux-64_linux-imx351uc
+  version: 0.2
+
+source:
+  url: /home/ray/gd.cio/ctng/compiler-centos5_64-imx351uc.tar.xz
+
+build:
+  script:
+    - cp -Rf * ${PREFIX}
+    - mkdir -p ${PREFIX}/etc/conda/activate.d
+    - mkdir -p ${PREFIX}/etc/conda/deactivate.d
+    - cp ${RECIPE_DIR}/activate.sh   ${PREFIX}/etc/conda/activate.d/${PKG_NAME}-activate.sh
+    - cp ${RECIPE_DIR}/deactivate.sh ${PREFIX}/etc/conda/deactivate.d/${PKG_NAME}-deactivate.sh
