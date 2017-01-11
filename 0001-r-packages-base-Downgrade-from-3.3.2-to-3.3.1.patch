@@ -1,0 +1,327 @@
+From 9fe26dcd67b39098e65c9034f776b03d959838a3 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Thu, 12 Jan 2017 10:55:12 +0000
+Subject: [PATCH] r-{packages,base}: Downgrade from 3.3.2 to 3.3.1
+
+---
+ python/rpy2/meta.yaml                              |  2 +-
+ .../0011-Linux-Do-not-modify-LD_LIBRARY_PATH.patch | 80 +++++++++-------------
+ r-base/meta.yaml                                   |  7 +-
+ r-packages/r-essentials/meta.yaml                  | 27 ++++----
+ r-recommended/meta.yaml                            |  4 +-
+ r/meta.yaml                                        |  9 ++-
+ 6 files changed, 57 insertions(+), 72 deletions(-)
+
+diff --git a/python/rpy2/meta.yaml b/python/rpy2/meta.yaml
+index 2594daf..06bd1ac 100644
+--- a/python/rpy2/meta.yaml
++++ b/python/rpy2/meta.yaml
+@@ -42,7 +42,7 @@ requirements:
+     - gcc               # [not win]
+     - python
+     - setuptools
+-    - r
++    - r-base 3.3.1
+     - singledispatch    # [not (py34 or py35)]
+     - six
+     - readline          # [not win]
+diff --git a/r-base/0011-Linux-Do-not-modify-LD_LIBRARY_PATH.patch b/r-base/0011-Linux-Do-not-modify-LD_LIBRARY_PATH.patch
+index 8b7df63..9168a3c 100644
+--- a/r-base/0011-Linux-Do-not-modify-LD_LIBRARY_PATH.patch
++++ b/r-base/0011-Linux-Do-not-modify-LD_LIBRARY_PATH.patch
+@@ -1,6 +1,6 @@
+-diff -urN R-3.3.2.orig/configure R-3.3.2/configure
+---- R-3.3.2.orig/configure	2016-12-06 14:50:35.000000000 +0000
+-+++ R-3.3.2/configure	2016-12-06 14:50:35.000000000 +0000
++diff -urN R-3.3.1.old/configure R-3.3.1/configure
++--- R-3.3.1.old/configure	2016-10-21 13:04:51.588700987 +0100
+++++ R-3.3.1/configure	2016-10-21 13:09:48.000000000 +0100
+ @@ -777,6 +777,7 @@
+  USE_EXPORTFILES_TRUE
+  SHLIB_EXT
+@@ -9,16 +9,16 @@ diff -urN R-3.3.2.orig/configure R-3.3.2/configure
+  DYLIB_UNDEFINED_ALLOWED_FALSE
+  DYLIB_UNDEFINED_ALLOWED_TRUE
+  INTERNET_LIBS
+-@@ -22363,7 +22364,7 @@
+- 
++@@ -22355,7 +22356,7 @@
++
+  ### * Checks for libraries.
+- 
++
+ -## Set up LD_LIBRARY_PATH or equivalent.
+ +## Add -Wl,-rpath, entries to RPATH_LDFLAGS.
+  ## <FIXME>
+  ## What is this doing *HERE*?
+  ## Should be needed for tests using AC_RUN_IFELSE()?
+-@@ -22396,6 +22397,13 @@
++@@ -22388,6 +22389,13 @@
+  else
+    R_LD_LIBRARY_PATH="${R_LD_LIBRARY_PATH}${separator}${lib}"
+  fi
+@@ -32,10 +32,10 @@ diff -urN R-3.3.2.orig/configure R-3.3.2/configure
+  	  ;;
+        esac
+      done
+-@@ -22415,13 +22423,20 @@
++@@ -22407,13 +22415,20 @@
+      Rshlibpath_var=${shlibpath_var}
+  esac
+- 
++
+ -## Export LD_LIBRARY_PATH or equivalent.
+ +## Export LD_LIBRARY_PATH or equivalent (except we do not want to do that
+ +## instead we want to use -Wl,-rpath .. only doing this for Linux for now).
+@@ -52,40 +52,22 @@ diff -urN R-3.3.2.orig/configure R-3.3.2/configure
+ +    eval "export ${Rshlibpath_var}"
+ +    ;;
+ +esac
+- 
+- 
++
++
+  ## record how to strip shared/dynamic libraries.
+-@@ -25082,7 +25097,7 @@
+- # flags.
+- r_save_CFLAGS=$CFLAGS
+- CFLAGS="$CFLAGS $r_verb"
+--(eval echo $as_me:25068: \"$ac_link\") >&5
+-+(eval echo $as_me:25117: \"$ac_link\") >&5
+- r_c_v_output=`eval $ac_link 5>&1 2>&1 | grep -v 'Driving:'`
+- echo "$r_c_v_output" >&5
+- CFLAGS=$r_save_CFLAGS
+-@@ -25157,7 +25172,7 @@
+- # flags.
+- r_save_CFLAGS=$CFLAGS
+- CFLAGS="$CFLAGS $r_cv_prog_c_v"
+--(eval echo $as_me:25143: \"$ac_link\") >&5
+-+(eval echo $as_me:25192: \"$ac_link\") >&5
+- r_c_v_output=`eval $ac_link 5>&1 2>&1 | grep -v 'Driving:'`
+- echo "$r_c_v_output" >&5
+- CFLAGS=$r_save_CFLAGS
+-diff -urN R-3.3.2.orig/configure.ac R-3.3.2/configure.ac
+---- R-3.3.2.orig/configure.ac	2016-12-06 14:50:35.000000000 +0000
+-+++ R-3.3.2/configure.ac	2016-12-06 14:50:35.000000000 +0000
+-@@ -668,7 +668,7 @@
+- 
++diff -urN R-3.3.1.old/configure.ac R-3.3.1/configure.ac
++--- R-3.3.1.old/configure.ac	2016-10-21 13:04:45.171835484 +0100
+++++ R-3.3.1/configure.ac	2016-10-21 13:10:13.000000000 +0100
++@@ -663,7 +663,7 @@
++
+  ### * Checks for libraries.
+- 
++
+ -## Set up LD_LIBRARY_PATH or equivalent.
+ +## Add -Wl,-rpath, entries to RPATH_LDFLAGS.
+  ## <FIXME>
+  ## What is this doing *HERE*?
+  ## Should be needed for tests using AC_RUN_IFELSE()?
+-@@ -695,6 +695,7 @@
++@@ -690,6 +690,7 @@
+          -L*)
+  	  lib=`echo ${arg} | sed "s/^-L//"`
+  	  R_SH_VAR_ADD(R_LD_LIBRARY_PATH, [${lib}], [${PATH_SEPARATOR}])
+@@ -93,7 +75,7 @@ diff -urN R-3.3.2.orig/configure.ac R-3.3.2/configure.ac
+  	  ;;
+        esac
+      done
+-@@ -714,13 +715,20 @@
++@@ -709,13 +710,20 @@
+      Rshlibpath_var=${shlibpath_var}
+  esac
+  AC_SUBST(shlibpath_var)
+@@ -114,19 +96,19 @@ diff -urN R-3.3.2.orig/configure.ac R-3.3.2/configure.ac
+ +    ;;
+ +esac
+  AC_SUBST(Rshlibpath_var)
+- 
++
+  ## record how to strip shared/dynamic libraries.
+-@@ -1714,6 +1722,7 @@
+- 
++@@ -1706,6 +1714,7 @@
++
+  AC_SUBST(MAIN_LD)
+  AC_SUBST(MAIN_LDFLAGS)
+ +AC_SUBST(RPATH_LDFLAGS)
+  AC_SUBST(CPICFLAGS)
+  AC_SUBST(CXXPICFLAGS)
+  AC_SUBST(DYLIB_LD)
+-diff -urN R-3.3.2.orig/etc/ldpaths.in R-3.3.2/etc/ldpaths.in
+---- R-3.3.2.orig/etc/ldpaths.in	2016-12-06 14:50:35.000000000 +0000
+-+++ R-3.3.2/etc/ldpaths.in	2016-12-06 14:50:35.000000000 +0000
++diff -urN R-3.3.1.old/etc/ldpaths.in R-3.3.1/etc/ldpaths.in
++--- R-3.3.1.old/etc/ldpaths.in	2016-01-09 23:15:11.000000000 +0000
+++++ R-3.3.1/etc/ldpaths.in	2016-10-21 13:05:20.052916181 +0100
+ @@ -1,3 +1,17 @@
+ +# https://github.com/conda/conda/issues/1679:
+ +#  Internally R_system() calls system() which
+@@ -145,9 +127,9 @@ diff -urN R-3.3.2.orig/etc/ldpaths.in R-3.3.2/etc/ldpaths.in
+  : ${JAVA_HOME=@JAVA_HOME@}
+  : ${R_JAVA_LD_LIBRARY_PATH=@R_JAVA_LD_LIBRARY_PATH@}
+  if test -n "@R_LD_LIBRARY_PATH@"; then
+-diff -urN R-3.3.2.orig/etc/Makeconf.in R-3.3.2/etc/Makeconf.in
+---- R-3.3.2.orig/etc/Makeconf.in	2016-12-06 14:50:35.000000000 +0000
+-+++ R-3.3.2/etc/Makeconf.in	2016-12-06 14:50:35.000000000 +0000
++diff -urN R-3.3.1.old/etc/Makeconf.in R-3.3.1/etc/Makeconf.in
++--- R-3.3.1.old/etc/Makeconf.in	2016-03-16 23:04:44.000000000 +0000
+++++ R-3.3.1/etc/Makeconf.in	2016-10-21 13:05:20.052916181 +0100
+ @@ -71,7 +71,8 @@
+  ## needed to build applications linking to static libR
+  MAIN_LD = @MAIN_LD@
+@@ -158,9 +140,9 @@ diff -urN R-3.3.2.orig/etc/Makeconf.in R-3.3.2/etc/Makeconf.in
+  MKINSTALLDIRS = $(R_HOME)/bin/mkinstalldirs
+  OBJC = @OBJC@
+  OBJCFLAGS = @OBJCFLAGS@ $(LTO)
+-diff -urN R-3.3.2.orig/Makeconf.in R-3.3.2/Makeconf.in
+---- R-3.3.2.orig/Makeconf.in	2016-12-06 14:50:35.000000000 +0000
+-+++ R-3.3.2/Makeconf.in	2016-12-06 14:50:35.000000000 +0000
++diff -urN R-3.3.1.old/Makeconf.in R-3.3.1/Makeconf.in
++--- R-3.3.1.old/Makeconf.in	2015-09-08 23:15:15.000000000 +0100
+++++ R-3.3.1/Makeconf.in	2016-10-21 13:05:20.052916181 +0100
+ @@ -63,7 +63,8 @@
+  MAIN_FFLAGS = @MAIN_FFLAGS@
+  MAIN_LD = @MAIN_LD@@BUILD_LTO_TRUE@ $(CFLAGS)
+diff --git a/r-base/meta.yaml b/r-base/meta.yaml
+index 898d7eb..9875852 100644
+--- a/r-base/meta.yaml
++++ b/r-base/meta.yaml
+@@ -1,6 +1,6 @@
+ {% set native = 'm2w64-' if win else '' %}
+ {% set posix= 'm2-' if win else '' %}
+-{% set ver= '3.3.2' %}
++{% set ver= '3.3.1' %}
+ 
+ package:
+   name: r-base
+@@ -8,7 +8,8 @@ package:
+ 
+ source:
+   url: https://cran.r-project.org/src/base/R-3/R-{{ ver }}.tar.gz
+-  sha1: 0e39e9c2d28fe6bab9c55ca23e08ba8727fd2fca
++#  sha1: 0e39e9c2d28fe6bab9c55ca23e08ba8727fd2fca
++  sha1: df853188d3e2b1c2d32393016401c432a5192c4d
+   patches:
+     - mac-unicode.patch # [osx]
+     - 0002-Win32-Fix-trio-config-h-include-depth-issue.patch
+@@ -23,7 +24,7 @@ source:
+     - 0012-macOS-include-cairo_h-not-cairo-xlib_h.patch
+ 
+ build:
+-  number: 1
++  number: 6
+   rpaths:
+     - lib/R/lib/
+     - lib/
+diff --git a/r-packages/r-essentials/meta.yaml b/r-packages/r-essentials/meta.yaml
+index e4b31ae..daf87ec 100644
+--- a/r-packages/r-essentials/meta.yaml
++++ b/r-packages/r-essentials/meta.yaml
+@@ -1,18 +1,18 @@
+ package:
+   name: r-essentials
+-  version: 1.5.1
++  version: 1.4.2
+ 
+ requirements:
+   # Not really needed, but just to make sure that they are built
+   build:
+-    - r-base >=3.3.2
+-    - r-recommended >=3.3.2
+-    - r-ggplot2 >=2.2.0
++    - r-base >=3.3.1
++    - r-recommended >=3.3.1
++    - r-ggplot2 >=2.1.0
+     - r-plyr >=1.8.4
+     - r-reshape2 >=1.4.2
+     - r-dplyr >=0.5.0
+     - r-tidyr >=0.6.0
+-    - r-caret >=6.0_73
++    - r-caret >=6.0_70
+     - r-randomforest >=4.6_12
+     - r-data.table >=1.10.0
+     - r-quantmod >=0.4_7
+@@ -21,8 +21,8 @@ requirements:
+     - r-glmnet >=2.0_5
+     - r-jsonlite >=1.1
+     - r-zoo >=1.7_13
+-    - r-irkernel >=0.7.1
+-    - r-rbokeh >=0.5.0
++    - r-irkernel >=0.6.1
++    - r-rbokeh >=0.4.2
+     - r-formatr >=1.4
+     - notebook >=4.2.3
+     - r-tidyverse >=1.0.0
+@@ -45,16 +45,15 @@ requirements:
+     - r-tidyr >=0.6.0
+     - r-xml2 >=1.0.0
+ 
+-
+   run:
+-    - r-base >=3.3.2
+-    - r-recommended >=3.3.2
+-    - r-ggplot2 >=2.2.0
++    - r-base >=3.3.1
++    - r-recommended >=3.3.1
++    - r-ggplot2 >=2.1.0
+     - r-plyr >=1.8.4
+     - r-reshape2 >=1.4.2
+     - r-dplyr >=0.5.0
+     - r-tidyr >=0.6.0
+-    - r-caret >=6.0_73
++    - r-caret >=6.0_70
+     - r-randomforest >=4.6_12
+     - r-data.table >=1.10.0
+     - r-quantmod >=0.4_7
+@@ -63,8 +62,8 @@ requirements:
+     - r-glmnet >=2.0_5
+     - r-jsonlite >=1.1
+     - r-zoo >=1.7_13
+-    - r-irkernel >=0.7.1
+-    - r-rbokeh >=0.5.0
++    - r-irkernel >=0.6.1
++    - r-rbokeh >=0.4.2
+     - r-formatr >=1.4
+     - notebook >=4.2.3
+     - r-tidyverse >=1.0.0
+diff --git a/r-recommended/meta.yaml b/r-recommended/meta.yaml
+index 8d4fa9b..9f7df75 100644
+--- a/r-recommended/meta.yaml
++++ b/r-recommended/meta.yaml
+@@ -1,10 +1,10 @@
+ package:
+   name: r-recommended
+-  version: 3.3.2
++  version: 3.3.1
+ 
+ requirements:
+   run:
+-    - r-base 3.3.2
++    - r-base 3.3.1
+     - r-boot
+     - r-class
+     - r-cluster
+diff --git a/r/meta.yaml b/r/meta.yaml
+index 132eab0..fb1d23d 100644
+--- a/r/meta.yaml
++++ b/r/meta.yaml
+@@ -1,8 +1,11 @@
+ package:
+   name: r
+-  version: 3.3.2
++  version: 3.3.1
++
++build:
++  number: 1
+ 
+ requirements:
+   run:
+-    - r-base 3.3.2
+-    - r-recommended 3.3.2
++    - r-base 3.3.1 6
++    - r-recommended 3.3.1
+-- 
+2.10.1
+
