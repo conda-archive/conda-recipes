@@ -1,0 +1,32 @@
+package:
+  name: openturns
+  version: 1.4
+
+source:
+    svn_url: https://svn.openturns.org/openturns/tags/openturns-1.4 # [not win]
+    url: http://downloads.sourceforge.net/openturns/openturns/openturns-1.4/dev/openturns-1.4_r4106-py2.7-i686.exe # [win and py27]
+    fn: openturns-1.4_r4106-py2.7-i686.exe # [win and py27]
+
+build:
+    number: 1
+
+requirements:
+    build:
+        - cmake >=2.8   # [unix]
+        - python        # [unix]
+        - swig >=2.0.9  # [unix]
+        - libxml2       # [unix]
+        - boost >=1.46  # [unix]
+
+    run:
+        - python
+        - matplotlib
+        - libxml2     # [unix]
+
+test:
+    imports:
+      - openturns
+
+about:
+    home: http://openturns.org/
+    license: GNU Lesser General Public License (LGPL)
