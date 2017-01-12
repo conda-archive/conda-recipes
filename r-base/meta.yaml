@@ -36,8 +36,7 @@ requirements:
     - m2-curl                  # [win]
     - m2-p7zip                 # [win]
     - readline                 # [not win]
-    - ncurses >=5.9*           # [not win]
-    - pango                    # [linux]
+    - ncurses 5.9*             # [not win]
     - gcc                      # [not win]
     - jpeg 8d*                 # [not win]
     - curl                     # [not win]
@@ -68,8 +67,7 @@ requirements:
 
   run:
     - readline                 # [not win]
-    - ncurses >=5.9*           # [not win]
-    - pango                    # [linux]
+    - ncurses 5.9*             # [not win]
     - libgcc                   # [not win]
     - {{native}}gcc-libs       # [win]
     - jpeg 8d*                 # [not win]
