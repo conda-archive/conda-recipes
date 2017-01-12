@@ -1,0 +1,85 @@
+{% set name = 'lars' %}
+{% set version = '1.2' %}
+
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-{{ name|lower }}
+  version: {{ version|replace("-", "_") }}
+
+source:
+  fn: {{ name }}_{{ version }}.tar.gz
+  url:
+    - https://cran.r-project.org/src/contrib/{{ name }}_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/{{ name }}/{{ name }}_{{ version }}.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 0
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r-base
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
+
+  run:
+    - r-base
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('lars')"  # [not win]
+    - "\"%R%\" -e \"library('lars')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://www-stat.stanford.edu/~hastie/Papers/#LARS
+  license: GPL-2
+  summary: Efficient procedures for fitting an entire lasso sequence with the cost of a single
+    least squares fit. Least angle regression and infinitesimal forward stagewise regression
+    are related to the lasso, as described in the paper below.
+  license_family: GPL2
+
+# The original CRAN metadata for this package was:
+
+# Package: lars
+# Type: Package
+# Version: 1.2
+# Date: 2013-04-23
+# Title: Least Angle Regression, Lasso and Forward Stagewise
+# Author: Trevor Hastie <hastie@stanford.edu> and Brad Efron <brad@stat.stanford.edu>
+# Maintainer: Trevor Hastie <hastie@stanford.edu>
+# Description: Efficient procedures for fitting an entire lasso sequence with the cost of a single least squares fit. Least angle regression and infinitesimal forward stagewise regression are related to the lasso, as described in the paper below.
+# Depends: R (>= 2.10)
+# License: GPL-2
+# URL: http://www-stat.stanford.edu/~hastie/Papers/#LARS
+# Packaged: 2013-04-24 05:12:53 UTC; hastie
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2013-04-24 09:46:12
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

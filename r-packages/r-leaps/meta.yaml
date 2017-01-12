@@ -1,0 +1,81 @@
+{% set name = 'leaps' %}
+{% set version = '3.0' %}
+
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-{{ name|lower }}
+  version: {{ version|replace("-", "_") }}
+
+source:
+  fn: {{ name }}_{{ version }}.tar.gz
+  url:
+    - https://cran.r-project.org/src/contrib/{{ name }}_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/{{ name }}/{{ name }}_{{ version }}.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 0
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: biglm
+requirements:
+  build:
+    - r-base
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
+
+  run:
+    - r-base
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('leaps')"  # [not win]
+    - "\"%R%\" -e \"library('leaps')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://CRAN.R-project.org/package=leaps
+  license: GPL (>= 2)
+  summary: Regression subset selection, including exhaustive search.
+  license_family: GPL3
+
+# The original CRAN metadata for this package was:
+
+# Package: leaps
+# Title: Regression Subset Selection
+# Version: 3.0
+# Author: Thomas Lumley based on Fortran code by Alan Miller
+# Description: Regression subset selection, including exhaustive search.
+# Depends:
+# Suggests: biglm
+# License: GPL (>= 2)
+# Maintainer: Thomas Lumley <t.lumley@auckland.ac.nz>
+# NeedsCompilation: yes
+# Packaged: 2017-01-09 20:18:20 UTC; tlumley
+# Repository: CRAN
+# Date/Publication: 2017-01-10 00:04:32
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
