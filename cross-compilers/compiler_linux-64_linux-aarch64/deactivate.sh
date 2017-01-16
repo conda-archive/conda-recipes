@@ -75,8 +75,8 @@ _tc_activation \
   deactivate host aarch64-unknown-linux-gnueabi aarch64-unknown-linux-gnueabi- \
   addr2line ar as c++ cc c++filt cpp elfedit g++ gcc c++ gcov gcov-tool gfortran gprof ld ldd nm objcopy objdump ranlib readelf size strings strip \
   CPPFLAGS,"-D_FORTIFY_SOURCE=2" \
-  CFLAGS,"-march=armv6k -mtune=arm1136jf-s -mfloat-abi=soft -mabi=aapcs-linux -mtls-dialect=gnu -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe" \
-  CXXFLAGS,"-march=armv6k -mtune=arm1136jf-s -mfloat-abi=soft -mabi=aapcs-linux -mtls-dialect=gnu -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe" \
+  CFLAGS,"-march=armv8-a -mtune=cortex-a57 -mabi=lp64 -mtls-dialect=desc -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe" \
+  CXXFLAGS,"-march=armv8-a -mtune=cortex-a57 -mabi=lp64 -mtls-dialect=desc -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe" \
   LDFLAGS,"-Wl,-O1,--sort-common,--as-needed,-z,relro" \
   DEBUG_CFLAGS,"-Og -g -fvar-tracking-assignments" \
   DEBUG_CXXFLAGS,"-Og -g -fvar-tracking-assignments"
