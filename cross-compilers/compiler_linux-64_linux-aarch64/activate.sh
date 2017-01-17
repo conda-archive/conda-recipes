@@ -88,5 +88,5 @@ if [ $? -ne 0 ]; then
 else
   env > /tmp/new-env-$$.txt
   echo "INFO: Activating '${HOST}' cross-compiler made the following environmental changes:"
-  diff -u0rN /tmp/old-env-$$.txt /tmp/new-env-$$.txt | tail -n +4 | grep "^-.*\|^+.*" | grep -v "CONDA_BACKUP_" | sort
+  diff -U 0 -rN /tmp/old-env-$$.txt /tmp/new-env-$$.txt | tail -n +4 | grep "^-.*\|^+.*" | grep -v "CONDA_BACKUP_" | sort
 fi
