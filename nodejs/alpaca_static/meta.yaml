@@ -1,15 +1,15 @@
 package:
   name: alpaca_static
-  version: 1.5.17
+  version: 1.5.22
 
 source:
   git_url: https://github.com/gitana/alpaca.git
-  git_rev: 1.5.17
-  patches:
-    - 0001-Update-some-deps-resolutions.patch
+  git_rev: 1.5.22
+#  patches:
+#    - 0001-Update-some-deps-resolutions.patch
 
 build:
-  number: 3
+  number: 0
   noarch: True
 
 requirements:
@@ -20,9 +20,9 @@ requirements:
     - gcc            [linux]
     - python 2.7.*
   run:
-    - jquery_static
-    - handlebars_static >=3.0.3
-    - bootstrap_static >=3.2.0
+    - jquery_static >=2.1.0
+    - handlebars_static ==4.0.5
+    - bootstrap_static ==3.3.2
 
 about:
   home: http://www.alpacajs.org/
