@@ -23,6 +23,7 @@ source:
     - 0012-macOS-include-cairo_h-not-cairo-xlib_h.patch
 
 build:
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
@@ -36,11 +37,12 @@ requirements:
     - m2-curl                  # [win]
     - m2-p7zip                 # [win]
     - readline                 # [not win]
-    - ncurses 5.9*             # [not win]
+    - ncurses 5.9.*            # [not win]
     - gcc                      # [not win]
-    - jpeg 8d*                 # [not win]
+    - jpeg 9*                  # [not win]
     - curl                     # [not win]
     - xz 5.2.*                 # [not win]
+    - libpng >=1.6.27,<1.7     # [not win]
     - {{posix}}pkg-config
     - {{native}}bzip2          # [not osx]
     - {{native}}libjpeg-turbo  # [win]
@@ -53,6 +55,7 @@ requirements:
     - {{native}}libsndfile     # [win]
     - {{native}}bwidget        # [win]
     - {{native}}tktable        # [win]
+    - {{native}}libpng         # [win]
     - {{native}}pango 1.40.*   # [not win]
     - {{native}}icu 54.*       # [not win]
     - {{native}}pcre 8.39*     # [not win]
@@ -60,7 +63,6 @@ requirements:
     - {{native}}tk
     - {{native}}zlib
     - {{native}}gsl
-    - {{native}}libpng
     - {{native}}libtiff
     - {{native}}libxml2
 #   - mkl
@@ -70,9 +72,10 @@ requirements:
     - ncurses 5.9*             # [not win]
     - libgcc                   # [not win]
     - {{native}}gcc-libs       # [win]
-    - jpeg 8d*                 # [not win]
+    - jpeg 9*                  # [not win]
     - curl                     # [not win]
     - xz 5.2.*                 # [not win]
+    - libpng >=1.6.27,<1.7     # [not win]
     - {{native}}bzip2          # [not osx]
     - {{native}}libjpeg-turbo  # [win]
     - {{native}}libiconv       # [win]
@@ -83,6 +86,7 @@ requirements:
     - {{native}}libsndfile     # [win]
     - {{native}}bwidget        # [win]
     - {{native}}tktable        # [win]
+    - {{native}}libpng         # [win]
     - {{native}}pango 1.40.*   # [not win]
     - {{native}}icu 54.*       # [not win]
     - {{native}}pcre 8.39*     # [not win]
@@ -90,7 +94,6 @@ requirements:
     - {{native}}tk
     - {{native}}zlib
     - {{native}}gsl
-    - {{native}}libpng
     - {{native}}libtiff
     - {{native}}libxml2
 #   - mkl
