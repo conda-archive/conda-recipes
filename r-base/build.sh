@@ -320,8 +320,6 @@ Darwin() {
     # DYLD_FALLBACK_LIBRARY_PATH and LDFLAGS for different stages of configure.
     export LDFLAGS=$LDFLAGS" -L${PREFIX}"
 
-    export PATH=$PREFIX/bin:/usr/bin:/bin:/usr/sbin:/sbin
-
     cat >> config.site <<EOF
 CC=clang
 CXX=clang++
@@ -333,6 +331,12 @@ EOF
     # unknown timezone 'Europe/London'
     # unknown timezone 'GMT'
     # https://stat.ethz.ch/pipermail/r-devel/2014-April/068745.html
+
+    echo $PATH | grep texlive > /dev/null 2>&1
+    if [[ $? != 0 ]]; then
+      echo "no texlive in PATH, refusing to build this, conda or conda-build are buggy or tex failed to install or something"
+      exit 1
+    fi
 
     ./configure --prefix=$PREFIX                    \
                 --with-blas="-framework Accelerate" \
