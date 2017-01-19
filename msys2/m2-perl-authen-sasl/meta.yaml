@@ -2,10 +2,10 @@ package:
   name: m2-perl-authen-sasl
   version: '2.16'
 source:
-  url: http://repo.msys2.org/msys/sources/perl-Authen-SASL-2.16-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/perl-Authen-SASL-2.16-2.src.tar.gz
+  md5: eceabb0c2733f5e66f3620943e7b2312
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/perl-Authen-SASL
-      url: http://repo.msys2.org/msys/i686/perl-Authen-SASL-2.16-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/perl-Authen-SASL-2.16-2-any.pkg.tar.xz
       md5: 07ae5170ec05b9b6c305b511f395e6aa
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/perl-Authen-SASL
-      url: http://repo.msys2.org/msys/x86_64/perl-Authen-SASL-2.16-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/perl-Authen-SASL-2.16-2-any.pkg.tar.xz
       md5: e6026a6b3ddc0dc34f27b2ca140cd12c
       mv-srcs:
       - '*'

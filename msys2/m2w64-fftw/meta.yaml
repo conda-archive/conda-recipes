@@ -2,10 +2,10 @@ package:
   name: m2w64-fftw
   version: 3.3.4
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-fftw-3.3.4-5.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-fftw-3.3.4-5.src.tar.gz
+  md5: f01457fe84d49ab85eb838a16ef29193
 build:
-  number: '5'
+  number: 6
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-fftw
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-fftw-3.3.4-5-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-fftw-3.3.4-5-any.pkg.tar.xz
       md5: fb6f08bd1120f11d9e5347e83047f4f6
       mv-srcs:
       - mingw32
@@ -26,7 +26,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-fftw
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-fftw-3.3.4-5-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-fftw-3.3.4-5-any.pkg.tar.xz
       md5: db7ec502f0fd8542a818580d7ef814f0
       mv-srcs:
       - mingw64

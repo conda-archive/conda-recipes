@@ -5,13 +5,13 @@ package:
   name: r-devtools
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.11.1"
+  version: "1.12.0"
 
 source:
-  fn: devtools_1.11.1.tar.gz
+  fn: devtools_1.12.0.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/devtools_1.11.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/devtools/devtools_1.11.1.tar.gz
+    - http://cran.r-project.org/src/contrib/devtools_1.12.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/devtools/devtools_1.12.0.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -80,7 +80,7 @@ about:
 
 # Package: devtools
 # Title: Tools to Make Developing R Packages Easier
-# Version: 1.11.1
+# Version: 1.12.0
 # Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")), person("Winston", "Chang", role = "aut"), person("RStudio", role = "cph"), person("R Core team", role = "ctb", comment = "Some namespace and vignette code extracted from base R") )
 # Encoding: UTF-8
 # Description: Collection of package development tools.
@@ -93,11 +93,11 @@ about:
 # VignetteBuilder: knitr
 # RoxygenNote: 5.0.1
 # NeedsCompilation: yes
-# Packaged: 2016-04-20 18:14:58 UTC; hadley
+# Packaged: 2016-12-05 14:53:59 UTC; hornik
 # Author: Hadley Wickham [aut, cre], Winston Chang [aut], RStudio [cph], R Core team [ctb] (Some namespace and vignette code extracted from base R)
 # Maintainer: Hadley Wickham <hadley@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2016-04-21 11:19:21
+# Date/Publication: 2016-12-05 18:28:47
 
 # See
 # http://docs.continuum.io/conda/build.html for

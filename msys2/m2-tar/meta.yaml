@@ -2,10 +2,10 @@ package:
   name: m2-tar
   version: '1.28'
 source:
-  url: http://repo.msys2.org/msys/sources/tar-1.28-3.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/tar-1.28-3.src.tar.gz
+  md5: dfb20d6444eb44fd9f3fbefd28e19352
 build:
-  number: '3'
+  number: 4
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -21,7 +21,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/tar
-      url: http://repo.msys2.org/msys/i686/tar-1.28-3-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/tar-1.28-3-i686.pkg.tar.xz
       md5: 6afa7cc6fff0d7045bb8f5371edfb6ab
       mv-srcs:
       - '*'
@@ -29,7 +29,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/tar
-      url: http://repo.msys2.org/msys/x86_64/tar-1.28-3-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/tar-1.28-3-x86_64.pkg.tar.xz
       md5: acded7bb5518a65a4abc92f7fc3b7a48
       mv-srcs:
       - '*'

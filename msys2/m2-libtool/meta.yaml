@@ -2,10 +2,10 @@ package:
   name: m2-libtool
   version: 2.4.6
 source:
-  url: http://repo.msys2.org/msys/sources/libtool-2.4.6-2.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libtool-2.4.6-2.src.tar.gz
   md5: fe0cd89e1b9f1d7cc19dc3ec1d400c78
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -20,7 +20,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libtool
-      url: http://repo.msys2.org/msys/i686/libtool-2.4.6-2-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libtool-2.4.6-2-i686.pkg.tar.xz
       md5: 219f25ae4564dc11fac7226b2b0626c5
       mv-srcs:
       - '*'
@@ -28,7 +28,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libtool
-      url: http://repo.msys2.org/msys/x86_64/libtool-2.4.6-2-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libtool-2.4.6-2-x86_64.pkg.tar.xz
       md5: 8c8a32ba07ee3984de6d040fe6baa9d8
       mv-srcs:
       - '*'

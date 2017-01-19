@@ -2,10 +2,10 @@ package:
   name: m2-libffi
   version: 3.2.1
 source:
-  url: http://repo.msys2.org/msys/sources/libffi-3.2.1-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libffi-3.2.1-1.src.tar.gz
+  md5: 6feabf3ad707dc9bfea67b5e953e58bb
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -17,7 +17,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libffi
-      url: http://repo.msys2.org/msys/i686/libffi-3.2.1-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libffi-3.2.1-1-i686.pkg.tar.xz
       md5: 39a70ec04faaa818a9322063f8e9a1a5
       mv-srcs:
       - '*'
@@ -25,7 +25,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libffi
-      url: http://repo.msys2.org/msys/x86_64/libffi-3.2.1-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libffi-3.2.1-1-x86_64.pkg.tar.xz
       md5: 9370f53c5e46ebe986d01426dea6167b
       mv-srcs:
       - '*'

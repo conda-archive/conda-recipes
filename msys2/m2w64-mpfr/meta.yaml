@@ -2,23 +2,23 @@ package:
   name: m2w64-mpfr
   version: 3.1.4
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-mpfr-3.1.4-3.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-mpfr-3.1.4-3.src.tar.gz
   md5: 06d49f95455f3d0deb631c7ee76e07eb
 build:
-  number: '3'
+  number: 4
 requirements:
   run:
   - msys2-conda-epoch >=20160418
   - m2w64-gmp
 about:
-  home: null
+  home: http://www.mpfr.org/
   license: LGPL
   summary: Multiple-precision floating-point library (mingw-w64)
 extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-mpfr
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-mpfr-3.1.4-3-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-mpfr-3.1.4-3-any.pkg.tar.xz
       md5: cdf8873c68d54a770c7fac0cf83cc1d8
       mv-srcs:
       - mingw32
@@ -26,7 +26,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-mpfr
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-mpfr-3.1.4-3-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-mpfr-3.1.4-3-any.pkg.tar.xz
       md5: 6c09715e7c848303c002d0a0285a5f80
       mv-srcs:
       - mingw64

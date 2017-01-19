@@ -5,13 +5,13 @@ package:
   name: r-ctv
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.8_1"
+  version: "0.8_2"
 
 source:
-  fn: ctv_0.8-1.tar.gz
+  fn: ctv_0.8-2.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/ctv_0.8-1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/ctv/ctv_0.8-1.tar.gz
+    - http://cran.r-project.org/src/contrib/ctv_0.8-2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/ctv/ctv_0.8-2.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -54,26 +54,29 @@ test:
 about:
   #home:
   license: GPL-2 | GPL-3
-  summary: Server-side and client-side tools for task views to CRAN-style repositories
+  summary: 'Infrastructure for task views to CRAN-style repositories: Querying task views and
+    installing the associated packages (client-side tools), generating HTML pages and
+    storing task view information in the repository (server-side tools).'
+
   license_family: GPL3
 
 # The original CRAN metadata for this package was:
 
 # Package: ctv
-# Version: 0.8-1
-# Date: 2015-01-10
+# Version: 0.8-2
+# Date: 2016-09-15
 # Title: CRAN Task Views
 # Authors@R: c(person(given = "Achim", family = "Zeileis", role = c("aut", "cre"), email = "Achim.Zeileis@R-project.org"), person(given = "Kurt", family = "Hornik", role = "aut", email = "Kurt.Hornik@R-project.org"))
-# Description: Server-side and client-side tools for task views to CRAN-style repositories
+# Description: Infrastructure for task views to CRAN-style repositories: Querying task views and installing the associated packages (client-side tools), generating HTML pages and storing task view information in the repository (server-side tools).
 # Depends: R (>= 2.13.0), utils
 # Suggests: XML
 # License: GPL-2 | GPL-3
-# Packaged: 2015-01-10 11:02:54 UTC; zeileis
+# NeedsCompilation: no
+# Packaged: 2016-09-15 20:16:03 UTC; zeileis
 # Author: Achim Zeileis [aut, cre], Kurt Hornik [aut]
 # Maintainer: Achim Zeileis <Achim.Zeileis@R-project.org>
-# NeedsCompilation: no
 # Repository: CRAN
-# Date/Publication: 2015-01-10 12:05:10
+# Date/Publication: 2016-09-15 22:48:31
 
 # See
 # http://docs.continuum.io/conda/build.html for

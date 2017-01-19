@@ -2,10 +2,10 @@ package:
   name: m2-perl-http-negotiate
   version: '6.01'
 source:
-  url: http://repo.msys2.org/msys/sources/perl-HTTP-Negotiate-6.01-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/perl-HTTP-Negotiate-6.01-2.src.tar.gz
+  md5: c3b6a3ebeb5319e0d2a50867e206edfa
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/perl-HTTP-Negotiate
-      url: http://repo.msys2.org/msys/i686/perl-HTTP-Negotiate-6.01-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/perl-HTTP-Negotiate-6.01-2-any.pkg.tar.xz
       md5: a80e0dfe4dabb71164cf17f5ba3b76b0
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/perl-HTTP-Negotiate
-      url: http://repo.msys2.org/msys/x86_64/perl-HTTP-Negotiate-6.01-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/perl-HTTP-Negotiate-6.01-2-any.pkg.tar.xz
       md5: 854c6bb97a68a947c9c590855d08ebb9
       mv-srcs:
       - '*'

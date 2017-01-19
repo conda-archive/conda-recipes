@@ -2,10 +2,10 @@ package:
   name: m2w64-mpc
   version: 1.0.3
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-mpc-1.0.3-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-mpc-1.0.3-2.src.tar.gz
+  md5: 5c24d319656ed61e517dfa0fee7e475c
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-mpc
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-mpc-1.0.3-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-mpc-1.0.3-2-any.pkg.tar.xz
       md5: 719e76fa7a54a8676d2e60af3bb13c45
       mv-srcs:
       - mingw32
@@ -26,7 +26,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-mpc
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-mpc-1.0.3-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-mpc-1.0.3-2-any.pkg.tar.xz
       md5: df1a7d4050568d83c265ae78c32ef30b
       mv-srcs:
       - mingw64

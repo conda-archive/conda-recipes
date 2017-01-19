@@ -2,10 +2,10 @@ package:
   name: m2-libcatgets
   version: '1.1'
 source:
-  url: http://repo.msys2.org/msys/sources/libcatgets-1.1-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libcatgets-1.1-2.src.tar.gz
+  md5: ea8fe74e9f19cd79b25f9062f02964cc
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libcatgets
-      url: http://repo.msys2.org/msys/i686/libcatgets-1.1-2-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libcatgets-1.1-2-i686.pkg.tar.xz
       md5: 8175287642ab84c36c61bb5f5aefde09
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libcatgets
-      url: http://repo.msys2.org/msys/x86_64/libcatgets-1.1-2-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libcatgets-1.1-2-x86_64.pkg.tar.xz
       md5: c861bbbd176bb3abb71f5a93fdd38271
       mv-srcs:
       - '*'

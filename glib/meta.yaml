@@ -11,6 +11,10 @@ source:
 
 build:
   detect_binary_files_with_prefix: true
+  skip_compile_pyc:
+    - share/glib-2.0/codegen/*.py
+    - share/glib-2.0/*.py
+    - share/glib-2.0/gdb/*.py
 
 requirements:
   build:
@@ -29,6 +33,15 @@ requirements:
     - pcre >=8.39 1
 
 about:
-  license: LGPL
   home: https://developer.gnome.org/glib/
-  summary: "GLib provides the core application building blocks for libraries and applications written in C. "
+  license: LGPL
+  license_family: LGPL
+  summary: Core application building blocks for libraries and applications in C
+  description: |
+    GLib provides the core application building blocks for libraries and
+    applications written in C. It provides the core object system used in
+    GNOME, the main loop implementation, and a large set of utility functions
+    functions for strings and common data structures.
+  doc_url: https://developer.gnome.org/glib/unstable/
+  dev_url: https://git.gnome.org/browse/glib/
+

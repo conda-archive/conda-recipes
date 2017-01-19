@@ -2,10 +2,10 @@ package:
   name: m2-patch
   version: 2.7.5
 source:
-  url: http://repo.msys2.org/msys/sources/patch-2.7.5-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/patch-2.7.5-1.src.tar.gz
+  md5: 5c7d31638c046f982f6036881f708ef3
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/patch
-      url: http://repo.msys2.org/msys/i686/patch-2.7.5-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/patch-2.7.5-1-i686.pkg.tar.xz
       md5: a06746e3e60fa1a9762794726885f12b
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/patch
-      url: http://repo.msys2.org/msys/x86_64/patch-2.7.5-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/patch-2.7.5-1-x86_64.pkg.tar.xz
       md5: c5ec9698bb214fe0643c76a951438b50
       mv-srcs:
       - '*'

@@ -2,10 +2,10 @@ package:
   name: m2-libreadline
   version: 6.3.008
 source:
-  url: http://repo.msys2.org/msys/sources/libreadline-6.3.008-7.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libreadline-6.3.008-7.src.tar.gz
+  md5: 1c7b185eee305d0b327fac774886778e
 build:
-  number: '7'
+  number: 8
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libreadline
-      url: http://repo.msys2.org/msys/i686/libreadline-6.3.008-7-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libreadline-6.3.008-7-i686.pkg.tar.xz
       md5: 4e55af837e436aaad9b15df1b89c563f
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libreadline
-      url: http://repo.msys2.org/msys/x86_64/libreadline-6.3.008-7-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libreadline-6.3.008-7-x86_64.pkg.tar.xz
       md5: 6441d0cfe6cb9d3d5e1fd769e59eb8f1
       mv-srcs:
       - '*'

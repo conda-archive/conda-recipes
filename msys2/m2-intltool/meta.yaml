@@ -2,10 +2,10 @@ package:
   name: m2-intltool
   version: 0.51.0
 source:
-  url: http://repo.msys2.org/msys/sources/intltool-0.51.0-2.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/intltool-0.51.0-2.src.tar.gz
   md5: 906f5dc071fb4370a5c850b1d7899c56
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/intltool
-      url: http://repo.msys2.org/msys/i686/intltool-0.51.0-2-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/intltool-0.51.0-2-i686.pkg.tar.xz
       md5: 35c45198e1e68b6f6d8b8d9f4bc58b94
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/intltool
-      url: http://repo.msys2.org/msys/x86_64/intltool-0.51.0-2-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/intltool-0.51.0-2-x86_64.pkg.tar.xz
       md5: 1050c21b52bc2b0bd88e6ca3f3f9ca4e
       mv-srcs:
       - '*'

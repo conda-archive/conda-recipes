@@ -2,10 +2,10 @@ package:
   name: m2-make
   version: '4.1'
 source:
-  url: http://repo.msys2.org/msys/sources/make-4.1-4.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/make-4.1-4.src.tar.gz
+  md5: 4dab3aa8a391d81ca2788ef938277fa5
 build:
-  number: '4'
+  number: 5
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -20,7 +20,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/make
-      url: http://repo.msys2.org/msys/i686/make-4.1-4-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/make-4.1-4-i686.pkg.tar.xz
       md5: abda511b40d53049b4f9ba7433033932
       mv-srcs:
       - '*'
@@ -28,7 +28,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/make
-      url: http://repo.msys2.org/msys/x86_64/make-4.1-4-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/make-4.1-4-x86_64.pkg.tar.xz
       md5: 7467f54b8cb57c47ff0b2c5f6d9c97af
       mv-srcs:
       - '*'

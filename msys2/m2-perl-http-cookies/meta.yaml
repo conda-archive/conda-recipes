@@ -2,10 +2,10 @@ package:
   name: m2-perl-http-cookies
   version: '6.01'
 source:
-  url: http://repo.msys2.org/msys/sources/perl-HTTP-Cookies-6.01-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/perl-HTTP-Cookies-6.01-2.src.tar.gz
+  md5: 08cd4bb83a3dcce375aadc4ccca4cfe9
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -20,7 +20,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/perl-HTTP-Cookies
-      url: http://repo.msys2.org/msys/i686/perl-HTTP-Cookies-6.01-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/perl-HTTP-Cookies-6.01-2-any.pkg.tar.xz
       md5: 1315588f49d17e93dc5b9fb010f3ccd1
       mv-srcs:
       - '*'
@@ -28,7 +28,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/perl-HTTP-Cookies
-      url: http://repo.msys2.org/msys/x86_64/perl-HTTP-Cookies-6.01-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/perl-HTTP-Cookies-6.01-2-any.pkg.tar.xz
       md5: 5b2667dd7cd13ef5267d160586310315
       mv-srcs:
       - '*'

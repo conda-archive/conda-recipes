@@ -2,10 +2,10 @@ package:
   name: m2-libunistring
   version: 0.9.6
 source:
-  url: http://repo.msys2.org/msys/sources/libunistring-0.9.6-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libunistring-0.9.6-1.src.tar.gz
   md5: 1c5036a4716f0be12153a13d4804e82c
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libunistring
-      url: http://repo.msys2.org/msys/i686/libunistring-0.9.6-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libunistring-0.9.6-1-i686.pkg.tar.xz
       md5: 830e4e08cfc9c3b5427ee7b4da1ee551
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libunistring
-      url: http://repo.msys2.org/msys/x86_64/libunistring-0.9.6-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libunistring-0.9.6-1-x86_64.pkg.tar.xz
       md5: c64311b463cc0ddedae7d24bcc98d638
       mv-srcs:
       - '*'

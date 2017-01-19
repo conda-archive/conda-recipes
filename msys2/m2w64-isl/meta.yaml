@@ -2,10 +2,10 @@ package:
   name: m2w64-isl
   version: 0.16.1
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-isl-0.16.1-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-isl-0.16.1-1.src.tar.gz
   md5: 655455624147d73944a897b082d11d58
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-isl
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-isl-0.16.1-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-isl-0.16.1-1-any.pkg.tar.xz
       md5: 9a8fb0947d5ffb7e88686a1cdb3d4ff3
       mv-srcs:
       - mingw32
@@ -26,7 +26,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-isl
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-isl-0.16.1-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-isl-0.16.1-1-any.pkg.tar.xz
       md5: 8907528ac4565caa1a4ebbae45147f0f
       mv-srcs:
       - mingw64

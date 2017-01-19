@@ -2,10 +2,10 @@ package:
   name: m2-grep
   version: '2.22'
 source:
-  url: http://repo.msys2.org/msys/sources/grep-2.22-3.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/grep-2.22-3.src.tar.gz
   md5: 35e694cd09de026bb05d622edfb18a91
 build:
-  number: '3'
+  number: 4
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -21,7 +21,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/grep
-      url: http://repo.msys2.org/msys/i686/grep-2.22-3-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/grep-2.22-3-i686.pkg.tar.xz
       md5: f5026b5cadbe59cc263ae35762e665a5
       mv-srcs:
       - '*'
@@ -29,7 +29,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/grep
-      url: http://repo.msys2.org/msys/x86_64/grep-2.22-3-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/grep-2.22-3-x86_64.pkg.tar.xz
       md5: 0c8b34ddfaf8c97c57cb88b4f1ec8df6
       mv-srcs:
       - '*'

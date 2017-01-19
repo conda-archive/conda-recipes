@@ -2,10 +2,10 @@ package:
   name: m2-glib2
   version: 2.48.0
 source:
-  url: http://repo.msys2.org/msys/sources/glib2-2.48.0-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/glib2-2.48.0-1.src.tar.gz
   md5: b9946b5bf97968ec0ab02d0d5626d30e
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -22,7 +22,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/glib2
-      url: http://repo.msys2.org/msys/i686/glib2-2.48.0-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/glib2-2.48.0-1-i686.pkg.tar.xz
       md5: 36d97b84b2bc0555ed31a29be10c1f8d
       mv-srcs:
       - '*'
@@ -30,7 +30,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/glib2
-      url: http://repo.msys2.org/msys/x86_64/glib2-2.48.0-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/glib2-2.48.0-1-x86_64.pkg.tar.xz
       md5: 51bf474ca7f9e8090c0e6bb3204b7aee
       mv-srcs:
       - '*'

@@ -5,13 +5,13 @@ package:
   name: r-plm
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.5_12"
+  version: "1.6_5"
 
 source:
-  fn: plm_1.5-12.tar.gz
+  fn: plm_1.6-5.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/plm_1.5-12.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/plm/plm_1.5-12.tar.gz
+    - http://cran.r-project.org/src/contrib/plm_1.6-5.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/plm/plm_1.6-5.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -70,7 +70,7 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: http://www.R-project.org
+  home: https://cran.r-project.org/package=plm, https://r-forge.r-project.org/projects/plm/
   license: GPL (>= 2)
   summary: A set of estimators and tests for panel data.
   license_family: GPL3
@@ -78,25 +78,25 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: plm
-# Version: 1.5-12
-# Date: 2015-12-14
+# Version: 1.6-5
+# Date: 2016-12-02
 # Title: Linear Models for Panel Data
-# Authors@R: c(person(given = "Yves", family = "Croissant", role = c("aut", "cre"), email = "yves.croissant@univ-reunion.fr"), person(given = "Giovanni", family = "Millo", role = "aut", email = "Giovanni.Millo@Generali.com"), person(given = "Ott", family = "Toomet", role = "ctb", email = "otoomet@gmail.com"), person(given = "Christian", family = "Kleiber", role = "ctb", email = "Christian.Kleiber@unibas.ch"),  person(given = "Achim", family = "Zeileis", role = "ctb", email = "Achim.Zeileis@R-project.org"), person(given = "Arne", family = "Henningsen", role = "ctb", email = "arne.henningsen@googlemail.com"), person(given = "Liviu", family = "Andronic", role = "ctb", email = "landronimirc@gmail.com"), person(given = "Nina", family = "Schoenfelder", role = "ctb", email = "nina.schoenfelder@fernuni-hagen.de"), person(given = "Kevin", family = "Tappe", role = "ctb", email = "kevin.tappe@bwi.uni-stuttgart.de"))
-# Depends: R (>= 2.10), Formula (>= 0.2-0), stats
+# Authors@R: c(person(given = "Yves",      family = "Croissant",    role = c("aut", "cre"), email = "yves.croissant@univ-reunion.fr"), person(given = "Giovanni",  family = "Millo",        role = "aut", email = "Giovanni.Millo@Generali.com"), person(given = "Kevin",     family = "Tappe",        role = "aut", email = "kevin.tappe@bwi.uni-stuttgart.de"), person(given = "Ott",       family = "Toomet",       role = "ctb", email = "otoomet@gmail.com"), person(given = "Christian", family = "Kleiber",      role = "ctb", email = "Christian.Kleiber@unibas.ch"),  person(given = "Achim",     family = "Zeileis",      role = "ctb", email = "Achim.Zeileis@R-project.org"), person(given = "Arne",      family = "Henningsen",   role = "ctb", email = "arne.henningsen@googlemail.com"), person(given = "Liviu",     family = "Andronic",     role = "ctb", email = "landronimirc@gmail.com"), person(given = "Nina",      family = "Schoenfelder", role = "ctb", email = "nina.schoenfelder@fernuni-hagen.de"))
+# Depends: R (>= 2.12.0), Formula (>= 0.2-0), stats
 # Imports: MASS, bdsmatrix, zoo, nlme, sandwich, lattice, car, lmtest
 # Suggests: AER
 # Description: A set of estimators and tests for panel data.
 # License: GPL (>= 2)
-# URL: http://www.R-project.org
-# Author: Yves Croissant [aut, cre], Giovanni Millo [aut], Ott Toomet [ctb], Christian Kleiber [ctb], Achim Zeileis [ctb], Arne Henningsen [ctb], Liviu Andronic [ctb], Nina Schoenfelder [ctb], Kevin Tappe [ctb]
+# URL: https://cran.r-project.org/package=plm, https://r-forge.r-project.org/projects/plm/
+# Author: Yves Croissant [aut, cre], Giovanni Millo [aut], Kevin Tappe [aut], Ott Toomet [ctb], Christian Kleiber [ctb], Achim Zeileis [ctb], Arne Henningsen [ctb], Liviu Andronic [ctb], Nina Schoenfelder [ctb]
 # Maintainer: Yves Croissant <yves.croissant@univ-reunion.fr>
 # Repository: CRAN
 # Repository/R-Forge/Project: plm
-# Repository/R-Forge/Revision: 170
-# Repository/R-Forge/DateTimeStamp: 2015-12-14 20:49:58
-# Date/Publication: 2015-12-15 01:10:50
+# Repository/R-Forge/Revision: 371
+# Repository/R-Forge/DateTimeStamp: 2016-12-02 10:18:21
+# Date/Publication: 2016-12-02 23:31:22
 # NeedsCompilation: no
-# Packaged: 2015-12-14 21:05:55 UTC; rforge
+# Packaged: 2016-12-02 13:10:45 UTC; rforge
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -5,13 +5,13 @@ package:
   name: r-repr
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.7"
+  version: "0.10"
 
 source:
 
 
   git_url: https://github.com/IRkernel/repr
-  git_tag: 0.7
+  git_tag: 0.10
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -29,7 +29,7 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: highr, Cairo, testthat
+# Suggests: methods, highr, Cairo, testthat
 requirements:
   build:
     - r-base
@@ -61,13 +61,13 @@ about:
 
 # Package: repr
 # Title: Serializable Representations
-# Version: 0.7
-# Authors@R: c( person('Philipp', 'A.', email = 'flying-sheep@web.de', role = c('aut', 'cre')), person('Thomas', 'Kluyver', email = 'thomas@kluyver.me.uk', role = 'aut'), person('Jan', 'Schulz', email = 'jasc@gmx.net', role = 'aut'), person('abielr', role = 'ctb'), person('Denilson', 'Figueiredo de Sa', role = 'ctb'), person('Jim', 'Hester', role = 'ctb'), person('karldw', role = 'ctb') )
-# Maintainer: Philipp A. <flying-sheep@web.de>
+# Version: 0.10
+# Authors@R: c( person('Philipp', 'Angerer', email = 'phil.angerer@gmail.com', role = c('aut', 'cre')), person('Thomas', 'Kluyver', email = 'thomas@kluyver.me.uk', role = 'aut'), person('Jan', 'Schulz', email = 'jasc@gmx.net', role = 'aut'), person('abielr', role = 'ctb'), person('Denilson', 'Figueiredo de Sa', role = 'ctb'), person('Jim', 'Hester', role = 'ctb'), person('karldw', role = 'ctb') )
+# Maintainer: Philipp Angerer <phil.angerer@gmail.com>
 # Description: String and binary representations of objects for several formats / mime types.
 # Depends: R (>= 3.0.1)
 # Imports: utils, grDevices
-# Suggests: highr, Cairo, testthat
+# Suggests: methods, highr, Cairo, testthat
 # Enhances: data.table, dplyr, htmlwidgets
 # License: GPL-3
 # LazyData: true

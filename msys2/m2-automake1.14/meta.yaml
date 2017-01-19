@@ -2,10 +2,10 @@ package:
   name: m2-automake1.14
   version: 1.14.1
 source:
-  url: http://repo.msys2.org/msys/sources/automake1.14-1.14.1-3.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/automake1.14-1.14.1-3.src.tar.gz
   md5: 14957867e30d15a7063eefbcc8b2fb92
 build:
-  number: '3'
+  number: 4
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/automake1.14
-      url: http://repo.msys2.org/msys/i686/automake1.14-1.14.1-3-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/automake1.14-1.14.1-3-any.pkg.tar.xz
       md5: d0e1a123176498fc5e4ac9dcee6f8562
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/automake1.14
-      url: http://repo.msys2.org/msys/x86_64/automake1.14-1.14.1-3-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/automake1.14-1.14.1-3-any.pkg.tar.xz
       md5: ff72ad712c7e31e6eca1050e58899481
       mv-srcs:
       - '*'

@@ -5,13 +5,13 @@ package:
   name: r-stringr
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.0.0"
+  version: "1.1.0"
 
 source:
-  fn: stringr_1.0.0.tar.gz
+  fn: stringr_1.1.0.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/stringr_1.0.0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/stringr/stringr_1.0.0.tar.gz
+    - http://cran.r-project.org/src/contrib/stringr_1.1.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/stringr/stringr_1.1.0.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,7 +31,7 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat, knitr
+# Suggests: testthat, knitr, htmltools, htmlwidgets, rmarkdown, covr
 requirements:
   build:
     - r-base
@@ -56,7 +56,7 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: https://github.com/hadley/stringr
   license: GPL-2
   summary: A consistent, simple and easy to use set of wrappers around the fantastic 'stringi'
     package. All function and argument names (and positions) are consistent, all functions
@@ -67,21 +67,25 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: stringr
-# Version: 1.0.0
+# Version: 1.1.0
 # Title: Simple, Consistent Wrappers for Common String Operations
 # Description: A consistent, simple and easy to use set of wrappers around the fantastic 'stringi' package. All function and argument names (and positions) are consistent, all functions deal with "NA"'s and zero length vectors in the same way, and the output from one function is easy to feed into the input of another.
 # Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre", "cph")), person("RStudio", role = "cph") )
 # License: GPL-2
 # Depends: R (>= 2.14)
 # Imports: stringi (>= 0.4.1), magrittr
-# Suggests: testthat, knitr
+# Suggests: testthat, knitr, htmltools, htmlwidgets, rmarkdown, covr
 # VignetteBuilder: knitr
+# URL: https://github.com/hadley/stringr
+# BugReports: https://github.com/hadley/stringr/issues
+# RoxygenNote: 5.0.1
+# LazyData: true
 # NeedsCompilation: no
-# Packaged: 2015-04-29 12:46:34 UTC; hadley
+# Packaged: 2016-08-19 14:42:23 UTC; hadley
 # Author: Hadley Wickham [aut, cre, cph], RStudio [cph]
 # Maintainer: Hadley Wickham <hadley@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2015-04-30 11:48:24
+# Date/Publication: 2016-08-19 21:02:58
 
 # See
 # http://docs.continuum.io/conda/build.html for

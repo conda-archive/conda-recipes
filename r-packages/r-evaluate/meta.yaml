@@ -5,13 +5,13 @@ package:
   name: r-evaluate
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.9"
+  version: "0.10"
 
 source:
-  fn: evaluate_0.9.tar.gz
+  fn: evaluate_0.10.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/evaluate_0.9.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/evaluate/evaluate_0.9.tar.gz
+    - http://cran.r-project.org/src/contrib/evaluate_0.10.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/evaluate/evaluate_0.10.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -65,9 +65,9 @@ about:
 # Package: evaluate
 # Type: Package
 # Title: Parsing and Evaluation Tools that Provide More Details than the Default
-# Version: 0.9
-# Date: 2016-04-29
-# Authors@R: c( person("Hadley", "Wickham", role = "aut"), person("Yihui", "Xie", role = c("cre", "ctb"), email = "xie@yihui.name"), person("Michael", "Lawrence", role = "ctb"), person("Thomas", "Kluyver", role = "ctb"), person("Barret", "Schloerke", role = "ctb") )
+# Version: 0.10
+# Date: 2016-10-10
+# Authors@R: c( person("Hadley", "Wickham", role = "aut"), person("Yihui", "Xie", role = c("cre", "ctb"), email = "xie@yihui.name"), person("Michael", "Lawrence", role = "ctb"), person("Thomas", "Kluyver", role = "ctb"), person("Barret", "Schloerke", role = "ctb"), person("Adam", "Ryczkowski", role = "ctb") )
 # Description: Parsing and evaluation tools that make it easy to recreate the command line behaviour of R.
 # License: MIT + file LICENSE
 # URL: https://github.com/hadley/evaluate
@@ -77,11 +77,11 @@ about:
 # Suggests: testthat, lattice, ggplot2
 # RoxygenNote: 5.0.1
 # NeedsCompilation: no
-# Packaged: 2016-04-29 06:08:35 UTC; yihui
-# Author: Hadley Wickham [aut], Yihui Xie [cre, ctb], Michael Lawrence [ctb], Thomas Kluyver [ctb], Barret Schloerke [ctb]
+# Packaged: 2016-10-10 21:31:23 UTC; yihui
+# Author: Hadley Wickham [aut], Yihui Xie [cre, ctb], Michael Lawrence [ctb], Thomas Kluyver [ctb], Barret Schloerke [ctb], Adam Ryczkowski [ctb]
 # Maintainer: Yihui Xie <xie@yihui.name>
 # Repository: CRAN
-# Date/Publication: 2016-04-29 12:11:45
+# Date/Publication: 2016-10-11 12:23:58
 
 # See
 # http://docs.continuum.io/conda/build.html for

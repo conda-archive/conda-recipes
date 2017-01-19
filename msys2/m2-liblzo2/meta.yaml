@@ -2,10 +2,10 @@ package:
   name: m2-liblzo2
   version: '2.09'
 source:
-  url: http://repo.msys2.org/msys/sources/liblzo2-2.09-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/liblzo2-2.09-1.src.tar.gz
+  md5: 7d29b6e0926b7ac9e19b585bd3b02d0f
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/liblzo2
-      url: http://repo.msys2.org/msys/i686/liblzo2-2.09-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/liblzo2-2.09-1-i686.pkg.tar.xz
       md5: 90f49cbb41cd1a14ca724e0631e6ee65
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/liblzo2
-      url: http://repo.msys2.org/msys/x86_64/liblzo2-2.09-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/liblzo2-2.09-1-x86_64.pkg.tar.xz
       md5: 05c456840a51b5930d9d617c8f6f53be
       mv-srcs:
       - '*'

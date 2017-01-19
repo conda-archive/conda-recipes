@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export CFLAGS="-I$PREFIX/include -L$PREFIX/lib"
+export CFLAGS=$CFLAGS" -I$PREFIX/include -L$PREFIX/lib"
 
 # As of Mac OS 10.8, X11 is no longer included by default
 # (See https://support.apple.com/en-us/HT201341 for the details).

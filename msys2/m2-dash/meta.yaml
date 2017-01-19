@@ -2,10 +2,10 @@ package:
   name: m2-dash
   version: 0.5.8
 source:
-  url: http://repo.msys2.org/msys/sources/dash-0.5.8-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/dash-0.5.8-1.src.tar.gz
+  md5: 3fc710bdfe2cefe56c6a8229690a8d88
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -21,7 +21,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/dash
-      url: http://repo.msys2.org/msys/i686/dash-0.5.8-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/dash-0.5.8-1-i686.pkg.tar.xz
       md5: 5b8ca5a42104dce4f51b566a3efcbbd2
       mv-srcs:
       - '*'
@@ -29,7 +29,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/dash
-      url: http://repo.msys2.org/msys/x86_64/dash-0.5.8-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/dash-0.5.8-1-x86_64.pkg.tar.xz
       md5: d3c8387ab7ace3fbd82cef97fd5755ca
       mv-srcs:
       - '*'

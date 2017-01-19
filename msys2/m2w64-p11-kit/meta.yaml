@@ -2,10 +2,10 @@ package:
   name: m2w64-p11-kit
   version: 0.23.2
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-p11-kit-0.23.2-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-p11-kit-0.23.2-1.src.tar.gz
   md5: d57c391979c7d8a72f16243ce090318a
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -20,7 +20,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-p11-kit
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-p11-kit-0.23.2-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-p11-kit-0.23.2-1-any.pkg.tar.xz
       md5: 80d75ffe495931260adb31cbd8702070
       mv-srcs:
       - mingw32
@@ -28,7 +28,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-p11-kit
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-p11-kit-0.23.2-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-p11-kit-0.23.2-1-any.pkg.tar.xz
       md5: 874edd8044d4512552714c5520d16c2b
       mv-srcs:
       - mingw64

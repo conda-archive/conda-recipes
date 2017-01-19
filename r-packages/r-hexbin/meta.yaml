@@ -71,7 +71,7 @@ about:
 # Title: Hexagonal Binning Routines
 # Author: Dan Carr <dcarr@voxel.galaxy.gmu.edu>, ported by Nicholas Lewin-Koh and Martin Maechler <maechler@stat.math.ethz.ch>, contains copies of lattice functions written by Deepayan Sarkar  <deepayan.sarkar@r-project.org>
 # Maintainer: Edzer Pebesma <edzer.pebesma@uni-muenster.de>
-# Depends: R (>= 2.0.1), methods
+# Depends: R (>= 2.10), methods
 # Imports: lattice, grid, graphics, grDevices, stats, utils
 # Suggests: marray, affy, Biobase, limma
 # Description: Binning and plotting functions for hexagonal bins. Now uses and relies on grid graphics and formal (S4) classes and methods.
@@ -79,9 +79,9 @@ about:
 # License: GPL-2
 # NeedsCompilation: yes
 # URL: http://github.com/edzer/hexbin
-# Packaged: 2015-08-19 15:11:53 UTC; edzer
+# Packaged: 2016-12-05 14:59:04 UTC; hornik
 # Repository: CRAN
-# Date/Publication: 2015-08-19 17:28:20
+# Date/Publication: 2016-12-05 18:28:47
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -5,11 +5,11 @@ package:
 source:
   url: http://cairographics.org/releases/pixman-0.34.0.tar.gz
   md5: e80ebae4da01e77f68744319f01d52a3
-  patches:               [win]
+  patches:
     - no_test.patch      [win]
 
-build:                   [win]
-  features:              [win]
+build:
+  features:
     - vc9                [win and py27]
     - vc10               [win and py34]
     - vc14               [win and py35]
@@ -19,6 +19,14 @@ requirements:
     - python             [win]
 
 about:
-  home: http://cgit.freedesktop.org/pixman/
+  home: http://www.pixman.org/
   license: MIT
+  license_family: MIT
+  license_file: COPYING
   summary: A low-level software library for pixel manipulation
+  description: |
+    Pixman is a low-level software library for pixel manipulation,
+    providing features such as image compositing and trapezoid
+    rasterization. Important users of pixman are the cairo graphics
+    library and the X server.
+  dev_url: https://cgit.freedesktop.org/pixman/

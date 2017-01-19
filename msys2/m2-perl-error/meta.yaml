@@ -2,10 +2,10 @@ package:
   name: m2-perl-error
   version: '0.17024'
 source:
-  url: http://repo.msys2.org/msys/sources/perl-Error-0.17024-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/perl-Error-0.17024-1.src.tar.gz
+  md5: 3aa3f46f4ef1e6f7a3ab8bd3d13c8f1e
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/perl-Error
-      url: http://repo.msys2.org/msys/i686/perl-Error-0.17024-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/perl-Error-0.17024-1-any.pkg.tar.xz
       md5: a954bace66c7ece3c5f617a5fb606000
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/perl-Error
-      url: http://repo.msys2.org/msys/x86_64/perl-Error-0.17024-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/perl-Error-0.17024-1-any.pkg.tar.xz
       md5: c9488513b1f524ef0213d89253c67924
       mv-srcs:
       - '*'

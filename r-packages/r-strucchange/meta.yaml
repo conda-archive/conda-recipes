@@ -1,0 +1,93 @@
+{% set name = 'strucchange' %}
+{% set version = '1.5-1' %}
+
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-{{ name|lower }}
+  version: {{ version|replace("-", "_") }}
+
+source:
+  fn: {{ name }}_{{ version }}.tar.gz
+  url:
+    - https://cran.r-project.org/src/contrib/{{ name }}_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/{{ name }}/{{ name }}_{{ version }}.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 0
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: stats4, car, dynlm, e1071, foreach, lmtest, mvtnorm, tseries
+requirements:
+  build:
+    - r-base
+    - r-sandwich
+    - r-zoo
+
+  run:
+    - r-base
+    - r-sandwich
+    - r-zoo
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('strucchange')"  # [not win]
+    - "\"%R%\" -e \"library('strucchange')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://CRAN.R-project.org/package=strucchange
+  license: GPL-2 | GPL-3
+  summary: Testing, monitoring and dating structural changes in (linear) regression models. strucchange
+    features tests/methods from the generalized fluctuation test framework as well as
+    from the F test (Chow test) framework. This includes methods to fit, plot and test
+    fluctuation processes (e.g., CUSUM, MOSUM, recursive/moving estimates) and F statistics,
+    respectively. It is possible to monitor incoming data online using fluctuation processes.
+    Finally, the breakpoints in regression models with structural changes can be estimated
+    together with confidence intervals. Emphasis is always given to methods for visualizing
+    the data.
+  license_family: GPL3
+
+# The original CRAN metadata for this package was:
+
+# Package: strucchange
+# Version: 1.5-1
+# Date: 2015-06-06
+# Title: Testing, Monitoring, and Dating Structural Changes
+# Authors@R: c(person(given = "Achim", family = "Zeileis", role = c("aut", "cre"), email = "Achim.Zeileis@R-project.org"), person(given = "Friedrich", family = "Leisch", role = "aut", email = "Friedrich.Leisch@R-project.org"), person(given = "Kurt", family = "Hornik", role = "aut", email = "Kurt.Hornik@R-project.org"), person(given = "Christian", family = "Kleiber", role = "aut", email = "Christian.Kleiber@unibas.ch"), person(given = "Bruce", family = "Hansen", role = "ctb"), person(give = c("Edgar", "C."), family = "Merkle", role = "ctb"))
+# Description: Testing, monitoring and dating structural changes in (linear) regression models. strucchange features tests/methods from the generalized fluctuation test framework as well as from the F test (Chow test) framework. This includes methods to fit, plot and test fluctuation processes (e.g., CUSUM, MOSUM, recursive/moving estimates) and F statistics, respectively. It is possible to monitor incoming data online using fluctuation processes. Finally, the breakpoints in regression models with structural changes can be estimated together with confidence intervals. Emphasis is always given to methods for visualizing the data.
+# LazyData: yes
+# Depends: R (>= 2.10.0), zoo, sandwich
+# Suggests: stats4, car, dynlm, e1071, foreach, lmtest, mvtnorm, tseries
+# Imports: graphics, stats
+# License: GPL-2 | GPL-3
+# NeedsCompilation: no
+# Packaged: 2015-06-06 10:01:15 UTC; zeileis
+# Author: Achim Zeileis [aut, cre], Friedrich Leisch [aut], Kurt Hornik [aut], Christian Kleiber [aut], Bruce Hansen [ctb], Edgar C. Merkle [ctb]
+# Maintainer: Achim Zeileis <Achim.Zeileis@R-project.org>
+# Repository: CRAN
+# Date/Publication: 2015-06-06 13:03:15
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

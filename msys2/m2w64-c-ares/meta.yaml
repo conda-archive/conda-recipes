@@ -2,10 +2,10 @@ package:
   name: m2w64-c-ares
   version: 1.11.0
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-c-ares-1.11.0-1.src.tar.gz
-  md5: c45dd73d19056c4c825621c1d427fc41
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-c-ares-1.11.0-1.src.tar.gz
+  md5: 34287340008a82154fbc6e9fc7db2c2e
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -17,7 +17,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-c-ares
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-c-ares-1.11.0-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-c-ares-1.11.0-1-any.pkg.tar.xz
       md5: 033a2a61092e32ecb0e2ebabf92fadf7
       mv-srcs:
       - mingw32
@@ -25,7 +25,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-c-ares
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-c-ares-1.11.0-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-c-ares-1.11.0-1-any.pkg.tar.xz
       md5: 052955279182878a8414c3da1ed232a8
       mv-srcs:
       - mingw64

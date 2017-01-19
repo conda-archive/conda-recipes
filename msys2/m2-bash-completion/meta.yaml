@@ -2,10 +2,10 @@ package:
   name: m2-bash-completion
   version: '2.3'
 source:
-  url: http://repo.msys2.org/msys/sources/bash-completion-2.3-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/bash-completion-2.3-1.src.tar.gz
   md5: 5717b1ce9b9c87a6d7d38a102dd046c0
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/bash-completion
-      url: http://repo.msys2.org/msys/i686/bash-completion-2.3-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/bash-completion-2.3-1-any.pkg.tar.xz
       md5: d25a7c16e94b2445e4393401b82f5d9e
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/bash-completion
-      url: http://repo.msys2.org/msys/x86_64/bash-completion-2.3-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/bash-completion-2.3-1-any.pkg.tar.xz
       md5: ab33a122a3c3aa3e107568f140df560b
       mv-srcs:
       - '*'

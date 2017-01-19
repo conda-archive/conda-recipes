@@ -2,10 +2,10 @@ package:
   name: m2-libpcre
   version: '8.38'
 source:
-  url: http://repo.msys2.org/msys/sources/libpcre-8.38-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libpcre-8.38-1.src.tar.gz
+  md5: b02505586bcd667b6031f2ea67a7a4a4
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libpcre
-      url: http://repo.msys2.org/msys/i686/libpcre-8.38-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libpcre-8.38-1-i686.pkg.tar.xz
       md5: a7320c35e86e2180c4bac4734272ac3b
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libpcre
-      url: http://repo.msys2.org/msys/x86_64/libpcre-8.38-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libpcre-8.38-1-x86_64.pkg.tar.xz
       md5: b6b14993a9e0fe219e68d821fb1c6ea2
       mv-srcs:
       - '*'

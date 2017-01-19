@@ -2,10 +2,10 @@ package:
   name: m2-autoconf
   version: '2.69'
 source:
-  url: http://repo.msys2.org/msys/sources/autoconf-2.69-3.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/autoconf-2.69-3.src.tar.gz
+  md5: ecb3483d9a0ced120b12a0917280c9a2
 build:
-  number: '3'
+  number: 4
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -22,7 +22,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/autoconf
-      url: http://repo.msys2.org/msys/i686/autoconf-2.69-3-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/autoconf-2.69-3-any.pkg.tar.xz
       md5: 3c7e24fad3a5c6b4f1142fb9c13da84d
       mv-srcs:
       - '*'
@@ -30,7 +30,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/autoconf
-      url: http://repo.msys2.org/msys/x86_64/autoconf-2.69-3-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/autoconf-2.69-3-any.pkg.tar.xz
       md5: 04671aefcd2adc211b0b482043bba9e4
       mv-srcs:
       - '*'

@@ -5,13 +5,13 @@ package:
   name: r-seacarb
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "3.0.14"
+  version: "3.1.1"
 
 source:
-  fn: seacarb_3.0.14.tar.gz
+  fn: seacarb_3.1.1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/seacarb_3.0.14.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/seacarb/seacarb_3.0.14.tar.gz
+    - http://cran.r-project.org/src/contrib/seacarb_3.1.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/seacarb/seacarb_3.1.1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -54,7 +54,7 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: http://CRAN.R-project.org/package=seacarb
+  home: https://CRAN.R-project.org/package=seacarb
   license: GPL (>= 2)
   summary: Calculates parameters of the seawater carbonate system and assists the design of ocean
     acidification perturbation experiments.
@@ -64,22 +64,22 @@ about:
 
 # Package: seacarb
 # Title: Seawater Carbonate Chemistry
-# Version: 3.0.14
-# Date: 2016-04-09
+# Version: 3.1.1
+# Date: 2016-11-22
 # LazyData: true
-# Authors@R: c(person("Jean-Pierre", "Gattuso", role = c("aut", "cre", "cph"), email = "gattuso@obs-vlfr.fr"), person("Jean-Marie", "Epitalon", role = "aut", email = "Jean-Marie.Epitalon@cerfacs.fr"), person("Heloise", "Lavigne", role = "aut", email = "lavigne@obs-vlfr.fr"), person("James", "Orr", role = "ctb"), person("Bernard", "Gentili", role = "ctb"), person("Andreas", "Hofmann", role = "ctb"), person("AurASlien", "Proye", role = "ctb"), person("Karline", "Soetaert", role = "ctb"), person("James", "Rae", role = "ctb") )
+# Authors@R: c(person("Jean-Pierre", "Gattuso", role = c("aut", "cre", "cph"), email = "gattuso@obs-vlfr.fr"), person("Jean-Marie", "Epitalon", role = "aut", email = "Jean-Marie.Epitalon@cerfacs.fr"), person("Heloise", "Lavigne", role = "aut", email = "lavigne@obs-vlfr.fr"), person("James", "Orr", role = "aut"), person("Bernard", "Gentili", role = "ctb"), person("Andreas", "Hofmann", role = "ctb"), person("AurASlien", "Proye", role = "ctb"), person("Karline", "Soetaert", role = "ctb"), person("James", "Rae", role = "ctb") )
 # Depends: R (>= 2.10), oce
 # Description: Calculates parameters of the seawater carbonate system and assists the design of ocean acidification perturbation experiments.
 # Encoding: UTF-8
-# URL: http://CRAN.R-project.org/package=seacarb
+# URL: https://CRAN.R-project.org/package=seacarb
 # License: GPL (>= 2)
 # Repository: CRAN
 # RoxygenNote: 5.0.1
 # NeedsCompilation: no
-# Packaged: 2016-04-09 16:04:23 UTC; gattuso_mba
-# Author: Jean-Pierre Gattuso [aut, cre, cph], Jean-Marie Epitalon [aut], Heloise Lavigne [aut], James Orr [ctb], Bernard Gentili [ctb], Andreas Hofmann [ctb], AurASlien Proye [ctb], Karline Soetaert [ctb], James Rae [ctb]
+# Packaged: 2016-11-22 06:34:24 UTC; gattuso_mba
+# Author: Jean-Pierre Gattuso [aut, cre, cph], Jean-Marie Epitalon [aut], Heloise Lavigne [aut], James Orr [aut], Bernard Gentili [ctb], Andreas Hofmann [ctb], AurASlien Proye [ctb], Karline Soetaert [ctb], James Rae [ctb]
 # Maintainer: Jean-Pierre Gattuso <gattuso@obs-vlfr.fr>
-# Date/Publication: 2016-04-10 00:25:41
+# Date/Publication: 2016-11-22 10:03:17
 
 # See
 # http://docs.continuum.io/conda/build.html for

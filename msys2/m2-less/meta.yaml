@@ -2,10 +2,10 @@ package:
   name: m2-less
   version: '481'
 source:
-  url: http://repo.msys2.org/msys/sources/less-481-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/less-481-1.src.tar.gz
   md5: b84f4848d62d512240c3b9b7e6940b4b
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/less
-      url: http://repo.msys2.org/msys/i686/less-481-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/less-481-1-i686.pkg.tar.xz
       md5: 90037dae69b2d7dfce76fce7d8334e22
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/less
-      url: http://repo.msys2.org/msys/x86_64/less-481-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/less-481-1-x86_64.pkg.tar.xz
       md5: 78fcbdb256b97d7db769407f0c296963
       mv-srcs:
       - '*'

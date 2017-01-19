@@ -2,10 +2,10 @@ package:
   name: m2-rebase
   version: 4.4.2
 source:
-  url: http://repo.msys2.org/msys/sources/rebase-4.4.2-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/rebase-4.4.2-1.src.tar.gz
   md5: 34e6487ffc047f7072d6e5b801ae6499
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -20,7 +20,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/rebase
-      url: http://repo.msys2.org/msys/i686/rebase-4.4.2-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/rebase-4.4.2-1-i686.pkg.tar.xz
       md5: befdb099fd5320901c071b1116cc46dd
       mv-srcs:
       - '*'
@@ -28,7 +28,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/rebase
-      url: http://repo.msys2.org/msys/x86_64/rebase-4.4.2-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/rebase-4.4.2-1-x86_64.pkg.tar.xz
       md5: a32a4bdd9895aa135e693840ce64162c
       mv-srcs:
       - '*'

@@ -5,12 +5,13 @@ package:
   name: r-shinysky
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "latest"
+  version: "2.0.0"
 
 source:
-  path: shinysky
-  # https://github.com/AnalytixWare/ShinySky
 
+
+  git_url: https://github.com/mingwandroid/ShinySky
+  git_tag: 2.0.0
   # You can add a hash for the file here, like md5 or sha1
   # md5: 49448ba4863157652311cc5ea4fea3ea
   # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
@@ -32,16 +33,16 @@ build:
 requirements:
   build:
     - r-base
-    - r-htmltools >=0.2.6
-    - r-shiny >=0.12.1
-    - ncurses
+    - r-rjsonio
+    - r-plyr
+    - r-shiny
 
   run:
     - r-base
-    - r-htmltools >=0.2.6
-    - r-shiny >=0.12.1
     - r-rjsonio
     - r-plyr
+    - r-shiny
+
 test:
   commands:
     # You can put additional test commands to be run here.
@@ -55,11 +56,25 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: http://www.github.com/AnalytixWare/shinysky/
-  license: GPL-2 | file LICENSE
-  summary: Create skies with 'Shiny'. This package provides a theme on top of 'Shiny', making
-    it easy to create attractive skies.
-  license_family: GPL2
+  home: https://github.com/AnalytixWare/ShinySky
+  license: MIT + file LICENSE
+  summary: A set of Shiny UI components includings alerts and styled buttons
+  license_family: MIT
+
+# The original CRAN metadata for this package was:
+
+# Package: shinysky
+# Type: Package
+# Title: A set of Shiny UI components/widgets.
+# Version: 2.0.0
+# Date: 2016-8-25
+# Author: AnalytixWare
+# Maintainer: ZJ <dzj@analytixware.com>
+# Description: A set of Shiny UI components includings alerts and styled buttons
+# License: MIT + file LICENSE
+# Depends: shiny, RJSONIO, plyr
+# URL: https://github.com/AnalytixWare/ShinySky
+# RoxygenNote: 5.0.1
 
 # See
 # http://docs.continuum.io/conda/build.html for

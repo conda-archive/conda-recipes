@@ -2,10 +2,10 @@ package:
   name: m2-mpfr
   version: 3.1.4
 source:
-  url: http://repo.msys2.org/msys/sources/mpfr-3.1.4-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/mpfr-3.1.4-1.src.tar.gz
   md5: 94535ee5131958923bdedad801f62a86
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/mpfr
-      url: http://repo.msys2.org/msys/i686/mpfr-3.1.4-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/mpfr-3.1.4-1-i686.pkg.tar.xz
       md5: 0c5f282a8a5367002ccd59f9a3344c5b
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/mpfr
-      url: http://repo.msys2.org/msys/x86_64/mpfr-3.1.4-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/mpfr-3.1.4-1-x86_64.pkg.tar.xz
       md5: a6cceddc5acf54122953d335c31bb8d9
       mv-srcs:
       - '*'

@@ -2,10 +2,10 @@ package:
   name: m2-pkg-config
   version: 0.29.1
 source:
-  url: http://repo.msys2.org/msys/sources/pkg-config-0.29.1-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/pkg-config-0.29.1-1.src.tar.gz
   md5: a17001f49b9c3b198ea026afaf28a418
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/pkg-config
-      url: http://repo.msys2.org/msys/i686/pkg-config-0.29.1-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/pkg-config-0.29.1-1-i686.pkg.tar.xz
       md5: d97e8a7b6dd2ea533312801608a5da50
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/pkg-config
-      url: http://repo.msys2.org/msys/x86_64/pkg-config-0.29.1-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/pkg-config-0.29.1-1-x86_64.pkg.tar.xz
       md5: 048fd7fbc70f46932364acd28c8ff599
       mv-srcs:
       - '*'

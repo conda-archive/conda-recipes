@@ -1,0 +1,15 @@
+package:
+  name: compiler_linux-64_linux-aarch64
+  version: 0.3
+
+source:
+  path: /c/d/ia_64
+
+build:
+  script:
+    - chmod -R u+w *
+    - cp -Rf * ${PREFIX}
+    - mkdir -p ${PREFIX}/etc/conda/activate.d
+    - mkdir -p ${PREFIX}/etc/conda/deactivate.d
+    - cp ${RECIPE_DIR}/activate.sh   ${PREFIX}/etc/conda/activate.d/${PKG_NAME}-activate.sh
+    - cp ${RECIPE_DIR}/deactivate.sh ${PREFIX}/etc/conda/deactivate.d/${PKG_NAME}-deactivate.sh

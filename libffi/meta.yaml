@@ -4,19 +4,29 @@ package:
 
 source:
   url: ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz
-  sha1: 280c265b789e041c02e5c97815793dfc283fb1e6
+  md5: 83b89587607e3eb65c70d361f13bab43
 
 build:
   number: 1
+  features:
+    - vc9     [win and py27]
+    - vc10    [win and py34]
+    - vc14    [win and py35]
+
+requirements:
+  build:
+    - python
+    - posix   [win]
+    - jom     [win]
 
 about:
   home: https://sourceware.org/libffi/
-  license: BSD
-  license_family: BSD
-  summary: Library supporting Foreign Function Interfaces
+  license: MIT
+  license_file: LICENSE
+  summary: portable foreign-function interface library
   description: |
-    The libffi library provides a portable, high level programming
-    interface to various calling conventions. This allows a programmer
-    to call any function specified by a call interface description
-    at run-time
-  dev_url: http://github.com/atgreen/libffi
+    The libffi library provides a portable, high level programming interface
+    to various calling conventions. This allows a programmer to call any
+    function specified by a call interface description at run-time.
+  doc_url: https://sourceware.org/libffi/
+  dev_url: https://github.com/libffi/libffi

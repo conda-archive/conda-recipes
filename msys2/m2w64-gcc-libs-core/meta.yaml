@@ -1,0 +1,43 @@
+package:
+  name: m2w64-gcc-libs-core
+  version: 5.3.0
+source:
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-gcc-libs-5.3.0-5.src.tar.gz
+  md5: 4698350ad11d86459ffc4843fe1c951f
+build:
+  number: 7
+requirements:
+  run:
+  - msys2-conda-epoch >=20160418
+  - m2w64-gmp
+  - m2w64-libwinpthread-git
+about:
+  home: https://gcc.gnu.org
+  license: GPL3+, partial:GCCRLE, partial:LGPL2+
+  summary: GNU Compiler Collection (core libraries) for MinGW-w64
+extra:
+  msys2-binaries:
+    win-32:
+      srcpkg: mingw32/mingw-w64-i686-gcc-libs
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-gcc-libs-5.3.0-5-any.pkg.tar.xz
+      md5: f0e867e51a73dc66929d5bdafe17c1cf
+      patches:
+      - 0001-mingw32-Remove-gcc-libs-non-core.patch
+      mv-srcs:
+      - mingw32
+      - Library/mingw-w64/share/licenses/gcc-libs
+      mv-dsts:
+      - Library/mingw-w64
+      - Library/mingw-w64/share/licenses/gcc-libs-core
+    win-64:
+      srcpkg: mingw64/mingw-w64-x86_64-gcc-libs
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-gcc-libs-5.3.0-5-any.pkg.tar.xz
+      md5: 071cd392ca1e2e15fe1612b925bd5172
+      patches:
+      - 0001-mingw64-Remove-gcc-libs-non-core.patch
+      mv-srcs:
+      - mingw64
+      - Library/mingw-w64/share/licenses/gcc-libs
+      mv-dsts:
+      - Library/mingw-w64
+      - Library/mingw-w64/share/licenses/gcc-libs-core

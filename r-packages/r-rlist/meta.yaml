@@ -1,0 +1,97 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-rlist
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.4.6.1"
+
+source:
+  fn: rlist_0.4.6.1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/rlist_0.4.6.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/rlist/rlist_0.4.6.1.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, stringdist, pipeR
+requirements:
+  build:
+    - r-base
+    - r-xml
+    - r-data.table
+    - r-jsonlite
+    - r-yaml
+
+  run:
+    - r-base
+    - r-xml
+    - r-data.table
+    - r-jsonlite
+    - r-yaml
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('rlist')" # [not win]
+    - "\"%R%\" -e \"library('rlist')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://renkun.me/rlist, https://github.com/renkun-ken/rlist, https://renkun.me/rlist-tutorial
+  license: MIT + file LICENSE
+  summary: Provides a set of functions for data manipulation with list objects, including mapping,
+    filtering, grouping, sorting, updating, searching, and other useful functions. Most
+    functions are designed to be pipeline friendly so that data processing with lists
+    can be chained.
+  license_family: MIT
+
+# The original CRAN metadata for this package was:
+
+# Package: rlist
+# Type: Package
+# Title: A Toolbox for Non-Tabular Data Manipulation
+# Version: 0.4.6.1
+# Author: Kun Ren <ken@renkun.me>
+# Maintainer: Kun Ren <ken@renkun.me>
+# Description: Provides a set of functions for data manipulation with list objects, including mapping, filtering, grouping, sorting, updating, searching, and other useful functions. Most functions are designed to be pipeline friendly so that data processing with lists can be chained.
+# Depends: R (>= 2.15)
+# Date: 2016-04-04
+# Suggests: testthat, stringdist, pipeR
+# Imports: yaml, jsonlite, XML, data.table
+# License: MIT + file LICENSE
+# URL: https://renkun.me/rlist, https://github.com/renkun-ken/rlist, https://renkun.me/rlist-tutorial
+# BugReports: https://github.com/renkun-ken/rlist/issues
+# ByteCompile: TRUE
+# LazyData: true
+# RoxygenNote: 5.0.1
+# NeedsCompilation: no
+# Packaged: 2016-04-04 08:55:10 UTC; Kun
+# Repository: CRAN
+# Date/Publication: 2016-04-04 11:49:36
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

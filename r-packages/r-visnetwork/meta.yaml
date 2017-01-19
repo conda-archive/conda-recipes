@@ -5,13 +5,13 @@ package:
   name: r-visnetwork
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.0.1"
+  version: "1.0.2"
 
 source:
-  fn: visNetwork_1.0.1.tar.gz
+  fn: visNetwork_1.0.2.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/visNetwork_1.0.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/visNetwork/visNetwork_1.0.1.tar.gz
+    - http://cran.r-project.org/src/contrib/visNetwork_1.0.2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/visNetwork/visNetwork_1.0.2.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -70,8 +70,8 @@ about:
 
 # Package: visNetwork
 # Title: Network Visualization using 'vis.js' Library
-# Version: 1.0.1
-# Date: 2016-06-20
+# Version: 1.0.2
+# Date: 2016-10-05
 # Authors@R: c( person(family = "Almende B.V.", role = c("aut", "cph"), comment = "vis.js library in htmlwidgets/lib, http://visjs.org, http://www.almende.com/home"), person("Benoit", "Thieurmel", role = c("aut", "cre"), comment = "R interface", email = "benoit.thieurmel@datastorm.fr") )
 # Maintainer: Benoit Thieurmel <benoit.thieurmel@datastorm.fr>
 # Description: Provides an R interface to the 'vis.js' JavaScript charting library. It allows an interactive visualization of networks.
@@ -84,10 +84,10 @@ about:
 # VignetteBuilder: knitr
 # RoxygenNote: 5.0.1
 # NeedsCompilation: no
-# Packaged: 2016-06-20 08:24:38 UTC; Benoit
+# Packaged: 2016-10-05 14:39:19 UTC; Benoit
 # Author: Almende B.V. [aut, cph] (vis.js library in htmlwidgets/lib, http://visjs.org, http://www.almende.com/home), Benoit Thieurmel [aut, cre] (R interface)
 # Repository: CRAN
-# Date/Publication: 2016-06-20 11:10:30
+# Date/Publication: 2016-10-05 18:17:57
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -2,10 +2,10 @@ package:
   name: m2-openssl
   version: 1.0.2.g
 source:
-  url: http://repo.msys2.org/msys/sources/openssl-1.0.2.g-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/openssl-1.0.2.g-1.src.tar.gz
   md5: 502c8853c85a04451c1ea2283868b600
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/openssl
-      url: http://repo.msys2.org/msys/i686/openssl-1.0.2.g-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/openssl-1.0.2.g-1-i686.pkg.tar.xz
       md5: 737f7b0335571846fa7bdcf1566328e6
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/openssl
-      url: http://repo.msys2.org/msys/x86_64/openssl-1.0.2.g-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/openssl-1.0.2.g-1-x86_64.pkg.tar.xz
       md5: f21d4da1fa35140029905b664e7bca7f
       mv-srcs:
       - '*'

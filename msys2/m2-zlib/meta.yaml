@@ -2,10 +2,10 @@ package:
   name: m2-zlib
   version: 1.2.8
 source:
-  url: http://repo.msys2.org/msys/sources/zlib-1.2.8-3.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/zlib-1.2.8-3.src.tar.gz
+  md5: cbfb6bebedba86d1581b45719a7dad09
 build:
-  number: '3'
+  number: 4
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/zlib
-      url: http://repo.msys2.org/msys/i686/zlib-1.2.8-3-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/zlib-1.2.8-3-i686.pkg.tar.xz
       md5: c507ca9cdf460859a9d737d7a8ef1bc5
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/zlib
-      url: http://repo.msys2.org/msys/x86_64/zlib-1.2.8-3-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/zlib-1.2.8-3-x86_64.pkg.tar.xz
       md5: 5805b3b38f8047c886a52289a6dbf98c
       mv-srcs:
       - '*'

@@ -1,22 +1,35 @@
 package:
   name: readline
-  version: 6.2.5
+  version: 6.2
 
 source:
-  fn: readline-6.2.5.tar.gz
-  url: https://github.com/tpn/readline/archive/6.2.5.tar.gz
-
-about:
-  home: http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html
-  license: GPL 3
-
-build:
-  number: 1
+  fn: readline-6.2.tar.gz
+  url: http://ftp.gnu.org/gnu/readline/readline-6.2.tar.gz
+  md5: 67948acb2ca081f23359d0256e9a271c
+  patches:
+    - tpn.patch
+    - stop-completion-from-appending-space.patch
 
 requirements:
   build:
-    - ncurses >=5.9
+    - ncurses >=5.9 10
   run:
-    - ncurses >=5.9
+    - ncurses >=5.9 10
 
-# vim:set ts=8 sw=2 sts=2 tw=78 et:
+build:
+  number: 3
+
+about:
+  home: http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html
+  license: GPL3
+  license_family: GPL3
+  license_file: COPYING
+  summary: Line-editing for programs with a command-line interface
+  description: |
+    The GNU Readline library provides a set of functions for use by
+    applications that allow users to edit command lines as they are typed in.
+    Both Emacs and vi editing modes are available. The Readline library
+    includes additional functions to maintain a list of previously-entered
+    command lines, to recall and perhaps reedit those lines, and perform
+    csh-like history expansion on previous commands.
+  doc_url: http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html#Documentation

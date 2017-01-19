@@ -5,13 +5,13 @@ package:
   name: r-hms
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.2"
+  version: "0.3"
 
 source:
-  fn: hms_0.2.tar.gz
+  fn: hms_0.3.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/hms_0.2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/hms/hms_0.2.tar.gz
+    - http://cran.r-project.org/src/contrib/hms_0.3.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/hms/hms_0.3.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -62,8 +62,8 @@ about:
 
 # Package: hms
 # Title: Pretty Time of Day
-# Date: 2016-06-17
-# Version: 0.2
+# Date: 2016-11-22
+# Version: 0.3
 # Authors@R: c( person("Kirill", "Muller", role = c("aut", "cre"), email = "krlmlr+r@mailbox.org"), person("The R Consortium", role = "cph") )
 # Description: Implements an S3 class for storing and formatting time-of-day values, based on the 'difftime' class.
 # Imports: methods
@@ -73,13 +73,13 @@ about:
 # LazyData: true
 # URL: https://github.com/rstats-db/hms
 # BugReports: https://github.com/rstats-db/hms/issues
-# RoxygenNote: 5.0.1
+# RoxygenNote: 5.0.1.9000
 # NeedsCompilation: no
-# Packaged: 2016-06-17 15:01:34 UTC; muelleki
+# Packaged: 2016-11-22 14:45:31 UTC; muelleki
 # Author: Kirill Muller [aut, cre], The R Consortium [cph]
 # Maintainer: Kirill Muller <krlmlr+r@mailbox.org>
 # Repository: CRAN
-# Date/Publication: 2016-06-17 21:12:12
+# Date/Publication: 2016-11-22 17:08:01
 
 # See
 # http://docs.continuum.io/conda/build.html for

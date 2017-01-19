@@ -2,10 +2,10 @@ package:
   name: m2w64-gnutls
   version: 3.4.11
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-gnutls-3.4.11-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-gnutls-3.4.11-1.src.tar.gz
   md5: 0d6cc3f4491575ad3ccf0655017cb5a6
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -26,7 +26,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-gnutls
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-gnutls-3.4.11-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-gnutls-3.4.11-1-any.pkg.tar.xz
       md5: c47b5c2488982ea198333cc93d01012f
       mv-srcs:
       - mingw32
@@ -34,7 +34,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-gnutls
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-gnutls-3.4.11-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-gnutls-3.4.11-1-any.pkg.tar.xz
       md5: 39334e4b3553eb1186db8b717986316a
       mv-srcs:
       - mingw64

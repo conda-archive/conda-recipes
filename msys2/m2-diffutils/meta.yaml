@@ -2,10 +2,10 @@ package:
   name: m2-diffutils
   version: '3.3'
 source:
-  url: http://repo.msys2.org/msys/sources/diffutils-3.3-3.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/diffutils-3.3-3.src.tar.gz
+  md5: b550df54bd86d85fd6b5946427bcc424
 build:
-  number: '3'
+  number: 4
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/diffutils
-      url: http://repo.msys2.org/msys/i686/diffutils-3.3-3-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/diffutils-3.3-3-i686.pkg.tar.xz
       md5: 42c1a437a8b94f85e7b448bc8ef129ff
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/diffutils
-      url: http://repo.msys2.org/msys/x86_64/diffutils-3.3-3-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/diffutils-3.3-3-x86_64.pkg.tar.xz
       md5: 9c780eea84fad48e118bccc64f38e9c2
       mv-srcs:
       - '*'

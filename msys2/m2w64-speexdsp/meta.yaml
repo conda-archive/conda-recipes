@@ -2,10 +2,10 @@ package:
   name: m2w64-speexdsp
   version: 1.2rc3
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-speexdsp-1.2rc3-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-speexdsp-1.2rc3-2.src.tar.gz
+  md5: 4a647dfe33940b385d193af0f6d1b97e
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-speexdsp
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-speexdsp-1.2rc3-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-speexdsp-1.2rc3-2-any.pkg.tar.xz
       md5: f2e6ef95c370ec58e4d3ff685440bd66
       mv-srcs:
       - mingw32
@@ -26,7 +26,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-speexdsp
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-speexdsp-1.2rc3-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-speexdsp-1.2rc3-2-any.pkg.tar.xz
       md5: e1f7c35dc821e41cf28b5e419b9b675b
       mv-srcs:
       - mingw64

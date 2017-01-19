@@ -2,10 +2,10 @@ package:
   name: m2-automake1.6
   version: 1.6.3
 source:
-  url: http://repo.msys2.org/msys/sources/automake1.6-1.6.3-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/automake1.6-1.6.3-2.src.tar.gz
+  md5: 761d33f1f15f6d4bc4a971b3366ab8f9
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/automake1.6
-      url: http://repo.msys2.org/msys/i686/automake1.6-1.6.3-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/automake1.6-1.6.3-2-any.pkg.tar.xz
       md5: a322d6b1d6a933df6da6cad0e71af774
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/automake1.6
-      url: http://repo.msys2.org/msys/x86_64/automake1.6-1.6.3-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/automake1.6-1.6.3-2-any.pkg.tar.xz
       md5: 390a638138a08322aa13c3f8b2d614e0
       mv-srcs:
       - '*'

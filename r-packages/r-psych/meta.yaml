@@ -1,0 +1,98 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-psych
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.6.9"
+
+source:
+  fn: psych_1.6.9.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/psych_1.6.9.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/psych/psych_1.6.9.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: GPArotation, sem, lavaan, Rcsdp, graph, Rgraphviz
+requirements:
+  build:
+    - r-base
+    - r-foreign
+    - r-mnormt
+
+  run:
+    - r-base
+    - r-foreign
+    - r-mnormt
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('psych')" # [not win]
+    - "\"%R%\" -e \"library('psych')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://personality-project.org/r/psych http://personality-project.org/r/psych-manual.pdf
+  license: GPL (>= 2)
+  summary: A general purpose toolbox for personality, psychometric theory and experimental psychology.   Functions
+    are primarily for multivariate analysis and scale construction using factor analysis,
+    principal component analysis, cluster analysis and reliability analysis, although
+    others provide basic descriptive statistics. Item Response Theory is done using  factor
+    analysis of tetrachoric and polychoric correlations. Functions for analyzing data
+    at multiple levels include within and between group statistics, including correlations
+    and factor analysis.   Functions for simulating and testing particular item and
+    test structures are included. Several functions  serve as a useful front end for
+    structural equation modeling.  Graphical displays of path diagrams, factor analysis
+    and structural equation models are created using basic graphics. Some of the functions
+    are written to support a book on psychometric theory as well as publications in
+    personality research. For more information, see the personality-project.org/r web
+    page.
+  license_family: GPL3
+
+# The original CRAN metadata for this package was:
+
+# Package: psych
+# Version: 1.6.9
+# Date: 2016-09-07
+# Title: Procedures for Psychological, Psychometric, and Personality Research
+# Author: William Revelle <revelle@northwestern.edu>
+# Maintainer: William Revelle <revelle@northwestern.edu>
+# Description: A general purpose toolbox for personality, psychometric theory and experimental psychology.   Functions are primarily for multivariate analysis and scale construction using factor analysis, principal component analysis, cluster analysis and reliability analysis, although others provide basic descriptive statistics. Item Response Theory is done using  factor analysis of tetrachoric and polychoric correlations. Functions for analyzing data at multiple levels include within and between group statistics, including correlations and factor analysis.   Functions for simulating and testing particular item and test structures are included. Several functions  serve as a useful front end for structural equation modeling.  Graphical displays of path diagrams, factor analysis and structural equation models are created using basic graphics. Some of the functions are written to support a book on psychometric theory as well as publications in personality research. For more information, see the personality-project.org/r web page.
+# License: GPL (>= 2)
+# Imports: mnormt,parallel,stats,graphics,grDevices,methods,foreign
+# Suggests: GPArotation, sem, lavaan, Rcsdp, graph, Rgraphviz
+# LazyData: true
+# URL: http://personality-project.org/r/psych http://personality-project.org/r/psych-manual.pdf
+# NeedsCompilation: no
+# Packaged: 2016-09-17 15:22:35 UTC; WR
+# Depends: R (>= 2.10)
+# Repository: CRAN
+# Date/Publication: 2016-09-17 20:07:46
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -5,13 +5,13 @@ package:
   name: r-sparsem
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.7"
+  version: "1.74"
 
 source:
-  fn: SparseM_1.7.tar.gz
+  fn: SparseM_1.74.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/SparseM_1.7.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/SparseM/SparseM_1.7.tar.gz
+    - http://cran.r-project.org/src/contrib/SparseM_1.74.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/SparseM/SparseM_1.74.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -66,7 +66,7 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: SparseM
-# Version: 1.7
+# Version: 1.74
 # Author: Roger Koenker <rkoenker@uiuc.edu> and Pin Ng <Pin.Ng@NAU.EDU>
 # Maintainer: Roger Koenker <rkoenker@uiuc.edu>
 # Depends: R (>= 2.15), methods
@@ -77,8 +77,8 @@ about:
 # URL: http://www.econ.uiuc.edu/~roger/research/sparse/sparse.html
 # NeedsCompilation: yes
 # Repository: CRAN
-# Packaged: 2015-08-14 18:29:09 UTC; roger
-# Date/Publication: 2015-08-15 23:30:51
+# Packaged: 2016-11-10 13:39:40 UTC; roger
+# Date/Publication: 2016-11-10 17:09:29
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -2,10 +2,10 @@ package:
   name: m2w64-wineditline
   version: '2.101'
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-wineditline-2.101-4.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-wineditline-2.101-4.src.tar.gz
+  md5: fec7b725c53f8ec70f62b63c3c7a5012
 build:
-  number: '4'
+  number: 5
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -17,7 +17,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-wineditline
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-wineditline-2.101-4-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-wineditline-2.101-4-any.pkg.tar.xz
       md5: 76851d61f1c6ef55d44c7054755bec56
       mv-srcs:
       - mingw32
@@ -25,7 +25,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-wineditline
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-wineditline-2.101-4-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-wineditline-2.101-4-any.pkg.tar.xz
       md5: 7c7cbf51bc21b60815d4be21dfe04f6f
       mv-srcs:
       - mingw64

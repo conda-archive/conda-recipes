@@ -1,0 +1,104 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-tidytext
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.1.2"
+
+source:
+  fn: tidytext_0.1.2.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/tidytext_0.1.2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/tidytext/tidytext_0.1.2.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: readr, tidyr, XML, tm, wordcloud, knitr, rmarkdown, ggplot2, reshape2, topicmodels, quanteda, NLP, scales, gutenbergr, testthat
+requirements:
+  build:
+    - r-base
+    - r-matrix
+    - r-broom
+    - r-dplyr
+    - r-hunspell
+    - r-janeaustenr
+    - r-purrr >=0.1.1
+    - r-stringr
+    - r-tokenizers
+
+  run:
+    - r-base
+    - r-matrix
+    - r-broom
+    - r-dplyr
+    - r-hunspell
+    - r-janeaustenr
+    - r-purrr >=0.1.1
+    - r-stringr
+    - r-tokenizers
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('tidytext')" # [not win]
+    - "\"%R%\" -e \"library('tidytext')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://github.com/juliasilge/tidytext
+  license: MIT + file LICENSE
+  summary: Text mining for word processing and sentiment analysis using 'dplyr', 'ggplot2', and
+    other tidy tools.
+  license_family: MIT
+
+# The original CRAN metadata for this package was:
+
+# Package: tidytext
+# Type: Package
+# Title: Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools
+# Version: 0.1.2
+# Date: 2016-10-27
+# Authors@R: c(person("Gabriela", "De Queiroz", email = "gabidequeiroz@gmail.com", role = c("ctb")), person("David", "Robinson", email = "admiral.david@gmail.com", role = c("aut")), person("Julia", "Silge", email = "julia.silge@gmail.com", role = c("aut", "cre")))
+# Description: Text mining for word processing and sentiment analysis using 'dplyr', 'ggplot2', and other tidy tools.
+# License: MIT + file LICENSE
+# LazyData: TRUE
+# URL: http://github.com/juliasilge/tidytext
+# BugReports: http://github.com/juliasilge/tidytext/issues
+# RoxygenNote: 5.0.1
+# Depends: R (>= 2.10)
+# Imports: dplyr, stringr, hunspell, broom, Matrix, tokenizers, janeaustenr, purrr (>= 0.1.1), methods
+# Suggests: readr, tidyr, XML, tm, wordcloud, knitr, rmarkdown, ggplot2, reshape2, topicmodels, quanteda, NLP, scales, gutenbergr, testthat
+# VignetteBuilder: knitr
+# NeedsCompilation: no
+# Packaged: 2016-10-27 16:51:25 UTC; juliasilge
+# Author: Gabriela De Queiroz [ctb], David Robinson [aut], Julia Silge [aut, cre]
+# Maintainer: Julia Silge <julia.silge@gmail.com>
+# Repository: CRAN
+# Date/Publication: 2016-10-28 01:17:37
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

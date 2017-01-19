@@ -1,0 +1,86 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-plogr
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.1_1"
+
+source:
+  fn: plogr_0.1-1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/plogr_0.1-1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/plogr/plogr_0.1-1.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: Rcpp
+requirements:
+  build:
+    - r-base
+
+  run:
+    - r-base
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('plogr')" # [not win]
+    - "\"%R%\" -e \"library('plogr')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/krlmlr/plogr#readme
+  license: MIT + file LICENSE
+  summary: ' A simple header-only logging library for C++. Add ''LinkingTo: plogr'' to ''DESCRIPTION'',
+    and ''#include <plogr.h>'' in your C++ modules to use it.'
+
+  license_family: MIT
+
+# The original CRAN metadata for this package was:
+
+# Package: plogr
+# Title: The 'plog' C++ Logging Library
+# Version: 0.1-1
+# Date: 2016-09-24
+# Authors@R: c( person("Kirill", "Muller", role = c("aut", "cre"), email = "krlmlr+r@mailbox.org"), person("Sergey", "Podobry", role = "cph", comment = "Author of the bundled plog library"))
+# Description:  A simple header-only logging library for C++. Add 'LinkingTo: plogr' to 'DESCRIPTION', and '#include <plogr.h>' in your C++ modules to use it.
+# Suggests: Rcpp
+# License: MIT + file LICENSE
+# Encoding: UTF-8
+# LazyData: true
+# URL: https://github.com/krlmlr/plogr#readme
+# BugReports: https://github.com/krlmlr/plogr/issues
+# RoxygenNote: 5.0.1.9000
+# NeedsCompilation: no
+# Packaged: 2016-09-24 12:08:49 UTC; muelleki
+# Author: Kirill Muller [aut, cre], Sergey Podobry [cph] (Author of the bundled plog library)
+# Maintainer: Kirill Muller <krlmlr+r@mailbox.org>
+# Repository: CRAN
+# Date/Publication: 2016-09-24 18:23:26
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
