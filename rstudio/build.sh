@@ -71,9 +71,9 @@ else
 fi
 
 if [[ $(uname) == Darwin ]]; then
-  cp -rf ${RECIPE_DIR}/app/RStudio.app ${PREFIX}/rstudioapp
-  cp ${RECIPE_DIR}/osx-post.sh ${PREFIX}/bin/.rstudio-post-link.sh
-  cp ${RECIPE_DIR}/osx-pre.sh ${PREFIX}/bin/.rstudio-pre-unlink.sh
+  cp -rf "${RECIPE_DIR}"/app/RStudio.app ${PREFIX}/rstudioapp
+  cp "${RECIPE_DIR}"/osx-post.sh ${PREFIX}/bin/.rstudio-post-link.sh
+  cp "${RECIPE_DIR}"/osx-pre.sh ${PREFIX}/bin/.rstudio-pre-unlink.sh
 elif [[ $(uname) == Linux ]]; then
   echo "It would be nice to add a .desktop file here, but it would"
   echo "be even nicer if menuinst handled both that and App bundles."
