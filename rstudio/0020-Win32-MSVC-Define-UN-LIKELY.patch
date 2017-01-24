@@ -1,4 +1,4 @@
-From e9bf8a9251a542e5b4936482aa170e05be1bb8d2 Mon Sep 17 00:00:00 2001
+From 258ea70b026fd46a3912925b8242bad689f1d955 Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Sat, 29 Oct 2016 17:16:07 +0100
 Subject: [PATCH 20/42] Win32 (MSVC): Define {UN,}LIKELY
@@ -22,5 +22,5 @@ index 5446b32..87b9490 100644
  # define LIKELY(x)   __builtin_expect(!!(x), 1)
  # define UNLIKELY(x) __builtin_expect(!!(x), 0)
 -- 
-2.10.1
+2.10.2
 

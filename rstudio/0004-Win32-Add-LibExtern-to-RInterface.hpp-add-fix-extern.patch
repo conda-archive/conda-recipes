@@ -1,4 +1,4 @@
-From 067a5da8914095a561fcc211557c5f6cc568e498 Mon Sep 17 00:00:00 2001
+From 6d793a67f21b1a393288d983bd80ac3621538ef2 Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Tue, 9 Aug 2016 11:45:58 +0100
 Subject: [PATCH 04/42] Win32: Add LibExtern to RInterface.hpp, add + fix
@@ -12,7 +12,7 @@ Subject: [PATCH 04/42] Win32: Add LibExtern to RInterface.hpp, add + fix
  4 files changed, 30 insertions(+), 22 deletions(-)
 
 diff --git a/src/cpp/r/RExec.cpp b/src/cpp/r/RExec.cpp
-index fcefae8..4845dd6 100644
+index ff8f584..ea878cf 100644
 --- a/src/cpp/r/RExec.cpp
 +++ b/src/cpp/r/RExec.cpp
 @@ -28,11 +28,13 @@
@@ -75,10 +75,10 @@ index e6d87ca..1fc7bd6 100644
  typedef struct SEXPREC *SEXP;
  
 diff --git a/src/cpp/r/session/REmbeddedWin32.cpp b/src/cpp/r/session/REmbeddedWin32.cpp
-index 2cf7984..0bee0ea 100644
+index bb66be4..432ba5d 100644
 --- a/src/cpp/r/session/REmbeddedWin32.cpp
 +++ b/src/cpp/r/session/REmbeddedWin32.cpp
-@@ -40,10 +40,13 @@
+@@ -41,10 +41,13 @@
  
  #include <Rembedded.h>
  #include <graphapp.h>
@@ -109,5 +109,5 @@ index 4bc2565..d61451c 100644
  #define CTXT_BROWSER 16
  
 -- 
-2.10.1
+2.10.2
 

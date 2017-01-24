@@ -1,4 +1,4 @@
-From eab5e82fd7f80092f269c9fa27eba982b0a0832e Mon Sep 17 00:00:00 2001
+From 8aaea7e993f2b57a3c6b3dcbd7cb40d2f4e29bb7 Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Sat, 29 Oct 2016 17:16:43 +0100
 Subject: [PATCH 21/42] Win32 (MSVC): Define STD{IN,OUT,ERR}_FILENO
@@ -22,5 +22,5 @@ index 4866b30..8f62c45 100644
  
  
 -- 
-2.10.1
+2.10.2
 

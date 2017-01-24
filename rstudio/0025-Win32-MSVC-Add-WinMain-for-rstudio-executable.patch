@@ -1,4 +1,4 @@
-From 5a50dfad800d991225ae1a637a29232bf887a790 Mon Sep 17 00:00:00 2001
+From 33cd6f7859c2612f650cfe51f40d1b96aabdedbf Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Sat, 29 Oct 2016 17:43:00 +0100
 Subject: [PATCH 25/42] Win32 (MSVC): Add WinMain() for rstudio executable
@@ -8,16 +8,16 @@ Visual Studio builds need main()
 
 .. and I am not sure why.
 ---
- src/cpp/desktop/DesktopMain.cpp | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ src/cpp/desktop/DesktopMain.cpp | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
 diff --git a/src/cpp/desktop/DesktopMain.cpp b/src/cpp/desktop/DesktopMain.cpp
-index e0e35fd..46b6df3 100644
+index bff22d1..1008e3a 100644
 --- a/src/cpp/desktop/DesktopMain.cpp
 +++ b/src/cpp/desktop/DesktopMain.cpp
-@@ -42,6 +42,10 @@
- #include "DesktopSessionLauncher.hpp"
+@@ -43,6 +43,10 @@
  #include "DesktopProgressActivator.hpp"
+ #include "DesktopNetworkProxyFactory.hpp"
  
 +#if defined(_MSC_VER)
 +#include <TCHAR.h>
@@ -26,15 +26,7 @@ index e0e35fd..46b6df3 100644
  QProcess* pRSessionProcess;
  QString sharedSecret;
  
-@@ -195,6 +199,7 @@ bool isNonProjectFilename(QString filename)
- 
- } // anonymous namespace
- 
-+
- int main(int argc, char* argv[])
- {
-    core::system::initHook();
-@@ -382,3 +387,15 @@ int main(int argc, char* argv[])
+@@ -386,3 +390,14 @@ int main(int argc, char* argv[])
     }
     CATCH_UNEXPECTED_EXCEPTION
  }
@@ -49,7 +41,6 @@ index e0e35fd..46b6df3 100644
 +	main(argc, argv);
 +}
 +#endif
-+
 -- 
-2.10.1
+2.10.2
 

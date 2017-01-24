@@ -1,4 +1,4 @@
-From ab3d9f056db2a76cd15e53ea31f36e2f859fee78 Mon Sep 17 00:00:00 2001
+From 77a8acf27ddc2a72df109a1fec1fd12ee520da9e Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Mon, 31 Oct 2016 11:56:29 +0000
 Subject: [PATCH 28/42] Conda: Define CONDA_BUILD when ENV{CONDA_BUILD} for
@@ -14,10 +14,10 @@ A subsequent commit will check this and put all resources under a
  4 files changed, 14 insertions(+)
 
 diff --git a/src/cpp/core/CMakeLists.txt b/src/cpp/core/CMakeLists.txt
-index d7678d4..061892d 100644
+index e17ac7b..21e659b 100644
 --- a/src/cpp/core/CMakeLists.txt
 +++ b/src/cpp/core/CMakeLists.txt
-@@ -313,6 +313,10 @@ target_link_libraries(
+@@ -314,6 +314,10 @@ target_link_libraries(
     ${CORE_SYSTEM_LIBRARIES}
  )
  
@@ -57,7 +57,7 @@ index a1f51ed..74e75ab 100644
     install(TARGETS rstudio DESTINATION ${RSTUDIO_INSTALL_BIN})
  
 diff --git a/src/cpp/session/CMakeLists.txt b/src/cpp/session/CMakeLists.txt
-index 7f21a6b..ea7a6ab 100644
+index 819d50d..ef37a6b 100644
 --- a/src/cpp/session/CMakeLists.txt
 +++ b/src/cpp/session/CMakeLists.txt
 @@ -336,6 +336,10 @@ if(RSTUDIO_DEVELOPMENT OR RSTUDIO_RUN_IN_PLACE)
@@ -72,5 +72,5 @@ index 7f21a6b..ea7a6ab 100644
  if(RSTUDIO_PACKAGE_BUILD_SLES)
     set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
 -- 
-2.10.1
+2.10.2
 

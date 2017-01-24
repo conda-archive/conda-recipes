@@ -1,4 +1,4 @@
-From 178d1fbfdf24dac58cd25f8405231b52e17271c4 Mon Sep 17 00:00:00 2001
+From ec68f73b5229c629a0ae1486d43bb6d311bb75c9 Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Wed, 19 Oct 2016 14:59:07 +0100
 Subject: [PATCH 08/42] Look for `bin/R` in `$CONDA_PREFIX`
@@ -97,5 +97,5 @@ index fb108a3..5d7f071 100644
        return RVersion();
  
 -- 
-2.9.3
+2.10.2
 

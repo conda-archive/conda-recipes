@@ -1,4 +1,4 @@
-From 849fd485b9338f1f4964b8bb1a1650795df489f7 Mon Sep 17 00:00:00 2001
+From 82fff54a7173ccd858537269b644509d4f60c96d Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Tue, 9 Aug 2016 11:49:59 +0100
 Subject: [PATCH 05/42] Debugging
@@ -8,7 +8,7 @@ Subject: [PATCH 05/42] Debugging
  1 file changed, 4 insertions(+)
 
 diff --git a/src/cpp/desktop/DesktopSessionLauncher.cpp b/src/cpp/desktop/DesktopSessionLauncher.cpp
-index 2761e55..d83ac65 100644
+index 40bb085..347a5b6 100644
 --- a/src/cpp/desktop/DesktopSessionLauncher.cpp
 +++ b/src/cpp/desktop/DesktopSessionLauncher.cpp
 @@ -99,6 +99,7 @@ Error SessionLauncher::launchFirstSession(const QString& filename,
@@ -19,7 +19,7 @@ index 2761e55..d83ac65 100644
  
     // launch the process
     Error error = launchSession(argList, &pRSessionProcess_);
-@@ -298,6 +299,9 @@ Error SessionLauncher::launchSession(const QStringList& argList,
+@@ -290,6 +291,9 @@ Error SessionLauncher::launchSession(const QStringList& argList,
     if (error)
        LOG_ERROR(error);
  
@@ -30,5 +30,5 @@ index 2761e55..d83ac65 100644
           boost::bind(launchProcess,
                       sessionPath_.absolutePath(),
 -- 
-2.10.1
+2.10.2
 

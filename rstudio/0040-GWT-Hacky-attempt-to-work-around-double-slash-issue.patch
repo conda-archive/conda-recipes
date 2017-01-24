@@ -1,4 +1,4 @@
-From 1a8b91cf64bc4531e848a968efdfd53c9031e362 Mon Sep 17 00:00:00 2001
+From 85186f97cbd4a569ca9557d94226c2cee4f70355 Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Tue, 8 Nov 2016 12:40:15 +0000
 Subject: [PATCH 40/42] GWT: Hacky attempt to work around double-slash issue
@@ -70,10 +70,10 @@ index a96f4d5..a88e370 100644
     }
     
 diff --git a/src/gwt/src/org/rstudio/studio/client/application/Application.java b/src/gwt/src/org/rstudio/studio/client/application/Application.java
-index e102540..0ce67e5 100644
+index fad892b..a66b218 100644
 --- a/src/gwt/src/org/rstudio/studio/client/application/Application.java
 +++ b/src/gwt/src/org/rstudio/studio/client/application/Application.java
-@@ -524,7 +524,7 @@ public class Application implements ApplicationEventHandlers
+@@ -545,7 +545,7 @@ public class Application implements ApplicationEventHandlers
           public void run()
           { 
              if (baseUrlOnly)
@@ -82,7 +82,7 @@ index e102540..0ce67e5 100644
              else
                 Window.Location.reload();
           }
-@@ -565,7 +565,7 @@ public class Application implements ApplicationEventHandlers
+@@ -586,7 +586,7 @@ public class Application implements ApplicationEventHandlers
     {
        // calculate the url without the scope
        InvalidSessionInfo info = event.getInfo();
@@ -91,7 +91,7 @@ index e102540..0ce67e5 100644
        String scopePath = info.getScopePath();
        int loc = baseURL.indexOf(scopePath);
        if (loc != -1)
-@@ -623,7 +623,7 @@ public class Application implements ApplicationEventHandlers
+@@ -644,7 +644,7 @@ public class Application implements ApplicationEventHandlers
                       server_.quitSession(false,
                                           null,
                                           null,
@@ -100,8 +100,8 @@ index e102540..0ce67e5 100644
                                           new SimpleRequestCallback<Boolean>());
                    }
                    else
-@@ -665,8 +665,8 @@ public class Application implements ApplicationEventHandlers
-     
+@@ -692,8 +692,8 @@ public class Application implements ApplicationEventHandlers
+    {
        // ensure there is no session context if requested
        String url = includeContext ? 
 -            GWT.getHostPageBaseURL() :
@@ -112,10 +112,10 @@ index e102540..0ce67e5 100644
        // add relative URL
        url += relativeUrl;
 diff --git a/src/gwt/src/org/rstudio/studio/client/application/ApplicationQuit.java b/src/gwt/src/org/rstudio/studio/client/application/ApplicationQuit.java
-index 090144b..71f1f11 100644
+index 6464db5..27aca53 100644
 --- a/src/gwt/src/org/rstudio/studio/client/application/ApplicationQuit.java
 +++ b/src/gwt/src/org/rstudio/studio/client/application/ApplicationQuit.java
-@@ -699,7 +699,7 @@ public class ApplicationQuit implements SaveActionChangedHandler,
+@@ -716,7 +716,7 @@ public class ApplicationQuit implements SaveActionChangedHandler,
                    saveChanges_,
                    switchToProject,
                    switchToRVersion_,
@@ -227,10 +227,10 @@ index 9959759..9a9799b 100644
                      project.getParentPathString(), 
                      rVersion,
 diff --git a/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java b/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java
-index e65470d..cd1bac8 100644
+index 4611d49..036cb3a 100644
 --- a/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java
 +++ b/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java
-@@ -394,8 +394,8 @@ public class RemoteServer implements Server
+@@ -393,8 +393,8 @@ public class RemoteServer implements Server
        ensureListeningForEvents();
        
        // return the url
@@ -268,5 +268,5 @@ index 67eced1..0a96fa3 100644
     }
     
 -- 
-2.10.1
+2.10.2
 

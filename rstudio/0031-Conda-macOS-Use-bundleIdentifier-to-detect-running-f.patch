@@ -1,4 +1,4 @@
-From fd201223cb5273cec7dd1d96057a1908db68abef Mon Sep 17 00:00:00 2001
+From 79931ba9465c140bd57ea11107206661b05b76e0 Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Mon, 31 Oct 2016 12:18:41 +0000
 Subject: [PATCH 31/42] Conda (macOS): Use bundleIdentifier to detect running
@@ -35,5 +35,5 @@ index bef97ea..8784fe2 100644
           sessionPath = installPath.complete("MacOS/rsession");
           scriptsPath = installPath.complete("MacOS");
 -- 
-2.10.1
+2.10.2
 

@@ -1,4 +1,4 @@
-From 345eacb3a06ea5e3276076c7653813a8990707a3 Mon Sep 17 00:00:00 2001
+From baa9f48d0992005c24f43468ac781908cec12463 Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Fri, 4 Nov 2016 23:44:53 +0000
 Subject: [PATCH 38/42] more debugging
@@ -128,5 +128,5 @@ index 0a772b9..961e861 100644
        }
     }
 -- 
-2.10.1
+2.10.2
 

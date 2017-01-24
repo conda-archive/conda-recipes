@@ -1,4 +1,4 @@
-From ff58d6ff2f46f67e7d883d8427b2e8bbd141eae0 Mon Sep 17 00:00:00 2001
+From 9013e1038c87b4acbc33a9972bcbbc19f9868dd1 Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Tue, 8 Nov 2016 14:05:19 +0000
 Subject: [PATCH 41/42] Remove debug output and forced 28080 port number
@@ -83,7 +83,7 @@ index 3e1c7b5..a4ed145 100644
        // recalculate the local peer and set RS_LOCAL_PEER so that
        // rsession and it's children can use it
 diff --git a/src/cpp/desktop/DesktopSessionLauncher.cpp b/src/cpp/desktop/DesktopSessionLauncher.cpp
-index 795a9d5..3129a67 100644
+index 852598e..27a2de9 100644
 --- a/src/cpp/desktop/DesktopSessionLauncher.cpp
 +++ b/src/cpp/desktop/DesktopSessionLauncher.cpp
 @@ -100,7 +100,6 @@ Error SessionLauncher::launchFirstSession(const QString& filename,
@@ -94,7 +94,7 @@ index 795a9d5..3129a67 100644
  
     // launch the process
     Error error = launchSession(argList, &pRSessionProcess_);
-@@ -300,9 +299,6 @@ Error SessionLauncher::launchSession(const QStringList& argList,
+@@ -292,9 +291,6 @@ Error SessionLauncher::launchSession(const QStringList& argList,
     if (error)
        LOG_ERROR(error);
  
@@ -104,7 +104,7 @@ index 795a9d5..3129a67 100644
     return  parent_process_monitor::wrapFork(
           boost::bind(launchProcess,
                       sessionPath_.absolutePath(),
-@@ -384,8 +380,6 @@ void SessionLauncher::buildLaunchContext(QString* pHost,
+@@ -376,8 +372,6 @@ void SessionLauncher::buildLaunchContext(QString* pHost,
     *pUrl = QUrl(QString::fromUtf8("http://") + *pHost +
                  QString::fromUtf8(":") + *pPort + QString::fromUtf8("/"));
  
@@ -240,10 +240,10 @@ index 5e1db4e..6ff19ca 100644
  
           requestLogEntry_ = RequestLog.log(requestId,
 diff --git a/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java b/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java
-index cd1bac8..a0674c9 100644
+index 036cb3a..55302b0 100644
 --- a/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java
 +++ b/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java
-@@ -394,7 +394,6 @@ public class RemoteServer implements Server
+@@ -393,7 +393,6 @@ public class RemoteServer implements Server
        ensureListeningForEvents();
        
        // return the url
@@ -252,5 +252,5 @@ index cd1bac8..a0674c9 100644
     }
     
 -- 
-2.10.1
+2.10.2
 

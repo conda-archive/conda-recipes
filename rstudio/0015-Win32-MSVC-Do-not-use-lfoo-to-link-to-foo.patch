@@ -1,4 +1,4 @@
-From 6863906aa2f2b15527838c9977477f17106a85f6 Mon Sep 17 00:00:00 2001
+From 89ad2f62cd6cebe64c8ecde48f650b67ee0253fa Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Fri, 28 Oct 2016 14:46:13 +0100
 Subject: [PATCH 15/42] Win32 (MSVC): Do not use -lfoo to link to foo
@@ -46,7 +46,7 @@ index 8edd57c..e9ce3bf 100644
  
  if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/CMakeOverlay.txt")
 diff --git a/src/cpp/core/CMakeLists.txt b/src/cpp/core/CMakeLists.txt
-index 1e45a42..d7678d4 100644
+index 57d056c..e17ac7b 100644
 --- a/src/cpp/core/CMakeLists.txt
 +++ b/src/cpp/core/CMakeLists.txt
 @@ -183,7 +183,7 @@ if (UNIX)
@@ -58,7 +58,7 @@ index 1e45a42..d7678d4 100644
     
           set(CORE_INCLUDE_DIRS
              ${CORE_INCLUDE_DIRS}
-@@ -259,7 +259,7 @@ else()
+@@ -260,7 +260,7 @@ else()
     add_subdirectory(zlib)
  
     # system libraries
@@ -205,7 +205,7 @@ index c6b71d8..2c6756e 100644
  
  add_executable(diagnostics
 diff --git a/src/cpp/session/CMakeLists.txt b/src/cpp/session/CMakeLists.txt
-index daf463c..a48dc3f 100644
+index 011e4b3..b29af3e 100644
 --- a/src/cpp/session/CMakeLists.txt
 +++ b/src/cpp/session/CMakeLists.txt
 @@ -306,19 +306,21 @@ if(WIN32)
@@ -292,5 +292,5 @@ index 67aa6c6..0f51e89 100644
  add_executable(consoleio
    ${CONSOLEIO_SOURCE_FILES}
 -- 
-2.10.1
+2.10.2
 

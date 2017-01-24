@@ -1,4 +1,4 @@
-From e54f168dc44c5d1783761c7fbe9021a7fb375539 Mon Sep 17 00:00:00 2001
+From 7170f5b509bd1a93f8cff85d5e11cda905deb69a Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Sat, 29 Oct 2016 16:30:47 +0100
 Subject: [PATCH 17/42] Win32 (MSVC): Add CMakeLists.txt support
@@ -8,10 +8,10 @@ Subject: [PATCH 17/42] Win32 (MSVC): Add CMakeLists.txt support
  1 file changed, 51 insertions(+), 2 deletions(-)
 
 diff --git a/src/cpp/CMakeLists.txt b/src/cpp/CMakeLists.txt
-index 1141967..f2a1b36 100644
+index c481fe3..653184f 100644
 --- a/src/cpp/CMakeLists.txt
 +++ b/src/cpp/CMakeLists.txt
-@@ -99,11 +99,60 @@ else()
+@@ -106,11 +106,60 @@ else()
        set(NEEDS_LARGE_ADDRESS "")
        add_definitions(-D_WIN64)
     else()
@@ -75,5 +75,5 @@ index 1141967..f2a1b36 100644
  
  # Boost.Signals is no longer being maintained and is now deprecated. Please switch to Boost.Signals2
 -- 
-2.10.1
+2.10.2
 

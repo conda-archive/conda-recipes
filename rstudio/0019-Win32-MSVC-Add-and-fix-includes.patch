@@ -1,4 +1,4 @@
-From d7584cfd62b6ba29b10491d50c2ec09f375c7e4f Mon Sep 17 00:00:00 2001
+From d3458da9e93add270cfeb10039638173fbd54a52 Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Sat, 29 Oct 2016 16:48:46 +0100
 Subject: [PATCH 19/42] Win32 (MSVC): Add and fix includes
@@ -141,5 +141,5 @@ index f978da5..841da72 100644
  
  #include <R_ext/Boolean.h>
 -- 
-2.10.1
+2.10.2
 

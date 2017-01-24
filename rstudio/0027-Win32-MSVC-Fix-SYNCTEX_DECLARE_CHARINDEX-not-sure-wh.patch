@@ -1,4 +1,4 @@
-From 0a8f546b1dd53645a03f652283f6a6f7c2ae8a24 Mon Sep 17 00:00:00 2001
+From 01ccb17b6e4c4b55136b53d30ad6eb620a13839f Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Sat, 29 Oct 2016 17:45:06 +0100
 Subject: [PATCH 27/42] Win32 (MSVC): Fix SYNCTEX_DECLARE_CHARINDEX (not sure
@@ -105,5 +105,5 @@ index a7e6eaa..f09f0df 100644
                          best_ref = start_ref;
                          best_weight = SYNCTEX_NODE_WEIGHT(parent);
 -- 
-2.10.1
+2.10.2
 

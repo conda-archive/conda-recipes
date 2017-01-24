@@ -1,4 +1,4 @@
-From 0df6b38bcd03098016f049c01cc7902f57c89346 Mon Sep 17 00:00:00 2001
+From f24c8164dfd86b583dbb72eff3175828f3e3c259 Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Sat, 29 Oct 2016 17:23:05 +0100
 Subject: [PATCH 22/42] Win32 (MSVC): Workaround poor handling of const
@@ -49,5 +49,5 @@ index 58d244e..10df788 100644
     {
        LOG_ERROR(systemError(::GetLastError(), ERROR_LOCATION));
 -- 
-2.10.1
+2.10.2
 

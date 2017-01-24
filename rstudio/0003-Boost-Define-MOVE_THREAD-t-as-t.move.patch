@@ -1,4 +1,4 @@
-From 945e8c49df78632a0b8f312fec3bf4049155709b Mon Sep 17 00:00:00 2001
+From 11001eea3b709ea7298380fe162c1ba9aea8ef7b Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Sat, 29 Oct 2016 17:03:57 +0100
 Subject: [PATCH 03/42] Boost: Define MOVE_THREAD(t) as t.move()
@@ -27,5 +27,5 @@ index 775f431..5446b32 100644
  
  /* Utility Macros */
 -- 
-2.10.1
+2.10.2
 
