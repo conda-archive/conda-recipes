@@ -1,4 +1,4 @@
-From 410eeda01b9d8f1b86b0545ac6f5a8802ebea02b Mon Sep 17 00:00:00 2001
+From 578431384783b0dd39f896e1ba29f5596e4ddc01 Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Sat, 29 Oct 2016 17:39:52 +0100
 Subject: [PATCH 23/42] Conda: Fix macOS and Windows layout, do not bundle deps
@@ -14,7 +14,7 @@ Subject: [PATCH 23/42] Conda: Fix macOS and Windows layout, do not bundle deps
  7 files changed, 92 insertions(+), 62 deletions(-)
 
 diff --git a/CMakeGlobals.txt b/CMakeGlobals.txt
-index 7729a8c..1d0b8b8 100644
+index 980d735..8cf4e00 100644
 --- a/CMakeGlobals.txt
 +++ b/CMakeGlobals.txt
 @@ -114,7 +114,7 @@ if(WIN32)
@@ -242,10 +242,10 @@ index ee57271..a1f51ed 100644
  # bundle qt dependencies if this is a package build
  if(RSTUDIO_BUNDLE_QT)
 diff --git a/src/cpp/desktop/DesktopMain.cpp b/src/cpp/desktop/DesktopMain.cpp
-index 69dab92..e0e35fd 100644
+index a33e3ec..bff22d1 100644
 --- a/src/cpp/desktop/DesktopMain.cpp
 +++ b/src/cpp/desktop/DesktopMain.cpp
-@@ -309,7 +309,7 @@ int main(int argc, char* argv[])
+@@ -310,7 +310,7 @@ int main(int argc, char* argv[])
           confPath = currentPath.complete("conf/rdesktop-dev.conf");
           sessionPath = currentPath.complete("session/rsession");
           scriptsPath = currentPath.complete("desktop");
@@ -254,7 +254,7 @@ index 69dab92..e0e35fd 100644
           if (version.architecture() == ArchX64)
              sessionPath = installPath.complete("session/x64/rsession");
  #endif
-@@ -324,7 +324,7 @@ int main(int argc, char* argv[])
+@@ -325,7 +325,7 @@ int main(int argc, char* argv[])
           scriptsPath = installPath.complete("bin");
  
           // check for win64 binary on windows
@@ -264,10 +264,10 @@ index 69dab92..e0e35fd 100644
              sessionPath = installPath.complete("bin/x64/rsession");
  #endif
 diff --git a/src/cpp/session/CMakeLists.txt b/src/cpp/session/CMakeLists.txt
-index 648e61f..7f21a6b 100644
+index c2cd8ba..819d50d 100644
 --- a/src/cpp/session/CMakeLists.txt
 +++ b/src/cpp/session/CMakeLists.txt
-@@ -484,8 +484,9 @@ if (NOT RSTUDIO_SESSION_WIN64)
+@@ -480,8 +480,9 @@ if (NOT RSTUDIO_SESSION_WIN64)
        endif()
     endif()
  
@@ -279,7 +279,7 @@ index 648e61f..7f21a6b 100644
        install(DIRECTORY "${RSTUDIO_WINDOWS_DEPENDENCIES_DIR}/gnudiff"
                USE_SOURCE_PERMISSIONS
                DESTINATION  ${RSTUDIO_INSTALL_BIN})
-@@ -495,8 +496,10 @@ if (NOT RSTUDIO_SESSION_WIN64)
+@@ -491,8 +492,10 @@ if (NOT RSTUDIO_SESSION_WIN64)
        install(DIRECTORY "${RSTUDIO_WINDOWS_DEPENDENCIES_DIR}/msys-ssh-1000-18"
                USE_SOURCE_PERMISSIONS
                DESTINATION  ${RSTUDIO_INSTALL_BIN})
@@ -291,5 +291,5 @@ index 648e61f..7f21a6b 100644
                DESTINATION  "${RSTUDIO_INSTALL_BIN}/sumatra")
        install(FILES resources/sumatrapdfrestrict.ini
 -- 
-2.10.1
+2.10.2
 

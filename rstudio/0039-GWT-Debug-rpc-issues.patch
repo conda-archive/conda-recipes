@@ -1,4 +1,4 @@
-From 829b552430da552a2b33c4ff6add06668f4928e8 Mon Sep 17 00:00:00 2001
+From 1baf6bfd1af66fbcacee54da71317b05f72d91d5 Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Mon, 7 Nov 2016 16:41:01 +0000
 Subject: [PATCH 39/42] GWT: Debug rpc issues
@@ -29,10 +29,10 @@ index 45615c0..345fb48 100644
     QWebFrame* mainFrame = pView_->page()->mainFrame();
     connect(mainFrame, SIGNAL(javaScriptWindowObjectCleared()),
 diff --git a/src/cpp/desktop/DesktopSessionLauncher.cpp b/src/cpp/desktop/DesktopSessionLauncher.cpp
-index 0154aa1..795a9d5 100644
+index b5f5a09..852598e 100644
 --- a/src/cpp/desktop/DesktopSessionLauncher.cpp
 +++ b/src/cpp/desktop/DesktopSessionLauncher.cpp
-@@ -384,6 +384,8 @@ void SessionLauncher::buildLaunchContext(QString* pHost,
+@@ -376,6 +376,8 @@ void SessionLauncher::buildLaunchContext(QString* pHost,
     *pUrl = QUrl(QString::fromUtf8("http://") + *pHost +
                  QString::fromUtf8(":") + *pPort + QString::fromUtf8("/"));
  
@@ -111,10 +111,10 @@ index 6ff19ca..5e1db4e 100644
  
           requestLogEntry_ = RequestLog.log(requestId,
 diff --git a/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java b/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java
-index f97f82b..e65470d 100644
+index 6ec3fb9..4611d49 100644
 --- a/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java
 +++ b/src/gwt/src/org/rstudio/studio/client/server/remote/RemoteServer.java
-@@ -394,6 +394,7 @@ public class RemoteServer implements Server
+@@ -393,6 +393,7 @@ public class RemoteServer implements Server
        ensureListeningForEvents();
        
        // return the url
@@ -123,5 +123,5 @@ index f97f82b..e65470d 100644
     }
     
 -- 
-2.10.1
+2.10.2
 

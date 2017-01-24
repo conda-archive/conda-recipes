@@ -1,4 +1,4 @@
-From 238506db4377ddb3acd0a4be7f428dccc30ec497 Mon Sep 17 00:00:00 2001
+From bb2d241d720ba7b6a2e7900bf6f44d8288b22326 Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Fri, 4 Nov 2016 11:13:02 +0000
 Subject: [PATCH 36/42] Win32 (MSVC): Cannot use variadic token pasting GNU ext
@@ -38,5 +38,5 @@ index 9f86cc7..7633989 100644
  #  define expect_true(x) CHECK((x))
  #  define expect_false(x) CHECK_FALSE((x))
 -- 
-2.10.1
+2.10.2
 

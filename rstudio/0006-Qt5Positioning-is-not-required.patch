@@ -1,4 +1,4 @@
-From d5ac618883cf625fa1406b35e3abf0520bed68ee Mon Sep 17 00:00:00 2001
+From 350a6cab89493ff5cd96146c8652d7cf31bdc555 Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Wed, 10 Aug 2016 14:34:20 +0100
 Subject: [PATCH 06/42] Qt5Positioning is not required
@@ -28,5 +28,5 @@ index bf451f5..43e0621 100644
        Svg
        Xml
 -- 
-2.10.1
+2.10.2
 
