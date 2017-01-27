@@ -34,14 +34,14 @@ build:
 # Suggests: knitr, testthat
 requirements:
   build:
-    - r-base >=3.3.2
+    - r-base
     - r-findpython
     - r-getopt >=1.19
     - r-proto
     - r-rjson
 
   run:
-    - r-base >=3.3.2
+    - r-base
     - r-findpython
     - r-getopt >=1.19
     - r-proto
