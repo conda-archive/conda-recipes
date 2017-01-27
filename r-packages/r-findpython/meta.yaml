@@ -1,0 +1,81 @@
+{% set name = 'findpython' %}
+{% set version = '1.0.1' %}
+
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-{{ name|lower }}
+  version: {{ version|replace("-", "_") }}
+
+source:
+  fn: {{ name }}_{{ version }}.tar.gz
+  url:
+    - https://cran.r-project.org/src/contrib/{{ name }}_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/{{ name }}/{{ name }}_{{ version }}.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 0
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat
+requirements:
+  build:
+    - r-base >=3.3.2
+
+  run:
+    - r-base >=3.3.2
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('findpython')"  # [not win]
+    - "\"%R%\" -e \"library('findpython')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/trevorld/findpython
+  license: MIT + file LICENSE
+  summary: Package designed to find an acceptable python binary.
+  license_family: MIT
+
+# The original CRAN metadata for this package was:
+
+# Package: findpython
+# Type: Package
+# Title: Python tools to find an acceptable python binary
+# Version: 1.0.1
+# Author: Trevor L Davis and Paul Gilbert.
+# Maintainer: Trevor L Davis <trevor.l.davis@stanford.edu>
+# URL: https://github.com/trevorld/findpython
+# BugReports: https://github.com/trevorld/findpython/issues
+# Description: Package designed to find an acceptable python binary.
+# Suggests: testthat
+# License: MIT + file LICENSE
+# Collate: 'find_python_cmd.r'
+# Packaged: 2014-04-03 17:33:07 UTC; trevorld
+# NeedsCompilation: no
+# Repository: CRAN
+# Date/Publication: 2014-04-03 20:20:34
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
