@@ -58,8 +58,8 @@ build:
 
 requirements:
   build:
-    # Need to debug rsession, this seems like the easiest way:
-    - qtcreator        # [win]
+    # qtcreator is handy for debugging rsession (https://anaconda.org/qttesting/qtcreator)
+    # - qtcreator        # [win]
     - gcc              # [not win]
     - libuuid          # [linux]
     - jom              # [win]
@@ -68,16 +68,24 @@ requirements:
     - qt >=5.6         # [not osx]
     - cmake
     - boost >=1.61
-    - r-base >=3.3.1
+    - r-base >=3.3.2
   run:
-    - libgcc           # [not win]
-    - libuuid          # [linux]
-    - qt >=5.6         # [not osx]
-    - m2w64-grep       # [win]
-    - m2w64-diffutils  # [win]
-    - m2-openssh       # [win]
-    - vs2015_runtime   # [win]
-    - r-essentials
+    - libgcc                # [not win]
+    - libuuid               # [linux]
+    - qt >=5.6              # [not osx]
+    - m2w64-grep            # [win]
+    - m2w64-diffutils       # [win]
+    - m2-openssh            # [win]
+    - vs2015_runtime        # [win]
+    - fonts-continuum
+    - r-essentials >=1.5.1
+    - r-rstudioapi >=0.6
+    - r-packrat >=0.4.8
+    - r-rsconnect >=0.7
+    # These need compilation.
+    - r-rcurl >=1.95
+    - r-rjsonio >=1.3
+    - r-pki >=0.1
 
 app:
   entry: ${PREFIX}/Library/bin/rstudio.exe        [win]
