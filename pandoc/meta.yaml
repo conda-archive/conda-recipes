@@ -1,28 +1,45 @@
+{% set version = "1.15.0.6" if linux else "1.19.2" %}
+
 package:
   name: pandoc
-  version: 1.15.2
+  version: {{ version }}
 
 source:
-  fn:   pandoc-1.15.2-1-amd64.deb                                                         # [linux64]
-  url:  https://github.com/jgm/pandoc/releases/download/1.15.2/pandoc-1.15.2-1-amd64.deb  # [linux64]
-  md5:  8eedd750b0c6825ceb3f365f54c7e226                                                  # [linux64]
-  fn:   pandoc-1.15.2.pkg                                                                 # [osx]
-  url:  https://github.com/jgm/pandoc/releases/download/1.15.2/pandoc-1.15.2-osx.pkg      # [osx]
-  md5:  a24f622d6f6472bd17a09f0c08ccbc48                                                  # [osx]
-  fn:   pandoc-1.15.2-windows.msi                                                         # [win]
-  url:  https://github.com/jgm/pandoc/releases/download/1.15.2/pandoc-1.15.2-windows.msi  # [win]
-  md5:  451220f39f44994a41518e8327c79ed2                                                  # [win]
+  url: https://copr-be.cloud.fedoraproject.org/results/petersen/pandoc-el5/epel-5-i386/00125413-pandoc/pandoc-1.15.0.6-1.i386.rpm      # [linux32]
+  sha256: 4ed1d4a181366cf07f8a575cd7424f3f032daabd439c2e07c1da867ecf47d79e                                                             # [linux32]
+  url: https://copr-be.cloud.fedoraproject.org/results/petersen/pandoc-el5/epel-5-x86_64/00125413-pandoc/pandoc-1.15.0.6-1.x86_64.rpm  # [linux64]
+  sha256: 51f95ed1583253a12a4baed0d173d251594377dfa9695dbb9e209ebefd2deb05                                                             # [linux64]
+  url: https://github.com/jgm/pandoc/releases/download/{{ version }}/pandoc-{{ version }}-osx.pkg                                      # [osx]
+  sha256: ebf8af76d94a87803d938e18d1b6f2da472e610a73f48838932a808ca2593239                                                             # [osx]
+  url: https://github.com/jgm/pandoc/releases/download/{{ version }}/pandoc-{{ version }}-windows.msi                                  # [win]
+  sha256: 63d26519adc2a86f71160058b8a03f2a4911064ef4b4ae3d3900c413e81beac0                                                             # [win]
 
 requirements:
+  build:
+    - gmp 6.1.*          # [linux]
+    - libffi 3.2.*       # [linux]
+    - zlib 1.2.*         # [osx]
+    # Our libiconv is missing _locale_charset
+    # - libiconv 1.14.*  # [osx]
   run:
-    - gmp               # [linux64]
-    - zlib              # [linux64]
+    - gmp 6.1.*          # [linux]
+    - libffi 3.2.*       # [linux]
+    - zlib 1.2.*         # [osx]
+    # - libiconv 1.14.*  # [osx]
 
 test:
   commands:
     - pandoc --help
+    - pandoc --version
+    - pandoc-citeproc --help
+    - pandoc-citeproc --version
 
 about:
   home: http://johnmacfarlane.net/pandoc/
-  license: GPL
-  summary: Universal markup converter
+  license: GPL-2.0
+  summary: 'Universal markup converter (repackaged binaries, includes pandoc-citeproc)'
+
+# extra:
+#   recipe-maintainers:
+#     - janschulz
+#     - ocefpaf
