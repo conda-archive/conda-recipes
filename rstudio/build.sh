@@ -7,7 +7,7 @@ pushd dependencies/common
   ./install-dictionaries
   ./install-mathjax
 # ./install-boost
-  ./install-pandoc
+# ./install-pandoc
   ./install-libclang
   ./install-packages
 popd
