@@ -24,7 +24,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -44,7 +44,8 @@ requirements:
     - r-htmltools >=0.3
     - r-jsonlite >=0.9.16
     - r-yaml
-
+    - pandoc >=1.19.2       # [not linux]
+    - pandoc >=1.15.0       # [linux]
 test:
   commands:
     # You can put additional test commands to be run here.
