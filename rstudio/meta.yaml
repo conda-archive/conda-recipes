@@ -59,13 +59,15 @@ build:
 requirements:
   build:
     # qtcreator is handy for debugging rsession (https://anaconda.org/qttesting/qtcreator)
-    # - qtcreator        # [win]
-    - gcc              # [not win]
-    - libuuid          # [linux]
-    - jom              # [win]
-    - m2w64-tools-git  # [win]
-    - ant              # [osx]
-    - qt >=5.6         # [not osx]
+    # - qtcreator           # [win]
+    - gcc                   # [not win]
+    - libuuid               # [linux]
+    - jom                   # [win]
+    - m2w64-tools-git       # [win]
+    - ant                   # [osx]
+    - qt >=5.6              # [not osx]
+    - pandoc >=1.19.2       # [not linux]
+    - pandoc >=1.15.0       # [linux]
     - cmake
     - boost >=1.61
     - r-base >=3.3.2
@@ -77,8 +79,11 @@ requirements:
     - m2w64-diffutils       # [win]
     - m2-openssh            # [win]
     - vs2015_runtime        # [win]
+    - pandoc >=1.19.2       # [not linux]
+    - pandoc >=1.15.0       # [linux]
     - fonts-continuum
     - r-essentials >=1.5.1
+    # Using the notebook publish functionality requires the next 6 packages:
     - r-rstudioapi >=0.6
     - r-packrat >=0.4.8
     - r-rsconnect >=0.7
