@@ -50,8 +50,10 @@ source:
     - 0040-GWT-Hacky-attempt-to-work-around-double-slash-issue.patch
     - 0041-Remove-debug-output-and-forced-28080-port-number.patch
     - 0042-Conda-Add-arch-suffix-to-the-QSettings-file.patch
+    - 0043-Use-conda-s-pandoc-when-CONDA_BUILD.patch
 
 build:
+  number: 1
   skip: True           # [win and py<35]
   features:
     - vc14             # [win and py35]

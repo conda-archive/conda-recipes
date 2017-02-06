@@ -6,6 +6,10 @@ set USE_JOM=1
 :: set BUILD_TYPE=RelWithDebInfo
 set BUILD_TYPE=Release
 
+FOR /f "usebackqeol=; tokens=1 delims=." %%A IN ('echo %PKG_VERSION%') DO set RSTUDIO_VERSION_MAJOR=%%A
+FOR /f "usebackqeol=; tokens=2 delims=." %%A IN ('echo %PKG_VERSION%') DO set RSTUDIO_VERSION_MINOR=%%A
+FOR /f "usebackqeol=; tokens=3 delims=." %%A IN ('echo %PKG_VERSION%') DO set RSTUDIO_VERSION_PATCH=%%A
+
 cd dependencies\windows
 call install-dependencies.cmd
 cd ..\..
@@ -67,7 +71,9 @@ if "%USE_JOM%" == "1" (
         -DLIBR_GRAPHAPP_LIBRARY=%PREFIX%\R\bin\!R_ARCH!\Rgraphapp.lib ^
         -DQT_QMAKE_EXECUTABLE=%PREFIX%\Library\bin\qmake.exe ^
         -DCMAKE_MAKE_PROGRAM=jom ^
-              -Wdev --debug-output --trace                ^
+        -DRSTUDIO_VERSION_MAJOR=%RSTUDIO_VERSION_MAJOR% ^
+        -DRSTUDIO_VERSION_MINOR=%RSTUDIO_VERSION_MINOR% ^
+        -DRSTUDIO_VERSION_PATCH=%RSTUDIO_VERSION_PATCH% ^
         ..
 ::  if "%PROCESSOR_ARCHITECTURE%"=="x86" (
 ::     echo Early test for OpenJDK heap allocation problem
@@ -92,6 +98,9 @@ if "%USE_JOM%" == "1" (
         -DQT_QMAKE_EXECUTABLE=%PREFIX%\Library\bin\qmake.exe ^
         -DCMAKE_CXX_FLAGS="/MP /DWIN32 /D_WINDOWS /EHsc" ^
         -DCMAKE_C_FLAGS="/MP /DWIN32 /D_WINDOWS /EHsc" ^
+        -DRSTUDIO_VERSION_MAJOR=%RSTUDIO_VERSION_MAJOR% ^
+        -DRSTUDIO_VERSION_MINOR=%RSTUDIO_VERSION_MINOR% ^
+        -DRSTUDIO_VERSION_PATCH=%RSTUDIO_VERSION_PATCH% ^
         ..
   cmake --build . --config %BUILD_TYPE% --target INSTALL
 )

@@ -2,6 +2,10 @@
 # Xcode.
 _XCODE_BUILD=0
 
+export RSTUDIO_VERSION_MAJOR=$(echo ${PKG_VERSION} | cut -d. -f1)
+export RSTUDIO_VERSION_MINOR=$(echo ${PKG_VERSION} | cut -d. -f2)
+export RSTUDIO_VERSION_PATCH=$(echo ${PKG_VERSION} | cut -d. -f3)
+
 pushd dependencies/common
   ./install-gwt
   ./install-dictionaries
@@ -52,14 +56,14 @@ fi
 
 #      -Wdev --debug-output --trace                \
 
-cmake                                             \
-      -DCMAKE_INSTALL_PREFIX=${PREFIX}            \
-      -DBOOST_ROOT=${PREFIX}                      \
-      -DRSTUDIO_TARGET=Desktop                    \
-      -DCMAKE_BUILD_TYPE=Release                  \
-      -DLIBR_HOME=${PREFIX}/lib/R                 \
-      -DUSE_MACOS_R_FRAMEWORK=FALSE               \
-      "${_CMAKE_EXTRA_CONFIG[@]}"                 \
+cmake                                   \
+      -DCMAKE_INSTALL_PREFIX=${PREFIX}  \
+      -DBOOST_ROOT=${PREFIX}            \
+      -DRSTUDIO_TARGET=Desktop          \
+      -DCMAKE_BUILD_TYPE=Release        \
+      -DLIBR_HOME=${PREFIX}/lib/R       \
+      -DUSE_MACOS_R_FRAMEWORK=FALSE     \
+      "${_CMAKE_EXTRA_CONFIG[@]}"       \
       ..
 
 # "cmake --build" might be fine on all OSes/generators (though it does
