@@ -1,13 +1,43 @@
-From 423bfe16388d6dc73fa345083ef34d7f6597dfcc Mon Sep 17 00:00:00 2001
+From ddeb4138a4ec37122063d40f320da7f5312c37e3 Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Sat, 4 Feb 2017 13:29:12 -0500
 Subject: [PATCH] Use conda's pandoc when CONDA_BUILD
 
 ---
- src/cpp/session/CMakeLists.txt     | 2 +-
- src/cpp/session/SessionOptions.cpp | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ dependencies/windows/install-dependencies.cmd | 18 ++++++++++--------
+ src/cpp/session/CMakeLists.txt                |  2 +-
+ src/cpp/session/SessionOptions.cpp            |  2 +-
+ 3 files changed, 12 insertions(+), 10 deletions(-)
 
+diff --git a/dependencies/windows/install-dependencies.cmd b/dependencies/windows/install-dependencies.cmd
+index 99580c3..58ddc94 100644
+--- a/dependencies/windows/install-dependencies.cmd
++++ b/dependencies/windows/install-dependencies.cmd
+@@ -152,14 +152,16 @@ if not exist "mathjax-26" (
+   )
+ )
+ 
+-if not exist pandoc\%PANDOC_VERSION% (
+-  wget %WGET_ARGS% "%BASEURL%%PANDOC_FILE%"
+-  echo Unzipping %PANDOC_FILE%
+-  unzip %UNZIP_ARGS% "%PANDOC_FILE%"
+-  mkdir pandoc\%PANDOC_VERSION%
+-  copy "%PANDOC_NAME%\windows\pandoc*" "pandoc\%PANDOC_VERSION%""
+-  del %PANDOC_FILE%
+-  rmdir /s /q %PANDOC_NAME%
++if not "%CONDA_BUILD%" == "1" (
++  if not exist pandoc\%PANDOC_VERSION% (
++    wget %WGET_ARGS% "%BASEURL%%PANDOC_FILE%"
++    echo Unzipping %PANDOC_FILE%
++    unzip %UNZIP_ARGS% "%PANDOC_FILE%"
++    mkdir pandoc\%PANDOC_VERSION%
++    copy "%PANDOC_NAME%\windows\pandoc*" "pandoc\%PANDOC_VERSION%""
++    del %PANDOC_FILE%
++    rmdir /s /q %PANDOC_NAME%
++  )
+ )
+ 
+ if not exist libclang\%LIBCLANG_VERSION% (
 diff --git a/src/cpp/session/CMakeLists.txt b/src/cpp/session/CMakeLists.txt
 index d446bc9..0ebb392 100644
 --- a/src/cpp/session/CMakeLists.txt
@@ -35,5 +65,5 @@ index 0a772b9..828aed3 100644
  const char* const kDefaultDiagnosticsPath = "../../bin/diagnostics";
  const char* const kDefaultConsoleIoPath = "../../bin/consoleio";
 -- 
-1.8.2.3
+2.10.2
 
