@@ -1,0 +1,45 @@
+# aarch64 commit
+# {% set commit="be154246dfb3ffc2da9f24d90fd58dfa7683705c" %}
+# x86_64 CentOS 5 commit
+{% set commit="11a11abe9ce4fe4c67ebff0f722a8b1470b9caab" %}
+
+package:
+  name: crosstool-ng
+  version: {{ commit[:8] }}
+
+source:
+  # according to @mingwandroid, there have been vast improvements, and we should be using master
+  # git_url: https://github.com/crosstool-ng/crosstool-ng.git
+  # git_tag: eff79ab71433cfd2a9f40b4cb3de580f0e2de17f
+  # url: http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-{{ version }}.tar.xz
+  # sha256: a8b50ddb6e651c3eec990de54bd191f7b8eb88cd4f88be9338f7ae01639b3fba
+  # for aarch64, used ct-ng master at above commit
+  git_url: https://github.com/diorcety/crosstool-ng.git
+  git_tag: {{ commit }}
+
+requirements:
+  build:
+    - autoconf
+    - automake
+    - bison
+    - flex
+    - git
+    - gperf
+    - help2man
+    - libtool
+    - ncurses
+    - texinfo
+    - wget
+    # - gcc
+
+test:
+  commands:
+    - ct-ng -h
+
+about:
+  home: http://crosstool-ng.org/
+
+extra:
+  recipe-maintainers:
+    - mingwandroid
+    - msarahan
