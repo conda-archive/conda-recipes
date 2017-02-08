@@ -18,7 +18,7 @@ sed -i "49ios.environ['OPENTURNS_CONFIG_PATH'] = os.path.realpath(__file__ + '/.
 mkdir -p build && cd build
 
 cmake \
-  -DLAPACK_LIBRARIES="$PREFIX/lib/libblas${SO_EXT};$PREFIX/lib/liblapack${SO_EXT}" \
+  -DLAPACK_LIBRARIES="$PREFIX/lib/libblas${SO_EXT};$PREFIX/lib/liblapack${SO_EXT};$PREFIX/lib/libgfortran${SO_EXT};$PREFIX/lib/libquadmath${SO_EXT}" \
   -DLIBXML2_LIBRARIES=$PREFIX/lib/libxml2${SO_EXT} \
   -DLIBXML2_INCLUDE_DIR=$PREFIX/include/libxml2 \
   -DMUPARSER_LIBRARIES=$PREFIX/lib/libmuparser${SO_EXT} \
