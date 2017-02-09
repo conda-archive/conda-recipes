@@ -5,13 +5,13 @@ package:
   name: r-rmarkdown
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.2"
+  version: "1.3"
 
 source:
-  fn: rmarkdown_1.2.tar.gz
+  fn: rmarkdown_1.3.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/rmarkdown_1.2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/rmarkdown/rmarkdown_1.2.tar.gz
+    - http://cran.r-project.org/src/contrib/rmarkdown_1.3.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/rmarkdown/rmarkdown_1.3.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -54,6 +54,8 @@ requirements:
     - r-knitr >=1.14
     - r-rprojroot
     - r-yaml >=2.1.5
+    - pandoc >=1.19.2       # [not linux]
+    - pandoc >=1.15.0       # [linux]
 
 test:
   commands:
