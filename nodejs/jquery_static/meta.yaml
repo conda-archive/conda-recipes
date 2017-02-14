@@ -1,10 +1,10 @@
 package:
   name: jquery_static
-  version: 2.1.0
+  version: 3.1.1
 
 source:
   git_url: https://github.com/jquery/jquery.git
-  git_rev: 2.1.0
+  git_rev: 3.1.1
   # patches:
   #   - 0001-Update-some-deps-resolutions.patch
 
