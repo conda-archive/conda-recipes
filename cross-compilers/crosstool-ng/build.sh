@@ -1,8 +1,10 @@
-export INCLUDE="$INCLUDE:$PREFIX/include"
-export LIB="$LIB:$PREFIX/lib"
-export CFLAGS="-I${PREFIX}/include -L${PREFIX}/lib ${CFLAGS}"
-export CPPFLAGS="-I${PREFIX}/include -L${PREFIX}/lib ${CFLAGS}"
-./bootstrap --prefix=$PREFIX
-./configure --prefix=$PREFIX
+#!/bin/bash
+export EXTRA_CFLAGS="-I${PREFIX}/include"
+export EXTRA_LDFLAGS="-L${PREFIX}/lib -lncursesw"
+if [[ $(uname) == Darwin ]]; then
+  export DYLD_FALLBACK_LIBRARY_PATH=${PREFIX}/lib
+fi
+./bootstrap
+./configure --prefix=${PREFIX}
 make
 make install
