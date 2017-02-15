@@ -74,13 +74,12 @@ env > /tmp/old-env-$$.txt
 _tc_activation \
   deactivate host aarch64-sarc-linux-gnueabi aarch64-sarc-linux-gnueabi- \
   addr2line ar as c++ cc c++filt cpp elfedit g++ gcc c++ gcov gcov-tool gfortran gprof ld ldd nm objcopy objdump ranlib readelf size strings strip \
-  CPPFLAGS,"-D_FORTIFY_SOURCE=2" \
-  CFLAGS,"-march=armv6k -mtune=arm1136jf-s -mfloat-abi=soft -mabi=aapcs-linux -mtls-dialect=gnu -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe" \
-  CXXFLAGS,"-march=armv6k -mtune=arm1136jf-s -mfloat-abi=soft -mabi=aapcs-linux -mtls-dialect=gnu -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe" \
-  LDFLAGS,"-Wl,-O1,--sort-common,--as-needed,-z,relro" \
-  DEBUG_CFLAGS,"-Og -g -fvar-tracking-assignments" \
-  DEBUG_CXXFLAGS,"-Og -g -fvar-tracking-assignments"
-
+  CPPFLAGS,${CPPFLAGS:-"-D_FORTIFY_SOURCE=2"} \
+  CFLAGS,${CFLAGS:-"-march=armv6k -mtune=arm1136jf-s -mfloat-abi=soft -mabi=aapcs-linux -mtls-dialect=gnu -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe"} \
+  CXXFLAGS,${CXXFLAGS:-"-march=armv6k -mtune=arm1136jf-s -mfloat-abi=soft -mabi=aapcs-linux -mtls-dialect=gnu -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe"} \
+  LDFLAGS,${LDFLAGS:-"-Wl,-O1,--sort-common,--as-needed,-z,relro"} \
+  DEBUG_CFLAGS,${DEBUG_CFLAGS:-"-Og -g -fvar-tracking-assignments"} \
+  DEBUG_CXXFLAGS,${DEBUG_CXXFLAGS:-"-Og -g -fvar-tracking-assignments"}
 
 if [ $? -ne 0 ]; then
   echo "ERROR: Cross-compiler deactivation failed, see above for details"
