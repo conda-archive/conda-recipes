@@ -1,12 +1,13 @@
 package:
   name: compiler_osx-64_linux-imx351uc
-  version: 0.2
+  version: 0.3
 
 source:
-  url: /Users/rdonnelly/gd.cio/ctng/compiler-macos16_64-imx351uc.tar.xz
+  path: /c/d/ii_32
 
 build:
   script:
+    - chmod -R u+w *
     - cp -Rf * ${PREFIX}
     - mkdir -p ${PREFIX}/etc/conda/activate.d
     - mkdir -p ${PREFIX}/etc/conda/deactivate.d
