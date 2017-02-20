@@ -1,7 +1,7 @@
 {% set target_platform='linux-imx351uc' %}
 
 package:
-  name: compiler_{{ target_platform }}
+  name: compilers_{{ target_platform }}
   version: 6.3.0
 
 source:
