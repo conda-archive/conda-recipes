@@ -42,14 +42,14 @@ requirements:
     - gcc               # [not win]
     - python
     - setuptools
-    - r
+    - r-base
     - singledispatch    # [not (py34 or py35)]
     - six
     - readline          # [not win]
 
   run:
     - python
-    - r
+    - r-base
     - singledispatch    # [not (py34 or py35)]
     - six
     - readline          # [not win]
