@@ -1,0 +1,48 @@
+{% set target_platform='linux-imx351uc' %}
+
+package:
+  name: compiler_{{ target_platform }}
+  version: 6.3.0
+
+source:
+  path: .
+
+build:
+  detect_binary_files_with_prefix: False
+  binary_relocation: False
+
+requirements:
+  build:
+    - crosstool-ng  1.22.0.diorcety.imx351uc
+  run:
+    - gcc_{{ target_platform }}
+    - g++_{{ target_platform }}
+    - gfortran_{{ target_platform }}
+
+outputs:
+  - name: gcc_{{ target_platform }}
+    script: install-gcc.sh
+    requirements:
+      - {{ pin_subpackage('libgcc_' ~ target_platform) }}
+
+  - name: g++_{{ target_platform }}
+    script: install-g++.sh
+    requirements:
+      - {{ pin_subpackage('libstdc++_' ~ target_platform) }}
+
+  - name: gfortran_{{ target_platform }}
+    script: install-gfortran.sh
+    requirements:
+      - {{ pin_subpackage('libgfortran_' ~ target_platform) }}
+
+  - name: binutils_{{ target_platform }}
+    script: install-binutils.sh
+
+  - name: libstdc++_{{ target_platform }}
+    script: install-libstdc++.sh
+
+  - name: libgcc_{{ target_platform }}
+    script: install-libgcc.sh
+
+  - name: libgfortran_{{ target_platform }}
+    script: install-libgfortran.sh
