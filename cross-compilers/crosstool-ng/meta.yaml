@@ -2,10 +2,13 @@
 # {% set commit="be154246dfb3ffc2da9f24d90fd58dfa7683705c" %}
 # x86_64 CentOS 5 commit
 {% set commit="11a11abe9ce4fe4c67ebff0f722a8b1470b9caab" %}
+# imx351uc commit
+{% set commit="imx351uc" %}
 
 package:
   name: crosstool-ng
-  version: {{ commit[:8] }}
+  version: 1.22.0.diorcety.{{ commit }}
+#  version: {{ commit[:8] }}
 
 source:
   # according to @mingwandroid, there have been vast improvements, and we should be using master
@@ -24,11 +27,11 @@ requirements:
     - bison
     - flex
     - git
-    - gperf
-    - help2man
+    # - gperf
+    # - help2man
     - libtool
     - ncurses
-    - texinfo
+    # - texinfo
     - wget
     # - gcc
 
