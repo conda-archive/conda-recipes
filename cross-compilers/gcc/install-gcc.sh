@@ -1,11 +1,10 @@
 set -e -x
-
-CHOST="x86_64-sarc-linux-gnu"
-pushd ${SRC_DIR}/.build/$CHOST/build/build-cc-gcc-final/
-
 # libtool wants to use ranlib that is here
 export PATH=$PATH:${SRC_DIR}/.build/$CHOST/buildtools/bin
 
+CHOST="x86_64-sarc-linux-gnu"
+
+pushd ${SRC_DIR}/.build/$CHOST/build/build-cc-gcc-final/
 make -C gcc prefix=${PREFIX} install-driver install-gcc-ar install-headers install-plugin
 
 install -m755 -t ${PREFIX}/bin/ gcc/gcov{,-tool}
@@ -67,7 +66,19 @@ EOF
 
   chmod 755 ${PREFIX}/bin/c{8,9}9
 
+# duplicate executable - taking up space?  Is it a hardlink?
+# rm $PREFIX/bin/${CHOST}-gcc-${PKG_VERSION}
+
+mkdir -p $PREFIX/$CHOST
+cp -r ${SRC_DIR}/gcc_built/${CHOST}/sysroot/include $PREFIX/${CHOST}
+
 popd
 # Install Runtime Library Exception
 install -Dm644 $SRC_DIR/.build/src/gcc-${PKG_VERSION}/COPYING.RUNTIME \
-        ${PREFIX}/share/licenses/gcc-fortran/RUNTIME.LIBRARY.EXCEPTION
+        ${PREFIX}/share/licenses/gcc/RUNTIME.LIBRARY.EXCEPTION
+
+mkdir -p $PREFIX/etc/conda/activate.d
+cp $RECIPE_DIR/activate-gcc.sh $PREFIX/etc/conda/activate.d/compiler_linux-cos5-64-activate-gcc.sh
+
+mkdir -p $PREFIX/etc/conda/deactivate.d
+cp $RECIPE_DIR/deactivate-gcc.sh $PREFIX/etc/conda/deactivate.d/compiler_linux-cos5-64-deactivate-gcc.sh

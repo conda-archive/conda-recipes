@@ -30,3 +30,9 @@ popd
 # Install Runtime Library Exception
 install -Dm644 $SRC_DIR/.build/src/gcc-${PKG_VERSION}/COPYING.RUNTIME \
         ${PREFIX}/share/licenses/gcc-fortran/RUNTIME.LIBRARY.EXCEPTION
+
+mkdir -p $PREFIX/etc/conda/activate.d
+cp $RECIPE_DIR/activate-g++.sh $PREFIX/etc/conda/activate.d/compiler_linux-cos5-64-activate-g++.sh
+
+mkdir -p $PREFIX/etc/conda/deactivate.d
+cp $RECIPE_DIR/deactivate-g++.sh $PREFIX/etc/conda/deactivate.d/compiler_linux-cos5-64-deactivate-g++.sh

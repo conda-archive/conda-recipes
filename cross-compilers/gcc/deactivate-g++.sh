@@ -73,12 +73,9 @@ function _tc_activation() {
 env > /tmp/old-env-$$.txt
 _tc_activation \
   deactivate host x86_64-sarc-linux-gnu x86_64-sarc-linux-gnu- \
-  addr2line ar as c++ cc c++filt cpp elfedit g++ gcc c++ gcov gcov-tool gfortran gprof ld ldd nm objcopy objdump ranlib readelf size strings strip \
+  c++ cpp g++ \
   CPPFLAGS,${CPPFLAGS:-"-D_FORTIFY_SOURCE=2"} \
-  CFLAGS,${CFLAGS:-"-march=nocona -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe -fstack-protector-strong"} \
   CXXFLAGS,${CXXFLAGS:-"-march=nocona -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe -fstack-protector-strong -std=c++11"} \
-  LDFLAGS,${LDFLAGS:-"-Wl,-O1,--sort-common,--as-needed,-z,relro"} \
-  DEBUG_CFLAGS,${DEBUG_CFLAGS:-"-Og -g -fvar-tracking-assignments"} \
   DEBUG_CXXFLAGS,${DEBUG_CXXFLAGS:-"-Og -g -fvar-tracking-assignments"}
 
 
@@ -87,6 +84,6 @@ if [ $? -ne 0 ]; then
 #  exit 1
 else
   env > /tmp/new-env-$$.txt
-  echo "INFO: Deactivating 'x86_64-unknown-linux-gnu' (pseudo) cross-compiler made the following environmental changes:"
+  echo "INFO: Deactivating 'x86_64-unknown-linux-gnu-g++' (pseudo) cross-compiler made the following environmental changes:"
   diff -U 0 -rN /tmp/old-env-$$.txt /tmp/new-env-$$.txt | tail -n +4 | grep "^-.*\|^+.*" | grep -v "CONDA_BACKUP_" | sort
 fi

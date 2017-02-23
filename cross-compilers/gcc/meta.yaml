@@ -1,5 +1,5 @@
 package:
-  name: compilers_linux-64_linux-cos5-64
+  name: compilers_linux-cos5-64
   version: 6.3.0
 
 source:
@@ -14,39 +14,40 @@ requirements:
     - crosstool-ng  11a11abe
     - unifdef
   run:
-    - gcc_linux-64_linux-cos5-64
-    - g++_linux-64_linux-cos5-64
-    - gfortran_linux-64_linux-cos5-64
+    - gcc_linux-cos5-64
+    - gxx_linux-cos5-64
+    - gfortran_linux-cos5-64
 
 outputs:
-  - name: gcc_linux-64_linux-cos5-64
+  - name: gcc_linux-cos5-64
     script: install-gcc.sh
     requirements:
-      - binutils_linux-64_linux-cos5-64
+      - binutils_linux-cos5-64
     # needs "build_customization branch
     # pin_downstream:
     #   - {{ pin_subpackage('libgcc_linux-cos5-64') }}
 
-  - name: g++_linux-64_linux-cos5-64
+  - name: gxx_linux-cos5-64
     script: install-g++.sh
     requirements:
-      - gcc_linux-64_linux-cos5-64
+      - gcc_linux-cos5-64
     # needs "build_customization branch
     # pin_downstream:
-    #   - {{ pin_subpackage('libstdc++_linux-cos5-64') }}
+    #   - {{ pin_subpackage('libstdcxx_linux-cos5-64') }}
 
-  - name: gfortran_linux-64_linux-cos5-64
+  - name: gfortran_linux-cos5-64
     script: install-gfortran.sh
     requirements:
-      - gcc_linux-64_linux-cos5-64
+      - gcc_linux-cos5-64
     # needs "build_customization branch
     # pin_downstream:
     #   - {{ pin_subpackage('libgfortran_linux-cos5-64') }}
 
-  - name: binutils_linux-64-cos5-64
+  - name: binutils_linux-cos5-64
     script: install-binutils.sh
+    version: 2.26
 
-  - name: libstdc++_linux-cos5-64
+  - name: libstdcxx_linux-cos5-64
     script: install-libstdc++.sh
 
   - name: libgcc_linux-cos5-64

@@ -1,6 +1,4 @@
 CHOST="x86_64-sarc-linux-gnu"
-
-echo $(pwd)
 mkdir -p .build/src
 mkdir -p .build/tarballs
 if [[ ! -e ".build/tarballs/linux-2.6.18.tar.xz" ]]; then
@@ -9,8 +7,8 @@ fi
 
 cp $RECIPE_DIR/.config .config
 
-# If the binary doesn't exist yet, then run ct-ng
-if [[ ! -e "${SRC_DIR}/gcc_built/bin/x86_64-sarc-linux-gnu-gcc" ]]; then
+# If dirty is unset or the binary doesn't exist yet, then run ct-ng
+if [[ ! -e "${SRC_DIR}/gcc_built/bin/${CHOST}-gcc" ]]; then
    ct-ng build;
 fi
 
