@@ -16,19 +16,19 @@ requirements:
     - crosstool-ng  1.22.0.diorcety.imx351uc
   run:
     - gcc_{{ target_platform }}
-    - g++_{{ target_platform }}
+    - gxx_{{ target_platform }}
     - gfortran_{{ target_platform }}
 
 outputs:
   - name: gcc_{{ target_platform }}
     script: install-gcc.sh
     requirements:
-      - {{ pin_subpackage('libgcc_' ~ target_platform) }}
+      - {{ pin_subpackage('binutils_' ~ target_platform) }}
 
-  - name: g++_{{ target_platform }}
+  - name: gxx_{{ target_platform }}
     script: install-g++.sh
     requirements:
-      - {{ pin_subpackage('libstdc++_' ~ target_platform) }}
+      - {{ pin_subpackage('libstdcxx_' ~ target_platform) }}
 
   - name: gfortran_{{ target_platform }}
     script: install-gfortran.sh
@@ -37,8 +37,10 @@ outputs:
 
   - name: binutils_{{ target_platform }}
     script: install-binutils.sh
+    requirements:
+      - {{ pin_subpackage('libgcc_' ~ target_platform) }}
 
-  - name: libstdc++_{{ target_platform }}
+  - name: libstdcxx_{{ target_platform }}
     script: install-libstdc++.sh
 
   - name: libgcc_{{ target_platform }}

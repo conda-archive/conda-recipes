@@ -1,6 +1,6 @@
 set -e -x
 
-CHOST="x86_64-sarc-linux-gnu"
+CHOST=$(${SRC_DIR}/.build/*-*-*-*/build/build-cc-gcc-final/gcc/xgcc -dumpmachine)
 
 # libtool wants to use ranlib that is here
 export PATH=$PATH:${SRC_DIR}/.build/$CHOST/buildtools/bin
@@ -21,8 +21,9 @@ make -C $CHOST/libstdc++-v3/include prefix=${PREFIX} install
 make -C $CHOST/libstdc++-v3/libsupc++ prefix=${PREFIX} install
 make -C $CHOST/libstdc++-v3/python prefix=${PREFIX} install
 
-mkdir -p ${PREFIX}/share/gdb/auto-load/usr/lib/
-cp ${SRC_DIR}/gcc_built/${CHOST}/sysroot/lib/libstdc++.so.6.*-gdb.py ${PREFIX}/share/gdb/auto-load/usr/lib/
+# Probably don't want to do this for cross-compilers
+# mkdir -p ${PREFIX}/share/gdb/auto-load/usr/lib/
+# cp ${SRC_DIR}/gcc_built/${CHOST}/sysroot/lib/libstdc++.so.6.*-gdb.py ${PREFIX}/share/gdb/auto-load/usr/lib/
 
 make -C libcpp prefix=${PREFIX} install
 
@@ -30,3 +31,7 @@ popd
 # Install Runtime Library Exception
 install -Dm644 $SRC_DIR/.build/src/gcc-${PKG_VERSION}/COPYING.RUNTIME \
         ${PREFIX}/share/licenses/gcc-fortran/RUNTIME.LIBRARY.EXCEPTION
+
+mkdir -p ${PREFIX}/etc/conda/{de,}activate.d
+cp "${SRC_DIR}"/activate-g++.sh ${PREFIX}/etc/conda/activate.d/activate-${PKG_NAME}.sh
+cp "${SRC_DIR}"/deactivate-g++.sh ${PREFIX}/etc/conda/deactivate.d/deactivate-${PKG_NAME}.sh

@@ -1,12 +1,19 @@
 set -e -x
 
-pushd $SRC_DIR/.build/x86_64-sarc-linux-gnu/build/build-binutils-host-x86_64-build_redhat-linux-gnu6E
-make DESTDIR=$PREFIX install
+CHOST=$(${SRC_DIR}/.build/*-*-*-*/build/build-cc-gcc-final/gcc/xgcc -dumpmachine)
+
+pushd ${SRC_DIR}/.build/${CHOST}/build/build-binutils-host-*
+  PATH=/home/ray/imx351uc/work/.build/${CHOST}/buildtools/bin:$PATH \
+    make prefix=${PREFIX} install
 popd
 
-# since binutils is a req for all compilers, we bundle the activate scripts here.
-mkdir -p $PREFIX/etc/conda/activate.d
-cp $RECIPE_DIR/activate.sh $PREFIX/etc/conda/activate.d/compiler_linux-64_linux-cos5-64-activate.sh
+# Copy the liblto_plugin.so from the build tree. This is something of a hack and, on OSes other
+# than the build OS, may cause segfaults. This plugin is used by gcc-ar, gcc-as and gcc-ranlib.
+pushd ${SRC_DIR}/.build/*-*-*-*/build/build-cc-gcc-core-pass-2/gcc/
+  mkdir -p ${PREFIX}/libexec/gcc/${CHOST}/${TOP_PKG_VERSION}/
+  cp -a liblto* ${PREFIX}/libexec/gcc/${CHOST}/${TOP_PKG_VERSION}/
+popd
 
-mkdir -p $PREFIX/etc/conda/deactivate.d
-cp $RECIPE_DIR/deactivate.sh $PREFIX/etc/conda/deactivate.d/compiler_linux-64_linux-cos5-64-deactivate.sh
+mkdir -p ${PREFIX}/etc/conda/{de,}activate.d
+cp "${SRC_DIR}"/activate-binutils.sh ${PREFIX}/etc/conda/activate.d/activate-${PKG_NAME}.sh
+cp "${SRC_DIR}"/deactivate-binutils.sh ${PREFIX}/etc/conda/deactivate.d/deactivate-${PKG_NAME}.sh
