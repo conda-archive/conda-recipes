@@ -1,6 +1,6 @@
 set -e -x
 
-CHOST="x86_64-sarc-linux-gnu"
+CHOST=$(${SRC_DIR}/.build/*-*-*-*/build/build-cc-gcc-final/gcc/xgcc -dumpmachine)
 pushd $SRC_DIR/.build/$CHOST/build/build-cc-gcc-final/
 
 make -C $CHOST/libgcc prefix=${PREFIX} install-shared
@@ -10,17 +10,16 @@ make -C $CHOST/libgcc prefix=${PREFIX} install-shared
 # libvtv \
 # libsanitizer/{a,l,ub}san \
 
-for lib in libatomic libgomp libquadmath; do
-    make -C $CHOST/$lib prefix=${PREFIX} install-toolexeclibLTLIBRARIES
+for lib in libatomic libgomp libquadmath libitm libsanitizer/tsan; do
+    if [[ -d $CHOST/$lib ]]; then
+        make -C $CHOST/$lib prefix=${PREFIX} install-toolexeclibLTLIBRARIES
+    fi
 done
 
-# make -C $CHOST/libsanitizer/tsan DESTDIR=${PREFIX} install-toolexeclibLTLIBRARIES
-
-# omits:
-# libitm \
-
 for lib in libgomp libquadmath; do
-    make -C $CHOST/$lib prefix=${PREFIX} install-info
+    if [[ -d $CHOST/$lib ]]; then
+      make -C $CHOST/$lib prefix=${PREFIX} install-info
+    fi
 done
 
 popd
