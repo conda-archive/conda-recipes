@@ -1,3 +1,5 @@
+CHOST="x86_64-sarc-linux-gnu"
+
 echo $(pwd)
 mkdir -p .build/src
 mkdir -p .build/tarballs
@@ -7,15 +9,19 @@ fi
 
 cp $RECIPE_DIR/.config .config
 
-# If dirty is unset or the binary doesn't exist yet, then run ct-ng
-if [[ -z ${DIRTY+x} || ! -e "${PREFIX}/bin/x86_64-sarc-linux-gnueabi-gcc" ]]; then
+# If the binary doesn't exist yet, then run ct-ng
+if [[ ! -e "${SRC_DIR}/gcc_built/bin/x86_64-sarc-linux-gnu-gcc" ]]; then
    ct-ng build;
 fi
 
-chmod 755 $PREFIX
+# increase stack size to prevent test failures
+# http://gcc.gnu.org/bugzilla/show_bug.cgi?id=31827
+ulimit -s 32768
 
-mkdir -p $PREFIX/etc/conda/activate.d
-cp $RECIPE_DIR/activate.sh $PREFIX/etc/conda/activate.d/compiler_linux-64_linux-cos5-64-activate.sh
+# pushd .build/x86_64-sarc-linux-gnu/build/build-cc-gcc-final
+# make -k check || true
+# popd
 
-mkdir -p $PREFIX/etc/conda/deactivate.d
-cp $RECIPE_DIR/deactivate.sh $PREFIX/etc/conda/deactivate.d/compiler_linux-64_linux-cos5-64-deactivate.sh
+# .build/src/gcc-${PKG_VERSION}/contrib/test_summary
+
+chmod 755 -R $PREFIX
