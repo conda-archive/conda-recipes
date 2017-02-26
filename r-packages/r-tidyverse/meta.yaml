@@ -1,0 +1,128 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-tidyverse
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.0.0"
+
+source:
+  fn: tidyverse_1.0.0.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/tidyverse_1.0.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/tidyverse/tidyverse_1.0.0.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: knitr, rmarkdown
+requirements:
+  build:
+    - r-base
+    - r-dbi
+    - r-broom
+    - r-dplyr
+    - r-forcats
+    - r-ggplot2
+    - r-haven
+    - r-hms
+    - r-httr
+    - r-jsonlite
+    - r-lubridate
+    - r-magrittr
+    - r-modelr
+    - r-purrr
+    - r-readr
+    - r-readxl
+    - r-rvest
+    - r-stringr
+    - r-tibble
+    - r-tidyr
+    - r-xml2
+
+  run:
+    - r-base
+    - r-dbi
+    - r-broom
+    - r-dplyr
+    - r-forcats
+    - r-ggplot2
+    - r-haven
+    - r-hms
+    - r-httr
+    - r-jsonlite
+    - r-lubridate
+    - r-magrittr
+    - r-modelr
+    - r-purrr
+    - r-readr
+    - r-readxl
+    - r-rvest
+    - r-stringr
+    - r-tibble
+    - r-tidyr
+    - r-xml2
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('tidyverse')" # [not win]
+    - "\"%R%\" -e \"library('tidyverse')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/hadley/tidyverse
+  license: GPL-3
+  summary: The 'tidyverse' is a set of packages that work in harmony because they share common
+    data representations and 'API' design. This package is designed to make it easy
+    to install and load multiple 'tidyverse' packages in a single step. Learn more about
+    the 'tidyverse' at <https://github.com/hadley/tidyverse>.
+  license_family: GPL3
+
+# The original CRAN metadata for this package was:
+
+# Package: tidyverse
+# Title: Easily Install and Load 'Tidyverse' Packages
+# Version: 1.0.0
+# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")), person("RStudio", role = "cph") )
+# Description: The 'tidyverse' is a set of packages that work in harmony because they share common data representations and 'API' design. This package is designed to make it easy to install and load multiple 'tidyverse' packages in a single step. Learn more about the 'tidyverse' at <https://github.com/hadley/tidyverse>.
+# Imports: broom, DBI, dplyr, forcats, ggplot2, haven, httr, hms, jsonlite, lubridate, magrittr, modelr, purrr, readr, readxl, stringr, tibble, rvest, tidyr, xml2
+# License: GPL-3
+# Encoding: UTF-8
+# LazyData: true
+# RoxygenNote: 5.0.1.9000
+# URL: https://github.com/hadley/tidyverse
+# BugReports: https://github.com/hadley/tidyverse/issues
+# Suggests: knitr, rmarkdown
+# VignetteBuilder: knitr
+# NeedsCompilation: no
+# Packaged: 2016-09-09 14:11:10 UTC; hadley
+# Author: Hadley Wickham [aut, cre], RStudio [cph]
+# Maintainer: Hadley Wickham <hadley@rstudio.com>
+# Repository: CRAN
+# Date/Publication: 2016-09-09 18:07:46
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

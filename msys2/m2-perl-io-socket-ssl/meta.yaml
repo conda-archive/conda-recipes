@@ -2,10 +2,10 @@ package:
   name: m2-perl-io-socket-ssl
   version: '2.016'
 source:
-  url: http://repo.msys2.org/msys/sources/perl-IO-Socket-SSL-2.016-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/perl-IO-Socket-SSL-2.016-1.src.tar.gz
+  md5: 7577533b1d0c7cf186ba73876e386d60
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -20,7 +20,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/perl-IO-Socket-SSL
-      url: http://repo.msys2.org/msys/i686/perl-IO-Socket-SSL-2.016-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/perl-IO-Socket-SSL-2.016-1-any.pkg.tar.xz
       md5: c128aed19387f5096d49449909136f3a
       mv-srcs:
       - '*'
@@ -28,7 +28,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/perl-IO-Socket-SSL
-      url: http://repo.msys2.org/msys/x86_64/perl-IO-Socket-SSL-2.016-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/perl-IO-Socket-SSL-2.016-1-any.pkg.tar.xz
       md5: 7d6922263168714570dd239047a8e7b5
       mv-srcs:
       - '*'

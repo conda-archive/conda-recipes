@@ -2,10 +2,10 @@ package:
   name: m2-texinfo
   version: '6.0'
 source:
-  url: http://repo.msys2.org/msys/sources/texinfo-6.0-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/texinfo-6.0-1.src.tar.gz
+  md5: db00f65f4715b73031759e913412cd7c
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -21,7 +21,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/texinfo
-      url: http://repo.msys2.org/msys/i686/texinfo-6.0-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/texinfo-6.0-1-i686.pkg.tar.xz
       md5: 8afd6952a749f996c525aff18fd06a77
       mv-srcs:
       - '*'
@@ -29,7 +29,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/texinfo
-      url: http://repo.msys2.org/msys/x86_64/texinfo-6.0-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/texinfo-6.0-1-x86_64.pkg.tar.xz
       md5: 8e6d6b7acad68aad9940c987745c08ab
       mv-srcs:
       - '*'

@@ -2,10 +2,10 @@ package:
   name: m2w64-libjpeg-turbo
   version: 1.4.2
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-libjpeg-turbo-1.4.2-2.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-libjpeg-turbo-1.4.2-2.src.tar.gz
   md5: b604f1b882a798ee14d414c65e3ea48b
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-libjpeg-turbo
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-libjpeg-turbo-1.4.2-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-libjpeg-turbo-1.4.2-2-any.pkg.tar.xz
       md5: cee4b57b3c55c8914efd98d551ddc3fe
       mv-srcs:
       - mingw32
@@ -27,7 +27,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-libjpeg-turbo
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-libjpeg-turbo-1.4.2-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-libjpeg-turbo-1.4.2-2-any.pkg.tar.xz
       md5: 63eed7a02be8918fa3759bea38d34173
       mv-srcs:
       - mingw64

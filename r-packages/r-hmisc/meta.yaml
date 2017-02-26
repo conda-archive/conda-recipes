@@ -5,13 +5,13 @@ package:
   name: r-hmisc
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "3.17_4"
+  version: "4.0_0"
 
 source:
-  fn: Hmisc_3.17-4.tar.gz
+  fn: Hmisc_4.0-0.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/Hmisc_3.17-4.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/Hmisc/Hmisc_3.17-4.tar.gz
+    - http://cran.r-project.org/src/contrib/Hmisc_4.0-0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/Hmisc/Hmisc_4.0-0.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,7 +31,7 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: chron, rms, mice, tables, knitr, ff, ffbase, htmltools
+# Suggests: chron, rms, mice, tables, knitr, ff, ffbase, plotly (>= 4.5.2)
 requirements:
   build:
     - r-base
@@ -43,11 +43,14 @@ requirements:
     - r-ggplot2 >=2.0
     - r-gridextra
     - r-gtable
+    - r-htmltable
+    - r-htmltools
     - r-lattice
     - r-latticeextra
     - r-nnet
     - r-rpart
-    - r-survival >=2.37_6
+    - r-survival >=2.40_1
+    - r-viridis
     - posix               # [win]
     - {{native}}toolchain # [win]
     - gcc                 # [not win]
@@ -62,11 +65,14 @@ requirements:
     - r-ggplot2 >=2.0
     - r-gridextra
     - r-gtable
+    - r-htmltable
+    - r-htmltools
     - r-lattice
     - r-latticeextra
     - r-nnet
     - r-rpart
-    - r-survival >=2.37_6
+    - r-survival >=2.40_1
+    - r-viridis
 
 test:
   commands:
@@ -86,28 +92,28 @@ about:
   summary: Contains many functions useful for data analysis, high-level graphics, utility operations,
     functions for computing sample size and power, importing and annotating datasets,
     imputing missing values, advanced table making, variable clustering, character string
-    manipulation, conversion of R objects to LaTeX code, and recoding variables.
+    manipulation, conversion of R objects to LaTeX and html code, and recoding variables.
   license_family: GPL3
 
 # The original CRAN metadata for this package was:
 
 # Package: Hmisc
-# Version: 3.17-4
-# Date: 2016-05-02
+# Version: 4.0-0
+# Date: 2016-10-31
 # Title: Harrell Miscellaneous
 # Author: Frank E Harrell Jr <f.harrell@vanderbilt.edu>, with contributions from Charles Dupont and many others.
 # Maintainer: Frank E Harrell Jr <f.harrell@vanderbilt.edu>
-# Depends: lattice, survival (>= 2.37-6), Formula, ggplot2 (>= 2.0)
-# Imports: methods, latticeExtra, cluster, rpart, nnet, acepack, foreign, gtable, grid, gridExtra, data.table
-# Suggests: chron, rms, mice, tables, knitr, ff, ffbase, htmltools
-# Description: Contains many functions useful for data analysis, high-level graphics, utility operations, functions for computing sample size and power, importing and annotating datasets, imputing missing values, advanced table making, variable clustering, character string manipulation, conversion of R objects to LaTeX code, and recoding variables.
+# Depends: lattice, survival (>= 2.40-1), Formula, ggplot2 (>= 2.0)
+# Imports: methods, latticeExtra, cluster, rpart, nnet, acepack, foreign, gtable, grid, gridExtra, data.table, htmlTable, viridis, htmltools
+# Suggests: chron, rms, mice, tables, knitr, ff, ffbase, plotly (>= 4.5.2)
+# Description: Contains many functions useful for data analysis, high-level graphics, utility operations, functions for computing sample size and power, importing and annotating datasets, imputing missing values, advanced table making, variable clustering, character string manipulation, conversion of R objects to LaTeX and html code, and recoding variables.
 # License: GPL (>= 2)
 # LazyLoad: Yes
 # URL: http://biostat.mc.vanderbilt.edu/Hmisc, https://github.com/harrelfe/Hmisc
 # NeedsCompilation: yes
-# Packaged: 2016-05-02 14:10:51 UTC; harrelfe
+# Packaged: 2016-10-31 12:43:34 UTC; harrelfe
 # Repository: CRAN
-# Date/Publication: 2016-05-02 17:28:19
+# Date/Publication: 2016-11-01 11:27:47
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -2,10 +2,10 @@ package:
   name: m2w64-gcc-objc
   version: 5.3.0
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-gcc-objc-5.3.0-5.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-gcc-objc-5.3.0-5.src.tar.gz
+  md5: 4698350ad11d86459ffc4843fe1c951f
 build:
-  number: '5'
+  number: 6
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-gcc-objc
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-gcc-objc-5.3.0-5-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-gcc-objc-5.3.0-5-any.pkg.tar.xz
       md5: 02001935d0e71c4ba4cb91a6a4e39b9b
       mv-srcs:
       - mingw32
@@ -26,7 +26,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-gcc-objc
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-gcc-objc-5.3.0-5-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-gcc-objc-5.3.0-5-any.pkg.tar.xz
       md5: 21b730ea7b7651948f06a9822b4367c7
       mv-srcs:
       - mingw64

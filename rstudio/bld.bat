@@ -6,6 +6,10 @@ set USE_JOM=1
 :: set BUILD_TYPE=RelWithDebInfo
 set BUILD_TYPE=Release
 
+FOR /f "usebackqeol=; tokens=1 delims=." %%A IN ('%PKG_VERSION%') DO set RSTUDIO_VERSION_MAJOR=%%A
+FOR /f "usebackqeol=; tokens=2 delims=." %%A IN ('%PKG_VERSION%') DO set RSTUDIO_VERSION_MINOR=%%A
+FOR /f "usebackqeol=; tokens=3 delims=." %%A IN ('%PKG_VERSION%') DO set RSTUDIO_VERSION_PATCH=%%A
+
 cd dependencies\windows
 call install-dependencies.cmd
 cd ..\..
@@ -57,6 +61,7 @@ set BOOST_ROOT=%PREFIX%
 if "%USE_JOM%" == "1" (
 ::  for /f "delims=" %%A in ('where cl.exe') do set "CL_EXE=%%A"
 ::  set "CL_EXE=!CL_EXE:\=/!"
+  echo Using cmake -G"NMake Makefiles"
   cmake -G"NMake Makefiles" ^
         -DCMAKE_INSTALL_PREFIX=%PREFIX%\Library ^
         -DRSTUDIO_TARGET=Desktop ^
@@ -65,7 +70,7 @@ if "%USE_JOM%" == "1" (
         -DLIBR_CORE_LIBRARY=%PREFIX%\R\bin\!R_ARCH!\R.lib ^
         -DLIBR_GRAPHAPP_LIBRARY=%PREFIX%\R\bin\!R_ARCH!\Rgraphapp.lib ^
         -DQT_QMAKE_EXECUTABLE=%PREFIX%\Library\bin\qmake.exe ^
-              -Wdev --debug-output --trace                ^
+        -DCMAKE_MAKE_PROGRAM=jom ^
         ..
 ::  if "%PROCESSOR_ARCHITECTURE%"=="x86" (
 ::     echo Early test for OpenJDK heap allocation problem
@@ -79,6 +84,7 @@ if "%USE_JOM%" == "1" (
 :: /MP == object level parallelism, but when added on its own
 :: WIN32, _WINDOWS and /EHsc are dropped, so add them back too.
 :: This needs to be fixed in the CMakeLists.txt files.
+  echo Using cmake -G"%CMAKE_GENERATOR%"
   cmake -G"%CMAKE_GENERATOR%" ^
         -DCMAKE_INSTALL_PREFIX=%PREFIX%\Library ^
         -DRSTUDIO_TARGET=Desktop ^

@@ -2,10 +2,10 @@ package:
   name: m2-libgdbm
   version: '1.11'
 source:
-  url: http://repo.msys2.org/msys/sources/libgdbm-1.11-3.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libgdbm-1.11-3.src.tar.gz
+  md5: 5b2bf818b0c2f78cf45ecdb079b7eeef
 build:
-  number: '3'
+  number: 4
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libgdbm
-      url: http://repo.msys2.org/msys/i686/libgdbm-1.11-3-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libgdbm-1.11-3-i686.pkg.tar.xz
       md5: 4ad71d2a18724b1bc9e5d481b90b9f58
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libgdbm
-      url: http://repo.msys2.org/msys/x86_64/libgdbm-1.11-3-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libgdbm-1.11-3-x86_64.pkg.tar.xz
       md5: 3d787752482705aaa93bbe6e20850dc0
       mv-srcs:
       - '*'

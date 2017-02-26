@@ -5,13 +5,13 @@ package:
   name: r-dbi
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.4_1"
+  version: "0.5_1"
 
 source:
-  fn: DBI_0.4-1.tar.gz
+  fn: DBI_0.5-1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/DBI_0.4-1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/DBI/DBI_0.4-1.tar.gz
+    - http://cran.r-project.org/src/contrib/DBI_0.5-1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/DBI/DBI_0.5-1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,7 +31,7 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat, RSQLite, knitr, covr
+# Suggests: testthat, RSQLite, knitr, rmarkdown, covr
 requirements:
   build:
     - r-base
@@ -52,7 +52,7 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: https://github.com/rstats-db/DBI
+  home: http://rstats-db.github.io/DBI
   license: LGPL (>= 2)
   summary: A database interface definition for communication between R and relational database
     management systems.  All classes in this package are virtual and need to be extended
@@ -62,26 +62,27 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: DBI
-# Version: 0.4-1
-# Date: 2016-05-07
+# Version: 0.5-1
+# Date: 2016-09-09
 # Title: R Database Interface
 # Description: A database interface definition for communication between R and relational database management systems.  All classes in this package are virtual and need to be extended by the various R/DBMS implementations.
 # Authors@R: c( person("R Special Interest Group on Databases (R-SIG-DB)", role = "aut"), person("Hadley", "Wickham", role = "aut"), person("Kirill", "Muller", email = "krlmlr+r@mailbox.org", role = c("aut", "cre")) )
 # Depends: R (>= 2.15.0), methods
-# Suggests: testthat, RSQLite, knitr, covr
+# Suggests: testthat, RSQLite, knitr, rmarkdown, covr
 # Encoding: UTF-8
 # License: LGPL (>= 2)
-# URL: https://github.com/rstats-db/DBI
+# URL: http://rstats-db.github.io/DBI
+# URLNote: https://github.com/rstats-db/DBI
 # BugReports: https://github.com/rstats-db/DBI/issues
-# Collate: 'DBObject.R' 'DBDriver.R' 'DBConnection.R' 'ANSI.R' 'DBResult.R' 'data-types.R' 'data.R' 'deprecated.R' 'interpolate.R' 'quote.R' 'rownames.R' 'table-create.R' 'table-insert.R' 'table.R' 'transactions.R' 'util.R'
+# Collate: 'DBObject.R' 'DBDriver.R' 'DBConnection.R' 'ANSI.R' 'DBI-package.R' 'DBResult.R' 'data-types.R' 'data.R' 'deprecated.R' 'hidden.R' 'interpolate.R' 'quote.R' 'rownames.R' 'table-create.R' 'table-insert.R' 'table.R' 'transactions.R' 'util.R'
 # VignetteBuilder: knitr
-# RoxygenNote: 5.0.1
+# RoxygenNote: 5.0.1.9000
 # NeedsCompilation: no
-# Packaged: 2016-05-07 13:24:22 UTC; muelleki
+# Packaged: 2016-09-09 21:32:04 UTC; muelleki
 # Author: R Special Interest Group on Databases (R-SIG-DB) [aut], Hadley Wickham [aut], Kirill Muller [aut, cre]
 # Maintainer: Kirill Muller <krlmlr+r@mailbox.org>
 # Repository: CRAN
-# Date/Publication: 2016-05-08 09:53:30
+# Date/Publication: 2016-09-10 01:27:20
 
 # See
 # http://docs.continuum.io/conda/build.html for

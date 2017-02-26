@@ -2,22 +2,22 @@ package:
   name: m2-msys2-runtime
   version: 2.5.0.17080.65c939c
 source:
-  url: http://repo.msys2.org/msys/sources/msys2-runtime-2.5.0.17080.65c939c-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/msys2-runtime-2.5.0.17080.65c939c-1.src.tar.gz
+  md5: 4d735859c1c3c1603373755e482d4e6b
 build:
-  number: '1'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
 about:
-  home: null
+  home: https://sourceforge.net/projects/msys2/
   license: GPL
   summary: Posix emulation engine for Windows
 extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/msys2-runtime
-      url: http://repo.msys2.org/msys/i686/msys2-runtime-2.5.0.17080.ac97025-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/msys2-runtime-2.5.0.17080.ac97025-1-i686.pkg.tar.xz
       md5: 71975da31a7595be57c4d5147a1b9cbf
       mv-srcs:
       - '*'
@@ -25,7 +25,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/msys2-runtime
-      url: http://repo.msys2.org/msys/x86_64/msys2-runtime-2.5.0.17080.65c939c-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/msys2-runtime-2.5.0.17080.65c939c-1-x86_64.pkg.tar.xz
       md5: 0bdbfff0aba037318547d8ae4effeec3
       mv-srcs:
       - '*'

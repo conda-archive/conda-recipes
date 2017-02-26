@@ -5,13 +5,13 @@ package:
   name: r-httr
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.2.0"
+  version: "1.2.1"
 
 source:
-  fn: httr_1.2.0.tar.gz
+  fn: httr_1.2.1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/httr_1.2.0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/httr/httr_1.2.0.tar.gz
+    - http://cran.r-project.org/src/contrib/httr_1.2.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/httr/httr_1.2.1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -72,7 +72,7 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: httr
-# Version: 1.2.0
+# Version: 1.2.1
 # Title: Tools for Working with URLs and HTTP
 # Description: Useful tools for working with HTTP organised by HTTP verbs (GET(), POST(), etc). Configuration functions make it easy to control additional request components (authenticate(), add_headers() and so on).
 # Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")), person("RStudio", role = "cph") )
@@ -84,11 +84,11 @@ about:
 # URL: https://github.com/hadley/httr
 # RoxygenNote: 5.0.1
 # NeedsCompilation: no
-# Packaged: 2016-06-14 22:20:32 UTC; hadley
+# Packaged: 2016-07-03 17:01:25 UTC; hadley
 # Author: Hadley Wickham [aut, cre], RStudio [cph]
 # Maintainer: Hadley Wickham <hadley@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2016-06-15 01:06:31
+# Date/Publication: 2016-07-03 22:33:34
 
 # See
 # http://docs.continuum.io/conda/build.html for

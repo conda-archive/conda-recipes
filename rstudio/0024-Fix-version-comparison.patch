@@ -1,4 +1,4 @@
-From 16b39fcb5dee781c136b31119d5c7a72ae961238 Mon Sep 17 00:00:00 2001
+From 2b38ea0e91387b9a7862878fa870f1870bcc952e Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Sat, 29 Oct 2016 17:41:22 +0100
 Subject: [PATCH 24/42] Fix version comparison
@@ -25,5 +25,5 @@ index 5d7f071..d0576df 100644
        return c;
  
 -- 
-2.10.1
+2.10.2
 

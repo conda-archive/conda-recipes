@@ -1,0 +1,69 @@
+From ddeb4138a4ec37122063d40f320da7f5312c37e3 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Sat, 4 Feb 2017 13:29:12 -0500
+Subject: [PATCH] Use conda's pandoc when CONDA_BUILD
+
+---
+ dependencies/windows/install-dependencies.cmd | 18 ++++++++++--------
+ src/cpp/session/CMakeLists.txt                |  2 +-
+ src/cpp/session/SessionOptions.cpp            |  2 +-
+ 3 files changed, 12 insertions(+), 10 deletions(-)
+
+diff --git a/dependencies/windows/install-dependencies.cmd b/dependencies/windows/install-dependencies.cmd
+index 99580c3..58ddc94 100644
+--- a/dependencies/windows/install-dependencies.cmd
++++ b/dependencies/windows/install-dependencies.cmd
+@@ -152,14 +152,16 @@ if not exist "mathjax-26" (
+   )
+ )
+ 
+-if not exist pandoc\%PANDOC_VERSION% (
+-  wget %WGET_ARGS% "%BASEURL%%PANDOC_FILE%"
+-  echo Unzipping %PANDOC_FILE%
+-  unzip %UNZIP_ARGS% "%PANDOC_FILE%"
+-  mkdir pandoc\%PANDOC_VERSION%
+-  copy "%PANDOC_NAME%\windows\pandoc*" "pandoc\%PANDOC_VERSION%""
+-  del %PANDOC_FILE%
+-  rmdir /s /q %PANDOC_NAME%
++if not "%CONDA_BUILD%" == "1" (
++  if not exist pandoc\%PANDOC_VERSION% (
++    wget %WGET_ARGS% "%BASEURL%%PANDOC_FILE%"
++    echo Unzipping %PANDOC_FILE%
++    unzip %UNZIP_ARGS% "%PANDOC_FILE%"
++    mkdir pandoc\%PANDOC_VERSION%
++    copy "%PANDOC_NAME%\windows\pandoc*" "pandoc\%PANDOC_VERSION%""
++    del %PANDOC_FILE%
++    rmdir /s /q %PANDOC_NAME%
++  )
+ )
+ 
+ if not exist libclang\%LIBCLANG_VERSION% (
+diff --git a/src/cpp/session/CMakeLists.txt b/src/cpp/session/CMakeLists.txt
+index d446bc9..0ebb392 100644
+--- a/src/cpp/session/CMakeLists.txt
++++ b/src/cpp/session/CMakeLists.txt
+@@ -25,7 +25,7 @@ endif()
+ if(NOT EXISTS "${RSTUDIO_DEPENDENCIES_DIR}/common/mathjax-26")
+   message(FATAL_ERROR "Mathjax 2.6 not found (re-run install-dependencies script to install)")
+ endif()
+-if(NOT EXISTS "${RSTUDIO_DEPENDENCIES_DIR}/common/pandoc")
++if(NOT DEFINED ENV{CONDA_BUILD} AND NOT EXISTS "${RSTUDIO_DEPENDENCIES_DIR}/common/pandoc")
+   message(FATAL_ERROR "pandoc not found (re-run install-dependencies script to install)")
+ endif()
+ 
+diff --git a/src/cpp/session/SessionOptions.cpp b/src/cpp/session/SessionOptions.cpp
+index 0a772b9..828aed3 100644
+--- a/src/cpp/session/SessionOptions.cpp
++++ b/src/cpp/session/SessionOptions.cpp
+@@ -72,7 +72,7 @@ const char* const kDefaultMsysSshPath = "bin/msys-ssh-1000-18";
+ // resources directory so this gets us to prefix/bin
+ // For gnudiff, gnugrep and msysssh we use conda's
+ // m2w64-diffutils, m2w64-grep and m2-openssh respectively.
+-const char* const kDefaultPandocPath = "../../bin/pandoc";
++const char* const kDefaultPandocPath = "../../bin";
+ const char* const kDefaultPostbackPath = "../../bin/rpostback";
+ const char* const kDefaultDiagnosticsPath = "../../bin/diagnostics";
+ const char* const kDefaultConsoleIoPath = "../../bin/consoleio";
+-- 
+2.10.2
+

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rm -rf "${PREFIX}"/RStudio.app
+rm -rf "${PREFIX}"/Applications/RStudio.app || true

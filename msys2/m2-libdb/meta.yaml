@@ -2,10 +2,10 @@ package:
   name: m2-libdb
   version: 5.3.28
 source:
-  url: http://repo.msys2.org/msys/sources/libdb-5.3.28-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libdb-5.3.28-2.src.tar.gz
+  md5: 1fe34958058be563736c8fb7f205a10e
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libdb
-      url: http://repo.msys2.org/msys/i686/libdb-5.3.28-2-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libdb-5.3.28-2-i686.pkg.tar.xz
       md5: a23f958c1cfa633b3607e2c2022bcc95
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libdb
-      url: http://repo.msys2.org/msys/x86_64/libdb-5.3.28-2-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libdb-5.3.28-2-x86_64.pkg.tar.xz
       md5: d475807dbef95e592f2b46af5a82bad4
       mv-srcs:
       - '*'

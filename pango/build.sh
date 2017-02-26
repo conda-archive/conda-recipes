@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ./configure --prefix=$PREFIX || exit 1
 make || exit 1

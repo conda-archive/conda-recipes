@@ -2,6 +2,6 @@ package:
   name: msys2-conda-epoch
   version: '20160418'
 build:
-  number: '0'
+  number: 1
 requirements:
   run: []

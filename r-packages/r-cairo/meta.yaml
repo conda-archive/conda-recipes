@@ -24,14 +24,12 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
-
-  skip: true # [osx]
 
 # pkg-config is ineffective on Linux currently since our cairo.pc
 # requires xrender.pc which we do not build. Bodge it in build.sh
@@ -39,17 +37,17 @@ build:
 requirements:
   build:
     - r-base
-    - pkg-config          # [not win]
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
-    - cairo               # [not win]
-    - libpng 1.6.*        # [not win]
+    - pkg-config             # [not win]
+    - posix                  # [win]
+    - {{native}}toolchain    # [win]
+    - gcc                    # [not win]
+    - cairo 1.14.*           # [not win]
+    - libpng >=1.6.27,<1.7   # [not win]
 
   run:
     - r-base
-    - cairo               # [not win]
-    - libpng 1.6.*        # [not win]
+    - cairo 1.14.*           # [not win]
+    - libpng >=1.6.27,<1.7   # [not win]
 
 test:
   commands:

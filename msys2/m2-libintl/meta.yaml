@@ -2,10 +2,10 @@ package:
   name: m2-libintl
   version: 0.19.7
 source:
-  url: http://repo.msys2.org/msys/sources/libintl-0.19.7-3.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libintl-0.19.7-3.src.tar.gz
+  md5: c79f1314c7cdd085adc2d516ca47a6e1
 build:
-  number: '3'
+  number: 4
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libintl
-      url: http://repo.msys2.org/msys/i686/libintl-0.19.7-3-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libintl-0.19.7-3-i686.pkg.tar.xz
       md5: 2ef05ce06b4dc8269293a6dd30ec9c68
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libintl
-      url: http://repo.msys2.org/msys/x86_64/libintl-0.19.7-3-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libintl-0.19.7-3-x86_64.pkg.tar.xz
       md5: a67e364427d0fab79500cfbd78a52f69
       mv-srcs:
       - '*'

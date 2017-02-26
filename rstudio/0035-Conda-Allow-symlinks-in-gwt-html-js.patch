@@ -1,4 +1,4 @@
-From 0430b1ca75d71a56ed90787c86e1669ec11b44da Mon Sep 17 00:00:00 2001
+From 9dab1d683b619046fb8e4290dd2f1effc9a4fe3c Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Wed, 2 Nov 2016 23:05:56 +0000
 Subject: [PATCH 35/42] Conda: Allow symlinks in gwt/html/js
@@ -32,5 +32,5 @@ index b9722e4..c4c6cfc 100644
     {
        // log if this isn't file not found
 -- 
-2.10.1
+2.10.2
 

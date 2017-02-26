@@ -1,0 +1,91 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-rprojroot
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.1"
+
+source:
+  fn: rprojroot_1.1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/rprojroot_1.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/rprojroot/rprojroot_1.1.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, knitr, withr, rmarkdown
+requirements:
+  build:
+    - r-base
+    - r-backports
+
+  run:
+    - r-base
+    - r-backports
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('rprojroot')" # [not win]
+    - "\"%R%\" -e \"library('rprojroot')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/krlmlr/rprojroot, https://krlmlr.github.io/rprojroot
+  license: GPL-3
+  summary: Robust, reliable and flexible paths to files below a project root. The 'root' of a
+    project is defined as a directory that matches a certain criterion, e.g., it contains
+    a certain regular file.
+  license_family: GPL3
+
+# The original CRAN metadata for this package was:
+
+# Package: rprojroot
+# Title: Finding Files in Project Subdirectories
+# Version: 1.1
+# Authors@R: person(given = "Kirill", family = "Muller", role = c("aut", "cre"), email = "krlmlr+r@mailbox.org")
+# Description: Robust, reliable and flexible paths to files below a project root. The 'root' of a project is defined as a directory that matches a certain criterion, e.g., it contains a certain regular file.
+# Depends: R (>= 3.0.0)
+# Imports: backports
+# Suggests: testthat, knitr, withr, rmarkdown
+# VignetteBuilder: knitr
+# License: GPL-3
+# LazyData: true
+# Encoding: UTF-8
+# URL: https://github.com/krlmlr/rprojroot, https://krlmlr.github.io/rprojroot
+# BugReports: https://github.com/krlmlr/rprojroot/issues
+# RoxygenNote: 5.0.1.9000
+# Collate: 'rrmake.R' 'criterion.R' 'file.R' 'has-file.R' 'root.R' 'rprojroot-package.R' 'shortcut.R'
+# NeedsCompilation: no
+# Packaged: 2016-10-29 13:06:56 UTC; muelleki
+# Author: Kirill Muller [aut, cre]
+# Maintainer: Kirill Muller <krlmlr+r@mailbox.org>
+# Repository: CRAN
+# Date/Publication: 2016-10-29 22:24:09
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

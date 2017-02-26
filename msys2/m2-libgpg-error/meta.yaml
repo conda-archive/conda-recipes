@@ -2,10 +2,10 @@ package:
   name: m2-libgpg-error
   version: '1.21'
 source:
-  url: http://repo.msys2.org/msys/sources/libgpg-error-1.21-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libgpg-error-1.21-1.src.tar.gz
   md5: 93c881e36db836a85380f4b89c4bb6fe
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -21,7 +21,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libgpg-error
-      url: http://repo.msys2.org/msys/i686/libgpg-error-1.21-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libgpg-error-1.21-1-i686.pkg.tar.xz
       md5: 624acd8659229ed56ca75c098dffc423
       mv-srcs:
       - '*'
@@ -29,7 +29,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libgpg-error
-      url: http://repo.msys2.org/msys/x86_64/libgpg-error-1.21-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libgpg-error-1.21-1-x86_64.pkg.tar.xz
       md5: d11a28ac0347530fc41acc7d28e23ece
       mv-srcs:
       - '*'

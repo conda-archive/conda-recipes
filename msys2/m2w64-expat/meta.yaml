@@ -2,10 +2,10 @@ package:
   name: m2w64-expat
   version: 2.1.1
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-expat-2.1.1-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-expat-2.1.1-1.src.tar.gz
   md5: 2d7b0130afa2789a55240c1fd1899dcd
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -17,7 +17,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-expat
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-expat-2.1.1-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-expat-2.1.1-1-any.pkg.tar.xz
       md5: b3a61ff61f0ee1433844d3fd81d04239
       mv-srcs:
       - mingw32
@@ -25,7 +25,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-expat
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-expat-2.1.1-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-expat-2.1.1-1-any.pkg.tar.xz
       md5: 9a2ddc79dbf20ee75db64b6cc9c7792c
       mv-srcs:
       - mingw64

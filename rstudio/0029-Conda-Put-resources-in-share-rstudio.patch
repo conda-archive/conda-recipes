@@ -1,4 +1,4 @@
-From 71b9604f3c22290a0bbe29ad197e2185efd6b847 Mon Sep 17 00:00:00 2001
+From bc196b7cd5cc65f4c2f0513e69ff4bd206074f7d Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Mon, 31 Oct 2016 12:01:00 +0000
 Subject: [PATCH 29/42] Conda: Put resources in share/rstudio
@@ -26,7 +26,7 @@ Add resolveIDEPath for Xcode and/or QtCreator debugging
  13 files changed, 216 insertions(+), 58 deletions(-)
 
 diff --git a/CMakeGlobals.txt b/CMakeGlobals.txt
-index 1d0b8b8..5e13b3a 100644
+index 8cf4e00..2af7da5 100644
 --- a/CMakeGlobals.txt
 +++ b/CMakeGlobals.txt
 @@ -123,7 +123,7 @@ else()
@@ -39,10 +39,10 @@ index 1d0b8b8..5e13b3a 100644
  
  # if the install prefix is /usr/local then tweak as appropriate
 diff --git a/src/cpp/core/FilePath.cpp b/src/cpp/core/FilePath.cpp
-index 3d002df..e50ad3c 100644
+index 66942e5..788634f 100644
 --- a/src/cpp/core/FilePath.cpp
 +++ b/src/cpp/core/FilePath.cpp
-@@ -391,6 +391,12 @@ bool FilePath::hasExtensionLowerCase(const std::string& ext) const
+@@ -394,6 +394,12 @@ bool FilePath::hasExtensionLowerCase(const std::string& ext) const
     return extensionLowerCase() == ext;
  }
  
@@ -56,10 +56,10 @@ index 3d002df..e50ad3c 100644
  
  struct MimeType
 diff --git a/src/cpp/core/include/core/FilePath.hpp b/src/cpp/core/include/core/FilePath.hpp
-index b6b08a3..2898d6b 100644
+index 6040c2c..691f850 100644
 --- a/src/cpp/core/include/core/FilePath.hpp
 +++ b/src/cpp/core/include/core/FilePath.hpp
-@@ -166,6 +166,9 @@ public:
+@@ -178,6 +178,9 @@ public:
     // to this one; if input path is absolute returns that path)
     FilePath complete(const std::string& path) const;
     
@@ -150,10 +150,10 @@ index 0d96d83..7636bb1 100644
     return supportingFilePath_;
  }
 diff --git a/src/cpp/desktop/DesktopMain.cpp b/src/cpp/desktop/DesktopMain.cpp
-index 46b6df3..888d768 100644
+index 1008e3a..77fcc12 100644
 --- a/src/cpp/desktop/DesktopMain.cpp
 +++ b/src/cpp/desktop/DesktopMain.cpp
-@@ -46,6 +46,12 @@
+@@ -47,6 +47,12 @@
  #include <TCHAR.h>
  #endif
  
@@ -166,9 +166,9 @@ index 46b6df3..888d768 100644
  QProcess* pRSessionProcess;
  QString sharedSecret;
  
-@@ -345,6 +351,45 @@ int main(int argc, char* argv[])
-       }
-       core::system::fixupExecutablePath(&sessionPath);
+@@ -348,6 +354,45 @@ int main(int argc, char* argv[])
+       NetworkProxyFactory* pProxyFactory = new NetworkProxyFactory();
+       QNetworkProxyFactory::setApplicationProxyFactory(pProxyFactory);
  
 +      // debugging in Visual Studio built with jom.
 +#if defined(_WIN32) && defined(CONDA_BUILD)
@@ -562,5 +562,5 @@ index 9f21a72..bcb9c65 100644
     std::string gnudiffPath_;
     std::string gnugrepPath_;
 -- 
-2.10.1
+2.10.2
 

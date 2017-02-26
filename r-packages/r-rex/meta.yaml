@@ -79,10 +79,10 @@ about:
 # Collate: 'aaa.R' 'utils.R' 'escape.R' 'capture.R' 'character_class.R' 'counts.R' 'lookarounds.R' 'match.R' 'or.R' 'rex-mode.R' 'rex.R' 'shortcuts.R' 'wildcards.R' 'zzz.R'
 # RoxygenNote: 5.0.1.9000
 # NeedsCompilation: no
-# Packaged: 2016-03-10 22:45:34 UTC; jhester
+# Packaged: 2016-12-05 15:10:53 UTC; hornik
 # Author: Kevin Ushey [aut], Jim Hester [aut, cre], Robert Krzyzanowski [aut]
 # Repository: CRAN
-# Date/Publication: 2016-03-11 00:40:20
+# Date/Publication: 2016-12-05 18:28:48
 
 # See
 # http://docs.continuum.io/conda/build.html for

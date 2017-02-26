@@ -2,10 +2,10 @@ package:
   name: m2-libgc
   version: 7.2.d
 source:
-  url: http://repo.msys2.org/msys/sources/libgc-7.2.d-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libgc-7.2.d-1.src.tar.gz
+  md5: a6679c07e152382e75bc3b762e38102f
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libgc
-      url: http://repo.msys2.org/msys/i686/libgc-7.2.d-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libgc-7.2.d-1-i686.pkg.tar.xz
       md5: d203f2d8ca3f462d0ec4c23a5eeedcb7
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libgc
-      url: http://repo.msys2.org/msys/x86_64/libgc-7.2.d-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libgc-7.2.d-1-x86_64.pkg.tar.xz
       md5: 733d6e7ada47f0ee568b42610d099b50
       mv-srcs:
       - '*'

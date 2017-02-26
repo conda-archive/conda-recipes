@@ -2,10 +2,10 @@ package:
   name: m2w64-tcl
   version: 8.6.5
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-tcl-8.6.5-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-tcl-8.6.5-1.src.tar.gz
   md5: 731f7aadd90c856bb33e085a4a956235
 build:
-  number: '1'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-tcl
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-tcl-8.6.5-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-tcl-8.6.5-1-any.pkg.tar.xz
       md5: cd53c7142c4b3ff9555361e94b5b3a60
       mv-srcs:
       - mingw32
@@ -27,7 +27,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-tcl
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-tcl-8.6.5-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-tcl-8.6.5-1-any.pkg.tar.xz
       md5: 64dfe5207b548bed0a5cbf08bae3b76a
       mv-srcs:
       - mingw64

@@ -2,10 +2,10 @@ package:
   name: m2w64-speex
   version: 1.2rc2
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-speex-1.2rc2-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-speex-1.2rc2-2.src.tar.gz
+  md5: 1a8b0c36aad85e4a441a38aec689ecee
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-speex
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-speex-1.2rc2-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-speex-1.2rc2-2-any.pkg.tar.xz
       md5: 0ce8d9a649d2322f0fd38fe4d9f9d15b
       mv-srcs:
       - mingw32
@@ -27,7 +27,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-speex
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-speex-1.2rc2-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-speex-1.2rc2-2-any.pkg.tar.xz
       md5: 63fe26c97ed30310f7c296724bcb6da4
       mv-srcs:
       - mingw64

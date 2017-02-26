@@ -1,0 +1,88 @@
+{% set name = 'DEoptimR' %}
+{% set version = '1.0-8' %}
+
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-{{ name|lower }}
+  version: {{ version|replace("-", "_") }}
+
+source:
+  fn: {{ name }}_{{ version }}.tar.gz
+  url:
+    - https://cran.r-project.org/src/contrib/{{ name }}_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/{{ name }}/{{ name }}_{{ version }}.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 0
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r-base
+
+  run:
+    - r-base
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('DEoptimR')"  # [not win]
+    - "\"%R%\" -e \"library('DEoptimR')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://CRAN.R-project.org/package=DEoptimR
+  license: GPL (>= 2)
+  summary: Differential Evolution (DE) stochastic algorithms for global optimization of problems
+    with and without constraints. The aim is to curate a collection of its state-of-the-art
+    variants that (1) do not sacrifice simplicity of design, (2) are essentially tuning-free,
+    and (3) can be efficiently implemented directly in the R language. Currently, it
+    only provides an implementation of the 'jDE' algorithm by Brest et al. (2006) <doi:10.1109/TEVC.2006.872133>.
+  license_family: GPL3
+
+# The original CRAN metadata for this package was:
+
+# Package: DEoptimR
+# Version: 1.0-8
+# Date: 2016-11-19
+# Title: Differential Evolution Optimization in Pure R
+# Authors@R: c(person("Eduardo L. T.", "Conceicao", role = c("aut", "cre"), email = "mail@eduardoconceicao.org"), person("Martin", "Maechler", role = "ctb", email = "maechler@stat.math.ethz.ch") )
+# Maintainer: Eduardo L. T. Conceicao <mail@eduardoconceicao.org>
+# Description: Differential Evolution (DE) stochastic algorithms for global optimization of problems with and without constraints. The aim is to curate a collection of its state-of-the-art variants that (1) do not sacrifice simplicity of design, (2) are essentially tuning-free, and (3) can be efficiently implemented directly in the R language. Currently, it only provides an implementation of the 'jDE' algorithm by Brest et al. (2006) <doi:10.1109/TEVC.2006.872133>.
+# Imports: stats
+# Enhances: robustbase
+# License: GPL (>= 2)
+# ByteCompile: yes
+# Author: Eduardo L. T. Conceicao [aut, cre], Martin Maechler [ctb]
+# Repository: CRAN
+# Repository/R-Forge/Project: robustbase
+# Repository/R-Forge/Revision: 746
+# Repository/R-Forge/DateTimeStamp: 2016-11-19 14:54:56
+# Date/Publication: 2016-11-19 18:16:34
+# NeedsCompilation: no
+# Packaged: 2016-11-19 15:06:00 UTC; rforge
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

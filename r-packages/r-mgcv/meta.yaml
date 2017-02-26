@@ -5,13 +5,13 @@ package:
   name: r-mgcv
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.8_12"
+  version: "1.8_16"
 
 source:
-  fn: mgcv_1.8-12.tar.gz
+  fn: mgcv_1.8-16.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/mgcv_1.8-12.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/mgcv/mgcv_1.8-12.tar.gz
+    - http://cran.r-project.org/src/contrib/mgcv_1.8-16.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/mgcv/mgcv_1.8-16.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -69,7 +69,7 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: mgcv
-# Version: 1.8-12
+# Version: 1.8-16
 # Author: Simon Wood <simon.wood@r-project.org>
 # Maintainer: Simon Wood <simon.wood@r-project.org>
 # Title: Mixed GAM Computation Vehicle with GCV/AIC/REML Smoothness Estimation
@@ -82,9 +82,9 @@ about:
 # ByteCompile: yes
 # License: GPL (>= 2)
 # NeedsCompilation: yes
-# Packaged: 2016-03-02 18:21:25 UTC; sw283
+# Packaged: 2016-11-07 10:22:00 UTC; sw283
 # Repository: CRAN
-# Date/Publication: 2016-03-03 07:57:37
+# Date/Publication: 2016-11-07 19:28:16
 
 # See
 # http://docs.continuum.io/conda/build.html for

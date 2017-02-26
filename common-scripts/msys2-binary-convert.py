@@ -20,7 +20,7 @@ def get_tar_xz(url, md5):
     sig = hashlib.md5()
     tmp_tar_xz = join(tmpdir, fname)
     if urlparts.scheme == 'file':
-        path = re.compile('^file:///').sub('', url).replace('/', os.sep)
+        path = re.compile('^file://').sub('', url).replace('/', os.sep)
         copy(path, tmp_tar_xz)
         with open(tmp_tar_xz, "rb") as tar_xz:
             for block in iter(lambda: tar_xz.read(1024), b""):
@@ -56,11 +56,11 @@ def main():
     msys2_tar_xz = get_tar_xz(msys2_tar_xz_url, msys2_md5)
     tar = tarfile.open(msys2_tar_xz, 'r|xz')
     tar.extractall(path=prefix)
-    try:
-        for pacman_file in ('.BUILDINFO', '.MTREE', '.PKGINFO'):
+    for pacman_file in ('.BUILDINFO', '.MTREE', '.PKGINFO', '.INSTALL'):
+        try:
             os.remove(join(prefix, pacman_file))
-    except:
-        pass
+        except:
+            pass
 
     try:
         patches = metadata.get_section(
@@ -86,6 +86,8 @@ def main():
     for mv_src, mv_dst in zip(mv_srcs_list, mv_dsts_list):
         mv_dst_definitely_dir = False
         mv_srcs = glob(join(prefix, normpath(mv_src)))
+        # Prevent the 'Scripts' subfolder from being moved into the final package.
+        mv_srcs = [m for m in mv_srcs if not re.match('.*\\Scripts$', m)]
         if '*' in mv_src or mv_dst.endswith('/') or len(mv_srcs) > 1:
             mv_dst_definitely_dir = True
         if len(mv_srcs):
@@ -97,8 +99,8 @@ def main():
                 makedirs(mv_dst_mkdir)
             except:
                 pass
-            for mv_src in mv_srcs:
-                move(mv_src, mv_dst)
+            for mv_src_item in mv_srcs:
+                move(mv_src_item, mv_dst)
     tar.close()
 
 if __name__ == "__main__":

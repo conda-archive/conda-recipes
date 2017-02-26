@@ -5,13 +5,13 @@ package:
   name: r-survival
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "2.39_4"
+  version: "2.40_1"
 
 source:
-  fn: survival_2.39-4.tar.gz
+  fn: survival_2.40-1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/survival_2.39-4.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/survival/survival_2.39-4.tar.gz
+    - http://cran.r-project.org/src/contrib/survival_2.40-1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/survival/survival_2.40-1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -57,12 +57,12 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: https://github.com/therneau/survival
   license: LGPL (>= 2)
   summary: Contains the core survival analysis routines, including definition of Surv objects,  Kaplan-Meier
     and Aalen-Johansen (multi-state) curves, Cox models, and parametric accelerated
     failure time models.
-  license_family: GPL3
+  license_family: LGPL
 
 # The original CRAN metadata for this package was:
 
@@ -70,7 +70,7 @@ about:
 # Maintainer: Terry M Therneau <therneau.terry@mayo.edu>
 # Priority: recommended
 # Package: survival
-# Version: 2.39-4
+# Version: 2.40-1
 # Depends: R (>= 2.13.0)
 # Imports: graphics, Matrix, methods, splines, stats, utils
 # LazyData: Yes
@@ -79,11 +79,12 @@ about:
 # Authors@R: c(person(c("Terry", "M"), "Therneau", email="therneau.terry@mayo.edu", role=c("aut", "cre")), person("Thomas", "Lumley", role=c("ctb", "trl"), comment="original S->R port and maintainer until 2009"))
 # Description: Contains the core survival analysis routines, including definition of Surv objects,  Kaplan-Meier and Aalen-Johansen (multi-state) curves, Cox models, and parametric accelerated failure time models.
 # License: LGPL (>= 2)
+# URL: https://github.com/therneau/survival
 # NeedsCompilation: yes
-# Packaged: 2016-05-10 20:07:43 UTC; therneau
+# Packaged: 2016-10-30 02:52:49 UTC; therneau
 # Author: Terry M Therneau [aut, cre], Thomas Lumley [ctb, trl] (original S->R port and maintainer until 2009)
 # Repository: CRAN
-# Date/Publication: 2016-05-11 11:45:26
+# Date/Publication: 2016-10-30 20:29:44
 
 # See
 # http://docs.continuum.io/conda/build.html for

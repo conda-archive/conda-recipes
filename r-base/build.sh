@@ -296,7 +296,7 @@ Mingw_w64_makefiles() {
     cp -Rf R "${PREFIX}"/
     # Remove the recommeded libraries, we package them separately as-per the other platforms now.
     rm -Rf "${PREFIX}"/R/library/{MASS,lattice,Matrix,nlme,survival,boot,cluster,codetools,foreign,KernSmooth,rpart,class,nnet,spatial,mgcv}
-    # * Here we force our MSYS2/mingw-w64 sysroot to be looked in for libraies during r-packages builds.
+    # * Here we force our MSYS2/mingw-w64 sysroot to be looked in for libraries during r-packages builds.
     for _makeconf in $(find "${PREFIX}"/R -name Makeconf); do
         sed -i 's|LOCAL_SOFT = |LOCAL_SOFT = \$(R_HOME)/../Library/mingw-w64|g' ${_makeconf}
         sed -i 's|^BINPREF ?= .*$|BINPREF ?= \$(R_HOME)/../Library/mingw-w64/bin/|g' ${_makeconf}
@@ -320,8 +320,6 @@ Darwin() {
     # DYLD_FALLBACK_LIBRARY_PATH and LDFLAGS for different stages of configure.
     export LDFLAGS=$LDFLAGS" -L${PREFIX}"
 
-    export PATH=$PREFIX/bin:/usr/bin:/bin:/usr/sbin:/sbin
-
     cat >> config.site <<EOF
 CC=clang
 CXX=clang++
@@ -333,6 +331,12 @@ EOF
     # unknown timezone 'Europe/London'
     # unknown timezone 'GMT'
     # https://stat.ethz.ch/pipermail/r-devel/2014-April/068745.html
+
+    echo $PATH | grep texlive > /dev/null 2>&1
+    if [[ $? != 0 ]]; then
+      echo "no texlive in PATH, refusing to build this, conda or conda-build are buggy or tex failed to install or something"
+      exit 1
+    fi
 
     ./configure --prefix=$PREFIX                    \
                 --with-blas="-framework Accelerate" \

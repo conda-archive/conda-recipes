@@ -1,4 +1,4 @@
-From 8fd47c5773f0adcabe16204f2af37f04d41b9900 Mon Sep 17 00:00:00 2001
+From a8d8cb4452cec65dcace2ec84b3d1be4aaf8b888 Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Tue, 1 Nov 2016 15:13:54 +0000
 Subject: [PATCH 37/42] Get rstudio-buildtools from local storage
@@ -74,7 +74,7 @@ index d630f66..9c708be 100755
  
  # target directory for gwt
 diff --git a/dependencies/common/install-libclang b/dependencies/common/install-libclang
-index 5c17015..de1c43d 100755
+index 10282c1..4aec1df 100755
 --- a/dependencies/common/install-libclang
 +++ b/dependencies/common/install-libclang
 @@ -17,6 +17,9 @@
@@ -130,7 +130,7 @@ index 44bdcba..4a8873f 100755
  
  # download and extract mathjax if necessary
 diff --git a/dependencies/common/install-pandoc b/dependencies/common/install-pandoc
-index c2d67bf..3626c24 100755
+index 96a5d21..2b644e8 100755
 --- a/dependencies/common/install-pandoc
 +++ b/dependencies/common/install-pandoc
 @@ -17,6 +17,9 @@
@@ -158,5 +158,5 @@ index c2d67bf..3626c24 100755
  
  # get pandoc
 -- 
-2.10.1
+2.10.2
 

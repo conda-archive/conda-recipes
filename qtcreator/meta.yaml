@@ -1,5 +1,5 @@
-{% set version = "4.0.3" %}
-{% set ver_maj_min = "4.0" %}
+{% set version = "4.2.0" %}
+{% set ver_maj_min = "4.2" %}
 
 package:
   name: qtcreator
@@ -9,25 +9,28 @@ package:
 #   url: http://download.qt.io/official_releases/qtcreator/{{ ver_maj_min }}/{{ version }}/qt-creator-opensource-src-{{ version }}.tar.gz
 source:
   git_url: https://code.qt.io/qt-creator/qt-creator.git
-  git_tag: v{{ version }}
+#  git_tag: v{{ version }}
+  git_tag: origin/4.2
   patches:
-    - 0001-Disable-app-build.patch                                               # [osx]
-    - 0002-Use-systemEnvironment-For-Start-and-Debug-External-Application.patch
-
-requirements:
-  build:
-    - python
-    - qt >=5.6
-    - jom            # [win]
-    - gcc            # [linux]
-  run:
-    - qt >=5.6
-    - vs2015_runtime # [win]
+    - 4.2/0001-macOS-Disable-app-bundle.patch
+    - 4.2/0002-Use-systemEnvironment-for-Start-and-Debug-External-A.patch
+    # - 4.0/0001-Disable-app-build.patch                                               # [osx]
+    # - 4.0/0002-Use-systemEnvironment-For-Start-and-Debug-External-Application.patch
 
 build:
   skip: True         # [win and py<35]
   features:
     - vc14           # [win and py35]
+
+requirements:
+  build:
+    - python
+    - qt 5.6.*
+    - jom            # [win]
+    - gcc            # [linux]
+  run:
+    - qt 5.6.*
+    - vs2015_runtime # [win]
 
   # These are only necessary for the qtcreator executable itself.
   # It would be better if were possible to filter the application

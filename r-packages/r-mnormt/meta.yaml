@@ -5,13 +5,13 @@ package:
   name: r-mnormt
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.5_4"
+  version: "1.5_5"
 
 source:
-  fn: mnormt_1.5-4.tar.gz
+  fn: mnormt_1.5-5.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/mnormt_1.5-4.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/mnormt/mnormt_1.5-4.tar.gz
+    - http://cran.r-project.org/src/contrib/mnormt_1.5-5.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/mnormt/mnormt_1.5-5.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -67,8 +67,8 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: mnormt
-# Version: 1.5-4
-# Date: 2016-03-08
+# Version: 1.5-5
+# Date: 2016-10-15
 # Title: The Multivariate Normal and t Distributions
 # Author: Fortran code by Alan Genz, R code by Adelchi Azzalini
 # Maintainer: Adelchi Azzalini <adelchi.azzalini@unipd.it>
@@ -77,9 +77,9 @@ about:
 # License: GPL-2 | GPL-3
 # URL: http://azzalini.stat.unipd.it/SW/Pkg-mnormt
 # NeedsCompilation: yes
-# Packaged: 2016-03-08 10:36:58 UTC; aa
+# Packaged: 2016-10-14 12:26:21 UTC; aa
 # Repository: CRAN
-# Date/Publication: 2016-03-09 01:11:14
+# Date/Publication: 2016-10-15 13:08:50
 
 # See
 # http://docs.continuum.io/conda/build.html for

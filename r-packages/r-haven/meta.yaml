@@ -1,0 +1,101 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-haven
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.0.0"
+
+source:
+  fn: haven_1.0.0.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/haven_1.0.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/haven/haven_1.0.0.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, knitr, rmarkdown, covr
+requirements:
+  build:
+    - r-base
+    - r-bh
+    - r-rcpp >=0.11.4
+    - r-hms
+    - r-readr >=0.1.0
+    - r-tibble
+    - posix               # [win]
+    - {{native}}toolchain # [win]
+    - gcc                 # [not win]
+
+  run:
+    - r-base
+    - r-bh
+    - r-rcpp >=0.11.4
+    - r-hms
+    - r-readr >=0.1.0
+    - r-tibble
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('haven')" # [not win]
+    - "\"%R%\" -e \"library('haven')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/hadley/haven, https://github.com/WizardMac/ReadStat
+  license: MIT + file LICENSE
+  summary: Import foreign statistical formats into R via the embedded 'ReadStat' C library (https://github.com/WizardMac/ReadStat).
+  license_family: MIT
+
+# The original CRAN metadata for this package was:
+
+# Package: haven
+# Version: 1.0.0
+# Title: Import and Export 'SPSS', 'Stata' and 'SAS' Files
+# Description: Import foreign statistical formats into R via the embedded 'ReadStat' C library (https://github.com/WizardMac/ReadStat).
+# License: MIT + file LICENSE
+# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")), person("Evan", "Miller", , role = c("aut", "cph"), comment = "Author of included ReadStat code"), person("RStudio", role = "cph") )
+# Depends: R (>= 3.1.0)
+# Suggests: testthat, knitr, rmarkdown, covr
+# LinkingTo: Rcpp, BH
+# Imports: Rcpp (>= 0.11.4), readr (>= 0.1.0), hms, tibble
+# LazyData: true
+# URL: https://github.com/hadley/haven, https://github.com/WizardMac/ReadStat
+# BugReports: https://github.com/hadley/haven/issues
+# VignetteBuilder: knitr
+# SystemRequirements: GNU make
+# RoxygenNote: 5.0.1
+# Encoding: UTF-8
+# NeedsCompilation: yes
+# Packaged: 2016-09-23 20:35:30 UTC; hadley
+# Author: Hadley Wickham [aut, cre], Evan Miller [aut, cph] (Author of included ReadStat code), RStudio [cph]
+# Maintainer: Hadley Wickham <hadley@rstudio.com>
+# Repository: CRAN
+# Date/Publication: 2016-09-23 22:44:41
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

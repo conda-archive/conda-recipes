@@ -1,4 +1,4 @@
-From 893d31419d9c776086a1efea89b602a314e9b85a Mon Sep 17 00:00:00 2001
+From b4035382d6ff693bacb2749120859db5adcb785c Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Wed, 2 Nov 2016 12:46:50 +0000
 Subject: [PATCH 34/42] Add RSTUDIO_SUPPORTING_FILE_PATH env var for debugging
@@ -51,7 +51,7 @@ index d9e6475..a2a3999 100644
     logEnvVar("R_DOC_DIR");
     logEnvVar("R_INCLUDE_DIR");
 diff --git a/src/cpp/desktop/DesktopSessionLauncher.cpp b/src/cpp/desktop/DesktopSessionLauncher.cpp
-index d83ac65..0154aa1 100644
+index 347a5b6..b5f5a09 100644
 --- a/src/cpp/desktop/DesktopSessionLauncher.cpp
 +++ b/src/cpp/desktop/DesktopSessionLauncher.cpp
 @@ -88,6 +88,7 @@ Error SessionLauncher::launchFirstSession(const QString& filename,
@@ -82,5 +82,5 @@ index de8e635..0a772b9 100644
     {
        LOG_ERROR_MESSAGE("Unable to determine install path: "+error.summary());
 -- 
-2.10.1
+2.10.2
 

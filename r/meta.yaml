@@ -1,8 +1,8 @@
 package:
   name: r
-  version: 3.3.1
+  version: 3.3.2
 
 requirements:
   run:
-    - r-base 3.3.1
-    - r-recommended 3.3.1
+    - r-base 3.3.2
+    - r-recommended 3.3.2

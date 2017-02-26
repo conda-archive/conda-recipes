@@ -2,10 +2,10 @@ package:
   name: m2w64-openssl
   version: 1.0.2.g
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-openssl-1.0.2.g-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-openssl-1.0.2.g-1.src.tar.gz
   md5: b716088c5b5b0ef6a5b41249c5e1f28c
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -21,7 +21,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-openssl
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-openssl-1.0.2.g-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-openssl-1.0.2.g-1-any.pkg.tar.xz
       md5: 9c013fe9eb7e545bed603e4cc601a38d
       mv-srcs:
       - mingw32
@@ -29,7 +29,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-openssl
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-openssl-1.0.2.g-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-openssl-1.0.2.g-1-any.pkg.tar.xz
       md5: 357cd00498eba308652aae5ed71e7a0c
       mv-srcs:
       - mingw64

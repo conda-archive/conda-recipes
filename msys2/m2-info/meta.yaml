@@ -2,10 +2,10 @@ package:
   name: m2-info
   version: '6.0'
 source:
-  url: http://repo.msys2.org/msys/sources/info-6.0-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/info-6.0-1.src.tar.gz
+  md5: db00f65f4715b73031759e913412cd7c
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -21,7 +21,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/info
-      url: http://repo.msys2.org/msys/i686/info-6.0-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/info-6.0-1-i686.pkg.tar.xz
       md5: 65025a00be7196c680f41001cf55cee7
       mv-srcs:
       - '*'
@@ -29,7 +29,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/info
-      url: http://repo.msys2.org/msys/x86_64/info-6.0-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/info-6.0-1-x86_64.pkg.tar.xz
       md5: 5de816053f1cd0a9bb2aff164539ffab
       mv-srcs:
       - '*'

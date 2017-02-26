@@ -2,10 +2,10 @@ package:
   name: m2-file
   version: '5.25'
 source:
-  url: http://repo.msys2.org/msys/sources/file-5.25-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/file-5.25-1.src.tar.gz
   md5: 7b46faf7eaf2e969f4b1f46d0f86c8d5
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -20,7 +20,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/file
-      url: http://repo.msys2.org/msys/i686/file-5.25-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/file-5.25-1-i686.pkg.tar.xz
       md5: ac80d80d0d952c349022e00ed5bee467
       mv-srcs:
       - '*'
@@ -28,7 +28,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/file
-      url: http://repo.msys2.org/msys/x86_64/file-5.25-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/file-5.25-1-x86_64.pkg.tar.xz
       md5: 3d9536b85216d7c75d5fbd1aba00b83e
       mv-srcs:
       - '*'

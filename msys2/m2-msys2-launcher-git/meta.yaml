@@ -2,22 +2,22 @@ package:
   name: m2-msys2-launcher-git
   version: 0.3.28.860c495
 source:
-  url: http://repo.msys2.org/msys/sources/msys2-launcher-git-0.3.28.860c495-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/msys2-launcher-git-0.3.28.860c495-1.src.tar.gz
   md5: 62a626e2e0ad2dec155b5a40e8db5d26
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
 about:
-  home: null
+  home: https://sourceforge.net/projects/msys2/
   license: GPL, MIT
   summary: Helper for launching MSYS2 shells
 extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/msys2-launcher-git
-      url: http://repo.msys2.org/msys/i686/msys2-launcher-git-0.3.28.860c495-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/msys2-launcher-git-0.3.28.860c495-1-i686.pkg.tar.xz
       md5: c82d5c49ae734499b14da3d5d3972513
       mv-srcs:
       - '*'
@@ -25,7 +25,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/msys2-launcher-git
-      url: http://repo.msys2.org/msys/x86_64/msys2-launcher-git-0.3.28.860c495-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/msys2-launcher-git-0.3.28.860c495-1-x86_64.pkg.tar.xz
       md5: abf775f8c09dda5fb6217273f7717017
       mv-srcs:
       - '*'

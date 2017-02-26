@@ -5,13 +5,13 @@ package:
   name: r-stringi
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.1.1"
+  version: "1.1.2"
 
 source:
-  fn: stringi_1.1.1.tar.gz
+  fn: stringi_1.1.2.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/stringi_1.1.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/stringi/stringi_1.1.1.tar.gz
+    - http://cran.r-project.org/src/contrib/stringi_1.1.2.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/stringi/stringi_1.1.2.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -70,8 +70,8 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: stringi
-# Version: 1.1.1
-# Date: 2016-05-25
+# Version: 1.1.2
+# Date: 2016-09-30
 # Title: Character String Processing Facilities
 # Description: Allows for fast, correct, consistent, portable, as well as convenient character string/text processing in every locale and any native encoding. Owing to the use of the ICU library, the package provides R users with platform-independent functions known to Java, Perl, Python, PHP, and Ruby programmers. Among available features there are: pattern searching (e.g., with ICU Java-like regular expressions or the Unicode Collation Algorithm), random string generation, case mapping, string transliteration, concatenation, Unicode normalization, date-time formatting and parsing, etc.
 # URL: http://www.gagolewski.com/software/stringi/ http://site.icu-project.org/ http://www.unicode.org/
@@ -86,10 +86,10 @@ about:
 # Maintainer: Marek Gagolewski <gagolews@rexamine.com>
 # RoxygenNote: 5.0.1
 # NeedsCompilation: yes
-# Packaged: 2016-05-25 15:59:57 UTC; gagolews
+# Packaged: 2016-09-30 14:18:17 UTC; gagolews
 # License_is_FOSS: yes
 # Repository: CRAN
-# Date/Publication: 2016-05-27 18:08:57
+# Date/Publication: 2016-10-01 14:26:04
 
 # See
 # http://docs.continuum.io/conda/build.html for

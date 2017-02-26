@@ -2,10 +2,10 @@ package:
   name: m2-automake-wrapper
   version: '10'
 source:
-  url: http://repo.msys2.org/msys/sources/automake-wrapper-10-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/automake-wrapper-10-1.src.tar.gz
+  md5: f0d07cb46183538da2b83a3e6a8f958e
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -30,7 +30,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/automake-wrapper
-      url: http://repo.msys2.org/msys/i686/automake-wrapper-10-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/automake-wrapper-10-1-any.pkg.tar.xz
       md5: b76ce20b712be6c257d04d7c43a1e320
       mv-srcs:
       - '*'
@@ -38,7 +38,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/automake-wrapper
-      url: http://repo.msys2.org/msys/x86_64/automake-wrapper-10-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/automake-wrapper-10-1-any.pkg.tar.xz
       md5: a5d33ca358269592e7eb36f68076b196
       mv-srcs:
       - '*'

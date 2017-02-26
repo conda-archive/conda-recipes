@@ -2,7 +2,7 @@ package:
   name: m2-base
   version: 1.0.0
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418

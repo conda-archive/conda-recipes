@@ -1,0 +1,6 @@
+diff -urN a/mingw32/bin/libgcc_s_dw2-1.dll b/mingw32/bin/libgcc_s_dw2-1.dll
+--- a/mingw32/bin/libgcc_s_dw2-1.dll	2015-04-26 11:33:58.000000000 +0100
++++ b/mingw32/bin/libgcc_s_dw2-1.dll	1970-01-01 01:00:00.000000000 +0100
+diff -urN a/mingw32/bin/libquadmath-0.dll b/mingw32/bin/libquadmath-0.dll
+--- a/mingw32/bin/libquadmath-0.dll	2015-04-26 11:33:58.000000000 +0100
++++ b/mingw32/bin/libquadmath-0.dll	1970-01-01 01:00:00.000000000 +0100

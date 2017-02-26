@@ -2,10 +2,10 @@ package:
   name: m2-automake1.7
   version: 1.7.9
 source:
-  url: http://repo.msys2.org/msys/sources/automake1.7-1.7.9-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/automake1.7-1.7.9-2.src.tar.gz
+  md5: e6e8fdde5f040f4b4b3ce025e78fef41
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/automake1.7
-      url: http://repo.msys2.org/msys/i686/automake1.7-1.7.9-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/automake1.7-1.7.9-2-any.pkg.tar.xz
       md5: 1e897e44f2f41d1ed82a7e02ae035f39
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/automake1.7
-      url: http://repo.msys2.org/msys/x86_64/automake1.7-1.7.9-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/automake1.7-1.7.9-2-any.pkg.tar.xz
       md5: c575c10691d4fac8c37895ba6f2cab75
       mv-srcs:
       - '*'

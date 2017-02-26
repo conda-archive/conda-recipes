@@ -2,10 +2,10 @@ package:
   name: m2-filesystem
   version: '2016.04'
 source:
-  url: http://repo.msys2.org/msys/sources/filesystem-2016.04-3.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/filesystem-2016.04-3.src.tar.gz
   md5: 04e03b1cefaa3a8c5ce138848928d04f
 build:
-  number: '3'
+  number: 4
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -17,7 +17,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/filesystem
-      url: http://repo.msys2.org/msys/i686/filesystem-2016.04-3-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/filesystem-2016.04-3-i686.pkg.tar.xz
       md5: f8264e5a90115b3e0d5afc80ca6c83c0
       patches:
       - 0001-Remove-etc-post-install-07-pacman-key-post.patch
@@ -28,7 +28,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/filesystem
-      url: http://repo.msys2.org/msys/x86_64/filesystem-2016.04-3-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/filesystem-2016.04-3-x86_64.pkg.tar.xz
       md5: 621936d70f4b7f690ee7e2e4744a9d0f
       patches:
       - 0001-Remove-etc-post-install-07-pacman-key-post.patch

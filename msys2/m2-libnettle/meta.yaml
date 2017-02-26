@@ -2,10 +2,10 @@ package:
   name: m2-libnettle
   version: 3.1.1
 source:
-  url: http://repo.msys2.org/msys/sources/libnettle-3.1.1-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libnettle-3.1.1-1.src.tar.gz
+  md5: da8bb07a2170cc4589df2f604da3882f
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libnettle
-      url: http://repo.msys2.org/msys/i686/libnettle-3.1.1-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libnettle-3.1.1-1-i686.pkg.tar.xz
       md5: 90b228e2577b77f128f0a85365abe5d2
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libnettle
-      url: http://repo.msys2.org/msys/x86_64/libnettle-3.1.1-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libnettle-3.1.1-1-x86_64.pkg.tar.xz
       md5: f1f2e81aacb702220429ec12bb936525
       mv-srcs:
       - '*'

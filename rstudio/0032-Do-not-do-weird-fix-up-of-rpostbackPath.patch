@@ -1,4 +1,4 @@
-From 92ca5f988b33349438aa0f591ebaadd80c2319f1 Mon Sep 17 00:00:00 2001
+From 76ac9a558ab9fab8df781e3b03b9d1148f2224ce Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Mon, 31 Oct 2016 13:48:13 +0000
 Subject: [PATCH 32/42] Do not do weird fix-up of rpostbackPath()
@@ -24,5 +24,5 @@ index ddfe7b2..f96efef 100644
              "RS_RPOSTBACK_PATH",
              string_utils::utf8ToSystem(rpostback.absolutePath()));
 -- 
-2.10.1
+2.10.2
 

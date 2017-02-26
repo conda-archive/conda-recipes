@@ -2,10 +2,10 @@ package:
   name: m2-curl
   version: 7.47.1
 source:
-  url: http://repo.msys2.org/msys/sources/curl-7.47.1-2.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/curl-7.47.1-2.src.tar.gz
   md5: decbcaa6db05719c46217d880778d4d9
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -23,7 +23,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/curl
-      url: http://repo.msys2.org/msys/i686/curl-7.47.1-2-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/curl-7.47.1-2-i686.pkg.tar.xz
       md5: 1e4edc4a8c631e62004b38b1f4b94add
       mv-srcs:
       - '*'
@@ -31,7 +31,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/curl
-      url: http://repo.msys2.org/msys/x86_64/curl-7.47.1-2-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/curl-7.47.1-2-x86_64.pkg.tar.xz
       md5: b72221272f3cc3e974622ff59cacde61
       mv-srcs:
       - '*'

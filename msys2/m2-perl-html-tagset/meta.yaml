@@ -2,10 +2,10 @@ package:
   name: m2-perl-html-tagset
   version: '3.20'
 source:
-  url: http://repo.msys2.org/msys/sources/perl-HTML-Tagset-3.20-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/perl-HTML-Tagset-3.20-2.src.tar.gz
+  md5: b88adafdd6fc48edc3f3d50df7a7d3bc
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/perl-HTML-Tagset
-      url: http://repo.msys2.org/msys/i686/perl-HTML-Tagset-3.20-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/perl-HTML-Tagset-3.20-2-any.pkg.tar.xz
       md5: 810e3e2a45a9997d1562914e34e58573
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/perl-HTML-Tagset
-      url: http://repo.msys2.org/msys/x86_64/perl-HTML-Tagset-3.20-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/perl-HTML-Tagset-3.20-2-any.pkg.tar.xz
       md5: 2d736a4ec35e749603a7854144ddfb74
       mv-srcs:
       - '*'

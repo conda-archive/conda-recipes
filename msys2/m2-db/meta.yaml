@@ -2,10 +2,10 @@ package:
   name: m2-db
   version: 5.3.28
 source:
-  url: http://repo.msys2.org/msys/sources/db-5.3.28-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/db-5.3.28-2.src.tar.gz
+  md5: 1fe34958058be563736c8fb7f205a10e
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/db
-      url: http://repo.msys2.org/msys/i686/db-5.3.28-2-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/db-5.3.28-2-i686.pkg.tar.xz
       md5: 47bee1d3307f80796116f81af4292bc1
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/db
-      url: http://repo.msys2.org/msys/x86_64/db-5.3.28-2-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/db-5.3.28-2-x86_64.pkg.tar.xz
       md5: b7d6e6fd91f2c46bb9e1e486dff99e5c
       mv-srcs:
       - '*'

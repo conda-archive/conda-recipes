@@ -2,10 +2,10 @@ package:
   name: m2-libgcrypt
   version: 1.6.4
 source:
-  url: http://repo.msys2.org/msys/sources/libgcrypt-1.6.4-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libgcrypt-1.6.4-1.src.tar.gz
   md5: 85487407880cb5f66b48861d8483a6c8
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libgcrypt
-      url: http://repo.msys2.org/msys/i686/libgcrypt-1.6.4-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libgcrypt-1.6.4-1-i686.pkg.tar.xz
       md5: d2866e3b3fd45e32a5ce3c931d6e905b
       mv-srcs:
       - '*'
@@ -26,7 +26,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libgcrypt
-      url: http://repo.msys2.org/msys/x86_64/libgcrypt-1.6.4-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libgcrypt-1.6.4-1-x86_64.pkg.tar.xz
       md5: 0d4a6af1aa0fdf7f1f89c1777b244652
       mv-srcs:
       - '*'

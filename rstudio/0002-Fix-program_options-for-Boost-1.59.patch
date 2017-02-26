@@ -1,4 +1,4 @@
-From bafc9d4edb7a4d3891ae7adab5b64a78724cb762 Mon Sep 17 00:00:00 2001
+From 333f255f22099e3b1a446d76ca8058c35c8e756f Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Tue, 9 Aug 2016 11:43:37 +0100
 Subject: [PATCH 02/42] Fix program_options for Boost >= 1.59
@@ -17,10 +17,10 @@ https://github.com/boostorg/program_options/commit/88dea3
  3 files changed, 15 insertions(+), 23 deletions(-)
 
 diff --git a/src/cpp/core/system/PosixSystem.cpp b/src/cpp/core/system/PosixSystem.cpp
-index d6b40f1..9ac7859 100644
+index 634c75f..ccfc1c4 100644
 --- a/src/cpp/core/system/PosixSystem.cpp
 +++ b/src/cpp/core/system/PosixSystem.cpp
-@@ -1414,9 +1414,10 @@ Error launchChildProcess(std::string path,
+@@ -1415,9 +1415,10 @@ Error launchChildProcess(std::string path,
             it != config.args.end();
             ++it)
        {
@@ -83,7 +83,7 @@ index 59dce4c..d9e6475 100644
  }
     
 diff --git a/src/cpp/desktop/DesktopSessionLauncher.cpp b/src/cpp/desktop/DesktopSessionLauncher.cpp
-index 7414e1f..2761e55 100644
+index 4b057f7..40bb085 100644
 --- a/src/cpp/desktop/DesktopSessionLauncher.cpp
 +++ b/src/cpp/desktop/DesktopSessionLauncher.cpp
 @@ -84,8 +84,7 @@ Error SessionLauncher::launchFirstSession(const QString& filename,
@@ -96,7 +96,7 @@ index 7414e1f..2761e55 100644
  
     RUN_DIAGNOSTICS_LOG("\nAttempting to launch R session...");
     logEnvVar("RSTUDIO_WHICH_R");
-@@ -382,7 +381,7 @@ void SessionLauncher::buildLaunchContext(QString* pHost,
+@@ -374,7 +373,7 @@ void SessionLauncher::buildLaunchContext(QString* pHost,
  
     if (!confPath_.empty())
     {
@@ -105,7 +105,7 @@ index 7414e1f..2761e55 100644
                     QString::fromUtf8(confPath_.absolutePath().c_str());
     }
     else
-@@ -390,18 +389,15 @@ void SessionLauncher::buildLaunchContext(QString* pHost,
+@@ -382,18 +381,15 @@ void SessionLauncher::buildLaunchContext(QString* pHost,
        // explicitly pass "none" so that rsession doesn't read an
        // /etc/rstudio/rsession.conf file which may be sitting around
        // from a previous configuratin or install
@@ -129,5 +129,5 @@ index 7414e1f..2761e55 100644
  
  
 -- 
-2.10.1
+2.10.2
 

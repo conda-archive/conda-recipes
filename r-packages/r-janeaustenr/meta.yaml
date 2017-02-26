@@ -1,0 +1,87 @@
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-janeaustenr
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "0.1.4"
+
+source:
+  fn: janeaustenr_0.1.4.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/janeaustenr_0.1.4.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/janeaustenr/janeaustenr_0.1.4.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: dplyr, testthat
+requirements:
+  build:
+    - r-base
+
+  run:
+    - r-base
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('janeaustenr')" # [not win]
+    - "\"%R%\" -e \"library('janeaustenr')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/juliasilge/janeaustenr
+  license: MIT + file LICENSE
+  summary: Full texts for Jane Austen's 6 completed novels, ready for text analysis. These novels
+    are "Sense and Sensibility", "Pride and Prejudice", "Mansfield Park", "Emma", "Northanger
+    Abbey", and "Persuasion".
+  license_family: MIT
+
+# The original CRAN metadata for this package was:
+
+# Package: janeaustenr
+# Title: Jane Austen's Complete Novels
+# Version: 0.1.4
+# Date: 2016-10-23
+# Authors@R: person("Julia", "Silge", email = "julia.silge@gmail.com", role = c("aut", "cre"))
+# Description: Full texts for Jane Austen's 6 completed novels, ready for text analysis. These novels are "Sense and Sensibility", "Pride and Prejudice", "Mansfield Park", "Emma", "Northanger Abbey", and "Persuasion".
+# URL: https://github.com/juliasilge/janeaustenr
+# BugReports: https://github.com/juliasilge/janeaustenr/issues
+# Depends: R (>= 3.1.2)
+# Suggests: dplyr, testthat
+# License: MIT + file LICENSE
+# LazyData: true
+# RoxygenNote: 5.0.1
+# Encoding: UTF-8
+# NeedsCompilation: no
+# Packaged: 2016-10-26 13:06:59 UTC; juliasilge
+# Author: Julia Silge [aut, cre]
+# Maintainer: Julia Silge <julia.silge@gmail.com>
+# Repository: CRAN
+# Date/Publication: 2016-10-26 15:43:10
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -2,10 +2,10 @@ package:
   name: m2w64-bwidget
   version: 1.9.10
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-bwidget-1.9.10-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-bwidget-1.9.10-1.src.tar.gz
   md5: c4e33506c48dd44e9478066ac3c5632d
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-bwidget
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-bwidget-1.9.10-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-bwidget-1.9.10-1-any.pkg.tar.xz
       md5: 65df87128f292baf08cacf7f1e9eb191
       mv-srcs:
       - mingw32
@@ -26,7 +26,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-bwidget
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-bwidget-1.9.10-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-bwidget-1.9.10-1-any.pkg.tar.xz
       md5: 9a5c6576a694110c15f1768e272cc21a
       mv-srcs:
       - mingw64

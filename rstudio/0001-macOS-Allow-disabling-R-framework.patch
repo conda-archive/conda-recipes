@@ -1,4 +1,4 @@
-From d35e21cda3385724760a1ab5d17eb39539a9dab4 Mon Sep 17 00:00:00 2001
+From 2bc20fbf1650b20cd1144484b9722614854cea34 Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Wed, 19 Oct 2016 14:57:45 +0100
 Subject: [PATCH 01/42] macOS: Allow disabling R framework
@@ -24,5 +24,5 @@ index d6a0556..ddbcd24 100644
     find_library(LIBR_LIBRARIES R)
     if(LIBR_LIBRARIES)
 -- 
-2.10.1
+2.10.2
 

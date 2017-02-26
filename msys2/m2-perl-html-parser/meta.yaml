@@ -2,10 +2,10 @@ package:
   name: m2-perl-html-parser
   version: '3.71'
 source:
-  url: http://repo.msys2.org/msys/sources/perl-HTML-Parser-3.71-3.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/perl-HTML-Parser-3.71-3.src.tar.gz
+  md5: 07c3b0f5ae02a00656b8420d1c605b5c
 build:
-  number: '3'
+  number: 4
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/perl-HTML-Parser
-      url: http://repo.msys2.org/msys/i686/perl-HTML-Parser-3.71-3-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/perl-HTML-Parser-3.71-3-i686.pkg.tar.xz
       md5: 520cb92a3b5a6a912c6f38acdc1e04f2
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/perl-HTML-Parser
-      url: http://repo.msys2.org/msys/x86_64/perl-HTML-Parser-3.71-3-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/perl-HTML-Parser-3.71-3-x86_64.pkg.tar.xz
       md5: 479ddc9be2155fb5cce3bf07efb596fc
       mv-srcs:
       - '*'

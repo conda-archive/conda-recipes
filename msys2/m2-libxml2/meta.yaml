@@ -2,10 +2,10 @@ package:
   name: m2-libxml2
   version: 2.9.2
 source:
-  url: http://repo.msys2.org/msys/sources/libxml2-2.9.2-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libxml2-2.9.2-2.src.tar.gz
+  md5: ea4cf381ef97c62dd88098083d098d5d
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -22,7 +22,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libxml2
-      url: http://repo.msys2.org/msys/i686/libxml2-2.9.2-2-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libxml2-2.9.2-2-i686.pkg.tar.xz
       md5: 435949d5878c5ca331e62dbb2690188c
       mv-srcs:
       - '*'
@@ -30,7 +30,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libxml2
-      url: http://repo.msys2.org/msys/x86_64/libxml2-2.9.2-2-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libxml2-2.9.2-2-x86_64.pkg.tar.xz
       md5: aed627dd7d5e17e7786be0015e70b8fe
       mv-srcs:
       - '*'

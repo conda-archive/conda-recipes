@@ -2,10 +2,10 @@ package:
   name: m2-perl-file-listing
   version: '6.04'
 source:
-  url: http://repo.msys2.org/msys/sources/perl-File-Listing-6.04-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/perl-File-Listing-6.04-2.src.tar.gz
+  md5: 5cf7609280a07062caab7e305c444bcf
 build:
-  number: '2'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/perl-File-Listing
-      url: http://repo.msys2.org/msys/i686/perl-File-Listing-6.04-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/perl-File-Listing-6.04-2-any.pkg.tar.xz
       md5: 64edfe003f576a0669f5665febbe004e
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/perl-File-Listing
-      url: http://repo.msys2.org/msys/x86_64/perl-File-Listing-6.04-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/perl-File-Listing-6.04-2-any.pkg.tar.xz
       md5: 7da75c747163fc6e71497aaf407df34a
       mv-srcs:
       - '*'

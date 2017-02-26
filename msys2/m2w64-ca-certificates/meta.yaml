@@ -2,10 +2,10 @@ package:
   name: m2w64-ca-certificates
   version: '20150426'
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-ca-certificates-20150426-2.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-x86_64-ca-certificates-20150426-2.src.tar.gz
+  md5: 164bfc2a6329e77be28a2088ae3cb1a5
 build:
-  number: '101'
+  number: 103
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-ca-certificates
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-ca-certificates-20150426-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-ca-certificates-20150426-2-any.pkg.tar.xz
       md5: dfb4c99f56152bc8242e5e330be4251a
       mv-srcs:
       - mingw32
@@ -26,7 +26,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-ca-certificates
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-ca-certificates-20150426-2-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-ca-certificates-20150426-2-any.pkg.tar.xz
       md5: 126676c0109e8ea3a798a3dc904dab06
       mv-srcs:
       - mingw64

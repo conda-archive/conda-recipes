@@ -1,4 +1,4 @@
-From 99fd0131de97c19de38e63eae26d6ec98f45561b Mon Sep 17 00:00:00 2001
+From ad82e13afc852e95c98bd7b047a9e76ecc1f904f Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Wed, 10 Aug 2016 14:51:51 +0100
 Subject: [PATCH 07/42] Qt5Sensors is not required
@@ -28,5 +28,5 @@ index 43e0621..60856c4 100644
        Xml
        XmlPatterns
 -- 
-2.10.1
+2.10.2
 

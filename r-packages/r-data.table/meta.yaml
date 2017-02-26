@@ -5,13 +5,13 @@ package:
   name: r-data.table
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "1.9.6"
+  version: "1.10.0"
 
 source:
-  fn: data.table_1.9.6.tar.gz
+  fn: data.table_1.10.0.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/data.table_1.9.6.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/data.table/data.table_1.9.6.tar.gz
+    - http://cran.r-project.org/src/contrib/data.table_1.10.0.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/data.table/data.table_1.10.0.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -31,18 +31,16 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: ggplot2 (>= 0.9.0), plyr, reshape, reshape2, testthat (>= 0.4), hexbin, fastmatch, nlme, xts, bit64, gdata, GenomicRanges, caret, knitr, curl, zoo, plm
+# Suggests: bit64, knitr, chron, ggplot2 (>= 0.9.0), plyr, reshape, reshape2, testthat (>= 0.4), hexbin, fastmatch, nlme, xts, gdata, GenomicRanges, caret, curl, zoo, plm, rmarkdown, parallel
 requirements:
   build:
     - r-base
-    - r-chron
     - posix               # [win]
     - {{native}}toolchain # [win]
     - gcc                 # [not win]
 
   run:
     - r-base
-    - r-chron
 
 test:
   commands:
@@ -57,34 +55,35 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: https://github.com/Rdatatable/data.table/wiki
-  license: GPL (>= 2)
+  home: http://r-datatable.com
+  license: GPL-3 | file LICENSE
   summary: Fast aggregation of large data (e.g. 100GB in RAM), fast ordered joins, fast add/modify/delete
-    of columns by group using no copies at all, list columns and a fast file reader
-    (fread). Offers a natural and flexible syntax, for faster development.
+    of columns by group using no copies at all, list columns, a fast friendly file reader
+    and parallel file writer. Offers a natural and flexible syntax, for faster development.
   license_family: GPL3
 
 # The original CRAN metadata for this package was:
 
 # Package: data.table
-# Version: 1.9.6
-# Title: Extension of Data.frame
-# Author: M Dowle, A Srinivasan, T Short, S Lianoglou with contributions from R Saporta, E Antonyan
-# Maintainer: Matt Dowle <mattjdowle@gmail.com>
-# Depends: R (>= 2.14.1)
-# Imports: methods, chron
-# Suggests: ggplot2 (>= 0.9.0), plyr, reshape, reshape2, testthat (>= 0.4), hexbin, fastmatch, nlme, xts, bit64, gdata, GenomicRanges, caret, knitr, curl, zoo, plm
-# Description: Fast aggregation of large data (e.g. 100GB in RAM), fast ordered joins, fast add/modify/delete of columns by group using no copies at all, list columns and a fast file reader (fread). Offers a natural and flexible syntax, for faster development.
-# License: GPL (>= 2)
-# URL: https://github.com/Rdatatable/data.table/wiki
+# Version: 1.10.0
+# Title: Extension of `data.frame`
+# Authors@R: c( person("Matt","Dowle",      role=c("aut","cre"), email="mattjdowle@gmail.com"), person("Arun","Srinivasan", role="aut", email="arunkumar.sriniv@gmail.com"), person("Jan","Gorecki",     role="ctb"), person("Tom","Short",       role="ctb"), person("Steve","Lianoglou", role="ctb"), person("Eduard","Antonyan", role="ctb") )
+# Depends: R (>= 3.0.0)
+# Imports: methods
+# Suggests: bit64, knitr, chron, ggplot2 (>= 0.9.0), plyr, reshape, reshape2, testthat (>= 0.4), hexbin, fastmatch, nlme, xts, gdata, GenomicRanges, caret, curl, zoo, plm, rmarkdown, parallel
+# Description: Fast aggregation of large data (e.g. 100GB in RAM), fast ordered joins, fast add/modify/delete of columns by group using no copies at all, list columns, a fast friendly file reader and parallel file writer. Offers a natural and flexible syntax, for faster development.
+# License: GPL-3 | file LICENSE
+# URL: http://r-datatable.com
 # BugReports: https://github.com/Rdatatable/data.table/issues
 # MailingList: datatable-help@lists.r-forge.r-project.org
 # VignetteBuilder: knitr
 # ByteCompile: TRUE
 # NeedsCompilation: yes
-# Packaged: 2015-09-19 04:47:43.628 UTC; mdowle
+# Packaged: 2016-12-02 19:25:45.346 UTC; mdowle
+# Author: Matt Dowle [aut, cre], Arun Srinivasan [aut], Jan Gorecki [ctb], Tom Short [ctb], Steve Lianoglou [ctb], Eduard Antonyan [ctb]
+# Maintainer: Matt Dowle <mattjdowle@gmail.com>
 # Repository: CRAN
-# Date/Publication: 2015-09-19 22:13:43
+# Date/Publication: 2016-12-03 11:05:23
 
 # See
 # http://docs.continuum.io/conda/build.html for

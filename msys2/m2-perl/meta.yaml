@@ -2,10 +2,10 @@ package:
   name: m2-perl
   version: 5.22.1
 source:
-  url: http://repo.msys2.org/msys/sources/perl-5.22.1-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/perl-5.22.1-1.src.tar.gz
   md5: e44e7726b1152dfe836e2396cbcbcdac
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -23,7 +23,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/perl
-      url: http://repo.msys2.org/msys/i686/perl-5.22.1-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/perl-5.22.1-1-i686.pkg.tar.xz
       md5: 72efc983e009fc138198e797a7df6bd3
       mv-srcs:
       - '*'
@@ -31,7 +31,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/perl
-      url: http://repo.msys2.org/msys/x86_64/perl-5.22.1-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/perl-5.22.1-1-x86_64.pkg.tar.xz
       md5: 194672a9450198d2b6b7cd8f8a2f5593
       mv-srcs:
       - '*'

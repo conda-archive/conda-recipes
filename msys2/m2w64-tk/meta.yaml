@@ -2,10 +2,10 @@ package:
   name: m2w64-tk
   version: 8.6.5
 source:
-  url: http://repo.msys2.org/mingw/sources/mingw-w64-tk-8.6.5-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-tk-8.6.5-1.src.tar.gz
   md5: 8ba57e7d862300352ef209147c21662b
 build:
-  number: '1'
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -18,7 +18,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-tk
-      url: http://repo.msys2.org/mingw/i686/mingw-w64-i686-tk-8.6.5-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-tk-8.6.5-1-any.pkg.tar.xz
       md5: 7cf8b5c14e39a93e503b3aa77e30b5c4
       mv-srcs:
       - mingw32
@@ -26,7 +26,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-tk
-      url: http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-tk-8.6.5-1-any.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-tk-8.6.5-1-any.pkg.tar.xz
       md5: a4ac193753e314a6dc144597e801954e
       mv-srcs:
       - mingw64

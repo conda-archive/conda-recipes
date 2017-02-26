@@ -2,10 +2,10 @@ package:
   name: m2w64-grep
   version: 2.24
 source:
-  url: file:///C:/Users/ray/gd.cio/msys2/pkgs/mingw-w64-grep-2.24-1.src.tar.gz
+  url: file://C:/Users/ray/gd.cio/msys2/pkgs/mingw-w64-grep-2.24-1.src.tar.gz
   md5: 6bc1b50b00b4fc984562b8116a3f6643
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -13,12 +13,13 @@ requirements:
 about:
   home: https://www.gnu.org/software/grep/
   license: GPL3
-  summary: Grep searches one or more input files for lines containing a match to a specified pattern (mingw-w64)
+  summary: Grep searches one or more input files for lines containing a match to a
+    specified pattern (mingw-w64)
 extra:
   msys2-binaries:
     win-32:
       srcpkg: mingw32/mingw-w64-i686-grep
-      url: file:///C:/Users/ray/gd.cio/msys2/pkgs/mingw-w64-i686-grep-2.24-1-any.pkg.tar.xz
+      url: file://C:/Users/ray/gd.cio/msys2/pkgs/mingw-w64-i686-grep-2.24-1-any.pkg.tar.xz
       md5: c616c6f8a06d311fccb9767f5da776cd
       mv-srcs:
       - mingw32
@@ -26,7 +27,7 @@ extra:
       - Library/mingw-w64
     win-64:
       srcpkg: mingw64/mingw-w64-x86_64-grep
-      url: file:///C:/Users/ray/gd.cio/msys2/pkgs/mingw-w64-x86_64-grep-2.24-1-any.pkg.tar.xz
+      url: file://C:/Users/ray/gd.cio/msys2/pkgs/mingw-w64-x86_64-grep-2.24-1-any.pkg.tar.xz
       md5: c513bb4527374e33aaf6c08622499d4f
       mv-srcs:
       - mingw64

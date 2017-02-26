@@ -5,13 +5,13 @@ package:
   name: r-feather
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "0.3.0"
+  version: "0.3.1"
 
 source:
-  fn: feather_0.3.0.tar.gz
+  fn: feather_0.3.1.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/feather_0.3.0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/feather/feather_0.3.0.tar.gz
+    - http://cran.r-project.org/src/contrib/feather_0.3.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/feather/feather_0.3.1.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -71,7 +71,7 @@ about:
 
 # Package: feather
 # Title: R Bindings to the Feather 'API'
-# Version: 0.3.0
+# Version: 0.3.1
 # Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")), person("RStudio", role = "cph"), person("Feather developers", role = "ctb", comment = "Bundled feather library"), person("Google", role = "ctb", comment = "Bundled flatbuffers code"), person("LevelDB Authors", role = "ctb") )
 # Description: Read and write feather files, a lightweight binary columnar data store designed for maximum speed.
 # Encoding: UTF-8
@@ -85,11 +85,11 @@ about:
 # SystemRequirements: little-endian platform
 # RoxygenNote: 5.0.1
 # NeedsCompilation: yes
-# Packaged: 2016-08-25 16:19:37 UTC; hadley
+# Packaged: 2016-11-08 22:45:11 UTC; kevin
 # Author: Hadley Wickham [aut, cre], RStudio [cph], Feather developers [ctb] (Bundled feather library), Google [ctb] (Bundled flatbuffers code), LevelDB Authors [ctb]
 # Maintainer: Hadley Wickham <hadley@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2016-08-25 18:53:42
+# Date/Publication: 2016-11-09 00:35:01
 
 # See
 # http://docs.continuum.io/conda/build.html for

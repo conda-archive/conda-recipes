@@ -5,13 +5,13 @@ package:
   name: r-xml
   # Note that conda versions cannot contain -, so any -'s in the version have
   # been replaced with _'s.
-  version: "3.98_1.4"
+  version: "3.98_1.5"
 
 source:
-  fn: XML_3.98-1.4.tar.gz
+  fn: XML_3.98-1.5.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/XML_3.98-1.4.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/XML/XML_3.98-1.4.tar.gz
+    - http://cran.r-project.org/src/contrib/XML_3.98-1.5.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/XML/XML_3.98-1.5.tar.gz
 
 
   # You can add a hash for the file here, like md5 or sha1
@@ -67,7 +67,7 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: XML
-# Version: 3.98-1.4
+# Version: 3.98-1.5
 # Author: Duncan Temple Lang and the CRAN Team
 # Maintainer: Duncan Temple Lang <duncan@r-project.org>
 # Title: Tools for Parsing and Generating XML Within R and S-Plus
@@ -79,10 +79,10 @@ about:
 # URL: http://www.omegahat.net/RSXML
 # License: BSD_2_clause + file LICENSE
 # Collate: AAA.R DTD.R DTDClasses.R DTDRef.R SAXMethods.S XMLClasses.R applyDOM.R assignChild.R catalog.R createNode.R dynSupports.R error.R flatTree.R nodeAccessors.R parseDTD.R schema.S summary.R tangle.R toString.S tree.R version.R xmlErrorEnums.R xmlEventHandler.R xmlEventParse.R xmlHandler.R xmlInternalSource.R xmlOutputDOM.R xmlNodes.R xmlOutputBuffer.R xmlTree.R xmlTreeParse.R htmlParse.R hashTree.R zzz.R supports.R parser.R libxmlFeatures.R xmlString.R saveXML.R namespaces.R readHTMLTable.R reflection.R xmlToDataFrame.R bitList.R compare.R encoding.R fixNS.R xmlRoot.R serialize.R xmlMemoryMgmt.R keyValueDB.R solrDocs.R XMLRErrorInfo.R xincludes.R namespaceHandlers.R tangle1.R htmlLinks.R htmlLists.R getDependencies.R getRelativeURL.R xmlIncludes.R simplifyPath.R
-# Packaged: 2016-03-01 07:39:47 UTC; ripley
+# Packaged: 2016-11-10 10:57:57 UTC; ripley
 # NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2016-03-01 10:54:31
+# Date/Publication: 2016-11-10 15:39:18
 
 # See
 # http://docs.continuum.io/conda/build.html for

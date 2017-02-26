@@ -24,7 +24,7 @@ source:
 build:
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 2
+  number: 3
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -35,15 +35,17 @@ build:
 requirements:
   build:
     - r-base
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
-    - {{native}}libpng
+    - posix                 # [win]
+    - {{native}}toolchain   # [win]
+    - gcc                   # [not win]
+    - {{native}}libpng      # [win]
+    - libpng >=1.6.27,<1.7  # [not win]
     - {{native}}zlib
 
   run:
     - r-base
-    - {{native}}libpng
+    - {{native}}libpng      # [win]
+    - libpng >=1.6.27,<1.7  # [not win]
     - {{native}}zlib
 
 test:

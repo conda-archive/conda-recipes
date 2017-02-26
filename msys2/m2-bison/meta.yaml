@@ -2,10 +2,10 @@ package:
   name: m2-bison
   version: 3.0.4
 source:
-  url: http://repo.msys2.org/msys/sources/bison-3.0.4-1.src.tar.gz
-  md5: 936524317a13f7da01ff4676bdb271e2
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/bison-3.0.4-1.src.tar.gz
+  md5: 4faed490890b130aa2a86b339f7ea02c
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/bison
-      url: http://repo.msys2.org/msys/i686/bison-3.0.4-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/bison-3.0.4-1-i686.pkg.tar.xz
       md5: 9abcb3a39de92267c51837989f53f300
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/bison
-      url: http://repo.msys2.org/msys/x86_64/bison-3.0.4-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/bison-3.0.4-1-x86_64.pkg.tar.xz
       md5: 80aa62d48ddd4fbc3ac5d19304dadc79
       mv-srcs:
       - '*'

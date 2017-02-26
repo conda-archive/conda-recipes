@@ -2,10 +2,10 @@ package:
   name: m2-libtasn1
   version: '4.7'
 source:
-  url: http://repo.msys2.org/msys/sources/libtasn1-4.7-1.src.tar.gz
+  url: http://msys2-sources.continuum.io/msys2-sources/msys/sources/libtasn1-4.7-1.src.tar.gz
   md5: 1cbfea56b3bc972bcdaedfefaac2671c
 build:
-  number: '1'
+  number: 2
 requirements:
   run:
   - msys2-conda-epoch >=20160418
@@ -19,7 +19,7 @@ extra:
   msys2-binaries:
     win-32:
       srcpkg: msys/libtasn1
-      url: http://repo.msys2.org/msys/i686/libtasn1-4.7-1-i686.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/i686/libtasn1-4.7-1-i686.pkg.tar.xz
       md5: 76789e02b3334176be74eddf4cb76e68
       mv-srcs:
       - '*'
@@ -27,7 +27,7 @@ extra:
       - Library/
     win-64:
       srcpkg: msys/libtasn1
-      url: http://repo.msys2.org/msys/x86_64/libtasn1-4.7-1-x86_64.pkg.tar.xz
+      url: http://msys2-sources.continuum.io/msys2-sources/msys/x86_64/libtasn1-4.7-1-x86_64.pkg.tar.xz
       md5: c9a68a1ca134646fb796cf449b8970a7
       mv-srcs:
       - '*'
