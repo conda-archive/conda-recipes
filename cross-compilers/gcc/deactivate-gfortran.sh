@@ -75,9 +75,9 @@ env > /tmp/old-env-$$.txt
 _tc_activation \
   deactivate host ${CHOST} ${CHOST}- \
   gfortran \
-  FFLAGS,${FFLAGS:-"-march=nocona -Wall -Wextra -fopenmp -O3"} \
-  FORTRANFLAGS,${FFLAGS:-"-march=nocona -Wall -Wextra -fopenmp -O3"} \
-  DEBUG_FFLAGS,${FFLAGS:-"-Og -g -Wall -Wextra -fcheck=all -fbacktrace -fimplicit-none"} \
+  "FFLAGS,${FFLAGS:--march=nocona -Wall -Wextra -fopenmp -fPIC -O3}" \
+  "FORTRANFLAGS,${FORTRANFLAGS:--march=nocona -Wall -Wextra -fopenmp -fPIC -O3}" \
+  "DEBUG_FFLAGS,${DEBUG_FFLAGS:--Og -g -Wall -Wextra -fcheck=all -fbacktrace -fPIC -fimplicit-none}"
 
 if [ $? -ne 0 ]; then
   echo "ERROR: (Pseudo) cross-compiler deactivation failed, see above for details"

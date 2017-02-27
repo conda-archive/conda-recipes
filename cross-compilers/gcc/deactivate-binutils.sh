@@ -74,9 +74,7 @@ function _tc_activation() {
 env > /tmp/old-env-$$.txt
 _tc_activation \
   deactivate host ${CHOST} ${CHOST}- \
-  addr2line ar as c++filt elfedit gprof ld nm objcopy objdump ranlib readelf size strings strip \
-  # dummy variable, I think.  Mostly because I don't know exactly how this script works
-  BINUTILS_VER,${BINUTILS_VER:-"2.26"} \
+  addr2line ar as c++filt elfedit gprof ld nm objcopy objdump ranlib readelf size strings strip
 
 if [ $? -ne 0 ]; then
   echo "ERROR: (Pseudo) cross-compiler deactivation failed, see above for details"

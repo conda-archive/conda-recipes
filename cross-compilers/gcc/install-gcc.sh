@@ -1,7 +1,6 @@
 set -e -x
 
-CHOST="x86_64-${vendor}-linux-gnu"
-PACKAGE="gcc"
+CHOST="${arch}-${vendor}-linux-${libc}"
 
 # libtool wants to use ranlib that is here
 export PATH=$PATH:${SRC_DIR}/.build/$CHOST/buildtools/bin
@@ -86,7 +85,7 @@ install -Dm644 $SRC_DIR/.build/src/gcc-${PKG_VERSION}/COPYING.RUNTIME \
         ${PREFIX}/share/licenses/gcc/RUNTIME.LIBRARY.EXCEPTION
 
 mkdir -p $PREFIX/etc/conda/activate.d
-echo "export CHOST=${CHOST}" | cat - $RECIPE_DIR/activate-${PACKAGE}.sh > /tmp/out && mv /tmp/out $PREFIX/etc/conda/activate.d/activate-${PACKAGE}-${CHOST}.sh
+echo "export CHOST=${CHOST}" | cat - $RECIPE_DIR/activate-gcc.sh > /tmp/out && mv /tmp/out $PREFIX/etc/conda/activate.d/activate-${PKG_NAME}.sh
 
 mkdir -p $PREFIX/etc/conda/deactivate.d
-echo "export CHOST=${CHOST}" | cat - $RECIPE_DIR/deactivate-${PACKAGE}.sh > /tmp/out && mv /tmp/out $PREFIX/etc/conda/deactivate.d/deactivate-${PACKAGE}-${CHOST}.sh
+echo "export CHOST=${CHOST}" | cat - $RECIPE_DIR/deactivate-gcc.sh > /tmp/out && mv /tmp/out $PREFIX/etc/conda/deactivate.d/deactivate-${PKG_NAME}.sh

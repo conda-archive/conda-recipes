@@ -74,10 +74,11 @@ function _tc_activation() {
 env > /tmp/old-env-$$.txt
 _tc_activation \
   deactivate host ${CHOST} ${CHOST}- \
-  gcc gcc-ar gcc-nm gcc-ranlib \
-  CFLAGS,${CFLAGS:-"-march=nocona -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe -fstack-protector-strong"} \
-  LDFLAGS,${LDFLAGS:-"-Wl,-O1,--sort-common,--as-needed,-z,relro"} \
-  DEBUG_CFLAGS,${DEBUG_CFLAGS:-"-Og -g -fvar-tracking-assignments"}
+  cpp gcc gcc-ar gcc-nm gcc-ranlib \
+  "CFLAGS,${CFLAGS:--march=nocona -fPIC -fvisibility=hidden -O2 -pipe -fstack-protector-strong}" \
+  "CPPFLAGS,${CPPFLAGS:--D_FORTIFY_SOURCE=2}" \
+  "LDFLAGS,${LDFLAGS:--Wl,-O1,--sort-common,--as-needed,-z,relro}" \
+  "DEBUG_CFLAGS,${DEBUG_CFLAGS:--Og -g -fPIC -fvar-tracking-assignments}"
 
 if [ $? -ne 0 ]; then
   echo "ERROR: (Pseudo) cross-compiler deactivation failed, see above for details"

@@ -74,10 +74,9 @@ function _tc_activation() {
 env > /tmp/old-env-$$.txt
 _tc_activation \
   activate host ${CHOST} ${CHOST}- \
-  c++ cpp g++ \
-  CPPFLAGS,${CPPFLAGS:-"-D_FORTIFY_SOURCE=2"} \
-  CXXFLAGS,${CXXFLAGS:-"-march=nocona -fPIC -fvisibility=hidden -O2 -pipe -fstack-protector-strong -std=c++11"} \
-  DEBUG_CXXFLAGS,${DEBUG_CXXFLAGS:-"-Og -g -fPIC -fvar-tracking-assignments"}
+  c++ g++ \
+  "CXXFLAGS,${CXXFLAGS:--march=nocona -fPIC -fvisibility=hidden -O2 -pipe -fstack-protector-strong -std=c++11}" \
+  "DEBUG_CXXFLAGS,${DEBUG_CXXFLAGS:--Og -g -fPIC -fvar-tracking-assignments}"
 
 
 if [ $? -ne 0 ]; then

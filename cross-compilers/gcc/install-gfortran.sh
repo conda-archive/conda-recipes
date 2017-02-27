@@ -1,9 +1,6 @@
 set -e -x
 
-
-CHOST="x86_64-${vendor}-linux-gnu"
-PACKAGE="gfortran"
-
+CHOST="${arch}-${vendor}-linux-${libc}"
 
 _libdir="libexec/gcc/$CHOST/$PKG_VERSION"
 pushd $SRC_DIR/.build/$CHOST/build/build-cc-gcc-final/
@@ -26,7 +23,7 @@ install -Dm644 $SRC_DIR/.build/src/gcc-${PKG_VERSION}/COPYING.RUNTIME \
         ${PREFIX}/share/licenses/gcc-fortran/RUNTIME.LIBRARY.EXCEPTION
 
 mkdir -p $PREFIX/etc/conda/activate.d
-echo "export CHOST=${CHOST}" | cat - $RECIPE_DIR/activate-${PACKAGE}.sh > /tmp/out && mv /tmp/out $PREFIX/etc/conda/activate.d/activate-${PACKAGE}-${CHOST}.sh
+echo "export CHOST=${CHOST}" | cat - $RECIPE_DIR/activate-gfortran.sh > /tmp/out && mv /tmp/out $PREFIX/etc/conda/activate.d/activate-${PKG_NAME}.sh
 
 mkdir -p $PREFIX/etc/conda/deactivate.d
-echo "export CHOST=${CHOST}" | cat - $RECIPE_DIR/deactivate-${PACKAGE}.sh > /tmp/out && mv /tmp/out $PREFIX/etc/conda/deactivate.d/deactivate-${PACKAGE}-${CHOST}.sh
+echo "export CHOST=${CHOST}" | cat - $RECIPE_DIR/deactivate-gfortran.sh > /tmp/out && mv /tmp/out $PREFIX/etc/conda/deactivate.d/deactivate-${PKG_NAME}.sh
