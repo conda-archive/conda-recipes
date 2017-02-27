@@ -74,16 +74,15 @@ env > /tmp/old-env-$$.txt
 _tc_activation \
   activate host @CHOST@ @CHOST@- \
   c++ cpp g++ \
-  CPPFLAGS,${CPPFLAGS:-"-D_FORTIFY_SOURCE=2"} \
-  CXXFLAGS,${CXXFLAGS:-"-march=nocona -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe -fstack-protector-strong -std=c++11"} \
-  DEBUG_CXXFLAGS,${DEBUG_CXXFLAGS:-"-Og -g -fvar-tracking-assignments"}
+  "CXXFLAGS,${CXXFLAGS:--march=nocona -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe -fstack-protector-strong -std=c++11}" \
+  "DEBUG_CXXFLAGS,${DEBUG_CXXFLAGS:--Og -g -fvar-tracking-assignments}"
 
 
 if [ $? -ne 0 ]; then
-  echo "ERROR: (Pseudo) cross-compiler activation failed, see above for details"
+  echo "ERROR: $(basename ${BASH_SOURCE[0]}) failed, see above for details"
 #exit 1
 else
   env > /tmp/new-env-$$.txt
-  echo "INFO: Activating '${HOST}-g++' (pseudo) cross-compiler made the following environmental changes:"
+  echo "INFO: $(basename ${BASH_SOURCE[0]}) made the following environmental changes:"
   diff -U 0 -rN /tmp/old-env-$$.txt /tmp/new-env-$$.txt | tail -n +4 | grep "^-.*\|^+.*" | grep -v "CONDA_BACKUP_" | sort
 fi

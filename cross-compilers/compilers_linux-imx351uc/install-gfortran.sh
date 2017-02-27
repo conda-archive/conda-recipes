@@ -1,17 +1,20 @@
 set -e -x
 
 CHOST=$(${SRC_DIR}/.build/*-*-*-*/build/build-cc-gcc-final/gcc/xgcc -dumpmachine)
-_libdir="lib/gcc/$CHOST/$PKG_VERSION"
+_libdir="libexec/gcc/$CHOST/$PKG_VERSION"
 pushd $SRC_DIR/.build/$CHOST/build/build-cc-gcc-final/
 
 # adapted from Arch install script from https://github.com/archlinuxarm/PKGBUILDs/blob/master/core/gcc/PKGBUILD
 make -C $CHOST/libgfortran prefix=$PREFIX install-cafexeclibLTLIBRARIES \
      install-{toolexeclibDATA,nodist_fincludeHEADERS}
+if [[ -d $CHOST/libgomp ]]; then
+  make -C $CHOST/libgomp prefix=$PREFIX install-nodist_fincludeHEADERS
+fi
 make -C gcc prefix=$PREFIX fortran.install-{common,man,info}
 install -Dm755 gcc/f951 $PREFIX/${_libdir}/f951
 
 pushd $PREFIX/bin
-  ln -s $CHOST-gfortran f95
+  ln -s $CHOST-gfortran $CHOST-f95
 popd
 
 popd

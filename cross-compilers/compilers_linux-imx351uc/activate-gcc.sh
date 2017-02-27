@@ -73,17 +73,18 @@ function _tc_activation() {
 env > /tmp/old-env-$$.txt
 _tc_activation \
   activate host @CHOST@ @CHOST@- \
-  gcc gcc-ar gcc-nm gcc-ranlib \
-  CFLAGS,${CFLAGS:-"-march=nocona -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe -fstack-protector-strong"} \
-  LDFLAGS,${LDFLAGS:-"-Wl,-O1,--sort-common,--as-needed,-z,relro"} \
-  DEBUG_CFLAGS,${DEBUG_CFLAGS:-"-Og -g -fvar-tracking-assignments"}
+  cc cpp gcc gcc-ar gcc-nm gcc-ranlib \
+  "CPPFLAGS,${CPPFLAGS:--D_FORTIFY_SOURCE=2}" \
+  "CFLAGS,${CFLAGS:--march=nocona -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe -fstack-protector-strong}" \
+  "LDFLAGS,${LDFLAGS:--Wl,-O1,--sort-common,--as-needed,-z,relro}" \
+  "DEBUG_CFLAGS,${DEBUG_CFLAGS:--Og -g -fvar-tracking-assignments}"
 
 
 if [ $? -ne 0 ]; then
-  echo "ERROR: (Pseudo) cross-compiler activation failed, see above for details"
+  echo "ERROR: $(basename ${BASH_SOURCE[0]}) failed, see above for details"
 #exit 1
 else
   env > /tmp/new-env-$$.txt
-  echo "INFO: Activating '${HOST}-gcc' (pseudo) cross-compiler made the following environmental changes:"
+  echo "INFO: $(basename ${BASH_SOURCE[0]}) made the following environmental changes:"
   diff -U 0 -rN /tmp/old-env-$$.txt /tmp/new-env-$$.txt | tail -n +4 | grep "^-.*\|^+.*" | grep -v "CONDA_BACKUP_" | sort
 fi
