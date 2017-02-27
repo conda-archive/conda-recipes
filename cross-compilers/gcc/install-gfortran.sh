@@ -1,6 +1,6 @@
 set -e -x
 
-CHOST="${arch}-${vendor}-linux-${libc}"
+CHOST="${cpu_arch}-${vendor}-linux-${libc}"
 
 _libdir="libexec/gcc/$CHOST/$PKG_VERSION"
 pushd $SRC_DIR/.build/$CHOST/build/build-cc-gcc-final/

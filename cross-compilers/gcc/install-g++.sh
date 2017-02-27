@@ -1,6 +1,6 @@
 set -e -x
 
-CHOST="${arch}-${vendor}-linux-${libc}"
+CHOST="${cpu_arch}-${vendor}-linux-${libc}"
 
 # libtool wants to use ranlib that is here
 export PATH=$PATH:${SRC_DIR}/.build/$CHOST/buildtools/bin

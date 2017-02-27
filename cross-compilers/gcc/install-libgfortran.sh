@@ -1,6 +1,6 @@
 set -e -x
 
-CHOST="${arch}-${vendor}-linux-${libc}"
+CHOST="${cpu_arch}-${vendor}-linux-${libc}"
 
 mkdir -p $PREFIX/lib
 cp ${SRC_DIR}/gcc_built/$CHOST/sysroot/lib/libgfortran.so.3.0.0 $PREFIX/lib
