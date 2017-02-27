@@ -6,7 +6,7 @@ pushd ${SRC_DIR}/.build/$CHOST/build/build-cc-gcc-final/
 # libtool wants to use ranlib that is here
 export PATH=$PATH:${SRC_DIR}/.build/$CHOST/buildtools/bin
 
-make -C gcc prefix=${PREFIX} install-driver install-gcc-ar install-headers install-plugin
+make -C gcc prefix=${PREFIX} install-driver install-cpp install-gcc-ar install-headers install-plugin
 
 install -m755 -t ${PREFIX}/bin/ gcc/gcov{,-tool}
 install -m755 -t ${PREFIX}/bin/ gcc/{cc1,collect2}
@@ -50,9 +50,9 @@ make -C gcc prefix=${PREFIX} install-man install-info
 make -C gcc prefix=${PREFIX} install-po
 
 # many packages expect this symlink
-[[ -f ${PREFIX}/bin/cc ]] && rm ${PREFIX}/bin/cc
+[[ -f ${PREFIX}/bin/$CHOST-cc ]] && rm ${PREFIX}/bin/$CHOST-cc
 pushd ${PREFIX}/bin
-  ln -s $CHOST-gcc cc
+  ln -s $CHOST-gcc $CHOST-cc
 popd
 
 # POSIX conformance launcher scripts for c89 and c99

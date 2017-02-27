@@ -73,16 +73,17 @@ function _tc_activation() {
 env > /tmp/old-env-$$.txt
 _tc_activation \
   activate host @CHOST@ @CHOST@- \
-  gfortran \
-  FFLAGS,${FFLAGS:-"-march=nocona -Wall -Wextra -fopenmp -O3"} \
-  FORTRANFLAGS,${FFLAGS:-"-march=nocona -Wall -Wextra -fopenmp -O3"} \
-  DEBUG_FFLAGS,${FFLAGS:-"-Og -g -Wall -Wextra -fcheck=all -fbacktrace -fimplicit-none"} \
+  gfortran f95 \
+  "FFLAGS,${FFLAGS:--march=nocona -Wall -Wextra -O3}" \
+  "FORTRANFLAGS,${FORTRANFLAGS:--march=nocona -Wall -Wextra -O3}" \
+  "DEBUG_FFLAGS,${DEBUG_FFLAGS:--Og -g -Wall -Wextra -fcheck=all -fbacktrace -fimplicit-none}"
+
 
 if [ $? -ne 0 ]; then
-  echo "ERROR: (Pseudo) cross-compiler activation failed, see above for details"
+  echo "ERROR: $(basename ${BASH_SOURCE[0]}) failed, see above for details"
 #exit 1
 else
   env > /tmp/new-env-$$.txt
-  echo "INFO: Activating '${HOST}-gfortran' (pseudo) cross-compiler made the following environmental changes:"
+  echo "INFO: $(basename ${BASH_SOURCE[0]}) made the following environmental changes:"
   diff -U 0 -rN /tmp/old-env-$$.txt /tmp/new-env-$$.txt | tail -n +4 | grep "^-.*\|^+.*" | grep -v "CONDA_BACKUP_" | sort
 fi

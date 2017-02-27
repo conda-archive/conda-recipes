@@ -7,7 +7,7 @@ export PATH=$PATH:${SRC_DIR}/.build/$CHOST/buildtools/bin
 
 pushd ${SRC_DIR}/.build/$CHOST/build/build-cc-gcc-final/
 
-make -C gcc prefix=${PREFIX} install-cpp c++.install-common install-lto-wrapper
+make -C gcc prefix=${PREFIX} c++.install-common install-lto-wrapper
 make -C lto-plugin prefix=${PREFIX} install
 install -dm755 ${PREFIX}/lib/bfd-plugins/
 

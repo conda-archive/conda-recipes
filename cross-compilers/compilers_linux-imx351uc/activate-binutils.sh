@@ -73,14 +73,14 @@ function _tc_activation() {
 env > /tmp/old-env-$$.txt
 _tc_activation \
   activate host @CHOST@ @CHOST@- \
-  addr2line ar as c++filt elfedit gprof ld ldd nm objcopy objdump ranlib readelf size strings strip
+  addr2line ar as c++filt elfedit gprof ld nm objcopy objdump ranlib readelf size strings strip
 
 
 if [ $? -ne 0 ]; then
-  echo "ERROR: (Pseudo) cross-compiler activation failed, see above for details"
+  echo "ERROR: $(basename ${BASH_SOURCE[0]}) failed, see above for details"
 #exit 1
 else
   env > /tmp/new-env-$$.txt
-  echo "INFO: Activating '${HOST}-binutils' (pseudo) cross-compiler made the following environmental changes:"
+  echo "INFO: $(basename ${BASH_SOURCE[0]}) made the following environmental changes:"
   diff -U 0 -rN /tmp/old-env-$$.txt /tmp/new-env-$$.txt | tail -n +4 | grep "^-.*\|^+.*" | grep -v "CONDA_BACKUP_" | sort
 fi
