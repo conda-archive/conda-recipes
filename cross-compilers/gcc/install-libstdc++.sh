@@ -1,6 +1,6 @@
 set -e -x
 
-CHOST="x86_64-sarc-linux-gnu"
+CHOST="${arch}-${vendor}-linux-${libc}"
 pushd $SRC_DIR/.build/$CHOST/build/build-cc-gcc-final/
 
 make -C $CHOST/libstdc++-v3/src prefix=${PREFIX} install-toolexeclibLTLIBRARIES

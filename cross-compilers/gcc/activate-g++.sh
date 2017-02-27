@@ -70,13 +70,14 @@ function _tc_activation() {
 
 # We would like to add "-fstack-protector --param=ssp-buffer-size" to {C,CXX}FLAGS
 # but uClibc has poor (or no) support for it.
+# CHOST is prepended to this file by the install script.
 env > /tmp/old-env-$$.txt
 _tc_activation \
-  activate host x86_64-sarc-linux-gnu x86_64-sarc-linux-gnu- \
+  activate host ${CHOST} ${CHOST}- \
   c++ cpp g++ \
   CPPFLAGS,${CPPFLAGS:-"-D_FORTIFY_SOURCE=2"} \
-  CXXFLAGS,${CXXFLAGS:-"-march=nocona -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe -fstack-protector-strong -std=c++11"} \
-  DEBUG_CXXFLAGS,${DEBUG_CXXFLAGS:-"-Og -g -fvar-tracking-assignments"}
+  CXXFLAGS,${CXXFLAGS:-"-march=nocona -fPIC -fvisibility=hidden -O2 -pipe -fstack-protector-strong -std=c++11"} \
+  DEBUG_CXXFLAGS,${DEBUG_CXXFLAGS:-"-Og -g -fPIC -fvar-tracking-assignments"}
 
 
 if [ $? -ne 0 ]; then

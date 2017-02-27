@@ -70,9 +70,10 @@ function _tc_activation() {
 
 # We would like to add "-fstack-protector --param=ssp-buffer-size" to {C,CXX}FLAGS
 # but uClibc has poor (or no) support for it.
+# CHOST is prepended to this file by the install script.
 env > /tmp/old-env-$$.txt
 _tc_activation \
-  deactivate host x86_64-sarc-linux-gnu x86_64-sarc-linux-gnu- \
+  deactivate host ${CHOST} ${CHOST}- \
   gfortran \
   FFLAGS,${FFLAGS:-"-march=nocona -Wall -Wextra -fopenmp -O3"} \
   FORTRANFLAGS,${FFLAGS:-"-march=nocona -Wall -Wextra -fopenmp -O3"} \

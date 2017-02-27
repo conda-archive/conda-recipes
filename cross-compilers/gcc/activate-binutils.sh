@@ -70,10 +70,11 @@ function _tc_activation() {
 
 # We would like to add "-fstack-protector --param=ssp-buffer-size" to {C,CXX}FLAGS
 # but uClibc has poor (or no) support for it.
+# CHOST is prepended to this file by the install script.
 env > /tmp/old-env-$$.txt
 _tc_activation \
-  activate host x86_64-sarc-linux-gnu x86_64-sarc-linux-gnu- \
-  addr2line ar as c++filt elfedit gprof ld ldd nm objcopy objdump ranlib readelf size strings strip
+  activate host ${CHOST} ${CHOST}- \
+  addr2line ar as c++filt elfedit gprof ld nm objcopy objdump ranlib readelf size strings strip
 
 
 if [ $? -ne 0 ]; then

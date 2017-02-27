@@ -1,4 +1,4 @@
-CHOST="x86_64-sarc-linux-gnu"
+CHOST="${arch}-${vendor}-linux-${libc}"
 mkdir -p .build/src
 mkdir -p .build/tarballs
 if [[ ! -e ".build/tarballs/linux-2.6.18.tar.xz" ]]; then
@@ -16,7 +16,7 @@ fi
 # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=31827
 ulimit -s 32768
 
-# pushd .build/x86_64-sarc-linux-gnu/build/build-cc-gcc-final
+# pushd .build/${CHOST}/build/build-cc-gcc-final
 # make -k check || true
 # popd
 

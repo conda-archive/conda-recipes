@@ -70,10 +70,13 @@ function _tc_activation() {
 
 # We would like to add "-fstack-protector --param=ssp-buffer-size" to {C,CXX}FLAGS
 # but uClibc has poor (or no) support for it.
+# CHOST is prepended to this file by the install script.
 env > /tmp/old-env-$$.txt
 _tc_activation \
-  deactivate host x86_64-sarc-linux-gnu x86_64-sarc-linux-gnu- \
-  addr2line ar as c++filt elfedit gprof ld ldd nm objcopy objdump ranlib readelf size strings strip
+  deactivate host ${CHOST} ${CHOST}- \
+  addr2line ar as c++filt elfedit gprof ld nm objcopy objdump ranlib readelf size strings strip \
+  # dummy variable, I think.  Mostly because I don't know exactly how this script works
+  BINUTILS_VER,${BINUTILS_VER:-"2.26"} \
 
 if [ $? -ne 0 ]; then
   echo "ERROR: (Pseudo) cross-compiler deactivation failed, see above for details"

@@ -1,5 +1,8 @@
 set -e -x
-CHOST="x86_64-sarc-linux-gnu"
+
+CHOST="x86_64-${vendor}-linux-gnu"
+PACKAGE="binutils"
+
 # libtool wants to use ranlib that is here
 export PATH=$PATH:${SRC_DIR}/.build/$CHOST/buildtools/bin
 
@@ -8,7 +11,7 @@ make prefix=$PREFIX install
 popd
 
 mkdir -p $PREFIX/etc/conda/activate.d
-cp $RECIPE_DIR/activate-binutils.sh $PREFIX/etc/conda/activate.d/compiler_linux-cos5-64-activate-binutils.sh
+echo "export CHOST=${CHOST}" | cat - $RECIPE_DIR/activate-${PACKAGE}.sh > /tmp/out && mv /tmp/out $PREFIX/etc/conda/activate.d/activate-${PACKAGE}-${CHOST}.sh
 
 mkdir -p $PREFIX/etc/conda/deactivate.d
-cp $RECIPE_DIR/deactivate-binutils.sh $PREFIX/etc/conda/deactivate.d/compiler_linux-cos5-64-deactivate-binutils.sh
+echo "export CHOST=${CHOST}" | cat - $RECIPE_DIR/deactivate-${PACKAGE}.sh > /tmp/out && mv /tmp/out $PREFIX/etc/conda/deactivate.d/deactivate-${PACKAGE}-${CHOST}.sh

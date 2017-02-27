@@ -1,6 +1,6 @@
 package:
   name: compilers_linux-cos5-64
-  version: 6.3.0
+  version: {{ gcc }}
 
 source:
   path: .
@@ -23,29 +23,26 @@ outputs:
     script: install-gcc.sh
     requirements:
       - binutils_linux-cos5-64
-    # needs "build_customization branch
-    # pin_downstream:
-    #   - {{ pin_subpackage('libgcc_linux-cos5-64') }}
+    pin_downstream:
+      - {{ pin_subpackage('libgcc_linux-cos5-64') }}
 
   - name: gxx_linux-cos5-64
     script: install-g++.sh
     requirements:
       - gcc_linux-cos5-64
-    # needs "build_customization branch
-    # pin_downstream:
-    #   - {{ pin_subpackage('libstdcxx_linux-cos5-64') }}
+    pin_downstream:
+      - {{ pin_subpackage('libstdcxx_linux-cos5-64') }}
 
   - name: gfortran_linux-cos5-64
     script: install-gfortran.sh
     requirements:
       - gcc_linux-cos5-64
-    # needs "build_customization branch
-    # pin_downstream:
-    #   - {{ pin_subpackage('libgfortran_linux-cos5-64') }}
+    pin_downstream:
+      - {{ pin_subpackage('libgfortran_linux-cos5-64') }}
 
   - name: binutils_linux-cos5-64
     script: install-binutils.sh
-    version: 2.26
+    version: {{ binutils }}
 
   - name: libstdcxx_linux-cos5-64
     script: install-libstdc++.sh

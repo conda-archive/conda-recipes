@@ -70,13 +70,14 @@ function _tc_activation() {
 
 # We would like to add "-fstack-protector --param=ssp-buffer-size" to {C,CXX}FLAGS
 # but uClibc has poor (or no) support for it.
+# CHOST is prepended to this file by the install script.
 env > /tmp/old-env-$$.txt
 _tc_activation \
-  activate host x86_64-sarc-linux-gnu x86_64-sarc-linux-gnu- \
+  activate host ${CHOST} ${CHOST}- \
   gfortran \
-  FFLAGS,${FFLAGS:-"-march=nocona -Wall -Wextra -fopenmp -O3"} \
-  FORTRANFLAGS,${FFLAGS:-"-march=nocona -Wall -Wextra -fopenmp -O3"} \
-  DEBUG_FFLAGS,${FFLAGS:-"-Og -g -Wall -Wextra -fcheck=all -fbacktrace -fimplicit-none"} \
+  FFLAGS,${FFLAGS:-"-march=nocona -Wall -Wextra -fopenmp -fPIC -O3"} \
+  FORTRANFLAGS,${FORTRANFLAGS:-"-march=nocona -Wall -Wextra -fopenmp -fPIC -O3"} \
+  DEBUG_FFLAGS,${DEBUG_FFLAGS:-"-Og -g -Wall -Wextra -fcheck=all -fbacktrace -fPIC -fimplicit-none"} \
 
 if [ $? -ne 0 ]; then
   echo "ERROR: (Pseudo) cross-compiler activation failed, see above for details"
