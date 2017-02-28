@@ -1,29 +1,54 @@
 package:
-  name: gcc_linux-64_linux-cos5-64
-  version: 6.3.0
+  name: compilers_linux-cos5-64
+  version: {{ gcc }}
 
 source:
   path: .
 
 build:
   detect_binary_files_with_prefix: False
+  binary_relocation: False
 
 requirements:
   build:
     - crosstool-ng  11a11abe
+    - unifdef
+  run:
+    - gcc_linux-cos5-64
+    - gxx_linux-cos5-64
+    - gfortran_linux-cos5-64
 
-# outputs:
-#   - name: gcc_linux-64_linux-aarch64
-#     script: install-gcc.sh
-#     requirements:
-#       - binutils_linux-64_linux-aarch64
-#   - name: g++_linux-64_linux-aarch64
-#     script: install-g++.sh
-#     requirements:
-#       - binutils_linux-64_linux-aarch64
-#   - name: binutils_linux-64-aarch64
-#     script: install-binutils.sh
-#   - name: libstdc++_linux-aarch64
-#     script: install-libstdc++.sh
-#   - name: libgcc_linux-aarch64
-#     script: install-libgcc.sh
+outputs:
+  - name: gcc_linux-cos5-64
+    script: install-gcc.sh
+    requirements:
+      - binutils_linux-cos5-64
+    pin_downstream:
+      - {{ pin_subpackage('libgcc_linux-cos5-64') }}
+
+  - name: gxx_linux-cos5-64
+    script: install-g++.sh
+    requirements:
+      - gcc_linux-cos5-64
+    pin_downstream:
+      - {{ pin_subpackage('libstdcxx_linux-cos5-64') }}
+
+  - name: gfortran_linux-cos5-64
+    script: install-gfortran.sh
+    requirements:
+      - gcc_linux-cos5-64
+    pin_downstream:
+      - {{ pin_subpackage('libgfortran_linux-cos5-64') }}
+
+  - name: binutils_linux-cos5-64
+    script: install-binutils.sh
+    version: {{ binutils }}
+
+  - name: libstdcxx_linux-cos5-64
+    script: install-libstdc++.sh
+
+  - name: libgcc_linux-cos5-64
+    script: install-libgcc.sh
+
+  - name: libgfortran_linux-cos5-64
+    script: install-libgfortran.sh

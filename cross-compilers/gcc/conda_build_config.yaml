@@ -1,0 +1,28 @@
+cpu_arch:
+  - x86_64
+libc:
+  - gnu
+binutils:
+  - 2.26
+glibc:
+  - 2.5
+kernel:
+  - 2.6.18
+gcc:
+  - 6.3.0
+gmp:
+  - 6.1.2
+mpfr:
+  - 3.1.5
+gettext:
+  - 0.19.7
+libiconv:
+  - 1.14
+isl:
+  - 0.16.1
+mpc:
+  - 1.0.3
+ncurses:
+  - 6.0
+vendor:
+  - cio

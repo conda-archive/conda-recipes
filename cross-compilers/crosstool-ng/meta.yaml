@@ -16,6 +16,11 @@ source:
   # for aarch64, used ct-ng master at above commit
   git_url: https://github.com/diorcety/crosstool-ng.git
   git_tag: {{ commit }}
+  patches:
+    - no-lto.patch
+
+build:
+  number: 1
 
 requirements:
   build:

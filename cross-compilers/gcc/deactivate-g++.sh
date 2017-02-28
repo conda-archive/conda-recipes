@@ -70,23 +70,19 @@ function _tc_activation() {
 
 # We would like to add "-fstack-protector --param=ssp-buffer-size" to {C,CXX}FLAGS
 # but uClibc has poor (or no) support for it.
+# CHOST is prepended to this file by the install script.
 env > /tmp/old-env-$$.txt
 _tc_activation \
-  deactivate host x86_64-sarc-linux-gnu x86_64-sarc-linux-gnu- \
-  addr2line ar as c++ cc c++filt cpp elfedit g++ gcc c++ gcov gcov-tool gfortran gprof ld ldd nm objcopy objdump ranlib readelf size strings strip \
-  CPPFLAGS,${CPPFLAGS:-"-D_FORTIFY_SOURCE=2"} \
-  CFLAGS,${CFLAGS:-"-march=nocona -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe -fstack-protector-strong"} \
-  CXXFLAGS,${CXXFLAGS:-"-march=nocona -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe -fstack-protector-strong -std=c++11"} \
-  LDFLAGS,${LDFLAGS:-"-Wl,-O1,--sort-common,--as-needed,-z,relro"} \
-  DEBUG_CFLAGS,${DEBUG_CFLAGS:-"-Og -g -fvar-tracking-assignments"} \
-  DEBUG_CXXFLAGS,${DEBUG_CXXFLAGS:-"-Og -g -fvar-tracking-assignments"}
-
+  deactivate host ${CHOST} ${CHOST}- \
+  c++ g++ \
+  "CXXFLAGS,${CXXFLAGS:--march=nocona -fPIC -fvisibility=hidden -O2 -pipe -fstack-protector-strong -std=c++11}" \
+  "DEBUG_CXXFLAGS,${DEBUG_CXXFLAGS:--Og -g -fPIC -fvar-tracking-assignments}"
 
 if [ $? -ne 0 ]; then
   echo "ERROR: (Pseudo) cross-compiler deactivation failed, see above for details"
 #  exit 1
 else
   env > /tmp/new-env-$$.txt
-  echo "INFO: Deactivating 'x86_64-unknown-linux-gnu' (pseudo) cross-compiler made the following environmental changes:"
+  echo "INFO: Deactivating 'x86_64-unknown-linux-gnu-g++' (pseudo) cross-compiler made the following environmental changes:"
   diff -U 0 -rN /tmp/old-env-$$.txt /tmp/new-env-$$.txt | tail -n +4 | grep "^-.*\|^+.*" | grep -v "CONDA_BACKUP_" | sort
 fi
