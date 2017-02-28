@@ -3,7 +3,7 @@ set -e -x
 CHOST=$(${SRC_DIR}/.build/*-*-*-*/build/build-cc-gcc-final/gcc/xgcc -dumpmachine)
 pushd ${SRC_DIR}/.build/$CHOST/build/build-cc-gcc-final/
 
-# libtool wants to use ranlib that is here
+# libtool wants to use ranlib that is here (do we need this scoped over the whole file?)
 export PATH=$PATH:${SRC_DIR}/.build/$CHOST/buildtools/bin
 
 make -C gcc prefix=${PREFIX} install-driver install-cpp install-gcc-ar install-headers install-plugin
@@ -88,9 +88,18 @@ rm $PREFIX/bin/${CHOST}-gcc-${PKG_VERSION}
 
 popd
 
+# Install kernel headers
+make -C ${SRC_DIR}/.build/src/linux-* CROSS_COMPILE=${CHOST}- O=${SRC_DIR}/.build/${CHOST}/build/build-kernel-headers ARCH=arm INSTALL_HDR_PATH=${PREFIX}/${CHOST}/sysroot/usr V=1 headers_install
+
 # Install uClibc headers
 pushd ${SRC_DIR}/.build/$CHOST/build/build-libc-startfiles/multilib
-  make CROSS_COMPILE=${CHOST}- PREFIX=${PREFIX}/${CHOST}/sysroot/ MULTILIB_DIR=lib LOCALE_DATA_FILENAME=uClibc-locale-030818.tgz STRIPTOOL=true V=2 UCLIBC_EXTRA_CFLAGS=-pipe headers
+  make CROSS_COMPILE=${CHOST}- PREFIX=${PREFIX}/${CHOST}/sysroot MULTILIB_DIR=lib LOCALE_DATA_FILENAME=uClibc-locale-030818.tgz STRIPTOOL=true V=2 UCLIBC_EXTRA_CFLAGS=-pipe headers
+popd
+
+# Install uClibc libraries
+pushd ${SRC_DIR}/.build/$CHOST/build/build-libc-final/multilib
+  PATH=${SRC_DIR}/.build/$CHOST/buildtools/$CHOST/bin:$PATH \
+    make CROSS_COMPILE=${CHOST}- PREFIX=${PREFIX}/${CHOST}/sysroot MULTILIB_DIR=lib LOCALE_DATA_FILENAME=uClibc-locale-030818.tgz STRIPTOOL=true V=2 UCLIBC_EXTRA_CFLAGS=-pipe install install_utils
 popd
 
 # Install Runtime Library Exception

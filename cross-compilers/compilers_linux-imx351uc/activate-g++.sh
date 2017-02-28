@@ -73,7 +73,7 @@ function _tc_activation() {
 env > /tmp/old-env-$$.txt
 _tc_activation \
   activate host @CHOST@ @CHOST@- \
-  c++ cpp g++ \
+  c++ g++ \
   "CXXFLAGS,${CXXFLAGS:--march=nocona -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe -fstack-protector-strong -std=c++11}" \
   "DEBUG_CXXFLAGS,${DEBUG_CXXFLAGS:--Og -g -fvar-tracking-assignments}"
 
