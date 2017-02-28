@@ -4,9 +4,7 @@ CHOST=$(${SRC_DIR}/.build/*-*-*-*/build/build-cc-gcc-final/gcc/xgcc -dumpmachine
 _libdir="libexec/gcc/$CHOST/$PKG_VERSION"
 pushd $SRC_DIR/.build/$CHOST/build/build-cc-gcc-final/
 
-# adapted from Arch install script from https://github.com/archlinuxarm/PKGBUILDs/blob/master/core/gcc/PKGBUILD
-make -C $CHOST/libgfortran prefix=$PREFIX install-cafexeclibLTLIBRARIES \
-     install-{toolexeclibDATA,nodist_fincludeHEADERS}
+make -C $CHOST/libgfortran prefix=$PREFIX install
 if [[ -d $CHOST/libgomp ]]; then
   make -C $CHOST/libgomp prefix=$PREFIX install-nodist_fincludeHEADERS
 fi
