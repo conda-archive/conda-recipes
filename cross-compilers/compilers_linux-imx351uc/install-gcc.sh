@@ -3,8 +3,9 @@ set -e -x
 CHOST=$(${SRC_DIR}/.build/*-*-*-*/build/build-cc-gcc-final/gcc/xgcc -dumpmachine)
 pushd ${SRC_DIR}/.build/$CHOST/build/build-cc-gcc-final/
 
-# libtool wants to use ranlib that is here (do we need this scoped over the whole file?)
-export PATH=$PATH:${SRC_DIR}/.build/$CHOST/buildtools/bin
+# libtool wants to use ranlib that is here, macOS install doesn't grok -t etc
+# .. do we need this scoped over the whole file though?
+export PATH=${SRC_DIR}//gcc_built/bin:${SRC_DIR}/.build/${CHOST}/buildtools/bin:${SRC_DIR}/.build/tools/bin:${PATH}
 
 make -C gcc prefix=${PREFIX} install-driver install-cpp install-gcc-ar install-headers install-plugin
 
@@ -109,3 +110,15 @@ install -Dm644 $SRC_DIR/.build/src/gcc-${PKG_VERSION}/COPYING.RUNTIME \
 mkdir -p ${PREFIX}/etc/conda/{de,}activate.d
 cp "${SRC_DIR}"/activate-gcc.sh ${PREFIX}/etc/conda/activate.d/activate-${PKG_NAME}.sh
 cp "${SRC_DIR}"/deactivate-gcc.sh ${PREFIX}/etc/conda/deactivate.d/deactivate-${PKG_NAME}.sh
+
+# Next problem: macOS targetting uClibc ends up with broken symlinks in sysroot/usr/lib:
+if [[ $(uname) == Darwin ]]; then
+  pushd ${PREFIX}/${CHOST}/sysroot/usr/lib
+  links=$(find . -type l | cut -c 3-)
+  for link in ${links}; do
+    target=$(readlink ${link} | sed 's#^/##' | sed 's#//#/#')
+    rm ${link}
+    ln -s ${target} ${link}
+  done
+  popd
+fi
