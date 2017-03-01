@@ -39,6 +39,8 @@ requirements:
     # - texinfo
     - wget
     # - gcc
+  run:
+    - ncurses
 
 test:
   commands:
