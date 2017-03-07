@@ -1,0 +1,28 @@
+From 7ddd6d708ecabd2a18cfea4299837851a2ff4d66 Mon Sep 17 00:00:00 2001
+From: Vassil Vassilev <vvasilev@cern.ch>
+Date: Wed, 22 Jan 2014 14:07:38 +0100
+Subject: [PATCH 16/58] Do not remove decls from the lookup if they don't exist
+ in it.
+
+---
+ lib/AST/DeclBase.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/lib/AST/DeclBase.cpp b/lib/AST/DeclBase.cpp
+index 6c1454c..a34017e 100644
+--- a/lib/AST/DeclBase.cpp
++++ b/lib/AST/DeclBase.cpp
+@@ -1260,7 +1260,9 @@ void DeclContext::removeDecl(Decl *D) {
+       if (Map) {
+         StoredDeclsMap::iterator Pos = Map->find(ND->getDeclName());
+         assert(Pos != Map->end() && "no lookup entry for decl");
+-        if (Pos->second.getAsVector() || Pos->second.getAsDecl() == ND)
++        StoredDeclsList::DeclsTy* Vec = Pos->second.getAsVector();
++        if ((Vec && std::find(Vec->begin(), Vec->end(), ND) != Vec->end())
++            || Pos->second.getAsDecl() == ND)
+           Pos->second.remove(ND);
+       }
+     } while (DC->isTransparentContext() && (DC = DC->getParent()));
+-- 
+2.7.4
+

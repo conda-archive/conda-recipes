@@ -1,0 +1,21 @@
+From f7acc8b3265f2be42cee8b05896dda02998b787f Mon Sep 17 00:00:00 2001
+From: Axel Naumann <Axel.Naumann@cern.ch>
+Date: Mon, 26 Aug 2013 14:36:15 +0200
+Subject: [PATCH 10/58] Forward to new location.
+
+---
+ lib/Parse/RAIIObjectsForParser.h | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 lib/Parse/RAIIObjectsForParser.h
+
+diff --git a/lib/Parse/RAIIObjectsForParser.h b/lib/Parse/RAIIObjectsForParser.h
+new file mode 100644
+index 0000000..9dc258a
+--- a/dev/null
++++ b/lib/Parse/RAIIObjectsForParser.h
+@@ -0,0 +1,2 @@
++// forward to new location
++#include "clang/Parse/RAIIObjectsForParser.h"
+-- 
+2.7.4
+

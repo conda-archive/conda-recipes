@@ -1,0 +1,48 @@
+From 15f0dad87d41737e7b777ca84afa9489eef5a540 Mon Sep 17 00:00:00 2001
+From: Vassil Vassilev <vvasilev@cern.ch>
+Date: Thu, 27 Feb 2014 15:50:03 +0100
+Subject: [PATCH 17/58] Find an easier way of accessing CodeGenModule
+ internals.
+
+---
+ lib/CodeGen/CodeGenModule.h   | 3 +++
+ lib/CodeGen/ModuleBuilder.cpp | 2 +-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/lib/CodeGen/CodeGenModule.h b/lib/CodeGen/CodeGenModule.h
+index 155a997..0f9a4d0 100644
+--- a/lib/CodeGen/CodeGenModule.h
++++ b/lib/CodeGen/CodeGenModule.h
+@@ -51,6 +51,7 @@ class IndexedInstrProfReader;
+ namespace clang {
+ class ASTContext;
+ class AtomicType;
++class CodeGeneratorImpl; // hack needed by cling
+ class FunctionDecl;
+ class IdentifierInfo;
+ class ObjCMethodDecl;
+@@ -1259,6 +1260,8 @@ private:
+   /// Check whether we can use a "simpler", more core exceptions personality
+   /// function.
+   void SimplifyPersonality();
++
++   friend class clang::CodeGeneratorImpl; // hack needed by cling
+ };
+ }  // end namespace CodeGen
+ }  // end namespace clang
+diff --git a/lib/CodeGen/ModuleBuilder.cpp b/lib/CodeGen/ModuleBuilder.cpp
+index 952d162..2d2daf1 100644
+--- a/lib/CodeGen/ModuleBuilder.cpp
++++ b/lib/CodeGen/ModuleBuilder.cpp
+@@ -29,7 +29,7 @@
+ using namespace clang;
+ using namespace CodeGen;
+ 
+-namespace {
++namespace clang {
+   class CodeGeneratorImpl : public CodeGenerator {
+     DiagnosticsEngine &Diags;
+     ASTContext *Ctx;
+-- 
+2.7.4
+

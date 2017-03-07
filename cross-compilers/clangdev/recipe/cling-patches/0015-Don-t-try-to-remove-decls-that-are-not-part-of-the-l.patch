@@ -1,0 +1,28 @@
+From c193304e64a1d12990abec7e8a8b6fa2e100cc7d Mon Sep 17 00:00:00 2001
+From: Vassil Vassilev <vvasilev@cern.ch>
+Date: Thu, 10 Oct 2013 18:12:07 +0200
+Subject: [PATCH 15/58] Don't try to remove decls that are not part of the
+ lookup.
+
+---
+ lib/AST/DeclBase.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/AST/DeclBase.cpp b/lib/AST/DeclBase.cpp
+index 26d5c33c..6c1454c 100644
+--- a/lib/AST/DeclBase.cpp
++++ b/lib/AST/DeclBase.cpp
+@@ -1251,8 +1251,8 @@ void DeclContext::removeDecl(Decl *D) {
+   if (isa<NamedDecl>(D)) {
+     NamedDecl *ND = cast<NamedDecl>(D);
+ 
+-    // Remove only decls that have a name
+-    if (!ND->getDeclName()) return;
++    // Remove only decls that have a name or registered in the lookup.
++    if (!ND->getDeclName() || ND->isHidden()) return;
+ 
+     auto *DC = D->getDeclContext();
+     do {
+-- 
+2.7.4
+

@@ -1,0 +1,35 @@
+From 613e595b0f38e1b5c90985e66eacd9a2cf928dfb Mon Sep 17 00:00:00 2001
+From: Vassil Vassilev <vvasilev@cern.ch>
+Date: Wed, 16 Oct 2013 14:22:22 +0200
+Subject: [PATCH 13/58] From me and Cristina: Fix removal of out-of-line
+ definitions.
+
+If we had:
+struct MyClass {
+  void f() {}
+}
+MyClass::f(){} // expected error redefinition of f.
+
+In that case we would have tried to remove the lookup entry for the decl from
+the primary decl context of the lexical decl context, which entry doesn't exist.
+It is registered in the semantic decl context of the decl itself.
+---
+ lib/AST/DeclBase.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/AST/DeclBase.cpp b/lib/AST/DeclBase.cpp
+index bfb7d02..26d5c33c 100644
+--- a/lib/AST/DeclBase.cpp
++++ b/lib/AST/DeclBase.cpp
+@@ -1254,7 +1254,7 @@ void DeclContext::removeDecl(Decl *D) {
+     // Remove only decls that have a name
+     if (!ND->getDeclName()) return;
+ 
+-    auto *DC = this;
++    auto *DC = D->getDeclContext();
+     do {
+       StoredDeclsMap *Map = DC->getPrimaryContext()->LookupPtr;
+       if (Map) {
+-- 
+2.7.4
+

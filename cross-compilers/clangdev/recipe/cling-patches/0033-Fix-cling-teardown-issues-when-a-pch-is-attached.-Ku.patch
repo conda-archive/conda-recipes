@@ -1,0 +1,80 @@
+From cbd27fc8f17605d73c20fb12ac093f1aeaf49064 Mon Sep 17 00:00:00 2001
+From: Vassil Vassilev <vvasilev@cern.ch>
+Date: Wed, 1 Oct 2014 12:12:08 +0200
+Subject: [PATCH 33/58] Fix cling teardown issues when a pch is attached. Kudos
+ to Axel.
+
+---
+ include/clang/Sema/Sema.h |  6 ++++--
+ lib/Sema/Sema.cpp         | 16 ++++++----------
+ 2 files changed, 10 insertions(+), 12 deletions(-)
+
+diff --git a/include/clang/Sema/Sema.h b/include/clang/Sema/Sema.h
+index f72cd3e..26d8ad0 100644
+--- a/include/clang/Sema/Sema.h
++++ b/include/clang/Sema/Sema.h
+@@ -132,6 +132,7 @@ namespace clang {
+   typedef ArrayRef<std::pair<IdentifierInfo *, SourceLocation>> ModuleIdPath;
+   class ModuleLoader;
+   class MultiLevelTemplateArgumentList;
++  class MultiplexExternalSemaSource;
+   class NamedDecl;
+   class ObjCCategoryDecl;
+   class ObjCCategoryImplDecl;
+@@ -268,8 +269,9 @@ class Sema {
+   ///\brief Source of additional semantic information.
+   ExternalSemaSource *ExternalSource;
+ 
+-  ///\brief Whether Sema has generated a multiplexer and has to delete it.
+-  bool isMultiplexExternalSource;
++  ///\brief Source of additional semantic information if it is a multiplexer.
++  llvm::IntrusiveRefCntPtr<MultiplexExternalSemaSource>
++      MultiplexExternalSource;
+ 
+   static bool mightHaveNonExternalLinkage(const DeclaratorDecl *FD);
+ 
+diff --git a/lib/Sema/Sema.cpp b/lib/Sema/Sema.cpp
+index 1318dd0..28b5d6a 100644
+--- a/lib/Sema/Sema.cpp
++++ b/lib/Sema/Sema.cpp
+@@ -74,8 +74,7 @@ void Sema::ActOnTranslationUnitScope(Scope *S) {
+ Sema::Sema(Preprocessor &pp, ASTContext &ctxt, ASTConsumer &consumer,
+            TranslationUnitKind TUKind,
+            CodeCompleteConsumer *CodeCompleter)
+-  : ExternalSource(nullptr),
+-    isMultiplexExternalSource(false), FPFeatures(pp.getLangOpts()),
++  : ExternalSource(nullptr), FPFeatures(pp.getLangOpts()),
+     LangOpts(pp.getLangOpts()), PP(pp), Context(ctxt), Consumer(consumer),
+     Diags(PP.getDiagnostics()), SourceMgr(PP.getSourceManager()),
+     CollectStats(false), CodeCompleter(CodeCompleter),
+@@ -277,10 +276,6 @@ Sema::~Sema() {
+         = dyn_cast_or_null<ExternalSemaSource>(Context.getExternalSource()))
+     ExternalSema->ForgetSema();
+ 
+-  // If Sema's ExternalSource is the multiplexer - we own it.
+-  if (isMultiplexExternalSource)
+-    delete ExternalSource;
+-
+   threadSafety::threadSafetyCleanup(ThreadSafetyDeclCache);
+ 
+   // Destroys data sharing attributes stack for OpenMP
+@@ -331,11 +326,12 @@ void Sema::addExternalSource(ExternalSemaSource *E) {
+     return;
+   }
+ 
+-  if (isMultiplexExternalSource)
+-    static_cast<MultiplexExternalSemaSource*>(ExternalSource)->addSource(*E);
++  if (MultiplexExternalSource.get())
++    MultiplexExternalSource->addSource(*E);
+   else {
+-    ExternalSource = new MultiplexExternalSemaSource(*ExternalSource, *E);
+-    isMultiplexExternalSource = true;
++    MultiplexExternalSource
++      = new MultiplexExternalSemaSource(*ExternalSource, *E);
++    ExternalSource = MultiplexExternalSource.get();
+   }
+ }
+ 
+-- 
+2.7.4
+

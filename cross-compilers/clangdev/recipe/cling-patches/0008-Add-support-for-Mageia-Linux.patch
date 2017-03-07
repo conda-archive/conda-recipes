@@ -1,0 +1,32 @@
+From 238b763bdf5cb09107dca08d74bad729e849bc52 Mon Sep 17 00:00:00 2001
+From: Axel Naumann <Axel.Naumann@cern.ch>
+Date: Mon, 26 Aug 2013 14:33:25 +0200
+Subject: [PATCH 08/58] Add support for Mageia Linux
+
+---
+ lib/Driver/ToolChains.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/lib/Driver/ToolChains.cpp b/lib/Driver/ToolChains.cpp
+index 1b02f46..744799f 100644
+--- a/lib/Driver/ToolChains.cpp
++++ b/lib/Driver/ToolChains.cpp
+@@ -1503,6 +1503,7 @@ bool Generic_GCC::GCCInstallationDetector::getBiarchSibling(Multilib &M) const {
+       "x86_64-redhat-linux",    "x86_64-suse-linux",
+       "x86_64-manbo-linux-gnu", "x86_64-linux-gnu",
+       "x86_64-slackware-linux", "x86_64-linux-android",
++      "x86_64-mageia-linux-gnu",
+       "x86_64-unknown-linux"};
+   static const char *const X32LibDirs[] = {"/libx32"};
+   static const char *const X86LibDirs[] = {"/lib32", "/lib"};
+@@ -1511,6 +1512,7 @@ bool Generic_GCC::GCCInstallationDetector::getBiarchSibling(Multilib &M) const {
+       "i386-linux-gnu",       "i386-redhat-linux6E",   "i686-redhat-linux",
+       "i586-redhat-linux",    "i386-redhat-linux",     "i586-suse-linux",
+       "i486-slackware-linux", "i686-montavista-linux", "i686-linux-android",
++      "i586-mageia-linux-gnu",
+       "i586-linux-gnu"};
+ 
+   static const char *const MIPSLibDirs[] = {"/lib"};
+-- 
+2.7.4
+

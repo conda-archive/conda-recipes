@@ -1,0 +1,53 @@
+From 85733d0b9f1d5721a681233f9fb8ac89c0f719e8 Mon Sep 17 00:00:00 2001
+From: Axel Naumann <Axel.Naumann@cern.ch>
+Date: Mon, 26 Aug 2013 12:20:13 +0200
+Subject: [PATCH 01/58] Empty the C/DtorLists once emitted.
+
+---
+ lib/CodeGen/CodeGenModule.cpp | 3 ++-
+ lib/CodeGen/CodeGenModule.h   | 8 ++++----
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/lib/CodeGen/CodeGenModule.cpp b/lib/CodeGen/CodeGenModule.cpp
+index 0161cfb..927633e 100644
+--- a/lib/CodeGen/CodeGenModule.cpp
++++ b/lib/CodeGen/CodeGenModule.cpp
+@@ -720,7 +720,7 @@ void CodeGenModule::AddGlobalDtor(llvm::Function *Dtor, int Priority) {
+   GlobalDtors.push_back(Structor(Priority, Dtor, nullptr));
+ }
+ 
+-void CodeGenModule::EmitCtorList(const CtorList &Fns, const char *GlobalName) {
++void CodeGenModule::EmitCtorList(CtorList &Fns, const char *GlobalName) {
+   // Ctor function type is void()*.
+   llvm::FunctionType* CtorFTy = llvm::FunctionType::get(VoidTy, false);
+   llvm::Type *CtorPFTy = llvm::PointerType::getUnqual(CtorFTy);
+@@ -748,6 +748,7 @@ void CodeGenModule::EmitCtorList(const CtorList &Fns, const char *GlobalName) {
+                              llvm::ConstantArray::get(AT, Ctors),
+                              GlobalName);
+   }
++  Fns.clear();
+ }
+ 
+ llvm::GlobalValue::LinkageTypes
+diff --git a/lib/CodeGen/CodeGenModule.h b/lib/CodeGen/CodeGenModule.h
+index 9490499..155a997 100644
+--- a/lib/CodeGen/CodeGenModule.h
++++ b/lib/CodeGen/CodeGenModule.h
+@@ -1202,10 +1202,10 @@ private:
+                      llvm::Constant *AssociatedData = nullptr);
+   void AddGlobalDtor(llvm::Function *Dtor, int Priority = 65535);
+ 
+-  /// Generates a global array of functions and priorities using the given list
+-  /// and name. This array will have appending linkage and is suitable for use
+-  /// as a LLVM constructor or destructor array.
+-  void EmitCtorList(const CtorList &Fns, const char *GlobalName);
++  /// EmitCtorList - Generates a global array of functions and priorities using
++  /// the given list and name. This array will have appending linkage and is
++  /// suitable for use as a LLVM constructor or destructor array. Clears Fns.
++  void EmitCtorList(CtorList &Fns, const char *GlobalName);
+ 
+   /// Emit any needed decls for which code generation was deferred.
+   void EmitDeferred();
+-- 
+2.7.4
+

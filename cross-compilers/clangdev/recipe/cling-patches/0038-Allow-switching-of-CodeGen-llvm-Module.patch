@@ -1,0 +1,58 @@
+From 5dc34bb84ab5a31c4e1fe97bda7bbc93648f2798 Mon Sep 17 00:00:00 2001
+From: Axel Naumann <Axel.Naumann@cern.ch>
+Date: Wed, 7 Jan 2015 10:28:02 +0100
+Subject: [PATCH 38/58] Allow switching of CodeGen llvm::Module.
+
+---
+ include/clang/CodeGen/ModuleBuilder.h |  2 ++
+ lib/CodeGen/ModuleBuilder.cpp         | 14 ++++++++++++++
+ 2 files changed, 16 insertions(+)
+
+diff --git a/include/clang/CodeGen/ModuleBuilder.h b/include/clang/CodeGen/ModuleBuilder.h
+index 9e90e83..b3e06fb 100644
+--- a/include/clang/CodeGen/ModuleBuilder.h
++++ b/include/clang/CodeGen/ModuleBuilder.h
+@@ -84,6 +84,8 @@ public:
+ 
+   void print(llvm::raw_ostream& out);
+   void forgetGlobal(llvm::GlobalValue* GV);
++  llvm::Module* StartModule(const std::string& ModuleName,
++                            llvm::LLVMContext& C)
+ };
+ 
+ /// CreateLLVMCodeGen - Create a CodeGenerator instance.
+diff --git a/lib/CodeGen/ModuleBuilder.cpp b/lib/CodeGen/ModuleBuilder.cpp
+index 716e2e0..258f41f 100644
+--- a/lib/CodeGen/ModuleBuilder.cpp
++++ b/lib/CodeGen/ModuleBuilder.cpp
+@@ -115,6 +115,14 @@ namespace clang {
+       return Builder->GetAddrOfGlobal(global, isForDefinition);
+     }
+ 
++    llvm::Module *StartModule(const std::string& ModuleName,
++                              llvm::LLVMContext& C) {
++      assert(!M && "Replacing existing Module?");
++      M.reset(new llvm::Module(ModuleName, C));
++      Initialize(*Ctx);
++      return M.get();
++    }
++
+     void print(llvm::raw_ostream& out) {
+       out << "\n\nCodeGen:\n";
+       //llvm::SmallPtrSet<llvm::GlobalValue*, 10> WeakRefReferences;
+@@ -441,6 +449,12 @@ void CodeGenerator::forgetGlobal(llvm::GlobalValue* GV) {
+   static_cast<CodeGeneratorImpl*>(this)->forgetGlobal(GV);
+ }
+ 
++
++llvm::Module *CodeGenerator::StartModule(const std::string& ModuleName,
++                                         llvm::LLVMContext& C) {
++   return static_cast<CodeGeneratorImpl*>(this)->StartModule(ModuleName, C);
++}
++
+ CodeGenerator *clang::CreateLLVMCodeGen(
+     DiagnosticsEngine &Diags, llvm::StringRef ModuleName,
+     const HeaderSearchOptions &HeaderSearchOpts,
+-- 
+2.7.4
+

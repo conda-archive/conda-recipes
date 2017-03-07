@@ -1,0 +1,110 @@
+From de655bcc1294297d536162f8100b00145da99194 Mon Sep 17 00:00:00 2001
+From: Vassil Vassilev <vvasilev@cern.ch>
+Date: Tue, 8 Apr 2014 16:48:23 +0200
+Subject: [PATCH 22/58] Mark the file entry invalid, until reread. Invalidate
+ SLocEntry cache, readd it on reread.
+
+Do not use translateFile, because it pulls in parts of the pch.
+---
+ include/clang/Basic/FileManager.h   |  2 +-
+ include/clang/Basic/SourceManager.h | 16 ++++++++++++++--
+ lib/Basic/FileManager.cpp           |  3 ++-
+ lib/Basic/SourceManager.cpp         | 15 +++++++++++++--
+ 4 files changed, 30 insertions(+), 6 deletions(-)
+
+diff --git a/include/clang/Basic/FileManager.h b/include/clang/Basic/FileManager.h
+index af62f7e..e94756d 100644
+--- a/include/clang/Basic/FileManager.h
++++ b/include/clang/Basic/FileManager.h
+@@ -255,7 +255,7 @@ public:
+                              vfs::Status &Result);
+ 
+   /// \brief Remove the real file \p Entry from the cache.
+-  void invalidateCache(const FileEntry *Entry);
++  void invalidateCache(FileEntry *Entry);
+ 
+   /// \brief If path is not absolute and FileSystemOptions set the working
+   /// directory, the path is modified to be relative to the given
+diff --git a/include/clang/Basic/SourceManager.h b/include/clang/Basic/SourceManager.h
+index 1b57da1..fa81177 100644
+--- a/include/clang/Basic/SourceManager.h
++++ b/include/clang/Basic/SourceManager.h
+@@ -715,7 +715,7 @@ public:
+ 
+   void clearIDTables();
+ 
+-  void invalidateCache(const FileEntry* Entry);
++  void invalidateCache(FileID FID);
+ 
+   DiagnosticsEngine &getDiagnostics() const { return Diag; }
+ 
+@@ -1532,7 +1532,19 @@ public:
+       if (Invalid) *Invalid = true;
+       return LocalSLocEntryTable[0];
+     }
+-    return getSLocEntryByID(FID.ID, Invalid);
++
++    // If we invalidated the cache we need to update the SLocEntry, too.
++    // FIXME: This only deals with files coming not from PCH
++    const SrcMgr::SLocEntry& SLocE = getSLocEntryByID(FID.ID, Invalid);
++    if (Invalid && !*Invalid && SLocE.isFile()) {
++      SrcMgr::ContentCache* CC
++        = const_cast<SrcMgr::ContentCache*>(SLocE.getFile().getContentCache());
++      if (!CC) {
++        CC = FileInfos.lookup(CC->OrigEntry);
++        const_cast<SrcMgr::FileInfo&>(SLocE.getFile()).Data = (uintptr_t) CC;
++      }
++    }
++    return SLocE;
+   }
+ 
+   unsigned getNextLocalOffset() const { return NextLocalOffset; }
+diff --git a/lib/Basic/FileManager.cpp b/lib/Basic/FileManager.cpp
+index 7b32a21..3207dd2 100644
+--- a/lib/Basic/FileManager.cpp
++++ b/lib/Basic/FileManager.cpp
+@@ -507,9 +507,10 @@ bool FileManager::getNoncachedStatValue(StringRef Path,
+   return false;
+ }
+ 
+-void FileManager::invalidateCache(const FileEntry *Entry) {
++void FileManager::invalidateCache(FileEntry *Entry) {
+   assert(Entry && "Cannot invalidate a NULL FileEntry");
+   FileEntriesToReread.insert(Entry);
++  Entry->IsValid = false;
+ }
+ 
+ 
+diff --git a/lib/Basic/SourceManager.cpp b/lib/Basic/SourceManager.cpp
+index bc66a1c..2a72521 100644
+--- a/lib/Basic/SourceManager.cpp
++++ b/lib/Basic/SourceManager.cpp
+@@ -409,12 +409,23 @@ void SourceManager::clearIDTables() {
+   createExpansionLoc(SourceLocation(),SourceLocation(),SourceLocation(), 1);
+ }
+ 
+-void SourceManager::invalidateCache(const FileEntry* Entry) {
++void SourceManager::invalidateCache(FileID FID) {
++  const FileEntry* Entry = getFileEntryForID(FID);
++  if (!Entry)
++    return;
+   if (ContentCache *&E = FileInfos[Entry]) {
+     E->replaceBuffer(0, /*free*/ true);
+     E = 0;
+   }
+-  getFileManager().invalidateCache(Entry);
++  if (!FID.isInvalid()) {
++    const SrcMgr::SLocEntry& SLocE = getSLocEntry(FID);
++    if (SLocE.isFile()) {
++      SrcMgr::ContentCache* CC =
++        const_cast<SrcMgr::ContentCache*>(SLocE.getFile().getContentCache());
++      CC->replaceBuffer(0, /*free*/true);
++    }
++  }
++  getFileManager().invalidateCache(const_cast<FileEntry*>(Entry));
+ }
+ 
+ /// getOrCreateContentCache - Create or return a cached ContentCache for the
+-- 
+2.7.4
+

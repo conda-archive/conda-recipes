@@ -1,0 +1,69 @@
+From 859f9ef0f19249dc0d0ad86333ce9db351113838 Mon Sep 17 00:00:00 2001
+From: Philippe Canal <pcanal@fnal.gov>
+Date: Thu, 24 Oct 2013 10:49:05 -0500
+Subject: [PATCH 12/58] Extend SubstTemplateTypeParmType to support
+ non-canonical types.
+
+Previously SubstTemplateTypeParmType could only keep the canonical
+type.  Our hack to support template default replacement with non-canonical
+type lead to the creation of SubstTemplateTypeParmType which had their
+'canonical type' pointer pointing to non-canonical type.
+
+This patch add a new data member to SubstTemplateTypeParmType to hold
+the non-canonical type representation *in addition* to the canonical
+type.
+
+This fixes ROOT-5612.
+---
+ include/clang/AST/Type.h | 8 +++++---
+ lib/AST/ASTContext.cpp   | 3 ++-
+ 2 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/include/clang/AST/Type.h b/include/clang/AST/Type.h
+index 1067c08..7b7a82e 100644
+--- a/include/clang/AST/Type.h
++++ b/include/clang/AST/Type.h
+@@ -3983,13 +3983,15 @@ public:
+ class SubstTemplateTypeParmType : public Type, public llvm::FoldingSetNode {
+   // The original type parameter.
+   const TemplateTypeParmType *Replaced;
++  QualType Replacement;
+ 
+-  SubstTemplateTypeParmType(const TemplateTypeParmType *Param, QualType Canon)
++  SubstTemplateTypeParmType(const TemplateTypeParmType *Param,
++                            QualType ReplacementType, QualType Canon)
+     : Type(SubstTemplateTypeParm, Canon, Canon->isDependentType(),
+            Canon->isInstantiationDependentType(),
+            Canon->isVariablyModifiedType(),
+            Canon->containsUnexpandedParameterPack()),
+-      Replaced(Param) { }
++      Replaced(Param), Replacement(ReplacementType) { }
+ 
+   friend class ASTContext;
+ 
+@@ -4002,7 +4004,7 @@ public:
+   /// Gets the type that was substituted for the template
+   /// parameter.
+   QualType getReplacementType() const {
+-    return getCanonicalTypeInternal();
++    return Replacement;
+   }
+ 
+   bool isSugared() const { return true; }
+diff --git a/lib/AST/ASTContext.cpp b/lib/AST/ASTContext.cpp
+index 6aad4d1..555226d 100644
+--- a/lib/AST/ASTContext.cpp
++++ b/lib/AST/ASTContext.cpp
+@@ -3291,7 +3291,8 @@ ASTContext::getSubstTemplateTypeParmType(const TemplateTypeParmType *Parm,
+ 
+   if (!SubstParm) {
+     SubstParm = new (*this, TypeAlignment)
+-      SubstTemplateTypeParmType(Parm, Replacement);
++      SubstTemplateTypeParmType(Parm, Replacement,
++                                Replacement.getCanonicalType());
+     Types.push_back(SubstParm);
+     SubstTemplateTypeParmTypes.InsertNode(SubstParm, InsertPos);
+   }
+-- 
+2.7.4
+

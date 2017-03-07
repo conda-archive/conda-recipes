@@ -1,0 +1,33 @@
+From 8d31bd3475f76e7ec709da919744e173ac768ca7 Mon Sep 17 00:00:00 2001
+From: Axel Naumann <Axel.Naumann@cern.ch>
+Date: Tue, 15 Apr 2014 12:12:19 +0200
+Subject: [PATCH 27/58] Do not try to re-read non-existent files.
+
+---
+ lib/Basic/FileManager.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/lib/Basic/FileManager.cpp b/lib/Basic/FileManager.cpp
+index 3207dd2..28ccf29 100644
+--- a/lib/Basic/FileManager.cpp
++++ b/lib/Basic/FileManager.cpp
+@@ -219,7 +219,7 @@ const FileEntry *FileManager::getFile(StringRef Filename, bool openFile,
+ 
+   const FileEntry *StaleFileEntry = 0;
+   bool needsRereading = false;
+-  if (NamedFileEnt.getValue()) {
++  if (NamedFileEnt.getValue() && NamedFileEnt.getValue() != NON_EXISTENT_FILE) {
+     std::set<const FileEntry*>::const_iterator found
+       = FileEntriesToReread.find(NamedFileEnt.getValue());
+     if (found != FileEntriesToReread.end()) {
+@@ -509,6 +509,7 @@ bool FileManager::getNoncachedStatValue(StringRef Path,
+ 
+ void FileManager::invalidateCache(FileEntry *Entry) {
+   assert(Entry && "Cannot invalidate a NULL FileEntry");
++  assert(Entry != NON_EXISTENT_FILE && "Cannot invalidate a missing FileEntry");
+   FileEntriesToReread.insert(Entry);
+   Entry->IsValid = false;
+ }
+-- 
+2.7.4
+

@@ -1,0 +1,25 @@
+From 6c236d0085f17e01bee600694819f83a9e08be1b Mon Sep 17 00:00:00 2001
+From: Axel Naumann <Axel.Naumann@cern.ch>
+Date: Wed, 6 Jul 2016 15:40:12 +0200
+Subject: [PATCH 51/58] FIXUP#2, merge mistake in lib/Lex/HeaderSearch.cpp.
+
+---
+ lib/Lex/HeaderSearch.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/Lex/HeaderSearch.cpp b/lib/Lex/HeaderSearch.cpp
+index 9d7ee42..9227a90 100644
+--- a/lib/Lex/HeaderSearch.cpp
++++ b/lib/Lex/HeaderSearch.cpp
+@@ -630,7 +630,7 @@ const FileEntry *HeaderSearch::LookupFile(
+           Includer ? getFileInfo(Includer).DirInfo != SrcMgr::C_User :
+           BuildSystemModule;
+       if (const FileEntry *FE = getFileAndSuggestModule(
+-              TmpDir, IncluderAndDir.second, IncluderIsSystemHeader,
++              TmpDir, IncludeLoc, IncluderAndDir.second, IncluderIsSystemHeader,
+               RequestingModule, SuggestedModule,
+               OpenFile, CacheFailures)) {
+         if (!Includer) {
+-- 
+2.7.4
+

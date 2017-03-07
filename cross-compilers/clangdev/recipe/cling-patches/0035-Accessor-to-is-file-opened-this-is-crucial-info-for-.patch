@@ -1,0 +1,25 @@
+From 48d4fe9966538d50754bee0fd475377d530a2783 Mon Sep 17 00:00:00 2001
+From: Axel Naumann <Axel.Naumann@cern.ch>
+Date: Mon, 20 Oct 2014 14:15:26 +0200
+Subject: [PATCH 35/58] Accessor to "is file opened"; this is crucial info for
+ us.
+
+---
+ include/clang/Basic/FileManager.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/clang/Basic/FileManager.h b/include/clang/Basic/FileManager.h
+index e94756d..b93f32c 100644
+--- a/include/clang/Basic/FileManager.h
++++ b/include/clang/Basic/FileManager.h
+@@ -85,6 +85,7 @@ public:
+ 
+   const char *getName() const { return Name; }
+   StringRef tryGetRealPathName() const { return RealPathName; }
++  bool isOpen() const { return (bool)File; }
+   bool isValid() const { return IsValid; }
+   off_t getSize() const { return Size; }
+   unsigned getUID() const { return UID; }
+-- 
+2.7.4
+

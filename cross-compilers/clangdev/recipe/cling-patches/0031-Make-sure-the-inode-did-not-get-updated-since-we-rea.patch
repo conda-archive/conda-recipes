@@ -1,0 +1,26 @@
+From 85e224021ab32ecce704601c9ceb727fdc1c248a Mon Sep 17 00:00:00 2001
+From: Axel Naumann <Axel.Naumann@cern.ch>
+Date: Tue, 7 Jan 2014 12:05:19 +0100
+Subject: [PATCH 31/58] Make sure the inode did not get updated since we read
+ it.
+
+---
+ lib/Basic/FileManager.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/lib/Basic/FileManager.cpp b/lib/Basic/FileManager.cpp
+index 28ccf29..bfb3955 100644
+--- a/lib/Basic/FileManager.cpp
++++ b/lib/Basic/FileManager.cpp
+@@ -302,6 +302,8 @@ const FileEntry *FileManager::getFile(StringRef Filename, bool openFile,
+     // multiple names.
+     if (DirInfo != UFE.Dir && Data.IsVFSMapped)
+       UFE.Dir = DirInfo;
++  }
++  if (UFE.isValid() && Data.ModTime == UFE.ModTime) {
+ 
+     // Always update the name to use the last name by which a file was accessed.
+     // FIXME: Neither this nor always using the first name is correct; we want
+-- 
+2.7.4
+

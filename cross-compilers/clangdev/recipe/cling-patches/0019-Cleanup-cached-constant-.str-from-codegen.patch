@@ -1,0 +1,64 @@
+From c6de25e51ec9cd3ce020b800b5e8b6fb1ec75ecd Mon Sep 17 00:00:00 2001
+From: Axel Naumann <Axel.Naumann@cern.ch>
+Date: Wed, 6 Apr 2016 14:31:51 +0200
+Subject: [PATCH 19/58] Cleanup cached constant (.str) from codegen.
+
+---
+ include/clang/CodeGen/ModuleBuilder.h |  2 ++
+ lib/CodeGen/ModuleBuilder.cpp         | 13 +++++++++++++
+ 2 files changed, 15 insertions(+)
+
+diff --git a/include/clang/CodeGen/ModuleBuilder.h b/include/clang/CodeGen/ModuleBuilder.h
+index 9cc5ae2..9e90e83 100644
+--- a/include/clang/CodeGen/ModuleBuilder.h
++++ b/include/clang/CodeGen/ModuleBuilder.h
+@@ -18,6 +18,7 @@
+ 
+ namespace llvm {
+   class Constant;
++  class GlobalValue;
+   class LLVMContext;
+   class Module;
+   class raw_ostream;
+@@ -82,6 +83,7 @@ public:
+   llvm::Constant *GetAddrOfGlobal(GlobalDecl decl, bool isForDefinition);
+ 
+   void print(llvm::raw_ostream& out);
++  void forgetGlobal(llvm::GlobalValue* GV);
+ };
+ 
+ /// CreateLLVMCodeGen - Create a CodeGenerator instance.
+diff --git a/lib/CodeGen/ModuleBuilder.cpp b/lib/CodeGen/ModuleBuilder.cpp
+index a0b9935..716e2e0 100644
+--- a/lib/CodeGen/ModuleBuilder.cpp
++++ b/lib/CodeGen/ModuleBuilder.cpp
+@@ -229,6 +229,16 @@ namespace clang {
+       out.flush();
+     }
+ 
++    void forgetGlobal(llvm::GlobalValue* GV) {
++      for(auto I = Builder->ConstantStringMap.begin(),
++            E = Builder->ConstantStringMap.end(); I != E; ++I) {
++        if (I->second == GV) {
++          Builder->ConstantStringMap.erase(I);
++          break;
++        }
++      }
++    }
++
+     void Initialize(ASTContext &Context) override {
+       Ctx = &Context;
+ 
+@@ -427,6 +437,9 @@ void CodeGenerator::print(llvm::raw_ostream& out) {
+   static_cast<CodeGeneratorImpl*>(this)->print(out);
+ }
+ 
++void CodeGenerator::forgetGlobal(llvm::GlobalValue* GV) {
++  static_cast<CodeGeneratorImpl*>(this)->forgetGlobal(GV);
++}
+ 
+ CodeGenerator *clang::CreateLLVMCodeGen(
+     DiagnosticsEngine &Diags, llvm::StringRef ModuleName,
+-- 
+2.7.4
+
