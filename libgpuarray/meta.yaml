@@ -1,13 +1,10 @@
 package:
   name: libgpuarray
-  version: "0.6.0rc1"
+  version: "0.6.2"
 
 source:
   git_url: https://github.com/Theano/libgpuarray.git
-  git_tag: v0.6.0-rc1
-  patches:
-    - 0001-Win32-Explicitly-include-stdint.h-for-old-MSVC.patch
-    - 0002-Win32-Use-W4-not-Wall-on-MSVC.patch
+  git_tag: v0.6.2
 
 build:
   features:
