@@ -36,7 +36,6 @@ if [[ ! -e "${SRC_DIR}/gcc_built/bin/${CHOST}-gcc" ]]; then
       # configuration values (e.g. CT_CONFIGURE_has_stat_flavor_GNU) get mixed with
       # the host platform .config file.
       yes "" | ct-ng oldconfig
-      cat .config | grep CT_BUILD
     fi
     unset CFLAGS CXXFLAGS LDFLAGS
     ct-ng build
