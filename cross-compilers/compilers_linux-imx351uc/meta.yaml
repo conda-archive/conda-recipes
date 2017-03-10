@@ -23,24 +23,29 @@ outputs:
   - name: gcc_{{ target_platform }}
     script: install-gcc.sh
     requirements:
-      - {{ pin_subpackage('binutils_' ~ target_platform) }}
+      - {{ pin_subpackage('binutils_' ~ target_platform, exact=True) }}
+    pin_downstream:
+      - {{ pin_subpackage('libgcc_' ~ target_platform) }}
 
   - name: gxx_{{ target_platform }}
     script: install-g++.sh
     requirements:
       # For cpp and crt{i,n}.o
-      - {{ pin_subpackage('gcc_' ~ target_platform) }}
+      - {{ pin_subpackage('gcc_' ~ target_platform, exact=True) }}
+    pin_downstream:
       - {{ pin_subpackage('libstdcxx_' ~ target_platform) }}
 
   - name: gfortran_{{ target_platform }}
     script: install-gfortran.sh
     requirements:
       # For cpp and crt{i,n}.o
-      - {{ pin_subpackage('gcc_' ~ target_platform) }}
+      - {{ pin_subpackage('gcc_' ~ target_platform, exact=True) }}
+    pin_downstream:
       - {{ pin_subpackage('libgfortran_' ~ target_platform) }}
 
   - name: binutils_{{ target_platform }}
     script: install-binutils.sh
+    version: 2.27
     requirements:
       - {{ pin_subpackage('libgcc_' ~ target_platform) }}
 

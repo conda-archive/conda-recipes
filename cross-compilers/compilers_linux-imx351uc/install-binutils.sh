@@ -3,8 +3,8 @@ set -e -x
 CHOST=$(${SRC_DIR}/.build/*-*-*-*/build/build-cc-gcc-final/gcc/xgcc -dumpmachine)
 
 pushd ${SRC_DIR}/.build/${CHOST}/build/build-binutils-host-*
-  PATH=/home/ray/imx351uc/work/.build/${CHOST}/buildtools/bin:$PATH \
-    make prefix=${PREFIX} install
+  PATH=${SRC_DIR}/.build/${CHOST}/buildtools/bin:$PATH \
+  make prefix=${PREFIX} install
 popd
 
 # Copy the liblto_plugin.so from the build tree. This is something of a hack and, on OSes other
