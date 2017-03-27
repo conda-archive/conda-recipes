@@ -1,0 +1,56 @@
+{% set version='0.60' %}
+
+package:
+  name: xgboost
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/dmlc/xgboost
+  git_tag: v{{ version }}
+  patches:
+    - 0001-conda-Unbundle-libxgboost.-so-dll.patch
+    - 0002-Fix-R-package-PKGROOT.patch
+    - 0003-Fix-R-package-mingw-w64-compiler-flags-remove-m64.patch
+    - 0001-Do-not-define-fopen64-as-std-fopen-on-32-bit-mingw-w.patch
+
+requirements:
+  build:
+    - gcc                  [unix]
+    - git                  [not win]
+    - m2-git               [win]
+    - posix                [win]
+    - m2w64-toolchain      [win]
+
+outputs:
+  - name: libxgboost
+    script: install-libxgboost.sh
+    requirements:
+      - m2w64-gcc-libs  [win]
+      - libgcc          [unix]
+
+  - name: py-xgboost
+    requirements:
+      - {{ pin_subpackage('libxgboost', exact=True) }}
+      - python {{ python }}
+      - numpy {{ numpy }}
+      - scipy
+      - scikit-learn
+    script: install-py-xgboost.sh
+    test:
+      script: test-py-xgboost.py
+
+  - name: r-xgboost
+    requirements:
+      # On macOS, R packages are built using clang/clang++ so
+      # they cannot re-use the same libxgboost shared library.
+      # It may be worthwhile to keep as a dependency though for
+      # the command-line program?
+      - {{ pin_subpackage('libxgboost', exact=True) }}  # [not osx]
+      - r-base {{ r_base }}
+      - r-matrix
+      - r-data.table
+      - r-magrittr
+      - r-stringi
+    script: install-r-xgboost.sh
+    test:
+      script: test-r-xgboost.r

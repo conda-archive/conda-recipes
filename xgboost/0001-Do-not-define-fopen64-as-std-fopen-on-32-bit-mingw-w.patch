@@ -1,0 +1,28 @@
+diff a/dmlc-core/include/dmlc/base.h b/dmlc-core/include/dmlc/base.h
+index 80d4a56..be8f0fc 100644
+--- a/dmlc-core/include/dmlc/base.h
++++ b/dmlc-core/include/dmlc/base.h
+@@ -119,9 +119,6 @@
+ #if !defined(__GNUC__)
+ #define fopen64 std::fopen
+ #endif
+-#if (defined __MINGW32__) && !(defined __MINGW64__)
+-#define fopen64 std::fopen
+-#endif
+ #ifdef _MSC_VER
+ #if _MSC_VER < 1900
+ // NOTE: sprintf_s is not equivalent to snprintf,
+h
+@@ -119,9 +119,6 @@
+ #if !defined(__GNUC__)
+ #define fopen64 std::fopen
+ #endif
+-#if (defined __MINGW32__) && !(defined __MINGW64__)
+-#define fopen64 std::fopen
+-#endif
+ #ifdef _MSC_VER
+ #if _MSC_VER < 1900
+ // NOTE: sprintf_s is not equivalent to snprintf,
+-- 
+2.10.2
+

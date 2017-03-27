@@ -1,0 +1,32 @@
+From 042e37351638d76ebe1c61d3246dc73c50fff7fb Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Sun, 26 Mar 2017 00:05:20 +0000
+Subject: [PATCH 3/3] Fix R package mingw-w64 compiler flags remove -m64
+
+---
+ make/mingw64.mk | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/make/mingw64.mk b/make/mingw64.mk
+index e20220b..7895c45 100644
+--- a/make/mingw64.mk
++++ b/make/mingw64.mk
+@@ -6,8 +6,13 @@
+ #
+ # see config.mk for template.
+ #-----------------------------------------------------------
+-export CXX=g++ -m64
+-export CC=gcc -m64
++
++ifndef CC
++export CC=gcc
++endif
++ifndef CXX
++export CXX=g++
++endif
+ 
+ # Whether enable openmp support, needed for multi-threading.
+ USE_OPENMP = 1
+-- 
+2.10.1
+
