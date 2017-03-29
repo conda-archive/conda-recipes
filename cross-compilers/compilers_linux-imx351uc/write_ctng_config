@@ -49,6 +49,7 @@ function write_ctng_config() {
       echo "CT_LIBC_UCLIBC_WCHAR=y"                                   >> .config
       echo "CT_LIBC_UCLIBC_VERBOSITY_2=y"                             >> .config
       echo "CT_LIBC_UCLIBC_VERBOSITY=\"V=2\""                         >> .config
+      echo "CT_LIBC_UCLIBC_CONFIG_FILE=\"${SRC_DIR}/uclibc.config\""  >> .config
     ;;
   esac
   case ${cpu_arch} in

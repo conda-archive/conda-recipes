@@ -1,3 +1,5 @@
+#!/bin/bash
+
 CHOST="${cpu_arch}-${vendor}-linux-uclibcgnueabi"
 mkdir -p .build/src
 mkdir -p .build/tarballs
