@@ -1,8 +1,6 @@
-{% set target_platform='linux-imx351uc' %}
-
 package:
-  name: compilers_{{ target_platform }}
-  version: 6.3.0
+  name: compilers_{{ cross_target_platform }}
+  version: {{ gcc }}
 
 source:
   path: .
@@ -13,47 +11,56 @@ build:
 
 requirements:
   build:
-    - crosstool-ng  1.22.0.diorcety.imx351uc
+    - crosstool-ng
+    # - crosstool-ng  1.22.0.diorcety.imx351uc
   run:
-    - gcc_{{ target_platform }}
-    - gxx_{{ target_platform }}
-    - gfortran_{{ target_platform }}
+    - gcc_{{ cross_target_platform }}
+    - gxx_{{ cross_target_platform }}
+    - gfortran_{{ cross_target_platform }}
 
 outputs:
-  - name: gcc_{{ target_platform }}
+  - name: gcc_{{ cross_target_platform }}
     script: install-gcc.sh
     requirements:
-      - {{ pin_subpackage('binutils_' ~ target_platform, exact=True) }}
+      - {{ pin_subpackage('binutils_' ~ cross_target_platform, exact=True) }}
     pin_downstream:
-      - {{ pin_subpackage('libgcc_' ~ target_platform) }}
+      - {{ pin_subpackage('libgcc_' ~ cross_target_platform) }}
 
-  - name: gxx_{{ target_platform }}
+  - name: gxx_{{ cross_target_platform }}
     script: install-g++.sh
     requirements:
       # For cpp and crt{i,n}.o
-      - {{ pin_subpackage('gcc_' ~ target_platform, exact=True) }}
+      - {{ pin_subpackage('gcc_' ~ cross_target_platform, exact=True) }}
     pin_downstream:
-      - {{ pin_subpackage('libstdcxx_' ~ target_platform) }}
+      - {{ pin_subpackage('libstdcxx_' ~ cross_target_platform) }}
 
-  - name: gfortran_{{ target_platform }}
+  - name: gfortran_{{ cross_target_platform }}
     script: install-gfortran.sh
     requirements:
       # For cpp and crt{i,n}.o
-      - {{ pin_subpackage('gcc_' ~ target_platform, exact=True) }}
+      - {{ pin_subpackage('gcc_' ~ cross_target_platform, exact=True) }}
     pin_downstream:
-      - {{ pin_subpackage('libgfortran_' ~ target_platform) }}
+      - {{ pin_subpackage('libgfortran_' ~ cross_target_platform) }}
 
-  - name: binutils_{{ target_platform }}
+  - name: binutils_{{ cross_target_platform }}
     script: install-binutils.sh
-    version: 2.27
+    version: {{ binutils }}
     requirements:
-      - {{ pin_subpackage('libgcc_' ~ target_platform) }}
+      - {{ pin_subpackage('libgcc_' ~ cross_target_platform) }}
 
-  - name: libstdcxx_{{ target_platform }}
+  - name: libstdcxx_{{ cross_target_platform }}
     script: install-libstdc++.sh
 
-  - name: libgcc_{{ target_platform }}
+  - name: libgcc_{{ cross_target_platform }}
     script: install-libgcc.sh
 
-  - name: libgfortran_{{ target_platform }}
+  - name: libgfortran_{{ cross_target_platform }}
     script: install-libgfortran.sh
+
+  - name: gdb_{{ cross_target_platform }}
+    version: {{ gdb }}
+    script: install-gdb.sh
+
+  - name: duma_{{ cross_target_platform }}
+    version: {{ duma }}
+    script: install-duma.sh

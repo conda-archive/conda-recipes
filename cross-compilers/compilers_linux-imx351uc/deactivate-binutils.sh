@@ -75,7 +75,6 @@ _tc_activation \
   deactivate host @CHOST@ @CHOST@- \  
   addr2line ar as c++filt elfedit gprof ld nm objcopy objdump ranlib readelf size strings strip
 
-
 if [ $? -ne 0 ]; then
   echo "ERROR: $(basename ${BASH_SOURCE[0]}) failed, see above for details"
 #exit 1

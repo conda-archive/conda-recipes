@@ -78,7 +78,6 @@ _tc_activation \
   "FORTRANFLAGS,${FORTRANFLAGS:--march=nocona -Wall -Wextra -O3}" \
   "DEBUG_FFLAGS,${DEBUG_FFLAGS:--Og -g -Wall -Wextra -fcheck=all -fbacktrace -fimplicit-none}"
 
-
 if [ $? -ne 0 ]; then
   echo "ERROR: $(basename ${BASH_SOURCE[0]}) failed, see above for details"
 #exit 1
