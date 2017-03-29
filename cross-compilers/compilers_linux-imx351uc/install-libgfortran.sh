@@ -11,8 +11,8 @@ rm -f $PREFIX/lib/libgfortran* || true
 
 cp ${SRC_DIR}/gcc_built/$CHOST/sysroot/lib/libgfortran.so.3.0.0 $PREFIX/lib
 pushd $PREFIX/lib
-ln -s libgfortran.so.3.0.0 libgfortran.so.3.0
-ln -s libgfortran.so.3.0 libgfortran.so
+  ln -s libgfortran.so.3.0.0 libgfortran.so.3.0
+  ln -s libgfortran.so.3.0 libgfortran.so
 popd
 
 # Install Runtime Library Exception

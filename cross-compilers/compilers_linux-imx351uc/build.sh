@@ -1,6 +1,13 @@
-CHOST="arm-unknown-linux-uclibcgnueabi"
+CHOST="${cpu_arch}-${vendor}-linux-uclibcgnueabi"
 mkdir -p .build/src
 mkdir -p .build/tarballs
+if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/linux-3.2.43.tar.xz" ]]; then
+    curl -L https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.2.43.tar.xz -o ${SYS_PREFIX}/conda-bld/src_cache/linux-3.2.43.tar.xz
+fi
+
+if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/uClibc-0.9.33.2.tar.xz" ]]; then
+    curl -L --insecure https://www.uclibc.org/downloads/uClibc-0.9.33.2.tar.xz -o ${SYS_PREFIX}/conda-bld/src_cache/uClibc-0.9.33.2.tar.xz
+fi
 
 BUILD_NCPUS=4
 if [ "$(uname)" == "Linux" ]; then
@@ -12,16 +19,20 @@ elif [ "$OSTYPE" == "msys" ]; then
 fi
 
 # If dirty is unset or the g++ binary doesn't exist yet, then run ct-ng
-# TODO :: Change && to ||, this is to prevent rebuilds when I forget to add --dirty.
-#if [[ -z ${DIRTY} && ! -e "${PREFIX}"/${CHOST}-g++ ]]; then
-if [[ ! -e "${SRC_DIR}/gcc_built/bin/${CHOST}-gcc" ]]; then
-    if [[ ! -f .config ]]; then
-      mv config .config
-      sed -i.bak "s|@BUILD_TOP@|${PWD}|g" .config
-      rm .config.bak
-      sed -i.bak "s|CT_PARALLEL_JOBS=4|CT_PARALLEL_JOBS=${BUILD_NCPUS}|g" .config
-      rm .config.bak
-      if [[ $(uname) == Darwin ]]; then
+if [[ ! -e "${SRC_DIR}/gcc_built/bin/${CHOST}-g++" ]]; then
+    bash ${RECIPE_DIR}/write_ctng_config
+    cp .config .config.emitted
+    sed -i.bak "s|CT_PARALLEL_JOBS=4|CT_PARALLEL_JOBS=${BUILD_NCPUS}|g" .config
+    rm .config.bak
+    # building oldconfig will ensure that the build platform specific crosstool-ng
+    # configuration values (e.g. CT_CONFIGURE_has_stat_flavor_GNU) get mixed with
+    # the host platform .config file.
+    yes "" | ct-ng oldconfig
+    cat .config | grep CT_DISABLE_MULTILIB_LIB_OSDIRNAMES=y || exit 1
+    cat .config | grep CT_CC_GCC_USE_LTO=y || exit 1
+    # Not sure why this is getting set to y since it depends on ! STATIC_TOOLCHAIN
+    sed -i.bak "s|CT_CC_GCC_ENABLE_PLUGINS=y|CT_CC_GCC_ENABLE_PLUGINS=n|g" .config
+    if [[ $(uname) == Darwin ]]; then
         sed -i.bak "s|CT_WANTS_STATIC_LINK=y|CT_WANTS_STATIC_LINK=n|g" .config
         rm .config.bak
         sed -i.bak "s|CT_CC_GCC_STATIC_LIBSTDCXX=y|CT_CC_GCC_STATIC_LIBSTDCXX=n|g" .config
@@ -31,15 +42,27 @@ if [[ ! -e "${SRC_DIR}/gcc_built/bin/${CHOST}-gcc" ]]; then
         sed -i.bak "s|CT_BUILD=\"x86_64-pc-linux-gnu\"|CT_BUILD=\"x86_64-apple-darwin11\"|g" .config
         rm .config.bak
         cat .config | grep CT_BUILD
-      fi
-      # building oldconfig will ensure that the build platform specific crosstool-ng
-      # configuration values (e.g. CT_CONFIGURE_has_stat_flavor_GNU) get mixed with
-      # the host platform .config file.
-      yes "" | ct-ng oldconfig
     fi
+#    while [[ 1 == 1 ]]; do
+#      echo "Debug this $(pwd)"
+#      echo "Debug this ${PATH}"
+#      sleep 5
+#    done
     unset CFLAGS CXXFLAGS LDFLAGS
     ct-ng build
 fi
+
+# increase stack size to prevent test failures
+# http://gcc.gnu.org/bugzilla/show_bug.cgi?id=31827
+if [[ $(uname) == Linux ]]; then
+  ulimit -s 32768
+fi
+
+# pushd .build/${CHOST}/build/build-cc-gcc-final
+# make -k check || true
+# popd
+
+# .build/src/gcc-${PKG_VERSION}/contrib/test_summary
 
 find . -name "*activate*.sh" -exec sed -i.bak "s|@CHOST@|${CHOST}|g" "{}" \;
 find . -name "*activate*.sh.bak" -exec sed rm "{}" \;

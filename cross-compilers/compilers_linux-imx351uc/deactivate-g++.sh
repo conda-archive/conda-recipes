@@ -74,9 +74,8 @@ env > /tmp/old-env-$$.txt
 _tc_activation \
   deactivate host @CHOST@ @CHOST@- \
   c++ g++ \
-  "CXXFLAGS,${CXXFLAGS:--march=nocona -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe -fstack-protector-strong -std=c++11}" \
+  "CXXFLAGS,${CXXFLAGS:--std=c++11 -march=armv6k -mtune=arm1136jf-s -mfloat-abi=soft -mabi=aapcs-linux -mtls-dialect=gnu -fPIC -pie -fPIE -fvisibility=hidden -O2 -pipe}" \
   "DEBUG_CXXFLAGS,${DEBUG_CXXFLAGS:--Og -g -fvar-tracking-assignments}"
-
 
 if [ $? -ne 0 ]; then
   echo "ERROR: $(basename ${BASH_SOURCE[0]}) failed, see above for details"

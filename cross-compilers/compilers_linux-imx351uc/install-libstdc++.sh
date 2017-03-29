@@ -8,8 +8,8 @@ export PATH=${SRC_DIR}/gcc_built/bin:${SRC_DIR}/.build/${CHOST}/buildtools/bin:$
 
 pushd $SRC_DIR/.build/$CHOST/build/build-cc-gcc-final/
 
-make -C $CHOST/libstdc++-v3/src prefix=${PREFIX} install-toolexeclibLTLIBRARIES
-make -C $CHOST/libstdc++-v3/po prefix=${PREFIX} install
+  make -C $CHOST/libstdc++-v3/src prefix=${PREFIX} install-toolexeclibLTLIBRARIES
+  make -C $CHOST/libstdc++-v3/po prefix=${PREFIX} install
 
 popd
 

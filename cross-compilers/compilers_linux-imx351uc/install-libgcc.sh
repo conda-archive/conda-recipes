@@ -10,21 +10,16 @@ pushd $SRC_DIR/.build/$CHOST/build/build-cc-gcc-final/
 
 make -C $CHOST/libgcc prefix=${PREFIX} install-shared
 
-# omits:
-# libitm \
-# libvtv \
-# libsanitizer/{a,l,ub}san \
-
-for lib in libatomic libgomp libquadmath libitm libsanitizer/tsan; do
-    if [[ -d $CHOST/$lib ]]; then
-        make -C $CHOST/$lib prefix=${PREFIX} install-toolexeclibLTLIBRARIES
-    fi
+for lib in libatomic libgomp libquadmath libitm libvtv libsanitizer/{a,l,ub,t}tsan; do
+  if [[ -d $CHOST/$lib ]]; then
+    make -C $CHOST/$lib prefix=${PREFIX} install-toolexeclibLTLIBRARIES
+  fi
 done
 
 for lib in libgomp libquadmath; do
-    if [[ -d $CHOST/$lib ]]; then
-      make -C $CHOST/$lib prefix=${PREFIX} install-info
-    fi
+  if [[ -d $CHOST/$lib ]]; then
+    make -C $CHOST/$lib prefix=${PREFIX} install-info
+  fi
 done
 
 popd

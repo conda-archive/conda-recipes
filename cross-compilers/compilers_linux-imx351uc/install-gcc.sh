@@ -90,7 +90,7 @@ rm $PREFIX/bin/${CHOST}-gcc-${PKG_VERSION}
 popd
 
 # Install kernel headers
-make -C ${SRC_DIR}/.build/src/linux-* CROSS_COMPILE=${CHOST}- O=${SRC_DIR}/.build/${CHOST}/build/build-kernel-headers ARCH=arm INSTALL_HDR_PATH=${PREFIX}/${CHOST}/sysroot/usr V=1 headers_install
+make -C ${SRC_DIR}/.build/src/linux-* CROSS_COMPILE=${CHOST}- O=${SRC_DIR}/.build/${CHOST}/build/build-kernel-headers ARCH=${cpu_arch} INSTALL_HDR_PATH=${PREFIX}/${CHOST}/sysroot/usr V=1 headers_install
 
 # Install uClibc headers
 pushd ${SRC_DIR}/.build/$CHOST/build/build-libc-startfiles/multilib
