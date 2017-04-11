@@ -74,7 +74,7 @@ env > /tmp/old-env-$$.txt
 _tc_activation \
   deactivate host @CHOST@ @CHOST@- \
   c++ g++ \
-  "CXXFLAGS,${CXXFLAGS:--std=c++11 -march=armv6k -mtune=arm1136jf-s -mfloat-abi=soft -mabi=aapcs-linux -mtls-dialect=gnu -fPIC -fPIE -fvisibility=hidden -O2 -pipe}" \
+  "CXXFLAGS,${CXXFLAGS:--std=c++11 -march=armv6k -mtune=arm1136jf-s -mfloat-abi=soft -mabi=aapcs-linux -mtls-dialect=gnu -fPIC -fPIE -fvisibility-inlines-hidden -O2 -pipe}" \
   "DEBUG_CXXFLAGS,${DEBUG_CXXFLAGS:--Og -g -fvar-tracking-assignments}"
 
 if [ $? -ne 0 ]; then
