@@ -75,7 +75,7 @@ _tc_activation \
   activate host @CHOST@ @CHOST@- \
   cc cpp gcc gcc-ar gcc-nm gcc-ranlib \
   "CPPFLAGS,${CPPFLAGS:--D_FORTIFY_SOURCE=2}" \
-  "CFLAGS,${CFLAGS:--march=armv6k -mtune=arm1136jf-s -mfloat-abi=soft -mabi=aapcs-linux -mtls-dialect=gnu -fPIC -fPIE -fvisibility=hidden -O2 -pipe}" \
+  "CFLAGS,${CFLAGS:--march=armv6k -mtune=arm1136jf-s -mfloat-abi=soft -mabi=aapcs-linux -mtls-dialect=gnu -fPIC -fPIE -O2 -pipe}" \
   "LDFLAGS,${LDFLAGS:--Wl,-O1,--sort-common,--as-needed,-z,relro}" \
   "DEBUG_CFLAGS,${DEBUG_CFLAGS:--Og -g -fvar-tracking-assignments}"
 
