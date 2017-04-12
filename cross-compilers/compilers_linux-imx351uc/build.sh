@@ -16,7 +16,12 @@ fi
 
 # Necessary because CentOS5.11 is having some certificate issues.
 if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/duma_2_5_15.tar.gz" ]]; then
-    curl -L --insecure https://vorboss.dl.sourceforge.net/project/duma/duma/2.5.15/duma_2_5_15.tar.gz -o ${SYS_PREFIX}/conda-bld/src_cache/duma_2_5_15.tar.gz
+    curl -L --insecure https://dronedata.dl.sourceforge.net/project/duma/duma/2.5.15/duma_2_5_15.tar.gz -o ${SYS_PREFIX}/conda-bld/src_cache/duma_2_5_15.tar.gz
+fi
+
+# Ditto.
+if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/expat-2.2.0.tar.bz2" ]]; then
+    curl -L --insecure https://dronedata.dl.sourceforge.net/project/expat/expat/2.2.0/expat-2.2.0.tar.bz2 ${SYS_PREFIX}/conda-bld/src_cache/expat-2.2.0.tar.bz2
 fi
 
 BUILD_NCPUS=4
