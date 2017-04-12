@@ -5,7 +5,7 @@ libc:
 uclibc:
   - 0.9.33.2
 binutils:
-  - 2.28
+  - 2.27
 kernel:
   - 3.2.43
 gcc:
