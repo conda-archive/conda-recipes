@@ -3,12 +3,20 @@
 CHOST="${cpu_arch}-${vendor}-linux-uclibcgnueabi"
 mkdir -p .build/src
 mkdir -p .build/tarballs
+
+# Necessary because crosstool-ng looks in the wrong location for this one.
 if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/linux-3.2.43.tar.xz" ]]; then
     curl -L https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.2.43.tar.xz -o ${SYS_PREFIX}/conda-bld/src_cache/linux-3.2.43.tar.xz
 fi
 
+# Necessary because uclibc let their certificate expire.
 if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/uClibc-0.9.33.2.tar.xz" ]]; then
     curl -L --insecure https://www.uclibc.org/downloads/uClibc-0.9.33.2.tar.xz -o ${SYS_PREFIX}/conda-bld/src_cache/uClibc-0.9.33.2.tar.xz
+fi
+
+# Necessary because CentOS5.11 is having some certificate issues.
+if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/duma_2_5_15.tar.gz" ]]; then
+    curl -L --insecure https://vorboss.dl.sourceforge.net/project/duma/duma/2.5.15/duma_2_5_15.tar.gz -o ${SYS_PREFIX}/conda-bld/src_cache/duma_2_5_15.tar.gz
 fi
 
 BUILD_NCPUS=4
