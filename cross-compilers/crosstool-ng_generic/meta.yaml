@@ -1,0 +1,39 @@
+{% set commit="linux-target-testing3" %}
+
+package:
+  name: crosstool-ng
+  version: 1.23.rc2.diorcety.{{ commit }}
+
+source:
+  git_url: https://github.com/diorcety/crosstool-ng.git
+  git_tag: {{ commit }}
+  patches:
+    - no-lto.patch
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - autoconf
+    - automake
+    - bison
+    - flex
+    - git
+    - libtool
+    - ncurses
+    - wget
+  run:
+    - ncurses
+
+test:
+  commands:
+    - ct-ng -h
+
+about:
+  home: http://crosstool-ng.org/
+
+extra:
+  recipe-maintainers:
+    - mingwandroid
+    - msarahan

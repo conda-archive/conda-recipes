@@ -1,0 +1,41 @@
+From 237479a0617dfbc9de8e49b31ebe907f074ef7b4 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Wed, 15 Feb 2017 14:33:25 +0000
+Subject: [PATCH] uClibc/glibc: add -fno-lto when making dummy shared libs
+
+Otherwise the build machine's lto plugin gets loaded and
+that segfaults when processing your host machine's dummy
+shared lib
+
+Signed-off-by: Ray Donnelly <mingw.android@gmail.com>
+---
+ scripts/build/libc/glibc.sh  | 1 +
+ scripts/build/libc/uClibc.sh | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/scripts/build/libc/glibc.sh b/scripts/build/libc/glibc.sh
+index 348c35a..04416ea 100644
+--- a/scripts/build/libc/glibc.sh
++++ b/scripts/build/libc/glibc.sh
+@@ -431,6 +431,7 @@ do_libc_backend_once() {
+                                            -nostartfiles              \
+                                            -shared                    \
+                                            -x c /dev/null             \
++                                           -fno-lto                   \
+                                            -o "${startfiles_dir}/libc.so"
+         fi # threads == nptl
+     fi # libc_mode = startfiles
+diff --git a/scripts/build/libc/uClibc.sh b/scripts/build/libc/uClibc.sh
+index e87abaf..fe18ac4 100644
+--- a/scripts/build/libc/uClibc.sh
++++ b/scripts/build/libc/uClibc.sh
+@@ -197,7 +197,7 @@ do_libc_backend_once() {
+             # libm.so is needed for ppc, as libgcc is linked against libm.so
+             # No problem to create it for other archs.
+             CT_DoLog EXTRA "Building dummy shared libs"
+-            CT_DoExecLog ALL "${CT_TARGET}-${CT_CC}" -nostdlib -nostartfiles \
++            CT_DoExecLog ALL "${CT_TARGET}-${CT_CC}" -nostdlib -nostartfiles -fno-lto \
+                 -shared ${multi_flags} -x c /dev/null -o libdummy.so
+ 
+             CT_DoLog EXTRA "Installing start files"
+

@@ -1,0 +1,36 @@
+cpu_arch:
+  - arm
+libc:
+  - uClibc
+uclibc:
+  - 0.9.33.2
+binutils:
+  - 2.27
+kernel:
+  - 3.2.43
+gcc:
+  - 6.3.0
+gmp:
+  - 6.1.2
+mpfr:
+  - 3.1.5
+gettext:
+  - 0.19.7
+libiconv:
+  - 1.14
+isl:
+  - 0.18
+mpc:
+  - 1.0.3
+ncurses:
+  - 6.0
+gdb:
+  - 7.12.1
+duma:
+  - 2.5.15
+vendor:
+  - caterpillar
+target_platform:
+  - linux-cos5-x86_64
+cross_target_platform:
+  - linux-imx351uc
