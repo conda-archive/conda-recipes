@@ -1,8 +1,8 @@
-{% set commit="linux-target-testing3" %}
+{% set commit="linux-target" %}
 
 package:
   name: crosstool-ng
-  version: 1.23.rc2.diorcety.{{ commit }}
+  version: 1.23.0.rc2.diorcety.{{ commit | replace("-","_") }}
 
 source:
   git_url: https://github.com/diorcety/crosstool-ng.git
