@@ -1,0 +1,178 @@
+#!/usr/bin/env bash
+
+function write_ctng_config() {
+  echo "CT_OBSOLETE=y"                                                   > .config
+  echo "CT_EXPERIMENTAL=y"                                              >> .config
+  echo "CT_LOCAL_TARBALLS_DIR=\"${SYS_PREFIX}/conda-bld/src_cache\""    >> .config
+  echo "CT_SAVE_TARBALLS=y"                                             >> .config
+  echo "CT_PREFIX_DIR=\"\${CT_TOP_DIR}/gcc_built\""                     >> .config
+  echo "CT_FORCE_SYSROOT=y"                                             >> .config
+  echo "CT_STATIC_TOOLCHAIN=y"                                          >> .config
+  echo "CT_CC_LANG_CXX=y"                                               >> .config
+  echo "CT_CC_LANG_FORTRAN=y"                                           >> .config
+  echo "CT_CC_LANG_OBJC=y"                                              >> .config
+  echo "CT_CC_LANG_OBJCXX=y"                                            >> .config
+  echo "CT_DEBUG_duma=y"                                                >> .config
+  echo "CT_DUMA_SO=y"                                                   >> .config
+  echo "CT_DUMA_CUSTOM_WRAPPER=y"                                       >> .config
+  echo "CT_DEBUG_gdb=y"                                                 >> .config
+  echo "CT_GDB_NATIVE=y"                                                >> .config
+  echo "CT_GDB_NATIVE_STATIC=y"                                         >> .config
+  echo "CT_DISABLE_MULTILIB_LIB_OSDIRNAMES=y"                           >> .config
+  echo "CT_CC_GCC_LIBGOMP=y"                                            >> .config
+  echo "CT_CC_GCC_LIBQUADMATH=y"                                        >> .config
+  echo "CT_CC_GCC_USE_LTO=y"                                            >> .config
+  echo "CT_CC_GCC_ENABLE_PLUGINS=n"                                     >> .config  
+  echo "CT_BINUTILS_PLUGINS=y"                                          >> .config
+
+  case ${cpu_arch} in
+    x86*)
+      echo "CT_ARCH=\"x86\""                                          >> .config
+      echo "CT_ARCH_x86=y"                                            >> .config
+      echo "CT_ARCH_USE_MMU=y"                                        >> .config
+    ;;
+    # This is freescale imx351
+    arm*)
+      echo "CT_ARCH=\"arm\""                                          >> .config
+      echo "CT_ARCH_arm=y"                                            >> .config
+      echo "CT_ARCH_CPU=\"arm1136jf-s\""                              >> .config
+      echo "CT_ARCH_FPU=\"vfp\""                                      >> .config
+      echo "CT_ARCH_SUPPORTS_BOTH_MMU=y"                              >> .config
+      echo "CT_ARCH_USE_MMU=y"                                        >> .config
+      echo "CT_ARCH_ARM_MODE=\"arm\""                                 >> .config
+      echo "CT_ARCH_ARM_MODE_ARM=y"                                   >> .config
+      echo "CT_ARCH_ARM_EABI=y"                                       >> .config
+      echo "CT_ARCH_FLOAT_SW=y"                                       >> .config
+      echo "CT_ARCH_FLOAT=\"soft\""                                   >> .config
+      echo "CT_ARCH_ARM_EABI_FORCE=y"                                 >> .config
+      echo "CT_LIBC_UCLIBC_IPV6=y"                                    >> .config
+      echo "CT_LIBC_UCLIBC_WCHAR=y"                                   >> .config
+      echo "CT_LIBC_UCLIBC_VERBOSITY_2=y"                             >> .config
+      echo "CT_LIBC_UCLIBC_VERBOSITY=\"V=2\""                         >> .config
+      echo "CT_LIBC_UCLIBC_CONFIG_FILE=\"${SRC_DIR}/uclibc.config\""  >> .config
+    ;;
+  esac
+  case ${cpu_arch} in
+    *64)
+      echo "CT_ARCH_64=y"                                             >> .config
+    ;;
+    *)
+      echo "CT_ARCH_32=y"                                             >> .config
+    ;;
+  esac
+  
+  if [ "${libc}" == "uClibc" ]; then
+    # [ALL  ]    ada-exp.o: In function `ada_parse':
+    # [ALL  ]    /home/ray/imx351uc/work/.build/arm-caterpillar-linux-uclibcgnueabi/build/build-gdb-native/gdb/ada-exp.y:745: undefined reference to `_obstack_free'
+    # [ALL  ]    gdbarch.o: In function `gdbarch_free':
+    # [ALL  ]    /home/ray/imx351uc/work/.build/src/gdb-7.12.1/gdb/gdbarch.c:484: undefined reference to `_obstack_free'
+    # [ALL  ]    gdbtypes.o: In function `recursive_dump_type':
+    # [ALL  ]    /home/ray/imx351uc/work/.build/src/gdb-7.12.1/gdb/gdbtypes.c:4381: undefined reference to `_obstack_free'
+    # [ALL  ]    dwarf2read.o: In function `abbrev_table_free':
+    # [ALL  ]    /home/ray/imx351uc/work/.build/src/gdb-7.12.1/gdb/dwarf2read.c:15480: undefined reference to `_obstack_free'
+    # [ALL  ]    /home/ray/imx351uc/work/.build/src/gdb-7.12.1/gdb/dwarf2read.c:15480: undefined reference to `_obstack_free'
+    # [ALL  ]    dwarf2read.o:/home/ray/imx351uc/work/.build/src/gdb-7.12.1/gdb/dwarf2read.c:22183: more undefined references to `_obstack_free' follow
+    _native_gdb=n
+  else
+    _native_gdb=y
+  fi
+
+  declare -a _extras
+  if [[ -n "${gdb}" ]]; then
+    echo "CT_DEBUG_gdb=y"                                               >> .config
+    echo "CT_GDB_CROSS=y"                                               >> .config
+    echo "CT_GDB_CROSS_STATIC=y"                                        >> .config
+    echo "CT_GDB_NATIVE=${_native_gdb}"                                 >> .config
+    echo "CT_GDB_NATIVE_STATIC=${_native_gdb}"                          >> .config
+    # GDBSERVER has issues with fully static:
+    # x86_64-sarc-linux-gnu-gcc -static -shared -fPIC -Wl,--soname=libinproctrace.so -Wl,--no-undefined -g -O2    -I. -I/home/ray/gcc-native/work/.build/src/gdb-7.12.1/gdb/gdbserver -I/home/ray/gcc-native/work/.build/src/gdb-7.12.1/gdb/gdbserver/../common -I/home/ray/gcc-native/work/.build/src/gdb-7.12.1/gdb/gdbserver/../regformats -I/home/ray/gcc-native/work/.build/src/gdb-7.12.1/gdb/gdbserver/.. -I/home/ray/gcc-native/work/.build/src/gdb-7.12.1/gdb/gdbserver/../../include -I/home/ray/gcc-native/work/.build/src/gdb-7.12.1/gdb/gdbserver/../gnulib/import -Ibuild-gnulib-gdbserver/import  -Wall -Wpointer-arith -Wno-unused -Wunused-value -Wunused-function -Wno-switch -Wno-char-subscripts -Wempty-body -Wunused-but-set-parameter -Wunused-but-set-variable -Wpointer-sign -Wmissing-prototypes -Wdeclaration-after-statement -Wmissing-parameter-type -Wold-style-declaration -Wold-style-definition -Wformat-nonliteral -Wno-missing-prototypes  -DGDBSERVER -static-libstdc++ -static-libgcc  -Wl,--dynamic-list=/home/ray/gcc-native/work/.build/src/gdb-7.12.1/gdb/gdbserver/proc-service.list -o libinproctrace.so ax-ipa.o tracepoint-ipa.o format-ipa.o utils-ipa.o regcache-ipa.o remote-utils-ipa.o common-utils-ipa.o tdesc-ipa.o print-utils-ipa.o rsp-low-ipa.o errors-ipa.o amd64-linux-ipa.o amd64-avx-linux-ipa.o amd64-avx-mpx-linux-ipa.o amd64-avx512-linux-ipa.o amd64-mpx-linux-ipa.o linux-amd64-ipa.o -ldl -pthread
+    # /home/ray/gcc-native/work/gcc_built/lib/gcc/x86_64-sarc-linux-gnu/6.3.0/../../../../x86_64-sarc-linux-gnu/bin/ld: /home/ray/gcc-native/work/gcc_built/lib/gcc/x86_64-sarc-linux-gnu/6.3.0/crtbeginT.o: relocation R_X86_64_32 against hidden symbol `__TMC_END__' can not be used when making a shared object
+    # /home/ray/gcc-native/work/gcc_built/lib/gcc/x86_64-sarc-linux-gnu/6.3.0/../../../../x86_64-sarc-linux-gnu/bin/ld: final link failed: Nonrepresentable section on output
+    echo "CT_GDB_GDBSERVER=n"                                           >> .config
+    # echo "CT_GDB_GDBSERVER=y"                                           >> .config
+    # echo "CT_GDB_GDBSERVER_HAS_IPA_LIB=y"                               >> .config
+    # echo "CT_GDB_GDBSERVER_STATIC=y"                                    >> .config
+    _extras+=("gdb_version,CT_GDB_VERSION")
+  fi
+
+  if [[ -n "${duma}" ]]; then
+    echo "CT_DEBUG_duma=y"                                              >> .config
+    echo "CT_DUMA_SO=y"                                                 >> .config
+    echo "CT_DUMA_CUSTOM_WRAPPER=y"                                     >> .config
+    _extras+=("duma_version,CT_DUMA_VERSION")                           >> .config
+  fi
+
+  # Compounds for bits that have different families
+  local linux_version=linux,${kernel}
+  local libc_version=uClibc,${uclibc}
+  local compiler_version=gcc,${gcc}
+  local binutils_version=binutils,${binutils}
+  local gdb_version=gdb,${gdb}
+  local _VAR_CT_VAR
+  for _VAR_CT_VAR in                      \
+    vendor,CT_TARGET_VENDOR               \
+    linux_version,CT_KERNEL_VERSION       \
+    libc_version,CT_LIBC_VERSION2         \
+    compiler_version,CT_CC_VERSION2       \
+    binutils_version,CT_BINUTILS_VERSION  \
+    libiconv,CT_LIBICONV_NEEDED           \
+    gettext,CT_GETTEXT_NEEDED             \
+    gmp,CT_GMP_NEEDED                     \
+    mpfr,CT_MPFR_NEEDED                   \
+    isl,CT_ISL_NEEDED                     \
+    mpc,CT_MPC_NEEDED                     \
+    ncurses,CT_NCURSES_NEEDED             \
+    gdb_version,CT_GDB_VERSION            \
+    "${_extras[@]}"; do
+    local _VAR=$(echo "${_VAR_CT_VAR}" | sed "s,^\([^\,]*\)\,.*,\1,")
+    local _CT_VAR=$(echo "${_VAR_CT_VAR}" | sed "s,^[^\,]*\,\(.*\),\1,")
+    local _VAL=${!_VAR}
+    # echo "_VAR=${_VAR}, _CT_VAR=${_CT_VAR}, _VAL=${_VAL}"
+    if [[ ${_CT_VAR} == *_NEEDED ]]; then
+      if [[ -n "${_VAL}" ]]; then
+        echo "${_CT_VAR}=y"                                           >> .config
+        # Drop into the VERSION logic below.
+        _CT_VAR=${_CT_VAR//_NEEDED}_VERSION
+        # echo _CT_VAR is ${_CT_VAR}
+      fi
+    fi
+    # Special case for things that need _STUB_FAMILYU_V_X_Y_Z=y
+    local _VERSION2=0
+    if [[ ${_CT_VAR} == *_VERSION2 ]]; then
+      _CT_VAR=${_CT_VAR//2/}
+      echo $_CT_VAR .. was 2?
+      _VERSION2=1
+    fi
+    if [[ ${_CT_VAR} == *_VERSION ]]; then
+      _STUB=${_CT_VAR//_VERSION/}
+      if [[ -n "${_VAL}" ]]; then
+        local _FAMILY=$(echo "${_VAL}" | sed "s,^\([^\,]*\)\,.*,\1,")
+        local _FVAL=$(echo "${_VAL}" | sed "s,^[^\,]*\,\(.*\),\1,")
+        echo _FAMILY $_FAMILY
+        echo _FVAL $_FVAL
+        if [[ ${_FAMILY} != ${_FVAL} ]]; then
+          _FAMILYU=$(echo ${_FAMILY} | tr 'a-z' 'A-Z')
+          echo "${_STUB}=\"${_FAMILY}\""                              >> .config
+          echo "${_STUB}_${_FAMILY}=y"                                >> .config
+          echo "${_STUB}_VERSION=\"${_FVAL}\""                        >> .config
+          if [[ ${_VERSION2} == 1 ]]; then
+            echo "${_STUB}_${_FAMILYU}_V_$(echo $_FVAL | tr '.' '_')=y" >> .config
+          else
+            echo "${_STUB}_V_$(echo $_FVAL | tr '.' '_')=y"           >> .config
+          fi
+        else
+          echo "_FAMILY=${_FAMILY}, _FVAL=${_FVAL}"
+          echo "${_STUB}=y"                                           >> .config
+          echo "${_STUB}_V_$(echo $_VAL | tr '.' '_')=y"              >> .config
+        fi
+      else
+        echo "${_STUB}=n"                                             >> .config
+      fi
+    elif [[ -n "${_VAL}" ]]; then
+      echo "${_CT_VAR}=\"${_VAL}\""                                   >> .config
+      echo "${_CT_VAR}_${_VAL}=y"                                     >> .config
+    fi
+  done
+}
+
+write_ctng_config

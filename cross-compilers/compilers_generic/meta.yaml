@@ -1,0 +1,74 @@
+# Ideally we'd also apply the following patches (from buildroot?) to uClibc:
+# uClibc-0.9.33.2-bits-time.h-sync-with-glibc-2.16.patch
+# uClibc-0.9.33.2-define-MSG_CMSG_CLOEXEC.patch
+# uClibc-0.9.33.2-dup3.patch
+# uClibc-0.9.33.2-ldso-limited-support-for-ORIGIN-in-rpath.patch
+# uClibc-0.9.33.2-OpenWRT-140-avr32_atomic_fix.patch
+# uClibc-0.9.33.2-resolv_c-minimal.patch
+# uClibc-0.9.33.2-Updated-to-support-SocketCDL.patch
+package:
+  name: compilers_{{ cross_target_platform }}
+  version: {{ gcc }}
+
+source:
+  path: .
+
+build:
+  detect_binary_files_with_prefix: False
+  binary_relocation: False
+
+requirements:
+  build:
+    - crosstool-ng
+    # - crosstool-ng  1.22.0.diorcety.imx351uc
+  run:
+    - gcc_{{ cross_target_platform }}
+    - gxx_{{ cross_target_platform }}
+    - gfortran_{{ cross_target_platform }}
+
+outputs:
+  - name: gcc_{{ cross_target_platform }}
+    script: install-gcc.sh
+    requirements:
+      - {{ pin_subpackage('binutils_' ~ cross_target_platform, exact=True) }}
+    pin_downstream:
+      - {{ pin_subpackage('libgcc_' ~ cross_target_platform) }}
+
+  - name: gxx_{{ cross_target_platform }}
+    script: install-g++.sh
+    requirements:
+      # For cpp and crt{i,n}.o
+      - {{ pin_subpackage('gcc_' ~ cross_target_platform, exact=True) }}
+    pin_downstream:
+      - {{ pin_subpackage('libstdcxx_' ~ cross_target_platform) }}
+
+  - name: gfortran_{{ cross_target_platform }}
+    script: install-gfortran.sh
+    requirements:
+      # For cpp and crt{i,n}.o
+      - {{ pin_subpackage('gcc_' ~ cross_target_platform, exact=True) }}
+    pin_downstream:
+      - {{ pin_subpackage('libgfortran_' ~ cross_target_platform) }}
+
+  - name: binutils_{{ cross_target_platform }}
+    script: install-binutils.sh
+    version: {{ binutils }}
+    requirements:
+      - {{ pin_subpackage('libgcc_' ~ cross_target_platform) }}
+
+  - name: libstdcxx_{{ cross_target_platform }}
+    script: install-libstdc++.sh
+
+  - name: libgcc_{{ cross_target_platform }}
+    script: install-libgcc.sh
+
+  - name: libgfortran_{{ cross_target_platform }}
+    script: install-libgfortran.sh
+
+  - name: gdb_{{ cross_target_platform }}
+    version: {{ gdb }}
+    script: install-gdb.sh
+
+  - name: duma_{{ cross_target_platform }}
+    version: {{ duma }}
+    script: install-duma.sh
