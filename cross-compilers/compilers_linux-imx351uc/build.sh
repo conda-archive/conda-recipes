@@ -24,6 +24,10 @@ if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/expat-2.2.0.tar.bz2" ]]; then
     curl -L --insecure https://dronedata.dl.sourceforge.net/project/expat/expat/2.2.0/expat-2.2.0.tar.bz2 -o ${SYS_PREFIX}/conda-bld/src_cache/expat-2.2.0.tar.bz2
 fi
 
+if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/gmp-6.1.2.tar.bz2" ]]; then
+    curl -L --insecure https://ftp.gnu.org/pub/gnu/gmp/gmp-6.1.2.tar.bz2 -o ${SYS_PREFIX}/conda-bld/src_cache/gmp-6.1.2.tar.bz2
+fi
+
 BUILD_NCPUS=4
 if [ "$(uname)" == "Linux" ]; then
   BUILD_NCPUS=$(grep -c ^processor /proc/cpuinfo)
