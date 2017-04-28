@@ -82,8 +82,6 @@ function _tc_activation() {
   return 0
 }
 
-# We would like to add "-fstack-protector --param=ssp-buffer-size" to {C,CXX}FLAGS
-# but uClibc has poor (or no) support for it.
 env > /tmp/old-env-$$.txt
 _tc_activation \
   activate host @CHOST@ @CHOST@- \
