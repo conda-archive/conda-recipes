@@ -1,5 +1,19 @@
 #!/bin/bash
 
+# This function takes no arguments
+# It tries to determine the name of this file in a programatic way.
+function _get_sourced_filename() {
+    if [ -n "${BASH_SOURCE[0]}" ]; then
+        basename "${BASH_SOURCE[0]}"
+    elif [ -n "${(%):-%x}" ]; then
+        # in zsh use prompt-style expansion to introspect the same information
+        # see http://stackoverflow.com/questions/9901210/bash-source0-equivalent-in-zsh
+        basename "${(%):-%x}"
+    else
+        echo "UNKNOWN FILE"
+    fi
+}
+
 # The arguments to this are:
 # 1. activation nature {activate|deactivate}
 # 2. toolchain nature {build|host|ccc}
@@ -76,10 +90,10 @@ _tc_activation \
   addr2line ar as c++filt elfedit gprof ld nm objcopy objdump ranlib readelf size strings strip
 
 if [ $? -ne 0 ]; then
-  echo "ERROR: $(basename ${BASH_SOURCE[0]}) failed, see above for details"
+  echo "ERROR: $(_get_sourced_filename) failed, see above for details"
 #exit 1
 else
   env > /tmp/new-env-$$.txt
-  echo "INFO: $(basename ${BASH_SOURCE[0]}) made the following environmental changes:"
+  echo "INFO: $(_get_sourced_filename) made the following environmental changes:"
   diff -U 0 -rN /tmp/old-env-$$.txt /tmp/new-env-$$.txt | tail -n +4 | grep "^-.*\|^+.*" | grep -v "CONDA_BACKUP_" | sort
 fi

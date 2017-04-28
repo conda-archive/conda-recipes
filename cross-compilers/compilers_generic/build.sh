@@ -1,28 +1,45 @@
 #!/bin/bash
 
-CHOST="${cpu_arch}-${vendor}-linux-uclibcgnueabi"
+if [[ "{libc}" == "uClibc" ]]; then
+  CHOST="${cpu_arch}-${vendor}-linux-uclibcgnueabi"
+else
+  CHOST="${cpu_arch}-${vendor}-linux-gnu"
+fi
+
 mkdir -p .build/src
 mkdir -p .build/tarballs
 
 # Necessary because crosstool-ng looks in the wrong location for this one.
-if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/linux-3.2.43.tar.xz" ]]; then
-    curl -L https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.2.43.tar.xz -o ${SYS_PREFIX}/conda-bld/src_cache/linux-3.2.43.tar.xz
+if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/linux-${kernel}.tar.bz2" ]]; then
+    curl -L https://www.kernel.org/pub/linux/kernel/v3.x/linux-${kernel}.tar.bz2 -o ${SYS_PREFIX}/conda-bld/src_cache/linux-${kernel}.tar.bz2
 fi
 
-# Necessary because uclibc let their certificate expire.
-if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/uClibc-0.9.33.2.tar.xz" ]]; then
-    curl -L --insecure https://www.uclibc.org/downloads/uClibc-0.9.33.2.tar.xz -o ${SYS_PREFIX}/conda-bld/src_cache/uClibc-0.9.33.2.tar.xz
+# Some kernels are not on kernel.org, such as the CentOS5.11 one used (and heavily patched) by RedHat.
+if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/linux-${kernel}.tar.bz2" ]]; then
+    curl -L ftp://ftp.be.debian.org/pub/linux/kernel/v2.6/linux-${kernel}.tar.bz2 -o ${SYS_PREFIX}/conda-bld/src_cache/linux-${kernel}.tar.bz2
+fi
+
+# Necessary because uclibc let their certificate expire, this is a bit hacky.
+if [[ "${libc}" == "uClibc" ]]; then
+  if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/uClibc-${uClibc}.tar.xz" ]]; then
+      curl -L --insecure https://www.uclibc.org/downloads/uClibc-${uClibc}.tar.xz -o ${SYS_PREFIX}/conda-bld/src_cache/uClibc-${uClibc}.tar.xz
+  fi
+else
+  if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/glibc-${glibc}.tar.bz2" ]]; then
+      curl -L --insecure https://ftp.gnu.org/gnu/libc/glibc-${glibc}.tar.bz2 -o ${SYS_PREFIX}/conda-bld/src_cache/glibc-${glibc}.tar.bz2
+  fi
 fi
 
 # Necessary because CentOS5.11 is having some certificate issues.
-if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/duma_2_5_15.tar.gz" ]]; then
-    curl -L --insecure https://dronedata.dl.sourceforge.net/project/duma/duma/2.5.15/duma_2_5_15.tar.gz -o ${SYS_PREFIX}/conda-bld/src_cache/duma_2_5_15.tar.gz
+if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/duma_${duma//./_}.tar.gz" ]]; then
+    curl -L --insecure https://dronedata.dl.sourceforge.net/project/duma/duma/${duma}/duma_${duma//./_}.tar.gz -o ${SYS_PREFIX}/conda-bld/src_cache/duma_${duma//./_}.tar.gz
 fi
 
 # Ditto.
 if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/expat-2.2.0.tar.bz2" ]]; then
-    curl -L --insecure https://dronedata.dl.sourceforge.net/project/expat/expat/2.2.0/expat-2.2.0.tar.bz2 ${SYS_PREFIX}/conda-bld/src_cache/expat-2.2.0.tar.bz2
+    curl -L --insecure https://dronedata.dl.sourceforge.net/project/expat/expat/2.2.0/expat-2.2.0.tar.bz2 -o ${SYS_PREFIX}/conda-bld/src_cache/expat-2.2.0.tar.bz2
 fi
+
 
 BUILD_NCPUS=4
 if [ "$(uname)" == "Linux" ]; then
@@ -35,14 +52,7 @@ fi
 
 # If dirty is unset or the g++ binary doesn't exist yet, then run ct-ng
 if [[ ! -e "${SRC_DIR}/gcc_built/bin/${CHOST}-g++" ]]; then
-    bash ${RECIPE_DIR}/write_ctng_config
-    cp .config .config.emitted
-    sed -i.bak "s|CT_PARALLEL_JOBS=4|CT_PARALLEL_JOBS=${BUILD_NCPUS}|g" .config
-    rm .config.bak
-    # building oldconfig will ensure that the build platform specific crosstool-ng
-    # configuration values (e.g. CT_CONFIGURE_has_stat_flavor_GNU) get mixed with
-    # the host platform .config file.
-    yes "" | ct-ng oldconfig
+    yes "" | ct-ng ${ctng_sample}
     cat .config | grep CT_DISABLE_MULTILIB_LIB_OSDIRNAMES=y || exit 1
     cat .config | grep CT_CC_GCC_USE_LTO=y || exit 1
     # Not sure why this is getting set to y since it depends on ! STATIC_TOOLCHAIN
