@@ -1,11 +1,3 @@
-# Ideally we'd also apply the following patches (from buildroot?) to uClibc:
-# uClibc-0.9.33.2-bits-time.h-sync-with-glibc-2.16.patch
-# uClibc-0.9.33.2-define-MSG_CMSG_CLOEXEC.patch
-# uClibc-0.9.33.2-dup3.patch
-# uClibc-0.9.33.2-ldso-limited-support-for-ORIGIN-in-rpath.patch
-# uClibc-0.9.33.2-OpenWRT-140-avr32_atomic_fix.patch
-# uClibc-0.9.33.2-resolv_c-minimal.patch
-# uClibc-0.9.33.2-Updated-to-support-SocketCDL.patch
 package:
   name: compilers_{{ cross_target_platform }}
   version: {{ gcc }}
@@ -20,7 +12,6 @@ build:
 requirements:
   build:
     - crosstool-ng
-    # - crosstool-ng  1.22.0.diorcety.imx351uc
   run:
     - gcc_{{ cross_target_platform }}
     - gxx_{{ cross_target_platform }}
