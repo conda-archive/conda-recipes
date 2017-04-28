@@ -7,8 +7,6 @@ package:
 source:
   git_url: https://github.com/diorcety/crosstool-ng.git
   git_tag: {{ commit }}
-  patches:
-    - no-lto.patch
 
 build:
   number: 1
@@ -25,6 +23,7 @@ requirements:
     - wget
   run:
     - ncurses
+    - libtool
 
 test:
   commands:
