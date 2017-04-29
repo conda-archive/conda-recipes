@@ -9,14 +9,17 @@ fi
 mkdir -p .build/src
 mkdir -p .build/tarballs
 
-# Necessary because crosstool-ng looks in the wrong location for this one.
-if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/linux-${kernel}.tar.bz2" ]]; then
-    curl -L https://www.kernel.org/pub/linux/kernel/v3.x/linux-${kernel}.tar.bz2 -o ${SYS_PREFIX}/conda-bld/src_cache/linux-${kernel}.tar.bz2
-fi
-
-# Some kernels are not on kernel.org, such as the CentOS5.11 one used (and heavily patched) by RedHat.
-if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/linux-${kernel}.tar.bz2" ]]; then
+# Some kernels are not on kernel.org, such as the CentOS 5.11 one used (and heavily patched) by RedHat.
+if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/linux-${kernel}.tar.bz2" ]] && \
+   [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/linux-${kernel}.tar.xz" ]]; then
+  if [[ ${kernel} == 2.6.* ]]; then
     curl -L ftp://ftp.be.debian.org/pub/linux/kernel/v2.6/linux-${kernel}.tar.bz2 -o ${SYS_PREFIX}/conda-bld/src_cache/linux-${kernel}.tar.bz2
+  elif [[ ${kernel} == 3.* ]]; then
+    # Necessary because crosstool-ng looks in the wrong location for this one.
+    curl -L https://www.kernel.org/pub/linux/kernel/v3.x/linux-${kernel}.tar.bz2 -o ${SYS_PREFIX}/conda-bld/src_cache/linux-${kernel}.tar.bz2
+  elif [[ ${kernel} == 4.* ]]; then
+    curl -L https://www.kernel.org/pub/linux/kernel/v4.x/linux-${kernel}.tar.xz -o ${SYS_PREFIX}/conda-bld/src_cache/linux-${kernel}.tar.xz
+  fi
 fi
 
 # Necessary because uclibc let their certificate expire, this is a bit hacky.
@@ -50,33 +53,39 @@ elif [ "$OSTYPE" == "msys" ]; then
   BUILD_NCPUS=${NUMBER_OF_PROCESSORS}
 fi
 
+source ${RECIPE_DIR}/write_ctng_config
+
 # If dirty is unset or the g++ binary doesn't exist yet, then run ct-ng
 if [[ ! -e "${SRC_DIR}/gcc_built/bin/${CHOST}-g++" ]]; then
     yes "" | ct-ng ${ctng_sample}
-    cat .config
+    write_ctng_config_before "${PWD}"/.config
     # Apply some adjustments for conda.
     sed -i.bak "s|# CT_DISABLE_MULTILIB_LIB_OSDIRNAMES is not set|CT_DISABLE_MULTILIB_LIB_OSDIRNAMES=y|g" .config
     sed -i.bak "s|CT_CC_GCC_USE_LTO=n|CT_CC_GCC_USE_LTO=y|g" .config
     cat .config | grep CT_DISABLE_MULTILIB_LIB_OSDIRNAMES=y || exit 1
     cat .config | grep CT_CC_GCC_USE_LTO=y || exit 1
     # Not sure why this is getting set to y since it depends on ! STATIC_TOOLCHAIN
-    sed -i.bak "s|CT_CC_GCC_ENABLE_PLUGINS=y|CT_CC_GCC_ENABLE_PLUGINS=n|g" .config
+    if [[ ${ctng_nature} == static ]]; then
+      sed -i.bak "s|CT_CC_GCC_ENABLE_PLUGINS=y|CT_CC_GCC_ENABLE_PLUGINS=n|g" .config
+    fi
     if [[ $(uname) == Darwin ]]; then
         sed -i.bak "s|CT_WANTS_STATIC_LINK=y|CT_WANTS_STATIC_LINK=n|g" .config
-        rm .config.bak
         sed -i.bak "s|CT_CC_GCC_STATIC_LIBSTDCXX=y|CT_CC_GCC_STATIC_LIBSTDCXX=n|g" .config
-        rm .config.bak
         sed -i.bak "s|CT_STATIC_TOOLCHAIN=y|CT_STATIC_TOOLCHAIN=n|g" .config
-        rm .config.bak
         sed -i.bak "s|CT_BUILD=\"x86_64-pc-linux-gnu\"|CT_BUILD=\"x86_64-apple-darwin11\"|g" .config
-        rm .config.bak
-        cat .config | grep CT_BUILD
     fi
-#    while [[ 1 == 1 ]]; do
-#      echo "Debug this $(pwd)"
-#      echo "Debug this ${PATH}"
-#      sleep 5
-#    done
+    # Now ensure any changes we made above pull in other requirements by running oldconfig.
+    yes "" | ct-ng oldconfig
+    # And undo any damage to version numbers => the seds above could be moved into this too probably.
+    write_ctng_config_after "${PWD}"/.config
+    if cat .config | grep "CT_GDB_NATIVE=y"; then
+      if ! cat .config | grep "CT_EXPAT_TARGET=y"; then
+        echo "ERROR: CT_GDB_NATIVE=y but CT_EXPAT_TARGET!=y"
+        cat .config
+        echo "ERROR: CT_GDB_NATIVE=y but CT_EXPAT_TARGET!=y"
+        exit 1
+      fi
+    fi
     unset CFLAGS CXXFLAGS LDFLAGS
     ct-ng build
 fi
@@ -94,6 +103,16 @@ fi
 # .build/src/gcc-${PKG_VERSION}/contrib/test_summary
 
 find . -name "*activate*.sh" -exec sed -i.bak "s|@CHOST@|${CHOST}|g" "{}" \;
+find . -name "*activate*.sh" -exec sed -i.bak "s|@CPPFLAGS@|${FINAL_CPPFLAGS}|g"             "{}" \;
+find . -name "*activate*.sh" -exec sed -i.bak "s|@CFLAGS@|${FINAL_CFLAGS}|g"                 "{}" \;
+find . -name "*activate*.sh" -exec sed -i.bak "s|@DEBUG_CFLAGS@|${FINAL_DEBUG_CFLAGS}|g"     "{}" \;
+find . -name "*activate*.sh" -exec sed -i.bak "s|@CXXFLAGS@|${FINAL_CXXFLAGS}|g"             "{}" \;
+find . -name "*activate*.sh" -exec sed -i.bak "s|@DEBUG_CXXFLAGS@|${FINAL_DEBUG_CXXFLAGS}|g" "{}" \;
+find . -name "*activate*.sh" -exec sed -i.bak "s|@DEBUG_CXXFLAGS@|${FINAL_DEBUG_CXXFLAGS}|g" "{}" \;
+find . -name "*activate*.sh" -exec sed -i.bak "s|@FFLAGS@|${FINAL_FFLAGS}|g"                 "{}" \;
+find . -name "*activate*.sh" -exec sed -i.bak "s|@DEBUG_FFLAGS@|${FINAL_DEBUG_FFLAGS}|g"     "{}" \;
+find . -name "*activate*.sh" -exec sed -i.bak "s|@LDFLAGS@|${FINAL_LDFLAGS}|g"               "{}" \;
+
 find . -name "*activate*.sh.bak" -exec sed rm "{}" \;
 
 chmod -R u+w ${SRC_DIR}/gcc_built
