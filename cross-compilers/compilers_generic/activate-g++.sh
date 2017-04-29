@@ -87,7 +87,7 @@ _tc_activation \
   activate host @CHOST@ @CHOST@- \
   c++ g++ \
   "CXXFLAGS,${CXXFLAGS:-@CXXFLAGS@}" \
-  "DEBUG_CXXFLAGS,${DEBUG_CXXFLAGS:-@CXXFLAGS@ @DEBUG_CXXFLAGS@}"
+  "DEBUG_CXXFLAGS,${DEBUG_CXXFLAGS:-@DEBUG_CXXFLAGS@}"
 
 if [ $? -ne 0 ]; then
   echo "ERROR: $(_get_sourced_filename) failed, see above for details"
