@@ -19,10 +19,18 @@ function write_config_var() {
   fi
   # Special case for things that need _STUB_FAMILYU_V_X_Y_Z=y
   local _VERSION2=0
+  # Even more special case for things that *also* need _STUB_FAMILYU_VERSION=y
+  local _VERSION3=0
+
   if [[ ${_CT_VAR} == *_VERSION2 ]]; then
     _CT_VAR=${_CT_VAR//2/}
     echo $_CT_VAR .. was 2?
     _VERSION2=1
+  elif [[ ${_CT_VAR} == *_VERSION3 ]]; then
+    _CT_VAR=${_CT_VAR//3/}
+    echo $_CT_VAR .. was 2?
+    _VERSION2=1
+    _VERSION3=1
   fi
   if [[ ${_CT_VAR} == *_VERSION ]]; then
     _STUB=${_CT_VAR//_VERSION/}
@@ -35,7 +43,11 @@ function write_config_var() {
         _FAMILYU=$(echo ${_FAMILY} | tr 'a-z' 'A-Z')
         echo "${_STUB}=\"${_FAMILY}\""                                >> "${_dst}"
         echo "${_STUB}_${_FAMILY}=y"                                  >> "${_dst}"
-        echo "${_STUB}_VERSION=\"${_FVAL}\""                          >> "${_dst}"
+        if [[ ${_VERSION3} == 1 ]]; then
+          echo "${_STUB}_${_FAMILYU}_VERSION=\"${_FVAL}\""            >> "${_dst}"
+        else
+          echo "${_STUB}_VERSION=\"${_FVAL}\""                        >> "${_dst}"
+        fi
         if [[ ${_VERSION2} == 1 ]]; then
           echo "${_STUB}_${_FAMILYU}_V_$(echo $_FVAL | tr '.' '_')=y" >> "${_dst}"
         else
@@ -84,7 +96,7 @@ function write_ctng_package_versions() {
     vendor,CT_TARGET_VENDOR               \
     linux_version,CT_KERNEL_VERSION       \
     libc_version,CT_LIBC_VERSION2         \
-    compiler_version,CT_CC_VERSION2       \
+    compiler_version,CT_CC_VERSION3       \
     binutils_version,CT_BINUTILS_VERSION  \
     libiconv,CT_LIBICONV_NEEDED           \
     gettext,CT_GETTEXT_NEEDED             \
