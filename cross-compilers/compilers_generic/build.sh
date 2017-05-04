@@ -1,11 +1,5 @@
 #!/bin/bash
 
-if [[ "{libc}" == "uClibc" ]]; then
-  CHOST="${cpu_arch}-${vendor}-linux-uclibcgnueabi"
-else
-  CHOST="${cpu_arch}-${vendor}-linux-gnueabi"
-fi
-
 mkdir -p .build/src
 mkdir -p .build/tarballs
 
@@ -23,7 +17,7 @@ if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/linux-${kernel}.tar.bz2" ]] && \
 fi
 
 # Necessary because uclibc let their certificate expire, this is a bit hacky.
-if [[ "${libc}" == "uClibc" ]]; then
+if [[ ${libc} == uClibc ]]; then
   if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/uClibc-${uClibc}.tar.xz" ]]; then
       curl -L --insecure https://www.uclibc.org/downloads/uClibc-${uClibc}.tar.xz -o ${SYS_PREFIX}/conda-bld/src_cache/uClibc-${uClibc}.tar.xz
   fi
@@ -35,7 +29,7 @@ fi
 
 # Necessary because CentOS5.11 is having some certificate issues.
 if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/duma_${duma//./_}.tar.gz" ]]; then
-    curl -L --insecure https://sourceforge.net/projects/duma/files/duma/${duma}//duma_${duma//./_}.tar.gz/download -o ${SYS_PREFIX}/conda-bld/src_cache/duma_${duma//./_}.tar.gz
+    curl -L --insecure https://sourceforge.net/projects/duma/files/duma/${duma}/duma_${duma//./_}.tar.gz/download -o ${SYS_PREFIX}/conda-bld/src_cache/duma_${duma//./_}.tar.gz
 fi
 
 if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/expat-2.2.0.tar.bz2" ]]; then
@@ -52,10 +46,12 @@ elif [ "$OSTYPE" == "msys" ]; then
   BUILD_NCPUS=${NUMBER_OF_PROCESSORS}
 fi
 
-source ${RECIPE_DIR}/write_ctng_config
+[[ -d ${SRC_DIR}/gcc_built ]] || mkdir -p ${SRC_DIR}/gcc_built
 
 # If dirty is unset or the g++ binary doesn't exist yet, then run ct-ng
-if [[ ! -e "${SRC_DIR}/gcc_built/bin/${CHOST}-g++" ]]; then
+if [[ ! -n $(find ${SRC_DIR}/gcc_built -iname ${cpu_arch}-${vendor}-*.config) ]]; then
+    source ${RECIPE_DIR}/write_ctng_config
+
     yes "" | ct-ng ${ctng_sample}
     write_ctng_config_before "${PWD}"/.config
     # Apply some adjustments for conda.
@@ -95,6 +91,8 @@ if [[ $(uname) == Linux ]]; then
   ulimit -s 32768
 fi
 
+CHOST=$(${SRC_DIR}/.build/*-*-*-*/build/build-cc-gcc-final/gcc/xgcc -dumpmachine)
+
 # pushd .build/${CHOST}/build/build-cc-gcc-final
 # make -k check || true
 # popd
@@ -119,12 +117,12 @@ chmod -R u+w ${SRC_DIR}/gcc_built
 # Next problem: macOS targetting uClibc ends up with broken symlinks in sysroot/usr/lib:
 if [[ $(uname) == Darwin ]]; then
   pushd ${SRC_DIR}/gcc_built/${CHOST}/sysroot/usr/lib
-  links=$(find . -type l | cut -c 3-)
-  for link in ${links}; do
-    target=$(readlink ${link} | sed 's#^/##' | sed 's#//#/#')
-    rm ${link}
-    ln -s ${target} ${link}
-  done
+    links=$(find . -type l | cut -c 3-)
+    for link in ${links}; do
+      target=$(readlink ${link} | sed 's#^/##' | sed 's#//#/#')
+      rm ${link}
+      ln -s ${target} ${link}
+    done
   popd
 fi
 
