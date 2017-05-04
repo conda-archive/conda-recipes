@@ -112,7 +112,7 @@ find . -name "*activate*.sh" -exec sed -i.bak "s|@FFLAGS@|${FINAL_FFLAGS}|g"    
 find . -name "*activate*.sh" -exec sed -i.bak "s|@DEBUG_FFLAGS@|${FINAL_DEBUG_FFLAGS}|g"     "{}" \;
 find . -name "*activate*.sh" -exec sed -i.bak "s|@LDFLAGS@|${FINAL_LDFLAGS}|g"               "{}" \;
 
-find . -name "*activate*.sh.bak" -exec sed rm "{}" \;
+find . -name "*activate*.sh.bak" -exec rm "{}" \;
 
 chmod -R u+w ${SRC_DIR}/gcc_built
 
@@ -127,3 +127,6 @@ if [[ $(uname) == Darwin ]]; then
   done
   popd
 fi
+
+exit 0
+
