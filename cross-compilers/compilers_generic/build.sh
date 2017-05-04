@@ -35,11 +35,14 @@ fi
 
 # Necessary because CentOS5.11 is having some certificate issues.
 if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/duma_${duma//./_}.tar.gz" ]]; then
+    # Sourceforge mirrors are often flakey ..
+    curl -L --insecure https://netix.dl.sourceforge.net/project/duma/duma/${duma}/duma_${duma//./_}.tar.gz -o ${SYS_PREFIX}/conda-bld/src_cache/duma_${duma//./_}.tar.gz || true
     curl -L --insecure https://dronedata.dl.sourceforge.net/project/duma/duma/${duma}/duma_${duma//./_}.tar.gz -o ${SYS_PREFIX}/conda-bld/src_cache/duma_${duma//./_}.tar.gz
 fi
 
 # Ditto.
 if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/expat-2.2.0.tar.bz2" ]]; then
+    curl -L --insecure https://netix.dl.sourceforge.net/project/expat/expat/2.2.0/expat-2.2.0.tar.bz2 -o ${SYS_PREFIX}/conda-bld/src_cache/expat-2.2.0.tar.bz2 || true
     curl -L --insecure https://dronedata.dl.sourceforge.net/project/expat/expat/2.2.0/expat-2.2.0.tar.bz2 -o ${SYS_PREFIX}/conda-bld/src_cache/expat-2.2.0.tar.bz2
 fi
 
