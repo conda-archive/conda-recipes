@@ -3,7 +3,7 @@
 if [[ "{libc}" == "uClibc" ]]; then
   CHOST="${cpu_arch}-${vendor}-linux-uclibcgnueabi"
 else
-  CHOST="${cpu_arch}-${vendor}-linux-gnu"
+  CHOST="${cpu_arch}-${vendor}-linux-gnueabi"
 fi
 
 mkdir -p .build/src
