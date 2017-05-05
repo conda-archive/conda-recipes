@@ -48,8 +48,8 @@ fi
 
 [[ -d ${SRC_DIR}/gcc_built ]] || mkdir -p ${SRC_DIR}/gcc_built
 
-# If dirty is unset or the g++ binary doesn't exist yet, then run ct-ng
-if [[ ! -n $(find ${SRC_DIR}/gcc_built -iname ${cpu_arch}-${vendor}-*.config) ]]; then
+# If the gfortran binary doesn't exist yet, then run ct-ng
+if [[ ! -n $(find ${SRC_DIR}/gcc_built -iname ${cpu_arch}-${vendor}-*-gfortran) ]]; then
     source ${RECIPE_DIR}/write_ctng_config
 
     yes "" | ct-ng ${ctng_sample}
@@ -127,4 +127,3 @@ if [[ $(uname) == Darwin ]]; then
 fi
 
 exit 0
-
