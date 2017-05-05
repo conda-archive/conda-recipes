@@ -1,5 +1,5 @@
 package:
-  name: compilers_{{ target_platform }}
+  name: compilers_{{ cross_target_platform }}
   version: {{ gcc }}
 
 source:
@@ -13,50 +13,50 @@ requirements:
   build:
     - crosstool-ng
   run:
-    - {{ pin_subpackage('gcc_' ~ target_platform, exact=True) }}
-    - {{ pin_subpackage('gxx_' ~ target_platform, exact=True) }}
-    - {{ pin_subpackage('gfortran_' ~ target_platform, exact=True) }}
+    - {{ pin_subpackage('gcc_' ~ cross_target_platform, exact=True) }}
+    - {{ pin_subpackage('gxx_' ~ cross_target_platform, exact=True) }}
+    - {{ pin_subpackage('gfortran_' ~ cross_target_platform, exact=True) }}
 
 outputs:
-  - name: gcc_{{ target_platform }}
+  - name: gcc_{{ cross_target_platform }}
     script: install-gcc.sh
     requirements:
-      build:
-        - unifdef
+#      build:
+#        - unifdef
       run:
-        - {{ pin_subpackage('binutils_' ~ target_platform, exact=True) }}
+        - {{ pin_subpackage('binutils_' ~ cross_target_platform, exact=True) }}
     run_exports:
-      - {{ pin_subpackage('libgcc_' ~ target_platform) }}
+      - {{ pin_subpackage('libgcc_' ~ cross_target_platform) }}
     about:
       summary: GNU C Compiler
       home: https://gcc.gnu.org/
       license: GPL
 
-  - name: gxx_{{ target_platform }}
+  - name: gxx_{{ cross_target_platform }}
     script: install-g++.sh
     requirements:
       # For cpp and crt{i,n}.o
-      - {{ pin_subpackage('gcc_' ~ target_platform, exact=True) }}
+      - {{ pin_subpackage('gcc_' ~ cross_target_platform, exact=True) }}
     run_exports:
-      - {{ pin_subpackage('libstdcxx_' ~ target_platform) }}
+      - {{ pin_subpackage('libstdcxx_' ~ cross_target_platform) }}
     about:
       summary: GNU C++ Compiler
       home: https://gcc.gnu.org/
       license: GPL
 
-  - name: gfortran_{{ target_platform }}
+  - name: gfortran_{{ cross_target_platform }}
     script: install-gfortran.sh
     requirements:
       # For cpp and crt{i,n}.o
-      - {{ pin_subpackage('gcc_' ~ target_platform, exact=True) }}
+      - {{ pin_subpackage('gcc_' ~ cross_target_platform, exact=True) }}
     run_exports:
-      - {{ pin_subpackage('libgfortran_' ~ target_platform) }}
+      - {{ pin_subpackage('libgfortran_' ~ cross_target_platform) }}
     about:
       summary: GNU Fortran Compiler
       home: https://gcc.gnu.org/
       license: GPL
 
-  - name: binutils_{{ target_platform }}
+  - name: binutils_{{ cross_target_platform }}
     script: install-binutils.sh
     version: {{ binutils }}
     about:
@@ -64,32 +64,32 @@ outputs:
       home: https://www.gnu.org/software/binutils/
       license: GPL
 
-  - name: libstdcxx_{{ target_platform }}
-    target: {{ target_platform }}
+  - name: libstdcxx_{{ cross_target_platform }}
+    target: {{ cross_target_platform }}
     script: install-libstdc++.sh
     about:
       summary: The GNU C++ Runtime Library
       home: https://gcc.gnu.org/
       license: GPL3 with runtime exception
 
-  - name: libgcc_{{ target_platform }}
-    target: {{ target_platform }}
+  - name: libgcc_{{ cross_target_platform }}
+    target: {{ cross_target_platform }}
     script: install-libgcc.sh
     about:
       summary: The GCC low-level runtime library
       home: https://gcc.gnu.org/onlinedocs/gccint/Libgcc.html
       license: GPL
 
-  - name: libgfortran_{{ target_platform }}
-    target: {{ target_platform }}
+  - name: libgfortran_{{ cross_target_platform }}
+    target: {{ cross_target_platform }}
     script: install-libgfortran.sh
     about:
       summary: The GNU Fortran Runtime Library
       home: https://gcc.gnu.org/
       license: GPL
 
-  - name: gdb_{{ target_platform }}
-    target: {{ target_platform }}
+  - name: gdb_{{ cross_target_platform }}
+    target: {{ cross_target_platform }}
     version: {{ gdb }}
     script: install-gdb.sh
     about:
@@ -97,8 +97,8 @@ outputs:
       home: https://www.gnu.org/software/gdb/
       license: GPL
 
-  - name: duma_{{ target_platform }}
-    target: {{ target_platform }}
+  - name: duma_{{ cross_target_platform }}
+    target: {{ cross_target_platform }}
     version: {{ duma }}
     script: install-duma.sh
     about:
