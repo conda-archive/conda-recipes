@@ -6,13 +6,15 @@ CHOST=$(${SRC_DIR}/.build/*-*-*-*/build/build-cc-gcc-final/gcc/xgcc -dumpmachine
 # .. do we need this scoped over the whole file though?
 export PATH=${SRC_DIR}/gcc_built/bin:${SRC_DIR}/.build/${CHOST}/buildtools/bin:${SRC_DIR}/.build/tools/bin:${PATH}
 
-pushd ${SRC_DIR}/.build/$CHOST/build/build-cc-gcc-final/
+pushd ${SRC_DIR}/.build/${CHOST}/build/build-cc-gcc-final/
+  # We may not have built with plugin support so failure here is not fatal:
+  make prefix=${PREFIX} install-lto-plugin || true
   make -C gcc prefix=${PREFIX} install-driver install-cpp install-gcc-ar install-headers install-plugin
 
   install -m755 -t ${PREFIX}/bin/ gcc/gcov{,-tool}
   install -m755 -t ${PREFIX}/bin/ gcc/{cc1,collect2}
 
-  make -C $CHOST/libgcc prefix=${PREFIX} install
+  make -C ${CHOST}/libgcc prefix=${PREFIX} install
   # rm ${PREFIX}/lib/libgcc_s.so*
 
   make prefix=${PREFIX} install-libcc1
@@ -21,25 +23,25 @@ pushd ${SRC_DIR}/.build/$CHOST/build/build-cc-gcc-final/
   make prefix=${PREFIX} install-fixincludes
   make -C gcc prefix=${PREFIX} install-mkheaders
 
-  if [[ -d $CHOST/libgomp ]]; then
-    make -C $CHOST/libgomp prefix=${PREFIX} install-nodist_toolexeclibHEADERS \
+  if [[ -d ${CHOST}/libgomp ]]; then
+    make -C ${CHOST}/libgomp prefix=${PREFIX} install-nodist_toolexeclibHEADERS \
     install-nodist_libsubincludeHEADERS
   fi
 
-  if [[ -d $CHOST/libitm ]]; then
-    make -C $CHOST/libitm prefix=${PREFIX} install-nodist_toolexeclibHEADERS
+  if [[ -d ${CHOST}/libitm ]]; then
+    make -C ${CHOST}/libitm prefix=${PREFIX} install-nodist_toolexeclibHEADERS
   fi
 
-  if [[ -d $CHOST/libquadmath ]]; then
-    make -C $CHOST/libquadmath prefix=${PREFIX} install-nodist_libsubincludeHEADERS
+  if [[ -d ${CHOST}/libquadmath ]]; then
+    make -C ${CHOST}/libquadmath prefix=${PREFIX} install-nodist_libsubincludeHEADERS
   fi
 
-  if [[ -d $CHOST/libsanitizer ]]; then
-    make -C $CHOST/libsanitizer prefix=${PREFIX} install-nodist_{saninclude,toolexeclib}HEADERS
+  if [[ -d ${CHOST}/libsanitizer ]]; then
+    make -C ${CHOST}/libsanitizer prefix=${PREFIX} install-nodist_{saninclude,toolexeclib}HEADERS
   fi
 
-  if [[ -d $CHOST/libsanitizer/asan ]]; then
-    make -C $CHOST/libsanitizer/asan prefix=${PREFIX} install-nodist_toolexeclibHEADERS
+  if [[ -d ${CHOST}/libsanitizer/asan ]]; then
+    make -C ${CHOST}/libsanitizer/asan prefix=${PREFIX} install-nodist_toolexeclibHEADERS
   fi
 
   make -C libiberty prefix=${PREFIX} install
@@ -51,9 +53,9 @@ pushd ${SRC_DIR}/.build/$CHOST/build/build-cc-gcc-final/
   make -C gcc prefix=${PREFIX} install-po
 
   # many packages expect this symlink
-  [[ -f ${PREFIX}/bin/$CHOST-cc ]] && rm ${PREFIX}/bin/$CHOST-cc
+  [[ -f ${PREFIX}/bin/${CHOST}-cc ]] && rm ${PREFIX}/bin/${CHOST}-cc
   pushd ${PREFIX}/bin
-    ln -s $CHOST-gcc $CHOST-cc
+    ln -s ${CHOST}-gcc ${CHOST}-cc
   popd
 
   # POSIX conformance launcher scripts for c89 and c99
@@ -98,21 +100,21 @@ make -C ${SRC_DIR}/.build/src/linux-* CROSS_COMPILE=${CHOST}- O=${SRC_DIR}/.buil
 
 if [[ ${libc} == gnu ]]; then
   # Install libc libraries
-  pushd ${SRC_DIR}/.build/$CHOST/build/build-libc-final/multilib
+  pushd ${SRC_DIR}/.build/${CHOST}/build/build-libc-final/multilib
     make -l BUILD_CFLAGS="-O2 -g -I${SRC_DIR}/.build/${CHOST}/buildtools/include" \
             BUILD_LDFLAGS="-L${SRC_DIR}/.build/${CHOST}/buildtools/lib"           \
             install_root=${PREFIX}/${CHOST}/sysroot install
   popd
 else
   # Install uClibc headers
-  pushd ${SRC_DIR}/.build/$CHOST/build/build-libc-startfiles/multilib
+  pushd ${SRC_DIR}/.build/${CHOST}/build/build-libc-startfiles/multilib
     make CROSS_COMPILE=${CHOST}- PREFIX=${PREFIX}/${CHOST}/sysroot MULTILIB_DIR=lib \
 	     LOCALE_DATA_FILENAME=uClibc-locale-030818.tgz STRIPTOOL=true V=2 UCLIBC_EXTRA_CFLAGS=-pipe headers
   popd
 
   # Install uClibc libraries
-  pushd ${SRC_DIR}/.build/$CHOST/build/build-libc-final/multilib
-    PATH=${SRC_DIR}/.build/$CHOST/buildtools/$CHOST/bin:$PATH \
+  pushd ${SRC_DIR}/.build/${CHOST}/build/build-libc-final/multilib
+    PATH=${SRC_DIR}/.build/${CHOST}/buildtools/${CHOST}/bin:$PATH \
       make CROSS_COMPILE=${CHOST}- PREFIX=${PREFIX}/${CHOST}/sysroot MULTILIB_DIR=lib                 \
 	       LOCALE_DATA_FILENAME=uClibc-locale-030818.tgz STRIPTOOL=true V=2 UCLIBC_EXTRA_CFLAGS=-pipe \
 		   install install_utils
