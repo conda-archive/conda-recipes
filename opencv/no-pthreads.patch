@@ -1,0 +1,15 @@
+diff --git modules/core/CMakeLists.txt modules/core/CMakeLists.txt
+index c45760c..d938e84 100644
+--- modules/core/CMakeLists.txt
++++ modules/core/CMakeLists.txt
+@@ -13,6 +13,10 @@ if(HAVE_CUDA)
+   ocv_warnings_disable(CMAKE_CXX_FLAGS -Wundef -Wenum-compare -Wunused-function -Wshadow)
+ endif()
+ 
++if(WITH_TBB)
++  ADD_DEFINITIONS(-DHAVE_PTHREADS=0)
++endif()
++
+ file(GLOB lib_cuda_hdrs        "include/opencv2/${name}/cuda/*.hpp"        "include/opencv2/${name}/cuda/*.h")
+ file(GLOB lib_cuda_hdrs_detail "include/opencv2/${name}/cuda/detail/*.hpp" "include/opencv2/${name}/cuda/detail/*.h")
+ 

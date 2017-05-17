@@ -1,0 +1,39 @@
+fdiff --git modules/text/src/ocr_beamsearch_decoder.cpp modules/text/src/ocr_beamsearch_decoder.cpp
+index 3ab24d2..4200a38 100644
+--- modules/text/src/ocr_beamsearch_decoder.cpp
++++ modules/text/src/ocr_beamsearch_decoder.cpp
+@@ -566,7 +566,7 @@ OCRBeamSearchClassifierCNN::OCRBeamSearchClassifierCNN (const string& filename)
+ 
+     nr_feature = weights.rows;
+     nr_class   = weights.cols;
+-    patch_size  = (int)sqrt(kernels.cols);
++    patch_size  = (int)sqrt(static_cast<float>(kernels.cols));
+     window_size = 4*patch_size;
+     step_size   = 4;
+     quad_size   = 12;
+diff --git modules/text/src/ocr_hmm_decoder.cpp modules/text/src/ocr_hmm_decoder.cpp
+index 002dc86..968e749 100644
+--- modules/text/src/ocr_hmm_decoder.cpp
++++ modules/text/src/ocr_hmm_decoder.cpp
+@@ -982,7 +982,7 @@ OCRHMMClassifierCNN::OCRHMMClassifierCNN (const string& filename)
+ 
+     nr_feature  = weights.rows;
+     nr_class    = weights.cols;
+-    patch_size  = (int)sqrt(kernels.cols);
++    patch_size  = (int)sqrt(static_cast<float>(kernels.cols));
+     // algorithm internal parameters
+     window_size = 32;
+     num_quads   = 25;
+diff --git modules/tracking/src/trackerKCF.cpp modules/tracking/src/trackerKCF.cpp
+index 4fab280..fd49fde 100644
+--- modules/tracking/src/trackerKCF.cpp
++++ modules/tracking/src/trackerKCF.cpp
+@@ -666,7 +666,7 @@ namespace cv{
+     for(int i=0;i<patch_data.rows;i++){
+       for(int j=0;j<patch_data.cols;j++){
+         pixel=patch_data.at<Vec3b>(i,j);
+-        index=(unsigned)(floor(pixel[2]/8)+32*floor(pixel[1]/8)+32*32*floor(pixel[0]/8));
++        index=(unsigned)(floor(pixel[2]/8.0f)+32*floor(pixel[1]/8.0f)+32*32*floor(pixel[0]/8.0f));
+ 
+         //copy the values
+         for(int _k=0;_k<10;_k++){

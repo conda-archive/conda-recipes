@@ -1,0 +1,13 @@
+diff --git modules/python/src2/cv2.cpp modules/python/src2/cv2.cpp
+index 7268822..9369f29 100644
+--- modules/python/src2/cv2.cpp
++++ modules/python/src2/cv2.cpp
+@@ -160,7 +160,7 @@ public:
+     {
+         if( data != 0 )
+         {
+-            CV_Error(Error::StsAssert, "The data should normally be NULL!");
++            //CV_Error(Error::StsAssert, "The data should normally be NULL!");
+             // probably this is safe to do in such extreme case
+             return stdAllocator->allocate(dims0, sizes, type, data, step, flags, usageFlags);
+         }
