@@ -1,0 +1,11 @@
+--- macholib/MachOGraph.py	2015-05-17 16:56:31.000000000 -0400
++++ macholib/MachOGraph.py	2015-05-17 16:56:12.000000000 -0400
+@@ -46,7 +46,7 @@
+                 try:
+                     fn = dyld_find(filename, env=self.env,
+                         executable_path=self.executable_path,
+-                        loader=loader.filename)
++                        loader_path=loader.filename)
+                     self.trans_table[(loader.filename, filename)] = fn
+                 except ValueError:
+                     return None

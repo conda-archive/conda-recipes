@@ -1,0 +1,68 @@
+package:
+  name: macholib
+  version: "1.7"
+
+source:
+  fn: macholib-1.7.tar.gz
+  url: https://pypi.python.org/packages/source/m/macholib/macholib-1.7.tar.gz
+  md5: cf03a55323d5b7ca59be530ba0b01032
+
+  patches:
+    # This patch fixes a simple bad variable name.
+    # See py2app#137: https://bitbucket.org/ronaldoussoren/py2app/issue/137/py2app-problems-using-enthought-python
+    # See also: https://bitbucket.org/ronaldoussoren/macholib/pull-request/10/machographlocate-when-calling-dyld_find/diff#comment-None
+    - MachOGraph.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - macholib = macholib:main
+    #
+    # Would create an entry point called macholib that calls macholib.main()
+
+    - macho_find = macholib.macho_find:main
+    - macho_standalone = macholib.macho_standalone:main
+    - macho_dump = macholib.macho_dump:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - altgraph >=0.12
+
+  run:
+    - python
+    - altgraph >=0.12
+
+test:
+  # Python imports
+  imports:
+    - macholib
+
+  commands:
+    - python -mmacholib dump ${PREFIX}/lib/libpython2.7.dylib
+    - macho_find ${PREFIX}/lib/libpython2.7.dylib
+    - macho_dump ${PREFIX}/lib/libpython2.7.dylib
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://bitbucket.org/ronaldoussoren/macholib
+  license: MIT License
+  summary: 'Mach-O header analysis and editing'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
