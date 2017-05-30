@@ -1,0 +1,29 @@
+package:
+    name: sklearn2pmml
+    version: "0.8.2"
+
+source:
+    git_url: https://github.com/jpmml/sklearn2pmml.git
+    git_rev: "bf0b9e05e5fb3692722136f347c13b8f223b0e55"
+
+requirements:
+    build:
+        - python
+        - setuptools
+        - scikit-learn
+        - sklearn-pandas
+        - joblib
+    run:
+        - python
+        - scikit-learn
+        - sklearn-pandas
+        - joblib
+
+test:
+    imports:
+        - sklearn2pmml
+
+about:
+    home: http://github.com/jpmml/sklearn2pmml
+    license: "GNU Affero General Public License (AGPL) version 3.0"
+    license_file: LICENSE.txt
