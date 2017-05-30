@@ -1,0 +1,34 @@
+package:
+    name: pymol 
+    version: 1.7.4.0
+
+source:
+    fn: pymol-v1.7.4.0.tar.bz2 
+    url: http://downloads.sourceforge.net/project/pymol/pymol/1.7/pymol-v1.7.4.0.tar.bz2
+    patches:
+      - fix_tests.patch
+requirements:
+    build:
+        - glew
+        - libpng
+        - freeglut
+        - freetype
+        - libxml2
+        - numpy
+        - python
+    run:
+        - libxml2
+        - libpng
+        - glew
+        - freetype
+        - freeglut
+        - python
+        - numpy
+test:
+  commands:
+    - pymol
+  imports:
+    - pymol
+about:
+    home: http://pymol.org/
+    license: pymol oss license 
