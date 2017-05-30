@@ -1,0 +1,71 @@
+package:
+  name: ipython-sql
+  version: "0.3.6"
+
+source:
+  fn: ipython-sql-0.3.6.tar.gz
+  url: https://pypi.python.org/packages/source/i/ipython-sql/ipython-sql-0.3.6.tar.gz
+  md5: d4feb00ac5806d7640b2545a43974766
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - ipython-sql = ipython-sql:main
+    #
+    # Would create an entry point called ipython-sql that calls ipython-sql.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - prettytable
+    - ipython >=1.0
+    - sqlalchemy >=0.6.7
+    - sqlparse
+    - six
+
+  run:
+    - python
+    - prettytable
+    - ipython >=1.0
+    - sqlalchemy >=0.6.7
+    - sqlparse
+    - six
+
+test:
+  # Python imports
+  imports:
+    - sql
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: pypi.python.org/pypi/ipython-sql
+  license: MIT License
+  summary: 'RDBMS access via IPython'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
