@@ -108,6 +108,10 @@ function write_ctng_package_versions() {
     "${_extras[@]}"; do
       write_config_var "${_dst}" "${_VAR_CT_VAR}"
   done
+  # Add this back here because build.sh filters out LIBC_GLIBC to prevent conflicts.
+  if [[ ${libc} == gnu ]]; then
+    echo "CT_LIBC_GLIBC_FORCE_UNWIND=y" >> "${_dst}"
+  fi
 }
 
 function write_ctng_config_before() {
