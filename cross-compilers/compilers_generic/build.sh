@@ -53,7 +53,7 @@ if [[ ! -n $(find ${SRC_DIR}/gcc_built -iname ${cpu_arch}-${vendor}-*-gfortran) 
     source ${RECIPE_DIR}/write_ctng_config
 
     yes "" | ct-ng ${ctng_sample}
-    write_ctng_config_before "${PWD}"/.config
+    write_ctng_config_before .config
     # Apply some adjustments for conda.
     sed -i.bak "s|# CT_DISABLE_MULTILIB_LIB_OSDIRNAMES is not set|CT_DISABLE_MULTILIB_LIB_OSDIRNAMES=y|g" .config
     sed -i.bak "s|CT_CC_GCC_USE_LTO=n|CT_CC_GCC_USE_LTO=y|g" .config
@@ -71,8 +71,12 @@ if [[ ! -n $(find ${SRC_DIR}/gcc_built -iname ${cpu_arch}-${vendor}-*-gfortran) 
     fi
     # Now ensure any changes we made above pull in other requirements by running oldconfig.
     yes "" | ct-ng oldconfig
+    # Now filter out 'things that cause problems'. For example, depending on the base sample, you can end up with
+    # two different glibc versions in-play.
+    sed -i.bak '/CT_LIBC/d' .config
+    sed -i.bak '/CT_LIBC_GLIBC/d' .config
     # And undo any damage to version numbers => the seds above could be moved into this too probably.
-    write_ctng_config_after "${PWD}"/.config
+    write_ctng_config_after .config
     if cat .config | grep "CT_GDB_NATIVE=y"; then
       if ! cat .config | grep "CT_EXPAT_TARGET=y"; then
         echo "ERROR: CT_GDB_NATIVE=y but CT_EXPAT_TARGET!=y"
