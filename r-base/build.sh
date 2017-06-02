@@ -23,8 +23,10 @@ Linux() {
     # 1. Why bother with java.rc? Presumably R uses it until `R CMD javareconf`?
     # 2. Why bother with readlink, that seems to make this inflexible.
     # 3. It definitely doesn't work for ArchLinux which has no /usr/lib/jvm/java
-    #JVMFOLDER=$(readlink -f /usr/lib/jvm/java)
-    JVMFOLDER=/usr/lib/jvm/java
+    # Totally agree ^, but the way it currently is it breaks the build for rJava. 
+    # R does not run `R CMD javareconf` by default and it might also need `R CMD javareconf -e` in fact.
+    JVMFOLDER=$(readlink -f /usr/lib/jvm/java)
+    # JVMFOLDER=/usr/lib/jvm/java
     # This is needed to force pkg-config to *also* search for system libraries.
     # We cannot use cairo without this since it depends on a good few X11 things.
     export PKG_CONFIG_PATH=/usr/lib/pkgconfig
