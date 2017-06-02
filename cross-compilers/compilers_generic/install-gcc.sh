@@ -17,6 +17,13 @@ pushd ${SRC_DIR}/.build/${CHOST}/build/build-cc-gcc-final/
   make -C ${CHOST}/libgcc prefix=${PREFIX} install
   # rm ${PREFIX}/lib/libgcc_s.so*
 
+  mkdir -p $PREFIX/$CHOST/sysroot/lib
+
+  cp ${SRC_DIR}/gcc_built/$CHOST/sysroot/lib/libgomp.so* $PREFIX/$CHOST/sysroot/lib
+  if [ -e ${SRC_DIR}/gcc_built/$CHOST/sysroot/lib/libquadmath.so* ]; then
+    cp ${SRC_DIR}/gcc_built/$CHOST/sysroot/lib/libquadmath.so* $PREFIX/$CHOST/sysroot/lib
+  fi
+
   make prefix=${PREFIX} install-libcc1
   install -d ${PREFIX}/share/gdb/auto-load/usr/lib
 
