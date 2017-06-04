@@ -163,6 +163,14 @@ function write_ctng_config_before() {
   echo "CT_CC_GCC_LIBQUADMATH=y"                                        >> "${_dst}"
   echo "CT_CC_GCC_USE_LTO=y"                                            >> "${_dst}"
   echo "CT_CC_GCC_ENABLE_PLUGINS=n"                                     >> "${_dst}"
+  # What about:
+  # 1. --with-linker-hash-style=gnu (faster dynamic loading)? Should be possible
+  #    on CentOS5.11, may be the default.
+  # 2. --enable-gnu-unique-object (less memory for template class statics)? From:
+  #    https://gcc.gnu.org/install/configure.html
+  #    Enabled by default for a toolchain with an assembler that accepts it and
+  #    GLIBC 2.11 or above, otherwise disabled.
+  echo "CT_CC_GCC_EXTRA_CONFIG_ARRAY=\"--enable-default-pie\""          >> "${_dst}"
   echo "CT_BINUTILS_PLUGINS=y"                                          >> "${_dst}"
 
   # TODO :: This is freescale imx351 and an exact hardware device. It would be better
