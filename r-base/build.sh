@@ -19,24 +19,15 @@ export TCL_LIBRARY=$PREFIX/lib/tcl8.5
 export TK_LIBRARY=$PREFIX/lib/tk8.5
 
 Linux() {
-    # There's probably a much better way to do this.
-    # 1. Why bother with java.rc? Presumably R uses it until `R CMD javareconf`?
-    # 2. Why bother with readlink, that seems to make this inflexible.
-    # 3. It definitely doesn't work for ArchLinux which has no /usr/lib/jvm/java
-    #JVMFOLDER=$(readlink -f /usr/lib/jvm/java)
-    JVMFOLDER=/usr/lib/jvm/java
+    # If lib/R/etc/javaconf ends up with anything other than ~autodetect~
+    # for any value (except JAVA_HOME) then 'R CMD javareconf' will never
+    # change it, so we prevent configure from finding Java.  post-install
+    # and activate scripts now call 'R CMD javareconf'.
+    unset JAVA_HOME
+
     # This is needed to force pkg-config to *also* search for system libraries.
     # We cannot use cairo without this since it depends on a good few X11 things.
     export PKG_CONFIG_PATH=/usr/lib/pkgconfig
-    echo "export JDK_HOME=${JVMFOLDER}"       > ${RECIPE_DIR}/java.rc
-    echo "export JAVA_HOME=\${JDK_HOME}/jre" >> ${RECIPE_DIR}/java.rc
-    . ${RECIPE_DIR}/java.rc
-    if [ -n "$JDK_HOME" -a -n "$JAVA_HOME" ]; then
-        export JAVA_CPPFLAGS="-I$JDK_HOME/include -I$JDK_HOME/include/linux"
-        export JAVA_LD_LIBRARY_PATH=${JAVA_HOME}/lib/amd64/server
-    else
-        echo warning: JDK_HOME and JAVA_HOME not set
-    fi
 
     mkdir -p $PREFIX/lib
 
@@ -69,13 +60,7 @@ Linux() {
 # it should be compiling sys-win32.c instead. Eventually it would be nice to fix
 # the Autotools build framework so that can be used for Windows builds too.
 Mingw_w64_autotools() {
-    . ${RECIPE_DIR}/java.rc
-    if [ -n "$JDK_HOME" -a -n "$JAVA_HOME" ]; then
-        export JAVA_CPPFLAGS="-I$JDK_HOME/include -I$JDK_HOME/include/linux"
-        export JAVA_LD_LIBRARY_PATH=${JAVA_HOME}/lib/amd64/server
-    else
-        echo warning: JDK_HOME and JAVA_HOME not set
-    fi
+    unset JAVA_HOME
 
     mkdir -p ${PREFIX}/lib
     export TCL_CONFIG=$PREFIX/Library/mingw-w64/lib/tclConfig.sh
@@ -305,6 +290,7 @@ Mingw_w64_makefiles() {
 }
 
 Darwin() {
+    unset JAVA_HOME
     # Without this, it will not find libgfortran. We do not use
     # DYLD_LIBRARY_PATH because that screws up some of the system libraries
     # that have older versions of libjpeg than the one we are using
@@ -357,9 +343,13 @@ EOF
 case `uname` in
     Darwin)
         Darwin
+        mkdir -p ${PREFIX}/etc/conda/activate.d
+        cp "${RECIPE_DIR}"/activate-${PKG_NAME}.sh ${PREFIX}/etc/conda/activate.d/activate-${PKG_NAME}.sh
         ;;
     Linux)
         Linux
+        mkdir -p ${PREFIX}/etc/conda/activate.d
+        cp "${RECIPE_DIR}"/activate-${PKG_NAME}.sh ${PREFIX}/etc/conda/activate.d/activate-${PKG_NAME}.sh
         ;;
     MINGW*)
         # Mingw_w64_autotools
