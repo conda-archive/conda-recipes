@@ -1,0 +1,38 @@
+{% set version = "1.1.4" %}
+{% set p = "m2-" if win else "" %}
+
+package:
+  name: libopus
+  version: {{ version }}
+
+source:
+  git_url: https://git.xiph.org/opus.git
+  git_tag: v{{ version }}
+
+requirements:
+  build:
+    - posix                    [win]
+    - {{ p }}git
+    - {{ p }}autoconf
+    - {{ p }}libtool
+    - {{ p }}automake          [not win]
+    - {{ p }}automake-wrapper  [win]
+    - m2w64-toolchain          [win]
+  run:
+    - m2w64-gcc-libs           [win]
+
+about:
+  home: http://opus-codec.org/
+  license: 3-clause BSD
+  license_family: BSD
+  summary: Opus Interactive Audio Codec
+  description: |
+    Opus is a totally open, royalty-free, highly versatile
+    audio codec. Opus is unmatched for interactive speech
+    and music transmission over the Internet, but is also
+    intended for storage and streaming applications. It is
+    standardized by the Internet Engineering Task Force
+    (IETF) as RFC 6716 which incorporated technology from
+    Skype's SILK codec and Xiph.Org's CELT codec.
+  doc_url: http://opus-codec.org/docs/
+  dev_url: http://opus-codec.org/development/
