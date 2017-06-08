@@ -1,34 +1,121 @@
-# Tested on Mac OS X 10.9 using clang compiler provided by XCode
+{% set version = "3.2.0" %}
+
 package:
-    name: opencv
-    version: 2.4.9
+  name: opencv
+  version: {{ version }}
 
 source:
-    fn: opencv-2.4.9.zip
-    url: http://downloads.sourceforge.net/project/opencvlibrary/opencv-unix/2.4.9/opencv-2.4.9.zip
+  git_url: https://github.com/opencv/opencv
+  git_tag: {{ version }}
+#  url: https://github.com/opencv/opencv/archive/{{ version }}.zip
+  patches:
+    - 0001-Win32-CONDA_BUILD-Do-not-use-bundled-ffmpeg.patch
+    - 0002-VS2008-does-not-support-C-11-std-vector-data.patch
+    - 0003-Add-static-inline-double-round-double-for-VC2008.patch
+    - 0004-Specify-template-overload-for-abs-for-VC2008.patch
 
 build:
-    number: 0
+  number: 0
+  features:
+    - nomkl  [nomkl]
 
 requirements:
-    build:
-        - cmake
-        - numpy
-        - jpeg
-        - zlib
-        - libpng
-        - python
-    run:
-        - python
-        - numpy
-        - jpeg
-        - zlib
-        - libpng
+  build:
+    - python
+    # For sha256 comparisons of opencv_contrib
+    - openssl 1.0.*         [unix]
+    # For downloading opencv_contrib
+    - curl
+    # For applying patches
+    - m2-git                [win]
+    - m2-filesystem         [win]
+    - m2w64-pkg-config      [win]
+    - libprotobuf 3.2.*
+    - git                   [not win]
+    - jom                   [win]
+    - cmake
+    - numpy x.x
+    - hdf5 >=1.8.17,<1.9    [unix]
+    - eigen 3.*
+    - zlib 1.2.*
+    - jpeg 9.*
+    - libtiff 4.0.*
+    - libpng >=1.6.21,<1.7
+    - ffmpeg 2.8.*
+    - msinttypes            [win and py<35]
+
+  run:
+    - python
+    - numpy x.x
+    - hdf5 >=1.8.17,<1.9    [unix]
+    - zlib 1.2.*
+    - jpeg 9.*
+    - libtiff 4.0.*
+    - libpng >=1.6.21,<1.7
+    - ffmpeg 2.8.*
+
 test:
     imports:
       - cv2
-      - cv2.cv
+      - cv2.xfeatures2d
+
+    commands:
+        # Verify dynamic libraries.
+        # "bioinspired", Not working in 3.1.0
+        {% set opencv_libs = [
+             "xfeatures2d",
+             "ximgproc",
+             "xobjdetect",
+             "xphoto",
+             "aruco",
+             "bgsegm",
+             "calib3d",
+             "ccalib",
+             "core",
+             "datasets",
+             "dnn",
+             "dpm",
+             "face",
+             "features2d",
+             "flann",
+             "fuzzy",
+             "highgui",
+             "imgcodecs",
+             "imgproc",
+             "line_descriptor",
+             "ml",
+             "objdetect",
+             "optflow",
+             "photo",
+             "plot",
+             "reg",
+             "rgbd",
+             "saliency",
+             "shape",
+             "stereo",
+             "stitching",
+             "structured_light",
+             "superres",
+             "surface_matching",
+             "text",
+             "tracking",
+             "video",
+             "videoio",
+             "videostab"
+        ] %}
+        {% for each_opencv_lib in opencv_libs %}
+        - test -f $PREFIX/lib/libopencv_{{ each_opencv_lib }}.dylib                        [osx]
+        - test -f $PREFIX/lib/libopencv_{{ each_opencv_lib }}.so                           [linux]
+        - if not exist %PREFIX%\\Library\\bin\\opencv_{{ each_opencv_lib }}320.dll exit 1  [win]
+        {% endfor %}
 
 about:
-    home: http://opencv.org/
-    license: BSD
+  home: http://opencv.org/
+  license: BSD 3-clause
+  license_family: BSD
+  summary: Computer vision and machine learning software library.
+  description: |
+    OpenCV (Open Source Computer Vision Library) includes several hundreds of computer vision algorithms.
+    It has a modular structure,which means that the package includes several shared or static libraries.
+  doc_url: http://docs.opencv.org/
+  doc_source_url: https://github.com/opencv/opencv/tree/master/doc
