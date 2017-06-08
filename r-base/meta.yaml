@@ -1,14 +1,14 @@
 {% set native = 'm2w64-' if win else '' %}
 {% set posix= 'm2-' if win else '' %}
-{% set ver= '3.3.2' %}
+{% set version= '3.3.2' %}
 
 package:
   name: r-base
-  version: {{ ver }}
+  version: {{ version }}
 
 source:
-  url: https://cran.r-project.org/src/base/R-3/R-{{ ver }}.tar.gz
-  sha1: 0e39e9c2d28fe6bab9c55ca23e08ba8727fd2fca
+  url: https://cran.r-project.org/src/base/R-3/R-{{ version }}.tar.gz
+  sha256: d294ad21e9f574fb4828ebb3a94b8cb34f4f304a41687a994be00dd41a4e514c
   patches:
     - mac-unicode.patch # [osx]
     - 0002-Win32-Fix-trio-config-h-include-depth-issue.patch
@@ -23,10 +23,19 @@ source:
     - 0012-macOS-include-cairo_h-not-cairo-xlib_h.patch
 
 build:
-  number: 1
+  number: 6
   rpaths:
     - lib/R/lib/
     - lib/
+  no_link:
+    # These files are modified by R CMD javareconf and can
+    # point to different Java implementations in each env.
+    - lib/R/etc/Makeconf
+    - lib/R/etc/ldpaths
+    - lib/R/etc/javaconf
+    - lib/R/etc/x64/Makeconf
+    - lib/R/etc/x64/ldpaths
+    - lib/R/etc/x64/javaconf
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -113,5 +122,7 @@ test:
 
 about:
   home: http://www.r-project.org/
-  license: GPL
+  license: GPL-3.0
   license_family: GPL
+  license_file: COPYING
+  summary: 'R is a free software environment for statistical computing and graphics.'
