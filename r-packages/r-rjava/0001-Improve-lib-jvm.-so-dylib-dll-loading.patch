@@ -1,0 +1,101 @@
+From e4fcb4cd4eddb2f7911b12dae5d68bbd0a28f3c2 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Thu, 8 Jun 2017 15:42:06 +0100
+Subject: [PATCH] Improve {lib,}jvm.{so,dylib,dll} loading
+
+Use the values from  Makeconf to find java (Unix), falling back to
+JAVA_HOME (which is needed on Windows). Add the directory to PATH
+on Windows or dyn.load it on Linux. macOS is kept largely the same
+as it was except we check Makeconf before JAVA_HOME.
+
+macOS needs to use a stub dylib instead, e.g.:
+
+ld -reexport_library /System/Library/Frameworks/JavaVM.framework/Versions/A/JavaVM -o ${CONDA_PREFIX}/lib/libjvm.dylib -dylib -macosx_version_min 10.9 -arch x86_64
+
+Then rJava needs to link to that, then activation and deactivation of
+environments containing java need to change the target via install_name_tool
+(or something that does the same thing). This will be painful though.
+---
+ R/zzz.R.in | 65 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 63 insertions(+), 2 deletions(-)
+
+diff --git a/R/zzz.R.in b/R/zzz.R.in
+index eb8aba7..545ac3b 100644
+--- a/R/zzz.R.in
++++ b/R/zzz.R.in
+@@ -1,9 +1,70 @@
++getMakeconfVar <- function(makeconf, var) {
++  # With some assistance from:
++  # https://github.com/r-hub/sysreqs/blob/master/R/platform.R
++  result <- grep(paste("^", var, "[ ]?=",sep=''), makeconf, value = TRUE)
++  sub(paste("^", var, "[ ]?=[ ]?", sep=''), "", result)
++}
++
+ .onLoad <- function(libname, pkgname) {
+-  Sys.setenv("LD_LIBRARY_PATH"=paste(Sys.getenv("LD_LIBRARY_PATH"),"@JAVA_LD@",sep=':'))
++  # Conda refuses to mess with LD_LIBRARY_PATH (etc/ldconfig does not do that now)
++  # as it is the Linux equivalent of DLL-hell and has caused real problems with
++  # R, instead we pre-load libjvm.so from the location detected by javareconf.
++  Makeconf <- readLines(file.path(R.home(), "etc", Sys.getenv('R_ARCH'), "Makeconf"))
++  dylib_ext <- getMakeconfVar(Makeconf, "DYLIB_EXT")
++  if (length(grep("^mingw", R.version$os))) {
++    exe_ext <- ".exe"
++    lib_prefix <- ""
++  } else {
++    exe_ext <- ""
++    lib_prefix <- "lib"
++  }
++  jvm_fname = paste(lib_prefix, "jvm", dylib_ext, sep='')
++  jh <- getMakeconfVar(Makeconf, "JAVA_HOME")
++  j_ld_lp <- getMakeconfVar(Makeconf, "JAVA_LD_LIBRARY_PATH")
++  jvm <- file.path(j_ld_lp, jvm_fname)
++  if (!length(j_ld_lp) || !file.exists(jvm)) {
++    if (!length(jh)) {
++      # In this case (which will always happen on Windows) fall back to JAVA_HOME
++      jh <- Sys.getenv("JAVA_HOME")
++      java_exe <- file.path(jh, 'bin', paste('java', exe_ext, sep=''))
++      Javaconf <- system2(java_exe, args=c("-XshowSettings:properties", "-version"), stderr = TRUE, stdout = TRUE, minimized = TRUE)
++      # "    sun.boot.library.path = C:\\Users\\builder\\mc-x64-3.6\\Library\\jre\\bin"
++      j_ld_lp <- grep(' *sun\\.boot\\.library\\.path[ ]?=', Javaconf, perl = TRUE, value = TRUE)
++      j_ld_lp <- sub(' *sun\\.boot\\.library\\.path[ ]?=[ ]?', "", j_ld_lp)
++      if (file.exists(file.path(j_ld_lp, "server", jvm_fname))) {
++        j_ld_lp <- file.path(j_ld_lp, "server")
++      } else if (file.exists(file.path(j_ld_lp, "client", jvm_fname))) {
++        j_ld_lp <- file.path(j_ld_lp, "client")
++      }
++    }
++  }
++  jvm <- file.path(j_ld_lp, jvm_fname)
++
++  if (length(grep("^darwin", R.version$os)))  {
++    # NYI, need to re-create the dylib stub to point to the real JVM dylib
++  } else if (length(grep("^linux", R.version$os))) {
++    if (file.exists(jvm)) {
++      dyn.load(jvm, local=FALSE, now=TRUE)
++    } else {
++      # This is what the code originally did. Kept as a last resort only, but if it is run
++      # then something bad has happened.
++      Sys.setenv("LD_LIBRARY_PATH"=paste(Sys.getenv("LD_LIBRARY_PATH"),"@JAVA_LD@",sep=':'))
++    }
++  } else if (length(grep("^mingw", R.version$os))) {
++    # When all you have is a hammer. Here I should really check that it is
++    # not already on PATH.
++    win_j_ld_lp <- gsub("/", "\\\\", j_ld_lp)
++    split_path <- strsplit(Sys.getenv("PATH"), ";")
++    if (!win_j_ld_lp %in% unlist(split_path)) {
++      if (file.exists(win_j_ld_lp) && file.info(win_j_ld_lp)$isdir == TRUE) {
++        Sys.setenv("PATH"=paste(win_j_ld_lp, Sys.getenv("PATH"), sep=';'))
++      }
++    }
++  }
++
+   ## On OS X with Oracle Java we may need to work around Oracle bug:
+   ## https://bugs.openjdk.java.net/browse/JDK-7131356
+   if (length(grep("^darwin", R.version$os)) && file.exists("/usr/libexec/java_home")) {
+-     jh <- Sys.getenv("JAVA_HOME")
+      if (!nzchar(jh)) jh <- system("/usr/libexec/java_home", intern=TRUE)[1L]
+      if (file.exists(file.path(jh, "jre/lib"))) jh <- file.path(jh, "jre")
+      if (file.exists(jli <- file.path(jh, "lib/jli/libjli.dylib"))) {
+-- 
+2.10.1
+
