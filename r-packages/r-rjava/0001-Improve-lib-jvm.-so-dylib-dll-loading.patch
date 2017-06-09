@@ -1,4 +1,4 @@
-From 735045f027714c6301d5ee44fcaff35f30185ae2 Mon Sep 17 00:00:00 2001
+From 9bf634515a5d28e70532ef2b0d1d96cd79767873 Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Thu, 8 Jun 2017 15:42:06 +0100
 Subject: [PATCH] Improve {lib,}jvm.{so,dylib,dll} loading
@@ -21,7 +21,7 @@ environments containing Java need to change the target via install_name_tool
  1 file changed, 64 insertions(+), 2 deletions(-)
 
 diff --git a/R/zzz.R.in b/R/zzz.R.in
-index eb8aba7..b84a686 100644
+index eb8aba7..f00e1bd 100644
 --- a/R/zzz.R.in
 +++ b/R/zzz.R.in
 @@ -1,9 +1,71 @@
@@ -48,7 +48,7 @@ index eb8aba7..b84a686 100644
 +  }
 +  jvm_fname = paste(lib_prefix, "jvm", dylib_ext, sep='')
 +  jh <- getMakeconfVar(Makeconf, "JAVA_HOME")
-+  j_ld_lp <- getMakeconfVar(Makeconf, "JAVA_LD_LIBRARY_PATH")
++  j_ld_lp <- gsub("$(JAVA_HOME)", jh, getMakeconfVar(Makeconf, "JAVA_LD_LIBRARY_PATH"), fixed=TRUE)
 +  jvm <- file.path(j_ld_lp, jvm_fname)
 +  if (!length(j_ld_lp) || !file.exists(jvm)) {
 +    if (!length(jh)) {
