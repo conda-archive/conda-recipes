@@ -1,0 +1,81 @@
+{% set n = 'm2w64-' if win else '' %}
+{% set p = 'm2-' if win else '' %}
+{% set version = '1.1.9' %}
+
+# Patrick Gaffe wants CVXOPT linked to MKL on Windows. Directly linking to some of the DLLs (mkl_intel_thread.dll) makes this a bit more possible:
+# C:\Users\ray\mc-x64-3.6\conda-bld\cvxopt_1494330482661\_b_env\Library\mingw-w64\bin\gcc.exe -shared -s build\temp.win-amd64-3.6\Release\src\c\fftw.o build\temp.win-amd64-3.6\Release\src\c\fftw.cp36-win_amd64.def -L\lib -LC:\Users\ray\mc-x64-3.6\conda-bld\cvxopt_1494330482661\_b_env\Library\lib -LC:\Users\ray\mc-x64-3.6\conda-bld\cvxopt_1494330482661\_b_env\libs -LC:\Users\ray\mc-x64-3.6\conda-bld\cvxopt_1494330482661\_b_env\PCbuild\amd64 -lfftw3 -lmkl_blas95_lp64 -lmkl_core_dll C:\Users\ray\mc-x64-3.6\conda-bld\cvxopt_1494330482661\_b_env\Library\bin\mkl_intel_thread.dll -lpython36 -lmsvcr140 -o build\lib.win-amd64-3.6\cvxopt\fftw.cp36-win_amd64.pyd
+# Other than that, see: https://software.intel.com/en-us/forums/intel-math-kernel-library/topic/704577
+# There, linking to mkl_rt.dll is recommended.
+
+package:
+  name: cvxopt
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/cvxopt/cvxopt
+  git_ref: {{ version }}
+  patches:
+    - 0001-MKL-and-MKL-with-GCC-on-Windows-support.patch
+    - 0002-use-same-macro-as-in-cholmod_internal.h.patch
+
+build:
+  detect_binary_files_with_prefix: False
+  features:
+    - nomkl                   [nomkl]
+
+requirements:
+  build:
+    - python
+    - {{p}}git
+    - mkl-devel 2017.0.1      [not nomkl]
+    - libpython               [win]
+    - posix                   [win]
+    - {{n}}openblas           [nomkl]
+    - {{n}}suitesparse        [nomkl]
+    - {{n}}gsl
+    - {{n}}fftw
+    - {{n}}dsdp
+    - {{n}}glpk
+    - {{n}}toolchain          [win]
+  run:
+    - python
+    - mkl 2017.0.1            [not nomkl]
+    - {{n}}openblas           [nomkl]
+    - {{n}}suitesparse        [nomkl]
+    - {{n}}gsl
+    - {{n}}fftw
+    - {{n}}dsdp
+    - {{n}}glpk
+    - {{n}}gcc-libs           [win]
+
+test:
+  imports:
+    - cvxopt
+    - cvxopt.base
+    - cvxopt.blas
+    - cvxopt.cholmod
+    - cvxopt.lapack
+    - cvxopt.misc_solvers
+    - cvxopt.umfpack
+    - cvxopt.glpk
+    - cvxopt.fftw
+  source_files:
+    - tests/*.py
+    - examples/*
+  commands: "%PYTHON% -m unittest discover -s %SRC_DIR%/tests"    [win]
+  commands: "${PYTHON} -m unittest discover -s ${SRC_DIR}/tests"  [not win]
+
+about:
+  home: http://cvxopt.org/
+  license: GPL
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Library for convex optimization
+  description: |
+    CVXOPT is a free software package for convex optimization based on Python.
+    It can be used with the interactive Python interpreter, on the command line
+    by executing Python scripts, or integrated in other software via Python
+    extension modules.
+  doc_url: http://cvxopt.org/documentation/index.html
+  doc_source_url: https://github.com/cvxopt/cvxopt/blob/master/doc/source/index.rst
+  dev_url: https://github.com/cvxopt/cvxopt

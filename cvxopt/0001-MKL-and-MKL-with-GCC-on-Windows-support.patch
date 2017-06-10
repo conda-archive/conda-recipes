@@ -1,0 +1,66 @@
+From b69431b7f4fae9ee3f29368c8402f160d4e7a74a Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Tue, 9 May 2017 14:52:55 +0100
+Subject: [PATCH 1/2] MKL and MKL-with-GCC-on-Windows support
+
+---
+ setup.py | 39 ++++++++++++++++++++++++++++++++-------
+ 1 file changed, 32 insertions(+), 7 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 8079753..2013756 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,10 +1,5 @@
+-try:
+-    from setuptools import setup, Extension
+-except ImportError:
+-    from distutils.core import setup, Extension
+-from glob import glob
+-import os, sys, platform
+-import versioneer
++import os
++import sys
+ 
+ # Modifiy this if BLAS and LAPACK libraries are not in /usr/lib.
+ BLAS_LIB_DIR = '/usr/lib'
+@@ -14,6 +9,36 @@ BLAS_LIB = ['blas']
+ LAPACK_LIB = ['lapack']
+ BLAS_EXTRA_LINK_ARGS = []
+ 
++if os.getenv('NOMKL') == '0':
++    # This is necessary because CVXOPT (and its dependencies) are built with GCC.
++    if sys.platform == 'win32':
++        BLAS_EXTRA_LINK_ARGS=[os.path.join(sys.prefix, 'Library', 'bin', 'mkl_rt.dll')]
++        COMMON = ['mkl_core_dll']
++    elif tuple.__itemsize__ == 8: # 64-bit
++        COMMON = ['mkl_core', 'mkl_intel_lp64', 'mkl_intel_thread', 'iomp5']
++    elif tuple.__itemsize__ == 4: # 32-bit
++        COMMON = ['mkl_core', 'mkl_intel', 'mkl_intel_thread', 'iomp5']
++
++    if sys.platform == 'win32':
++        BLAS_LIB_DIR = os.path.join(sys.prefix, 'Library', 'lib')
++    else:
++        BLAS_LIB_DIR = os.path.join(sys.prefix, 'lib')
++
++    if tuple.__itemsize__ == 8: # 64-bit
++        BLAS_LIB = ['mkl_blas95_lp64'] + COMMON
++        LAPACK_LIB = ['mkl_lapack95_lp64']
++    elif tuple.__itemsize__ == 4: # 32-bit
++        BLAS_LIB = ['mkl_blas95'] + COMMON
++        LAPACK_LIB = ['mkl_lapack95']
++
++try:
++    from setuptools import setup, Extension
++except ImportError:
++    from distutils.core import setup, Extension
++from glob import glob
++import os, sys, platform
++import versioneer
++
+ # Set environment variable BLAS_NOUNDERSCORES=1 if your BLAS/LAPACK do
+ # not use trailing underscores
+ BLAS_NOUNDERSCORES = False
+-- 
+2.12.1
+

@@ -1,0 +1,43 @@
+From b2faeaa9bd352924c3946751e30337e7cb17f965 Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Tue, 9 May 2017 15:46:07 +0100
+Subject: [PATCH 2/2] MKL: Use 64-bit indices if DLONG is defined
+
+Inspired by https://github.com/cvxopt/cvxopt/pull/31 but fixed
+to not break when using an external mingw-w64 suitesparse.
+---
+ src/C/amd.c     | 3 +--
+ src/C/cholmod.c | 3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/src/C/amd.c b/src/C/amd.c
+index e0fa02d..be96242 100644
+--- a/src/C/amd.c
++++ b/src/C/amd.c
+@@ -23,8 +23,7 @@
+ #include "amd.h"
+ #include "misc.h"
+ 
+-/* defined in pyconfig.h */
+-#if (SIZEOF_INT < SIZEOF_SIZE_T)
++#if (SIZEOF_INT < SIZEOF_SIZE_T) || defined(DLONG)
+ #define amd_order amd_l_order
+ #define amd_defaults amd_l_defaults
+ #endif
+diff --git a/src/C/cholmod.c b/src/C/cholmod.c
+index 567ffd6..e4c0b50 100644
+--- a/src/C/cholmod.c
++++ b/src/C/cholmod.c
+@@ -28,8 +28,7 @@
+ 
+ const int E_SIZE[] = { sizeof(int_t), sizeof(double), sizeof(double complex) };
+ 
+-/* defined in pyconfig.h */
+-#if (SIZEOF_INT < SIZEOF_SIZE_T)
++#if (SIZEOF_INT < SIZEOF_SIZE_T) || defined(DLONG)
+ #define CHOL(name) cholmod_l_ ## name
+ #else
+ #define CHOL(name) cholmod_ ## name
+-- 
+2.12.1
+
