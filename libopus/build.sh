@@ -15,4 +15,6 @@ else
 fi
 
 ./autogen.sh
-./configure --prefix=${PREFIX} ${HOST_BUILD} && make -j${JOBS} && make install
+./configure --prefix=${PREFIX} ${HOST_BUILD}
+exit /b 1
+make -j${JOBS} && make install
