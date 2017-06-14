@@ -1,6 +1,6 @@
 diff -urN r-packages-new/r-bh/meta.yaml r-packages-new.fixed/r-bh/meta.yaml
---- r-packages-new/r-bh/meta.yaml	2017-06-14 13:25:29.000000000 +0100
-+++ r-packages-new.fixed/r-bh/meta.yaml	2017-06-14 11:24:06.000000000 +0100
+--- r-packages-new/r-bh/meta.yaml	2017-06-14 17:05:00.000000000 +0100
++++ r-packages-new.fixed/r-bh/meta.yaml	2017-06-14 15:20:53.000000000 +0100
 @@ -66,7 +66,7 @@
      ''range'' ''scope_exit'' ''smart_ptr'' ''spirit'' ''tuple'' ''type_traits'' ''typeof''
      ''unordered'' ''utility'' ''uuid''.'
@@ -11,8 +11,8 @@ diff -urN r-packages-new/r-bh/meta.yaml r-packages-new.fixed/r-bh/meta.yaml
  # The original CRAN metadata for this package was:
  
 diff -urN r-packages-new/r-bitops/meta.yaml r-packages-new.fixed/r-bitops/meta.yaml
---- r-packages-new/r-bitops/meta.yaml	2017-06-14 13:25:32.000000000 +0100
-+++ r-packages-new.fixed/r-bitops/meta.yaml	2017-06-14 11:24:57.000000000 +0100
+--- r-packages-new/r-bitops/meta.yaml	2017-06-14 17:05:30.000000000 +0100
++++ r-packages-new.fixed/r-bitops/meta.yaml	2017-06-14 15:20:53.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -23,8 +23,8 @@ diff -urN r-packages-new/r-bitops/meta.yaml r-packages-new.fixed/r-bitops/meta.y
    # This is required to make R link correctly on Linux.
    rpaths:
 diff -urN r-packages-new/r-boot/meta.yaml r-packages-new.fixed/r-boot/meta.yaml
---- r-packages-new/r-boot/meta.yaml	2017-06-14 13:25:34.000000000 +0100
-+++ r-packages-new.fixed/r-boot/meta.yaml	2017-06-14 11:25:35.000000000 +0100
+--- r-packages-new/r-boot/meta.yaml	2017-06-14 17:05:32.000000000 +0100
++++ r-packages-new.fixed/r-boot/meta.yaml	2017-06-14 15:20:53.000000000 +0100
 @@ -54,7 +54,7 @@
    summary: Functions and datasets for bootstrapping from the book "Bootstrap Methods and Their
      Application" by A. C. Davison and  D. V. Hinkley (1997, CUP), originally written
@@ -35,8 +35,8 @@ diff -urN r-packages-new/r-boot/meta.yaml r-packages-new.fixed/r-boot/meta.yaml
  # The original CRAN metadata for this package was:
  
 diff -urN r-packages-new/r-bradleyterry2/meta.yaml r-packages-new.fixed/r-bradleyterry2/meta.yaml
---- r-packages-new/r-bradleyterry2/meta.yaml	2017-06-14 13:25:36.000000000 +0100
-+++ r-packages-new.fixed/r-bradleyterry2/meta.yaml	2017-06-14 11:25:56.000000000 +0100
+--- r-packages-new/r-bradleyterry2/meta.yaml	2017-06-14 17:05:34.000000000 +0100
++++ r-packages-new.fixed/r-bradleyterry2/meta.yaml	2017-06-14 15:20:53.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -47,8 +47,8 @@ diff -urN r-packages-new/r-bradleyterry2/meta.yaml r-packages-new.fixed/r-bradle
    # This is required to make R link correctly on Linux.
    rpaths:
 diff -urN r-packages-new/r-brew/meta.yaml r-packages-new.fixed/r-brew/meta.yaml
---- r-packages-new/r-brew/meta.yaml	2017-06-14 13:25:37.000000000 +0100
-+++ r-packages-new.fixed/r-brew/meta.yaml	2017-06-14 11:26:13.000000000 +0100
+--- r-packages-new/r-brew/meta.yaml	2017-06-14 17:05:35.000000000 +0100
++++ r-packages-new.fixed/r-brew/meta.yaml	2017-06-14 15:20:53.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -59,8 +59,8 @@ diff -urN r-packages-new/r-brew/meta.yaml r-packages-new.fixed/r-brew/meta.yaml
    # This is required to make R link correctly on Linux.
    rpaths:
 diff -urN r-packages-new/r-brglm/meta.yaml r-packages-new.fixed/r-brglm/meta.yaml
---- r-packages-new/r-brglm/meta.yaml	2017-06-14 13:25:38.000000000 +0100
-+++ r-packages-new.fixed/r-brglm/meta.yaml	2017-06-14 11:26:31.000000000 +0100
+--- r-packages-new/r-brglm/meta.yaml	2017-06-14 17:05:37.000000000 +0100
++++ r-packages-new.fixed/r-brglm/meta.yaml	2017-06-14 15:20:53.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -71,8 +71,8 @@ diff -urN r-packages-new/r-brglm/meta.yaml r-packages-new.fixed/r-brglm/meta.yam
    # This is required to make R link correctly on Linux.
    rpaths:
 diff -urN r-packages-new/r-cairo/meta.yaml r-packages-new.fixed/r-cairo/meta.yaml
---- r-packages-new/r-cairo/meta.yaml	2017-06-14 13:25:42.000000000 +0100
-+++ r-packages-new.fixed/r-cairo/meta.yaml	2017-06-14 11:49:57.000000000 +0100
+--- r-packages-new/r-cairo/meta.yaml	2017-06-14 17:05:41.000000000 +0100
++++ r-packages-new.fixed/r-cairo/meta.yaml	2017-06-14 15:23:27.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -86,23 +86,23 @@ diff -urN r-packages-new/r-cairo/meta.yaml r-packages-new.fixed/r-cairo/meta.yam
  requirements:
    build:
      - r-base
-+    - pkg-config             # [not win]
++    - pkg-config           # [not win]
++    - cairo 1.14.*         # [not win]
++    - libpng >=1.6.27,<1.7 # [not win]
      - posix                # [win]
      - {{native}}toolchain  # [win]
      - gcc                  # [not win]
-+    - cairo 1.14.*           # [not win]
-+    - libpng >=1.6.27,<1.7   # [not win]
  
    run:
      - r-base
-+    - cairo 1.14.*           # [not win]
-+    - libpng >=1.6.27,<1.7   # [not win]
++    - cairo 1.14.*         # [not win]
++    - libpng >=1.6.27,<1.7 # [not win]
+     - {{native}}gcc-libs   # [win]
+     - libgcc               # [not win]
  
- test:
-   commands:
 diff -urN r-packages-new/r-catools/meta.yaml r-packages-new.fixed/r-catools/meta.yaml
---- r-packages-new/r-catools/meta.yaml	2017-06-14 13:25:48.000000000 +0100
-+++ r-packages-new.fixed/r-catools/meta.yaml	2017-06-14 11:51:07.000000000 +0100
+--- r-packages-new/r-catools/meta.yaml	2017-06-14 17:05:46.000000000 +0100
++++ r-packages-new.fixed/r-catools/meta.yaml	2017-06-14 15:20:53.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -113,8 +113,8 @@ diff -urN r-packages-new/r-catools/meta.yaml r-packages-new.fixed/r-catools/meta
    # This is required to make R link correctly on Linux.
    rpaths:
 diff -urN r-packages-new/r-curl/meta.yaml r-packages-new.fixed/r-curl/meta.yaml
---- r-packages-new/r-curl/meta.yaml	2017-06-14 13:26:08.000000000 +0100
-+++ r-packages-new.fixed/r-curl/meta.yaml	2017-06-14 12:05:44.000000000 +0100
+--- r-packages-new/r-curl/meta.yaml	2017-06-14 17:06:08.000000000 +0100
++++ r-packages-new.fixed/r-curl/meta.yaml	2017-06-14 15:24:21.000000000 +0100
 @@ -32,12 +32,14 @@
  requirements:
    build:
@@ -127,12 +127,12 @@ diff -urN r-packages-new/r-curl/meta.yaml r-packages-new.fixed/r-curl/meta.yaml
    run:
      - r-base
 +    - {{native}}curl
+     - {{native}}gcc-libs   # [win]
+     - libgcc               # [not win]
  
- test:
-   commands:
 diff -urN r-packages-new/r-data.table/build.sh r-packages-new.fixed/r-data.table/build.sh
---- r-packages-new/r-data.table/build.sh	2017-06-14 13:26:11.000000000 +0100
-+++ r-packages-new.fixed/r-data.table/build.sh	2017-06-14 12:06:49.000000000 +0100
+--- r-packages-new/r-data.table/build.sh	2017-06-14 17:06:12.000000000 +0100
++++ r-packages-new.fixed/r-data.table/build.sh	2017-06-14 15:20:53.000000000 +0100
 @@ -7,6 +7,11 @@
  $R CMD INSTALL --build .
  
@@ -146,8 +146,8 @@ diff -urN r-packages-new/r-data.table/build.sh r-packages-new.fixed/r-data.table
  # See
  # http://docs.continuum.io/conda/build.html
 diff -urN r-packages-new/r-dichromat/meta.yaml r-packages-new.fixed/r-dichromat/meta.yaml
---- r-packages-new/r-dichromat/meta.yaml	2017-06-14 13:26:19.000000000 +0100
-+++ r-packages-new.fixed/r-dichromat/meta.yaml	2017-06-14 12:08:52.000000000 +0100
+--- r-packages-new/r-dichromat/meta.yaml	2017-06-14 17:06:21.000000000 +0100
++++ r-packages-new.fixed/r-dichromat/meta.yaml	2017-06-14 15:20:53.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -158,8 +158,8 @@ diff -urN r-packages-new/r-dichromat/meta.yaml r-packages-new.fixed/r-dichromat/
    # This is required to make R link correctly on Linux.
    rpaths:
 diff -urN r-packages-new/r-domc/meta.yaml r-packages-new.fixed/r-domc/meta.yaml
---- r-packages-new/r-domc/meta.yaml	2017-06-14 13:26:21.000000000 +0100
-+++ r-packages-new.fixed/r-domc/meta.yaml	2017-06-14 12:09:35.000000000 +0100
+--- r-packages-new/r-domc/meta.yaml	2017-06-14 17:06:24.000000000 +0100
++++ r-packages-new.fixed/r-domc/meta.yaml	2017-06-14 15:20:53.000000000 +0100
 @@ -28,6 +28,7 @@
      - lib/R/lib/
      - lib/
@@ -169,8 +169,8 @@ diff -urN r-packages-new/r-domc/meta.yaml r-packages-new.fixed/r-domc/meta.yaml
  requirements:
    build:
 diff -urN r-packages-new/r-feather/build.sh r-packages-new.fixed/r-feather/build.sh
---- r-packages-new/r-feather/build.sh	2017-06-14 13:26:34.000000000 +0100
-+++ r-packages-new.fixed/r-feather/build.sh	2017-06-14 12:12:06.000000000 +0100
+--- r-packages-new/r-feather/build.sh	2017-06-14 17:06:38.000000000 +0100
++++ r-packages-new.fixed/r-feather/build.sh	2017-06-14 15:20:53.000000000 +0100
 @@ -4,6 +4,11 @@
  mv DESCRIPTION DESCRIPTION.old
  grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
@@ -184,8 +184,8 @@ diff -urN r-packages-new/r-feather/build.sh r-packages-new.fixed/r-feather/build
  
  # Add more build steps here, if they are necessary.
 diff -urN r-packages-new/r-fracdiff/meta.yaml r-packages-new.fixed/r-fracdiff/meta.yaml
---- r-packages-new/r-fracdiff/meta.yaml	2017-06-14 13:26:48.000000000 +0100
-+++ r-packages-new.fixed/r-fracdiff/meta.yaml	2017-06-14 12:14:29.000000000 +0100
+--- r-packages-new/r-fracdiff/meta.yaml	2017-06-14 17:06:52.000000000 +0100
++++ r-packages-new.fixed/r-fracdiff/meta.yaml	2017-06-14 15:20:53.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -196,8 +196,8 @@ diff -urN r-packages-new/r-fracdiff/meta.yaml r-packages-new.fixed/r-fracdiff/me
    # This is required to make R link correctly on Linux.
    rpaths:
 diff -urN r-packages-new/r-git2r/meta.yaml r-packages-new.fixed/r-git2r/meta.yaml
---- r-packages-new/r-git2r/meta.yaml	2017-06-14 13:27:03.000000000 +0100
-+++ r-packages-new.fixed/r-git2r/meta.yaml	2017-06-14 12:16:13.000000000 +0100
+--- r-packages-new/r-git2r/meta.yaml	2017-06-14 17:07:07.000000000 +0100
++++ r-packages-new.fixed/r-git2r/meta.yaml	2017-06-14 15:25:00.000000000 +0100
 @@ -32,12 +32,14 @@
  requirements:
    build:
@@ -210,12 +210,12 @@ diff -urN r-packages-new/r-git2r/meta.yaml r-packages-new.fixed/r-git2r/meta.yam
    run:
      - r-base
 +    - {{native}}openssl
+     - {{native}}gcc-libs   # [win]
+     - libgcc               # [not win]
  
- test:
-   commands:
 diff -urN r-packages-new/r-gsl/build.sh r-packages-new.fixed/r-gsl/build.sh
---- r-packages-new/r-gsl/build.sh	2017-06-14 13:27:12.000000000 +0100
-+++ r-packages-new.fixed/r-gsl/build.sh	2017-06-14 12:18:12.000000000 +0100
+--- r-packages-new/r-gsl/build.sh	2017-06-14 17:07:16.000000000 +0100
++++ r-packages-new.fixed/r-gsl/build.sh	2017-06-14 15:20:53.000000000 +0100
 @@ -4,6 +4,12 @@
  mv DESCRIPTION DESCRIPTION.old
  grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
@@ -230,8 +230,8 @@ diff -urN r-packages-new/r-gsl/build.sh r-packages-new.fixed/r-gsl/build.sh
  
  # Add more build steps here, if they are necessary.
 diff -urN r-packages-new/r-highr/meta.yaml r-packages-new.fixed/r-highr/meta.yaml
---- r-packages-new/r-highr/meta.yaml	2017-06-14 13:27:25.000000000 +0100
-+++ r-packages-new.fixed/r-highr/meta.yaml	2017-06-14 12:20:29.000000000 +0100
+--- r-packages-new/r-highr/meta.yaml	2017-06-14 17:07:29.000000000 +0100
++++ r-packages-new.fixed/r-highr/meta.yaml	2017-06-14 15:20:53.000000000 +0100
 @@ -54,7 +54,7 @@
    summary: Provides syntax highlighting for R source code. Currently it supports LaTeX and HTML
      output. Source code of other languages is supported via Andre Simon's highlight
@@ -242,8 +242,8 @@ diff -urN r-packages-new/r-highr/meta.yaml r-packages-new.fixed/r-highr/meta.yam
  # The original CRAN metadata for this package was:
  
 diff -urN r-packages-new/r-htmlwidgets/meta.yaml r-packages-new.fixed/r-htmlwidgets/meta.yaml
---- r-packages-new/r-htmlwidgets/meta.yaml	2017-06-14 13:27:33.000000000 +0100
-+++ r-packages-new.fixed/r-htmlwidgets/meta.yaml	2017-06-14 12:22:09.000000000 +0100
+--- r-packages-new/r-htmlwidgets/meta.yaml	2017-06-14 17:07:38.000000000 +0100
++++ r-packages-new.fixed/r-htmlwidgets/meta.yaml	2017-06-14 15:20:53.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -263,8 +263,8 @@ diff -urN r-packages-new/r-htmlwidgets/meta.yaml r-packages-new.fixed/r-htmlwidg
  test:
    commands:
 diff -urN r-packages-new/r-igraph/bld.bat r-packages-new.fixed/r-igraph/bld.bat
---- r-packages-new/r-igraph/bld.bat	2017-06-14 13:27:41.000000000 +0100
-+++ r-packages-new.fixed/r-igraph/bld.bat	2017-06-14 12:23:31.000000000 +0100
+--- r-packages-new/r-igraph/bld.bat	2017-06-14 17:07:46.000000000 +0100
++++ r-packages-new.fixed/r-igraph/bld.bat	2017-06-14 15:20:53.000000000 +0100
 @@ -1,3 +1,12 @@
 +@rem :: Prevent interpretation of /**/ as an absolute Windows path.
 +set MSYS2_ARG_CONV_EXCL=-DIGRAPH_THREAD_LOCAL
@@ -279,9 +279,9 @@ diff -urN r-packages-new/r-igraph/bld.bat r-packages-new.fixed/r-igraph/bld.bat
  if errorlevel 1 exit 1
  
 diff -urN r-packages-new/r-igraph/meta.yaml r-packages-new.fixed/r-igraph/meta.yaml
---- r-packages-new/r-igraph/meta.yaml	2017-06-14 13:27:41.000000000 +0100
-+++ r-packages-new.fixed/r-igraph/meta.yaml	2017-06-14 12:23:53.000000000 +0100
-@@ -36,9 +36,11 @@
+--- r-packages-new/r-igraph/meta.yaml	2017-06-14 17:07:46.000000000 +0100
++++ r-packages-new.fixed/r-igraph/meta.yaml	2017-06-14 15:25:56.000000000 +0100
+@@ -36,13 +36,16 @@
      - r-nmf
      - r-irlba
      - r-magrittr
@@ -293,18 +293,15 @@ diff -urN r-packages-new/r-igraph/meta.yaml r-packages-new.fixed/r-igraph/meta.y
  
    run:
      - r-base
-@@ -46,6 +48,8 @@
+-    - r-matrix
++    - {{native}}gmp
++    - {{native}}libxml2   # [win]    - r-matrix
      - r-nmf
      - r-irlba
      - r-magrittr
-+    - {{native}}gmp
-+    - {{native}}libxml2   # [win]
- 
- test:
-   commands:
 diff -urN r-packages-new/r-jpeg/meta.yaml r-packages-new.fixed/r-jpeg/meta.yaml
---- r-packages-new/r-jpeg/meta.yaml	2017-06-14 13:27:50.000000000 +0100
-+++ r-packages-new.fixed/r-jpeg/meta.yaml	2017-06-14 12:25:14.000000000 +0100
+--- r-packages-new/r-jpeg/meta.yaml	2017-06-14 17:07:56.000000000 +0100
++++ r-packages-new.fixed/r-jpeg/meta.yaml	2017-06-14 15:59:11.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -314,24 +311,31 @@ diff -urN r-packages-new/r-jpeg/meta.yaml r-packages-new.fixed/r-jpeg/meta.yaml
  
    # This is required to make R link correctly on Linux.
    rpaths:
-@@ -35,9 +35,13 @@
+@@ -32,15 +32,15 @@
+ requirements:
+   build:
+     - r-base
++    - {{native}}libjpeg-turbo  # [win]
++    - jpeg 9*                  # [not win]
++  run:
++    - {{native}}libjpeg-turbo  # [win]
++    - jpeg 9*                  # [not win]
      - posix                # [win]
      - {{native}}toolchain  # [win]
      - gcc                  # [not win]
-+    - {{native}}libjpeg-turbo  # [win]
-+    - jpeg 9*                  # [not win]
  
-   run:
-     - r-base
-+    - jpeg 9*                  # [not win]
-+    - {{native}}libjpeg-turbo  # [win]
- 
+-  run:
+-    - r-base
+-    - {{native}}gcc-libs   # [win]
+-    - libgcc               # [not win]
+-
  test:
    commands:
+     # You can put additional test commands to be run here.
 diff -urN r-packages-new/r-kernsmooth/meta.yaml r-packages-new.fixed/r-kernsmooth/meta.yaml
---- r-packages-new/r-kernsmooth/meta.yaml	2017-06-14 13:27:53.000000000 +0100
-+++ r-packages-new.fixed/r-kernsmooth/meta.yaml	2017-06-14 12:25:49.000000000 +0100
-@@ -57,7 +57,7 @@
+--- r-packages-new/r-kernsmooth/meta.yaml	2017-06-14 17:08:00.000000000 +0100
++++ r-packages-new.fixed/r-kernsmooth/meta.yaml	2017-06-14 15:20:53.000000000 +0100
+@@ -59,7 +59,7 @@
    summary: 'Functions for kernel smoothing (and density estimation) corresponding to the book:  Wand,
      M.P. and Jones, M.C. (1995) "Kernel Smoothing".'
  
@@ -341,8 +345,8 @@ diff -urN r-packages-new/r-kernsmooth/meta.yaml r-packages-new.fixed/r-kernsmoot
  # The original CRAN metadata for this package was:
  
 diff -urN r-packages-new/r-knitr/meta.yaml r-packages-new.fixed/r-knitr/meta.yaml
---- r-packages-new/r-knitr/meta.yaml	2017-06-14 13:27:55.000000000 +0100
-+++ r-packages-new.fixed/r-knitr/meta.yaml	2017-06-14 12:26:08.000000000 +0100
+--- r-packages-new/r-knitr/meta.yaml	2017-06-14 17:08:02.000000000 +0100
++++ r-packages-new.fixed/r-knitr/meta.yaml	2017-06-14 15:20:53.000000000 +0100
 @@ -65,7 +65,7 @@
    license: GPL
    summary: Provides a general-purpose tool for dynamic report generation in R using Literate
@@ -353,8 +357,8 @@ diff -urN r-packages-new/r-knitr/meta.yaml r-packages-new.fixed/r-knitr/meta.yam
  # The original CRAN metadata for this package was:
  
 diff -urN r-packages-new/r-labeling/meta.yaml r-packages-new.fixed/r-labeling/meta.yaml
---- r-packages-new/r-labeling/meta.yaml	2017-06-14 13:27:59.000000000 +0100
-+++ r-packages-new.fixed/r-labeling/meta.yaml	2017-06-14 12:26:57.000000000 +0100
+--- r-packages-new/r-labeling/meta.yaml	2017-06-14 17:08:05.000000000 +0100
++++ r-packages-new.fixed/r-labeling/meta.yaml	2017-06-14 15:20:53.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -365,8 +369,8 @@ diff -urN r-packages-new/r-labeling/meta.yaml r-packages-new.fixed/r-labeling/me
    # This is required to make R link correctly on Linux.
    rpaths:
 diff -urN r-packages-new/r-magrittr/meta.yaml r-packages-new.fixed/r-magrittr/meta.yaml
---- r-packages-new/r-magrittr/meta.yaml	2017-06-14 13:28:25.000000000 +0100
-+++ r-packages-new.fixed/r-magrittr/meta.yaml	2017-06-14 12:30:44.000000000 +0100
+--- r-packages-new/r-magrittr/meta.yaml	2017-06-14 17:08:31.000000000 +0100
++++ r-packages-new.fixed/r-magrittr/meta.yaml	2017-06-14 15:20:53.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -377,8 +381,8 @@ diff -urN r-packages-new/r-magrittr/meta.yaml r-packages-new.fixed/r-magrittr/me
    # This is required to make R link correctly on Linux.
    rpaths:
 diff -urN r-packages-new/r-minqa/meta.yaml r-packages-new.fixed/r-minqa/meta.yaml
---- r-packages-new/r-minqa/meta.yaml	2017-06-14 13:28:49.000000000 +0100
-+++ r-packages-new.fixed/r-minqa/meta.yaml	2017-06-14 12:34:25.000000000 +0100
+--- r-packages-new/r-minqa/meta.yaml	2017-06-14 17:08:56.000000000 +0100
++++ r-packages-new.fixed/r-minqa/meta.yaml	2017-06-14 16:00:18.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -388,26 +392,9 @@ diff -urN r-packages-new/r-minqa/meta.yaml r-packages-new.fixed/r-minqa/meta.yam
  
    # This is required to make R link correctly on Linux.
    rpaths:
-@@ -32,14 +32,14 @@
- requirements:
-   build:
-     - r-base
--    - r-rcpp
-+    - r-rcpp >=0.9.10
-     - posix                # [win]
-     - {{native}}toolchain  # [win]
-     - gcc                  # [not win]
- 
-   run:
-     - r-base
--    - r-rcpp
-+    - r-rcpp >=0.9.10
- 
- test:
-   commands:
 diff -urN r-packages-new/r-mlmrev/meta.yaml r-packages-new.fixed/r-mlmrev/meta.yaml
---- r-packages-new/r-mlmrev/meta.yaml	2017-06-14 13:28:51.000000000 +0100
-+++ r-packages-new.fixed/r-mlmrev/meta.yaml	2017-06-14 12:34:57.000000000 +0100
+--- r-packages-new/r-mlmrev/meta.yaml	2017-06-14 17:08:58.000000000 +0100
++++ r-packages-new.fixed/r-mlmrev/meta.yaml	2017-06-14 15:20:53.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -418,8 +405,8 @@ diff -urN r-packages-new/r-mlmrev/meta.yaml r-packages-new.fixed/r-mlmrev/meta.y
    # This is required to make R link correctly on Linux.
    rpaths:
 diff -urN r-packages-new/r-nloptr/build.sh r-packages-new.fixed/r-nloptr/build.sh
---- r-packages-new/r-nloptr/build.sh	2017-06-14 13:29:07.000000000 +0100
-+++ r-packages-new.fixed/r-nloptr/build.sh	2017-06-14 12:38:05.000000000 +0100
+--- r-packages-new/r-nloptr/build.sh	2017-06-14 17:09:15.000000000 +0100
++++ r-packages-new.fixed/r-nloptr/build.sh	2017-06-14 15:20:53.000000000 +0100
 @@ -4,7 +4,8 @@
  mv DESCRIPTION DESCRIPTION.old
  grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
@@ -431,8 +418,8 @@ diff -urN r-packages-new/r-nloptr/build.sh r-packages-new.fixed/r-nloptr/build.s
  # Add more build steps here, if they are necessary.
  
 diff -urN r-packages-new/r-nloptr/meta.yaml r-packages-new.fixed/r-nloptr/meta.yaml
---- r-packages-new/r-nloptr/meta.yaml	2017-06-14 13:29:07.000000000 +0100
-+++ r-packages-new.fixed/r-nloptr/meta.yaml	2017-06-14 12:38:38.000000000 +0100
+--- r-packages-new/r-nloptr/meta.yaml	2017-06-14 17:09:15.000000000 +0100
++++ r-packages-new.fixed/r-nloptr/meta.yaml	2017-06-14 16:03:26.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -453,12 +440,12 @@ diff -urN r-packages-new/r-nloptr/meta.yaml r-packages-new.fixed/r-nloptr/meta.y
    run:
      - r-base
 +    - {{native}}nlopt      # [win]
+     - {{native}}gcc-libs   # [win]
+     - libgcc               # [not win]
  
- test:
-   commands:
 diff -urN r-packages-new/r-nycflights13/meta.yaml r-packages-new.fixed/r-nycflights13/meta.yaml
---- r-packages-new/r-nycflights13/meta.yaml	2017-06-14 13:29:17.000000000 +0100
-+++ r-packages-new.fixed/r-nycflights13/meta.yaml	2017-06-14 12:39:42.000000000 +0100
+--- r-packages-new/r-nycflights13/meta.yaml	2017-06-14 17:09:24.000000000 +0100
++++ r-packages-new.fixed/r-nycflights13/meta.yaml	2017-06-14 15:20:53.000000000 +0100
 @@ -55,7 +55,7 @@
    license: CC0
    summary: Airline on-time data for all flights departing NYC in 2013. Also includes useful 'metadata'
@@ -469,9 +456,9 @@ diff -urN r-packages-new/r-nycflights13/meta.yaml r-packages-new.fixed/r-nycflig
  # The original CRAN metadata for this package was:
  
 diff -urN r-packages-new/r-pbdzmq/meta.yaml r-packages-new.fixed/r-pbdzmq/meta.yaml
---- r-packages-new/r-pbdzmq/meta.yaml	2017-06-14 13:29:25.000000000 +0100
-+++ r-packages-new.fixed/r-pbdzmq/meta.yaml	2017-06-14 12:40:53.000000000 +0100
-@@ -29,17 +29,23 @@
+--- r-packages-new/r-pbdzmq/meta.yaml	2017-06-14 17:09:33.000000000 +0100
++++ r-packages-new.fixed/r-pbdzmq/meta.yaml	2017-06-14 16:11:37.000000000 +0100
+@@ -29,10 +29,15 @@
      - lib/
  
  # Suggests: pbdRPC
@@ -482,22 +469,22 @@ diff -urN r-packages-new/r-pbdzmq/meta.yaml r-packages-new.fixed/r-pbdzmq/meta.y
    build:
      - r-base
      - r-r6
++    - pkg-config           # [not win]
++    - zeromq 4.1.*         # [not win]
      - posix                # [win]
-+    - pkg-config          # [not win]
      - {{native}}toolchain  # [win]
      - gcc                  # [not win]
-+    - zeromq 4.1.*        # [not win]
- 
-   run:
-     - r-base
+@@ -42,6 +47,7 @@
      - r-r6
-+    - zeromq 4.1.*        # [not win]
+     - {{native}}gcc-libs   # [win]
+     - libgcc               # [not win]
++    - zeromq 4.1.*         # [not win]
  
  test:
    commands:
 diff -urN r-packages-new/r-perm/meta.yaml r-packages-new.fixed/r-perm/meta.yaml
---- r-packages-new/r-perm/meta.yaml	2017-06-14 13:29:30.000000000 +0100
-+++ r-packages-new.fixed/r-perm/meta.yaml	2017-06-14 12:42:02.000000000 +0100
+--- r-packages-new/r-perm/meta.yaml	2017-06-14 17:09:38.000000000 +0100
++++ r-packages-new.fixed/r-perm/meta.yaml	2017-06-14 15:20:53.000000000 +0100
 @@ -52,7 +52,7 @@
    home: https://CRAN.R-project.org/package=perm
    license: GPL
@@ -508,8 +495,8 @@ diff -urN r-packages-new/r-perm/meta.yaml r-packages-new.fixed/r-perm/meta.yaml
  # The original CRAN metadata for this package was:
  
 diff -urN r-packages-new/r-pki/meta.yaml r-packages-new.fixed/r-pki/meta.yaml
---- r-packages-new/r-pki/meta.yaml	2017-06-14 13:29:33.000000000 +0100
-+++ r-packages-new.fixed/r-pki/meta.yaml	2017-06-14 12:42:42.000000000 +0100
+--- r-packages-new/r-pki/meta.yaml	2017-06-14 17:09:41.000000000 +0100
++++ r-packages-new.fixed/r-pki/meta.yaml	2017-06-14 16:14:02.000000000 +0100
 @@ -15,9 +15,9 @@
  
  
@@ -522,42 +509,24 @@ diff -urN r-packages-new/r-pki/meta.yaml r-packages-new.fixed/r-pki/meta.yaml
  
  build:
    # If this is a new build for the same version, increment the build number.
-@@ -36,10 +36,12 @@
+@@ -34,12 +34,14 @@
+     - r-base
+     - r-base64enc
      - posix                # [win]
++    - {{native}}openssl
      - {{native}}toolchain  # [win]
      - gcc                  # [not win]
-+    - {{native}}openssl
  
    run:
      - r-base
      - r-base64enc
 +    - {{native}}openssl
+     - {{native}}gcc-libs   # [win]
+     - libgcc               # [not win]
  
- test:
-   commands:
-diff -urN r-packages-new/r-plyr/meta.yaml r-packages-new.fixed/r-plyr/meta.yaml
---- r-packages-new/r-plyr/meta.yaml	2017-06-14 13:29:38.000000000 +0100
-+++ r-packages-new.fixed/r-plyr/meta.yaml	2017-06-14 12:43:47.000000000 +0100
-@@ -32,14 +32,14 @@
- requirements:
-   build:
-     - r-base
--    - r-rcpp
-+    - r-rcpp >=0.11.0
-     - posix                # [win]
-     - {{native}}toolchain  # [win]
-     - gcc                  # [not win]
- 
-   run:
-     - r-base
--    - r-rcpp
-+    - r-rcpp >=0.11.0
- 
- test:
-   commands:
 diff -urN r-packages-new/r-png/meta.yaml r-packages-new.fixed/r-png/meta.yaml
---- r-packages-new/r-png/meta.yaml	2017-06-14 13:29:40.000000000 +0100
-+++ r-packages-new.fixed/r-png/meta.yaml	2017-06-14 12:44:14.000000000 +0100
+--- r-packages-new/r-png/meta.yaml	2017-06-14 17:09:49.000000000 +0100
++++ r-packages-new.fixed/r-png/meta.yaml	2017-06-14 16:37:38.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -567,7 +536,7 @@ diff -urN r-packages-new/r-png/meta.yaml r-packages-new.fixed/r-png/meta.yaml
  
    # This is required to make R link correctly on Linux.
    rpaths:
-@@ -35,9 +35,15 @@
+@@ -35,11 +35,17 @@
      - posix                # [win]
      - {{native}}toolchain  # [win]
      - gcc                  # [not win]
@@ -577,6 +546,8 @@ diff -urN r-packages-new/r-png/meta.yaml r-packages-new.fixed/r-png/meta.yaml
  
    run:
      - r-base
+     - {{native}}gcc-libs   # [win]
+     - libgcc               # [not win]
 +    - {{native}}libpng      # [win]
 +    - libpng >=1.6.27,<1.7  # [not win]
 +    - {{native}}zlib
@@ -584,8 +555,8 @@ diff -urN r-packages-new/r-png/meta.yaml r-packages-new.fixed/r-png/meta.yaml
  test:
    commands:
 diff -urN r-packages-new/r-profilemodel/meta.yaml r-packages-new.fixed/r-profilemodel/meta.yaml
---- r-packages-new/r-profilemodel/meta.yaml	2017-06-14 13:29:46.000000000 +0100
-+++ r-packages-new.fixed/r-profilemodel/meta.yaml	2017-06-14 12:45:06.000000000 +0100
+--- r-packages-new/r-profilemodel/meta.yaml	2017-06-14 17:09:56.000000000 +0100
++++ r-packages-new.fixed/r-profilemodel/meta.yaml	2017-06-14 15:20:53.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -595,30 +566,9 @@ diff -urN r-packages-new/r-profilemodel/meta.yaml r-packages-new.fixed/r-profile
  
    # This is required to make R link correctly on Linux.
    rpaths:
-diff -urN r-packages-new/r-pryr/meta.yaml r-packages-new.fixed/r-pryr/meta.yaml
---- r-packages-new/r-pryr/meta.yaml	2017-06-14 13:29:49.000000000 +0100
-+++ r-packages-new.fixed/r-pryr/meta.yaml	2017-06-14 11:12:20.000000000 +0100
-@@ -32,7 +32,7 @@
- requirements:
-   build:
-     - r-base
--    - r-rcpp
-+    - r-rcpp >=0.11.0
-     - r-codetools
-     - r-stringr
-     - posix                # [win]
-@@ -41,7 +41,7 @@
- 
-   run:
-     - r-base
--    - r-rcpp
-+    - r-rcpp >=0.11.0
-     - r-codetools
-     - r-stringr
- 
 diff -urN r-packages-new/r-quadprog/meta.yaml r-packages-new.fixed/r-quadprog/meta.yaml
---- r-packages-new/r-quadprog/meta.yaml	2017-06-14 13:29:55.000000000 +0100
-+++ r-packages-new.fixed/r-quadprog/meta.yaml	2017-06-14 12:52:46.000000000 +0100
+--- r-packages-new/r-quadprog/meta.yaml	2017-06-14 17:10:06.000000000 +0100
++++ r-packages-new.fixed/r-quadprog/meta.yaml	2017-06-14 15:20:59.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -629,8 +579,8 @@ diff -urN r-packages-new/r-quadprog/meta.yaml r-packages-new.fixed/r-quadprog/me
    # This is required to make R link correctly on Linux.
    rpaths:
 diff -urN r-packages-new/r-rcolorbrewer/meta.yaml r-packages-new.fixed/r-rcolorbrewer/meta.yaml
---- r-packages-new/r-rcolorbrewer/meta.yaml	2017-06-14 13:30:14.000000000 +0100
-+++ r-packages-new.fixed/r-rcolorbrewer/meta.yaml	2017-06-14 12:58:26.000000000 +0100
+--- r-packages-new/r-rcolorbrewer/meta.yaml	2017-06-14 17:10:26.000000000 +0100
++++ r-packages-new.fixed/r-rcolorbrewer/meta.yaml	2017-06-14 15:20:59.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -641,8 +591,8 @@ diff -urN r-packages-new/r-rcolorbrewer/meta.yaml r-packages-new.fixed/r-rcolorb
    # This is required to make R link correctly on Linux.
    rpaths:
 diff -urN r-packages-new/r-rcpp/meta.yaml r-packages-new.fixed/r-rcpp/meta.yaml
---- r-packages-new/r-rcpp/meta.yaml	2017-06-14 13:30:17.000000000 +0100
-+++ r-packages-new.fixed/r-rcpp/meta.yaml	2017-06-14 12:58:48.000000000 +0100
+--- r-packages-new/r-rcpp/meta.yaml	2017-06-14 17:10:28.000000000 +0100
++++ r-packages-new.fixed/r-rcpp/meta.yaml	2017-06-14 15:20:59.000000000 +0100
 @@ -15,9 +15,9 @@
  
  
@@ -656,51 +606,10 @@ diff -urN r-packages-new/r-rcpp/meta.yaml r-packages-new.fixed/r-rcpp/meta.yaml
  
  build:
    # If this is a new build for the same version, increment the build number.
-diff -urN r-packages-new/r-rcpparmadillo/meta.yaml r-packages-new.fixed/r-rcpparmadillo/meta.yaml
---- r-packages-new/r-rcpparmadillo/meta.yaml	2017-06-14 13:30:18.000000000 +0100
-+++ r-packages-new.fixed/r-rcpparmadillo/meta.yaml	2017-06-14 12:59:09.000000000 +0100
-@@ -32,14 +32,14 @@
- requirements:
-   build:
-     - r-base
--    - r-rcpp
-+    - r-rcpp >=0.11.0
-     - posix                # [win]
-     - {{native}}toolchain  # [win]
-     - gcc                  # [not win]
- 
-   run:
-     - r-base
--    - r-rcpp
-+    - r-rcpp >=0.11.0
- 
- test:
-   commands:
-diff -urN r-packages-new/r-rcppeigen/meta.yaml r-packages-new.fixed/r-rcppeigen/meta.yaml
---- r-packages-new/r-rcppeigen/meta.yaml	2017-06-14 13:30:20.000000000 +0100
-+++ r-packages-new.fixed/r-rcppeigen/meta.yaml	2017-06-14 11:12:53.000000000 +0100
-@@ -33,7 +33,7 @@
-   build:
-     - r-base
-     - r-matrix >=1.1_0
--    - r-rcpp
-+    - r-rcpp >=0.11.0
-     - posix                # [win]
-     - {{native}}toolchain  # [win]
-     - gcc                  # [not win]
-@@ -41,7 +41,7 @@
-   run:
-     - r-base
-     - r-matrix >=1.1_0
--    - r-rcpp
-+    - r-rcpp >=0.11.0
- 
- test:
-   commands:
 diff -urN r-packages-new/r-rcurl/meta.yaml r-packages-new.fixed/r-rcurl/meta.yaml
---- r-packages-new/r-rcurl/meta.yaml	2017-06-14 13:30:22.000000000 +0100
-+++ r-packages-new.fixed/r-rcurl/meta.yaml	2017-06-14 12:59:40.000000000 +0100
-@@ -36,10 +36,12 @@
+--- r-packages-new/r-rcurl/meta.yaml	2017-06-14 17:10:35.000000000 +0100
++++ r-packages-new.fixed/r-rcurl/meta.yaml	2017-06-14 16:48:12.000000000 +0100
+@@ -36,12 +36,14 @@
      - posix                # [win]
      - {{native}}toolchain  # [win]
      - gcc                  # [not win]
@@ -709,13 +618,15 @@ diff -urN r-packages-new/r-rcurl/meta.yaml r-packages-new.fixed/r-rcurl/meta.yam
    run:
      - r-base
      - r-bitops
+     - {{native}}gcc-libs   # [win]
+     - libgcc               # [not win]
 +    - {{native}}curl       # [not osx]
  
  test:
    commands:
 diff -urN r-packages-new/r-rjava/meta.yaml r-packages-new.fixed/r-rjava/meta.yaml
---- r-packages-new/r-rjava/meta.yaml	2017-06-14 13:30:36.000000000 +0100
-+++ r-packages-new.fixed/r-rjava/meta.yaml	2017-06-14 13:02:23.000000000 +0100
+--- r-packages-new/r-rjava/meta.yaml	2017-06-14 17:10:49.000000000 +0100
++++ r-packages-new.fixed/r-rjava/meta.yaml	2017-06-14 15:21:00.000000000 +0100
 @@ -15,9 +15,8 @@
  
  
@@ -737,8 +648,8 @@ diff -urN r-packages-new/r-rjava/meta.yaml r-packages-new.fixed/r-rjava/meta.yam
      - gcc                  # [not win]
  
 diff -urN r-packages-new/r-rjsonio/meta.yaml r-packages-new.fixed/r-rjsonio/meta.yaml
---- r-packages-new/r-rjsonio/meta.yaml	2017-06-14 13:30:40.000000000 +0100
-+++ r-packages-new.fixed/r-rjsonio/meta.yaml	2017-06-14 13:02:53.000000000 +0100
+--- r-packages-new/r-rjsonio/meta.yaml	2017-06-14 17:10:52.000000000 +0100
++++ r-packages-new.fixed/r-rjsonio/meta.yaml	2017-06-14 15:21:00.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -749,8 +660,8 @@ diff -urN r-packages-new/r-rjsonio/meta.yaml r-packages-new.fixed/r-rjsonio/meta
    # This is required to make R link correctly on Linux.
    rpaths:
 diff -urN r-packages-new/r-rmarkdown/meta.yaml r-packages-new.fixed/r-rmarkdown/meta.yaml
---- r-packages-new/r-rmarkdown/meta.yaml	2017-06-14 13:30:43.000000000 +0100
-+++ r-packages-new.fixed/r-rmarkdown/meta.yaml	2017-06-14 13:03:26.000000000 +0100
+--- r-packages-new/r-rmarkdown/meta.yaml	2017-06-14 17:10:56.000000000 +0100
++++ r-packages-new.fixed/r-rmarkdown/meta.yaml	2017-06-14 15:21:00.000000000 +0100
 @@ -51,6 +51,8 @@
      - r-knitr >=1.14
      - r-rprojroot
@@ -761,9 +672,9 @@ diff -urN r-packages-new/r-rmarkdown/meta.yaml r-packages-new.fixed/r-rmarkdown/
  test:
    commands:
 diff -urN r-packages-new/r-rodbc/meta.yaml r-packages-new.fixed/r-rodbc/meta.yaml
---- r-packages-new/r-rodbc/meta.yaml	2017-06-14 13:30:52.000000000 +0100
-+++ r-packages-new.fixed/r-rodbc/meta.yaml	2017-06-14 13:04:35.000000000 +0100
-@@ -35,9 +35,11 @@
+--- r-packages-new/r-rodbc/meta.yaml	2017-06-14 17:11:04.000000000 +0100
++++ r-packages-new.fixed/r-rodbc/meta.yaml	2017-06-14 16:48:52.000000000 +0100
+@@ -35,11 +35,13 @@
      - posix                # [win]
      - {{native}}toolchain  # [win]
      - gcc                  # [not win]
@@ -771,34 +682,15 @@ diff -urN r-packages-new/r-rodbc/meta.yaml r-packages-new.fixed/r-rodbc/meta.yam
  
    run:
      - r-base
+     - {{native}}gcc-libs   # [win]
+     - libgcc               # [not win]
 +    - unixodbc             # [not win]
  
  test:
    commands:
-diff -urN r-packages-new/r-roxygen2/meta.yaml r-packages-new.fixed/r-roxygen2/meta.yaml
---- r-packages-new/r-roxygen2/meta.yaml	2017-06-14 13:30:53.000000000 +0100
-+++ r-packages-new.fixed/r-roxygen2/meta.yaml	2017-06-14 11:13:30.000000000 +0100
-@@ -33,7 +33,7 @@
-   build:
-     - r-base
-     - r-r6
--    - r-rcpp
-+    - r-rcpp >=0.11.0
-     - r-brew
-     - r-commonmark
-     - r-desc
-@@ -48,7 +48,7 @@
-   run:
-     - r-base
-     - r-r6
--    - r-rcpp
-+    - r-rcpp >=0.11.0
-     - r-brew
-     - r-commonmark
-     - r-desc
 diff -urN r-packages-new/r-rserve/build.sh r-packages-new.fixed/r-rserve/build.sh
---- r-packages-new/r-rserve/build.sh	2017-06-14 13:30:59.000000000 +0100
-+++ r-packages-new.fixed/r-rserve/build.sh	2017-06-14 13:05:50.000000000 +0100
+--- r-packages-new/r-rserve/build.sh	2017-06-14 17:11:12.000000000 +0100
++++ r-packages-new.fixed/r-rserve/build.sh	2017-06-14 15:21:01.000000000 +0100
 @@ -4,7 +4,17 @@
  mv DESCRIPTION DESCRIPTION.old
  grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
@@ -819,43 +711,47 @@ diff -urN r-packages-new/r-rserve/build.sh r-packages-new.fixed/r-rserve/build.s
  # Add more build steps here, if they are necessary.
  
 diff -urN r-packages-new/r-rserve/meta.yaml r-packages-new.fixed/r-rserve/meta.yaml
---- r-packages-new/r-rserve/meta.yaml	2017-06-14 13:30:59.000000000 +0100
-+++ r-packages-new.fixed/r-rserve/meta.yaml	2017-06-14 13:06:30.000000000 +0100
-@@ -35,9 +35,11 @@
+--- r-packages-new/r-rserve/meta.yaml	2017-06-14 17:11:12.000000000 +0100
++++ r-packages-new.fixed/r-rserve/meta.yaml	2017-06-14 16:53:31.000000000 +0100
+@@ -35,11 +35,13 @@
      - posix                # [win]
      - {{native}}toolchain  # [win]
      - gcc                  # [not win]
-+    - libiconv            # [osx]
++    - libiconv             # [osx]
  
    run:
      - r-base
-+    - libiconv            # [osx]
+     - {{native}}gcc-libs   # [win]
+     - libgcc               # [not win]
++    - libiconv             # [osx]
  
  test:
    commands:
 diff -urN r-packages-new/r-rzmq/meta.yaml r-packages-new.fixed/r-rzmq/meta.yaml
---- r-packages-new/r-rzmq/meta.yaml	2017-06-14 13:31:10.000000000 +0100
-+++ r-packages-new.fixed/r-rzmq/meta.yaml	2017-06-14 13:08:07.000000000 +0100
-@@ -33,11 +33,16 @@
+--- r-packages-new/r-rzmq/meta.yaml	2017-06-14 17:11:23.000000000 +0100
++++ r-packages-new.fixed/r-rzmq/meta.yaml	2017-06-14 16:55:10.000000000 +0100
+@@ -33,6 +33,9 @@
    build:
      - r-base
      - posix                # [win]
 +    - {{posix}}pkg-config
++    - {{native}}zeromq     # [win]
++    - zeromq 4.1.*         # [not win]
      - {{native}}toolchain  # [win]
      - gcc                  # [not win]
-+    - {{native}}zeromq    # [win]
-+    - zeromq 4.1.*        # [not win]
  
-   run:
+@@ -40,6 +43,8 @@
      - r-base
-+    - {{native}}zeromq    # [win]
-+    - zeromq 4.1.*        # [not win]
+     - {{native}}gcc-libs   # [win]
+     - libgcc               # [not win]
++    - {{native}}zeromq     # [win]
++    - zeromq 4.1.*         # [not win]
  
  test:
    commands:
 diff -urN r-packages-new/r-testit/meta.yaml r-packages-new.fixed/r-testit/meta.yaml
---- r-packages-new/r-testit/meta.yaml	2017-06-14 13:31:52.000000000 +0100
-+++ r-packages-new.fixed/r-testit/meta.yaml	2017-06-14 13:13:20.000000000 +0100
+--- r-packages-new/r-testit/meta.yaml	2017-06-14 17:12:07.000000000 +0100
++++ r-packages-new.fixed/r-testit/meta.yaml	2017-06-14 15:21:01.000000000 +0100
 @@ -53,7 +53,7 @@
    license: GPL
    summary: Provides two convenience functions assert() and test_pkg() to facilitate testing R
@@ -866,8 +762,8 @@ diff -urN r-packages-new/r-testit/meta.yaml r-packages-new.fixed/r-testit/meta.y
  # The original CRAN metadata for this package was:
  
 diff -urN r-packages-new/r-timedate/meta.yaml r-packages-new.fixed/r-timedate/meta.yaml
---- r-packages-new/r-timedate/meta.yaml	2017-06-14 13:32:07.000000000 +0100
-+++ r-packages-new.fixed/r-timedate/meta.yaml	2017-06-14 13:15:02.000000000 +0100
+--- r-packages-new/r-timedate/meta.yaml	2017-06-14 17:12:22.000000000 +0100
++++ r-packages-new.fixed/r-timedate/meta.yaml	2017-06-14 15:21:01.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -877,9 +773,30 @@ diff -urN r-packages-new/r-timedate/meta.yaml r-packages-new.fixed/r-timedate/me
  
    # This is required to make R link correctly on Linux.
    rpaths:
+diff -urN r-packages-new/r-ttr/meta.yaml r-packages-new.fixed/r-ttr/meta.yaml
+--- r-packages-new/r-ttr/meta.yaml	2017-06-14 17:12:28.000000000 +0100
++++ r-packages-new.fixed/r-ttr/meta.yaml	2017-06-14 15:05:10.000000000 +0100
+@@ -32,7 +32,7 @@
+ requirements:
+   build:
+     - r-base
+-    - r-xts
++    - r-xts >=0.9_3
+     - r-zoo
+     - posix                # [win]
+     - {{native}}toolchain  # [win]
+@@ -40,7 +40,7 @@
+ 
+   run:
+     - r-base
+-    - r-xts
++    - r-xts >=0.9_3
+     - r-zoo
+     - {{native}}gcc-libs   # [win]
+     - libgcc               # [not win]
 diff -urN r-packages-new/r-weatherdata/meta.yaml r-packages-new.fixed/r-weatherdata/meta.yaml
---- r-packages-new/r-weatherdata/meta.yaml	2017-06-14 13:32:28.000000000 +0100
-+++ r-packages-new.fixed/r-weatherdata/meta.yaml	2017-06-14 13:21:56.000000000 +0100
+--- r-packages-new/r-weatherdata/meta.yaml	2017-06-14 17:12:43.000000000 +0100
++++ r-packages-new.fixed/r-weatherdata/meta.yaml	2017-06-14 15:21:01.000000000 +0100
 @@ -58,7 +58,7 @@
    summary: Functions that help in fetching weather data from websites. Given a location and a
      date range, these functions help fetch weather data (temperature, pressure etc.)
@@ -890,8 +807,8 @@ diff -urN r-packages-new/r-weatherdata/meta.yaml r-packages-new.fixed/r-weatherd
  # The original CRAN metadata for this package was:
  
 diff -urN r-packages-new/r-whisker/meta.yaml r-packages-new.fixed/r-whisker/meta.yaml
---- r-packages-new/r-whisker/meta.yaml	2017-06-14 13:32:29.000000000 +0100
-+++ r-packages-new.fixed/r-whisker/meta.yaml	2017-06-14 13:21:37.000000000 +0100
+--- r-packages-new/r-whisker/meta.yaml	2017-06-14 17:12:45.000000000 +0100
++++ r-packages-new.fixed/r-whisker/meta.yaml	2017-06-14 15:21:01.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -902,8 +819,8 @@ diff -urN r-packages-new/r-whisker/meta.yaml r-packages-new.fixed/r-whisker/meta
    # This is required to make R link correctly on Linux.
    rpaths:
 diff -urN r-packages-new/r-xlsx/meta.yaml r-packages-new.fixed/r-xlsx/meta.yaml
---- r-packages-new/r-xlsx/meta.yaml	2017-06-14 13:32:32.000000000 +0100
-+++ r-packages-new.fixed/r-xlsx/meta.yaml	2017-06-14 13:21:18.000000000 +0100
+--- r-packages-new/r-xlsx/meta.yaml	2017-06-14 17:12:48.000000000 +0100
++++ r-packages-new.fixed/r-xlsx/meta.yaml	2017-06-14 15:21:01.000000000 +0100
 @@ -28,6 +28,7 @@
      - lib/R/lib/
      - lib/
@@ -913,8 +830,8 @@ diff -urN r-packages-new/r-xlsx/meta.yaml r-packages-new.fixed/r-xlsx/meta.yaml
  requirements:
    build:
 diff -urN r-packages-new/r-xlsxjars/meta.yaml r-packages-new.fixed/r-xlsxjars/meta.yaml
---- r-packages-new/r-xlsxjars/meta.yaml	2017-06-14 13:32:36.000000000 +0100
-+++ r-packages-new.fixed/r-xlsxjars/meta.yaml	2017-06-14 13:21:07.000000000 +0100
+--- r-packages-new/r-xlsxjars/meta.yaml	2017-06-14 17:12:52.000000000 +0100
++++ r-packages-new.fixed/r-xlsxjars/meta.yaml	2017-06-14 15:21:01.000000000 +0100
 @@ -28,10 +28,12 @@
      - lib/R/lib/
      - lib/
@@ -929,8 +846,8 @@ diff -urN r-packages-new/r-xlsxjars/meta.yaml r-packages-new.fixed/r-xlsxjars/me
  
    run:
 diff -urN r-packages-new/r-xml/bld.bat r-packages-new.fixed/r-xml/bld.bat
---- r-packages-new/r-xml/bld.bat	2017-06-14 13:32:38.000000000 +0100
-+++ r-packages-new.fixed/r-xml/bld.bat	2017-06-14 13:19:49.000000000 +0100
+--- r-packages-new/r-xml/bld.bat	2017-06-14 17:12:53.000000000 +0100
++++ r-packages-new.fixed/r-xml/bld.bat	2017-06-14 15:21:01.000000000 +0100
 @@ -1,3 +1,8 @@
 +@rem :: Prevent interpretation of \? as escaped character.
 +@rem :: (where I'm not sure which character ? represents)
@@ -941,9 +858,9 @@ diff -urN r-packages-new/r-xml/bld.bat r-packages-new.fixed/r-xml/bld.bat
  if errorlevel 1 exit 1
  
 diff -urN r-packages-new/r-xml/meta.yaml r-packages-new.fixed/r-xml/meta.yaml
---- r-packages-new/r-xml/meta.yaml	2017-06-14 13:32:38.000000000 +0100
-+++ r-packages-new.fixed/r-xml/meta.yaml	2017-06-14 13:20:14.000000000 +0100
-@@ -35,9 +35,11 @@
+--- r-packages-new/r-xml/meta.yaml	2017-06-14 17:12:53.000000000 +0100
++++ r-packages-new.fixed/r-xml/meta.yaml	2017-06-14 16:57:17.000000000 +0100
+@@ -35,11 +35,13 @@
      - posix                # [win]
      - {{native}}toolchain  # [win]
      - gcc                  # [not win]
@@ -951,36 +868,73 @@ diff -urN r-packages-new/r-xml/meta.yaml r-packages-new.fixed/r-xml/meta.yaml
  
    run:
      - r-base
+     - {{native}}gcc-libs   # [win]
+     - libgcc               # [not win]
 +    - {{native}}libxml2
  
  test:
    commands:
 diff -urN r-packages-new/r-xml2/meta.yaml r-packages-new.fixed/r-xml2/meta.yaml
---- r-packages-new/r-xml2/meta.yaml	2017-06-14 13:32:39.000000000 +0100
-+++ r-packages-new.fixed/r-xml2/meta.yaml	2017-06-14 13:18:12.000000000 +0100
-@@ -33,15 +33,17 @@
-   build:
-     - r-base
-     - r-bh
--    - r-rcpp
-+    - r-rcpp >=0.11.4.6
+--- r-packages-new/r-xml2/meta.yaml	2017-06-14 17:12:55.000000000 +0100
++++ r-packages-new.fixed/r-xml2/meta.yaml	2017-06-14 16:59:28.000000000 +0100
+@@ -37,6 +37,7 @@
      - posix                # [win]
      - {{native}}toolchain  # [win]
      - gcc                  # [not win]
-+    - {{native}}libxml2
++     - {{native}}libxml2
  
    run:
      - r-base
-     - r-bh
--    - r-rcpp
-+    - r-rcpp >=0.11.4.6
+@@ -44,6 +45,7 @@
+     - r-rcpp >=0.11.4.6
+     - {{native}}gcc-libs   # [win]
+     - libgcc               # [not win]
 +    - {{native}}libxml2
  
  test:
    commands:
+diff -urN r-packages-new/r-xml2/meta.yaml.rej r-packages-new.fixed/r-xml2/meta.yaml.rej
+--- r-packages-new/r-xml2/meta.yaml.rej	1970-01-01 01:00:00.000000000 +0100
++++ r-packages-new.fixed/r-xml2/meta.yaml.rej	2017-06-14 15:21:01.000000000 +0100
+@@ -0,0 +1,35 @@
++***************
++*** 33,47 ****
++    build:
++      - r-base
++      - r-bh
++-     - r-rcpp
++      - posix                # [win]
++      - {{native}}toolchain  # [win]
++      - gcc                  # [not win]
++  
++    run:
++      - r-base
++      - r-bh
++-     - r-rcpp
++  
++  test:
++    commands:
++--- 33,49 ----
++    build:
++      - r-base
++      - r-bh
+++     - r-rcpp >=0.11.4.6
++      - posix                # [win]
++      - {{native}}toolchain  # [win]
++      - gcc                  # [not win]
+++     - {{native}}libxml2
++  
++    run:
++      - r-base
++      - r-bh
+++     - r-rcpp >=0.11.4.6
+++     - {{native}}libxml2
++  
++  test:
++    commands:
 diff -urN r-packages-new/r-xts/meta.yaml r-packages-new.fixed/r-xts/meta.yaml
---- r-packages-new/r-xts/meta.yaml	2017-06-14 13:32:43.000000000 +0100
-+++ r-packages-new.fixed/r-xts/meta.yaml	2017-06-14 13:17:40.000000000 +0100
+--- r-packages-new/r-xts/meta.yaml	2017-06-14 17:12:59.000000000 +0100
++++ r-packages-new.fixed/r-xts/meta.yaml	2017-06-14 15:21:01.000000000 +0100
 @@ -21,7 +21,7 @@
  
  build:
@@ -991,8 +945,8 @@ diff -urN r-packages-new/r-xts/meta.yaml r-packages-new.fixed/r-xts/meta.yaml
    # This is required to make R link correctly on Linux.
    rpaths:
 diff -urN r-packages-new/r-yaml/build.sh r-packages-new.fixed/r-yaml/build.sh
---- r-packages-new/r-yaml/build.sh	2017-06-14 13:32:44.000000000 +0100
-+++ r-packages-new.fixed/r-yaml/build.sh	2017-06-14 13:17:21.000000000 +0100
+--- r-packages-new/r-yaml/build.sh	2017-06-14 17:13:00.000000000 +0100
++++ r-packages-new.fixed/r-yaml/build.sh	2017-06-14 15:21:01.000000000 +0100
 @@ -4,6 +4,13 @@
  mv DESCRIPTION DESCRIPTION.old
  grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
