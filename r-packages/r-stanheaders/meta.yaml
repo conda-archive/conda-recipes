@@ -1,30 +1,27 @@
+{% set version = '2.15.0-1' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-stanheaders
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "2.12.0_1"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: StanHeaders_2.12.0-1.tar.gz
+  fn: StanHeaders_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/StanHeaders_2.12.0-1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/StanHeaders/StanHeaders_2.12.0-1.tar.gz
+    - https://cran.r-project.org/src/contrib/StanHeaders_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/StanHeaders/StanHeaders_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: eea2412909bba4bdf80fe7d2c62e9d248a20c3fc644fb0a09b892954dd386f48
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -35,9 +32,9 @@ build:
 requirements:
   build:
     - r-base
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -45,8 +42,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('StanHeaders')" # [not win]
-    - "\"%R%\" -e \"library('StanHeaders')\"" # [win]
+    - $R -e "library('StanHeaders')"  # [not win]
+    - "\"%R%\" -e \"library('StanHeaders')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -59,36 +56,36 @@ about:
   license: BSD_3_clause + file LICENSE
   summary: The C++ header files of the Stan project are provided by this package, but it contains
     no R code, vignettes, or function documentation. There is a shared object containing
-    part of the CVODES library, but it is not accessible from R. StanHeaders is only
-    useful for developers who want to utilize the LinkingTo directive of their package's
-    DESCRIPTION file to build on the Stan library without incurring unnecessary dependencies.
-    The Stan project develops a probabilistic programming language that implements full
-    or approximate Bayesian statistical inference via Markov Chain Monte Carlo or variational
-    methods and implements (optionally penalized) maximum likelihood estimation via
-    optimization. The Stan library includes an advanced automatic differentiation scheme,
-    templated statistical and linear algebra functions that can handle the automatically
-    differentiable scalar types (and doubles, ints, etc.), and a parser for the Stan
-    language. The 'rstan' package provides user-facing R functions to parse, compile,
-    test, estimate, and analyze Stan models.
+    part of the 'CVODES' library, but it is not accessible from R. 'StanHeaders' is
+    only useful for developers who want to utilize the 'LinkingTo' directive of their
+    package's DESCRIPTION file to build on the Stan library without incurring unnecessary
+    dependencies. The Stan project develops a probabilistic programming language that
+    implements full or approximate Bayesian statistical inference via Markov Chain Monte
+    Carlo or 'variational' methods and implements (optionally penalized) maximum likelihood
+    estimation via optimization. The Stan library includes an advanced automatic differentiation
+    scheme, 'templated' statistical and linear algebra functions that can handle the
+    automatically 'differentiable' scalar types (and doubles, 'ints', etc.), and a parser
+    for the Stan language. The 'rstan' package provides user-facing R functions to parse,
+    compile, test, estimate, and analyze Stan models.
   license_family: BSD
 
 # The original CRAN metadata for this package was:
 
 # Package: StanHeaders
-# Date: 2016-11-19
+# Date: 2017-04-17
 # Title: C++ Header Files for Stan
 # Authors@R: c(person("Ben",family="Goodrich", email="benjamin.goodrich@columbia.edu", role=c('cre','aut')), person("Joshua", "Pritikin", role = "ctb"), person("Andrew", "Gelman", role = "aut"), person("Bob", "Carpenter",  role = "aut"), person("Matt", "Hoffman", role = "aut"), person("Daniel", "Lee", role = "aut"), person("Michael", "Betancourt", role = "aut"), person("Marcus", "Brubaker", role = "aut"), person("Jiqiang", "Guo", role = "aut"), person("Peter", "Li", role = "aut"), person("Allen", "Riddell", role = "aut"), person("Marco", "Inacio", role = "aut"), person("Mitzi", "Morris", role = "aut"), person("Jeffrey", "Arnold", role = "aut"), person("Rob", "Goedman", role = "aut"), person("Brian", "Lau", role = "aut"), person("Rob", "Trangucci", role = "aut"), person("Jonah", "Gabry", role = "aut"), person("Alp", "Kucukelbir", role = "aut"), person("Robert", "Grant", role = "aut"), person("Dustin", "Tran", role = "aut"), person("Michael", "Malecki", role = "aut"), person("Yuanjun", "Gao", role = "aut"), person("Trustees of", "Columbia University", role = "cph"), person("Lawrence Livermore", "National Security", role = "cph", comment = "CVODES"), person("The Regents of the", "University of California", role = "cph", comment = "CVODES"), person("Southern Methodist", "University", role = "cph", comment = "CVODES"))
 # URL: http://mc-stan.org/
-# Description: The C++ header files of the Stan project are provided by this package, but it contains no R code, vignettes, or function documentation. There is a shared object containing part of the CVODES library, but it is not accessible from R. StanHeaders is only useful for developers who want to utilize the LinkingTo directive of their package's DESCRIPTION file to build on the Stan library without incurring unnecessary dependencies. The Stan project develops a probabilistic programming language that implements full or approximate Bayesian statistical inference via Markov Chain Monte Carlo or variational methods and implements (optionally penalized) maximum likelihood estimation via optimization. The Stan library includes an advanced automatic differentiation scheme, templated statistical and linear algebra functions that can handle the automatically differentiable scalar types (and doubles, ints, etc.), and a parser for the Stan language. The 'rstan' package provides user-facing R functions to parse, compile, test, estimate, and analyze Stan models.
+# Description: The C++ header files of the Stan project are provided by this package, but it contains no R code, vignettes, or function documentation. There is a shared object containing part of the 'CVODES' library, but it is not accessible from R. 'StanHeaders' is only useful for developers who want to utilize the 'LinkingTo' directive of their package's DESCRIPTION file to build on the Stan library without incurring unnecessary dependencies. The Stan project develops a probabilistic programming language that implements full or approximate Bayesian statistical inference via Markov Chain Monte Carlo or 'variational' methods and implements (optionally penalized) maximum likelihood estimation via optimization. The Stan library includes an advanced automatic differentiation scheme, 'templated' statistical and linear algebra functions that can handle the automatically 'differentiable' scalar types (and doubles, 'ints', etc.), and a parser for the Stan language. The 'rstan' package provides user-facing R functions to parse, compile, test, estimate, and analyze Stan models.
 # Suggests: RcppEigen, BH
-# Version: 2.12.0-1
+# Version: 2.15.0-1
 # License: BSD_3_clause + file LICENSE
 # NeedsCompilation: yes
+# Packaged: 2017-04-19 07:59:51 UTC; goodrich
 # Author: Ben Goodrich [cre, aut], Joshua Pritikin [ctb], Andrew Gelman [aut], Bob Carpenter [aut], Matt Hoffman [aut], Daniel Lee [aut], Michael Betancourt [aut], Marcus Brubaker [aut], Jiqiang Guo [aut], Peter Li [aut], Allen Riddell [aut], Marco Inacio [aut], Mitzi Morris [aut], Jeffrey Arnold [aut], Rob Goedman [aut], Brian Lau [aut], Rob Trangucci [aut], Jonah Gabry [aut], Alp Kucukelbir [aut], Robert Grant [aut], Dustin Tran [aut], Michael Malecki [aut], Yuanjun Gao [aut], Trustees of Columbia University [cph], Lawrence Livermore National Security [cph] (CVODES), The Regents of the University of California [cph] (CVODES), Southern Methodist University [cph] (CVODES)
 # Maintainer: Ben Goodrich <benjamin.goodrich@columbia.edu>
-# Packaged: 2016-11-20 16:10:53 UTC; goodrich
 # Repository: CRAN
-# Date/Publication: 2016-11-20 20:03:03
+# Date/Publication: 2017-04-19 09:15:37 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

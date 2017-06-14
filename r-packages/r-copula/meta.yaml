@@ -1,37 +1,34 @@
+{% set version = '0.999-16' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-copula
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.999_15"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: copula_0.999-15.tar.gz
+  fn: copula_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/copula_0.999-15.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/copula/copula_0.999-15.tar.gz
+    - https://cran.r-project.org/src/contrib/copula_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/copula/copula_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 8a2b6c704701cba68fbdc837ca73db1f3d3c4bfbbdb2e4dab4d6af0c65b9d056
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: MASS, KernSmooth, sfsmisc, scatterplot3d, Rmpfr, bbmle, knitr, parallel, lcopula, mvnormtest, partitions, polynom, randtoolbox, rugarch, Runuran, tseries, VGAM, VineCopula, zoo
+# Suggests: MASS, KernSmooth, sfsmisc, scatterplot3d, Rmpfr, bbmle, knitr, parallel, gridExtra, lcopula, mvnormtest, partitions, polynom, qrng, randtoolbox, rugarch, Runuran, tseries, VGAM, VineCopula, zoo
 requirements:
   build:
     - r-base
@@ -45,9 +42,9 @@ requirements:
     - r-pcapp
     - r-pspline
     - r-stabledist >=0.6_4
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -65,8 +62,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('copula')" # [not win]
-    - "\"%R%\" -e \"library('copula')\"" # [win]
+    - $R -e "library('copula')"  # [not win]
+    - "\"%R%\" -e \"library('copula')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -92,28 +89,28 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: copula
-# Version: 0.999-15
-# VersionNote: Last CRAN: 0.999-14 on 2015-10-26
-# Date: 2016-07-24
+# Version: 0.999-16
+# VersionNote: Last CRAN: 0.999-15 on 2016-07-25
+# Date: 2017-01-07
 # Title: Multivariate Dependence with Copulas
 # Author: Marius Hofert <marius.hofert@uwaterloo.ca>, Ivan Kojadinovic <ivan.kojadinovic@univ-pau.fr>, Martin Maechler <maechler@stat.math.ethz.ch>, and Jun Yan <jun.yan@uconn.edu>
 # Maintainer: Martin Maechler <maechler@stat.math.ethz.ch>
 # Depends: R (>= 3.1.0)
 # Imports: stats, graphics, methods, stats4, Matrix, lattice, colorspace, gsl, ADGofTest, stabledist (>= 0.6-4), mvtnorm, pcaPP, pspline, numDeriv
-# Suggests: MASS, KernSmooth, sfsmisc, scatterplot3d, Rmpfr, bbmle, knitr, parallel, lcopula, mvnormtest, partitions, polynom, randtoolbox, rugarch, Runuran, tseries, VGAM, VineCopula, zoo
+# Suggests: MASS, KernSmooth, sfsmisc, scatterplot3d, Rmpfr, bbmle, knitr, parallel, gridExtra, lcopula, mvnormtest, partitions, polynom, qrng, randtoolbox, rugarch, Runuran, tseries, VGAM, VineCopula, zoo
 # SuggestsNote: the last lines' packages {parallel, ..., zoo} are only used in vignettes, demos and few tests.
 # Enhances: nor1mix
 # Description: Classes (S4) of commonly used elliptical, Archimedean, extreme value and some more copula families.  Methods for density, distribution, random number generation, bivariate dependence measures, perspective and contour plots.  Fitting copula models including variance estimates. Independence and serial (univariate and multivariate) independence tests, and other copula related tests. Empirical copula and multivariate CDF. Goodness-of-fit tests for copulas based on multipliers, the parametric bootstrap with several transformation options. Merged former package 'nacopula' for nested Archimedean copulas: Efficient sampling algorithms, various estimators, goodness-of-fit tests and related tools and special functions.
 # License: GPL (>= 3) | file LICENCE
 # ByteCompile: yes
 # VignetteBuilder: knitr
-# Collate: AllClass.R Classes.R Copula.R Auxiliaries.R aux-acopula.R special-func.R cop_objects.R nacopula.R dC-dc.R amhCopula.R amhExpr.R An.R archmCopula.R asymCopula.R cCopula.R claytonCopula.R claytonExpr.R ellipCopula.R empcop.R empPsi.R acR.R estimation.R evCopula.R evTests.R exchTests.R fgmCopula.R fitCopula.R fitLambda.R fitMvdc.R fixedPar.R frankCopula.R frankExpr.R galambosCopula.R galambosExpr-math.R galambosExpr.R ggraph-tools.R pairsRosenblatt.R prob.R gofTrafos.R gofEVTests.R gofCopula.R graphics.R gumbelCopula.R gumbelExpr.R huslerReissCopula.R huslerReissExpr.R indepCopula.R indepTests.R joeCopula.R K.R logseries.R mvdc.R matrix_tools.R normalCopula.R opower.R plackettCopula.R plackettExpr.R rotCopula.R rstable1.R safeUroot.R schlatherCopula.R stable.R timing.R tCopula.R tawnCopula.R tawnExpr.R tevCopula.R wrapper.R xvCopula.R zzz.R
+# Collate: AllClass.R Classes.R AllGeneric.R Auxiliaries.R aux-acopula.R asymCopula.R mixCopula.R rotCopula.R Copula.R special-func.R amhCopula.R claytonCopula.R frankCopula.R cop_objects.R nacopula.R dC-dc.R amhExpr.R An.R archmCopula.R cCopula.R claytonExpr.R ellipCopula.R empcop.R empPsi.R acR.R estimation.R evCopula.R evTests.R exchTests.R fgmCopula.R fitCopula.R fitLambda.R fitMvdc.R fixedPar.R frankExpr.R galambosCopula.R galambosExpr-math.R galambosExpr.R ggraph-tools.R pairsRosenblatt.R prob.R gofTrafos.R gofEVTests.R gofCopula.R graphics.R gumbelCopula.R gumbelExpr.R huslerReissCopula.R huslerReissExpr.R indepCopula.R indepTests.R joeCopula.R K.R logseries.R mvdc.R matrix_tools.R normalCopula.R opower.R plackettCopula.R plackettExpr.R rstable1.R safeUroot.R schlatherCopula.R stable.R timing.R tCopula.R tawnCopula.R tawnExpr.R tevCopula.R wrapper.R xvCopula.R zzz.R
 # Encoding: UTF-8
 # URL: http://copula.r-forge.r-project.org/
 # NeedsCompilation: yes
-# Packaged: 2016-09-24 16:45:01 UTC; hornik
+# Packaged: 2017-01-09 09:46:11 UTC; maechler
 # Repository: CRAN
-# Date/Publication: 2016-09-24 18:49:05
+# Date/Publication: 2017-01-09 15:16:55
 
 # See
 # http://docs.continuum.io/conda/build.html for

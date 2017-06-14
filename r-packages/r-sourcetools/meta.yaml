@@ -1,30 +1,27 @@
+{% set version = '0.1.6' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-sourcetools
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.1.5"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: sourcetools_0.1.5.tar.gz
+  fn: sourcetools_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/sourcetools_0.1.5.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/sourcetools/sourcetools_0.1.5.tar.gz
+    - https://cran.r-project.org/src/contrib/sourcetools_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/sourcetools/sourcetools_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: c9f48d2f0b7f7ed0e7fecdf8e730b0b80c4d567f0e1e880d118b0944b1330c51
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -35,9 +32,9 @@ build:
 requirements:
   build:
     - r-base
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -45,8 +42,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('sourcetools')" # [not win]
-    - "\"%R%\" -e \"library('sourcetools')\"" # [win]
+    - $R -e "library('sourcetools')"  # [not win]
+    - "\"%R%\" -e \"library('sourcetools')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -55,7 +52,7 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: https://CRAN.R-project.org/package=sourcetools
   license: MIT + file LICENSE
   summary: Tools for the reading and tokenization of R code. The 'sourcetools' package provides
     both an R and C++ interface for the tokenization of R code, and helpers for interacting
@@ -67,7 +64,7 @@ about:
 # Package: sourcetools
 # Type: Package
 # Title: Tools for Reading, Tokenizing and Parsing R Code
-# Version: 0.1.5
+# Version: 0.1.6
 # Author: Kevin Ushey
 # Maintainer: Kevin Ushey <kevinushey@gmail.com>
 # Description: Tools for the reading and tokenization of R code. The 'sourcetools' package provides both an R and C++ interface for the tokenization of R code, and helpers for interacting with the tokenized representation of R code.
@@ -79,9 +76,9 @@ about:
 # BugReports: https://github.com/kevinushey/sourcetools/issues
 # Encoding: UTF-8
 # NeedsCompilation: yes
-# Packaged: 2016-09-14 22:38:37 UTC; kevin
+# Packaged: 2017-04-05 19:41:15 UTC; kevin
 # Repository: CRAN
-# Date/Publication: 2016-09-15 03:07:07
+# Date/Publication: 2017-04-05 21:57:43 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

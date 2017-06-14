@@ -1,30 +1,27 @@
+{% set version = '1.1-2' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-rsqlite
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "1.1_1"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: RSQLite_1.1-1.tar.gz
+  fn: RSQLite_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/RSQLite_1.1-1.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/RSQLite/RSQLite_1.1-1.tar.gz
+    - https://cran.r-project.org/src/contrib/RSQLite_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/RSQLite/RSQLite_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: e4022e6a134bb0ff00d33474d2189a7bb48ee12b513d258e957b78bb1bf4e955
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -40,9 +37,9 @@ requirements:
     - r-rcpp >=0.12.7
     - r-memoise
     - r-plogr
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -55,8 +52,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('RSQLite')" # [not win]
-    - "\"%R%\" -e \"library('RSQLite')\"" # [win]
+    - $R -e "library('RSQLite')"  # [not win]
+    - "\"%R%\" -e \"library('RSQLite')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -74,8 +71,8 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: RSQLite
-# Version: 1.1
-# Date: 2016-11-24
+# Version: 1.1-2
+# Date: 2017-01-07
 # Title: 'SQLite' Interface for R
 # Authors@R: c( person("Kirill", "Muller", role = c("aut", "cre"), email = "krlmlr+r@mailbox.org"), person("Hadley", "Wickham", role = c("aut")), person(c("David", "A."), "James", role = "aut"), person("Seth", "Falcon", role = "aut"), person(family = "SQLite Authors", role = "ctb", comment = "for the included SQLite sources"), person("Liam", "Healy", role = "ctb", comment = "for the included SQLite sources"), person(family = "R Consortium", role = "cph"), person(family = "RStudio", role = "cph") )
 # Description: Embeds the 'SQLite' database engine in R and provides an interface compliant with the 'DBI' package. The source for the 'SQLite' engine (version 3.8.8.2) is included.
@@ -91,11 +88,11 @@ about:
 # VignetteBuilder: knitr
 # RoxygenNote: 5.0.1.9000
 # NeedsCompilation: yes
-# Packaged: 2016-11-25 14:49:05 UTC; muelleki
+# Packaged: 2017-01-08 00:12:25 UTC; muelleki
 # Author: Kirill Muller [aut, cre], Hadley Wickham [aut], David A. James [aut], Seth Falcon [aut], SQLite Authors [ctb] (for the included SQLite sources), Liam Healy [ctb] (for the included SQLite sources), R Consortium [cph], RStudio [cph]
 # Maintainer: Kirill Muller <krlmlr+r@mailbox.org>
 # Repository: CRAN
-# Date/Publication: 2016-11-27 16:31:52
+# Date/Publication: 2017-01-08 16:57:09
 
 # See
 # http://docs.continuum.io/conda/build.html for

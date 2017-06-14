@@ -1,37 +1,34 @@
+{% set version = '1.5' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-formatr
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "1.4"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: formatR_1.4.tar.gz
+  fn: formatR_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/formatR_1.4.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/formatR/formatR_1.4.tar.gz
+    - https://cran.r-project.org/src/contrib/formatR_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/formatR/formatR_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 874c197ae3720ec11b44984a055655b99a698e1912104eb9034c11fdf6104da7
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: codetools, shiny, testit, knitr
+# Suggests: codetools, shiny, testit, rmarkdown, knitr
 requirements:
   build:
     - r-base
@@ -42,8 +39,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('formatR')" # [not win]
-    - "\"%R%\" -e \"library('formatR')\"" # [win]
+    - $R -e "library('formatR')"  # [not win]
+    - "\"%R%\" -e \"library('formatR')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -52,35 +49,36 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: http://yihui.name/formatR
+  home: https://yihui.name/formatR
   license: GPL
   summary: Provides a function tidy_source() to format R source code. Spaces and indent will
     be added to the code automatically, and comments will be preserved under certain
     conditions, so that R code will be more human-readable and tidy. There is also a
     Shiny app as a user interface in this package (see tidy_app()).
-  license_family: GPL3
+  license_family: GPL
 
 # The original CRAN metadata for this package was:
 
 # Package: formatR
 # Type: Package
 # Title: Format R Code Automatically
-# Version: 1.4
-# Date: 2016-05-09
-# Author: Yihui Xie
+# Version: 1.5
+# Date: 2017-04-26
+# Authors@R: c( person("Yihui", "Xie", email = "xie@yihui.name", role = c("aut", "cre")), person("Eugene", "Ha", role = "ctb"), person("Kohske", "Takahashi", role = "ctb"), person("Ed", "Lee", role = "ctb") )
 # Maintainer: Yihui Xie <xie@yihui.name>
 # Description: Provides a function tidy_source() to format R source code. Spaces and indent will be added to the code automatically, and comments will be preserved under certain conditions, so that R code will be more human-readable and tidy. There is also a Shiny app as a user interface in this package (see tidy_app()).
 # Depends: R (>= 3.0.2)
-# Suggests: codetools, shiny, testit, knitr
+# Suggests: codetools, shiny, testit, rmarkdown, knitr
 # License: GPL
-# URL: http://yihui.name/formatR
+# URL: https://yihui.name/formatR
 # BugReports: https://github.com/yihui/formatR/issues
 # VignetteBuilder: knitr
-# RoxygenNote: 5.0.1
+# RoxygenNote: 6.0.1
 # NeedsCompilation: no
-# Packaged: 2016-05-09 06:18:28 UTC; yihui
+# Packaged: 2017-04-25 16:06:05 UTC; yihui
+# Author: Yihui Xie [aut, cre], Eugene Ha [ctb], Kohske Takahashi [ctb], Ed Lee [ctb]
 # Repository: CRAN
-# Date/Publication: 2016-05-09 17:52:57
+# Date/Publication: 2017-04-25 23:31:46 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

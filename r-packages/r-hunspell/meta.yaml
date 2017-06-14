@@ -1,30 +1,27 @@
+{% set version = '2.5' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-hunspell
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "2.2"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: hunspell_2.2.tar.gz
+  fn: hunspell_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/hunspell_2.2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/hunspell/hunspell_2.2.tar.gz
+    - https://cran.r-project.org/src/contrib/hunspell_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/hunspell/hunspell_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 17e83c287ff2da6e703a2ea139206daf3e93714c83d76616e8a710485f94ba5f
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -37,9 +34,9 @@ requirements:
     - r-base
     - r-rcpp
     - r-digest
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -49,8 +46,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('hunspell')" # [not win]
-    - "\"%R%\" -e \"library('hunspell')\"" # [win]
+    - $R -e "library('hunspell')"  # [not win]
+    - "\"%R%\" -e \"library('hunspell')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -59,7 +56,7 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: https://github.com/ropensci/hunspell#readme
+  home: https://github.com/ropensci/hunspell#readme (devel) https://hunspell.github.io (upstream)
   license: GPL-2 | LGPL-2.1 | MPL-1.1
   summary: A spell checker and morphological analyzer library designed for languages with rich
     morphology and complex word compounding or character encoding. The package can check
@@ -73,22 +70,22 @@ about:
 # Package: hunspell
 # Type: Package
 # Title: High-Performance Stemmer, Tokenizer, and Spell Checker for R
-# Version: 2.2
+# Version: 2.5
 # Author: Jeroen Ooms
-# Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>
+# Maintainer: Jeroen Ooms <jeroen@berkeley.edu>
 # Description: A spell checker and morphological analyzer library designed for languages with rich morphology and complex word compounding or character encoding. The package can check and analyze individual words as well as search for incorrect words within a text, latex, html or xml document. Use the 'devtools' package to spell check R documentation with 'hunspell'.
 # License: GPL-2 | LGPL-2.1 | MPL-1.1
-# URL: https://github.com/ropensci/hunspell#readme
+# URL: https://github.com/ropensci/hunspell#readme (devel) https://hunspell.github.io (upstream)
 # BugReports: https://github.com/ropensci/hunspell/issues
 # Imports: Rcpp, digest
 # LinkingTo: Rcpp
 # Suggests: testthat, devtools, pdftools, janeaustenr, wordcloud2, knitr, rmarkdown
 # VignetteBuilder: knitr
-# RoxygenNote: 5.0.1.9000
+# RoxygenNote: 6.0.1
 # NeedsCompilation: yes
-# Packaged: 2016-11-09 22:34:30 UTC; jeroen
+# Packaged: 2017-05-21 14:25:48 UTC; jeroen
 # Repository: CRAN
-# Date/Publication: 2016-11-09 23:58:58
+# Date/Publication: 2017-05-21 16:10:23 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

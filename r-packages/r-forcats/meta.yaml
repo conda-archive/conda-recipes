@@ -1,30 +1,27 @@
+{% set version = '0.2.0' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-forcats
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.1.1"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: forcats_0.1.1.tar.gz
+  fn: forcats_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/forcats_0.1.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/forcats/forcats_0.1.1.tar.gz
+    - https://cran.r-project.org/src/contrib/forcats_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/forcats/forcats_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: b5bce370422d4c0ec9509249ae645373949bfbe9217cdf50dce2bfbdad9f7cd7
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -46,8 +43,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('forcats')" # [not win]
-    - "\"%R%\" -e \"library('forcats')\"" # [win]
+    - $R -e "library('forcats')"  # [not win]
+    - "\"%R%\" -e \"library('forcats')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -56,7 +53,7 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: https://hadley.github.io/forcats/, https://github.com/hadley/forcats
+  home: http://forcats.tidyverse.org, https://github.com/tidyverse/forcats
   license: GPL-3
   summary: Helpers for reordering factor levels (including moving specified levels to front,
     ordering by first appearance, reversing, and randomly shuffling), and tools for
@@ -68,24 +65,24 @@ about:
 
 # Package: forcats
 # Title: Tools for Working with Categorical Variables (Factors)
-# Version: 0.1.1
-# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")), person("RStudio", role = "cph") )
+# Version: 0.2.0
+# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")), person("RStudio", role = c("cph", "fnd")) )
 # Description: Helpers for reordering factor levels (including moving specified levels to front, ordering by first appearance, reversing, and randomly shuffling), and tools for modifying factor levels (including collapsing rare levels into other, 'anonymising', and manually 'recoding').
 # License: GPL-3
 # Encoding: UTF-8
 # LazyData: true
-# URL: https://hadley.github.io/forcats/, https://github.com/hadley/forcats
-# BugReports: https://github.com/hadley/forcats/issues
+# URL: http://forcats.tidyverse.org, https://github.com/tidyverse/forcats
+# BugReports: https://github.com/tidyverse/forcats/issues
 # Depends: R (>= 2.10)
 # Imports: tibble, magrittr
-# RoxygenNote: 5.0.1
+# RoxygenNote: 5.0.1.9000
 # Suggests: ggplot2, testthat, covr
 # NeedsCompilation: no
-# Packaged: 2016-09-15 20:18:13 UTC; hadley
-# Author: Hadley Wickham [aut, cre], RStudio [cph]
+# Packaged: 2017-01-22 19:24:31 UTC; hornik
+# Author: Hadley Wickham [aut, cre], RStudio [cph, fnd]
 # Maintainer: Hadley Wickham <hadley@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2016-09-16 00:15:04
+# Date/Publication: 2017-01-23 16:39:48
 
 # See
 # http://docs.continuum.io/conda/build.html for

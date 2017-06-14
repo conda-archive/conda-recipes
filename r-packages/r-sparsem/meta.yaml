@@ -1,30 +1,27 @@
+{% set version = '1.77' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-sparsem
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "1.74"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: SparseM_1.74.tar.gz
+  fn: SparseM_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/SparseM_1.74.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/SparseM/SparseM_1.74.tar.gz
+    - https://cran.r-project.org/src/contrib/SparseM_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/SparseM/SparseM_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: a9329fef14ae4fc646df1f4f6e57efb0211811599d015f7bc04c04285495d45c
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -35,9 +32,9 @@ build:
 requirements:
   build:
     - r-base
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -45,8 +42,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('SparseM')" # [not win]
-    - "\"%R%\" -e \"library('SparseM')\"" # [win]
+    - $R -e "library('SparseM')"  # [not win]
+    - "\"%R%\" -e \"library('SparseM')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -66,7 +63,7 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: SparseM
-# Version: 1.74
+# Version: 1.77
 # Author: Roger Koenker <rkoenker@uiuc.edu> and Pin Ng <Pin.Ng@NAU.EDU>
 # Maintainer: Roger Koenker <rkoenker@uiuc.edu>
 # Depends: R (>= 2.15), methods
@@ -77,8 +74,8 @@ about:
 # URL: http://www.econ.uiuc.edu/~roger/research/sparse/sparse.html
 # NeedsCompilation: yes
 # Repository: CRAN
-# Packaged: 2016-11-10 13:39:40 UTC; roger
-# Date/Publication: 2016-11-10 17:09:29
+# Packaged: 2017-04-23 17:52:11 UTC; roger
+# Date/Publication: 2017-04-23 18:26:30 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

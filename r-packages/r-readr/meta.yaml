@@ -1,64 +1,59 @@
+{% set version = '1.1.1' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-readr
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "1.0.0"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: readr_1.0.0.tar.gz
+  fn: readr_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/readr_1.0.0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/readr/readr_1.0.0.tar.gz
+    - https://cran.r-project.org/src/contrib/readr_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/readr/readr_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 1a29b99009a06f2cee18d08bc6201fd4985b6d45c76cefca65084dcc1a2f7cb3
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat, knitr, rmarkdown, stringi, covr
+# Suggests: curl, testthat, knitr, rmarkdown, stringi, covr
 requirements:
   build:
     - r-base
     - r-bh
     - r-r6
-    - r-rcpp >=0.11.5
-    - r-curl
+    - r-rcpp >=0.12.0.5
     - r-hms
     - r-tibble
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
     - r-bh
     - r-r6
-    - r-rcpp >=0.11.5
-    - r-curl
+    - r-rcpp >=0.12.0.5
     - r-hms
     - r-tibble
 
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('readr')" # [not win]
-    - "\"%R%\" -e \"library('readr')\"" # [win]
+    - $R -e "library('readr')"  # [not win]
+    - "\"%R%\" -e \"library('readr')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -67,34 +62,36 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: https://github.com/hadley/readr
+  home: http://readr.tidyverse.org, https://github.com/tidyverse/readr
   license: GPL (>= 2) | file LICENSE
-  summary: Read flat/tabular text files from disk (or a connection).
+  summary: The goal of 'readr' is to provide a fast and friendly way to read rectangular data
+    (like 'csv', 'tsv', and 'fwf'). It is designed to flexibly parse many types of data
+    found in the wild, while still cleanly failing when data unexpectedly changes.
   license_family: GPL3
 
 # The original CRAN metadata for this package was:
 
 # Package: readr
-# Version: 1.0.0
-# Title: Read Tabular Data
-# Description: Read flat/tabular text files from disk (or a connection).
-# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")), person("Jim", "Hester", , "jim.hester@rstudio.com", "aut"), person("Romain", "Francois", role = "aut"), person("R Core Team", role = "ctb", comment = "Date time code adapted from R"), person("RStudio", role = "cph"), person("Jukka", "Jaylnki", role = c("ctb", "cph"), comment = "grisu3 implementation"), person("Mikkel", "Jrgensen", role = c("ctb", "cph"), comment = "grisu3 implementation"))
+# Version: 1.1.1
+# Title: Read Rectangular Text Data
+# Description: The goal of 'readr' is to provide a fast and friendly way to read rectangular data (like 'csv', 'tsv', and 'fwf'). It is designed to flexibly parse many types of data found in the wild, while still cleanly failing when data unexpectedly changes.
+# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", "aut"), person("Jim", "Hester", , "james.hester@rstudio.com", c("aut", "cre")), person("Romain", "Francois", role = "aut"), person("R Core Team", role = "ctb", comment = "Date time code adapted from R"), person("RStudio", role = c("cph", "fnd")), person("Jukka", "Jylanki", role = c("ctb", "cph"), comment = "grisu3 implementation"), person("Mikkel", "Jrgensen", role = c("ctb", "cph"), comment = "grisu3 implementation"))
 # Encoding: UTF-8
 # Depends: R (>= 3.0.2)
 # LinkingTo: Rcpp, BH
-# Imports: Rcpp (>= 0.11.5), curl, tibble, hms, R6
-# Suggests: testthat, knitr, rmarkdown, stringi, covr
+# Imports: Rcpp (>= 0.12.0.5), tibble, hms, R6
+# Suggests: curl, testthat, knitr, rmarkdown, stringi, covr
 # License: GPL (>= 2) | file LICENSE
-# BugReports: https://github.com/hadley/readr/issues
-# URL: https://github.com/hadley/readr
+# BugReports: https://github.com/tidyverse/readr/issues
+# URL: http://readr.tidyverse.org, https://github.com/tidyverse/readr
 # VignetteBuilder: knitr
-# RoxygenNote: 5.0.1
+# RoxygenNote: 6.0.1
 # NeedsCompilation: yes
-# Packaged: 2016-08-03 15:26:00 UTC; hadley
-# Author: Hadley Wickham [aut, cre], Jim Hester [aut], Romain Francois [aut], R Core Team [ctb] (Date time code adapted from R), RStudio [cph], Jukka Jaylnki [ctb, cph] (grisu3 implementation), Mikkel Jrgensen [ctb, cph] (grisu3 implementation)
-# Maintainer: Hadley Wickham <hadley@rstudio.com>
+# Packaged: 2017-05-16 16:03:56 UTC; jhester
+# Author: Hadley Wickham [aut], Jim Hester [aut, cre], Romain Francois [aut], R Core Team [ctb] (Date time code adapted from R), RStudio [cph, fnd], Jukka Jylanki [ctb, cph] (grisu3 implementation), Mikkel Jrgensen [ctb, cph] (grisu3 implementation)
+# Maintainer: Jim Hester <james.hester@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2016-08-03 17:55:25
+# Date/Publication: 2017-05-16 19:03:57 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

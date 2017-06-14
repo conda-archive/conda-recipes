@@ -1,37 +1,34 @@
+{% set version = '1.1.0' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-memoise
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "1.0.0"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: memoise_1.0.0.tar.gz
+  fn: memoise_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/memoise_1.0.0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/memoise/memoise_1.0.0.tar.gz
+    - https://cran.r-project.org/src/contrib/memoise_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/memoise/memoise_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: b276f9452a26aeb79e12dd7227fcc8712832781a42f92d70e86040da0573980c
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat
+# Suggests: testthat, aws.s3, httr, covr
 requirements:
   build:
     - r-base
@@ -44,8 +41,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('memoise')" # [not win]
-    - "\"%R%\" -e \"library('memoise')\"" # [win]
+    - $R -e "library('memoise')"  # [not win]
+    - "\"%R%\" -e \"library('memoise')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -65,21 +62,22 @@ about:
 # Encoding: UTF-8
 # Package: memoise
 # Title: Memoisation of Functions
-# Version: 1.0.0
-# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", role = "aut"), person("Jim", "Hester", , "jim.hester@rstudio.com", role = c("aut", "cre")), person("Kirill", "MAzller", , "krlmlr+r@mailbox.org", role = "aut"))
+# Version: 1.1.0
+# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", role = "aut"), person("Jim", "Hester", , "jim.hester@rstudio.com", role = c("aut", "cre")), person("Kirill", "MAzller", , "krlmlr+r@mailbox.org", role = "aut"), person("Daniel", "Cook", , "danielecook@gmail.com", role = "aut"))
 # Description: Cache the results of a function so that when you call it again with the same arguments it returns the pre-computed value.
 # URL: https://github.com/hadley/memoise
 # BugReports: https://github.com/hadley/memoise/issues
 # Imports: digest (>= 0.6.3)
-# Suggests: testthat
+# Suggests: testthat, aws.s3, httr, covr
+# Additional_repositories: http://cloudyr.github.io/drat
 # License: MIT + file LICENSE
-# RoxygenNote: 5.0.1
+# RoxygenNote: 6.0.1
 # NeedsCompilation: no
-# Packaged: 2016-01-28 19:30:15 UTC; jhester
-# Author: Hadley Wickham [aut], Jim Hester [aut, cre], Kirill MAzller [aut]
+# Packaged: 2017-04-20 17:35:47 UTC; jhester
+# Author: Hadley Wickham [aut], Jim Hester [aut, cre], Kirill MAzller [aut], Daniel Cook [aut]
 # Maintainer: Jim Hester <jim.hester@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2016-01-29 05:58:01
+# Date/Publication: 2017-04-21 05:54:22 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -1,30 +1,27 @@
+{% set version = '1.2.0' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-stringr
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "1.1.0"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: stringr_1.1.0.tar.gz
+  fn: stringr_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/stringr_1.1.0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/stringr/stringr_1.1.0.tar.gz
+    - https://cran.r-project.org/src/contrib/stringr_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/stringr/stringr_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 61d0b30768bbfd7c0bb89310e2de5b7b457ac504538acbcca50374b46b16129a
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -46,8 +43,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('stringr')" # [not win]
-    - "\"%R%\" -e \"library('stringr')\"" # [win]
+    - $R -e "library('stringr')"  # [not win]
+    - "\"%R%\" -e \"library('stringr')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -56,8 +53,8 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: https://github.com/hadley/stringr
-  license: GPL-2
+  home: http://stringr.tidyverse.org, https://github.com/tidyverse/stringr
+  license: GPL-2 | file LICENSE
   summary: A consistent, simple and easy to use set of wrappers around the fantastic 'stringi'
     package. All function and argument names (and positions) are consistent, all functions
     deal with "NA"'s and zero length vectors in the same way, and the output from one
@@ -67,25 +64,25 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: stringr
-# Version: 1.1.0
+# Version: 1.2.0
 # Title: Simple, Consistent Wrappers for Common String Operations
 # Description: A consistent, simple and easy to use set of wrappers around the fantastic 'stringi' package. All function and argument names (and positions) are consistent, all functions deal with "NA"'s and zero length vectors in the same way, and the output from one function is easy to feed into the input of another.
 # Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre", "cph")), person("RStudio", role = "cph") )
-# License: GPL-2
+# License: GPL-2 | file LICENSE
 # Depends: R (>= 2.14)
 # Imports: stringi (>= 0.4.1), magrittr
 # Suggests: testthat, knitr, htmltools, htmlwidgets, rmarkdown, covr
 # VignetteBuilder: knitr
-# URL: https://github.com/hadley/stringr
-# BugReports: https://github.com/hadley/stringr/issues
-# RoxygenNote: 5.0.1
+# URL: http://stringr.tidyverse.org, https://github.com/tidyverse/stringr
+# BugReports: https://github.com/tidyverse/stringr/issues
+# RoxygenNote: 6.0.1
 # LazyData: true
 # NeedsCompilation: no
-# Packaged: 2016-08-19 14:42:23 UTC; hadley
+# Packaged: 2017-02-17 15:23:03 UTC; hadley
 # Author: Hadley Wickham [aut, cre, cph], RStudio [cph]
 # Maintainer: Hadley Wickham <hadley@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2016-08-19 21:02:58
+# Date/Publication: 2017-02-18 21:23:06
 
 # See
 # http://docs.continuum.io/conda/build.html for

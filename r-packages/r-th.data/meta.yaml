@@ -1,30 +1,27 @@
+{% set version = '1.0-8' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-th.data
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "1.0_7"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: TH.data_1.0-7.tar.gz
+  fn: TH.data_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/TH.data_1.0-7.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/TH.data/TH.data_1.0-7.tar.gz
+    - https://cran.r-project.org/src/contrib/TH.data_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/TH.data/TH.data_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 478f109fcc1226500ead8e3bd6e047cecde2294fde4df8ec216d38313db79a9d
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -46,8 +43,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('TH.data')" # [not win]
-    - "\"%R%\" -e \"library('TH.data')\"" # [win]
+    - $R -e "library('TH.data')"  # [not win]
+    - "\"%R%\" -e \"library('TH.data')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -56,7 +53,7 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: https://CRAN.R-project.org/package=TH.data
   license: GPL-3
   summary: Contains data sets used in other packages Torsten Hothorn maintains.
   license_family: GPL3
@@ -65,8 +62,8 @@ about:
 
 # Package: TH.data
 # Title: TH's Data Archive
-# Date: 2016-01-19
-# Version: 1.0-7
+# Date: 2017-01-23
+# Version: 1.0-8
 # Authors@R: c(person("Torsten", "Hothorn", role = c("aut", "cre"), email = "Torsten.Hothorn@R-project.org"))
 # Description: Contains data sets used in other packages Torsten Hothorn maintains.
 # Depends: R (>= 2.10.0), survival, MASS
@@ -74,11 +71,11 @@ about:
 # LazyData: yes
 # License: GPL-3
 # NeedsCompilation: no
-# Packaged: 2016-01-28 08:58:38 UTC; hothorn
+# Packaged: 2017-01-23 13:13:20 UTC; hothorn
 # Author: Torsten Hothorn [aut, cre]
 # Maintainer: Torsten Hothorn <Torsten.Hothorn@R-project.org>
 # Repository: CRAN
-# Date/Publication: 2016-01-28 10:16:26
+# Date/Publication: 2017-01-23 21:08:04
 
 # See
 # http://docs.continuum.io/conda/build.html for

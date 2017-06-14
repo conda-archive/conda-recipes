@@ -1,30 +1,27 @@
+{% set version = '0.3-1' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-selectr
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.3_0"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: selectr_0.3-0.tar.gz
+  fn: selectr_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/selectr_0.3-0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/selectr/selectr_0.3-0.tar.gz
+    - https://cran.r-project.org/src/contrib/selectr_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/selectr/selectr_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: db4f7ceea4b522a54c3ae7709787b0b7fcf389c5d945c5a278e3625388218949
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -44,8 +41,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('selectr')" # [not win]
-    - "\"%R%\" -e \"library('selectr')\"" # [win]
+    - $R -e "library('selectr')"  # [not win]
+    - "\"%R%\" -e \"library('selectr')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -67,8 +64,8 @@ about:
 # Package: selectr
 # Type: Package
 # Title: Translate CSS Selectors to XPath Expressions
-# Version: 0.3-0
-# Date: 2016-08-24
+# Version: 0.3-1
+# Date: 2016-12-18
 # Authors@R: c(person("Simon", "Potter", role = c("aut", "trl", "cre"), email = "simon@sjp.co.nz"), person("Simon", "Sapin", role = "aut"), person("Ian", "Bicking", role = "aut"))
 # License: BSD_3_clause + file LICENCE
 # Depends: R (>= 2.15.2)
@@ -78,11 +75,11 @@ about:
 # BugReports: https://github.com/sjp/selectr/issues
 # Description: Translates a CSS3 selector into an equivalent XPath expression. This allows us to use CSS selectors when working with the XML package as it can only evaluate XPath expressions. Also provided are convenience functions useful for using CSS selectors on XML nodes. This package is a port of the Python package 'cssselect' (<https://pythonhosted.org/cssselect/>).
 # NeedsCompilation: no
-# Packaged: 2016-08-28 19:05:00 UTC; simon
+# Packaged: 2016-12-19 02:54:30 UTC; sjp
 # Author: Simon Potter [aut, trl, cre], Simon Sapin [aut], Ian Bicking [aut]
 # Maintainer: Simon Potter <simon@sjp.co.nz>
 # Repository: CRAN
-# Date/Publication: 2016-08-30 19:45:20
+# Date/Publication: 2016-12-19 08:34:09
 
 # See
 # http://docs.continuum.io/conda/build.html for

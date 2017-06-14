@@ -1,37 +1,34 @@
+{% set version = '0.5.0' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-highcharter
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.4.0"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: highcharter_0.4.0.tar.gz
+  fn: highcharter_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/highcharter_0.4.0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/highcharter/highcharter_0.4.0.tar.gz
+    - https://cran.r-project.org/src/contrib/highcharter_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/highcharter/highcharter_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: d77ab493f6eb8648b352205df1bf60848c8f2155d46920077bac57809cbbded7
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: knitr, rmarkdown, survival, ggplot2
+# Suggests: knitr, rmarkdown, survival, ggplot2, httr, viridisLite
 requirements:
   build:
     - r-base
@@ -48,9 +45,8 @@ requirements:
     - r-quantmod
     - r-rlist
     - r-stringr
-    - r-tibble
+    - r-tibble >=1.1
     - r-tidyr
-    - r-viridislite
     - r-xts
     - r-zoo
 
@@ -69,17 +65,16 @@ requirements:
     - r-quantmod
     - r-rlist
     - r-stringr
-    - r-tibble
+    - r-tibble >=1.1
     - r-tidyr
-    - r-viridislite
     - r-xts
     - r-zoo
 
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('highcharter')" # [not win]
-    - "\"%R%\" -e \"library('highcharter')\"" # [win]
+    - $R -e "library('highcharter')"  # [not win]
+    - "\"%R%\" -e \"library('highcharter')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -99,25 +94,26 @@ about:
 
 # Package: highcharter
 # Type: Package
-# Version: 0.4.0
+# Version: 0.5.0
 # Title: A Wrapper for the 'Highcharts' Library
 # Description: A wrapper for the 'Highcharts' library including shortcut functions to plot R objects. 'Highcharts'  <http://www.highcharts.com/> is a charting library offering numerous chart types with a simple configuration syntax.
 # Authors@R: c( person("Joshua", "Kunst", role = c("aut", "cre"), email = "jbkunst@gmail.com"), person("Nuno", "Agostinho", role = c("ctb"), comment  = "hchart.survfit, densities and hc_add_series_scatter"),   person("Eduardo", "Flores", role = c("ctb"), comment  = "First version hc_add_series_df_tidy"), person("Dean", "Kilfoyle", role = c("ctb"), comment  = "First version hc_add_series_boxplot"), person("Adline", "Dsilva", role = c("ctb"), comment  = "First version Matrix heatmap") )
-# Date: 2016-07-14
+# Date: 2016-09-05
 # URL: http://jkunst.com/highcharter
 # BugReports: https://github.com/jbkunst/highcharter/issues
 # Maintainer: Joshua Kunst <jbkunst@gmail.com>
 # License: MIT + file LICENSE
 # RoxygenNote: 5.0.1
 # Depends: R (>= 2.10)
-# Imports: htmlwidgets, magrittr, purrr, rlist, assertthat, zoo, dplyr, tibble, stringr, broom, viridisLite, xts, quantmod, tidyr, htmltools, jsonlite, igraph, lubridate
-# Suggests: knitr, rmarkdown, survival, ggplot2
+# Imports: htmlwidgets, magrittr, purrr, rlist, assertthat, zoo, dplyr, tibble (>= 1.1), stringr, broom, xts, quantmod, tidyr, htmltools, jsonlite, igraph, lubridate
+# Suggests: knitr, rmarkdown, survival, ggplot2, httr, viridisLite
 # VignetteBuilder: knitr
+# LazyData: true
 # NeedsCompilation: no
-# Packaged: 2016-07-14 19:46:42 UTC; jkunst
+# Packaged: 2017-01-17 02:03:58 UTC; Joshua
 # Author: Joshua Kunst [aut, cre], Nuno Agostinho [ctb] (hchart.survfit, densities and hc_add_series_scatter), Eduardo Flores [ctb] (First version hc_add_series_df_tidy), Dean Kilfoyle [ctb] (First version hc_add_series_boxplot), Adline Dsilva [ctb] (First version Matrix heatmap)
 # Repository: CRAN
-# Date/Publication: 2016-07-15 00:16:46
+# Date/Publication: 2017-01-17 08:36:29
 
 # See
 # http://docs.continuum.io/conda/build.html for

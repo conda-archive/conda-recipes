@@ -1,30 +1,27 @@
+{% set version = '1.16' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-knitr
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "1.15.1"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: knitr_1.15.1.tar.gz
+  fn: knitr_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/knitr_1.15.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/knitr/knitr_1.15.1.tar.gz
+    - https://cran.r-project.org/src/contrib/knitr_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/knitr/knitr_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 10481fbf266b68402bf1973da99a87576ec2579f1c6cb2f1cca524b661a56a09
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -54,8 +51,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('knitr')" # [not win]
-    - "\"%R%\" -e \"library('knitr')\"" # [win]
+    - $R -e "library('knitr')"  # [not win]
+    - "\"%R%\" -e \"library('knitr')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -75,9 +72,9 @@ about:
 # Package: knitr
 # Type: Package
 # Title: A General-Purpose Package for Dynamic Report Generation in R
-# Version: 1.15.1
-# Date: 2016-11-22
-# Authors@R: c( person("Yihui", "Xie", email = "xie@yihui.name", role = c("aut", "cre")), person("Adam", "Vogt", role = "ctb"), person("Alastair", "Andrew", role = "ctb"), person("Alex", "Zvoleff", role = "ctb"), person("Andre", "Simon", role = "ctb", comment = "the CSS files under inst/themes/ were derived from the Highlight package http://www.andre-simon.de"), person("Aron", "Atkins", role = "ctb"), person("Aaron", "Wolen", role = "ctb"), person("Ashley", "Manton", role = "ctb"), person("Ben", "Baumer", role = "ctb"), person("Brian", "Diggs", role = "ctb"), person("Cassio", "Pereira", role = "ctb"), person("David", "Robinson", role = "ctb"), person("Donald", "Arseneau", role = c("ctb", "cph"), comment = "the framed package at inst/misc/framed.sty"), person("Doug", "Hemken", role = "ctb"), person("Duncan", "Murdoch", role = "ctb"), person("Fabian", "Hirschmann", role = "ctb"), person("Fitch", "Simeon", role = "ctb"), person(c("Frank", "E", "Harrell", "Jr"), role = "ctb", comment = "the Sweavel package at inst/misc/Sweavel.sty"), person("Gregoire", "Detrez", role = "ctb"), person("Hadley", "Wickham", role = "ctb"), person("Heewon", "Jeon", role = "ctb"), person("Henrik", "Bengtsson", role = "ctb"), person("Hiroaki", "Yutani", role = "ctb"), person("Jake", "Burkhead", role = "ctb"), person("James", "Manton", role = "ctb"), person("Jared", "Lander", role = "ctb"), person("Jason", "Punyon", role = "ctb"), person("Jeff", "Arnold", role = "ctb"), person("Jeremy", "Ashkenas", role = c("ctb", "cph"), comment = "the CSS file at inst/misc/docco-classic.css"), person("Jeremy", "Stephens", role = "ctb"), person("Jim", "Hester", role = "ctb"), person("Joe", "Cheng", role = "ctb"), person("Johannes", "Ranke", role = "ctb"), person("John", "Honaker", role = "ctb"), person("John", "Muschelli", role = "ctb"), person("Jonathan", "Keane", role = "ctb"), person("JJ", "Allaire", role = "ctb"), person("Johan", "Toloe", role = "ctb"), person("Joseph", "Larmarange", role = "ctb"), person("Julien", "Barnier", role = "ctb"), person("Kaiyin", "Zhong", role = "ctb"), person("Kamil", "Slowikowski", role = "ctb"), person(c("Kevin", "K."), "Smith", role = "ctb"), person("Kirill", "Mueller", role = "ctb"), person("Kohske", "Takahashi", role = "ctb"), person("Michael", "Friendly", role = "ctb"), person("Michal", "Bojanowski", role = "ctb"), person("Michel", "Kuhlmann", role = "ctb"), person("Nacho", "Caballero", role = "ctb"), person("Nick", "Salkowski", role = "ctb"), person("Noam", "Ross", role = "ctb"), person("Qiang", "Li", role = "ctb"), person("Ramnath", "Vaidyanathan", role = "ctb"), person("Richard", "Cotton", role = "ctb"), person("Robert", "Krzyzanowski", role = "ctb"), person("Romain", "Francois", role = "ctb"), person("Scott", "Kostyshak", role = "ctb"), person("Sebastian", "Meyer", role = "ctb"), person("Sietse", "Brouwer", role = "ctb"), person(c("Simon", "de"), "Bernard", role = "ctb"), person("Taiyun", "Wei", role = "ctb"), person("Thibaut", "Assus", role = "ctb"), person("Thibaut", "Lamadon", role = "ctb"), person("Thomas", "Leeper", role = "ctb"), person("Tom", "Torsney-Weir", role = "ctb"), person("Trevor", "Davis", role = "ctb"), person("Viktoras", "Veitas", role = "ctb"), person("Weicheng", "Zhu", role = "ctb"), person("Wush", "Wu", role = "ctb"), person("Zachary", "Foster", role = "ctb") )
+# Version: 1.16
+# Date: 2017-05-17
+# Authors@R: c( person("Yihui", "Xie", email = "xie@yihui.name", role = c("aut", "cre")), person("Adam", "Vogt", role = "ctb"), person("Alastair", "Andrew", role = "ctb"), person("Alex", "Zvoleff", role = "ctb"), person("Andre", "Simon", role = "ctb", comment = "the CSS files under inst/themes/ were derived from the Highlight package http://www.andre-simon.de"), person("Aron", "Atkins", role = "ctb"), person("Aaron", "Wolen", role = "ctb"), person("Ashley", "Manton", role = "ctb"), person("Ben", "Baumer", role = "ctb"), person("Brian", "Diggs", role = "ctb"), person("Cassio", "Pereira", role = "ctb"), person("David", "Robinson", role = "ctb"), person("Donald", "Arseneau", role = c("ctb", "cph"), comment = "the framed package at inst/misc/framed.sty"), person("Doug", "Hemken", role = "ctb"), person("Duncan", "Murdoch", role = "ctb"), person("Fabian", "Hirschmann", role = "ctb"), person("Fitch", "Simeon", role = "ctb"), person("Forest", "Fang", role = "ctb"), person(c("Frank", "E", "Harrell", "Jr"), role = "ctb", comment = "the Sweavel package at inst/misc/Sweavel.sty"), person("Gregoire", "Detrez", role = "ctb"), person("Hadley", "Wickham", role = "ctb"), person("Heewon", "Jeon", role = "ctb"), person("Henrik", "Bengtsson", role = "ctb"), person("Hiroaki", "Yutani", role = "ctb"), person("Ian", "Lyttle", role = "ctb"), person("Hodges", "Daniel", role = "ctb"), person("Jake", "Burkhead", role = "ctb"), person("James", "Manton", role = "ctb"), person("Jared", "Lander", role = "ctb"), person("Jason", "Punyon", role = "ctb"), person("Javier", "Luraschi", role = "ctb"), person("Jeff", "Arnold", role = "ctb"), person("Jeremy", "Ashkenas", role = c("ctb", "cph"), comment = "the CSS file at inst/misc/docco-classic.css"), person("Jeremy", "Stephens", role = "ctb"), person("Jim", "Hester", role = "ctb"), person("Joe", "Cheng", role = "ctb"), person("Johannes", "Ranke", role = "ctb"), person("John", "Honaker", role = "ctb"), person("John", "Muschelli", role = "ctb"), person("Jonathan", "Keane", role = "ctb"), person("JJ", "Allaire", role = "ctb"), person("Johan", "Toloe", role = "ctb"), person("Joseph", "Larmarange", role = "ctb"), person("Julien", "Barnier", role = "ctb"), person("Kaiyin", "Zhong", role = "ctb"), person("Kamil", "Slowikowski", role = "ctb"), person("Karl", "Forner", role = "ctb"), person(c("Kevin", "K."), "Smith", role = "ctb"), person("Kirill", "Mueller", role = "ctb"), person("Kohske", "Takahashi", role = "ctb"), person("Michael", "Friendly", role = "ctb"), person("Michal", "Bojanowski", role = "ctb"), person("Michel", "Kuhlmann", role = "ctb"), person("Nacho", "Caballero", role = "ctb"), person("Nick", "Salkowski", role = "ctb"), person("Noam", "Ross", role = "ctb"), person("Qiang", "Li", role = "ctb"), person("Ramnath", "Vaidyanathan", role = "ctb"), person("Richard", "Cotton", role = "ctb"), person("Robert", "Krzyzanowski", role = "ctb"), person("Romain", "Francois", role = "ctb"), person("Scott", "Kostyshak", role = "ctb"), person("Sebastian", "Meyer", role = "ctb"), person("Sietse", "Brouwer", role = "ctb"), person(c("Simon", "de"), "Bernard", role = "ctb"), person("Sylvain", "Rousseau", role = "ctb"), person("Taiyun", "Wei", role = "ctb"), person("Thibaut", "Assus", role = "ctb"), person("Thibaut", "Lamadon", role = "ctb"), person("Thomas", "Leeper", role = "ctb"), person("Tom", "Torsney-Weir", role = "ctb"), person("Trevor", "Davis", role = "ctb"), person("Viktoras", "Veitas", role = "ctb"), person("Weicheng", "Zhu", role = "ctb"), person("Wush", "Wu", role = "ctb"), person("Zachary", "Foster", role = "ctb") )
 # Maintainer: Yihui Xie <xie@yihui.name>
 # Description: Provides a general-purpose tool for dynamic report generation in R using Literate Programming techniques.
 # Depends: R (>= 3.1.0)
@@ -87,14 +84,14 @@ about:
 # URL: http://yihui.name/knitr/
 # BugReports: https://github.com/yihui/knitr/issues
 # VignetteBuilder: knitr
-# SystemRequirements: Package vignettes based on R Markdown v2 require Pandoc (http://pandoc.org). The function rst2pdf() and vignettes based on reStructuredText require rst2pdf (https://github.com/rst2pdf/rst2pdf).
+# SystemRequirements: Package vignettes based on R Markdown v2 or reStructuredText require Pandoc (http://pandoc.org). The function rst2pdf() require rst2pdf (https://github.com/rst2pdf/rst2pdf).
 # Collate: 'block.R' 'cache.R' 'utils.R' 'citation.R' 'hooks-html.R' 'plot.R' 'defaults.R' 'concordance.R' 'engine.R' 'highlight.R' 'themes.R' 'header.R' 'hooks-asciidoc.R' 'hooks-chunk.R' 'hooks-extra.R' 'hooks-latex.R' 'hooks-md.R' 'hooks-rst.R' 'hooks-textile.R' 'hooks.R' 'output.R' 'package.R' 'pandoc.R' 'params.R' 'parser.R' 'pattern.R' 'rocco.R' 'spin.R' 'table.R' 'template.R' 'utils-base64.R' 'utils-conversion.R' 'utils-rd2html.R' 'utils-sweave.R' 'utils-upload.R' 'utils-vignettes.R' 'zzz.R'
-# RoxygenNote: 5.0.1
+# RoxygenNote: 6.0.1
 # NeedsCompilation: no
-# Packaged: 2016-11-22 05:33:02 UTC; yihui
-# Author: Yihui Xie [aut, cre], Adam Vogt [ctb], Alastair Andrew [ctb], Alex Zvoleff [ctb], Andre Simon [ctb] (the CSS files under inst/themes/ were derived from the Highlight package http://www.andre-simon.de), Aron Atkins [ctb], Aaron Wolen [ctb], Ashley Manton [ctb], Ben Baumer [ctb], Brian Diggs [ctb], Cassio Pereira [ctb], David Robinson [ctb], Donald Arseneau [ctb, cph] (the framed package at inst/misc/framed.sty), Doug Hemken [ctb], Duncan Murdoch [ctb], Fabian Hirschmann [ctb], Fitch Simeon [ctb], Frank E Harrell Jr [ctb] (the Sweavel package at inst/misc/Sweavel.sty), Gregoire Detrez [ctb], Hadley Wickham [ctb], Heewon Jeon [ctb], Henrik Bengtsson [ctb], Hiroaki Yutani [ctb], Jake Burkhead [ctb], James Manton [ctb], Jared Lander [ctb], Jason Punyon [ctb], Jeff Arnold [ctb], Jeremy Ashkenas [ctb, cph] (the CSS file at inst/misc/docco-classic.css), Jeremy Stephens [ctb], Jim Hester [ctb], Joe Cheng [ctb], Johannes Ranke [ctb], John Honaker [ctb], John Muschelli [ctb], Jonathan Keane [ctb], JJ Allaire [ctb], Johan Toloe [ctb], Joseph Larmarange [ctb], Julien Barnier [ctb], Kaiyin Zhong [ctb], Kamil Slowikowski [ctb], Kevin K. Smith [ctb], Kirill Mueller [ctb], Kohske Takahashi [ctb], Michael Friendly [ctb], Michal Bojanowski [ctb], Michel Kuhlmann [ctb], Nacho Caballero [ctb], Nick Salkowski [ctb], Noam Ross [ctb], Qiang Li [ctb], Ramnath Vaidyanathan [ctb], Richard Cotton [ctb], Robert Krzyzanowski [ctb], Romain Francois [ctb], Scott Kostyshak [ctb], Sebastian Meyer [ctb], Sietse Brouwer [ctb], Simon de Bernard [ctb], Taiyun Wei [ctb], Thibaut Assus [ctb], Thibaut Lamadon [ctb], Thomas Leeper [ctb], Tom Torsney-Weir [ctb], Trevor Davis [ctb], Viktoras Veitas [ctb], Weicheng Zhu [ctb], Wush Wu [ctb], Zachary Foster [ctb]
+# Packaged: 2017-05-17 05:29:52 UTC; yihui
+# Author: Yihui Xie [aut, cre], Adam Vogt [ctb], Alastair Andrew [ctb], Alex Zvoleff [ctb], Andre Simon [ctb] (the CSS files under inst/themes/ were derived from the Highlight package http://www.andre-simon.de), Aron Atkins [ctb], Aaron Wolen [ctb], Ashley Manton [ctb], Ben Baumer [ctb], Brian Diggs [ctb], Cassio Pereira [ctb], David Robinson [ctb], Donald Arseneau [ctb, cph] (the framed package at inst/misc/framed.sty), Doug Hemken [ctb], Duncan Murdoch [ctb], Fabian Hirschmann [ctb], Fitch Simeon [ctb], Forest Fang [ctb], Frank E Harrell Jr [ctb] (the Sweavel package at inst/misc/Sweavel.sty), Gregoire Detrez [ctb], Hadley Wickham [ctb], Heewon Jeon [ctb], Henrik Bengtsson [ctb], Hiroaki Yutani [ctb], Ian Lyttle [ctb], Hodges Daniel [ctb], Jake Burkhead [ctb], James Manton [ctb], Jared Lander [ctb], Jason Punyon [ctb], Javier Luraschi [ctb], Jeff Arnold [ctb], Jeremy Ashkenas [ctb, cph] (the CSS file at inst/misc/docco-classic.css), Jeremy Stephens [ctb], Jim Hester [ctb], Joe Cheng [ctb], Johannes Ranke [ctb], John Honaker [ctb], John Muschelli [ctb], Jonathan Keane [ctb], JJ Allaire [ctb], Johan Toloe [ctb], Joseph Larmarange [ctb], Julien Barnier [ctb], Kaiyin Zhong [ctb], Kamil Slowikowski [ctb], Karl Forner [ctb], Kevin K. Smith [ctb], Kirill Mueller [ctb], Kohske Takahashi [ctb], Michael Friendly [ctb], Michal Bojanowski [ctb], Michel Kuhlmann [ctb], Nacho Caballero [ctb], Nick Salkowski [ctb], Noam Ross [ctb], Qiang Li [ctb], Ramnath Vaidyanathan [ctb], Richard Cotton [ctb], Robert Krzyzanowski [ctb], Romain Francois [ctb], Scott Kostyshak [ctb], Sebastian Meyer [ctb], Sietse Brouwer [ctb], Simon de Bernard [ctb], Sylvain Rousseau [ctb], Taiyun Wei [ctb], Thibaut Assus [ctb], Thibaut Lamadon [ctb], Thomas Leeper [ctb], Tom Torsney-Weir [ctb], Trevor Davis [ctb], Viktoras Veitas [ctb], Weicheng Zhu [ctb], Wush Wu [ctb], Zachary Foster [ctb]
 # Repository: CRAN
-# Date/Publication: 2016-11-22 09:36:46
+# Date/Publication: 2017-05-18 09:05:55 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

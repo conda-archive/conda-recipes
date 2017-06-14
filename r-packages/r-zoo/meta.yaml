@@ -1,44 +1,41 @@
+{% set version = '1.8-0' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-zoo
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "1.7_13"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: zoo_1.7-13.tar.gz
+  fn: zoo_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/zoo_1.7-13.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/zoo/zoo_1.7-13.tar.gz
+    - https://cran.r-project.org/src/contrib/zoo_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/zoo/zoo_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 09922c46f15de378bd955dfe526e028aef9632a9f79dca1550dc4591faa21357
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: coda, chron, DAAG, fts, its, ggplot2, mondate, scales, strucchange, timeDate, timeSeries, tis, tseries, xts
+# Suggests: coda, chron, DAAG, fts, ggplot2, mondate, scales, strucchange, timeDate, timeSeries, tis, tseries, xts
 requirements:
   build:
     - r-base
     - r-lattice >=0.20_27
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -47,8 +44,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('zoo')" # [not win]
-    - "\"%R%\" -e \"library('zoo')\"" # [win]
+    - $R -e "library('zoo')"  # [not win]
+    - "\"%R%\" -e \"library('zoo')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -68,22 +65,22 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: zoo
-# Version: 1.7-13
-# Date: 2016-05-03
+# Version: 1.8-0
+# Date: 2017-04-13
 # Title: S3 Infrastructure for Regular and Irregular Time Series (Z's Ordered Observations)
-# Authors@R: c(person(given = "Achim", family = "Zeileis", role = c("aut", "cre"), email = "Achim.Zeileis@R-project.org"), person(given = "Gabor", family = "Grothendieck", role = "aut", email = "ggrothendieck@gmail.com"), person(given = c("Jeffrey", "A."), family = "Ryan", role = "aut", email = "jeff.a.ryan@gmail.com"), person(given = "Felix", family = "Andrews", role = "ctb", email = "felix@nfrac.org"))
+# Authors@R: c(person(given = "Achim", family = "Zeileis", role = c("aut", "cre"), email = "Achim.Zeileis@R-project.org"), person(given = "Gabor", family = "Grothendieck", role = "aut", email = "ggrothendieck@gmail.com"), person(given = c("Jeffrey", "A."), family = "Ryan", role = "aut", email = "jeff.a.ryan@gmail.com"), person(given = c("Joshua", "M."), family = "Ulrich", role = "ctb", email = "josh.m.ulrich@gmail.com"), person(given = "Felix", family = "Andrews", role = "ctb", email = "felix@nfrac.org"))
 # Description: An S3 class with methods for totally ordered indexed observations. It is particularly aimed at irregular time series of numeric vectors/matrices and factors. zoo's key design goals are independence of a particular index/date/time class and consistency with ts and base R by providing methods to extend standard generics.
 # Depends: R (>= 2.10.0), stats
-# Suggests: coda, chron, DAAG, fts, its, ggplot2, mondate, scales, strucchange, timeDate, timeSeries, tis, tseries, xts
+# Suggests: coda, chron, DAAG, fts, ggplot2, mondate, scales, strucchange, timeDate, timeSeries, tis, tseries, xts
 # Imports: utils, graphics, grDevices, lattice (>= 0.20-27)
 # License: GPL-2 | GPL-3
 # URL: http://zoo.R-Forge.R-project.org/
 # NeedsCompilation: yes
-# Packaged: 2016-05-03 15:50:22 UTC; zeileis
-# Author: Achim Zeileis [aut, cre], Gabor Grothendieck [aut], Jeffrey A. Ryan [aut], Felix Andrews [ctb]
+# Packaged: 2017-04-12 22:23:52 UTC; zeileis
+# Author: Achim Zeileis [aut, cre], Gabor Grothendieck [aut], Jeffrey A. Ryan [aut], Joshua M. Ulrich [ctb], Felix Andrews [ctb]
 # Maintainer: Achim Zeileis <Achim.Zeileis@R-project.org>
 # Repository: CRAN
-# Date/Publication: 2016-05-03 17:52:16
+# Date/Publication: 2017-04-12 23:15:13 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

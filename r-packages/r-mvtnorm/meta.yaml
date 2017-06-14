@@ -1,30 +1,27 @@
+{% set version = '1.0-6' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-mvtnorm
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "1.0_5"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: mvtnorm_1.0-5.tar.gz
+  fn: mvtnorm_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/mvtnorm_1.0-5.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/mvtnorm/mvtnorm_1.0-5.tar.gz
+    - https://cran.r-project.org/src/contrib/mvtnorm_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/mvtnorm/mvtnorm_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 4a015b57b645b520151b213eb04b7331598c06442a3f652c7dc149425bd2e444
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -35,9 +32,9 @@ build:
 requirements:
   build:
     - r-base
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -45,8 +42,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('mvtnorm')" # [not win]
-    - "\"%R%\" -e \"library('mvtnorm')\"" # [win]
+    - $R -e "library('mvtnorm')"  # [not win]
+    - "\"%R%\" -e \"library('mvtnorm')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -64,8 +61,8 @@ about:
 
 # Package: mvtnorm
 # Title: Multivariate Normal and t Distributions
-# Version: 1.0-5
-# Date: 2016-02-02
+# Version: 1.0-6
+# Date: 2017-03-01
 # Authors@R: c(person("Alan", "Genz", role = "aut"), person("Frank", "Bretz", role = "aut"), person("Tetsuhisa", "Miwa", role = "aut"), person("Xuefei", "Mi", role = "aut"), person("Friedrich", "Leisch", role = "ctb"), person("Fabian", "Scheipl", role = "ctb"), person("Bjoern", "Bornkamp", role = "ctb"), person("Martin", "Maechler", role = "ctb"), person("Torsten", "Hothorn", role = c("aut", "cre"), email = "Torsten.Hothorn@R-project.org"))
 # Description: Computes multivariate normal and t probabilities, quantiles, random deviates and densities.
 # Imports: stats, methods
@@ -73,11 +70,11 @@ about:
 # License: GPL-2
 # URL: http://mvtnorm.R-forge.R-project.org
 # NeedsCompilation: yes
-# Packaged: 2016-02-02 13:44:04 UTC; hothorn
+# Packaged: 2017-03-02 13:15:25 UTC; hothorn
 # Author: Alan Genz [aut], Frank Bretz [aut], Tetsuhisa Miwa [aut], Xuefei Mi [aut], Friedrich Leisch [ctb], Fabian Scheipl [ctb], Bjoern Bornkamp [ctb], Martin Maechler [ctb], Torsten Hothorn [aut, cre]
 # Maintainer: Torsten Hothorn <Torsten.Hothorn@R-project.org>
 # Repository: CRAN
-# Date/Publication: 2016-02-02 17:15:56
+# Date/Publication: 2017-03-02 16:14:20
 
 # See
 # http://docs.continuum.io/conda/build.html for

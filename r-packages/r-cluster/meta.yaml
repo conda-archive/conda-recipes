@@ -1,30 +1,27 @@
+{% set version = '2.0.6' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-cluster
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "2.0.5"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: cluster_2.0.5.tar.gz
+  fn: cluster_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/cluster_2.0.5.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/cluster/cluster_2.0.5.tar.gz
+    - https://cran.r-project.org/src/contrib/cluster_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/cluster/cluster_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: f424b87f10595ed358b1ac80471b520ab9c767a4d203663c25b177c8ce5f8ffc
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -35,9 +32,9 @@ build:
 requirements:
   build:
     - r-base
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -45,8 +42,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('cluster')" # [not win]
-    - "\"%R%\" -e \"library('cluster')\"" # [win]
+    - $R -e "library('cluster')"  # [not win]
+    - "\"%R%\" -e \"library('cluster')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -55,7 +52,7 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: https://CRAN.R-project.org/package=cluster
   license: GPL (>= 2)
   summary: Methods for Cluster analysis.  Much extended the original from Peter Rousseeuw, Anja
     Struyf and Mia Hubert, based on Kaufman and Rousseeuw (1990) "Finding Groups in
@@ -65,8 +62,8 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: cluster
-# Version: 2.0.5
-# Date: 2016-09-16
+# Version: 2.0.6
+# Date: 2017-03-10
 # Priority: recommended
 # Title: "Finding Groups in Data": Cluster Analysis Extended Rousseeuw et al.
 # Description: Methods for Cluster analysis.  Much extended the original from Peter Rousseeuw, Anja Struyf and Mia Hubert, based on Kaufman and Rousseeuw (1990) "Finding Groups in Data".
@@ -82,10 +79,10 @@ about:
 # BuildResaveData: no
 # License: GPL (>= 2)
 # NeedsCompilation: yes
-# Packaged: 2016-10-07 09:47:50 UTC; maechler
+# Packaged: 2017-03-10 09:25:12 UTC; maechler
 # Author: Martin Maechler [aut, cre], Peter Rousseeuw [aut] (Fortran original), Anja Struyf [aut] (S original), Mia Hubert [aut] (S original), Kurt Hornik [trl, ctb] (port to R; maintenance(1999-2000)), Matthias Studer [ctb], Pierre Roudier [ctb], Juan Gonzalez [ctb]
 # Repository: CRAN
-# Date/Publication: 2016-10-08 08:19:31
+# Date/Publication: 2017-03-16 13:24:03 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

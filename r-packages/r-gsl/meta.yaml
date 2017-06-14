@@ -1,30 +1,27 @@
+{% set version = '1.9-10.3' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-gsl
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "1.9_10.1"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: gsl_1.9-10.1.tar.gz
+  fn: gsl_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/gsl_1.9-10.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/gsl/gsl_1.9-10.1.tar.gz
+    - https://cran.r-project.org/src/contrib/gsl_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/gsl/gsl_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 4f9fc4dc8170ba93c9b45940448da089ce9ad4c45ba39c8f264e1505a3e03a02
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -35,20 +32,18 @@ build:
 requirements:
   build:
     - r-base
-    - {{native}}gsl
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
-    - {{native}}gsl
 
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('gsl')" # [not win]
-    - "\"%R%\" -e \"library('gsl')\"" # [win]
+    - $R -e "library('gsl')"  # [not win]
+    - "\"%R%\" -e \"library('gsl')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -57,31 +52,31 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
-  license: GPL-2
+  home: https://CRAN.R-project.org/package=gsl
+  license: GPL (>= 2)
   summary: ' An R wrapper for the special functions and quasi random number generators of the
     Gnu Scientific Library (http://www.gnu.org/software/gsl/).  See gsl-package.Rd for
     details of  overall package organization, and Misc.Rd for some functions that are
     widely used in the package, and some tips on installation.'
 
-  license_family: GPL2
+  license_family: GPL3
 
 # The original CRAN metadata for this package was:
 
 # Package: gsl
-# Version: 1.9-10.1
+# Version: 1.9-10.3
 # Depends: R (>= 2.10.0)
-# Date: 2015-12-02
-# Title: wrapper for the Gnu Scientific Library
+# Date: 2016-12-14
+# Title: Wrapper for the Gnu Scientific Library
 # Author: Robin K. S. Hankin; qrng functions by Duncan Murdoch and multimin by Andrew Clausen
 # SystemRequirements: Gnu Scientific Library version >= 1.12
 # Description:  An R wrapper for the special functions and quasi random number generators of the Gnu Scientific Library (http://www.gnu.org/software/gsl/).  See gsl-package.Rd for details of  overall package organization, and Misc.Rd for some functions that are widely used in the package, and some tips on installation.
 # Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
-# License: GPL-2
-# Packaged: 2015-12-02 11:10:29 UTC; ripley
+# License: GPL (>= 2)
 # NeedsCompilation: yes
 # Repository: CRAN
-# Date/Publication: 2015-12-02 12:31:29
+# Date/Publication: 2017-01-05 11:13:10
+# Packaged: 2017-01-05 07:48:21 UTC; rksh
 
 # See
 # http://docs.continuum.io/conda/build.html for

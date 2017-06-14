@@ -1,37 +1,34 @@
+{% set version = '8.0' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-forecast
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "7.3"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: forecast_7.3.tar.gz
+  fn: forecast_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/forecast_7.3.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/forecast/forecast_7.3.tar.gz
+    - https://cran.r-project.org/src/contrib/forecast_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/forecast/forecast_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 75456318b8a202bfb3780ccfa24ab0d7264e96c6788fd14e01622fbf8556ad42
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat
+# Suggests: testthat, knitr, rmarkdown, expsmooth, rticles
 requirements:
   build:
     - r-base
@@ -40,13 +37,15 @@ requirements:
     - r-colorspace
     - r-fracdiff
     - r-ggplot2 >=2.0.0
+    - r-lmtest
+    - r-magrittr
     - r-nnet
     - r-timedate
     - r-tseries
     - r-zoo
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -55,6 +54,8 @@ requirements:
     - r-colorspace
     - r-fracdiff
     - r-ggplot2 >=2.0.0
+    - r-lmtest
+    - r-magrittr
     - r-nnet
     - r-timedate
     - r-tseries
@@ -63,8 +64,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('forecast')" # [not win]
-    - "\"%R%\" -e \"library('forecast')\"" # [win]
+    - $R -e "library('forecast')"  # [not win]
+    - "\"%R%\" -e \"library('forecast')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -82,25 +83,26 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: forecast
-# Version: 7.3
+# Version: 8.0
 # Title: Forecasting Functions for Time Series and Linear Models
 # Description: Methods and tools for displaying and analysing univariate time series forecasts including exponential smoothing via state space models and automatic ARIMA modelling.
-# Depends: R (>= 3.0.2), stats, graphics, zoo, timeDate
-# Imports: tseries, fracdiff, Rcpp (>= 0.11.0), nnet, colorspace, parallel, ggplot2 (>= 2.0.0)
-# Suggests: testthat
+# Depends: R (>= 3.0.2),
+# Imports: stats, graphics, tseries, fracdiff, Rcpp (>= 0.11.0), nnet, colorspace, parallel, ggplot2 (>= 2.0.0), magrittr, lmtest, zoo, timeDate
+# Suggests: testthat, knitr, rmarkdown, expsmooth, rticles
 # LinkingTo: Rcpp (>= 0.11.0), RcppArmadillo (>= 0.2.35)
 # LazyData: yes
 # ByteCompile: TRUE
-# Authors@R: c(person(given="Rob", family="Hyndman", role=c("aut", "cre", "cph"), email="Rob.Hyndman@monash.edu"))
+# Authors@R: c( person("Rob", "Hyndman", email="Rob.Hyndman@monash.edu", role=c("aut", "cre", "cph")), person("Mitchell", "O'Hara-Wild", role="aut"), person("Christoph", "Bergmeir", role="aut"), person("Slava", "Razbash", role="aut"), person("Earo", "Wang", role="aut") )
 # BugReports: https://github.com/robjhyndman/forecast/issues
 # License: GPL (>= 2)
 # URL: http://github.com/robjhyndman/forecast
+# VignetteBuilder: knitr
 # NeedsCompilation: yes
-# Packaged: 2016-10-12 10:12:00 UTC; robjhyndman
-# Author: Rob Hyndman [aut, cre, cph]
+# Packaged: 2017-02-23 00:20:56 UTC; hyndman
+# Author: Rob Hyndman [aut, cre, cph], Mitchell O'Hara-Wild [aut], Christoph Bergmeir [aut], Slava Razbash [aut], Earo Wang [aut]
 # Maintainer: Rob Hyndman <Rob.Hyndman@monash.edu>
 # Repository: CRAN
-# Date/Publication: 2016-10-13 00:38:06
+# Date/Publication: 2017-02-23 08:31:18
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -1,54 +1,55 @@
+{% set version = '1.0.0' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-readxl
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.1.1"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: readxl_0.1.1.tar.gz
+  fn: readxl_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/readxl_0.1.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/readxl/readxl_0.1.1.tar.gz
+    - https://cran.r-project.org/src/contrib/readxl_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/readxl/readxl_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: fbd62f07fed7946363698a57be88f4ef3fa254ecf456ef292535849c787fc7ad
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat
+# Suggests: covr, knitr, rmarkdown, rprojroot (>= 1.1), testthat
 requirements:
   build:
     - r-base
-    - r-rcpp >=0.11.5
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - r-rcpp >=0.11.6
+    - r-cellranger
+    - r-tibble >=1.1
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
-    - r-rcpp >=0.11.5
+    - r-rcpp >=0.11.6
+    - r-cellranger
+    - r-tibble >=1.1
 
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('readxl')" # [not win]
-    - "\"%R%\" -e \"library('readxl')\"" # [win]
+    - $R -e "library('readxl')"  # [not win]
+    - "\"%R%\" -e \"library('readxl')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -57,10 +58,10 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
-  license: GPL-3 + file LICENSE
-  summary: Import excel files into R. Supports '.xls' via the embedded 'libxls' C library (http://sourceforge.net/projects/libxls/)
-    and '.xlsx' via the embedded 'RapidXML' C++ library (http://rapidxml.sourceforge.net).
+  home: http://readxl.tidyverse.org, https://github.com/tidyverse/readxl
+  license: GPL-3
+  summary: Import excel files into R. Supports '.xls' via the embedded 'libxls' C library <https://sourceforge.net/projects/libxls/>
+    and '.xlsx' via the embedded 'RapidXML' C++ library <https://rapidxml.sourceforge.net>.
     Works on Windows, Mac and Linux without external dependencies.
   license_family: GPL3
 
@@ -68,21 +69,24 @@ about:
 
 # Package: readxl
 # Title: Read Excel Files
-# Version: 0.1.1
-# Authors@R: c( person("Hadley", "Wickham", ,"hadley@rstudio.com", role = c("aut", "cre")), person("RStudio", role = "cph", comment = "Copyright holder of all R code and all C/C++ code without explicit copyright attribution"), person("Marcin", "Kalicinski", role = c("ctb", "cph"), comment = "Author of included RapidXML code"), person("Komarov Valery", role = c("ctb", "cph"), comment = "Author of included libxls code"), person("Christophe Leitienne", role = c("ctb", "cph"), comment = "Author of included libxls code"), person("Bob Colbert", role = c("ctb", "cph"), comment = "Author of included libxls code"), person("David Hoerl", role = c("ctb", "cph"), comment = "Author of included libxls code") )
-# Description: Import excel files into R. Supports '.xls' via the embedded 'libxls' C library (http://sourceforge.net/projects/libxls/) and '.xlsx' via the embedded 'RapidXML' C++ library (http://rapidxml.sourceforge.net). Works on Windows, Mac and Linux without external dependencies.
-# License: GPL-3 + file LICENSE
+# Version: 1.0.0
+# Authors@R: c( person("Hadley", "Wickham", ,"hadley@rstudio.com", role = c("aut")), person("Jennifer", "Bryan", ,"jenny@rstudio.com", role = c("aut", "cre")), person("RStudio", role = c("cph"), comment = "Copyright holder of all R code and all C/C++ code without explicit copyright attribution"), person("Marcin", "Kalicinski", role = c("ctb", "cph"), comment = "Author of included RapidXML code"), person("Komarov Valery", role = c("ctb", "cph"), comment = "Author of included libxls code"), person("Christophe Leitienne", role = c("ctb", "cph"), comment = "Author of included libxls code"), person("Bob Colbert", role = c("ctb", "cph"), comment = "Author of included libxls code"), person("David Hoerl", role = c("ctb", "cph"), comment = "Author of included libxls code") )
+# Description: Import excel files into R. Supports '.xls' via the embedded 'libxls' C library <https://sourceforge.net/projects/libxls/> and '.xlsx' via the embedded 'RapidXML' C++ library <https://rapidxml.sourceforge.net>. Works on Windows, Mac and Linux without external dependencies.
+# License: GPL-3
 # LazyData: true
 # LinkingTo: Rcpp
-# Imports: Rcpp (>= 0.11.5)
-# Suggests: testthat
-# RoxygenNote: 5.0.1
+# Imports: cellranger, Rcpp (>= 0.11.6), tibble (>= 1.1)
+# Suggests: covr, knitr, rmarkdown, rprojroot (>= 1.1), testthat
+# URL: http://readxl.tidyverse.org, https://github.com/tidyverse/readxl
+# BugReports: https://github.com/tidyverse/readxl/issues
+# VignetteBuilder: knitr
+# RoxygenNote: 6.0.1
 # NeedsCompilation: yes
-# Packaged: 2016-03-28 19:47:20 UTC; hadley
-# Author: Hadley Wickham [aut, cre], RStudio [cph] (Copyright holder of all R code and all C/C++ code without explicit copyright attribution), Marcin Kalicinski [ctb, cph] (Author of included RapidXML code), Komarov Valery [ctb, cph] (Author of included libxls code), Christophe Leitienne [ctb, cph] (Author of included libxls code), Bob Colbert [ctb, cph] (Author of included libxls code), David Hoerl [ctb, cph] (Author of included libxls code)
-# Maintainer: Hadley Wickham <hadley@rstudio.com>
+# Packaged: 2017-04-18 06:15:07 UTC; jenny
+# Author: Hadley Wickham [aut], Jennifer Bryan [aut, cre], RStudio [cph] (Copyright holder of all R code and all C/C++ code without explicit copyright attribution), Marcin Kalicinski [ctb, cph] (Author of included RapidXML code), Komarov Valery [ctb, cph] (Author of included libxls code), Christophe Leitienne [ctb, cph] (Author of included libxls code), Bob Colbert [ctb, cph] (Author of included libxls code), David Hoerl [ctb, cph] (Author of included libxls code)
+# Maintainer: Jennifer Bryan <jenny@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2016-03-28 23:26:14
+# Date/Publication: 2017-04-18 07:21:33 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

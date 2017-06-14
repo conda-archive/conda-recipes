@@ -1,30 +1,27 @@
+{% set version = '2.0-10' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-glmnet
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "2.0_5"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: glmnet_2.0-5.tar.gz
+  fn: glmnet_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/glmnet_2.0-5.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/glmnet/glmnet_2.0-5.tar.gz
+    - https://cran.r-project.org/src/contrib/glmnet_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/glmnet/glmnet_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 0d813f549fe47ed7260beeef605144a521e938e6e8a3a8a206dbcbedc887c21e
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -37,9 +34,9 @@ requirements:
     - r-base
     - r-matrix >=1.0_6
     - r-foreach
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -49,8 +46,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('glmnet')" # [not win]
-    - "\"%R%\" -e \"library('glmnet')\"" # [win]
+    - $R -e "library('glmnet')"  # [not win]
+    - "\"%R%\" -e \"library('glmnet')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -61,12 +58,11 @@ test:
 about:
   home: http://www.jstatsoft.org/v33/i01/.
   license: GPL-2
-  summary: 'Extremely efficient procedures for fitting the entire lasso or elastic-net regularization
+  summary: Extremely efficient procedures for fitting the entire lasso or elastic-net regularization
     path for linear regression, logistic and multinomial regression models, Poisson
     regression and the Cox model. Two recent additions are the multiple-response Gaussian,
-    and the grouped multinomial. The algorithm uses cyclical coordinate descent in a
-    path-wise fashion, as described in the paper linked to via the URL below. '
-
+    and the grouped multinomial regression. The algorithm uses cyclical coordinate descent
+    in a path-wise fashion, as described in the paper linked to via the URL below.
   license_family: GPL2
 
 # The original CRAN metadata for this package was:
@@ -74,21 +70,21 @@ about:
 # Package: glmnet
 # Type: Package
 # Title: Lasso and Elastic-Net Regularized Generalized Linear Models
-# Version: 2.0-5
-# Date: 2016-3-15
+# Version: 2.0-10
+# Date: 2017-05-05
 # Author: Jerome Friedman, Trevor Hastie, Noah Simon, Rob Tibshirani
 # Maintainer: Trevor Hastie <hastie@stanford.edu>
 # Depends: Matrix (>= 1.0-6), utils, foreach
 # Imports: methods
 # Suggests: survival, knitr, lars
-# Description: Extremely efficient procedures for fitting the entire lasso or elastic-net regularization path for linear regression, logistic and multinomial regression models, Poisson regression and the Cox model. Two recent additions are the multiple-response Gaussian, and the grouped multinomial. The algorithm uses cyclical coordinate descent in a path-wise fashion, as described in the paper linked to via the URL below.
+# Description: Extremely efficient procedures for fitting the entire lasso or elastic-net regularization path for linear regression, logistic and multinomial regression models, Poisson regression and the Cox model. Two recent additions are the multiple-response Gaussian, and the grouped multinomial regression. The algorithm uses cyclical coordinate descent in a path-wise fashion, as described in the paper linked to via the URL below.
 # License: GPL-2
 # VignetteBuilder: knitr
 # URL: http://www.jstatsoft.org/v33/i01/.
 # NeedsCompilation: yes
-# Packaged: 2016-03-16 21:07:09 UTC; hastie
+# Packaged: 2017-05-05 17:23:16 UTC; hastie
 # Repository: CRAN
-# Date/Publication: 2016-03-17 14:00:48
+# Date/Publication: 2017-05-06 06:23:56 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

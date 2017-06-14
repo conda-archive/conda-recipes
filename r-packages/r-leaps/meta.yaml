@@ -1,23 +1,20 @@
-{% set name = 'leaps' %}
 {% set version = '3.0' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
-  name: r-{{ name|lower }}
+  name: r-leaps
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: {{ name }}_{{ version }}.tar.gz
+  fn: leaps_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/{{ name }}_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/{{ name }}/{{ name }}_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/leaps_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/leaps/leaps_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 55a879cdad5a4c9bc3b5697dd4d364b3a094a49d8facb6692f5ce6af82adf285
   # patches:
    # List any patch files here
    # - fix.patch

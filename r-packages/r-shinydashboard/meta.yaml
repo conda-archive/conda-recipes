@@ -1,30 +1,27 @@
+{% set version = '0.6.0' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-shinydashboard
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.5.3"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: shinydashboard_0.5.3.tar.gz
+  fn: shinydashboard_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/shinydashboard_0.5.3.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/shinydashboard/shinydashboard_0.5.3.tar.gz
+    - https://cran.r-project.org/src/contrib/shinydashboard_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/shinydashboard/shinydashboard_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 9575b162fcaf30a433d647ecc2e61e1e3e4f4dd2e97a97b22e1a8da370e73f6b
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -46,8 +43,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('shinydashboard')" # [not win]
-    - "\"%R%\" -e \"library('shinydashboard')\"" # [win]
+    - $R -e "library('shinydashboard')"  # [not win]
+    - "\"%R%\" -e \"library('shinydashboard')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -66,21 +63,21 @@ about:
 
 # Package: shinydashboard
 # Title: Create Dashboards with 'Shiny'
-# Version: 0.5.3
-# Authors@R: c( person("Winston", "Chang", role = c("aut", "cre"), email = "winston@rstudio.com"), person(family = "RStudio", role = "cph"), person(family = "Almasaeed Studio", role = c("ctb", "cph"), comment = "AdminLTE theme for Bootstrap"), person(family = "Adobe Systems Incorporated", role = c("ctb", "cph"), comment = "Source Sans Pro font") )
+# Version: 0.6.0
+# Authors@R: c( person("Winston", "Chang", role = c("aut", "cre"), email = "winston@rstudio.com"), person("Barbara", "Borges Ribeiro", role = "aut", email = "barbara@rstudio.com"), person(family = "RStudio", role = "cph"), person(family = "Almasaeed Studio", role = c("ctb", "cph"), comment = "AdminLTE theme for Bootstrap"), person(family = "Adobe Systems Incorporated", role = c("ctb", "cph"), comment = "Source Sans Pro font") )
 # Description: Create dashboards with 'Shiny'. This package provides a theme on top of 'Shiny', making it easy to create attractive dashboards.
 # URL: http://rstudio.github.io/shinydashboard/
 # Depends: R (>= 3.0)
 # License: GPL-2 | file LICENSE
 # Imports: utils, shiny (>= 0.12.1), htmltools (>= 0.2.6)
 # BugReports: https://github.com/rstudio/shinydashboard
-# RoxygenNote: 5.0.1
+# RoxygenNote: 6.0.1
 # NeedsCompilation: no
-# Packaged: 2016-09-20 18:47:14 UTC; winston
-# Author: Winston Chang [aut, cre], RStudio [cph], Almasaeed Studio [ctb, cph] (AdminLTE theme for Bootstrap), Adobe Systems Incorporated [ctb, cph] (Source Sans Pro font)
+# Packaged: 2017-05-17 16:19:52 UTC; barbaraborges
+# Author: Winston Chang [aut, cre], Barbara Borges Ribeiro [aut], RStudio [cph], Almasaeed Studio [ctb, cph] (AdminLTE theme for Bootstrap), Adobe Systems Incorporated [ctb, cph] (Source Sans Pro font)
 # Maintainer: Winston Chang <winston@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2016-09-20 22:18:55
+# Date/Publication: 2017-05-18 04:23:45 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

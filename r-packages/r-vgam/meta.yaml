@@ -1,30 +1,27 @@
+{% set version = '1.0-3' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-vgam
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "1.0_2"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: VGAM_1.0-2.tar.gz
+  fn: VGAM_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/VGAM_1.0-2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/VGAM/VGAM_1.0-2.tar.gz
+    - https://cran.r-project.org/src/contrib/VGAM_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/VGAM/VGAM_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 23bb6690ae15e9ede3198ef55d5d3236c279aa8fa6bd4f7350242379d9d72673
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -35,9 +32,9 @@ build:
 requirements:
   build:
     - r-base
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -45,8 +42,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('VGAM')" # [not win]
-    - "\"%R%\" -e \"library('VGAM')\"" # [win]
+    - $R -e "library('VGAM')"  # [not win]
+    - "\"%R%\" -e \"library('VGAM')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -76,8 +73,8 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: VGAM
-# Version: 1.0-2
-# Date: 2016-05-26
+# Version: 1.0-3
+# Date: 2017-01-11
 # Title: Vector Generalized Linear and Additive Models
 # Author: Thomas W. Yee <t.yee@auckland.ac.nz>
 # Maintainer: Thomas Yee <t.yee@auckland.ac.nz>
@@ -90,9 +87,9 @@ about:
 # BuildVignettes: yes
 # LazyLoad: yes
 # LazyData: yes
-# Packaged: 2016-05-26 13:22:19 UTC; tyee001
+# Packaged: 2017-01-11 02:07:28 UTC; tyee001
 # Repository: CRAN
-# Date/Publication: 2016-05-27 18:08:24
+# Date/Publication: 2017-01-11 08:59:31
 
 # See
 # http://docs.continuum.io/conda/build.html for
