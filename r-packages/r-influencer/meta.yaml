@@ -42,6 +42,8 @@ requirements:
     - r-base
     - r-matrix >=1.1_4
     - r-igraph >=1.0.1
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

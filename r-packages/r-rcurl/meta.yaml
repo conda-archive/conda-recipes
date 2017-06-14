@@ -41,6 +41,8 @@ requirements:
   run:
     - r-base
     - r-bitops
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
     - {{native}}curl       # [not osx]
 
 test:

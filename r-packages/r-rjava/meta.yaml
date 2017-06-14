@@ -27,9 +27,6 @@ build:
     - lib/R/lib/
     - lib/
 
-  script_env:
-    - JAVA_HOME
-
 
 requirements:
   build:
@@ -41,22 +38,14 @@ requirements:
 
   run:
     - r-base
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
-
-  # I would like to use this instead of depending on openjdk but
-  # conda-build does not seem to allow that?
-  # script_env:
-  #   - JAVA_HOME  # [win]
-
-  requires:
-    - openjdk  # [win64]
-
   commands:
     # You can put additional test commands to be run here.
     - $R -e "library('rJava')"  # [not win]
-    # We cannot test on Windows 32-bit due to not having openjdk.
-    - "\"%R%\" -e \"library('rJava')\""  # [win64]
+    - "\"%R%\" -e \"library('rJava')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.

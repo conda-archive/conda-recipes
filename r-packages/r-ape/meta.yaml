@@ -42,6 +42,8 @@ requirements:
     - r-base
     - r-lattice
     - r-nlme
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

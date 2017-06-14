@@ -72,6 +72,8 @@ requirements:
     - r-rpart
     - r-survival >=2.40_1
     - r-viridis
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

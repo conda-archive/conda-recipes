@@ -48,6 +48,8 @@ requirements:
     - r-hms
     - r-readr >=0.1.0
     - r-tibble
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

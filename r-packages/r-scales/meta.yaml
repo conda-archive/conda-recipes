@@ -50,6 +50,8 @@ requirements:
     - r-labeling
     - r-munsell >=0.2
     - r-plyr
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

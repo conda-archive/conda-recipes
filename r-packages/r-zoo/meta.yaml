@@ -40,6 +40,8 @@ requirements:
   run:
     - r-base
     - r-lattice >=0.20_27
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

@@ -40,6 +40,8 @@ requirements:
   run:
     - r-base
     - r-profilemodel
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

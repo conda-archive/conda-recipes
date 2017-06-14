@@ -44,6 +44,8 @@ requirements:
     - r-matrix
     - r-matrixmodels
     - r-sparsem
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

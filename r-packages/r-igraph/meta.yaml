@@ -44,12 +44,13 @@ requirements:
 
   run:
     - r-base
-    - r-matrix
+    - {{native}}gmp
+    - {{native}}libxml2   # [win]    - r-matrix
     - r-nmf
     - r-irlba
     - r-magrittr
-    - {{native}}gmp
-    - {{native}}libxml2   # [win]
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

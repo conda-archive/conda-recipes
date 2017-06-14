@@ -40,6 +40,8 @@ requirements:
   run:
     - r-base
     - {{native}}openssl
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

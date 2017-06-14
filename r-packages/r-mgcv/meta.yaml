@@ -42,6 +42,8 @@ requirements:
     - r-base
     - r-matrix
     - r-nlme >=3.1_64
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

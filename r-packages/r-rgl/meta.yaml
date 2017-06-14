@@ -50,6 +50,8 @@ requirements:
     - r-knitr
     - r-magrittr
     - r-shiny
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

@@ -54,6 +54,8 @@ requirements:
     - r-nlme
     - r-plyr
     - r-reshape2
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

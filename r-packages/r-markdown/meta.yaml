@@ -40,6 +40,8 @@ requirements:
   run:
     - r-base
     - r-mime >=0.3
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

@@ -58,6 +58,8 @@ requirements:
     - r-pcapp
     - r-pspline
     - r-stabledist >=0.6_4
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

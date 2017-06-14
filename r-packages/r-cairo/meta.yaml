@@ -32,17 +32,19 @@ build:
 requirements:
   build:
     - r-base
-    - pkg-config             # [not win]
+    - pkg-config           # [not win]
+    - cairo 1.14.*         # [not win]
+    - libpng >=1.6.27,<1.7 # [not win]
     - posix                # [win]
     - {{native}}toolchain  # [win]
     - gcc                  # [not win]
-    - cairo 1.14.*           # [not win]
-    - libpng >=1.6.27,<1.7   # [not win]
 
   run:
     - r-base
-    - cairo 1.14.*           # [not win]
-    - libpng >=1.6.27,<1.7   # [not win]
+    - cairo 1.14.*         # [not win]
+    - libpng >=1.6.27,<1.7 # [not win]
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

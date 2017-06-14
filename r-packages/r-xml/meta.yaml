@@ -39,6 +39,8 @@ requirements:
 
   run:
     - r-base
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
     - {{native}}libxml2
 
 test:

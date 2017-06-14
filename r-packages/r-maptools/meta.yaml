@@ -44,6 +44,8 @@ requirements:
     - r-foreign >=0.8
     - r-lattice
     - r-sp >=1.0_11
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

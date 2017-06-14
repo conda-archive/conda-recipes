@@ -36,16 +36,18 @@ requirements:
   build:
     - r-base
     - r-r6
+    - pkg-config           # [not win]
+    - zeromq 4.1.*         # [not win]
     - posix                # [win]
-    - pkg-config          # [not win]
     - {{native}}toolchain  # [win]
     - gcc                  # [not win]
-    - zeromq 4.1.*        # [not win]
 
   run:
     - r-base
     - r-r6
-    - zeromq 4.1.*        # [not win]
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
+    - zeromq 4.1.*         # [not win]
 
 test:
   commands:

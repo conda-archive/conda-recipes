@@ -42,6 +42,8 @@ requirements:
     - r-base
     - r-matrix >=1.0_6
     - r-foreach
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

@@ -44,6 +44,8 @@ requirements:
     - r-rcpp >=0.11.6
     - r-cellranger
     - r-tibble >=1.1
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

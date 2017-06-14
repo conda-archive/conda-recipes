@@ -37,12 +37,14 @@ requirements:
     - posix                # [win]
     - {{native}}toolchain  # [win]
     - gcc                  # [not win]
-    - {{native}}libxml2
+     - {{native}}libxml2
 
   run:
     - r-base
     - r-bh
     - r-rcpp >=0.11.4.6
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
     - {{native}}libxml2
 
 test:
