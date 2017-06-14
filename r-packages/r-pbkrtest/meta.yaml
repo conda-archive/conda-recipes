@@ -1,37 +1,34 @@
+{% set version = '0.4-7' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-pbkrtest
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.4_6"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: pbkrtest_0.4-6.tar.gz
+  fn: pbkrtest_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/pbkrtest_0.4-6.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/pbkrtest/pbkrtest_0.4-6.tar.gz
+    - https://cran.r-project.org/src/contrib/pbkrtest_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/pbkrtest/pbkrtest_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 5cbb03ad2b2468720a5a610a0ebda48ac08119a34fca77810a85f554225c23ea
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: gplots
+
 requirements:
   build:
     - r-base
@@ -48,8 +45,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('pbkrtest')" # [not win]
-    - "\"%R%\" -e \"library('pbkrtest')\"" # [win]
+    - $R -e "library('pbkrtest')"  # [not win]
+    - "\"%R%\" -e \"library('pbkrtest')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -60,31 +57,31 @@ test:
 about:
   home: http://people.math.aau.dk/~sorenh/software/pbkrtest/
   license: GPL (>= 2)
-  summary: Test in mixed effects models. . Attention is on mixed effects models as implemented
-    in the 'lme4' package. . This package implements a parametric bootstrap test and
-    a Kenward Roger  modification of F-tests for linear mixed effects models and a parametric
-    bootstrap  test for generalized linear mixed models.
+  summary: Test in mixed effects models. Attention is on mixed effects models as implemented
+    in the 'lme4' package. This package implements a parametric bootstrap test and a
+    Kenward Roger modification of F-tests for linear mixed effects models and a parametric
+    bootstrap test for generalized linear mixed models.
   license_family: GPL3
 
 # The original CRAN metadata for this package was:
 
 # Package: pbkrtest
-# Version: 0.4-6
+# Version: 0.4-7
 # Title: Parametric Bootstrap and Kenward Roger Based Methods for Mixed Model Comparison
-# Author: Ulrich Halekoh <uhalekoh@health.sdu.dk> Srren Hrjsgaard <sorenh@math.aau.dk>
-# Maintainer: Srren Hrjsgaard <sorenh@math.aau.dk>
-# Description: Test in mixed effects models. . Attention is on mixed effects models as implemented in the 'lme4' package. . This package implements a parametric bootstrap test and a Kenward Roger  modification of F-tests for linear mixed effects models and a parametric bootstrap  test for generalized linear mixed models.
+# Author: Ulrich Halekoh <uhalekoh@health.sdu.dk> Sren Hjsgaard <sorenh@math.aau.dk>
+# Maintainer: Sren Hjsgaard <sorenh@math.aau.dk>
+# Description: Test in mixed effects models. Attention is on mixed effects models as implemented in the 'lme4' package. This package implements a parametric bootstrap test and a Kenward Roger modification of F-tests for linear mixed effects models and a parametric bootstrap test for generalized linear mixed models.
 # URL: http://people.math.aau.dk/~sorenh/software/pbkrtest/
 # Depends: R (>= 3.2.3), lme4 (>= 1.1.10)
 # Imports: Matrix (>= 1.2.3), parallel, MASS, methods
-# Suggests: gplots
-# Encoding: latin1
+# Encoding: UTF-8
 # ZipData: no
 # License: GPL (>= 2)
+# RoxygenNote: 5.0.1
 # NeedsCompilation: no
-# Packaged: 2016-01-27 16:02:56 UTC; sorenh
+# Packaged: 2017-03-12 20:05:38 UTC; sorenh
 # Repository: CRAN
-# Date/Publication: 2016-01-27 20:39:58
+# Date/Publication: 2017-03-15 08:49:25
 
 # See
 # http://docs.continuum.io/conda/build.html for

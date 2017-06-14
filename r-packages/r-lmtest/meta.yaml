@@ -1,30 +1,27 @@
+{% set version = '0.9-35' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-lmtest
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.9_34"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: lmtest_0.9-34.tar.gz
+  fn: lmtest_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/lmtest_0.9-34.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/lmtest/lmtest_0.9-34.tar.gz
+    - https://cran.r-project.org/src/contrib/lmtest_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/lmtest/lmtest_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 2f4982f1b6cd133ef36fe9718f4ff2f4fa5c20716100fdd5ee5c947b68c8eb80
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -36,9 +33,9 @@ requirements:
   build:
     - r-base
     - r-zoo
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -47,8 +44,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('lmtest')" # [not win]
-    - "\"%R%\" -e \"library('lmtest')\"" # [win]
+    - $R -e "library('lmtest')"  # [not win]
+    - "\"%R%\" -e \"library('lmtest')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -57,7 +54,7 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: https://CRAN.R-project.org/package=lmtest
   license: GPL-2 | GPL-3
   summary: A collection of tests, data sets, and examples for diagnostic checking in linear regression
     models. Furthermore, some generic tools for inference in parametric models are provided.
@@ -67,8 +64,8 @@ about:
 
 # Package: lmtest
 # Title: Testing Linear Regression Models
-# Version: 0.9-34
-# Date: 2015-06-06
+# Version: 0.9-35
+# Date: 2017-02-11
 # Authors@R: c(person(given = "Torsten", family = "Hothorn", role = "aut", email = "Torsten.Hothorn@R-project.org"), person(given = "Achim", family = "Zeileis", role = c("aut", "cre"), email = "Achim.Zeileis@R-project.org"), person(given = c("Richard", "W."), family = "Farebrother", role = "aut", comment = "pan.f"), person(given = "Clint", family = "Cummins", role = "aut", comment = "pan.f"), person(given = "Giovanni", family = "Millo", role = "ctb"), person(given = "David", family = "Mitchell", role = "ctb"))
 # Description: A collection of tests, data sets, and examples for diagnostic checking in linear regression models. Furthermore, some generic tools for inference in parametric models are provided.
 # LazyData: yes
@@ -77,11 +74,11 @@ about:
 # Imports: graphics
 # License: GPL-2 | GPL-3
 # NeedsCompilation: yes
-# Packaged: 2015-06-06 08:59:18 UTC; zeileis
+# Packaged: 2017-02-11 09:30:28 UTC; zeileis
 # Author: Torsten Hothorn [aut], Achim Zeileis [aut, cre], Richard W. Farebrother [aut] (pan.f), Clint Cummins [aut] (pan.f), Giovanni Millo [ctb], David Mitchell [ctb]
 # Maintainer: Achim Zeileis <Achim.Zeileis@R-project.org>
 # Repository: CRAN
-# Date/Publication: 2015-06-06 13:03:26
+# Date/Publication: 2017-02-11 10:43:09
 
 # See
 # http://docs.continuum.io/conda/build.html for

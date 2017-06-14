@@ -1,30 +1,27 @@
+{% set version = '0.8' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-markdown
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.7.7"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: markdown_0.7.7.tar.gz
+  fn: markdown_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/markdown_0.7.7.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/markdown/markdown_0.7.7.tar.gz
+    - https://cran.r-project.org/src/contrib/markdown_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/markdown/markdown_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 538fd912b2220f2df344c6cca58304ce11e0960de7bd7bd573b3385105d48fed
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  number: 2
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -36,9 +33,9 @@ requirements:
   build:
     - r-base
     - r-mime >=0.3
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -47,8 +44,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('markdown')" # [not win]
-    - "\"%R%\" -e \"library('markdown')\"" # [win]
+    - $R -e "library('markdown')"  # [not win]
+    - "\"%R%\" -e \"library('markdown')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -70,22 +67,24 @@ about:
 # Package: markdown
 # Type: Package
 # Title: 'Markdown' Rendering for R
-# Version: 0.7.7
-# Date: 2015-04-23
-# Author: JJ Allaire, Jeffrey Horner, Vicent Marti, and Natacha Porte
-# Maintainer: Yihui Xie <xie@yihui.name>
+# Version: 0.8
+# Date: 2017-04-20
+# Authors@R: c( person("JJ", "Allaire", role = "aut"), person("Jeffrey", "Horner", role = "aut"), person("Henrik", "Bengtsson", role = "ctb"), person("Jim", "Hester", role = "ctb"), person("Yixuan", "Qiu", role = "ctb"), person("Kohske", "Takahashi", role = "ctb"), person("Adam", "November", role = "ctb"), person("Nacho", "Caballero", role = "ctb"), person("Jeroen", "Ooms", role = "ctb"), person("Thomas", "Leeper", role = "ctb"), person("Joe", "Cheng", role = "ctb"), person("Andrzej", "Oles", role = "ctb"), person("Vicent", "Marti", role = c("aut", "cph"), comment = "The Sundown library"), person("Natacha", "Porte", role = c("aut", "cph"), comment = "The Sundown library"), person(family = "RStudio", role = "cph"), person("Yihui", "Xie", role = c("cre", "ctb"), email = "xie@yihui.name") )
 # Description: Provides R bindings to the 'Sundown' 'Markdown' rendering library (https://github.com/vmg/sundown). 'Markdown' is a plain-text formatting syntax that can be converted to 'XHTML' or other formats. See http://en.wikipedia.org/wiki/Markdown for more information about 'Markdown'.
 # Depends: R (>= 2.11.1)
-# Imports: mime (>= 0.3)
+# Imports: utils, mime (>= 0.3)
 # Suggests: knitr, RCurl
 # License: GPL-2
 # URL: https://github.com/rstudio/markdown
 # BugReports: https://github.com/rstudio/markdown/issues
 # VignetteBuilder: knitr
+# RoxygenNote: 6.0.1
 # NeedsCompilation: yes
-# Packaged: 2015-04-22 15:26:12 UTC; yihui
+# Packaged: 2017-04-19 20:14:01 UTC; yihui
+# Author: JJ Allaire [aut], Jeffrey Horner [aut], Henrik Bengtsson [ctb], Jim Hester [ctb], Yixuan Qiu [ctb], Kohske Takahashi [ctb], Adam November [ctb], Nacho Caballero [ctb], Jeroen Ooms [ctb], Thomas Leeper [ctb], Joe Cheng [ctb], Andrzej Oles [ctb], Vicent Marti [aut, cph] (The Sundown library), Natacha Porte [aut, cph] (The Sundown library), RStudio [cph], Yihui Xie [cre, ctb]
+# Maintainer: Yihui Xie <xie@yihui.name>
 # Repository: CRAN
-# Date/Publication: 2015-04-22 22:33:46
+# Date/Publication: 2017-04-20 09:07:54 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

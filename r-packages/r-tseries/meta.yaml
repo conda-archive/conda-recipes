@@ -1,56 +1,55 @@
+{% set version = '0.10-41' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-tseries
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.10_35"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: tseries_0.10-35.tar.gz
+  fn: tseries_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/tseries_0.10-35.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/tseries/tseries_0.10-35.tar.gz
+    - https://cran.r-project.org/src/contrib/tseries_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/tseries/tseries_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: c5139b2b615fa3bcd1d591a6180c02bb667772414f9bd90dd83bd37534bbba26
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: its
+
 requirements:
   build:
     - r-base
     - r-quadprog
+    - r-quantmod >=0.4.9
     - r-zoo
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
     - r-quadprog
+    - r-quantmod >=0.4.9
     - r-zoo
 
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('tseries')" # [not win]
-    - "\"%R%\" -e \"library('tseries')\"" # [win]
+    - $R -e "library('tseries')"  # [not win]
+    - "\"%R%\" -e \"library('tseries')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -59,7 +58,7 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: https://CRAN.R-project.org/package=tseries
   license: GPL-2
   summary: Time series analysis and computational finance.
   license_family: GPL2
@@ -67,20 +66,19 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: tseries
-# Version: 0.10-35
+# Version: 0.10-41
 # Title: Time Series Analysis and Computational Finance
 # Authors@R: c(person("Adrian", "Trapletti", role = "aut", email = "adrian@trapletti.org"), person("Kurt", "Hornik", role = c("aut", "cre"), email = "Kurt.Hornik@R-project.org"), person("Blake", "LeBaron", role = "ctb", comment = "BDS test code"))
 # Description: Time series analysis and computational finance.
 # Depends: R (>= 2.10.0)
-# Suggests: its
-# Imports: graphics, stats, utils, quadprog, zoo
+# Imports: graphics, stats, utils, quadprog, zoo, quantmod (>= 0.4.9)
 # License: GPL-2
 # NeedsCompilation: yes
-# Packaged: 2016-05-02 07:49:42 UTC; hornik
+# Packaged: 2017-05-29 13:26:51 UTC; hornik
 # Author: Adrian Trapletti [aut], Kurt Hornik [aut, cre], Blake LeBaron [ctb] (BDS test code)
 # Maintainer: Kurt Hornik <Kurt.Hornik@R-project.org>
 # Repository: CRAN
-# Date/Publication: 2016-05-02 13:58:30
+# Date/Publication: 2017-05-29 16:40:56 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -1,43 +1,40 @@
+{% set version = '0.20-35' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-lattice
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.20_34"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: lattice_0.20-34.tar.gz
+  fn: lattice_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/lattice_0.20-34.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/lattice/lattice_0.20-34.tar.gz
+    - https://cran.r-project.org/src/contrib/lattice_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/lattice/lattice_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 0829ab0f4dec55aac6a73bc3411af68441ddb1b5b078d680a7c2643abeaa965d
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: KernSmooth, MASS
+# Suggests: KernSmooth, MASS, latticeExtra
 requirements:
   build:
     - r-base
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -45,8 +42,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('lattice')" # [not win]
-    - "\"%R%\" -e \"library('lattice')\"" # [win]
+    - $R -e "library('lattice')"  # [not win]
+    - "\"%R%\" -e \"library('lattice')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -66,26 +63,26 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: lattice
-# Version: 0.20-34
-# Date: 2016-09-06
+# Version: 0.20-35
+# Date: 2017-03-23
 # Priority: recommended
 # Title: Trellis Graphics for R
 # Author: Deepayan Sarkar <deepayan.sarkar@r-project.org>
 # Maintainer: Deepayan Sarkar <deepayan.sarkar@r-project.org>
 # Description: A powerful and elegant high-level data visualization system inspired by Trellis graphics, with an emphasis on multivariate data. Lattice is sufficient for typical graphics needs, and is also flexible enough to handle most nonstandard requirements. See ?Lattice for an introduction.
 # Depends: R (>= 3.0.0)
-# Suggests: KernSmooth, MASS
+# Suggests: KernSmooth, MASS, latticeExtra
 # Imports: grid, grDevices, graphics, stats, utils
 # Enhances: chron
 # LazyLoad: yes
 # LazyData: yes
 # License: GPL (>= 2)
 # URL: http://lattice.r-forge.r-project.org/
-# BugReports: http://r-forge.r-project.org/projects/lattice/
+# BugReports: https://github.com/deepayan/lattice/issues
 # NeedsCompilation: yes
-# Packaged: 2016-09-06 11:56:33 UTC; deepayan
+# Packaged: 2017-03-25 11:25:40 UTC; deepayan
 # Repository: CRAN
-# Date/Publication: 2016-09-06 20:09:12
+# Date/Publication: 2017-03-25 18:05:47 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

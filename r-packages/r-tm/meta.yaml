@@ -1,30 +1,27 @@
+{% set version = '0.7-1' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-tm
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.6_2"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: tm_0.6-2.tar.gz
+  fn: tm_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/tm_0.6-2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/tm/tm_0.6-2.tar.gz
+    - https://cran.r-project.org/src/contrib/tm_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/tm/tm_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 184dc285d3c53b8b4adacfd78b2b098c1bf8ead948d18719efa979a4a6cfe6fc
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -35,22 +32,26 @@ build:
 requirements:
   build:
     - r-base
+    - r-bh
     - r-nlp >=0.1_6.2
-    - r-slam >=0.1_31
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - r-rcpp
+    - r-slam >=0.1_37
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
+    - r-bh
     - r-nlp >=0.1_6.2
-    - r-slam >=0.1_31
+    - r-rcpp
+    - r-slam >=0.1_37
 
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('tm')" # [not win]
-    - "\"%R%\" -e \"library('tm')\"" # [win]
+    - $R -e "library('tm')"  # [not win]
+    - "\"%R%\" -e \"library('tm')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -68,11 +69,12 @@ about:
 
 # Package: tm
 # Title: Text Mining Package
-# Version: 0.6-2
-# Date: 2015-07-02
+# Version: 0.7-1
+# Date: 2017-03-02
 # Authors@R: c(person("Ingo", "Feinerer", role = c("aut", "cre"), email = "feinerer@logic.at"), person("Kurt", "Hornik", role = "aut"), person("Artifex Software, Inc.", role = c("ctb", "cph"), comment = "pdf_info.ps taken from GPL Ghostscript"))
-# Depends: R (>= 3.1.0), NLP (>= 0.1-6.2)
-# Imports: parallel, slam (>= 0.1-31), stats, tools, utils, graphics
+# Depends: R (>= 3.2.0), NLP (>= 0.1-6.2)
+# Imports: Rcpp, parallel, slam (>= 0.1-37), stats, tools, utils, graphics
+# LinkingTo: BH, Rcpp
 # Suggests: filehash, methods, Rcampdf, Rgraphviz, Rpoppler, SnowballC, tm.lexicon.GeneralInquirer, XML
 # SystemRequirements: Antiword (<http://www.winfield.demon.nl/>) for reading MS Word files, pdfinfo and pdftotext from Poppler (<http://poppler.freedesktop.org/>) for reading PDF
 # Description: A framework for text mining applications within R.
@@ -80,11 +82,11 @@ about:
 # URL: http://tm.r-forge.r-project.org/
 # Additional_repositories: http://datacube.wu.ac.at
 # NeedsCompilation: yes
-# Packaged: 2015-07-03 06:57:05 UTC; hornik
+# Packaged: 2017-03-02 14:36:20 UTC; hornik
 # Author: Ingo Feinerer [aut, cre], Kurt Hornik [aut], Artifex Software, Inc. [ctb, cph] (pdf_info.ps taken from GPL Ghostscript)
 # Maintainer: Ingo Feinerer <feinerer@logic.at>
 # Repository: CRAN
-# Date/Publication: 2015-07-03 10:43:07
+# Date/Publication: 2017-03-02 17:45:01
 
 # See
 # http://docs.continuum.io/conda/build.html for

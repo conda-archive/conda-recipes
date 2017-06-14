@@ -1,30 +1,27 @@
+{% set version = '3.1-131' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-nlme
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "3.1_128"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: nlme_3.1-128.tar.gz
+  fn: nlme_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/nlme_3.1-128.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/nlme/nlme_3.1-128.tar.gz
+    - https://cran.r-project.org/src/contrib/nlme_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/nlme/nlme_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 79daa167eb9bc7d8dba506da4b24b5250665b051d4e0a51dfccbb0087fdb564c
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -36,9 +33,9 @@ requirements:
   build:
     - r-base
     - r-lattice
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -47,8 +44,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('nlme')" # [not win]
-    - "\"%R%\" -e \"library('nlme')\"" # [win]
+    - $R -e "library('nlme')"  # [not win]
+    - "\"%R%\" -e \"library('nlme')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -57,7 +54,7 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: https://CRAN.R-project.org/package=nlme
   license: GPL (>= 2) | file LICENCE
   summary: Fit and compare Gaussian linear and nonlinear mixed-effects models.
   license_family: GPL3
@@ -65,8 +62,8 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: nlme
-# Version: 3.1-128
-# Date: 2016-05-04
+# Version: 3.1-131
+# Date: 2017-02-06
 # Priority: recommended
 # Title: Linear and Nonlinear Mixed Effects Models
 # Authors@R: c(person("JosAS", "Pinheiro", role = "aut", comment = "S version"), person("Douglas", "Bates", role = "aut", comment = "up to 2007"), person("Saikat", "DebRoy", role = "ctb", comment = "up to 2002"), person("Deepayan", "Sarkar", role = "ctb", comment = "up to 2005"), person("EISPACK authors", role = "ctb", comment = "src/rs.f"), person("Siem", "Heisterkamp", role = "ctb", comment = "Author fixed sigma"), person("Bert", "Van Willigen",role = "ctb", comment = "Programmer fixed sigma"), person("R-core", email = "R-core@R-project.org", role = c("aut", "cre")))
@@ -78,13 +75,13 @@ about:
 # ByteCompile: yes
 # Encoding: UTF-8
 # License: GPL (>= 2) | file LICENCE
-# BugReports: http://bugs.r-project.org
+# BugReports: https://bugs.r-project.org
 # NeedsCompilation: yes
-# Packaged: 2016-05-09 08:38:54 UTC; maechler
+# Packaged: 2017-02-06 10:56:42 UTC; maechler
 # Author: JosAS Pinheiro [aut] (S version), Douglas Bates [aut] (up to 2007), Saikat DebRoy [ctb] (up to 2002), Deepayan Sarkar [ctb] (up to 2005), EISPACK authors [ctb] (src/rs.f), Siem Heisterkamp [ctb] (Author fixed sigma), Bert Van Willigen [ctb] (Programmer fixed sigma), R-core [aut, cre]
 # Maintainer: R-core <R-core@R-project.org>
 # Repository: CRAN
-# Date/Publication: 2016-05-10 11:40:55
+# Date/Publication: 2017-02-06 21:34:58
 
 # See
 # http://docs.continuum.io/conda/build.html for

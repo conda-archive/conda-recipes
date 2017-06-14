@@ -1,30 +1,27 @@
+{% set version = '7.3-47' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-mass
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "7.3_45"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: MASS_7.3-45.tar.gz
+  fn: MASS_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/MASS_7.3-45.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/MASS/MASS_7.3-45.tar.gz
+    - https://cran.r-project.org/src/contrib/MASS_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/MASS/MASS_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: ed44cdabe84fff3553122267ade61d5cc68071c435f7645d36c8f2e4e9f9c6bf
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -35,9 +32,9 @@ build:
 requirements:
   build:
     - r-base
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -45,8 +42,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('MASS')" # [not win]
-    - "\"%R%\" -e \"library('MASS')\"" # [win]
+    - $R -e "library('MASS')"  # [not win]
+    - "\"%R%\" -e \"library('MASS')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -65,9 +62,9 @@ about:
 
 # Package: MASS
 # Priority: recommended
-# Version: 7.3-45
-# Date: 2015-11-10
-# Revision: $Rev: 3453 $
+# Version: 7.3-47
+# Date: 2017-02-26
+# Revision: $Rev: 3474 $
 # Depends: R (>= 3.1.0), grDevices, graphics, stats, utils
 # Imports: methods
 # Suggests: lattice, nlme, nnet, survival
@@ -78,12 +75,13 @@ about:
 # ByteCompile: yes
 # License: GPL-2 | GPL-3
 # URL: http://www.stats.ox.ac.uk/pub/MASS4/
+# Contact: <MASS@stats.ox.ac.uk>
 # NeedsCompilation: yes
-# Packaged: 2016-04-21 09:06:13 UTC; ripley
+# Packaged: 2017-02-26 08:41:42 UTC; ripley
 # Author: Brian Ripley [aut, cre, cph], Bill Venables [ctb], Douglas M. Bates [ctb], Kurt Hornik [trl] (partial port ca 1998), Albrecht Gebhardt [trl] (partial port ca 1998), David Firth [ctb]
 # Maintainer: Brian Ripley <ripley@stats.ox.ac.uk>
 # Repository: CRAN
-# Date/Publication: 2016-04-21 11:13:45
+# Date/Publication: 2017-04-21 13:33:21 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

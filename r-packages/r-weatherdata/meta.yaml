@@ -1,30 +1,27 @@
+{% set version = '0.5.0' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-weatherdata
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.4.1"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: weatherData_0.4.1.tar.gz
+  fn: weatherData_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/weatherData_0.4.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/weatherData/weatherData_0.4.1.tar.gz
+    - https://cran.r-project.org/src/contrib/weatherData_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/weatherData/weatherData_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 49ff581367f13eeec1e04b9fafa4149b44660ce690dfa9c7944072034a3d40d0
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  number: 2
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -35,17 +32,19 @@ build:
 requirements:
   build:
     - r-base
+    - r-curl
     - r-plyr
 
   run:
     - r-base
+    - r-curl
     - r-plyr
 
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('weatherData')" # [not win]
-    - "\"%R%\" -e \"library('weatherData')\"" # [win]
+    - $R -e "library('weatherData')"  # [not win]
+    - "\"%R%\" -e \"library('weatherData')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -68,19 +67,22 @@ about:
 # Title: Get Weather Data from the Web
 # Description: Functions that help in fetching weather data from websites. Given a location and a date range, these functions help fetch weather data (temperature, pressure etc.) for any weather related analysis.
 # URL: http://ram-n.github.io/weatherData/
-# Version: 0.4.1
-# Date: 2014-06-23
-# Author: Ram Narasimhan
+# BugReports: https://github.com/ram-n/weatherData/issues
+# Version: 0.5.0
+# Date: 2017-05-16
+# Authors@R: person("Ram", "Narasimhan", email = "ramnarasimhan@gmail.com", role = c("aut", "cre"))
 # Suggests: testthat
-# Imports: plyr
-# Maintainer: Ram Narasimhan <ramnarasimhan@gmail.com>
+# Depends: R (>= 2.10)
+# Imports: curl, plyr, utils
 # LazyData: TRUE
 # License: GPL
-# Packaged: 2014-06-24 14:44:23 UTC; 212310464
-# Depends: R (>= 2.10)
+# RoxygenNote: 6.0.1
 # NeedsCompilation: no
+# Packaged: 2017-06-05 20:11:46 UTC; Ram
+# Author: Ram Narasimhan [aut, cre]
+# Maintainer: Ram Narasimhan <ramnarasimhan@gmail.com>
 # Repository: CRAN
-# Date/Publication: 2014-06-24 17:17:14
+# Date/Publication: 2017-06-05 21:55:33 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

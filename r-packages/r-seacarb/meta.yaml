@@ -1,30 +1,27 @@
+{% set version = '3.1.2' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-seacarb
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "3.1.1"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: seacarb_3.1.1.tar.gz
+  fn: seacarb_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/seacarb_3.1.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/seacarb/seacarb_3.1.1.tar.gz
+    - https://cran.r-project.org/src/contrib/seacarb_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/seacarb/seacarb_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 52a7b6bc4d8a520022dc59d42389c21b668e50ce6b613c2fd5e8d33d8a7233bf
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -35,17 +32,19 @@ build:
 requirements:
   build:
     - r-base
+    - r-gsw
     - r-oce
 
   run:
     - r-base
+    - r-gsw
     - r-oce
 
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('seacarb')" # [not win]
-    - "\"%R%\" -e \"library('seacarb')\"" # [win]
+    - $R -e "library('seacarb')"  # [not win]
+    - "\"%R%\" -e \"library('seacarb')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -64,11 +63,11 @@ about:
 
 # Package: seacarb
 # Title: Seawater Carbonate Chemistry
-# Version: 3.1.1
-# Date: 2016-11-22
+# Version: 3.1.2
+# Date: 2017-04-30
 # LazyData: true
-# Authors@R: c(person("Jean-Pierre", "Gattuso", role = c("aut", "cre", "cph"), email = "gattuso@obs-vlfr.fr"), person("Jean-Marie", "Epitalon", role = "aut", email = "Jean-Marie.Epitalon@cerfacs.fr"), person("Heloise", "Lavigne", role = "aut", email = "lavigne@obs-vlfr.fr"), person("James", "Orr", role = "aut"), person("Bernard", "Gentili", role = "ctb"), person("Andreas", "Hofmann", role = "ctb"), person("AurASlien", "Proye", role = "ctb"), person("Karline", "Soetaert", role = "ctb"), person("James", "Rae", role = "ctb") )
-# Depends: R (>= 2.10), oce
+# Authors@R: c(person("Jean-Pierre", "Gattuso", role = c("aut", "cre", "cph"), email = "gattuso@obs-vlfr.fr"), person("Jean-Marie", "Epitalon", role = "aut", email = "Jean-Marie.Epitalon@orange.fr"), person("Heloise", "Lavigne", role = "aut", email = "lavigne@obs-vlfr.fr"), person("James", "Orr", role = "aut"), person("Bernard", "Gentili", role = "ctb"), person("Andreas", "Hofmann", role = "ctb"), person("AurASlien", "Proye", role = "ctb"), person("Karline", "Soetaert", role = "ctb"), person("James", "Rae", role = "ctb") )
+# Depends: R (>= 2.10), oce, gsw
 # Description: Calculates parameters of the seawater carbonate system and assists the design of ocean acidification perturbation experiments.
 # Encoding: UTF-8
 # URL: https://CRAN.R-project.org/package=seacarb
@@ -76,10 +75,10 @@ about:
 # Repository: CRAN
 # RoxygenNote: 5.0.1
 # NeedsCompilation: no
-# Packaged: 2016-11-22 06:34:24 UTC; gattuso_mba
+# Packaged: 2017-04-30 08:40:10 UTC; gattuso
 # Author: Jean-Pierre Gattuso [aut, cre, cph], Jean-Marie Epitalon [aut], Heloise Lavigne [aut], James Orr [aut], Bernard Gentili [ctb], Andreas Hofmann [ctb], AurASlien Proye [ctb], Karline Soetaert [ctb], James Rae [ctb]
 # Maintainer: Jean-Pierre Gattuso <gattuso@obs-vlfr.fr>
-# Date/Publication: 2016-11-22 10:03:17
+# Date/Publication: 2017-04-30 21:52:28 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

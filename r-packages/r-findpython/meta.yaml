@@ -1,23 +1,20 @@
-{% set name = 'findpython' %}
-{% set version = '1.0.1' %}
+{% set version = '1.0.2' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
-  name: r-{{ name|lower }}
+  name: r-findpython
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: {{ name }}_{{ version }}.tar.gz
+  fn: findpython_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/{{ name }}_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/{{ name }}/{{ name }}_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/findpython_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/findpython/findpython_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: b38b148521927b27a8fd480df797a4c6bc618407606f27bef07d7b93fb6a68f4
   # patches:
    # List any patch files here
    # - fix.patch
@@ -61,20 +58,21 @@ about:
 
 # Package: findpython
 # Type: Package
-# Title: Python tools to find an acceptable python binary
-# Version: 1.0.1
+# Title: Python Tools to Find an Acceptable Python Binary
+# Version: 1.0.2
 # Author: Trevor L Davis and Paul Gilbert.
-# Maintainer: Trevor L Davis <trevor.l.davis@stanford.edu>
+# Maintainer: Trevor L Davis <trevor.l.davis@gmail.com>
 # URL: https://github.com/trevorld/findpython
 # BugReports: https://github.com/trevorld/findpython/issues
 # Description: Package designed to find an acceptable python binary.
 # Suggests: testthat
 # License: MIT + file LICENSE
 # Collate: 'find_python_cmd.r'
-# Packaged: 2014-04-03 17:33:07 UTC; trevorld
+# RoxygenNote: 5.0.1
 # NeedsCompilation: no
+# Packaged: 2017-03-14 21:28:13 UTC; trevorld
 # Repository: CRAN
-# Date/Publication: 2014-04-03 20:20:34
+# Date/Publication: 2017-03-15 05:25:12
 
 # See
 # http://docs.continuum.io/conda/build.html for

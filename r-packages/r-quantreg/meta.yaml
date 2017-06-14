@@ -1,30 +1,27 @@
+{% set version = '5.33' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-quantreg
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "5.29"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: quantreg_5.29.tar.gz
+  fn: quantreg_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/quantreg_5.29.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/quantreg/quantreg_5.29.tar.gz
+    - https://cran.r-project.org/src/contrib/quantreg_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/quantreg/quantreg_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 3a12012caeca2c1b688f542c26f21779c2c27734ea81edc1b205344654af39b6
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -38,9 +35,9 @@ requirements:
     - r-matrix
     - r-matrixmodels
     - r-sparsem
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -51,8 +48,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('quantreg')" # [not win]
-    - "\"%R%\" -e \"library('quantreg')\"" # [win]
+    - $R -e "library('quantreg')"  # [not win]
+    - "\"%R%\" -e \"library('quantreg')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -61,7 +58,7 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: http://www.r-project.org
+  home: https://www.r-project.org
   license: GPL (>= 2)
   summary: 'Estimation and inference methods for models of conditional quantiles:  Linear and
     nonlinear parametric and non-parametric (total variation penalized) models  for
@@ -76,7 +73,7 @@ about:
 # Package: quantreg
 # Title: Quantile Regression
 # Description: Estimation and inference methods for models of conditional quantiles:  Linear and nonlinear parametric and non-parametric (total variation penalized) models  for conditional quantiles of a univariate response and several methods for handling censored survival data.  Portfolio selection methods based on expected shortfall risk are also included.
-# Version: 5.29
+# Version: 5.33
 # Authors@R: c( person("Roger", "Koenker",  role = c("cre","aut"), email =  "rkoenker@illinois.edu"), person("Stephen", "Portnoy",  role = c("ctb"),  comment = "Contributions to Censored QR code", email =  "sportnoy@illinois.edu"), person(c("Pin", "Tian"), "Ng",  role = c("ctb"),  comment = "Contributions to Sparse QR code", email =  "pin.ng@nau.edu"), person("Achim", "Zeileis",  role = c("ctb"),  comment = "Contributions to dynrq code essentially identical to his dynlm code",  email =  "Achim.Zeileis@uibk.ac.at"), person("Philip", "Grosjean",  role = c("ctb"),  comment = "Contributions to nlrq code", email =  "phgrosjean@sciviews.org"), person(c("Brian", "D"), "Ripley",  role = c("trl","ctb"),  comment = "Initial (2001) R port from S (to my everlasting shame --  how could I have been so slow to adopt R!) and for numerous other  suggestions and useful advice", email =  "ripley@stats.ox.ac.uk"))
 # Maintainer: Roger Koenker <rkoenker@illinois.edu>
 # Repository: CRAN
@@ -84,11 +81,11 @@ about:
 # Imports: methods, graphics, Matrix, MatrixModels
 # Suggests: tripack, akima, MASS, survival, rgl, logspline, nor1mix, Formula, zoo
 # License: GPL (>= 2)
-# URL: http://www.r-project.org
+# URL: https://www.r-project.org
 # NeedsCompilation: yes
-# Packaged: 2016-09-03 19:53:41 UTC; roger
+# Packaged: 2017-04-17 15:11:28 UTC; roger
 # Author: Roger Koenker [cre, aut], Stephen Portnoy [ctb] (Contributions to Censored QR code), Pin Tian Ng [ctb] (Contributions to Sparse QR code), Achim Zeileis [ctb] (Contributions to dynrq code essentially identical to his dynlm code), Philip Grosjean [ctb] (Contributions to nlrq code), Brian D Ripley [trl, ctb] (Initial (2001) R port from S (to my everlasting shame -- how could I have been so slow to adopt R!) and for numerous other suggestions and useful advice)
-# Date/Publication: 2016-09-04 13:02:15
+# Date/Publication: 2017-04-18 06:41:23 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

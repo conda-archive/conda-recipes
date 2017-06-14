@@ -1,42 +1,40 @@
+{% set version = '1.1.0' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-leaflet
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "1.0.1"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: leaflet_1.0.1.tar.gz
+  fn: leaflet_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/leaflet_1.0.1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/leaflet/leaflet_1.0.1.tar.gz
+    - https://cran.r-project.org/src/contrib/leaflet_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/leaflet/leaflet_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: f474be80f40f62175c5a08aab7e549251ced9faa70d340374d522fdaf08cca15
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: knitr, maps, shiny, testit (>= 0.4), rgdal, R6, RJSONIO
+# Suggests: knitr, maps, sf, shiny, testit (>= 0.4), rgdal, rgeos, R6, RJSONIO, purrr, testthat
 requirements:
   build:
     - r-base
     - r-rcolorbrewer
     - r-base64enc
+    - r-crosstalk
     - r-htmltools
     - r-htmlwidgets
     - r-magrittr
@@ -45,11 +43,13 @@ requirements:
     - r-raster
     - r-scales >=0.2.5
     - r-sp
+    - r-viridis
 
   run:
     - r-base
     - r-rcolorbrewer
     - r-base64enc
+    - r-crosstalk
     - r-htmltools
     - r-htmlwidgets
     - r-magrittr
@@ -58,12 +58,13 @@ requirements:
     - r-raster
     - r-scales >=0.2.5
     - r-sp
+    - r-viridis
 
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('leaflet')" # [not win]
-    - "\"%R%\" -e \"library('leaflet')\"" # [win]
+    - $R -e "library('leaflet')"  # [not win]
+    - "\"%R%\" -e \"library('leaflet')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -73,7 +74,7 @@ test:
 
 about:
   home: http://rstudio.github.io/leaflet/
-  license: GPL-3 | file LICENSE
+  license: GPL-3
   summary: Create and customize interactive maps using the 'Leaflet' JavaScript library and the
     'htmlwidgets' package. These maps can be used directly from the R console, from
     'RStudio', in Shiny apps and R Markdown documents.
@@ -84,21 +85,24 @@ about:
 # Package: leaflet
 # Type: Package
 # Title: Create Interactive Web Maps with the JavaScript 'Leaflet' Library
-# Version: 1.0.1
-# Date: 2016-02-25
-# Authors@R: c( person("Joe", "Cheng", email = "joe@rstudio.com", role = c("aut", "cre")), person("Yihui", "Xie", role = c("aut")), person("Hadley", "Wickham", role = c("ctb")), person("jQuery Foundation and contributors", role = c("ctb", "cph"), comment = "jQuery library"), person("Vladimir", "Agafonkin", role = c("ctb", "cph"), comment = "Leaflet library"), person("CloudMade", role = c("cph"), comment = "Leaflet library"), person("Leaflet contributors", role = c("ctb"), comment = "Leaflet library"), person("Leaflet Providers contributors", role = c("ctb", "cph"), comment = "Leaflet Providers plugin"), person("RStudio", role = c("cph")) )
+# Version: 1.1.0
+# Date: 2017-02-17
+# Authors@R: c( person("Joe", "Cheng", email = "joe@rstudio.com", role = c("aut", "cre")), person("Bhaskar", "Karambelkar", role = c("aut")), person("Yihui", "Xie", role = c("aut")), person("Hadley", "Wickham", role = c("ctb")), person("Kenton", "Russell", role = c("ctb")), person("Kent", "Johnson", role=c("ctb")), person("jQuery Foundation and contributors", role = c("ctb", "cph"), comment = "jQuery library"), person("Vladimir", "Agafonkin", role = c("ctb", "cph"), comment = "Leaflet library"), person("CloudMade", role = c("cph"), comment = "Leaflet library"), person("Leaflet contributors", role = c("ctb"), comment = "Leaflet library"), person("Leaflet Providers contributors", role = c("ctb", "cph"), comment = "Leaflet Providers plugin"), person("Brandon Copeland", role = c("ctb", "cph"), comment = "leaflet-measure plugin"), person("Jacob Toye", role = c("ctb", "cph"), comment = "Leaflet.label plugin"), person("Joerg Dietrich", role = c("ctb", "cph"), comment = "Leaflet.Terminator plugin"), person("Benjamin Becquet", role = c("ctb", "cph"), comment = "Leaflet.MagnifyingGlass plugin"), person("Norkart AS", role = c("ctb", "cph"), comment = "Leaflet.MiniMap plugin"), person("L. Voogdt", role = c("ctb", "cph"), comment = "Leaflet.awesome-markers plugin"), person("Daniel Montague", role = c("ctb", "cph"), comment = "Leaflet.EasyButton plugin"), person("Kartena AB", role = c("ctb", "cph"), comment = "Proj4Leaflet plugin"), person("Robert Kajic", role = c("ctb", "cph"), comment = "leaflet-locationfilter plugin"), person("Mapbox", role = c("ctb", "cph"), comment = "leaflet-omnivore plugin"), person("Michael Bostock", role = c("ctb", "cph"), comment = "topojson"), person("RStudio", role = c("cph")) )
 # Maintainer: Joe Cheng <joe@rstudio.com>
 # Description: Create and customize interactive maps using the 'Leaflet' JavaScript library and the 'htmlwidgets' package. These maps can be used directly from the R console, from 'RStudio', in Shiny apps and R Markdown documents.
-# License: GPL-3 | file LICENSE
+# License: GPL-3
 # URL: http://rstudio.github.io/leaflet/
 # BugReports: https://github.com/rstudio/leaflet/issues
-# Imports: base64enc, grDevices, htmlwidgets, htmltools, magrittr, markdown, methods, png, RColorBrewer, raster, scales (>= 0.2.5), sp, stats, utils
-# Suggests: knitr, maps, shiny, testit (>= 0.4), rgdal, R6, RJSONIO
+# Depends: R (>= 3.1.0)
+# Imports: base64enc, crosstalk, htmlwidgets, htmltools, magrittr, markdown, methods, png, RColorBrewer, raster, scales (>= 0.2.5), sp, stats, viridis
+# Suggests: knitr, maps, sf, shiny, testit (>= 0.4), rgdal, rgeos, R6, RJSONIO, purrr, testthat
+# RoxygenNote: 5.0.1
+# LazyData: true
 # NeedsCompilation: no
-# Packaged: 2016-02-27 00:15:02 UTC; jcheng
-# Author: Joe Cheng [aut, cre], Yihui Xie [aut], Hadley Wickham [ctb], jQuery Foundation and contributors [ctb, cph] (jQuery library), Vladimir Agafonkin [ctb, cph] (Leaflet library), CloudMade [cph] (Leaflet library), Leaflet contributors [ctb] (Leaflet library), Leaflet Providers contributors [ctb, cph] (Leaflet Providers plugin), RStudio [cph]
+# Packaged: 2017-02-21 16:56:25 UTC; jcheng
+# Author: Joe Cheng [aut, cre], Bhaskar Karambelkar [aut], Yihui Xie [aut], Hadley Wickham [ctb], Kenton Russell [ctb], Kent Johnson [ctb], jQuery Foundation and contributors [ctb, cph] (jQuery library), Vladimir Agafonkin [ctb, cph] (Leaflet library), CloudMade [cph] (Leaflet library), Leaflet contributors [ctb] (Leaflet library), Leaflet Providers contributors [ctb, cph] (Leaflet Providers plugin), Brandon Copeland [ctb, cph] (leaflet-measure plugin), Jacob Toye [ctb, cph] (Leaflet.label plugin), Joerg Dietrich [ctb, cph] (Leaflet.Terminator plugin), Benjamin Becquet [ctb, cph] (Leaflet.MagnifyingGlass plugin), Norkart AS [ctb, cph] (Leaflet.MiniMap plugin), L. Voogdt [ctb, cph] (Leaflet.awesome-markers plugin), Daniel Montague [ctb, cph] (Leaflet.EasyButton plugin), Kartena AB [ctb, cph] (Proj4Leaflet plugin), Robert Kajic [ctb, cph] (leaflet-locationfilter plugin), Mapbox [ctb, cph] (leaflet-omnivore plugin), Michael Bostock [ctb, cph] (topojson), RStudio [cph]
 # Repository: CRAN
-# Date/Publication: 2016-02-27 09:50:10
+# Date/Publication: 2017-02-21 19:08:12
 
 # See
 # http://docs.continuum.io/conda/build.html for

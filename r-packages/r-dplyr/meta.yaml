@@ -1,68 +1,71 @@
+{% set version = '0.7.0' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-dplyr
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.5.0"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: dplyr_0.5.0.tar.gz
+  fn: dplyr_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/dplyr_0.5.0.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/dplyr/dplyr_0.5.0.tar.gz
+    - https://cran.r-project.org/src/contrib/dplyr_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/dplyr/dplyr_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 27b3593c09da5e99c0c4fb19ea826edd2cab619f8aaefd0cfd2a4140a0bd9410
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: RSQLite (>= 1.0.0), RMySQL, RPostgreSQL, testthat, knitr, microbenchmark, ggplot2, mgcv, Lahman (>= 3.0-1), nycflights13, methods, rmarkdown, covr, dtplyr
+# Suggests: bit64, covr, dbplyr, dtplyr, DBI, ggplot2, hms, knitr, Lahman (>= 3.0-1), mgcv, microbenchmark, nycflights13, rmarkdown, RMySQL, RPostgreSQL, RSQLite, testthat, withr
 requirements:
   build:
     - r-base
     - r-bh >=1.58.0_1
-    - r-dbi >=0.4.1
     - r-r6
     - r-rcpp >=0.12.0
     - r-assertthat
-    - r-lazyeval >=0.1.10
+    - r-bindrcpp
+    - r-glue
     - r-magrittr
-    - r-tibble
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - r-pkgconfig
+    - r-plogr
+    - r-rlang >=0.1
+    - r-tibble >=1.3.1
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
     - r-bh >=1.58.0_1
-    - r-dbi >=0.4.1
     - r-r6
     - r-rcpp >=0.12.0
     - r-assertthat
-    - r-lazyeval >=0.1.10
+    - r-bindrcpp
+    - r-glue
     - r-magrittr
-    - r-tibble
+    - r-pkgconfig
+    - r-plogr
+    - r-rlang >=0.1
+    - r-tibble >=1.3.1
 
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('dplyr')" # [not win]
-    - "\"%R%\" -e \"library('dplyr')\"" # [win]
+    - $R -e "library('dplyr')"  # [not win]
+    - "\"%R%\" -e \"library('dplyr')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -71,7 +74,7 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: https://github.com/hadley/dplyr
+  home: http://dplyr.tidyverse.org, https://github.com/tidyverse/dplyr
   license: MIT + file LICENSE
   summary: A fast, consistent tool for working with data frame like objects, both in memory and
     out of memory.
@@ -79,29 +82,29 @@ about:
 
 # The original CRAN metadata for this package was:
 
-# Package: dplyr
 # Type: Package
-# Version: 0.5.0
+# Package: dplyr
+# Version: 0.7.0
 # Title: A Grammar of Data Manipulation
 # Description: A fast, consistent tool for working with data frame like objects, both in memory and out of memory.
-# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")), person("Romain", "Francois", , "romain@r-enthusiasts.com", role = "aut"), person("RStudio", role = "cph") )
-# URL: https://github.com/hadley/dplyr
-# BugReports: https://github.com/hadley/dplyr/issues
+# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")), person("Romain", "Francois", , "romain@r-enthusiasts.com", role = "aut"), person("Lionel", "Henry", role = "aut"), person("Kirill", "MAzller", role = "aut"), person("RStudio", role = c("cph", "fnd")) )
+# URL: http://dplyr.tidyverse.org, https://github.com/tidyverse/dplyr
+# BugReports: https://github.com/tidyverse/dplyr/issues
+# Encoding: UTF-8
 # Depends: R (>= 3.1.2)
-# Imports: assertthat, utils, R6, Rcpp (>= 0.12.3), tibble, magrittr, lazyeval (>= 0.1.10), DBI (>= 0.4.1)
-# Suggests: RSQLite (>= 1.0.0), RMySQL, RPostgreSQL, testthat, knitr, microbenchmark, ggplot2, mgcv, Lahman (>= 3.0-1), nycflights13, methods, rmarkdown, covr, dtplyr
+# Imports: assertthat, bindrcpp, glue, magrittr, methods, pkgconfig, rlang (>= 0.1), R6, Rcpp (>= 0.12.6), tibble (>= 1.3.1), utils
+# Suggests: bit64, covr, dbplyr, dtplyr, DBI, ggplot2, hms, knitr, Lahman (>= 3.0-1), mgcv, microbenchmark, nycflights13, rmarkdown, RMySQL, RPostgreSQL, RSQLite, testthat, withr
 # VignetteBuilder: knitr
-# LinkingTo: Rcpp (>= 0.12.0), BH (>= 1.58.0-1)
+# LinkingTo: Rcpp (>= 0.12.0), BH (>= 1.58.0-1), bindrcpp, plogr
 # LazyData: yes
 # License: MIT + file LICENSE
-# Collate: 'RcppExports.R' 'all-equal.r' 'bench-compare.r' 'bind.r' 'case_when.R' 'coalesce.R' 'colwise.R' 'compute-collect.r' 'copy-to.r' 'data-lahman.r' 'data-nasa.r' 'data-nycflights13.r' 'data-temp.r' 'data.r' 'dataframe.R' 'dbi-s3.r' 'desc.r' 'distinct.R' 'do.r' 'dplyr.r' 'explain.r' 'failwith.r' 'funs.R' 'group-by.r' 'group-indices.R' 'group-size.r' 'grouped-df.r' 'id.r' 'if_else.R' 'inline.r' 'join.r' 'lazy-ops.R' 'lead-lag.R' 'location.R' 'manip.r' 'na_if.R' 'near.R' 'nth-value.R' 'order-by.R' 'over.R' 'partial-eval.r' 'progress.R' 'query.r' 'rank.R' 'recode.R' 'rowwise.r' 'sample.R' 'select-utils.R' 'select-vars.R' 'sets.r' 'sql-build.R' 'sql-escape.r' 'sql-generic.R' 'sql-query.R' 'sql-render.R' 'sql-star.r' 'src-local.r' 'src-mysql.r' 'src-postgres.r' 'src-sql.r' 'src-sqlite.r' 'src-test.r' 'src.r' 'tally.R' 'tbl-cube.r' 'tbl-df.r' 'tbl-lazy.R' 'tbl-sql.r' 'tbl.r' 'tibble-reexport.r' 'top-n.R' 'translate-sql-helpers.r' 'translate-sql-base.r' 'translate-sql-window.r' 'translate-sql.r' 'utils-format.r' 'utils-replace-with.R' 'utils.r' 'view.r' 'zzz.r'
-# RoxygenNote: 5.0.1
+# RoxygenNote: 6.0.1
 # NeedsCompilation: yes
-# Packaged: 2016-06-23 21:54:41 UTC; hadley
-# Author: Hadley Wickham [aut, cre], Romain Francois [aut], RStudio [cph]
+# Packaged: 2017-06-08 23:30:56 UTC; hadley
+# Author: Hadley Wickham [aut, cre], Romain Francois [aut], Lionel Henry [aut], Kirill MAzller [aut], RStudio [cph, fnd]
 # Maintainer: Hadley Wickham <hadley@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2016-06-24 15:37:11
+# Date/Publication: 2017-06-09 11:08:18 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

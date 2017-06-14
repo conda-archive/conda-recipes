@@ -1,37 +1,34 @@
+{% set version = '1.1.0' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-backports
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "1.0.4"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: backports_1.0.4.tar.gz
+  fn: backports_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/backports_1.0.4.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/backports/backports_1.0.4.tar.gz
+    - https://cran.r-project.org/src/contrib/backports_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/backports/backports_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: c5536966ed6ca93f20c9a21d4f569cc1c6865d3352445ea66448f82590349fcd
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: checkmate
+
 requirements:
   build:
     - r-base
@@ -42,8 +39,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('backports')" # [not win]
-    - "\"%R%\" -e \"library('backports')\"" # [win]
+    - $R -e "library('backports')"  # [not win]
+    - "\"%R%\" -e \"library('backports')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -66,7 +63,7 @@ about:
 # Package: backports
 # Type: Package
 # Title: Reimplementations of Functions Introduced Since R-3.0.0
-# Version: 1.0.4
+# Version: 1.1.0
 # Author: Michel Lang <michellang@gmail.com>
 # Maintainer: Michel Lang <michellang@gmail.com>
 # Description: Implementations of functions which have been introduced in R since version 3.0.0. The backports are conditionally exported which results in R resolving the function names to the version shipped with R (if available) and uses the implemented backports as fallback. This way package developers can make use of the new functions without worrying about the minimum required R version.
@@ -76,11 +73,11 @@ about:
 # NeedsCompilation: no
 # ByteCompile: yes
 # Depends: R (>= 3.0.0)
-# Suggests: checkmate
-# RoxygenNote: 5.0.1
-# Packaged: 2016-10-24 12:42:24 UTC; lang
+# Imports: utils
+# RoxygenNote: 6.0.1
+# Packaged: 2017-05-21 20:37:17 UTC; michel
 # Repository: CRAN
-# Date/Publication: 2016-10-24 17:14:21
+# Date/Publication: 2017-05-22 18:23:15 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

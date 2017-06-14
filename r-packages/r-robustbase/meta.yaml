@@ -1,23 +1,20 @@
-{% set name = 'robustbase' %}
 {% set version = '0.92-7' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
-  name: r-{{ name|lower }}
+  name: r-robustbase
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: {{ name }}_{{ version }}.tar.gz
+  fn: robustbase_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/{{ name }}_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/{{ name }}/{{ name }}_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/robustbase_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/robustbase/robustbase_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: fcbd6ccbb0291b599fe6a674a91344511e0a691b9cadba0a9d40037faa22bf8f
   # patches:
    # List any patch files here
    # - fix.patch

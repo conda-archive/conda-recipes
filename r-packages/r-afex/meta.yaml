@@ -1,44 +1,41 @@
+{% set version = '0.18-0' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-afex
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.16_1"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: afex_0.16-1.tar.gz
+  fn: afex_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/afex_0.16-1.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/afex/afex_0.16-1.tar.gz
+    - https://cran.r-project.org/src/contrib/afex_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/afex/afex_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 65bf137d1cffa97ac0bd79923612d29738d8dea3d1efa572875c0b570eab4453
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: ascii, xtable, parallel, plyr, optimx, nloptr, knitr, lattice, multcomp, testthat, mlmRev, dplyr
+# Suggests: xtable, parallel, plyr, optimx, nloptr, knitr, rmarkdown, lattice, latticeExtra, multcomp, testthat, mlmRev, dplyr, tidyr, dfoptim, Matrix, psych
 requirements:
   build:
     - r-base
-    - r-matrix >=1.1.1
     - r-car
     - r-coin
     - r-lme4 >=1.1_8
+    - r-lmertest
     - r-lsmeans >=2.17
     - r-pbkrtest >=0.4_1
     - r-reshape2
@@ -46,10 +43,10 @@ requirements:
 
   run:
     - r-base
-    - r-matrix >=1.1.1
     - r-car
     - r-coin
     - r-lme4 >=1.1_8
+    - r-lmertest
     - r-lsmeans >=2.17
     - r-pbkrtest >=0.4_1
     - r-reshape2
@@ -58,8 +55,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('afex')" # [not win]
-    - "\"%R%\" -e \"library('afex')\"" # [win]
+    - $R -e "library('afex')"  # [not win]
+    - "\"%R%\" -e \"library('afex')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -68,17 +65,17 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: https://github.com/singmann/afex
-  license: GPL (>= 3)
-  summary: Provides convenience functions for analyzing factorial experiments using ANOVA or
-    mixed models. aov_ez(), aov_car(), and aov_4() allow specification of between, within
-    (i.e., repeated-measures), or mixed between- within (i.e., split-plot) ANOVAs for
-    data in long format (i.e., one observation per row), potentially aggregating multiple
-    observations per individual and cell of the design. mixed() fits mixed models using
-    lme4::lmer() and computes p-values for all fixed effects using either Kenward-Roger
-    approximation for degrees of freedom (LMM only), parametric bootstrap (LMMs and
-    GLMMs), or likelihood ratio tests (LMMs and GLMMs). afex uses type 3 sums of squares
-    as default (imitating commercial statistical software).
+  home: http://afex.singmann.science/, https://github.com/singmann/afex
+  license: GPL (>= 2)
+  summary: Convenience functions for analyzing factorial experiments using ANOVA or mixed models.
+    aov_ez(), aov_car(), and aov_4() allow specification of between, within (i.e., repeated-measures),
+    or mixed between-within (i.e., split-plot) ANOVAs for data in long format (i.e.,
+    one observation per row), aggregating multiple observations per individual and cell
+    of the design. mixed() fits mixed models using lme4::lmer() and computes p-values
+    for all fixed effects using either Kenward-Roger or Satterthwaite approximation
+    for degrees of freedom (LMM only), parametric bootstrap (LMMs and GLMMs), or likelihood
+    ratio tests (LMMs and GLMMs). afex uses type 3 sums of squares as default (imitating
+    commercial statistical software).
   license_family: GPL3
 
 # The original CRAN metadata for this package was:
@@ -86,24 +83,25 @@ about:
 # Package: afex
 # Type: Package
 # Title: Analysis of Factorial Experiments
-# Depends: R (>= 3.1.0), lme4 (>= 1.1-8), reshape2, lsmeans (>= 2.17)
-# Suggests: ascii, xtable, parallel, plyr, optimx, nloptr, knitr, lattice, multcomp, testthat, mlmRev, dplyr
-# Imports: stringr, coin, Matrix (>= 1.1.1), pbkrtest (>= 0.4-1), car, stats, utils, methods
-# Description: Provides convenience functions for analyzing factorial experiments using ANOVA or mixed models. aov_ez(), aov_car(), and aov_4() allow specification of between, within (i.e., repeated-measures), or mixed between- within (i.e., split-plot) ANOVAs for data in long format (i.e., one observation per row), potentially aggregating multiple observations per individual and cell of the design. mixed() fits mixed models using lme4::lmer() and computes p-values for all fixed effects using either Kenward-Roger approximation for degrees of freedom (LMM only), parametric bootstrap (LMMs and GLMMs), or likelihood ratio tests (LMMs and GLMMs). afex uses type 3 sums of squares as default (imitating commercial statistical software).
-# URL: https://github.com/singmann/afex
-# License: GPL (>= 3)
+# Depends: R (>= 3.1.0), lme4 (>= 1.1-8), lsmeans (>= 2.17)
+# Suggests: xtable, parallel, plyr, optimx, nloptr, knitr, rmarkdown, lattice, latticeExtra, multcomp, testthat, mlmRev, dplyr, tidyr, dfoptim, Matrix, psych
+# Imports: stringr, coin, pbkrtest (>= 0.4-1), lmerTest, car, reshape2, stats, methods
+# Description: Convenience functions for analyzing factorial experiments using ANOVA or mixed models. aov_ez(), aov_car(), and aov_4() allow specification of between, within (i.e., repeated-measures), or mixed between-within (i.e., split-plot) ANOVAs for data in long format (i.e., one observation per row), aggregating multiple observations per individual and cell of the design. mixed() fits mixed models using lme4::lmer() and computes p-values for all fixed effects using either Kenward-Roger or Satterthwaite approximation for degrees of freedom (LMM only), parametric bootstrap (LMMs and GLMMs), or likelihood ratio tests (LMMs and GLMMs). afex uses type 3 sums of squares as default (imitating commercial statistical software).
+# URL: http://afex.singmann.science/, https://github.com/singmann/afex
+# BugReports: https://github.com/singmann/afex/issues
+# License: GPL (>= 2)
 # Encoding: UTF-8
 # VignetteBuilder: knitr
-# Authors@R: c(person(given="Henrik", family="Singmann", role=c("aut", "cre"), email="singmann+afex@gmail.com"), person(given="Ben", family="Bolker", role=c("aut")), person(given="Jake", family="Westfall", role=c("aut")), person(given="Frederik", family="Aust", role=c("aut")), person(given="Sren", family="Hjsgaard", role=c("ctb")), person(given="John", family="Fox", role=c("ctb")), person(given="Michael A.", family="Lawrence", role=c("ctb")), person(given="Ulf", family="Mertens", role=c("ctb")) )
-# Version: 0.16-1
-# Date: 2016-04-04
-# RoxygenNote: 5.0.1
+# Authors@R: c(person(given="Henrik", family="Singmann", role=c("aut", "cre"), email="singmann+afex@gmail.com"), person(given="Ben", family="Bolker", role=c("aut")), person(given="Jake", family="Westfall", role=c("aut")), person(given="Frederik", family="Aust", role=c("aut")), person(given="Sren", family="Hjsgaard", role=c("ctb")), person(given="John", family="Fox", role=c("ctb")), person(given="Michael A.", family="Lawrence", role=c("ctb")), person(given="Ulf", family="Mertens", role=c("ctb")), person(given="Jonathan", family="Love", role=c("ctb")) )
+# Version: 0.18-0
+# Date: 2017-05-25
+# RoxygenNote: 6.0.1
 # NeedsCompilation: no
-# Packaged: 2016-04-03 22:10:13 UTC; henrik
-# Author: Henrik Singmann [aut, cre], Ben Bolker [aut], Jake Westfall [aut], Frederik Aust [aut], Sren Hjsgaard [ctb], John Fox [ctb], Michael A. Lawrence [ctb], Ulf Mertens [ctb]
+# Packaged: 2017-05-25 12:25:31 UTC; henrik
+# Author: Henrik Singmann [aut, cre], Ben Bolker [aut], Jake Westfall [aut], Frederik Aust [aut], Sren Hjsgaard [ctb], John Fox [ctb], Michael A. Lawrence [ctb], Ulf Mertens [ctb], Jonathan Love [ctb]
 # Maintainer: Henrik Singmann <singmann+afex@gmail.com>
 # Repository: CRAN
-# Date/Publication: 2016-04-04 01:11:31
+# Date/Publication: 2017-05-25 22:17:48 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

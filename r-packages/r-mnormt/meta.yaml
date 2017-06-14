@@ -1,30 +1,27 @@
+{% set version = '1.5-5' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-mnormt
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "1.5_5"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: mnormt_1.5-5.tar.gz
+  fn: mnormt_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/mnormt_1.5-5.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/mnormt/mnormt_1.5-5.tar.gz
+    - https://cran.r-project.org/src/contrib/mnormt_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/mnormt/mnormt_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: ff78d5f935278935f1814a69e5a913d93d6dd2ac1b5681ba86b30c6773ef64ac
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -35,9 +32,9 @@ build:
 requirements:
   build:
     - r-base
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -45,8 +42,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('mnormt')" # [not win]
-    - "\"%R%\" -e \"library('mnormt')\"" # [win]
+    - $R -e "library('mnormt')"  # [not win]
+    - "\"%R%\" -e \"library('mnormt')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.

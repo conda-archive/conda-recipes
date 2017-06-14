@@ -1,62 +1,57 @@
+{% set version = '0.2.2.2' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-purrr
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.2.2"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: purrr_0.2.2.tar.gz
+  fn: purrr_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/purrr_0.2.2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/purrr/purrr_0.2.2.tar.gz
+    - https://cran.r-project.org/src/contrib/purrr_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/purrr/purrr_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 81dd2c5b0fb6b59a465e47b4312eb25e798eaedf4d76d36e42a404d7433136c4
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat, covr
+# Suggests: testthat, covr, dplyr (>= 0.4.3)
 requirements:
   build:
     - r-base
-    - r-bh
     - r-rcpp
-    - r-dplyr
     - r-lazyeval >=0.2.0
     - r-magrittr >=1.5
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - r-tibble
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
-    - r-bh
     - r-rcpp
-    - r-dplyr
     - r-lazyeval >=0.2.0
     - r-magrittr >=1.5
+    - r-tibble
 
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('purrr')" # [not win]
-    - "\"%R%\" -e \"library('purrr')\"" # [win]
+    - $R -e "library('purrr')"  # [not win]
+    - "\"%R%\" -e \"library('purrr')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -76,23 +71,22 @@ about:
 
 # Package: purrr
 # Title: Functional Programming Tools
-# Version: 0.2.2
-# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")), person("Lionel", "Henry", , "lionel.hry@gmail.com", "ctb"), person("RStudio", role = "cph") )
+# Version: 0.2.2.2
+# Authors@R: c( person("Lionel", "Henry", , "lionel@rstudio.com", c("aut", "cre")), person("Hadley", "Wickham", , "hadley@rstudio.com", "aut"), person("RStudio", role = "cph") )
 # Description: Make your pure functions purr with the 'purrr' package. This package completes R's functional programming tools with missing features present in other programming languages.
 # License: GPL-3 | file LICENSE
 # LazyData: true
-# Imports: magrittr (>= 1.5), dplyr (>= 0.4.3), Rcpp, lazyeval (>= 0.2.0)
-# Suggests: testthat, covr
-# LinkingTo: Rcpp, dplyr, BH
+# Imports: magrittr (>= 1.5), Rcpp, lazyeval (>= 0.2.0), tibble
+# Suggests: testthat, covr, dplyr (>= 0.4.3)
 # URL: https://github.com/hadley/purrr
 # BugReports: https://github.com/hadley/purrr/issues
-# RoxygenNote: 5.0.1
+# RoxygenNote: 6.0.1
 # NeedsCompilation: yes
-# Packaged: 2016-06-17 22:17:44 UTC; hadley
-# Author: Hadley Wickham [aut, cre], Lionel Henry [ctb], RStudio [cph]
-# Maintainer: Hadley Wickham <hadley@rstudio.com>
+# Packaged: 2017-05-10 14:14:02 UTC; lionel
+# Author: Lionel Henry [aut, cre], Hadley Wickham [aut], RStudio [cph]
+# Maintainer: Lionel Henry <lionel@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2016-06-18 10:05:18
+# Date/Publication: 2017-05-11 18:22:22 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

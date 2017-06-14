@@ -1,30 +1,27 @@
+{% set version = '1.1-13' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-lme4
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "1.1_12"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: lme4_1.1-12.tar.gz
+  fn: lme4_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/lme4_1.1-12.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/lme4/lme4_1.1-12.tar.gz
+    - https://cran.r-project.org/src/contrib/lme4_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/lme4/lme4_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 5fa8b63d15882d153ee105d399b559dd942d97b2e6e7deae3802f41cc451448e
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -43,9 +40,9 @@ requirements:
     - r-minqa >=1.1.15
     - r-nlme >=3.1_123
     - r-nloptr >=1.0.4
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -61,8 +58,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('lme4')" # [not win]
-    - "\"%R%\" -e \"library('lme4')\"" # [win]
+    - $R -e "library('lme4')"  # [not win]
+    - "\"%R%\" -e \"library('lme4')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -82,7 +79,7 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: lme4
-# Version: 1.1-12
+# Version: 1.1-13
 # Title: Linear Mixed-Effects Models using 'Eigen' and S4
 # Authors@R: c(person("Douglas","Bates", role="aut"), person("Martin","Maechler", role="aut"), person("Ben","Bolker",email="bbolker+lme4@gmail.com", role=c("aut","cre")), person("Steven","Walker",role="aut"), person("Rune Haubo Bojesen","Christensen", role="ctb"), person("Henrik","Singmann", role="ctb"), person("Bin", "Dai", role="ctb"), person("Gabor", "Grothendieck", role="ctb"), person("Peter", "Green", role="ctb"))
 # Contact: LME4 Authors <lme4-authors@lists.r-forge.r-project.org>
@@ -97,11 +94,11 @@ about:
 # URL: https://github.com/lme4/lme4/ http://lme4.r-forge.r-project.org/
 # BugReports: https://github.com/lme4/lme4/issues
 # NeedsCompilation: yes
-# Packaged: 2016-04-16 03:11:44 UTC; bolker
+# Packaged: 2017-04-18 12:18:44 UTC; bolker
 # Author: Douglas Bates [aut], Martin Maechler [aut], Ben Bolker [aut, cre], Steven Walker [aut], Rune Haubo Bojesen Christensen [ctb], Henrik Singmann [ctb], Bin Dai [ctb], Gabor Grothendieck [ctb], Peter Green [ctb]
 # Maintainer: Ben Bolker <bbolker+lme4@gmail.com>
 # Repository: CRAN
-# Date/Publication: 2016-04-16 20:40:11
+# Date/Publication: 2017-04-19 04:28:18 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

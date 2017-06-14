@@ -1,46 +1,43 @@
+{% set version = '0.9-2' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-maptools
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.8_40"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: maptools_0.8-40.tar.gz
+  fn: maptools_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/maptools_0.8-40.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/maptools/maptools_0.8-40.tar.gz
+    - https://cran.r-project.org/src/contrib/maptools_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/maptools/maptools_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 3bf88cd06f69168d169727ca90d378dfedca77d80ebd26380b2708b3c6aab41c
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: rgeos (>= 0.1-8), spatstat (>= 1.18), PBSmapping, maps, RColorBrewer, raster, polyclip
+# Suggests: rgeos (>= 0.1-8), spatstat (>= 1.18), PBSmapping, maps, RColorBrewer, raster, polyclip, spatstat.utils
 requirements:
   build:
     - r-base
     - r-foreign >=0.8
     - r-lattice
     - r-sp >=1.0_11
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -51,8 +48,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('maptools')" # [not win]
-    - "\"%R%\" -e \"library('maptools')\"" # [win]
+    - $R -e "library('maptools')"  # [not win]
+    - "\"%R%\" -e \"library('maptools')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -73,24 +70,24 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: maptools
-# Version: 0.8-40
-# Date: 2016-11-14
+# Version: 0.9-2
+# Date: 2017-03-24
 # Title: Tools for Reading and Handling Spatial Objects
 # Authors@R: c( person("Roger", "Bivand", role = c("cre", "aut"), email = "Roger.Bivand@nhh.no"), person("Nicholas", "Lewin-Koh", role = "aut"), person("Edzer", "Pebesma", role = "ctb"), person("Eric", "Archer", role = "ctb"), person("Adrian", "Baddeley", role = "ctb"), person("Nick", "Bearman", role = "ctb"), person("Hans-Jorg", "Bibiko", role = "ctb"), person("Steven", "Brey", role = "ctb"), person("Jonathan", "Callahan", role = "ctb"), person("German", "Carrillo", role = "ctb"), person("Stephane", "Dray", role = "ctb"), person("David", "Forrest", role = "ctb"), person("Michael", "Friendly", role = "ctb"), person("Patrick", "Giraudoux", role = "ctb"), person("Duncan", "Golicher", role = "ctb"), person("Virgilio", "Gomez Rubio", role = "ctb"), person("Patrick", "Hausmann", role = "ctb"), person("Karl Ove", "Hufthammer", role = "ctb"), person("Thomas", "Jagger", role = "ctb"), person("Kent", "Johnson", role = "ctb"), person("Sebastian", "Luque", role = "ctb"), person("Don", "MacQueen", role = "ctb"), person("Andrew", "Niccolai", role = "ctb"), person("Edzer", "Pebesma", role = "ctb"), person("Oscar", "Perpinan Lamigueiro", role = "ctb"), person("Tom", "Short", role = "ctb"), person("Greg", "Snow", role = "ctb"), person("Ben", "Stabler", role = "ctb"), person("Murray", "Stokely", role = "ctb"), person("Rolf", "Turner", role = "ctb"))
 # Encoding: UTF-8
 # Depends: R (>= 2.10), sp (>= 1.0-11)
 # Imports: foreign (>= 0.8), methods, grid, lattice, stats, utils, grDevices
-# Suggests: rgeos (>= 0.1-8), spatstat (>= 1.18), PBSmapping, maps, RColorBrewer, raster, polyclip
+# Suggests: rgeos (>= 0.1-8), spatstat (>= 1.18), PBSmapping, maps, RColorBrewer, raster, polyclip, spatstat.utils
 # Enhances: gpclib, RArcInfo
 # Description: Set of tools for manipulating and reading geographic data, in particular 'ESRI Shapefiles'; C code used from 'shapelib'. It includes binary access to 'GSHHG' shoreline files. The package also provides interface wrappers for exchanging spatial objects with packages such as 'PBSmapping', 'spatstat', 'maps', 'RArcInfo', 'Stata tmap', 'WinBUGS', 'Mondrian', and others.
 # License: GPL (>= 2)
 # URL: http://r-forge.r-project.org/projects/maptools/
 # NeedsCompilation: yes
-# Packaged: 2016-11-15 10:52:21 UTC; rsb
+# Packaged: 2017-03-25 12:06:53 UTC; rsb
 # Author: Roger Bivand [cre, aut], Nicholas Lewin-Koh [aut], Edzer Pebesma [ctb], Eric Archer [ctb], Adrian Baddeley [ctb], Nick Bearman [ctb], Hans-Jorg Bibiko [ctb], Steven Brey [ctb], Jonathan Callahan [ctb], German Carrillo [ctb], Stephane Dray [ctb], David Forrest [ctb], Michael Friendly [ctb], Patrick Giraudoux [ctb], Duncan Golicher [ctb], Virgilio Gomez Rubio [ctb], Patrick Hausmann [ctb], Karl Ove Hufthammer [ctb], Thomas Jagger [ctb], Kent Johnson [ctb], Sebastian Luque [ctb], Don MacQueen [ctb], Andrew Niccolai [ctb], Edzer Pebesma [ctb], Oscar Perpinan Lamigueiro [ctb], Tom Short [ctb], Greg Snow [ctb], Ben Stabler [ctb], Murray Stokely [ctb], Rolf Turner [ctb]
 # Maintainer: Roger Bivand <Roger.Bivand@nhh.no>
 # Repository: CRAN
-# Date/Publication: 2016-11-15 14:17:59
+# Date/Publication: 2017-03-25 16:04:54 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -1,30 +1,27 @@
+{% set version = '2.2.1' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-irlba
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "2.1.2"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: irlba_2.1.2.tar.gz
+  fn: irlba_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/irlba_2.1.2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/irlba/irlba_2.1.2.tar.gz
+    - https://cran.r-project.org/src/contrib/irlba_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/irlba/irlba_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 1a00d36128a5ef38c8ad911ad7671768d50db0171e3930b57ac60670423fcb7d
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -36,9 +33,9 @@ requirements:
   build:
     - r-base
     - r-matrix
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -47,8 +44,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('irlba')" # [not win]
-    - "\"%R%\" -e \"library('irlba')\"" # [win]
+    - $R -e "library('irlba')"  # [not win]
+    - "\"%R%\" -e \"library('irlba')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -57,33 +54,33 @@ test:
     # Put any additional test requirements here.
 
 about:
-  #home:
+  home: https://CRAN.R-project.org/package=irlba
   license: GPL-3
-  summary: Fast and memory efficient methods for truncated singular and eigenvalue decompositions
-    and principal component analysis of large sparse or dense matrices.
+  summary: Fast and memory efficient methods for truncated singular value decomposition and principal
+    components analysis of large sparse and dense matrices.
   license_family: GPL3
 
 # The original CRAN metadata for this package was:
 
 # Package: irlba
 # Type: Package
-# Title: Fast Truncated SVD, PCA and Symmetric Eigendecomposition for Large Dense and Sparse Matrices
-# Version: 2.1.2
-# Date: 2016-09-20
+# Title: Fast Truncated Singular Value Decomposition and Principal Components Analysis for Large Dense and Sparse Matrices
+# Version: 2.2.1
+# Date: 2017-05-16
 # Authors@R: c( person("Jim", "Baglama", rol=c("aut", "cph"), email="jbaglama@uri.edu"), person("Lothar", "Reichel", role=c("aut", "cph"), email="reichel@math.kent.edu"), person("B. W.", "Lewis", role=c("aut","cre","cph"), email="blewis@illposed.net"))
-# Description: Fast and memory efficient methods for truncated singular and eigenvalue decompositions and principal component analysis of large sparse or dense matrices.
+# Description: Fast and memory efficient methods for truncated singular value decomposition and principal components analysis of large sparse and dense matrices.
 # Depends: Matrix
 # LinkingTo: Matrix
 # Imports: stats, methods
 # License: GPL-3
 # BugReports: https://github.com/bwlewis/irlba/issues
-# RoxygenNote: 5.0.0
+# RoxygenNote: 5.0.1
 # NeedsCompilation: yes
-# Packaged: 2016-09-21 13:57:09 UTC; blewis
+# Packaged: 2017-05-16 20:24:46 UTC; blewis
 # Author: Jim Baglama [aut, cph], Lothar Reichel [aut, cph], B. W. Lewis [aut, cre, cph]
 # Maintainer: B. W. Lewis <blewis@illposed.net>
 # Repository: CRAN
-# Date/Publication: 2016-09-21 19:27:40
+# Date/Publication: 2017-05-17 07:28:01 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

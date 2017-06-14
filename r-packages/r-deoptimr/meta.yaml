@@ -1,23 +1,20 @@
-{% set name = 'DEoptimR' %}
 {% set version = '1.0-8' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
-  name: r-{{ name|lower }}
+  name: r-deoptimr
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: {{ name }}_{{ version }}.tar.gz
+  fn: DEoptimR_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/{{ name }}_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/{{ name }}/{{ name }}_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/DEoptimR_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/DEoptimR/DEoptimR_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 846911c1b2561a9fae73a8c60a21a5680963ebb0050af3c1f1147ae9a121e5ef
   # patches:
    # List any patch files here
    # - fix.patch

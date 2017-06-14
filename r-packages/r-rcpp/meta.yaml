@@ -1,25 +1,27 @@
+{% set version = '0.12.11' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-rcpp
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.12.8"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: Rcpp_0.12.8.tar.gz
+  fn: Rcpp_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/Rcpp_0.12.8.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/Rcpp/Rcpp_0.12.8.tar.gz
+    - https://cran.r-project.org/src/contrib/Rcpp_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/Rcpp/Rcpp_{{ version }}.tar.gz
+
+
+  sha256: bd8cae275bb45cf98f3e3c6e1b5189bdd9c02e74b25241419ed3e4851d859c7f
   patches:
     - 0001-Add-CXX1XSTD-to-PKG_CPPFLAGS.patch
     - 0002-macOS-When-target-lt-10.9-libstdc-supports-only-some.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -30,9 +32,9 @@ build:
 requirements:
   build:
     - r-base
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -40,8 +42,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('Rcpp')" # [not win]
-    - "\"%R%\" -e \"library('Rcpp')\"" # [win]
+    - $R -e "library('Rcpp')"  # [not win]
+    - "\"%R%\" -e \"library('Rcpp')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -65,8 +67,8 @@ about:
 
 # Package: Rcpp
 # Title: Seamless R and C++ Integration
-# Version: 0.12.8
-# Date: 2016-11-16
+# Version: 0.12.11
+# Date: 2017-05-20
 # Author: Dirk Eddelbuettel, Romain Francois, JJ Allaire, Kevin Ushey, Qiang Kou, Nathan Russell, Douglas Bates and John Chambers
 # Maintainer: Dirk Eddelbuettel <edd@debian.org>
 # Description: The 'Rcpp' package provides R functions as well as C++ classes which offer a seamless integration of R and C++. Many R data types and objects can be mapped back and forth to C++ equivalents which facilitates both writing of new code as well as easier integration of third-party libraries. Documentation  about 'Rcpp' is provided by several vignettes included in this package, via the  'Rcpp Gallery' site at <http://gallery.rcpp.org>, the paper by Eddelbuettel and  Francois (2011, JSS), and the book by Eddelbuettel (2013, Springer); see  'citation("Rcpp")' for details on these last two.
@@ -80,9 +82,9 @@ about:
 # MailingList: Please send questions and comments regarding Rcpp to rcpp-devel@lists.r-forge.r-project.org
 # RoxygenNote: 5.0.1
 # NeedsCompilation: yes
-# Packaged: 2016-11-16 13:37:45.66862 UTC; edd
+# Packaged: 2017-05-20 12:07:21.962471 UTC; edd
 # Repository: CRAN
-# Date/Publication: 2016-11-17 17:59:44
+# Date/Publication: 2017-05-22 04:18:02 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

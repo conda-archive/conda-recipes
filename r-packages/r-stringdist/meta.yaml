@@ -1,30 +1,27 @@
+{% set version = '0.9.4.4' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-stringdist
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "0.9.4.2"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: stringdist_0.9.4.2.tar.gz
+  fn: stringdist_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/stringdist_0.9.4.2.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/stringdist/stringdist_0.9.4.2.tar.gz
+    - https://cran.r-project.org/src/contrib/stringdist_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/stringdist/stringdist_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 97d88229255f87e2ebd4dfbfaea025f13b0d203b171e45dd9413cf6023cccfe2
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -35,9 +32,9 @@ build:
 requirements:
   build:
     - r-base
-    - posix               # [win]
-    - {{native}}toolchain # [win]
-    - gcc                 # [not win]
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
 
   run:
     - r-base
@@ -45,8 +42,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('stringdist')" # [not win]
-    - "\"%R%\" -e \"library('stringdist')\"" # [win]
+    - $R -e "library('stringdist')"  # [not win]
+    - "\"%R%\" -e \"library('stringdist')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -76,19 +73,19 @@ about:
 # LazyLoad: yes
 # Authors@R: c( person("Mark", "van der Loo", role=c("aut","cre"),email="mark.vanderloo@gmail.com") , person("Jan", "van der Laan", role="ctb"),person("R Core Team","",role=c("ctb")),person("Nick","Logan",role="ctb"))
 # Description: Implements an approximate string matching version of R's native 'match' function. Can calculate various string distances based on edits (Damerau-Levenshtein, Hamming, Levenshtein, optimal sting alignment), qgrams (q- gram, cosine, jaccard distance) or heuristic metrics (Jaro, Jaro-Winkler). An implementation of soundex is provided as well. Distances can be computed between character vectors while taking proper care of encoding or between integer vectors representing generic sequences.
-# Version: 0.9.4.2
+# Version: 0.9.4.4
 # Depends: R (>= 2.15.3)
 # Imports: parallel
 # URL: https://github.com/markvanderloo/stringdist
 # BugReports: https://github.com/markvanderloo/stringdist/issues
-# Date: 2016-09-09
+# Date: 2016-12-16
 # Suggests: testthat
 # RoxygenNote: 5.0.1
 # NeedsCompilation: yes
-# Packaged: 2016-09-09 21:33:04 UTC; mark
+# Packaged: 2016-12-16 12:17:10 UTC; mark
 # Author: Mark van der Loo [aut, cre], Jan van der Laan [ctb], R Core Team [ctb], Nick Logan [ctb]
 # Repository: CRAN
-# Date/Publication: 2016-09-09 23:46:16
+# Date/Publication: 2016-12-16 15:25:23
 
 # See
 # http://docs.continuum.io/conda/build.html for

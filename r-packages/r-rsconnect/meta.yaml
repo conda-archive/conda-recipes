@@ -1,23 +1,20 @@
-{% set name = 'rsconnect' %}
-{% set version = '0.7' %}
+{% set version = '0.8' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
-  name: r-{{ name|lower }}
+  name: r-rsconnect
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: {{ name }}_{{ version }}.tar.gz
+  fn: rsconnect_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/{{ name }}_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/{{ name }}/{{ name }}_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/rsconnect_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/rsconnect/rsconnect_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: fe1f6dc5f5c7c418796a13890f9ba5e608f5e6717327d0bd13c23bc5f0d389a9
   # patches:
    # List any patch files here
    # - fix.patch
@@ -78,8 +75,7 @@ about:
 # Package: rsconnect
 # Type: Package
 # Title: Deployment Interface for R Markdown Documents and Shiny Applications
-# Version: 0.7
-# Date: 2016-12-20
+# Version: 0.8
 # Author: JJ Allaire
 # Maintainer: JJ Allaire <jj@rstudio.com>
 # Description: Programmatic deployment interface for 'RPubs', 'shinyapps.io', and 'RStudio Connect'. Supported content types include R Markdown documents, Shiny applications, plots, and static web content.
@@ -88,11 +84,11 @@ about:
 # Suggests: scrypt, knitr, testthat, rmarkdown (>= 1.1)
 # Enhances: BiocInstaller
 # License: GPL-2
-# RoxygenNote: 5.0.1
+# RoxygenNote: 6.0.1
 # NeedsCompilation: no
-# Packaged: 2016-12-20 18:40:16 UTC; jjallaire
+# Packaged: 2017-05-08 20:12:10 UTC; jjallaire
 # Repository: CRAN
-# Date/Publication: 2016-12-21 17:02:20
+# Date/Publication: 2017-05-08 22:48:15 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for

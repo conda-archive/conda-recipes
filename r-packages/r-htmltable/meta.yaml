@@ -1,46 +1,47 @@
+{% set version = '1.9' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-htmltable
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "1.7"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: htmlTable_1.7.tar.gz
+  fn: htmlTable_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/htmlTable_1.7.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/htmlTable/htmlTable_1.7.tar.gz
+    - https://cran.r-project.org/src/contrib/htmlTable_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/htmlTable/htmlTable_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 5b487a7f33af77db7d987bf61f3ef2ba18bb629fe7b9802409f8b3485c603132
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat, XML, xtable, ztable, Hmisc, reshape, rmarkdown, pander
+# Suggests: testthat, XML, xtable, ztable, Hmisc, reshape, rmarkdown, pander, chron, lubridate
 requirements:
   build:
     - r-base
+    - r-checkmate
+    - r-htmlwidgets
     - r-knitr >=1.6
     - r-magrittr >=1.5
     - r-stringr
 
   run:
     - r-base
+    - r-checkmate
+    - r-htmlwidgets
     - r-knitr >=1.6
     - r-magrittr >=1.5
     - r-stringr
@@ -48,8 +49,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('htmlTable')" # [not win]
-    - "\"%R%\" -e \"library('htmlTable')\"" # [win]
+    - $R -e "library('htmlTable')"  # [not win]
+    - "\"%R%\" -e \"library('htmlTable')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -70,8 +71,8 @@ about:
 # The original CRAN metadata for this package was:
 
 # Package: htmlTable
-# Version: 1.7
-# Date: 2016-10-18
+# Version: 1.9
+# Date: 2017-01-25
 # Title: Advanced Tables for Markdown/HTML
 # Author: Max Gordon <max@gforge.se>
 # Maintainer: Max Gordon <max@gforge.se>
@@ -80,15 +81,15 @@ about:
 # URL: http://gforge.se/packages/
 # BugReports: https://github.com/gforge/htmlTable/issues
 # Biarch: yes
-# Imports: stringr, knitr (>= 1.6), magrittr (>= 1.5), methods
-# Suggests: testthat, XML, xtable, ztable, Hmisc, reshape, rmarkdown, pander
+# Imports: stringr, knitr (>= 1.6), magrittr (>= 1.5), methods, checkmate, htmlwidgets
+# Suggests: testthat, XML, xtable, ztable, Hmisc, reshape, rmarkdown, pander, chron, lubridate
 # Encoding: UTF-8
 # NeedsCompilation: no
 # VignetteBuilder: knitr
 # RoxygenNote: 5.0.1
-# Packaged: 2016-10-19 08:22:01 UTC; Max
+# Packaged: 2017-01-25 10:39:00 UTC; max
 # Repository: CRAN
-# Date/Publication: 2016-10-19 13:07:26
+# Date/Publication: 2017-01-26 12:08:14
 
 # See
 # http://docs.continuum.io/conda/build.html for

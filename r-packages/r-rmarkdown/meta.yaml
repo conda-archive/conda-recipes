@@ -1,30 +1,27 @@
+{% set version = '1.5' %}
+
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-rmarkdown
-  # Note that conda versions cannot contain -, so any -'s in the version have
-  # been replaced with _'s.
-  version: "1.3"
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: rmarkdown_1.3.tar.gz
+  fn: rmarkdown_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/rmarkdown_1.3.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/rmarkdown/rmarkdown_1.3.tar.gz
+    - https://cran.r-project.org/src/contrib/rmarkdown_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/rmarkdown/rmarkdown_{{ version }}.tar.gz
 
 
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  sha256: 239970febac7adcc51d08976cc89426b0b4798bf90216253e4fcd1badd24fb73
   # patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  # If this is a new build for the same version, increment the build number.
+  number: 0
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -60,8 +57,8 @@ requirements:
 test:
   commands:
     # You can put additional test commands to be run here.
-    - $R -e "library('rmarkdown')" # [not win]
-    - "\"%R%\" -e \"library('rmarkdown')\"" # [win]
+    - $R -e "library('rmarkdown')"  # [not win]
+    - "\"%R%\" -e \"library('rmarkdown')\""  # [win]
 
   # You can also put a file called run_test.py, run_test.sh, or run_test.bat
   # in the recipe that will be run at test time.
@@ -80,22 +77,22 @@ about:
 # Package: rmarkdown
 # Type: Package
 # Title: Dynamic Documents for R
-# Version: 1.2
-# Authors@R: c( person("JJ", "Allaire", role = c("aut", "cre"), email = "jj@rstudio.com"), person("Joe", "Cheng", role = "aut", email = "joe@rstudio.com"), person("Yihui", "Xie", role = "aut", email = "yihui@rstudio.com"), person("Jonathan", "McPherson", role = "aut", email = "jonathan@rstudio.com"), person("Winston", "Chang", role = "aut", email = "winston@rstudio.com"), person("Jeff", "Allen", role = "aut", email = "jeff@rstudio.com"), person("Hadley", "Wickham", role = "aut", email = "hadley@rstudio.com"), person("Aron", "Atkins", role = "aut", email = "aron@rstudio.com"), person("Rob", "Hyndman", role = "aut", email = "Rob.Hyndman@monash.edu"), person(family = "RStudio, Inc.", role = "cph"), person(family = "jQuery Foundation", role = "cph", comment = "jQuery library"), person(family = "jQuery contributors", role = c("ctb", "cph"), comment = "jQuery library; authors listed in inst/rmd/h/jquery-AUTHORS.txt"), person(family = "jQuery UI contributors", role = c("ctb", "cph"), comment = "jQuery UI library; authors listed in inst/rmd/h/jqueryui-AUTHORS.txt"), person("Mark", "Otto", role = "ctb", comment = "Bootstrap library"), person("Jacob", "Thornton", role = "ctb", comment = "Bootstrap library"), person(family = "Bootstrap contributors", role = "ctb", comment = "Bootstrap library"), person(family = "Twitter, Inc", role = "cph", comment = "Bootstrap library"), person("Alexander", "Farkas", role = c("ctb", "cph"), comment = "html5shiv library"), person("Scott", "Jehl", role = c("ctb", "cph"), comment = "Respond.js library"), person("Ivan", "Sagalaev", role = c("ctb", "cph"), comment = "highlight.js library"), person("Greg", "Franko", role = c("ctb", "cph"), comment = "tocify library"), person("Eli", "Grey", role = c("ctb", "cph"), comment = "FileSaver library"), person("John", "MacFarlane", role = c("ctb", "cph"), comment = "Pandoc templates"), person(family = "Google, Inc.", role = c("ctb", "cph"), comment = "ioslides library"), person("Dave", "Raggett", role = "ctb", comment = "slidy library"), person(family = "W3C", role = "cph", comment = "slidy library"), person("Dave", "Gandy", role = c("ctb", "cph"), comment = "Font-Awesome"), person("Ben", "Sperry", role = "ctb", comment = "Ionicons"), person(family = "Drifty", role = "cph", comment = "Ionicons") )
+# Version: 1.5
+# Authors@R: c( person("JJ", "Allaire", role = c("aut", "cre"), email = "jj@rstudio.com"), person("Joe", "Cheng", role = "aut", email = "joe@rstudio.com"), person("Yihui", "Xie", role = "aut", email = "yihui@rstudio.com"), person("Jonathan", "McPherson", role = "aut", email = "jonathan@rstudio.com"), person("Winston", "Chang", role = "aut", email = "winston@rstudio.com"), person("Jeff", "Allen", role = "aut", email = "jeff@rstudio.com"), person("Hadley", "Wickham", role = "aut", email = "hadley@rstudio.com"), person("Aron", "Atkins", role = "aut", email = "aron@rstudio.com"), person("Rob", "Hyndman", role = "aut", email = "Rob.Hyndman@monash.edu"), person("Ruben", "Arslan", role = "aut", email = "ruben.arslan@uni-goettingen.de"), person(family = "RStudio, Inc.", role = "cph"), person(family = "jQuery Foundation", role = "cph", comment = "jQuery library"), person(family = "jQuery contributors", role = c("ctb", "cph"), comment = "jQuery library; authors listed in inst/rmd/h/jquery-AUTHORS.txt"), person(family = "jQuery UI contributors", role = c("ctb", "cph"), comment = "jQuery UI library; authors listed in inst/rmd/h/jqueryui-AUTHORS.txt"), person("Mark", "Otto", role = "ctb", comment = "Bootstrap library"), person("Jacob", "Thornton", role = "ctb", comment = "Bootstrap library"), person(family = "Bootstrap contributors", role = "ctb", comment = "Bootstrap library"), person(family = "Twitter, Inc", role = "cph", comment = "Bootstrap library"), person("Alexander", "Farkas", role = c("ctb", "cph"), comment = "html5shiv library"), person("Scott", "Jehl", role = c("ctb", "cph"), comment = "Respond.js library"), person("Ivan", "Sagalaev", role = c("ctb", "cph"), comment = "highlight.js library"), person("Greg", "Franko", role = c("ctb", "cph"), comment = "tocify library"), person("Eli", "Grey", role = c("ctb", "cph"), comment = "FileSaver library"), person("John", "MacFarlane", role = c("ctb", "cph"), comment = "Pandoc templates"), person(family = "Google, Inc.", role = c("ctb", "cph"), comment = "ioslides library"), person("Dave", "Raggett", role = "ctb", comment = "slidy library"), person(family = "W3C", role = "cph", comment = "slidy library"), person("Dave", "Gandy", role = c("ctb", "cph"), comment = "Font-Awesome"), person("Ben", "Sperry", role = "ctb", comment = "Ionicons"), person(family = "Drifty", role = "cph", comment = "Ionicons"), person("Aidan", "Lister", role = c("ctb", "cph"),  comment = "jQuery StickyTabs") )
 # Description: Convert R Markdown documents into a variety of formats.
 # Depends: R (>= 3.0)
-# Imports: tools, utils, grDevices, knitr (>= 1.14), yaml (>= 2.1.5), htmltools (>= 0.3.5), caTools, evaluate (>= 0.8), base64enc, jsonlite, rprojroot, methods
+# Imports: tools, utils, knitr (>= 1.14), yaml (>= 2.1.5), htmltools (>= 0.3.5), caTools, evaluate (>= 0.8), base64enc, jsonlite, rprojroot, methods
 # Suggests: shiny (>= 0.11), tufte, testthat, digest, tibble
 # SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
 # URL: http://rmarkdown.rstudio.com
 # License: GPL-3
-# RoxygenNote: 5.0.1
+# RoxygenNote: 6.0.1
 # NeedsCompilation: no
-# Packaged: 2016-11-21 11:09:55 UTC; jjallaire
-# Author: JJ Allaire [aut, cre], Joe Cheng [aut], Yihui Xie [aut], Jonathan McPherson [aut], Winston Chang [aut], Jeff Allen [aut], Hadley Wickham [aut], Aron Atkins [aut], Rob Hyndman [aut], RStudio, Inc. [cph], jQuery Foundation [cph] (jQuery library), jQuery contributors [ctb, cph] (jQuery library; authors listed in inst/rmd/h/jquery-AUTHORS.txt), jQuery UI contributors [ctb, cph] (jQuery UI library; authors listed in inst/rmd/h/jqueryui-AUTHORS.txt), Mark Otto [ctb] (Bootstrap library), Jacob Thornton [ctb] (Bootstrap library), Bootstrap contributors [ctb] (Bootstrap library), Twitter, Inc [cph] (Bootstrap library), Alexander Farkas [ctb, cph] (html5shiv library), Scott Jehl [ctb, cph] (Respond.js library), Ivan Sagalaev [ctb, cph] (highlight.js library), Greg Franko [ctb, cph] (tocify library), Eli Grey [ctb, cph] (FileSaver library), John MacFarlane [ctb, cph] (Pandoc templates), Google, Inc. [ctb, cph] (ioslides library), Dave Raggett [ctb] (slidy library), W3C [cph] (slidy library), Dave Gandy [ctb, cph] (Font-Awesome), Ben Sperry [ctb] (Ionicons), Drifty [cph] (Ionicons)
+# Packaged: 2017-04-25 14:24:59 UTC; jjallaire
+# Author: JJ Allaire [aut, cre], Joe Cheng [aut], Yihui Xie [aut], Jonathan McPherson [aut], Winston Chang [aut], Jeff Allen [aut], Hadley Wickham [aut], Aron Atkins [aut], Rob Hyndman [aut], Ruben Arslan [aut], RStudio, Inc. [cph], jQuery Foundation [cph] (jQuery library), jQuery contributors [ctb, cph] (jQuery library; authors listed in inst/rmd/h/jquery-AUTHORS.txt), jQuery UI contributors [ctb, cph] (jQuery UI library; authors listed in inst/rmd/h/jqueryui-AUTHORS.txt), Mark Otto [ctb] (Bootstrap library), Jacob Thornton [ctb] (Bootstrap library), Bootstrap contributors [ctb] (Bootstrap library), Twitter, Inc [cph] (Bootstrap library), Alexander Farkas [ctb, cph] (html5shiv library), Scott Jehl [ctb, cph] (Respond.js library), Ivan Sagalaev [ctb, cph] (highlight.js library), Greg Franko [ctb, cph] (tocify library), Eli Grey [ctb, cph] (FileSaver library), John MacFarlane [ctb, cph] (Pandoc templates), Google, Inc. [ctb, cph] (ioslides library), Dave Raggett [ctb] (slidy library), W3C [cph] (slidy library), Dave Gandy [ctb, cph] (Font-Awesome), Ben Sperry [ctb] (Ionicons), Drifty [cph] (Ionicons), Aidan Lister [ctb, cph] (jQuery StickyTabs)
 # Maintainer: JJ Allaire <jj@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2016-11-21 16:51:00
+# Date/Publication: 2017-04-26 05:57:08 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for
