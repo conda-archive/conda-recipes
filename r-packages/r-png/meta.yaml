@@ -41,6 +41,8 @@ requirements:
 
   run:
     - r-base
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
     - {{native}}libpng      # [win]
     - libpng >=1.6.27,<1.7  # [not win]
     - {{native}}zlib

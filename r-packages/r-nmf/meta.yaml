@@ -64,6 +64,8 @@ requirements:
     - r-reshape2
     - r-rngtools >=1.2.3
     - r-stringr >=1.0.0
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

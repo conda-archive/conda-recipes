@@ -39,6 +39,8 @@ requirements:
 
   run:
     - r-base
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
     - unixodbc             # [not win]
 
 test:

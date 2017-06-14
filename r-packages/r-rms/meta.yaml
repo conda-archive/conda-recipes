@@ -62,6 +62,8 @@ requirements:
     - r-quantreg
     - r-rpart
     - r-survival >=2.40_1
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

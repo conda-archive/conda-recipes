@@ -46,6 +46,8 @@ requirements:
     - r-grpreg
     - r-lattice
     - r-leaps
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

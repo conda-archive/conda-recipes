@@ -46,6 +46,8 @@ requirements:
     - r-curl
     - r-xts >=0.9_0
     - r-zoo
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

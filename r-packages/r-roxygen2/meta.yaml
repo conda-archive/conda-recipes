@@ -56,6 +56,8 @@ requirements:
     - r-stringi
     - r-stringr >=0.5
     - r-xml2
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

@@ -34,14 +34,16 @@ requirements:
     - r-base
     - r-base64enc
     - posix                # [win]
+    - {{native}}openssl
     - {{native}}toolchain  # [win]
     - gcc                  # [not win]
-    - {{native}}openssl
 
   run:
     - r-base
     - r-base64enc
     - {{native}}openssl
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

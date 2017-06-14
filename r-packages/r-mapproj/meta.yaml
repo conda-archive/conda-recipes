@@ -40,6 +40,8 @@ requirements:
   run:
     - r-base
     - r-maps >=2.3_0
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

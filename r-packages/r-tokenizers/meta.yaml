@@ -44,6 +44,8 @@ requirements:
     - r-rcpp >=0.12.3
     - r-snowballc >=0.5.1
     - r-stringi >=1.0.1
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

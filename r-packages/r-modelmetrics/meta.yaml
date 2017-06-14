@@ -40,6 +40,8 @@ requirements:
   run:
     - r-base
     - r-rcpp
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

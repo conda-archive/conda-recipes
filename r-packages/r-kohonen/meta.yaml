@@ -33,7 +33,7 @@ requirements:
   build:
     - r-base
     - r-mass
-    - r-rcpp >=0.12.7
+    - r-rcpp
     - posix                # [win]
     - {{native}}toolchain  # [win]
     - gcc                  # [not win]
@@ -41,7 +41,9 @@ requirements:
   run:
     - r-base
     - r-mass
-    - r-rcpp >=0.12.7
+    - r-rcpp
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

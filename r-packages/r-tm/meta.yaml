@@ -46,6 +46,8 @@ requirements:
     - r-nlp >=0.1_6.2
     - r-rcpp
     - r-slam >=0.1_37
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

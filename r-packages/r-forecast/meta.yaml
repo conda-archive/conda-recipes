@@ -60,6 +60,8 @@ requirements:
     - r-timedate
     - r-tseries
     - r-zoo
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

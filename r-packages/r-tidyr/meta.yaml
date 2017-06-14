@@ -50,6 +50,8 @@ requirements:
     - r-magrittr
     - r-stringi
     - r-tibble
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

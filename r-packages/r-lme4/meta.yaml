@@ -54,6 +54,8 @@ requirements:
     - r-minqa >=1.1.15
     - r-nlme >=3.1_123
     - r-nloptr >=1.0.4
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

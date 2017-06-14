@@ -42,6 +42,8 @@ requirements:
     - r-base
     - r-xts >=0.9_3
     - r-zoo
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

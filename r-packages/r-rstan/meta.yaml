@@ -52,6 +52,8 @@ requirements:
     - r-ggplot2 >=2.0.0
     - r-gridextra >=2.0.0
     - r-inline
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

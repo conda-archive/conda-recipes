@@ -35,11 +35,13 @@ requirements:
     - posix                # [win]
     - {{native}}toolchain  # [win]
     - gcc                  # [not win]
-    - libiconv            # [osx]
+    - libiconv             # [osx]
 
   run:
     - r-base
-    - libiconv            # [osx]
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
+    - libiconv             # [osx]
 
 test:
   commands:

@@ -42,6 +42,8 @@ requirements:
     - r-base
     - r-rcpp >=0.12.3
     - r-rlang
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

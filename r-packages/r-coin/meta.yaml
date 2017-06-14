@@ -46,6 +46,8 @@ requirements:
     - r-multcomp
     - r-mvtnorm >=1.0_5
     - r-survival
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:

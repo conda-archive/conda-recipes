@@ -34,15 +34,17 @@ requirements:
     - r-base
     - posix                # [win]
     - {{posix}}pkg-config
+    - {{native}}zeromq     # [win]
+    - zeromq 4.1.*         # [not win]
     - {{native}}toolchain  # [win]
     - gcc                  # [not win]
-    - {{native}}zeromq    # [win]
-    - zeromq 4.1.*        # [not win]
 
   run:
     - r-base
-    - {{native}}zeromq    # [win]
-    - zeromq 4.1.*        # [not win]
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
+    - {{native}}zeromq     # [win]
+    - zeromq 4.1.*         # [not win]
 
 test:
   commands:

@@ -48,6 +48,8 @@ requirements:
     - r-rcpp >=0.12.7
     - r-memoise
     - r-plogr
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
 
 test:
   commands:
