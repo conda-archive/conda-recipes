@@ -1,0 +1,17 @@
+package:
+  name: pyrpm
+  version: 0.5.7
+
+source:
+  git_url: https://github.com/02strich/pyrpm
+
+build:
+  script: ${PYTHON} setup.py install --single-version-externally-managed --record=record.txt  [unix]
+  script:  %PYTHON% setup.py install --single-version-externally-managed --record=record.txt  [win]
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
