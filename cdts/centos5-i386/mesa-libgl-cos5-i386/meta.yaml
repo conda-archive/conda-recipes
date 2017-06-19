@@ -1,0 +1,13 @@
+package:
+  name: mesa-libgl-cos5-i386
+  version: 6.5.1
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/mesa-libGL-6.5.1-7.11.el5_9.i386.rpm
+  sha1: 082427c7e98b1f1310512ae48d94ba10945f1263
+
+outputs:
+  - name: mesa-libgl-cos5-i386
+    target: noarch
+
+

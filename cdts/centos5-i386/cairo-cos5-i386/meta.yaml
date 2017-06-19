@@ -1,0 +1,13 @@
+package:
+  name: cairo-cos5-i386
+  version: 1.2.4
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/cairo-1.2.4-5.el5.i386.rpm
+  sha1: 785f139c87106fc0387212d1d6a22a86cefd767d
+
+outputs:
+  - name: cairo-cos5-i386
+    target: noarch
+
+

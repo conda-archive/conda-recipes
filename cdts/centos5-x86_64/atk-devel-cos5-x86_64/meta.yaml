@@ -1,0 +1,19 @@
+package:
+  name: atk-devel-cos5-x86_64
+  version: 1.12.2
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/atk-devel-1.12.2-1.fc6.x86_64.rpm
+  sha1: ec2526bcd9ae1a82770d22b3bf108302d0f0809f
+
+outputs:
+  - name: atk-devel-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - atk-cos5-x86_64 ==1.12.2
+    - glib2-devel-cos5-x86_64 >=2.6.0
+  run:
+    - atk-cos5-x86_64 ==1.12.2
+    - glib2-devel-cos5-x86_64 >=2.6.0

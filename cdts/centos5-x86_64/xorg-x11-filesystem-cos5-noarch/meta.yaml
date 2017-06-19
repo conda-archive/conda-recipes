@@ -1,0 +1,17 @@
+package:
+  name: xorg-x11-filesystem-cos5-noarch
+  version: 7.1
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/xorg-x11-filesystem-7.1-2.fc6.noarch.rpm
+  sha1: a4e3e9d83a124dc70bbe074e2f1f716bae01b9a3
+
+outputs:
+  - name: xorg-x11-filesystem-cos5-noarch
+    target: noarch
+
+requirements:
+  build:
+    - filesystem-cos5-x86_64 >=2.3.7
+  run:
+    - filesystem-cos5-x86_64 >=2.3.7

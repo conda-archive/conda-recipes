@@ -1,0 +1,17 @@
+package:
+  name: libsepol-devel-cos5-x86_64
+  version: 1.15.2
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/libsepol-devel-1.15.2-3.el5.x86_64.rpm
+  sha1: fc44e7b39649dbf15f17c48ef45a102267e579c9
+
+outputs:
+  - name: libsepol-devel-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - libsepol-cos5-x86_64 ==1.15.2
+  run:
+    - libsepol-cos5-x86_64 ==1.15.2

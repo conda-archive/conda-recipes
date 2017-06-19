@@ -1,0 +1,17 @@
+package:
+  name: fontconfig-cos5-x86_64
+  version: 2.4.1
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/fontconfig-2.4.1-7.el5.x86_64.rpm
+  sha1: 96c9d3b6b300f0becb5ce8f16e89218b9e9e9b98
+
+outputs:
+  - name: fontconfig-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - freetype-cos5-x86_64 >=2.1.4
+  run:
+    - freetype-cos5-x86_64 >=2.1.4

@@ -1,0 +1,19 @@
+package:
+  name: libselinux-devel-cos5-i386
+  version: 1.33.4
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/libselinux-devel-1.33.4-5.7.el5.i386.rpm
+  sha1: 0bbeeec9ce3365b2bbb533720db682638c13bf97
+
+outputs:
+  - name: libselinux-devel-cos5-i386
+    target: noarch
+
+requirements:
+  build:
+    - libselinux-cos5-i386 ==1.33.4
+    - libsepol-devel-cos5-i386 >=1.15.2
+  run:
+    - libselinux-cos5-i386 ==1.33.4
+    - libsepol-devel-cos5-i386 >=1.15.2

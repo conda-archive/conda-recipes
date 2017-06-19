@@ -1,0 +1,17 @@
+package:
+  name: filesystem-cos5-x86_64
+  version: 2.4.0
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/filesystem-2.4.0-3.el5.centos.x86_64.rpm
+  sha1: e4bb6c8e7e9a24ba3c79c1ae34313b2cfe9b37c6
+
+outputs:
+  - name: filesystem-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - setup-cos5-noarch >=2.5.4
+  run:
+    - setup-cos5-noarch >=2.5.4

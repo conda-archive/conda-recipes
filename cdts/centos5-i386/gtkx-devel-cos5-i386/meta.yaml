@@ -1,0 +1,17 @@
+package:
+  name: gtkx-devel-cos5-i386
+  version: 1.2.10
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/gtk+-devel-1.2.10-57.el5.i386.rpm
+  sha1: 9ab9ffbd5839e0335f9a63e0303708d5f9afdf8e
+
+outputs:
+  - name: gtkx-devel-cos5-i386
+    target: noarch
+
+requirements:
+  build:
+    - gtkx-cos5-i386 ==1.2.10
+  run:
+    - gtkx-cos5-i386 ==1.2.10

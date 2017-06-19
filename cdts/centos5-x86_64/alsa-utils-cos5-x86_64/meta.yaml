@@ -1,0 +1,13 @@
+package:
+  name: alsa-utils-cos5-x86_64
+  version: 1.0.17
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/alsa-utils-1.0.17-7.el5.x86_64.rpm
+  sha1: a376fcfd3b7a5e560f371c73caf8449c748f9f0c
+
+outputs:
+  - name: alsa-utils-cos5-x86_64
+    target: noarch
+
+

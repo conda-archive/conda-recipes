@@ -1,0 +1,13 @@
+package:
+  name: glib2-cos5-i386
+  version: 2.12.3
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/glib2-2.12.3-4.el5_3.1.i386.rpm
+  sha1: 9d459ee73798966f2d8a99c9b37788ed7bbeb1e0
+
+outputs:
+  - name: glib2-cos5-i386
+    target: noarch
+
+

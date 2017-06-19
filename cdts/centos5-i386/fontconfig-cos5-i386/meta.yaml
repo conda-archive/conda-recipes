@@ -1,0 +1,17 @@
+package:
+  name: fontconfig-cos5-i386
+  version: 2.4.1
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/fontconfig-2.4.1-7.el5.i386.rpm
+  sha1: 4488f998ff50c521a60100bedf31fb9a8d7051d6
+
+outputs:
+  - name: fontconfig-cos5-i386
+    target: noarch
+
+requirements:
+  build:
+    - freetype-cos5-i386 >=2.1.4
+  run:
+    - freetype-cos5-i386 >=2.1.4

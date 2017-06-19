@@ -1,0 +1,13 @@
+package:
+  name: libsepol-cos5-i386
+  version: 1.15.2
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/libsepol-1.15.2-3.el5.i386.rpm
+  sha1: 16f2655e891d3ab50e69a132b3cfaabb9e9e36a4
+
+outputs:
+  - name: libsepol-cos5-i386
+    target: noarch
+
+

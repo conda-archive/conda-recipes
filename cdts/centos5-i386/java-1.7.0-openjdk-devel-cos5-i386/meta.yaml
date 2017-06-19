@@ -1,0 +1,17 @@
+package:
+  name: java-1.7.0-openjdk-devel-cos5-i386
+  version: 1.7.0.65
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/java-1.7.0-openjdk-devel-1.7.0.65-2.5.1.2.el5_10.i386.rpm
+  sha1: 58e1ac2d93c1bfc426a376bc565f9742095c8de1
+
+outputs:
+  - name: java-1.7.0-openjdk-devel-cos5-i386
+    target: noarch
+
+requirements:
+  build:
+    - java-1.7.0-openjdk-cos5-i386 ==1.7.0.65
+  run:
+    - java-1.7.0-openjdk-cos5-i386 ==1.7.0.65

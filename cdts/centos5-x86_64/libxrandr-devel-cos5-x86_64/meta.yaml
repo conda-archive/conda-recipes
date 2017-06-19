@@ -1,0 +1,19 @@
+package:
+  name: libxrandr-devel-cos5-x86_64
+  version: 1.1.1
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/libXrandr-devel-1.1.1-3.3.x86_64.rpm
+  sha1: 8f594b934682e292ce84f82a6849a2acab43c3f3
+
+outputs:
+  - name: libxrandr-devel-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - xorg-x11-filesystem-cos5-noarch >=0.99.2
+    - libxrandr-cos5-x86_64 ==1.1.1
+  run:
+    - xorg-x11-filesystem-cos5-noarch >=0.99.2
+    - libxrandr-cos5-x86_64 ==1.1.1

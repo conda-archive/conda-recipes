@@ -1,0 +1,25 @@
+package:
+  name: pango-devel-cos5-i386
+  version: 1.14.9
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/pango-devel-1.14.9-8.el5.centos.3.i386.rpm
+  sha1: 7179c99158d06df24a196477cdf19e69805abdfd
+
+outputs:
+  - name: pango-devel-cos5-i386
+    target: noarch
+
+requirements:
+  build:
+    - freetype-devel-cos5-i386 >=2.1.3
+    - glib2-devel-cos5-i386 >=2.12.0
+    - cairo-devel-cos5-i386 >=1.2.2
+    - pango-cos5-i386 ==1.14.9
+    - fontconfig-devel-cos5-i386 >=2.0
+  run:
+    - freetype-devel-cos5-i386 >=2.1.3
+    - glib2-devel-cos5-i386 >=2.12.0
+    - cairo-devel-cos5-i386 >=1.2.2
+    - pango-cos5-i386 ==1.14.9
+    - fontconfig-devel-cos5-i386 >=2.0

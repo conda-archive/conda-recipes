@@ -1,0 +1,13 @@
+package:
+  name: setup-cos5-noarch
+  version: 2.5.58
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/setup-2.5.58-9.el5.noarch.rpm
+  sha1: bc6c5c4f0393a6f47f6f506d830c2b0cb60025ab
+
+outputs:
+  - name: setup-cos5-noarch
+    target: noarch
+
+

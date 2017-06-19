@@ -1,0 +1,13 @@
+package:
+  name: freetype-cos5-i386
+  version: 2.2.1
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/freetype-2.2.1-32.el5_9.1.i386.rpm
+  sha1: 0c66fd0d9cd0bfccb63ba0b946d3ba27d7883cb1
+
+outputs:
+  - name: freetype-cos5-i386
+    target: noarch
+
+

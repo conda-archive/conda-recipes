@@ -1,0 +1,13 @@
+package:
+  name: gdk-pixbuf-cos5-i386
+  version: 0.22.0
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/gdk-pixbuf-0.22.0-25.el5.i386.rpm
+  sha1: b28695b4cefae4595821230666fc13b24bc37c4e
+
+outputs:
+  - name: gdk-pixbuf-cos5-i386
+    target: noarch
+
+

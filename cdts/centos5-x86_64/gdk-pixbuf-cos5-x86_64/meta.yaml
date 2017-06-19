@@ -1,0 +1,13 @@
+package:
+  name: gdk-pixbuf-cos5-x86_64
+  version: 0.22.0
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/gdk-pixbuf-0.22.0-25.el5.x86_64.rpm
+  sha1: defb313385006a9e7209911b9505e73dbf27f47b
+
+outputs:
+  - name: gdk-pixbuf-cos5-x86_64
+    target: noarch
+
+

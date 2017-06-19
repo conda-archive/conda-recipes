@@ -1,0 +1,23 @@
+package:
+  name: libgcj-cos5-x86_64
+  version: 4.1.2
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/libgcj-4.1.2-55.el5.x86_64.rpm
+  sha1: 8b10c73da7e396733f66c1258dcf9ec134903cfc
+
+outputs:
+  - name: libgcj-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - zip-cos5-x86_64 >=2.1
+    - libart_lgpl-cos5-x86_64 >=2.1.0
+    - glib2-cos5-x86_64 >=2.4.0
+    - gtk2-cos5-x86_64 >=2.4.0
+  run:
+    - zip-cos5-x86_64 >=2.1
+    - libart_lgpl-cos5-x86_64 >=2.1.0
+    - glib2-cos5-x86_64 >=2.4.0
+    - gtk2-cos5-x86_64 >=2.4.0

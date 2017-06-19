@@ -1,0 +1,13 @@
+package:
+  name: libjpeg-cos5-i386
+  version: 6b
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/libjpeg-6b-38.i386.rpm
+  sha1: 3f51e3fa9cd64465ad76f17933cedec2db86b47a
+
+outputs:
+  - name: libjpeg-cos5-i386
+    target: noarch
+
+

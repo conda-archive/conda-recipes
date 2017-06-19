@@ -1,0 +1,17 @@
+package:
+  name: filesystem-cos5-i386
+  version: 2.4.0
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/filesystem-2.4.0-3.el5.centos.i386.rpm
+  sha1: df79aac154f4111828c6dd2357931d927985c86e
+
+outputs:
+  - name: filesystem-cos5-i386
+    target: noarch
+
+requirements:
+  build:
+    - setup-cos5-noarch >=2.5.4
+  run:
+    - setup-cos5-noarch >=2.5.4

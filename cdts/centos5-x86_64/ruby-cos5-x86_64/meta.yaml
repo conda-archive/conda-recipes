@@ -1,0 +1,17 @@
+package:
+  name: ruby-cos5-x86_64
+  version: 1.8.5
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/ruby-1.8.5-31.el5_9.x86_64.rpm
+  sha1: cc76fc63034c54e88985424c9d6c282d30e29b8f
+
+outputs:
+  - name: ruby-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - ruby-libs-cos5-x86_64 ==1.8.5
+  run:
+    - ruby-libs-cos5-x86_64 ==1.8.5

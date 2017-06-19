@@ -1,0 +1,19 @@
+package:
+  name: libxrandr-devel-cos5-i386
+  version: 1.1.1
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/libXrandr-devel-1.1.1-3.3.i386.rpm
+  sha1: dd8e2c52d2eefb5d89362337c7758844c699d3aa
+
+outputs:
+  - name: libxrandr-devel-cos5-i386
+    target: noarch
+
+requirements:
+  build:
+    - xorg-x11-filesystem-cos5-noarch >=0.99.2
+    - libxrandr-cos5-i386 ==1.1.1
+  run:
+    - xorg-x11-filesystem-cos5-noarch >=0.99.2
+    - libxrandr-cos5-i386 ==1.1.1

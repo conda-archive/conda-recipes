@@ -1,0 +1,13 @@
+package:
+  name: zip-cos5-i386
+  version: 2.31
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/zip-2.31-2.el5.i386.rpm
+  sha1: 405e5cea2434262b255b9c7a7e7659cd3e339e59
+
+outputs:
+  - name: zip-cos5-i386
+    target: noarch
+
+

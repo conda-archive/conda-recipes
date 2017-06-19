@@ -1,0 +1,13 @@
+package:
+  name: cairo-cos5-x86_64
+  version: 1.2.4
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/cairo-1.2.4-5.el5.x86_64.rpm
+  sha1: 657d30a3b13f1f39720aeee0384c98ca69b19332
+
+outputs:
+  - name: cairo-cos5-x86_64
+    target: noarch
+
+

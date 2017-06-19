@@ -1,0 +1,13 @@
+package:
+  name: alsa-lib-cos5-x86_64
+  version: 1.0.17
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/alsa-lib-1.0.17-1.el5.x86_64.rpm
+  sha1: 000afd464dc109b8bd03efefe62c6348345eed72
+
+outputs:
+  - name: alsa-lib-cos5-x86_64
+    target: noarch
+
+

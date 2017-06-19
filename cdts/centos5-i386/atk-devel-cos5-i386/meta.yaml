@@ -1,0 +1,19 @@
+package:
+  name: atk-devel-cos5-i386
+  version: 1.12.2
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/atk-devel-1.12.2-1.fc6.i386.rpm
+  sha1: 45e75f0c2d1ddedf9881dee21534a49b3ccafa6f
+
+outputs:
+  - name: atk-devel-cos5-i386
+    target: noarch
+
+requirements:
+  build:
+    - atk-cos5-i386 ==1.12.2
+    - glib2-devel-cos5-i386 >=2.6.0
+  run:
+    - atk-cos5-i386 ==1.12.2
+    - glib2-devel-cos5-i386 >=2.6.0

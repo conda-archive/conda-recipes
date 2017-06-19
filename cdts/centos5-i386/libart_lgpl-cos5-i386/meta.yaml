@@ -1,0 +1,13 @@
+package:
+  name: libart_lgpl-cos5-i386
+  version: 2.3.17
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/libart_lgpl-2.3.17-4.i386.rpm
+  sha1: 9b13e931b9346806da7241a1e8a9c9f9d5382d2f
+
+outputs:
+  - name: libart_lgpl-cos5-i386
+    target: noarch
+
+

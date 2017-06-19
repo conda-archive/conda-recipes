@@ -1,0 +1,19 @@
+package:
+  name: glib2-devel-cos5-i386
+  version: 2.12.3
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/glib2-devel-2.12.3-4.el5_3.1.i386.rpm
+  sha1: 366a424b39a752e99c7583cdd9f07b38cd7b271e
+
+outputs:
+  - name: glib2-devel-cos5-i386
+    target: noarch
+
+requirements:
+  build:
+    - glib2-cos5-i386 ==2.12.3
+    - pkgconfig-cos5-i386 >=0.8
+  run:
+    - glib2-cos5-i386 ==2.12.3
+    - pkgconfig-cos5-i386 >=0.8

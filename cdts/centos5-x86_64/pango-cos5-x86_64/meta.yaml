@@ -1,0 +1,23 @@
+package:
+  name: pango-cos5-x86_64
+  version: 1.14.9
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/pango-1.14.9-8.el5.centos.3.x86_64.rpm
+  sha1: c2004dd34a21c72d0d7dacf73c2ecd7ce68ae854
+
+outputs:
+  - name: pango-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - glib2-cos5-x86_64 >=2.12.0
+    - freetype-cos5-x86_64 >=2.1.3
+    - freetype-cos5-x86_64 >=2.1.3
+    - cairo-cos5-x86_64 >=1.2.2
+  run:
+    - glib2-cos5-x86_64 >=2.12.0
+    - freetype-cos5-x86_64 >=2.1.3
+    - freetype-cos5-x86_64 >=2.1.3
+    - cairo-cos5-x86_64 >=1.2.2

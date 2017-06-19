@@ -1,0 +1,17 @@
+package:
+  name: gtkx-devel-cos5-x86_64
+  version: 1.2.10
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/gtk+-devel-1.2.10-57.el5.x86_64.rpm
+  sha1: 69ba0f537ae8d06db114834f45b772c4c7368aad
+
+outputs:
+  - name: gtkx-devel-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - gtkx-cos5-x86_64 ==1.2.10
+  run:
+    - gtkx-cos5-x86_64 ==1.2.10

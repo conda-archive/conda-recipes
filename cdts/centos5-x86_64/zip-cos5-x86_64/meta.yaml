@@ -1,0 +1,13 @@
+package:
+  name: zip-cos5-x86_64
+  version: 2.31
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/zip-2.31-2.el5.x86_64.rpm
+  sha1: ed955a9e6f810c01a99f4786a5199c22cb128052
+
+outputs:
+  - name: zip-cos5-x86_64
+    target: noarch
+
+

@@ -1,0 +1,13 @@
+package:
+  name: alsa-utils-cos5-i386
+  version: 1.0.17
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/alsa-utils-1.0.17-7.el5.i386.rpm
+  sha1: 4986881ecdcc792e902225ad6a594bc1341412ca
+
+outputs:
+  - name: alsa-utils-cos5-i386
+    target: noarch
+
+

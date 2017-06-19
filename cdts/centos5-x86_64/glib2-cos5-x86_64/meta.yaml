@@ -1,0 +1,13 @@
+package:
+  name: glib2-cos5-x86_64
+  version: 2.12.3
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/glib2-2.12.3-4.el5_3.1.x86_64.rpm
+  sha1: c7a6a50f1a27344a018fb485f3a7c916a4c141d7
+
+outputs:
+  - name: glib2-cos5-x86_64
+    target: noarch
+
+

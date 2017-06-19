@@ -1,0 +1,13 @@
+package:
+  name: ruby-libs-cos5-i386
+  version: 1.8.5
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/ruby-libs-1.8.5-31.el5_9.i386.rpm
+  sha1: b81d16ebb49c9bc967bcbc7206a55da71148515f
+
+outputs:
+  - name: ruby-libs-cos5-i386
+    target: noarch
+
+

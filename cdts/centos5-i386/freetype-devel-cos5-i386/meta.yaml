@@ -1,0 +1,17 @@
+package:
+  name: freetype-devel-cos5-i386
+  version: 2.2.1
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/freetype-devel-2.2.1-32.el5_9.1.i386.rpm
+  sha1: b12030c02878277994ec06c26e6a866fd78665e0
+
+outputs:
+  - name: freetype-devel-cos5-i386
+    target: noarch
+
+requirements:
+  build:
+    - freetype-cos5-i386 ==2.2.1
+  run:
+    - freetype-cos5-i386 ==2.2.1

@@ -1,0 +1,13 @@
+package:
+  name: pkgconfig-cos5-x86_64
+  version: 0.21
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/pkgconfig-0.21-2.el5.x86_64.rpm
+  sha1: 561b88d9992e9b02b9fd5c5f0eb9d682c4829106
+
+outputs:
+  - name: pkgconfig-cos5-x86_64
+    target: noarch
+
+

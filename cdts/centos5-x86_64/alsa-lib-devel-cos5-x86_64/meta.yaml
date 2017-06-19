@@ -1,0 +1,17 @@
+package:
+  name: alsa-lib-devel-cos5-x86_64
+  version: 1.0.17
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/alsa-lib-devel-1.0.17-1.el5.x86_64.rpm
+  sha1: e19214cdb6b276163be4da9da59e05daad892295
+
+outputs:
+  - name: alsa-lib-devel-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - alsa-lib-cos5-x86_64 ==1.0.17
+  run:
+    - alsa-lib-cos5-x86_64 ==1.0.17
