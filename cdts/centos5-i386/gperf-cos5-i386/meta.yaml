@@ -1,0 +1,13 @@
+package:
+  name: gperf-cos5-i386
+  version: 3.0.1
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/gperf-3.0.1-7.2.2.i386.rpm
+  sha1: 01ad538d1afa15baefeaa2216355234c85689f7d
+
+outputs:
+  - name: gperf-cos5-i386
+    target: noarch
+
+

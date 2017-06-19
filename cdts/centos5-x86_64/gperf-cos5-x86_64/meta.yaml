@@ -1,0 +1,13 @@
+package:
+  name: gperf-cos5-x86_64
+  version: 3.0.1
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/gperf-3.0.1-7.2.2.x86_64.rpm
+  sha1: 985e83a61879b6d3883fb930991b8849a5b4d82c
+
+outputs:
+  - name: gperf-cos5-x86_64
+    target: noarch
+
+

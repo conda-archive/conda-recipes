@@ -1,0 +1,13 @@
+package:
+  name: atk-cos5-i386
+  version: 1.12.2
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/atk-1.12.2-1.fc6.i386.rpm
+  sha1: 5114ab54100a19ebdd5d1b357420be4d5c1b4f40
+
+outputs:
+  - name: atk-cos5-i386
+    target: noarch
+
+

@@ -1,0 +1,21 @@
+package:
+  name: cairo-devel-cos5-x86_64
+  version: 1.2.4
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/cairo-devel-1.2.4-5.el5.x86_64.rpm
+  sha1: f35040d5c83ee1cdfd89cc9148c619fcdab668eb
+
+outputs:
+  - name: cairo-devel-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - freetype-devel-cos5-x86_64 >=2.1.3
+    - fontconfig-devel-cos5-x86_64 >=2.0
+    - cairo-cos5-x86_64 ==1.2.4
+  run:
+    - freetype-devel-cos5-x86_64 >=2.1.3
+    - fontconfig-devel-cos5-x86_64 >=2.0
+    - cairo-cos5-x86_64 ==1.2.4

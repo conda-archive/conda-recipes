@@ -1,0 +1,13 @@
+package:
+  name: libjpeg-cos5-x86_64
+  version: 6b
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/libjpeg-6b-38.x86_64.rpm
+  sha1: 9ccd40349280f1cfee55c183aa9b4563a0853341
+
+outputs:
+  - name: libjpeg-cos5-x86_64
+    target: noarch
+
+

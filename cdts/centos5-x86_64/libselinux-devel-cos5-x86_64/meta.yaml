@@ -1,0 +1,19 @@
+package:
+  name: libselinux-devel-cos5-x86_64
+  version: 1.33.4
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/libselinux-devel-1.33.4-5.7.el5.x86_64.rpm
+  sha1: b743efbb316ce236136ee7b8d1349978702460a4
+
+outputs:
+  - name: libselinux-devel-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - libselinux-cos5-x86_64 ==1.33.4
+    - libsepol-devel-cos5-x86_64 >=1.15.2
+  run:
+    - libselinux-cos5-x86_64 ==1.33.4
+    - libsepol-devel-cos5-x86_64 >=1.15.2

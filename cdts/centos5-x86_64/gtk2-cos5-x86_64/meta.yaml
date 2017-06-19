@@ -1,0 +1,23 @@
+package:
+  name: gtk2-cos5-x86_64
+  version: 2.10.4
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/gtk2-2.10.4-30.el5.x86_64.rpm
+  sha1: 99e46dcca0f0e21868c4fd70dac72cb5396830c0
+
+outputs:
+  - name: gtk2-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - atk-cos5-x86_64 >=1.9.0
+    - glib2-cos5-x86_64 >=2.12.0
+    - libtiff-cos5-x86_64 >=3.6.1
+    - pango-cos5-x86_64 >=1.13.0
+  run:
+    - atk-cos5-x86_64 >=1.9.0
+    - glib2-cos5-x86_64 >=2.12.0
+    - libtiff-cos5-x86_64 >=3.6.1
+    - pango-cos5-x86_64 >=1.13.0

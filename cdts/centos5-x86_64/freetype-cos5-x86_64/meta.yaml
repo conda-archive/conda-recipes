@@ -1,0 +1,13 @@
+package:
+  name: freetype-cos5-x86_64
+  version: 2.2.1
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/freetype-2.2.1-32.el5_9.1.x86_64.rpm
+  sha1: 7dfa2d0cc4d15e8973d1ffa6c29b164811ce1426
+
+outputs:
+  - name: freetype-cos5-x86_64
+    target: noarch
+
+

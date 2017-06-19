@@ -1,0 +1,17 @@
+package:
+  name: mesa-libgl-devel-cos5-x86_64
+  version: 6.5.1
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/mesa-libGL-devel-6.5.1-7.11.el5_9.x86_64.rpm
+  sha1: be50d9e03ad8e7266dc3bde5de660ff9d184744a
+
+outputs:
+  - name: mesa-libgl-devel-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - mesa-libgl-cos5-x86_64 ==6.5.1
+  run:
+    - mesa-libgl-cos5-x86_64 ==6.5.1

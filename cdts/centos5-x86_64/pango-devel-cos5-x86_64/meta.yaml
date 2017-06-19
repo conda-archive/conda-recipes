@@ -1,0 +1,25 @@
+package:
+  name: pango-devel-cos5-x86_64
+  version: 1.14.9
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/pango-devel-1.14.9-8.el5.centos.3.x86_64.rpm
+  sha1: 2813e3fa0813d648cf1084a2500534c0d57ea0f6
+
+outputs:
+  - name: pango-devel-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - fontconfig-devel-cos5-x86_64 >=2.0
+    - freetype-devel-cos5-x86_64 >=2.1.3
+    - glib2-devel-cos5-x86_64 >=2.12.0
+    - pango-cos5-x86_64 ==1.14.9
+    - cairo-devel-cos5-x86_64 >=1.2.2
+  run:
+    - fontconfig-devel-cos5-x86_64 >=2.0
+    - freetype-devel-cos5-x86_64 >=2.1.3
+    - glib2-devel-cos5-x86_64 >=2.12.0
+    - pango-cos5-x86_64 ==1.14.9
+    - cairo-devel-cos5-x86_64 >=1.2.2

@@ -1,0 +1,25 @@
+package:
+  name: gtk2-devel-cos5-x86_64
+  version: 2.10.4
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/gtk2-devel-2.10.4-30.el5.x86_64.rpm
+  sha1: a42a151be85875518bde9c7e4c120912b11b4d6d
+
+outputs:
+  - name: gtk2-devel-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - cairo-devel-cos5-x86_64 >=1.2.0
+    - pango-devel-cos5-x86_64 >=1.13.0
+    - glib2-devel-cos5-x86_64 >=2.12.0
+    - gtk2-cos5-x86_64 ==2.10.4
+    - atk-devel-cos5-x86_64 >=1.9.0
+  run:
+    - cairo-devel-cos5-x86_64 >=1.2.0
+    - pango-devel-cos5-x86_64 >=1.13.0
+    - glib2-devel-cos5-x86_64 >=2.12.0
+    - gtk2-cos5-x86_64 ==2.10.4
+    - atk-devel-cos5-x86_64 >=1.9.0

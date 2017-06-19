@@ -1,0 +1,17 @@
+package:
+  name: libx11-cos5-i386
+  version: 1.0.3
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/libX11-1.0.3-11.el5_7.1.i386.rpm
+  sha1: e4d96841a75fda69a1d5dd2131426d1a63b75fa0
+
+outputs:
+  - name: libx11-cos5-i386
+    target: noarch
+
+requirements:
+  build:
+    - xorg-x11-filesystem-cos5-noarch >=0.99.2
+  run:
+    - xorg-x11-filesystem-cos5-noarch >=0.99.2

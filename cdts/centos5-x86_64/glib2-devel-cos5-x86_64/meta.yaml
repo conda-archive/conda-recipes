@@ -1,0 +1,19 @@
+package:
+  name: glib2-devel-cos5-x86_64
+  version: 2.12.3
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/glib2-devel-2.12.3-4.el5_3.1.x86_64.rpm
+  sha1: 8cca1e7938b94717e40fba559da4dc816e6120ae
+
+outputs:
+  - name: glib2-devel-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - glib2-cos5-x86_64 ==2.12.3
+    - pkgconfig-cos5-x86_64 >=0.8
+  run:
+    - glib2-cos5-x86_64 ==2.12.3
+    - pkgconfig-cos5-x86_64 >=0.8

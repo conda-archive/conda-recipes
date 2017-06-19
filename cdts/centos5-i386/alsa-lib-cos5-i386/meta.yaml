@@ -1,0 +1,13 @@
+package:
+  name: alsa-lib-cos5-i386
+  version: 1.0.17
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/alsa-lib-1.0.17-1.el5.i386.rpm
+  sha1: 2c38078f962846471385dcc6ccc05daeb019d347
+
+outputs:
+  - name: alsa-lib-cos5-i386
+    target: noarch
+
+

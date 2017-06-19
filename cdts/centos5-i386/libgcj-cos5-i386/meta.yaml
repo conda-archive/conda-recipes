@@ -1,0 +1,23 @@
+package:
+  name: libgcj-cos5-i386
+  version: 4.1.2
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/libgcj-4.1.2-55.el5.i386.rpm
+  sha1: f9ec8413b17551cce1303943a1fa2ccfb20159a7
+
+outputs:
+  - name: libgcj-cos5-i386
+    target: noarch
+
+requirements:
+  build:
+    - libart_lgpl-cos5-i386 >=2.1.0
+    - gtk2-cos5-i386 >=2.4.0
+    - zip-cos5-i386 >=2.1
+    - glib2-cos5-i386 >=2.4.0
+  run:
+    - libart_lgpl-cos5-i386 >=2.1.0
+    - gtk2-cos5-i386 >=2.4.0
+    - zip-cos5-i386 >=2.1
+    - glib2-cos5-i386 >=2.4.0

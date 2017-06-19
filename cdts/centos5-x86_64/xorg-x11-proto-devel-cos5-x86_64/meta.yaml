@@ -1,0 +1,17 @@
+package:
+  name: xorg-x11-proto-devel-cos5-x86_64
+  version: 7.1
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/xorg-x11-proto-devel-7.1-13.el5.x86_64.rpm
+  sha1: 57d8fcad62051df13b42fddf6a6e04568d13926a
+
+outputs:
+  - name: xorg-x11-proto-devel-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - xorg-x11-filesystem-cos5-noarch >=0.99.2
+  run:
+    - xorg-x11-filesystem-cos5-noarch >=0.99.2

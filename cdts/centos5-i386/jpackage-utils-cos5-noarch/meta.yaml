@@ -1,0 +1,13 @@
+package:
+  name: jpackage-utils-cos5-noarch
+  version: 1.7.3
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/jpackage-utils-1.7.3-1jpp.3.el5.noarch.rpm
+  sha1: f75f3575b42c82065707e6cf9cf97958fffb00e1
+
+outputs:
+  - name: jpackage-utils-cos5-noarch
+    target: noarch
+
+

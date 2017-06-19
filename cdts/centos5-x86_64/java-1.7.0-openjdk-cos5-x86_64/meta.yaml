@@ -1,0 +1,19 @@
+package:
+  name: java-1.7.0-openjdk-cos5-x86_64
+  version: 1.7.0.65
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/java-1.7.0-openjdk-1.7.0.65-2.5.1.2.el5_10.x86_64.rpm
+  sha1: c3ac6331c7d0bd677c9a6b6c4efee725e3966b24
+
+outputs:
+  - name: java-1.7.0-openjdk-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - jpackage-utils-cos5-noarch >=1.7.3
+    - libjpeg-cos5-x86_64 ==6b
+  run:
+    - jpackage-utils-cos5-noarch >=1.7.3
+    - libjpeg-cos5-x86_64 ==6b

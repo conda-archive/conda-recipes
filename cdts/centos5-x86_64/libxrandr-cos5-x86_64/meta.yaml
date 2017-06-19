@@ -1,0 +1,13 @@
+package:
+  name: libxrandr-cos5-x86_64
+  version: 1.1.1
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/libXrandr-1.1.1-3.3.x86_64.rpm
+  sha1: 1b9e99c7183d5349781a97dbd9c2d3ebf66f0e22
+
+outputs:
+  - name: libxrandr-cos5-x86_64
+    target: noarch
+
+

@@ -1,0 +1,17 @@
+package:
+  name: libselinux-cos5-x86_64
+  version: 1.33.4
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/libselinux-1.33.4-5.7.el5.x86_64.rpm
+  sha1: 90ed4015d33e89ab35c24fb074be8cf7268107d3
+
+outputs:
+  - name: libselinux-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - libsepol-cos5-x86_64 >=1.15.2
+  run:
+    - libsepol-cos5-x86_64 >=1.15.2

@@ -1,0 +1,17 @@
+package:
+  name: freetype-devel-cos5-x86_64
+  version: 2.2.1
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/freetype-devel-2.2.1-32.el5_9.1.x86_64.rpm
+  sha1: 366104e1d905366c607f9ad1918617d1255fe142
+
+outputs:
+  - name: freetype-devel-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - freetype-cos5-x86_64 ==2.2.1
+  run:
+    - freetype-cos5-x86_64 ==2.2.1

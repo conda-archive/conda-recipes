@@ -1,0 +1,13 @@
+package:
+  name: libtiff-cos5-x86_64
+  version: 3.8.2
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/libtiff-3.8.2-19.el5_10.x86_64.rpm
+  sha1: 9e5d40959ed617e63dc05068f413d8e40e1daf01
+
+outputs:
+  - name: libtiff-cos5-x86_64
+    target: noarch
+
+

@@ -1,0 +1,13 @@
+package:
+  name: atk-cos5-x86_64
+  version: 1.12.2
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/atk-1.12.2-1.fc6.x86_64.rpm
+  sha1: 88a518b6dd686dcb70916e45464c744fb4b1d2d7
+
+outputs:
+  - name: atk-cos5-x86_64
+    target: noarch
+
+

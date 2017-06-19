@@ -1,0 +1,17 @@
+package:
+  name: libx11-cos5-x86_64
+  version: 1.0.3
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/libX11-1.0.3-11.el5_7.1.x86_64.rpm
+  sha1: 05e3995bb00d0eab7add6bf4942309ccca7667b5
+
+outputs:
+  - name: libx11-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - xorg-x11-filesystem-cos5-noarch >=0.99.2
+  run:
+    - xorg-x11-filesystem-cos5-noarch >=0.99.2

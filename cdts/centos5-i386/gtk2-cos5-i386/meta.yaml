@@ -1,0 +1,23 @@
+package:
+  name: gtk2-cos5-i386
+  version: 2.10.4
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/gtk2-2.10.4-30.el5.i386.rpm
+  sha1: ceadd7e52e5b35350bd9b1ce55273cded3221eba
+
+outputs:
+  - name: gtk2-cos5-i386
+    target: noarch
+
+requirements:
+  build:
+    - libtiff-cos5-i386 >=3.6.1
+    - atk-cos5-i386 >=1.9.0
+    - glib2-cos5-i386 >=2.12.0
+    - pango-cos5-i386 >=1.13.0
+  run:
+    - libtiff-cos5-i386 >=3.6.1
+    - atk-cos5-i386 >=1.9.0
+    - glib2-cos5-i386 >=2.12.0
+    - pango-cos5-i386 >=1.13.0

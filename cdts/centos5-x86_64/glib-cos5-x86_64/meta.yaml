@@ -1,0 +1,13 @@
+package:
+  name: glib-cos5-x86_64
+  version: 1.2.10
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/glib-1.2.10-20.el5.x86_64.rpm
+  sha1: 0f11a34a1a0ddaede1d15a1f5db9a84edab3bca2
+
+outputs:
+  - name: glib-cos5-x86_64
+    target: noarch
+
+

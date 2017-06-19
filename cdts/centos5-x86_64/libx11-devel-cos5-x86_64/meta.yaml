@@ -1,0 +1,21 @@
+package:
+  name: libx11-devel-cos5-x86_64
+  version: 1.0.3
+
+source:
+  url: http://vault.centos.org/5.11/os/x86_64/CentOS/libX11-devel-1.0.3-11.el5_7.1.x86_64.rpm
+  sha1: a084895bdd01ffbdf45692be4e0efcf77c88763e
+
+outputs:
+  - name: libx11-devel-cos5-x86_64
+    target: noarch
+
+requirements:
+  build:
+    - xorg-x11-filesystem-cos5-noarch >=0.99.2
+    - xorg-x11-proto-devel-cos5-x86_64 >=7.1
+    - libx11-cos5-x86_64 ==1.0.3
+  run:
+    - xorg-x11-filesystem-cos5-noarch >=0.99.2
+    - xorg-x11-proto-devel-cos5-x86_64 >=7.1
+    - libx11-cos5-x86_64 ==1.0.3

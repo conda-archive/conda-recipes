@@ -1,0 +1,13 @@
+package:
+  name: pkgconfig-cos5-i386
+  version: 0.21
+
+source:
+  url: http://vault.centos.org/5.11/os/i386/CentOS/pkgconfig-0.21-2.el5.i386.rpm
+  sha1: cf0536aee77321ab7f943fb22701a7b6083403eb
+
+outputs:
+  - name: pkgconfig-cos5-i386
+    target: noarch
+
+
