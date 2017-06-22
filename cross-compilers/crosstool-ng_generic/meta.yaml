@@ -20,7 +20,10 @@ requirements:
     - git
     - libtool
     - ncurses
-    - wget
+    # There are two packages called 'wget' on defaults, one, the real wget and the other
+    # a pythonic implementation from Anatoly Techtonik. At present, conda is installing
+    # the latter unless I force the version.
+    - wget ==1.18
   run:
     - ncurses
     - libtool
