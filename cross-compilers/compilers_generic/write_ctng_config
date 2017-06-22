@@ -24,11 +24,11 @@ function write_config_var() {
 
   if [[ ${_CT_VAR} == *_VERSION2 ]]; then
     _CT_VAR=${_CT_VAR//2/}
-    echo $_CT_VAR .. was 2?
+    # echo $_CT_VAR .. was 2?
     _VERSION2=1
   elif [[ ${_CT_VAR} == *_VERSION3 ]]; then
     _CT_VAR=${_CT_VAR//3/}
-    echo $_CT_VAR .. was 2?
+    # echo $_CT_VAR .. was 2?
     _VERSION2=1
     _VERSION3=1
   fi
@@ -71,45 +71,45 @@ function write_ctng_package_versions() {
   local _dst="${1}"
 
   declare -a _extras
-  if [[ -n "${gdb}" ]]; then
+  if [[ -n "${ctng_gdb}" ]]; then
     _extras+=("gdb_version,CT_GDB_VERSION")
   fi
-  if [[ -n "${duma}" ]]; then
+  if [[ -n "${ctng_duma}" ]]; then
     _extras+=("duma_version,CT_DUMA_VERSION")
   fi
   # Compounds for bits that have different families
-  local linux_version=linux,${kernel}
-  local _libc=${libc}
-  if [[ ${libc} == gnu ]]; then
+  local ctng_linux_version=linux,${ctng_kernel}
+  local _libc=${ctng_libc#ctng_}
+  if [[ ${_libc} == gnu ]]; then
     _libc=glibc
   fi
-  local libc_version=${_libc},${!libc}
-  local compiler_version=gcc,${gcc}
-  local binutils_version=binutils,${binutils}
-  local gdb_version=gdb,${gdb}
+  local ctng_libc_version=${_libc},${!ctng_libc}
+  local ctng_compiler_version=gcc,${ctng_gcc}
+  local ctng_binutils_version=binutils,${ctng_binutils}
+  local ctng_gdb_version=gdb,${ctng_gdb}
   # TODO :: Fix this in crosstool-ng, 200-duma.sh requires
   #         version numbers to be supplied with _'s insead
   #         of .'s for no good reason.
-  local duma_version=duma,${duma//./_}
+  local duma_version=duma,${ctng_duma//./_}
   local _VAR_CT_VAR
-  for _VAR_CT_VAR in                      \
-    vendor,CT_TARGET_VENDOR               \
-    linux_version,CT_KERNEL_VERSION       \
-    libc_version,CT_LIBC_VERSION2         \
-    compiler_version,CT_CC_VERSION3       \
-    binutils_version,CT_BINUTILS_VERSION  \
-    libiconv,CT_LIBICONV_NEEDED           \
-    gettext,CT_GETTEXT_NEEDED             \
-    gmp,CT_GMP_NEEDED                     \
-    mpfr,CT_MPFR_NEEDED                   \
-    isl,CT_ISL_NEEDED                     \
-    mpc,CT_MPC_NEEDED                     \
-    ncurses,CT_NCURSES_NEEDED             \
+  for _VAR_CT_VAR in                           \
+    ctng_vendor,CT_TARGET_VENDOR               \
+    ctng_linux_version,CT_KERNEL_VERSION       \
+    ctng_libc_version,CT_LIBC_VERSION2         \
+    ctng_compiler_version,CT_CC_VERSION3       \
+    ctng_binutils_version,CT_BINUTILS_VERSION  \
+    ctng_libiconv,CT_LIBICONV_NEEDED           \
+    ctng_gettext,CT_GETTEXT_NEEDED             \
+    ctng_gmp,CT_GMP_NEEDED                     \
+    ctng_mpfr,CT_MPFR_NEEDED                   \
+    ctng_isl,CT_ISL_NEEDED                     \
+    ctng_mpc,CT_MPC_NEEDED                     \
+    ctng_ncurses,CT_NCURSES_NEEDED             \
     "${_extras[@]}"; do
       write_config_var "${_dst}" "${_VAR_CT_VAR}"
   done
   # Add this back here because build.sh filters out LIBC_GLIBC to prevent conflicts.
-  if [[ ${libc} == gnu ]]; then
+  if [[ ${ctng_libc} == gnu ]]; then
     echo "CT_LIBC_GLIBC_FORCE_UNWIND=y" >> "${_dst}"
   fi
 }
@@ -133,12 +133,12 @@ function write_ctng_config_before() {
   echo "CT_CC_LANG_FORTRAN=y"                                           >> "${_dst}"
   echo "CT_CC_LANG_OBJC=y"                                              >> "${_dst}"
   echo "CT_CC_LANG_OBJCXX=y"                                            >> "${_dst}"
-  if [[ -n ${duma} ]]; then
+  if [[ -n ${ctng_duma} ]]; then
     echo "CT_DEBUG_duma=y"                                              >> "${_dst}"
     echo "CT_DUMA_SO=y"                                                 >> "${_dst}"
     echo "CT_DUMA_CUSTOM_WRAPPER=y"                                     >> "${_dst}"
   fi
-  if [[ -n ${gdb} ]]; then
+  if [[ -n ${ctng_gdb} ]]; then
     echo "CT_DEBUG_gdb=y"                                               >> "${_dst}"
     if [[ ${ctng_nature} == static ]]; then
       echo "CT_GDB_NATIVE_STATIC=y"                                     >> "${_dst}"
@@ -175,7 +175,7 @@ function write_ctng_config_before() {
 
   # TODO :: This is freescale imx351 and an exact hardware device. It would be better
   #         to handle this via a custom .config file.
-  if [[ ${libc} == uClibc ]] && [[ ${cpu_model} == arm1136jf-s ]]; then
+  if [[ ${ctng_libc} == uClibc ]] && [[ ${ctng_cpu_model} == arm1136jf-s ]]; then
     echo "CT_ARCH=\"arm\""                                              >> "${_dst}"
     echo "CT_ARCH_arm=y"                                                >> "${_dst}"
     echo "CT_ARCH_FPU=\"vfp\""                                          >> "${_dst}"
@@ -194,7 +194,7 @@ function write_ctng_config_before() {
     echo "CT_LIBC_UCLIBC_CONFIG_FILE=\"${SRC_DIR}/uclibc.config\""      >> "${_dst}"
   fi
   
-  if [[ ${libc} == uClibc ]] || [[ -z "${gdb}" ]]; then
+  if [[ ${ctng_libc} == uClibc ]] || [[ -z "${ctng_gdb}" ]]; then
     # [ALL  ]    ada-exp.o: In function `ada_parse':
     # [ALL  ]    /home/ray/imx351uc/work/.build/arm-caterpillar-linux-uclibcgnueabi/build/build-gdb-native/gdb/ada-exp.y:745: undefined reference to `_obstack_free'
     # [ALL  ]    gdbarch.o: In function `gdbarch_free':
@@ -210,7 +210,7 @@ function write_ctng_config_before() {
     _native_gdb=y
   fi
 
-  if [[ -n "${gdb}" ]]; then
+  if [[ -n "${ctng_gdb}" ]]; then
     echo "CT_DEBUG_gdb=y"                                               >> "${_dst}"
     echo "CT_GDB_CROSS=y"                                               >> "${_dst}"
     if [[ ${ctng_nature} == static ]]; then
@@ -235,7 +235,7 @@ function write_ctng_config_before() {
     echo "CT_GDB_NATIVE=${_native_gdb}"                                 >> "${_dst}"
   fi
 
-  if [[ -n "${duma}" ]]; then
+  if [[ -n "${ctng_duma}" ]]; then
     echo "CT_DEBUG_duma=y"                                              >> "${_dst}"
     echo "CT_DUMA_SO=y"                                                 >> "${_dst}"
     echo "CT_DUMA_CUSTOM_WRAPPER=y"                                     >> "${_dst}"

@@ -4,32 +4,32 @@ mkdir -p .build/src
 mkdir -p .build/tarballs
 
 # Some kernels are not on kernel.org, such as the CentOS 5.11 one used (and heavily patched) by RedHat.
-if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/linux-${kernel}.tar.bz2" ]] && \
-   [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/linux-${kernel}.tar.xz" ]]; then
-  if [[ ${kernel} == 2.6.* ]]; then
-    curl -L ftp://ftp.be.debian.org/pub/linux/kernel/v2.6/linux-${kernel}.tar.bz2 -o ${SYS_PREFIX}/conda-bld/src_cache/linux-${kernel}.tar.bz2
-  elif [[ ${kernel} == 3.* ]]; then
+if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/linux-${ctng_kernel}.tar.bz2" ]] && \
+   [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/linux-${ctng_kernel}.tar.xz" ]]; then
+  if [[ ${ctng_kernel} == 2.6.* ]]; then
+    curl -L ftp://ftp.be.debian.org/pub/linux/kernel/v2.6/linux-${ctng_kernel}.tar.bz2 -o ${SYS_PREFIX}/conda-bld/src_cache/linux-${ctng_kernel}.tar.bz2
+  elif [[ ${ctng_kernel} == 3.* ]]; then
     # Necessary because crosstool-ng looks in the wrong location for this one.
-    curl -L https://www.kernel.org/pub/linux/kernel/v3.x/linux-${kernel}.tar.bz2 -o ${SYS_PREFIX}/conda-bld/src_cache/linux-${kernel}.tar.bz2
-  elif [[ ${kernel} == 4.* ]]; then
-    curl -L https://www.kernel.org/pub/linux/kernel/v4.x/linux-${kernel}.tar.xz -o ${SYS_PREFIX}/conda-bld/src_cache/linux-${kernel}.tar.xz
+    curl -L https://www.kernel.org/pub/linux/kernel/v3.x/linux-${ctng_kernel}.tar.bz2 -o ${SYS_PREFIX}/conda-bld/src_cache/linux-${ctng_kernel}.tar.bz2
+  elif [[ ${ctng_kernel} == 4.* ]]; then
+    curl -L https://www.kernel.org/pub/linux/kernel/v4.x/linux-${ctng_kernel}.tar.xz -o ${SYS_PREFIX}/conda-bld/src_cache/linux-${ctng_kernel}.tar.xz
   fi
 fi
 
 # Necessary because uclibc let their certificate expire, this is a bit hacky.
-if [[ ${libc} == uClibc ]]; then
-  if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/uClibc-${uClibc}.tar.xz" ]]; then
-      curl -L --insecure https://www.uclibc.org/downloads/uClibc-${uClibc}.tar.xz -o ${SYS_PREFIX}/conda-bld/src_cache/uClibc-${uClibc}.tar.xz
+if [[ ${ctng_libc} == uClibc ]]; then
+  if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/uClibc-${ctng_uClibc}.tar.xz" ]]; then
+      curl -L --insecure https://www.uclibc.org/downloads/uClibc-${ctng_uClibc}.tar.xz -o ${SYS_PREFIX}/conda-bld/src_cache/uClibc-${ctng_uClibc}.tar.xz
   fi
 else
-  if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/glibc-${gnu}.tar.bz2" ]]; then
-      curl -L --insecure https://ftp.gnu.org/gnu/libc/glibc-${gnu}.tar.bz2 -o ${SYS_PREFIX}/conda-bld/src_cache/glibc-${gnu}.tar.bz2
+  if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/glibc-${ctng_gnu}.tar.bz2" ]]; then
+      curl -L --insecure https://ftp.gnu.org/gnu/libc/glibc-${ctng_gnu}.tar.bz2 -o ${SYS_PREFIX}/conda-bld/src_cache/glibc-${ctng_gnu}.tar.bz2
   fi
 fi
 
 # Necessary because CentOS5.11 is having some certificate issues.
-if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/duma_${duma//./_}.tar.gz" ]]; then
-    curl -L --insecure https://sourceforge.net/projects/duma/files/duma/${duma}/duma_${duma//./_}.tar.gz/download -o ${SYS_PREFIX}/conda-bld/src_cache/duma_${duma//./_}.tar.gz
+if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/duma_${ctng_duma//./_}.tar.gz" ]]; then
+    curl -L --insecure https://sourceforge.net/projects/duma/files/duma/${ctng_duma}/duma_${ctng_duma//./_}.tar.gz/download -o ${SYS_PREFIX}/conda-bld/src_cache/duma_${ctng_duma//./_}.tar.gz
 fi
 
 if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/expat-2.2.0.tar.bz2" ]]; then
@@ -49,7 +49,7 @@ fi
 [[ -d ${SRC_DIR}/gcc_built ]] || mkdir -p ${SRC_DIR}/gcc_built
 
 # If the gfortran binary doesn't exist yet, then run ct-ng
-if [[ ! -n $(find ${SRC_DIR}/gcc_built -iname ${cpu_arch}-${vendor}-*-gfortran) ]]; then
+if [[ ! -n $(find ${SRC_DIR}/gcc_built -iname ${ctng_cpu_arch}-${ctng_vendor}-*-gfortran) ]]; then
     source ${RECIPE_DIR}/write_ctng_config
 
     yes "" | ct-ng ${ctng_sample}
