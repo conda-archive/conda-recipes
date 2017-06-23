@@ -195,7 +195,7 @@ function write_ctng_config_before() {
     echo "CT_LIBC_UCLIBC_VERBOSITY=\"V=2\""                             >> "${_dst}"
     echo "CT_LIBC_UCLIBC_CONFIG_FILE=\"${SRC_DIR}/uclibc.config\""      >> "${_dst}"
   fi
-  
+
   if [[ ${ctng_libc} == uClibc ]] || [[ -z "${ctng_gdb}" ]]; then
     # [ALL  ]    ada-exp.o: In function `ada_parse':
     # [ALL  ]    /home/ray/imx351uc/work/.build/arm-caterpillar-linux-uclibcgnueabi/build/build-gdb-native/gdb/ada-exp.y:745: undefined reference to `_obstack_free'
@@ -235,6 +235,8 @@ function write_ctng_config_before() {
       echo "CT_BINUTILS_LINKERS_LIST=\"gold,ld\""                       >> "${_dst}"
     fi
     echo "CT_GDB_NATIVE=${_native_gdb}"                                 >> "${_dst}"
+    echo "CT_GDB_CROSS_PYTHON=n"                                        >> "${_dst}"
+    echo "CT_GDB_HAS_PYTHON=n"                                          >> "${_dst}"
   fi
 
   if [[ -n "${ctng_duma}" ]]; then
