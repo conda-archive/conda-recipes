@@ -99,13 +99,13 @@ EOF
 popd
 
 # Install kernel headers
-kernel_arch=${cpu_arch}
+kernel_arch=${ctng_cpu_arch}
 if [[ ${kernel_arch} == aarch64 ]]; then
   kernel_arch=arm64
 fi
 make -C ${SRC_DIR}/.build/src/linux-* CROSS_COMPILE=${CHOST}- O=${SRC_DIR}/.build/${CHOST}/build/build-kernel-headers ARCH=${kernel_arch} INSTALL_HDR_PATH=${PREFIX}/${CHOST}/sysroot/usr V=1 headers_install
 
-if [[ ${libc} == gnu ]]; then
+if [[ ${ctng_libc} == ctng_gnu ]]; then
   # Install libc libraries
   pushd ${SRC_DIR}/.build/${CHOST}/build/build-libc-final/multilib
     make -l BUILD_CFLAGS="-O2 -g -I${SRC_DIR}/.build/${CHOST}/buildtools/include" \
