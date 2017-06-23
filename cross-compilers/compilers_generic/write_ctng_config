@@ -124,6 +124,8 @@ function write_ctng_config_before() {
   echo "CT_PREFIX_DIR=\"\${CT_TOP_DIR}/gcc_built\""                     >> "${_dst}"
   echo "CT_FORCE_SYSROOT=y"                                             >> "${_dst}"
   echo "CT_ARCH_CPU=\"${cpu_model}\""                                   >> "${_dst}"
+  echo "CT_ALLOW_BUILD_AS_ROOT=y"                                       >> "${_dst}"
+  echo "CT_ALLOW_BUILD_AS_ROOT_SURE=y"                                  >> "${_dst}"
   if [[ ${ctng_nature} == static ]]; then
     echo "CT_STATIC_TOOLCHAIN=y"                                        >> "${_dst}"
   else
