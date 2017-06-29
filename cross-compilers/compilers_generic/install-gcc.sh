@@ -1,6 +1,7 @@
 set -e -x
 
 CHOST=$(${SRC_DIR}/.build/*-*-*-*/build/build-cc-gcc-final/gcc/xgcc -dumpmachine)
+_libdir=libexec/gcc/${CHOST}/${PKG_VERSION}
 
 # libtool wants to use ranlib that is here, macOS install doesn't grok -t etc
 # .. do we need this scoped over the whole file though?
@@ -10,9 +11,19 @@ pushd ${SRC_DIR}/.build/${CHOST}/build/build-cc-gcc-final/
   # We may not have built with plugin support so failure here is not fatal:
   make prefix=${PREFIX} install-lto-plugin || true
   make -C gcc prefix=${PREFIX} install-driver install-cpp install-gcc-ar install-headers install-plugin
-
-  install -m755 -t ${PREFIX}/bin/ gcc/gcov{,-tool}
-  install -m755 -t ${PREFIX}/bin/ gcc/{cc1,collect2}
+  # This is how it used to be ..
+  # install -m755 -t ${PREFIX}/bin/ gcc/gcov{,-tool}
+  # install -m755 -t ${PREFIX}/bin/ gcc/{cc1,collect2}
+  # .. and this is the new version.
+  # from a full build.log
+  # for file in gnat1 brig1 cc1 cc1plus f951 go1  lto1 cc1obj cc1objplus; do   if [ -f $file ] ; then     rm -f /home/ray/mcf-x-cos6_64/cb_host.20170628_093818/cross-compiler/work/gcc_built/libexec/gcc/x86_64-conda_cos6-linux-gnu/7.1.0/$file;     /home/ray/mcf-x-cos6_64/cb_host.20170628_093818/cross-compiler/work/.build/tools/bin/install -c $file /home/ray/mcf-x-cos6_64/cb_host.20170628_093818/cross-compiler/work/gcc_built/libexec/gcc/x86_64-conda_cos6-linux-gnu/7.1.0/$file;   else true;   fi; done
+  # for file in  collect2 ..; do   if [ x"$file" != x.. ]; then     rm -f /home/ray/mcf-x-cos6_64/cb_host.20170628_093818/cross-compiler/work/gcc_built/libexec/gcc/x86_64-conda_cos6-linux-gnu/7.1.0/$file;     /home/ray/mcf-x-cos6_64/cb_host.20170628_093818/cross-compiler/work/.build/tools/bin/install -c $file /home/ray/mcf-x-cos6_64/cb_host.20170628_093818/cross-compiler/work/gcc_built/libexec/gcc/x86_64-conda_cos6-linux-gnu/7.1.0/$file;   else true; fi; done
+  # Include languages we do not have any other place for here (and also lto1)
+  for file in gnat1 brig1 cc1 go1 lto1 cc1obj cc1objplus; do
+    if [[ -f gcc/${file} ]]; then
+      install -c gcc/${file} ${PREFIX}/${_libdir}/${file}
+    fi
+  done
 
   make -C ${CHOST}/libgcc prefix=${PREFIX} install
   # rm ${PREFIX}/lib/libgcc_s.so*
@@ -94,7 +105,7 @@ EOF
 
   chmod 755 ${PREFIX}/bin/c{8,9}9
 
-  rm $PREFIX/bin/${CHOST}-gcc-${PKG_VERSION}
+  rm ${PREFIX}/bin/${CHOST}-gcc-${PKG_VERSION}
 
 popd
 
@@ -105,7 +116,7 @@ if [[ ${kernel_arch} == aarch64 ]]; then
 fi
 make -C ${SRC_DIR}/.build/src/linux-* CROSS_COMPILE=${CHOST}- O=${SRC_DIR}/.build/${CHOST}/build/build-kernel-headers ARCH=${kernel_arch} INSTALL_HDR_PATH=${PREFIX}/${CHOST}/sysroot/usr V=1 headers_install
 
-if [[ ${ctng_libc} == ctng_gnu ]]; then
+if [[ ${ctng_libc} == gnu ]]; then
   # Install libc libraries
   pushd ${SRC_DIR}/.build/${CHOST}/build/build-libc-final/multilib
     make -l BUILD_CFLAGS="-O2 -g -I${SRC_DIR}/.build/${CHOST}/buildtools/include" \
