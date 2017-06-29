@@ -113,7 +113,10 @@ popd
 kernel_arch=${ctng_cpu_arch}
 if [[ ${kernel_arch} == aarch64 ]]; then
   kernel_arch=arm64
+elif [[ ${kernel_arch} == i686 ]]; then
+  kernel_arch=x86
 fi
+
 make -C ${SRC_DIR}/.build/src/linux-* CROSS_COMPILE=${CHOST}- O=${SRC_DIR}/.build/${CHOST}/build/build-kernel-headers ARCH=${kernel_arch} INSTALL_HDR_PATH=${PREFIX}/${CHOST}/sysroot/usr V=1 headers_install
 
 if [[ ${ctng_libc} == gnu ]]; then
