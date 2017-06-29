@@ -22,8 +22,8 @@ if [[ ${ctng_libc} == uClibc ]]; then
       curl -L --insecure https://www.uclibc.org/downloads/uClibc-${ctng_uClibc}.tar.xz -o ${SYS_PREFIX}/conda-bld/src_cache/uClibc-${ctng_uClibc}.tar.xz
   fi
 else
-  if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/glibc-${ctng_gnu}.tar.bz2" ]]; then
-      curl -L --insecure https://ftp.gnu.org/gnu/libc/glibc-${ctng_gnu}.tar.bz2 -o ${SYS_PREFIX}/conda-bld/src_cache/glibc-${ctng_gnu}.tar.bz2
+  if [[ ! -e "${SYS_PREFIX}/conda-bld/src_cache/glibc-${gnu}.tar.bz2" ]]; then
+      curl -L --insecure https://ftp.gnu.org/gnu/libc/glibc-${gnu}.tar.bz2 -o ${SYS_PREFIX}/conda-bld/src_cache/glibc-${gnu}.tar.bz2
   fi
 fi
 

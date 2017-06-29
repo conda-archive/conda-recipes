@@ -1,7 +1,7 @@
 set -e -x
 
 CHOST=$(${SRC_DIR}/.build/*-*-*-*/build/build-cc-gcc-final/gcc/xgcc -dumpmachine)
-_libdir="libexec/gcc/$CHOST/$PKG_VERSION"
+_libdir=libexec/gcc/${CHOST}/${PKG_VERSION}
 
 # libtool wants to use ranlib that is here, macOS install doesn't grok -t etc
 # .. do we need this scoped over the whole file though?
@@ -17,7 +17,13 @@ if [[ -d $CHOST/libgomp ]]; then
   make -C $CHOST/libgomp prefix=$PREFIX install-nodist_fincludeHEADERS
 fi
 make -C gcc prefix=$PREFIX fortran.install-{common,man,info}
-install -Dm755 gcc/f951 $PREFIX/${_libdir}/f951
+# How it used to be:
+# install -Dm755 gcc/f951 ${PREFIX}/${_libdir}/f951
+for file in f951; do
+  if [[ -f gcc/${file} ]]; then
+    install -c gcc/${file} ${PREFIX}/${_libdir}/${file}
+  fi
+done
 
 mkdir -p $PREFIX/$CHOST/sysroot/lib
 cp $CHOST/libgfortran/libgfortran.spec $PREFIX/$CHOST/sysroot/lib
