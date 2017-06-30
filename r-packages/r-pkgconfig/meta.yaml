@@ -1,0 +1,80 @@
+{% set version = '2.0.1' %}
+
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-pkgconfig
+  version: {{ version|replace("-", "_") }}
+
+source:
+  fn: pkgconfig_{{ version }}.tar.gz
+  url:
+    - https://cran.r-project.org/src/contrib/pkgconfig_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/pkgconfig/pkgconfig_{{ version }}.tar.gz
+
+
+  sha256: ab02b2a4b639ba94dcba882a059fe9cddae5498a4309841f764b62ec46ba5a40
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 0
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: covr, testthat, disposables (>= 1.0.3)
+requirements:
+  build:
+    - r-base
+
+  run:
+    - r-base
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('pkgconfig')"  # [not win]
+    - "\"%R%\" -e \"library('pkgconfig')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/gaborcsardi/pkgconfig
+  license: MIT + file LICENSE
+  summary: Set configuration options on a per-package basis. Options set by a given package only
+    apply to that package, other packages are unaffected.
+  license_family: MIT
+
+# The original CRAN metadata for this package was:
+
+# Package: pkgconfig
+# Title: Private Configuration for 'R' Packages
+# Version: 2.0.1
+# Author: Gbor Csrdi
+# Maintainer: Gbor Csrdi <csardi.gabor@gmail.com>
+# Description: Set configuration options on a per-package basis. Options set by a given package only apply to that package, other packages are unaffected.
+# License: MIT + file LICENSE
+# LazyData: true
+# Imports: utils
+# Suggests: covr, testthat, disposables (>= 1.0.3)
+# URL: https://github.com/gaborcsardi/pkgconfig
+# BugReports: https://github.com/gaborcsardi/pkgconfig/issues
+# Encoding: UTF-8
+# NeedsCompilation: no
+# Packaged: 2017-03-21 10:15:26 UTC; gaborcsardi
+# Repository: CRAN
+# Date/Publication: 2017-03-21 15:20:20 UTC
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

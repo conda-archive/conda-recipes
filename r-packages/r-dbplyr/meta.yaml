@@ -1,0 +1,103 @@
+{% set version = '1.1.0' %}
+
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-dbplyr
+  version: {{ version|replace("-", "_") }}
+
+source:
+  fn: dbplyr_{{ version }}.tar.gz
+  url:
+    - https://cran.r-project.org/src/contrib/dbplyr_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/dbplyr/dbplyr_{{ version }}.tar.gz
+
+
+  sha256: 7b1e456a2d1056fa6284582cd82d2df66d06b3eea92e9995f5a91a45f246f69d
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 0
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: covr, knitr, Lahman (>= 3.0-1), nycflights13, rmarkdown, RSQLite (>= 1.0.0), RMySQL, RPostgreSQL, testthat
+requirements:
+  build:
+    - r-base
+    - r-dbi >=0.5
+    - r-r6
+    - r-assertthat
+    - r-dplyr >=0.5.0.9004
+    - r-glue
+    - r-purrr
+    - r-rlang >=0.1.0
+    - r-tibble >=1.3.0.9007
+
+  run:
+    - r-base
+    - r-dbi >=0.5
+    - r-r6
+    - r-assertthat
+    - r-dplyr >=0.5.0.9004
+    - r-glue
+    - r-purrr
+    - r-rlang >=0.1.0
+    - r-tibble >=1.3.0.9007
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('dbplyr')"  # [not win]
+    - "\"%R%\" -e \"library('dbplyr')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/tidyverse/dbplyr
+  license: MIT + file LICENSE
+  summary: A 'dplyr' back end for databases that allows you to work with  remote database tables
+    as if they are in-memory data frames. Basic features works with any database that
+    has a 'DBI' back end; more advanced features  require 'SQL' translation to be provided
+    by the package author.
+  license_family: MIT
+
+# The original CRAN metadata for this package was:
+
+# Package: dbplyr
+# Type: Package
+# Version: 1.1.0
+# Title: A 'dplyr' Back End for Databases
+# Description: A 'dplyr' back end for databases that allows you to work with  remote database tables as if they are in-memory data frames. Basic features works with any database that has a 'DBI' back end; more advanced features  require 'SQL' translation to be provided by the package author.
+# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")), person("RStudio", role = c("cph", "fnd")) )
+# URL: https://github.com/tidyverse/dbplyr
+# BugReports: https://github.com/tidyverse/dplyr/issues
+# Depends: R (>= 3.1.2)
+# Imports: assertthat, DBI (>= 0.5), dplyr (>= 0.5.0.9004), glue, methods, purrr, rlang (>= 0.1.0), tibble (>= 1.3.0.9007), R6, utils
+# Suggests: covr, knitr, Lahman (>= 3.0-1), nycflights13, rmarkdown, RSQLite (>= 1.0.0), RMySQL, RPostgreSQL, testthat
+# VignetteBuilder: knitr
+# LazyData: yes
+# License: MIT + file LICENSE
+# Collate: 'cache.r' 'compat-purrr.R' 'data-lahman.r' 'data-nycflights13.r' 'db-compute.R' 'db-mysql.r' 'db-odbc-hive.R' 'db-odbc-impala.R' 'db-odbc-mssql.R' 'db-odbc-oracle.R' 'db-odbc-postgres.R' 'db-postgres.r' 'db-sqlite.r' 'dbi-s3.r' 'dbplyr.R' 'do.r' 'explain.r' 'ident.R' 'lazy-ops.R' 'memdb.R' 'partial-eval.r' 'query.r' 'schema.R' 'simulate.r' 'sql-build.R' 'sql-escape.r' 'sql-generic.R' 'sql-optimise.R' 'sql-query.R' 'sql-render.R' 'sql.R' 'src-sql.r' 'src_dbi.R' 'tbl-lazy.R' 'tbl-sql.r' 'test-frame.R' 'testthat.r' 'translate-sql-helpers.r' 'translate-sql-window.r' 'translate-sql-base.r' 'translate-sql-clause.r' 'translate-sql-odbc.R' 'translate-sql.r' 'utils-format.r' 'utils.r' 'window.R' 'zzz.R'
+# RoxygenNote: 6.0.1
+# NeedsCompilation: no
+# Packaged: 2017-06-26 19:19:44 UTC; hadley
+# Author: Hadley Wickham [aut, cre], RStudio [cph, fnd]
+# Maintainer: Hadley Wickham <hadley@rstudio.com>
+# Repository: CRAN
+# Date/Publication: 2017-06-27 06:55:24 UTC
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
