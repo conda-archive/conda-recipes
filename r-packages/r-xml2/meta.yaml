@@ -37,7 +37,7 @@ requirements:
     - posix                # [win]
     - {{native}}toolchain  # [win]
     - gcc                  # [not win]
-     - {{native}}libxml2
+    - {{native}}libxml2
 
   run:
     - r-base
