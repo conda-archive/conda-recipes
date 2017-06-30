@@ -1,5 +1,8 @@
 #!/bin/bash
 
+aclocal -I m4
+autoconf
+
 # Without setting these, R goes off and tries to find things on its own, which
 # we don't want (we only want it to find stuff in the build environment).
 
