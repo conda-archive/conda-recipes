@@ -14,7 +14,7 @@ source:
     - https://cran.r-project.org/src/contrib/Archive/foreign/foreign_{{ version }}.tar.gz
 
 
-  sha256: b93fd2d7152380427cb95306fe735aafce54392f7019dcf616086ec8b9da5cd8
+  sha256: 62b8b6a4e6c892e7884d5c4c67f5b38f837dd7049154efd29152d737a82b1f66
   # patches:
    # List any patch files here
    # - fix.patch
