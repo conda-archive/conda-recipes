@@ -1,0 +1,87 @@
+{% set version = '0.4-5' %}
+
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-units
+  version: {{ version|replace("-", "_") }}
+
+source:
+  fn: units_{{ version }}.tar.gz
+  url:
+    - https://cran.r-project.org/src/contrib/units_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/units/units_{{ version }}.tar.gz
+
+
+  sha256: 5c208cc8266bc37373bb630d22172643630a4e0f7a34d02a56cba67e03045469
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 0
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: NISTunits, measurements, xml2, tibble, knitr, testthat, covr, ggforce, magrittr
+requirements:
+  build:
+    - r-base
+    - r-udunits2 >=0.13
+
+  run:
+    - r-base
+    - r-udunits2 >=0.13
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('units')"  # [not win]
+    - "\"%R%\" -e \"library('units')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/edzer/units/
+  license: GPL-2
+  summary: Support for measurement units in R vectors; automatic propagation, conversion, derivation
+    and simplification of units; raising errors in case of unit incompatibility. Compatible
+    with the difftime class. Uses the UNIDATA udunits library and unit database for
+    unit conversion and compatibility checking.
+  license_family: GPL2
+
+# The original CRAN metadata for this package was:
+
+# Package: units
+# Version: 0.4-5
+# Title: Measurement Units for R Vectors
+# Authors@R: c(person("Edzer", "Pebesma", role = c("aut", "cre"), email = "edzer.pebesma@uni-muenster.de"), person("Thomas", "Mailund", role = "aut", email = "mailund@birc.au.dk"))
+# Depends: R (>= 3.0.0)
+# Imports: udunits2 (>= 0.13)
+# Suggests: NISTunits, measurements, xml2, tibble, knitr, testthat, covr, ggforce, magrittr
+# VignetteBuilder: knitr
+# Description: Support for measurement units in R vectors; automatic propagation, conversion, derivation and simplification of units; raising errors in case of unit incompatibility. Compatible with the difftime class. Uses the UNIDATA udunits library and unit database for unit conversion and compatibility checking.
+# License: GPL-2
+# URL: https://github.com/edzer/units/
+# BugReports: https://github.com/edzer/units/issues/
+# RoxygenNote: 6.0.1
+# Encoding: UTF-8
+# NeedsCompilation: no
+# Packaged: 2017-06-13 13:50:39 UTC; edzer
+# Author: Edzer Pebesma [aut, cre], Thomas Mailund [aut]
+# Maintainer: Edzer Pebesma <edzer.pebesma@uni-muenster.de>
+# Repository: CRAN
+# Date/Publication: 2017-06-15 00:08:02 UTC
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
