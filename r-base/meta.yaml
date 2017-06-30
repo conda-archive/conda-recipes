@@ -1,6 +1,6 @@
 {% set native = 'm2w64-' if win else '' %}
 {% set posix= 'm2-' if win else '' %}
-{% set version= '3.3.2' %}
+{% set version= '3.4.1' %}
 
 package:
   name: r-base
@@ -8,12 +8,11 @@ package:
 
 source:
   url: https://cran.r-project.org/src/base/R-3/R-{{ version }}.tar.gz
-  sha256: d294ad21e9f574fb4828ebb3a94b8cb34f4f304a41687a994be00dd41a4e514c
+  sha256: 02b1135d15ea969a3582caeb95594a05e830a6debcdb5b85ed2d5836a6a3fc78
   patches:
     - mac-unicode.patch # [osx]
     - 0002-Win32-Fix-trio-config-h-include-depth-issue.patch
     - 0003-Win32-Do-not-static-libgcc-link.patch              # This patch is only correct if using MSYS2's tcltk.
-    - 0004-Win32-Use-TCL_VERSION_86.patch                     # This patch is only correct if using MSYS2's tcltk.
     - 0005-Win32-Extend-sqrt-NA_real_-hack-to-all-GCC-versions.patch
     - 0006-Win32-GCC-5.3-Fix-ISNAN-int-emits-UD2-insn.patch
     - 0007-Win32-MSYS2-ENV_CONV_EXCL_R_ARCH.patch
@@ -23,7 +22,7 @@ source:
     - 0012-macOS-include-cairo_h-not-cairo-xlib_h.patch
 
 build:
-  number: 6
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -53,6 +52,9 @@ requirements:
     - xz 5.2.*                 # [not win]
     - libpng >=1.6.27,<1.7     # [not win]
     - {{posix}}pkg-config
+    - {{posix}}autoconf
+    - {{posix}}automake-wrapper # [win]
+    - {{posix}}automake         # [not win]
     - {{native}}bzip2          # [not osx]
     - {{native}}libjpeg-turbo  # [win]
     - {{native}}toolchain      # [win]
