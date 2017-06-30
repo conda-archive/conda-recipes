@@ -1,0 +1,93 @@
+{% set version = '1.0.0' %}
+
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-crosstalk
+  version: {{ version|replace("-", "_") }}
+
+source:
+  fn: crosstalk_{{ version }}.tar.gz
+  url:
+    - https://cran.r-project.org/src/contrib/crosstalk_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/crosstalk/crosstalk_{{ version }}.tar.gz
+
+
+  sha256: b31eada24cac26f24c9763d9a8cbe0adfd87b264cf57f8725027fe0c7742ca51
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 0
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r-base
+    - r-r6
+    - r-ggplot2
+    - r-htmltools >=0.3.5
+    - r-jsonlite
+    - r-lazyeval
+    - r-shiny >=0.11
+
+  run:
+    - r-base
+    - r-r6
+    - r-ggplot2
+    - r-htmltools >=0.3.5
+    - r-jsonlite
+    - r-lazyeval
+    - r-shiny >=0.11
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('crosstalk')"  # [not win]
+    - "\"%R%\" -e \"library('crosstalk')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://rstudio.github.io/crosstalk/
+  license: MIT + file LICENSE
+  summary: Provides building blocks for allowing HTML widgets to communicate with each other,
+    with Shiny or without (i.e. static .html files). Currently supports linked brushing
+    and filtering.
+  license_family: MIT
+
+# The original CRAN metadata for this package was:
+
+# Package: crosstalk
+# Type: Package
+# Title: Inter-Widget Interactivity for HTML Widgets
+# Version: 1.0.0
+# Authors@R: c( person("Joe", "Cheng", role = c("aut", "cre"), email = "joe@rstudio.com"), person(family = "RStudio", role = "cph"), person(family = "jQuery Foundation", role = "cph", comment = "jQuery library and jQuery UI library"), person(family = "jQuery contributors", role = c("ctb", "cph"), comment = "jQuery library; authors listed in inst/www/shared/jquery-AUTHORS.txt"), person("Mark", "Otto", role = "ctb", comment = "Bootstrap library"), person("Jacob", "Thornton", role = "ctb", comment = "Bootstrap library"), person(family = "Bootstrap contributors", role = "ctb", comment = "Bootstrap library"), person(family = "Twitter, Inc", role = "cph", comment = "Bootstrap library"), person("Brian", "Reavis", role = c("ctb", "cph"), comment = "selectize.js library"), person("Kristopher Michael", "Kowal", role = c("ctb", "cph"), comment = "es5-shim library"), person(family = "es5-shim contributors", role = c("ctb", "cph"), comment = "es5-shim library"), person("Denis", "Ineshin", role = c("ctb", "cph"), comment = "ion.rangeSlider library"), person("Sami", "Samhuri", role = c("ctb", "cph"), comment = "Javascript strftime library") )
+# Description: Provides building blocks for allowing HTML widgets to communicate with each other, with Shiny or without (i.e. static .html files). Currently supports linked brushing and filtering.
+# License: MIT + file LICENSE
+# Imports: htmltools (>= 0.3.5), jsonlite, lazyeval, R6, shiny (>= 0.11), ggplot2
+# URL: https://rstudio.github.io/crosstalk/
+# BugReports: https://github.com/rstudio/crosstalk/issues
+# RoxygenNote: 5.0.1
+# NeedsCompilation: no
+# Packaged: 2016-12-20 20:01:51 UTC; jcheng
+# Author: Joe Cheng [aut, cre], RStudio [cph], jQuery Foundation [cph] (jQuery library and jQuery UI library), jQuery contributors [ctb, cph] (jQuery library; authors listed in inst/www/shared/jquery-AUTHORS.txt), Mark Otto [ctb] (Bootstrap library), Jacob Thornton [ctb] (Bootstrap library), Bootstrap contributors [ctb] (Bootstrap library), Twitter, Inc [cph] (Bootstrap library), Brian Reavis [ctb, cph] (selectize.js library), Kristopher Michael Kowal [ctb, cph] (es5-shim library), es5-shim contributors [ctb, cph] (es5-shim library), Denis Ineshin [ctb, cph] (ion.rangeSlider library), Sami Samhuri [ctb, cph] (Javascript strftime library)
+# Maintainer: Joe Cheng <joe@rstudio.com>
+# Repository: CRAN
+# Date/Publication: 2016-12-21 08:30:32
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

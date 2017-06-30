@@ -1,0 +1,89 @@
+{% set version = '1.1.1' %}
+
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-glue
+  version: {{ version|replace("-", "_") }}
+
+source:
+  fn: glue_{{ version }}.tar.gz
+  url:
+    - https://cran.r-project.org/src/contrib/glue_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/glue/glue_{{ version }}.tar.gz
+
+
+  sha256: 309eedfd84018f3fa24339aa6ee87ba7af88f941edd450f2879fe7e317ae5c05
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 0
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: testthat, covr, magrittr
+requirements:
+  build:
+    - r-base
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
+
+  run:
+    - r-base
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('glue')"  # [not win]
+    - "\"%R%\" -e \"library('glue')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/tidyverse/glue
+  license: MIT + file LICENSE
+  summary: An implementation of interpreted string literals, inspired by Python's Literal String
+    Interpolation <https://www.python.org/dev/peps/pep-0498/> and Docstrings <https://www.python.org/dev/peps/pep-0257/>
+    and Julia's Triple-Quoted String Literals <https://docs.julialang.org/en/stable/manual/strings/#triple-quoted-string-literals>.
+  license_family: MIT
+
+# The original CRAN metadata for this package was:
+
+# Package: glue
+# Title: Interpreted String Literals
+# Version: 1.1.1
+# Authors@R: person("Jim", "Hester", email = "james.f.hester@gmail.com", role = c("aut", "cre"))
+# Description: An implementation of interpreted string literals, inspired by Python's Literal String Interpolation <https://www.python.org/dev/peps/pep-0498/> and Docstrings <https://www.python.org/dev/peps/pep-0257/> and Julia's Triple-Quoted String Literals <https://docs.julialang.org/en/stable/manual/strings/#triple-quoted-string-literals>.
+# Depends: R (>= 3.0.0)
+# Suggests: testthat, covr, magrittr
+# Imports: methods
+# License: MIT + file LICENSE
+# Encoding: UTF-8
+# LazyData: true
+# RoxygenNote: 6.0.1
+# URL: https://github.com/tidyverse/glue
+# BugReports: https://github.com/tidyverse/glue/issues
+# NeedsCompilation: yes
+# Packaged: 2017-06-16 20:43:57 UTC; jhester
+# Author: Jim Hester [aut, cre]
+# Maintainer: Jim Hester <james.f.hester@gmail.com>
+# Repository: CRAN
+# Date/Publication: 2017-06-21 16:58:04 UTC
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

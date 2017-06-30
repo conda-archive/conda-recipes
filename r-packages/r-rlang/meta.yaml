@@ -1,0 +1,87 @@
+{% set version = '0.1.1' %}
+
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-rlang
+  version: {{ version|replace("-", "_") }}
+
+source:
+  fn: rlang_{{ version }}.tar.gz
+  url:
+    - https://cran.r-project.org/src/contrib/rlang_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/rlang/rlang_{{ version }}.tar.gz
+
+
+  sha256: 5901f95d68728a7d9bb1c2373a20ce6e4ad222f66e397e7735e9eff987c73c3f
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 0
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: knitr, rmarkdown (>= 0.2.65), testthat, covr
+requirements:
+  build:
+    - r-base
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
+
+  run:
+    - r-base
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('rlang')"  # [not win]
+    - "\"%R%\" -e \"library('rlang')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: http://rlang.tidyverse.org, https://github.com/tidyverse/rlang
+  license: GPL-3
+  summary: A toolbox for working with base types, core R features like the condition system,
+    and core 'Tidyverse' features like tidy evaluation.
+  license_family: GPL3
+
+# The original CRAN metadata for this package was:
+
+# Package: rlang
+# Version: 0.1.1
+# Title: Functions for Base Types and Core R and 'Tidyverse' Features
+# Description: A toolbox for working with base types, core R features like the condition system, and core 'Tidyverse' features like tidy evaluation.
+# Authors@R: c( person("Lionel", "Henry", ,"lionel@rstudio.com", c("aut", "cre")), person("Hadley", "Wickham", ,"hadley@rstudio.com", "aut"), person("RStudio", role = "cph") )
+# License: GPL-3
+# LazyData: true
+# Depends: R (>= 3.1.0)
+# Suggests: knitr, rmarkdown (>= 0.2.65), testthat, covr
+# VignetteBuilder: knitr
+# RoxygenNote: 6.0.1
+# URL: http://rlang.tidyverse.org, https://github.com/tidyverse/rlang
+# BugReports: https://github.com/tidyverse/rlang/issues
+# NeedsCompilation: yes
+# Packaged: 2017-05-17 18:50:03 UTC; lionel
+# Author: Lionel Henry [aut, cre], Hadley Wickham [aut], RStudio [cph]
+# Maintainer: Lionel Henry <lionel@rstudio.com>
+# Repository: CRAN
+# Date/Publication: 2017-05-18 05:16:00 UTC
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,86 @@
+{% set version = '1.1.0' %}
+
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-cellranger
+  version: {{ version|replace("-", "_") }}
+
+source:
+  fn: cellranger_{{ version }}.tar.gz
+  url:
+    - https://cran.r-project.org/src/contrib/cellranger_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/cellranger/cellranger_{{ version }}.tar.gz
+
+
+  sha256: 5d38f288c752bbb9cea6ff830b8388bdd65a8571fd82d8d96064586bd588cf99
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 0
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: covr, testthat (>= 1.0.0), knitr, rmarkdown
+requirements:
+  build:
+    - r-base
+    - r-rematch
+    - r-tibble
+
+  run:
+    - r-base
+    - r-rematch
+    - r-tibble
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('cellranger')"  # [not win]
+    - "\"%R%\" -e \"library('cellranger')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/rsheets/cellranger
+  license: MIT + file LICENSE
+  summary: Helper functions to work with spreadsheets and the "A1:D10" style of cell range specification.
+  license_family: MIT
+
+# The original CRAN metadata for this package was:
+
+# Package: cellranger
+# Title: Translate Spreadsheet Cell Ranges to Rows and Columns
+# Version: 1.1.0
+# Authors@R: c( person("Jennifer", "Bryan", , "jenny@stat.ubc.ca", c("cre", "aut")), person("Hadley", "Wickham", , "hadley@rstudio.com", "ctb") )
+# Description: Helper functions to work with spreadsheets and the "A1:D10" style of cell range specification.
+# Depends: R (>= 3.0.0)
+# License: MIT + file LICENSE
+# LazyData: true
+# URL: https://github.com/rsheets/cellranger
+# BugReports: https://github.com/rsheets/cellranger/issues
+# Suggests: covr, testthat (>= 1.0.0), knitr, rmarkdown
+# RoxygenNote: 5.0.1.9000
+# VignetteBuilder: knitr
+# Imports: rematch, tibble
+# NeedsCompilation: no
+# Packaged: 2016-07-26 06:50:00 UTC; jenny
+# Author: Jennifer Bryan [cre, aut], Hadley Wickham [ctb]
+# Maintainer: Jennifer Bryan <jenny@stat.ubc.ca>
+# Repository: CRAN
+# Date/Publication: 2016-07-27 03:17:48
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
