@@ -111,6 +111,17 @@ function write_ctng_package_versions() {
   # Add this back here because build.sh filters out LIBC_GLIBC to prevent conflicts.
   if [[ ${_libc} == glibc ]]; then
     echo "CT_LIBC_GLIBC_FORCE_UNWIND=y"  >> "${_dst}"
+    # More hacks. Time to find a better way than this?
+    local _libc_minor=$(echo ${ctng_libc_version} | awk -F \. {'print $2'})
+    if [[ ${_libc_minor} -ge 17 ]]; then
+      echo "CT_LIBC_GLIBC_2_17_or_later=y" >> "${_dst}"
+      if [[ ${_libc_minor} -ge 20 ]]; then
+        echo "CT_LIBC_GLIBC_2_20_or_later=y" >> "${_dst}"
+        if [[ ${_libc_minor} -ge 23 ]]; then
+          echo "CT_LIBC_GLIBC_2_23_or_later=y" >> "${_dst}"
+        fi
+      fi
+    fi
   fi
 }
 
