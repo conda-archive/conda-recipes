@@ -35,9 +35,12 @@ requirements:
     - posix                # [win]
     - {{native}}toolchain  # [win]
     - gcc                  # [not win]
+    - {{native}}udunits2
 
   run:
-    - r-base{indent}libgcc  # [not win]
+    - r-base
+    - libgcc  # [not win]
+    - {{native}}udunits2
 
 test:
   commands:
