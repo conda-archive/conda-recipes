@@ -39,9 +39,7 @@ requirements:
     - posix                # [win]
     - {{native}}toolchain  # [win]
     - gcc                  # [not win]
-    - {{native}}gdal
-    - {{native}}geos
-    - {{native}}proj4
+    - {{native}}libgdal
 
   run:
     - r-base
@@ -51,9 +49,7 @@ requirements:
     - r-units >=0.4
     - {{native}}gcc-libs   # [win]
     - libgcc               # [not win]
-    - {{native}}gdal
-    - {{native}}geos
-    - {{native}}proj4
+    - {{native}}libgdal
 
 test:
   commands:
