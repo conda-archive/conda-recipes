@@ -1,0 +1,76 @@
+--- a/compiler-rt/lib/sanitizer_common/sanitizer_platform_limits_posix.cc.old	2017-04-19 19:50:17.174365584 +0100
++++ b/compiler-rt/lib/sanitizer_common/sanitizer_platform_limits_posix.cc	2017-04-19 20:02:55.784804178 +0100
+@@ -42,6 +42,25 @@
+ #include <sys/time.h>
+ #include <sys/times.h>
+ #include <sys/types.h>
++// Likely CentOS5 kernel header problem:
++// http://lists.qt-project.org/pipermail/interest/2015-February/015308.html
++// I also ran into this building Qt5
++#include <asm/types.h>
++#ifdef __CHECKER__
++#define __bitwise__ __attribute__((bitwise))
++#else
++#define __bitwise__
++#endif
++#ifdef __CHECK_ENDIAN__
++#define __bitwise __bitwise__
++#else
++#define __bitwise
++#endif
++//typedef         __u64           uint64_t;
++//typedef         __u64           u_int64_t;
++//typedef         __s64           int64_t;
++typedef __u64 __bitwise __le64;
++typedef __u64 __bitwise __be64;
+ #include <sys/utsname.h>
+ #include <termios.h>
+ #include <time.h>
+@@ -160,13 +179,13 @@
+ # include <sys/procfs.h>
+ #endif
+ #include <sys/user.h>
+-#include <sys/ustat.h>
++//#include <sys/ustat.h>
+ #include <linux/cyclades.h>
+ #include <linux/if_eql.h>
+ #include <linux/if_plip.h>
+ #include <linux/lp.h>
+-#include <linux/mroute.h>
+-#include <linux/mroute6.h>
++//#include <linux/mroute.h>
++//#include <linux/mroute6.h>
+ #include <linux/scc.h>
+ #include <linux/serial.h>
+ #include <sys/msg.h>
+@@ -253,7 +272,7 @@
+ #endif // SANITIZER_LINUX || SANITIZER_FREEBSD
+ 
+ #if SANITIZER_LINUX && !SANITIZER_ANDROID
+-  unsigned struct_ustat_sz = sizeof(struct ustat);
++//  unsigned struct_ustat_sz = sizeof(struct ustat);
+   unsigned struct_rlimit64_sz = sizeof(struct rlimit64);
+   unsigned struct_statvfs64_sz = sizeof(struct statvfs64);
+ #endif // SANITIZER_LINUX && !SANITIZER_ANDROID
+@@ -485,8 +504,8 @@
+ #endif // (SANITIZER_LINUX || SANITIZER_FREEBSD) && !SANITIZER_ANDROID
+ 
+ #if !SANITIZER_ANDROID && !SANITIZER_MAC
+-  unsigned struct_sioc_sg_req_sz = sizeof(struct sioc_sg_req);
+-  unsigned struct_sioc_vif_req_sz = sizeof(struct sioc_vif_req);
++//  unsigned struct_sioc_sg_req_sz = sizeof(struct sioc_sg_req);
++//  unsigned struct_sioc_vif_req_sz = sizeof(struct sioc_vif_req);
+ #endif
+ 
+   const unsigned IOCTL_NOT_PRESENT = 0;
+@@ -536,8 +555,8 @@
+   unsigned IOCTL_TIOCSTI = TIOCSTI;
+   unsigned IOCTL_TIOCSWINSZ = TIOCSWINSZ;
+ #if ((SANITIZER_LINUX || SANITIZER_FREEBSD) && !SANITIZER_ANDROID)
+-  unsigned IOCTL_SIOCGETSGCNT = SIOCGETSGCNT;
+-  unsigned IOCTL_SIOCGETVIFCNT = SIOCGETVIFCNT;
++//  unsigned IOCTL_SIOCGETSGCNT = SIOCGETSGCNT;
++//  unsigned IOCTL_SIOCGETVIFCNT = SIOCGETVIFCNT;
+ #endif
+ 
+ #if SANITIZER_LINUX
