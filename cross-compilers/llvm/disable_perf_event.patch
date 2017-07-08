@@ -1,0 +1,78 @@
+diff --git a/lib/sanitizer_common/sanitizer_common_interceptors_ioctl.inc b/lib/sanitizer_common/sanitizer_common_interceptors_ioctl.inc
+index 4ed9afe..558b08c 100644
+--- a/lib/sanitizer_common/sanitizer_common_interceptors_ioctl.inc
++++ b/lib/sanitizer_common/sanitizer_common_interceptors_ioctl.inc
+@@ -95,10 +95,12 @@ static void ioctl_table_fill() {
+   _(SIOCSIFNETMASK, READ, struct_ifreq_sz);
+ #endif
+ 
++/*
+ #if (SANITIZER_LINUX && !SANITIZER_ANDROID)
+   _(SIOCGETSGCNT, WRITE, struct_sioc_sg_req_sz);
+   _(SIOCGETVIFCNT, WRITE, struct_sioc_vif_req_sz);
+ #endif
++*/
+ 
+ #if SANITIZER_LINUX
+   // Conflicting request ids.
+diff --git a/lib/sanitizer_common/sanitizer_platform_limits_linux.cc b/lib/sanitizer_common/sanitizer_platform_limits_linux.cc
+index 46e3b18..1ec0fee 100644
+--- a/lib/sanitizer_common/sanitizer_platform_limits_linux.cc
++++ b/lib/sanitizer_common/sanitizer_platform_limits_linux.cc
+@@ -49,11 +49,31 @@
+ #undef off_t
+ #endif
+ 
++// Likely CentOS5 kernel header problem:
++// http://lists.qt-project.org/pipermail/interest/2015-February/015308.html
++// I also ran into this building Qt5
++#include <asm/types.h>
++#ifdef __CHECKER__
++#define __bitwise__ __attribute__((bitwise))
++#else
++#define __bitwise__
++#endif
++#ifdef __CHECK_ENDIAN__
++#define __bitwise __bitwise__
++#else
++#define __bitwise
++#endif
++//typedef         __u64           uint64_t;
++//typedef         __u64           u_int64_t;
++//typedef         __s64           int64_t;
++typedef __u64 __bitwise __le64;
++typedef __u64 __bitwise __be64;
++
+ #include <linux/aio_abi.h>
+ 
+ #if !SANITIZER_ANDROID
+ #include <sys/statfs.h>
+-#include <linux/perf_event.h>
++//#include <linux/perf_event.h>
+ #endif
+ 
+ using namespace __sanitizer;
+@@ -82,19 +102,23 @@ CHECK_SIZE_AND_OFFSET(io_event, obj);
+ CHECK_SIZE_AND_OFFSET(io_event, res);
+ CHECK_SIZE_AND_OFFSET(io_event, res2);
+ 
++/*
+ #if !SANITIZER_ANDROID
+ COMPILER_CHECK(sizeof(struct __sanitizer_perf_event_attr) <=
+                sizeof(struct perf_event_attr));
+ CHECK_SIZE_AND_OFFSET(perf_event_attr, type);
+ CHECK_SIZE_AND_OFFSET(perf_event_attr, size);
+ #endif
++*/
+ 
+ COMPILER_CHECK(iocb_cmd_pread == IOCB_CMD_PREAD);
+ COMPILER_CHECK(iocb_cmd_pwrite == IOCB_CMD_PWRITE);
++/*
+ #if !SANITIZER_ANDROID
+ COMPILER_CHECK(iocb_cmd_preadv == IOCB_CMD_PREADV);
+ COMPILER_CHECK(iocb_cmd_pwritev == IOCB_CMD_PWRITEV);
+ #endif
++*/
+ 
+ CHECK_TYPE_SIZE(iocb);
+ CHECK_SIZE_AND_OFFSET(iocb, aio_data);

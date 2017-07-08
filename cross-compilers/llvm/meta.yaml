@@ -1,0 +1,96 @@
+{% set version="4.0.1" %}
+{% set native_compiler_subdir="linux-cos6-x86_64" %}
+
+package:
+  name: llvm
+  version: {{ version }}
+
+source:
+  # - git_url: https://github.com/llvm/llvm
+  #   git_tag: master
+  - url: http://releases.llvm.org/{{ version }}/llvm-{{ version }}.src.tar.xz
+  - url: http://releases.llvm.org/{{ version }}/cfe-{{ version }}.src.tar.xz
+    folder: tools/clang
+  - url: http://releases.llvm.org/{{ version }}/compiler-rt-{{ version }}.src.tar.xz
+    folder: projects/compiler-rt
+  - url: http://releases.llvm.org/{{ version }}/libcxx-{{ version }}.src.tar.xz
+    folder: projects/libcxx
+  - url: http://releases.llvm.org/{{ version }}/libcxxabi-{{ version }}.src.tar.xz
+    folder: projects/libcxxabi
+  - url: http://releases.llvm.org/{{ version }}/openmp-{{ version }}.src.tar.xz
+    folder: projects/openmp
+  - url: http://releases.llvm.org/{{ version }}/polly-{{ version }}.src.tar.xz
+    folder: tools/polly
+
+requirements:
+  build:
+    # we use selectors rather than jinja2 here because we only want to use the native
+    #   compiler to build llvm and clang (which are natively cross-compilers.)
+    # We might want to split the runtime libs below into a separate recipe,
+    #    so that this recipe can use jinja2 instead.
+    - gcc_{{ native_compiler_subdir }}  {{ compiler_ver }}    [linux]
+    - gxx_{{ native_compiler_subdir }}  {{ compiler_ver }}    [linux]
+    # - {{ compiler('c') }}  {{ compiler_ver }}
+    # - {{ compiler('cxx') }}  {{ compiler_ver }}
+    - cmake
+
+outputs:
+  - name: llvm
+    script: install-llvm.sh
+    requirements:
+      build:
+        - cmake
+        # these are here so that the run_exports functionality of conda-build 3 works.
+        - {{ pin_compatible('gcc_' ~ native_compiler_subdir, exact=True) }}
+        - {{ pin_compatible('gxx_' ~ native_compiler_subdir, exact=True) }}
+  - name: clang
+    script: install-clang.sh
+    requirements:
+      build:
+        - cmake
+        - {{ pin_subpackage('llvm', exact=True) }}
+      run:
+        - {{ pin_subpackage('llvm', exact=True) }}
+
+  # metapackages that make it easier to cross-compile
+  - name: clang_{{library_type}}_{{ target_platform }}
+    script: install-clang-wrapper.sh
+    requirements:
+      build:
+        - {{ pin_subpackage('clang', exact=True) }}
+      run:
+        - {{ pin_subpackage('clang', exact=True) }}
+        # we can't pin binutils, because we have no way of knowing what the
+        # correct version is on the target platform.
+        - binutils_{{ target_platform }}
+    {% if library_type == 'shared' %}
+    run_exports:
+      - {{ pin_subpackage('compiler-rt_' ~ library_type ~ '_' ~ target_platform) }}
+      - {{ pin_subpackage('libcxx_' ~ library_type ~ '_' ~ target_platform) }}
+    {% endif %}
+
+  - name: libcxxabi_{{ target_platform }}
+    target: {{ target_platform }}
+    script: install-libcxxabi.sh
+    requirements:
+      build:
+        - cmake
+        - {{ pin_subpackage("clang_shared_" ~ target_platform, exact=True) }}
+
+  - name: libcxx_{{ library_type }}_{{ target_platform }}
+    target: {{ target_platform }}
+    script: install-libcxx.sh
+    requirements:
+      build:
+        - cmake
+        - {{ pin_subpackage("clang_" ~ library_type ~ "_" ~ target_platform, exact=True) }}
+
+  - name: compiler-rt_{{ library_type }}_{{ target_platform }}
+    script: install-compiler-rt.sh
+    target: {{ target_platform }}
+    run_exports:
+      - {{ pin_subpackage('compiler-rt_' ~ library_type ~ '_' ~ target_platform) }}
+    requirements:
+      build:
+        - cmake
+        - {{ pin_subpackage("clang_" ~ library_type ~ "_" ~ target_platform, exact=True) }}
