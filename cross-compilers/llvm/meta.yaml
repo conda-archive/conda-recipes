@@ -28,8 +28,8 @@ requirements:
     #   compiler to build llvm and clang (which are natively cross-compilers.)
     # We might want to split the runtime libs below into a separate recipe,
     #    so that this recipe can use jinja2 instead.
-    - gcc_{{ native_compiler_subdir }}  {{ compiler_ver }}    [linux]
-    - gxx_{{ native_compiler_subdir }}  {{ compiler_ver }}    [linux]
+    # - gcc_{{ native_compiler_subdir }}  {{ compiler_ver }}    [linux]
+    # - gxx_{{ native_compiler_subdir }}  {{ compiler_ver }}    [linux]
     # - {{ compiler('c') }}  {{ compiler_ver }}
     # - {{ compiler('cxx') }}  {{ compiler_ver }}
     - cmake
@@ -41,8 +41,8 @@ outputs:
       build:
         - cmake
         # these are here so that the run_exports functionality of conda-build 3 works.
-        - {{ pin_compatible('gcc_' ~ native_compiler_subdir, exact=True) }}
-        - {{ pin_compatible('gxx_' ~ native_compiler_subdir, exact=True) }}
+        - {{ pin_compatible('gcc_' ~ native_compiler_subdir, exact=True) }}   [linux]
+        - {{ pin_compatible('gxx_' ~ native_compiler_subdir, exact=True) }}   [linux]
   - name: clang
     script: install-clang.sh
     requirements:

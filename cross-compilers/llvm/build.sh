@@ -1,5 +1,9 @@
 mkdir -p llvm_build
-CHOST=$($GCC -dumpmachine)
+if [[ -n ${GCC} ]]; then
+  CHOST=$(${GCC} -dumpmachine)
+else
+  CHOST=$(clang -dumpmachine)
+fi
 
 if [[ ! -e "${SRC_DIR}/llvm_build/tools/clang/tools/c-index-test" ]]; then
     pushd llvm_build
