@@ -44,4 +44,5 @@ mkdir -p ${PREFIX}/etc/conda/{de,}activate.d
 cp "${SRC_DIR}"/activate-g++.sh ${PREFIX}/etc/conda/activate.d/activate-${PKG_NAME}.sh
 cp "${SRC_DIR}"/deactivate-g++.sh ${PREFIX}/etc/conda/deactivate.d/deactivate-${PKG_NAME}.sh
 
-${PREFIX}/bin/${CHOST}-g++ ~/gd.cio/hello-world.cpp
+# Test:
+${PREFIX}/bin/${CHOST}-g++ "${RECIPE_DIR}"/hello-world.cpp
