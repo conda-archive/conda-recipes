@@ -84,7 +84,7 @@ function _tc_activation() {
 
 env > /tmp/old-env-$$.txt
 _tc_activation \
-  deactivate host @CHOST@ @CHOST@- \  
+  deactivate host @CHOST@ @CHOST@- \
   addr2line ar as c++filt elfedit gprof ld nm objcopy objdump ranlib readelf size strings strip
 
 if [ $? -ne 0 ]; then
