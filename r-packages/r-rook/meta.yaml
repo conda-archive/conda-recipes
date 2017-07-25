@@ -1,0 +1,87 @@
+{% set version = '1.1-1' %}
+
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-rook
+  version: {{ version|replace("-", "_") }}
+
+source:
+  fn: Rook_{{ version }}.tar.gz
+  url:
+    - https://cran.r-project.org/src/contrib/Rook_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/Rook/Rook_{{ version }}.tar.gz
+
+
+  sha256: 00f4ecfa4c5c57018acbb749080c07154549a6ecaa8d4130dd9de79427504903
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 0
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r-base
+    - r-brew
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
+
+  run:
+    - r-base
+    - r-brew
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('Rook')"  # [not win]
+    - "\"%R%\" -e \"library('Rook')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://CRAN.R-project.org/package=Rook
+  license: GPL-2
+  summary: This package contains the Rook specification and convenience software for building
+    and running Rook applications. To get started, be sure and read the 'Rook' help
+    file first.
+  license_family: GPL2
+
+# The original CRAN metadata for this package was:
+
+# Package: Rook
+# Type: Package
+# Title: Rook - a web server interface for R
+# Version: 1.1-1
+# Date: 2014-10-20
+# Author: Jeffrey Horner <jeffrey.horner@gmail.com>
+# Maintainer: Jeffrey Horner <jeffrey.horner@gmail.com>
+# Description: This package contains the Rook specification and convenience software for building and running Rook applications. To get started, be sure and read the 'Rook' help file first.
+# Depends: R (>= 2.13.0)
+# Imports: utils, tools, methods, brew
+# License: GPL-2
+# LazyLoad: yes
+# Packaged: 2014-10-20 16:54:31 UTC; jeffrey
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2014-10-20 19:18:06
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
