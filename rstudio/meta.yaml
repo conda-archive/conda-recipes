@@ -1,4 +1,4 @@
-{% set version = '1.0.136' %}
+{% set version = '1.0.153' %}
 
 package:
   name: rstudio
@@ -44,7 +44,7 @@ source:
     - 0034-Add-RSTUDIO_SUPPORTING_FILE_PATH-env-var-for-debuggi.patch
     - 0035-Conda-Allow-symlinks-in-gwt-html-js.patch
     - 0036-Win32-MSVC-Cannot-use-variadic-token-pasting-GNU-ext.patch
-    - 0037-Get-rstudio-buildtools-from-local-storage.patch
+    # - 0037-Get-rstudio-buildtools-from-local-storage.patch
     - 0038-more-debugging.patch
     - 0039-GWT-Debug-rpc-issues.patch
     - 0040-GWT-Hacky-attempt-to-work-around-double-slash-issue.patch
