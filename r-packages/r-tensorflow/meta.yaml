@@ -1,21 +1,18 @@
-{% set name = 'tensorflow' %}
-{% set version = '0.4.0' %}
+{% set version = '0.8.2' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
 package:
-  name: r-{{ name|lower }}
+  name: r-tensorflow
   version: {{ version|replace("-", "_") }}
 
 source:
 
 
-  git_url: https://github.com/mingwandroid/tensorflow
-  git_tag: v0.4.0
-  # You can add a hash for the file here, like md5 or sha1
-  # md5: 49448ba4863157652311cc5ea4fea3ea
-  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  git_url: https://github.com/rstudio/tensorflow
+  git_tag: v0.8.2
+  # You can add a hash for the file here, like md5, sha1 or sha256
   # patches:
    # List any patch files here
    # - fix.patch
@@ -32,14 +29,16 @@ build:
 # Suggests: testthat
 requirements:
   build:
-    - python
     - r-base
-    - r-rcpp >=0.12.7
+    - r-jsonlite
+    - r-reticulate >=0.8
+    - r-yaml
 
   run:
-    - python
     - r-base
-    - r-rcpp >=0.12.7
+    - r-jsonlite
+    - r-reticulate >=0.8
+    - r-yaml
 
 test:
   commands:
@@ -54,17 +53,9 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: https://github.com/rstudio/tensorflow
+  home: https
   license: Apache License 2.0
-  summary: TensorFlow is an open source software library for numerical computation using data
-    flow graphs. Nodes in the graph represent mathematical operations, while the graph
-    edges represent the multidimensional data arrays (tensors) communicated between
-    them. The flexible architecture allows you to deploy computation to one or more
-    CPUs or GPUs in a desktop, server, or mobile device with a single API. TensorFlow
-    was originally developed by researchers and engineers working on the Google Brain
-    Team within Google's Machine Intelligence research organization for the purposes
-    of conducting machine learning and deep neural networks research, but the system
-    is general enough to be applicable in a wide variety of other domains as well.
+  summary: Interface to TensorFlow
   license_family: APACHE
 
 # The original CRAN metadata for this package was:
@@ -72,20 +63,19 @@ about:
 # Package: tensorflow
 # Type: Package
 # Title: R Interface to TensorFlow
-# Version: 0.4.0
-# Date: 2016-10-11
+# Version: 0.8.2
 # Authors@R: c( person("JJ", "Allaire", role = c("aut", "cre"), comment = "R interface", email = "jj@rstudio.com"), person(family = "RStudio", role = "cph"), person("Dirk", "Eddelbuettel", role = c("ctb", "cph"), email = "edd@debian.org"), person("Nick", "Golding", role = c("ctb", "cph"), email = "nick.golding.research@gmail.com"), person("Yuan", "Tang", role = c("ctb", "cph"), email = "terrytangyuan@gmail.com"), person(family = "Google Inc.", role = c("ctb", "cph"), comment = "Examples and Tutorials") )
-# Description: TensorFlow is an open source software library for numerical computation using data flow graphs. Nodes in the graph represent mathematical operations, while the graph edges represent the multidimensional data arrays (tensors) communicated between them. The flexible architecture allows you to deploy computation to one or more CPUs or GPUs in a desktop, server, or mobile device with a single API. TensorFlow was originally developed by researchers and engineers working on the Google Brain Team within Google's Machine Intelligence research organization for the purposes of conducting machine learning and deep neural networks research, but the system is general enough to be applicable in a wide variety of other domains as well.
+# Description: Interface to 'TensorFlow' <https://www.tensorflow.org/>, an open source software library for numerical computation using data flow graphs. Nodes in the graph represent mathematical operations, while the graph edges represent the multidimensional data arrays (tensors) communicated between them. The flexible architecture allows you to deploy computation to one or more 'CPUs' or 'GPUs' in a desktop, server, or mobile device with a single 'API'. 'TensorFlow' was originally developed by researchers and engineers working on the Google Brain Team within Google's Machine Intelligence research organization for the purposes of conducting machine learning and deep neural networks research, but the system is general enough to be applicable in a wide variety of other domains as well.
 # License: Apache License 2.0
 # URL: https://github.com/rstudio/tensorflow
 # BugReports: https://github.com/rstudio/tensorflow/issues
-# SystemRequirements: Python (>= 2.7.0); NumPy (>= 1.11); TensorFlow (https://www.tensorflow.org/)
+# SystemRequirements: TensorFlow (https://www.tensorflow.org/)
 # Encoding: UTF-8
 # LazyData: true
 # Depends: R (>= 3.0)
-# Imports: utils, Rcpp (>= 0.12.7)
-# LinkingTo: Rcpp
-# RoxygenNote: 5.0.1
+# Imports: utils, reticulate (>= 0.8), yaml, jsonlite
+# Roxygen: list(markdown = TRUE)
+# RoxygenNote: 6.0.1
 # Suggests: testthat
 
 # See
