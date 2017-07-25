@@ -1,0 +1,24 @@
+diff -urN R-3.4.1.orig/src/scripts/javareconf.in R-3.4.1/src/scripts/javareconf.in
+--- R-3.4.1.orig/src/scripts/javareconf.in	2017-07-25 18:30:46.000000000 -0500
++++ R-3.4.1/src/scripts/javareconf.in	2017-07-25 18:38:42.000000000 -0500
+@@ -354,10 +354,16 @@
+ ac_status=$?
+ 
+ if test $ac_status != 0; then
+-  echo "Unable to compile a JNI program"
+-  JAVA_LD_LIBRARY_PATH=
+-  JAVA_LIBS=
+-  JAVA_CPPFLAGS=
++  echo "Unable to compile a JNI program, ignoring this though as you may not want to compile anything here"
++  echo ".. this is an Anaconda Distribution and conda-forge customization whereby env activation causes us"
++  echo ".. to call R CMD javareconf in order to dynamically detect a JDK that may be in that env. The fact"
++  echo ".. that we prohibit setting LD_LIBRARY_PATH is also somewhat responsible for us needing to do this"
++  echo ".. because \${R_HOME}/etc/ldpaths is the normal way that R dynamically finds shared libraries. This"
++  echo ".. is what would, in upstream R, set LD_LIBRARY_PATH. AD cannot set this as it causes all sorts of"
++  echo ".. issues with DT_RUNPATH / DT_RPATH on various distributions."
++  # JAVA_LD_LIBRARY_PATH=
++  # JAVA_LIBS=
++  # JAVA_CPPFLAGS=
+ fi
+ 
+ rm -f conftest.c conftest.o conftest.so Makevars
