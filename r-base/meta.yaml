@@ -20,6 +20,7 @@ source:
     - 0009-R-3.3.0-Use-AC_SEARCH_LIBS-to-search-for-ncurses.patch
     - 0011-Linux-Do-not-modify-LD_LIBRARY_PATH.patch
     - 0012-macOS-include-cairo_h-not-cairo-xlib_h.patch
+    - 0013-javareconf-do-not-fail-on-compile-fail.patch
 
 build:
   number: 0
