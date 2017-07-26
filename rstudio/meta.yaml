@@ -8,6 +8,7 @@ source:
   git_url: https://github.com/rstudio/rstudio.git
   git_tag: v{{ version }}
   patches:
+    - 0000-remove-unused-C-method-registration.patch
     - 0001-macOS-Allow-disabling-R-framework.patch
     - 0002-Fix-program_options-for-Boost-1.59.patch
     - 0003-Boost-Define-MOVE_THREAD-t-as-t.move.patch
