@@ -1,0 +1,78 @@
+From da18ea73ec56d4504a3f106e43a9f092c8411eb2 Mon Sep 17 00:00:00 2001
+From: Kevin Ushey <kevinushey@gmail.com>
+Date: Tue, 4 Apr 2017 19:46:59 -0700
+Subject: [PATCH] remove unused C method registration
+
+---
+ src/cpp/r/RRoutines.cpp           | 22 +---------------------
+ src/cpp/r/include/r/RRoutines.hpp |  6 +-----
+ 2 files changed, 2 insertions(+), 26 deletions(-)
+
+diff --git a/src/cpp/r/RRoutines.cpp b/src/cpp/r/RRoutines.cpp
+index 2b5d6d95de..86478244a2 100644
+--- a/src/cpp/r/RRoutines.cpp
++++ b/src/cpp/r/RRoutines.cpp
+@@ -23,15 +23,9 @@ namespace r {
+ namespace routines {
+  
+ namespace { 
+-   std::vector<R_CMethodDef> s_cMethods;
+    std::vector<R_CallMethodDef> s_callMethods; 
+ }
+    
+-void addCMethod(const R_CMethodDef method)
+-{
+-   s_cMethods.push_back(method);
+-}
+-   
+ void addCallMethod(const R_CallMethodDef method)
+ {
+    s_callMethods.push_back(method);
+@@ -50,20 +44,6 @@ void registerCallMethod(const char* name,
+ 
+ void registerAll()
+ {
+-   // c methods
+-   R_CMethodDef* pCMethods = NULL;
+-   if (s_cMethods.size() > 0)
+-   {
+-      R_CMethodDef nullMethodDef ;
+-      nullMethodDef.name = NULL ;
+-      nullMethodDef.fun = NULL ;
+-      nullMethodDef.numArgs = 0 ;
+-      nullMethodDef.types = NULL;
+-      nullMethodDef.styles = NULL;
+-      s_cMethods.push_back(nullMethodDef);
+-      pCMethods = &s_cMethods[0];
+-   }
+-   
+    // call methods
+    R_CallMethodDef* pCallMethods = NULL;
+    if (s_callMethods.size() > 0)
+@@ -77,7 +57,7 @@ void registerAll()
+    }
+    
+    DllInfo *info = R_getEmbeddingDllInfo() ;
+-   R_registerRoutines(info, pCMethods, pCallMethods, NULL, NULL);
++   R_registerRoutines(info, NULL, pCallMethods, NULL, NULL);
+ }
+    
+    
+diff --git a/src/cpp/r/include/r/RRoutines.hpp b/src/cpp/r/include/r/RRoutines.hpp
+index 45552d9e19..2371025e03 100644
+--- a/src/cpp/r/include/r/RRoutines.hpp
++++ b/src/cpp/r/include/r/RRoutines.hpp
+@@ -24,12 +24,8 @@ namespace rstudio {
+ namespace r {
+ namespace routines {
+ 
+-void addCMethod(const R_CMethodDef method);
+ void addCallMethod(const R_CallMethodDef method);
+-void registerCallMethod(const char* name,
+-                        DL_FUNC fun,
+-                        int numArgs);
+-
++void registerCallMethod(const char* name, DL_FUNC fun, int numArgs);
+ void registerAll();
+ 
+ #define RS_REGISTER_CALL_METHOD(__NAME__, __NUM_ARGS__)                        \
