@@ -85,6 +85,7 @@ test:
     - r-dplyr
     - numpy
     - pandas
+    - mock
 
 about:
   home: http://rpy.sourceforge.net
