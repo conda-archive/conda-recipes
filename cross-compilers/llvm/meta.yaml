@@ -1,5 +1,5 @@
 {% set version="4.0.1" %}
-{% set native_compiler_subdir="linux-cos6-x86_64" %}
+{% set native_compiler_subdir=build_platform %}
 
 package:
   name: llvm
@@ -35,38 +35,39 @@ requirements:
     - cmake
 
 outputs:
-  - name: llvm
+  - name: llvm_{{library_type}}
     script: install-llvm.sh
     requirements:
       build:
         - cmake
         # these are here so that the run_exports functionality of conda-build 3 works.
-        - {{ pin_compatible('gcc_' ~ native_compiler_subdir, exact=True) }}   [linux]
-        - {{ pin_compatible('gxx_' ~ native_compiler_subdir, exact=True) }}   [linux]
+        - {{ pin_compatible('gcc_' ~ native_compiler_subdir, exact=True) }}  [linux]
+        - {{ pin_compatible('gxx_' ~ native_compiler_subdir, exact=True) }}  [linux]
+
   - name: clang
     script: install-clang.sh
     requirements:
       build:
         - cmake
-        - {{ pin_subpackage('llvm', exact=True) }}
+        - {{ pin_subpackage('llvm_' ~ library_type, exact=True) }}
       run:
-        - {{ pin_subpackage('llvm', exact=True) }}
+        - {{ pin_subpackage('llvm_' ~ library_type, exact=True) }}
 
   # metapackages that make it easier to cross-compile
   - name: clang_{{library_type}}_{{ target_platform }}
     script: install-clang-wrapper.sh
     requirements:
       build:
-        - {{ pin_subpackage('clang', exact=True) }}
+        - {{ pin_subpackage('clang_' ~ library_type ~ '_' ~ target_platform, exact=True) }}
       run:
-        - {{ pin_subpackage('clang', exact=True) }}
+        - {{ pin_subpackage('clang_' ~ library_type ~ '_' ~ target_platform, exact=True) }}
         # we can't pin binutils, because we have no way of knowing what the
         # correct version is on the target platform.
-        - binutils_{{ target_platform }}
+        - binutils_{{ target_platform }}  [linux]
     {% if library_type == 'shared' %}
     run_exports:
-      - {{ pin_subpackage('compiler-rt_' ~ library_type ~ '_' ~ target_platform) }}
-      - {{ pin_subpackage('libcxx_' ~ library_type ~ '_' ~ target_platform) }}
+      - {{ pin_subpackage('compiler-rt_' ~ target_platform) }}
+      - {{ pin_subpackage('libcxx_' ~ target_platform) }}
     {% endif %}
 
   - name: libcxxabi_{{ target_platform }}
@@ -75,22 +76,22 @@ outputs:
     requirements:
       build:
         - cmake
-        - {{ pin_subpackage("clang_shared_" ~ target_platform, exact=True) }}
+        - {{ pin_subpackage('clang_' ~ library_type ~ '_' ~ target_platform, exact=True) }}
 
-  - name: libcxx_{{ library_type }}_{{ target_platform }}
+  - name: libcxx_{{ target_platform }}
     target: {{ target_platform }}
     script: install-libcxx.sh
     requirements:
       build:
         - cmake
-        - {{ pin_subpackage("clang_" ~ library_type ~ "_" ~ target_platform, exact=True) }}
+        - {{ pin_subpackage('clang_' ~ library_type ~ '_' ~ target_platform, exact=True) }}
 
-  - name: compiler-rt_{{ library_type }}_{{ target_platform }}
+  - name: compiler-rt_{{ target_platform }}
     script: install-compiler-rt.sh
     target: {{ target_platform }}
     run_exports:
-      - {{ pin_subpackage('compiler-rt_' ~ library_type ~ '_' ~ target_platform) }}
+      - {{ pin_subpackage('compiler-rt_' ~ target_platform) }}
     requirements:
       build:
         - cmake
-        - {{ pin_subpackage("clang_" ~ library_type ~ "_" ~ target_platform, exact=True) }}
+        - {{ pin_subpackage('clang_' ~ library_type ~ '_' ~ target_platform, exact=True) }}
