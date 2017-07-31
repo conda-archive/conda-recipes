@@ -21,6 +21,9 @@ source:
     folder: projects/openmp
   - url: http://releases.llvm.org/{{ version }}/polly-{{ version }}.src.tar.xz
     folder: tools/polly
+  # Because macOS 10.9's clang is too old (problems with atomics)
+  - url: http://releases.llvm.org/4.0.1/clang+llvm-4.0.1-x86_64-apple-darwin.tar.xz  [osx]
+    folder: bootstrap                                                                [osx]
 
 requirements:
   build:
