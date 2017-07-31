@@ -11,8 +11,8 @@ if [[ $(uname) == Darwin ]]; then
 
   # Cannot set this when using CMake without also providing CMAKE_OSX_SYSROOT
   # (though that is not a bad idea really, if the SDK can be redistributed?).
-  unset MACOSX_DEPLOYMENT_TARGET
-  export MACOSX_DEPLOYMENT_TARGET
+  # unset MACOSX_DEPLOYMENT_TARGET
+  export MACOSX_DEPLOYMENT_TARGET=10.9
 
   # Still having trouble with atomics in tsan:
   # [ 27%] Building CXX object projects/compiler-rt/lib/tsan/CMakeFiles/clang_rt.tsan_osx_dynamic.dir/rtl/tsan_interceptors_mac.cc.o
@@ -91,9 +91,15 @@ if [[ ! -e "${SRC_DIR}/llvm_build/tools/clang/tools/c-index-test" ]]; then
 # -D LLVM_ENABLE_ASSERTIONS:BOOL=ON \
 # -D CMAKE_OSX_DEPLOYMENT_TARGET= \
 
-    cmake -G 'Unix Makefiles' \
+    cmake -G'Unix Makefiles'                                     \
+      -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX}                      \
+      -DCMAKE_OSX_SYSROOT=${SRC_DIR}/bootstrap/MacOSX10.9.sdk    \
+      -DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET}  \
       ..
     make -j${CPU_COUNT} VERBOSE=1
+    # pushd llvm_build/projects/compiler-rt/lib/tsan/
+    #   make -j${CPU_COUNT} VERBOSE=1
+    #popd
     # make -j1 VERBOSE=1
     popd
 fi
