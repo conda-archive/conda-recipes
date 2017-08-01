@@ -1,0 +1,69 @@
+ctng_nature:
+  - shared
+ctng_sample:
+  - x86_64-centos6-linux-gnu
+ctng_cpu_arch:
+  - x86_64
+ctng_cpu_model:
+  - 
+ctng_libc:
+  - gnu
+gnu:
+  - 2.12.2
+ctng_kernel:
+  - 2.6.32
+ctng_binutils:
+  - 2.28
+ctng_gcc:
+  - 7.1.0
+ctng_gmp:
+  - 6.1.2
+ctng_mpfr:
+  - 3.1.5
+ctng_gettext:
+  - 0.19.7
+ctng_libiconv:
+  - 1.14
+ctng_isl:
+  - 0.18
+ctng_mpc:
+  - 1.0.3
+ctng_ncurses:
+  - 6.0
+ctng_gdb:
+  - 7.12.1
+ctng_duma:
+  - 2.5.15
+ctng_vendor:
+  - conda_cos6
+ctng_target_platform:
+  - linux-64
+FINAL_CPPFLAGS:
+  - -D_FORTIFY_SOURCE=2
+FINAL_CFLAGS:
+  - -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -O2 -pipe
+FINAL_CXXFLAGS:
+  - -fvisibility-inlines-hidden -std=c++17 -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -O2 -pipe
+FINAL_FFLAGS:
+  - -fopenmp -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -O2 -pipe
+FINAL_LDFLAGS:
+  - -Wl,-O2,--sort-common,--as-needed,-z,relro
+FINAL_DEBUG_CFLAGS:
+  - -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -O2 -pipe -Og -g -Wall -Wextra -fcheck=all -fbacktrace -fimplicit-none -fvar-tracking-assignments
+FINAL_DEBUG_CXXFLAGS:
+  - -fvisibility-inlines-hidden -std=c++17 -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -O2 -pipe -Og -g -Wall -Wextra -fcheck=all -fbacktrace -fimplicit-none -fvar-tracking-assignments
+FINAL_DEBUG_FFLAGS:
+  - -fopenmp -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -O2 -pipe -Og -g -Wall -Wextra -fcheck=all -fbacktrace -fimplicit-none -fvar-tracking-assignments
+zip_keys:
+  -
+    - ctng_target_platform
+    - ctng_cpu_arch
+    - ctng_cpu_model
+    - FINAL_CPPFLAGS
+    - FINAL_CFLAGS
+    - FINAL_CXXFLAGS
+    - FINAL_FFLAGS
+    - FINAL_LDFLAGS
+    - FINAL_DEBUG_CFLAGS
+    - FINAL_DEBUG_CXXFLAGS
+    - FINAL_DEBUG_FFLAGS
