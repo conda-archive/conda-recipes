@@ -14,6 +14,9 @@ if [[ $(uname) == Darwin ]]; then
   # unset MACOSX_DEPLOYMENT_TARGET
   export MACOSX_DEPLOYMENT_TARGET=10.9
 
+  export CXXFLAGS=-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}
+  export CFLAGS=-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}
+
   # Still having trouble with atomics in tsan:
   # [ 27%] Building CXX object projects/compiler-rt/lib/tsan/CMakeFiles/clang_rt.tsan_osx_dynamic.dir/rtl/tsan_interceptors_mac.cc.o
   # cd /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/llvm_build/projects/compiler-rt/lib/tsan && /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/bin/clang++   -D_DEBUG -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -Dclang_rt_tsan_osx_dynamic_EXPORTS -I/Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/llvm_build/projects/compiler-rt/lib/tsan -I/Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/compiler-rt/lib/tsan -I/Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/llvm_build/include -I/Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/include -I/Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/compiler-rt/lib/tsan/..  -arch x86_64  -fPIC -fvisibility-inlines-hidden -Wall -W -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -pedantic -Wno-long-long -Wcovered-switch-default -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wstring-conversion -Werror=date-time -std=c++11 -Wall -std=c++11 -Wno-unused-parameter -g -arch x86_64 -fPIC    -stdlib=libc++ -mmacosx-version-min=10.9 -isysroot / -fPIC -fno-builtin -fno-exceptions -fomit-frame-pointer -funwind-tables -fno-stack-protector -fno-sanitize=safe-stack -fvisibility=hidden -fvisibility-inlines-hidden -fno-function-sections -fno-lto -O3 -gline-tables-only -Wno-gnu -Wno-variadic-macros -Wno-c99-extensions -Wno-non-virtual-dtor -fPIE -fno-rtti -msse3 -Wframe-larger-than=530 -Wglobal-constructors -o CMakeFiles/clang_rt.tsan_osx_dynamic.dir/rtl/tsan_interceptors_mac.cc.o -c /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/compiler-rt/lib/tsan/rtl/tsan_interceptors_mac.cc
@@ -90,14 +93,17 @@ if [[ ! -e "${SRC_DIR}/llvm_build/tools/clang/tools/c-index-test" ]]; then
 # -D BUILD_SHARED_LIBS:BOOL=ON \
 # -D LLVM_ENABLE_ASSERTIONS:BOOL=ON \
 # -D CMAKE_OSX_DEPLOYMENT_TARGET= \
-
+    set -x
     cmake -G'Unix Makefiles'                                     \
       -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX}                      \
       -DCMAKE_OSX_SYSROOT=${SRC_DIR}/bootstrap/MacOSX10.9.sdk    \
       -DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET}  \
       ..
+    # exit 1
+    # make -j${CPU_COUNT} VERBOSE=1
+    pushd projects/compiler-rt/lib/tsan
+    make -j1 VERBOSE=1
     exit 1
-    make -j${CPU_COUNT} VERBOSE=1
     # pushd llvm_build/projects/compiler-rt/lib/tsan/
     #   make -j${CPU_COUNT} VERBOSE=1
     #popd

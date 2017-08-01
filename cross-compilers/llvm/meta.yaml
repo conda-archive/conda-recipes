@@ -13,6 +13,8 @@ source:
     folder: tools/clang
   - url: http://releases.llvm.org/{{ version }}/compiler-rt-{{ version }}.src.tar.xz
     folder: projects/compiler-rt
+    patches:
+      - 0001-compiler-rt-Determine-COMPILER_RT_SUPPORTED_ARCH-eve.patch
   - url: http://releases.llvm.org/{{ version }}/libcxx-{{ version }}.src.tar.xz
     folder: projects/libcxx
   - url: http://releases.llvm.org/{{ version }}/libcxxabi-{{ version }}.src.tar.xz
