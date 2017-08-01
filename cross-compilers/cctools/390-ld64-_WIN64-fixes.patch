@@ -1,0 +1,33 @@
+diff -urN a/ld64/src/ld/parsers/libunwind/AddressSpace.hpp b/ld64/src/ld/parsers/libunwind/AddressSpace.hpp
+--- a/ld64/src/ld/parsers/libunwind/AddressSpace.hpp	2013-11-18 23:05:36.653503853 +0000
++++ b/ld64/src/ld/parsers/libunwind/AddressSpace.hpp	2013-11-18 23:05:36.953500082 +0000
+@@ -86,7 +86,7 @@
+ {
+ public:
+ 	
+-	#if __LP64__
++	#if defined(__LP64__) || defined(_WIN64) || defined(__x86_64__)
+ 		typedef uint64_t	pint_t;
+ 		typedef  int64_t	sint_t;
+ 	#else
+@@ -113,7 +113,7 @@
+ 
+ inline uintptr_t LocalAddressSpace::getP(pint_t addr)
+ {
+-#if __LP64__
++#if defined(__LP64__) || defined(_WIN64) || defined(__x86_64__)
+ 	return get64(addr);
+ #else
+ 	return get32(addr);
+diff -urN a/ld64/src/ld/parsers/macho_relocatable_file.cpp b/ld64/src/ld/parsers/macho_relocatable_file.cpp
+--- a/ld64/src/ld/parsers/macho_relocatable_file.cpp	2014-02-11 02:12:49.667796653 +0000
++++ b/ld64/src/ld/parsers/macho_relocatable_file.cpp	2014-02-11 02:12:42.514352690 +0000
+@@ -4604,7 +4604,7 @@
+ template <typename A>
+ unsigned long Literal8Section<A>::contentHash(const class Atom<A>* atom, const ld::IndirectBindingTable& ind) const
+ {
+-#if __LP64__
++#if defined(__LP64__) || defined(_WIN64)
+ 	const uint64_t* literalContent = (uint64_t*)atom->contentPointer();
+ 	return *literalContent;
+ #else
