@@ -1,0 +1,43 @@
+From 32840b9046e67dcf45fb0b14b44c0ec226858cc3 Mon Sep 17 00:00:00 2001
+From: Kuba Mracek <mracek@apple.com>
+Date: Fri, 7 Jul 2017 01:06:20 +0000
+Subject: [PATCH] [cmake] Cache results of find_darwin_sdk_dir
+
+This improves find_darwin_sdk_dir to cache the results of executing xcodebuild to find the SDK. Should significantly reduce the CMake re-configure time.
+
+Differential Revision: https://reviews.llvm.org/D34736
+
+
+
+git-svn-id: https://llvm.org/svn/llvm-project/compiler-rt/trunk@307344 91177308-0d34-0410-b5e6-96231b3b80d8
+---
+ cmake/Modules/CompilerRTDarwinUtils.cmake | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/cmake/Modules/CompilerRTDarwinUtils.cmake b/cmake/Modules/CompilerRTDarwinUtils.cmake
+index 1837908..aaa97e3 100644
+--- a/cmake/Modules/CompilerRTDarwinUtils.cmake
++++ b/cmake/Modules/CompilerRTDarwinUtils.cmake
+@@ -4,6 +4,11 @@
+ # set the default Xcode to use. This function finds the SDKs that are present in
+ # the current Xcode.
+ function(find_darwin_sdk_dir var sdk_name)
++  set(DARWIN_${sdk_name}_CACHED_SYSROOT "" CACHE STRING "Darwin SDK path for SDK ${sdk_name}.")
++  if(DARWIN_${sdk_name}_CACHED_SYSROOT)
++    set(${var} ${DARWIN_${sdk_name}_CACHED_SYSROOT} PARENT_SCOPE)
++    return()
++  endif()
+   # Let's first try the internal SDK, otherwise use the public SDK.
+   execute_process(
+     COMMAND xcodebuild -version -sdk ${sdk_name}.internal Path
+@@ -26,6 +31,7 @@
+   if(result_process EQUAL 0)
+     set(${var} ${var_internal} PARENT_SCOPE)
+   endif()
++  set(DARWIN_${sdk_name}_CACHED_SYSROOT ${var_internal} CACHE STRING "Darwin SDK path for SDK ${sdk_name}." FORCE)
+ endfunction()
+ 
+ # There isn't a clear mapping of what architectures are supported with a given
+-- 
+2.8.4
+

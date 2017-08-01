@@ -94,10 +94,18 @@ if [[ ! -e "${SRC_DIR}/llvm_build/tools/clang/tools/c-index-test" ]]; then
 # -D LLVM_ENABLE_ASSERTIONS:BOOL=ON \
 # -D CMAKE_OSX_DEPLOYMENT_TARGET= \
     set -x
-    cmake -G'Unix Makefiles'                                     \
-      -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX}                      \
-      -DCMAKE_OSX_SYSROOT=${SRC_DIR}/bootstrap/MacOSX10.9.sdk    \
-      -DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET}  \
+
+    # DCMAKE_OSX_SYSROOT is not needed for compiler-rt (but may be for other parts).
+    # I believe that MacOSX10.9.sdk cannot be used to build compiler-rt, whereas:
+    # -DDARWIN_macosx_CACHED_SYSROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk
+    # .. probably can?
+
+    cmake -G'Unix Makefiles'                                              \
+      -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX}                               \
+      -DCMAKE_OSX_SYSROOT=${SRC_DIR}/bootstrap/MacOSX10.9.sdk             \
+      -DDARWIN_macosx_CACHED_SYSROOT=${SRC_DIR}/bootstrap/MacOSX10.9.sdk  \
+      -DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET}           \
+      --trace-expand \
       ..
     # exit 1
     # make -j${CPU_COUNT} VERBOSE=1
