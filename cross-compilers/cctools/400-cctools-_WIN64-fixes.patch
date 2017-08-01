@@ -1,0 +1,163 @@
+diff -urN cctools-895.orig/as/driver.c cctools-895/as/driver.c
+--- cctools-895.orig/as/driver.c	2017-08-01 14:23:25.000000000 +0100
++++ cctools-895/as/driver.c	2017-08-01 14:44:09.000000000 +0100
+@@ -209,14 +209,14 @@
+ 	 */
+ 	if(arch_name == NULL){
+ 	    if(get_arch_from_host(&arch_flag, NULL)){
+-#if __LP64__
++#if defined(__LP64__) || defined(_WIN64)
+ 		/*
+ 		 * If runing as a 64-bit binary and on an Intel x86 host
+ 		 * default to the 64-bit assember.
+ 		 */
+ 		if(arch_flag.cputype == CPU_TYPE_I386)
+ 		    arch_flag = *get_arch_family_from_cputype(CPU_TYPE_X86_64);
+-#endif /* __LP64__ */
++#endif /* defined(__LP64__) || defined(_WIN64) */
+ 		arch_name = arch_flag.name;
+ 	    }
+ 	    else
+diff -urN cctools-895.orig/include/i386/types.h cctools-895/include/i386/types.h
+--- cctools-895.orig/include/i386/types.h	2017-08-01 13:57:33.000000000 +0100
++++ cctools-895/include/i386/types.h	2017-08-01 14:44:22.000000000 +0100
+@@ -94,7 +94,7 @@
+ #endif
+ typedef	unsigned long long	u_int64_t;
+ 
+-#if __LP64__
++#if defined(__LP64__) || defined(_WIN64)
+ typedef int64_t			register_t;
+ #else
+ typedef int32_t			register_t;
+diff -urN cctools-895.orig/include/mach/i386/vm_types.h cctools-895/include/mach/i386/vm_types.h
+--- cctools-895.orig/include/mach/i386/vm_types.h	2017-08-01 13:57:33.000000000 +0100
++++ cctools-895/include/mach/i386/vm_types.h	2017-08-01 14:44:22.000000000 +0100
+@@ -97,7 +97,7 @@
+  * A vm_offset_t is a type-neutral pointer,
+  * e.g. an offset into a virtual memory space.
+  */
+-#ifdef __LP64__
++#if defined(__LP64__) || defined(_WIN64)
+ typedef uintptr_t		vm_offset_t;
+ #else	/* __LP64__ */
+ typedef	natural_t		vm_offset_t;
+@@ -108,7 +108,7 @@
+  * expressing the difference between two
+  * vm_offset_t entities.
+  */
+-#ifdef __LP64__
++#if defined(__LP64__) || defined(_WIN64)
+ typedef uintptr_t		vm_size_t;
+ #else	/* __LP64__ */
+ typedef	natural_t		vm_size_t;
+diff -urN cctools-895.orig/include/mach-o/loader.h cctools-895/include/mach-o/loader.h
+--- cctools-895.orig/include/mach-o/loader.h	2017-08-01 13:57:33.000000000 +0100
++++ cctools-895/include/mach-o/loader.h	2017-08-01 14:44:22.000000000 +0100
+@@ -313,7 +313,7 @@
+  */
+ union lc_str {
+ 	uint32_t	offset;	/* offset to the string */
+-#ifndef __LP64__
++#if !defined(__LP64__) && !defined(_WIN64)
+ 	char		*ptr;	/* pointer to the string */
+ #endif 
+ };
+diff -urN cctools-895.orig/include/mach-o/nlist.h cctools-895/include/mach-o/nlist.h
+--- cctools-895.orig/include/mach-o/nlist.h	2017-08-01 13:57:33.000000000 +0100
++++ cctools-895/include/mach-o/nlist.h	2017-08-01 14:44:22.000000000 +0100
+@@ -75,7 +75,7 @@
+  */
+ struct nlist {
+ 	union {
+-#ifndef __LP64__
++#if !defined(__LP64__) && !defined(_WIN64)
+ 		char *n_name;	/* for use when in-core */
+ #endif
+ 		uint32_t n_strx;	/* index into the string table */
+diff -urN cctools-895.orig/include/mach-o/ranlib.h cctools-895/include/mach-o/ranlib.h
+--- cctools-895.orig/include/mach-o/ranlib.h	2017-08-01 13:57:33.000000000 +0100
++++ cctools-895/include/mach-o/ranlib.h	2017-08-01 14:44:22.000000000 +0100
+@@ -58,7 +58,7 @@
+ struct	ranlib {
+     union {
+ 	uint32_t	ran_strx;	/* string table index of */
+-#ifndef __LP64__
++#if !defined(__LP64__) && !defined(_WIN64)
+ 	char		*ran_name;	/* symbol defined by */
+ #endif
+     } ran_un;
+diff -urN cctools-895.orig/include/objc/objc.h cctools-895/include/objc/objc.h
+--- cctools-895.orig/include/objc/objc.h	2017-08-01 13:57:33.000000000 +0100
++++ cctools-895/include/objc/objc.h	2017-08-01 14:44:22.000000000 +0100
+@@ -28,6 +28,7 @@
+ #ifndef _OBJC_OBJC_H_
+ #define _OBJC_OBJC_H_
+ 
++#include <stdint.h>
+ #include <sys/types.h>      // for __DARWIN_NULL
+ #include <Availability.h>
+ #include <objc/objc-api.h>
+@@ -127,9 +128,9 @@
+ 
+ // The following declarations are provided here for source compatibility.
+ 
+-#if defined(__LP64__)
+-    typedef long arith_t;
+-    typedef unsigned long uarith_t;
++#if defined(__LP64__) || defined(_WIN64)
++    typedef int64_t arith_t;
++    typedef uint64_t uarith_t;
+ #   define ARITH_SHIFT 32
+ #else
+     typedef int arith_t;
+diff -urN cctools-895.orig/include/objc/runtime.h cctools-895/include/objc/runtime.h
+--- cctools-895.orig/include/objc/runtime.h	2017-08-01 13:57:33.000000000 +0100
++++ cctools-895/include/objc/runtime.h	2017-08-01 14:44:22.000000000 +0100
+@@ -461,14 +461,14 @@
+     char *ivar_name                                          OBJC2_UNAVAILABLE;
+     char *ivar_type                                          OBJC2_UNAVAILABLE;
+     int ivar_offset                                          OBJC2_UNAVAILABLE;
+-#ifdef __LP64__
++#if defined(__LP64__) || defined(_WIN64)
+     int space                                                OBJC2_UNAVAILABLE;
+ #endif
+ }                                                            OBJC2_UNAVAILABLE;
+ 
+ struct objc_ivar_list {
+     int ivar_count                                           OBJC2_UNAVAILABLE;
+-#ifdef __LP64__
++#if defined(__LP64__) || defined(_WIN64)
+     int space                                                OBJC2_UNAVAILABLE;
+ #endif
+     /* variable length structure */
+@@ -486,7 +486,7 @@
+     struct objc_method_list *obsolete                        OBJC2_UNAVAILABLE;
+ 
+     int method_count                                         OBJC2_UNAVAILABLE;
+-#ifdef __LP64__
++#if defined(__LP64__) || defined(_WIN64)
+     int space                                                OBJC2_UNAVAILABLE;
+ #endif
+     /* variable length structure */
+@@ -510,7 +510,7 @@
+ #define CACHE_BUCKET_NAME(B)  ((B)->method_name)
+ #define CACHE_BUCKET_IMP(B)   ((B)->method_imp)
+ #define CACHE_BUCKET_VALID(B) (B)
+-#ifndef __LP64__
++#if !defined(__LP64__) && !defined(_WIN64)
+ #define CACHE_HASH(sel, mask) (((uintptr_t)(sel)>>2) & (mask))
+ #else
+ #define CACHE_HASH(sel, mask) (((unsigned int)((uintptr_t)(sel)>>3)) & (mask))
+diff -urN cctools-895.orig/libstuff/ofile.c cctools-895/libstuff/ofile.c
+--- cctools-895.orig/libstuff/ofile.c	2017-08-01 14:43:46.000000000 +0100
++++ cctools-895/libstuff/ofile.c	2017-08-01 14:46:40.000000000 +0100
+@@ -398,7 +398,7 @@
+ 	     */
+ 	    if(all_archs == FALSE){
+ 		(void)get_arch_from_host(&host_arch_flag, &specific_arch_flag);
+-#if __LP64__
++#if defined(__LP64__) || defined(_WIN64)
+ 		/*
+ 		 * If runing as a 64-bit binary and on an Intel x86 host
+ 		 * default to 64-bit.
