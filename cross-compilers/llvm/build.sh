@@ -96,6 +96,7 @@ if [[ ! -e "${SRC_DIR}/llvm_build/tools/clang/tools/c-index-test" ]]; then
       -DCMAKE_OSX_SYSROOT=${SRC_DIR}/bootstrap/MacOSX10.9.sdk    \
       -DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET}  \
       ..
+    exit 1
     make -j${CPU_COUNT} VERBOSE=1
     # pushd llvm_build/projects/compiler-rt/lib/tsan/
     #   make -j${CPU_COUNT} VERBOSE=1
