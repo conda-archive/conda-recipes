@@ -11,7 +11,6 @@ source:
   patches:
     - 001-remove_static_part.patch
     - 100-add_sdkroot_headers.patch
-    - 101-remove-ld64-sleep.patch
     - 110-import_to_include.patch
     - 120-fix_time_bugs.patch
     - 130-add_compileguards.patch
@@ -39,3 +38,8 @@ source:
     - 400-cctools-_WIN64-fixes.patch
     - 410-remove_inc_arch_sparc_reg_h_PC.patch
     - 420-autoconfiscate.patch
+
+requirements:
+  build:
+    - autoconf
+    - automake
