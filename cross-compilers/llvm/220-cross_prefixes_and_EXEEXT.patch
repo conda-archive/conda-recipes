@@ -1,0 +1,45 @@
+diff -urN cctools-895.orig/ar/ar.c cctools-895/ar/ar.c
+--- cctools-895.orig/ar/ar.c	2017-08-01 13:57:33.000000000 +0100
++++ cctools-895/ar/ar.c	2017-08-01 14:17:08.000000000 +0100
+@@ -280,7 +280,7 @@
+ 	if(run_ranlib){
+ 	    /* run ranlib -f or -q on the archive */
+ 	    reset_execute_list();
+-	    add_execute_list_with_prefix("ranlib");
++	    add_execute_list_with_prefix(RANLIBPROG);
+ 	    if(options & AR_S)
+ 		add_execute_list("-f");
+ 	    else
+diff -urN cctools-895.orig/as/driver.c cctools-895/as/driver.c
+--- cctools-895.orig/as/driver.c	2017-08-01 13:57:33.000000000 +0100
++++ cctools-895/as/driver.c	2017-08-01 14:17:54.000000000 +0100
+@@ -29,7 +29,7 @@
+ {
+     const char *LIB = "../libexec/as/";
+     const char *LOCALLIB = "../local/libexec/as/";
+-    const char *AS = "/as";
++    const char *AS = "/as" EXEEXT;
+ 
+     int i, j;
+     uint32_t count, verbose, run_clang;
+diff -urN cctools-895.orig/misc/libtool.c cctools-895/misc/libtool.c
+--- cctools-895.orig/misc/libtool.c	2017-08-01 14:08:16.000000000 +0100
++++ cctools-895/misc/libtool.c	2017-08-01 14:17:08.000000000 +0100
+@@ -3417,7 +3417,7 @@
+ 	 */
+ 	for(i = 0; i < narchs || (i == 0 && narchs == 0); i++){
+ 	    reset_execute_list();
+-	    add_execute_list_with_prefix("ld");
++	    add_execute_list_with_prefix(LDPROG);
+ 	    if(narchs != 0 && cmd_flags.arch_only_flag.name == NULL)
+ 		add_execute_list("-arch_multiple");
+ 	    if(archs != NULL){
+@@ -3539,7 +3539,7 @@
+ 	 */
+ 	if(narchs > 1){
+ 	    reset_execute_list();
+-	    add_execute_list_with_prefix("lipo");
++	    add_execute_list_with_prefix(LIPOPROG);
+ 	    add_execute_list("-create");
+ 	    add_execute_list("-output");
+ 	    add_execute_list(cmd_flags.output);

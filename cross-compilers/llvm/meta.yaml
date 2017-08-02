@@ -1,5 +1,7 @@
 {% set version="4.0.1" %}
 {% set native_compiler_subdir=build_platform %}
+{% set cctools_version = '895' %}
+{% set cctools_sha256 = 'ce66034fa35117f9ae76bbb7dd72d8068c405778fa42e877e8a13237a10c5cb7' %}
 
 package:
   name: llvm
@@ -24,7 +26,39 @@ source:
     folder: projects/openmp
   - url: http://releases.llvm.org/{{ version }}/polly-{{ version }}.src.tar.xz
     folder: tools/polly
-  # Because macOS 10.9's clang is too old (problems with atomics)
+  - url: https://opensource.apple.com/tarballs/cctools/cctools-{{ version }}.tar.gz
+    sha256: {{ cctools_sha256 }}
+    patches:
+      - 001-remove_static_part.patch
+      - 100-add_sdkroot_headers.patch
+      - 110-import_to_include.patch
+      - 120-fix_time_bugs.patch
+      - 130-add_compileguards.patch
+      - 140-remove_sysctl_osversion_detection.patch
+      - 160-map_64bit_arches.patch
+      - 170-fix_printf_format_bugs.patch
+      - 180-add_CROSS_SYSROOT.patch
+      - 190-default_arch.patch
+      - 210-dont_typedef_NxConstantString.patch
+      - 220-cross_prefixes_and_EXEEXT.patch
+      - 230-progname_fixes.patch
+      - 240-use_strerror.patch
+      - 250-dont_assume_getattrlist.patch
+      - 260-ppc64_reenable.patch
+      - 270-dont_assume_vm_sync.patch
+      - 280-missing_includes.patch
+      - 290-error_as_weak_symbol.patch
+      - 300-undef___unused_for_sysctl.patch
+      - 340-win_O_BINARY.patch
+      - 350-win_fileio_mode.patch
+      - 360-win_TMPDIR_to_TEMP.patch
+      - 370-win_execute.patch
+      - 380-win_avoid_mmap_ofile.patch
+      - 400-cctools-_WIN64-fixes.patch
+      - 410-remove_inc_arch_sparc_reg_h_PC.patch
+      - 420-autoconfiscate.patch
+
+    # Because macOS 10.9's clang is too old (problems with atomics)
   - url: http://releases.llvm.org/4.0.1/clang+llvm-4.0.1-x86_64-apple-darwin.tar.xz                       [osx]
     folder: bootstrap                                                                                     [osx]
   - url: https://github.com/phracker/MacOSX-SDKs/releases/download/MacOSX10.11.sdk/MacOSX10.9.sdk.tar.xz  [osx]
@@ -43,6 +77,17 @@ requirements:
     - cmake
 
 outputs:
+
+  - name: cctools
+    script: install-cctools.sh
+    requirements:
+      build:
+        - autoconf
+        - automake
+        - {{ pin_subpackage('llvm_' ~ library_type, exact=True) }}
+      run:
+        - {{ pin_subpackage('llvm_' ~ library_type, exact=True) }}
+
   - name: llvm_{{library_type}}
     script: install-llvm.sh
     requirements:
