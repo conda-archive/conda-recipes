@@ -1,0 +1,87 @@
+diff -urN cctools-895.orig/as/driver.c cctools-895/as/driver.c
+--- cctools-895.orig/as/driver.c	2017-08-01 14:19:25.000000000 +0100
++++ cctools-895/as/driver.c	2017-08-01 14:21:49.000000000 +0100
+@@ -55,17 +55,29 @@
+ 	 */
+ 	bufsize = MAXPATHLEN;
+ 	p = buf;
+-	i = _NSGetExecutablePath(p, &bufsize);
+-	if(i == -1){
+-	    p = allocate(bufsize);
+-	    _NSGetExecutablePath(p, &bufsize);
+-	}
+-	prefix = realpath(p, resolved_name);
+-	if(prefix == NULL)
+-	    system_fatal("realpath(3) for %s failed", p);
+-	p = rindex(prefix, '/');
+-	if(p != NULL)
+-	    p[1] = '\0';
++        if(progname != NULL){
++            strcpy(p, progname);
++        }
++        i = _NSGetExecutablePath(p, &bufsize);
++        if(i == -1){
++            p = allocate(bufsize);
++            _NSGetExecutablePath(p, &bufsize);
++        }
++        if(p != NULL){
++            p = rindex(p, '/');
++            if(p != NULL)
++                    p[1] = '\0';
++        }
++        prefix = realpath(buf, resolved_name);
++        if(prefix == NULL)
++            system_fatal("realpath(3) for %s failed", p);
++
++        /* Append slash at the end if not exist */
++        p = prefix + strlen(prefix);
++        if((p-prefix)<(MAXPATHLEN-1) && prefix[p-prefix-1] != '/'){
++           *(p++) = '/';
++           *(p++) = '\0';
++        }
+ 	/*
+ 	 * Process the assembler flags exactly like the assembler would (except
+ 	 * let the assembler complain about multiple flags, bad combinations of
+diff -urN cctools-895.orig/libstuff/execute.c cctools-895/libstuff/execute.c
+--- cctools-895.orig/libstuff/execute.c	2017-08-01 13:57:33.000000000 +0100
++++ cctools-895/libstuff/execute.c	2017-08-01 14:19:40.000000000 +0100
+@@ -165,10 +165,23 @@
+ 	    p = allocate(bufsize);
+ 	    _NSGetExecutablePath(p, &bufsize);
+ 	}
+-	prefix = realpath(p, resolved_name);
+-	p = rindex(prefix, '/');
+-	if(p != NULL)
+-	    p[1] = '\0';
++	if(p != NULL){
++	    p = rindex(p, '/');
++	    if(p != NULL)
++		    p[1] = '\0';
++	}
++	strcpy(resolved_name, buf);
++	prefix = realpath(buf, resolved_name);
++	if(prefix == NULL){
++	    prefix = resolved_name;
++	}
++
++	/* Append slash at the end if not exist */
++	p = prefix + strlen(prefix);
++	if((p-prefix)<(MAXPATHLEN-1) && prefix[p-prefix-1] != '/'){
++	   *(p++) = '/';
++	   *(p++) = '\0';
++	}
+ 
+ 	return(makestr(prefix, str, NULL));
+ }
+diff -urN cctools-895.orig/misc/libtool.c cctools-895/misc/libtool.c
+--- cctools-895.orig/misc/libtool.c	2017-08-01 14:19:25.000000000 +0100
++++ cctools-895/misc/libtool.c	2017-08-01 14:19:40.000000000 +0100
+@@ -389,7 +389,7 @@
+ 	    p++;
+ 	else
+ 	    p = argv[0];
+-	if(strncmp(p, "ranlib", sizeof("ranlib") - 1) == 0)
++	if(strstr(p, "ranlib") != NULL)
+ 	    cmd_flags.ranlib = TRUE;
+ 
+ 	/* The default is to used long names */

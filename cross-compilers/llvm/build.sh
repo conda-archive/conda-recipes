@@ -70,7 +70,7 @@ fi
 if [[ ! -e "${SRC_DIR}/llvm_build/tools/clang/tools/c-index-test" ]]; then
     pushd llvm_build
     # TODO: how to add AArch64 here based on conda_build_config.yaml - does case matter?
-    CMAKE_FLAGS="$CMAKE_FLAGS -D LLVM_TARGETS_TO_BUILD:STRING=X86;AArch64"
+    # CMAKE_FLAGS="$CMAKE_FLAGS -D LLVM_TARGETS_TO_BUILD:STRING=X86;AArch64"
     CMAKE_FLAGS="$CMAKE_FLAGS -D CMAKE_BUILD_TYPE:STRING=Release"
     CMAKE_FLAGS="$CMAKE_FLAGS -D CMAKE_INSTALL_PREFIX:PATH=$PREFIX"
     CMAKE_FLAGS="$CMAKE_FLAGS ${SNAPSHOT_MINIMAL:- -DLINK_POLLY_INTO_TOOLS:BOOL=ON}"
@@ -108,10 +108,10 @@ if [[ ! -e "${SRC_DIR}/llvm_build/tools/clang/tools/c-index-test" ]]; then
       --trace-expand \
       ..
     # exit 1
-    # make -j${CPU_COUNT} VERBOSE=1
-    pushd projects/compiler-rt/lib/tsan
-    make -j1 VERBOSE=1
-    exit 1
+    make -j${CPU_COUNT} VERBOSE=1
+    # pushd projects/compiler-rt/lib/tsan
+    # make -j1 VERBOSE=1
+    # exit 1
     # pushd llvm_build/projects/compiler-rt/lib/tsan/
     #   make -j${CPU_COUNT} VERBOSE=1
     #popd
