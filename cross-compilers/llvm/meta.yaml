@@ -26,7 +26,8 @@ source:
     folder: projects/openmp
   - url: http://releases.llvm.org/{{ version }}/polly-{{ version }}.src.tar.xz
     folder: tools/polly
-  - url: https://opensource.apple.com/tarballs/cctools/cctools-{{ version }}.tar.gz
+  - url: https://opensource.apple.com/tarballs/cctools/cctools-{{ cctools_version }}.tar.gz
+    folder: cctools
     sha256: {{ cctools_sha256 }}
     patches:
       - 001-remove_static_part.patch
@@ -75,6 +76,8 @@ requirements:
     # - {{ compiler('c') }}  {{ compiler_ver }}
     # - {{ compiler('cxx') }}  {{ compiler_ver }}
     - cmake
+    - autoconf
+    - automake
 
 outputs:
 

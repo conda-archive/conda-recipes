@@ -100,9 +100,11 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
     popd
   fi
   [[ -d cctools_build ]] || mkdir cctools_build
-  pushd cctools_build
+  pushd cctools
     autoreconf -vfi
-    ./configure \
+  popd
+  pushd cctools_build
+    ../cctools/configure \
       --prefix=${PREFIX} \
       --with-llvm=${PREFIX} \
       --disable-static
