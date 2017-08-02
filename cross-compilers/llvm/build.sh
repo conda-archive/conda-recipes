@@ -1,7 +1,5 @@
 #!/bin/bash
 
-mkdir -p llvm_build
-
 if [[ $(uname) == Darwin ]]; then
 
   # Need to use a more modern clang to bootstrap the build.
@@ -67,54 +65,56 @@ else
   CHOST=$(${CC} -dumpmachine)
 fi
 
-if [[ ! -e "${SRC_DIR}/llvm_build/tools/clang/tools/c-index-test" ]]; then
-    pushd llvm_build
-    # TODO: how to add AArch64 here based on conda_build_config.yaml - does case matter?
-    # CMAKE_FLAGS="$CMAKE_FLAGS -D LLVM_TARGETS_TO_BUILD:STRING=X86;AArch64"
-    CMAKE_FLAGS="$CMAKE_FLAGS -D CMAKE_BUILD_TYPE:STRING=Release"
-    CMAKE_FLAGS="$CMAKE_FLAGS -D CMAKE_INSTALL_PREFIX:PATH=$PREFIX"
-    CMAKE_FLAGS="$CMAKE_FLAGS ${SNAPSHOT_MINIMAL:- -DLINK_POLLY_INTO_TOOLS:BOOL=ON}"
-    CMAKE_FLAGS="$CMAKE_FLAGS -D LLVM_PARALLEL_LINK_JOBS:STRING=1"
-    CMAKE_FLAGS="$CMAKE_FLAGS -D BUILD_SHARED_LIBS:BOOL=ON"
-    CMAKE_FLAGS="$CMAKE_FLAGS -D LLVM_ENABLE_ASSERTIONS:BOOL=ON"
-    if [[ $(uname) == Darwin ]]; then
-      CMAKE_FLAGS="$CMAKE_FLAGS -D CMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET}"
-    fi
-    # CMAKE_FLAGS="$CMAKE_FLAGS -Wdev --debug-output --trace"
-    # I think this is for gold - which Ray says we need MOSTLY_STATIC support in gcc for
-    # CMAKE_FLAGS="$CMAKE_FLAGS -D LLVM_BINUTILS_INCDIR=$PREFIX/lib/gcc/${cpu_arch}-${vendor}-linux-gnu/${compiler_ver}/plugin/include"
-    # cmake -G "Unix Makefiles" $CMAKE_FLAGS ..
+declare -a _cmake_config
+_cmake_config+=(-DCMAKE_INSTALL_PREFIX:PATH=${PREFIX})
+# TODO: how to add AArch64 here based on conda_build_config.yaml - does case matter?
+# _cmake_config+=(-DLLVM_TARGETS_TO_BUILD:STRING=X86;AArch64)
+_cmake_config+=(-DCMAKE_BUILD_TYPE:STRING=Release)
+_cmake_config+=(-DBUILD_SHARED_LIBS:BOOL=ON)
+_cmake_config+=(-DLLVM_ENABLE_ASSERTIONS:BOOL=OFF)
+_cmake_config+=(-DLINK_POLLY_INTO_TOOLS:BOOL=ON)
+# Only valid when using the Ninja Generator AFAICT
+# _cmake_config+=(-DLLVM_PARALLEL_LINK_JOBS:STRING=1)
+# What about cross-compiling targetting Darwin here? Are any of these needed?
+if [[ $(uname) == Darwin ]]; then
+  _cmake_config+=(-DCMAKE_OSX_SYSROOT=${SRC_DIR}/bootstrap/MacOSX${MACOSX_DEPLOYMENT_TARGET}.sdk)
+  _cmake_config+=(-DDARWIN_macosx_CACHED_SYSROOT=${SRC_DIR}/bootstrap/MacOSX${MACOSX_DEPLOYMENT_TARGET}.sdk)
+  _cmake_config+=(-DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET})
+fi
+# I think this is for gold - which Ray says we need MOSTLY_STATIC support in gcc for
+# _cmake_config+=(-DLLVM_BINUTILS_INCDIR=${PREFIX}/lib/gcc/${cpu_arch}-${vendor}-linux-gnu/${compiler_ver}/plugin/include)
 
+# For when the going gets tough
+# _cmake_config+=(-Wdev)
+# _cmake_config+=(--debug-output)
+# _cmake_config+=(--trace-expand)
+# CPU_COUNT=1
 
-# -D CMAKE_BUILD_TYPE:STRING=Release \
-# -D CMAKE_INSTALL_PREFIX:PATH=/Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac \
-# -DLINK_POLLY_INTO_TOOLS:BOOL=ON \
-# -D LLVM_PARALLEL_LINK_JOBS:STRING=1 \
-# -D BUILD_SHARED_LIBS:BOOL=ON \
-# -D LLVM_ENABLE_ASSERTIONS:BOOL=ON \
-# -D CMAKE_OSX_DEPLOYMENT_TARGET= \
-    set -x
-
-    # DCMAKE_OSX_SYSROOT is not needed for compiler-rt (but may be for other parts).
-    # I believe that MacOSX10.9.sdk cannot be used to build compiler-rt, whereas:
-    # -DDARWIN_macosx_CACHED_SYSROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk
-    # .. probably can?
-
-    cmake -G'Unix Makefiles'                                              \
-      -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX}                               \
-      -DCMAKE_OSX_SYSROOT=${SRC_DIR}/bootstrap/MacOSX10.9.sdk             \
-      -DDARWIN_macosx_CACHED_SYSROOT=${SRC_DIR}/bootstrap/MacOSX10.9.sdk  \
-      -DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET}           \
-      --trace-expand \
-      ..
-    # exit 1
-    make -j${CPU_COUNT} VERBOSE=1
-    # pushd projects/compiler-rt/lib/tsan
-    # make -j1 VERBOSE=1
-    # exit 1
-    # pushd llvm_build/projects/compiler-rt/lib/tsan/
-    #   make -j${CPU_COUNT} VERBOSE=1
-    #popd
-    # make -j1 VERBOSE=1
+if [[ ! -f ${PREFIX}/bin/otool ]]; then
+  if [[ ! -e ${PREFIX}/lib/libLTO${SHLIB_EXT} ]]; then
+    [[ -d llvm_lto_build ]] || mkdir llvm_lto_build
+    pushd llvm_lto_build
+      cmake -G'Unix Makefiles' "${_cmake_config[@]}" ..
+      pushd tools/lto
+      make -j${CPU_COUNT} install-LTO
     popd
+  fi
+  [[ -d cctools_build ]] || mkdir cctools_build
+  pushd cctools_build
+    autoreconf -vfi
+    ./configure \
+      --prefix=${PREFIX} \
+      --with-llvm=${PREFIX} \
+      --disable-static
+    make -j${CPU_COUNT} VERBOSE=1
+    make install
+  popd
+fi
+
+if [[ ! -e "${SRC_DIR}/llvm_build/tools/clang/tools/c-index-test" ]]; then
+  [[ -d llvm_build ]] || mkdir llvm_build
+  pushd llvm_build
+    cmake -G'Unix Makefiles' "${_cmake_config[@]}" ..
+    make -j${CPU_COUNT} VERBOSE=1
+  popd
 fi
