@@ -1,6 +1,9 @@
 #!/bin/bash
 
-if [[ $(uname) == Darwin ]]; then
+if [[ $(uname) == Linux ]]; then
+  # Since we have ports of cctools and ld64 we can cross-compile.
+  export MACOSX_DEPLOYMENT_TARGET=10.9
+elif [[ $(uname) == Darwin ]]; then
 
   # Need to use a more modern clang to bootstrap the build.
   PATH=${PWD}/bootstrap/bin:${PATH}
@@ -14,6 +17,8 @@ if [[ $(uname) == Darwin ]]; then
 
   export CXXFLAGS=-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}
   export CFLAGS=-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}
+  SYSROOT_DIR=${SRC_DIR}/bootstrap/MacOSX${MACOSX_DEPLOYMENT_TARGET}.sdk
+  CFLAG_SYSROOT="--sysroot ${SYSROOT_DIR}"
 
   # Still having trouble with atomics in tsan:
   # [ 27%] Building CXX object projects/compiler-rt/lib/tsan/CMakeFiles/clang_rt.tsan_osx_dynamic.dir/rtl/tsan_interceptors_mac.cc.o
@@ -56,7 +61,10 @@ if [[ $(uname) == Darwin ]]; then
   #       __tsan::substitution_OSAtomicIncrement64Barrier in tsan_interceptors_mac.cc.o
   #      (maybe you meant: _wrap_OSAtomicIncrement64Barrier)
   # ld: symbol(s) not found for architecture x86_64
+fi
 
+if [[ ${MACOSX_DEPLOYMENT_TARGET} == 10.9 ]]; then
+  DARWIN_TARGET=x86_64-apple-darwin13.4.0
 fi
 
 if [[ -n ${GCC} ]]; then
@@ -77,14 +85,14 @@ _cmake_config+=(-DLINK_POLLY_INTO_TOOLS:BOOL=ON)
 # _cmake_config+=(-DLLVM_PARALLEL_LINK_JOBS:STRING=1)
 # What about cross-compiling targetting Darwin here? Are any of these needed?
 if [[ $(uname) == Darwin ]]; then
-  _cmake_config+=(-DCMAKE_OSX_SYSROOT=${SRC_DIR}/bootstrap/MacOSX${MACOSX_DEPLOYMENT_TARGET}.sdk)
-  _cmake_config+=(-DDARWIN_macosx_CACHED_SYSROOT=${SRC_DIR}/bootstrap/MacOSX${MACOSX_DEPLOYMENT_TARGET}.sdk)
+  _cmake_config+=(-DCMAKE_OSX_SYSROOT=${SYSROOT_DIR})
+  _cmake_config+=(-DDARWIN_macosx_CACHED_SYSROOT=${SYSROOT_DIR})
   _cmake_config+=(-DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET})
+#elif [[ $(uname) == Linux ]]; then
+#  _cmake_config+=(-DLLVM_BINUTILS_INCDIR=${PREFIX}/lib/gcc/${cpu_arch}-${vendor}-linux-gnu/${compiler_ver}/plugin/include)
 fi
-# I think this is for gold - which Ray says we need MOSTLY_STATIC support in gcc for
-# _cmake_config+=(-DLLVM_BINUTILS_INCDIR=${PREFIX}/lib/gcc/${cpu_arch}-${vendor}-linux-gnu/${compiler_ver}/plugin/include)
 
-# For when the going gets tough
+# For when the going gets tough:
 # _cmake_config+=(-Wdev)
 # _cmake_config+=(--debug-output)
 # _cmake_config+=(--trace-expand)
@@ -105,11 +113,12 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
     autoreconf -vfi
   popd
   pushd cctools_build
-    CC=${CC}" --sysroot ${SRC_DIR}/bootstrap/MacOSX${MACOSX_DEPLOYMENT_TARGET}.sdk" \
-    CXX=$CXX}" --sysroot ${SRC_DIR}/bootstrap/MacOSX${MACOSX_DEPLOYMENT_TARGET}.sdk" \
+    CC=${CC}" ${CFLAG_SYSROOT}" \
+    CXX=${CXX}" ${CFLAG_SYSROOT}" \
       ../cctools/configure \
         --host=$(${CC} -dumpmachine) \
         --build=$(${CC} -dumpmachine) \
+        --target=${DARWIN_TARGET} \
         --prefix=${PREFIX} \
         --with-llvm=${PREFIX} \
         --disable-static

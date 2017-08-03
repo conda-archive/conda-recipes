@@ -71,10 +71,10 @@ requirements:
     #   compiler to build llvm and clang (which are natively cross-compilers.)
     # We might want to split the runtime libs below into a separate recipe,
     #    so that this recipe can use jinja2 instead.
-    # - gcc_{{ native_compiler_subdir }}  {{ compiler_ver }}    [linux]
-    # - gxx_{{ native_compiler_subdir }}  {{ compiler_ver }}    [linux]
-    # - {{ compiler('c') }}  {{ compiler_ver }}
-    # - {{ compiler('cxx') }}  {{ compiler_ver }}
+    - gcc_{{ native_compiler_subdir }}  [linux]
+    - gxx_{{ native_compiler_subdir }}  [linux]
+    # - {{ compiler('c') }}  [linux]
+    # - {{ compiler('cxx') }}  [linux]
     - cmake
     - autoconf
     - automake
@@ -87,8 +87,11 @@ outputs:
       build:
         - autoconf
         - automake
+      host:
+        - libuuid  [linux]
         - {{ pin_subpackage('llvm_' ~ library_type, exact=True) }}
       run:
+        - libuuid  [linux]
         - {{ pin_subpackage('llvm_' ~ library_type, exact=True) }}
 
   - name: llvm_{{library_type}}
