@@ -1,0 +1,92 @@
+{% set version = '4.0.0' %}
+
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-bcp
+  version: {{ version|replace("-", "_") }}
+
+source:
+  fn: bcp_{{ version }}.tar.gz
+  url:
+    - https://cran.r-project.org/src/contrib/bcp_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/bcp/bcp_{{ version }}.tar.gz
+
+
+  sha256: f5b54d26fb09d087cf187dec0bc105a52476bf162b1c5a4a9a9e2929023a6dae
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 0
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: DNAcopy, coda, strucchange, vegan, ggplot2, igraph
+requirements:
+  build:
+    - r-base
+    - r-rcpp >=0.9.2
+    - r-rcpparmadillo
+    - posix                # [win]
+    - {{native}}toolchain  # [win]
+    - gcc                  # [not win]
+
+  run:
+    - r-base
+    - r-rcpp >=0.9.2
+    - r-rcpparmadillo
+    - {{native}}gcc-libs   # [win]
+    - libgcc               # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('bcp')"  # [not win]
+    - "\"%R%\" -e \"library('bcp')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://CRAN.R-project.org/package=bcp
+  license: GPL (>= 2)
+  summary: Provides an implementation of the Barry and Hartigan (1993) product partition model
+    for the normal errors change point problem using Markov Chain Monte Carlo.  It also
+    extends the methodology to regression models on a connected graph (Wang and Emerson,
+    2015); this allows estimation of change point models with multivariate responses.
+    Parallel MCMC, previously available in bcp v.3.0.0, is currently not implemented.
+  license_family: GPL3
+
+# The original CRAN metadata for this package was:
+
+# Package: bcp
+# Type: Package
+# Title: Bayesian Analysis of Change Point Problems
+# Version: 4.0.0
+# Date: 2015-07-14
+# Author: Xiaofei Wang, Chandra Erdman, and John W. Emerson
+# Maintainer: John W. Emerson <john.emerson@yale.edu>
+# Depends: graphics, methods, grid
+# Suggests: DNAcopy, coda, strucchange, vegan, ggplot2, igraph
+# Description: Provides an implementation of the Barry and Hartigan (1993) product partition model for the normal errors change point problem using Markov Chain Monte Carlo.  It also extends the methodology to regression models on a connected graph (Wang and Emerson, 2015); this allows estimation of change point models with multivariate responses. Parallel MCMC, previously available in bcp v.3.0.0, is currently not implemented.
+# License: GPL (>= 2)
+# Imports: Rcpp (>= 0.9.2)
+# LinkingTo: Rcpp, RcppArmadillo
+# NeedsCompilation: yes
+# Packaged: 2015-07-14 23:29:06 UTC; jay
+# Repository: CRAN
+# Date/Publication: 2015-07-15 13:23:42
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
