@@ -96,7 +96,8 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
     pushd llvm_lto_build
       cmake -G'Unix Makefiles' "${_cmake_config[@]}" ..
       pushd tools/lto
-      make -j${CPU_COUNT} install-LTO
+        make -j${CPU_COUNT} install-LTO
+      popd
     popd
   fi
   [[ -d cctools_build ]] || mkdir cctools_build
@@ -104,10 +105,14 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
     autoreconf -vfi
   popd
   pushd cctools_build
-    ../cctools/configure \
-      --prefix=${PREFIX} \
-      --with-llvm=${PREFIX} \
-      --disable-static
+    CC=${CC}" --sysroot ${SRC_DIR}/bootstrap/MacOSX${MACOSX_DEPLOYMENT_TARGET}.sdk" \
+    CXX=$CXX}" --sysroot ${SRC_DIR}/bootstrap/MacOSX${MACOSX_DEPLOYMENT_TARGET}.sdk" \
+      ../cctools/configure \
+        --host=$(${CC} -dumpmachine) \
+        --build=$(${CC} -dumpmachine) \
+        --prefix=${PREFIX} \
+        --with-llvm=${PREFIX} \
+        --disable-static
     make -j${CPU_COUNT} VERBOSE=1
     make install
   popd
