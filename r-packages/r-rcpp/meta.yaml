@@ -15,9 +15,9 @@ source:
 
 
   sha256: bd8cae275bb45cf98f3e3c6e1b5189bdd9c02e74b25241419ed3e4851d859c7f
-  patches:
-    - 0001-Add-CXX1XSTD-to-PKG_CPPFLAGS.patch
-    - 0002-macOS-When-target-lt-10.9-libstdc-supports-only-some.patch
+  # patches:
+  #   - 0001-Add-CXX1XSTD-to-PKG_CPPFLAGS.patch
+  #   - 0002-macOS-When-target-lt-10.9-libstdc-supports-only-some.patch
 
 build:
   # If this is a new build for the same version, increment the build number.
