@@ -4,7 +4,8 @@
 mv DESCRIPTION DESCRIPTION.old
 grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
 
-$R CMD INSTALL --build .
+PKG_CONFIG_PATH=/usr/lib/pkgconfig \
+  $R CMD INSTALL --build .
 
 # Add more build steps here, if they are necessary.
 
