@@ -15,7 +15,8 @@ source:
 
 
   sha256: 693e19e32605f4c66a51b1eb84258a973ac2fe1d2f919b28e66944721aab9ae1
-  # patches:
+  patches:
+   - C++98-rework.patch
    # List any patch files here
    # - fix.patch
 
