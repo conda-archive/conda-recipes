@@ -38,6 +38,7 @@ requirements:
     - r-knitr
     - r-magrittr
     - r-shiny
+    - {{posix}}pkg-config
     - posix                # [win]
     - {{native}}toolchain  # [win]
     - gcc                  # [not win]
