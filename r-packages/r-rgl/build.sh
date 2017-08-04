@@ -4,8 +4,8 @@
 mv DESCRIPTION DESCRIPTION.old
 grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
 
-PKG_CONFIG_PATH=/usr/lib/pkgconfig \
-  $R CMD INSTALL --build .
+DISPLAY=:0 \
+  $R CMD INSTALL --build . --configure-args="--disable-ftgl"
 
 # Add more build steps here, if they are necessary.
 
