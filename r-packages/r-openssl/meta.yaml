@@ -33,13 +33,16 @@ requirements:
   build:
     - r-base
     - posix                # [win]
+    - {{posix}}pkg-config  # [not win]
     - {{native}}toolchain  # [win]
+    - openssl              # [not win]
     - gcc                  # [not win]
 
   run:
     - r-base
     - {{native}}gcc-libs   # [win]
     - libgcc               # [not win]
+    - openssl              # [not win]
 
 test:
   commands:
