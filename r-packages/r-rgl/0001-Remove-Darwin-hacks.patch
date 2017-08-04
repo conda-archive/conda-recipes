@@ -1,0 +1,38 @@
+diff -urN rgl.orig/rgl/configure rgl/rgl/configure
+--- rgl.orig/rgl/configure	2017-08-04 11:19:01.000000000 -0500
++++ rgl/rgl/configure	2017-08-04 11:31:10.000000000 -0500
+@@ -4202,11 +4202,11 @@
+     fi
+     # some X11 installations on OSX 10.5 feature -rpath which doesn't work when used in
+     # conjunction with 10.4u SDK (and is redundant anyway since OS X always uses full paths)
+-    if test rpath`echo "${LIBS}" | sed -n 's/.*-Wl,-rpath,.*/Yes/p' 2>/dev/null` = rpathYes; then
+-      LIBS=`echo "${LIBS}" | sed 's:-Wl,-rpath,[^ ]*::'`
+-    fi
++    # if test rpath`echo "${LIBS}" | sed -n 's/.*-Wl,-rpath,.*/Yes/p' 2>/dev/null` = rpathYes; then
++    #   LIBS=`echo "${LIBS}" | sed 's:-Wl,-rpath,[^ ]*::'`
++    # fi
+     # X11 must come *after* the OpenGL stuff
+-    CPPFLAGS="${CPPFLAGS} -I/opt/X11/include"
++    # CPPFLAGS="${CPPFLAGS} -I/opt/X11/include"
+   fi
+ 
+ ## --- OpenGL ----------------------------------------------------------------
+diff -urN rgl.orig/rgl/configure.ac rgl/rgl/configure.ac
+--- rgl.orig/rgl/configure.ac	2017-08-04 11:19:01.000000000 -0500
++++ rgl/rgl/configure.ac	2017-08-04 11:32:11.000000000 -0500
+@@ -120,11 +120,11 @@
+     fi    
+     # some X11 installations on OSX 10.5 feature -rpath which doesn't work when used in
+     # conjunction with 10.4u SDK (and is redundant anyway since OS X always uses full paths)
+-    if test rpath`echo "${LIBS}" | sed -n 's/.*-Wl,-rpath,.*/Yes/p' 2>/dev/null` = rpathYes; then
+-      LIBS=`echo "${LIBS}" | sed 's:-Wl,-rpath,[[^ ]]*::'`
+-    fi
++    # if test rpath`echo "${LIBS}" | sed -n 's/.*-Wl,-rpath,.*/Yes/p' 2>/dev/null` = rpathYes; then
++    #   LIBS=`echo "${LIBS}" | sed 's:-Wl,-rpath,[[^ ]]*::'`
++    # fi
+     # X11 must come *after* the OpenGL stuff
+-    CPPFLAGS="${CPPFLAGS} -I/opt/X11/include"
++    # CPPFLAGS="${CPPFLAGS} -I/opt/X11/include"
+   fi
+ 
+ ## --- OpenGL ----------------------------------------------------------------
