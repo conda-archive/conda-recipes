@@ -32,15 +32,16 @@ build:
 requirements:
   build:
     - r-base
-    - {{native}}libjpeg-turbo  # [win]
     - jpeg 9*                  # [not win]
+    - gcc                      # [not win]
+    - posix                    # [win]
+    - {{native}}libjpeg-turbo  # [win]
+    - {{native}}toolchain      # [win]
   run:
     - r-base
-    - {{native}}libjpeg-turbo  # [win]
     - jpeg 9*                  # [not win]
-    - posix                # [win]
-    - {{native}}toolchain  # [win]
-    - gcc                  # [not win]
+    - {{native}}libjpeg-turbo  # [win]
+    - {{native}}gcc-libs       # [win]
 
 test:
   commands:
