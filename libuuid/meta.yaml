@@ -1,0 +1,28 @@
+{% set version = "1.0.3" %}
+
+package:
+    name: libuuid
+    version: {{ version }}
+
+source:
+    fn: libuuid-{{ version }}.tar.gz
+    url: ftp://ftp.nersc.no/pub/Aleks/libuuid-{{ version }}.tar.gz
+    sha256: 46af3275291091009ad7f1b899de3d0cea0252737550e7919d17237997db5644
+
+build:
+    number: 1
+    skip: True  # [win]
+
+test:
+    commands:
+        - test -f ${PREFIX}/lib/libuuid.a  # [unix]
+        - conda inspect linkages libuuid  # [unix]
+
+about:
+    home: http://sourceforge.net/projects/libuuid/
+    license: BSD 3-Clause
+    summary: 'Portable uuid C library.'
+
+extra:
+    recipe-maintainers:
+        - ocefpaf

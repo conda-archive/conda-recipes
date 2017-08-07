@@ -78,20 +78,16 @@ requirements:
     - cmake
     - autoconf
     - automake
+    - libuuid
 
 outputs:
 
   - name: cctools
     script: install-cctools.sh
     requirements:
-      build:
-        - autoconf
-        - automake
       host:
-        - libuuid  [linux]
         - {{ pin_subpackage('llvm_' ~ library_type, exact=True) }}
       run:
-        - libuuid  [linux]
         - {{ pin_subpackage('llvm_' ~ library_type, exact=True) }}
 
   - name: llvm_{{library_type}}
@@ -107,7 +103,6 @@ outputs:
     script: install-clang.sh
     requirements:
       build:
-        - cmake
         - {{ pin_subpackage('llvm_' ~ library_type, exact=True) }}
       run:
         - {{ pin_subpackage('llvm_' ~ library_type, exact=True) }}
