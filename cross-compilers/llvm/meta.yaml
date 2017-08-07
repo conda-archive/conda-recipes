@@ -35,6 +35,10 @@ source:
   - url: https://opensource.apple.com/tarballs/tapi/tapi-{{ tapi_version }}.tar.gz
     sha256: {{ tapi_sha256 }}
     folder: projects/tapi
+    patches:
+      - 0001-tapi-llvm-4.0.1-compat-remove-TimeValue-header-include.patch 
+      - 0002-tapi-llvm-4.0.1-compat-add-missing-StringSwitch-include.patch
+      - 0003-tapi-llvm-4.0.1-compat-modernise-error-handling.patch        
   - url: https://opensource.apple.com/tarballs/cctools/cctools-{{ cctools_version }}.tar.gz
     sha256: {{ cctools_sha256 }}
     folder: cctools
