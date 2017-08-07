@@ -67,7 +67,6 @@ source:
     sha256: {{ ld64_sha256 }}
     patches:
       - 100-ld64-add_sdkroot_headers.patch
-      - 101-ld64-remove-sleep.patch
       - 150-ld64-allow_glibc_or_bsd_qsort_r.patch
       - 180-ld64-add_CROSS_SYSROOT.patch
       - 200-ld64-add_typename.patch

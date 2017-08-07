@@ -1,7 +1,7 @@
 diff -urN ld64.orig/src/ld/Options.cpp ld64/src/ld/Options.cpp
---- ld64.orig/src/ld/Options.cpp	2013-10-07 17:09:10.452467263 +0100
-+++ ld64/src/ld/Options.cpp	2013-10-07 17:09:10.635803410 +0100
-@@ -2790,6 +2790,10 @@
+--- ld64.orig/src/ld/Options.cpp	2017-01-20 22:24:09.000000000 +0000
++++ ld64/src/ld/Options.cpp	2017-08-07 16:34:02.035498140 +0100
+@@ -3988,6 +3988,10 @@
  	}
  	int standardLibraryPathsStartIndex = libraryPaths.size();
  	int standardFrameworkPathsStartIndex = frameworkPaths.size();

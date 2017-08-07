@@ -1,6 +1,6 @@
 diff -urN ld64.orig/Makefile.in ld64/Makefile.in
 --- ld64.orig/Makefile.in	1970-01-01 01:00:00.000000000 +0100
-+++ ld64/Makefile.in	2013-11-18 23:05:40.089460657 +0000
++++ ld64/Makefile.in	2017-08-07 16:50:00.560922666 +0100
 @@ -0,0 +1,103 @@
 +builddir        = @builddir@
 +top_builddir    = @top_builddir@
@@ -107,7 +107,7 @@ diff -urN ld64.orig/Makefile.in ld64/Makefile.in
 +	rm -f ld
 diff -urN ld64.orig/Makefile.in.85.2.1 ld64/Makefile.in.85.2.1
 --- ld64.orig/Makefile.in.85.2.1	1970-01-01 01:00:00.000000000 +0100
-+++ ld64/Makefile.in.85.2.1	2013-11-18 23:05:40.089460657 +0000
++++ ld64/Makefile.in.85.2.1	2017-08-07 16:50:00.560922666 +0100
 @@ -0,0 +1,78 @@
 +builddir = @builddir@
 +top_builddir = @top_builddir@
@@ -189,15 +189,7 @@ diff -urN ld64.orig/Makefile.in.85.2.1 ld64/Makefile.in.85.2.1
 +	rm -f ld
 diff -urN ld64.orig/src/ld/configure.h ld64/src/ld/configure.h
 --- ld64.orig/src/ld/configure.h	1970-01-01 01:00:00.000000000 +0100
-+++ ld64/src/ld/configure.h	2013-11-18 23:05:40.181459501 +0000
++++ ld64/src/ld/configure.h	2017-08-07 16:50:00.560922666 +0100
 @@ -0,0 +1,2 @@
 +
-+
-diff -urN ld64.orig/APPLE_LICENSE ld64/APPLE_LICENSE
---- ld64.orig/APPLE_LICENSE	2017-08-07 14:59:07.618348312 +0100
-+++ ld64/APPLE_LICENSE	2017-08-07 14:59:24.975884766 +0100
-@@ -365,3 +365,4 @@
- FITNESS FOR A PARTICULAR PURPOSE, QUIET ENJOYMENT OR NON-INFRINGEMENT.
- Please see the License for the specific language governing rights and
- limitations under the License."
 +
