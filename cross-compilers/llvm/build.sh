@@ -100,7 +100,7 @@ fi
 
 if [[ ! -f ${PREFIX}/bin/otool ]]; then
   if [[ ! -e ${PREFIX}/lib/libLTO${SHLIB_EXT} ]]; then
-    [[ -d llvm_lto_tapi_build ]] || mkdir llvm_lto_build
+    [[ -d llvm_lto_tapi_build ]] || mkdir llvm_lto_tapi_build
     pushd llvm_lto_tapi_build
       cmake -G'Unix Makefiles' "${_cmake_config[@]}" ..
       pushd tools/lto
