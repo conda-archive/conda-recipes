@@ -1,6 +1,6 @@
-diff -urN cctools-895.orig/ar/ar.c cctools-895/ar/ar.c
---- cctools-895.orig/ar/ar.c	2017-08-01 13:57:33.000000000 +0100
-+++ cctools-895/ar/ar.c	2017-08-01 14:17:08.000000000 +0100
+diff -urN cctools.orig/ar/ar.c cctools/ar/ar.c
+--- cctools.orig/ar/ar.c	2017-08-01 13:57:33.000000000 +0100
++++ cctools/ar/ar.c	2017-08-01 14:17:08.000000000 +0100
 @@ -280,7 +280,7 @@
  	if(run_ranlib){
  	    /* run ranlib -f or -q on the archive */
@@ -10,9 +10,9 @@ diff -urN cctools-895.orig/ar/ar.c cctools-895/ar/ar.c
  	    if(options & AR_S)
  		add_execute_list("-f");
  	    else
-diff -urN cctools-895.orig/as/driver.c cctools-895/as/driver.c
---- cctools-895.orig/as/driver.c	2017-08-01 13:57:33.000000000 +0100
-+++ cctools-895/as/driver.c	2017-08-01 14:17:54.000000000 +0100
+diff -urN cctools.orig/as/driver.c cctools/as/driver.c
+--- cctools.orig/as/driver.c	2017-08-01 13:57:33.000000000 +0100
++++ cctools/as/driver.c	2017-08-01 14:17:54.000000000 +0100
 @@ -29,7 +29,7 @@
  {
      const char *LIB = "../libexec/as/";
@@ -22,9 +22,9 @@ diff -urN cctools-895.orig/as/driver.c cctools-895/as/driver.c
  
      int i, j;
      uint32_t count, verbose, run_clang;
-diff -urN cctools-895.orig/misc/libtool.c cctools-895/misc/libtool.c
---- cctools-895.orig/misc/libtool.c	2017-08-01 14:08:16.000000000 +0100
-+++ cctools-895/misc/libtool.c	2017-08-01 14:17:08.000000000 +0100
+diff -urN cctools.orig/misc/libtool.c cctools/misc/libtool.c
+--- cctools.orig/misc/libtool.c	2017-08-01 14:08:16.000000000 +0100
++++ cctools/misc/libtool.c	2017-08-01 14:17:08.000000000 +0100
 @@ -3417,7 +3417,7 @@
  	 */
  	for(i = 0; i < narchs || (i == 0 && narchs == 0); i++){

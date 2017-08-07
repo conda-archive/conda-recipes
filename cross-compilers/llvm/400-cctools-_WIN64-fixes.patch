@@ -1,6 +1,6 @@
-diff -urN cctools-895.orig/as/driver.c cctools-895/as/driver.c
---- cctools-895.orig/as/driver.c	2017-08-01 14:23:25.000000000 +0100
-+++ cctools-895/as/driver.c	2017-08-01 14:44:09.000000000 +0100
+diff -urN cctools.orig/as/driver.c cctools/as/driver.c
+--- cctools.orig/as/driver.c	2017-08-01 14:23:25.000000000 +0100
++++ cctools/as/driver.c	2017-08-01 14:44:09.000000000 +0100
 @@ -209,14 +209,14 @@
  	 */
  	if(arch_name == NULL){
@@ -18,9 +18,9 @@ diff -urN cctools-895.orig/as/driver.c cctools-895/as/driver.c
  		arch_name = arch_flag.name;
  	    }
  	    else
-diff -urN cctools-895.orig/include/mach-o/loader.h cctools-895/include/mach-o/loader.h
---- cctools-895.orig/include/mach-o/loader.h	2017-08-01 13:57:33.000000000 +0100
-+++ cctools-895/include/mach-o/loader.h	2017-08-01 14:44:22.000000000 +0100
+diff -urN cctools.orig/include/mach-o/loader.h cctools/include/mach-o/loader.h
+--- cctools.orig/include/mach-o/loader.h	2017-08-01 13:57:33.000000000 +0100
++++ cctools/include/mach-o/loader.h	2017-08-01 14:44:22.000000000 +0100
 @@ -313,7 +313,7 @@
   */
  union lc_str {
@@ -30,9 +30,9 @@ diff -urN cctools-895.orig/include/mach-o/loader.h cctools-895/include/mach-o/lo
  	char		*ptr;	/* pointer to the string */
  #endif 
  };
-diff -urN cctools-895.orig/include/mach-o/nlist.h cctools-895/include/mach-o/nlist.h
---- cctools-895.orig/include/mach-o/nlist.h	2017-08-01 13:57:33.000000000 +0100
-+++ cctools-895/include/mach-o/nlist.h	2017-08-01 14:44:22.000000000 +0100
+diff -urN cctools.orig/include/mach-o/nlist.h cctools/include/mach-o/nlist.h
+--- cctools.orig/include/mach-o/nlist.h	2017-08-01 13:57:33.000000000 +0100
++++ cctools/include/mach-o/nlist.h	2017-08-01 14:44:22.000000000 +0100
 @@ -75,7 +75,7 @@
   */
  struct nlist {
@@ -42,9 +42,9 @@ diff -urN cctools-895.orig/include/mach-o/nlist.h cctools-895/include/mach-o/nli
  		char *n_name;	/* for use when in-core */
  #endif
  		uint32_t n_strx;	/* index into the string table */
-diff -urN cctools-895.orig/include/mach-o/ranlib.h cctools-895/include/mach-o/ranlib.h
---- cctools-895.orig/include/mach-o/ranlib.h	2017-08-01 13:57:33.000000000 +0100
-+++ cctools-895/include/mach-o/ranlib.h	2017-08-01 14:44:22.000000000 +0100
+diff -urN cctools.orig/include/mach-o/ranlib.h cctools/include/mach-o/ranlib.h
+--- cctools.orig/include/mach-o/ranlib.h	2017-08-01 13:57:33.000000000 +0100
++++ cctools/include/mach-o/ranlib.h	2017-08-01 14:44:22.000000000 +0100
 @@ -58,7 +58,7 @@
  struct	ranlib {
      union {
@@ -54,9 +54,9 @@ diff -urN cctools-895.orig/include/mach-o/ranlib.h cctools-895/include/mach-o/ra
  	char		*ran_name;	/* symbol defined by */
  #endif
      } ran_un;
-diff -urN cctools-895.orig/libstuff/ofile.c cctools-895/libstuff/ofile.c
---- cctools-895.orig/libstuff/ofile.c	2017-08-01 14:43:46.000000000 +0100
-+++ cctools-895/libstuff/ofile.c	2017-08-01 14:46:40.000000000 +0100
+diff -urN cctools.orig/libstuff/ofile.c cctools/libstuff/ofile.c
+--- cctools.orig/libstuff/ofile.c	2017-08-01 14:43:46.000000000 +0100
++++ cctools/libstuff/ofile.c	2017-08-01 14:46:40.000000000 +0100
 @@ -398,7 +398,7 @@
  	     */
  	    if(all_archs == FALSE){

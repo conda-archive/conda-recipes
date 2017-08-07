@@ -1,6 +1,6 @@
-diff -urN cctools-895.orig/libstuff/execute.c cctools-895/libstuff/execute.c
---- cctools-895.orig/libstuff/execute.c	2017-08-01 14:23:25.000000000 +0100
-+++ cctools-895/libstuff/execute.c	2017-08-01 14:42:03.000000000 +0100
+diff -urN cctools.orig/libstuff/execute.c cctools/libstuff/execute.c
+--- cctools.orig/libstuff/execute.c	2017-08-01 14:23:25.000000000 +0100
++++ cctools/libstuff/execute.c	2017-08-01 14:42:03.000000000 +0100
 @@ -25,7 +25,11 @@
  #include <mach/mach.h> /* first to get rid of pre-comp warning */
  #include "stdio.h"

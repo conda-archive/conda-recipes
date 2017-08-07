@@ -1,0 +1,13 @@
+diff -urN ld64.orig/src/ld/ld.cpp ld64/src/ld/ld.cpp
+--- ld64.orig/src/ld/ld.cpp	2013-12-12 16:13:34.301347637 -0500
++++ ld64/src/ld/ld.cpp	2013-12-12 16:13:39.069347468 -0500
+@@ -567,9 +567,6 @@
+ 
+ int main(int argc, const char* argv[])
+ {
+-#if DEBUG
+-	usleep(1000000);
+-#endif
+ 	const char* archName = NULL;
+ 	bool showArch = false;
+ 	bool archInferred = false;

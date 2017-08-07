@@ -1,0 +1,60 @@
+diff -urN ld64.orig/src/ld/InputFiles.cpp ld64/src/ld/InputFiles.cpp
+--- ld64.orig/src/ld/InputFiles.cpp	2013-10-07 17:09:18.769262532 +0100
++++ ld64/src/ld/InputFiles.cpp	2013-10-07 17:09:19.159268568 +0100
+@@ -370,7 +370,7 @@
+ 	if ( trace_file == -1 ) {
+ 		const char *trace_file_path = _options.traceOutputFile();
+ 		if ( trace_file_path != NULL ) {
+-			trace_file = open(trace_file_path, O_WRONLY | O_APPEND | O_CREAT, 0666);
++			trace_file = open(trace_file_path, O_WRONLY | O_APPEND | O_CREAT, FIO_READ_WRITE);
+ 			if ( trace_file == -1 )
+ 				throwf("Could not open or create trace file: %s", trace_file_path);
+ 		}
+diff -urN ld64.orig/src/ld/OutputFile.cpp ld64/src/ld/OutputFile.cpp
+--- ld64.orig/src/ld/OutputFile.cpp	2013-10-07 17:09:18.769262532 +0100
++++ ld64/src/ld/OutputFile.cpp	2013-10-07 17:09:19.159268568 +0100
+@@ -1591,9 +1591,9 @@
+ 	if ( (access(_options.outputFilePath(), F_OK) == 0) && (access(_options.outputFilePath(), W_OK) == -1) )
+ 		throwf("can't write output file: %s", _options.outputFilePath());
+ 
+-	int permissions = 0777;
++	int permissions = FIO_READ_WRITE_EXEC;
+ 	if ( _options.outputKind() == Options::kObjectFile )
+-		permissions = 0666;
++		permissions = FIO_READ_WRITE;
+ 	// Calling unlink first assures the file is gone so that open creates it with correct permissions
+ 	// It also handles the case where __options.outputFilePath() file is not writable but its directory is
+ 	// And it means we don't have to truncate the file when done writing (in case new is smaller than old)
+diff -urN ld64.orig/src/ld/lto_file.hpp ld64/src/ld/lto_file.hpp
+--- ld64.orig/src/ld/lto_file.hpp	2013-10-07 17:09:18.769262532 +0100
++++ ld64/src/ld/lto_file.hpp	2013-10-07 17:09:19.159268568 +0100
+@@ -547,7 +547,7 @@
+         char tempMachoPath[MAXPATHLEN];
+         strcpy(tempMachoPath, outputFilePath);
+         strcat(tempMachoPath, ".lto.o");
+-        int fd = ::open(tempMachoPath, O_CREAT | O_WRONLY | O_TRUNC | O_BINARY, 0666);
++        int fd = ::open(tempMachoPath, O_CREAT | O_WRONLY | O_TRUNC | O_BINARY, FIO_READ_WRITE);
+ 		if ( fd != -1) {
+ 			::write(fd, machOFile, machOFileLen);
+ 			::close(fd);
+diff -urN ld64.orig/src/ld/parsers/lto_file.cpp ld64/src/ld/parsers/lto_file.cpp
+--- ld64.orig/src/ld/parsers/lto_file.cpp	2013-10-07 17:09:18.769262532 +0100
++++ ld64/src/ld/parsers/lto_file.cpp	2013-10-07 17:09:19.155935200 +0100
+@@ -649,7 +649,7 @@
+         char tempMachoPath[MAXPATHLEN];
+         strcpy(tempMachoPath, options.outputFilePath);
+         strcat(tempMachoPath, ".lto.o");
+-        int fd = ::open(tempMachoPath, O_CREAT | O_WRONLY | O_TRUNC | O_BINARY, 0666);
++        int fd = ::open(tempMachoPath, O_CREAT | O_WRONLY | O_TRUNC | O_BINARY, FIO_READ_WRITE);
+ 		if ( fd != -1) {
+ 			::write(fd, machOFile, machOFileLen);
+ 			::close(fd);
+@@ -663,7 +663,7 @@
+ 
+ 	// if needed, save temp mach-o file to specific location
+ 	if ( options.tmpObjectFilePath != NULL ) {
+-		int fd = ::open(options.tmpObjectFilePath, O_CREAT | O_WRONLY | O_TRUNC | O_BINARY, 0666);
++		int fd = ::open(options.tmpObjectFilePath, O_CREAT | O_WRONLY | O_TRUNC | O_BINARY, FIO_READ_WRITE);
+ 		if ( fd != -1) {
+ 			::write(fd, machOFile, machOFileLen);
+ 			::close(fd);

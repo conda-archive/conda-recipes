@@ -1,6 +1,6 @@
-diff -urN cctools-895.orig/as/driver.c cctools-895/as/driver.c
---- cctools-895.orig/as/driver.c	2017-08-01 14:19:25.000000000 +0100
-+++ cctools-895/as/driver.c	2017-08-01 14:21:49.000000000 +0100
+diff -urN cctools.orig/as/driver.c cctools/as/driver.c
+--- cctools.orig/as/driver.c	2017-08-01 14:19:25.000000000 +0100
++++ cctools/as/driver.c	2017-08-01 14:21:49.000000000 +0100
 @@ -55,17 +55,29 @@
  	 */
  	bufsize = MAXPATHLEN;
@@ -42,9 +42,9 @@ diff -urN cctools-895.orig/as/driver.c cctools-895/as/driver.c
  	/*
  	 * Process the assembler flags exactly like the assembler would (except
  	 * let the assembler complain about multiple flags, bad combinations of
-diff -urN cctools-895.orig/libstuff/execute.c cctools-895/libstuff/execute.c
---- cctools-895.orig/libstuff/execute.c	2017-08-01 13:57:33.000000000 +0100
-+++ cctools-895/libstuff/execute.c	2017-08-01 14:19:40.000000000 +0100
+diff -urN cctools.orig/libstuff/execute.c cctools/libstuff/execute.c
+--- cctools.orig/libstuff/execute.c	2017-08-01 13:57:33.000000000 +0100
++++ cctools/libstuff/execute.c	2017-08-01 14:19:40.000000000 +0100
 @@ -165,10 +165,23 @@
  	    p = allocate(bufsize);
  	    _NSGetExecutablePath(p, &bufsize);
@@ -73,9 +73,9 @@ diff -urN cctools-895.orig/libstuff/execute.c cctools-895/libstuff/execute.c
  
  	return(makestr(prefix, str, NULL));
  }
-diff -urN cctools-895.orig/misc/libtool.c cctools-895/misc/libtool.c
---- cctools-895.orig/misc/libtool.c	2017-08-01 14:19:25.000000000 +0100
-+++ cctools-895/misc/libtool.c	2017-08-01 14:19:40.000000000 +0100
+diff -urN cctools.orig/misc/libtool.c cctools/misc/libtool.c
+--- cctools.orig/misc/libtool.c	2017-08-01 14:19:25.000000000 +0100
++++ cctools/misc/libtool.c	2017-08-01 14:19:40.000000000 +0100
 @@ -389,7 +389,7 @@
  	    p++;
  	else

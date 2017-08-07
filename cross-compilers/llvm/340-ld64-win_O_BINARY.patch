@@ -1,0 +1,114 @@
+diff -urN ld64.orig/src/ld/Options.cpp ld64/src/ld/Options.cpp
+--- ld64.orig/src/ld/Options.cpp	2013-10-07 17:09:18.085918632 +0100
++++ ld64/src/ld/Options.cpp	2013-10-07 17:09:18.455924360 +0100
+@@ -348,7 +348,7 @@
+ void Options::loadSymbolOrderFile(const char* fileOfExports, NameToOrder& orderMapping)
+ {
+ 	// read in whole file
+-	int fd = ::open(fileOfExports, O_RDONLY, 0);
++	int fd = ::open(fileOfExports, O_RDONLY|O_BINARY, 0);
+ 	if ( fd == -1 )
+ 		throwf("can't open -exported_symbols_order file: %s", fileOfExports);
+ 	struct stat stat_buf;
+@@ -1109,7 +1109,7 @@
+ 	if ( fileOfExports == NULL )
+ 		throwf("missing file after %s", option);
+ 	// read in whole file
+-	int fd = ::open(fileOfExports, O_RDONLY, 0);
++	int fd = ::open(fileOfExports, O_RDONLY|O_BINARY, 0);
+ 	if ( fd == -1 )
+ 		throwf("can't open %s file: %s", option, fileOfExports);
+ 	struct stat stat_buf;
+@@ -1179,7 +1179,7 @@
+ void Options::parseAliasFile(const char* fileOfAliases)
+ {
+ 	// read in whole file
+-	int fd = ::open(fileOfAliases, O_RDONLY, 0);
++	int fd = ::open(fileOfAliases, O_RDONLY|O_BINARY, 0);
+ 	if ( fd == -1 )
+ 		throwf("can't open alias file: %s", fileOfAliases);
+ 	struct stat stat_buf;
+@@ -1527,7 +1527,7 @@
+ 	fAutoOrderInitializers = false;
+ 
+ 	// read in whole file
+-	int fd = ::open(path, O_RDONLY, 0);
++	int fd = ::open(path, O_RDONLY|O_BINARY, 0);
+ 	if ( fd == -1 )
+ 		throwf("can't open order file: %s", path);
+ 	struct stat stat_buf;
+@@ -1657,7 +1657,7 @@
+ 	}
+ 
+ 	// read in whole file
+-	int fd = ::open(path, O_RDONLY, 0);
++	int fd = ::open(path, O_RDONLY|O_BINARY, 0);
+ 	if ( fd == -1 )
+ 		throwf("can't open -sectcreate file: %s", path);
+ 	struct stat stat_buf;
+diff -urN ld64.orig/src/ld/OutputFile.cpp ld64/src/ld/OutputFile.cpp
+--- ld64.orig/src/ld/OutputFile.cpp	2013-10-07 17:09:18.089252010 +0100
++++ ld64/src/ld/OutputFile.cpp	2013-10-07 17:09:18.459257738 +0100
+@@ -1714,7 +1714,7 @@
+ 	}
+ 
+ 	// write whole output file in one chunk
+-	int fd = open(_options.outputFilePath(), O_CREAT | O_WRONLY | O_TRUNC, permissions);
++	int fd = open(_options.outputFilePath(), O_CREAT | O_WRONLY | O_TRUNC | O_BINARY, permissions);
+ 	if ( fd == -1 ) 
+ 		throwf("can't open output file for writing: %s, errno=%d", _options.outputFilePath(), errno);
+ 	if ( ::pwrite(fd, wholeBuffer, _fileSize, 0) == -1 )
+diff -urN ld64.orig/src/ld/lto_file.hpp ld64/src/ld/lto_file.hpp
+--- ld64.orig/src/ld/lto_file.hpp	2013-10-07 17:09:18.089252010 +0100
++++ ld64/src/ld/lto_file.hpp	2013-10-07 17:09:18.459257738 +0100
+@@ -547,7 +547,7 @@
+         char tempMachoPath[MAXPATHLEN];
+         strcpy(tempMachoPath, outputFilePath);
+         strcat(tempMachoPath, ".lto.o");
+-        int fd = ::open(tempMachoPath, O_CREAT | O_WRONLY | O_TRUNC, 0666);
++        int fd = ::open(tempMachoPath, O_CREAT | O_WRONLY | O_TRUNC | O_BINARY, 0666);
+ 		if ( fd != -1) {
+ 			::write(fd, machOFile, machOFileLen);
+ 			::close(fd);
+diff -urN ld64.orig/src/ld/parsers/lto_file.cpp ld64/src/ld/parsers/lto_file.cpp
+--- ld64.orig/src/ld/parsers/lto_file.cpp	2013-10-07 17:09:18.089252010 +0100
++++ ld64/src/ld/parsers/lto_file.cpp	2013-10-07 17:09:18.455924360 +0100
+@@ -649,7 +649,7 @@
+         char tempMachoPath[MAXPATHLEN];
+         strcpy(tempMachoPath, options.outputFilePath);
+         strcat(tempMachoPath, ".lto.o");
+-        int fd = ::open(tempMachoPath, O_CREAT | O_WRONLY | O_TRUNC, 0666);
++        int fd = ::open(tempMachoPath, O_CREAT | O_WRONLY | O_TRUNC | O_BINARY, 0666);
+ 		if ( fd != -1) {
+ 			::write(fd, machOFile, machOFileLen);
+ 			::close(fd);
+@@ -663,7 +663,7 @@
+ 
+ 	// if needed, save temp mach-o file to specific location
+ 	if ( options.tmpObjectFilePath != NULL ) {
+-		int fd = ::open(options.tmpObjectFilePath, O_CREAT | O_WRONLY | O_TRUNC, 0666);
++		int fd = ::open(options.tmpObjectFilePath, O_CREAT | O_WRONLY | O_TRUNC | O_BINARY, 0666);
+ 		if ( fd != -1) {
+ 			::write(fd, machOFile, machOFileLen);
+ 			::close(fd);
+diff -urN ld64.orig/src/other/rebase.cpp ld64/src/other/rebase.cpp
+--- ld64.orig/src/other/rebase.cpp	2013-10-07 17:09:18.085918632 +0100
++++ ld64/src/other/rebase.cpp	2013-10-07 17:09:18.452590935 +0100
+@@ -122,7 +122,7 @@
+  : fMappingAddress(0), fFileSize(0)
+ {
+ 	// map in whole file
+-	int fd = ::open(path, (writable ? O_RDWR : O_RDONLY), 0);
++	int fd = ::open(path, (writable ? O_RDWR|O_BINARY : O_RDONLY|O_BINARY), 0);
+ 	if ( fd == -1 )
+ 		throwf("can't open file %s, errno=%d", path, errno);
+ 	struct stat stat_buf;
+@@ -782,7 +782,7 @@
+ 		
+ 	// create new file with all same permissions to hold copy of dylib 
+ 	::unlink(dstFile);
+-	int dst = open(dstFile, O_CREAT | O_RDWR | O_TRUNC, stat_buf.st_mode);	
++	int dst = open(dstFile, O_CREAT | O_RDWR | O_TRUNC | O_BINARY, stat_buf.st_mode);	
+ 	if ( dst == -1 )
+ 		throwf("can't create temp file %s, errnor=%d", dstFile, errno);
+ 

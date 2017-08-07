@@ -1,6 +1,6 @@
-diff -urN cctools-895.orig/ar/append.c cctools-895/ar/append.c
---- cctools-895.orig/ar/append.c	2017-08-01 18:57:04.000000000 +0100
-+++ cctools-895/ar/append.c	2017-08-01 18:57:17.000000000 +0100
+diff -urN cctools.orig/ar/append.c cctools/ar/append.c
+--- cctools.orig/ar/append.c	2017-08-01 18:57:04.000000000 +0100
++++ cctools/ar/append.c	2017-08-01 18:57:17.000000000 +0100
 @@ -93,7 +93,7 @@
  	CF cf;
  	struct stat sb;
@@ -10,9 +10,9 @@ diff -urN cctools-895.orig/ar/append.c cctools-895/ar/append.c
  	if (lseek(afd, (off_t)0, SEEK_END) == (off_t)-1)
  		error(archive);
  
-diff -urN cctools-895.orig/ar/archive.c cctools-895/ar/archive.c
---- cctools-895.orig/ar/archive.c	2017-08-01 18:57:04.000000000 +0100
-+++ cctools-895/ar/archive.c	2017-08-01 18:57:17.000000000 +0100
+diff -urN cctools.orig/ar/archive.c cctools/ar/archive.c
+--- cctools.orig/ar/archive.c	2017-08-01 18:57:04.000000000 +0100
++++ cctools/ar/archive.c	2017-08-01 18:57:17.000000000 +0100
 @@ -100,7 +100,7 @@
  	created = 0;
  	if (mode & O_CREAT) {
@@ -31,9 +31,9 @@ diff -urN cctools-895.orig/ar/archive.c cctools-895/ar/archive.c
  		error(archive);
  
  	if((mode & O_ACCMODE) == O_RDONLY)
-diff -urN cctools-895.orig/ar/extract.c cctools-895/ar/extract.c
---- cctools-895.orig/ar/extract.c	2017-08-01 18:57:04.000000000 +0100
-+++ cctools-895/ar/extract.c	2017-08-01 18:57:17.000000000 +0100
+diff -urN cctools.orig/ar/extract.c cctools/ar/extract.c
+--- cctools.orig/ar/extract.c	2017-08-01 18:57:04.000000000 +0100
++++ cctools/ar/extract.c	2017-08-01 18:57:17.000000000 +0100
 @@ -117,7 +117,7 @@
  		    sb.st_mtime > chdr.date)
  			continue;
@@ -43,9 +43,9 @@ diff -urN cctools-895.orig/ar/extract.c cctools-895/ar/extract.c
  			warn("%s", file);
  			skip_arobj(afd);
  			eval = 1;
-diff -urN cctools-895.orig/ar/replace.c cctools-895/ar/replace.c
---- cctools-895.orig/ar/replace.c	2017-08-01 18:57:04.000000000 +0100
-+++ cctools-895/ar/replace.c	2017-08-01 18:57:17.000000000 +0100
+diff -urN cctools.orig/ar/replace.c cctools/ar/replace.c
+--- cctools.orig/ar/replace.c	2017-08-01 18:57:04.000000000 +0100
++++ cctools/ar/replace.c	2017-08-01 18:57:17.000000000 +0100
 @@ -104,7 +104,7 @@
  	 * a race here, but it's pretty short, and not worth fixing.
  	 */
@@ -73,9 +73,9 @@ diff -urN cctools-895.orig/ar/replace.c cctools-895/ar/replace.c
  			errflg = 1;
  			warn("%s", file);
  			continue;
-diff -urN cctools-895.orig/as/write_object.c cctools-895/as/write_object.c
---- cctools-895.orig/as/write_object.c	2017-08-01 18:57:04.000000000 +0100
-+++ cctools-895/as/write_object.c	2017-08-01 18:57:17.000000000 +0100
+diff -urN cctools.orig/as/write_object.c cctools/as/write_object.c
+--- cctools.orig/as/write_object.c	2017-08-01 18:57:04.000000000 +0100
++++ cctools/as/write_object.c	2017-08-01 18:57:17.000000000 +0100
 @@ -633,7 +633,7 @@
  	    if(stat_buf.st_mode & S_IFREG)
  		(void)unlink(out_file_name);
@@ -85,9 +85,9 @@ diff -urN cctools-895.orig/as/write_object.c cctools-895/as/write_object.c
  	    as_fatal("can't create output file: %s", out_file_name);
  	if(write(fd, output_addr, output_size) != (int)output_size)
  	    as_fatal("can't write output file");
-diff -urN cctools-895.orig/efitools/makerelocs.c cctools-895/efitools/makerelocs.c
---- cctools-895.orig/efitools/makerelocs.c	2017-08-01 18:57:04.000000000 +0100
-+++ cctools-895/efitools/makerelocs.c	2017-08-01 18:57:24.000000000 +0100
+diff -urN cctools.orig/efitools/makerelocs.c cctools/efitools/makerelocs.c
+--- cctools.orig/efitools/makerelocs.c	2017-08-01 18:57:04.000000000 +0100
++++ cctools/efitools/makerelocs.c	2017-08-01 18:57:24.000000000 +0100
 @@ -444,7 +444,7 @@
  	       (nbase_reloc + 1) * sizeof(struct base_relocation_entry);
  	fb = malloc(size);
@@ -97,9 +97,9 @@ diff -urN cctools-895.orig/efitools/makerelocs.c cctools-895/efitools/makerelocs
  	if(f == -1){
  	    fatal("open output file");
  	}
-diff -urN cctools-895.orig/efitools/mtoc.c cctools-895/efitools/mtoc.c
---- cctools-895.orig/efitools/mtoc.c	2017-08-01 18:57:04.000000000 +0100
-+++ cctools-895/efitools/mtoc.c	2017-08-01 18:57:24.000000000 +0100
+diff -urN cctools.orig/efitools/mtoc.c cctools/efitools/mtoc.c
+--- cctools.orig/efitools/mtoc.c	2017-08-01 18:57:04.000000000 +0100
++++ cctools/efitools/mtoc.c	2017-08-01 18:57:24.000000000 +0100
 @@ -1650,7 +1650,7 @@
  	/*
  	 * Create the pecoff file and write the buffer to the file.
@@ -109,9 +109,9 @@ diff -urN cctools-895.orig/efitools/mtoc.c cctools-895/efitools/mtoc.c
  	if(f == -1)
  	    system_fatal("Can't create output file: %s", out);
  
-diff -urN cctools-895.orig/ld/rld.c cctools-895/ld/rld.c
---- cctools-895.orig/ld/rld.c	2017-08-01 18:57:04.000000000 +0100
-+++ cctools-895/ld/rld.c	2017-08-01 18:57:24.000000000 +0100
+diff -urN cctools.orig/ld/rld.c cctools/ld/rld.c
+--- cctools.orig/ld/rld.c	2017-08-01 18:57:04.000000000 +0100
++++ cctools/ld/rld.c	2017-08-01 18:57:24.000000000 +0100
 @@ -629,7 +629,7 @@
  			  sizeof(struct nlist) +
  			  output_symtab_info.symtab_command.strsize;
@@ -130,9 +130,9 @@ diff -urN cctools-895.orig/ld/rld.c cctools-895/ld/rld.c
  		      0666)) == -1){
  	    system_error("can't create output file: %s", output_filename);
  	    return_value = 0;
-diff -urN cctools-895.orig/libstuff/ofile.c cctools-895/libstuff/ofile.c
---- cctools-895.orig/libstuff/ofile.c	2017-08-01 18:57:04.000000000 +0100
-+++ cctools-895/libstuff/ofile.c	2017-08-01 18:57:30.000000000 +0100
+diff -urN cctools.orig/libstuff/ofile.c cctools/libstuff/ofile.c
+--- cctools.orig/libstuff/ofile.c	2017-08-01 18:57:04.000000000 +0100
++++ cctools/libstuff/ofile.c	2017-08-01 18:57:30.000000000 +0100
 @@ -847,7 +847,7 @@
  	memset(ofile, '\0', sizeof(struct ofile));
  
@@ -142,9 +142,9 @@ diff -urN cctools-895.orig/libstuff/ofile.c cctools-895/libstuff/ofile.c
  #ifdef OFI
  	    return(NSObjectFileImageAccess);
  #else
-diff -urN cctools-895.orig/libstuff/writeout.c cctools-895/libstuff/writeout.c
---- cctools-895.orig/libstuff/writeout.c	2017-08-01 18:57:04.000000000 +0100
-+++ cctools-895/libstuff/writeout.c	2017-08-01 18:57:30.000000000 +0100
+diff -urN cctools.orig/libstuff/writeout.c cctools/libstuff/writeout.c
+--- cctools.orig/libstuff/writeout.c	2017-08-01 18:57:04.000000000 +0100
++++ cctools/libstuff/writeout.c	2017-08-01 18:57:30.000000000 +0100
 @@ -154,7 +154,7 @@
  	else
  	    fsync = 0;
@@ -154,9 +154,9 @@ diff -urN cctools-895.orig/libstuff/writeout.c cctools-895/libstuff/writeout.c
                  system_error("can't create output file: %s", output);
                  goto cleanup;
              }
-diff -urN cctools-895.orig/misc/libtool.c cctools-895/misc/libtool.c
---- cctools-895.orig/misc/libtool.c	2017-08-01 18:57:04.000000000 +0100
-+++ cctools-895/misc/libtool.c	2017-08-01 18:57:30.000000000 +0100
+diff -urN cctools.orig/misc/libtool.c cctools/misc/libtool.c
+--- cctools.orig/misc/libtool.c	2017-08-01 18:57:04.000000000 +0100
++++ cctools/misc/libtool.c	2017-08-01 18:57:30.000000000 +0100
 @@ -2553,7 +2553,7 @@
  	    if(same_toc == FALSE)
  		p = put_toc_member(p, archs+0, host_byte_sex, target_byte_sex);
@@ -193,9 +193,9 @@ diff -urN cctools-895.orig/misc/libtool.c cctools-895/misc/libtool.c
  			if(trace_file == -1)
  				error("Could not open or create trace file: %s\n", cmd_flags.trace_file_path);
  		}
-diff -urN cctools-895.orig/misc/lipo.c cctools-895/misc/lipo.c
---- cctools-895.orig/misc/lipo.c	2017-08-01 18:57:04.000000000 +0100
-+++ cctools-895/misc/lipo.c	2017-08-01 18:59:12.000000000 +0100
+diff -urN cctools.orig/misc/lipo.c cctools/misc/lipo.c
+--- cctools.orig/misc/lipo.c	2017-08-01 18:57:04.000000000 +0100
++++ cctools/misc/lipo.c	2017-08-01 18:59:12.000000000 +0100
 @@ -587,7 +587,7 @@
  		   (thin_files[i].cpusubtype & ~CPU_SUBTYPE_MASK) ==
  		   (thin_arch_flag.cpusubtype & ~CPU_SUBTYPE_MASK)){
@@ -214,9 +214,9 @@ diff -urN cctools-895.orig/misc/lipo.c cctools-895/misc/lipo.c
  		      output_filemode)) == -1)
  	    system_fatal("can't create temporary output file: %s", rename_file);
  
-diff -urN cctools-895.orig/misc/segedit.c cctools-895/misc/segedit.c
---- cctools-895.orig/misc/segedit.c	2017-08-01 18:57:04.000000000 +0100
-+++ cctools-895/misc/segedit.c	2017-08-01 18:57:30.000000000 +0100
+diff -urN cctools.orig/misc/segedit.c cctools/misc/segedit.c
+--- cctools.orig/misc/segedit.c	2017-08-01 18:57:04.000000000 +0100
++++ cctools/misc/segedit.c	2017-08-01 18:57:30.000000000 +0100
 @@ -249,7 +249,7 @@
      struct symseg_command *ssp;
  
@@ -262,9 +262,9 @@ diff -urN cctools-895.orig/misc/segedit.c cctools-895/misc/segedit.c
  				system_fatal("can't open file: %s to replace "
  					 "section (%s,%s) with", rp->filename,
  					 rp->segname, rp->sectname);
-diff -urN cctools-895.orig/misc/strip.c cctools-895/misc/strip.c
---- cctools-895.orig/misc/strip.c	2017-08-01 18:57:04.000000000 +0100
-+++ cctools-895/misc/strip.c	2017-08-01 18:57:30.000000000 +0100
+diff -urN cctools.orig/misc/strip.c cctools/misc/strip.c
+--- cctools.orig/misc/strip.c	2017-08-01 18:57:04.000000000 +0100
++++ cctools/misc/strip.c	2017-08-01 18:57:30.000000000 +0100
 @@ -718,7 +718,7 @@
  		 * the current working directory to that path.
  		 */

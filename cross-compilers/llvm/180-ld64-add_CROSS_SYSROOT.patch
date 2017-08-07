@@ -1,0 +1,14 @@
+diff -urN ld64.orig/src/ld/Options.cpp ld64/src/ld/Options.cpp
+--- ld64.orig/src/ld/Options.cpp	2013-10-07 17:09:10.452467263 +0100
++++ ld64/src/ld/Options.cpp	2013-10-07 17:09:10.635803410 +0100
+@@ -2790,6 +2790,10 @@
+ 	}
+ 	int standardLibraryPathsStartIndex = libraryPaths.size();
+ 	int standardFrameworkPathsStartIndex = frameworkPaths.size();
++#ifdef CROSS_SYSROOT
++	if(fSDKPaths.size() == 0)
++		fSDKPaths.push_back(CROSS_SYSROOT);
++#endif
+ 	if ( addStandardLibraryDirectories ) {
+ 		libraryPaths.push_back("/usr/lib");
+ 		libraryPaths.push_back("/usr/local/lib");
