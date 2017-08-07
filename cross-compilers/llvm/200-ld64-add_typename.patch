@@ -1,0 +1,62 @@
+diff -urN ld64.orig/src/ld/parsers/macho_relocatable_file.cpp ld64/src/ld/parsers/macho_relocatable_file.cpp
+--- ld64.orig/src/ld/parsers/macho_relocatable_file.cpp	2013-10-07 17:09:11.455816067 +0100
++++ ld64/src/ld/parsers/macho_relocatable_file.cpp	2013-10-07 17:09:11.625818720 +0100
+@@ -60,6 +60,13 @@
+ extern void throwf(const char* format, ...) __attribute__ ((noreturn,format(printf, 1, 2)));
+ extern void warning(const char* format, ...) __attribute__((format(printf, 1, 2)));
+ 
++// Work around for an old compiler bug.
++#if (__GNUC__>=4) && (__GNUC_MINOR__>=5)
++ #define _TYPENAME typename
++#else
++ #define _TYPENAME
++#endif
++
+ namespace mach_o {
+ namespace relocatable {
+ 
+@@ -3769,7 +3776,7 @@
+ 
+ template <>
+ void CFISection<x86_64>::cfiParse(class Parser<x86_64>& parser, uint8_t* buffer, 
+-									libunwind::CFI_Atom_Info<CFISection<x86_64>::OAS>::CFI_Atom_Info cfiArray[], 
++									_TYPENAME libunwind::CFI_Atom_Info<CFISection<x86_64>::OAS>::CFI_Atom_Info cfiArray[],
+ 									uint32_t count)
+ {
+ 	// copy __eh_frame data to buffer
+@@ -3831,7 +3838,7 @@
+ 
+ template <>
+ void CFISection<x86>::cfiParse(class Parser<x86>& parser, uint8_t* buffer, 
+-									libunwind::CFI_Atom_Info<CFISection<x86>::OAS>::CFI_Atom_Info cfiArray[], 
++									_TYPENAME libunwind::CFI_Atom_Info<CFISection<x86>::OAS>::CFI_Atom_Info cfiArray[],
+ 									uint32_t count)
+ {
+ 	// create ObjectAddressSpace object for use by libunwind
+@@ -3850,7 +3857,7 @@
+ // need to change libunwind parseCFIs() to work for ppc
+ template <>
+ void CFISection<ppc>::cfiParse(class Parser<ppc>& parser, uint8_t* buffer, 
+-									libunwind::CFI_Atom_Info<CFISection<ppc>::OAS>::CFI_Atom_Info cfiArray[], 
++									_TYPENAME libunwind::CFI_Atom_Info<CFISection<ppc>::OAS>::CFI_Atom_Info cfiArray[],
+ 									uint32_t count)
+ {
+ 	// create ObjectAddressSpace object for use by libunwind
+@@ -3867,7 +3874,7 @@
+ 
+ template <>
+ void CFISection<ppc64>::cfiParse(class Parser<ppc64>& parser, uint8_t* buffer, 
+-									libunwind::CFI_Atom_Info<CFISection<ppc64>::OAS>::CFI_Atom_Info cfiArray[], 
++									_TYPENAME libunwind::CFI_Atom_Info<CFISection<ppc64>::OAS>::CFI_Atom_Info cfiArray[],
+ 									uint32_t count)
+ {
+ 	// libunwind does not support ppc64
+@@ -3876,7 +3883,7 @@
+ 
+ template <>
+ void CFISection<arm>::cfiParse(class Parser<arm>& parser, uint8_t* buffer, 
+-									libunwind::CFI_Atom_Info<CFISection<arm>::OAS>::CFI_Atom_Info cfiArray[], 
++									_TYPENAME libunwind::CFI_Atom_Info<CFISection<arm>::OAS>::CFI_Atom_Info cfiArray[],
+ 									uint32_t count)
+ {
+ 	// arm does not use zero cost exceptions

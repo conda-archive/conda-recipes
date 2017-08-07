@@ -1,15 +1,15 @@
-diff -urN cctools-895.orig/as/app.h cctools-895/as/app.h
---- cctools-895.orig/as/app.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/as/app.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/as/app.h cctools/as/app.h
+--- cctools.orig/as/app.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/as/app.h	2017-08-01 13:54:10.000000000 +0100
 @@ -1,4 +1,4 @@
 -#import <stdio.h>
 +#include <stdio.h>
  
  extern FILE *scrub_file;
  extern char *scrub_string;
-diff -urN cctools-895.orig/as/as.h cctools-895/as/as.h
---- cctools-895.orig/as/as.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/as/as.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/as/as.h cctools/as/as.h
+--- cctools.orig/as/as.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/as/as.h	2017-08-01 13:54:10.000000000 +0100
 @@ -58,9 +58,9 @@
  
  /* These #imports are for type definitions etc. */
@@ -23,18 +23,18 @@ diff -urN cctools-895.orig/as/as.h cctools-895/as/as.h
  
  /* These defines are potentially useful */
  #undef FALSE
-diff -urN cctools-895.orig/as/atof-ieee.h cctools-895/as/atof-ieee.h
---- cctools-895.orig/as/atof-ieee.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/as/atof-ieee.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/as/atof-ieee.h cctools/as/atof-ieee.h
+--- cctools.orig/as/atof-ieee.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/as/atof-ieee.h	2017-08-01 13:54:10.000000000 +0100
 @@ -1,4 +1,4 @@
 -#import "flonum.h"
 +#include "flonum.h"
  
  extern char *atof_ieee(
      char *str,
-diff -urN cctools-895.orig/as/expr.h cctools-895/as/expr.h
---- cctools-895.orig/as/expr.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/as/expr.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/as/expr.h cctools/as/expr.h
+--- cctools.orig/as/expr.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/as/expr.h	2017-08-01 13:54:10.000000000 +0100
 @@ -20,9 +20,9 @@
  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.  */
  
@@ -48,9 +48,9 @@ diff -urN cctools-895.orig/as/expr.h cctools-895/as/expr.h
  
  enum {
    /* FROM expr.h line 46 */
-diff -urN cctools-895.orig/as/flonum.h cctools-895/as/flonum.h
---- cctools-895.orig/as/flonum.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/as/flonum.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/as/flonum.h cctools/as/flonum.h
+--- cctools.orig/as/flonum.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/as/flonum.h	2017-08-01 13:54:10.000000000 +0100
 @@ -34,7 +34,7 @@
  *									*
  \***********************************************************************/
@@ -60,9 +60,9 @@ diff -urN cctools-895.orig/as/flonum.h cctools-895/as/flonum.h
  
  /***********************************************************************\
  *									*
-diff -urN cctools-895.orig/as/frags.h cctools-895/as/frags.h
---- cctools-895.orig/as/frags.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/as/frags.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/as/frags.h cctools/as/frags.h
+--- cctools.orig/as/frags.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/as/frags.h	2017-08-01 13:54:10.000000000 +0100
 @@ -19,9 +19,9 @@
  along with GAS; see the file COPYING.  If not, write to
  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.  */
@@ -76,9 +76,9 @@ diff -urN cctools-895.orig/as/frags.h cctools-895/as/frags.h
  
  /*
   * A code fragment (frag) is some known number of chars, followed by some
-diff -urN cctools-895.orig/as/md.h cctools-895/as/md.h
---- cctools-895.orig/as/md.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/as/md.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/as/md.h cctools/as/md.h
+--- cctools.orig/as/md.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/as/md.h	2017-08-01 13:54:10.000000000 +0100
 @@ -19,13 +19,13 @@
  in a file named COPYING.  Among other things, the copyright
  notice and this notice must be preserved on all copies.  */
@@ -100,9 +100,9 @@ diff -urN cctools-895.orig/as/md.h cctools-895/as/md.h
  
  /* These are the default cputype and cpusubtype for this target MACHINE */
  extern const cpu_type_t md_cputype;
-diff -urN cctools-895.orig/as/read.h cctools-895/as/read.h
---- cctools-895.orig/as/read.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/as/read.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/as/read.h cctools/as/read.h
+--- cctools.orig/as/read.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/as/read.h	2017-08-01 13:54:10.000000000 +0100
 @@ -19,7 +19,7 @@
  along with GAS; see the file COPYING.  If not, write to
  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.  */
@@ -112,9 +112,9 @@ diff -urN cctools-895.orig/as/read.h cctools-895/as/read.h
  
  /* Define to make whitespace be allowed in many syntactically
     unnecessary places.  Normally undefined.  For compatibility with
-diff -urN cctools-895.orig/as/struc-symbol.h cctools-895/as/struc-symbol.h
---- cctools-895.orig/as/struc-symbol.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/as/struc-symbol.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/as/struc-symbol.h cctools/as/struc-symbol.h
+--- cctools.orig/as/struc-symbol.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/as/struc-symbol.h	2017-08-01 13:54:10.000000000 +0100
 @@ -21,7 +21,7 @@
  
  #ifdef NeXT_MOD
@@ -124,9 +124,9 @@ diff -urN cctools-895.orig/as/struc-symbol.h cctools-895/as/struc-symbol.h
  #else /* !defined(NeXT_MOD) */
  #ifndef		VMS
  #include "a.out.h"		/* Needed to define struct nlist. Sigh. */
-diff -urN cctools-895.orig/as/symbols.h cctools-895/as/symbols.h
---- cctools-895.orig/as/symbols.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/as/symbols.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/as/symbols.h cctools/as/symbols.h
+--- cctools.orig/as/symbols.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/as/symbols.h	2017-08-01 13:54:10.000000000 +0100
 @@ -17,8 +17,8 @@
  along with GAS; see the file COPYING.  If not, write to
  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.  */
@@ -138,9 +138,9 @@ diff -urN cctools-895.orig/as/symbols.h cctools-895/as/symbols.h
  
  extern struct hash_control *sy_hash;
  extern struct obstack notes;
-diff -urN cctools-895.orig/gprof/gprof.h cctools-895/gprof/gprof.h
---- cctools-895.orig/gprof/gprof.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/gprof/gprof.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/gprof/gprof.h cctools/gprof/gprof.h
+--- cctools.orig/gprof/gprof.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/gprof/gprof.h	2017-08-01 13:54:10.000000000 +0100
 @@ -57,17 +57,17 @@
   *
   *	@(#)gprof.h	8.1 (Berkeley) 6/6/93
@@ -167,9 +167,9 @@ diff -urN cctools-895.orig/gprof/gprof.h cctools-895/gprof/gprof.h
  
  /*
   * Used for comparison routine return values.
-diff -urN cctools-895.orig/include/architecture/m88k/fp_regs.h cctools-895/include/architecture/m88k/fp_regs.h
---- cctools-895.orig/include/architecture/m88k/fp_regs.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/include/architecture/m88k/fp_regs.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/include/architecture/m88k/fp_regs.h cctools/include/architecture/m88k/fp_regs.h
+--- cctools.orig/include/architecture/m88k/fp_regs.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/include/architecture/m88k/fp_regs.h	2017-08-01 13:54:10.000000000 +0100
 @@ -41,7 +41,7 @@
  #ifndef	_ARCH_M88K_FP_REGS_H_
  #define	_ARCH_M88K_FP_REGS_H_
@@ -179,9 +179,9 @@ diff -urN cctools-895.orig/include/architecture/m88k/fp_regs.h cctools-895/inclu
  
  /*
   * m88k_xrf_t -- data types that MAY be in extended register file
-diff -urN cctools-895.orig/include/architecture/m88k/reg_help.h cctools-895/include/architecture/m88k/reg_help.h
---- cctools-895.orig/include/architecture/m88k/reg_help.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/include/architecture/m88k/reg_help.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/include/architecture/m88k/reg_help.h cctools/include/architecture/m88k/reg_help.h
+--- cctools.orig/include/architecture/m88k/reg_help.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/include/architecture/m88k/reg_help.h	2017-08-01 13:54:10.000000000 +0100
 @@ -41,7 +41,7 @@
  #ifndef _ARCH_M88K_REG_HELP_H_
  #define _ARCH_M88K_REG_HELP_H_
@@ -191,9 +191,9 @@ diff -urN cctools-895.orig/include/architecture/m88k/reg_help.h cctools-895/incl
  
  /* Stack pointer must always be a multiple of 16 */
  #define	STACK_INCR	16
-diff -urN cctools-895.orig/include/mach/m88k/thread_status.h cctools-895/include/mach/m88k/thread_status.h
---- cctools-895.orig/include/mach/m88k/thread_status.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/include/mach/m88k/thread_status.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/include/mach/m88k/thread_status.h cctools/include/mach/m88k/thread_status.h
+--- cctools.orig/include/mach/m88k/thread_status.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/include/mach/m88k/thread_status.h	2017-08-01 13:54:10.000000000 +0100
 @@ -49,8 +49,8 @@
  #ifndef	_MACH_M88K_THREAD_STATE_
  #define	_MACH_M88K_THREAD_STATE_
@@ -205,9 +205,9 @@ diff -urN cctools-895.orig/include/mach/m88k/thread_status.h cctools-895/include
  
  /**************************************************************************
   * Data Typedefs used by thread_getstatus() and thread_setstatus()        *
-diff -urN cctools-895.orig/include/mach/machine.h cctools-895/include/mach/machine.h
---- cctools-895.orig/include/mach/machine.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/include/mach/machine.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/include/mach/machine.h cctools/include/mach/machine.h
+--- cctools.orig/include/mach/machine.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/include/mach/machine.h	2017-08-01 13:54:10.000000000 +0100
 @@ -80,8 +80,8 @@
  #ifndef	_MACH_MACHINE_H_
  #define _MACH_MACHINE_H_
@@ -219,9 +219,9 @@ diff -urN cctools-895.orig/include/mach/machine.h cctools-895/include/mach/machi
  
  /*
   *	For each host, there is a maximum possible number of
-diff -urN cctools-895.orig/include/mach-o/hppa/swap.h cctools-895/include/mach-o/hppa/swap.h
---- cctools-895.orig/include/mach-o/hppa/swap.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/include/mach-o/hppa/swap.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/include/mach-o/hppa/swap.h cctools/include/mach-o/hppa/swap.h
+--- cctools.orig/include/mach-o/hppa/swap.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/include/mach-o/hppa/swap.h	2017-08-01 13:54:10.000000000 +0100
 @@ -20,8 +20,8 @@
   * 
   * @APPLE_LICENSE_HEADER_END@
@@ -233,9 +233,9 @@ diff -urN cctools-895.orig/include/mach-o/hppa/swap.h cctools-895/include/mach-o
  
  extern void swap_hppa_integer_thread_state(
      struct hp_pa_integer_thread_state *regs,
-diff -urN cctools-895.orig/include/mach-o/i860/swap.h cctools-895/include/mach-o/i860/swap.h
---- cctools-895.orig/include/mach-o/i860/swap.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/include/mach-o/i860/swap.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/include/mach-o/i860/swap.h cctools/include/mach-o/i860/swap.h
+--- cctools.orig/include/mach-o/i860/swap.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/include/mach-o/i860/swap.h	2017-08-01 13:54:10.000000000 +0100
 @@ -20,8 +20,8 @@
   * 
   * @APPLE_LICENSE_HEADER_END@
@@ -247,9 +247,9 @@ diff -urN cctools-895.orig/include/mach-o/i860/swap.h cctools-895/include/mach-o
  
  extern void swap_i860_thread_state_regs(
      struct i860_thread_state_regs *cpu,
-diff -urN cctools-895.orig/include/mach-o/m68k/swap.h cctools-895/include/mach-o/m68k/swap.h
---- cctools-895.orig/include/mach-o/m68k/swap.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/include/mach-o/m68k/swap.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/include/mach-o/m68k/swap.h cctools/include/mach-o/m68k/swap.h
+--- cctools.orig/include/mach-o/m68k/swap.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/include/mach-o/m68k/swap.h	2017-08-01 13:54:10.000000000 +0100
 @@ -20,8 +20,8 @@
   * 
   * @APPLE_LICENSE_HEADER_END@
@@ -261,9 +261,9 @@ diff -urN cctools-895.orig/include/mach-o/m68k/swap.h cctools-895/include/mach-o
  
  extern void swap_m68k_thread_state_regs(
      struct m68k_thread_state_regs *cpu,
-diff -urN cctools-895.orig/include/mach-o/m88k/swap.h cctools-895/include/mach-o/m88k/swap.h
---- cctools-895.orig/include/mach-o/m88k/swap.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/include/mach-o/m88k/swap.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/include/mach-o/m88k/swap.h cctools/include/mach-o/m88k/swap.h
+--- cctools.orig/include/mach-o/m88k/swap.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/include/mach-o/m88k/swap.h	2017-08-01 13:54:10.000000000 +0100
 @@ -20,8 +20,8 @@
   * 
   * @APPLE_LICENSE_HEADER_END@
@@ -275,9 +275,9 @@ diff -urN cctools-895.orig/include/mach-o/m88k/swap.h cctools-895/include/mach-o
  
  extern void swap_m88k_thread_state_grf_t(
      m88k_thread_state_grf_t *cpu,
-diff -urN cctools-895.orig/include/mach-o/sparc/swap.h cctools-895/include/mach-o/sparc/swap.h
---- cctools-895.orig/include/mach-o/sparc/swap.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/include/mach-o/sparc/swap.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/include/mach-o/sparc/swap.h cctools/include/mach-o/sparc/swap.h
+--- cctools.orig/include/mach-o/sparc/swap.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/include/mach-o/sparc/swap.h	2017-08-01 13:54:10.000000000 +0100
 @@ -20,8 +20,8 @@
   * 
   * @APPLE_LICENSE_HEADER_END@
@@ -289,9 +289,9 @@ diff -urN cctools-895.orig/include/mach-o/sparc/swap.h cctools-895/include/mach-
  
  void swap_sparc_thread_state_regs(
      struct sparc_thread_state_regs *cpu,
-diff -urN cctools-895.orig/include/standalone/libsa.h cctools-895/include/standalone/libsa.h
---- cctools-895.orig/include/standalone/libsa.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/include/standalone/libsa.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/include/standalone/libsa.h cctools/include/standalone/libsa.h
+--- cctools.orig/include/standalone/libsa.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/include/standalone/libsa.h	2017-08-01 13:54:10.000000000 +0100
 @@ -22,13 +22,13 @@
   */
  /* Exported API for standalone library */
@@ -310,9 +310,9 @@ diff -urN cctools-895.orig/include/standalone/libsa.h cctools-895/include/standa
  
  #ifndef bcopy
  #ifdef __OPENSTEP__
-diff -urN cctools-895.orig/include/stuff/breakout.h cctools-895/include/stuff/breakout.h
---- cctools-895.orig/include/stuff/breakout.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/include/stuff/breakout.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/include/stuff/breakout.h cctools/include/stuff/breakout.h
+--- cctools.orig/include/stuff/breakout.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/include/stuff/breakout.h	2017-08-01 13:54:10.000000000 +0100
 @@ -24,7 +24,7 @@
  #define __private_extern__ __declspec(private_extern)
  #endif
@@ -322,9 +322,9 @@ diff -urN cctools-895.orig/include/stuff/breakout.h cctools-895/include/stuff/br
  
  /*
   * This is used to build the table of contents of an archive.  Each toc_entry
-diff -urN cctools-895.orig/include/stuff/errors.h cctools-895/include/stuff/errors.h
---- cctools-895.orig/include/stuff/errors.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/include/stuff/errors.h	2017-08-01 13:54:40.000000000 +0100
+diff -urN cctools.orig/include/stuff/errors.h cctools/include/stuff/errors.h
+--- cctools.orig/include/stuff/errors.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/include/stuff/errors.h	2017-08-01 13:54:40.000000000 +0100
 @@ -25,7 +25,7 @@
   * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   * POSSIBILITY OF SUCH DAMAGE.
@@ -334,9 +334,9 @@ diff -urN cctools-895.orig/include/stuff/errors.h cctools-895/include/stuff/erro
  
  /* user defined (imported) */
  extern char *progname __attribute__((visibility("hidden")));
-diff -urN cctools-895.orig/include/stuff/ofile.h cctools-895/include/stuff/ofile.h
---- cctools-895.orig/include/stuff/ofile.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/include/stuff/ofile.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/include/stuff/ofile.h cctools/include/stuff/ofile.h
+--- cctools.orig/include/stuff/ofile.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/include/stuff/ofile.h	2017-08-01 13:54:10.000000000 +0100
 @@ -28,17 +28,17 @@
  #define __private_extern__ __declspec(private_extern)
  #endif
@@ -361,9 +361,9 @@ diff -urN cctools-895.orig/include/stuff/ofile.h cctools-895/include/stuff/ofile
  
  enum ofile_type {
      OFILE_UNKNOWN,
-diff -urN cctools-895.orig/include/stuff/print.h cctools-895/include/stuff/print.h
---- cctools-895.orig/include/stuff/print.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/include/stuff/print.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/include/stuff/print.h cctools/include/stuff/print.h
+--- cctools.orig/include/stuff/print.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/include/stuff/print.h	2017-08-01 13:54:10.000000000 +0100
 @@ -24,7 +24,7 @@
  #define __private_extern__ __declspec(private_extern)
  #endif
@@ -373,9 +373,9 @@ diff -urN cctools-895.orig/include/stuff/print.h cctools-895/include/stuff/print
  
  __private_extern__ void print(
      const char *format, ...)
-diff -urN cctools-895.orig/include/stuff/reloc.h cctools-895/include/stuff/reloc.h
---- cctools-895.orig/include/stuff/reloc.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/include/stuff/reloc.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/include/stuff/reloc.h cctools/include/stuff/reloc.h
+--- cctools.orig/include/stuff/reloc.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/include/stuff/reloc.h	2017-08-01 13:54:10.000000000 +0100
 @@ -24,8 +24,8 @@
  #define __private_extern__ __declspec(private_extern)
  #endif
@@ -387,9 +387,9 @@ diff -urN cctools-895.orig/include/stuff/reloc.h cctools-895/include/stuff/reloc
  
  __private_extern__ uint32_t reloc_pair_r_type(
      cpu_type_t cputype);
-diff -urN cctools-895.orig/include/stuff/vm_flush_cache.h cctools-895/include/stuff/vm_flush_cache.h
---- cctools-895.orig/include/stuff/vm_flush_cache.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/include/stuff/vm_flush_cache.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/include/stuff/vm_flush_cache.h cctools/include/stuff/vm_flush_cache.h
+--- cctools.orig/include/stuff/vm_flush_cache.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/include/stuff/vm_flush_cache.h	2017-08-01 13:54:10.000000000 +0100
 @@ -24,7 +24,7 @@
  #define __private_extern__ __declspec(private_extern)
  #endif
@@ -399,9 +399,9 @@ diff -urN cctools-895.orig/include/stuff/vm_flush_cache.h cctools-895/include/st
  __private_extern__ kern_return_t vm_flush_cache(
      mach_port_t target_task,
      vm_address_t address,
-diff -urN cctools-895.orig/ld/layout.c cctools-895/ld/layout.c
---- cctools-895.orig/ld/layout.c	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/ld/layout.c	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/ld/layout.c cctools/ld/layout.c
+--- cctools.orig/ld/layout.c	2017-08-01 13:52:43.000000000 +0100
++++ cctools/ld/layout.c	2017-08-01 13:54:10.000000000 +0100
 @@ -51,21 +51,21 @@
  #include "stuff/openstep_mach.h"
  #include <mach-o/fat.h>
@@ -431,9 +431,9 @@ diff -urN cctools-895.orig/ld/layout.c cctools-895/ld/layout.c
  #include <mach-o/nlist.h>
  #include <mach-o/reloc.h>
  #if defined(RLD) && !defined(SA_RLD) && !(defined(KLD) && defined(__STATIC__))
-diff -urN cctools-895.orig/libmacho/hppa_swap.c cctools-895/libmacho/hppa_swap.c
---- cctools-895.orig/libmacho/hppa_swap.c	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/libmacho/hppa_swap.c	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/libmacho/hppa_swap.c cctools/libmacho/hppa_swap.c
+--- cctools.orig/libmacho/hppa_swap.c	2017-08-01 13:52:43.000000000 +0100
++++ cctools/libmacho/hppa_swap.c	2017-08-01 13:54:10.000000000 +0100
 @@ -21,7 +21,7 @@
   * @APPLE_LICENSE_HEADER_END@
   */
@@ -443,9 +443,9 @@ diff -urN cctools-895.orig/libmacho/hppa_swap.c cctools-895/libmacho/hppa_swap.c
  
  void
  swap_hppa_integer_thread_state(
-diff -urN cctools-895.orig/libmacho/i386_swap.c cctools-895/libmacho/i386_swap.c
---- cctools-895.orig/libmacho/i386_swap.c	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/libmacho/i386_swap.c	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/libmacho/i386_swap.c cctools/libmacho/i386_swap.c
+--- cctools.orig/libmacho/i386_swap.c	2017-08-01 13:52:43.000000000 +0100
++++ cctools/libmacho/i386_swap.c	2017-08-01 13:54:10.000000000 +0100
 @@ -133,7 +133,7 @@
  
  #include <string.h>
@@ -455,9 +455,9 @@ diff -urN cctools-895.orig/libmacho/i386_swap.c cctools-895/libmacho/i386_swap.c
  
  void
  swap_i386_thread_state(
-diff -urN cctools-895.orig/libmacho/i860_swap.c cctools-895/libmacho/i860_swap.c
---- cctools-895.orig/libmacho/i860_swap.c	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/libmacho/i860_swap.c	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/libmacho/i860_swap.c cctools/libmacho/i860_swap.c
+--- cctools.orig/libmacho/i860_swap.c	2017-08-01 13:52:43.000000000 +0100
++++ cctools/libmacho/i860_swap.c	2017-08-01 13:54:10.000000000 +0100
 @@ -21,7 +21,7 @@
   * @APPLE_LICENSE_HEADER_END@
   */
@@ -467,9 +467,9 @@ diff -urN cctools-895.orig/libmacho/i860_swap.c cctools-895/libmacho/i860_swap.c
  
  void
  swap_i860_thread_state_regs(
-diff -urN cctools-895.orig/libmacho/m68k_swap.c cctools-895/libmacho/m68k_swap.c
---- cctools-895.orig/libmacho/m68k_swap.c	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/libmacho/m68k_swap.c	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/libmacho/m68k_swap.c cctools/libmacho/m68k_swap.c
+--- cctools.orig/libmacho/m68k_swap.c	2017-08-01 13:52:43.000000000 +0100
++++ cctools/libmacho/m68k_swap.c	2017-08-01 13:54:10.000000000 +0100
 @@ -21,7 +21,7 @@
   * @APPLE_LICENSE_HEADER_END@
   */
@@ -479,9 +479,9 @@ diff -urN cctools-895.orig/libmacho/m68k_swap.c cctools-895/libmacho/m68k_swap.c
  
  void
  swap_m68k_thread_state_regs(
-diff -urN cctools-895.orig/libmacho/m88k_swap.c cctools-895/libmacho/m88k_swap.c
---- cctools-895.orig/libmacho/m88k_swap.c	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/libmacho/m88k_swap.c	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/libmacho/m88k_swap.c cctools/libmacho/m88k_swap.c
+--- cctools.orig/libmacho/m88k_swap.c	2017-08-01 13:52:43.000000000 +0100
++++ cctools/libmacho/m88k_swap.c	2017-08-01 13:54:10.000000000 +0100
 @@ -22,8 +22,8 @@
   */
  #ifndef RLD
@@ -493,9 +493,9 @@ diff -urN cctools-895.orig/libmacho/m88k_swap.c cctools-895/libmacho/m88k_swap.c
  
  void
  swap_m88k_thread_state_grf_t(
-diff -urN cctools-895.orig/libmacho/ppc_swap.c cctools-895/libmacho/ppc_swap.c
---- cctools-895.orig/libmacho/ppc_swap.c	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/libmacho/ppc_swap.c	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/libmacho/ppc_swap.c cctools/libmacho/ppc_swap.c
+--- cctools.orig/libmacho/ppc_swap.c	2017-08-01 13:52:43.000000000 +0100
++++ cctools/libmacho/ppc_swap.c	2017-08-01 13:54:10.000000000 +0100
 @@ -71,8 +71,8 @@
  #define __vrsave vrsave
  #define __xer xer
@@ -507,9 +507,9 @@ diff -urN cctools-895.orig/libmacho/ppc_swap.c cctools-895/libmacho/ppc_swap.c
  
  void
  swap_ppc_thread_state_t(
-diff -urN cctools-895.orig/libmacho/sparc_swap.c cctools-895/libmacho/sparc_swap.c
---- cctools-895.orig/libmacho/sparc_swap.c	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/libmacho/sparc_swap.c	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/libmacho/sparc_swap.c cctools/libmacho/sparc_swap.c
+--- cctools.orig/libmacho/sparc_swap.c	2017-08-01 13:52:43.000000000 +0100
++++ cctools/libmacho/sparc_swap.c	2017-08-01 13:54:10.000000000 +0100
 @@ -22,8 +22,8 @@
   */
  #ifndef RLD
@@ -521,9 +521,9 @@ diff -urN cctools-895.orig/libmacho/sparc_swap.c cctools-895/libmacho/sparc_swap
  
  void
  swap_sparc_thread_state_regs(
-diff -urN cctools-895.orig/libstuff/SymLoc.c cctools-895/libstuff/SymLoc.c
---- cctools-895.orig/libstuff/SymLoc.c	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/libstuff/SymLoc.c	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/libstuff/SymLoc.c cctools/libstuff/SymLoc.c
+--- cctools.orig/libstuff/SymLoc.c	2017-08-01 13:52:43.000000000 +0100
++++ cctools/libstuff/SymLoc.c	2017-08-01 13:54:10.000000000 +0100
 @@ -21,18 +21,18 @@
   * @APPLE_LICENSE_HEADER_END@
   */
@@ -552,9 +552,9 @@ diff -urN cctools-895.orig/libstuff/SymLoc.c cctools-895/libstuff/SymLoc.c
  
  const char *
  symLocForDylib(const char *installName, const char *releaseName,
-diff -urN cctools-895.orig/libstuff/ofile.c cctools-895/libstuff/ofile.c
---- cctools-895.orig/libstuff/ofile.c	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/libstuff/ofile.c	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/libstuff/ofile.c cctools/libstuff/ofile.c
+--- cctools.orig/libstuff/ofile.c	2017-08-01 13:52:43.000000000 +0100
++++ cctools/libstuff/ofile.c	2017-08-01 13:54:10.000000000 +0100
 @@ -50,17 +50,17 @@
  #include <sys/mman.h>
  #include <mach-o/fat.h>
@@ -580,9 +580,9 @@ diff -urN cctools-895.orig/libstuff/ofile.c cctools-895/libstuff/ofile.c
  #include <mach-o/nlist.h>
  #include <mach-o/reloc.h>
  #include "stuff/bool.h"
-diff -urN cctools-895.orig/misc/cmpdylib.c cctools-895/misc/cmpdylib.c
---- cctools-895.orig/misc/cmpdylib.c	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/misc/cmpdylib.c	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/misc/cmpdylib.c cctools/misc/cmpdylib.c
+--- cctools.orig/misc/cmpdylib.c	2017-08-01 13:52:43.000000000 +0100
++++ cctools/misc/cmpdylib.c	2017-08-01 13:54:10.000000000 +0100
 @@ -20,13 +20,13 @@
   * 
   * @APPLE_LICENSE_HEADER_END@
@@ -603,9 +603,9 @@ diff -urN cctools-895.orig/misc/cmpdylib.c cctools-895/misc/cmpdylib.c
  
  /* name of the program for error messages (argv[0]) */
  __private_extern__ char *progname = NULL;
-diff -urN cctools-895.orig/misc/pagestuff.c cctools-895/misc/pagestuff.c
---- cctools-895.orig/misc/pagestuff.c	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/misc/pagestuff.c	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/misc/pagestuff.c cctools/misc/pagestuff.c
+--- cctools.orig/misc/pagestuff.c	2017-08-01 13:52:43.000000000 +0100
++++ cctools/misc/pagestuff.c	2017-08-01 13:54:10.000000000 +0100
 @@ -21,12 +21,12 @@
   * @APPLE_LICENSE_HEADER_END@
   */
@@ -625,9 +625,9 @@ diff -urN cctools-895.orig/misc/pagestuff.c cctools-895/misc/pagestuff.c
  
  enum file_part_type {
      FP_FAT_HEADERS,
-diff -urN cctools-895.orig/misc/redo_prebinding.c cctools-895/misc/redo_prebinding.c
---- cctools-895.orig/misc/redo_prebinding.c	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/misc/redo_prebinding.c	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/misc/redo_prebinding.c cctools/misc/redo_prebinding.c
+--- cctools.orig/misc/redo_prebinding.c	2017-08-01 13:52:43.000000000 +0100
++++ cctools/misc/redo_prebinding.c	2017-08-01 13:54:10.000000000 +0100
 @@ -83,31 +83,31 @@
  #include <mach-o/redo_prebinding.h>
  #endif /* defined(LIBRARY_API) */
@@ -685,9 +685,9 @@ diff -urN cctools-895.orig/misc/redo_prebinding.c cctools-895/misc/redo_prebindi
  
  #include <mach-o/dyld.h>
  
-diff -urN cctools-895.orig/otool/arm_disasm.h cctools-895/otool/arm_disasm.h
---- cctools-895.orig/otool/arm_disasm.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/otool/arm_disasm.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/otool/arm_disasm.h cctools/otool/arm_disasm.h
+--- cctools.orig/otool/arm_disasm.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/otool/arm_disasm.h	2017-08-01 13:54:10.000000000 +0100
 @@ -28,10 +28,10 @@
   *
   * @APPLE_LICENSE_HEADER_END@
@@ -703,9 +703,9 @@ diff -urN cctools-895.orig/otool/arm_disasm.h cctools-895/otool/arm_disasm.h
  #include "stuff/symbol.h"
  #include "llvm-c/Disassembler.h"
  
-diff -urN cctools-895.orig/otool/hppa_disasm.h cctools-895/otool/hppa_disasm.h
---- cctools-895.orig/otool/hppa_disasm.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/otool/hppa_disasm.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/otool/hppa_disasm.h cctools/otool/hppa_disasm.h
+--- cctools.orig/otool/hppa_disasm.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/otool/hppa_disasm.h	2017-08-01 13:54:10.000000000 +0100
 @@ -28,10 +28,10 @@
   *
   * @APPLE_LICENSE_HEADER_END@
@@ -721,9 +721,9 @@ diff -urN cctools-895.orig/otool/hppa_disasm.h cctools-895/otool/hppa_disasm.h
  #include "stuff/symbol.h"
  
  extern uint32_t hppa_disassemble(
-diff -urN cctools-895.orig/otool/i386_disasm.h cctools-895/otool/i386_disasm.h
---- cctools-895.orig/otool/i386_disasm.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/otool/i386_disasm.h	2017-08-01 13:55:16.000000000 +0100
+diff -urN cctools.orig/otool/i386_disasm.h cctools/otool/i386_disasm.h
+--- cctools.orig/otool/i386_disasm.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/otool/i386_disasm.h	2017-08-01 13:55:16.000000000 +0100
 @@ -28,10 +28,10 @@
   *
   * @APPLE_LICENSE_HEADER_END@
@@ -739,9 +739,9 @@ diff -urN cctools-895.orig/otool/i386_disasm.h cctools-895/otool/i386_disasm.h
  #include "otool.h"
  #include "stuff/symbol.h"
  #include "llvm-c/Disassembler.h"
-diff -urN cctools-895.orig/otool/i860_disasm.h cctools-895/otool/i860_disasm.h
---- cctools-895.orig/otool/i860_disasm.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/otool/i860_disasm.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/otool/i860_disasm.h cctools/otool/i860_disasm.h
+--- cctools.orig/otool/i860_disasm.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/otool/i860_disasm.h	2017-08-01 13:54:10.000000000 +0100
 @@ -28,10 +28,10 @@
   *
   * @APPLE_LICENSE_HEADER_END@
@@ -757,9 +757,9 @@ diff -urN cctools-895.orig/otool/i860_disasm.h cctools-895/otool/i860_disasm.h
  #include "stuff/symbol.h"
  
  extern uint32_t i860_disassemble(
-diff -urN cctools-895.orig/otool/m68k_disasm.h cctools-895/otool/m68k_disasm.h
---- cctools-895.orig/otool/m68k_disasm.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/otool/m68k_disasm.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/otool/m68k_disasm.h cctools/otool/m68k_disasm.h
+--- cctools.orig/otool/m68k_disasm.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/otool/m68k_disasm.h	2017-08-01 13:54:10.000000000 +0100
 @@ -28,10 +28,10 @@
   *
   * @APPLE_LICENSE_HEADER_END@
@@ -775,9 +775,9 @@ diff -urN cctools-895.orig/otool/m68k_disasm.h cctools-895/otool/m68k_disasm.h
  #include "stuff/symbol.h"
  
  extern uint32_t m68k_disassemble(
-diff -urN cctools-895.orig/otool/m88k_disasm.h cctools-895/otool/m88k_disasm.h
---- cctools-895.orig/otool/m88k_disasm.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/otool/m88k_disasm.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/otool/m88k_disasm.h cctools/otool/m88k_disasm.h
+--- cctools.orig/otool/m88k_disasm.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/otool/m88k_disasm.h	2017-08-01 13:54:10.000000000 +0100
 @@ -28,10 +28,10 @@
   *
   * @APPLE_LICENSE_HEADER_END@
@@ -793,9 +793,9 @@ diff -urN cctools-895.orig/otool/m88k_disasm.h cctools-895/otool/m88k_disasm.h
  #include "stuff/symbol.h"
  
  extern uint32_t m88k_disassemble(
-diff -urN cctools-895.orig/otool/ofile_print.h cctools-895/otool/ofile_print.h
---- cctools-895.orig/otool/ofile_print.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/otool/ofile_print.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/otool/ofile_print.h cctools/otool/ofile_print.h
+--- cctools.orig/otool/ofile_print.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/otool/ofile_print.h	2017-08-01 13:54:10.000000000 +0100
 @@ -28,13 +28,13 @@
   *
   * @APPLE_LICENSE_HEADER_END@
@@ -817,9 +817,9 @@ diff -urN cctools-895.orig/otool/ofile_print.h cctools-895/otool/ofile_print.h
  #include "stuff/symbol.h"
  
  extern void print_fat_headers(
-diff -urN cctools-895.orig/otool/ppc_disasm.h cctools-895/otool/ppc_disasm.h
---- cctools-895.orig/otool/ppc_disasm.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/otool/ppc_disasm.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/otool/ppc_disasm.h cctools/otool/ppc_disasm.h
+--- cctools.orig/otool/ppc_disasm.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/otool/ppc_disasm.h	2017-08-01 13:54:10.000000000 +0100
 @@ -28,10 +28,10 @@
   *
   * @APPLE_LICENSE_HEADER_END@
@@ -835,9 +835,9 @@ diff -urN cctools-895.orig/otool/ppc_disasm.h cctools-895/otool/ppc_disasm.h
  #include "stuff/symbol.h"
  
  extern uint32_t ppc_disassemble(
-diff -urN cctools-895.orig/otool/sparc_disasm.h cctools-895/otool/sparc_disasm.h
---- cctools-895.orig/otool/sparc_disasm.h	2017-08-01 13:52:43.000000000 +0100
-+++ cctools-895/otool/sparc_disasm.h	2017-08-01 13:54:10.000000000 +0100
+diff -urN cctools.orig/otool/sparc_disasm.h cctools/otool/sparc_disasm.h
+--- cctools.orig/otool/sparc_disasm.h	2017-08-01 13:52:43.000000000 +0100
++++ cctools/otool/sparc_disasm.h	2017-08-01 13:54:10.000000000 +0100
 @@ -28,10 +28,10 @@
   *
   * @APPLE_LICENSE_HEADER_END@
@@ -853,9 +853,9 @@ diff -urN cctools-895.orig/otool/sparc_disasm.h cctools-895/otool/sparc_disasm.h
  #include "stuff/symbol.h"
  
  extern uint32_t sparc_disassemble(
-diff -urN cctools-895.orig/include/architecture/i386/fpu.h cctools-895/include/architecture/i386/fpu.h
---- cctools-895.orig/include/architecture/i386/fpu.h	2017-08-01 13:49:35.000000000 +0100
-+++ cctools-895/include/architecture/i386/fpu.h	2017-08-01 13:49:53.000000000 +0100
+diff -urN cctools.orig/include/architecture/i386/fpu.h cctools/include/architecture/i386/fpu.h
+--- cctools.orig/include/architecture/i386/fpu.h	2017-08-01 13:49:35.000000000 +0100
++++ cctools/include/architecture/i386/fpu.h	2017-08-01 13:49:53.000000000 +0100
 @@ -27,13 +27,16 @@
   *
   * HISTORY
@@ -906,9 +906,9 @@ diff -urN cctools-895.orig/include/architecture/i386/fpu.h cctools-895/include/a
  } fp_state_t;
 +
 +#endif	/* _ARCH_I386_FPU_H_ */
-diff -urN cctools-895.orig/include/architecture/i386/frame.h cctools-895/include/architecture/i386/frame.h
---- cctools-895.orig/include/architecture/i386/frame.h	2017-08-01 13:49:35.000000000 +0100
-+++ cctools-895/include/architecture/i386/frame.h	2017-08-01 13:49:53.000000000 +0100
+diff -urN cctools.orig/include/architecture/i386/frame.h cctools/include/architecture/i386/frame.h
+--- cctools.orig/include/architecture/i386/frame.h	2017-08-01 13:49:35.000000000 +0100
++++ cctools/include/architecture/i386/frame.h	2017-08-01 13:49:53.000000000 +0100
 @@ -27,17 +27,20 @@
   *
   * HISTORY

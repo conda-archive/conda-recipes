@@ -1,0 +1,11 @@
+diff -urN ld64.orig/src/ld/ld.cpp ld64/src/ld/ld.cpp
+--- ld64.orig/src/ld/ld.cpp	2013-10-07 17:09:17.649245225 +0100
++++ ld64/src/ld/ld.cpp	2013-10-07 17:09:17.769247050 +0100
+@@ -649,6 +649,7 @@
+ 
+ #ifndef NDEBUG
+ // implement assert() function to print out a backtrace before aborting
++extern "C" void __assert_rtn(const char* func, const char* file, int line, const char* failedexpr);
+ void __assert_rtn(const char* func, const char* file, int line, const char* failedexpr)
+ {
+ 	fprintf(stderr, "Assertion failed: (%s), function %s, file %s, line %d.\n", failedexpr, func, file, line);

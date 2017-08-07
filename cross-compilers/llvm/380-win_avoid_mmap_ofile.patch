@@ -1,6 +1,6 @@
-diff -urN cctools-895.orig/libstuff/ofile.c cctools-895/libstuff/ofile.c
---- cctools-895.orig/libstuff/ofile.c	2017-08-01 14:31:38.000000000 +0100
-+++ cctools-895/libstuff/ofile.c	2017-08-01 14:42:54.000000000 +0100
+diff -urN cctools.orig/libstuff/ofile.c cctools/libstuff/ofile.c
+--- cctools.orig/libstuff/ofile.c	2017-08-01 14:31:38.000000000 +0100
++++ cctools/libstuff/ofile.c	2017-08-01 14:42:54.000000000 +0100
 @@ -882,6 +882,20 @@
  	    printf("Modification time = %ld\n", (long int)stat_buf.st_mtime);
  #endif /* OTOOL */

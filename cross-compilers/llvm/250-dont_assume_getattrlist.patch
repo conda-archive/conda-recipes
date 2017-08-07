@@ -1,6 +1,6 @@
-diff -urN cctools-895.orig/misc/redo_prebinding.c cctools-895/misc/redo_prebinding.c
---- cctools-895.orig/misc/redo_prebinding.c	2017-08-01 13:57:33.000000000 +0100
-+++ cctools-895/misc/redo_prebinding.c	2017-08-01 14:24:10.000000000 +0100
+diff -urN cctools.orig/misc/redo_prebinding.c cctools/misc/redo_prebinding.c
+--- cctools.orig/misc/redo_prebinding.c	2017-08-01 13:57:33.000000000 +0100
++++ cctools/misc/redo_prebinding.c	2017-08-01 14:24:10.000000000 +0100
 @@ -9897,7 +9897,7 @@
  	errors++;
  }

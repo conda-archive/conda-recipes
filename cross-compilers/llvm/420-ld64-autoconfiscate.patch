@@ -1,0 +1,203 @@
+diff -urN ld64.orig/Makefile.in ld64/Makefile.in
+--- ld64.orig/Makefile.in	1970-01-01 01:00:00.000000000 +0100
++++ ld64/Makefile.in	2013-11-18 23:05:40.089460657 +0000
+@@ -0,0 +1,103 @@
++builddir        = @builddir@
++top_builddir    = @top_builddir@
++srcdir          = @srcdir@
++top_srcdir      = @top_srcdir@
++prefix		= @prefix@
++exec_prefix	= @exec_prefix@
++bindir		= @bindir@
++
++VPATH = @srcdir@:@srcdir@/src
++
++CC                   = @CC@
++CXX                  = @CXX@
++CFLAGS               = @CFLAGS@
++CXXFLAGS             = @CXXFLAGS@
++WARNINGS             = @WARNINGS@
++MDYNAMICNOPIC        = @MDYNAMICNOPIC@
++CPPFLAGS             = @CPPFLAGS@
++DEFS                 = @DEFS@ @ENDIAN_FLAG@
++LDFLAGS              = @LDFLAGS@
++HAVE_LIBC_CXX_H      = @HAVE_LIBC_CXX_H@
++HAVE_FOREIGN_HEADERS = @HAVE_FOREIGN_HEADERS@
++UUID_LIBS            = @UUID_LIBS@
++SSL_LIBS             = @SSL_LIBS@
++LTO_DEFS             = @LTO_DEFS@
++LTO_LIBS             = @LTO_LIBS@
++DL_LIBS              = @DL_LIBS@
++
++ifeq ($(HAVE_LIBC_CXX_H),YES)
++INCLIBCCXX = -include $(top_builddir)/include/libc_cxx.h
++endif
++
++ifeq ($(HAVE_FOREIGN_HEADERS),YES)
++FORHDRS    = -I$(top_srcdir)/include/foreign
++endif
++
++INSTALL         = @INSTALL@
++INSTALL_PROGRAM = @INSTALL_PROGRAM@
++transform       = @program_transform_name@
++LDPROG          = $(shell echo ld_classic | sed '$(transform)')
++ASPROG          = $(shell echo as | sed '$(transform)')
++
++# -I$(builddir)
++MYINCLUDES      = -I$(srcdir)/include -I$(srcdir)/Readers \
++                  -I$(srcdir)/Writers -I$(top_builddir)/include \
++                  -I$(top_srcdir)/include -I$(top_srcdir)/ld64/src/ld \
++                  -I$(top_srcdir)/ld64/src/abstraction -I$(top_srcdir)/ld64/src/ld/parsers \
++                  $(INCLIBCCXX) -include $(top_builddir)/include/config.h $(FORHDRS)
++
++MYWARNINGS      =
++MYDEFS          = -DDEBUG -DBINDIR="\"$(bindir)\"" -DLDPROG="\"$(LDPROG)\"" \
++		  -DASPROG="\"$(ASPROG)\"" $(LTO_DEFS)
++
++MYLDFLAGS       = -L$(top_builddir)/libstuff
++MYLIBS          = -lstuff $(SSL_LIBS) $(UUID_LIBS) $(DL_LIBS) $(LTO_LIBS)
++
++MYCOMPILEFLAGS  = $(WARNINGS) $(MYWARNINGS) $(DEFS) $(MYDEFS) \
++                  $(CPPFLAGS) $(MYINCLUDES) $(CFLAGS) $(MDYNAMICNOPIC)
++
++MYLINKFLAGS     = $(LDFLAGS) $(MYLDFLAGS) $(MYLIBS)
++
++CXXFILES        = src/ld/ld.cpp src/ld/Options.cpp src/ld/InputFiles.cpp \
++                  src/ld/SymbolTable.cpp src/ld/Resolver.cpp src/ld/OutputFile.cpp \
++                  src/ld/passes/branch_island.cpp src/ld/passes/branch_shim.cpp \
++                  src/ld/passes/compact_unwind.cpp src/ld/passes/dtrace_dof.cpp \
++                  src/ld/passes/dylibs.cpp src/ld/passes/got.cpp \
++                  src/ld/passes/huge.cpp src/ld/passes/objc.cpp \
++                  src/ld/passes/order_file.cpp src/ld/passes/stubs/stubs.cpp \
++                  src/ld/passes/tlvp.cpp \
++                  src/ld/parsers/opaque_section_file.cpp src/ld/parsers/lto_file.cpp \
++                  src/ld/parsers/archive_file.cpp \
++                  src/ld/parsers/macho_relocatable_file.cpp src/ld/parsers/macho_dylib_file.cpp
++
++# Probably want to build this program too:
++# src/other/dyldinfo.cpp
++
++CFILES = src/ld/debugline.c
++
++OBJS = $(CXXFILES:.cpp=.o)
++OBJS += $(CFILES:.c=.o)
++
++.cpp.o:
++	@mkdir -p `dirname $@`
++	$(CXX) $(MYCOMPILEFLAGS) $(CXXFLAGS) -c -o $@ $<
++
++.c.o:
++	@mkdir -p `dirname $@`
++	$(CC) $(MYCOMPILEFLAGS) -c -o $@ $<
++
++.PHONY: default clean distclean install
++
++default: ld
++
++ld: $(OBJS)
++	$(CXX) -o $@ $^ $(MYLINKFLAGS)
++
++install: ld
++	mkdir -p $(DESTDIR)$(bindir)
++	$(INSTALL_PROGRAM) ld \
++	 $(DESTDIR)$(bindir)/`echo ld | sed '$(transform)'`
++
++clean:
++	rm -r -f *.o */*.o
++	rm -f ld
+diff -urN ld64.orig/Makefile.in.85.2.1 ld64/Makefile.in.85.2.1
+--- ld64.orig/Makefile.in.85.2.1	1970-01-01 01:00:00.000000000 +0100
++++ ld64/Makefile.in.85.2.1	2013-11-18 23:05:40.089460657 +0000
+@@ -0,0 +1,78 @@
++builddir = @builddir@
++top_builddir = @top_builddir@
++srcdir = @srcdir@
++top_srcdir = @top_srcdir@
++
++prefix		= @prefix@
++exec_prefix	= @exec_prefix@
++bindir		= @bindir@
++
++VPATH = @srcdir@:@srcdir@/src
++
++CC                   = @CC@
++CXX                  = @CXX@
++CFLAGS               = @CFLAGS@
++CXXFLAGS             = @CXXFLAGS@
++WARNINGS             = @WARNINGS@
++MDYNAMICNOPIC        = @MDYNAMICNOPIC@
++CPPFLAGS             = @CPPFLAGS@
++DEFS                 = @DEFS@ @ENDIAN_FLAG@
++LDFLAGS              = @LDFLAGS@
++HAVE_FOREIGN_HEADERS = @HAVE_FOREIGN_HEADERS@
++UUID_LIBS	     = @UUID_LIBS@
++SSL_LIBS             = @SSL_LIBS@
++LTO_DEFS             = @LTO_DEFS@
++LTO_LIBS             = @LTO_LIBS@
++
++ifeq ($(HAVE_FOREIGN_HEADERS),YES)
++FORHDRS         = -I$(top_srcdir)/include/foreign
++endif
++
++INSTALL		= @INSTALL@
++INSTALL_PROGRAM	= @INSTALL_PROGRAM@
++transform       = @program_transform_name@
++LDPROG          = $(shell echo ld_classic | sed '$(transform)')
++ASPROG          = $(shell echo as | sed '$(transform)')
++
++MYINCLUDES      = -I$(builddir) -I$(srcdir) -I$(srcdir) -I$(srcdir)/Readers \
++			-I$(srcdir)/Writers -I$(top_builddir)/include \
++			-I$(top_srcdir)/include -include $(top_builddir)/include/config.h $(FORHDRS)
++MYWARNINGS      =
++MYDEFS          = -DDEBUG -DBINDIR="\"$(bindir)\"" -DLDPROG="\"$(LDPROG)\"" \
++		  -DASPROG="\"$(ASPROG)\"" $(LTO_DEFS)
++
++MYLDFLAGS	= -L$(top_builddir)/libstuff
++MYLIBS		= -lstuff $(SSL_LIBS) $(UUID_LIBS) $(LTO_LIBS)
++
++MYCOMPILEFLAGS	= $(WARNINGS) $(MYWARNINGS) $(DEFS) $(MYDEFS) \
++	$(CPPFLAGS) $(MYINCLUDES) $(CFLAGS) $(MDYNAMICNOPIC)
++
++MYLINKFLAGS	= $(LDFLAGS) $(MYLDFLAGS) $(MYLIBS)
++
++CXXFILES = ld.cpp Options.cpp
++CFILES = debugline.c
++
++OBJS = $(CXXFILES:.cpp=.o)
++OBJS += $(CFILES:.c=.o)
++
++.cpp.o:
++	$(CXX) $(MYCOMPILEFLAGS) $(CXXFLAGS) -c -o $@ $<
++
++.c.o:
++	$(CC) $(MYCOMPILEFLAGS) -c -o $@ $<
++
++.PHONY: default clean distclean install
++
++default: ld
++
++ld: $(OBJS)
++	$(CXX) -o $@ $^ $(MYLINKFLAGS)
++
++install: ld
++	mkdir -p $(DESTDIR)$(bindir)
++	$(INSTALL_PROGRAM) ld \
++		$(DESTDIR)$(bindir)/`echo ld | sed '$(transform)'`
++
++clean:
++	rm -r -f *.o */*.o
++	rm -f ld
+diff -urN ld64.orig/src/ld/configure.h ld64/src/ld/configure.h
+--- ld64.orig/src/ld/configure.h	1970-01-01 01:00:00.000000000 +0100
++++ ld64/src/ld/configure.h	2013-11-18 23:05:40.181459501 +0000
+@@ -0,0 +1,2 @@
++
++
+diff -urN ld64.orig/APPLE_LICENSE ld64/APPLE_LICENSE
+--- ld64.orig/APPLE_LICENSE	2017-08-07 14:59:07.618348312 +0100
++++ ld64/APPLE_LICENSE	2017-08-07 14:59:24.975884766 +0100
+@@ -365,3 +365,4 @@
+ FITNESS FOR A PARTICULAR PURPOSE, QUIET ENJOYMENT OR NON-INFRINGEMENT.
+ Please see the License for the specific language governing rights and
+ limitations under the License."
++
