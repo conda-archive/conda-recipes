@@ -107,7 +107,7 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
         make -j${CPU_COUNT} install-LTO
       popd
       pushd projects/tapi
-        make -j${CPU_COUNT} install-tapi
+        make -j${CPU_COUNT} install
       popd
     popd
   fi
