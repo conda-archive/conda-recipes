@@ -100,17 +100,25 @@ fi
 
 if [[ ! -f ${PREFIX}/bin/otool ]]; then
   if [[ ! -e ${PREFIX}/lib/libLTO${SHLIB_EXT} ]]; then
-    [[ -d llvm_lto_build ]] || mkdir llvm_lto_build
-    pushd llvm_lto_build
+    [[ -d llvm_lto_tapi_build ]] || mkdir llvm_lto_build
+    pushd llvm_lto_tapi_build
       cmake -G'Unix Makefiles' "${_cmake_config[@]}" ..
       pushd tools/lto
         make -j${CPU_COUNT} install-LTO
+      popd
+      pushd projects/tapi
+        make -j${CPU_COUNT} install-tapi
       popd
     popd
   fi
   [[ -d cctools_build ]] || mkdir cctools_build
   pushd cctools
     autoreconf -vfi
+      # Yuck, sorry.
+      [[ -d include/macho-o ]] || mkdir -p include/macho-o
+      cp ld64/src/other/prune_trie.h include/mach-o/prune_trie.h
+      cp ld64/src/other/prune_trie.h libprunetrie/prune_trie.h
+      cp ld64/src/other/PruneTrie.cpp libprunetrie/PruneTrie.cpp
   popd
   pushd cctools_build
     CC=${CC}" ${CFLAG_SYSROOT}" \
