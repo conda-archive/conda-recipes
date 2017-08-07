@@ -1,0 +1,11 @@
+diff -urN /Users/rdonnelly/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/tapi.orig/include/tapi/Core/File.h /Users/rdonnelly/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/tapi/include/tapi/Core/File.h
+--- /Users/rdonnelly/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/tapi.orig/include/tapi/Core/File.h	2017-08-07 23:35:16.000000000 +0100
++++ /Users/rdonnelly/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/tapi/include/tapi/Core/File.h	2017-08-07 23:37:09.000000000 +0100
+@@ -17,7 +17,6 @@
+ 
+ #include "tapi/Defines.h"
+ #include "llvm/Support/Path.h"
+-#include "llvm/Support/TimeValue.h"
+ #include <system_error>
+ 
+ TAPI_NAMESPACE_INTERNAL_BEGIN

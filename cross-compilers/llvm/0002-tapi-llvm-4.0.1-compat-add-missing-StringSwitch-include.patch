@@ -1,0 +1,10 @@
+--- tapi.orig/include/tapi/Core/YAML.h	2017-08-07 23:35:16.000000000 +0100
++++ tapi/include/tapi/Core/YAML.h	2017-08-07 23:40:36.000000000 +0100
+@@ -16,6 +16,7 @@
+ #define TAPI_CORE_YAML_H
+ 
+ #include "llvm/Support/YAMLTraits.h"
++#include "llvm/ADT/StringSwitch.h"
+ 
+ LLVM_YAML_STRONG_TYPEDEF(uint8_t, SwiftVersion)
+ 

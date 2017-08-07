@@ -1,0 +1,57 @@
+--- tapi.orig/lib/Core/MachODylibReader.cpp	2017-08-07 23:35:16.000000000 +0100
++++ tapi/lib/Core/MachODylibReader.cpp	2017-08-07 23:50:49.000000000 +0100
+@@ -12,6 +12,7 @@
+ ///
+ //===----------------------------------------------------------------------===//
+ 
++#include "llvm/Support/Error.h"
+ #include "tapi/Core/MachODylibReader.h"
+ #include "tapi/Core/ArchitectureSupport.h"
+ #include "tapi/Core/InterfaceFile.h"
+@@ -37,7 +38,7 @@
+   }
+ 
+   auto binaryOrErr = createBinary(bufferRef);
+-  if (binaryOrErr.getError())
++  if (!binaryOrErr)
+     return FileType::Invalid;
+ 
+   Binary &bin = *binaryOrErr.get();
+@@ -49,7 +50,7 @@
+   for (auto OI = UB->begin_objects(), OE = UB->end_objects(); OI != OE; ++OI) {
+     auto objOrErr = OI->getAsObjectFile();
+     // Ignore archives.
+-    if (objOrErr.getError())
++    if (!objOrErr)
+       continue;
+ 
+     auto &obj = *objOrErr.get();
+@@ -228,7 +229,7 @@
+                      ? SymbolFlags::WeakReferenced
+                      : SymbolFlags::None;
+     auto symbolName = symbol.getName();
+-    if (symbolName.getError())
++    if (!symbolName)
+       continue;
+ 
+     StringRef name;
+@@ -244,8 +245,8 @@
+   file->setPath(memBuffer.getBufferIdentifier());
+ 
+   auto binaryOrErr = createBinary(memBuffer);
+-  if (auto ec = binaryOrErr.getError()) {
+-    file->setErrorCode(ec);
++  if (!binaryOrErr) {
++    file->setErrorCode(errorToErrorCode(binaryOrErr.takeError()));
+     return std::move(file);
+   }
+ 
+@@ -263,7 +264,7 @@
+     auto objOrErr = OI->getAsObjectFile();
+ 
+     // Ignore archives.
+-    if (objOrErr.getError())
++    if (!objOrErr)
+       continue;
+ 
+     auto &object = *objOrErr.get();
