@@ -100,15 +100,20 @@ fi
 
 if [[ ! -f ${PREFIX}/bin/otool ]]; then
   if [[ ! -e ${PREFIX}/lib/libLTO${SHLIB_EXT} ]]; then
-    [[ -d llvm_lto_tapi_build ]] || mkdir llvm_lto_tapi_build
-    pushd llvm_lto_tapi_build
+    [[ -d llvm_lto_build ]] || mkdir llvm_lto_build
+    pushd llvm_lto_build
       cmake -G'Unix Makefiles' "${_cmake_config[@]}" ..
       pushd tools/lto
         make -j${CPU_COUNT} install-LTO
       popd
-      pushd projects/tapi
-        make -j${CPU_COUNT} install
-      popd
+      # pushd projects/tapi
+      #   make -j${CPU_COUNT} install
+      # popd
+    popd
+    [[ -d llvm_tapi_build ]] || mkdir llvm_tapi_build
+    pushd llvm_tapi_build
+      cmake -G'Unix Makefiles' -C ../projects/tapi/cmake/caches/apple-tapi.cmake "${_cmake_config[@]}" ..
+      make -j${CPU_COUNT} install-distribution
     popd
   fi
   [[ -d cctools_build ]] || mkdir cctools_build
