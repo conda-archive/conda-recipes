@@ -6,6 +6,8 @@
 {% set ld64_sha256 = '175d89c419e99d49a7a5f7e4196d3cef4c9e19cc17a425c332e86df6b516f7d7' %}
 {% set dyld_version = '433.5' %}
 {% set dyld_sha256 = '13e370ed12c137f0153a96bab12e1d46896db07f8a40bac6b0529585ceac9260' %}
+{% set tapi_version = '1.30' %}
+{% set tapi_sha256 = 'be2f3732c4ba7e9d78696fe43f0b31fa4963925ee6e4e5e11cc45603a83ff9a1' %}
 
 package:
   name: llvm
@@ -17,6 +19,8 @@ source:
   - url: http://releases.llvm.org/{{ version }}/llvm-{{ version }}.src.tar.xz
   - url: http://releases.llvm.org/{{ version }}/cfe-{{ version }}.src.tar.xz
     folder: tools/clang
+  - url: http://releases.llvm.org/{{ version }}/polly-{{ version }}.src.tar.xz
+    folder: tools/polly
   - url: http://releases.llvm.org/{{ version }}/compiler-rt-{{ version }}.src.tar.xz
     folder: projects/compiler-rt
     patches:
@@ -28,11 +32,12 @@ source:
     folder: projects/libcxxabi
   - url: http://releases.llvm.org/{{ version }}/openmp-{{ version }}.src.tar.xz
     folder: projects/openmp
-  - url: http://releases.llvm.org/{{ version }}/polly-{{ version }}.src.tar.xz
-    folder: tools/polly
+  - url: https://opensource.apple.com/tarballs/tapi/tapi-{{ tapi_version }}.tar.gz
+    sha256: {{ tapi_sha256 }}
+    folder: projects/tapi
   - url: https://opensource.apple.com/tarballs/cctools/cctools-{{ cctools_version }}.tar.gz
-    folder: cctools
     sha256: {{ cctools_sha256 }}
+    folder: cctools
     patches:
       - 001-remove_static_part.patch
       - 100-add_sdkroot_headers.patch
@@ -63,8 +68,8 @@ source:
       - 410-remove_inc_arch_sparc_reg_h_PC.patch
       - 420-autoconfiscate.patch
   - url: https://opensource.apple.com/tarballs/ld64/ld64-{{ ld64_version }}.tar.gz
-    folder: cctools/ld64
     sha256: {{ ld64_sha256 }}
+    folder: cctools/ld64
     patches:
       - 100-ld64-add_sdkroot_headers.patch
       - 150-ld64-allow_glibc_or_bsd_qsort_r.patch
@@ -77,15 +82,14 @@ source:
       - 350-ld64-win_fileio_mode.patch
       - 390-ld64-_WIN64-fixes.patch
       - 420-ld64-autoconfiscate.patch
-      - 500-ld64-remove-old-compiler-workaround.patch
     # Because macOS 10.9's clang is too old (problems with atomics)
   - url: http://releases.llvm.org/4.0.1/clang+llvm-4.0.1-x86_64-apple-darwin.tar.xz                       [osx]
     folder: bootstrap                                                                                     [osx]
   # We copy headers necessary for building cctools/ld64 from dyld and MacOSX10.9.sdk (on all OSes).
   # older versions of these files are added by 100-add_sdkroot_headers.patch, we overwrite those...
   - url: https://opensource.apple.com/tarballs/dyld/dyld-{{ dyld_version }}.tar.gz
-    folder: bootstrap/dyld
     sha256: {{ dyld_sha256 }}
+    folder: bootstrap/dyld
   - url: https://github.com/phracker/MacOSX-SDKs/releases/download/MacOSX10.11.sdk/MacOSX10.9.sdk.tar.xz
     folder: bootstrap/MacOSX10.9.sdk
 
