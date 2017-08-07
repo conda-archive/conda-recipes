@@ -5560,3 +5560,12 @@ diff -urN a/otool/Makefile.in b/otool/Makefile.in
 +clean:
 +	rm -r -f *.o
 +	rm -f otool
+diff -urN a/APPLE_LICENSE b/APPLE_LICENSE
+--- a/APPLE_LICENSE	2017-08-07 16:01:54.768269414 +0100
++++ b/APPLE_LICENSE	2017-08-07 16:05:08.446223376 +0100
+@@ -364,4 +364,4 @@
+ INCLUDING WITHOUT LIMITATION, ANY WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE, QUIET ENJOYMENT OR NON-INFRINGEMENT.
+ Please see the License for the specific language governing rights and
+-limitations under the License."
++limitations under the License." 

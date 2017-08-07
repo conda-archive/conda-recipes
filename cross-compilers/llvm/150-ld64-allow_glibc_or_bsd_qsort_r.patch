@@ -1,7 +1,7 @@
 diff -urN ld64.orig/src/ld/parsers/macho_relocatable_file.cpp ld64/src/ld/parsers/macho_relocatable_file.cpp
---- ld64.orig/src/ld/parsers/macho_relocatable_file.cpp	2013-10-07 17:09:08.975777780 +0100
-+++ ld64/src/ld/parsers/macho_relocatable_file.cpp	2013-10-07 17:09:09.149113735 +0100
-@@ -51,6 +51,11 @@
+--- ld64.orig/src/ld/parsers/macho_relocatable_file.cpp	2017-01-20 22:24:10.000000000 +0000
++++ ld64/src/ld/parsers/macho_relocatable_file.cpp	2017-08-07 16:32:51.000000000 +0100
+@@ -53,6 +53,11 @@
  #include "macho_relocatable_file.h"
  
  
@@ -13,7 +13,7 @@ diff -urN ld64.orig/src/ld/parsers/macho_relocatable_file.cpp ld64/src/ld/parser
  
  extern void throwf(const char* format, ...) __attribute__ ((noreturn,format(printf, 1, 2)));
  extern void warning(const char* format, ...) __attribute__((format(printf, 1, 2)));
-@@ -1058,8 +1063,13 @@
+@@ -1207,8 +1212,13 @@
  	void											makeSortedSymbolsArray(uint32_t symArray[], const uint32_t sectionArray[]);
  	void											makeSortedSectionsArray(uint32_t array[]);
  	static int										pointerSorter(const void* l, const void* r);
@@ -27,9 +27,9 @@ diff -urN ld64.orig/src/ld/parsers/macho_relocatable_file.cpp ld64/src/ld/parser
  
  	void											parseDebugInfo();
  	void											parseStabs();
-@@ -1841,8 +1851,13 @@
- 	}
- }
+@@ -2301,8 +2311,13 @@
+ 
+ 
  
 +#ifdef HAVE_BSD_QSORT_R
  template <typename A>
@@ -41,7 +41,7 @@ diff -urN ld64.orig/src/ld/parsers/macho_relocatable_file.cpp ld64/src/ld/parser
  {
  	Parser<A>* parser = (Parser<A>*)extra;
  	const uint32_t* left = (uint32_t*)l;
-@@ -1885,7 +1900,7 @@
+@@ -2345,7 +2360,7 @@
  	// sort by symbol table address
  	for (uint32_t i=0; i < _machOSectionsCount; ++i)
  		array[i] = i;
@@ -50,7 +50,7 @@ diff -urN ld64.orig/src/ld/parsers/macho_relocatable_file.cpp ld64/src/ld/parser
  
  	if ( log ) {
  		fprintf(stderr, "sorted sections:\n");
-@@ -1896,8 +1911,13 @@
+@@ -2356,8 +2371,13 @@
  
  
  
@@ -64,12 +64,12 @@ diff -urN ld64.orig/src/ld/parsers/macho_relocatable_file.cpp ld64/src/ld/parser
  {
  	ParserAndSectionsArray* extraInfo = (ParserAndSectionsArray*)extra;
  	Parser<A>* parser = extraInfo->parser;
-@@ -1969,7 +1989,7 @@
+@@ -2438,7 +2458,7 @@
  	
  	// sort by symbol table address
  	ParserAndSectionsArray extra = { this, sectionArray };
 -	::qsort_r(array, _symbolsInSections, sizeof(uint32_t), &extra, &symbolIndexSorter);
-+	QSORT_R(array, _symbolsInSections, sizeof(uint32_t), &extra, symbolIndexSorter);
++	QSORT_R(array, _symbolsInSections, sizeof(uint32_t), &extra, &symbolIndexSorter);
+ 
  	
  	// look for two symbols at same address
- 	_overlappingSymbols = false;
