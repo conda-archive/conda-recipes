@@ -3603,7 +3603,7 @@ diff -urN a/configure.ac b/configure.ac
 --- a/configure.ac	1970-01-01 01:00:00.000000000 +0100
 +++ b/configure.ac	2013-11-18 23:05:40.233458847 +0000
 @@ -0,0 +1,780 @@
-+AC_INIT([ccctools], [809], [Ray Donnelly <mingw.android@gmail.com>])
++AC_INIT([cctools], [895], [Ray Donnelly <mingw.android@gmail.com>])
 +AC_PREREQ([2.62])
 +AC_REVISION([m4_esyscmd_s([git describe --always])])
 +
