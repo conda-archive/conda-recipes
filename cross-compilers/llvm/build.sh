@@ -119,26 +119,30 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
   popd
 
   # libtool on macOS 10.9 is too old to build LLVM statically:
+  # CMakeFiles/LLVMSupport.dir/PluginLoader.cpp.o is not an object file (not allowed in a library)
   # https://trac.macports.org/ticket/54129
-  # .. so we build that first.
-  [[ -d cctools_build_libtool ]] || mkdir cctools_build_libtool
-  pushd cctools_build_libtool
-    # We cannot use bootstrap clang yet as configure fails with:
-    # ld: unknown option: -no_deduplicate
-    CC=/usr/bin/clang" ${CFLAG_SYSROOT}"     \
-    CXX=/usr/bin/clang++" ${CFLAG_SYSROOT}"  \
-      ../cctools/configure                   \
-        "${_cctools_config[@]}"              \
-        --prefix=${BOOTSTRAP}                \
-        --with-llvm=${BOOTSTRAP}             \
-        --disable-static
-  popd
-  pushd cctools_build_libtool/misc
-    make libtool${EXEEXT}
-    cp libtool${EXEEXT} ${BOOTSTRAP}/bin
-  popd
-  which libtool
-  exit 1
+  # .. so we must build a new one first.
+  if [[ ! -e ${BOOTSTRAP}/bin/libtool${EXEEXT} ]]; then
+    [[ -d cctools_build_libtool ]] || mkdir cctools_build_libtool
+    pushd cctools_build_libtool
+      # We cannot use bootstrap clang yet as configure fails with:
+      # ld: unknown option: -no_deduplicate
+      CC=/usr/bin/clang" ${CFLAG_SYSROOT}"     \
+      CXX=/usr/bin/clang++" ${CFLAG_SYSROOT}"  \
+        ../cctools/configure                   \
+          "${_cctools_config[@]}"              \
+          --prefix=${BOOTSTRAP}                \
+          --with-llvm=${BOOTSTRAP}             \
+          --disable-static
+    popd
+    pushd cctools_build_libtool/libstuff
+      make -j${CPU_COUNT}
+    popd
+    pushd cctools_build_libtool/misc
+      make -j${CPU_COUNT} libtool${EXEEXT}
+      cp libtool${EXEEXT} ${BOOTSTRAP}/bin
+    popd
+  fi
   if [[ ! -e ${PREFIX}/lib/libLTO${SHLIB_EXT} ]]; then
     [[ -d llvm_lto_build ]] || mkdir llvm_lto_build
     pushd llvm_lto_build
