@@ -3,6 +3,9 @@
 if [[ $(uname) == Linux ]]; then
   # Since we have ports of cctools and ld64 we can cross-compile.
   export MACOSX_DEPLOYMENT_TARGET=10.9
+  # We do not need to use system compilers on Linux at all.
+  _usr_bin_CC=$(which gcc)
+  _usr_bin_CXX=$(which g++)
 elif [[ $(uname) == Darwin ]]; then
 
   BOOTSTRAP=${PWD}/bootstrap
@@ -10,6 +13,8 @@ elif [[ $(uname) == Darwin ]]; then
   PATH=${BOOTSTRAP}/bin:${PATH}
   export CC=$(which clang)
   export CXX=$(which clang++)
+  _usr_bin_CC=/usr/bin/clang
+  _usr_bin_CXX=/usr/bin/clang++
 
   # Cannot set this when using CMake without also providing CMAKE_OSX_SYSROOT
   # (though that is not a bad idea really, if the SDK can be redistributed?).
@@ -134,8 +139,8 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
       # ld: unknown option: -no_deduplicate
       # .. you had better be running this on macOS 10.9 with the
       # .. compiler command line tools installed, otherwise YMMV
-      CC=/usr/bin/clang" ${CFLAG_SYSROOT}"     \
-      CXX=/usr/bin/clang++" ${CFLAG_SYSROOT}"  \
+      CC=${_usr_bin_CC}" ${CFLAG_SYSROOT}"     \
+      CXX=${_usr_bin_CXX}"  ${CFLAG_SYSROOT}"  \
         ../cctools/configure                   \
           "${_cctools_config[@]}"              \
           --prefix=${BOOTSTRAP}                \
@@ -193,12 +198,12 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
     # ld: unknown option: -no_deduplicate
     # .. you had better be running this on macOS 10.9 with the
     # .. compiler command line tools installed, otherwise YMMV
-    CC=/usr/bin/clang" ${CFLAG_SYSROOT}"     \
-    CXX=/usr/bin/clang++" ${CFLAG_SYSROOT}"  \
-      ../cctools/configure                   \
-        "${_cctools_config[@]}"              \
-        --prefix=${PREFIX}                   \
-        --with-llvm=${PREFIX}                \
+    CC=${_usr_bin_CC}" ${CFLAG_SYSROOT}"    \
+    CXX=${_usr_bin_CXX}" ${CFLAG_SYSROOT}"  \
+      ../cctools/configure                  \
+        "${_cctools_config[@]}"             \
+        --prefix=${PREFIX}                  \
+        --with-llvm=${PREFIX}               \
         --disable-static
     make -j${CPU_COUNT} VERBOSE=1
     make install
