@@ -1,0 +1,13 @@
+--- CMakeLists.txt.orig	2017-08-08 05:19:47.000000000 -0700
++++ CMakeLists.txt	2017-08-08 05:21:35.000000000 -0700
+@@ -65,7 +65,9 @@
+       OUTPUT_STRIP_TRAILING_WHITESPACE)
+   endif()
+ 
+-  if(NOT CMAKE_LIBTOOL OR NOT EXISTS CMAKE_LIBTOOL)
++  # .. except the latest libtool provided for macOS 10.9 is too old,
++  # .. so we never want to use it and will have built our own instead.
++  if(NOT CMAKE_LIBTOOL OR NOT EXISTS CMAKE_LIBTOOL OR TRUE)
+     find_program(CMAKE_LIBTOOL NAMES libtool)
+   endif()
+ 
