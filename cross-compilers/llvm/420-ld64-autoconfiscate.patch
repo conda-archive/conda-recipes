@@ -93,7 +93,7 @@ diff -urN ld64.orig/Makefile.in ld64/Makefile.in
 +
 +.cpp.o:
 +	@mkdir -p `dirname $@`
-+	$(CXX) $(MYCOMPILEFLAGS) $(CXXFLAGS) -c -o $@ $<
++	$(CXX) $(MYCOMPILEFLAGS) $(CXXFLAGS) -std=c++11 -c -o $@ $<
 +
 +.c.o:
 +	@mkdir -p `dirname $@`
@@ -104,7 +104,7 @@ diff -urN ld64.orig/Makefile.in ld64/Makefile.in
 +default: ld
 +
 +ld: $(OBJS)
-+	$(CXX) -o $@ $^ $(MYLINKFLAGS)
++	$(CXX) -std=c++11 -o $@ $^ $(MYLINKFLAGS)
 +
 +install: ld
 +	mkdir -p $(DESTDIR)$(bindir)

@@ -1,0 +1,11 @@
+diff -urN ld64.orig/include/CrashReporterClient.h ld64/include/CrashReporterClient.h
+--- ld64.orig/include/CrashReporterClient.h	1970-01-01 01:00:00.000000000 +0100
++++ ld64/include/CrashReporterClient.h	2017-08-08 17:36:46.290766041 +0100
+@@ -0,0 +1,7 @@
++#ifndef _LIBC_CRASHREPORTERCLIENT_H
++#define _LIBC_CRASHREPORTERCLIENT_H
++
++#define CRGetCrashLogMessage() 0
++#define CRSetCrashLogMessage(x) /* nothing */
++
++#endif /* _LIBC_CRASHREPORTERCLIENT_H */
