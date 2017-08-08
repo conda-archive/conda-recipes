@@ -1,0 +1,31 @@
+{% set version = '1.6.1' %}
+
+package:
+  name: xar
+  version: {{ version }}
+
+source:
+  url: https://github.com/mackyle/xar/archive/xar-{{ version }}.tar.gz
+
+requirements:
+  build:
+    - autoconf
+
+build:
+  script:
+    - cd xar && ./autogen.sh --noconfigure && ./configure --prefix=${PREFIX} && make && make install
+
+about:
+  home: http://mackyle.github.io/xar
+  license: BSD 3-clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: eXtensible ARchiver
+  description: |
+    A fork/clone of the subversion xar repository from
+    http://xar.googlecode.com/svn/ that includes several
+    enhancements and bug fixes including very basic command
+    line signature support (master branch).
+  doc_url: http://mackyle.github.io/xar/xar.html
+  doc_source_url: https://raw.githubusercontent.com/mackyle/xar/master/xar/xar.spec.in
+  dev_url: https://github.com/mackyle/xar
