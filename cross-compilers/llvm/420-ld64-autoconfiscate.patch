@@ -10,7 +10,7 @@ diff -urN ld64.orig/APPLE_LICENSE ld64/APPLE_LICENSE
 diff -urN ld64.orig/Makefile.in ld64/Makefile.in
 --- ld64.orig/Makefile.in	1970-01-01 01:00:00.000000000 +0100
 +++ ld64/Makefile.in	2017-08-07 17:26:39.623611550 +0100
-@@ -0,0 +1,103 @@
+@@ -0,0 +1,104 @@
 +builddir        = @builddir@
 +top_builddir    = @top_builddir@
 +srcdir          = @srcdir@
@@ -61,7 +61,8 @@ diff -urN ld64.orig/Makefile.in ld64/Makefile.in
 +
 +MYWARNINGS      =
 +MYDEFS          = -DDEBUG -DBINDIR="\"$(bindir)\"" -DLDPROG="\"$(LDPROG)\"" \
-+		  -DASPROG="\"$(ASPROG)\"" $(LTO_DEFS)
++                  -DASPROG="\"$(ASPROG)\"" $(LTO_DEFS) \
++                  -DALL_SUPPORTED_ARCHS="\"armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em (tvOS)\""
 +
 +MYLDFLAGS       = -L$(top_builddir)/libstuff
 +MYLIBS          = -lstuff $(SSL_LIBS) $(UUID_LIBS) $(DL_LIBS) $(LTO_LIBS)
