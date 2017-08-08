@@ -78,7 +78,7 @@ diff -urN ld64.orig/Makefile.in ld64/Makefile.in
 +                  src/ld/passes/compact_unwind.cpp src/ld/passes/dtrace_dof.cpp \
 +                  src/ld/passes/dylibs.cpp src/ld/passes/got.cpp \
 +                  src/ld/passes/huge.cpp src/ld/passes/objc.cpp \
-+                  src/ld/passes/order_file.cpp src/ld/passes/stubs/stubs.cpp \
++                  src/ld/passes/bitcode_bundle.cpp src/ld/passes/stubs/stubs.cpp \
 +                  src/ld/passes/tlvp.cpp \
 +                  src/ld/parsers/opaque_section_file.cpp src/ld/parsers/lto_file.cpp \
 +                  src/ld/parsers/archive_file.cpp \
