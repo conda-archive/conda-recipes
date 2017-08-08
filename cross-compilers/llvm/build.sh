@@ -5,8 +5,9 @@ if [[ $(uname) == Linux ]]; then
   export MACOSX_DEPLOYMENT_TARGET=10.9
 elif [[ $(uname) == Darwin ]]; then
 
+  BOOTSTRAP=${PWD}/bootstrap
   # Need to use a more modern clang to bootstrap the build.
-  PATH=${PWD}/bootstrap/bin:${PATH}
+  PATH=${BOOTSTRAP}/bin:${PATH}
   export CC=$(which clang)
   export CXX=$(which clang-c++)
 
@@ -78,7 +79,8 @@ _cmake_config+=(-DCMAKE_INSTALL_PREFIX:PATH=${PREFIX})
 # TODO: how to add AArch64 here based on conda_build_config.yaml - does case matter?
 # _cmake_config+=(-DLLVM_TARGETS_TO_BUILD:STRING=X86;AArch64)
 _cmake_config+=(-DCMAKE_BUILD_TYPE:STRING=Release)
-_cmake_config+=(-DBUILD_SHARED_LIBS:BOOL=ON)
+# The bootstrap clang I use was built with a static libLLVMObject.a and I trying to get the same here
+# _cmake_config+=(-DBUILD_SHARED_LIBS:BOOL=ON)
 _cmake_config+=(-DLLVM_ENABLE_ASSERTIONS:BOOL=OFF)
 _cmake_config+=(-DLINK_POLLY_INTO_TOOLS:BOOL=ON)
 # Only valid when using the Ninja Generator AFAICT
@@ -98,7 +100,45 @@ fi
 # _cmake_config+=(--trace-expand)
 # CPU_COUNT=1
 
+declare -a _cctools_config
+_cctools_config+=(--host=$(${CC} -dumpmachine))
+_cctools_config+=(--build=$(${CC} -dumpmachine))
+_cctools_config+=(--target=${DARWIN_TARGET})
+_cctools_config+=(--prefix=${PREFIX})
+_cctools_config+=(--disable-static)
+
 if [[ ! -f ${PREFIX}/bin/otool ]]; then
+
+  pushd cctools
+    autoreconf -vfi
+      # Yuck, sorry.
+      [[ -d include/macho-o ]] || mkdir -p include/macho-o
+      cp ld64/src/other/prune_trie.h include/mach-o/prune_trie.h
+      cp ld64/src/other/prune_trie.h libprunetrie/prune_trie.h
+      cp ld64/src/other/PruneTrie.cpp libprunetrie/PruneTrie.cpp
+  popd
+
+  # libtool on macOS 10.9 is too old to build LLVM statically:
+  # https://trac.macports.org/ticket/54129
+  # .. so we build that first.
+  [[ -d cctools_build_libtool ]] || mkdir cctools_build_libtool
+  pushd cctools_build_libtool
+    # We cannot use bootstrap clang yet as configure fails with:
+    # ld: unknown option: -no_deduplicate
+    CC=/usr/bin/clang" ${CFLAG_SYSROOT}"     \
+    CXX=/usr/bin/clang++" ${CFLAG_SYSROOT}"  \
+      ../cctools/configure                   \
+        "${_cctools_config[@]}"              \
+        --prefix=${BOOTSTRAP}                \
+        --with-llvm=${BOOTSTRAP}             \
+        --disable-static
+  popd
+  pushd cctools_build_libtool/misc
+    make libtool${EXEEXT}
+    cp libtool${EXEEXT} ${BOOTSTRAP}/bin
+  popd
+  which libtool
+  exit 1
   if [[ ! -e ${PREFIX}/lib/libLTO${SHLIB_EXT} ]]; then
     [[ -d llvm_lto_build ]] || mkdir llvm_lto_build
     pushd llvm_lto_build
@@ -112,28 +152,31 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
     popd
     [[ -d llvm_tapi_build ]] || mkdir llvm_tapi_build
     pushd llvm_tapi_build
+      _cmake_config+=(-Wdev)
+      _cmake_config+=(--debug-output)
+      _cmake_config+=(--trace-expand)
       cmake -G'Unix Makefiles' -C ../projects/tapi/cmake/caches/apple-tapi.cmake "${_cmake_config[@]}" ..
       make -j${CPU_COUNT} install-distribution
+      # tapi will fail to build here as it will not link to two libs, one of which has been built this time around (LLVMSupport)
+      # and one of which has not, LLVMObject (but it has been built by install-LTO, as a dylib whereas the official releases are
+      # static).
+      # To reproduce the failure:
+      # pushd /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/llvm_tapi_build/projects/tapi/lib/Core
+      # /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/bin/clang++  -mmacosx-version-min=10.9  -stdlib=libc++ -fPIC -fvisibility-inlines-hidden -Wall -W -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -pedantic -Wno-long-long -Wcovered-switch-default -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wstring-conversion -Werror=date-time -std=c++11 -flto -Os    -DNDEBUG -isysroot /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/MacOSX10.9.sdk -mmacosx-version-min=10.9 -dynamiclib -Wl,-headerpad_max_install_names  -Wl,-dead_strip -Wl,-object_path_lto,/Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/llvm_tapi_build/projects/tapi/lib/Core/./tapiCore-lto.o   -arch x86_64 -stdlib=libc++ -flto -o ../../../../lib/libtapiCore.dylib -install_name @rpath/libtapiCore.dylib CMakeFiles/tapiCore.dir/ArchitectureSupport.cpp.o CMakeFiles/tapiCore.dir/InterfaceFile.cpp.o CMakeFiles/tapiCore.dir/MachODylibReader.cpp.o CMakeFiles/tapiCore.dir/Registry.cpp.o CMakeFiles/tapiCore.dir/Symbol.cpp.o CMakeFiles/tapiCore.dir/TextStub_v1.cpp.o CMakeFiles/tapiCore.dir/TextStub_v2.cpp.o CMakeFiles/tapiCore.dir/YAMLReaderWriter.cpp.o -Wl,-rpath,@loader_path/../lib
+      # To work around it, add:
+      # -L../../../../lib/ -lLLVMSupport -L../../../../../llvm_lto_build/lib -lLLVMObject
+      # Overall, combining this in the same build as install-LTO might be wise? I am not sure if llvm-config would help with any of this too?
+      exit 1
     popd
   fi
   [[ -d cctools_build ]] || mkdir cctools_build
-  pushd cctools
-    autoreconf -vfi
-      # Yuck, sorry.
-      [[ -d include/macho-o ]] || mkdir -p include/macho-o
-      cp ld64/src/other/prune_trie.h include/mach-o/prune_trie.h
-      cp ld64/src/other/prune_trie.h libprunetrie/prune_trie.h
-      cp ld64/src/other/PruneTrie.cpp libprunetrie/PruneTrie.cpp
-  popd
-  pushd cctools_build
-    CC=${CC}" ${CFLAG_SYSROOT}" \
-    CXX=${CXX}" ${CFLAG_SYSROOT}" \
-      ../cctools/configure \
-        --host=$(${CC} -dumpmachine) \
-        --build=$(${CC} -dumpmachine) \
-        --target=${DARWIN_TARGET} \
-        --prefix=${PREFIX} \
-        --with-llvm=${PREFIX} \
+  pushd cctools_build_libtool
+    CC=${CC}" ${CFLAG_SYSROOT}"    \
+    CXX=${CXX}" ${CFLAG_SYSROOT}"  \
+      ../cctools/configure         \
+        "${_cctools_config[@]}"    \
+        --prefix=${PREFIX}         \
+        --with-llvm=${PREFIX}      \
         --disable-static
     make -j${CPU_COUNT} VERBOSE=1
     make install
