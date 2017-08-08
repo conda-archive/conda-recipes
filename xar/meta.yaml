@@ -1,5 +1,10 @@
 {% set version = '1.6.1' %}
 
+# This package is linked to Apple's ld64, but they use a very early version
+# of it, not this fork. Still, it should work OK. We do not need lzma and
+# may not even need bzip2 nor libxml2 however the build system ignores
+# --without-lzma (and probably the others too) and finds system libraries.
+
 package:
   name: xar
   version: {{ version }}
@@ -10,16 +15,20 @@ source:
 requirements:
   build:
     - autoconf
+    - libxml2
+    - bzip2
+    - zlib
+    - xz
 
 build:
   script:
-    - cd xar && ./autogen.sh --noconfigure && ./configure --prefix=${PREFIX} && make && make install
+    - cd xar && ./autogen.sh --noconfigure && ./configure --disable-shared --with-lzma=${PREFIX} --prefix=${PREFIX} && make && make install
 
 about:
   home: http://mackyle.github.io/xar
   license: BSD 3-clause
   license_family: BSD
-  license_file: LICENSE
+  license_file: xar/LICENSE
   summary: eXtensible ARchiver
   description: |
     A fork/clone of the subversion xar repository from
