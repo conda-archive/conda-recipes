@@ -17,8 +17,6 @@ source:
   # - git_url: https://github.com/llvm/llvm
   #   git_tag: master
   - url: http://releases.llvm.org/{{ version }}/llvm-{{ version }}.src.tar.xz
-    patches:
-      - 0001-llvm-macOS-10.9-compat-Do-not-use-xcrun-found-libtool-as-its-too-old.patch
   - url: http://releases.llvm.org/{{ version }}/cfe-{{ version }}.src.tar.xz
     folder: tools/clang
   - url: http://releases.llvm.org/{{ version }}/polly-{{ version }}.src.tar.xz

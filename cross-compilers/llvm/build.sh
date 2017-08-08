@@ -9,7 +9,7 @@ elif [[ $(uname) == Darwin ]]; then
   # Need to use a more modern clang to bootstrap the build.
   PATH=${BOOTSTRAP}/bin:${PATH}
   export CC=$(which clang)
-  export CXX=$(which clang-c++)
+  export CXX=$(which clang++)
 
   # Cannot set this when using CMake without also providing CMAKE_OSX_SYSROOT
   # (though that is not a bad idea really, if the SDK can be redistributed?).
@@ -74,6 +74,11 @@ else
   CHOST=$(${CC} -dumpmachine)
 fi
 
+# conda-build cleans out ${PREFIX} on each build. Also the sub-package install
+# scripts need to copy things across to ${PREFIX} from ${PWD}/prefix
+OLD_PREFIX=${PREFIX}
+PREFIX=${PWD}/prefix
+
 declare -a _cmake_config
 _cmake_config+=(-DCMAKE_INSTALL_PREFIX:PATH=${PREFIX})
 # TODO: how to add AArch64 here based on conda_build_config.yaml - does case matter?
@@ -127,6 +132,8 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
     pushd cctools_build_libtool
       # We cannot use bootstrap clang yet as configure fails with:
       # ld: unknown option: -no_deduplicate
+      # .. you had better be running this on macOS 10.9 with the
+      # .. compiler command line tools installed, otherwise YMMV
       CC=/usr/bin/clang" ${CFLAG_SYSROOT}"     \
       CXX=/usr/bin/clang++" ${CFLAG_SYSROOT}"  \
         ../cctools/configure                   \
@@ -143,44 +150,55 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
       cp libtool${EXEEXT} ${BOOTSTRAP}/bin
     popd
   fi
+
   if [[ ! -e ${PREFIX}/lib/libLTO${SHLIB_EXT} ]]; then
     [[ -d llvm_lto_build ]] || mkdir llvm_lto_build
     pushd llvm_lto_build
-      cmake -G'Unix Makefiles' "${_cmake_config[@]}" ..
+      cmake -G'Unix Makefiles'                        \
+            "${_cmake_config[@]}"                     \
+            -DCMAKE_LIBTOOL=${BOOTSTRAP}/bin/libtool  \
+            ..
       pushd tools/lto
         make -j${CPU_COUNT} install-LTO
       popd
-      # pushd projects/tapi
-      #   make -j${CPU_COUNT} install
       # popd
     popd
-    [[ -d llvm_tapi_build ]] || mkdir llvm_tapi_build
-    pushd llvm_tapi_build
-      _cmake_config+=(-Wdev)
-      _cmake_config+=(--debug-output)
-      _cmake_config+=(--trace-expand)
-      cmake -G'Unix Makefiles' -C ../projects/tapi/cmake/caches/apple-tapi.cmake "${_cmake_config[@]}" ..
-      make -j${CPU_COUNT} install-distribution
-      # tapi will fail to build here as it will not link to two libs, one of which has been built this time around (LLVMSupport)
-      # and one of which has not, LLVMObject (but it has been built by install-LTO, as a dylib whereas the official releases are
-      # static).
-      # To reproduce the failure:
-      # pushd /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/llvm_tapi_build/projects/tapi/lib/Core
-      # /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/bin/clang++  -mmacosx-version-min=10.9  -stdlib=libc++ -fPIC -fvisibility-inlines-hidden -Wall -W -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -pedantic -Wno-long-long -Wcovered-switch-default -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wstring-conversion -Werror=date-time -std=c++11 -flto -Os    -DNDEBUG -isysroot /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/MacOSX10.9.sdk -mmacosx-version-min=10.9 -dynamiclib -Wl,-headerpad_max_install_names  -Wl,-dead_strip -Wl,-object_path_lto,/Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/llvm_tapi_build/projects/tapi/lib/Core/./tapiCore-lto.o   -arch x86_64 -stdlib=libc++ -flto -o ../../../../lib/libtapiCore.dylib -install_name @rpath/libtapiCore.dylib CMakeFiles/tapiCore.dir/ArchitectureSupport.cpp.o CMakeFiles/tapiCore.dir/InterfaceFile.cpp.o CMakeFiles/tapiCore.dir/MachODylibReader.cpp.o CMakeFiles/tapiCore.dir/Registry.cpp.o CMakeFiles/tapiCore.dir/Symbol.cpp.o CMakeFiles/tapiCore.dir/TextStub_v1.cpp.o CMakeFiles/tapiCore.dir/TextStub_v2.cpp.o CMakeFiles/tapiCore.dir/YAMLReaderWriter.cpp.o -Wl,-rpath,@loader_path/../lib
-      # To work around it, add:
-      # -L../../../../lib/ -lLLVMSupport -L../../../../../llvm_lto_build/lib -lLLVMObject
-      # Overall, combining this in the same build as install-LTO might be wise? I am not sure if llvm-config would help with any of this too?
-      exit 1
-    popd
+    if [[ ! -e ${PREFIX}/lib/libtapi${SHLIB_EXT} ]]; then
+      [[ -d llvm_tapi_build ]] || mkdir llvm_tapi_build
+      pushd llvm_tapi_build
+        # _cmake_config+=(-Wdev)
+        # _cmake_config+=(--debug-output)
+        # _cmake_config+=(--trace-expand)
+        cmake -G'Unix Makefiles'                                 \
+              -C ../projects/tapi/cmake/caches/apple-tapi.cmake  \
+              "${_cmake_config[@]}"                              \
+              -DCMAKE_LIBTOOL=${BOOTSTRAP}/bin/libtool           \
+              ..
+        make -j${CPU_COUNT} install-distribution
+        # tapi will fail to build here as it will not link to two libs, one of which has been built this time around (LLVMSupport)
+        # and one of which has not, LLVMObject (but it has been built by install-LTO, as a dylib whereas the official releases are
+        # static).
+        # To reproduce the failure:
+        # pushd /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/llvm_tapi_build/projects/tapi/lib/Core
+        # /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/bin/clang++  -mmacosx-version-min=10.9  -stdlib=libc++ -fPIC -fvisibility-inlines-hidden -Wall -W -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -pedantic -Wno-long-long -Wcovered-switch-default -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wstring-conversion -Werror=date-time -std=c++11 -flto -Os    -DNDEBUG -isysroot /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/MacOSX10.9.sdk -mmacosx-version-min=10.9 -dynamiclib -Wl,-headerpad_max_install_names  -Wl,-dead_strip -Wl,-object_path_lto,/Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/llvm_tapi_build/projects/tapi/lib/Core/./tapiCore-lto.o   -arch x86_64 -stdlib=libc++ -flto -o ../../../../lib/libtapiCore.dylib -install_name @rpath/libtapiCore.dylib CMakeFiles/tapiCore.dir/ArchitectureSupport.cpp.o CMakeFiles/tapiCore.dir/InterfaceFile.cpp.o CMakeFiles/tapiCore.dir/MachODylibReader.cpp.o CMakeFiles/tapiCore.dir/Registry.cpp.o CMakeFiles/tapiCore.dir/Symbol.cpp.o CMakeFiles/tapiCore.dir/TextStub_v1.cpp.o CMakeFiles/tapiCore.dir/TextStub_v2.cpp.o CMakeFiles/tapiCore.dir/YAMLReaderWriter.cpp.o -Wl,-rpath,@loader_path/../lib
+        # To work around it, add:
+        # -L../../../../lib/ -lLLVMSupport -L../../../../../llvm_lto_build/lib -lLLVMObject
+        # Overall, combining this in the same build as install-LTO might be wise? I am not sure if llvm-config would help with any of this too?
+      popd
+    fi
   fi
   [[ -d cctools_build ]] || mkdir cctools_build
-  pushd cctools_build_libtool
-    CC=${CC}" ${CFLAG_SYSROOT}"    \
-    CXX=${CXX}" ${CFLAG_SYSROOT}"  \
-      ../cctools/configure         \
-        "${_cctools_config[@]}"    \
-        --prefix=${PREFIX}         \
-        --with-llvm=${PREFIX}      \
+  pushd cctools_build
+    # We still cannot use bootstrap clang yet as configure fails with:
+    # ld: unknown option: -no_deduplicate
+    # .. you had better be running this on macOS 10.9 with the
+    # .. compiler command line tools installed, otherwise YMMV
+    CC=/usr/bin/clang" ${CFLAG_SYSROOT}"     \
+    CXX=/usr/bin/clang++" ${CFLAG_SYSROOT}"  \
+      ../cctools/configure                   \
+        "${_cctools_config[@]}"              \
+        --prefix=${PREFIX}                   \
+        --with-llvm=${PREFIX}                \
         --disable-static
     make -j${CPU_COUNT} VERBOSE=1
     make install
@@ -190,7 +208,12 @@ fi
 if [[ ! -e "${SRC_DIR}/llvm_build/tools/clang/tools/c-index-test" ]]; then
   [[ -d llvm_build ]] || mkdir llvm_build
   pushd llvm_build
-    cmake -G'Unix Makefiles' "${_cmake_config[@]}" ..
-    make -j${CPU_COUNT} VERBOSE=1
+     cmake -G'Unix Makefiles'                      \
+            "${_cmake_config[@]}"                  \
+            -DCMAKE_LIBTOOL=${PREFIX}/bin/libtool  \
+            -DLD64_EXECUTABLE=${PREFIX}/bin/ld64   \
+            ..
+      make -j${CPU_COUNT} V=1
+      make install
   popd
 fi
