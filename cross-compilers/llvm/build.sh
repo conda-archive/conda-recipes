@@ -4,8 +4,8 @@ if [[ $(uname) == Linux ]]; then
   # Since we have ports of cctools and ld64 we can cross-compile.
   export MACOSX_DEPLOYMENT_TARGET=10.9
   # We do not need to use system compilers on Linux at all.
-  _usr_bin_CC=$(which gcc)
-  _usr_bin_CXX=$(which g++)
+  _usr_bin_CC=${CC}
+  _usr_bin_CXX=${CXX}
 elif [[ $(uname) == Darwin ]]; then
 
   BOOTSTRAP=${PWD}/bootstrap
@@ -144,7 +144,7 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
         ../cctools/configure                   \
           "${_cctools_config[@]}"              \
           --prefix=${BOOTSTRAP}                \
-          --with-llvm=${BOOTSTRAP}             \
+          --without-llvm                       \
           --disable-static
     popd
     pushd cctools_build_libtool/libstuff
