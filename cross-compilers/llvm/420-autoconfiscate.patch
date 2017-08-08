@@ -7288,7 +7288,7 @@ diff -urN a/misc/Makefile.in b/misc/Makefile.in
 diff -urN a/otool/Makefile.in b/otool/Makefile.in
 --- a/otool/Makefile.in	1970-01-01 01:00:00.000000000 +0100
 +++ b/otool/Makefile.in	2013-11-18 23:05:40.201459249 +0000
-@@ -0,0 +1,81 @@
+@@ -0,0 +1,82 @@
 +builddir = @builddir@
 +top_builddir = @top_builddir@
 +srcdir = @srcdir@
@@ -7301,6 +7301,7 @@ diff -urN a/otool/Makefile.in b/otool/Makefile.in
 +VPATH = @srcdir@
 +
 +CC                   = @CC@
++CXX                  = @CXX@
 +CFLAGS               = @CFLAGS@
 +WARNINGS             = @WARNINGS@
 +MDYNAMICNOPIC        = @MDYNAMICNOPIC@
@@ -7357,7 +7358,7 @@ diff -urN a/otool/Makefile.in b/otool/Makefile.in
 +#	$(CC) $(OBJC) $(MYCOMPILEFLAGS) -c -o $@ $<
 +
 +otool: $(OBJS) $(OBJCOBJS) ofile.o
-+	$(CC) -o $@ $^ $(MYLINKFLAGSO)
++	$(CXX) -o $@ $^ $(MYLINKFLAGSO)
 +
 +ofile.o: $(top_srcdir)/libstuff/ofile.c
 +	$(CC) -DOTOOL $(MYCOMPILEFLAGS) -c -o $@ $<
