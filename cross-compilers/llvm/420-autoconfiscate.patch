@@ -3749,7 +3749,7 @@ diff -urN a/configure.ac b/configure.ac
 +AM_COND_IF([HAVE_TZFILE_H], [],
 + AC_CONFIG_HEADERS([include/tzfile.h]))
 +
-+AC_CHECK_HEADERS([CommonCrypto/CommonDigest.h], [], [SSL_LIBS="$LD_STATIC -lssl -lcrypto $LD_DYNAMIC"])
++AC_CHECK_HEADERS([CommonCrypto/CommonDigest.h], [SSL_LIBS=/usr/lib/libcrypto.dylib], [SSL_LIBS="$LD_STATIC -lssl -lcrypto $LD_DYNAMIC"])
 +AC_SUBST(SSL_LIBS)
 +AM_CONDITIONAL([HAVE_COMMONCRYPTO_COMMONDIGEST_H], [test "x$ac_cv_header_CommonCrypto_CommonDigest_h" = xyes])
 +AM_COND_IF([HAVE_COMMONCRYPTO_COMMONDIGEST_H], [],
