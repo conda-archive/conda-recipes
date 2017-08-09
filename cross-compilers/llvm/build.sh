@@ -1,14 +1,28 @@
 #!/bin/bash
 
+# conda-build cleans out ${PREFIX} on each build. Also the sub-package install
+# scripts need to selectively copy things across to ${PREFIX} from ${PWD}/prefix
+# so we build to a different prefix and handle the copying manually. Because of
+# this we need to tell the compilers to look in ${PREFIX} for our dependencies.
+export LDFLAGS=${LDFLAGS}" -L${PREFIX}/lib"
+export CFLAGS=${CFLAGS}" -I${PREFIX}/include"
+export CXXFLAGS=${CXXFLAGS}" -I${PREFIX}/include"
+OLD_PREFIX=${PREFIX}
+PREFIX=${SRC_DIR}/prefix
+
 if [[ $(uname) == Linux ]]; then
+
   # Since we have ports of cctools and ld64 we can cross-compile.
   export MACOSX_DEPLOYMENT_TARGET=10.9
   # We do not need to use system compilers on Linux at all.
   _usr_bin_CC=${CC}
   _usr_bin_CXX=${CXX}
+  # Nor do we need any special bootstrap compilers.
+  BOOTSTRAP=${PREFIX}
+
 elif [[ $(uname) == Darwin ]]; then
 
-  BOOTSTRAP=${PWD}/bootstrap
+  BOOTSTRAP=${SRC_DIR}/bootstrap
   # Need to use a more modern clang to bootstrap the build.
   PATH=${BOOTSTRAP}/bin:${PATH}
   export CC=$(which clang)
@@ -79,11 +93,6 @@ else
   CHOST=$(${CC} -dumpmachine)
 fi
 
-# conda-build cleans out ${PREFIX} on each build. Also the sub-package install
-# scripts need to copy things across to ${PREFIX} from ${PWD}/prefix
-OLD_PREFIX=${PREFIX}
-PREFIX=${PWD}/prefix
-
 declare -a _cmake_config
 _cmake_config+=(-DCMAKE_INSTALL_PREFIX:PATH=${PREFIX})
 # TODO: how to add AArch64 here based on conda_build_config.yaml - does case matter?
@@ -93,6 +102,13 @@ _cmake_config+=(-DCMAKE_BUILD_TYPE:STRING=Release)
 # _cmake_config+=(-DBUILD_SHARED_LIBS:BOOL=ON)
 _cmake_config+=(-DLLVM_ENABLE_ASSERTIONS:BOOL=OFF)
 _cmake_config+=(-DLINK_POLLY_INTO_TOOLS:BOOL=ON)
+# Urgh, llvm *really* wants to link to ncurses / terminfo and I really do not want it to.
+_cmake_config+=(-DHAVE_TERMINFO_NCURSES=OFF)
+_cmake_config+=(-DHAVE_TERMINFO_NCURSESW=OFF)
+_cmake_config+=(-DHAVE_TERMINFO_TERMINFO=OFF)
+_cmake_config+=(-DHAVE_TERMINFO_TINFO=OFF)
+_cmake_config+=(-DHAVE_TERMIOS_H=OFF)
+
 # Only valid when using the Ninja Generator AFAICT
 # _cmake_config+=(-DLLVM_PARALLEL_LINK_JOBS:STRING=1)
 # What about cross-compiling targetting Darwin here? Are any of these needed?
@@ -131,29 +147,34 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
   # libtool on macOS 10.9 is too old to build LLVM statically:
   # CMakeFiles/LLVMSupport.dir/PluginLoader.cpp.o is not an object file (not allowed in a library)
   # https://trac.macports.org/ticket/54129
-  # .. so we must build a new one first.
-  if [[ ! -e ${BOOTSTRAP}/bin/libtool${EXEEXT} ]]; then
-    [[ -d cctools_build_libtool ]] || mkdir cctools_build_libtool
-    pushd cctools_build_libtool
-      # We cannot use bootstrap clang yet as configure fails with:
-      # ld: unknown option: -no_deduplicate
-      # .. you had better be running this on macOS 10.9 with the
-      # .. compiler command line tools installed, otherwise YMMV
-      CC=${_usr_bin_CC}" ${CFLAG_SYSROOT}"     \
-      CXX=${_usr_bin_CXX}"  ${CFLAG_SYSROOT}"  \
-        ../cctools/configure                   \
-          "${_cctools_config[@]}"              \
-          --prefix=${BOOTSTRAP}                \
-          --without-llvm                       \
-          --disable-static
-    popd
-    pushd cctools_build_libtool/libstuff
-      make -j${CPU_COUNT}
-    popd
-    pushd cctools_build_libtool/misc
-      make -j${CPU_COUNT} libtool${EXEEXT}
-      cp libtool${EXEEXT} ${BOOTSTRAP}/bin
-    popd
+  # .. so we must build a new one first. --without-llvm does not work here.
+  if [[ $(uname) == Darwin ]]; then
+    if [[ ! -e ${BOOTSTRAP}/bin/libtool${EXEEXT} ]]; then
+      [[ -d cctools_build_libtool ]] || mkdir cctools_build_libtool
+      pushd cctools_build_libtool
+        # We cannot use bootstrap clang yet as configure fails with:
+        # ld: unknown option: -no_deduplicate
+        # .. you had better be running this on macOS 10.9 with the
+        # .. compiler command line tools installed, otherwise YMMV
+        CC=${_usr_bin_CC}" ${CFLAG_SYSROOT}"     \
+        CXX=${_usr_bin_CXX}"  ${CFLAG_SYSROOT}"  \
+          ../cctools/configure                   \
+            "${_cctools_config[@]}"              \
+            --prefix=${BOOTSTRAP}                \
+            --without-llvm                       \
+            --disable-static
+      popd
+      pushd cctools_build_libtool/libstuff
+        make -j${CPU_COUNT}
+      popd
+      pushd cctools_build_libtool/misc
+        make -j${CPU_COUNT} libtool${EXEEXT}
+        cp libtool${EXEEXT} ${BOOTSTRAP}/bin
+      popd
+    fi
+    BOOTSTRAP_LIBTOOL=${BOOTSTRAP}/bin/libtool
+  else
+    BOOTSTRAP_LIBTOOL=$(which libtool)
   fi
 
   if [[ ! -e ${PREFIX}/lib/libLTO${SHLIB_EXT} ]]; then
@@ -161,7 +182,7 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
     pushd llvm_lto_build
       cmake -G'Unix Makefiles'                        \
             "${_cmake_config[@]}"                     \
-            -DCMAKE_LIBTOOL=${BOOTSTRAP}/bin/libtool  \
+            -DCMAKE_LIBTOOL=${BOOTSTRAP_LIBTOOL}      \
             ..
       pushd tools/lto
         make -j${CPU_COUNT} install-LTO
