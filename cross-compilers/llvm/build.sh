@@ -145,7 +145,7 @@ pushd cctools
   autoreconf -vfi
     # Yuck, sorry.
     [[ -d include/macho-o ]] || mkdir -p include/macho-o
-    cp ld64/src/other/prune_trie.h include/mach-o/prune_trie.
+    cp ld64/src/other/prune_trie.h include/mach-o/prune_trie.h
     cp ld64/src/other/prune_trie.h libprunetrie/prune_trie.h
     cp ld64/src/other/PruneTrie.cpp libprunetrie/PruneTrie.cpp
 popd
