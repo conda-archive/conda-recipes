@@ -9,6 +9,9 @@ export CFLAGS=${CFLAGS}" -I${PREFIX}/include"
 export CXXFLAGS=${CXXFLAGS}" -I${PREFIX}/include"
 OLD_PREFIX=${PREFIX}
 PREFIX=${SRC_DIR}/prefix
+# We want to stop using the bootstrap compiler so will remove it from PATH
+# as soon as it's no longer necessary.
+OLD_PATH=${PATH}
 
 if [[ $(uname) == Linux ]]; then
 
@@ -235,15 +238,19 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
   popd
 fi
 
+# Ditch the bootstrap compilers, use system ones
+export PATH=${PREFIX}/bin:${OLD_PATH}
+
 if [[ ! -e "${SRC_DIR}/llvm_build/tools/clang/tools/c-index-test" ]]; then
   [[ -d llvm_build ]] || mkdir llvm_build
   pushd llvm_build
-     cmake -G'Unix Makefiles'                      \
-            "${_cmake_config[@]}"                  \
-            -DCMAKE_LIBTOOL=${PREFIX}/bin/libtool  \
-            -DLD64_EXECUTABLE=${PREFIX}/bin/ld64   \
-            ..
-      make -j${CPU_COUNT} V=1
-      make install
+    cmake -G'Unix Makefiles'                                                          \
+          "${_cmake_config[@]}"                                                       \
+          -DCMAKE_LIBTOOL=${PREFIX}/bin/${DARWIN_TARGET}-libtool                      \
+          -DLD64_EXECUTABLE=${PREFIX}/bin/${DARWIN_TARGET}-ld                         \
+          -DCMAKE_INSTALL_NAME_TOOL=${PREFIX}/bin/${DARWIN_TARGET}-install_name_tool  \
+          ..
+    make -j${CPU_COUNT} V=1
+    make install
   popd
 fi
