@@ -65,7 +65,7 @@ diff -urN ld64.orig/Makefile.in ld64/Makefile.in
 +                  -DALL_SUPPORTED_ARCHS="\"armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em (tvOS)\"" \
 +                  -DBITCODE_XAR_VERSION="\"1.0\"" -DSUPPORT_APPLE_TV=1
 +
-+MYLDFLAGS       = -L$(top_builddir)/libstuff
++MYLDFLAGS       = -L$(top_builddir)/libstuff -Wl,-rpath,@loader_path/../lib/
 +MYLIBS          = -lstuff $(UUID_LIBS) $(DL_LIBS) $(LTO_LIBS) -ltapi -lxar $(SSL_LIBS)
 +
 +MYCOMPILEFLAGS  = $(WARNINGS) $(MYWARNINGS) $(DEFS) $(MYDEFS) \

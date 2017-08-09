@@ -5950,7 +5950,7 @@ diff -urN a/libstuff/apple_version.c b/libstuff/apple_version.c
 +++ b/libstuff/apple_version.c	2013-11-18 23:05:40.189459400 +0000
 @@ -0,0 +1,2 @@
 +const char apple_version[]= PACKAGE_NAME "-" PACKAGE_VERSION;
-+const char ldVersionString[]= "@(#)PROGRAM:ld  PROJECT:" PACKAGE_NAME "-" PACKAGE_VERSION "\n";
++const char ldVersionString[]= "@(#)PROGRAM:ld  PROJECT: ld64-274.2\n";
 diff -urN a/libstuff/emulated.c b/libstuff/emulated.c
 --- a/libstuff/emulated.c	1970-01-01 01:00:00.000000000 +0100
 +++ b/libstuff/emulated.c	2013-11-18 23:05:40.189459400 +0000
@@ -7085,11 +7085,11 @@ diff -urN a/man/Makefile.in b/man/Makefile.in
 +INSTALL_PROGRAM = @INSTALL_PROGRAM@
 +INSTALL_DATA	= @INSTALL_DATA@
 +
-+MANPAGES1	= as.1 gprof.1 ld.1 nm.1 otool.1 ranlib.1 \
++MANPAGES1	= as.1 nm.1 otool.1 ranlib.1 \
 +		segedit.1 size.1 strings.1 strip.1 lipo.1 \
 +		libtool.1 pagestuff.1 redo_prebinding.1 \
 +		nmedit.1 install_name_tool.1 checksyms.1 \
-+		seg_addr_table.1 ld64.1
++		seg_addr_table.1
 +
 +MANPAGES3	= arch.3
 +
