@@ -19,6 +19,7 @@ requirements:
     - bzip2
     - zlib
     - xz
+    - openssl  # [not osx]
 
 build:
   script:
