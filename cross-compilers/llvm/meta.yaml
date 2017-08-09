@@ -106,8 +106,6 @@ requirements:
     #    so that this recipe can use jinja2 instead.
     - gcc_{{ native_compiler_subdir }}  [linux]
     - gxx_{{ native_compiler_subdir }}  [linux]
-    # - {{ compiler('c') }}  [linux]
-    # - {{ compiler('cxx') }}  [linux]
     - cmake
     - autoconf
     - automake
