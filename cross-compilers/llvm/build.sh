@@ -1,5 +1,8 @@
 #!/bin/bash
 
+VERBOSE_CM="VERBOSE=1"
+VERBOSE_AT="V=1"
+
 # conda-build cleans out ${PREFIX} on each build. Also the sub-package install
 # scripts need to selectively copy things across to ${PREFIX} from ${PWD}/prefix
 # so we build to a different prefix and handle the copying manually. Because of
@@ -138,16 +141,16 @@ _cctools_config+=(--target=${DARWIN_TARGET})
 _cctools_config+=(--prefix=${PREFIX})
 _cctools_config+=(--disable-static)
 
-if [[ ! -f ${PREFIX}/bin/otool ]]; then
+pushd cctools
+  autoreconf -vfi
+    # Yuck, sorry.
+    [[ -d include/macho-o ]] || mkdir -p include/macho-o
+    cp ld64/src/other/prune_trie.h include/mach-o/prune_trie.
+    cp ld64/src/other/prune_trie.h libprunetrie/prune_trie.h
+    cp ld64/src/other/PruneTrie.cpp libprunetrie/PruneTrie.cpp
+popd
 
-  pushd cctools
-    autoreconf -vfi
-      # Yuck, sorry.
-      [[ -d include/macho-o ]] || mkdir -p include/macho-o
-      cp ld64/src/other/prune_trie.h include/mach-o/prune_trie.h
-      cp ld64/src/other/prune_trie.h libprunetrie/prune_trie.h
-      cp ld64/src/other/PruneTrie.cpp libprunetrie/PruneTrie.cpp
-  popd
+if [[ ! -f ${PREFIX}/bin/${DARWIN_TARGET}-ld ]]; then
 
   # libtool on macOS 10.9 is too old to build LLVM statically:
   # CMakeFiles/LLVMSupport.dir/PluginLoader.cpp.o is not an object file (not allowed in a library)
@@ -172,10 +175,10 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
             --disable-static
       popd
       pushd cctools_build_libtool/libstuff
-        make -j${CPU_COUNT}
+        make -j${CPU_COUNT} ${VERBOSE_AT}
       popd
       pushd cctools_build_libtool/misc
-        make -j${CPU_COUNT} libtool${EXEEXT}
+        make -j${CPU_COUNT} libtool${EXEEXT} ${VERBOSE_AT}
         cp libtool${EXEEXT} ${BOOTSTRAP}/bin
       popd
     fi
@@ -192,7 +195,7 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
             -DCMAKE_LIBTOOL=${BOOTSTRAP_LIBTOOL}      \
             ..
       pushd tools/lto
-        make -j${CPU_COUNT} install-LTO
+        make -j${CPU_COUNT} ${VERBOSE_CM} install-LTO
       popd
       # popd
     popd
@@ -207,7 +210,7 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
               "${_cmake_config[@]}"                              \
               -DCMAKE_LIBTOOL=${BOOTSTRAP}/bin/libtool           \
               ..
-        make -j${CPU_COUNT} install-distribution
+        make -j${CPU_COUNT} ${VERBOSE_CM} install-distribution
         # tapi will fail to build here as it will not link to two libs, one of which has been built this time around (LLVMSupport)
         # and one of which has not, LLVMObject (but it has been built by install-LTO, as a dylib whereas the official releases are
         # static).
@@ -233,24 +236,45 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
         --prefix=${PREFIX}                  \
         --with-llvm=${PREFIX}               \
         --disable-static
-    make -j${CPU_COUNT} VERBOSE=1
+    make -j${CPU_COUNT} ${VERBOSE_AT}
     make install
   popd
 fi
 
-# Ditch the bootstrap compilers, use system ones
-export PATH=${PREFIX}/bin:${OLD_PATH}
+# Put our new cctools to the front of PATH, but keep bootstrap on.
+export PATH=${PREFIX}/bin:${PATH}
 
 if [[ ! -e "${SRC_DIR}/llvm_build/tools/clang/tools/c-index-test" ]]; then
   [[ -d llvm_build ]] || mkdir llvm_build
   pushd llvm_build
-    cmake -G'Unix Makefiles'                                                          \
-          "${_cmake_config[@]}"                                                       \
-          -DCMAKE_LIBTOOL=${PREFIX}/bin/${DARWIN_TARGET}-libtool                      \
-          -DLD64_EXECUTABLE=${PREFIX}/bin/${DARWIN_TARGET}-ld                         \
-          -DCMAKE_INSTALL_NAME_TOOL=${PREFIX}/bin/${DARWIN_TARGET}-install_name_tool  \
-          ..
-    make -j${CPU_COUNT} V=1
+    CC=${CC}" ${CFLAG_SYSROOT}"                                                         \
+    CXX=${CXX}" ${CFLAG_SYSROOT}"                                                       \
+      cmake -G'Unix Makefiles'                                                          \
+            "${_cmake_config[@]}"                                                       \
+            -DCMAKE_LIBTOOL=${PREFIX}/bin/${DARWIN_TARGET}-libtool                      \
+            -DLD64_EXECUTABLE=${PREFIX}/bin/${DARWIN_TARGET}-ld                         \
+            -DCMAKE_INSTALL_NAME_TOOL=${PREFIX}/bin/${DARWIN_TARGET}-install_name_tool  \
+            ..
+    make -j${CPU_COUNT} ${VERBOSE_CM}
+    make install
+  popd
+fi
+
+# Ditch the bootstrap compilers, we will use our own from now on.
+export PATH=${PREFIX}/bin:${OLD_PATH}
+
+# As soon as we've made llvm, we rebuild cctools with these new compilers.
+if [[ ! -f ${cctools_build_final}/ld64/ld ]]; then
+  [[ -d cctools_build_final ]] || mkdir cctools_build_final
+  pushd cctools_build_final
+    CC=${PREFIX}/bin/clang" ${CFLAG_SYSROOT}"     \
+    CXX=${PREFIX}/bin/clang++" ${CFLAG_SYSROOT}"  \
+      ../cctools/configure                        \
+        "${_cctools_config[@]}"                   \
+        --prefix=${PREFIX}                        \
+        --with-llvm=${PREFIX}                     \
+        --disable-static
+    make -j${CPU_COUNT} ${VERBOSE_AT}
     make install
   popd
 fi
