@@ -1,0 +1,15 @@
+diff -urN tapi.orig/CMakeLists.txt tapi/CMakeLists.txt
+--- tapi.orig/CMakeLists.txt	2017-08-09 09:45:28.269787162 +0100
++++ tapi/CMakeLists.txt	2017-08-09 09:45:46.285340057 +0100
+@@ -1,8 +1,8 @@
+ cmake_minimum_required(VERSION 2.8.12.2)
+ 
+-if(NOT APPLE)
+-  message(FATAL_ERROR "Unsupported configuration.")
+-endif()
++# if(NOT APPLE)
++#   message(FATAL_ERROR "Unsupported configuration.")
++# endif()
+ 
+ set(TAPI_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+ set(TAPI_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR})
