@@ -21,10 +21,6 @@ requirements:
     - xz
     - openssl  # [not osx]
 
-build:
-  script:
-    - cd xar && ./autogen.sh --noconfigure && ./configure --disable-shared --with-lzma=${PREFIX} --prefix=${PREFIX} && make && make install
-
 about:
   home: http://mackyle.github.io/xar
   license: BSD 3-clause
