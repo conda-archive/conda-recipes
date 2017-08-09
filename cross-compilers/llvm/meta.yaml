@@ -112,7 +112,8 @@ requirements:
     - cmake
     - autoconf
     - automake
-    - libuuid
+    # macOS has its own uuid library. It includes uuid_string_t which llvm uses.
+    - libuuid  # [not osx]
     - xar
 
 outputs:
