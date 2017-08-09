@@ -260,10 +260,9 @@ if [[ ! -e "${SRC_DIR}/llvm_build/tools/clang/tools/c-index-test" ]]; then
   popd
 fi
 
+# Now we have built llvm and clang, we rebuild cctools with them.
 # Ditch the bootstrap compilers, we will use our own from now on.
 export PATH=${PREFIX}/bin:${OLD_PATH}
-
-# As soon as we've made llvm, we rebuild cctools with these new compilers.
 if [[ ! -f ${cctools_build_final}/ld64/ld ]]; then
   [[ -d cctools_build_final ]] || mkdir cctools_build_final
   pushd cctools_build_final
