@@ -35,8 +35,8 @@ elif [[ $(uname) == Darwin ]]; then
   # unset MACOSX_DEPLOYMENT_TARGET
   export MACOSX_DEPLOYMENT_TARGET=10.9
 
-  export CXXFLAGS=-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}
-  export CFLAGS=-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}
+  export CXXFLAGS=${CFLAGS}" -mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}"
+  export CFLAGS=${CFLAGS}" -mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}"
   SYSROOT_DIR=${SRC_DIR}/bootstrap/MacOSX${MACOSX_DEPLOYMENT_TARGET}.sdk
   CFLAG_SYSROOT="--sysroot ${SYSROOT_DIR}"
 
@@ -103,8 +103,10 @@ _cmake_config+=(-DCMAKE_BUILD_TYPE:STRING=Release)
 _cmake_config+=(-DLLVM_ENABLE_ASSERTIONS:BOOL=OFF)
 _cmake_config+=(-DLINK_POLLY_INTO_TOOLS:BOOL=ON)
 # Urgh, llvm *really* wants to link to ncurses / terminfo and I really do not want it to.
-_cmake_config+=(-DHAVE_TERMINFO_NCURSES=OFF)
-_cmake_config+=(-DHAVE_TERMINFO_NCURSESW=OFF)
+if [[ $(uname) != Darwin ]]; then
+  _cmake_config+=(-DHAVE_TERMINFO_NCURSES=OFF)
+  _cmake_config+=(-DHAVE_TERMINFO_NCURSESW=OFF)
+fi
 _cmake_config+=(-DHAVE_TERMINFO_TERMINFO=OFF)
 _cmake_config+=(-DHAVE_TERMINFO_TINFO=OFF)
 _cmake_config+=(-DHAVE_TERMIOS_H=OFF)
@@ -154,6 +156,8 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
       pushd cctools_build_libtool
         # We cannot use bootstrap clang yet as configure fails with:
         # ld: unknown option: -no_deduplicate
+        # We do however need a good libLTO.dylib and llvm-c/lto.h for
+        # libstuff which is linked to libtool. Horrible.
         # .. you had better be running this on macOS 10.9 with the
         # .. compiler command line tools installed, otherwise YMMV
         CC=${_usr_bin_CC}" ${CFLAG_SYSROOT}"     \
@@ -161,7 +165,7 @@ if [[ ! -f ${PREFIX}/bin/otool ]]; then
           ../cctools/configure                   \
             "${_cctools_config[@]}"              \
             --prefix=${BOOTSTRAP}                \
-            --without-llvm                       \
+            --with-llvm=${BOOTSTRAP}             \
             --disable-static
       popd
       pushd cctools_build_libtool/libstuff
