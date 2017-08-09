@@ -4,6 +4,7 @@
 # of it, not this fork. Still, it should work OK. We do not need lzma and
 # may not even need bzip2 nor libxml2 however the build system ignores
 # --without-lzma (and probably the others too) and finds system libraries.
+# Also, I link the transitive static libraries into libxar.
 
 package:
   name: xar
@@ -31,7 +32,11 @@ about:
     A fork/clone of the subversion xar repository from
     http://xar.googlecode.com/svn/ that includes several
     enhancements and bug fixes including very basic command
-    line signature support (master branch).
+    line signature support. This is not a general purpose
+    package and exists only as a dependency for ld64. As
+    such, on Darwin, it is entirely statically linked, except
+    for libcrypto, which you must ensure gets resolved to
+    /usr/lib/libcrypto.dylib when this library is consumed.
   doc_url: http://mackyle.github.io/xar/xar.html
   doc_source_url: https://raw.githubusercontent.com/mackyle/xar/master/xar/xar.spec.in
   dev_url: https://github.com/mackyle/xar
