@@ -244,9 +244,9 @@ fi
 # We no longer need to use CFLAG_SYSROOT and can instead use:
 export CONDA_BUILD_SYSROOT=${SYSROOT_DIR}
 # .. to test this stuff, use command lines such as old:
-# prefix/bin/clang++ ~/hello-world.cpp --sysroot ~/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/MacOSX10.9.sdk -v -Wl,-t -Wl,-v 
+# prefix/bin/clang++ ~/hello-world.cpp --sysroot ~/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/MacOSX10.9.sdk -v -Wl,-t -Wl,-v
 # vs new:
-# CONDA_BUILD_SYSROOT=~/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/MacOSX10.9.sdk prefix/bin/clang++ ~/hello-world.cpp -Wl,-t -Wl,-v 
+# CONDA_BUILD_SYSROOT=~/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/MacOSX10.9.sdk prefix/bin/clang++ ~/hello-world.cpp -Wl,-t -Wl,-v
 if [[ ! -e "${SRC_DIR}/llvm_build_final/tools/clang/tools/c-index-test" ]]; then
   [[ -d llvm_build_final ]] || mkdir llvm_build_final
   pushd llvm_build_final
@@ -265,3 +265,9 @@ fi
 
 # exit 1 so our stuff is kept around
 exit 1
+
+# To iterate on clang/clang++ frontend changes, edit for example:
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/tools/clang/lib/Frontend/InitHeaderSearch.cpp
+
+cd /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/llvm_build/tools/clang/tools/driver
+make VERBOSE=1 ; echo && echo && echo && echo && echo && echo && CONDA_BUILD_SYSROOT=/Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/MacOSX10.9.sdk ../../../../bin/clang++ -v ~/hw.cpp --sysroot /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/MacOSX10.9.sdk_not_used

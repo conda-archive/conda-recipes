@@ -1,0 +1,42 @@
+diff -urN clang.orig/lib/Driver/Driver.cpp clang/lib/Driver/Driver.cpp
+--- clang.orig/lib/Driver/Driver.cpp	2017-08-10 15:45:56.000000000 -0700
++++ clang/lib/Driver/Driver.cpp	2017-08-10 15:58:21.000000000 -0700
+@@ -614,8 +614,13 @@
+     A->claim();
+     PrefixDirs.push_back(A->getValue(0));
+   }
+-  if (const Arg *A = Args.getLastArg(options::OPT__sysroot_EQ))
+-    SysRoot = A->getValue();
++  if (Optional<std::string> CondaBuildSysrootValue =
++          llvm::sys::Process::GetEnv("CONDA_BUILD_SYSROOT")) {
++    SysRoot = *CondaBuildSysrootValue;
++  } else {
++    if (const Arg *A = Args.getLastArg(options::OPT__sysroot_EQ))
++      SysRoot = A->getValue();
++  }
+   if (const Arg *A = Args.getLastArg(options::OPT__dyld_prefix_EQ))
+     DyldPrefix = A->getValue();
+   if (Args.hasArg(options::OPT_nostdlib))
+diff -urN clang.orig/lib/Frontend/InitHeaderSearch.cpp clang/lib/Frontend/InitHeaderSearch.cpp
+--- clang.orig/lib/Frontend/InitHeaderSearch.cpp	2017-08-10 14:57:35.000000000 -0700
++++ clang/lib/Frontend/InitHeaderSearch.cpp	2017-08-10 16:19:14.000000000 -0700
+@@ -26,6 +26,7 @@
+ #include "llvm/ADT/Twine.h"
+ #include "llvm/Support/ErrorHandling.h"
+ #include "llvm/Support/Path.h"
++#include "llvm/Support/Process.h"
+ #include "llvm/Support/raw_ostream.h"
+ 
+ using namespace clang;
+@@ -223,7 +224,10 @@
+         break;
+     default:
+       // FIXME: temporary hack: hard-coded paths.
+-      AddPath("/usr/local/include", System, false);
++      Optional<std::string> CondaBuildSysrootValue =
++              llvm::sys::Process::GetEnv("CONDA_BUILD_SYSROOT");
++      if (!CondaBuildSysrootValue.hasValue())
++        AddPath("/usr/local/include", System, false);
+       break;
+     }
+   }
