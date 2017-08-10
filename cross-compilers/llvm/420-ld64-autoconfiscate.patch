@@ -69,7 +69,7 @@ diff -urN ld64.orig/Makefile.in ld64/Makefile.in
 +                  -DSUPPORT_ARCH_armv7k=1 -DSUPPORT_ARCH_armv7s=1 -DSUPPORT_ARCH_armv6m=1 -DSUPPORT_ARCH_armv7m=1 \
 +                  -DSUPPORT_ARCH_armv7em=1 -DSUPPORT_ARCH_armv8=1 -DSUPPORT_ARCH_arm64=1 -DSUPPORT_ARCH_arm64v8=1
 +
-+MYLDFLAGS       = -L$(top_builddir)/libstuff -Wl,-rpath,@loader_path/../lib/
++MYLDFLAGS       = -L$(top_builddir)/libstuff
 +MYLIBS          = -lstuff $(UUID_LIBS) $(DL_LIBS) $(LTO_LIBS) -ltapi -lxar $(SSL_LIBS)
 +
 +MYCOMPILEFLAGS  = $(WARNINGS) $(MYWARNINGS) $(DEFS) $(MYDEFS) \
