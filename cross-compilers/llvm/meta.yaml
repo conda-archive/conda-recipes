@@ -21,6 +21,7 @@ source:
     folder: tools/clang
     patches:
       - 0001-clang-Allow-disabling-libXML.patch
+      - 0002-clang-add-conda-specific-env-var-CONDA_BUILD_SYSROOT.patch
   - url: http://releases.llvm.org/{{ version }}/polly-{{ version }}.src.tar.xz
     folder: tools/polly
   - url: http://releases.llvm.org/{{ version }}/compiler-rt-{{ version }}.src.tar.xz
