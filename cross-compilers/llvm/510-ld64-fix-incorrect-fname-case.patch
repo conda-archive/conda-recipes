@@ -1,0 +1,12 @@
+diff -urN a/src/ld/parsers/textstub_dylib_file.cpp b/src/ld/parsers/textstub_dylib_file.cpp
+--- a/src/ld/parsers/textstub_dylib_file.cpp	2017-08-09 17:41:54.000000000 -0700
++++ b/src/ld/parsers/textstub_dylib_file.cpp	2017-08-09 17:42:10.000000000 -0700
+@@ -29,7 +29,7 @@
+ #include <vector>
+ 
+ #include "Architectures.hpp"
+-#include "bitcode.hpp"
++#include "Bitcode.hpp"
+ #include "MachOFileAbstraction.hpp"
+ #include "MachOTrie.hpp"
+ #include "generic_dylib_file.hpp"
