@@ -19,9 +19,9 @@ source:
   - url: http://releases.llvm.org/{{ version }}/llvm-{{ version }}.src.tar.xz
   - url: http://releases.llvm.org/{{ version }}/cfe-{{ version }}.src.tar.xz
     folder: tools/clang
-  - url: http://releases.llvm.org/{{ version }}/polly-{{ version }}.src.tar.xz
     patches:
       - 0001-clang-Allow-disabling-libXML.patch
+  - url: http://releases.llvm.org/{{ version }}/polly-{{ version }}.src.tar.xz
     folder: tools/polly
   - url: http://releases.llvm.org/{{ version }}/compiler-rt-{{ version }}.src.tar.xz
     folder: projects/compiler-rt
