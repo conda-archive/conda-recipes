@@ -241,9 +241,12 @@ fi
 # Now we have built cctools with the new compilers rebuild clang
 # with them too. This is so that the libc++ they link to is not
 # from /usr/lib but instead relative to our build prefix.
-# We no longer need to use CFLAG_SYSROOT and can instead use
+# We no longer need to use CFLAG_SYSROOT and can instead use:
 export CONDA_BUILD_SYSROOT=${SYSROOT_DIR}
-if [[ 1 == 0 ]]; then
+# .. to test this stuff, use command lines such as old:
+# prefix/bin/clang++ ~/hello-world.cpp --sysroot ~/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/MacOSX10.9.sdk -v -Wl,-t -Wl,-v 
+# vs new:
+# CONDA_BUILD_SYSROOT=~/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/MacOSX10.9.sdk prefix/bin/clang++ ~/hello-world.cpp -Wl,-t -Wl,-v 
 if [[ ! -e "${SRC_DIR}/llvm_build_final/tools/clang/tools/c-index-test" ]]; then
   [[ -d llvm_build_final ]] || mkdir llvm_build_final
   pushd llvm_build_final
@@ -258,7 +261,6 @@ if [[ ! -e "${SRC_DIR}/llvm_build_final/tools/clang/tools/c-index-test" ]]; then
     make -j${CPU_COUNT} ${VERBOSE_CM}
     make install
   popd
-fi
 fi
 
 # exit 1 so our stuff is kept around
