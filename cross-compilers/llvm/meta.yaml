@@ -91,6 +91,8 @@ source:
       - 420-ld64-autoconfiscate.patch
       - 500-ld64-add-fake-CrashReporterClient.h.patch
       - 510-ld64-fix-incorrect-fname-case.patch
+      - 520-ld64-fix-usr-local-and-usr-ordering.patch
+      - 530-ld64-add-conda-specific-env-vars-to-modify-lib-search-paths.patch
     # Because macOS 10.9's clang is too old (problems with atomics)
   - url: http://releases.llvm.org/4.0.1/clang+llvm-4.0.1-x86_64-apple-darwin.tar.xz                       [osx]
     folder: bootstrap                                                                                     [osx]
