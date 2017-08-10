@@ -186,6 +186,7 @@ if [[ ! -f ${PREFIX}/bin/${DARWIN_TARGET}-ld ]]; then
       popd
     fi
   fi
+  exit 1
   [[ -d cctools_build ]] || mkdir cctools_build
   pushd cctools_build
     # We still cannot use bootstrap clang yet as configure fails with:
@@ -242,6 +243,7 @@ fi
 # Now we have built cctools with the new compilers rebuild clang
 # with them too. This is so that the libc++ they link to is not
 # from /usr/lib but instead relative to our build prefix.
+if [[ 1 == 0 ]]; then
 if [[ ! -e "${SRC_DIR}/llvm_build_final/tools/clang/tools/c-index-test" ]]; then
   [[ -d llvm_build_final ]] || mkdir llvm_build_final
   pushd llvm_build_final
@@ -257,3 +259,6 @@ if [[ ! -e "${SRC_DIR}/llvm_build_final/tools/clang/tools/c-index-test" ]]; then
     make install
   popd
 fi
+fi
+
+exit 1
