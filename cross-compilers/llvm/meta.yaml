@@ -117,7 +117,10 @@ requirements:
     - automake
     # macOS has its own uuid library. It includes uuid_string_t which llvm uses.
     - libuuid  # [not osx]
+    # ld64 needs this.
     - xar
+    # We only use the static library from this and only get away with that as it depends on nothing.
+    - zlib
 
 outputs:
 

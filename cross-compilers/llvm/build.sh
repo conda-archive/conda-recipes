@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Ensure we do not end up linking to a shared libz
+rm -f "${PREFIX}"/lib/libz*${SHLIB_EXT}
+# .. if this doesn't work we will need to pass LLVM_ENABLE_ZLIB
+# or add find_library() to LLVM.
+
 pushd cctools
   autoreconf -vfi
   # Yuck, sorry.
