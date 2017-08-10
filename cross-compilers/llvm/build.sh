@@ -117,6 +117,7 @@ _cctools_config+=(--build=$(${CC} -dumpmachine))
 _cctools_config+=(--target=${DARWIN_TARGET})
 _cctools_config+=(--prefix=${PREFIX})
 _cctools_config+=(--disable-static)
+_cctools_config+=(--enable-shared)
 
 if [[ ! -f ${PREFIX}/bin/${DARWIN_TARGET}-ld ]]; then
 
@@ -139,8 +140,7 @@ if [[ ! -f ${PREFIX}/bin/${DARWIN_TARGET}-ld ]]; then
           ../cctools/configure                   \
             "${_cctools_config[@]}"              \
             --prefix=${BOOTSTRAP}                \
-            --with-llvm=${BOOTSTRAP}             \
-            --disable-static
+            --with-llvm=${BOOTSTRAP}
       popd
       pushd cctools_build_libtool/libstuff
         make -j${CPU_COUNT} ${VERBOSE_AT}
@@ -190,8 +190,7 @@ if [[ ! -f ${PREFIX}/bin/${DARWIN_TARGET}-ld ]]; then
       ../cctools/configure                  \
         "${_cctools_config[@]}"             \
         --prefix=${PREFIX}                  \
-        --with-llvm=${PREFIX}               \
-        --disable-static
+        --with-llvm=${PREFIX}
     make -j${CPU_COUNT} ${VERBOSE_AT}
     make install
   popd
@@ -227,8 +226,7 @@ if [[ ! -f ${cctools_build_final}/ld64/ld ]]; then
       ../cctools/configure                        \
         "${_cctools_config[@]}"                   \
         --prefix=${PREFIX}                        \
-        --with-llvm=${PREFIX}                     \
-        --disable-static
+        --with-llvm=${PREFIX}
     make -j${CPU_COUNT} ${VERBOSE_AT}
     make install
   popd
