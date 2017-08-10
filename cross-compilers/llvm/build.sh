@@ -185,7 +185,6 @@ if [[ ! -f ${PREFIX}/bin/${DARWIN_TARGET}-ld ]]; then
       popd
     fi
   fi
-  exit 1
   [[ -d cctools_build ]] || mkdir cctools_build
   pushd cctools_build
     # We still cannot use bootstrap clang yet as configure fails with:
@@ -242,12 +241,14 @@ fi
 # Now we have built cctools with the new compilers rebuild clang
 # with them too. This is so that the libc++ they link to is not
 # from /usr/lib but instead relative to our build prefix.
+# We no longer need to use CFLAG_SYSROOT and can instead use
+export CONDA_BUILD_SYSROOT=${SYSROOT_DIR}
 if [[ 1 == 0 ]]; then
 if [[ ! -e "${SRC_DIR}/llvm_build_final/tools/clang/tools/c-index-test" ]]; then
   [[ -d llvm_build_final ]] || mkdir llvm_build_final
   pushd llvm_build_final
-    CC=${PREFIX}/bin/clang" ${CFLAG_SYSROOT}"                                           \
-    CXX=${PREFIX}/bin/clang++" ${CFLAG_SYSROOT}"                                        \
+    CC=${PREFIX}/bin/clang"                                                             \
+    CXX=${PREFIX}/bin/clang++"                                                          \
       cmake -G'Unix Makefiles'                                                          \
             "${_cmake_config[@]}"                                                       \
             -DCMAKE_LIBTOOL=${PREFIX}/bin/${DARWIN_TARGET}-libtool                      \
@@ -260,4 +261,5 @@ if [[ ! -e "${SRC_DIR}/llvm_build_final/tools/clang/tools/c-index-test" ]]; then
 fi
 fi
 
+# exit 1 so our stuff is kept around
 exit 1
