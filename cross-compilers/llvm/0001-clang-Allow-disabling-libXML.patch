@@ -1,0 +1,23 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2ce621c04b8a9ddf290b027efb985bd83aa653ff..63a041e48427b0b475e9868c7c8ef7b93baa1abf 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -180,10 +180,15 @@
+ # we can include cmake files from this directory.
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
+ 
+-find_package(LibXml2 2.5.3 QUIET)
+-if (LIBXML2_FOUND)
+-  set(CLANG_HAVE_LIBXML 1)
++# @LOCALMOD-BEGIN
++option(CLANG_ENABLE_LIBXML "Enable libXML" ON)
++if (CLANG_ENABLE_LIBXML)
++  find_package(LibXml2)
++  if (LIBXML2_FOUND)
++    set(CLANG_HAVE_LIBXML 1)
++  endif()
+ endif()
++# @LOCALMOD-END
+ 
+ include(CheckIncludeFile)
+ check_include_file(sys/resource.h CLANG_HAVE_RLIMITS)

@@ -86,6 +86,7 @@ _cmake_config+=(-DCMAKE_BUILD_TYPE:STRING=Release)
 _cmake_config+=(-DLLVM_ENABLE_ASSERTIONS:BOOL=OFF)
 _cmake_config+=(-DLINK_POLLY_INTO_TOOLS:BOOL=ON)
 # Urgh, llvm *really* wants to link to ncurses / terminfo and I really do not want it to.
+_cmake_config+=(-DHAVE_TERMINFO_CURSES=OFF)
 if [[ $(uname) != Darwin ]]; then
   _cmake_config+=(-DHAVE_TERMINFO_NCURSES=OFF)
   _cmake_config+=(-DHAVE_TERMINFO_NCURSESW=OFF)
@@ -93,6 +94,7 @@ fi
 _cmake_config+=(-DHAVE_TERMINFO_TERMINFO=OFF)
 _cmake_config+=(-DHAVE_TERMINFO_TINFO=OFF)
 _cmake_config+=(-DHAVE_TERMIOS_H=OFF)
+_cmake_config+=(-DCLANG_ENABLE_LIBXML=OFF)
 
 # Only valid when using the Ninja Generator AFAICT
 # _cmake_config+=(-DLLVM_PARALLEL_LINK_JOBS:STRING=1)
