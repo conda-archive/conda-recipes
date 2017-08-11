@@ -216,7 +216,7 @@ fi
 # Put our new cctools to the front of PATH, but also keep bootstrap.
 export PATH=${PREFIX}/bin:${PATH}
 
-if [[ ! -f llvm_build/tools/clang/tools/c-index-test ]]; then
+if [[ ! -f llvm_build/bin/c-index-test ]]; then
   [[ -d llvm_build ]] || mkdir llvm_build
   pushd llvm_build
     CC=${CC}" ${CFLAG_SYSROOT}"                                                         \
@@ -258,7 +258,7 @@ export CONDA_BUILD_SYSROOT=${SYSROOT_DIR}
 # prefix/bin/clang++ ~/hello-world.cpp --sysroot ~/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/MacOSX10.9.sdk -v -Wl,-t -Wl,-v
 # vs (new):
 # CONDA_BUILD_SYSROOT=~/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/MacOSX10.9.sdk prefix/bin/clang++ ~/hello-world.cpp -Wl,-t -Wl,-v
-if [[ ! -f llvm_build_final/tools/clang/tools/c-index-test ]]; then
+if [[ ! -f llvm_build_final/bin/c-index-test ]]; then
   [[ -d llvm_build_final ]] || mkdir llvm_build_final
   pushd llvm_build_final
     CC=${PREFIX}/bin/clang                                                              \
@@ -281,6 +281,8 @@ fi
 sed -i.orig '/\(clang\|lld\|lldb\)\/cmake_install.cmake/d' llvm_build_final/tools/cmake_install.cmake
 sed -i.orig '/\(compiler-rt\|libcxxabi\|libcxx\|libunwind\)\/cmake_install.cmake/d' llvm_build_final/projects/cmake_install.cmake
 
+exit 0
+
 # There is no way of having libc++.dylib instruct the linker to add a relative rpath, though that would be nice.
 #
 # We could rewrite the LC_ID_DYLIB at install time when building but that would be horrible. The code involved is:
@@ -300,10 +302,7 @@ sed -i.orig '/\(compiler-rt\|libcxxabi\|libcxx\|libunwind\)\/cmake_install.cmake
 #
 # https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/RunpathDependentLibraries.html#//apple_ref/doc/uid/TP40008306-SW1
 # https://raw.githubusercontent.com/opensource-apple/dyld/master/src/ImageLoaderMachO.cpp (search for @loader_path and @executable_path).
-
-# exit 1 so our work direcory and build prefix are kept around.
-exit 1
-
+#
 # To iterate on clang/clang++ frontend changes, edit for example:
 # /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/tools/clang/lib/Frontend/InitHeaderSearch.cpp
 
