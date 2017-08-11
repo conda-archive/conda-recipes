@@ -249,7 +249,7 @@ export CONDA_BUILD_SYSROOT=${SYSROOT_DIR}
 # prefix/bin/clang++ ~/hello-world.cpp --sysroot ~/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/MacOSX10.9.sdk -v -Wl,-t -Wl,-v
 # vs (new):
 # CONDA_BUILD_SYSROOT=~/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/MacOSX10.9.sdk prefix/bin/clang++ ~/hello-world.cpp -Wl,-t -Wl,-v
-if [[ ! -f llvm_build_final/tools/clang/tools/c-index-test" ]]; then
+if [[ ! -f llvm_build_final/tools/clang/tools/c-index-test ]]; then
   [[ -d llvm_build_final ]] || mkdir llvm_build_final
   pushd llvm_build_final
     CC=${PREFIX}/bin/clang                                                              \
