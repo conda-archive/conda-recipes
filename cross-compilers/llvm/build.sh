@@ -250,8 +250,8 @@ export CONDA_BUILD_SYSROOT=${SYSROOT_DIR}
 if [[ ! -e "${SRC_DIR}/llvm_build_final/tools/clang/tools/c-index-test" ]]; then
   [[ -d llvm_build_final ]] || mkdir llvm_build_final
   pushd llvm_build_final
-    CC=${PREFIX}/bin/clang"                                                             \
-    CXX=${PREFIX}/bin/clang++"                                                          \
+    CC=${PREFIX}/bin/clang                                                              \
+    CXX=${PREFIX}/bin/clang++                                                           \
       cmake -G'Unix Makefiles'                                                          \
             "${_cmake_config[@]}"                                                       \
             -DCMAKE_LIBTOOL=${PREFIX}/bin/${DARWIN_TARGET}-libtool                      \
