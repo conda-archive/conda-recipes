@@ -5,6 +5,14 @@ rm -f "${PREFIX}"/lib/libz*${SHLIB_EXT}
 # .. if this doesn't work we will need to pass LLVM_ENABLE_ZLIB
 # or add find_library() to LLVM.
 
+if [[ -f tools/cmake_install.cmake.orig ]]; then
+  cp tools/cmake_install.cmake.orig tools/cmake_install.cmake
+fi
+
+if [[ -f projects/cmake_install.cmake.orig ]]; then
+  cp projects/cmake_install.cmake.orig projects/cmake_install.cmake
+fi
+
 pushd cctools
   autoreconf -vfi
   # Yuck, sorry.
@@ -175,6 +183,7 @@ if [[ ! -f ${PREFIX}/bin/${DARWIN_TARGET}-ld ]]; then
         make -j${CPU_COUNT} ${VERBOSE_CM} install-LTO
       popd
     popd
+    # TODO :: Tapi breaks when making cross-compilers.
     if [[ ! -f ${PREFIX}/lib/libtapi${SHLIB_EXT} ]]; then
       [[ -d llvm_tapi_build ]] || mkdir llvm_tapi_build
       pushd llvm_tapi_build
@@ -265,7 +274,34 @@ if [[ ! -f llvm_build_final/tools/clang/tools/c-index-test ]]; then
   popd
 fi
 
-# exit 1 so our stuff is kept around
+# Before running the install scripts, disable automatic installation of components that go into subpackages
+# -i.orig to check what has been removed in-case it starts dropping more than it should
+# and so we can undo this on re-entry.
+#
+sed -i.orig '/\(clang\|lld\|lldb\|polly\)\/cmake_install.cmake/d' tools/cmake_install.cmake
+sed -i.orig '/\(compiler-rt\|libcxxabi\|libcxx\|libunwind\)\/cmake_install.cmake/d' projects/cmake_install.cmake
+
+# There is no way of having libc++.dylib instruct the linker to add a relative rpath, though that would be nice.
+#
+# We could rewrite the LC_ID_DYLIB at install time when building but that would be horrible. The code involved is:
+#   cctools/ld64/src/ld/HeaderAndLoadCommands.hpp line 1346 (uint8_t* HeaderAndLoadCommandsAtom<A>::copyDylibLoadCommand(uint8_t* p, const ld::dylib::File* dylib) const)
+# and:
+#   cctools/ld64/src/ld/parsers/macho_dylib_file.cpp line 162 (case LC_ID_DYLIB)
+#
+# Instead, LLVM for example uses:
+# set(_install_rpath "@loader_path/../lib" ${extra_libdir})
+# set_target_properties(${name} PROPERTIES
+# set_target_properties(${name} PROPERTIES
+#                       BUILD_WITH_INSTALL_RPATH On
+#                       INSTALL_RPATH "${_install_rpath}"
+#                       ${_install_name_dir})
+#
+# References for how Apple's dynamic loader works:
+#
+# https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/RunpathDependentLibraries.html#//apple_ref/doc/uid/TP40008306-SW1
+# https://raw.githubusercontent.com/opensource-apple/dyld/master/src/ImageLoaderMachO.cpp (search for @loader_path and @executable_path).
+
+# exit 1 so our work direcory and build prefix are kept around.
 exit 1
 
 # To iterate on clang/clang++ frontend changes, edit for example:
