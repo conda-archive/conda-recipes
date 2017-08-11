@@ -126,71 +126,54 @@ requirements:
     - zlib
 
 outputs:
+  - name: llvm-lto-tapi
+    script: install-llvm-lto-tapi.sh
 
-  - name: cctools_ld64
-    script: install-cctools.sh
+  - name: cctools-ld64
+    script: install-cctools-ld64.sh
     requirements:
-      host:
-        - {{ pin_subpackage('llvm_' ~ library_type, exact=True) }}
       run:
-        - {{ pin_subpackage('llvm_' ~ library_type, exact=True) }}
+        - {{ pin_subpackage('llvm-lto-tapi', exact=True) }}
 
-  - name: llvm_{{library_type}}
+  - name: llvm
     script: install-llvm.sh
-    requirements:
-      build:
-        - cmake
-        # these are here so that the run_exports functionality of conda-build 3 works.
-        - {{ pin_compatible('gcc_' ~ native_compiler_subdir, exact=True) }}  [linux]
-        - {{ pin_compatible('gxx_' ~ native_compiler_subdir, exact=True) }}  [linux]
 
   - name: clang
     script: install-clang.sh
     requirements:
-      build:
-        - {{ pin_subpackage('llvm_' ~ library_type, exact=True) }}
       run:
-        - {{ pin_subpackage('llvm_' ~ library_type, exact=True) }}
-
-  # metapackages that make it easier to cross-compile
-  - name: clang_{{library_type}}_{{ target_platform }}
-    script: install-clang-wrapper.sh
-    requirements:
-      build:
-        - {{ pin_subpackage('clang_' ~ library_type ~ '_' ~ target_platform, exact=True) }}
-      run:
-        - {{ pin_subpackage('clang_' ~ library_type ~ '_' ~ target_platform, exact=True) }}
-        # we can't pin binutils, because we have no way of knowing what the
-        # correct version is on the target platform.
-        - binutils_{{ target_platform }}  [linux]
-    {% if library_type == 'shared' %}
+        - {{ pin_subpackage('llvm', exact=True) }}
+        - {{ pin_subpackage('cctools-ld64', exact=True) }}
+        - {{ pin_subpackage('compiler-rt_' ~ cross_target_platform, exact=True) }}
     run_exports:
-      - {{ pin_subpackage('compiler-rt_' ~ target_platform) }}
-      - {{ pin_subpackage('libcxx_' ~ target_platform) }}
-    {% endif %}
+      - {{ pin_subpackage('compiler-rt_' ~ cross_target_platform) }}
 
-  - name: libcxxabi_{{ target_platform }}
-    target: {{ target_platform }}
+  - name: clangxx
+    script: install-clangxx.sh
+    requirements:
+      run:
+        - {{ pin_subpackage('clang', exact=True) }}
+    run_exports:
+      - {{ pin_subpackage('libcxx_' ~ cross_target_platform) }}
+
+  - name: libcxx_{{ cross_target_platform }}
+    target: {{ cross_target_platform }}
+    requirements:
+      run:
+        - {{ pin_subpackage('libcxxabi_' ~ cross_target_platform, exact=True) }}
+    script: install-libcxx.sh
+
+  - name: libcxxabi_{{ cross_target_platform }}
+    target: {{ cross_target_platform }}
     script: install-libcxxabi.sh
     requirements:
-      build:
-        - cmake
-        - {{ pin_subpackage('clang_' ~ library_type ~ '_' ~ target_platform, exact=True) }}
+      run:
+        - {{ pin_subpackage('libunwind_' ~ cross_target_platform, exact=True) }}
 
-  - name: libcxx_{{ target_platform }}
-    target: {{ target_platform }}
-    script: install-libcxx.sh
-    requirements:
-      build:
-        - cmake
-        - {{ pin_subpackage('clang_' ~ library_type ~ '_' ~ target_platform, exact=True) }}
+  - name: libunwind_{{ cross_target_platform }}
+    target: {{ cross_target_platform }}
+    script: install-libunwind.sh
 
-  - name: compiler-rt_{{ target_platform }}
+  - name: compiler-rt_{{ cross_target_platform }}
     script: install-compiler-rt.sh
-    target: {{ target_platform }}
-    run_exports:
-      - {{ pin_subpackage('compiler-rt_' ~ target_platform) }}
-    requirements:
-      build:
-        - cmake
-        - {{ pin_subpackage('clang_' ~ library_type ~ '_' ~ target_platform, exact=True) }}
+    target: {{ cross_target_platform }}
