@@ -29,6 +29,9 @@ build:
     - lib/R/lib/
     - lib/
 
+  script_env:
+    - JAVA_HOME
+
 # Suggests: RUnit
 requirements:
   build:
