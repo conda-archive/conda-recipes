@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DEST=${PWD}/install-libunwind
-pushd llvm_build_final/projects/libunwind
+DEST=${PWD}/install-cctools-ld64
+pushd cctools_build_final
   make install DESTDIR=${DEST}
 popd
 pushd ${DEST}/${PWD}/prefix
