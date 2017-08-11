@@ -1,9 +1,9 @@
 #!/bin/bash
 
-pushd projects/libcxx
-  make DESTDIR=${PWD}/install-libcxx install
+DEST=${PWD}/install-libcxx
+pushd llvm_build_final/projects/libcxx
+  make install DESTDIR=${DEST}
 popd
-
-pushd ${PWD}/install-libcxx/${PWD}/prefix
+pushd ${DEST}/${PWD}/prefix
   cp -Rf * ${PREFIX}
 popd

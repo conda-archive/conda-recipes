@@ -157,22 +157,22 @@ outputs:
       - {{ pin_subpackage('libcxx_' ~ cross_target_platform) }}
 
   - name: libcxx_{{ cross_target_platform }}
+    script: install-libcxx.sh
     target: {{ cross_target_platform }}
     requirements:
       run:
         - {{ pin_subpackage('libcxxabi_' ~ cross_target_platform, exact=True) }}
-    script: install-libcxx.sh
 
   - name: libcxxabi_{{ cross_target_platform }}
-    target: {{ cross_target_platform }}
     script: install-libcxxabi.sh
+    target: {{ cross_target_platform }}
     requirements:
       run:
         - {{ pin_subpackage('libunwind_' ~ cross_target_platform, exact=True) }}
 
   - name: libunwind_{{ cross_target_platform }}
-    target: {{ cross_target_platform }}
     script: install-libunwind.sh
+    target: {{ cross_target_platform }}
 
   - name: compiler-rt_{{ cross_target_platform }}
     script: install-compiler-rt.sh

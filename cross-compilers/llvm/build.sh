@@ -5,12 +5,12 @@ rm -f "${PREFIX}"/lib/libz*${SHLIB_EXT}
 # .. if this doesn't work we will need to pass LLVM_ENABLE_ZLIB
 # or add find_library() to LLVM.
 
-if [[ -f tools/cmake_install.cmake.orig ]]; then
-  cp tools/cmake_install.cmake.orig tools/cmake_install.cmake
+if [[ -f llvm_build_final/tools/cmake_install.cmake.orig ]]; then
+  cp llvm_build_final/tools/cmake_install.cmake.orig tools/cmake_install.cmake
 fi
 
-if [[ -f projects/cmake_install.cmake.orig ]]; then
-  cp projects/cmake_install.cmake.orig projects/cmake_install.cmake
+if [[ -f llvm_build_final/projects/cmake_install.cmake.orig ]]; then
+  cp llvm_build_final/projects/cmake_install.cmake.orig projects/cmake_install.cmake
 fi
 
 pushd cctools
@@ -278,8 +278,8 @@ fi
 # -i.orig to check what has been removed in-case it starts dropping more than it should
 # and so we can undo this on re-entry.
 #
-sed -i.orig '/\(clang\|lld\|lldb\|polly\)\/cmake_install.cmake/d' tools/cmake_install.cmake
-sed -i.orig '/\(compiler-rt\|libcxxabi\|libcxx\|libunwind\)\/cmake_install.cmake/d' projects/cmake_install.cmake
+sed -i.orig '/\(clang\|lld\|lldb\)\/cmake_install.cmake/d' llvm_build_final/tools/cmake_install.cmake
+sed -i.orig '/\(compiler-rt\|libcxxabi\|libcxx\|libunwind\)\/cmake_install.cmake/d' llvm_build_final/projects/cmake_install.cmake
 
 # There is no way of having libc++.dylib instruct the linker to add a relative rpath, though that would be nice.
 #
