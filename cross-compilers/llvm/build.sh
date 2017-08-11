@@ -99,7 +99,10 @@ _cmake_config+=(-DHAVE_TERMINFO_TERMINFO=OFF)
 _cmake_config+=(-DHAVE_TERMINFO_TINFO=OFF)
 _cmake_config+=(-DHAVE_TERMIOS_H=OFF)
 _cmake_config+=(-DCLANG_ENABLE_LIBXML=OFF)
-
+# Once we are using our libc++ (not until llvm_build_final), it will be single-arch only and not setting
+# this causes link failures building the santizers since they respect DARWIN_osx_ARCHS. We may as well
+# save some compilation time by setting this for all of our llvm builds.
+_cmake_config+=(-DDARWIN_osx_ARCHS=x86_64)
 # Only valid when using the Ninja Generator AFAICT
 # _cmake_config+=(-DLLVM_PARALLEL_LINK_JOBS:STRING=1)
 # What about cross-compiling targetting Darwin here? Are any of these needed?
@@ -161,7 +164,7 @@ if [[ ! -f ${PREFIX}/bin/${DARWIN_TARGET}-ld ]]; then
     BOOTSTRAP_LIBTOOL=$(which libtool)
   fi
 
-  if [[ ! -e ${PREFIX}/lib/libLTO${SHLIB_EXT} ]]; then
+  if [[ ! -f ${PREFIX}/lib/libLTO${SHLIB_EXT} ]]; then
     [[ -d llvm_lto_build ]] || mkdir llvm_lto_build
     pushd llvm_lto_build
       cmake -G'Unix Makefiles'                        \
@@ -171,9 +174,8 @@ if [[ ! -f ${PREFIX}/bin/${DARWIN_TARGET}-ld ]]; then
       pushd tools/lto
         make -j${CPU_COUNT} ${VERBOSE_CM} install-LTO
       popd
-      # popd
     popd
-    if [[ ! -e ${PREFIX}/lib/libtapi${SHLIB_EXT} ]]; then
+    if [[ ! -f ${PREFIX}/lib/libtapi${SHLIB_EXT} ]]; then
       [[ -d llvm_tapi_build ]] || mkdir llvm_tapi_build
       pushd llvm_tapi_build
         cmake -G'Unix Makefiles'                                 \
@@ -205,7 +207,7 @@ fi
 # Put our new cctools to the front of PATH, but also keep bootstrap.
 export PATH=${PREFIX}/bin:${PATH}
 
-if [[ ! -e "${SRC_DIR}/llvm_build/tools/clang/tools/c-index-test" ]]; then
+if [[ ! -f llvm_build/tools/clang/tools/c-index-test ]]; then
   [[ -d llvm_build ]] || mkdir llvm_build
   pushd llvm_build
     CC=${CC}" ${CFLAG_SYSROOT}"                                                         \
@@ -224,7 +226,7 @@ fi
 # Now we have built llvm and clang, we rebuild cctools with them.
 # Ditch the bootstrap compilers, we will use our own from now on.
 export PATH=${PREFIX}/bin:${OLD_PATH}
-if [[ ! -f ${cctools_build_final}/ld64/ld ]]; then
+if [[ ! -f cctools_build_final/ld64/ld ]]; then
   [[ -d cctools_build_final ]] || mkdir cctools_build_final
   pushd cctools_build_final
     CC=${PREFIX}/bin/clang" ${CFLAG_SYSROOT}"     \
@@ -239,15 +241,15 @@ if [[ ! -f ${cctools_build_final}/ld64/ld ]]; then
 fi
 
 # Now we have built cctools with the new compilers rebuild clang
-# with them too. This is so that the libc++ they link to is not
+# with those. This is so that the libc++ they link to is not
 # from /usr/lib but instead relative to our build prefix.
 # We no longer need to use CFLAG_SYSROOT and can instead use:
 export CONDA_BUILD_SYSROOT=${SYSROOT_DIR}
-# .. to test this stuff, use command lines such as old:
+# .. to test that ld is behaving wrt CONDA_BUILD_SYSROOT, use command lines such as (old):
 # prefix/bin/clang++ ~/hello-world.cpp --sysroot ~/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/MacOSX10.9.sdk -v -Wl,-t -Wl,-v
-# vs new:
+# vs (new):
 # CONDA_BUILD_SYSROOT=~/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/MacOSX10.9.sdk prefix/bin/clang++ ~/hello-world.cpp -Wl,-t -Wl,-v
-if [[ ! -e "${SRC_DIR}/llvm_build_final/tools/clang/tools/c-index-test" ]]; then
+if [[ ! -f llvm_build_final/tools/clang/tools/c-index-test" ]]; then
   [[ -d llvm_build_final ]] || mkdir llvm_build_final
   pushd llvm_build_final
     CC=${PREFIX}/bin/clang                                                              \
