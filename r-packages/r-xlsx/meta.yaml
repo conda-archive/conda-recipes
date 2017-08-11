@@ -30,6 +30,9 @@ build:
 
   skip: true # [linux]
 
+  script_env:
+    - JAVA_HOME
+
 requirements:
   build:
     - r-base
