@@ -197,8 +197,9 @@ outputs:
   - name: libunwind_{{ cross_target_platform }}
     script: install-libunwind.sh
     target: {{ cross_target_platform }}
-    build:
-      - cmake
+    requirements:
+      build:
+        - cmake
 
   - name: compiler-rt_{{ cross_target_platform }}
     script: install-compiler-rt.sh
