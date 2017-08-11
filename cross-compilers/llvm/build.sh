@@ -1,5 +1,36 @@
 #!/bin/bash
 
+# TODO :: Install licenses:
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/include/llvm/Support/LICENSE.TXT
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/include/llvm/Support/LICENSE.TXT
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/lib/Target/ARM/LICENSE.TXT
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/LICENSE.TXT
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/prefix/include/llvm/Support/LICENSE.TXT
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/compiler-rt/LICENSE.TXT
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/libcxx/LICENSE.TXT
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/libcxx/utils/google-benchmark/LICENSE
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/libcxxabi/LICENSE.TXT
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/openmp/LICENSE.txt
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/openmp/testsuite/LICENSE
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/tapi/LICENSE.TXT
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/test/YAMLParser/LICENSE.txt
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/tools/clang/LICENSE.TXT
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/tools/polly/lib/External/isl/LICENSE
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/tools/polly/lib/JSON/LICENSE.txt
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/tools/polly/LICENSE.txt
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/tools/polly/tools/GPURuntime/LICENSE.TXT
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/utils/unittest/googlemock/LICENSE.txt
+# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/utils/unittest/googletest/LICENSE.TXT
+# TODO :: Install llvm cmake support files:
+# install -d "${PREFIX}"/share/llvm/cmake/{modules,platforms}
+# install -Dm644 "${SRC_DIR}"/cmake/modules/*.cmake "${PREFIX}"/share/llvm/cmake/modules/
+# install -Dm644 "${SRC_DIR}"/cmake/platforms/*.cmake "${PREFIX}"/share/llvm/cmake/platforms/
+# TODO :: Check OpenMP and polly work correctly.
+# TODO :: Check for and eliminate any overlapping files (can conda-build have a feature?)
+
+VERBOSE_CM="VERBOSE=1"
+VERBOSE_AT="V=1"
+
 # Ensure we do not end up linking to a shared libz
 rm -f "${PREFIX}"/lib/libz*${SHLIB_EXT}
 # .. if this doesn't work we will need to pass LLVM_ENABLE_ZLIB
@@ -14,16 +45,15 @@ if [[ -f llvm_build_final/projects/cmake_install.cmake.orig ]]; then
 fi
 
 pushd cctools
-  autoreconf -vfi
-  # Yuck, sorry.
-  [[ -d include/macho-o ]] || mkdir -p include/macho-o
-  cp ld64/src/other/prune_trie.h include/mach-o/prune_trie.h
-  cp ld64/src/other/prune_trie.h libprunetrie/prune_trie.h
-  cp ld64/src/other/PruneTrie.cpp libprunetrie/PruneTrie.cpp
+  if [[ ! -f configure ]]; then
+    autoreconf -vfi
+    # Yuck, sorry.
+    [[ -d include/macho-o ]] || mkdir -p include/macho-o
+    cp ld64/src/other/prune_trie.h include/mach-o/prune_trie.h
+    cp ld64/src/other/prune_trie.h libprunetrie/prune_trie.h
+    cp ld64/src/other/PruneTrie.cpp libprunetrie/PruneTrie.cpp
+  fi
 popd
-
-VERBOSE_CM="VERBOSE=1"
-VERBOSE_AT="V=1"
 
 # We need to be careful to avoid linking to any shared libs.
 # I have seen ncurses and zlib linked to the final binaries.

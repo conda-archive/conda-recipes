@@ -29,6 +29,8 @@ source:
     patches:
       - 0001-cmake-Cache-results-of-find_darwin_sdk_dir.patch
       - 0002-compiler-rt-Determine-COMPILER_RT_SUPPORTED_ARCH-eve.patch
+  - url: http://releases.llvm.org/{{ version }}/libunwind-{{ version }}.src.tar.xz
+    folder: projects/libunwind
   - url: http://releases.llvm.org/{{ version }}/libcxx-{{ version }}.src.tar.xz
     folder: projects/libcxx
   - url: http://releases.llvm.org/{{ version }}/libcxxabi-{{ version }}.src.tar.xz
@@ -132,15 +134,22 @@ outputs:
   - name: cctools-ld64
     script: install-cctools-ld64.sh
     requirements:
+      build:
+        - {{ pin_subpackage('llvm-lto-tapi', exact=True) }}
       run:
         - {{ pin_subpackage('llvm-lto-tapi', exact=True) }}
 
   - name: llvm
     script: install-llvm.sh
+    requirements:
+      run:
+        - {{ pin_subpackage('llvm-lto-tapi', exact=True) }}
 
   - name: clang
     script: install-clang.sh
     requirements:
+      build:
+        - cmake
       run:
         - {{ pin_subpackage('llvm', exact=True) }}
         - {{ pin_subpackage('cctools-ld64', exact=True) }}
@@ -151,15 +160,28 @@ outputs:
   - name: clangxx
     script: install-clangxx.sh
     requirements:
+      # Need clang present during build otherwise we have a dangling symlink
+      build:
+        - {{ pin_subpackage('clang', exact=True) }}
       run:
         - {{ pin_subpackage('clang', exact=True) }}
     run_exports:
       - {{ pin_subpackage('libcxx_' ~ cross_target_platform) }}
 
+  - name: polly
+    script: install-polly.sh
+    requirements:
+      build:
+        - cmake
+      run:
+        - {{ pin_subpackage('llvm', exact=True) }}
+
   - name: libcxx_{{ cross_target_platform }}
     script: install-libcxx.sh
     target: {{ cross_target_platform }}
     requirements:
+      build:
+        - cmake
       run:
         - {{ pin_subpackage('libcxxabi_' ~ cross_target_platform, exact=True) }}
 
@@ -167,13 +189,20 @@ outputs:
     script: install-libcxxabi.sh
     target: {{ cross_target_platform }}
     requirements:
+      build:
+        - cmake
       run:
         - {{ pin_subpackage('libunwind_' ~ cross_target_platform, exact=True) }}
 
   - name: libunwind_{{ cross_target_platform }}
     script: install-libunwind.sh
     target: {{ cross_target_platform }}
+    build:
+      - cmake
 
   - name: compiler-rt_{{ cross_target_platform }}
     script: install-compiler-rt.sh
     target: {{ cross_target_platform }}
+    requirements:
+      build:
+        - cmake

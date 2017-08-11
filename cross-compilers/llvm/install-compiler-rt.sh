@@ -1,9 +1,12 @@
 #!/bin/bash
 
-DEST=${PWD}/install-compiler-rt
+. activate "${PREFIX}"
+cd "${SRC_DIR}"
+
+DEST="${PWD}"/install-compiler-rt
 pushd llvm_build_final/projects/compiler-rt
-  make install DESTDIR=${DEST}
+  make install DESTDIR="${DEST}"
 popd
-pushd ${DEST}/${PWD}/prefix
-  cp -Rf * ${PREFIX}
+pushd "${DEST}"/"${PWD}"/prefix
+  cp -Rf * "${PREFIX}"
 popd

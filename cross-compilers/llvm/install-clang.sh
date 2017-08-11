@@ -1,11 +1,15 @@
 #!/bin/bash
 
-DEST=${PWD}/install-clang
+. activate "${PREFIX}"
+cd "${SRC_DIR}"
+
+DEST="${PWD}"/install-clang
 pushd llvm_build_final/tools/clang
-  make install DESTDIR=${DEST}
+  make install DESTDIR="${DEST}"
 popd
-pushd ${DEST}/${PWD}/prefix
-  cp -Rf * ${PREFIX}
-  install -Dm644 LICENSE.TXT "${PREFIX}"/share/licenses/clang/LICENSE
+pushd "${DEST}"/"${PWD}"/prefix
+  cp -Rf * "${PREFIX}"
+  rm "${PREFIX}"/bin/clang++
+  find . -name "LICENSE*"
+  cp LICENSE.TXT "${PREFIX}"/share/licenses/clang/LICENSE
 popd
-rm -f ${PREFIX}/bin/clang++
