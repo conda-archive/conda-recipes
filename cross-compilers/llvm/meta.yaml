@@ -123,6 +123,7 @@ requirements:
     # build.sh sets HAVE_TERMINFO_*=OFF instead; could effect quality (colours etc) of console output?
     # - ncurses                           # [linux]
     - cmake
+    - swig
     - autoconf
     - automake
     # macOS has its own uuid library. It includes uuid_string_t which llvm uses.
@@ -171,7 +172,12 @@ outputs:
       build:
         - cmake
       run:
-        - {{ pin_subpackage('llvm', exact=True) }}
+        # llvm pinned using min_pin, max_pin because:
+        # conda_build.exceptions.RecipeError: Mismatching hashes in recipe. Exact pins in dependencies that contribute to the hash often cause this. Can you change one or more exact pins to version bound constraints?
+        # Involved packages were:
+        # Mismatching package: llvm; consumer package: clang
+        # Mismatching package: llvm; consumer package: lldb
+        - {{ pin_subpackage('llvm', min_pin='x.x.x', max_pin='x.x.x') }}
         - {{ pin_subpackage('cctools-ld64', exact=True) }}
         - {{ pin_subpackage('compiler-rt_' ~ cross_target_platform, exact=True) }}
         # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
@@ -186,7 +192,12 @@ outputs:
       build:
         - cmake
       run:
-        - {{ pin_subpackage('llvm', exact=True) }}
+        # llvm pinned using min_pin, max_pin because:
+        # conda_build.exceptions.RecipeError: Mismatching hashes in recipe. Exact pins in dependencies that contribute to the hash often cause this. Can you change one or more exact pins to version bound constraints?
+        # Involved packages were:
+        # Mismatching package: llvm; consumer package: clang
+        # Mismatching package: llvm; consumer package: lldb
+        - {{ pin_subpackage('llvm', min_pin='x.x.x', max_pin='x.x.x') }}
         # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
         # but that is not possible when bootstrapping as it would cause a build dependency cycle.
         - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
@@ -221,9 +232,6 @@ outputs:
         - cmake
       run:
         - {{ pin_subpackage('libcxxabi_' ~ cross_target_platform, exact=True) }}
-        # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
-        # but that is not possible when bootstrapping as it would cause a build dependency cycle.
-        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
 
   - name: libcxxabi_{{ cross_target_platform }}
     script: install-libcxxabi.sh
@@ -231,11 +239,6 @@ outputs:
     requirements:
       build:
         - cmake
-      run:
-        - {{ pin_subpackage('libunwind_' ~ cross_target_platform, exact=True) }}
-        # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
-        # but that is not possible when bootstrapping as it would cause a build dependency cycle.
-        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
 
   - name: libunwind_{{ cross_target_platform }}
     script: install-libunwind.sh
