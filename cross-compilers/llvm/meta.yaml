@@ -144,8 +144,23 @@ outputs:
         # but that is not possible when bootstrapping as it would cause a build dependency cycle.
         - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
 
-  - name: cctools-ld64
-    script: install-cctools-ld64.sh
+  - name: cctools
+    version: {{ cctools_version }}
+    script: install-cctools.sh
+    requirements:
+        # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
+        # but that is not possible when bootstrapping as it would cause a build dependency cycle.
+        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
+    about:
+      home: https://opensource.apple.com/source
+      license: Apple Public Source License 2.0
+      license_family: Other
+      license_file: cctools/APPLE_LICENSE
+      summary: Assembler, archiver, ranlib, libtool, otool et al for Darwin Mach-O files
+
+  - name: ld64
+    version: {{ ld64_version }}
+    script: install-ld64.sh
     requirements:
       build:
         - {{ pin_subpackage('llvm-lto-tapi', exact=True) }}
@@ -158,8 +173,8 @@ outputs:
       home: https://opensource.apple.com/source
       license: Apple Public Source License 2.0
       license_family: Other
-      license_file: cctools/APPLE_LICENSE
-      summary: Assemblers, linkers and other tools for manipulating Darwin Mach-O files
+      license_file: cctools/ld64/APPLE_LICENSE
+      summary: Darwin Mach-O linker
 
   - name: llvm
     script: install-llvm.sh
@@ -171,6 +186,8 @@ outputs:
         # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
         # but that is not possible when bootstrapping as it would cause a build dependency cycle.
         - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
+        - {{ pin_subpackage('cctools', exact=True) }}
+        - {{ pin_subpackage('ld64', exact=True) }}
     about:
       home: https://llvm.org/
       license: University of Illinois/NCSA Open Source License
@@ -195,7 +212,6 @@ outputs:
         # Mismatching package: llvm; consumer package: clang
         # Mismatching package: llvm; consumer package: lldb
         - {{ pin_subpackage('llvm', min_pin='x.x.x', max_pin='x.x.x') }}
-        - {{ pin_subpackage('cctools-ld64', exact=True) }}
         - {{ pin_subpackage('compiler-rt_' ~ cross_target_platform, exact=True) }}
         # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
         # but that is not possible when bootstrapping as it would cause a build dependency cycle.

@@ -3,9 +3,9 @@
 . activate "${PREFIX}"
 cd "${SRC_DIR}"
 
-DEST="${PWD}"/install-cctools-ld64
+DEST="${PWD}"/install-ld64
 [[ -d "${DEST}" ]] && rm -rf "${DEST}"
-pushd cctools_build_final
+pushd cctools_build_final/ld64
   make install DESTDIR="${DEST}"
 popd
 pushd "${DEST}"/"${PWD}"/prefix
