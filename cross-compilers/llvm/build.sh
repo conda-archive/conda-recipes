@@ -312,7 +312,7 @@ fi
 if sed --help 2>&1 | grep GNU > /dev/null; then
   SED="sed -r"
 else
-  SED="sed"
+  SED="sed -E"
 fi
 
 ${SED} -i.orig '/\/clang|lld|lldb\/cmake_install.cmake/d' llvm_build_final/tools/cmake_install.cmake
