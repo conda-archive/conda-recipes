@@ -1,3 +1,6 @@
+# llvm recipe adapted to build macOS conda compilers. build.sh spins multiple times
+# in order to bootstrap the compilers so they do not depend on system libs (libc++)
+
 {% set version="4.0.1" %}
 {% set native_compiler_subdir=build_platform %}
 {% set cctools_version = '895' %}
@@ -22,6 +25,8 @@ source:
     patches:
       - 0001-clang-Allow-disabling-libXML.patch
       - 0002-clang-add-conda-specific-env-var-CONDA_BUILD_SYSROOT.patch
+  - url: http://releases.llvm.org/{{ version }}/lldb-{{ version }}.src.tar.xz
+    folder: tools/lldb
   - url: http://releases.llvm.org/{{ version }}/polly-{{ version }}.src.tar.xz
     folder: tools/polly
   - url: http://releases.llvm.org/{{ version }}/compiler-rt-{{ version }}.src.tar.xz
@@ -133,6 +138,10 @@ outputs:
     requirements:
       build:
         - cmake
+      run:
+        # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
+        # but that is not possible when bootstrapping as it would cause a build dependency cycle.
+        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
 
   - name: cctools-ld64
     script: install-cctools-ld64.sh
@@ -141,6 +150,9 @@ outputs:
         - {{ pin_subpackage('llvm-lto-tapi', exact=True) }}
       run:
         - {{ pin_subpackage('llvm-lto-tapi', exact=True) }}
+        # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
+        # but that is not possible when bootstrapping as it would cause a build dependency cycle.
+        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
 
   - name: llvm
     script: install-llvm.sh
@@ -149,6 +161,9 @@ outputs:
         - cmake
       run:
         - {{ pin_subpackage('llvm-lto-tapi', exact=True) }}
+        # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
+        # but that is not possible when bootstrapping as it would cause a build dependency cycle.
+        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
 
   - name: clang
     script: install-clang.sh
@@ -159,8 +174,22 @@ outputs:
         - {{ pin_subpackage('llvm', exact=True) }}
         - {{ pin_subpackage('cctools-ld64', exact=True) }}
         - {{ pin_subpackage('compiler-rt_' ~ cross_target_platform, exact=True) }}
-    run_exports:
-      - {{ pin_subpackage('compiler-rt_' ~ cross_target_platform) }}
+        # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
+        # but that is not possible when bootstrapping as it would cause a build dependency cycle.
+        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
+    # We do *not* list compiler_rt as a run_export as it is statically linked into binaries.
+    # The sanitizers *are* dylibs (on macOS <= 10.10 use DYLD_INSERT_LIBRARIES to use them).
+
+  - name: lldb
+    script: install-lldb.sh
+    requirements:
+      build:
+        - cmake
+      run:
+        - {{ pin_subpackage('llvm', exact=True) }}
+        # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
+        # but that is not possible when bootstrapping as it would cause a build dependency cycle.
+        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
 
   - name: clangxx
     script: install-clangxx.sh
@@ -180,6 +209,9 @@ outputs:
         - cmake
       run:
         - {{ pin_subpackage('llvm', exact=True) }}
+        # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
+        # but that is not possible when bootstrapping as it would cause a build dependency cycle.
+        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
 
   - name: libcxx_{{ cross_target_platform }}
     script: install-libcxx.sh
@@ -189,6 +221,9 @@ outputs:
         - cmake
       run:
         - {{ pin_subpackage('libcxxabi_' ~ cross_target_platform, exact=True) }}
+        # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
+        # but that is not possible when bootstrapping as it would cause a build dependency cycle.
+        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
 
   - name: libcxxabi_{{ cross_target_platform }}
     script: install-libcxxabi.sh
@@ -198,6 +233,9 @@ outputs:
         - cmake
       run:
         - {{ pin_subpackage('libunwind_' ~ cross_target_platform, exact=True) }}
+        # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
+        # but that is not possible when bootstrapping as it would cause a build dependency cycle.
+        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
 
   - name: libunwind_{{ cross_target_platform }}
     script: install-libunwind.sh
@@ -205,6 +243,10 @@ outputs:
     requirements:
       build:
         - cmake
+      run:
+        # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
+        # but that is not possible when bootstrapping as it would cause a build dependency cycle.
+        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
 
   - name: compiler-rt_{{ cross_target_platform }}
     script: install-compiler-rt.sh
