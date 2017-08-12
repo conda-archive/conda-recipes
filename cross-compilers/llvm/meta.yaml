@@ -25,8 +25,8 @@ source:
     patches:
       - 0001-clang-Allow-disabling-libXML.patch
       - 0002-clang-add-conda-specific-env-var-CONDA_BUILD_SYSROOT.patch
-  - url: http://releases.llvm.org/{{ version }}/lldb-{{ version }}.src.tar.xz
-    folder: tools/lldb
+#  - url: http://releases.llvm.org/{{ version }}/lldb-{{ version }}.src.tar.xz
+#    folder: tools/lldb
   - url: http://releases.llvm.org/{{ version }}/polly-{{ version }}.src.tar.xz
     folder: tools/polly
   - url: http://releases.llvm.org/{{ version }}/compiler-rt-{{ version }}.src.tar.xz
@@ -212,31 +212,35 @@ outputs:
         The goal of the Clang project is to create a new C based language front-end:
         C, C++, Objective C/C++, OpenCL C and others for the LLVM compiler
 
-  - name: lldb
-    script: install-lldb.sh
-    requirements:
-      build:
-        - cmake
-      run:
-        # llvm pinned using min_pin, max_pin because:
-        # conda_build.exceptions.RecipeError: Mismatching hashes in recipe. Exact pins in dependencies that contribute to the hash often cause this. Can you change one or more exact pins to version bound constraints?
-        # Involved packages were:
-        # Mismatching package: llvm; consumer package: clang
-        # Mismatching package: llvm; consumer package: lldb
-        - {{ pin_subpackage('llvm', min_pin='x.x.x', max_pin='x.x.x') }}
-        # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
-        # but that is not possible when bootstrapping as it would cause a build dependency cycle.
-        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
-    about:
-      home: http://lldb.llvm.org/
-      license: University of Illinois/NCSA Open Source License
-      license_family: Other
-      license_file: tools/lldb/LICENSE.TXT
-      summary: The LLDB Debugger
-      description: |
-        LLDB is a next generation, high-performance debugger. It is built as a set
-        of reusable components which highly leverage existing libraries in the larger
-        LLVM Project, such as the Clang expression parser and LLVM disassembler
+# Disabled because:
+# On MacOSX lldb needs to be code signed. See:
+# https://llvm.org/svn/llvm-project/lldb/trunk/docs/code-signing.txt
+# https://github.com/Homebrew/legacy-homebrew/commit/8da6986730e06b51a9686afa2ad9eeb241f8708a
+#  - name: lldb
+#    script: install-lldb.sh
+#    requirements:
+#      build:
+#        - cmake
+#      run:
+#        # llvm pinned using min_pin, max_pin because:
+#        # conda_build.exceptions.RecipeError: Mismatching hashes in recipe. Exact pins in dependencies that contribute to the hash often cause this. Can you change one or more exact pins to version bound constraints?
+#        # Involved packages were:
+#        # Mismatching package: llvm; consumer package: clang
+#        # Mismatching package: llvm; consumer package: lldb
+#        - {{ pin_subpackage('llvm', min_pin='x.x.x', max_pin='x.x.x') }}
+#        # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
+#        # but that is not possible when bootstrapping as it would cause a build dependency cycle.
+#        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
+#    about:
+#      home: http://lldb.llvm.org/
+#      license: University of Illinois/NCSA Open Source License
+#      license_family: Other
+#      license_file: tools/lldb/LICENSE.TXT
+#      summary: The LLDB Debugger
+#      description: |
+#        LLDB is a next generation, high-performance debugger. It is built as a set
+#        of reusable components which highly leverage existing libraries in the larger
+#        LLVM Project, such as the Clang expression parser and LLVM disassembler
 
   - name: clangxx
     script: install-clangxx.sh
