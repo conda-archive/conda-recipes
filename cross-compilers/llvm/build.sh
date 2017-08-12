@@ -315,10 +315,9 @@ else
   SED="sed -E"
 fi
 
-${SED} -i.orig '/\/clang|lld|lldb\/cmake_install.cmake/d' llvm_build_final/tools/cmake_install.cmake
-${SED} -i.orig '/\/compiler-rt|libcxxabi|libcxx|libunwind\/cmake_install.cmake/d' llvm_build_final/projects/cmake_install.cmake
+${SED} -i.orig '/\/clang|lld|lldb|polly\/cmake_install.cmake/d' llvm_build_final/tools/cmake_install.cmake
+${SED} -i.orig '/\/compiler-rt|libcxxabi|libcxx|libunwind|tapi\/cmake_install.cmake/d' llvm_build_final/projects/cmake_install.cmake
 
-exit 0
 
 # There is no way of having libc++.dylib instruct the linker to add a relative rpath, though that would be nice.
 #
@@ -343,5 +342,3 @@ exit 0
 # To iterate on clang/clang++ frontend changes, edit for example:
 # /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/tools/clang/lib/Frontend/InitHeaderSearch.cpp
 
-cd /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/llvm_build/tools/clang/tools/driver
-make VERBOSE=1 ; echo && echo && echo && echo && echo && echo && CONDA_BUILD_SYSROOT=/Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/MacOSX10.9.sdk ../../../../bin/clang++ -v ~/hw.cpp --sysroot /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/MacOSX10.9.sdk_not_used
