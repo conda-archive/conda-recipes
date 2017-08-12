@@ -1,33 +1,5 @@
 #!/bin/bash
 
-# TODO :: Install licenses:
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/bootstrap/include/llvm/Support/LICENSE.TXT
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/include/llvm/Support/LICENSE.TXT
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/lib/Target/ARM/LICENSE.TXT
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/LICENSE.TXT
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/prefix/include/llvm/Support/LICENSE.TXT
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/compiler-rt/LICENSE.TXT
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/libcxx/LICENSE.TXT
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/libcxx/utils/google-benchmark/LICENSE
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/libcxxabi/LICENSE.TXT
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/openmp/LICENSE.txt
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/openmp/testsuite/LICENSE
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/projects/tapi/LICENSE.TXT
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/test/YAMLParser/LICENSE.txt
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/tools/clang/LICENSE.TXT
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/tools/polly/lib/External/isl/LICENSE
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/tools/polly/lib/JSON/LICENSE.txt
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/tools/polly/LICENSE.txt
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/tools/polly/tools/GPURuntime/LICENSE.TXT
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/utils/unittest/googlemock/LICENSE.txt
-# /Users/vagrant/conda/automated-build/bootstrap/mcf-x-build/cross-compiler/work/utils/unittest/googletest/LICENSE.TXT
-# TODO :: Install llvm cmake support files:
-# install -d "${PREFIX}"/share/llvm/cmake/{modules,platforms}
-# install -Dm644 "${SRC_DIR}"/cmake/modules/*.cmake "${PREFIX}"/share/llvm/cmake/modules/
-# install -Dm644 "${SRC_DIR}"/cmake/platforms/*.cmake "${PREFIX}"/share/llvm/cmake/platforms/
-# TODO :: Check OpenMP and polly work correctly.
-# TODO :: Check for and eliminate any overlapping files (can conda-build have a feature?)
-
 VERBOSE_CM="VERBOSE=1"
 VERBOSE_AT="V=1"
 
