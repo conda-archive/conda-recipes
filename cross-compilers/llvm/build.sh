@@ -308,8 +308,15 @@ fi
 # -i.orig to check what has been removed in-case it starts dropping more than it should
 # and so we can undo this on re-entry.
 #
-sed -i.orig '/\(clang\|lld\|lldb\)\/cmake_install.cmake/d' llvm_build_final/tools/cmake_install.cmake
-sed -i.orig '/\(compiler-rt\|libcxxabi\|libcxx\|libunwind\)\/cmake_install.cmake/d' llvm_build_final/projects/cmake_install.cmake
+
+if sed --help 2>&1 | grep GNU > /dev/null; then
+  SED="sed -r"
+else
+  SED="sed"
+fi
+
+${SED} -i.orig '/\/clang|lld|lldb\/cmake_install.cmake/d' llvm_build_final/tools/cmake_install.cmake
+${SED} -i.orig '/\/compiler-rt|libcxxabi|libcxx|libunwind\/cmake_install.cmake/d' llvm_build_final/projects/cmake_install.cmake
 
 exit 0
 

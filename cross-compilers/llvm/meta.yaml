@@ -130,6 +130,9 @@ requirements:
 outputs:
   - name: llvm-lto-tapi
     script: install-llvm-lto-tapi.sh
+    requirements:
+      build:
+        - cmake
 
   - name: cctools-ld64
     script: install-cctools-ld64.sh
@@ -142,6 +145,8 @@ outputs:
   - name: llvm
     script: install-llvm.sh
     requirements:
+      build:
+        - cmake
       run:
         - {{ pin_subpackage('llvm-lto-tapi', exact=True) }}
 
