@@ -14,4 +14,7 @@ pushd "${DEST}"/"${PWD}"/prefix
   rm include/llvm-c/lto.h
   rm lib/libLTO.dylib
   cp -Rf * "${PREFIX}"
+  mkdir -p "${PREFIX}"/share/llvm/cmake/{modules,platforms}
+  cp -Rf "${SRC_DIR}"/cmake/modules/*.cmake "${PREFIX}"/share/llvm/cmake/modules/
+  cp -Rf "${SRC_DIR}"/cmake/platforms/*.cmake "${PREFIX}"/share/llvm/cmake/platforms/
 popd
