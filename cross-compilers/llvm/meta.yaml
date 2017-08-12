@@ -154,6 +154,12 @@ outputs:
         # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
         # but that is not possible when bootstrapping as it would cause a build dependency cycle.
         - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
+    about:
+      home: https://opensource.apple.com/source
+      license: Apple Public Source License 2.0
+      license_family: Other
+      license_file: cctools/APPLE_LICENSE
+      summary: Assemblers, linkers and other tools for manipulating Darwin Mach-O files
 
   - name: llvm
     script: install-llvm.sh
@@ -165,6 +171,17 @@ outputs:
         # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
         # but that is not possible when bootstrapping as it would cause a build dependency cycle.
         - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
+    about:
+      home: https://llvm.org/
+      license: University of Illinois/NCSA Open Source License
+      license_family: Other
+      license_file: LICENSE.TXT
+      summary: The LLVM Compiler Infrastructure
+      description: |
+        The LLVM Project is a collection of modular and reusable compiler and toolchain
+        technologies. Despite its name, LLVM has little to do with traditional virtual
+        machines. The name "LLVM" itself is not an acronym; it is the full name of the
+        project.
 
   - name: clang
     script: install-clang.sh
@@ -185,6 +202,15 @@ outputs:
         - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
     # We do *not* list compiler_rt as a run_export as it is statically linked into binaries.
     # The sanitizers *are* dylibs (on macOS <= 10.10 use DYLD_INSERT_LIBRARIES to use them).
+    about:
+      home: http://clang.llvm.org/
+      license: University of Illinois/NCSA Open Source License
+      license_family: Other
+      license_file: tools/clang/LICENSE.TXT
+      summary: A C language family frontend for LLVM
+      description: |
+        The goal of the Clang project is to create a new C based language front-end:
+        C, C++, Objective C/C++, OpenCL C and others for the LLVM compiler
 
   - name: lldb
     script: install-lldb.sh
@@ -201,6 +227,16 @@ outputs:
         # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
         # but that is not possible when bootstrapping as it would cause a build dependency cycle.
         - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
+    about:
+      home: http://lldb.llvm.org/
+      license: University of Illinois/NCSA Open Source License
+      license_family: Other
+      license_file: tools/lldb/LICENSE.TXT
+      summary: The LLDB Debugger
+      description: |
+        LLDB is a next generation, high-performance debugger. It is built as a set
+        of reusable components which highly leverage existing libraries in the larger
+        LLVM Project, such as the Clang expression parser and LLVM disassembler
 
   - name: clangxx
     script: install-clangxx.sh
@@ -212,6 +248,15 @@ outputs:
         - {{ pin_subpackage('clang', exact=True) }}
     run_exports:
       - {{ pin_subpackage('libcxx_' ~ cross_target_platform) }}
+    about:
+      home: http://clang.llvm.org/
+      license: University of Illinois/NCSA Open Source License
+      license_family: Other
+      license_file: tools/clang/LICENSE.TXT
+      summary: A C language family frontend for LLVM
+      description: |
+        The goal of the Clang project is to create a new C based language front-end:
+        C, C++, Objective C/C++, OpenCL C and others for the LLVM compiler
 
   - name: polly
     script: install-polly.sh
@@ -223,6 +268,17 @@ outputs:
         # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
         # but that is not possible when bootstrapping as it would cause a build dependency cycle.
         - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
+    about:
+      home: http://polly.llvm.org/
+      license: University of Illinois/NCSA Open Source License
+      license_family: Other
+      license_file: tools/polly/LICENSE.txt
+      summary: LLVM Framework for High-Level Loop and Data-Locality Optimizations
+      description: |
+        Polly is a high-level loop and data-locality optimizer and optimization
+        infrastructure for LLVM. It uses an abstract mathematical representation
+        based on integer polyhedra to analyze and optimize the memory access
+        pattern of a program
 
   - name: libcxx_{{ cross_target_platform }}
     script: install-libcxx.sh
@@ -232,6 +288,15 @@ outputs:
         - cmake
       run:
         - {{ pin_subpackage('libcxxabi_' ~ cross_target_platform, exact=True) }}
+    about:
+      home: http://libcxx.llvm.org/
+      license: MIT license or UIUC License
+      license_family: Other
+      license_file: projects/libcxx/LICENSE.TXT
+      summary: C++ Standard Library
+      description: |
+        libc++ is a new implementation of the C++ standard library, targeting
+        C++11
 
   - name: libcxxabi_{{ cross_target_platform }}
     script: install-libcxxabi.sh
@@ -239,6 +304,15 @@ outputs:
     requirements:
       build:
         - cmake
+    about:
+      home: http://libcxxabi.llvm.org/
+      license: MIT license or UIUC License
+      license_family: Other
+      license_file: projects/libcxxabi/LICENSE.TXT
+      summary: C++ Standard Library Support
+      description: |
+        libc++abi is a new implementation of low level support for a standard
+        C++ library
 
   - name: libunwind_{{ cross_target_platform }}
     script: install-libunwind.sh
@@ -250,6 +324,15 @@ outputs:
         # Normally, this dep would be injected via run_exports by the jinja2 compiler() function
         # but that is not possible when bootstrapping as it would cause a build dependency cycle.
         - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}        # [osx]
+    about:
+      home: http://libcxxabi.llvm.org/
+      license: MIT license or UIUC License
+      license_family: Other
+      license_file: projects/libcxxabi/LICENSE.TXT
+      summary: C++ Standard Library Support
+      description: |
+        libc++abi is a new implementation of low level support for a standard
+        C++ library
 
   - name: compiler-rt_{{ cross_target_platform }}
     script: install-compiler-rt.sh
@@ -257,3 +340,17 @@ outputs:
     requirements:
       build:
         - cmake
+    about:
+      home: http://compiler-rt.llvm.org/
+      license: MIT license or UIUC License
+      license_family: Other
+      license_file: projects/compiler-rt/LICENSE.TXT
+      summary: compiler-rt runtime libraries
+      description: |
+        builtins - low-level target-specific hooks required by code generation and other
+          runtime components
+        sanitizer runtimes - AddressSanitizer, ThreadSanitizer, UndefinedBehaviorSanitizer,
+          MemorySanitizer, LeakSanitizer, DataFlowSanitizer
+        profile - library which is used to collect coverage information
+        BlocksRuntime - target-independent implementation of Apple "Blocks" runtime
+          interfaces
