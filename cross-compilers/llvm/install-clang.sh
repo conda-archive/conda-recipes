@@ -11,6 +11,4 @@ popd
 pushd "${DEST}"/"${PWD}"/prefix
   cp -Rf * "${PREFIX}"
   rm "${PREFIX}"/bin/clang++
-  find . -name "LICENSE*"
-  cp LICENSE.TXT "${PREFIX}"/share/licenses/clang/LICENSE
 popd
