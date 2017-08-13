@@ -156,7 +156,7 @@ $PREFIX/bin/${CHOST}-gcc -dumpspecs > $specdir/specs
 # We use double quotes here because we want $PREFIX and $CHOST to be expanded at build time
 #   and recorded in the specs file.  It will undergo a prefix replacement when our compiler
 #   package is installed.
-sed -i -e "/\*link_libgcc:/,+1 s+%.*+& -R${PREFIX}/${CHOST}/lib+" $specdir/specs
+sed -i -e "/\*link_libgcc:/,+1 s+%.*+& -rpath ${PREFIX}/lib+" $specdir/specs
 
 # Install Runtime Library Exception
 install -Dm644 $SRC_DIR/.build/src/gcc-${PKG_VERSION}/COPYING.RUNTIME \

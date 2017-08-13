@@ -13,8 +13,15 @@ make -C $CHOST/libgcc prefix=${PREFIX} install-shared
 for lib in libatomic libgomp libquadmath libitm libvtv libsanitizer/{a,l,ub,t}tsan; do
   if [[ -d $CHOST/$lib ]]; then
     make -C $CHOST/$lib prefix=${PREFIX} install-toolexeclibLTLIBRARIES
+    make -C $CHOST/$lib prefix=${PREFIX} install-nodist_fincludeHEADERS || true
+    symtargets=$(find ${PREFIX}/lib -name "lib${lib}.so*")
+    for symtarget in ${symtargets}; do
+      symtargetname=$(basename ${symtarget})
+      ln -s ${PREFIX}/lib/${symtargetname} ${PREFIX}/${CHOST}/sysroot/lib/${symtargetname}
+    done
   fi
 done
+
 
 for lib in libgomp libquadmath; do
   if [[ -d $CHOST/$lib ]]; then

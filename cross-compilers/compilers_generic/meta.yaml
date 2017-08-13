@@ -21,12 +21,10 @@ outputs:
   - name: gcc_{{ ctng_target_platform }}
     script: install-gcc.sh
     requirements:
-#      build:
-#        - unifdef
       run:
         - {{ pin_subpackage('binutils_' ~ ctng_target_platform, exact=True) }}
     run_exports:
-      - {{ pin_subpackage('libgcc_' ~ ctng_target_platform) }}
+      - {{ pin_subpackage('libgcc_' ~ ctng_target_platform, min_pin='x.x.x.x.x.x.x.x.x', max_pin='None') }}
     about:
       summary: GNU C Compiler
       home: https://gcc.gnu.org/
@@ -38,7 +36,7 @@ outputs:
       # For cpp and crt{i,n}.o
       - {{ pin_subpackage('gcc_' ~ ctng_target_platform, exact=True) }}
     run_exports:
-      - {{ pin_subpackage('libstdcxx_' ~ ctng_target_platform) }}
+      - {{ pin_subpackage('libstdcxx_' ~ ctng_target_platform, min_pin='x.x.x.x.x.x.x.x.x', max_pin='None') }}
     about:
       summary: GNU C++ Compiler
       home: https://gcc.gnu.org/
@@ -50,7 +48,7 @@ outputs:
       # For cpp and crt{i,n}.o
       - {{ pin_subpackage('gcc_' ~ ctng_target_platform, exact=True) }}
     run_exports:
-      - {{ pin_subpackage('libgfortran_' ~ ctng_target_platform) }}
+      - {{ pin_subpackage('libgfortran_' ~ ctng_target_platform, min_pin='x.x.x.x.x.x.x.x.x', max_pin='None') }}
     about:
       summary: GNU Fortran Compiler
       home: https://gcc.gnu.org/
