@@ -3,24 +3,23 @@ package:
 
 outputs:
 
-  - name: clang
+  - name: aaa
     requirements:
       run:
-        - {{ pin_subpackage('llvm', exact=True) }}
+        - {{ pin_subpackage('bbb', exact=True) }}
 
-  - name: llvm
+  - name: bbb
     requirements:
       run:
-        - {{ pin_subpackage('llvm-lto-tapi', exact=True) }}
+        - {{ pin_subpackage('ccc', exact=True) }}
 
-  - name: llvm-lto-tapi
+  - name: ccc
     requirements:
       run:
-        - {{ pin_subpackage('libcxx_osx-64', exact=True) }}
+        - {{ pin_subpackage('ddd', exact=True) }}
 
-  - name: libcxx_osx-64
+  - name: ddd
     requirements:
-        - {{ pin_subpackage('libcxxabi_osx-64', exact=True) }}
+        - {{ pin_subpackage('eee', exact=True) }}
 
-  - name: libcxxabi_osx-64
-
+  - name: eee
