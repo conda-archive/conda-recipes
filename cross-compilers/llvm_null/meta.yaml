@@ -1,70 +1,26 @@
-{% set version='1' %}
-{% set cross_target_platform='osx-64' %}
-{% set cctools_version = '895' %}
-
 package:
-  name: test-llvm-suite
-  version: {{ version }}
+  name: llvm-suite
 
 outputs:
-  - name: test-llvm-lto-tapi
-    script: install.sh
+
+  - name: clang
     requirements:
       run:
-        - {{ pin_subpackage('test-libcxx_' ~ cross_target_platform, exact=True) }}
+        - {{ pin_subpackage('llvm', exact=True) }}
 
-  - name: test-cctools
-    version: {{ cctools_version }}
-    script: install.sh
+  - name: llvm
     requirements:
       run:
-        - {{ pin_subpackage('test-libcxx_' ~ cross_target_platform, exact=True) }}
+        - {{ pin_subpackage('llvm-lto-tapi', exact=True) }}
 
-  - name: test-llvm
-    script: install.sh
+  - name: llvm-lto-tapi
     requirements:
       run:
-        - {{ pin_subpackage('test-llvm-lto-tapi', exact=True) }}
-        - {{ pin_subpackage('test-libcxx_' ~ cross_target_platform, exact=True) }}
-        - {{ pin_subpackage('test-cctools', exact=True) }}
+        - {{ pin_subpackage('libcxx_osx-64', exact=True) }}
 
-  - name: test-clang
-    script: install.sh
+  - name: libcxx_osx-64
     requirements:
-      run:
-        - {{ pin_subpackage('test-llvm', exact=True) }}
-        - {{ pin_subpackage('test-compiler-rt_' ~ cross_target_platform, exact=True) }}
-        - {{ pin_subpackage('test-libcxx_' ~ cross_target_platform, exact=True) }}
+        - {{ pin_subpackage('libcxxabi_osx-64', exact=True) }}
 
-  - name: test-clangxx
-    script: install.sh
-    requirements:
-      run:
-        - {{ pin_subpackage('test-clang', exact=True) }}
-    run_exports:
-      - {{ pin_subpackage('test-libcxx_' ~ cross_target_platform) }}
+  - name: libcxxabi_osx-64
 
-  - name: test-polly
-    script: install.sh
-    requirements:
-      run:
-        - {{ pin_subpackage('test-llvm', exact=True) }}
-        - {{ pin_subpackage('test-libcxx_' ~ cross_target_platform, exact=True) }}
-
-  - name: test-libcxx_{{ cross_target_platform }}
-    script: install.sh
-    requirements:
-      run:
-        - {{ pin_subpackage('test-libcxxabi_' ~ cross_target_platform, exact=True) }}
-
-  - name: test-libcxxabi_{{ cross_target_platform }}
-    script: install.sh
-
-  - name: test-libunwind_{{ cross_target_platform }}
-    script: install.sh
-    requirements:
-      run:
-        - {{ pin_subpackage('test-libcxx_' ~ cross_target_platform, exact=True) }}
-
-  - name: test-compiler-rt_{{ cross_target_platform }}
-    script: install.sh
