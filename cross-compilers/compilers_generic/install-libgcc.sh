@@ -10,6 +10,7 @@ pushd $SRC_DIR/.build/$CHOST/build/build-cc-gcc-final/
 
 make -C $CHOST/libgcc prefix=${PREFIX} install-shared
 
+mkdir -p ${PREFIX}/${CHOST}/sysroot/lib || true
 for lib in libatomic libgomp libquadmath libitm libvtv libsanitizer/{a,l,ub,t}tsan; do
   if [[ -d $CHOST/$lib ]]; then
     make -C $CHOST/$lib prefix=${PREFIX} install-toolexeclibLTLIBRARIES

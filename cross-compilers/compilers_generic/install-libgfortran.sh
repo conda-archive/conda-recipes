@@ -11,6 +11,7 @@ rm -f ${PREFIX}/lib/libgfortran* || true
 
 cp -f ${SRC_DIR}/gcc_built/${CHOST}/sysroot/lib/libgfortran*.so* ${PREFIX}/lib/
 
+mkdir -p ${PREFIX}/${CHOST}/sysroot/lib || true
 symtargets=$(find ${PREFIX}/lib -name "libgfortran*.so*")
 for symtarget in ${symtargets}; do
   symtargetname=$(basename ${symtarget})
