@@ -3,69 +3,69 @@
 {% set cctools_version = '895' %}
 
 package:
-  name: llvm-suite
+  name: test-llvm-suite
   version: {{ version }}
 
 outputs:
-  - name: llvm-lto-tapi
+  - name: test-llvm-lto-tapi
     script: install.sh
     requirements:
       run:
-        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}
+        - {{ pin_subpackage('test-libcxx_' ~ cross_target_platform, exact=True) }}
 
-  - name: cctools
+  - name: test-cctools
     version: {{ cctools_version }}
     script: install.sh
     requirements:
       run:
-        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}
+        - {{ pin_subpackage('test-libcxx_' ~ cross_target_platform, exact=True) }}
 
-  - name: llvm
+  - name: test-llvm
     script: install.sh
     requirements:
       run:
-        - {{ pin_subpackage('llvm-lto-tapi', exact=True) }}
-        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}
-        - {{ pin_subpackage('cctools', exact=True) }}
+        - {{ pin_subpackage('test-llvm-lto-tapi', exact=True) }}
+        - {{ pin_subpackage('test-libcxx_' ~ cross_target_platform, exact=True) }}
+        - {{ pin_subpackage('test-cctools', exact=True) }}
 
-  - name: clang
+  - name: test-clang
     script: install.sh
     requirements:
       run:
-        - {{ pin_subpackage('llvm', exact=True) }}
-        - {{ pin_subpackage('compiler-rt_' ~ cross_target_platform, exact=True) }}
-        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}
+        - {{ pin_subpackage('test-llvm', exact=True) }}
+        - {{ pin_subpackage('test-compiler-rt_' ~ cross_target_platform, exact=True) }}
+        - {{ pin_subpackage('test-libcxx_' ~ cross_target_platform, exact=True) }}
 
-  - name: clangxx
+  - name: test-clangxx
     script: install.sh
     requirements:
       run:
-        - {{ pin_subpackage('clang', exact=True) }}
+        - {{ pin_subpackage('test-clang', exact=True) }}
     run_exports:
-      - {{ pin_subpackage('libcxx_' ~ cross_target_platform) }}
+      - {{ pin_subpackage('test-libcxx_' ~ cross_target_platform) }}
 
-  - name: polly
+  - name: test-polly
     script: install.sh
     requirements:
       run:
-        - {{ pin_subpackage('llvm', exact=True) }}
-        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}
+        - {{ pin_subpackage('test-llvm', exact=True) }}
+        - {{ pin_subpackage('test-libcxx_' ~ cross_target_platform, exact=True) }}
 
-  - name: libcxx_{{ cross_target_platform }}
+  - name: test-libcxx_{{ cross_target_platform }}
     script: install.sh
     requirements:
       run:
-        - {{ pin_subpackage('libcxxabi_' ~ cross_target_platform, exact=True) }}
+        - {{ pin_subpackage('test-libcxxabi_' ~ cross_target_platform, exact=True) }}
 
-  - name: libcxxabi_{{ cross_target_platform }}
+  - name: test-libcxxabi_{{ cross_target_platform }}
     script: install.sh
     requirements:
 
-  - name: libunwind_{{ cross_target_platform }}
+  - name: test-libunwind_{{ cross_target_platform }}
     script: install.sh
     requirements:
       run:
-        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}
+        - {{ pin_subpackage('test-libcxx_' ~ cross_target_platform, exact=True) }}
 
-  - name: compiler-rt_{{ cross_target_platform }}
+  - name: test-compiler-rt_{{ cross_target_platform }}
     script: install.sh
