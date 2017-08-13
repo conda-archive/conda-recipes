@@ -4,8 +4,6 @@ ctng_sample:
   - x86_64-centos6-linux-gnu
 ctng_cpu_arch:
   - x86_64
-ctng_cpu_model:
-  - 
 ctng_libc:
   - gnu
 gnu:
@@ -58,7 +56,6 @@ zip_keys:
   -
     - ctng_target_platform
     - ctng_cpu_arch
-    - ctng_cpu_model
     - FINAL_CPPFLAGS
     - FINAL_CFLAGS
     - FINAL_CXXFLAGS
