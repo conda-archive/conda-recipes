@@ -7,16 +7,14 @@ _libdir=libexec/gcc/${CHOST}/${PKG_VERSION}
 # .. do we need this scoped over the whole file though?
 export PATH=${SRC_DIR}/gcc_built/bin:${SRC_DIR}/.build/${CHOST}/buildtools/bin:${SRC_DIR}/.build/tools/bin:${PATH}
 
-pushd $SRC_DIR/.build/$CHOST/build/build-cc-gcc-final/
+pushd ${SRC_DIR}/.build/${CHOST}/build/build-cc-gcc-final/
 
 # adapted from Arch install script from https://github.com/archlinuxarm/PKGBUILDs/blob/master/core/gcc/PKGBUILD
 # We cannot make install since .la files are not relocatable so libtool deliberately prevents it:
 # libtool: install: error: cannot install `libgfortran.la' to a directory not ending in ${SRC_DIR}/work/gcc_built/${CHOST}/lib/../lib
-make -C $CHOST/libgfortran prefix=$PREFIX all-multi libgfortran.spec ieee_arithmetic.mod ieee_exceptions.mod ieee_features.mod config.h
-if [[ -d $CHOST/libgomp ]]; then
-  make -C $CHOST/libgomp prefix=$PREFIX install-nodist_fincludeHEADERS
-fi
-make -C gcc prefix=$PREFIX fortran.install-{common,man,info}
+make -C ${CHOST}/libgfortran prefix=${PREFIX} all-multi libgfortran.spec ieee_arithmetic.mod ieee_exceptions.mod ieee_features.mod config.h
+make -C gcc prefix=${PREFIX} fortran.install-{common,man,info}
+
 # How it used to be:
 # install -Dm755 gcc/f951 ${PREFIX}/${_libdir}/f951
 for file in f951; do
@@ -25,11 +23,11 @@ for file in f951; do
   fi
 done
 
-mkdir -p $PREFIX/$CHOST/sysroot/lib
-cp $CHOST/libgfortran/libgfortran.spec $PREFIX/$CHOST/sysroot/lib
+mkdir -p ${PREFIX}/${CHOST}/sysroot/lib
+cp ${CHOST}/libgfortran/libgfortran.spec ${PREFIX}/${CHOST}/sysroot/lib
 
-pushd $PREFIX/bin
-  ln -s $CHOST-gfortran $CHOST-f95
+pushd ${PREFIX}/bin
+  ln -s ${CHOST}-gfortran ${CHOST}-f95
 popd
 
 popd
