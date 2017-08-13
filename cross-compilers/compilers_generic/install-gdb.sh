@@ -9,4 +9,6 @@ CHOST=$(${SRC_DIR}/.build/*-*-*-*/build/build-cc-gcc-final/gcc/xgcc -dumpmachine
 pushd ${SRC_DIR}/.build/${CHOST}/build/build-gdb-cross
   PATH=${SRC_DIR}/.build/${CHOST}/buildtools/bin:$PATH \
   make prefix=${PREFIX} install
+  # Gets installed by binutils:
+  rm ${PREFIX}/share/info/bfd.info
 popd

@@ -20,4 +20,4 @@ done
 
 # Install Runtime Library Exception
 install -Dm644 $SRC_DIR/.build/src/gcc-${PKG_VERSION}/COPYING.RUNTIME \
-        ${PREFIX}/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION
+        ${PREFIX}/share/licenses/libgfortran/RUNTIME.LIBRARY.EXCEPTION

@@ -36,9 +36,6 @@ make -C $CHOST/libstdc++-v3/python prefix=${PREFIX} install
 make -C libcpp prefix=${PREFIX} install
 
 popd
-# Install Runtime Library Exception
-install -Dm644 $SRC_DIR/.build/src/gcc-${PKG_VERSION}/COPYING.RUNTIME \
-        ${PREFIX}/share/licenses/gcc-fortran/RUNTIME.LIBRARY.EXCEPTION
 
 mkdir -p ${PREFIX}/etc/conda/{de,}activate.d
 cp "${SRC_DIR}"/activate-g++.sh ${PREFIX}/etc/conda/activate.d/activate-${PKG_NAME}.sh

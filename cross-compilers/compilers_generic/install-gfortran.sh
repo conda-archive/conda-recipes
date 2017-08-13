@@ -32,7 +32,6 @@ popd
 
 popd
 
-cp ${SRC_DIR}/gcc_built/$CHOST/sysroot/lib/libgfortran.so* $PREFIX/$CHOST/sysroot/lib
 # Install Runtime Library Exception
 install -Dm644 $SRC_DIR/.build/src/gcc-${PKG_VERSION}/COPYING.RUNTIME \
         ${PREFIX}/share/licenses/gcc-fortran/RUNTIME.LIBRARY.EXCEPTION
