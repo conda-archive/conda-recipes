@@ -1,0 +1,76 @@
+{% set version='1' %}
+{% set cross_target_platform='osx-64' %}
+{% set cctools_version = '895' %}
+
+package:
+  name: llvm-suite
+  version: {{ version }}
+
+outputs:
+  - name: llvm-lto-tapi
+    script: install-llvm-lto-tapi.sh
+    requirements:
+      run:
+        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}
+
+  - name: cctools
+    version: {{ cctools_version }}
+    script: install-cctools.sh
+    requirements:
+        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}
+
+  - name: llvm
+    script: install-llvm.sh
+    requirements:
+      run:
+        - {{ pin_subpackage('llvm-lto-tapi', exact=True) }}
+        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}
+        - {{ pin_subpackage('cctools', exact=True) }}
+
+  - name: clang
+    script: install-clang.sh
+    requirements:
+      run:
+        - {{ pin_subpackage('llvm', exact=True) }}
+        - {{ pin_subpackage('compiler-rt_' ~ cross_target_platform, exact=True) }}
+        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}
+
+  - name: clangxx
+    script: install-clangxx.sh
+    requirements:
+      build:
+        - {{ pin_subpackage('clang', exact=True) }}
+      run:
+        - {{ pin_subpackage('clang', exact=True) }}
+    run_exports:
+      - {{ pin_subpackage('libcxx_' ~ cross_target_platform) }}
+
+  - name: polly
+    script: install-polly.sh
+    requirements:
+      run:
+        - {{ pin_subpackage('llvm', exact=True) }}
+        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}
+
+  - name: libcxx_{{ cross_target_platform }}
+    script: install-libcxx.sh
+    target: {{ cross_target_platform }}
+    requirements:
+      run:
+        - {{ pin_subpackage('libcxxabi_' ~ cross_target_platform, exact=True) }}
+
+  - name: libcxxabi_{{ cross_target_platform }}
+    script: install-libcxxabi.sh
+    target: {{ cross_target_platform }}
+    requirements:
+
+  - name: libunwind_{{ cross_target_platform }}
+    script: install-libunwind.sh
+    target: {{ cross_target_platform }}
+    requirements:
+      run:
+        - {{ pin_subpackage('libcxx_' ~ cross_target_platform, exact=True) }}
+
+  - name: compiler-rt_{{ cross_target_platform }}
+    script: install-compiler-rt.sh
+    target: {{ cross_target_platform }}
