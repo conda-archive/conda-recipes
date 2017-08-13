@@ -109,6 +109,7 @@ _cmake_config+=(-DHAVE_TERMINFO_TERMINFO=OFF)
 _cmake_config+=(-DHAVE_TERMINFO_TINFO=OFF)
 _cmake_config+=(-DHAVE_TERMIOS_H=OFF)
 _cmake_config+=(-DCLANG_ENABLE_LIBXML=OFF)
+_cmake_config+=(-DLIBOMP_INSTALL_ALIASES=OFF)
 # Once we are using our libc++ (not until llvm_build_final), it will be single-arch only and not setting
 # this causes link failures building the santizers since they respect DARWIN_osx_ARCHS. We may as well
 # save some compilation time by setting this for all of our llvm builds.
@@ -288,7 +289,7 @@ else
 fi
 
 ${SED} -i.orig '/\/clang|lld|lldb|polly\/cmake_install.cmake/d' llvm_build_final/tools/cmake_install.cmake
-${SED} -i.orig '/\/compiler-rt|libcxxabi|libcxx|libunwind|tapi\/cmake_install.cmake/d' llvm_build_final/projects/cmake_install.cmake
+${SED} -i.orig '/\/compiler-rt|libcxxabi|libcxx|libunwind|openmp|tapi\/cmake_install.cmake/d' llvm_build_final/projects/cmake_install.cmake
 
 
 # There is no way of having libc++.dylib instruct the linker to add a relative rpath, though that would be nice.
