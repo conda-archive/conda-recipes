@@ -59,7 +59,6 @@ outputs:
 
   - name: test-libcxxabi_{{ cross_target_platform }}
     script: install.sh
-    requirements:
 
   - name: test-libunwind_{{ cross_target_platform }}
     script: install.sh
