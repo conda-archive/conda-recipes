@@ -19,7 +19,4 @@ outputs:
         - {{ pin_subpackage('ddd', exact=True) }}
 
   - name: ddd
-    requirements:
-        - {{ pin_subpackage('eee', exact=True) }}
 
-  - name: eee
