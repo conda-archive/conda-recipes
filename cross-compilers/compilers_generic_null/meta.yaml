@@ -1,3 +1,9 @@
+{% set cross_target_platform = 'linux-64' %}
+{% set gcc = '7.1.0' %}
+{% set binutils = '2.28' %}
+{% set gdb = '7.12' %}
+{% set duma = '1' %}
+
 package:
   name: compilers_{{ cross_target_platform }}
   version: {{ gcc }}
@@ -10,8 +16,6 @@ build:
   binary_relocation: False
 
 requirements:
-  build:
-    - crosstool-ng
   run:
     - {{ pin_subpackage('gcc_' ~ cross_target_platform, exact=True) }}
     - {{ pin_subpackage('gxx_' ~ cross_target_platform, exact=True) }}
@@ -26,7 +30,7 @@ outputs:
       run:
         - {{ pin_subpackage('binutils_' ~ cross_target_platform, exact=True) }}
     run_exports:
-      - {{ pin_subpackage('libgcc_' ~ cross_target_platform) }}
+      - {{ pin_subpackage('libgcc_' ~ cross_target_platform, min_pin='x.x.x.x.x.x.x.x.x', max_pin=None) }}
     about:
       summary: GNU C Compiler
       home: https://gcc.gnu.org/
@@ -38,7 +42,7 @@ outputs:
       # For cpp and crt{i,n}.o
       - {{ pin_subpackage('gcc_' ~ cross_target_platform, exact=True) }}
     run_exports:
-      - {{ pin_subpackage('libstdcxx_' ~ cross_target_platform) }}
+      - {{ pin_subpackage('libstdcxx_' ~ cross_target_platform, min_pin='x.x.x.x.x.x.x.x.x', max_pin=None) }}
     about:
       summary: GNU C++ Compiler
       home: https://gcc.gnu.org/
@@ -50,7 +54,7 @@ outputs:
       # For cpp and crt{i,n}.o
       - {{ pin_subpackage('gcc_' ~ cross_target_platform, exact=True) }}
     run_exports:
-      - {{ pin_subpackage('libgfortran_' ~ cross_target_platform) }}
+      - {{ pin_subpackage('libgfortran_' ~ cross_target_platform, min_pin='x.x.x.x.x.x.x.x.x', max_pin=None) }}
     about:
       summary: GNU Fortran Compiler
       home: https://gcc.gnu.org/

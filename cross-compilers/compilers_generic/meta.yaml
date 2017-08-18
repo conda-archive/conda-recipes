@@ -24,7 +24,7 @@ outputs:
       run:
         - {{ pin_subpackage('binutils_' ~ ctng_target_platform, exact=True) }}
     run_exports:
-      - {{ pin_subpackage('libgcc_' ~ ctng_target_platform, min_pin='x.x.x.x.x.x.x.x.x', max_pin='None') }}
+      - {{ pin_subpackage('libgcc_' ~ ctng_target_platform, min_pin='x.x.x.x.x.x.x.x.x', max_pin=None) }}
     about:
       summary: GNU C Compiler
       home: https://gcc.gnu.org/
@@ -41,7 +41,7 @@ outputs:
         - {{ pin_subpackage('gcc_' ~ ctng_target_platform, exact=True) }}
         - {{ pin_subpackage('libstdcxx_' ~ ctng_target_platform, exact=True) }}
     run_exports:
-      - {{ pin_subpackage('libstdcxx_' ~ ctng_target_platform, min_pin='x.x.x.x.x.x.x.x.x', max_pin='None') }}
+      - {{ pin_subpackage('libstdcxx_' ~ ctng_target_platform, min_pin='x.x.x.x.x.x.x.x.x', max_pin=None) }}
     about:
       summary: GNU C++ Compiler
       home: https://gcc.gnu.org/
@@ -58,7 +58,7 @@ outputs:
         - {{ pin_subpackage('gcc_' ~ ctng_target_platform, exact=True) }}
         - {{ pin_subpackage('libgfortran_' ~ ctng_target_platform, exact=True) }}
     run_exports:
-      - {{ pin_subpackage('libgfortran_' ~ ctng_target_platform, min_pin='x.x.x.x.x.x.x.x.x', max_pin='None') }}
+      - {{ pin_subpackage('libgfortran_' ~ ctng_target_platform, min_pin='x.x.x.x.x.x.x.x.x', max_pin=None) }}
     about:
       summary: GNU Fortran Compiler
       home: https://gcc.gnu.org/
