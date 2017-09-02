@@ -50,6 +50,12 @@ Linux() {
                 --with-recommended-packages=no  \
                 LIBnn=lib
 
+    if cat src/include/config.h | grep "undef HAVE_PANGOCAIRO"; then
+        echo "Did not find pangocairo, refusing to continue"
+        cat config.log | grep pango
+        exit 1
+    fi
+
     make -j${CPU_COUNT}
     # echo "Running make check-all, this will take some time ..."
     # make check-all -j1 V=1 > $(uname)-make-check.log 2>&1 || make check-all -j1 V=1 > $(uname)-make-check.2.log 2>&1
@@ -362,3 +368,10 @@ case `uname` in
         Mingw_w64_makefiles
         ;;
 esac
+
+cairo_so=$(find ${PREFIX} -name "cairo.so")
+if ldd ${cairo_so} || grep /usr/lib64/libpng; then
+  echo "Broken, ${cairo_so} links to system libpng (and probably pango and pangocairo)"
+  exit 1
+fi
+
