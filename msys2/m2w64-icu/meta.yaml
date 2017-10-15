@@ -1,0 +1,50 @@
+{% set pkgver='58.2' %}
+{% set pkgrel='2' %}
+{% set _realname='icu' %}
+{% set pkgname='m2w64-' ~ _realname %}
+
+package:
+  name: {{ pkgname }}
+  version: {{ pkgver }}
+source:
+  - url: http://download.icu-project.org/files/icu4c/{{ pkgver }}/icu4c-{{ pkgver|replace('.','_') }}-src.tgz
+    sha256: 2b0a4410153a9b20de0e20c7d8b66049a72aef244b53683d0d7521371683da0c
+    folder: icu
+    patches:
+      - 0004-move-to-bin.mingw.patch
+      - 0007-actually-move-to-bin.mingw.patch
+      - 0008-data-install-dir.mingw.patch
+      - 0009-fix-bindir-in-config.mingw.patch
+      - 0010-msys-rules-for-makefiles.mingw.patch
+      - 0011-sbin-dir.mingw.patch
+      - 0012-libprefix.mingw.patch
+      - 0014-mingwize-pkgdata.mingw.patch
+      - 0015-debug.mingw.patch
+      - 0016-icu-pkgconfig.patch
+      - 0017-icu-config-versioning.patch
+      - 0020-workaround-missing-locale.patch
+  - url: ./PKGBUILD
+build:
+  number: {{ pkgrel }}
+requirements:
+  build:
+    - m2-filesystem
+    - m2-sed
+    - m2-autoconf
+    - m2-automake-wrapper
+    - m2-make
+    - m2w64-toolchain
+  run:
+    - msys2-conda-epoch >=20160418
+    - m2w64-gcc-libs
+about:
+  home: http://site.icu-project.org/
+  license: MIT
+  summary: 'International Components for Unicode.'
+  description: |
+    ICU is a mature, widely used set of C/C++ and Java libraries providing
+    Unicode and Globalization support for software applications. ICU is
+    widely portable and gives applications the same results on all platforms
+    and between C/C++ and Java software.
+  doc_url: http://site.icu-project.org/design
+  dev_url: http://source.icu-project.org/repos/icu/
