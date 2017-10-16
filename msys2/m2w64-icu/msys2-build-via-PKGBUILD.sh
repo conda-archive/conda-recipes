@@ -10,8 +10,14 @@ pushd ${srcdir}/icu
   autoreconf -vfi
 popd
 build
+if [[ $? != 0 ]]; then
+  exit 1
+fi
 export pkgdir="${PREFIX}"
 export pkgver=58.2
 package_icu
+if [[ $? != 0 ]]; then
+  exit 1
+fi
 rm -rf "${PREFIX}"/Library/dev
 rm -rf "${PREFIX}"/Library/etc
