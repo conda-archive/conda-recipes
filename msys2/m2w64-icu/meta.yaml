@@ -23,7 +23,8 @@ source:
       - 0016-icu-pkgconfig.patch
       - 0017-icu-config-versioning.patch
       - 0020-workaround-missing-locale.patch
-  - url: ./PKGBUILD
+  - path: ./PKGBUILD
+  - path: ./msys2-build-via-PKGBUILD.sh
 build:
   number: {{ pkgrel }}
 requirements:
