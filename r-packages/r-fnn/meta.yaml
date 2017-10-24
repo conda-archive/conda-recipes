@@ -1,0 +1,79 @@
+package:
+  name: r-fnn
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.1"
+
+source:
+  fn: FNN_1.1.tar.gz
+  url:
+    - http://cran.r-project.org/src/contrib/FNN_1.1.tar.gz
+    - http://cran.r-project.org/src/contrib/Archive/FNN/FNN_1.1.tar.gz
+
+
+  # You can add a hash for the file here, like md5 or sha1
+  # md5: 49448ba4863157652311cc5ea4fea3ea
+  # sha1: 3bcfbee008276084cbb37a2b453963c61176a322
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: chemometrics, mvtnorm
+requirements:
+  build:
+    - r
+    - gcc # [not win]
+
+  run:
+    - r
+    - libgcc # [not win]
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('FNN')" # [not win]
+    - "\"%R%\" -e \"library('FNN')\"" # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  #home:
+  license: GPL (>= 2.1)
+  summary: Cover-tree and kd-tree fast k-nearest neighbor search algorithms and related applications
+    including KNN classification, regression and information measures are implemented.
+
+# The original CRAN metadata for this package was:
+
+# Package: FNN
+# Version: 1.1
+# Date: 2013-07-30
+# Title: Fast Nearest Neighbor Search Algorithms and Applications
+# Author: Alina Beygelzimer, Sham Kakadet and John Langford (cover tree library),  Sunil Arya and David Mount (ANN library for the kd-tree approach), Shengqiao Li
+# Copyright: ANN Copyright (c) 1997-2010 University of Maryland and Sunil Arya and David Mount. All Rights Reserved.
+# Maintainer: Shengqiao Li <lishengqiao@yahoo.com>
+# Depends: R (>= 2.8.0)
+# Suggests: chemometrics, mvtnorm
+# Description: Cover-tree and kd-tree fast k-nearest neighbor search algorithms and related applications including KNN classification, regression and information measures are implemented.
+# License: GPL (>= 2.1)
+# Packaged: 2013-07-31 15:25:40 UTC; lis2
+# NeedsCompilation: yes
+# Repository: CRAN
+# Date/Publication: 2013-07-31 21:31:17
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
