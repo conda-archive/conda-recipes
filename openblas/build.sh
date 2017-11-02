@@ -5,12 +5,7 @@
 CF="${CFLAGS}"
 unset CFLAGS
 
-if [[ `uname` == 'Darwin' ]]; then
-  # FFLAGS="-Wl,-rpath,${CONDA_PREFIX}/lib ${FFLAGS}"
-  LDFLAGS="-Wl,-rpath,${CONDA_PREFIX}/lib ${LDFLAGS}"
-elif [[ ${ARCH} -eq 64 ]]; then
-  FFLAGS="-frecursive ${FFLAGS}"
-fi
+LDFLAGS="-Wl,-rpath,${CONDA_PREFIX}/lib ${LDFLAGS}"
 
 make \
   QUIET_MAKE=1 DYNAMIC_ARCH=1 BINARY=${ARCH} NO_LAPACK=0 \

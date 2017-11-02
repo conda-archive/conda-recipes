@@ -20,7 +20,7 @@ requirements:
 
 test:
   commands:
-    - test -f ${PREFIX}/lib/openblas.pc # [unix]
+    - test -f ${PREFIX}/lib/pkgconfig/openblas.pc # [unix]
     - test -f ${PREFIX}/lib/libopenblas.a # [unix]
     - test -f ${PREFIX}/lib/libopenblas${SHLIB_EXT} # [unix]
 

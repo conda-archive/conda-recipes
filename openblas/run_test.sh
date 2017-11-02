@@ -1,11 +1,13 @@
 #! /usr/bin/env bash
+echo $PKG_CONFIG_PATH
 pkg-config --exists --print-errors openblas
 
 echo "
 #include <f77blas.h>
 
 int main(int argc, const char ** argv) {
-  // don't really care about result - just making sure linking is working a-ok
+  // checking the values actually occurs during building. We're just checking
+  // linking here
   int i=0;
   int N=4,incX=0,incY=0;
   double x1[]={1.0,3.0,5.0,7.0};
