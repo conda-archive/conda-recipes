@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-echo $PKG_CONFIG_PATH
+env
 pkg-config --exists --print-errors openblas
 
 echo "

@@ -5,7 +5,7 @@
 CF="${CFLAGS}"
 unset CFLAGS
 
-LDFLAGS="-Wl,-rpath,${CONDA_PREFIX}/lib ${LDFLAGS}"
+LDFLAGS="-Wl,-rpath,${CONDA_PREFIX}/lib -L${CONDA_PREFIX}/lib ${LDFLAGS}"
 
 make \
   QUIET_MAKE=1 DYNAMIC_ARCH=1 BINARY=${ARCH} NO_LAPACK=0 \
