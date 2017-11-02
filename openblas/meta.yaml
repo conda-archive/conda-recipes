@@ -1,22 +1,29 @@
 package:
   name: openblas
-  version: 0.2.14
+  version: {{ version }}
 
 source:
-  fn: openblas-0.2.14.tgz
-  url: http://github.com/xianyi/OpenBLAS/tarball/v0.2.14
-  md5: d340dc3d8a03f549ae29488d737b9c30
-
-build:
-  number: 2
-
-  track_features:
-    - openblas
+  fn: openblas-v{{ version }}.tar.gz
+  url: https://github.com/xianyi/OpenBLAS/archive/v{{ version }}.tar.gz
+  md5: {{ md5 }}
 
 requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('fortran') }}
+    - libgfortran
   run:
-    - libgcc
+    - {{ pin_compatible('libgfortran') }}
+  test:
+    - {{ compiler('c') }}
+    - pkg-config
+
+test:
+  commands:
+    - test -f ${PREFIX}/lib/openblas.pc # [unix]
+    - test -f ${PREFIX}/lib/libopenblas.a # [unix]
+    - test -f ${PREFIX}/lib/libopenblas${SHLIB_EXT} # [unix]
 
 about:
-  home: http://xianyi.github.io/OpenBLAS/
-  license: BSD
+  home: http://www.openblas.net/
+  license: BSD 3-Clause

@@ -1,33 +1,28 @@
+# !/usr/bin/env bash
 
+# See this workaround
+# ( https://github.com/xianyi/OpenBLAS/issues/818#issuecomment-207365134 ).
+CF="${CFLAGS}"
+unset CFLAGS
 
-# Depending on our platform, shared libraries end with either .so or .dylib
 if [[ `uname` == 'Darwin' ]]; then
-    DYLIB_EXT=dylib
-else
-    DYLIB_EXT=so
+  # FFLAGS="-Wl,-rpath,${CONDA_PREFIX}/lib ${FFLAGS}"
+  LDFLAGS="-Wl,-rpath,${CONDA_PREFIX}/lib ${LDFLAGS}"
+elif [[ ${ARCH} -eq 64 ]]; then
+  FFLAGS="-frecursive ${FFLAGS}"
 fi
 
-# Build all CPU targets and allow dynamic configuration
-# Build LAPACK.
-# Set number of thread to 1; however, this can be changed by
-# setting OPENBLAS_NUM_THREADS before loading the library.
-make DYNAMIC_ARCH=1 BINARY=${ARCH} NO_LAPACK=0 NO_AFFINITY=1 NUM_THREADS=1 -j${CPU_COUNT}
+make \
+  QUIET_MAKE=1 DYNAMIC_ARCH=1 BINARY=${ARCH} NO_LAPACK=0 \
+  NO_AFFINITY=1 USE_THREAD=1 FFLAGS="${FFLAGS}" CFLAGS="${CF}" \
+  PREFIX=${PREFIX} LDFLAGS="${LDFLAGS}"
 make install PREFIX=$PREFIX
-
-# Make sure the linked gfortran libraries are searched for on the RPATH.
-if [[ `uname` == 'Darwin' ]]; then
-    GFORTRAN_LIB=$(python -c "from os.path import realpath; print(realpath(\"$(gfortran -print-file-name=libgfortran.3.dylib)\"))")
-    GCC_LIB=$(python -c "from os.path import realpath; print(realpath(\"$(gfortran -print-file-name=libgcc_s.1.dylib)\"))")
-    QUADMATH_LIB=$(python -c "from os.path import realpath; print(realpath(\"$(gfortran -print-file-name=libquadmath.0.dylib)\"))")
-    install_name_tool -change $GFORTRAN_LIB @rpath/libgfortran.3.dylib $PREFIX/lib/libopenblas.dylib
-    install_name_tool -change $GCC_LIB @rpath/libgcc_s.1.dylib $PREFIX/lib/libopenblas.dylib
-    install_name_tool -change $QUADMATH_LIB @rpath/libquadmath.0.dylib $PREFIX/lib/libopenblas.dylib
-fi
 
 # As OpenBLAS, now will have all symbols that BLAS or LAPACK have,
 # create libraries with the standard names that are linked back to
 # OpenBLAS. This will make it easier for packages that are looking for them.
-ln -fs $PREFIX/lib/libopenblas.a $PREFIX/lib/libblas.a
-ln -fs $PREFIX/lib/libopenblas.a $PREFIX/lib/liblapack.a
-ln -fs $PREFIX/lib/libopenblas.$DYLIB_EXT $PREFIX/lib/libblas.$DYLIB_EXT
-ln -fs $PREFIX/lib/libopenblas.$DYLIB_EXT $PREFIX/lib/liblapack.$DYLIB_EXT
+for arg in blas cblas lapack; do
+    ln -fs $PREFIX/lib/pkgconfig/openblas.pc $PREFIX/lib/pkgconfig/$arg.pc
+    ln -fs $PREFIX/lib/libopenblas.a $PREFIX/lib/lib$arg.a
+    ln -fs $PREFIX/lib/libopenblas$SHLIB_EXT $PREFIX/lib/lib$arg$SHLIB_EXT
+done
