@@ -7,6 +7,10 @@ source:
   url: https://github.com/xianyi/OpenBLAS/archive/v{{ version }}.tar.gz
   md5: {{ md5 }}
 
+build:
+  track_features:
+    - openblas
+
 requirements:
   build:
     - {{ compiler('c') }}
