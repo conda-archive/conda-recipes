@@ -16,14 +16,12 @@ requirements:
   run:
     - {{ pin_compatible('libgfortran') }}
     - {{ pin_compatible('libgcc') }}
-  test:
-    - {{ compiler('c') }}
 
 test:
   commands:
-    - test -f ${PREFIX}/lib/pkgconfig/openblas.pc # [unix]
-    - test -f ${PREFIX}/lib/libopenblas.a # [unix]
-    - test -f ${PREFIX}/lib/libopenblas${SHLIB_EXT} # [unix]
+    - test -f ${PREFIX}/lib/pkgconfig/openblas.pc
+    - test -f ${PREFIX}/lib/libopenblas.a
+    - test -f ${PREFIX}/lib/libopenblas${SHLIB_EXT}
 
 about:
   home: http://www.openblas.net/
