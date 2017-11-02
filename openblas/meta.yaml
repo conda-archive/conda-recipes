@@ -16,7 +16,6 @@ requirements:
     - {{ pin_compatible('libgfortran') }}
   test:
     - {{ compiler('c') }}
-    - pkg-config
 
 test:
   commands:

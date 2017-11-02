@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
-env
-pkg-config --exists --print-errors openblas
+
+LDFLAGS="-Wl,-rpath,${CONDA_PREFIX}/lib -L${CONDA_PREFIX}/lib ${LDFLAGS}"
 
 echo "
 #include <f77blas.h>
@@ -16,8 +16,9 @@ int main(int argc, const char ** argv) {
   double y2[]={2.0,4.0,6.0,8.0};
 
   BLASFUNC(dswap)(&N,x1,&incX,y1,&incY);
+  return 0;
 }
 " > test.c
 
-${CC} `pkg-config --cflags --libs openblas` -o test test.c
+${CC} ${LDFLAGS} ${CFLAGS} -lopenblas -lgfortran -I "${CONDA_PREFIX}/include" test.c -o test
 ./test
