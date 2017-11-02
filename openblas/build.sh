@@ -5,17 +5,7 @@
 CF="${CFLAGS}"
 unset CFLAGS
 
-export LDFLAGS="-Wl,-rpath,${CONDA_PREFIX}/lib -L${CONDA_PREFIX}/lib ${LDFLAGS}"
-
-echo "
-int main(int argc, const char ** argv) {
-  return 0;
-}
-" > foo.c
-${CC} -v -lgfortran foo.c -o foo
-./foo
-echo "Done"
-exit 1
+LDFLAGS="-Wl,-rpath,${CONDA_PREFIX}/lib -L${CONDA_PREFIX}/lib ${LDFLAGS}"
 
 make \
   QUIET_MAKE=1 DYNAMIC_ARCH=1 BINARY=${ARCH} NO_LAPACK=0 \

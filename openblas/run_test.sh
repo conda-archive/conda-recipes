@@ -2,6 +2,8 @@
 
 LDFLAGS="-Wl,-rpath,${CONDA_PREFIX}/lib -L${CONDA_PREFIX}/lib ${LDFLAGS}"
 
+env
+
 echo "
 #include <f77blas.h>
 

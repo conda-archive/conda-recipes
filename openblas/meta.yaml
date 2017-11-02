@@ -12,8 +12,10 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('fortran') }}
     - libgfortran
+    - libgcc
   run:
     - {{ pin_compatible('libgfortran') }}
+    - {{ pin_compatible('libgcc') }}
   test:
     - {{ compiler('c') }}
 
