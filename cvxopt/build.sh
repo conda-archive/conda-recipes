@@ -13,16 +13,9 @@ export CVXOPT_GLPK_INC_DIR=${PREFIX}/include
 export CVXOPT_DSDP_LIB_DIR=${PREFIX}/lib
 export CVXOPT_DSDP_INC_DIR=${PREFIX}/include/dsdp
 
-if [[ ${NOMKL} == 1 ]]; then
-  curl -SLO http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-4.5.5.tar.gz
-  tar -xf SuiteSparse-4.5.5.tar.gz
-  export CVXOPT_SUITESPARSE_SRC_DIR=${PWD}/SuiteSparse
-else
-  export CVXOPT_BLAS_LIB=openblas
-  export CVXOPT_LAPACK_LIB=openblas
-  export CVXOPT_SUITESPARSE_LIB_DIR=${PREFIX}/lib
-  export CVXOPT_SUITESPARSE_INC_DIR=${PREFIX}/include
-fi
+curl -SLO http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-4.5.5.tar.gz
+tar -xf SuiteSparse-4.5.5.tar.gz
+export CVXOPT_SUITESPARSE_SRC_DIR=${PWD}/SuiteSparse
 
 if [ `uname` == Linux ]
 then

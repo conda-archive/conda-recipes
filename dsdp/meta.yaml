@@ -1,0 +1,22 @@
+package:
+  name: dsdp
+  version: 5.8
+
+source:
+  fn: DSDP5.8.tar.gz
+  url: http://www.mcs.anl.gov/hs/software/DSDP/DSDP5.8.tar.gz
+
+build:
+
+requirements:
+  build:
+  - openblas-devel	[linux and nomkl]
+  - mkl-devel		[linux and not nomkl]
+  - libgfortran 	[linux]
+
+about:
+  home: http://www.mcs.anl.gov/hs/software/DSDP
+  license: Other
+  license_file: dsdp-license
+  summary: Software for Semidefinite Programming
+  description:
