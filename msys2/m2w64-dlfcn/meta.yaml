@@ -1,0 +1,42 @@
+{% set pkgver='1.1.1' %}
+{% set pkgrel='1' %}
+{% set _realname='dlfcn' %}
+{% set pkgname='m2w64-' ~ _realname %}
+
+package:
+  name: {{ pkgname }}
+  version: {{ pkgver }}
+
+source:
+  - url: https://github.com/dlfcn-win32/dlfcn-win32/archive/v{{ pkgver }}.tar.gz
+    sha256: 31434f96abc6978b80a437f072eebc6255d4f4c66fbd18aa073f3866a02b38a9
+    folder: dlfcn-win32-{{ pkgver }}
+  - path: ./PKGBUILD
+  - path: ./msys2-build-via-PKGBUILD.sh
+
+build:
+  number: {{ pkgrel }}
+
+requirements:
+  build:
+    - m2-filesystem
+    - m2-coreutils
+    - m2-sed
+    - m2-grep
+    - m2-make
+    - m2w64-toolchain
+  run:
+    - msys2-conda-epoch >=20160418
+    - m2w64-gcc-libs
+
+about:
+  home: https://github.com/dlfcn-win32/dlfcn-win32
+  license: LGPL2.1
+  summary: 'dlfcn-win32 is an implementation of dlfcn for Windows.'
+  description: |
+    dlfcn is a set of functions that allows runtime dynamic library loading.
+    It is standardized in the POSIX. Windows also provide similar routines, but
+    not in a POSIX-compatible way. This library attempts to implement a wrapper
+    around the Windows functions to make programs written for POSIX that use
+    dlfcn work in Windows without any modifications.
+  dev_url: https://github.com/dlfcn-win32/dlfcn-win32
