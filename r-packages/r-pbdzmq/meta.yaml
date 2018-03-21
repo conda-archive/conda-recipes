@@ -37,7 +37,7 @@ requirements:
     - r-base
     - r-r6
     - pkg-config           # [not win]
-    - zeromq 4.1.*         # [not win]
+    - zeromq 4.2.*         # [not win]
     - posix                # [win]
     - {{native}}toolchain  # [win]
     - gcc                  # [not win]
@@ -47,7 +47,7 @@ requirements:
     - r-r6
     - {{native}}gcc-libs   # [win]
     - libgcc               # [not win]
-    - zeromq 4.1.*         # [not win]
+    - zeromq 4.2.*         # [not win]
 
 test:
   commands:
