@@ -1,0 +1,42 @@
+{% set pkgver='4.3.0' %}
+{% set pkgrel='0' %}
+{% set _realname='jags' %}
+{% set pkgname='m2w64-' ~ _realname %}
+
+package:
+  name: {{ pkgname }}
+  version: {{ pkgver }}
+source:
+  - url: https://svwh.dl.sourceforge.net/project/mcmc-jags/JAGS/4.x/Source/JAGS-{{ pkgver }}.tar.gz
+    sha256: 8ac5dd57982bfd7d5f0ee384499d62f3e0bb35b5f1660feb368545f1186371fc
+    folder: {{ _realname }}-{{ pkgver }}
+  - path: ./PKGBUILD
+  - path: ./msys2-build-via-PKGBUILD.sh
+build:
+  number: {{ pkgrel }}
+requirements:
+  build:
+    - m2-filesystem
+    - m2-sed
+    - m2-grep
+    - m2-findutils
+    - m2-autoconf
+    - m2-automake-wrapper
+    - m2-make
+    - m2-libtool
+    - m2w64-pkg-config
+    - m2w64-toolchain
+    - m2w64-openblas
+  run:
+    - msys2-conda-epoch >=20160418
+    - m2w64-gcc-libs
+    - m2w64-openblas
+about:
+  home: https://sourceforge.net/projects/mcmc-jags/
+  license: MIT
+  summary: 'JAGS: Just Another Gibbs Sampler'
+  description: |
+    JAGS is Just Another Gibbs Sampler. It is a program for the statistical
+    analysis of Bayesian hierarchical models by Markov Chain Monte Carlo.
+  doc_url: https://sourceforge.net/projects/mcmc-jags/files/Manuals/4.x/jags_user_manual.pdf/download
+  dev_url: https://sourceforge.net/projects/mcmc-jag

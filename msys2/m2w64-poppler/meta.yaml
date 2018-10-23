@@ -1,0 +1,56 @@
+{% set pkgver='0.69.0' %}
+{% set pkgrel='0' %}
+{% set _realname='poppler' %}
+{% set pkgname='m2w64-' ~ _realname %}
+
+package:
+  name: {{ pkgname }}
+  version: {{ pkgver }}
+source:
+  - url: https://poppler.freedesktop.org/{{ _realname }}-{{ pkgver }}.tar.xz
+    sha256: 2b0a4410153a9b20de0e20c7d8b66049a72aef244b53683d0d7521371683da0c
+    patches:
+      - 001-enable-nss-mingw.patch
+      - 003-fix-introspection.patch
+      - 004-basename-include.patch
+      - 005-openjpeg2-include-dirs.patch
+      - 006-win32-fix-build.patch
+  - path: ./PKGBUILD
+  - path: ./msys2-build-via-PKGBUILD.sh
+build:
+  number: {{ pkgrel }}
+requirements:
+  build:
+    - m2-filesystem
+    - m2-sed
+    - m2-autoconf
+    - m2-automake-wrapper
+    - m2-make
+    - m2w64-toolchain
+  run:
+    - msys2-conda-epoch >=20160418
+    - m2w64-gcc-libs
+    - m2w64-cairo
+    - m2w64-curl
+    - m2w64-freetype
+    - m2w64-icu
+    - m2w64-lcms2
+    - m2w64-libjpeg
+    - m2w64-libpng
+    - m2w64-libtiff
+    - m2w64-nss
+    - m2w64-openjpeg2
+    - m2w64-poppler2-data
+    - m2w64-zlib
+about:
+  home: http://poppler.freedesktop.org
+  license: GPL2
+  summary: PDF rendering library based on xpdf 3.0 (mingw-w64)
+  description: |
+    ICU is a mature, widely used set of C/C++ and Java libraries providing
+    Unicode and Globalization support for software applications. ICU is
+    widely portable and gives applications the same results on all platforms
+    and between C/C++ and Java software.
+  dev_url: https://anongit.freedesktop.org/git/poppler/poppler.git
+  doc_url: http://marpirk.github.io/poppler-cpp-doc/
+  
