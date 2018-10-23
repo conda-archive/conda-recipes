@@ -41,4 +41,6 @@ check() {
 package() {
   cd "${srcdir}"/build-${CARCH}
   make install DESTDIR="${pkgdir}"
+  # Replace the broken (and largely redundant) jags.bat with a sensible one.
+  echo "%~dp0..\libexec\jags-terminal %1" > "${pkgdir}${MINGW_PREFIX}"/bin/jags.bat
 }
