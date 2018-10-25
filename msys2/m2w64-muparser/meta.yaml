@@ -1,0 +1,48 @@
+{% set pkgver='2.2.5' %}
+{% set pkgrel='2' %}
+{% set _realname='muparser' %}
+{% set pkgname='m2w64-' ~ _realname %}
+
+package:
+  name: {{ pkgname }}
+  version: {{ pkgver }}
+source:
+  - url: https://github.com/beltoforion/muparser/archive/v{{ pkgver }.tar.gz
+    fn: {{ pkgname }}-v{{ pkgver }.tar.gz
+    sha256: 0666ef55da72c3e356ca85b6a0084d56b05dd740c3c21d26d372085aa2c6e708
+    folder: {{ _realname }}-{{ pkgver }}
+  - path: ./PKGBUILD
+  - path: ./msys2-build-via-PKGBUILD.sh
+  - path: ./CMakeLists.txt
+
+build:
+  number: {{ pkgrel }}
+requirements:
+  build:
+    - m2-filesystem
+    - m2-sed
+    - m2-grep
+    - m2-findutils
+    - m2-autoconf
+    - m2-automake-wrapper
+    - m2-make
+    - m2-libtool
+    - m2w64-cmake
+    - m2w64-toolchain
+  run:
+    - msys2-conda-epoch >=20160418
+    - m2w64-gcc-libs
+about:
+  home: http://muparser.beltoforion.de/
+  license: MIT
+  summary: 'Fast Math Parser Library (mingw-w64)'
+  description: |
+    Many applications require the parsing of mathematical expressions.
+    The main objective of this library is to provide a fast and easy way of
+    doing this. muParser is an extensible high performance math expression
+    parser library written in C++. It works by transforming a mathematical
+    expression into bytecode and precalculating constant parts of the
+    expression
+  doc_url: http://beltoforion.de/article.php?a=muparser
+  dev_url: https://github.com/beltoforion/muparser/
+  
