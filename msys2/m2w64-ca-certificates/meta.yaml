@@ -10,6 +10,8 @@ requirements:
   run:
   - msys2-conda-epoch >=20160418
   - m2w64-p11-kit
+  - m2-findutils
+  - m2-coreutils
 about:
   home: http://packages.qa.debian.org/c/ca-certificates.html
   license: MPL, GPL
