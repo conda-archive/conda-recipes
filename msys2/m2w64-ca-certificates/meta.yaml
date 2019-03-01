@@ -5,7 +5,7 @@ source:
   url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-x86_64-ca-certificates-20150426-2.src.tar.gz
   md5: 164bfc2a6329e77be28a2088ae3cb1a5
 build:
-  number: 103
+  number: 104
 requirements:
   run:
   - msys2-conda-epoch >=20160418

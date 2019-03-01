@@ -5,7 +5,7 @@ source:
   url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-p11-kit-0.23.2-1.src.tar.gz
   md5: d57c391979c7d8a72f16243ce090318a
 build:
-  number: 2
+  number: 3
 requirements:
   run:
   - msys2-conda-epoch >=20160418
