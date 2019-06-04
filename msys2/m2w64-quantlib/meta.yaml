@@ -1,0 +1,52 @@
+{% set name = "quantlib" %}
+{% set version = "1.15" %}
+{% set pkgname='m2w64-' ~ name %}
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: "{{ name|lower }}"
+  version: {{ version }}
+
+source:
+  - url: https://dl.bintray.com/quantlib/releases/QuantLib-{{ version }}.tar.gz
+    fn: {{ pkgname }}-v{{ version }}.tar.gz
+    sha256: 1f651b210d3046bffa9635864906423d40f9fff87faeaf417c9b76fd88f0ee64
+    folder: {{ name }}-{{ version }}
+  - path: ./PKGBUILD
+  - path: ./msys2-build-via-PKGBUILD.sh
+  - path: ./CMakeLists.txt
+
+build:
+  number: 0
+  
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - m2-base
+    - m2-filesystem
+    - m2-sed
+    - m2-grep
+    - m2-findutils
+    - m2-autoconf
+    - m2-automake-wrapper
+    - m2-make
+    - m2-libtool
+    - cmake                    
+    - m2w64-toolchain
+
+  host:
+    - libboost
+
+  run:
+    - libboost
+    - msys2-conda-epoch >=20160418
+    - m2w64-gcc-libs
+
+about:
+  home: https://github.com/lballabio/quantlib
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE.TXT
+  summary: unified deep learning toolkit

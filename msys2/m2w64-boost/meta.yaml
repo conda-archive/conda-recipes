@@ -1,0 +1,49 @@
+{% set pkgver='1.70.0' %}
+{% set pkgrel='2' %}
+{% set _realname='boost' %}
+{% set pkgname='m2w64-' ~ _realname %}
+
+package:
+  name: {{ pkgname }}
+  version: {{ pkgver }}
+source:
+  - url: https://downloads.sourceforge.net/sourceforge/boost/boost_1_70_0.tar.bz2
+    fn: {{ pkgname }}-v{{ pkgver }}.tar.gz
+    sha256: 430ae8354789de4fd19ee52f3b1f739e1fba576f0aded0897c3c2bc00fb38778
+    folder: {{ _realname }}-{{ pkgver }}
+  - path: ./PKGBUILD
+  - path: ./msys2-build-via-PKGBUILD.sh
+
+build:
+  number: {{ pkgrel }}
+requirements:
+  build:
+    - m2-filesystem
+    - m2-sed
+    - m2-grep
+    - m2-findutils
+    - m2-autoconf
+    - m2-automake-wrapper
+    - m2-make
+    - m2-libtool
+    - m2-bzip2
+    - m2w64-bzip2
+    - m2w64-icu
+    - m2w64-toolchain
+  run:
+    - msys2-conda-epoch >=20160418
+    - m2w64-gcc-libs
+about:
+  home: https://www.boost.org/
+  license: custom
+  summary: 'Free peer-reviewed portable C++ source libraries (mingw-w64)'
+  description: |
+    Many applications require the parsing of mathematical expressions.
+    The main objective of this library is to provide a fast and easy way of
+    doing this. muParser is an extensible high performance math expression
+    parser library written in C++. It works by transforming a mathematical
+    expression into bytecode and precalculating constant parts of the
+    expression
+  doc_url: https://www.boost.org/doc/
+  dev_url: https://github.com/boostorg/boost
+  
