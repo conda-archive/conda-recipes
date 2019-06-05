@@ -10,7 +10,8 @@ source:
   - url: https://downloads.sourceforge.net/sourceforge/boost/boost_1_70_0.tar.bz2
     fn: {{ pkgname }}-v{{ pkgver }}.tar.gz
     sha256: 430ae8354789de4fd19ee52f3b1f739e1fba576f0aded0897c3c2bc00fb38778
-    folder: {{ _realname }}-{{ pkgver }}
+    # folder: {{ _realname }}-{{ pkgver }}
+    folder: build-x86_64-w64-mingw32
   - path: ./PKGBUILD
   - path: ./msys2-build-via-PKGBUILD.sh
 

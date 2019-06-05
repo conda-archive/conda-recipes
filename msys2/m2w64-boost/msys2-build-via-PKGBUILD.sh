@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 export MINGW_PREFIX="/Library/mingw-w64"
+check_option() {
+  echo n
+}
 if [[ ${ARCH} == 32 ]]; then
   export CARCH=i686
 else

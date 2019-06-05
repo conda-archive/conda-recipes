@@ -110,17 +110,16 @@ prepare() {
 build() {
   local PREFIX_DEPS=$(cygpath -am ${MINGW_PREFIX})
 
-  [[ -d ${srcdir}/build-${MINGW_CHOST} ]] && rm -rf ${srcdir}/build-${MINGW_CHOST}
-  mkdir -p "${srcdir}/build-${MINGW_CHOST}"
-  lndir "${srcdir}/boost_${_boostver}" "${srcdir}/build-${MINGW_CHOST}"
-
+  # [[ -d ${srcdir}/build-${MINGW_CHOST} ]] && rm -rf ${srcdir}/build-${MINGW_CHOST}
+  # mkdir -p "${srcdir}/build-${MINGW_CHOST}"
+  # mv "${srcdir}/boost-${pkgver}" "${srcdir}/build-${MINGW_CHOST}"
   cd "${srcdir}/build-${MINGW_CHOST}"
 
   _py2ver=$(${MINGW_PREFIX}/bin/python2 -c "import sys;sys.stdout.write('.'.join(map(str, sys.version_info[:2])))")
   _py3ver=$(${MINGW_PREFIX}/bin/python3 -c "import sys;sys.stdout.write('.'.join(map(str, sys.version_info[:2])))")
 
-  echo "using python : ${_py2ver} : ${PREFIX_DEPS}/bin/python2.exe : ${PREFIX_DEPS}/include/python${_py2ver}  : ${PREFIX_DEPS}/lib/python${_py2ver}/config ;"             >> ./tools/build/src/user-config.jam
-  echo "using python : ${_py3ver} : ${PREFIX_DEPS}/bin/python3.exe : ${PREFIX_DEPS}/include/python${_py3ver}m : ${PREFIX_DEPS}/lib/python${_py3ver}/config-${_py3ver}m ;" >> ./tools/build/src/user-config.jam
+  #echo "using python : ${_py2ver} : ${PREFIX_DEPS}/bin/python2.exe : ${PREFIX_DEPS}/include/python${_py2ver}  : ${PREFIX_DEPS}/lib/python${_py2ver}/config ;"             >> ./tools/build/src/user-config.jam
+  #echo "using python : ${_py3ver} : ${PREFIX_DEPS}/bin/python3.exe : ${PREFIX_DEPS}/include/python${_py3ver}m : ${PREFIX_DEPS}/lib/python${_py3ver}/config-${_py3ver}m ;" >> ./tools/build/src/user-config.jam
   #echo "using gcc : : ${PREFIX_DEPS}/bin/g++.exe : <rc>${PREFIX_DEPS}/bin/windres.exe ;" >> ./tools/build/src/user-config.jam
 
   ./bootstrap.sh --with-icu=${MINGW_PREFIX} --with-python=${MINGW_PREFIX} --with-toolset=gcc
@@ -134,11 +133,11 @@ build() {
     ;;
   esac
 
-  if check_option "debug" "y"; then
-      local variant=debug
-  else
+#  if check_option "debug" "y"; then
+#      local variant=debug
+#  else
       local variant=release
-  fi
+#  fi
 
   ./b2 \
     address-model=${_model} \
@@ -149,7 +148,6 @@ build() {
     threadapi=win32 \
     toolset=gcc \
     variant=${variant} \
-    python=2.7,3.7 \
     --debug-configuration \
     --prefix=${MINGW_PREFIX} \
     --layout=tagged \
@@ -197,7 +195,6 @@ package() {
       threadapi=win32 \
       toolset=gcc \
       variant=${variant} \
-      python=2.7,3.7 \
       --prefix=${pkgdir}${MINGW_PREFIX} \
       --layout=tagged \
       --without-mpi \

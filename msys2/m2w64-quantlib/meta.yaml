@@ -22,8 +22,6 @@ build:
   
 requirements:
   build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
     - m2-base
     - m2-filesystem
     - m2-sed

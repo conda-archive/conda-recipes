@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+check_option () {
+  echo 0
+}
 export MINGW_PREFIX="/Library/mingw-w64"
 if [[ ${ARCH} == 32 ]]; then
   export CARCH=i686
@@ -18,4 +21,3 @@ export pkgver=${PKG_VERSION}
 # popd
 build || exit 1
 package || exit 1
-
