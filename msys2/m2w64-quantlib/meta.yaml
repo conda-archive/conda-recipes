@@ -19,7 +19,8 @@ source:
 
 build:
   number: 0
-  
+  merge_build_host: True
+
 requirements:
   build:
     - m2-base
@@ -35,7 +36,7 @@ requirements:
     - m2w64-toolchain
 
   host:
-    - libboost
+    - m2w64-boost
 
   run:
     - libboost
