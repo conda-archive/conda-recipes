@@ -167,7 +167,7 @@ build() {
     -sZLIB_INCLUDE=${MINGW_PREFIX}/include \
     -sZLIB_LIBPATH=${MINGW_PREFIX}/lib \
     -d2 \
-    -j$(nproc)
+    -j$(nproc) || true
 }
 
 package() {
@@ -212,7 +212,7 @@ package() {
       -sZLIB_BINARY=z \
       -sZLIB_INCLUDE=${MINGW_PREFIX}/include \
       -sZLIB_LIBPATH=${MINGW_PREFIX}/lib \
-      install
+      install || true
 
   mkdir -p ${pkgdir}${MINGW_PREFIX}/bin
   mv ${pkgdir}${MINGW_PREFIX}/lib/*.dll ${pkgdir}${MINGW_PREFIX}/bin
