@@ -31,7 +31,7 @@ build() {
 
   ../${_srcname}-${pkgver}/configure \
     --disable-dependency-tracking \
-    --enable-static \
+    --disable-static \
     --enable-shared \
     --enable-intraday \
     --prefix=${MINGW_PREFIX} \

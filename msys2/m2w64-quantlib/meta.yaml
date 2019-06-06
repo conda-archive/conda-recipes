@@ -13,6 +13,8 @@ source:
     fn: {{ pkgname }}-v{{ version }}.tar.gz
     sha256: 1f651b210d3046bffa9635864906423d40f9fff87faeaf417c9b76fd88f0ee64
     folder: {{ name }}-{{ version }}
+    patches:
+      - 0001-Add-win32-dll-and-no-undefined.patch
   - path: ./PKGBUILD
   - path: ./msys2-build-via-PKGBUILD.sh
   - path: ./CMakeLists.txt
@@ -23,6 +25,7 @@ build:
 
 requirements:
   build:
+    - m2-patch
     - m2-base
     - m2-filesystem
     - m2-sed

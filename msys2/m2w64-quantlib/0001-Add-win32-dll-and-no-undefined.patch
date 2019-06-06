@@ -1,0 +1,21 @@
+--- ./quantlib-1.15/configure.ac.orig	2019-06-06 01:12:38.032580800 +0200
++++ ./quantlib-1.15/configure.ac	2019-06-06 01:13:08.709728600 +0200
+@@ -27,6 +27,7 @@
+ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE.  See the license for more details.])
+ 
++LT_INIT([win32-dll])
+ AC_PROG_AWK
+ AC_PROG_INSTALL
+ 
+--- ./quantlib-1.15/ql/Makefile.am.orig	2019-06-06 11:26:53.605921800 +0200
++++ ./quantlib-1.15/ql/Makefile.am	2019-06-06 11:27:41.109969800 +0200
+@@ -81,7 +81,7 @@
+ 	timegrid.cpp
+ 
+ lib_LTLIBRARIES = libQuantLib.la
+-libQuantLib_la_LDFLAGS = -version-info 0:0:0
++libQuantLib_la_LDFLAGS = -version-info 0:0:0 -no-undefined
+ 
+ libQuantLib_la_LIBADD = \
+     cashflows/libCashFlows.la \

@@ -16,8 +16,8 @@ export pkgdir="${PREFIX}"
 export pkgver=${PKG_VERSION}
 . ./PKGBUILD
 # Breaks, PKG_CONFIG issues leading to CPPUNIT issues.
-# pushd ${srcdir}/JAGS-${PKG_VERSION}
-#   autoreconf -vfi
-# popd
+pushd ${srcdir}/Quantlib-${PKG_VERSION}
+  ./autogen.sh
+popd
 build || exit 1
 package || exit 1
