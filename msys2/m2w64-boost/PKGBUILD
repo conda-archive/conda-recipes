@@ -181,11 +181,11 @@ package() {
     ;;
   esac
 
-  if check_option "debug" "y"; then
-      local variant=debug
-  else
+  # if check_option "debug" "y"; then
+  #     local variant=debug
+  # else
       local variant=release
-  fi
+  # fi
 
   ./b2 \
       address-model=${_model} \
