@@ -1,0 +1,39 @@
+--- setupext.py
++++ setupext.py
+@@ -1050,22 +1050,8 @@
+     name = "qhull"
+ 
+     def check(self):
+-        self.__class__.found_external = True
+-        try:
+-            return self._check_for_pkg_config(
+-                'qhull', 'qhull/qhull_a.h', min_version='2003.1')
+-        except CheckFailed as e:
+-            self.__class__.found_pkgconfig = False
+-            # Qhull may not be in the pkg-config system but may still be
+-            # present on this system, so check if the header files can be
+-            # found.
+-            include_dirs = [
+-                os.path.join(x, 'qhull') for x in get_include_dirs()]
+-            if has_include_file(include_dirs, 'qhull_a.h'):
+-                return 'Using system Qhull (version unknown, no pkg-config info)'
+-            else:
+-                self.__class__.found_external = False
+-                return str(e) + ' Using local copy.'
++        self.__class__.found_external = False
++        return 'Using local copy.'
+ 
+     def add_flags(self, ext):
+         if self.found_external:
+@@ -1338,9 +1324,9 @@
+     def check_requirements(self):
+         try:
+             if PY3:
+-                import tkinter as Tkinter
++                import no_Tkinter
+             else:
+-                import Tkinter
++                import no_Tkinter
+         except ImportError:
+             raise CheckFailed('TKAgg requires Tkinter.')
+         except RuntimeError:
