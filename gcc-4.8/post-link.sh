@@ -46,7 +46,7 @@ else
     c_runtime_obj_files_found=0
 
     # Try locating crtXXX.o in default library search paths
-    for library_path in $(ld --verbose | grep SEARCH_DIR | sed -r 's/SEARCH_DIR\("=?([^"]*)"\);/ \1/g'); do
+    for library_path in $(/usr/bin/ld --verbose | grep SEARCH_DIR | sed -r 's/SEARCH_DIR\("=?([^"]*)"\);/ \1/g'); do
         for obj_file in $C_RUNTIME_OBJ_FILES; do
             obj_file_full_path="$library_path/$obj_file"
             if [[ -e "$obj_file_full_path" ]]; then
@@ -110,6 +110,13 @@ else
         # *cpp:
         # ... yada yada ... -isystem ${INCDIR}
         sed -i ':a;N;$!ba;s|\(*cpp:\n[^\n]*\)|\1 -isystem '${INCDIR}'|g' "${SPECS_FILE}"
+    done
+
+    #
+    # Linux Portability Issue #2.5: linker also needs to find the rest of libc (i.e. libc.so in addition to crtXXX.o)
+    #
+    for library_path in $(/usr/bin/ld --verbose | grep SEARCH_DIR | sed -r 's/SEARCH_DIR\("=?([^"]*)"\);/ \1/g'); do
+         sed -i ':a;N;$!ba;s|\(*link_libgcc:\n[^\n]*\)|\1 -L'${library_path}'|g' "${SPECS_FILE}"
     done
 fi
 
