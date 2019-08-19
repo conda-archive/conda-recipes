@@ -1,10 +1,10 @@
 package:
   name: vtk
-  version: 6.3.0
+  version: 7.0.0
 
 source:
-  url: http://www.vtk.org/files/release/6.3/VTK-6.3.0.tar.gz
-  fn:  vtk-6.3.0.tar.gz
+  url: http://www.vtk.org/files/release/7.0/VTK-7.0.0.tar.gz
+  fn: vtk-v7.0.0.tar.gz
   patches:
     - dlls.patch                              [win]
     - apple.patch                             [osx]
