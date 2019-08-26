@@ -1,0 +1,9 @@
+matrix:
+  - [[CLANG_VARIANT, 'cling']]
+  - [[CLANG_VARIANT, 'default']]
+travis:
+  secure:
+    BINSTAR_TOKEN: Vzvr5umj7+XJZ5+J2FL5WxJzakhKjQlqF57YMmoI6IvJh0vlaWaPobkvXJqFqpPCMvo4WQ2IJBMhApxUtx9HdpX5zgBhdqRY1EIizgL01Bai/tg5BuCBZgcQi0mG8LYM2b6qhNGVHvYpSQ+lAkoZlsSAKzjA2mlJ6XyexGLvt9qg2AwNiVw/qXfIXdyfksUBJ5LBE9P1BImMjPTKnc5OCejFM8foldOgymOtAmemBsMkPn6TDOHc0sNQtte4QcZpliENbhJLVrLQd56Vl2+BXfju9vT0etgzwlb9dqejnoYX6UCmKpiQAGsNhc777e9H5JswSF95amMgWdkdgSqkmDYKmNJZSj48svVDN+i3bAuS8ZtHZ2jjavo0avC3AsQKxd8WKVLx99bo2OZjrVNJ7uanzvpgmauQZUSNdEjd8A8Ac7escbSe/VT02htlNqOsBijxS7hRLCbr9ueB9nsdPXzwVtreptSDHmX23OKObi4yCbgA8TDFu3YEWmkZ6pK7D/1wcFqQMBFdYYoW0QWx0040F+BKtXnpAwrbyDGsjQvc+OiOenzz3lO9wPTCXgfak3W5iasfR1Bcsh/GB2iAI0NNLM6oz/2VB/ZTKMrMqb+jsh6VwmcL9Vqjyugf6c9fMpQsUZ9Rk6iphwkdPAdSzuIBkfyfXqmHotVF0CIHbeU=
+appveyor:
+  secure:
+    BINSTAR_TOKEN: MP4hZYylDyUWEsrt3u3cod2sbFeRwUziH02mvQOdbjsTO/l1yIxDkP/76rSIjcGC

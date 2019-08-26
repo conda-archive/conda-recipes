@@ -1,0 +1,44 @@
+From 33cba37ae946e9dc5c1d24aaf1c847b0562f93ad Mon Sep 17 00:00:00 2001
+From: Axel Naumann <Axel.Naumann@cern.ch>
+Date: Tue, 6 Sep 2016 16:10:43 +0200
+Subject: [PATCH 53/58] Keep track of emitted deferred decls, in case cling
+ needs to unload them.
+
+They will then be put back into the DeferredDecls.
+This can go away once cling draws its symbols from an ever-growing, central
+module, instead of separate modules per transaction.
+---
+ lib/CodeGen/CodeGenModule.cpp | 1 +
+ lib/CodeGen/CodeGenModule.h   | 4 ++++
+ 2 files changed, 5 insertions(+)
+
+diff --git a/lib/CodeGen/CodeGenModule.cpp b/lib/CodeGen/CodeGenModule.cpp
+index b071e2b..80a61f6 100644
+--- a/lib/CodeGen/CodeGenModule.cpp
++++ b/lib/CodeGen/CodeGenModule.cpp
+@@ -1322,6 +1322,7 @@ void CodeGenModule::EmitDeferred() {
+ 
+     // Otherwise, emit the definition and move on to the next one.
+     EmitGlobalDefinition(D, GV);
++    EmittedDeferredDecls[GV->getName()] = D;
+ 
+     // If we found out that we need to emit more decls, do that recursively.
+     // This has the advantage that the decls are emitted in a DFS and related
+diff --git a/lib/CodeGen/CodeGenModule.h b/lib/CodeGen/CodeGenModule.h
+index 0f9a4d0..1bd76d7 100644
+--- a/lib/CodeGen/CodeGenModule.h
++++ b/lib/CodeGen/CodeGenModule.h
+@@ -320,6 +320,10 @@ private:
+     DeferredDeclsToEmit.emplace_back(GV, GD);
+   }
+ 
++  /// Enables unloading of emitted symbols that need to become deferred.
++  llvm::StringMap<GlobalDecl> EmittedDeferredDecls;
++
++
+   /// List of alias we have emitted. Used to make sure that what they point to
+   /// is defined once we get to the end of the of the translation unit.
+   std::vector<GlobalDecl> Aliases;
+-- 
+2.7.4
+

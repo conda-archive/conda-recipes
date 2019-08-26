@@ -1,0 +1,73 @@
+From 3f664451e47dc743b923a0b2d65b32816f890d37 Mon Sep 17 00:00:00 2001
+From: Axel Naumann <Axel.Naumann@cern.ch>
+Date: Tue, 6 Sep 2016 16:12:42 +0200
+Subject: [PATCH 54/58] Forget Decls by removing them from the DeferredDecls.
+ Put DeferredDecls back if needed.
+
+---
+ include/clang/CodeGen/ModuleBuilder.h |  1 +
+ lib/CodeGen/ModuleBuilder.cpp         | 29 +++++++++++++++++++++++++++++
+ 2 files changed, 30 insertions(+)
+
+diff --git a/include/clang/CodeGen/ModuleBuilder.h b/include/clang/CodeGen/ModuleBuilder.h
+index 64274cb..e8ff6b3 100644
+--- a/include/clang/CodeGen/ModuleBuilder.h
++++ b/include/clang/CodeGen/ModuleBuilder.h
+@@ -84,6 +84,7 @@ public:
+ 
+   void print(llvm::raw_ostream& out);
+   void forgetGlobal(llvm::GlobalValue* GV);
++  void forgetDecl(const GlobalDecl& GD);
+   llvm::Module* StartModule(const std::string& ModuleName,
+                             llvm::LLVMContext& C,
+                             const CodeGenOptions& CGO);
+diff --git a/lib/CodeGen/ModuleBuilder.cpp b/lib/CodeGen/ModuleBuilder.cpp
+index ba5cf8f..cc9c284 100644
+--- a/lib/CodeGen/ModuleBuilder.cpp
++++ b/lib/CodeGen/ModuleBuilder.cpp
+@@ -277,6 +277,31 @@ namespace clang {
+           break;
+         }
+       }
++
++      if (GV->isWeakForLinker() && !GV->isDeclaration()) {
++        auto IEmittedDeferredDecl
++          = Builder->EmittedDeferredDecls.find(GV->getName());
++        if (IEmittedDeferredDecl != Builder->EmittedDeferredDecls.end()) {
++          Builder->DeferredDecls[GV->getName()] = IEmittedDeferredDecl->second;
++          Builder->EmittedDeferredDecls.erase(IEmittedDeferredDecl);
++        }
++      }
++    }
++
++    void forgetDecl(const GlobalDecl& GD) {
++      StringRef MangledName = Builder->getMangledName(GD);
++      auto IEmittedDeferredDecl
++        = Builder->EmittedDeferredDecls.find(MangledName);
++      if (IEmittedDeferredDecl != Builder->EmittedDeferredDecls.end()) {
++        assert(IEmittedDeferredDecl->getValue() == GD
++               && "Removing wrong EmittedDeferredDecl");
++        Builder->EmittedDeferredDecls.erase(IEmittedDeferredDecl);
++      } else {
++        auto IDeferredDecl = Builder->DeferredDecls.find(MangledName);
++        if (IDeferredDecl != Builder->DeferredDecls.end()) {
++          Builder->DeferredDecls.erase(IDeferredDecl);
++        }
++      }
+     }
+ 
+     void Initialize(ASTContext &Context) override {
+@@ -481,6 +506,10 @@ void CodeGenerator::forgetGlobal(llvm::GlobalValue* GV) {
+   static_cast<CodeGeneratorImpl*>(this)->forgetGlobal(GV);
+ }
+ 
++void CodeGenerator::forgetDecl(const GlobalDecl& GD) {
++  static_cast<CodeGeneratorImpl*>(this)->forgetDecl(GD);
++}
++
+ 
+ llvm::Module *CodeGenerator::StartModule(const std::string& ModuleName,
+                                          llvm::LLVMContext& C,
+-- 
+2.7.4
+

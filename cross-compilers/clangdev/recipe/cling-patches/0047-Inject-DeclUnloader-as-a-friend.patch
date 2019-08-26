@@ -1,0 +1,24 @@
+From b64425b07999c338e63f7eddfb7caf643106d129 Mon Sep 17 00:00:00 2001
+From: Philippe Canal <pcanal@fnal.gov>
+Date: Sat, 17 Oct 2015 01:05:32 -0500
+Subject: [PATCH 47/58] Inject DeclUnloader as a friend.
+
+---
+ include/clang/AST/DeclCXX.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/clang/AST/DeclCXX.h b/include/clang/AST/DeclCXX.h
+index 66acfee..616f851 100644
+--- a/include/clang/AST/DeclCXX.h
++++ b/include/clang/AST/DeclCXX.h
+@@ -1727,6 +1727,7 @@ public:
+   friend class ASTRecordWriter;
+   friend class ASTReader;
+   friend class ASTWriter;
++  friend class DeclUnloader;
+ };
+ 
+ /// \brief Represents a static or instance method of a struct/union/class.
+-- 
+2.7.4
+

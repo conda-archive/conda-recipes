@@ -1,0 +1,140 @@
+From df1a8e3b918b11ccf807347a5dd50263897449bb Mon Sep 17 00:00:00 2001
+From: Axel Naumann <Axel.Naumann@cern.ch>
+Date: Fri, 9 Sep 2016 17:09:13 +0200
+Subject: [PATCH 56/58] Track (previously deferred) emitted symbol; put back as
+ deferred if unloaded.
+
+`EmittedDeferredDecls` is a map from "global value emitted because a deferred definition was needed" to the entries of the DeferredDecls to be put back when the global value is unloaded.
+Fix the unloading of definitions of emitted deferred symbols, and the unloading of declarations from the DeferredDecls.
+forgetDecl() only needs to act on weak declarations with a definition (strong symbols are emitted, those without a definition cannot enter DeferredDecls).
+---
+ lib/CodeGen/CodeGenModule.cpp |  3 ++-
+ lib/CodeGen/CodeGenModule.h   |  8 ++++++-
+ lib/CodeGen/ModuleBuilder.cpp | 50 +++++++++++++++++++++++++++++--------------
+ 3 files changed, 43 insertions(+), 18 deletions(-)
+
+diff --git a/lib/CodeGen/CodeGenModule.cpp b/lib/CodeGen/CodeGenModule.cpp
+index 80a61f6..166305a 100644
+--- a/lib/CodeGen/CodeGenModule.cpp
++++ b/lib/CodeGen/CodeGenModule.cpp
+@@ -1322,7 +1322,6 @@ void CodeGenModule::EmitDeferred() {
+ 
+     // Otherwise, emit the definition and move on to the next one.
+     EmitGlobalDefinition(D, GV);
+-    EmittedDeferredDecls[GV->getName()] = D;
+ 
+     // If we found out that we need to emit more decls, do that recursively.
+     // This has the advantage that the decls are emitted in a DFS and related
+@@ -1958,6 +1957,7 @@ CodeGenModule::GetOrCreateLLVMFunction(StringRef MangledName,
+       // DeferredDeclsToEmit list, and remove it from DeferredDecls (since we
+       // don't need it anymore).
+       addDeferredDeclToEmit(F, DDI->second);
++      EmittedDeferredDecls[F] = std::make_pair(DDI->first, DDI->second);
+       DeferredDecls.erase(DDI);
+ 
+       // Otherwise, there are cases we have to worry about where we're
+@@ -2155,6 +2155,7 @@ CodeGenModule::GetOrCreateLLVMGlobal(StringRef MangledName,
+     // Move the potentially referenced deferred decl to the DeferredDeclsToEmit
+     // list, and remove it from DeferredDecls (since we don't need it anymore).
+     addDeferredDeclToEmit(GV, DDI->second);
++    EmittedDeferredDecls[GV] = std::make_pair(DDI->first, DDI->second);
+     DeferredDecls.erase(DDI);
+   }
+ 
+diff --git a/lib/CodeGen/CodeGenModule.h b/lib/CodeGen/CodeGenModule.h
+index 1bd76d7..928a702 100644
+--- a/lib/CodeGen/CodeGenModule.h
++++ b/lib/CodeGen/CodeGenModule.h
+@@ -36,6 +36,8 @@
+ #include "llvm/IR/ValueHandle.h"
+ #include "llvm/Transforms/Utils/SanitizerStats.h"
+ 
++#include <unordered_map>
++
+ namespace llvm {
+ class Module;
+ class Constant;
+@@ -321,7 +323,11 @@ private:
+   }
+ 
+   /// Enables unloading of emitted symbols that need to become deferred.
+-  llvm::StringMap<GlobalDecl> EmittedDeferredDecls;
++  /// Key is the emitted definition, value is symbol name + Decl created
++  /// while marking this deferred, i.e. the content of DeferredDecls.
++  std::unordered_map<llvm::GlobalValue*,
++                     std::pair<llvm::StringRef, GlobalDecl>>
++    EmittedDeferredDecls;
+ 
+ 
+   /// List of alias we have emitted. Used to make sure that what they point to
+diff --git a/lib/CodeGen/ModuleBuilder.cpp b/lib/CodeGen/ModuleBuilder.cpp
+index 0e85c59..fc05c99 100644
+--- a/lib/CodeGen/ModuleBuilder.cpp
++++ b/lib/CodeGen/ModuleBuilder.cpp
+@@ -279,29 +279,47 @@ namespace clang {
+         }
+       }
+ 
+-      if (GV->isWeakForLinker() && !GV->isDeclaration()) {
+-        auto IEmittedDeferredDecl
+-          = Builder->EmittedDeferredDecls.find(GV->getName());
+-        if (IEmittedDeferredDecl != Builder->EmittedDeferredDecls.end()) {
+-          Builder->DeferredDecls[GV->getName()] = IEmittedDeferredDecl->second;
+-          Builder->EmittedDeferredDecls.erase(IEmittedDeferredDecl);
++      if (GV->isWeakForLinker()) {
++        if (!GV->isDeclaration()) {
++          // This is a definition. If if was emitted as deferred, move it
++          // back into deferred state.
++          auto IEmittedDeferredDecl
++            = Builder->EmittedDeferredDecls.find(GV);
++          if (IEmittedDeferredDecl != Builder->EmittedDeferredDecls.end()) {
++            // Use the name of the original GV, not that of our definition
++            // that's soon to be erased.
++            Builder->DeferredDecls[IEmittedDeferredDecl->second.first]
++              = IEmittedDeferredDecl->second.second;
++            Builder->EmittedDeferredDecls.erase(IEmittedDeferredDecl);
++          }
++        } else {
++          // might be an entry in the deferred decls, if so: remove!
++          auto IDeferredDecl = Builder->DeferredDecls.find(GV->getName());
++          if (IDeferredDecl != Builder->DeferredDecls.end()) {
++            // yes, pointer comparison.
++            if (IDeferredDecl->first.data() == GV->getName().data())
++              Builder->DeferredDecls.erase(IDeferredDecl);
++          }
+         }
+       }
+     }
+ 
+     void forgetDecl(const GlobalDecl& GD) {
+-      StringRef MangledName = Builder->getMangledName(GD);
+-      auto IEmittedDeferredDecl
+-        = Builder->EmittedDeferredDecls.find(MangledName);
+-      if (IEmittedDeferredDecl != Builder->EmittedDeferredDecls.end()) {
+-        assert(IEmittedDeferredDecl->getValue() == GD
+-               && "Removing wrong EmittedDeferredDecl");
+-        Builder->EmittedDeferredDecls.erase(IEmittedDeferredDecl);
++      if (const auto VD = dyn_cast<VarDecl>(GD.getDecl())) {
++        if (!VD->isWeak() || !VD->isThisDeclarationADefinition())
++          return;
++      } else if (const auto FD = dyn_cast<FunctionDecl>(GD.getDecl())) {
++        if (!FD->isWeak() || !FD->isThisDeclarationADefinition())
++          return;
+       } else {
+-        auto IDeferredDecl = Builder->DeferredDecls.find(MangledName);
+-        if (IDeferredDecl != Builder->DeferredDecls.end()) {
++        return;
++      }
++      // It's a weak, defined var or function decl.
++      StringRef MangledName = Builder->getMangledName(GD);
++      auto IDeferredDecl = Builder->DeferredDecls.find(MangledName);
++      if (IDeferredDecl != Builder->DeferredDecls.end()) {
++        if (IDeferredDecl->second == GD)
+           Builder->DeferredDecls.erase(IDeferredDecl);
+-        }
+       }
+     }
+ 
+-- 
+2.7.4
+

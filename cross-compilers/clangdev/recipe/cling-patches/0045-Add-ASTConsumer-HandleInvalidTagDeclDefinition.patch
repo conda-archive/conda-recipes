@@ -1,0 +1,47 @@
+From 0bd706cda5d377d0bffed9f3097ea3913997cdce Mon Sep 17 00:00:00 2001
+From: Philippe Canal <pcanal@fnal.gov>
+Date: Wed, 23 Sep 2015 09:34:32 +0200
+Subject: [PATCH 45/58] Add ASTConsumer::HandleInvalidTagDeclDefinition.
+
+This allows Sema to inform the consumer that an invalid declaration has been seen and
+can properly react (for example an interpreter may want to revert the transaction)
+---
+ include/clang/AST/ASTConsumer.h      | 6 ++++++
+ lib/Sema/SemaTemplateInstantiate.cpp | 4 +++-
+ 2 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/include/clang/AST/ASTConsumer.h b/include/clang/AST/ASTConsumer.h
+index 0b1f006..73873f0 100644
+--- a/include/clang/AST/ASTConsumer.h
++++ b/include/clang/AST/ASTConsumer.h
+@@ -74,6 +74,12 @@ public:
+   /// can be defined in declspecs).
+   virtual void HandleTagDeclDefinition(TagDecl *D) {}
+ 
++  /// HandleInvalidTagDeclDefinition - This callback is invoked each time a TagDecl
++  /// (e.g. struct, union, enum, class) end up invalid after attempting completion.
++  /// This allows the client to record (and possibly remove from the AST) the
++  /// decl.
++  virtual void HandleInvalidTagDeclDefinition(TagDecl *D) {}
++
+   /// \brief This callback is invoked the first time each TagDecl is required to
+   /// be complete.
+   virtual void HandleTagDeclRequiredDefinition(const TagDecl *D) {}
+diff --git a/lib/Sema/SemaTemplateInstantiate.cpp b/lib/Sema/SemaTemplateInstantiate.cpp
+index 65a5633..9629bb5 100644
+--- a/lib/Sema/SemaTemplateInstantiate.cpp
++++ b/lib/Sema/SemaTemplateInstantiate.cpp
+@@ -2142,7 +2142,9 @@ Sema::InstantiateClass(SourceLocation PointOfInstantiation,
+   // Exit the scope of this instantiation.
+   SavedContext.pop();
+ 
+-  if (!Instantiation->isInvalidDecl()) {
++  if (Instantiation->isInvalidDecl()) {
++     Consumer.HandleInvalidTagDeclDefinition(Instantiation);
++  } else {
+     Consumer.HandleTagDeclDefinition(Instantiation);
+ 
+     // Always emit the vtable for an explicit instantiation definition
+-- 
+2.7.4
+

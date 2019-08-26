@@ -1,0 +1,40 @@
+From 64e87103122fdc777a2ffa2e63d8dcc198d5a057 Mon Sep 17 00:00:00 2001
+From: Philippe Canal <pcanal@fnal.gov>
+Date: Sun, 13 Nov 2016 15:17:36 -0600
+Subject: [PATCH 58/58] Fix assertion when removing decls coming from a pch/pcm
+
+When the decls come from a pch/pcm, they are added to the lookup table
+only at the time of the first search.
+
+This resulted in the assertion triggering when using an overzealous version
+of AutoloadingVisitor in the test roottest/root/io/newClassDef/noclassdef.
+---
+ lib/AST/DeclBase.cpp | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/lib/AST/DeclBase.cpp b/lib/AST/DeclBase.cpp
+index a34017e..efeee66 100644
+--- a/lib/AST/DeclBase.cpp
++++ b/lib/AST/DeclBase.cpp
+@@ -1259,11 +1259,13 @@ void DeclContext::removeDecl(Decl *D) {
+       StoredDeclsMap *Map = DC->getPrimaryContext()->LookupPtr;
+       if (Map) {
+         StoredDeclsMap::iterator Pos = Map->find(ND->getDeclName());
+-        assert(Pos != Map->end() && "no lookup entry for decl");
+-        StoredDeclsList::DeclsTy* Vec = Pos->second.getAsVector();
+-        if ((Vec && std::find(Vec->begin(), Vec->end(), ND) != Vec->end())
+-            || Pos->second.getAsDecl() == ND)
+-          Pos->second.remove(ND);
++        assert((DC->hasExternalVisibleStorage() || Pos != Map->end()) && "no lookup entry for decl");
++        if (Pos != Map->end()) {
++          StoredDeclsList::DeclsTy* Vec = Pos->second.getAsVector();
++          if ((Vec && std::find(Vec->begin(), Vec->end(), ND) != Vec->end())
++              || Pos->second.getAsDecl() == ND)
++            Pos->second.remove(ND);
++        }
+       }
+     } while (DC->isTransparentContext() && (DC = DC->getParent()));
+   }
+-- 
+2.7.4
+

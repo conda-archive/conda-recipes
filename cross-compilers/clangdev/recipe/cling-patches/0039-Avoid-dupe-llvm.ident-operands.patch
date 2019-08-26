@@ -1,0 +1,26 @@
+From db2aae4542cf616d346ea29ec3d3ce4ef08561f0 Mon Sep 17 00:00:00 2001
+From: Axel Naumann <Axel.Naumann@cern.ch>
+Date: Mon, 12 Jan 2015 14:30:17 +0100
+Subject: [PATCH 39/58] Avoid dupe "llvm.ident" operands.
+
+---
+ lib/CodeGen/CodeGenModule.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/lib/CodeGen/CodeGenModule.cpp b/lib/CodeGen/CodeGenModule.cpp
+index 9e5d2a6..b071e2b 100644
+--- a/lib/CodeGen/CodeGenModule.cpp
++++ b/lib/CodeGen/CodeGenModule.cpp
+@@ -4148,6 +4148,9 @@ void CodeGenFunction::EmitDeclMetadata() {
+ void CodeGenModule::EmitVersionIdentMetadata() {
+   llvm::NamedMDNode *IdentMetadata =
+     TheModule.getOrInsertNamedMetadata("llvm.ident");
++  if (IdentMetadata->getNumOperands() > 0)
++    return;
++
+   std::string Version = getClangFullVersion();
+   llvm::LLVMContext &Ctx = TheModule.getContext();
+ 
+-- 
+2.7.4
+

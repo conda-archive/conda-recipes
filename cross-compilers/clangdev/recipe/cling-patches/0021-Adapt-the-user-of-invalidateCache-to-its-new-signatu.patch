@@ -1,0 +1,26 @@
+From 0d6837eeb628eec48f23dacdff9fa18bfd4195df Mon Sep 17 00:00:00 2001
+From: Vassil Vassilev <vvasilev@cern.ch>
+Date: Tue, 8 Apr 2014 18:00:07 +0200
+Subject: [PATCH 21/58] Adapt the user of invalidateCache to its new signature.
+ Note: this might be change of behavior, because the new implementation
+ doesn't erase the entry from the ADT.
+
+---
+ lib/Serialization/ModuleManager.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/Serialization/ModuleManager.cpp b/lib/Serialization/ModuleManager.cpp
+index a3259ab..5d277ad 100644
+--- a/lib/Serialization/ModuleManager.cpp
++++ b/lib/Serialization/ModuleManager.cpp
+@@ -223,6 +223,7 @@ void ModuleManager::removeModules(
+   for (ModuleIterator victim = first; victim != last; ++victim) {
+     Modules.erase((*victim)->File);
+ 
++    FileMgr.invalidateCache(const_cast<FileEntry*>((*victim)->File));
+     if (modMap) {
+       StringRef ModuleName = (*victim)->ModuleName;
+       if (Module *mod = modMap->findModule(ModuleName)) {
+-- 
+2.7.4
+

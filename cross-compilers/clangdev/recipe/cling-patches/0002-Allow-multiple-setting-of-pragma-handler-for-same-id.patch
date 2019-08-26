@@ -1,0 +1,32 @@
+From 30d677fd81d79aaea0ea5fb822e9f802940dc080 Mon Sep 17 00:00:00 2001
+From: Axel Naumann <Axel.Naumann@cern.ch>
+Date: Mon, 26 Aug 2013 14:27:45 +0200
+Subject: [PATCH 02/58] Allow multiple setting of pragma handler for same
+ identifier.
+
+---
+ lib/Lex/Pragma.cpp | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/lib/Lex/Pragma.cpp b/lib/Lex/Pragma.cpp
+index 3bdd31b..469b7a1 100644
+--- a/lib/Lex/Pragma.cpp
++++ b/lib/Lex/Pragma.cpp
+@@ -750,9 +750,11 @@ void Preprocessor::AddPragmaHandler(StringRef Namespace,
+   }
+ 
+   // Check to make sure we don't already have a pragma for this identifier.
+-  assert(!InsertNS->FindHandler(Handler->getName()) &&
+-         "Pragma handler already exists for this identifier!");
+-  InsertNS->AddPragma(Handler);
++  // assert(!InsertNS->FindHandler(Handler->getName()) &&
++  //        "Pragma handler already exists for this identifier!");
++
++  if (!InsertNS->FindHandler(Handler->getName()))
++     InsertNS->AddPragma(Handler);
+ }
+ 
+ /// RemovePragmaHandler - Remove the specific pragma handler from the
+-- 
+2.7.4
+

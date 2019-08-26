@@ -1,0 +1,53 @@
+From 2a4dd949fcfd324fdd6b0b5956b7fe0355fc9245 Mon Sep 17 00:00:00 2001
+From: Philippe Canal <pcanal@fnal.gov>
+Date: Sun, 15 Nov 2015 01:36:24 -0600
+Subject: [PATCH 46/58] Fix ROOT-7775 by making all static init function name
+ unique.
+
+In EmitCXXGlobalVarDeclInitFunc make the init function name more unique when module are used.
+
+Most static init are called from a wrapping function (whose name start with _GLOBAL__sub_I_ and is followed by the source filename).
+The static init functions are named __cxx_global_var_init followed by a serial number which is local to each module.
+Neither the _GLOBAL__sub_I_ nor the __cxx_global_var_init are effectively removed for the SymbolTable in the dynamic library corresponding to the module.
+
+I assume normal functions they get properly removed because when the module is unloaded/removed the whole corresponding SymbolTable must be removed.  There does not seem to be any interface to remove a single symbol from the symbol table.
+
+To avoid the problem for the common case of static init, we alredy use a 'Hack to temporarily set the file entry's name to a unique name.'  in IncrementalParser.cpp around line 539, which make the name of the wrapping init function whose name start with _GLOBAL__sub_I_ unique accross the whole execution.
+
+Those routines in turn call routines that have *non* unique name (starting by __cxx_global_var_init), I suppose because the wrapping routines are compiled they see the init function with that name in the module before looking into other modules.
+
+The static initialization for explicit template specialization are intentionally *not* put in this uniquely named wrapping function.  Instead they are called directly.   When they are called by runStaticInitializersOnce, the search-by-name we use find the 'first' instance of a function by that name (rather than the last).
+
+The solution I found was to make the name of the static init functions that are named __cxx_global_var_init to be followed by the module name ....
+---
+ lib/CodeGen/CGDeclCXX.cpp | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/lib/CodeGen/CGDeclCXX.cpp b/lib/CodeGen/CGDeclCXX.cpp
+index 89d142e..02560ae 100644
+--- a/lib/CodeGen/CGDeclCXX.cpp
++++ b/lib/CodeGen/CGDeclCXX.cpp
+@@ -335,9 +335,19 @@ CodeGenModule::EmitCXXGlobalVarDeclInitFunc(const VarDecl *D,
+     getCXXABI().getMangleContext().mangleDynamicInitializer(D, Out);
+   }
+ 
++  // Use the module name to make the initializer unique accross modules.
++  SmallString<128> moduleName(TheModule.getName());
++  for (size_t i = 0; i < moduleName.size(); ++i) {
++    // Replace everything that's not [a-zA-Z0-9._] with a _. This set happens
++    // to be the set of C preprocessing numbers.
++    if (!isPreprocessingNumberBody(moduleName[i]))
++      moduleName[i] = '_';
++  }
++
+   // Create a variable initialization function.
+   llvm::Function *Fn =
+-      CreateGlobalInitOrDestructFunction(FTy, FnName.str(),
++      CreateGlobalInitOrDestructFunction(FTy,
++                                         llvm::Twine(FnName)+moduleName.str()+"_",
+                                          getTypes().arrangeNullaryFunction(),
+                                          D->getLocation());
+ 
+-- 
+2.7.4
+

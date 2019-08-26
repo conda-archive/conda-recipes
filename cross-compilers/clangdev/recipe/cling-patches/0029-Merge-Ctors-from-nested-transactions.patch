@@ -1,0 +1,55 @@
+From ac7bcc43207f4a75b6bbc57cf5305c01cf233013 Mon Sep 17 00:00:00 2001
+From: Axel Naumann <Axel.Naumann@cern.ch>
+Date: Tue, 27 May 2014 18:17:51 +0200
+Subject: [PATCH 29/58] Merge Ctors from nested transactions.
+
+We cannot run nested transactions' initializations until the parent is done.
+But the parent transaction must not replace the nested transactions' static initialization either.
+The only way out is to collapse all transactions' static initializers until they are run.
+This fixes
+root [0] TTree *chain = new TTree("abc","title")
+which left chain == 0 before.
+---
+ lib/CodeGen/CodeGenModule.cpp | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/lib/CodeGen/CodeGenModule.cpp b/lib/CodeGen/CodeGenModule.cpp
+index 927633e..9e5d2a6 100644
+--- a/lib/CodeGen/CodeGenModule.cpp
++++ b/lib/CodeGen/CodeGenModule.cpp
+@@ -721,6 +721,8 @@ void CodeGenModule::AddGlobalDtor(llvm::Function *Dtor, int Priority) {
+ }
+ 
+ void CodeGenModule::EmitCtorList(CtorList &Fns, const char *GlobalName) {
++  if (Fns.empty())
++    return;
+   // Ctor function type is void()*.
+   llvm::FunctionType* CtorFTy = llvm::FunctionType::get(VoidTy, false);
+   llvm::Type *CtorPFTy = llvm::PointerType::getUnqual(CtorFTy);
+@@ -729,8 +731,23 @@ void CodeGenModule::EmitCtorList(CtorList &Fns, const char *GlobalName) {
+   llvm::StructType *CtorStructTy = llvm::StructType::get(
+       Int32Ty, llvm::PointerType::getUnqual(CtorFTy), VoidPtrTy, nullptr);
+ 
++
+   // Construct the constructor and destructor arrays.
+   SmallVector<llvm::Constant *, 8> Ctors;
++
++  // Add existing ones:
++  if (llvm::GlobalVariable* OldGlobal
++      = TheModule.getGlobalVariable(GlobalName, true)) {
++    if (const llvm::ConstantArray* CArr =
++        llvm::dyn_cast<llvm::ConstantArray>(OldGlobal->getInitializer())) {
++      uint64_t OldSize = CArr->getType()->getNumElements();
++      for (uint64_t Idx = 0; Idx < OldSize; ++Idx) {
++        Ctors.push_back(CArr->getAggregateElement(Idx));
++      }
++    }
++    OldGlobal->eraseFromParent();
++  }
++
+   for (const auto &I : Fns) {
+     llvm::Constant *S[] = {
+         llvm::ConstantInt::get(Int32Ty, I.Priority, false),
+-- 
+2.7.4
+

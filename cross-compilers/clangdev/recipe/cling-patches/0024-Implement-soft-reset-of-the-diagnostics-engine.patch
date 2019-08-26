@@ -1,0 +1,56 @@
+From 5bd9fc2b829f0182d5a5dd58bf13fca96dce1707 Mon Sep 17 00:00:00 2001
+From: Vassil Vassilev <vvasilev@cern.ch>
+Date: Thu, 27 Mar 2014 11:26:03 +0100
+Subject: [PATCH 24/58] Implement soft reset of the diagnostics engine.
+
+---
+ include/clang/Basic/Diagnostic.h | 3 ++-
+ lib/Basic/Diagnostic.cpp         | 4 +++-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/include/clang/Basic/Diagnostic.h b/include/clang/Basic/Diagnostic.h
+index 085faea..9a7e02b 100644
+--- a/include/clang/Basic/Diagnostic.h
++++ b/include/clang/Basic/Diagnostic.h
+@@ -635,7 +635,8 @@ public:
+ 
+   /// \brief Reset the state of the diagnostic object to its initial 
+   /// configuration.
+-  void Reset();
++  /// \param[in] soft - if true, doesn't reset the diagnostic mappings and state
++  void Reset(bool soft = false);
+   
+   //===--------------------------------------------------------------------===//
+   // DiagnosticsEngine classification and reporting interfaces.
+diff --git a/lib/Basic/Diagnostic.cpp b/lib/Basic/Diagnostic.cpp
+index f10d156..c199ffb 100644
+--- a/lib/Basic/Diagnostic.cpp
++++ b/lib/Basic/Diagnostic.cpp
+@@ -112,7 +112,7 @@ bool DiagnosticsEngine::popMappings(SourceLocation Loc) {
+   return true;
+ }
+ 
+-void DiagnosticsEngine::Reset() {
++void DiagnosticsEngine::Reset(bool soft /*=false*/) {
+   ErrorOccurred = false;
+   UncompilableErrorOccurred = false;
+   FatalErrorOccurred = false;
+@@ -127,6 +127,7 @@ void DiagnosticsEngine::Reset() {
+   LastDiagLevel = DiagnosticIDs::Ignored;
+   DelayedDiagID = 0;
+ 
++  if (!soft) {
+   // Clear state related to #pragma diagnostic.
+   DiagStates.clear();
+   DiagStatePoints.clear();
+@@ -136,6 +137,7 @@ void DiagnosticsEngine::Reset() {
+   // through command-line.
+   DiagStates.emplace_back();
+   DiagStatePoints.push_back(DiagStatePoint(&DiagStates.back(), FullSourceLoc()));
++  }
+ }
+ 
+ void DiagnosticsEngine::SetDelayedDiagnostic(unsigned DiagID, StringRef Arg1,
+-- 
+2.7.4
+

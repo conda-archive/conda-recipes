@@ -1,0 +1,25 @@
+From dccd771ed72af987c6bc8de51895cb3ae53fddae Mon Sep 17 00:00:00 2001
+From: Axel Naumann <Axel.Naumann@cern.ch>
+Date: Tue, 1 Jul 2014 14:23:49 +0200
+Subject: [PATCH 30/58] !SrcMan can happen for Locs from the command line!
+
+Fixes issue reported by Guy Barrand and others; test coming up.
+---
+ include/clang/Basic/SourceLocation.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/clang/Basic/SourceLocation.h b/include/clang/Basic/SourceLocation.h
+index 006cf3d..6e6c6b5 100644
+--- a/include/clang/Basic/SourceLocation.h
++++ b/include/clang/Basic/SourceLocation.h
+@@ -316,6 +316,7 @@ public:
+   /// \returns true if this source location comes before 'Loc', false otherwise.
+   bool isBeforeInTranslationUnitThan(FullSourceLoc Loc) const {
+     assert(Loc.isValid());
++    if (!SrcMgr) return true; // assume command line is before Loc
+     assert(SrcMgr == Loc.SrcMgr && "Loc comes from another SourceManager!");
+     return isBeforeInTranslationUnitThan((SourceLocation)Loc);
+   }
+-- 
+2.7.4
+

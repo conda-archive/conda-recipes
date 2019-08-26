@@ -1,0 +1,107 @@
+From 3f5d3af7ba5baa752b775f463accbfd00f97ad4f Mon Sep 17 00:00:00 2001
+From: Axel Naumann <Axel.Naumann@cern.ch>
+Date: Mon, 26 Aug 2013 14:36:50 +0200
+Subject: [PATCH 11/58] Add RAII for Parser::TemplateIds.
+
+---
+ include/clang/Parse/RAIIObjectsForParser.h | 20 ++++++++++++++++++++
+ lib/Parse/Parser.cpp                       | 26 +++-----------------------
+ 2 files changed, 23 insertions(+), 23 deletions(-)
+
+diff --git a/include/clang/Parse/RAIIObjectsForParser.h b/include/clang/Parse/RAIIObjectsForParser.h
+index 36d87eb..0422b03 100644
+--- a/include/clang/Parse/RAIIObjectsForParser.h
++++ b/include/clang/Parse/RAIIObjectsForParser.h
+@@ -18,6 +18,7 @@
+ #include "clang/Parse/ParseDiagnostic.h"
+ #include "clang/Parse/Parser.h"
+ #include "clang/Sema/DelayedDiagnostic.h"
++#include "clang/Sema/ParsedTemplate.h"
+ #include "clang/Sema/Sema.h"
+ 
+ namespace clang {
+@@ -442,6 +443,25 @@ namespace clang {
+     void skipToEnd();
+   };
+ 
++  /// \brief RAIIObject to destroy the contents of a SmallVector of
++  /// TemplateIdAnnotation pointers and clear the vector.
++  class DestroyTemplateIdAnnotationsRAIIObj {
++    SmallVectorImpl<TemplateIdAnnotation *> &Container;
++
++  public:
++    DestroyTemplateIdAnnotationsRAIIObj(
++        SmallVectorImpl<TemplateIdAnnotation *> &Container)
++        : Container(Container) {}
++
++    ~DestroyTemplateIdAnnotationsRAIIObj() {
++      for (SmallVectorImpl<TemplateIdAnnotation *>::iterator I =
++               Container.begin(),
++             E = Container.end();
++           I != E; ++I)
++        (*I)->Destroy();
++      Container.clear();
++    }
++  };
+ } // end namespace clang
+ 
+ #endif
+diff --git a/lib/Parse/Parser.cpp b/lib/Parse/Parser.cpp
+index 675a3a9..d768911 100644
+--- a/lib/Parse/Parser.cpp
++++ b/lib/Parse/Parser.cpp
+@@ -38,26 +38,6 @@ public:
+     return false;
+   }
+ };
+-
+-/// \brief RAIIObject to destroy the contents of a SmallVector of
+-/// TemplateIdAnnotation pointers and clear the vector.
+-class DestroyTemplateIdAnnotationsRAIIObj {
+-  SmallVectorImpl<TemplateIdAnnotation *> &Container;
+-
+-public:
+-  DestroyTemplateIdAnnotationsRAIIObj(
+-      SmallVectorImpl<TemplateIdAnnotation *> &Container)
+-      : Container(Container) {}
+-
+-  ~DestroyTemplateIdAnnotationsRAIIObj() {
+-    for (SmallVectorImpl<TemplateIdAnnotation *>::iterator I =
+-             Container.begin(),
+-                                                           E = Container.end();
+-         I != E; ++I)
+-      (*I)->Destroy();
+-    Container.clear();
+-  }
+-};
+ } // end anonymous namespace
+ 
+ IdentifierInfo *Parser::getSEHExceptKeyword() {
+@@ -542,13 +522,13 @@ void Parser::LateTemplateParserCleanupCallback(void *P) {
+   // While this RAII helper doesn't bracket any actual work, the destructor will
+   // clean up annotations that were created during ActOnEndOfTranslationUnit
+   // when incremental processing is enabled.
+-   DestroyTemplateIdAnnotationsRAIIObj CleanupRAII(*(Parser*)P);
++  DestroyTemplateIdAnnotationsRAIIObj CleanupRAII(((Parser *)P)->TemplateIds);
+ }
+ 
+ /// ParseTopLevelDecl - Parse one top-level declaration, return whatever the
+ /// action tells us to.  This returns true if the EOF was encountered.
+ bool Parser::ParseTopLevelDecl(DeclGroupPtrTy &Result) {
+-  DestroyTemplateIdAnnotationsRAIIObj CleanupRAII(*this);
++  DestroyTemplateIdAnnotationsRAIIObj CleanupRAII(TemplateIds);
+ 
+   // Skip over the EOF token, flagging end of previous input for incremental
+   // processing
+@@ -629,7 +609,7 @@ bool Parser::ParseTopLevelDecl(DeclGroupPtrTy &Result) {
+ Parser::DeclGroupPtrTy
+ Parser::ParseExternalDeclaration(ParsedAttributesWithRange &attrs,
+                                  ParsingDeclSpec *DS) {
+-  DestroyTemplateIdAnnotationsRAIIObj CleanupRAII(*this);
++  DestroyTemplateIdAnnotationsRAIIObj CleanupRAII(TemplateIds);
+   ParenBraceBracketBalancer BalancerRAIIObj(*this);
+ 
+   if (PP.isCodeCompletionReached()) {
+-- 
+2.7.4
+

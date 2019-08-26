@@ -1,0 +1,69 @@
+From 059dba938535180a51b056c1ba616cc4dbc4cc2b Mon Sep 17 00:00:00 2001
+From: Axel Naumann <Axel.Naumann@cern.ch>
+Date: Thu, 15 May 2014 14:50:06 +0200
+Subject: [PATCH 28/58] Pass the OpenFile flag also to DirectoryLookup.
+
+---
+ include/clang/Lex/DirectoryLookup.h |  3 ++-
+ lib/Lex/HeaderSearch.cpp            | 10 ++++++----
+ 2 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/include/clang/Lex/DirectoryLookup.h b/include/clang/Lex/DirectoryLookup.h
+index ee0af29..c6d3cff 100644
+--- a/include/clang/Lex/DirectoryLookup.h
++++ b/include/clang/Lex/DirectoryLookup.h
+@@ -182,7 +182,8 @@ public:
+                               ModuleMap::KnownHeader *SuggestedModule,
+                               bool &InUserSpecifiedSystemFramework,
+                               bool &HasBeenMapped,
+-                              SmallVectorImpl<char> &MappedName) const;
++                              SmallVectorImpl<char> &MappedName,
++                              bool OpenFile = true) const;
+ 
+ private:
+   const FileEntry *DoFrameworkLookup(
+diff --git a/lib/Lex/HeaderSearch.cpp b/lib/Lex/HeaderSearch.cpp
+index f1f99c6..f2e687e 100644
+--- a/lib/Lex/HeaderSearch.cpp
++++ b/lib/Lex/HeaderSearch.cpp
+@@ -282,7 +282,8 @@ const FileEntry *DirectoryLookup::LookupFile(
+     ModuleMap::KnownHeader *SuggestedModule,
+     bool &InUserSpecifiedSystemFramework,
+     bool &HasBeenMapped,
+-    SmallVectorImpl<char> &MappedName) const {
++    SmallVectorImpl<char> &MappedName,
++    bool OpenFile) const {
+   InUserSpecifiedSystemFramework = false;
+   HasBeenMapped = false;
+ 
+@@ -303,7 +304,8 @@ const FileEntry *DirectoryLookup::LookupFile(
+ 
+     return HS.getFileAndSuggestModule(TmpDir, IncludeLoc, getDir(),
+                                       isSystemHeaderDirectory(),
+-                                      RequestingModule, SuggestedModule);
++                                      RequestingModule, SuggestedModule,
++                                      OpenFile);
+   }
+ 
+   if (isFramework())
+@@ -331,7 +333,7 @@ const FileEntry *DirectoryLookup::LookupFile(
+     Result = HM->LookupFile(Filename, HS.getFileMgr());
+ 
+   } else {
+-    Result = HS.getFileMgr().getFile(Dest);
++    Result = HS.getFileMgr().getFile(Dest, OpenFile);
+   }
+ 
+   if (Result) {
+@@ -721,7 +723,7 @@ const FileEntry *HeaderSearch::LookupFile(
+     const FileEntry *FE = SearchDirs[i].LookupFile(
+         Filename, *this, IncludeLoc, SearchPath, RelativePath, RequestingModule,
+         SuggestedModule, InUserSpecifiedSystemFramework, HasBeenMapped,
+-        MappedName);
++        MappedName, OpenFile);
+     if (HasBeenMapped) {
+       CacheLookup.MappedName =
+           copyString(Filename, LookupFileCache.getAllocator());
+-- 
+2.7.4
+

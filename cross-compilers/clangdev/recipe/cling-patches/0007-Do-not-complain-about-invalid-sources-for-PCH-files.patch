@@ -1,0 +1,34 @@
+From 4f249ea014d24953b53d4f2f0b8c3cee93a5763d Mon Sep 17 00:00:00 2001
+From: Axel Naumann <Axel.Naumann@cern.ch>
+Date: Mon, 26 Aug 2013 14:32:50 +0200
+Subject: [PATCH 07/58] Do not complain about invalid sources for PCH files.
+
+---
+ lib/Serialization/ASTReader.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/Serialization/ASTReader.cpp b/lib/Serialization/ASTReader.cpp
+index 9d1554a..e0989e0 100644
+--- a/lib/Serialization/ASTReader.cpp
++++ b/lib/Serialization/ASTReader.cpp
+@@ -1258,7 +1258,7 @@ bool ASTReader::ReadSLocEntry(int ID) {
+     // We will detect whether a file changed and return 'Failure' for it, but
+     // we will also try to fail gracefully by setting up the SLocEntry.
+     unsigned InputID = Record[4];
+-    InputFile IF = getInputFile(*F, InputID);
++    InputFile IF = getInputFile(*F, InputID, /*Complain=*/false);
+     const FileEntry *File = IF.getFile();
+     bool OverriddenBuffer = IF.isOverridden();
+ 
+@@ -1941,7 +1941,7 @@ InputFile ASTReader::getInputFile(ModuleFile &F, unsigned ID, bool Complain) {
+   BitstreamCursor &Cursor = F.InputFilesCursor;
+   SavedStreamPosition SavedPosition(Cursor);
+   Cursor.JumpToBit(F.InputFileOffsets[ID-1]);
+-  
++
+   InputFileInfo FI = readInputFileInfo(F, ID);
+   off_t StoredSize = FI.StoredSize;
+   time_t StoredTime = FI.StoredTime;
+-- 
+2.7.4
+
