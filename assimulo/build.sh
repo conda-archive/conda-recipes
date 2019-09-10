@@ -12,4 +12,4 @@ fi
 ${PYTHON} setup.py install \
     --lapack-home=${PREFIX}/lib \
     --blas-home=${BLAS_LIB_PATH} \
-    --sundials-home=${PREFIX}/lib || exit 1;
+    --sundials-home=${PREFIX} || exit 1;

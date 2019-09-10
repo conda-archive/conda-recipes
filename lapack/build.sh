@@ -1,5 +1,5 @@
-mkdir build
-cd build
+mkdir build || exit 1;
+cd build || exit 1;
 
 # CMAKE_INSTALL_LIBDIR="lib" suppresses CentOS default of lib64 (conda expects lib)
 
