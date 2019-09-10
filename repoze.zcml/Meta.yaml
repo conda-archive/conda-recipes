@@ -1,0 +1,29 @@
+package:
+  name: repoze.zcml
+  version: 0.4
+
+source:
+  fn: repoze.zcml-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/r/repoze.zcml/repoze.zcml-0.4.tar.gz
+  md5: f9d612bac1533d03fa20e78a3c66c2ad
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.configuration
+    - zope.component
+
+  run:
+    - python
+    - zope.configuration
+    - zope.component
+
+test:
+  imports:
+    - repoze.zcml
+
+about:
+  home: http://www.repoze.org/
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: "Core directives for use in ZCML-based applications"

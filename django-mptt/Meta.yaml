@@ -1,0 +1,27 @@
+package:
+  name: django-mptt
+  version: 0.6.1
+
+source:
+  fn: django-mptt-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-mptt/django-mptt-0.6.1.tar.gz
+  md5: b7572188f6852a7326e3b3f873ab5027
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  imports:
+    - mptt
+
+about:
+  home: http://github.com/django-mptt/django-mptt
+  license: MIT License
+  summary: "Utilities for implementing Modified Preorder Tree Traversal with your Django Models and working with trees of Model instances."

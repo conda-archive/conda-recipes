@@ -1,0 +1,27 @@
+package:
+  name: envoy
+  version: 0.0.3
+
+source:
+  fn: envoy-0.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/e/envoy/envoy-0.0.3.tar.gz
+  md5: 548cc52576b6d73fa886439e3100d576
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build: 
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - envoy
+
+about:
+  home: https://github.com/kennethreitz/envoy
+  license: MIT
+  summary: "Simple API for running external processes."

@@ -1,0 +1,25 @@
+package:
+  name: werkzeug
+  version: 0.9.6
+
+source:
+  fn: Werkzeug-0.9.6.tar.gz
+  url: https://pypi.python.org/packages/source/W/Werkzeug/Werkzeug-0.9.6.tar.gz
+  md5: f7afcadc03b0f2267bdc156c34586043
+
+requirements:
+  build:
+    - python
+    - distribute
+
+  run:
+    - python
+
+test:
+  imports:
+    - werkzeug
+
+about:
+  home: http://werkzeug.pocoo.org/
+  license: BSD License
+  summary: "The Swiss Army knife of Python web development"

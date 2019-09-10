@@ -1,0 +1,27 @@
+package:
+  name: selector
+  version: 0.10.1
+
+source:
+  fn: selector-0.10.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/selector/selector-0.10.1.tar.gz
+  md5: f4739c6e24d58972c2f592644eeeca43
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - resolver
+
+  run:
+    - python
+    - resolver
+
+test:
+  imports:
+    - selector
+
+about:
+  home: http://github.com/lukearno/selector/
+  license: MIT
+  summary: "WSGI request delegation. (AKA routing.)"

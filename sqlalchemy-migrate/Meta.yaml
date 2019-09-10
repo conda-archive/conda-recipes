@@ -1,0 +1,27 @@
+package:
+  name: sqlalchemy-migrate
+  version: !!str 0.9.2
+
+source:
+  fn: sqlalchemy-migrate-0.9.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/sqlalchemy-migrate/sqlalchemy-migrate-0.9.2.tar.gz
+  md5: ef7058d719d0d441371b698439505b55
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pbr
+
+  run:
+    - python
+    - pbr
+
+test:
+  imports:
+    - migrate
+
+about:
+  home: http://www.openstack.org/
+  license: Apache Software License
+  summary: "Database schema migration for SQLAlchemy"

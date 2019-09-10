@@ -1,0 +1,33 @@
+package:
+  name: kombu
+  version: !!str 3.0.23
+
+source:
+  fn: kombu-3.0.23.tar.gz
+  url: https://pypi.python.org/packages/source/k/kombu/kombu-3.0.23.tar.gz
+  md5: d02b880bec8a5a975e19faf1f1d8c7cf
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - anyjson >=0.3.3
+    - amqp >=1.4.6,<2.0
+
+  run:
+    - python
+    - anyjson >=0.3.3
+    - amqp >=1.4.6,<2.0
+
+test:
+  imports:
+    - kombu
+    - kombu.async
+    - kombu.tests
+    - kombu.transport
+    - kombu.utils
+
+about:
+  home: http://kombu.readthedocs.org
+  license:  BSD License
+  summary: 'Messaging library for Python'

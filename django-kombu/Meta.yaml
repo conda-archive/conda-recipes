@@ -1,0 +1,26 @@
+package:
+  name: django-kombu
+  version: !!str 0.9.4
+
+source:
+  fn: django-kombu-0.9.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-kombu/django-kombu-0.9.4.tar.gz
+  md5: 8d0b27cf87fedf88e1fd735e13c46dd7
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - djkombu
+    - djkombu.management.commands
+
+about:
+  home: https://github.com/ask/django-kombu
+  license: BSD License
+  summary: "Kombu transport using the Django database as a message store."

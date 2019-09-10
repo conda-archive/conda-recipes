@@ -1,0 +1,30 @@
+package:
+  name: zope.filerepresentation
+  version: !!str 4.0.2
+
+source:
+  fn: zope.filerepresentation-4.0.2.zip
+  url: https://pypi.python.org/packages/source/z/zope.filerepresentation/zope.filerepresentation-4.0.2.zip
+  md5: 5e98e8508ba114a679adbe333f8e29fd
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.schema
+
+  run:
+    - python
+    - zope.schema
+
+test:
+  imports:
+    - zope.filerepresentation
+
+about:
+  home: http://pypi.python.org/pypi/zope.filerepresentation
+  license: Zope Public License
+  summary: "File-system Representation Interfaces"

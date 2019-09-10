@@ -1,0 +1,25 @@
+package:
+  name: versiontools
+  version: 1.9.1
+
+source:
+  fn: versiontools-1.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/v/versiontools/versiontools-1.9.1.tar.gz
+  md5: 602b7db8eea30dd29a1d451997adf251
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - versiontools
+
+about:
+  home: https://launchpad.net/versiontools
+  license: BSD
+  summary: "Smart replacement for plain tuple used in __version__"

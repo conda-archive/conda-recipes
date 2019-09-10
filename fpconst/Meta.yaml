@@ -1,0 +1,25 @@
+package:
+  name: fpconst
+  version: 0.7.2
+
+source:
+  fn: fpconst-0.7.2.tar.gz
+  url: https://pypi.python.org/packages/source/f/fpconst/fpconst-0.7.2.tar.gz
+  md5: 10ba9e04129af23108d24c22c3a698b1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - fpconst
+
+about:
+  home: http://research.warnes.net/projects/RStatServer/fpconst/index_html
+  license: Apache
+  summary: "Utilities for handling IEEE 754 floating point special values"

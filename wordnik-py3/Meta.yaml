@@ -1,0 +1,25 @@
+package:
+  name: wordnik-py3
+  version: !!str 2.1.2
+
+source:
+  fn: wordnik-py3-2.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/w/wordnik-py3/wordnik-py3-2.1.2.tar.gz
+  md5: 1a73187cc7b61a0e426fda94ade31925
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - wordnik
+
+about:
+  home: http://developer.wordnik.com
+  license: UNKNOWN
+  summary: "Wordnik API for Python3"

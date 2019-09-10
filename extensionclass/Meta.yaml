@@ -1,0 +1,28 @@
+package:
+  name: extensionclass
+  version: 4.1a1
+
+source:
+  fn: extensionclass-4.1a1.zip
+  url: https://pypi.python.org/packages/source/E/ExtensionClass/ExtensionClass-4.1a1.zip
+  md5: 4040722b425e2dbbeca34c4a82cd4d21
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test: 
+  imports:
+    - ExtensionClass
+
+about:
+  home: http://pypi.python.org/pypi/extensionclass
+  license: ZPL 2.1
+  summary: "Metaclass for subclassable extension types"

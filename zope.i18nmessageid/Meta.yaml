@@ -1,0 +1,26 @@
+package:
+  name: zope.i18nmessageid
+  version: !!str 4.0.3
+
+source:
+  fn: zope.i18nmessageid-4.0.3.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.i18nmessageid/zope.i18nmessageid-4.0.3.tar.gz
+  md5: fc20d6e548d1671da4ab1d9110667f13
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  imports:
+    - zope.i18nmessageid
+
+about:
+  home: http://pypi.python.org/pypi/zope.i18nmessageid
+  license: ZPL 2.1
+  summary: "Message Identifiers for internationalization"

@@ -1,0 +1,27 @@
+package:
+  name: django-recaptcha-works
+  version: 0.3.4
+
+source:
+  fn: django-recaptcha-works-0.3.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-recaptcha-works/django-recaptcha-works-0.3.4.tar.gz
+  md5: fbe17c468dd56c826a15376d50b32d10
+
+requirements:
+  build:
+   - python
+   - django
+   - setuptools
+
+  run:
+    - python
+    - django
+
+test:
+  imports:
+    - recaptcha_works
+
+about:
+  home: https://pypi.python.org/pypi/django-recaptcha-works
+  license: BSD License
+  summary: "django-recaptcha-works provides a Django form field that integrates the reCaptcha service."

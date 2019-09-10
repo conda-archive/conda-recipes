@@ -1,0 +1,31 @@
+package:
+  name: pyramid_debugtoolbar
+  version: !!str 2.2
+
+source:
+  fn: pyramid_debugtoolbar-2.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyramid_debugtoolbar/pyramid_debugtoolbar-2.2.tar.gz
+  md5: 9b20b80a33e319e90a96e58fefd1895b
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - repoze.lru
+    - pygments
+    - pyramid_mako >=0.3.1
+
+  run:
+    - python
+    - repoze.lru
+    - pygments
+    - pyramid_mako >=0.3.1
+
+test:
+  imports:
+    - pyramid_debugtoolbar
+
+about:
+  home: http://docs.pylonsproject.org/projects/pyramid-debugtoolbarBSD
+  license: BSD
+  summary: "A package which provides an interactive HTML debugger for Pyramid application development"

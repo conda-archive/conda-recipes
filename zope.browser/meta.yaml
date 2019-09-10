@@ -1,0 +1,30 @@
+package:
+  name: zope.browser
+  version: !!str 2.0.2
+
+source:
+  fn: zope.browser-2.0.2.zip
+  url: https://pypi.python.org/packages/source/z/zope.browser/zope.browser-2.0.2.zip
+  md5: 76e4fb32b0c94848c118c7a64f27778b
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+
+  run:
+    - python
+    - zope.interface
+    - setuptools
+test:
+  imports:
+    - zope.browser
+
+about:
+  home: http://pypi.python.org/pypi/zope.browser
+  license: Zope Public License
+  summary: "Shared Zope Toolkit browser components"

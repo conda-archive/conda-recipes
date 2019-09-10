@@ -1,0 +1,24 @@
+package:
+  name: markdown
+  version: 2.5.1
+
+source:
+  fn: markdown-2.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/M/Markdown/Markdown-2.5.1.tar.gz
+  md5: 9effb2679302efb1ce14265cb9e46f96
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - markdown
+
+about:
+  home: http://packages.python.org/Markdown/
+  license:  BSD License
+  summary: "Python implementation of Markdown"

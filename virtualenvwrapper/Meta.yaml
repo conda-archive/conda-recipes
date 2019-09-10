@@ -1,0 +1,27 @@
+package:
+  name: virtualenvwrapper
+  version: 4.3.1
+
+source:
+  fn: virtualenvwrapper-4.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/v/virtualenvwrapper/virtualenvwrapper-4.3.1.tar.gz
+  md5: 4327d04b0e65d4229352454ab8ce3f37
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pbr
+
+  run:
+    - python
+    - pbr
+
+test:
+ imports:
+    - virtualenvwrapper
+
+about:
+  home: http://virtualenvwrapper.readthedocs.org/
+  license: MIT
+  summary: "Enhancements to virtualenv"

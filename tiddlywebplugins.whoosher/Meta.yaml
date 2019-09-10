@@ -1,0 +1,29 @@
+package:
+  name: tiddlywebplugins.whoosher
+  version: 0.9.28
+
+source:
+  fn: tiddlywebplugins.whoosher-1.2.10.tar.gz
+  url: https://pypi.python.org/packages/source/t/tiddlywebplugins.whoosher/tiddlywebplugins.whoosher-0.9.28.tar.gz
+  md5: 7bf5905594de38aeafde10002561880c
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - whoosh
+    - tiddlywebplugins.utils
+
+  run:
+    - python
+    - whoosh
+    - tiddlywebplugins.utils
+
+test:
+  imports:
+    - tiddlywebplugins.whoosher
+
+about:
+  home: http://pypi.python.org/pypi/tiddlywebplugins.whoosher
+  license: unspecified
+  summary: "A TiddlyWeb plugin that provides an indexed search interface using Whoosh."

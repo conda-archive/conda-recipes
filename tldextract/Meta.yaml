@@ -1,0 +1,25 @@
+package:
+  name: tldextract
+  version: 1.4
+
+source:
+  fn: tldextract-1.4.tar.gz
+  url: https://pypi.python.org/packages/source/t/tldextract/tldextract-1.4.tar.gz
+  md5: 19ed26cb35fb057da822f3d4d2380805
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - tldextract
+
+about:
+  home: https://github.com/john-kurkowski/tldextract
+  license: BSD license
+  summary: "Accurately separate the TLD from the registered domain and subdomains of a URL, using the Public Suffix List."

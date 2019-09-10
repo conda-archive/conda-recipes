@@ -1,0 +1,26 @@
+package:
+  name: yolk
+  version: !!str 0.4.3
+
+source:
+  fn: yolk-0.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/y/yolk/yolk-0.4.3.tar.gz
+  md5: 10dfabca7a020058436aec9dbad70123
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+
+  imports:
+    - yolk
+
+about:
+  home:  https://github.com/cakebread/yolk
+  license: BSD
+  summary: "Command-line tool for querying PyPI and Python packages installed on your system."

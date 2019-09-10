@@ -1,0 +1,27 @@
+package:
+  name: collective.recipe.template
+  version: !!str 1.11
+
+source:
+  fn: collective.recipe.template-1.11.zip
+  url: https://pypi.python.org/packages/source/c/collective.recipe.template/collective.recipe.template-1.11.zip
+  md5: 3e3268233b407c88cc81825441628762
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.buildout
+
+  run:
+    - python
+    - zc.buildout
+
+test:
+  imports:
+    - collective.recipe.template
+
+about:
+  home: http://pypi.python.org/pypi/collective.recipe.template
+  license: BSD
+  summary: "Buildout recipe to generate a text file from a template"

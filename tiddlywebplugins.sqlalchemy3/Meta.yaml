@@ -1,0 +1,32 @@
+package:
+  name: tiddlywebplugins.sqlalchemy3
+  version: 3.1.1
+
+source:
+  fn: tiddlywebplugins.sqlalchemy3-3.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/tiddlywebplugins.sqlalchemy3/tiddlywebplugins.sqlalchemy3-3.1.1.tar.gz
+  md5: 33a10db019fca71289b17af311b3145c
+
+requirements:
+  build:
+    - python
+    - pyparsing <2.0.0
+    - setuptools
+    - tiddlyweb >=1.2.0
+    - sqlalchemy
+
+  run:
+    - python
+    - pyparsing <2.0.0
+    - tiddlyweb >=1.2.0
+    - sqlalchemy
+    - setuptools
+
+test:
+  imports:
+    - tiddlywebplugins.sqlalchemy3
+
+about:
+  home: http://pypi.python.org/pypi/tiddlywebplugins.sqlalchemy3
+  license: BSD
+  summary: "sqlalchemy store for tiddlyweb"

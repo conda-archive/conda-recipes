@@ -1,0 +1,32 @@
+package:
+  name: zope.configuration
+  version: !!str 4.3.0
+
+source:
+  fn: zope.configuration-4.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.configuration/zope.configuration-4.0.3.tar.gz
+  md5: d85ff342b524bfa819916632d5ef096a
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.schema
+    - zope.i18nmessageid
+
+  run:
+    - python
+    - zope.schema
+    - zope.i18nmessageid
+
+test:
+  imports:
+    - zope.configuration
+
+about:
+  home: http://pypi.python.org/pypi/zope.configuration
+  license: Zope Public License
+  summary: "Zope Configuration Markup Language (ZCML)"

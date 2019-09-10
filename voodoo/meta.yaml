@@ -1,0 +1,29 @@
+package:
+  name: voodoo
+  version: !!str 1.3.6
+
+source:
+  fn: voodoo-1.3.6.tar.gz
+  url: https://pypi.python.org/packages/source/V/Voodoo/Voodoo-1.3.6.tar.gz
+  md5: 0b2f33db521ee7dccee7945e8f73bbb7
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - colorama
+    - jinja2
+
+  run:
+    - python
+    - colorama
+    - jinja2
+
+test:
+  imports:
+    - voodoo
+
+about:
+  home: http://github.com/lucuma/voodoo
+  license: BSD License
+  summary: "Template system for project skeletons"

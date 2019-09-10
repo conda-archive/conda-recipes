@@ -1,0 +1,27 @@
+package:
+  name: django-templatetag-sugar
+  version: !!str 1.0
+
+source:
+  fn: django-templatetag-sugar-1.0.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-templatetag-sugar/django-templatetag-sugar-1.0.tar.gz
+  md5: 40da36b5a4bf98fdff867f2ccd5bb34e
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  imports:
+    - templatetag_sugar
+
+about:
+  home: http://github.com/alex/django-templatetag-sugar/
+  license: BSD
+  summary: "A library to make Django's template tags sweet."

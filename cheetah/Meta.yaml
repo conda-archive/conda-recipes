@@ -1,0 +1,24 @@
+package:
+  name: cheetah
+  version: !!str 2.4.4
+
+source:
+  fn: cheetah-2.4.4.tar.gz
+  url: https://pypi.python.org/packages/source/C/Cheetah/Cheetah-2.4.4.tar.gz
+  md5: 853917116e731afbc8c8a43c37e6ddba
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - Cheetah
+
+about:
+  home: http://www.cheetahtemplate.org/
+  license: MIT
+  summary: 'Cheetah is a template engine and code generation tool.'

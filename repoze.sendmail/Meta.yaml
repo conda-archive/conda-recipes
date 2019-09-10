@@ -1,0 +1,27 @@
+package:
+  name: repoze.sendmail
+  version: 4.2
+
+source:
+  fn: repoze.sendmail-4.2.tar.gz
+  url: https://pypi.python.org/packages/source/r/repoze.sendmail/repoze.sendmail-4.2.tar.gz
+  md5: d6e6d40e3284ea447936919adbc3002b
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - transaction
+
+  run:
+    - python
+    - transaction
+
+test:
+  imports:
+    - repoze.sendmail
+
+about:
+  home: http://www.repoze.org/
+  license: ZPL 2.1
+  summary: "Repoze Sendmail"

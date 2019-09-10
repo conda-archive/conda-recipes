@@ -1,0 +1,27 @@
+package:
+  name: pyrabbit
+  version: 1.1.0
+
+source:
+  fn: pyrabbit-1.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyrabbit/pyrabbit-1.1.0.tar.gz
+  md5: 625013ba47fe79d296b76a74200c3312
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - httplib2
+
+  run:
+    - python
+    - httplib2
+
+test:
+  imports:
+    - pyrabbit
+
+about:
+  home: http://www.github.com/bkjones/pyrabbit
+  license: MIT
+  summary: "A Pythonic interface to the RabbitMQ Management HTTP API"

@@ -1,0 +1,24 @@
+package:
+  name: resolver
+  version: 0.2.1
+
+source:
+  fn: resolver-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/r/resolver/resolver-0.2.1.tar.gz
+  md5: 3a74a03ac19ec05f1f33d4fe34dd1d3f
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - resolver
+
+about:
+  home: http://github.com/lukearno/resolver/
+  license: LGPL
+  summary: "Resolve specially formated statements to Python objects."

@@ -1,0 +1,26 @@
+package:
+  name: pika
+  version: !!str 0.9.14
+
+source:
+  fn: pika-0.9.14.tar.gz
+  url: https://pypi.python.org/packages/source/p/pika/pika-0.9.14.tar.gz
+  md5: b99aad4b88961d3c7e4876b8327fc97c
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - pika
+    - pika.adapters
+
+about:
+  home: https://pika.readthedocs.org
+  license:  MPL v2.0
+  summary: 'Pika Python AMQP Client Library'

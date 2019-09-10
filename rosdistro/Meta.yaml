@@ -1,0 +1,31 @@
+package:
+  name: rosdistro
+  version: 0.3.5
+
+source:
+  fn: rosditro-0.3.5.tar.gz
+  url: https://pypi.python.org/packages/source/r/rosdistro/rosdistro-0.3.5.tar.gz
+  md5: 23ab4292ee777a56962b6ae9ebff306a
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyyaml
+    - rospkg
+    - catkin_pkg
+
+  run:
+    - python
+    - pyyaml
+    - rospkg
+    - catkin_pkg
+
+test:
+  imports:
+    - rosdistro
+
+about:
+  home: http://wiki.ros.org/rosdistro
+  license: MIT
+  summary: "A tool to work with rosdistro files"

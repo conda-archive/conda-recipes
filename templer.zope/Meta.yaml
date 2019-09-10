@@ -1,0 +1,27 @@
+package:
+  name: templer.zope
+  version: !!str 1.0b2
+
+source:
+  fn: templer.zope-1.0b2.zip
+  url: https://pypi.python.org/packages/source/t/templer.zope/templer.zope-1.0b2.zip
+  md5: c6f29be8b58d33eba48387d47670784c
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - templer.buildout
+
+  run:
+    - python
+    - templer.buildout
+
+test:
+  imports:
+    - templer.zope
+
+about:
+  home: http://svn.plone.org/svn/collective/
+  license: MIT
+  summary: "Templer system extensions for zope"

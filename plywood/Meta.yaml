@@ -1,0 +1,30 @@
+package:
+  name: plywood
+  version: !!str 1.10.0
+
+source:
+  fn: plywood-1.10.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/plywood/plywood-1.10.0.tar.gz
+  md5: f756f0d3530b131cfbbcabc2c9f2e55d
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - chomsky
+
+  run:
+    - python
+    - chomsky
+
+test:
+  imports:
+    - plywood
+
+about:
+  home: https://github.com/colinta/plywood
+  license: BSD
+  summary: "A template language grammar inspired by the Python code aesthetic"

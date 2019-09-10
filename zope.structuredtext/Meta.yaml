@@ -1,0 +1,31 @@
+package:
+  name: zope.structuredtext
+  version: 4.0.0
+
+source:
+  fn: zope.structuredtext-4.0.0.zip
+  url: https://pypi.python.org/packages/source/z/zope.structuredtext/zope.structuredtext-4.0.0.zip
+  md5: 15705e1d101598ce42805c1ea3b8265b
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+
+  run:
+    - python
+    - six
+    - setuptools
+
+test:
+  imports:
+    - zope.structuredtext
+
+about:
+  home: http://pypi.python.org/pypi/zope.structuredtext
+  license: ZPL 2.1
+  summary: "StructuredText parser"

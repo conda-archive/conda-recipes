@@ -1,0 +1,27 @@
+package:
+  name: waitress
+  version: 0.8.9
+
+source:
+  fn: waitress-0.8.9.tar.gz
+  url: https://pypi.python.org/packages/source/w/waitress/waitress-0.8.9.tar.gz
+  md5: da3f2e62b3676be5dd630703a68e2a04
+
+
+requirements:
+  build:
+    - python
+    - distribute
+
+  run:
+    - python
+    - distribute
+
+test:
+  imports:
+    - waitress
+
+about:
+  home: https://github.com/Pylons/waitress
+  license: Zope Public License
+  summary: "Waitress WSGI server"

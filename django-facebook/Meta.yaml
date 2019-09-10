@@ -1,0 +1,27 @@
+package:
+  name: django-facebook
+  version: 6.0.1
+
+source:
+  fn: django-facebook.6.0.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-facebook/django-facebook-6.0.1.tar.gz
+  md5: dd4f6b103c150aa32f3490cd9bd0c18c
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - unidecode
+
+  run:
+    - python
+    - unidecode
+
+test:
+  imports:
+    - django_facebook.management.commands
+
+about:
+  home: http://github.com/tschellenbach/Django-facebook
+  license: GNU General Public License
+  summary: "Facebook open graph API client in python. Enables django applications to register users using facebook. Fixes issues with the official but unsupported Facebook python-sdk. Enables mobile facebook authentication. Canvas page authentication for facebook applications. FQL access via the server side api."

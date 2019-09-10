@@ -1,0 +1,25 @@
+package:
+  name: sanction
+  version: 0.4.1
+
+source:
+  fn: sanction-0.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/sanction/sanction-0.4.1.tar.gz
+  md5: 68362d95eaf620b555a81dbead995724
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - sanction
+
+about:
+  home: https://github.com/demianbrecht/sanction
+  license: MIT
+  summary: "A simple, lightweight OAuth2 client"

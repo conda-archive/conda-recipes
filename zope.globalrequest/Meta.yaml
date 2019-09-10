@@ -1,0 +1,30 @@
+package:
+  name: zope.globalrequest
+  version: 1.0
+
+source:
+  fn: zope.globalrequest-1.0.zip
+  url: https://pypi.python.org/packages/source/z/zope.globalrequest/zope.globalrequest-1.0.zip
+  md5: ae6ff02db5ba89c1fb96ed7a73ca1cfa
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build: 
+    - python
+    - setuptools
+
+  run:
+    - python
+    - zope.interface
+    - setuptools
+
+test:
+  imports:
+    - zope.globalrequest
+
+about:
+  home: http://pypi.python.org/pypi/zope.globalrequest
+  license: ZPL
+  summary: "Global way of retrieving the currently active request."

@@ -1,0 +1,29 @@
+package:
+  name: django-debug-toolbar
+  version: 1.2.1
+
+source:
+  fn: Django-debug-toolbar-1.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-debug-toolbar/django-debug-toolbar-1.2.1.tar.gz
+  md5: 16d016c2e041c106ceae50d17d2234b6
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - sqlparse
+    - django
+
+  run:
+    - python
+    - sqlparse
+    - django
+test:
+  imports:
+    - debug_toolbar
+    - debug_toolbar.management.commands
+
+about:
+  home: https://github.com/django-debug-toolbar/django-debug-toolbar
+  license: BSD License
+  summary: "A configurable set of panels that display various debug information about the current request/response."

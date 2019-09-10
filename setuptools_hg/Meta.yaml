@@ -1,0 +1,25 @@
+package:
+  name: setuptools_hg
+  version: 0.4
+
+source:
+  fn: setuptools_hg-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/s/setuptools_hg/setuptools_hg-0.4.tar.gz
+  md5: 1435518e523f2d2296294c9abc37a7c7
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - setuptools_hg
+
+about:
+  home: http://bitbucket.org/jezdez/setuptools_hg/
+  license: BSD License
+  summary: "Setuptools/distribute plugin for finding files under Mercurial version control."

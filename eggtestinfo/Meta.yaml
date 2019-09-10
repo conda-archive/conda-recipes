@@ -1,0 +1,26 @@
+package:
+  name: eggtestinfo
+  version: 0.3
+
+source:
+  fn: eggtestinfo-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/e/eggtestinfo/eggtestinfo-0.3.tar.gz
+  md5: 6f0507aee05f00c640c0d64b5073f840
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  imports:
+    - eggtestinfo
+
+about:
+  home: http://pypi.python.org/pypi/eggtestinfo
+  license: ZPL
+  summary: "Add test information to .egg-info"

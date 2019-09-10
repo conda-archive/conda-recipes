@@ -1,0 +1,25 @@
+package:
+  name: python-cloudfiles
+  version: !!str 1.7.11
+
+source:
+  fn: python-cloudfiles-1.7.11.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-cloudfiles/python-cloudfiles-1.7.11.tar.gz
+  md5: 34aa2678078a884dc6752c60d4c6bb90
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - cloudfiles
+
+about:
+  home: https://github.com/rackspace/python-cloudfiles
+  license: MIT
+  summary: "CloudFiles client library for Python"

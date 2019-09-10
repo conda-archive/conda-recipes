@@ -1,0 +1,27 @@
+package:
+  name: pycassa
+  version: 1.11.0
+
+source:
+  fn: pycassa-1.11.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/pycassa/pycassa-1.11.0.tar.gz
+  md5: 778b5ea6910104c701a3169f6636f358
+
+requirements:
+  build:
+    - python
+    - thrift
+    - setuptools
+
+  run:
+    - python
+    - thrift
+
+test:
+  imports:
+    - pycassa
+
+about:
+  home: http://github.com/pycassa/pycassa
+  license: MIT License
+  summary: "Python client library for Apache Cassandra"

@@ -1,0 +1,29 @@
+package:
+  name: restrictedpython
+  version: 3.6.0
+
+source:
+  fn: restrictedpython-3.6.0.zip
+  url: https://pypi.python.org/packages/source/R/RestrictedPython/RestrictedPython-3.6.0.zip
+  md5: aa75a7dcc7fbc966357837cc66cacec6
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test: 
+  imports:
+    - RestrictedPython
+    - RestrictedPython.Guards
+
+about:
+  home: http://pypi.python.org/pypi/restrictedpython
+  license: ZPL 2.1
+  summary: "RestrictedPython provides a restricted execution environment for Python, e.g. for running untrusted code."

@@ -1,0 +1,29 @@
+package:
+  name: haigha
+  version: !!str 0.7.0
+
+source:
+  fn: haigha-0.7.0.tar.gz
+  url: https://pypi.python.org/packages/source/h/haigha/haigha-0.7.0.tar.gz
+  md5: b4042c0f0566940ab454b6b942b37009
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - haigha.classes
+    - haigha.frames
+    - haigha
+    - haigha.transports
+    - haigha.connections
+
+about:
+  home: https://github.com/agoragames/haigha
+  license: BSD License
+  summary: "Synchronous and asynchronous AMQP client library"

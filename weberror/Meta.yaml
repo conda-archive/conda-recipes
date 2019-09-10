@@ -1,0 +1,33 @@
+package:
+  name: weberror
+  version: !!str 0.10.3
+
+source:
+  fn: weberror-0.10.3.tar.gz
+  url: https://pypi.python.org/packages/source/W/WebError/WebError-0.10.3.tar.gz
+  md5: 84b9990b0baae6fd440b1e60cdd06f9a
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - paste
+    - pygments
+    - tempita
+    - webob
+
+  run:
+    - python
+    - paste
+    - pygments
+    - tempita
+    - webob
+
+test:
+  imports:
+    - weberror
+
+about:
+  home:  https://pypi.python.org/pypi/WebError
+  license: MIT
+  summary: "Web Error handling and exception catching"

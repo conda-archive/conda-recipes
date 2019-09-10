@@ -1,0 +1,28 @@
+package:
+  name: pathtools
+  version: !!str 0.1.2
+
+source:
+  fn: pathtools-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/pathtools/pathtools-0.1.2.tar.gz
+  md5: 9a1af5c605768ea5804b03b734ff0f82
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - pathtools
+
+about:
+  home: http://github.com/gorakhargosh/pathtools
+  license: MIT License
+  summary: "File system general utilities"

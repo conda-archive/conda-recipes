@@ -1,0 +1,25 @@
+package:
+  name: iniparse
+  version: 0.4
+
+source:
+  fn: iniparse-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/i/iniparse/iniparse-0.4.tar.gz
+  md5: 5e573e9e9733d97623881ce9bbe5eca6
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - iniparse
+
+about:
+  home: http://code.google.com/p/iniparse/
+  license: MIT
+  summary: "Accessing and Modifying INI files"

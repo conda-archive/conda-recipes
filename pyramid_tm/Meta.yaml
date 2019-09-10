@@ -1,0 +1,25 @@
+package:
+  name: pyramid_tm
+  version: !!str 0.7
+
+source:
+  fn: pyramid_tm-0.7.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyramid_tm/pyramid_tm-0.7.tar.gz
+  md5: 6dc917d262c69366630c542bd21859a3
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - transaction
+    - pyramid
+
+  run:
+    - python
+    - transaction
+    - pyramid
+
+about:
+  home: http://docs.pylonsproject.org/
+  license: MIT LiceBSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: "A package which allows Pyramid requests to join the active transaction"

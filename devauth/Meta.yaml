@@ -1,0 +1,32 @@
+package:
+  name: devauth
+  version: !!str 0.1.2
+
+source:
+  fn: devauth-0.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/D/DevAuth/DevAuth-0.1.2.tar.gz
+  md5: d9382f8c0d161042c0d7b9cad5b7e22a
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tempita
+    - paste
+    - webob
+
+  run:
+    - python
+    - tempita
+    - paste
+    - webob
+
+test:
+
+  imports:
+    - devauth
+
+about:
+  home: http://devauth.openplans.org/
+  license: MIT License
+  summary: "Authentication for developer access to applications"

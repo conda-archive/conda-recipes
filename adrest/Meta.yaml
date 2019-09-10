@@ -1,0 +1,30 @@
+package:
+  name: adrest
+  version: 3.2.3
+
+source:
+  fn: adrest-3.2.3.tar.gz
+  url: https://pypi.python.org/packages/source/a/adrest/adrest-3.2.3.tar.gz
+  md5: 19ed6191a274ea16db78c63fbae19ab3
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-mimeparse
+    - django
+
+  run:
+    - python
+    - python-mimeparse
+    - django
+
+test:
+  # Python imports
+  imports:
+    - adrest
+
+about:
+  home: http://github.com/klen/adrest
+  license: GNU LGPL
+  summary: 'Another Django REST. Simple application for quick build REST API.'

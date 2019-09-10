@@ -1,0 +1,32 @@
+package:
+  name: minitage
+  version: !!str 2.0.67
+
+source:
+  fn: minitage-2.0.67.zip
+  url: https://pypi.python.org/packages/source/m/minitage/minitage-2.0.67.zip
+  md5: 523d0f2d7129c160e71656d6aee4e450
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - ordereddict
+    - minitage.paste
+
+  run:
+    - python
+    - ordereddict
+    - minitage.paste
+
+test:
+  imports:
+    - minitage
+
+about:
+  home: http://cheeseshop.python.org/pypi/minitage
+  license: BSD License
+  summary: "A meta package-manager to deploy projects on UNIX Systemes sponsored by Makina Corpus"

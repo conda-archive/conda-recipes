@@ -1,0 +1,28 @@
+package:
+  name: eventlet
+  version: 0.15.2
+
+source:
+  fn: eventlet-0.15.2.tar.gz
+  url: https://pypi.python.org/packages/source/e/eventlet/eventlet-0.15.2.tar.gz
+  md5: c5b0217cc1da6fcf4bcf6957df57f3cd
+
+requirements:
+  build:
+    - python
+    - distribute
+    - greenlet
+
+  run:
+    - python
+    - distribute
+    - greenlet
+
+test:
+  imports:
+    - eventlet
+
+about:
+  home: http://eventlet.net
+  license: MIT License
+  summary: "Highly concurrent networking library"

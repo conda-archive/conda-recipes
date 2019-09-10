@@ -1,0 +1,28 @@
+package:
+  name: django_compressor
+  version: 1.4
+
+source:
+  fn: django-compressor-1.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/django_compressor/django_compressor-1.4.tar.gz
+  md5: dc050f1a85f83f927f94bcb09e8bdd0f
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-appconf
+
+  run:
+    - python
+    - django-appconf
+    - six
+
+test:
+  imports:
+    - compressor
+
+about:
+  home:  http://django-compressor.readthedocs.org/en/latest/
+  license: MIT License
+  summary: "Compresses linked and inline JavaScript or CSS into single cached files."

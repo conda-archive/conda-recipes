@@ -1,0 +1,30 @@
+package:
+  name: repoze.who
+  version: 2.2
+
+source:
+  fn: repoze.who-2.2.tar.gz
+  url: https://pypi.python.org/packages/source/r/repoze.who/repoze.who-2.2.tar.gz
+  md5: c677ac4d4a32b6f6880a8f9cf20adffb
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+    - webob
+
+  run:
+    - python
+    - zope.interface
+    - webob
+    - setuptools
+
+test:
+  imports:
+    - repoze.who
+
+about:
+  home: http://www.repoze.org
+  license: BSD
+  summary: "repoze.who is an identification and authentication framework for WSGI."

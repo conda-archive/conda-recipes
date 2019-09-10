@@ -1,0 +1,26 @@
+package:
+  name: zope.datetime
+  version: 4.0.0
+
+source:
+  fn: zope.datetime-4.0.0.zip
+  url: https://pypi.python.org/packages/source/z/zope.datetime/zope.datetime-4.0.0.zip
+  md5: 11186b74926a08c7fe928c0f7631e73a
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  imports:
+    - zope.datetime
+
+about:
+  home: http://pypi.python.org/pypi/zope.datetime
+  license: ZPL 2.1
+  summary: "Commonly used date and time related utility functions."

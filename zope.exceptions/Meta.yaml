@@ -1,0 +1,31 @@
+package:
+  name: zope.exceptions
+  version: !!str 4.0.7
+
+source:
+  fn: zope.exceptions-4.0.7.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.exceptions/zope.exceptions-4.0.7.tar.gz
+  md5: 93daa7463373d755441d2b034709acac
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.interface
+
+  run:
+    - python
+    - setuptools
+    - zope.interface
+
+test:
+  imports:
+    - zope.exceptions
+
+about:
+  home: http://pypi.python.org/pypi/zope.exceptions
+  license: ZPL
+  summary: "Zope Exceptions"

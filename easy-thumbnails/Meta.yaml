@@ -1,0 +1,29 @@
+package:
+  name: easy-thumbnails
+  version: "2.1"
+
+source:
+  fn: easy-thumbnails-2.1.tar.gz
+  url: https://pypi.python.org/packages/source/e/easy-thumbnails/easy-thumbnails-2.1.tar.gz
+  md5: 6bbcb46575d03c42c88f0949e310143e
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pillow
+    - django
+
+  run:
+    - python
+    - pillow
+    - django
+
+test:
+  imports:
+    - easy_thumbnails
+
+about:
+  home: http://github.com/SmileyChris/easy-thumbnails
+  license: BSD
+  summary: "Easy thumbnails for Django"

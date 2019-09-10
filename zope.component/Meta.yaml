@@ -1,0 +1,32 @@
+package:
+  name: zope.component
+  version: 4.2.1
+
+source:
+  fn: zope.component-4.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/z/zope.component/zope.component-4.2.1.tar.gz
+  md5: cf55d496428d976f9329a4a2330a8b54
+
+build:
+  preserve_egg_dir: yes
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.event
+    - zope.interface
+
+  run:
+    - python
+    - zope.event
+    - zope.interface
+
+test:
+  imports:
+    - zope.component
+
+about:
+  home: http://pypi.python.org/pypi/zope.component
+  license: ZPL 2.1
+  summary: "Zope Component Architecture"

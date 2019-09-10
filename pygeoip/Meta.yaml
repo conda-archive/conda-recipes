@@ -1,0 +1,24 @@
+package:
+  name: pygeoip
+  version: 0.3.1
+
+source:
+  fn: pygeoip-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pygeoip/pygeoip-0.3.1.tar.gz
+  md5: f31d44b7dd955f756edda64763c8f069
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - pygeoip
+
+about:
+  home: https://github.com/appliedsec/pygeoip
+  license: LGPLv3+
+  summary: "Pure Python GeoIP API"

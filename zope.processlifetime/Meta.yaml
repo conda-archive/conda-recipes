@@ -1,0 +1,30 @@
+package:
+    name: zope.processlifetime
+    version: 2.0.0
+source:
+    fn: zope.processlifetime-2.0.0.zip
+    url: https://pypi.python.org/packages/source/z/zope.processlifetime/zope.processlifetime-2.0.0.zip
+    md5: 8d4af3e757673d04283791e07b90ed4a
+
+build:
+    preserve_egg_dir: True
+
+requirements:
+    build:
+        - python
+        - setuptools
+        - zope.interface
+
+    run:
+        - python
+        - zope.interface
+        - setuptools
+
+test:
+    imports:
+        - zope.processlifetime
+
+about:
+    home: http://pypi.python.org/pypi/zope.processlifetime
+    license: ZPL 2.1
+    summary: "Zope process lifetime events"

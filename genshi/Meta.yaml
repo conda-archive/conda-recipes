@@ -1,0 +1,23 @@
+package:
+  name: genshi
+  version: 0.7
+source:
+  fn: genshi-0.7.tar.gz
+  url: https://pypi.python.org/packages/source/G/Genshi/Genshi-0.7.tar.gz
+  md5: 54e64dd69da3ec961f86e686e0848a82
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - genshi
+
+about:
+  home: http://genshi.edgewall.org/
+  license: BSD
+  summary: "A toolkit for generation of output for the web"

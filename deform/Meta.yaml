@@ -1,0 +1,34 @@
+package:
+  name: deform
+  version: 2.0a2
+
+source:
+  fn: deform-2.0a2.tar.gz
+  url: https://pypi.python.org/packages/source/d/deform/deform-2.0a2.tar.gz
+  md5: 7a90d41f7fbc18002ce74f39bd90a5e4
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.deprecation
+    - translationstring
+    - peppercorn
+    - colander
+    - chameleon
+
+  run:
+    - python
+    - zope.deprecation
+    - colander
+    - peppercorn
+    - chameleon
+
+test:
+  imports:
+    - deform
+
+about:
+  home: http://docs.pylonsproject.org/projects/deform/en/latest/
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: "Another form generation library"

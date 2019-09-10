@@ -1,0 +1,28 @@
+package:
+  name: unittest-xml-reporting
+  version: !!str 1.9.0
+
+source:
+  fn: unittest-xml-reporting-1.9.0.tar.gz
+  url: https://pypi.python.org/packages/source/u/unittest-xml-reporting/unittest-xml-reporting-1.9.0.tar.gz
+  md5: cac08bf50d93920701869673ab3d816b
+
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+
+  run:
+    - python
+    - six
+
+test:
+  imports:
+    - xmlrunner
+
+about:
+  home: http://github.com/xmlrunner/unittest-xml-reporting/tree/master/
+  license: BSD License
+  summary: "unittest-based test runner with Ant/JUnit like XML reporting."

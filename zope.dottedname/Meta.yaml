@@ -1,0 +1,27 @@
+package:
+  name: zope.dottedname
+  version: 4.0.1
+
+source:
+  fn: zope.dottedname-4.0.1.zip
+  url: https://pypi.python.org/packages/source/z/zope.dottedname/zope.dottedname-4.0.1.zip
+  md5: 4855fe5e104dfa48f9f117ce6686c780
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - setuptools
+
+test:
+  imports:
+    - zope.dottedname
+    - zope.dottedname.resolve
+
+about:
+  home: http://pypi.python.org/pypi/zope.dottedname
+  license: Zope Public License
+  summary: "Resolver for Python dotted names."

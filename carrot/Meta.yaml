@@ -1,0 +1,30 @@
+package:
+  name: carrot
+  version: 0.10.7
+
+source:
+  fn: carrot-0.10.7.tar.gz
+  url: https://pypi.python.org/packages/source/c/carrot/carrot-0.10.7.tar.gz
+  md5: 530a0614de3a669314c3acd4995c54d5
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - amqplib
+    - anyjson
+
+  run:
+    - python
+    - amqplib
+    - anyjson
+
+test:
+  # Python imports
+  imports:
+  - carrot
+
+about:
+  home: http://github.com/ask/carrot/
+  license: BSD License
+  summary: 'AMQP Messaging Framework for Python'

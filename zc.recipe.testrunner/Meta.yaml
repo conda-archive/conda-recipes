@@ -1,0 +1,32 @@
+package:
+  name: zc.recipe.testrunner
+  version: 2.0.0
+
+source:
+  fn: zc.recipe.testrunner-2.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/z/zc.recipe.testrunner/zc.recipe.testrunner-2.0.0.tar.gz
+  md5: 13aba3a677ae42c0dcc420e63e65fcc1
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.recipe.egg
+    - zope.testrunner
+
+  run:
+    - python
+    - zc.recipe.egg
+    - zope.testrunner
+
+test: 
+  imports:
+    - zc.recipe.testrunner
+
+about:
+  home: http://svn.zope.org/zc.buildout
+  license: Zope Public License
+  summary: "ZC Buildout recipe for creating test runners"

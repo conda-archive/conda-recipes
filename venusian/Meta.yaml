@@ -1,0 +1,26 @@
+package:
+  name: venusian
+  version: 1.0a8
+
+source:
+  fn: venusian-1.0a8.tar.gz
+  url: https://pypi.python.org/packages/source/v/venusian/venusian-1.0a8.tar.gz
+  md5: a1a72166fd7cccf0f30e3305e09ce5cf
+
+requirements:
+  build:
+    - python
+    - distribute
+
+  run:
+    - python
+    - distribute
+
+test:
+  imports:
+    - venusian
+
+about:
+  home: http://pylonsproject.org
+  license: BSD-derived
+  summary: "A library for deferring decorator actions"

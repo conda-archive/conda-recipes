@@ -1,0 +1,41 @@
+package:
+  name: deliverance
+  version: !!str 0.6.1
+
+source:
+  fn: deliverance-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/D/Deliverance/Deliverance-0.6.1.tar.gz
+  md5: 5816bca79e957af4c6a791219c36fba8
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - simplejson
+    - chardet
+    - wsgifilter
+    - pastescript
+    - devauth
+    - weberror
+    - wsgiproxy
+    - lxml
+
+  run:
+    - python
+    - simplejson
+    - chardet
+    - wsgifilter
+    - pastescript
+    - devauth
+    - weberror
+    - wsgiproxy
+    - lxml
+
+test:
+   imports: 
+     - deliverance
+
+about:
+  home: https://github.com/deliverance/Deliverance/
+  license: MIT
+  summary: "Deliverance transforms HTML to theme pages"

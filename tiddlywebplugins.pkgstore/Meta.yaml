@@ -1,0 +1,28 @@
+package:
+  name: tiddlywebplugins.pkgstore
+  version: 0.3
+
+source:
+  fn: tiddlywebplugins.pkgstore-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/t/tiddlywebplugins.pkgstore/tiddlywebplugins.pkgstore-0.3.tar.gz
+  md5: c52ba1d990aebbb972058d3b5c1b54c0
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - tiddlyweb
+
+  run:
+    - python
+    - tiddlyweb
+    - setuptools
+
+test:
+  imports:
+    - tiddlywebplugins.pkgstore
+
+about:
+  home: http://pypi.python.org/pypi/tiddlywebplugins.pkgstore
+  license: unspecified
+  summary: "Store TiddlyWeb entities in Python package resources"

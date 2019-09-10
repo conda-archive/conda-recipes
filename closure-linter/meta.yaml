@@ -1,0 +1,27 @@
+package:
+  name: closure-linter
+  version: !!str 2.3.13
+
+source:
+  fn: closure-linter-2.3.13.tar.gz
+  url: https://pypi.python.org/packages/source/c/closure-linter/closure-linter-2.3.13.tar.gz
+  md5: f57b42e5d7d7bfa10357567b93c1fcd8
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-gflags
+
+  run:
+    - python
+    - python-gflags
+
+test:
+  imports:
+    - closure_linter
+
+about:
+  home: http://code.google.com/p/closure-linter
+  license: GPL
+  summary: "Closure Linter"

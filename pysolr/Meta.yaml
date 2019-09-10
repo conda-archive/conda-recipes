@@ -1,0 +1,26 @@
+package:
+  name: pysolr
+  version: 3.2.0
+
+source:
+  fn: transaction-3.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/pysolr/pysolr-3.2.0.tar.gz
+  md5: abed75a1a61edc42714b37f13b231453
+
+requirements:
+  build:
+    - python
+    - requests
+
+  run:
+    - python
+    - requests
+
+test:
+  imports:
+    - pysolr 
+
+about:
+  home: http://github.com/toastdriven/pysolr/
+  license: BSD
+  summary: "Lightweight python wrapper for Apache Solr."

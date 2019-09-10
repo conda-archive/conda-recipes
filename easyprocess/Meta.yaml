@@ -1,0 +1,25 @@
+package:
+  name: easyprocess
+  version: !!str 0.1.6
+
+source:
+  fn: easyprocess-0.1.6.tar.gz
+  url: https://pypi.python.org/packages/source/E/EasyProcess/EasyProcess-0.1.6.tar.gz
+  md5: 8719886c7962bfea97a7d82fccd657a9
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - easyprocess
+
+about:
+  home: https://github.com/ponty/easyprocess
+  license: BSD
+  summary: "Easy to use python subprocess interface."

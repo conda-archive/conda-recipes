@@ -1,0 +1,30 @@
+package:
+  name: django-test-utils
+  version: 0.3
+
+source:
+  fn: django-test-utils-0.3.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-test-utils/django-test-utils-0.3.tar.gz
+  md5: 3eb304a9964fd510cc2f6f444d239142
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build: 
+    - python
+    - setuptools
+    - beautifulsoup
+
+  run:
+    - python
+    - beautifulsoup
+
+test:
+  imports:
+    - test_utils
+
+about:
+  home: http://github.com/ericholscher/django-test-utils/tree/master
+  license: Unspecified
+  summary: "A package to help testing in Django"

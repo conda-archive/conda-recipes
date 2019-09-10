@@ -1,0 +1,27 @@
+package:
+  name: rsa
+  version: 3.1.4
+
+source:
+  fn: rsa-3.1.4.tar.gz
+  url: https://pypi.python.org/packages/source/r/rsa/rsa-3.1.4.tar.gz
+  md5: b6b1c80e1931d4eba8538fd5d4de1355
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pyasn1
+
+  run:
+    - python
+    - pyasn1
+
+test:
+  imports:
+    - rsa
+
+about:
+  home: http://stuvel.eu/rsa
+  license: Apache Software License
+  summary: "Pure-Python RSA implementation"

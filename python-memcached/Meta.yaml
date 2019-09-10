@@ -1,0 +1,25 @@
+package:
+  name: python-memcached
+  version: 1.53
+
+source:
+  fn: python-memcached-1.53.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-memcached/python-memcached-1.53.tar.gz
+  md5: 89570d26e7e7b15caa668a6b2678bd3c
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - memcache
+
+about:
+  home: http://www.tummy.com/Community/software/python-memcached/
+  license: Python Software Foundation License
+  summary: "Pure python memcached client"

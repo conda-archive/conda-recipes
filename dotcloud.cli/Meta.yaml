@@ -1,0 +1,25 @@
+package:
+  name: dotcloud.cli
+  version: 0.4.8
+
+source:
+  fn: dotcloud.cli-0.4.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/dotcloud.cli/dotcloud.cli-0.4.8.tar.gz
+  md5: a9698b2b910eb037c0b72271311dc0cb
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - dotcloud.cli
+
+about:
+  home: http://www.dotcloud.com/
+  license: Unspecified
+  summary: "dotCloud command-line interface client"

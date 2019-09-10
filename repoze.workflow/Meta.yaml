@@ -1,0 +1,34 @@
+package:
+  name: repoze.workflow
+  version: 0.6.1
+
+source:
+  fn: repoze.workflow-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/source/r/repoze.workflow/repoze.workflow-0.6.1.tar.gz
+  md5: 56f072938020dcc80e691452f173d5e5
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.configuration
+    - zope.component
+    - repoze.zcml
+
+  run:
+    - python
+    - zope.configuration
+    - zope.component
+    - repoze.zcml
+
+test:
+  imports:
+    - repoze.workflow
+
+about:
+  home: http://www.repoze.org/
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: "Content workflow for repoze.bfg"

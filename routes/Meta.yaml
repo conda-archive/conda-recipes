@@ -1,0 +1,27 @@
+package:
+  name: routes
+  version: 2.0
+
+source:
+  fn: routes-2.0.tar.gz
+  url: https://pypi.python.org/packages/source/R/Routes/Routes-2.0.tar.gz
+  md5: b97b1b8016d663d1000a0e0b50656c54
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - repoze.lru
+
+  run:
+    - python
+    - repoze.lru
+
+test:
+  imports:
+    - routes
+
+about:
+  home: http://routes.groovie.org/
+  license: BSD License
+  summary: "Routing Recognition and Generation Tools"

@@ -1,0 +1,30 @@
+package:
+  name: django-sekizai
+  version: !!str 0.7
+
+source:
+  fn: django-sekizai-0.7.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-sekizai/django-sekizai-0.7.tar.gz
+  md5: e4e2927353317f31e8602ee13edee514
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django-classy-tags
+
+  run:
+    - python
+    - django-classy-tags
+
+test:
+  imports:
+    - sekizai
+
+about:
+  home: http://github.com/ojii/django-sekizai
+  license: BSD License
+  summary: "Django Sekizai"

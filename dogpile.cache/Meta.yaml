@@ -1,0 +1,31 @@
+package:
+  name: dogpile.cache
+  version: !!str 0.5.4
+
+source:
+  fn: dogpile.cache-0.5.4.tar.gz
+  url: https://pypi.python.org/packages/source/d/dogpile.cache/dogpile.cache-0.5.4.tar.gz
+  md5: 513b77ba1bd0c31bb15dd9dd0d8471af
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - dogpile.core
+
+  run:
+    - python
+    - dogpile.core
+
+test:
+  imports:
+    - dogpile.cache
+
+about:
+  home: http://bitbucket.org/zzzeek/dogpile.cache
+  license: BSD
+  summary: "A caching front-end based on the Dogpile lock."
+

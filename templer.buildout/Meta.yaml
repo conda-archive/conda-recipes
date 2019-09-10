@@ -1,0 +1,27 @@
+package:
+  name: templer.buildout
+  version: !!str 1.0b1
+
+source:
+  fn: templer.buildout-1.0b1.zip
+  url: https://pypi.python.org/packages/source/t/templer.buildout/templer.buildout-1.0b1.zip
+  md5: 5fd503ef064f0b6566a3bdea0ac3575c
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - templer.core
+
+  run:
+    - python
+    - templer.core
+
+test:
+  imports:
+    - templer.buildout
+
+about:
+  home: http://svn.plone.org/svn/collective/templer.buildout
+  license: MIT
+  summary: "Templer system extensions for buildouts and buildout recipes"

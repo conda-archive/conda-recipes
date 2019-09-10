@@ -1,0 +1,44 @@
+package:
+  name: celery
+  version: !!str 3.1.13
+
+source:
+  fn: celery-3.1.13.tar.gz
+  url: https://pypi.python.org/packages/source/c/celery/celery-3.1.13.tar.gz
+  md5: 549aa12b13f77d1363e9087d3deb4742
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pytz
+    - billiard >=3.3.0.17,<3.4
+    - kombu >=3.0.19,<3.1
+
+  run:
+    - python
+    - pytz
+    - billiard >=3.3.0.17,<3.4
+    - kombu >=3.0.19,<3.1
+
+test:
+  imports:
+    - celery
+    - celery.app
+    - celery.apps
+    - celery.bin
+    - celery.concurrency
+    - celery.contrib
+    - celery.events
+    - celery.fixups
+    - celery.loaders
+    - celery.security
+    - celery.task
+    - celery.utils
+    - celery.utils.dispatch
+    - celery.worker
+
+about:
+  home: http://celeryproject.org
+  license:  BSD License
+  summary: 'Distributed Task Queue'

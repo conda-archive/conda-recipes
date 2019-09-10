@@ -1,0 +1,27 @@
+package:
+  name: django-classy-tags
+  version: 0.5.1
+
+source:
+  fn: django-classy-tags-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-classy-tags/django-classy-tags-0.5.1.tar.gz
+  md5: b514edc23d469b0f545be104ab07bcaf
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - django
+
+  run:
+    - python
+    - django
+
+test:
+  imports:
+    - classytags
+
+about:
+  home: https://github.com/ojii/django-classy-tags
+  license: BSD License
+  summary: "Class based template tags for Django"

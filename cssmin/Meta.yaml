@@ -1,0 +1,25 @@
+package:
+  name: cssmin
+  version: !!str 0.2.0
+
+source:
+  fn: cssmin-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/cssmin/cssmin-0.2.0.tar.gz
+  md5: c2798658a4f69663365a3e70c3b8250b
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - cssmin
+
+about:
+  home: http://github.com/zacharyvoase/cssmin
+  license: Unspecified
+  summary: "A Python port of the YUI CSS compression algorithm."

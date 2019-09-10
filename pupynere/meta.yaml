@@ -1,0 +1,27 @@
+package:
+  name: pupynere
+  version: !!str 1.0.15
+
+source:
+  fn: pupynere-1.0.15.tar.gz
+  url: https://pypi.python.org/packages/source/p/pupynere/pupynere-1.0.15.tar.gz
+  md5: 1657a9a1bf49b2753711185ca0089cbf
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+
+  run:
+    - python
+    - numpy
+
+test:
+  imports:
+    - pupynere
+
+about:
+  home: http://bitbucket.org/robertodealmeida/pupynere/
+  license: MIT
+  summary: "NetCDF file reader and writer."

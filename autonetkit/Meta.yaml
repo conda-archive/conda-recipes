@@ -1,0 +1,40 @@
+package:
+  name: autonetkit
+  version: 0.9.10
+
+source:
+  fn: autonetkit-0.9.10.tar.gz
+  url: https://pypi.python.org/packages/source/a/autonetkit/autonetkit-0.9.10.tar.gz
+  md5: 653910a2cb0299a10f2ae0873ea2df4f
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - netaddr ==0.7.10
+    - mako ==0.8
+    - networkx ==1.7
+    - configobj ==4.7.1
+    - tornado ==3.0.1
+
+  run:
+    - python
+    - tornado
+    - netaddr ==0.7.10
+    - mako ==0.8
+    - networkx ==1.7
+    - configobj ==4.7.1
+    - tornado ==3.0.1
+    - setuptools
+
+test: 
+  imports:
+    - autonetkit
+
+about:
+  home: http://www.autonetkit.org/
+  license: BSD License
+  summary: 'Automatic configuration generation for emulated networks'

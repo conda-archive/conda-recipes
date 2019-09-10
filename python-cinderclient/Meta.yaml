@@ -1,0 +1,27 @@
+package:
+  name: python-cinderclient
+  version: 1.1.1
+
+source:
+  fn: python-cinderclient-1.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-cinderclient/python-cinderclient-1.1.1.tar.gz
+  md5: 5b8ec90592d2b4a2b1df64df7bb6af6b
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pbr
+
+  run:
+    - python
+    - pbr
+
+test:
+  imports:
+    - cinderclient
+
+about:
+  home: http://www.openstack.org/
+  license: Apache Software License
+  summary: "OpenStack Block Storage API Client Library"

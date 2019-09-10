@@ -1,0 +1,32 @@
+package:
+  name: pbp.recipe.noserunner
+  version: !!str 0.2.6
+
+source:
+  fn: pbp.noserunner-0.2.6.tar.gz
+  url: https://pypi.python.org/packages/source/p/pbp.recipe.noserunner/pbp.recipe.noserunner-0.2.6.tar.gz
+  md5: e40520a6e84a237604591d204dfb7270
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zc.recipe.egg
+    - nose
+
+  run:
+    - python
+    - zc.recipe.egg
+    - nose
+
+test:
+  imports:
+    - pbp.recipe.noserunner
+
+about:
+  home: http://atomisator.ziade.org/
+  license:  ZPL
+  summary: "Expert Python Programming - ZC Buildout runner for nose"

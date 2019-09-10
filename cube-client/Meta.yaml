@@ -1,0 +1,27 @@
+package:
+  name: cube-client
+  version: 0.2.0
+
+source:
+  fn: cube-client-0.2.0.tar.gz
+  url: https://pypi.python.org/packages/source/c/cube-client/cube-client-0.2.0.tar.gz
+  md5: db789558ee0ee1a6d5eeed1dc5e58196
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - requests
+
+  run:
+    - python
+    - requests
+
+test:
+  imports:
+    - cube
+
+about:
+  home: https://github.com/tsileo/cube-client
+  license: MIT
+  summary: "A Python client for Cube: Time Series Data Collection & Analysis"

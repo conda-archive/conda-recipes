@@ -1,0 +1,30 @@
+package:
+  name: jsonpatch
+  version: 1.8
+
+source:
+  fn: jsonpatch-1.8.tar.gz
+  url: https://pypi.python.org/packages/source/j/jsonpatch/jsonpatch-1.8.tar.gz
+  md5: df95ad1c78d13ff47221b0bb005eb1ab
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - jsonpointer
+
+  run:
+    - python
+    - jsonpointer
+
+test: 
+  imports:
+    - jsonpatch
+
+about:
+  home: https://github.com/stefankoegl/python-json-patch
+  license: Modified BSD License
+  summary: "Apply JSON-Patches (RFC 6902)"

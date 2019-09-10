@@ -1,0 +1,26 @@
+package:
+  name: peppercorn
+  version: 0.4
+
+source:
+  fn: peppercorn-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/p/peppercorn/peppercorn-0.4.tar.gz
+  md5: 464d6f2342eaf704dfb52046c1f5c320
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - colander
+
+  run:
+    - python
+
+test:
+  imports:
+    - peppercorn
+
+about:
+  home: http://docs.pylonsproject.org/projects/peppercorn/en/latest/
+  license: BSD-derived (http://www.repoze.org/LICENSE.txt)
+  summary: "A library for converting a token stream into a data structure for use in web form posts"

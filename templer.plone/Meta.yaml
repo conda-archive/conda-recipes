@@ -1,0 +1,26 @@
+package:
+  name: templer.plone
+  version: !!str 1.0b1
+
+source:
+  fn: templer.plone-1.0b1.zip
+  url: https://pypi.python.org/packages/source/t/templer.plone/templer.plone-1.0b1.zip
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - templer.zope
+
+  run:
+    - python
+    - templer.zope
+
+test:
+  imports:
+    - templer.plone
+
+about:
+  home: http://svn.plone.org/svn/collective/templer.plone
+  license: MIT
+  summary: "Templer system extensions for plone add-on development"

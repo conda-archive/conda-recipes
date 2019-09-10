@@ -1,0 +1,25 @@
+package:
+  name: tempita
+  version: 0.5.2
+
+source:
+  fn: tempita-0.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/T/Tempita/Tempita-0.5.2.tar.gz
+  md5: 4c2f17bb9d481821c41b6fbee904cea1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - tempita
+
+about:
+  home: http://pythonpaste.org/tempita/
+  license: MIT
+  summary: "A very small text templating language"

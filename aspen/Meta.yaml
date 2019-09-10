@@ -1,0 +1,25 @@
+package:
+  name: aspen
+  version: 0.34
+
+source:
+  fn: aspen0.34.tar.gz
+  url: https://pypi.python.org/packages/source/a/aspen/aspen-0.34.tar.gz
+  md5: b644fb8cb5e4e6390382984ed9fc61df
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - aspen
+
+about:
+  home: http://aspen.io
+  license: MIT License
+  summary: 'Aspen is a Python web framework. Simplates are the main attraction.'

@@ -1,0 +1,27 @@
+package:
+  name: networkx
+  version: 1.9.1
+
+source:
+  fn: networkx-1.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/n/networkx/networkx-1.9.1.tar.gz
+  md5: a2d9ee8427c5636426f319968e0af9f2
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - decorator
+
+  run:
+    - python
+    - decorator
+
+test:
+  imports:
+    - networkx
+
+about:
+  home: http://networkx.github.io/
+  license: BSD
+  summary: "Python package for creating and manipulating graphs and networks"

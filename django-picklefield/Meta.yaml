@@ -1,0 +1,32 @@
+package:
+  name: django-picklefield
+  version: 0.3.1
+
+source:
+  fn: django-picklefield-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-picklefield/django-picklefield-0.3.1.tar.gz
+  md5: 69712c8744502f2bf179c7fbed0006ef
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - django
+
+  run:
+    - python
+    - django
+    - setuptools
+    - six
+
+test:
+  imports:
+    - django
+    - six
+    - picklefield
+
+about:
+  home: http://github.com/gintas/django-picklefield
+  license: MIT License
+  summary: "Pickled object field for Django"

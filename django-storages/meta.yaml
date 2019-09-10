@@ -1,0 +1,25 @@
+package:
+  name: django-storages
+  version: !!str 1.1.8
+
+source:
+  fn: django-storages-1.1.8.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-storages/django-storages-1.1.8.tar.gz
+  md5: 1b551bbe2adc8e7dddf2043da3238d6a
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - storages
+
+about:
+  home: http://code.welldev.org/django-storages/
+  license: BSD
+  summary: "Support for many storages (S3, MogileFS, etc) in Django."

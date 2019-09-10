@@ -1,0 +1,30 @@
+package:
+  name: httpencode
+  version: !!str 0.1
+
+source:
+  fn: httpencode-0.1.tar.gz
+  url: https://pypi.python.org/packages/source/H/HTTPEncode/HTTPEncode-0.1.tar.gz
+  md5: f9fae2fc6b05da73d7b27c6cb45a08a9
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - httplib2
+    - paste
+
+  run:
+    - python
+    - httplib2
+    - paste
+    - setuptools
+
+test:
+   imports: 
+     - httpencode
+
+about:
+  home: http://pythonpaste.org/httpencode/
+  license: MIT
+  summary: "Fast RPC or encoded calls between WSGI apps"

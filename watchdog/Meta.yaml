@@ -1,0 +1,34 @@
+package:
+  name: watchdog
+  version: !!str 0.8.1
+
+source:
+  fn: watchdog-0.8.1.tar.gz
+  url: https://pypi.python.org/packages/source/w/watchdog/watchdog-0.8.1.tar.gz
+  md5: a58a082823dc6d3c60ffba1ff5f94608
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pathtools
+    - argh
+    - pyyaml
+
+  run:
+    - python
+    - pathtools
+    - argh
+    - pyyaml
+
+test:
+  imports:
+    - watchdog
+
+about:
+  home: http://github.com/gorakhargosh/watchdog
+  license: BSD
+  summary: "Filesystem events monitoring"

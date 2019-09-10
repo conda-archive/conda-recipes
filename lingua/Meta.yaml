@@ -1,0 +1,29 @@
+package:
+    name: lingua
+    version: 3.3
+
+source:
+    fn: lingua-3.3.tar.gz
+    url: https://pypi.python.org/packages/source/l/lingua/lingua-3.3.tar.gz
+    md5: 1ee721bbc745b074a79c5121d5791889
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - chameleon
+    - polib
+
+  run:
+    - python
+    - chameleon
+    - polib
+
+test:
+  imports:
+    - lingua
+
+about:
+    home: https://github.com/wichert/lingua
+    license: BSD
+    summary: "Translation toolset"

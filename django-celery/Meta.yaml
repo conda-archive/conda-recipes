@@ -1,0 +1,27 @@
+package:
+  name: django-celery
+  version: 3.1.10
+
+source:
+  fn: django-celery.3.1.10.tar.gz
+  url: https://pypi.python.org/packages/source/d/django-celery/django-celery-3.1.10.tar.gz
+  md5: 82435ce3900868c11e250a57360d514e
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - celery
+
+  run:
+    - python
+    - celery
+
+test:
+  imports:
+    - djcelery
+
+about:
+  home: http://celeryproject.org
+  license: BSD License
+  summary: "Old django celery integration project."

@@ -1,0 +1,32 @@
+package:
+  name: zope.lifecycleevent
+  version: !!str 4.0.3
+
+source:
+  fn: zope.lifecycleevent-4.0.3.zip
+  url: https://pypi.python.org/packages/source/z/zope.lifecycleevent/zope.lifecycleevent-4.0.3.zip
+  md5: 79a2665d6f65b173e1967b041117d277
+
+build:
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - zope.event
+    - zope.interface
+
+  run:
+    - python
+    - zope.event
+    - zope.interface
+
+test:
+  imports:
+    - zope.lifecycleevent
+
+about:
+  home: http://pypi.python.org/pypi/zope.lifecycleevent
+  license: Zope Public License
+  summary: "Object life-cycle events"
