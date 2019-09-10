@@ -1,0 +1,18 @@
+package:
+  name: libwebp
+  version: !!str 0.4.2
+
+source:
+    fn: libwebp-0.4.2.tar.gz
+    url: http://downloads.webmproject.org/releases/webp/libwebp-0.4.2.tar.gz
+    md5: 404f45a7d695217db2bb49e1e22ad49f
+
+requirements:
+  build:
+
+  run:
+
+about:
+    home: https://developers.google.com/speed/webp/
+    license: BSD License
+    summary: 'Library for handling webp files'

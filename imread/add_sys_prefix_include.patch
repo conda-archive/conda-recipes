@@ -1,0 +1,13 @@
+diff --git setup.py setup.py
+index 9204e1e..1dfda1e 100644
+--- setup.py
++++ setup.py
+@@ -45,6 +45,8 @@ if EXCLUDE_WEBP:
+ include_dirs = [np.get_include()]
+ library_dirs = []
+ 
++include_dirs.append(sys.prefix + '/include')
++
+ for pth in ('/usr/local/include', '/usr/X11/include'):
+     if os.path.isdir(pth):
+         include_dirs.append(pth)
