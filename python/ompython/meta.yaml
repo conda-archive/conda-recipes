@@ -1,0 +1,33 @@
+package:
+    name: ompython
+    version: 2.0.7
+
+source:
+    fn: OMPython-2.0.7.tar.gz
+    url: https://pypi.python.org/packages/source/O/OMPython/OMPython-2.0.7.tar.gz
+    md5: 31c9a34c43e76772b1caa79a2bbf4f25
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - distribute
+        - python
+        - pyparsing
+        - omniorb
+
+    run:
+        - python
+        - pyparsing
+        - omniorb
+
+test:
+    imports:
+        - OMPython
+
+about:
+    home: http://openmodelica.org/
+    license: BSD
+    summary: OpenModelica-Python API Interface
+

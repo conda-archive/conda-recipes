@@ -1,0 +1,39 @@
+From 9bb8ca5f6cea72093be7e553e4aa066ffad74f14 Mon Sep 17 00:00:00 2001
+From: "Kamil Kwiek (irritum)" <kamil.kwiek@continuum.io>
+Date: Mon, 21 Mar 2016 16:53:52 +0100
+Subject: [PATCH] Fixed windows platform for python3.5
+
+---
+ config/config.mk                | 2 +-
+ mk/platforms/x86_win32_vs_14.mk | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git config/config.mk config/config.mk
+index 5567123..c502299 100644
+--- config/config.mk
++++ config/config.mk
+@@ -59,7 +59,7 @@
+ # You should also look at <top>/mk/platforms/$(platform).mk and if necessary
+ # edit the make variables, such as CC and CXX, in the file.
+ 
+-#platform = x86_win32_vs_14
++platform = x86_win32_vs_14
+ #platform = x86_win32_vs_13
+ #platform = x86_win32_vs_12
+ #platform = x86_win32_vs_11
+diff --git mk/platforms/x86_win32_vs_14.mk mk/platforms/x86_win32_vs_14.mk
+index 8fb2ee9..b00f3b5 100644
+--- mk/platforms/x86_win32_vs_14.mk
++++ mk/platforms/x86_win32_vs_14.mk
+@@ -23,7 +23,7 @@ ABSTOP = $(shell cd $(TOP); pwd)
+ # http://sourceforge.net/project/showfiles.php?group_id=51138&package_id=48638
+ # In that case, uncomment the first line below.
+ 
+-#PYTHON = $(ABSTOP)/$(BINDIR)/omnipython
++PYTHON = python
+ #PYTHON = /cygdrive/c/Python26/python
+ 
+ 
+-- 
+2.0.5
+

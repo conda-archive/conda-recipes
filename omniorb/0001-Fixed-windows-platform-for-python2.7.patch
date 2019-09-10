@@ -1,0 +1,39 @@
+From b23c7bf62da7f70b1e082a851292746d316db776 Mon Sep 17 00:00:00 2001
+From: "Kamil Kwiek (irritum)" <kamil.kwiek@continuum.io>
+Date: Mon, 21 Mar 2016 11:53:35 +0100
+Subject: [PATCH] Fixed windows platform for python2.7
+
+---
+ config/config.mk               | 2 +-
+ mk/platforms/x86_win32_vs_8.mk | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git config/config.mk config/config.mk
+index 5567123..a4d4495 100644
+--- config/config.mk
++++ config/config.mk
+@@ -65,7 +65,7 @@
+ #platform = x86_win32_vs_11
+ #platform = x86_win32_vs_10
+-#platform = x86_win32_vs_9
++platform = x86_win32_vs_9
+ #platform = x86_win32_vs_8
+ #platform = x86_win32_vs_7
+ #platform = x86_win32_vs_6
+ #platform = x86_win32_mingw
+diff --git mk/platforms/x86_win32_vs_9.mk mk/platforms/x86_win32_vs_9.mk
+index be80cf9..b91d1a9 100755
+--- mk/platforms/x86_win32_vs_9.mk
++++ mk/platforms/x86_win32_vs_9.mk
+@@ -23,7 +23,7 @@ ABSTOP = $(shell cd $(TOP); pwd)
+ # http://sourceforge.net/project/showfiles.php?group_id=51138&package_id=48638
+ # In that case, uncomment the first line below.
+ 
+-#PYTHON = $(ABSTOP)/$(BINDIR)/omnipython
++PYTHON = python
+ #PYTHON = /cygdrive/c/Python26/python
+ 
+ 
+-- 
+2.0.5
+

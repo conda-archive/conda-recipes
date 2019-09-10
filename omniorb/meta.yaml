@@ -1,0 +1,34 @@
+package:
+    name: omniorb
+    version: 4.2.1
+
+source:
+    fn: omniORB-4.2.1-2.tar.bz2
+    url: https://sourceforge.net/projects/omniorb/files/omniORB/omniORB-4.2.1/omniORB-4.2.1-2.tar.bz2
+
+    patches:
+        - 0001-Fixed-windows-platform-for-python2.7.patch   # [win and py27]
+        - 0001-Fixed-windows-platform-for-python3.x.patch   # [win and py33|py34]
+        - 0001-Fixed-windows-platform-for-python3.5.patch   # [win and py35]
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+
+    run:
+        - python
+
+test:
+    commands:
+        - omniidl -h
+        - omniidlrun.py -h          # [not win]
+        - omniNames -ORBhelp
+
+about:
+    home: https://openmodelica.org/
+    license: BSD
+    summary: It's CORBA object request broker for C++ and Python.
+
