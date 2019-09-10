@@ -1,0 +1,20 @@
+package:
+  name: sparselm
+  version: 1.3
+
+source:
+  fn: sparselm-1.3.tgz
+  url: http://users.ics.forth.gr/~lourakis/sparseLM/sparselm-1.3.tgz
+  sha1: 3e2157b0d964522b313e874fe2f7a1ca30528c58
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - cmake
+
+about:
+  home: http://users.ics.forth.gr/~lourakis/sparseLM/
+  license: GPL
+  summary: Sparse non-linear least-squares solver
