@@ -1,0 +1,31 @@
+package:
+    name: webapp2
+    version: 2.5.2
+
+source:
+    fn: webapp2-2.5.2.tar.gz
+    url: https://pypi.python.org/packages/source/w/webapp2/webapp2-2.5.2.tar.gz
+    md5: 69e3e2f6669867b9c5290ba8fea71220
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - distribute
+        - python
+        - webob
+
+    run:
+        - distribute
+        - python
+        - webob
+
+test:
+    imports:
+        - webapp2
+
+about:
+    home: http://webapp-improved.appspot.com/
+    license: Apache
+    summary: Taking Google App Engine's webapp to the next level!

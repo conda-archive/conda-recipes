@@ -1,0 +1,54 @@
+package:
+    name: rdc.etl
+    version: 1.0.0
+
+source:
+    git_url: https://github.com/rdcli/rdc.etl
+    git_tag: 1.0.0a6
+
+    patches:
+        - 0001-Fixed-setup.py-file.patch
+        - 0001-Fixed-beautifulsoup-import.patch
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - distribute
+        - python
+        - rdc.common ==0.1.0
+        - lxml
+        - beautiful-soup
+        - requests
+        - unidecode
+        - webob
+        - webapp2
+        - sqlalchemy
+        - blessings
+        - psutil
+        - repoze.lru
+
+    run:
+        - distribute
+        - python
+        - rdc.common ==0.1.0
+        - lxml
+        - beautiful-soup
+        - requests
+        - unidecode
+        - webob
+        - webapp2
+        - sqlalchemy
+        - blessings
+        - psutil
+        - repoze.lru
+
+test:
+    imports:
+        - rdc.etl
+
+about:
+    home: https://github.com/rdcli/rdc.etl
+    license: Apache 2.0
+    summary: Extract Transform Load (ETL) toolkit for python

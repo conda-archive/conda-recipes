@@ -1,0 +1,32 @@
+From 095848722bd5f6d54415762200c5953898005691 Mon Sep 17 00:00:00 2001
+From: "Kamil Kwiek (irritum)" <kamil.kwiek@continuum.io>
+Date: Thu, 3 Mar 2016 14:05:57 +0100
+Subject: [PATCH] Fixed setup.py file
+
+---
+ setup.py | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git setup.py setup.py
+index e074a1b..104a5d1 100644
+--- setup.py
++++ setup.py
+@@ -21,7 +21,6 @@ version = read('version.txt')
+ 
+ setup(
+     name='rdc.etl',
+-    namespace_packages = ['rdc'],
+     version=version,
+     description="Extract Transform Load (ETL) toolkit for python",
+     long_description=read('README.rst'),
+@@ -34,7 +33,6 @@ setup(
+     license='Apache License, Version 2.0',
+     packages=find_packages(exclude=['ez_setup', 'example', 'test']),
+     include_package_data=True,
+-    install_requires=read('requirements.txt', requirements_filter),
+     entry_points="""
+     [paste.paster_create_template]
+     etl_project=rdc.etl.extra.tools.template:ETLProjectTemplate
+-- 
+2.0.5
+
