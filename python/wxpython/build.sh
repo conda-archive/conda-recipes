@@ -2,13 +2,17 @@
 
 mkdir -vp ${PREFIX}/bin;
 
-ARCH="$(uname 2>/dev/null)"
+MYARCH="$(uname 2>/dev/null)"
+MYNCPU=$(( (CPU_COUNT > 8) ? 8 : CPU_COUNT ))
 
-export CFLAGS="-m64 -pipe -O2 -march=x86-64 -fPIC"
+MYCFLAGS=""
+if [[ ${ARCH} == 64 ]]; then
+    MYCFLAGS="-m64 -march=x86-64"
+fi
+
+export CFLAGS="${MYCFLAGS} -pipe -O2 -fPIC"
 export CXXFLAGS="${CFLAGS} -std=c++11"
 export CPPFLAGS="${CFLAGS} -std=c++11"
-#export CPPFLAGS="-I${PREFIX}/include"
-#export LDFLAGS="-L${PREFIX}/lib64"
 
 LinuxInstallation() {
     # Build dependencies:
@@ -41,7 +45,7 @@ LinuxInstallation() {
         --with-regex=builtin \
         --with-zlib=builtin \
         --prefix="${PREFIX}" || return 1;
-    make || return 1;
+    make -j ${MYNCPU} || return 1;
     make install || return 1;
 
     pushd wxPython/;
@@ -49,25 +53,15 @@ LinuxInstallation() {
         --record installed_files.txt --prefix="${PREFIX}" || return 1;
     popd;
 
-    rm ${PREFIX}/bin/wx-config || return 1;
-
-    pushd ${PREFIX};
-    ln -vs ../lib/wx/config/inplace-gtk2-unicode-3.0 wx-config || return 1;
-    popd;
-
     return 0;
 }
 
-case ${ARCH} in
+case ${MYARCH} in
     'Linux')
         LinuxInstallation || exit 1;
         ;;
     *)
-        echo -e "Unsupported machine type: ${ARCH}";
+        echo -e "Unsupported machine type: ${MYARCH}";
         exit 1;
         ;;
 esac
-
-#POST_LINK="${PREFIX}/bin/.wxpython-post-link.sh"
-#cp -v ${RECIPE_DIR}/post-link.sh ${POST_LINK};
-#chmod -v 0755 ${POST_LINK};
