@@ -1,0 +1,6 @@
+diff --git requirements.txt requirements.txt
+index b8f7aa6..e69de29 100644
+--- requirements.txt
++++ requirements.txt
+@@ -1 +0,0 @@
+-sphinx>=1.3
