@@ -1,0 +1,24 @@
+
+package:
+    name: boost-vpython
+    version: 1.55.0
+
+source:
+    fn: boost_1_55_0.tar.bz2
+    url: http://sourceforge.net/projects/boost/files/boost/1.55.0/boost_1_55_0.tar.bz2
+
+build:
+    number: 0
+
+requirements:
+    build:
+
+    run:
+
+test:
+    imports:
+
+about:
+    home: http://www.boost.org/
+    license: Boost-1.0
+

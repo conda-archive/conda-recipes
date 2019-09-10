@@ -1,0 +1,22 @@
+diff --git setup.py setup.py
+index c7b1988..2e45a09 100644
+--- setup.py
++++ setup.py
+@@ -87,7 +87,7 @@ elif os_host == 'mac':
+         #
+         # we have no setup.cfg file, assume boost is in 'dependencies'
+         #
+-        BOOST_DIR = os.path.join(VISUAL_DIR,os.path.join('dependencies','boost_files')) 
++        BOOST_DIR = os.path.join(os.environ['PREFIX'], 'include')
+         BOOST_LIBDIR = os.path.join(BOOST_DIR,'mac_libs')
+         LIBRARY_DIRS = [BOOST_LIBDIR]
+     else:
+@@ -133,7 +133,7 @@ for pattern in patterns:
+     VISUAL_SOURCES.extend(glob(VISUAL_DIR + pattern)) 
+  
+ if os_host == 'mac': 
+-    os.environ['LDFLAGS'] = '-framework Cocoa -framework OpenGL -framework Python'
++    os.environ['LDFLAGS'] = ('-framework Cocoa -framework OpenGL ')
+ elif os_host == 'linux': 
+     os.environ['LD_FLAGS'] = LINK_FLAGS 
+  
