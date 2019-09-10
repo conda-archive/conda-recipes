@@ -1,14 +1,14 @@
 package:
   name: swig
-  version: 3.0.8
+  version: 3.0.10
 
 source:
-  fn: swig-3.0.8.tar.gz   [unix]
-  url: http://prdownloads.sourceforge.net/swig/swig-3.0.8.tar.gz   [unix]
-  sha1: 1f45e96219536b3423b8d4dbd03614ffccca9c33 [unix]
-  fn: swigwin-3.0.8.zip   [win]
-  url: http://prdownloads.sourceforge.net/swig/swigwin-3.0.8.zip   [win]
-  sha1: 13cd3ed0acc6d92d09b960a628fb5282aaa37549 [win]
+  fn: swig-3.0.10.tar.gz   [unix]
+  url: http://prdownloads.sourceforge.net/swig/swig-3.0.10.tar.gz   [unix]
+  sha1: c672b8535394cfb204c70de7c66e69fb20a95647 [unix]
+  fn: swigwin-3.0.10.zip   [win]
+  url: http://prdownloads.sourceforge.net/swig/swigwin-3.0.10.zip   [win]
+  sha1: ce224e518ca4b347c8207e788d457dd116713b12 [win]
 
 build:
   detect_binary_files_with_prefix: True    [unix]
