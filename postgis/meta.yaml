@@ -9,6 +9,9 @@ source:
 build:
   number: 0
 
+# 
+# OS X needs libiconv
+#
 requirements:
   build:
     - gdal
@@ -17,6 +20,7 @@ requirements:
     - json-c
     - libxml2
     - postgresql
+    - libiconv # [osx]
   run:
     - gdal
     - geos
@@ -24,6 +28,7 @@ requirements:
     - json-c
     - libxml2
     - postgresql
+    - libiconv # [osx]
 
 about:
   home: http://postgis.net

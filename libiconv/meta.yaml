@@ -1,0 +1,11 @@
+package:
+  name: libiconv
+  version: 1.14 
+
+source:
+  fn: libiconv-1.14.tar.gz
+  url: http://ftpmirror.gnu.org/libiconv/libiconv-1.14.tar.gz
+
+about:
+  home: https://www.gnu.org/software/libiconv/ 
+  license: GPL
