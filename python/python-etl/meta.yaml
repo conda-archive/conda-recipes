@@ -1,0 +1,50 @@
+package:
+    name: python-etl
+    version: 1.01
+
+source:
+    fn: Python-ETL-1.01.zip
+    url: https://pypi.python.org/packages/source/P/Python-ETL/Python-ETL-1.01.zip
+    md5: 811e1efd9d8c04730b6c6e397ed9bfd6
+
+    patches:
+        - 0001-Corrected-name-of-one-dependency.patch
+
+build:
+    number: 0
+
+requirements:
+    build:
+        - python
+        - hgtools
+        - xlrd
+        - xlutils >=1.5.2
+        - xlwt >=0.7.4
+        - pyyaml >=3.10
+        - docutils >=0.3
+        - pyodbc >=2.1.11
+        - pymongo >=2.3,<3
+        - mysql-python
+        - python-dateutil ==2.1
+
+    run:
+        - python
+        - hgtools
+        - xlrd
+        - xlutils >=1.5.2
+        - xlwt >=0.7.4
+        - pyyaml >=3.10
+        - docutils >=0.3
+        - pyodbc >=2.1.11
+        - pymongo >=2.3,<3
+        - mysql-python
+        - python-dateutil ==2.1
+
+test:
+    imports:
+        - cardsharp                 # [win]
+
+about:
+    home: http://python-etl.norc.org
+    license: MIT
+    summary: Python-ETL is an open-source Extract, Transform, load (ETL) library written in Python

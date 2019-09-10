@@ -1,0 +1,50 @@
+From c4e5424884a8bc230f3d8113f04b71fa26293227 Mon Sep 17 00:00:00 2001
+From: "Kamil Kwiek (irritum)" <kamil.kwiek@gmail.com>
+Date: Mon, 29 Feb 2016 11:23:27 +0100
+Subject: [PATCH] Corrected name of one dependency
+
+---
+ Python_ETL.egg-info/requires.txt | 4 ++--
+ setup.py                         | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git Python_ETL.egg-info/requires.txt Python_ETL.egg-info/requires.txt
+index 374bdc1..2e004c5 100644
+--- Python_ETL.egg-info/requires.txt
++++ Python_ETL.egg-info/requires.txt
+@@ -1,4 +1,4 @@
+-pythonetl-xlrd
++xlrd
+ xlutils>=1.5.2
+ xlwt>=0.7.4
+ pyyaml>=3.10
+@@ -6,4 +6,4 @@ docutils>=0.3
+ pyodbc>=2.1.11
+ pymongo>=2.3
+ mysql-python
+-python-dateutil==2.1
+\ No newline at end of file
++python-dateutil==2.1
+diff --git setup.py setup.py
+index d241b95..3071d50 100644
+--- setup.py
++++ setup.py
+@@ -10,7 +10,7 @@ setup(
+ 
+     # Project uses reStructuredText, so ensure that the docutils get
+     # installed or upgraded on the target machine
+-    install_requires = ['pythonetl-xlrd', 'xlutils>=1.5.2', 'xlwt>=0.7.4', 'pyyaml>=3.10',
++    install_requires = ['xlrd', 'xlutils>=1.5.2', 'xlwt>=0.7.4', 'pyyaml>=3.10',
+                         'docutils>=0.3', 'pyodbc>=2.1.11', 'pymongo>=2.3', 'mysql-python', 'python-dateutil==2.1'],
+ 
+     package_data = {
+@@ -29,4 +29,4 @@ setup(
+     url = "http://python-etl.norc.org",
+ 
+     # could also include long_description, download_url, classifiers, etc.
+-)
+\ No newline at end of file
++)
+-- 
+2.4.10
+
