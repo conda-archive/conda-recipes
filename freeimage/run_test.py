@@ -29,9 +29,7 @@ assert os.path.isfile(lib_fname2), "Could not find file: %s" % lib_fname2
 
 # Load library and get found version
 for fname in (lib_fname1, lib_fname2):
-    print('Testing', fname)
     lib = loader(fname)
     lib.FreeImage_GetVersion.restype = ctypes.c_char_p
     found_version = lib.FreeImage_GetVersion().decode('utf-8')
     assert lib_version == found_version
-    print('Test ok, FreeImage version:', found_version)

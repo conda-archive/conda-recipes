@@ -1,5 +1,4 @@
-
-if defined ProgramFiles(x86) (
+if "%ARCH%" == "64" (
   set ARCH=x64
 ) else (
   set ARCH=Win32
