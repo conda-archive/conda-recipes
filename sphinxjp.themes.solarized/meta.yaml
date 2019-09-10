@@ -1,0 +1,39 @@
+package:
+  name: sphinxjp.themes.solarized
+  version: "0.1.0"
+
+source:
+  fn: sphinxjp.themes.solarized-0.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/sphinxjp.themes.solarized/sphinxjp.themes.solarized-0.1.0.tar.gz
+  md5: 88cd13855a6127aff99123fb65a83fe9
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - docutils
+    - sphinx
+    - sphinxjp.themecore
+    - pygments
+
+  run:
+    - python
+    - setuptools
+    - docutils
+    - sphinx
+    - sphinxjp.themecore
+    - pygments
+
+test:
+  imports:
+    - sphinxjp.themes
+    - sphinxjp
+    - sphinxjp.themes.solarized
+
+about:
+  home: http://bitbucket.org/miiton/sphinxjp.themes.solarized
+  license: MIT
+  summary: 'A sphinx theme based on solarized color scheme.'

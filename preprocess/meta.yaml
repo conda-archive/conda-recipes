@@ -1,0 +1,27 @@
+package:
+  name: preprocess
+  version: "1.2.0"
+
+source:
+  git_url: https://github.com/hplgit/preprocess.git
+
+build:
+  number: 2
+
+requirements:
+  build:
+    - python
+    - future
+
+  run:
+    - python
+    - future
+
+test:
+  imports:
+    - preprocess
+
+about:
+  home: http://code.google.com/p/preprocess/
+  license: MIT
+  summary: 'preprocess: a multi-language preprocessor'

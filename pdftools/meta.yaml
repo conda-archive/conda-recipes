@@ -1,0 +1,27 @@
+package:
+  name: pdftools
+  version: "1.0.6"
+
+source:
+  fn: pdftools-0.37.tar.gz
+  url: http://www.boddie.org.uk/david/Projects/Python/pdftools/Software/pdftools-0.37.tar.gz
+  md5: 436b7fdc3c2936e71cf15103a3b7db26
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  imports:
+    - pdftools
+
+about:
+  home: http://www.boddie.org.uk/david/Projects/Python/pdftools/
+  license: GPL-2
+  summary: 'PDF document reading classes'
